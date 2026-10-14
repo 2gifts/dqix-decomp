@@ -13,7 +13,7 @@ extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" int _ZN8Object3D21MaybeSetBCFGAnimationEii(void* obj, int a, int b);
 extern "C" void* _ZN8Object3D25GetCurrentAnimationConfigEv(void* obj);
 extern "C" BCFG::AnimationRecord* _ZN4BCFG18GetAnimationRecordEi(void* list, int index);
-extern "C" int _Z22IsMatchingName0208e824PvPc(void* unused, char* str);
+int IsMatchingName0208e824(void* unused, char* str);
 
 struct Entry0208f168 {
     unsigned int low9 : 9;
@@ -70,7 +70,7 @@ extern "C" ARM void func_0208f168(struct Self0208f168* self, void* alloc) {
     if (name == 0) {
         return;
     }
-    if (_Z22IsMatchingName0208e824PvPc(h, name + 5) == 0) {
+    if (IsMatchingName0208e824(h, name + 5) == 0) {
         return;
     }
 

@@ -92,21 +92,21 @@ void* GetData02100044(void);
 void* GetData02153637(void);
 void* GetData02153634(void);
 void* GetData02153660(void);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void* GetDataPtr02114e04_020d6c00(void);
 extern "C" int func_0202c540(void* obj);
 int GetFieldAt0x0(int* obj);
-extern "C" void _Z24UpdatePlayClocks020ac4f8i(int arg);
+void UpdatePlayClocks020ac4f8(int arg);
 extern "C" void __clear(void* buf, int len);
 void Clear0x20BytesAt0x74de(unsigned char* obj);
 void ClearFieldKeepBit0x10(void* obj);
 extern "C" void func_02046a8c(void* a, void* b);
 void SetBitsInWord(unsigned int* word, unsigned int bits);
-extern "C" void _Z21BlankFunction020d84e0v(void);
+void BlankFunction020d84e0(void);
 extern "C" void func_0202b0f4(void* obj);
 extern "C" void func_0205e22c(void* obj);
 unsigned char GetField0x3acValue(GameState* gs);
 int GetByte0x26c(char* obj);
-extern "C" void _Z24ResetObjectState02039d84P11Obj02039d84(Obj02039d84* obj);
+void ResetObjectState02039d84(Obj02039d84* obj);
 GameObject* GetCombatantWithFlag0x1000(GameState* gs, int idx);
 int GetSignedByte0x2d0(void* obj);
 extern "C" void func_ov017_02190264(void* obj, int idx);
@@ -119,18 +119,18 @@ extern "C" void func_ov017_02191234(void* obj);
 extern "C" void func_ov017_02191108(void* obj, int a, int b, int c, int d);
 void SetField0x2d0(void* obj, unsigned char value);
 void SetByte0x1c8(unsigned char* obj, unsigned char value);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char* obj);
+void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
 void* GetFieldIfFlag4(char* obj);
 void SetField0x21c(void* obj, short value);
 extern "C" void* func_0205ec34(void);
 int GetPackedNibbleFlag0x8(PackedNibbleArray0206e2dc* arr, int idx);
 extern "C" void func_020abd20(int arg);
 void SetPackedNibbleFlag0x8(PackedNibbleArray0206e2a0* arr, int idx);
-extern "C" void _Z12Init020d9ae8P14Struct020d9ae8i(Struct020d9ae8* obj, int arg);
-extern "C" void _Z22CopyStringInto020d9dc4PcS_(char* dst, char* src);
+void Init020d9ae8(Struct020d9ae8* obj, int arg);
+void CopyStringInto020d9dc4(char* dst, char* src);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
-extern "C" void _Z30DecrementKeyEverywhere02086d88Phi(unsigned char* obj, int key);
-extern "C" void _Z28ClearByteField17201_0218d500Pv(void* obj);
+void DecrementKeyEverywhere02086d88(unsigned char* obj, int key);
+void ClearByteField17201_0218d500(void* obj);
 void ClearAllTreasureMapUnknownBits(void* obj);
 extern "C" void func_02048150(void* obj, int a, int b);
 extern "C" void func_ov017_02191aac(void* obj, int mode, int idx, unsigned char mask);
@@ -138,19 +138,19 @@ extern "C" void VectorizedMemset(void* dst, int value, int len);
 char* GetGlobal02109030(void);
 void ResetEightRegionsAndFlags(char* obj);
 extern "C" Field021c37a4* func_02012fe4(void);
-extern "C" void _Z29ClearTwoBytesAtField_02195748Ph(unsigned char* obj);
+void ClearTwoBytesAtField_02195748(unsigned char* obj);
 void ApplyVecFromField0x246(char* obj);
-extern "C" void _Z21InitSlotTable020e3004P17SlotTable020e3004(SlotTable020e3004* p);
-extern "C" void _Z23ClearThreeBytes020e358cP13Bytes020e358c(Bytes020e358c* p);
-extern "C" void _Z23ResetEntryArray020e3814P13Entry020e3840(Entry020e3840* p);
-extern "C" int _Z20GetField0xcd0209c3acPc(char* obj);
+void InitSlotTable020e3004(SlotTable020e3004* p);
+void ClearThreeBytes020e358c(Bytes020e358c* p);
+void ResetEntryArray020e3814(Entry020e3840* p);
+int GetField0xcd0209c3ac(char* obj);
 extern "C" void func_0209c2e0(void* obj, int a, int b);
-extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(Actor0209c678* obj, int state);
+void DispatchContextByState0209c678(Actor0209c678* obj, int state);
 extern "C" void func_020bbd9c(void);
-extern "C" int _Z24IsHandleB8Active0209c6bcPv(void* obj);
-extern "C" void _Z24InitActorContext0209c20cP13Actor0209c20c(Actor0209c20c* obj);
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(FlagWord020466f4* obj, unsigned int flags);
-extern "C" Global021c37a4* _Z26GetGlobalField0x1c020421a0v(void);
+int IsHandleB8Active0209c6bc(void* obj);
+void InitActorContext0209c20c(Actor0209c20c* obj);
+void ClearFlags020466f4(FlagWord020466f4* obj, unsigned int flags);
+Global021c37a4* GetGlobalField0x1c020421a0(void);
 
 extern Actor021c37a4 data_02109bf4;
 
@@ -164,7 +164,7 @@ extern "C" ARM void func_ov017_021c37a4(void) {
     void* d153637 = GetData02153637();
     void* d153634 = GetData02153634();
     void* d153660 = GetData02153660();
-    void* d114e04 = _Z27GetDataPtr02114e04_020d6c00v();
+    void* d114e04 = GetDataPtr02114e04_020d6c00();
     int active = func_0202c540(search);
     int state = GetFieldAt0x0((int*)search);
     int mode = search->mode;
@@ -174,7 +174,7 @@ extern "C" ARM void func_ov017_021c37a4(void) {
     Swap021c37a4 swap;
 
     if ((state == 5 && mode > 1) || state == 6) {
-        _Z24UpdatePlayClocks020ac4f8i(1);
+        UpdatePlayClocks020ac4f8(1);
     }
 
     __clear(name, 0x30);
@@ -187,7 +187,7 @@ extern "C" ARM void func_ov017_021c37a4(void) {
     }
 
     SetBitsInWord((unsigned int*)res, 2);
-    _Z21BlankFunction020d84e0v();
+    BlankFunction020d84e0();
     func_0202b0f4(search);
     func_0205e22c(d100044);
     search->flags &= ~0x10;
@@ -196,7 +196,7 @@ extern "C" ARM void func_ov017_021c37a4(void) {
         if (i == GetField0x3acValue(gs)) {
             GameObject* member = gs->GetPartyMemberByIndex(i);
             if (active && member && GetByte0x26c((char*)member)) {
-                _Z24ResetObjectState02039d84P11Obj02039d84((Obj02039d84*)member);
+                ResetObjectState02039d84((Obj02039d84*)member);
             }
         } else {
             GameObject* combatant = GetCombatantWithFlag0x1000(gs, i);
@@ -248,7 +248,7 @@ extern "C" ARM void func_ov017_021c37a4(void) {
         if (combatant) {
             SetField0x2d0(combatant, GetField0x3acValue(gs));
             SetByte0x1c8((unsigned char*)combatant, GetField0x3acValue(gs));
-            _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)combatant);
+            ClearBytesAndZeroBlock02039d24((unsigned char*)combatant);
         }
     }
 
@@ -299,14 +299,14 @@ extern "C" ARM void func_ov017_021c37a4(void) {
             void* list;
             void* node = res->unknown_ptr_array_3afc[0x31];
             list = res->unknown_ptr_array_36fc[0];
-            _Z12Init020d9ae8P14Struct020d9ae8i((Struct020d9ae8*)node, 0);
-            _Z22CopyStringInto020d9dc4PcS_((char*)node, name);
+            Init020d9ae8((Struct020d9ae8*)node, 0);
+            CopyStringInto020d9dc4((char*)node, name);
             AppendNodeToTail((TailList020469b4*)list, (TailNode020469b4*)node);
         }
     }
 
-    _Z30DecrementKeyEverywhere02086d88Phi((unsigned char*)party, 0x5612);
-    _Z28ClearByteField17201_0218d500Pv(res);
+    DecrementKeyEverywhere02086d88((unsigned char*)party, 0x5612);
+    ClearByteField17201_0218d500(res);
     if (active) {
         ClearAllTreasureMapUnknownBits(gs);
     }
@@ -340,22 +340,22 @@ extern "C" ARM void func_ov017_021c37a4(void) {
     FieldTimer021c37a4* timer = field->GetTimer();
     timer->value = 0;
     res->unknown_flag_42e2 = 0;
-    _Z29ClearTwoBytesAtField_02195748Ph((unsigned char*)res);
+    ClearTwoBytesAtField_02195748((unsigned char*)res);
     ApplyVecFromField0x246((char*)follower);
-    _Z21InitSlotTable020e3004P17SlotTable020e3004((SlotTable020e3004*)d153637);
-    _Z23ClearThreeBytes020e358cP13Bytes020e358c((Bytes020e358c*)d153634);
-    _Z23ResetEntryArray020e3814P13Entry020e3840((Entry020e3840*)d153660);
+    InitSlotTable020e3004((SlotTable020e3004*)d153637);
+    ClearThreeBytes020e358c((Bytes020e358c*)d153634);
+    ResetEntryArray020e3814((Entry020e3840*)d153660);
     field->flag = 1;
 
-    if (_Z20GetField0xcd0209c3acPc((char*)&data_02109bf4) != 0x7f) {
+    if (GetField0xcd0209c3ac((char*)&data_02109bf4) != 0x7f) {
         func_0209c2e0(&data_02109bf4, 0x7f, 0);
-        _Z30DispatchContextByState0209c678P13Actor0209c678i((Actor0209c678*)&data_02109bf4, 0);
+        DispatchContextByState0209c678((Actor0209c678*)&data_02109bf4, 0);
         func_020bbd9c();
     }
     data_02109bf4.flags &= ~4;
-    if (!_Z24IsHandleB8Active0209c6bcPv(&data_02109bf4)) {
-        _Z24InitActorContext0209c20cP13Actor0209c20c((Actor0209c20c*)&data_02109bf4);
+    if (!IsHandleB8Active0209c6bc(&data_02109bf4)) {
+        InitActorContext0209c20c((Actor0209c20c*)&data_02109bf4);
     }
-    _Z18ClearFlags020466f4P16FlagWord020466f4j((FlagWord020466f4*)d114e04, 0x800);
-    _Z26GetGlobalField0x1c020421a0v()->flag = 0;
+    ClearFlags020466f4((FlagWord020466f4*)d114e04, 0x800);
+    GetGlobalField0x1c020421a0()->flag = 0;
 }

@@ -4,7 +4,7 @@
 #include "Combat/ScriptElementList.h"
 
 struct Init0208d51c;
-extern "C" void _Z19ResetStruct0208d51cP12Init0208d51c(struct Init0208d51c* p);
+void ResetStruct0208d51c(struct Init0208d51c* p);
 
 struct Elem0208d928 {
     short id;
@@ -16,7 +16,7 @@ struct Elem0208d928 {
 };
 
 struct List0208d928;
-extern "C" void _Z27AppendCappedElement0208d928P12List0208d928P12Elem0208d928(struct List0208d928* l, struct Elem0208d928* e);
+void AppendCappedElement0208d928(struct List0208d928* l, struct Elem0208d928* e);
 
 extern const char data_020f1244[];
 
@@ -35,7 +35,7 @@ extern "C" ARM int func_0208d594(Script::Parameter* p) {
     Script::Parameter* q;
     char* buf;
 
-    _Z19ResetStruct0208d51cP12Init0208d51c((struct Init0208d51c*)&elem);
+    ResetStruct0208d51c((struct Init0208d51c*)&elem);
     elem.id = (short)p->ToInt();
     if (data_02108fc0.header->selectedCount != 0) {
         const short* cur = data_02108fc0.header->selectedIds;
@@ -117,6 +117,6 @@ extern "C" ARM int func_0208d594(Script::Parameter* p) {
         }
     }
 
-    _Z27AppendCappedElement0208d928P12List0208d928P12Elem0208d928((struct List0208d928*)data_02108fc0.header, &elem);
+    AppendCappedElement0208d928((struct List0208d928*)data_02108fc0.header, &elem);
     return 1;
 }

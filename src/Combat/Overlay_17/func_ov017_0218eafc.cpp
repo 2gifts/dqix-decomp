@@ -19,7 +19,7 @@ struct Battle0218eafc {
 
 extern "C" void* func_02057924(void);
 extern "C" void func_02057ab8(void* list, int id);
-extern "C" int _Z29CheckByteFlagsAt4488_021922acPvj(void* self, unsigned int idx);
+int CheckByteFlagsAt4488_021922ac(void* self, unsigned int idx);
 int CheckFlag0x1ceBit2Set(unsigned char* obj);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 int IsField0x1b4Or0x1b8Positive(int* obj);
@@ -29,14 +29,14 @@ int CheckField0x56bLowNibble(Obj02061bd8* obj);
 unsigned char GetByteFieldAt0x1a0(void* obj, int extra);
 extern "C" void func_02031234(int angle);
 extern "C" Object3D* func_ov017_021bdbcc(void* obj);
-extern "C" Object3D* _Z21GetField4334_021bdbc0Ph(unsigned char* ov);
+Object3D* GetField4334_021bdbc0(unsigned char* ov);
 extern "C" void func_ov017_0218dba0(int id);
 
 // USA: func_ov017_0218eafc
 extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
     GameState* gs = GameState::GetInstance();
     void* list = func_02057924();
-    int flagged = _Z29CheckByteFlagsAt4488_021922acPvj(battle, (unsigned char)idx);
+    int flagged = CheckByteFlagsAt4488_021922ac(battle, (unsigned char)idx);
     if (flagged) func_02057ab8(list, idx);
     if (GetField0x3b0Value(gs) == 0) return;
 
@@ -141,7 +141,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
             }
             if (member->obj3D_.IsParent()) member->obj3D_.DrawChildren(&member->obj3D_);
             if (idx == 0) {
-                Object3D* effect = _Z21GetField4334_021bdbc0Ph((unsigned char*)battle);
+                Object3D* effect = GetField4334_021bdbc0((unsigned char*)battle);
                 if (effect) {
                     GetModelBonePositionAndDirectionMatrices(context, NULL, NULL, GetByteFieldAt0x1a0(member, 2));
                     effect->EnableFlag(0x8000);

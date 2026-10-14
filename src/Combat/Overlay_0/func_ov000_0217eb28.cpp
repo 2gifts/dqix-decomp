@@ -49,8 +49,8 @@ struct PartyState {
 };
 extern Actor0209c73c data_02109bf4;
 extern unsigned short data_02114e30;
-extern "C" int _Z25IsAnimationActive0209ca2cPv(void*);
-extern "C" void _Z26DispatchActorState0209c73cP13Actor0209c73c(Actor0209c73c*);
+int IsAnimationActive0209ca2c(void*);
+void DispatchActorState0209c73c(Actor0209c73c*);
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 extern "C" int func_0205d97c(void*);
 int GetAdjustedByteField0x1d6b(void*);
@@ -59,18 +59,18 @@ int CheckField0NonZero(int*);
 extern "C" void func_ov017_021c3fb4(int, int);
 extern "C" void func_ov017_0218f5a4(GameResources*, int, int, int, int);
 extern "C" BattleCommand* func_ov000_02161318(BattleMenuState*, int);
-extern "C" int _Z29HasAnyFlags_021719f8_021719f8Pi(int*);
+int HasAnyFlags_021719f8_021719f8(int*);
 extern "C" void func_ov000_02171c04(BattleCommand*);
-extern "C" MenuEntry* _Z20GetLastEntry0205d888P14Struct0205d888(Struct0205d888*);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0*, int);
+MenuEntry* GetLastEntry0205d888(Struct0205d888*);
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 extern "C" void func_ov000_0217c638(BattleMenuState*, int, int);
-extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(Struct_0205def8*, int, int);
+void SetElementFlag0x20ByKey0205def8(Struct_0205def8*, int, int);
 
 // USA: func_ov000_0217eb28
 extern "C" ARM void func_ov000_0217eb28(BattleMenuState* state, int first, int second) {
     if (state->animation) {
-        if (_Z25IsAnimationActive0209ca2cPv(&data_02109bf4)) return;
-        _Z26DispatchActorState0209c73cP13Actor0209c73c(&data_02109bf4);
+        if (IsAnimationActive0209ca2c(&data_02109bf4)) return;
+        DispatchActorState0209c73c(&data_02109bf4);
     }
     int triggered = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
     triggered |= TestFlag0SetAndFlag1Clear(&data_02114e30, 0x802);
@@ -90,34 +90,34 @@ extern "C" ARM void func_ov000_0217eb28(BattleMenuState* state, int first, int s
         func_ov017_0218f5a4(resources, character, 1, 0, 0);
         BattleCommand* command = func_ov000_02161318(state, character);
         if (!command) return;
-        if (_Z29HasAnyFlags_021719f8_021719f8Pi((int*)command)) {
+        if (HasAnyFlags_021719f8_021719f8((int*)command)) {
             command->commands[command->selected] = 0x64;
             command->flags &= ~4;
         }
         func_ov000_02171c04(command);
-        MenuEntry* entry = _Z20GetLastEntry0205d888P14Struct0205d888((Struct0205d888*)state->entries);
+        MenuEntry* entry = GetLastEntry0205d888((Struct0205d888*)state->entries);
         while (entry) {
             if (entry->type == 2) break;
-            _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)state->entries, 0);
-            entry = _Z20GetLastEntry0205d888P14Struct0205d888((Struct0205d888*)state->entries);
+            ResetEntryList0205d6a0((Entry_0205d6a0*)state->entries, 0);
+            entry = GetLastEntry0205d888((Struct0205d888*)state->entries);
         }
         unsigned char count = ((PartyState*)GetPtrField0x2a04(GameState::GetInstance()))->count;
         for (unsigned char i = 0; i < count; i++) {
             int id = state->party[i];
             BattleCommand* candidate = func_ov000_02161318(state, id);
-            if (candidate && !_Z29HasAnyFlags_021719f8_021719f8Pi((int*)candidate) && candidate->active) {
+            if (candidate && !HasAnyFlags_021719f8_021719f8((int*)candidate) && candidate->active) {
                 state->current = id;
                 break;
             }
         }
         func_ov000_0217c638(state, first, second);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((Struct_0205def8*)state->entries, 1, 1);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((Struct_0205def8*)state->entries, 1, 2);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((Struct_0205def8*)state->entries, 1, 5);
+        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)state->entries, 1, 1);
+        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)state->entries, 1, 2);
+        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)state->entries, 1, 5);
         state->character = -1;
         state->field1d6f = 0;
     } else {
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)state->entries, 0);
+        ResetEntryList0205d6a0((Entry_0205d6a0*)state->entries, 0);
         state->commands[state->selected] = 0;
         state->selected--;
         func_ov000_0217c638(state, first, second);

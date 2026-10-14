@@ -14,15 +14,15 @@ struct TailNode020469b4;
 struct SafeAllocator;
 
 extern "C" void* func_ov017_0218b5b0();
-extern "C" void _Z30SetByteB10AndClearB11_02184a3cPch(char* obj, unsigned char value);
+void SetByteB10AndClearB11_02184a3c(char* obj, unsigned char value);
 extern "C" void func_ov008_02184754(void* obj);
 extern "C" void func_ov008_021845ac(void* obj);
-extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int mode);
-extern "C" void _Z21InitObjState_021b2174Ph(unsigned char* obj);
-extern "C" void _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc(S021b2ba0* obj, char* name);
-extern "C" void _Z25SetFields30And34_021b2bd0Pvii(void* obj, int handler, int overlayId);
+void SetCombatModeFromCase020dc2d0(int mode);
+void InitObjState_021b2174(unsigned char* obj);
+void SetNameChecked_021b2ba0(S021b2ba0* obj, char* name);
+void SetFields30And34_021b2bd0(void* obj, int handler, int overlayId);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
-extern "C" void _Z29AllocateAndCopyBuf76_0216aa70P13SafeAllocatorPv(SafeAllocator* allocator, void* arg);
+void AllocateAndCopyBuf76_0216aa70(SafeAllocator* allocator, void* arg);
 extern char data_ov008_0218b594;
 
 struct Manager0218b084 {
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov008_0218b084(Manager0218b084* self) {
             self->e9c = 2;
             return;
         }
-        _Z30SetByteB10AndClearB11_02184a3cPch(self->f2a8, 0xd);
+        SetByteB10AndClearB11_02184a3c(self->f2a8, 0xd);
         self->e9c = self->e9c + 1;
         return;
     }
@@ -81,14 +81,14 @@ extern "C" ARM void func_ov008_0218b084(Manager0218b084* self) {
     bgcnt[0] = (bgcnt[0] & ~3) | 1;
     bgcnt[1] = (bgcnt[1] & ~3) | 2;
     bgcnt[2] = (bgcnt[2] & ~3);
-    _Z29SetCombatModeFromCase020dc2d0i(0);
+    SetCombatModeFromCase020dc2d0(0);
     if (self->eba != 0) {
         TailList020469b4* list;
         unsigned char* obj = *(unsigned char**)((char*)res + R(0x392c,0x3b4c));
         list = *(TailList020469b4**)((char*)res + R(0x34ec,0x36fc));
-        _Z21InitObjState_021b2174Ph(obj);
-        _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)obj, &data_ov008_0218b594);
-        _Z25SetFields30And34_021b2bd0Pvii(obj, (int)_Z29AllocateAndCopyBuf76_0216aa70P13SafeAllocatorPv, OVERLAY_ID(4));
+        InitObjState_021b2174(obj);
+        SetNameChecked_021b2ba0((S021b2ba0*)obj, &data_ov008_0218b594);
+        SetFields30And34_021b2bd0(obj, (int)AllocateAndCopyBuf76_0216aa70, OVERLAY_ID(4));
         AppendNodeToTail(list, (TailNode020469b4*)obj);
     }
     self->eb8 = 1;

@@ -35,10 +35,10 @@ extern int data_02108760;
 
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
+MemberScreen* GetField1c_021a193c(int* p);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 extern "C" int func_0205bf58(void* cursor, int ticks);
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(Struct_0205bb84* s);
+int ComputeScaledSum0205bb84(Struct_0205bb84* s);
 extern "C" void func_ov005_0215742c(EquipmentMenu* self);
 extern "C" void func_ov005_0215751c(EquipmentMenu* self);
 extern "C" void func_ov005_0215771c(EquipmentMenu* self);
@@ -47,9 +47,9 @@ extern "C" void func_ov005_0215771c(EquipmentMenu* self);
 extern "C" ARM void func_ov005_0215730c(EquipmentMenu* self) {
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
         func_ov005_0215792c(self, 1);
-        MemberScreen* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+        MemberScreen* screen = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
         screen->flags_ |= 0x800;
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 0x1b, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 0x1b, 0);
         return;
     }
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 4)) {
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov005_0215730c(EquipmentMenu* self) {
     if (ticks == 0)
         ticks = 1;
     func_0205bf58(self->cursor_, ticks);
-    _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((Struct_0205bb84*)self->cursor_);
+    ComputeScaledSum0205bb84((Struct_0205bb84*)self->cursor_);
     switch (self->state_) {
     case 2:
         func_ov005_0215742c(self);

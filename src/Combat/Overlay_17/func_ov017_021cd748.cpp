@@ -72,7 +72,7 @@ int IsField0Null(void**);
 extern "C" void func_ov017_021baedc(void*, int);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 Get28ByteElementAt0x334Elem* Get28ByteElementAt0x334(Get28ByteElementAt0x334Struct*, int);
-extern "C" int _Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(Obj_021bd3a4*);
+int HasFlag3orFlag2And9a_021bd3a4(Obj_021bd3a4*);
 extern "C" int func_0202c508(SearchStruct0202c1a4*);
 extern "C" void func_ov017_021bc6e0(TransitionState*, int, int);
 
@@ -136,10 +136,10 @@ extern "C" ARM void func_ov017_021cd748(int sender, TransitionEvent* event, Game
                 state->parameter = event->parameter;
             }
         } else {
-            if (!_Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4((Obj_021bd3a4*)state)) ((ResourceStatus*)resources)->destination = destination;
+            if (!HasFlag3orFlag2And9a_021bd3a4((Obj_021bd3a4*)state)) ((ResourceStatus*)resources)->destination = destination;
         }
     } else {
-        if (func_0202c508(search) && _Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4((Obj_021bd3a4*)state)) {
+        if (func_0202c508(search) && HasFlag3orFlag2And9a_021bd3a4((Obj_021bd3a4*)state)) {
             unsigned short requested = event->fallbackDestination;
             unsigned short second = state->secondDestination;
             unsigned short first = state->firstDestination;

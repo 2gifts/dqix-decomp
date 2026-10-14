@@ -15,10 +15,10 @@ struct S021bd35c {
 };
 struct Obj_021bd3a4;
 
-extern "C" void _Z26CopyFiveHalfwords_021bd35cP9S021bd35cP11Src021bd35c(S021bd35c* obj, Src021bd35c* src);
-extern "C" void _Z18SetFieldA_021bb9ecPvt(void* obj, unsigned short v);
-extern "C" int _Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(Obj_021bd3a4* obj);
-extern "C" void _Z27EnqueueEventTag107_021cdd70tttttth(unsigned short a0, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4, unsigned short a5, unsigned char a6);
+void CopyFiveHalfwords_021bd35c(S021bd35c* obj, Src021bd35c* src);
+void SetFieldA_021bb9ec(void* obj, unsigned short v);
+int HasFlag3orFlag2And9a_021bd3a4(Obj_021bd3a4* obj);
+void EnqueueEventTag107_021cdd70(unsigned short a0, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4, unsigned short a5, unsigned char a6);
 
 struct ByteTable3 { unsigned char v[3]; };
 extern const ByteTable3 data_ov017_021d6ce8;
@@ -62,22 +62,22 @@ extern "C" ARM void func_ov017_021cddd4(int p0, Evt021cddd4* evt, int unused, Ba
             src.h4 = evt->field_0xa;
             src.h8 = evt->field_0xc;
             src.h6 = evt->field_0xe;
-            _Z26CopyFiveHalfwords_021bd35cP9S021bd35cP11Src021bd35c(obj, &src);
+            CopyFiveHalfwords_021bd35c(obj, &src);
             ByteTable3 tbl = data_ov017_021d6ce8;
-            _Z18SetFieldA_021bb9ecPvt(obj, tbl.v[evt->field_0x6]);
+            SetFieldA_021bb9ec(obj, tbl.v[evt->field_0x6]);
         }
     } else if (GetSearchStructCurrentArrEntry(search) == 0) {
         int kind = entry->field_0xc;
         S021bd35c* cur = base->obj;
         if (kind == evt->field_0x4) {
-            _Z27EnqueueEventTag107_021cdd70tttttth(evt->field_0x4, 0, 0, 0, 0, 0, p0);
+            EnqueueEventTag107_021cdd70(evt->field_0x4, 0, 0, 0, 0, 0, p0);
         } else if (kind == 0x13) {
-            _Z27EnqueueEventTag107_021cdd70tttttth(evt->field_0x4, 1, 0x71e8, 0xffff, 0x199, 0x71e8, p0);
-        } else if (_Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4((Obj_021bd3a4*)cur)) {
+            EnqueueEventTag107_021cdd70(evt->field_0x4, 1, 0x71e8, 0xffff, 0x199, 0x71e8, p0);
+        } else if (HasFlag3orFlag2And9a_021bd3a4((Obj_021bd3a4*)cur)) {
             S021bd35c* o = base->obj;
-            _Z27EnqueueEventTag107_021cdd70tttttth(evt->field_0x4, 1, o->field_0x16, o->field_0x52, o->field_0x1a, o->field_0x18, p0);
+            EnqueueEventTag107_021cdd70(evt->field_0x4, 1, o->field_0x16, o->field_0x52, o->field_0x1a, o->field_0x18, p0);
         } else {
-            _Z27EnqueueEventTag107_021cdd70tttttth(evt->field_0x4, 2, 0, 0, 0, 0, p0);
+            EnqueueEventTag107_021cdd70(evt->field_0x4, 2, 0, 0, 0, 0, p0);
         }
     }
 }

@@ -8,9 +8,9 @@ ArrayContainsByteStruct *GetPtrField0x2a04(GameState *gs);
 extern "C" int *func_0202ae18(void);
 int ArrayContainsByte(ArrayContainsByteStruct *arr, int value);
 int CheckField0NonZero(int *p);
-extern "C" int _Z34HasPositiveField304Short4_02154a34Pvi(void *self, int id);
-extern "C" int _Z36HasPositiveField256Short178_02154b94Pvi(void *self, int id);
-extern "C" void *_Z26LookupElementByKey02079ee0Pvi(void *table, int key);
+int HasPositiveField304Short4_02154a34(void *self, int id);
+int HasPositiveField256Short178_02154b94(void *self, int id);
+void *LookupElementByKey02079ee0(void *table, int key);
 
 struct Entry02153ccc {
     unsigned char state;
@@ -63,15 +63,15 @@ extern "C" ARM int func_ov002_02153ccc(void **self, Info02153ccc *info, Action02
             e->state = 1;
             continue;
         }
-        if (_Z36HasPositiveField256Short178_02154b94Pvi(self, id)) {
+        if (HasPositiveField256Short178_02154b94(self, id)) {
             e->state = 2;
             continue;
         }
-        if (!_Z34HasPositiveField304Short4_02154a34Pvi(self, id)) continue;
+        if (!HasPositiveField304Short4_02154a34(self, id)) continue;
         if (info->type == 0x21) {
             value = 999;
         } else {
-            void *elem = _Z26LookupElementByKey02079ee0Pvi(*self, action->key);
+            void *elem = LookupElementByKey02079ee0(*self, action->key);
             if (elem == 0) continue;
             value = func_ov002_021538e4(self, action, elem, info->kind);
         }

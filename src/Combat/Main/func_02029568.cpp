@@ -35,11 +35,11 @@ struct Menu02029568 {
     int arr[2];
 };
 
-extern "C" void _Z12Init0202949cPc(char* obj);
+void Init0202949c(char* obj);
 
 // USA: func_02029568
 extern "C" ARM void func_02029568(struct Menu02029568* m) {
-    _Z12Init0202949cPc((char*)m);
+    Init0202949c((char*)m);
     m->type = 1;
     m->f50 = 0;
     m->f52 = 0;

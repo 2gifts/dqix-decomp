@@ -12,12 +12,12 @@ struct Background021626e4 {
 
 extern "C" int func_ov017_021d612c(void* args);
 extern "C" int func_ov017_021d60f4(void* args);
-extern "C" unsigned int _Z37LoadResourceIntoGlobalBuffer_0215a750PKcPPv(const char* path, void** outPtr);
+unsigned int LoadResourceIntoGlobalBuffer_0215a750(const char* path, void** outPtr);
 extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void* archive);
 extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void* archive, int index, void** name, int* size);
-extern "C" void _Z28SetBg3ControlFields_02162678iiii(int a, int b, int c, int d);
+void SetBg3ControlFields_02162678(int a, int b, int c, int d);
 void SetSubBgMode(unsigned int mode);
-extern "C" void _Z31SetSubBg3ControlFields_021628d4iiii(int a, int b, int c, int d);
+void SetSubBg3ControlFields_021628d4(int a, int b, int c, int d);
 extern "C" void _Z17ResetList0204af64P12List0204af64(Background021626e4* background);
 extern "C" void func_0204b5b4(Background021626e4* background, int a);
 extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(Background021626e4* background, int a);
@@ -57,7 +57,7 @@ extern "C" ARM int func_ov001_021626e4(void* args) {
     if (file == NULL) {
         BackgroundLoader::AddLockGlobal();
         locked = 1;
-        if (_Z37LoadResourceIntoGlobalBuffer_0215a750PKcPPv(path, &file) == 0) {
+        if (LoadResourceIntoGlobalBuffer_0215a750(path, &file) == 0) {
             BackgroundLoader::RemoveLockGlobal();
             return 0;
         }
@@ -70,12 +70,12 @@ extern "C" ARM int func_ov001_021626e4(void* args) {
 
     DISPCNT = (DISPCNT & ~0x1f00) | 0x800;
     if (subScreen == 0) {
-        _Z28SetBg3ControlFields_02162678iiii(0, 0, 1, 1);
+        SetBg3ControlFields_02162678(0, 0, 1, 1);
     } else {
         DisableSubBGVRAMBanks();
         SetSubBgMode(0);
         MapVRAMBanksToSubBG(VRAM_BANK_H);
-        _Z31SetSubBg3ControlFields_021628d4iiii(0, 0, 0xe, 0);
+        SetSubBg3ControlFields_021628d4(0, 0, 0xe, 0);
     }
 
     _Z17ResetList0204af64P12List0204af64(&background);

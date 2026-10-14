@@ -21,20 +21,20 @@ extern "C" void VectorizedMemset(void* dst, int value, unsigned int size);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 unsigned char GetField0x397cValue(GameState* battleStruct);
 int GetField0x3acValue(GameState* battleStruct);
-extern "C" void _Z26ClearSearchFlagBit0202c600P12SearchStructi(SearchStruct* obj, int value);
-extern "C" void _Z26ClearSearchFlagBit0202c718P12SearchStructi(SearchStruct* obj, int value);
-extern "C" void _Z25RemoveSearchEntry0202c21cP12SearchStructi(SearchStruct* obj, int value);
+void ClearSearchFlagBit0202c600(SearchStruct* obj, int value);
+void ClearSearchFlagBit0202c718(SearchStruct* obj, int value);
+void RemoveSearchEntry0202c21c(SearchStruct* obj, int value);
 Entry0207da94* GetData02108ea8(void);
-extern "C" void _Z28ClearByteField17201_0218d500Pv(void* obj);
-extern "C" void _Z22ProcessEntries0207da94P13Entry0207da94i(Entry0207da94* list, int idx);
+void ClearByteField17201_0218d500(void* obj);
+void ProcessEntries0207da94(Entry0207da94* list, int idx);
 Entry020e3544* GetData02153637(void);
-extern "C" void _Z28ClearMatchingEntries020e3544P13Entry020e3544i(Entry020e3544* p, int id);
+void ClearMatchingEntries020e3544(Entry020e3544* p, int id);
 BitEntry020e3b08* GetData02153660(void);
 void ClearBitInEntries(BitEntry020e3b08* entries, int bit);
-extern "C" int _Z37CheckField0x17dBits4And5Equal0207959cP11Obj0207959ci(Obj0207959c* obj, int mode);
+int CheckField0x17dBits4And5Equal0207959c(Obj0207959c* obj, int mode);
 void ClearField0x17dBits0x38(ClearField0x17dBits0x38Struct* s);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
-extern "C" unsigned short _Z20GetField6b4_021b8480Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
+unsigned short GetField6b4_021b8480(void* obj);
 
 struct Slot_021905b8 {
     char data[6];
@@ -77,21 +77,21 @@ extern "C" ARM void func_ov017_021905b8(GameResources* self, int id, int remove)
     }
     if (id == GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search) || id == GetField0x397cValue(gs) ||
         id == GetField0x3acValue(gs)) {
-        _Z26ClearSearchFlagBit0202c600P12SearchStructi(search, id);
-        _Z26ClearSearchFlagBit0202c718P12SearchStructi(search, id);
+        ClearSearchFlagBit0202c600(search, id);
+        ClearSearchFlagBit0202c718(search, id);
         return;
     }
 
     Entry0207da94* entries = GetData02108ea8();
     func_0207dba8(entries);
-    _Z28ClearByteField17201_0218d500Pv(self);
-    _Z26ClearSearchFlagBit0202c600P12SearchStructi(search, id);
-    _Z26ClearSearchFlagBit0202c718P12SearchStructi(search, id);
+    ClearByteField17201_0218d500(self);
+    ClearSearchFlagBit0202c600(search, id);
+    ClearSearchFlagBit0202c718(search, id);
     if (remove) {
-        _Z25RemoveSearchEntry0202c21cP12SearchStructi(search, id);
+        RemoveSearchEntry0202c21c(search, id);
     }
     func_ov017_02190264(self, id);
-    _Z22ProcessEntries0207da94P13Entry0207da94i(entries, (unsigned char)id);
+    ProcessEntries0207da94(entries, (unsigned char)id);
 
 #if defined(jpn)
     Slot_021905b8* slot = (Slot_021905b8*)((char*)gs + 0x7280);
@@ -109,11 +109,11 @@ extern "C" ARM void func_ov017_021905b8(GameResources* self, int id, int remove)
         }
     }
 
-    _Z28ClearMatchingEntries020e3544P13Entry020e3544i(GetData02153637(), id);
+    ClearMatchingEntries020e3544(GetData02153637(), id);
 
     Zone_021905b8* zone = (Zone_021905b8*)self->unknown_ptr_3718;
     if (zone->active != 0) {
-        void* stack = _Z20GetField6b0_021b8470Pv(zone);
+        void* stack = GetField6b0_021b8470(zone);
         if (stack != NULL) {
             func_ov000_0215fb04(stack, id);
         }
@@ -121,11 +121,11 @@ extern "C" ARM void func_ov017_021905b8(GameResources* self, int id, int remove)
 
     for (int i = 0; i < 0x30; i++) {
         Monster_021905b8* mon = (Monster_021905b8*)gs->GetMaybeFieldMonsterByIndex(i + 0x70);
-        if (mon != NULL && _Z37CheckField0x17dBits4And5Equal0207959cP11Obj0207959ci((Obj0207959c*)mon, id)) {
+        if (mon != NULL && CheckField0x17dBits4And5Equal0207959c((Obj0207959c*)mon, id)) {
             int cond;
             Zone_021905b8* z = (Zone_021905b8*)self->unknown_ptr_3718;
             cond = 1;
-            if (z->active != 0 && _Z20GetField6b4_021b8480Pv(z) == 0) {
+            if (z->active != 0 && GetField6b4_021b8480(z) == 0) {
                 ZoneSlot_021905b8* zs = (ZoneSlot_021905b8*)func_ov017_021b8478(z);
                 if (zs != NULL && zs->id == mon->id) {
                     ZoneState_021905b8* st = (ZoneState_021905b8*)func_ov017_021b8468(z);

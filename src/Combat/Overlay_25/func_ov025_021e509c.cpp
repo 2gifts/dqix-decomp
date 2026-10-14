@@ -30,14 +30,14 @@ struct Record021e509c {
 
 extern "C" void* func_02057924(void);
 Record021e509c* GetInlineRecordByBattleId(void* obj, int id);
-extern "C" int* _Z28GetSlotPtr_021e8cf0_021e8cf0Pci(char* base, int idx);
+int* GetSlotPtr_021e8cf0_021e8cf0(char* base, int idx);
 extern Holder021e509c data_ov025_021ef988;
 
 // USA: func_ov025_021e509c
 extern "C" ARM int func_ov025_021e509c(Param021e509c* p) {
     void* obj = func_02057924();
-    int* slotA = _Z28GetSlotPtr_021e8cf0_021e8cf0Pci(data_ov025_021ef988.slots, p->slotA);
-    int* slotB = _Z28GetSlotPtr_021e8cf0_021e8cf0Pci(data_ov025_021ef988.slots, p->slotB);
+    int* slotA = GetSlotPtr_021e8cf0_021e8cf0(data_ov025_021ef988.slots, p->slotA);
+    int* slotB = GetSlotPtr_021e8cf0_021e8cf0(data_ov025_021ef988.slots, p->slotB);
     if (slotA == 0 || slotB == 0) {
         return 1;
     }

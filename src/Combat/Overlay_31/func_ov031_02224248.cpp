@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Header_0223bd28;
-extern "C" void _Z26ExtractPackedHiLo_0223bd28P15Header_0223bd28iPjS1_(Header_0223bd28*, int, unsigned int*, unsigned int*);
+void ExtractPackedHiLo_0223bd28(Header_0223bd28*, int, unsigned int*, unsigned int*);
 
 struct Entity02224248 {
 	unsigned char pad0[0xfc];
@@ -20,7 +20,7 @@ void RunFourStagesA_022242d4(void);
 // USA: func_ov031_02224248
 extern "C" ARM void func_ov031_02224248(void* obj) {
 	unsigned int outHi, outLo;
-	_Z26ExtractPackedHiLo_0223bd28P15Header_0223bd28iPjS1_(data_ov031_02250bfc->header, 0, &outHi, &outLo);
+	ExtractPackedHiLo_0223bd28(data_ov031_02250bfc->header, 0, &outHi, &outLo);
 	int off = (int)outLo - 0xc;
 	outLo = (unsigned int)off;
 	if (off > 0xaa) {

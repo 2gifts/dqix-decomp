@@ -22,7 +22,7 @@ struct ElemKind0217a764 {
 
 extern "C" void* _Z17GetPtrField0x2a04P9GameState(void* battleStruct);
 extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" void _Z28ComputeMappedOffset_0217a220Ph(unsigned char* obj);
+void ComputeMappedOffset_0217a220(unsigned char* obj);
 
 short FindMappedMemberId02080468(void* obj, int id);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
@@ -72,14 +72,14 @@ extern "C" ARM void func_ov003_0217a764(unsigned char* self) {
         ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
         *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
         *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
-        _Z28ComputeMappedOffset_0217a220Ph(self);
+        ComputeMappedOffset_0217a220(self);
         func_ov003_021748c4(self);
         return;
     }
 
     if (state == 1) {
         *(void**)(self + (0xff8 - kRegionSelfShift)) = self + (0x1000 + 0xe - kRegionSelfShift);
-        _Z28ComputeMappedOffset_0217a220Ph(self);
+        ComputeMappedOffset_0217a220(self);
         func_ov023_021dcae0((struct Obj021dcae0*)(self + 0x3c), *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)));
         if (func_ov003_021765b4(self) != 0) {
             DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);

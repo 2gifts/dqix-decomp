@@ -100,17 +100,17 @@ struct Scene021620f0 {
 };
 
 extern "C" void* func_0202ae18(void);
-extern "C" GameObject* _Z25GetCombatantWithFlag0x400P9GameStatei(GameState* gameState, int combatantId);
+GameObject* GetCombatantWithFlag0x400(GameState* gameState, int combatantId);
 extern "C" void _Z18ZeroStruct021620d8P22ZeroableStruct021620d8(Pair021620f0* pair);
-extern "C" FieldStruct02048934* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(Container02070e60* table, int key);
-extern "C" Param02048850* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(BinarySearchByComparatorStruct* table, int key);
-extern "C" void _Z24FindOrAssignSlot02167c28Phi(unsigned char* obj, int id);
+FieldStruct02048934* SearchWithLow15Comparator02070fd0(Container02070e60* table, int key);
+Param02048850* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct* table, int key);
+void FindOrAssignSlot02167c28(unsigned char* obj, int id);
 extern "C" int func_ov000_02161bb8(unsigned char* obj);
 extern "C" void func_020891cc(void* obj);
 extern "C" void func_02089630(void* dst, void* src, int useExactValue);
 extern "C" void func_02049c88(void* obj, void* model);
-extern "C" void _Z21RegisterCombatantSlotP9GameStateiP10GameObject(GameState* gameState, int id, GameObject* combatant);
-extern "C" void _Z21SyncNameFlag_02161274P10GameObject(GameObject* obj);
+void RegisterCombatantSlot(GameState* gameState, int id, GameObject* combatant);
+void SyncNameFlag_02161274(GameObject* obj);
 void SetRandomizedShort0x18802048934(void* p, FieldStruct02048934* f, Random* r);
 void IncrementByteCounterWrapAt0x12(unsigned char* p);
 void ResetNameState02048614(unsigned char* obj);
@@ -146,8 +146,8 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
     const signed char* counts = data_ov000_02182fd4[formation];
     int g;
     for (g = 0, id = 0; kinds[g] != -1; g++) {
-        FieldStruct02048934* entry = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(names, kinds[g]);
-        Param02048850* info = _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(infos, kinds[g]);
+        FieldStruct02048934* entry = SearchWithLow15Comparator02070fd0(names, kinds[g]);
+        Param02048850* info = SearchWithComparator0206f4f0(infos, kinds[g]);
         if (!entry || !info) return;
         int key = kinds[g];
         kind = key;
@@ -157,11 +157,11 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
         f->groupCount++;
         f->pairCount++;
         for (int j = 0; j < counts[g]; j++, id++) {
-            c = (Combatant021620f0*)_Z25GetCombatantWithFlag0x400P9GameStatei(game, id + 0xc0);
+            c = (Combatant021620f0*)GetCombatantWithFlag0x400(game, id + 0xc0);
             Stats021620f0* stats = &scene->roster->stats[id];
             func_020891cc(stats);
             if (!c) {
-                _Z24FindOrAssignSlot02167c28Phi((unsigned char*)scene, id + 0xc0);
+                FindOrAssignSlot02167c28((unsigned char*)scene, id + 0xc0);
                 c = &scene->combatants[id];
                 ResetNameState02048614((unsigned char*)c);
                 func_02049c88(c, &scene->models[id]);
@@ -173,7 +173,7 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
                 SetupFieldsFromParam02048850((Obj02048850*)c, info);
                 c->object.MakeHidden();
                 ClearSubstructByte0x56((unsigned char*)c);
-                _Z21RegisterCombatantSlotP9GameStateiP10GameObject(game, id + 0xc0, (GameObject*)c);
+                RegisterCombatantSlot(game, id + 0xc0, (GameObject*)c);
             }
             SetRandomizedShort0x18802048934(c, entry, scene->data->GetRandom());
             unsigned short v0 = c->field_188;
@@ -186,7 +186,7 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
             if (slot == 1) {
                 slot = 0;
             } else if (slot == 2) {
-                _Z21SyncNameFlag_02161274P10GameObject((GameObject*)c);
+                SyncNameFlag_02161274((GameObject*)c);
             }
             c->object.unknown_2_ = key;
             c->mode = g;

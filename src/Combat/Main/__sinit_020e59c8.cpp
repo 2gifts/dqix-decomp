@@ -9,7 +9,7 @@ extern int data_020fb3e4;
 
 extern "C" ARM void func_0201c124(void);
 extern "C" void __register_global_object(void* obj, void* func, void* node);
-extern "C" void* _Z21InitBigStruct0201c014Pv(void* obj);
+void* InitBigStruct0201c014(void* obj);
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_020e59c8
@@ -24,6 +24,6 @@ extern "C" __declspec(initcode) ARM void __sinit_020e59c8(void) {
     data_020fb3d0[0] = t;
     t = t + data_020ef0dc[0];
     data_020fb3d0[3] = t;
-    _Z21InitBigStruct0201c014Pv(&data_020fb3f0);
+    InitBigStruct0201c014(&data_020fb3f0);
     __register_global_object(&data_020fb3f0, (void*)func_0201c124, &data_020fb3e4);
 }

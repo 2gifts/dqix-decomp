@@ -26,19 +26,19 @@ struct Obj0205eaa0;
 struct Obj021e6e20;
 struct Struct0205de24;
 struct Struct_0205c570;
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(Struct0205de24*, unsigned char, unsigned char);
+void FindAndLinkMatchingEntry0205de24(Struct0205de24*, unsigned char, unsigned char);
 extern "C" void func_ov023_021e6e60(void*);
 void SetupBattleTag0218a574(char*);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570*);
+int GetActiveScaledSum0205d794(Struct_0205c570*);
 extern "C" int func_ov023_021e6448(void*);
 extern "C" int func_ov023_021e7148(void*);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_0202ae18();
 int GetField5cb0Value(char*);
 const char* FindEntryByKey(TableA68*, int);
 extern "C" void func_ov012_0218bba0(void*, int, int);
 extern "C" void func_ov012_02189be8(void*, int);
-extern "C" int _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20(Obj021e6e20*);
+int TestFlagsAndActiveElement2_021e6e20(Obj021e6e20*);
 extern "C" char data_02108760[];
 
 static inline ProfileAccolade* GetProfileAccolade(GameState* state) {
@@ -56,18 +56,18 @@ extern "C" ARM void func_ov012_02188640(char* editor) {
         else
             index = 0;
         *(unsigned int*)(editor + 0x1444) = index;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((Struct0205de24*)(editor + 0x90), 0, 3);
+        FindAndLinkMatchingEntry0205de24((Struct0205de24*)(editor + 0x90), 0, 3);
         func_ov023_021e6e60(editor);
         SetupBattleTag0218a574(editor);
         ++*(unsigned char*)(editor + 0x1340);
         return;
     } else if (*(unsigned char*)(editor + 0x1340) == 1) {
         *(unsigned char*)(editor + 0x1368) = 1;
-        *(int*)(editor + 0x1444) = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)(editor + 0x90));
+        *(int*)(editor + 0x1444) = GetActiveScaledSum0205d794((Struct_0205c570*)(editor + 0x90));
         if (func_ov023_021e6448(editor))
-            *(int*)(editor + 0x1444) = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)(editor + 0x90));
+            *(int*)(editor + 0x1444) = GetActiveScaledSum0205d794((Struct_0205c570*)(editor + 0x90));
         if (func_ov023_021e7148(editor)) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             ProfileAccolade* profile = GetProfileAccolade(GameState::GetInstance());
             GameState* state = GameState::GetInstance();
             func_0202ae18();
@@ -90,7 +90,7 @@ extern "C" ARM void func_ov012_02188640(char* editor) {
             func_ov012_02189be8(editor, 0);
             return;
         }
-        if (_Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20((Obj021e6e20*)editor))
+        if (TestFlagsAndActiveElement2_021e6e20((Obj021e6e20*)editor))
             func_ov012_02189be8(editor, 1);
         return;
     }
@@ -165,19 +165,19 @@ struct Obj021e6e20;
 struct Struct0205de24;
 struct Struct_0205c570;
 
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(Struct0205de24* window, unsigned char a, unsigned char b);
+void FindAndLinkMatchingEntry0205de24(Struct0205de24* window, unsigned char a, unsigned char b);
 extern "C" void func_ov023_021e6e60(ProfileEditor02188640* self);
-extern "C" void _Z22SetupBattleTag0218a574Pc(char* self);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570* window);
+void SetupBattleTag0218a574(char* self);
+int GetActiveScaledSum0205d794(Struct_0205c570* window);
 extern "C" int func_ov023_021e6448(ProfileEditor02188640* self);
 extern "C" int func_ov023_021e6de4(ProfileEditor02188640* self);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* sound, int effect, int a);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int a);
 extern "C" void func_0202ae18();
 int GetField5cb0Value(char* gameState);
 const char* FindEntryByKey(TableA68* table, int key);
 extern "C" void func_ov012_0218adac(ProfileEditor02188640* self, int animate, int design, int keepPage);
 extern "C" void func_ov012_0218930c(ProfileEditor02188640* self, int cancel);
-extern "C" int _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20(Obj021e6e20* self);
+int TestFlagsAndActiveElement2_021e6e20(Obj021e6e20* self);
 
 extern "C" char data_02108760[];
 
@@ -211,21 +211,21 @@ extern "C" ARM void func_ov012_02188640(ProfileEditor02188640* self)
         index = 0;
     found:
         self->selections_[5] = index;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((Struct0205de24*)self->window_, 0, 3);
+        FindAndLinkMatchingEntry0205de24((Struct0205de24*)self->window_, 0, 3);
         func_ov023_021e6e60(self);
-        _Z22SetupBattleTag0218a574Pc((char*)self);
+        SetupBattleTag0218a574((char*)self);
         self->step_++;
         return;
     }
     else if (self->step_ == 1)
     {
         self->unk_13a0 = 1;
-        self->selections_[5] = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->window_);
+        self->selections_[5] = GetActiveScaledSum0205d794((Struct_0205c570*)self->window_);
         if (func_ov023_021e6448(self))
-            self->selections_[5] = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->window_);
+            self->selections_[5] = GetActiveScaledSum0205d794((Struct_0205c570*)self->window_);
         if (func_ov023_021e6de4(self))
         {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             Profile02188640* profile = GetProfile02188640(GameState::GetInstance());
             GameState* gameState = GameState::GetInstance();
             func_0202ae18();
@@ -258,7 +258,7 @@ extern "C" ARM void func_ov012_02188640(ProfileEditor02188640* self)
             func_ov012_0218930c(self, 0);
             return;
         }
-        if (_Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20((Obj021e6e20*)self))
+        if (TestFlagsAndActiveElement2_021e6e20((Obj021e6e20*)self))
             func_ov012_0218930c(self, 1);
         return;
     }

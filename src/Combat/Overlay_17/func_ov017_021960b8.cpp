@@ -44,27 +44,27 @@ struct Battle021960b8 {
 
 extern "C" void* func_020704fc(void);
 extern "C" void __clear(void* ptr, int size);
-extern "C" void _Z26ResetGxEngineState020c52e8v();
+void ResetGxEngineState020c52e8();
 extern "C" void func_020c5414();
 void SubmitGeometryJob(int, int, int, int, void*);
-extern "C" void _Z28ComputeAndLoadMatrix020c5770iiiiiiiiPv(int, int, int, int, int, int, int, int, void*);
-extern "C" void _Z28ForwardObjAndField0_021a3b30i(int);
-extern "C" void _Z25UpdateInterpTimer020707c8P13Timer020707c8(Timer020707c8*);
+void ComputeAndLoadMatrix020c5770(int, int, int, int, int, int, int, int, void*);
+void ForwardObjAndField0_021a3b30(int);
+void UpdateInterpTimer020707c8(Timer020707c8*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 unsigned int GetBitsInField4(unsigned int*, unsigned int);
-extern "C" void _Z31ReleaseField0x38IfValid020444e0P11Obj020444e0(Obj020444e0*);
+void ReleaseField0x38IfValid020444e0(Obj020444e0*);
 extern "C" void func_ov017_0219ad84(Battle021960b8*);
 GameObject* GetCombatantWithFlag0x100(GameState*, int);
 extern "C" void func_0205337c(GameObject*);
 unsigned char GetByteField0x252(void*);
 int GetByte0x26c(char*);
 void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
-extern "C" void _Z34MaybeDispatchPendingAction02096824Ph(unsigned char*);
+void MaybeDispatchPendingAction02096824(unsigned char*);
 int* GetGlobal02109030();
-extern "C" void _Z36UpdateChannelStateIfEligible02093f68Pc(char*);
+void UpdateChannelStateIfEligible02093f68(char*);
 extern "C" void* func_02012fe4(void);
 void MaybeUpdateOrDispatchEntry_021959ec(void*);
-extern "C" Global020421a0* _Z26GetGlobalField0x1c020421a0v();
+Global020421a0* GetGlobalField0x1c020421a0();
 
 extern Vector3fix data_ov017_021d6408;
 extern Vector3fix data_ov017_021d6414;
@@ -78,7 +78,7 @@ extern int data_ov017_021d8350;
 // USA: func_ov017_021960b8
 extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
     GameState* game = GameState::GetInstance();
-    Global020421a0* global = _Z26GetGlobalField0x1c020421a0v();
+    Global020421a0* global = GetGlobalField0x1c020421a0();
     Timer020707c8* timer = (Timer020707c8*)func_020704fc();
     GameObject* leader = game->GetUnknownGameObject();
     game->GetTickCount();
@@ -88,16 +88,16 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
     __clear(&eye, sizeof(eye));
     Vector3fix up = data_ov017_021d6414;
 
-    _Z26ResetGxEngineState020c52e8v();
+    ResetGxEngineState020c52e8();
     func_020c5414();
     *(volatile unsigned int*)0x04000440 = 0;
     SubmitGeometryJob((int)&eye, (int)&up, (int)&target, 1, NULL);
-    _Z28ComputeAndLoadMatrix020c5770iiiiiiiiPv(0, 0xc0000, 0, 0x100000, -0x400000, 0x400000, 0x400000, 1, NULL);
+    ComputeAndLoadMatrix020c5770(0, 0xc0000, 0, 0x100000, -0x400000, 0x400000, 0x400000, 1, NULL);
     *(volatile unsigned int*)0x04000440 = 2;
-    _Z28ForwardObjAndField0_021a3b30i((int)self->nodeList);
+    ForwardObjAndField0_021a3b30((int)self->nodeList);
 
     if (timer->field0 != 0) {
-        _Z25UpdateInterpTimer020707c8P13Timer020707c8(timer);
+        UpdateInterpTimer020707c8(timer);
     }
 
     if (GetHeadNodeIdOrMinusOne(self->nodeList) != 2 &&
@@ -105,7 +105,7 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
         GetHeadNodeIdOrMinusOne(self->nodeList) != 10) {
         if ((global->field998 != 0 || global->field19cb != 0) &&
             GetBitsInField4(self->flags, 0x8000) == 0) {
-            _Z31ReleaseField0x38IfValid020444e0P11Obj020444e0((Obj020444e0*)global);
+            ReleaseField0x38IfValid020444e0((Obj020444e0*)global);
         }
         func_ov017_0219ad84(self);
         if (GetBitsInField4(self->flags, 4) == 0) {
@@ -135,10 +135,10 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
         } else {
             data_ov017_021d8340 = 0;
         }
-        _Z34MaybeDispatchPendingAction02096824Ph(self->pendingAction);
+        MaybeDispatchPendingAction02096824(self->pendingAction);
     }
 
-    _Z36UpdateChannelStateIfEligible02093f68Pc((char*)GetGlobal02109030());
+    UpdateChannelStateIfEligible02093f68((char*)GetGlobal02109030());
     if (((AtmosphericEffectSet*)((char*)func_02012fe4() + kAtmosphericOffset))->Draw()) {
         MaybeUpdateOrDispatchEntry_021959ec(self);
     }

@@ -84,8 +84,8 @@ struct StatusOwner02081164;
 
 void ClearSublistEntriesFlag1(void* obj, int id);
 void SetEntryHalfword0xe(void* obj, int id, int value);
-extern "C" void _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(Container02080fa8* obj, int id, int value);
-extern "C" int _Z24SetEntryFlagById02080b2cPvi(void* obj, int id);
+void SetEntryFirstField02080fa8(Container02080fa8* obj, int id, int value);
+int SetEntryFlagById02080b2c(void* obj, int id);
 void SetEntryFlag0x2ByShortId(StatusOwner02081164* owner, int id, int enable);
 
 extern "C" {
@@ -133,14 +133,14 @@ extern "C" ARM void func_ov014_02188330(MonsterListScreen* self)
         short percent = value;
         completion = percent / 100;
     }
-    _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((Container02080fa8*)self->menu_, 4, completion);
-    _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((Container02080fa8*)self->menu_, 5, numKnown);
+    SetEntryFirstField02080fa8((Container02080fa8*)self->menu_, 4, completion);
+    SetEntryFirstField02080fa8((Container02080fa8*)self->menu_, 5, numKnown);
     for (unsigned char i = 0;; i++)
     {
         short item = data_ov014_021894cc[hidden][i];
         if (item < 0)
             break;
-        _Z24SetEntryFlagById02080b2cPvi(self->menu_, item);
+        SetEntryFlagById02080b2c(self->menu_, item);
     }
     SetEntryFlag0x2ByShortId((StatusOwner02081164*)self->menu_, 0, 1);
     func_020813ec(self->menu_, 0);

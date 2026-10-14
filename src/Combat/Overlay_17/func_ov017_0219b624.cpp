@@ -25,10 +25,10 @@ bool GetFileInNarc(const void*, const char*, const void**, unsigned int*, unsign
 extern const char data_ov017_021d7504[], data_ov017_021d7510[], data_ov017_021d751b[];
 extern const char data_ov017_021d751f[], data_ov017_021d7526[], data_ov017_021d7530[], data_ov017_021d753a[];
 extern const char data_ov017_021d7544[], data_ov017_021d7555[], data_ov017_021d7567[];
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08*);
+void CopyInternalFields0207df50(Foo0207df50*);
+void RestorePairTables0207df90(char*);
+void BackupPairTables0207dfac(char*);
+int NormalizeField5_0200fb08(Struct0200fb08*);
 void* GetData02109020();
 void InitFourNamedSubStructs(char*, int);
 extern "C" {
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov017_0219b624(GameResources* self) {
     allocator = &self->allocator_array_38[5];
     Foo0207df50* pairs = reinterpret_cast<Foo0207df50*>(reinterpret_cast<char*>(self) + PairTablesOffset);
     allocator->Reset();
-    _Z26CopyInternalFields0207df50P11Foo0207df50(pairs);
+    CopyInternalFields0207df50(pairs);
     BackgroundLoader::AddLockGlobal();
     char path[0x50];
     unsigned int length;
@@ -64,7 +64,7 @@ extern "C" ARM void func_ov017_0219b624(GameResources* self) {
         BackgroundLoader::RemoveLockGlobal();
         return;
     }
-    _Z25RestorePairTables0207df90Pc((char*)pairs);
+    RestorePairTables0207df90((char*)pairs);
     NarcHandle archive;
     if (!archive.Initialize(data_ov017_021d751b, (const unsigned char*)&data_0211e33c)) {
         BackgroundLoader::RemoveLockGlobal();
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov017_0219b624(GameResources* self) {
     }
 #if !defined(jpn)
     sprintf(name, data_ov017_021d751f, data_ov017_021d7526);
-    switch (_Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)game)) {
+    switch (NormalizeField5_0200fb08((Struct0200fb08*)game)) {
     case 3: sprintf(name, data_ov017_021d751f, data_ov017_021d7530); break;
     case 5: sprintf(name, data_ov017_021d751f, data_ov017_021d753a); break;
     }
@@ -122,7 +122,7 @@ extern "C" ARM void func_ov017_0219b624(GameResources* self) {
     }
     BackgroundLoader::RemoveLockGlobal();
     InitFourNamedSubStructs(static_cast<char*>(self->unknown_ptr_4328), (int)allocator);
-    _Z24BackupPairTables0207dfacPc((char*)pairs);
+    BackupPairTables0207dfac((char*)pairs);
     globals->lootableTemplates_[0] = &self->substruct_array_2b90[5];
     globals->lootableTemplates_[1] = &self->substruct_array_2b90[6];
     globals->lootableTemplates_[2] = &self->substruct_array_2b90[7];

@@ -13,10 +13,10 @@ extern unsigned char data_020f0dc8;
 
 void SelectBattleContextMode2(int mode);
 int GetBattleSysInnerField4();
-extern "C" void _Z24PrepareAndCommit020d0050i(int value);
+void PrepareAndCommit020d0050(int value);
 int GetCardReadManagerSharedStatus();
-extern "C" int _Z47ForwardWaitForField0x114Bit4ClearIsNull020d0834v();
-extern "C" void _Z23EmptyDestructor020758a0Pv(void* obj);
+int ForwardWaitForField0x114Bit4ClearIsNull020d0834();
+void EmptyDestructor020758a0(void* obj);
 extern "C" void func_020d05ec(int a, int b, int c, void* d, int e, int f, int g, int h, int i);
 
 // USA: func_02075910
@@ -39,15 +39,15 @@ extern "C" ARM int func_02075910(int a1, int a2, int a3, int a4) {
 
     int b = ((GetBattleSysInnerField4() & 0xff) == 1);
     if (b) {
-        func_020d05ec(a1, a2, a3, _Z23EmptyDestructor020758a0Pv, 0, 1, 6, 1, 0);
+        func_020d05ec(a1, a2, a3, EmptyDestructor020758a0, 0, 1, 6, 1, 0);
     } else {
         b = ((GetBattleSysInnerField4() & 0xff) == 2);
         if (b) {
-            func_020d05ec(a1, a2, a3, _Z23EmptyDestructor020758a0Pv, 0, 1, 6, 1, 0);
+            func_020d05ec(a1, a2, a3, EmptyDestructor020758a0, 0, 1, 6, 1, 0);
         } else {
             b = ((GetBattleSysInnerField4() & 0xff) == 3);
             if (b) {
-                func_020d05ec(a1, a2, a3, _Z23EmptyDestructor020758a0Pv, 0, 1, 6, 1, 0);
+                func_020d05ec(a1, a2, a3, EmptyDestructor020758a0, 0, 1, 6, 1, 0);
             }
         }
     }
@@ -57,11 +57,11 @@ extern "C" ARM int func_02075910(int a1, int a2, int a3, int a4) {
             result = 0;
         }
     } else {
-        _Z47ForwardWaitForField0x114Bit4ClearIsNull020d0834v();
+        ForwardWaitForField0x114Bit4ClearIsNull020d0834();
         if (GetCardReadManagerSharedStatus()) {
             result = 0;
         }
-        _Z24PrepareAndCommit020d0050i((int)data_02108dfc.value);
+        PrepareAndCommit020d0050((int)data_02108dfc.value);
         data_02108dfc.flag = 1;
     }
 

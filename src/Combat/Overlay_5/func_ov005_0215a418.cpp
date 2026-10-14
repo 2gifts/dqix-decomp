@@ -12,7 +12,7 @@
 
 struct Mtx43_02030d84 { unsigned int v[12]; };
 extern "C" void _Z15RotationMatrixYi(Mtx43_02030d84* dst, int angle);
-extern "C" void _Z16IssueCommand0x19i(int cmd);
+void IssueCommand0x19(int cmd);
 
 extern "C" void* _ZN9GameState11GetInstanceEv();
 extern "C" char* func_ov017_0218b5b0();
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov005_0215a418(Scene0215a418* self) {
         Mtx43_02030d84 mtx;
         _Z15RotationMatrixYi(&mtx, 0x3244);
         mtxCopy = mtx;
-        _Z16IssueCommand0x19i((int)&mtxCopy);
+        IssueCommand0x19((int)&mtxCopy);
         func_02047554((Entry0215a418*)((char*)ents + off), 0, 1);
         G3_MTX_POP = 1;
         G3_MTX_PUSH = 0;

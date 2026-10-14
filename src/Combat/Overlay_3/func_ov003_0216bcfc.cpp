@@ -49,9 +49,9 @@ int CheckField0NonZero(int *p);
 int CountActiveEntries(ActiveEntry02046900 *archive);
 void *FindRecordByIndex(Rec020467f0 *archive, int index, void **name, int *size);
 void *AllocateAligned4(AllocatorUnion *alloc, unsigned int size);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion *alloc, void *p);
-extern "C" void _Z23EmptyDestructor0205a494Pv(void *p);
-extern "C" void _Z21InitField170_021700bcP9S021700bc(S021700bc *p);
+void TailForward02012da4(AllocatorUnion *alloc, void *p);
+void EmptyDestructor0205a494(void *p);
+void InitField170_021700bc(S021700bc *p);
 extern "C" void *func_0202ae18();
 extern "C" void func_0202c288();
 extern "C" void func_02043124(void *p);
@@ -60,7 +60,7 @@ extern "C" void func_ov003_0216d8d4(void *self, int a, int b, int c, int d);
 extern "C" void func_ov003_0216e02c(void *sub, SafeAllocator *allocator);
 extern "C" int func_ov003_0216e124(void *sub);
 extern "C" void func_ov003_021700dc(void *sub);
-extern "C" void *_Z26GetGlobalField0x1c020421a0v();
+void *GetGlobalField0x1c020421a0();
 extern "C" void *memset(void *dst, int value, unsigned int length);
 
 extern char data_02114e20;
@@ -68,7 +68,7 @@ extern char data_ov003_021801c9[];
 
 // USA: func_ov003_0216bcfc
 extern "C" ARM void func_ov003_0216bcfc(Menu0216bcfc *self) {
-    Global0216bcfc *global   = (Global0216bcfc *) _Z26GetGlobalField0x1c020421a0v();
+    Global0216bcfc *global   = (Global0216bcfc *) GetGlobalField0x1c020421a0();
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
     void *obj                = func_0202ae18();
 
@@ -81,13 +81,13 @@ extern "C" ARM void func_ov003_0216bcfc(Menu0216bcfc *self) {
             self->step_  = 0;
             return;
         }
-        Global0216bcfc *global2 = (Global0216bcfc *) _Z26GetGlobalField0x1c020421a0v();
+        Global0216bcfc *global2 = (Global0216bcfc *) GetGlobalField0x1c020421a0();
         memset(global2->text_, 0, 0x960);
         void *buffer = AllocateAligned4((AllocatorUnion *) &data_02114e20, 0x8000);
         VectorizedMemset(buffer, 0, 0x8000);
         self->allocator_.CreateTypeA(buffer, 0x8000);
         self->allocator_.Reset();
-        _Z21InitField170_021700bcP9S021700bc((S021700bc *) self->sub_410);
+        InitField170_021700bc((S021700bc *) self->sub_410);
         func_ov003_0216e02c(self->sub_410, &self->allocator_);
         self->unk_4e8 = &self->unk_1324;
         char pixels[0x20];
@@ -105,9 +105,9 @@ extern "C" ARM void func_ov003_0216bcfc(Menu0216bcfc *self) {
         SignedAllocatorHeader *signedAlloc = self->allocator_.GetSignedAllocator();
         if (signedAlloc != 0) {
             self->allocator_.Destroy();
-            _Z19TailForward02012da4P14AllocatorUnionPv((AllocatorUnion *) &data_02114e20, signedAlloc);
+            TailForward02012da4((AllocatorUnion *) &data_02114e20, signedAlloc);
         }
-        _Z23EmptyDestructor0205a494Pv((char *) self + 0x126c);
+        EmptyDestructor0205a494((char *) self + 0x126c);
         self->unk_12bc = 0;
         self->unk_12ac = self->unk_1264;
         self->unk_12b8 = 0xf;

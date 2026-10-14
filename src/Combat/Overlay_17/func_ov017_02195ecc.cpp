@@ -10,8 +10,8 @@ extern "C" void _Z29CopyVec3sAndDispatch_02196048PiS_S_(Vector3fix* eye, Vector3
 extern "C" Container02057a6c* func_02057924(void);
 extern "C" int func_020ca4b4(const void* src, void* dst, int size);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
-extern "C" void _Z34UpdateEntriesWhereFlag2Set02057a6cP17Container02057a6c(Container02057a6c* c);
-extern "C" void _Z28ForwardObjAndField0_021a3af0i(int obj);
+void UpdateEntriesWhereFlag2Set02057a6c(Container02057a6c* c);
+void ForwardObjAndField0_021a3af0(int obj);
 
 extern const Vector3fix data_ov017_021d6420;
 extern const Vector3fix data_ov017_021d642c;
@@ -51,11 +51,11 @@ extern "C" ARM void func_ov017_02195ecc(Battle02195ecc* self, unsigned int mode)
     if (mode & 1) {
         Container02057a6c* entries = func_02057924();
         if (GetBitsInField4(self->flags, 0x20) == 0) {
-            _Z34UpdateEntriesWhereFlag2Set02057a6cP17Container02057a6c(entries);
+            UpdateEntriesWhereFlag2Set02057a6c(entries);
         }
     }
     if (mode & 2) {
-        _Z28ForwardObjAndField0_021a3af0i(self->nodeList);
+        ForwardObjAndField0_021a3af0(self->nodeList);
     }
 
     _Z29CopyVec3sAndDispatch_02196048PiS_S_(&savedEye, &savedUp, &savedTarget);

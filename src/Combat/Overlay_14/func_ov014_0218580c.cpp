@@ -89,15 +89,15 @@ extern Statics_02189800 data_ov014_02189800;
 extern char data_ov014_02189692[];
 extern char data_ov014_021896a7[];
 
-extern "C" void _Z20ClearFields_021e20c0Pv(void* layout);
+void ClearFields_021e20c0(void* layout);
 extern "C" int func_ov023_021e20f0(void* layout, SafeAllocator* allocator, void* file, unsigned int size);
 extern "C" LayoutElement* func_ov014_021842a0(void* layout, short id);
 int CountActiveEntries(ActiveEntry02046900* pac);
 void* FindRecordByIndex(Rec020467f0* pac, int index, void** outName, int* outSize);
 extern "C" void func_0205a528(SpriteRenderer* renderer, void* file, unsigned int size, SafeAllocator* allocator);
-extern "C" void _Z25ComputeShortPair_021e2bdcPviPsS0_(void* layout, int id, short* x, short* y);
+void ComputeShortPair_021e2bdc(void* layout, int id, short* x, short* y);
 void* GetFieldIfFlag4(char* gameState);
-extern "C" void _Z28InitCombatController020a2010Pv(void* camera);
+void InitCombatController020a2010(void* camera);
 void SetFields0x10To0x18(unsigned char* camera, int x, int y, int z);
 extern "C" void func_0202e5d8(void* camera, int x, int y, int z);
 extern "C" void func_0202e0a4(void* camera);
@@ -126,7 +126,7 @@ extern "C" ARM void func_ov014_0218580c(MonsterInfoScreen* self) {
     }
 
     if (self->initStep_ == 1) {
-        _Z20ClearFields_021e20c0Pv(self->layout_);
+        ClearFields_021e20c0(self->layout_);
         self->taskID_ = loader->QueueLoadFile(data_ov014_02189692, NULL);
         self->initStep_++;
     }
@@ -165,20 +165,20 @@ extern "C" ARM void func_ov014_0218580c(MonsterInfoScreen* self) {
         short y = 0;
         Sprite* sprite;
         HIDE_ELEMENT(self->layout_, 0x1a);
-        _Z25ComputeShortPair_021e2bdcPviPsS0_(self->layout_, 0x1a, &x, &y);
+        ComputeShortPair_021e2bdc(self->layout_, 0x1a, &x, &y);
         sprite = &self->sprites_[0];
         sprite->x_ = x << 12;
         sprite->y_ = y << 12;
         sprite->unk_22 = 0x21;
         sprite->unk_26 = 0;
         HIDE_ELEMENT(self->layout_, 0x1b);
-        _Z25ComputeShortPair_021e2bdcPviPsS0_(self->layout_, 0x1b, &x, &y);
+        ComputeShortPair_021e2bdc(self->layout_, 0x1b, &x, &y);
         sprite = &self->sprites_[1];
         sprite->x_ = x << 12;
         sprite->y_ = y << 12;
         sprite->unk_22 = 0x22;
         sprite->unk_26 = 0;
-        _Z25ComputeShortPair_021e2bdcPviPsS0_(self->layout_, 0x14, &x, &y);
+        ComputeShortPair_021e2bdc(self->layout_, 0x14, &x, &y);
         sprite = &self->sprites_[2];
         sprite->x_ = x << 12;
         sprite->y_ = y << 12;
@@ -197,7 +197,7 @@ extern "C" ARM void func_ov014_0218580c(MonsterInfoScreen* self) {
         DISPCNT = (DISPCNT & ~0x1f00) | (0x13 << 8);
         GameState* gameState = GameState::GetInstance();
         data_ov014_02189800.previousCamera = GetFieldIfFlag4((char*)gameState);
-        _Z28InitCombatController020a2010Pv(self->camera_);
+        InitCombatController020a2010(self->camera_);
         SetFields0x10To0x18((unsigned char*)self->camera_, 0, 0, 0);
         func_0202e5d8(self->camera_, 0, 0, 0xa000);
         func_0202e0a4(self->camera_);

@@ -26,29 +26,29 @@ struct EventParams021a6648 {
     int field_38, field_3c, field_40; Vector3i scale;
 };
 extern "C" void* func_02057924();
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+unsigned int* GetDataPtr02114e04_020d6c00();
+void CancelPendingAction020397cc(Obj020397cc*, int);
 int IsField0Null(void**);
 void SetBitsInWord(unsigned int*, unsigned int);
 void OrBitsIntoField0(unsigned int*, unsigned int);
 extern "C" void func_020a0cc4(unsigned int);
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
+void CopyInternalFields0207df50(Foo0207df50*);
 void BackupPairTableToBuffer(int*);
-extern "C" void _Z22ReadGlobalPair020bb910Pi(int*);
+void ReadGlobalPair020bb910(int*);
 void CleanInvalidateCacheRange(const void*, unsigned int);
 extern "C" int func_02057e6c(void*, int, SafeAllocator*, void*, unsigned int, Foo0207df50*);
-extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void*, int, int);
-extern "C" void _Z26SetForwardAndStore0205ebc0Pvii(void*, int, int);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(void*, int, int);
+void FindNodeAndProcess02057fb4(void*, int, int);
+void SetForwardAndStore0205ebc0(void*, int, int);
+void DispatchIfField0xc4NonNeg_0205ebfc(void*, int, int);
 void SetByteField0x253(void*);
-extern "C" void _Z25ForwardField0xc0_0205ebecPv(void*);
+void ForwardField0xc0_0205ebec(void*);
 void ClearBitsInWord(unsigned int*, unsigned int);
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(FlagWord020466f4*, unsigned int);
-extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int);
-extern "C" void _Z30RegisterNodeAndNotify_0219593cv();
-extern "C" Obj020d7aa0* _Z25GetGlobalResetObj020d7a50v();
-extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(Obj020d7aa0*);
+void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
+void SetCombatModeFromCase020dc2d0(int);
+void RegisterNodeAndNotify_0219593c();
+Obj020d7aa0* GetGlobalResetObj020d7a50();
+void TeardownAndResetState020d7aa0(Obj020d7aa0*);
 int ListContainsId(ListHead02046b60*, int);
 extern "C" void func_02046a8c(ListHead02046b60*, void*);
 extern "C" void func_ov017_021a6b30(Transition021a6648*);
@@ -67,10 +67,10 @@ extern "C" ARM void func_ov017_021a6648(Transition021a6648* self, ListHead02046b
     GameResources* resources = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     void* manager = func_02057924();
-    unsigned int* flags = _Z27GetDataPtr02114e04_020d6c00v();
+    unsigned int* flags = GetDataPtr02114e04_020d6c00();
     if (self->state == 0) {
         leader->obj3D_.MakeHidden();
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)leader, 1);
+        CancelPendingAction020397cc((Obj020397cc*)leader, 1);
         if (!IsField0Null((void**)resources->unknown_ptr_array_36fc[1])) return;
         SetBitsInWord(&resources->brightnessFlags_0, 0x10);
         OrBitsIntoField0(flags, 1);
@@ -86,9 +86,9 @@ extern "C" ARM void func_ov017_021a6648(Transition021a6648* self, ListHead02046b
         self->allocator.Reset();
         BattleStateTable021a6648* table = (BattleStateTable021a6648*)resources->unknown_2cc;
         Foo0207df50* fields = &table->transition;
-        _Z26CopyInternalFields0207df50P11Foo0207df50(fields);
+        CopyInternalFields0207df50(fields);
         BackupPairTableToBuffer(self->backup);
-        _Z22ReadGlobalPair020bb910Pi(self->pair);
+        ReadGlobalPair020bb910(self->pair);
         void* copy = self->allocator.Allocate(length);
         memcpy(copy, data, length);
         CleanInvalidateCacheRange(copy, length);
@@ -121,13 +121,13 @@ extern "C" ARM void func_ov017_021a6648(Transition021a6648* self, ListHead02046b
         params.position = leader->obj3D_.position_;
         params.scale = scale;
         params.enabled = 1;
-        _Z26FindNodeAndProcess02057fb4Pvii(manager, 0xc, (int)&params);
+        FindNodeAndProcess02057fb4(manager, 0xc, (int)&params);
         if (self->kind == 2) {
-            _Z26SetForwardAndStore0205ebc0Pvii(&data_02108760, 0xa3, 0xa3);
-            _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, 5, 0);
+            SetForwardAndStore0205ebc0(&data_02108760, 0xa3, 0xa3);
+            DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 5, 0);
         } else {
-            _Z26SetForwardAndStore0205ebc0Pvii(&data_02108760, 0xb2, 0xb2);
-            _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, 2, 0);
+            SetForwardAndStore0205ebc0(&data_02108760, 0xb2, 0xb2);
+            DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 2, 0);
         }
         self->timer = 0;
         self->state++;
@@ -140,13 +140,13 @@ extern "C" ARM void func_ov017_021a6648(Transition021a6648* self, ListHead02046b
         self->timer += game->GetTickCount();
         if (self->timer < data_ov017_021d6aaa[self->kind * 3]) return;
         SetByteField0x253(leader);
-        _Z25ForwardField0xc0_0205ebecPv(&data_02108760);
+        ForwardField0xc0_0205ebec(&data_02108760);
         ClearBitsInWord(&resources->brightnessFlags_0, 0x10);
-        _Z18ClearFlags020466f4P16FlagWord020466f4j((FlagWord020466f4*)flags, 1);
-        _Z29SetCombatModeFromCase020dc2d0i(0);
+        ClearFlags020466f4((FlagWord020466f4*)flags, 1);
+        SetCombatModeFromCase020dc2d0(0);
         if (self->reset) {
-            _Z30RegisterNodeAndNotify_0219593cv();
-            _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
+            RegisterNodeAndNotify_0219593c();
+            TeardownAndResetState020d7aa0(GetGlobalResetObj020d7a50());
         }
         if (!self->skipLists && ListContainsId(list, 0xa)) {
             func_02046a8c(list, resources->unknown_ptr_3718);

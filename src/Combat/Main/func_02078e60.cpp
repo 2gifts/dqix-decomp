@@ -10,7 +10,7 @@ extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f
 struct List_020283fc;
 int FindListIndexById(struct List_020283fc* list, int id);
 
-extern "C" int _Z29CheckAnySlotMatchesId02073d58iPvi(int a, void* b, int c);
+int CheckAnySlotMatchesId02073d58(int a, void* b, int c);
 
 struct Entry_0209bd94;
 struct EntryTable0209bd94;
@@ -23,7 +23,7 @@ struct MaskEntry02078e60 {
     unsigned int rsvd2 : 11;
     unsigned char pad8[0x20 - 8];
 };
-extern "C" struct MaskEntry02078e60* _Z27FindEntryByHalfword0209bd94P18EntryTable0209bd94i(struct EntryTable0209bd94* table, int key);
+struct MaskEntry02078e60* FindEntryByHalfword0209bd94(struct EntryTable0209bd94* table, int key);
 
 struct Slot02078e60 {
     unsigned char id;
@@ -86,7 +86,7 @@ extern "C" ARM unsigned short func_02078e60(void* obj, char* out) {
         return 0;
     }
     if ((o->field17d & 0x40) == 0) {
-        if (_Z29CheckAnySlotMatchesId02073d58iPvi(le->id, entry, o->f4) != 0) {
+        if (CheckAnySlotMatchesId02073d58(le->id, entry, o->f4) != 0) {
             *out = 1;
             return le->id;
         }
@@ -95,9 +95,9 @@ extern "C" ARM unsigned short func_02078e60(void* obj, char* out) {
         return le->id;
     }
 #if defined(jpn)
-    found = _Z27FindEntryByHalfword0209bd94P18EntryTable0209bd94i((struct EntryTable0209bd94*)((char*)entry + 0x5c), o->field168);
+    found = FindEntryByHalfword0209bd94((struct EntryTable0209bd94*)((char*)entry + 0x5c), o->field168);
 #else
-    found = _Z27FindEntryByHalfword0209bd94P18EntryTable0209bd94i((struct EntryTable0209bd94*)((char*)entry + 0x60), o->field168);
+    found = FindEntryByHalfword0209bd94((struct EntryTable0209bd94*)((char*)entry + 0x60), o->field168);
 #endif
     n = 0;
     any = 0;
@@ -107,7 +107,7 @@ extern "C" ARM unsigned short func_02078e60(void* obj, char* out) {
             if ((item->flags & found->flags8) == 0 && item->flags != 0) {
                 continue;
             }
-            if (_Z29CheckAnySlotMatchesId02073d58iPvi(item->id, entry, -1) != 0) {
+            if (CheckAnySlotMatchesId02073d58(item->id, entry, -1) != 0) {
                 any = 1;
             } else {
                 picks[n++] = le->items[j];

@@ -23,8 +23,8 @@ struct StructA0205d5d0;
 #endif
 #if !defined(jpn)
 #endif
-extern "C" void _Z25AppendEntryNames_0215e13cPcS_i(char* base, char* dst, int flag);
-extern "C" void _Z28SetupFieldAndFormat_0215de6cPcPv(char* base, void* buf);
+void AppendEntryNames_0215e13c(char* base, char* dst, int flag);
+void SetupFieldAndFormat_0215de6c(char* base, void* buf);
 
 struct TouchState_02114e54 {
     char unk_0[0x24];
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov003_0215db2c(char* self) {
         memset(*(void**)(self + kRegion7c), 0, kRegion960);
         unsigned char page = *(unsigned char*)(self + kRegion148);
         if (page == 1) {
-            _Z25AppendEntryNames_0215e13cPcS_i(self, *(char**)(self + kRegion7c), flag);
+            AppendEntryNames_0215e13c(self, *(char**)(self + kRegion7c), flag);
         }
         if (page != 0) {
 #if defined(jpn)
@@ -72,7 +72,7 @@ extern "C" ARM void func_ov003_0215db2c(char* self) {
     }
     if (*(unsigned char*)(self + kRegion3bb) != 0) {
         memset(*(void**)(self + kRegion7c), 0, kRegion960);
-        _Z28SetupFieldAndFormat_0215de6cPcPv(self, *(void**)(self + kRegion7c));
+        SetupFieldAndFormat_0215de6c(self, *(void**)(self + kRegion7c));
 #if defined(jpn)
         TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(self + kRegion98), 0, *(int*)(self + kRegion7c), 1);
 #else

@@ -3,7 +3,7 @@
 #pragma define_section initcode ".init" RX
 
 struct Struct_020401e4;
-extern "C" struct Struct_020401e4* _Z20ResetElement0203ef60P15Struct_020401e4(struct Struct_020401e4* obj);
+struct Struct_020401e4* ResetElement0203ef60(struct Struct_020401e4* obj);
 
 struct Data_020efd8c {
     float f0;
@@ -37,5 +37,5 @@ extern "C" __declspec(initcode) ARM void __sinit_020e5c58(void) {
     float addend = data_020efd8c.f8;
     data_021075d8.f18 = partial;
     data_021075d8.f14 = partial + addend;
-    _Z20ResetElement0203ef60P15Struct_020401e4(&data_021075f4);
+    ResetElement0203ef60(&data_021075f4);
 }

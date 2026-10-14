@@ -142,12 +142,12 @@ static inline ProfileTitle* GetTitleProfile(GameState* game) {
     ProfileRegion* region = (ProfileRegion*)game;
     return &region->profile;
 }
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(Struct0205de24*, unsigned char, unsigned char);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570*);
-extern "C" void _Z22BuildMessageB_021898bcPc(char*);
+void FindAndLinkMatchingEntry0205de24(Struct0205de24*, unsigned char, unsigned char);
+int GetActiveScaledSum0205d794(Struct_0205c570*);
+void BuildMessageB_021898bc(char*);
 void* FindEntryByKey(TableA68*, int);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
-extern "C" int _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20(Obj021e6e20*);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
+int TestFlagsAndActiveElement2_021e6e20(Obj021e6e20*);
 extern Obj0205eaa0 data_02108760;
 extern "C" void func_ov023_021e6e60(ProfileEditor*);
 extern "C" int func_ov023_021e6de4(ProfileEditor*);
@@ -173,15 +173,15 @@ extern "C" ARM void func_ov012_02186c1c(ProfileEditor* self) {
             }
         }
         self->cursor = cursor;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(&self->entries, 0, 3);
+        FindAndLinkMatchingEntry0205de24(&self->entries, 0, 3);
         func_ov023_021e6e60(self);
-        _Z22BuildMessageB_021898bcPc((char*)self);
+        BuildMessageB_021898bc((char*)self);
         self->step++;
         return;
     }
     if (self->step != 1) return;
     self->active = 1;
-    self->cursor = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)&self->entries);
+    self->cursor = GetActiveScaledSum0205d794((Struct_0205c570*)&self->entries);
     if (func_ov023_021e6de4(self)) {
         int rebuild = 1;
         switch (self->cursor) {
@@ -212,9 +212,9 @@ extern "C" ARM void func_ov012_02186c1c(ProfileEditor* self) {
         }
         }
         if (!rebuild) return;
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     } else {
-        if (!_Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20((Obj021e6e20*)self)) return;
+        if (!TestFlagsAndActiveElement2_021e6e20((Obj021e6e20*)self)) return;
         func_ov012_0218930c(self, 1);
     }
 }

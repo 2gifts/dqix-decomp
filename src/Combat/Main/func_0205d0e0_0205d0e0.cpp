@@ -24,7 +24,7 @@ struct Struct_0205d81c {
 };
 
 struct Struct0205d888;
-extern "C" void* _Z20GetLastEntry0205d888P14Struct0205d888(struct Struct0205d888* p);
+void* GetLastEntry0205d888(struct Struct0205d888* p);
 
 extern "C" int func_0205c5b0(void* selfPtr, int p1);
 unsigned int SelectField0x18Or0x68ByFlags(unsigned char* obj);
@@ -32,7 +32,7 @@ void SetByte0xd9AndFlag0x2(unsigned char* obj, unsigned char value);
 unsigned int SelectField0x8Or0x58ByFlags(unsigned char* obj);
 void SetByte0xdaAndFlag0x2(unsigned char* obj, int val);
 extern "C" void func_0204c87c(void* entry, int arg);
-extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 struct Obj0204ffc0;
 void ProcessRefAndDispatch0204ffc0(struct Obj0204ffc0* a, int b);
 
@@ -47,7 +47,7 @@ extern "C" ARM int func_0205d0e0(void* objPtr, int val) {
     if (obj->field9C == 0) return 0;
 
     ret = 0;
-    entry = (struct Elem_0205d81c*)_Z20GetLastEntry0205d888P14Struct0205d888((struct Struct0205d888*)objPtr);
+    entry = (struct Elem_0205d81c*)GetLastEntry0205d888((struct Struct0205d888*)objPtr);
     if (entry != 0) {
         ret = func_0205c5b0(objPtr, val);
         if (obj->fieldB0 == entry->fieldC4) {
@@ -63,7 +63,7 @@ extern "C" ARM int func_0205d0e0(void* objPtr, int val) {
     }
 
     if (obj->fieldB8 != 0xff) {
-        entry = _Z23FindElementByC40205d81cP15Struct_0205d81ci(obj, obj->fieldB8);
+        entry = FindElementByC40205d81c(obj, obj->fieldB8);
         if (entry != 0) {
             ProcessRefAndDispatch0204ffc0((struct Obj0204ffc0*)entry, -1);
         }

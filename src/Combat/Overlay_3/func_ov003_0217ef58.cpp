@@ -41,7 +41,7 @@ void PushInputLogA(int id);
 extern "C" void func_ov003_0216d63c(Scene0217ef58* scene);
 extern "C" void func_ov003_0216ae0c(Scene0217ef58* scene, SafeAllocator* allocator);
 extern "C" int func_ov003_0216af14(Scene0217ef58* scene);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int arg1);
+void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
 int GetFieldIfFlag4(char* obj);
 void ClearIntAt0x23c(unsigned char* obj);
 extern "C" int func_ov017_021959b4(void);
@@ -50,7 +50,7 @@ extern "C" void func_ov003_0217f118(Obj0217ef58* obj);
 void SetByteField0x253(void* obj);
 void SetField0x23cTrue(void* obj);
 void ClearFlagBits(unsigned char* obj, int mask);
-extern "C" void _Z29InitObjAndClearFlags_0217f1b8Ph(unsigned char* obj);
+void InitObjAndClearFlags_0217f1b8(unsigned char* obj);
 extern AllocatorUnion data_02114e20;
 
 // USA: func_ov003_0217ef58
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov003_0217ef58(Obj0217ef58* self) {
         func_ov003_0216d63c(self->scene);
         func_ov003_0216ae0c(self->scene, &self->allocator);
         self->scene->id = self->id;
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)gs->GetUnknownGameObject(), 1);
+        CancelPendingAction020397cc((Obj020397cc*)gs->GetUnknownGameObject(), 1);
         ClearIntAt0x23c((unsigned char*)GetFieldIfFlag4((char*)gs));
         self->state = 1;
     } else if (self->state == 1) {
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov003_0217ef58(Obj0217ef58* self) {
         self->state = -1;
     } else if (self->state == 3) {
         if (func_ov003_0216af14(self->scene) == 0) {
-            _Z29InitObjAndClearFlags_0217f1b8Ph((unsigned char*)self);
+            InitObjAndClearFlags_0217f1b8((unsigned char*)self);
         }
     }
 }

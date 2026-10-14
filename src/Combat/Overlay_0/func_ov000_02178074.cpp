@@ -46,8 +46,8 @@ struct TextWorkspace {
     char* textBuffer;
 };
 
-extern "C" TextWorkspace* _Z26GetGlobalField0x1c020421a0v();
-extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+TextWorkspace* GetGlobalField0x1c020421a0();
+struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 extern "C" void func_ov000_021781f8(struct Owner_02178074* obj, struct InStruct_02178074* in);
 extern "C" void func_ov000_0217c638(struct Owner_02178074* obj, int a, int b);
 extern "C" void func_ov000_0217831c(struct Owner_02178074* obj, void* textBuffer);
@@ -90,9 +90,9 @@ extern "C" ARM void func_ov000_02178074(struct Owner_02178074* obj, struct InStr
 #endif
     int pageCount = panel->pageCount;
 #if defined(jpn)
-    textBuffer = _Z26GetGlobalField0x1c020421a0v()->textBuffer;
+    textBuffer = GetGlobalField0x1c020421a0()->textBuffer;
 #else
-    char* textBuffer = _Z26GetGlobalField0x1c020421a0v()->textBuffer;
+    char* textBuffer = GetGlobalField0x1c020421a0()->textBuffer;
 #endif
 #if defined(jpn)
     memset(textBuffer, 0, 0x800);
@@ -106,7 +106,7 @@ extern "C" ARM void func_ov000_02178074(struct Owner_02178074* obj, struct InStr
 #else
     func_0205d304(panel, textBuffer, 0, 0, multiplePages, 1, 0, 0);
 #endif
-    struct Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)panel, 0x21);
+    struct Elem_0205d81c* elem = FindElementByC40205d81c((struct Struct_0205d81c*)panel, 0x21);
     if (elem != 0) {
         elem->field_0xc2 = 0;
     }

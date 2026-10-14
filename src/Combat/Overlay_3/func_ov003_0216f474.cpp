@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" char *_Z26GetGlobalField0x1c020421a0v(void);
+char *GetGlobalField0x1c020421a0(void);
 extern "C" char *func_02012fe4(void);
 extern "C" void func_ov003_0216fc58(void *self, int a, int b);
 extern "C" void func_ov003_0216ff90(void *self);
@@ -18,11 +18,11 @@ struct Pool02098970;
 struct Entry02098970;
 struct NibbleElem02098e70;
 struct NibbleElem02098eac;
-extern "C" Entry0216f474 *_Z27FindEntryByShortId_0216f414P12Obj_0216f414i(Obj_0216f414 *list, int id);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0 *obj, int a, int b);
+Entry0216f474 *FindEntryByShortId_0216f414(Obj_0216f414 *list, int id);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *obj, int a, int b);
 int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
 int ReleaseEntryIfInPool(Pool02098970 *pool, Entry02098970 *entry);
-extern "C" void _Z29ResetFieldsB68AndB74_0216fb6cPc(char *pool);
+void ResetFieldsB68AndB74_0216fb6c(char *pool);
 int CountNibble0xcEquals9(NibbleElem02098e70 *p);
 int CountNibble0xcEqualsA(NibbleElem02098eac *p);
 
@@ -78,21 +78,21 @@ struct Menu0216f474 {
 extern "C" ARM void func_ov003_0216f474(Menu0216f474 *self) {
     char *base;
     Global0216f474 *global;
-    global    = (Global0216f474 *) _Z26GetGlobalField0x1c020421a0v();
+    global    = (Global0216f474 *) GetGlobalField0x1c020421a0();
     base      = func_02012fe4();
     int state = self->state_;
     if (state == 0) {
         if (self->unk_d4 != 0) {
-            Entry0216f474 *e = _Z27FindEntryByShortId_0216f414P12Obj_0216f414i(self->unk_d4, 0x19);
+            Entry0216f474 *e = FindEntryByShortId_0216f414(self->unk_d4, 0x19);
             if (e != 0) {
                 e->flags &= ~2;
             }
-            e = _Z27FindEntryByShortId_0216f414P12Obj_0216f414i(self->unk_d4, 0x1a);
+            e = FindEntryByShortId_0216f414(self->unk_d4, 0x1a);
             if (e != 0) {
                 e->flags |= 2;
             }
         }
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
         Item0216f474 *item = self->items_[(self->unk_0 - 1) * 8 + self->unk_6];
         if (item->kind_ == 9 || item->kind_ == 0xa) {
             func_ov003_0216fc58(self, 1, 0);
@@ -130,17 +130,17 @@ extern "C" ARM void func_ov003_0216f474(Menu0216f474 *self) {
             if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401) != 0 || sel == self->unk_9) {
                 switch (self->unk_8) {
                     case 0:
-                        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
+                        DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
                         func_ov003_0216ff90(self);
                         self->state_ = 2;
                         break;
                     case 1:
-                        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
+                        DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
                         func_ov003_0216ff90(self);
                         self->state_ = 3;
                         break;
                     case 2:
-                        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
+                        DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
                         func_ov003_0216ff90(self);
                         self->unk_7  = -1;
                         self->unk_1  = 2;
@@ -169,9 +169,9 @@ extern "C" ARM void func_ov003_0216f474(Menu0216f474 *self) {
             ReleaseEntryIfInPool((Pool02098970 *) (base + 0x840), (Entry02098970 *) item);
             func_ov003_02170898(self);
             func_ov003_02170688(self);
-            _Z29ResetFieldsB68AndB74_0216fb6cPc(base + 0x840);
+            ResetFieldsB68AndB74_0216fb6c(base + 0x840);
             func_02098630(base + 0x840, &copy, 0, 0);
-            _Z29ResetFieldsB68AndB74_0216fb6cPc(base + 0x840);
+            ResetFieldsB68AndB74_0216fb6c(base + 0x840);
             func_ov003_02170898(self);
             func_ov003_02170688(self);
             self->unk_16c = 1;
@@ -211,15 +211,15 @@ extern "C" ARM void func_ov003_0216f474(Menu0216f474 *self) {
     } else if (state == 5) {
         Item0216f474 *item = self->items_[(self->unk_0 - 1) * 8 + self->unk_6];
         if (self->unk_d4 != 0) {
-            Entry0216f474 *e = _Z27FindEntryByShortId_0216f414P12Obj_0216f414i(self->unk_d4, 0x19);
+            Entry0216f474 *e = FindEntryByShortId_0216f414(self->unk_d4, 0x19);
             if (e != 0) {
                 e->flags &= ~2;
             }
-            e = _Z27FindEntryByShortId_0216f414P12Obj_0216f414i(self->unk_d4, 0x1a);
+            e = FindEntryByShortId_0216f414(self->unk_d4, 0x1a);
             if (e != 0) {
                 e->flags &= ~2;
             }
-            e = _Z27FindEntryByShortId_0216f414P12Obj_0216f414i(self->unk_d4, 0x1b);
+            e = FindEntryByShortId_0216f414(self->unk_d4, 0x1b);
             if (e != 0) {
                 e->flags |= 2;
             }

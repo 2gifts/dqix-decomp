@@ -16,8 +16,8 @@ extern "C" Save021557ac* func_0205ec34();
 extern "C" int func_020deb58(Container020dedd0*, int, int, int, int);
 extern "C" Item021557ac* func_020dec30(Container020dedd0*, int, int, int, int, int);
 int TestBitInByteArray(int, unsigned char*, int);
-extern "C" void _Z22ClearElements_021e1518Pv(void*);
-extern "C" void _Z32RefreshEntryStatusFlags_021e1474P18ObjStruct_021e1474P17Container020dedd0(ObjStruct_021e1474*, Container020dedd0*);
+void ClearElements_021e1518(void*);
+void RefreshEntryStatusFlags_021e1474(ObjStruct_021e1474*, Container020dedd0*);
 extern Table021557ac* data_ov004_021707c4;
 
 class Node021557ac {
@@ -94,8 +94,8 @@ extern "C" ARM int func_ov004_021557ac(void* self) {
     if (source && destination) {
         ObjStruct_021e1474* entries = destination->GetEntries();
         if (entries) {
-            _Z22ClearElements_021e1518Pv(entries);
-            _Z32RefreshEntryStatusFlags_021e1474P18ObjStruct_021e1474P17Container020dedd0(entries, source->GetContainer());
+            ClearElements_021e1518(entries);
+            RefreshEntryStatusFlags_021e1474(entries, source->GetContainer());
         }
     }
     return 0;

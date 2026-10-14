@@ -22,7 +22,7 @@ struct Session02072398 {
     struct List02072560* list;
 };
 
-extern "C" void _Z27AppendElementCapped02072560P12List02072560P12Elem02072560(struct List02072560* list, struct Elem02072560* src);
+void AppendElementCapped02072560(struct List02072560* list, struct Elem02072560* src);
 
 extern Session02072398 data_02108da8;
 
@@ -54,6 +54,6 @@ extern "C" ARM int func_02072398(Script::Parameter* params, int count) {
     if (count != 0) {
         e.f2a = params[0].ToInt();
     }
-    _Z27AppendElementCapped02072560P12List02072560P12Elem02072560(data_02108da8.list, &e);
+    AppendElementCapped02072560(data_02108da8.list, &e);
     return 1;
 }

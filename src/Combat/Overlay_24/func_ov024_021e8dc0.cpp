@@ -3,7 +3,7 @@
 #include "Util/Random.h"
 
 int TestBit2At0x2f4(unsigned char* obj);
-extern "C" int _Z28RollChanceFromTable_021564ccP6Randomi(struct Random* rand, int id);
+int RollChanceFromTable_021564cc(struct Random* rand, int id);
 
 struct Ctx_021e8dc0 {
 	char pad0[0x10];
@@ -71,7 +71,7 @@ extern "C" ARM int func_ov024_021e8dc0(struct Ctx_021e8dc0* ctx, int id, struct 
 		if (params->actionId == 1) {
 			struct Bits2f4_021e8dc0* w = (struct Bits2f4_021e8dc0*)(c->field150 + 0x2f4);
 			if (!w) return count;
-			if (!w->bit1 && !w->bit0 && _Z28RollChanceFromTable_021564ccP6Randomi(ctx->random, id)) {
+			if (!w->bit1 && !w->bit0 && RollChanceFromTable_021564cc(ctx->random, id)) {
 				ctx->field0x78 = 1;
 				ctx->field0x7a = 1;
 				count++;

@@ -14,8 +14,8 @@ struct DetailedMapFlags {
 };
 GameResources* func_ov017_0218b5b0();
 void* GetField0x3f8Address(GameState*);
-extern "C" int _Z17IsInRange0201b588i(int);
-extern "C" void _Z31ClearOrFillBattleRegion02027ad8ii(int, int);
+int IsInRange0201b588(int);
+void ClearOrFillBattleRegion02027ad8(int, int);
 int CheckField0NonZero(int*);
 extern "C" {
 int* func_0202ae18();
@@ -41,7 +41,7 @@ extern "C" ARM void func_0208fa8c(DetailedTreasureMapData* map) {
     ZoneState* destination = func_02012fe4();
     currentZone = current->zoneId;
     int nextZone = destination->zoneId;
-    if (_Z17IsInRange0201b588i(currentZone) && !_Z17IsInRange0201b588i(nextZone) &&
+    if (IsInRange0201b588(currentZone) && !IsInRange0201b588(nextZone) &&
         (nextZone < 30000 || nextZone > 39999)) {
         map->Clear();
         func_020a0cc4(0x2000);
@@ -52,12 +52,12 @@ extern "C" ARM void func_0208fa8c(DetailedTreasureMapData* map) {
         if (!grotto->unknown_0[0]) ((DetailedMapFlags*)map)->field260 = 1;
         grotto->unknown_0[1] = 0;
         if (func_0202c540(session)) grotto->activeMapLevel = map->GetLevel();
-        if (region && nextZone) _Z31ClearOrFillBattleRegion02027ad8ii((int)region, map->discoveryState_ == 3);
-    } else if (!_Z17IsInRange0201b588i(currentZone) && _Z17IsInRange0201b588i(nextZone) &&
+        if (region && nextZone) ClearOrFillBattleRegion02027ad8((int)region, map->discoveryState_ == 3);
+    } else if (!IsInRange0201b588(currentZone) && IsInRange0201b588(nextZone) &&
                (currentZone < 30000 || currentZone > 39999)) {
         if (CheckField0NonZero(session) && func_0202c540(session) && !grotto->unknown_0[1])
             grotto->unknown_0[1] = 0;
         else grotto->unknown_0[1] = 1;
-        if (region) _Z31ClearOrFillBattleRegion02027ad8ii((int)region, 0);
+        if (region) ClearOrFillBattleRegion02027ad8((int)region, 0);
     }
 }

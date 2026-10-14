@@ -26,15 +26,15 @@
 
 extern "C" void __clear(void*, unsigned long);
 struct Foo0207df50;
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
+void CopyInternalFields0207df50(Foo0207df50*);
+void RestorePairTables0207df90(char*);
+void BackupPairTables0207dfac(char*);
 struct Struct_203dafc;
 void ClearEightWords(Struct_203dafc*);
 struct Struct020A2CF0;
 struct S020a3568;
 Struct020A2CF0* GetFieldIfFlag2(char*);
-extern "C" void _Z18ResetState020a2cf0P14Struct020A2CF0(Struct020A2CF0*);
+void ResetState020a2cf0(Struct020A2CF0*);
 void SetField0x218(S020a3568*, int);
 ModelRenderContext* GetModel3DContext(Model3D*);
 extern "C" void func_ov015_0218bb3c(RenderCommandHandler*);
@@ -73,8 +73,8 @@ extern "C" ARM int func_ov015_0218e2a4(BattleModelLoader* self, ModelDescription
     self->allocator->Reset();
     int loaded = 1;
     Foo0207df50* palette = self->manager->palette;
-    _Z26CopyInternalFields0207df50P11Foo0207df50(palette);
-    _Z25RestorePairTables0207df90Pc((char*)palette);
+    CopyInternalFields0207df50(palette);
+    RestorePairTables0207df90((char*)palette);
     if (self->mode == 5) sprintf(path, data_ov015_02194078, description->archive);
     else sprintf(path, data_ov015_02194052, description->archive);
     BackgroundLoader::AddLockGlobal();
@@ -104,13 +104,13 @@ extern "C" ARM int func_ov015_0218e2a4(BattleModelLoader* self, ModelDescription
         self->object->MaybeSetBCFGAnimation(0, self->animationFlags);
     }
     BackgroundLoader::RemoveLockGlobal();
-    _Z24BackupPairTables0207dfacPc((char*)palette);
+    BackupPairTables0207dfac((char*)palette);
     if (!loaded) return 0;
     GameState* game = GameState::GetInstance();
     if (!game) return 0;
     Struct020A2CF0* camera = GetFieldIfFlag2((char*)game);
     if (!camera) return 0;
-    _Z18ResetState020a2cf0P14Struct020A2CF0(camera);
+    ResetState020a2cf0(camera);
     SetField0x218((S020a3568*)camera, 0);
     self->id = description->id;
     return 1;

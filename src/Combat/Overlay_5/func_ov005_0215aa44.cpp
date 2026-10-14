@@ -30,7 +30,7 @@ struct EquipmentMenu
     unsigned short digits_[20][3];
 };
 
-extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem* GetGlobalField0x1c020421a0();
 #if defined(jpn)
 extern "C" void func_02045f3c(MessageSystem* messages, unsigned short* codes, int x, int y, int color, int, int, int);
 #else
@@ -40,7 +40,7 @@ extern "C" void func_02045f3c(MessageSystem* messages, unsigned short* codes, in
 // USA: func_ov005_0215aa44
 extern "C" ARM void func_ov005_0215aa44(EquipmentMenu* self)
 {
-    MessageSystem* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     int page = self->page_ + 1;
     int count = self->pageCounts_[self->kind_];
     GXFIFO_MATRIX_PUSH = 0;

@@ -64,12 +64,12 @@ struct BattleWork {
     unsigned int savedField;
 };
 
-extern "C" SlotWork* _Z21FindSlotById_021dae60P18Container_021dae60i(Container_021dae60* c, int id);
+SlotWork* FindSlotById_021dae60(Container_021dae60* c, int id);
 int GetCombatWorkFlags0x55f4(void* work, int mask);
 void SetCombatWorkFlags0x55f4(void* work, int mask);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
+void* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int* field, unsigned int bits);
-extern "C" void _Z22SetFlagAndCall02176038P11Obj02176038(Obj02176038* obj);
+void SetFlagAndCall02176038(Obj02176038* obj);
 
 extern "C" {
 void* memset(void*, int, unsigned int);
@@ -97,7 +97,7 @@ extern "C" ARM void func_ov026_021dbf04(BattleWork* self) {
     Roster* roster = (Roster*)GetPtrField0x2a04(GameState::GetInstance());
     for (int i = 0; i < roster->count; i++) {
         int id = roster->ids[i];
-        SlotWork* slot = _Z21FindSlotById_021dae60P18Container_021dae60i(&self->list, id);
+        SlotWork* slot = FindSlotById_021dae60(&self->list, id);
         if (slot != NULL) {
             func_ov000_0217f518(slot);
             func_ov000_02162c14(self, id, &cmd);
@@ -110,6 +110,6 @@ extern "C" ARM void func_ov026_021dbf04(BattleWork* self) {
     if (wasSet) {
         SetCombatWorkFlags0x55f4(self, 0x2000000);
     }
-    OrBitsIntoField0((unsigned int*)_Z27GetDataPtr02114e04_020d6c00v(), self->savedField);
-    _Z22SetFlagAndCall02176038P11Obj02176038((Obj02176038*)&self->list);
+    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), self->savedField);
+    SetFlagAndCall02176038((Obj02176038*)&self->list);
 }

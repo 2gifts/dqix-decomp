@@ -13,15 +13,15 @@ struct ActionEntry0215ae80 {
 
 struct List02160094;
 struct List021600f8;
-extern "C" ActionEntry0215ae80* _Z22GetNodeAtIndex02160094P12List02160094i(struct List02160094* list, int index);
-extern "C" void* _Z22GetNodeAtIndex021600f8P12List021600f8i(struct List021600f8* list, int index);
+ActionEntry0215ae80* GetNodeAtIndex02160094(struct List02160094* list, int index);
+void* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
 
 struct ActionNode0215ae80 {
     char pad0[0x28];
 };
 
-extern "C" void* _Z25GetWorkArrayEntry0215e9d8Pv(void* work);
-extern "C" void _Z18InitStruct02160030Pv(void* obj);
+void* GetWorkArrayEntry0215e9d8(void* work);
+void InitStruct02160030(void* obj);
 
 struct Battle0215ae80 {
     char pad0[0x7770];
@@ -38,12 +38,12 @@ struct Battle0215ae80 {
 extern "C" ARM void func_ov000_0215ae80(Battle0215ae80* self) {
     int i;
     for (i = self->actionCursor; i < self->actionCount; i++) {
-        void* work = _Z25GetWorkArrayEntry0215e9d8Pv(self);
+        void* work = GetWorkArrayEntry0215e9d8(self);
         if (work == NULL) return;
-        _Z18InitStruct02160030Pv(work);
+        InitStruct02160030(work);
         ActionNode0215ae80* node = &self->actions[i];
-        ActionEntry0215ae80* entry = _Z22GetNodeAtIndex02160094P12List02160094i((struct List02160094*)node, 0);
-        if (entry != NULL && _Z22GetNodeAtIndex021600f8P12List021600f8i((struct List021600f8*)node, 0) != NULL) {
+        ActionEntry0215ae80* entry = GetNodeAtIndex02160094((struct List02160094*)node, 0);
+        if (entry != NULL && GetNodeAtIndex021600f8((struct List021600f8*)node, 0) != NULL) {
             short id = entry->combatantId;
             GameState* gs = GameState::GetInstance();
             GameObject* c = gs->GetCombatantByIndex(id);

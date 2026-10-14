@@ -15,16 +15,16 @@ struct Rec021eee48 {
     Rec021eee48* next;
 };
 struct Obj021eee48;
-extern "C" ListNode02160094* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094*, int);
-extern "C" ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8*, int);
-extern "C" void _Z20ResetFields_021de110Pv(void*);
-extern "C" void _Z29PushNodeFromFreeList_021eee48P11Obj021eee48P11Rec021eee48(Obj021eee48*, Rec021eee48*);
+ListNode02160094* GetNodeAtIndex02160094(List02160094*, int);
+ListNode021600f8* GetNodeAtIndex021600f8(List021600f8*, int);
+void ResetFields_021de110(void*);
+void PushNodeFromFreeList_021eee48(Obj021eee48*, Rec021eee48*);
 extern "C" int func_ov025_021df9f4(GameObject*);
 extern "C" void func_02033920(GameObject*, int, int);
 
 // USA: func_ov025_021e2ca4
 extern "C" ARM int func_ov025_021e2ca4(MovementCommand* command, List02160094* list, Obj021eee48* queue) {
-    ListNode02160094* node = _Z22GetNodeAtIndex02160094P12List02160094i(list, 0);
+    ListNode02160094* node = GetNodeAtIndex02160094(list, 0);
     if (!node) return 0;
     int id = node->id;
     GameState* game = GameState::GetInstance();
@@ -34,7 +34,7 @@ extern "C" ARM int func_ov025_021e2ca4(MovementCommand* command, List02160094* l
     if (!config) return 1;
     BCFG::AnimationRecord* record = config->GetAnimationRecord(animation);
     if (!record) return 0;
-    ListNode021600f8* target = _Z22GetNodeAtIndex021600f8P12List021600f8i((List021600f8*)list, 0);
+    ListNode021600f8* target = GetNodeAtIndex021600f8((List021600f8*)list, 0);
     if (!target) return 1;
     GameObject* other = game->GetCombatantByIndex(target->id);
     if (record && other) {
@@ -58,13 +58,13 @@ extern "C" ARM int func_ov025_021e2ca4(MovementCommand* command, List02160094* l
         Vector3fix destination;
         Vector3fix_Add(&actorPosition, &movement, &destination);
         Rec021eee48 entry;
-        _Z20ResetFields_021de110Pv(&entry);
+        ResetFields_021de110(&entry);
         entry.type = 0;
         entry.delay = delay;
         entry.id = node->id;
         entry.duration = duration;
         entry.target.position = destination;
-        _Z29PushNodeFromFreeList_021eee48P11Obj021eee48P11Rec021eee48(queue, &entry);
+        PushNodeFromFreeList_021eee48(queue, &entry);
         int angle = fix32_Atan2(direction.x, direction.z);
         int turnDuration = 250;
         if (duration < turnDuration) turnDuration = duration;
@@ -73,12 +73,12 @@ extern "C" ARM int func_ov025_021e2ca4(MovementCommand* command, List02160094* l
         entry.target.angle = angle;
         if (list->head) entry.id = list->head->id;
         else entry.id = 0;
-        _Z29PushNodeFromFreeList_021eee48P11Obj021eee48P11Rec021eee48(queue, &entry);
+        PushNodeFromFreeList_021eee48(queue, &entry);
         entry.type = 1;
         entry.id = node->id;
         entry.duration = duration;
         entry.target.angle = fix32_Atan2(direction.x, direction.z);
-        _Z29PushNodeFromFreeList_021eee48P11Obj021eee48P11Rec021eee48(queue, &entry);
+        PushNodeFromFreeList_021eee48(queue, &entry);
         if (func_ov025_021df9f4(other)) func_02033920(other, node->id, 1);
     }
     return 1;

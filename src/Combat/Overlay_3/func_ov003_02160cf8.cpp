@@ -22,10 +22,9 @@ enum { kRegionValue4A8_2D0 = 0x4a8 };
 enum { kRegionValue468_290 = 0x468 };
 #endif
 
-
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void* GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int* word, unsigned int bits);
-extern "C" void _Z26ApplyElementEffect02161438Pv(void* obj);
+void ApplyElementEffect02161438(void* obj);
 
 struct View02160cf8 {
 	void* field0;
@@ -51,7 +50,7 @@ struct Self02160cf8 {
 // USA: func_ov003_02160cf8
 extern "C" ARM int func_ov003_02160cf8(struct Self02160cf8* self) {
 	GameResources* res = func_ov017_0218b5b0();
-	void* dataPtr = _Z27GetDataPtr02114e04_020d6c00v();
+	void* dataPtr = GetDataPtr02114e04_020d6c00();
 	int result = 0;
 
 	if (self->state == 0) {
@@ -68,7 +67,7 @@ extern "C" ARM int func_ov003_02160cf8(struct Self02160cf8* self) {
 		}
 	} else if (self->state == 2) {
 		if (func_ov003_0216759c(self->view) != 0) {
-			_Z26ApplyElementEffect02161438Pv(self);
+			ApplyElementEffect02161438(self);
 			self->state++;
 		}
 	} else if (self->state == 3) {

@@ -42,7 +42,7 @@ extern const Vec3i02184a4c data_ov008_0218b328;
 extern const Vec3i02184a4c data_ov008_0218b334;
 extern const Vec3i02184a4c data_ov008_0218b31c;
 
-extern "C" int _Z12StringLengthPKc(const char* s);
+int StringLength(const char* s);
 
 struct List02184a4c {
     void* entries;
@@ -189,11 +189,11 @@ struct Obj02184a4c {
 extern "C" void* func_0202ae18(void);
 extern "C" char* func_0205ec34(void);
 extern "C" int _Z18TestBitInByteArrayiPhi(char* unused, char* arr, int index);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+int LoadBattleBlock020ac4c0(void* dst);
 extern "C" int func_0202c508(void* obj);
 extern "C" int func_0202c540(void* obj);
 extern "C" void _Z23ResetListHeader020727d8P12List020727d8(List02184a4c* list);
-extern "C" void _Z28SubmitScriptFromFile020727f8PvPKciS_h(void* list, const char* path, int id, void* out, unsigned char mode);
+void SubmitScriptFromFile020727f8(void* list, const char* path, int id, void* out, unsigned char mode);
 extern "C" void _Z13Reset0209fe9cPc(void* obj);
 extern "C" void _Z37InitManagerAndAllocateBuffers0209fee4P11Obj0209fee4P13SafeAllocatorii(void* obj, SafeAllocator* alloc, void* data, unsigned int size);
 extern "C" void _Z12SetIntAt0x60P21IntField0x60_0209ff64i(void* obj, int value);
@@ -219,31 +219,31 @@ extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(void* obj);
 extern "C" int func_0205a528(void* obj, void* data, int size, SafeAllocator* alloc);
 extern "C" int func_ov008_02188d74(Obj02184a4c* obj);
 extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
-extern "C" int _Z18LoadFileIntoMemoryPKcPvPj(const char* path, void* dst, unsigned int* outSize);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
+int LoadFileIntoMemory(const char* path, void* dst, unsigned int* outSize);
 extern "C" int _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* info, void* callback);
 extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(void* obj, const Vec3i02184a4c* scale);
 extern "C" void _ZN8Object3D21MaybeSetBCFGAnimationEii(void* obj, int a, int b);
-extern "C" void _Z28InitCombatController020a2010Pv(void* obj);
+void InitCombatController020a2010(void* obj);
 extern "C" void _Z12SetVec3At0x4P18Vec3Target0202e5c0iii(void* obj, int x, int y, int z);
 extern "C" void _Z19SetFields0x10To0x18Phiii(void* obj, int a, int b, int c);
-extern "C" void _Z18SetField0x238FalsePv(void* obj);
+void SetField0x238False(void* obj);
 extern "C" void _Z18SetField0x3b0ValueP9GameStatei(GameState* gs, void* value);
 extern "C" void _Z19ClearStruct020a13c4P9S020a13c4(void* p);
-extern "C" void _Z31SetupGlobalAndRunScript020a13e4PvS_ith(void* a, void* b, int c, unsigned short d, unsigned char e);
+void SetupGlobalAndRunScript020a13e4(void* a, void* b, int c, unsigned short d, unsigned char e);
 extern "C" int func_ov023_021ed724(void* obj, short* ids, int count);
 extern "C" MessageSrc02184a4c* _Z26FindElementByField020a15bcP13Array020a15bci(void* arr, int id);
 extern "C" void func_020e046c(char* buf, void* b, unsigned int c, int idx);
 extern "C" int _Z17GetField5cbcValuePc(GameState* gs);
-extern "C" int _Z14CompareStringsPKcS0_(const char* a, const char* b);
+int CompareStrings(const char* a, const char* b);
 extern "C" int _Z18CheckField0NonZeroPi(void* obj);
 extern "C" void func_ov008_0218712c(Obj02184a4c* obj, int a);
 extern "C" void _Z18InitConfig02187664P15Manager02187664i(Obj02184a4c* obj, int a);
 extern "C" void func_ov008_02187a70(Obj02184a4c* obj, int a);
 extern "C" void func_ov008_02187f6c(Obj02184a4c* obj, int a);
 extern "C" Elem0205d81c02184a4c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(void* s, int key);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
+char* GetGlobalField0x1c020421a0(void);
 extern "C" void func_020432c4(char* obj);
 extern "C" void _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(void* actor, int val);
 extern "C" void func_ov008_02186964(Obj02184a4c* obj);
@@ -288,7 +288,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
             obj->flags &= ~1;
         }
         BattleBlock02184a4c block;
-        _Z23LoadBattleBlock020ac4c0Pv(&block);
+        LoadBattleBlock020ac4c0(&block);
         BattleBlock02184a4c* pb = &block;
         unsigned int scriptId = pb->GetTail()->GetScriptId();
         if (scriptId == 0) {
@@ -316,7 +316,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                 __clear(path, 0x80);
                 List02184a4c list;
                 _Z23ResetListHeader020727d8P12List020727d8(&list);
-                _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, 1000, path, REGION_VALUE(1, 2));
+                SubmitScriptFromFile020727f8(&list, data_ov008_0218b400, 1000, path, REGION_VALUE(1, 2));
                 obj->taskId = loader->QueueLoadFile(path, NULL);
                 obj->flags |= 0x400;
             }
@@ -367,7 +367,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
             obj->alloc14.Reset();
             void* data = obj->alloc14.Allocate(0x2000);
             unsigned int size;
-            _Z18LoadFileIntoMemoryPKcPvPj(data_ov008_0218c0bc, data, &size);
+            LoadFileIntoMemory(data_ov008_0218c0bc, data, &size);
             obj->alloc28.Reset();
             func_020dfec0(obj->container, &obj->alloc28, data, size);
             obj->alloc14.Reset();
@@ -468,10 +468,10 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
     } else if (state == 8) {
         char* stage = ov17->stage;
         _Z26CopyInternalFields0207df50P11Foo0207df50(stage + 0x230);
-        _Z25RestorePairTables0207df90Pc(stage + 0x230);
+        RestorePairTables0207df90(stage + 0x230);
         BackgroundLoader::AddLockGlobal();
         unsigned int size = 0;
-        if (_Z18LoadFileIntoMemoryPKcPvPj(_Z21GetFieldByKey020e0434P17Container020e0310i(obj->container, 10), data_0211e33c, &size) != 0) {
+        if (LoadFileIntoMemory(_Z21GetFieldByKey020e0434P17Container020e0310i(obj->container, 10), data_0211e33c, &size) != 0) {
             ArchiveInfo02184a4c info;
             info.unk_0 = 0;
             info.unk_14 = 0;
@@ -491,11 +491,11 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
             _ZN8Object3D21MaybeSetBCFGAnimationEii(&obj->model, 0, 0);
         }
         BackgroundLoader::RemoveLockGlobal();
-        _Z24BackupPairTables0207dfacPc(stage + 0x230);
-        _Z28InitCombatController020a2010Pv(obj->controller);
+        BackupPairTables0207dfac(stage + 0x230);
+        InitCombatController020a2010(obj->controller);
         _Z12SetVec3At0x4P18Vec3Target0202e5c0iii(obj->controller, 0, 0x8000, 0x40000);
         _Z19SetFields0x10To0x18Phiii(obj->controller, 0, 0, 0);
-        _Z18SetField0x238FalsePv(obj->controller);
+        SetField0x238False(obj->controller);
         _Z18SetField0x3b0ValueP9GameStatei(gs, obj->controller);
         obj->b11++;
     } else if (state == 9) {
@@ -504,7 +504,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
         } else if (func_ov008_02185964(obj->poller) != 0) {
             if (obj->poller->count > 0) {
                 _Z19ClearStruct020a13c4P9S020a13c4(obj->script);
-                _Z31SetupGlobalAndRunScript020a13e4PvS_ith(obj->script, obj->scriptArg8c, 0, 0, 1);
+                SetupGlobalAndRunScript020a13e4(obj->script, obj->scriptArg8c, 0, 0, 1);
                 short ids[50];
                 int count = obj->poller->count;
                 for (int i = 0; i < count; i++) {
@@ -545,7 +545,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                     const char* text = src->text;
                     if (text != NULL) {
                         memset(msg->buf, 0, REGION_VALUE(0x118, 0x200));
-                        sprintf(msg->buf + _Z12StringLengthPKc(msg->buf), data_ov008_0218b3e0, text);
+                        sprintf(msg->buf + StringLength(msg->buf), data_ov008_0218b3e0, text);
                     }
                 }
                 Member02184a4c* hero = (Member02184a4c*)GameState::GetInstance()->GetProtagonist();
@@ -581,8 +581,8 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                 memset(obj->pathBuf, 0, REGION_VALUE(0x800, 0x960));
                 List02184a4c list;
                 _Z23ResetListHeader020727d8P12List020727d8(&list);
-                _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, (short)id, obj->pathBuf, REGION_VALUE(1, 2));
-                if (_Z14CompareStringsPKcS0_(obj->pathBuf, data_ov008_0218b48f) == 0) {
+                SubmitScriptFromFile020727f8(&list, data_ov008_0218b400, (short)id, obj->pathBuf, REGION_VALUE(1, 2));
+                if (CompareStrings(obj->pathBuf, data_ov008_0218b48f) == 0) {
                     obj->b11 = 0xff;
                 } else {
                     obj->taskId = loader->QueueLoadFile(obj->pathBuf, NULL);
@@ -637,7 +637,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
             memset(obj->pathBuf, 0, REGION_VALUE(0x800, 0x960));
             List02184a4c list;
             _Z23ResetListHeader020727d8P12List020727d8(&list);
-            _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, id, obj->pathBuf, REGION_VALUE(1, 2));
+            SubmitScriptFromFile020727f8(&list, data_ov008_0218b400, id, obj->pathBuf, REGION_VALUE(1, 2));
             obj->taskId = loader->QueueLoadFile(obj->pathBuf, NULL);
             obj->b11 = 10;
             obj->flags |= 0x100;
@@ -659,11 +659,11 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
         }
         if (obj->b24 == 0) {
             char* stage = ov17->stage;
-            char* presenter = _Z26GetGlobalField0x1c020421a0v();
+            char* presenter = GetGlobalField0x1c020421a0();
             _Z26CopyInternalFields0207df50P11Foo0207df50(stage + 0x5b0);
-            _Z25RestorePairTables0207df90Pc(stage + 0x5b0);
+            RestorePairTables0207df90(stage + 0x5b0);
             func_020432c4(presenter);
-            _Z24BackupPairTables0207dfacPc(stage + 0x5b0);
+            BackupPairTables0207dfac(stage + 0x5b0);
             _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(&data_02109bf4, 0x29);
             obj->b10 = 3;
             obj->b11 = 0;

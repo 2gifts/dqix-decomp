@@ -4,8 +4,8 @@
 #include "Filesystem/FileIO.h"
 #include "std_library_functions.h"
 
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
+void RestorePairTables0207df90(char*);
+void BackupPairTables0207dfac(char*);
 
 // USA: func_0201445c
 ARM bool Zone3D::ProcessNSBTXFile(const void* pFile, unsigned int fileSize, const char* pName)
@@ -30,11 +30,11 @@ ARM bool Zone3D::ProcessNSBTXFile(const void* pFile, unsigned int fileSize, cons
             firstModel_418_ = pNode;
             pRaw = DecompressLZ77FileIntoScratchSpace(*pAlloc, pFile, nSize);
             if (pRaw) {
-                _Z25RestorePairTables0207df90Pc(pGraph);
+                RestorePairTables0207df90(pGraph);
                 pModel->SetRawFile(pRaw, nSize);
                 pModel->ClearRawFileCache();
                 pModel->ProcessRawFile(Model3D::TextureStagingMode_Immediate);
-                _Z24BackupPairTables0207dfacPc(pGraph);
+                BackupPairTables0207dfac(pGraph);
 
                 NSBXXTex* pTex = pModel->GetTEX0();
                 if (pTex) {

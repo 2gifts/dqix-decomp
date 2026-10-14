@@ -91,7 +91,7 @@ Canvas* FindElementByByte0xc4(Obj2081*, int);
 bool CheckField0x9cSetWhenField0xd4Present(unsigned char*);
 void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
 bool TestFlag0SetAndFlag1Clear(unsigned short*, int);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 void ClearSublistEntriesFlag4(void*, int);
 
 extern "C" {
@@ -155,7 +155,7 @@ extern "C" ARM bool func_ov014_02187074(MonsterListScreen* self)
         short count = 0;
         self->entries_ = func_020974b0(&self->list_, self->family_, -1, (self->listFlags_ & 8) != 0, 0x10, &count);
         func_ov014_02187228(self, entry);
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
         ClearSublistEntriesFlag4(self->menu_, 5);
         func_ov014_0218854c(self);
         func_ov014_021885bc(self);

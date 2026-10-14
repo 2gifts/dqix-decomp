@@ -13,7 +13,7 @@ extern "C" void* func_0202ae18(void);
 int CheckField0NonZero(int* obj);
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
-extern "C" GameObject* _Z30FindCombatantByField2_021a2738Pvi(void* unused, int value);
+GameObject* FindCombatantByField2_021a2738(void* unused, int value);
 
 // USA: func_ov017_0219e180
 extern "C" ARM void func_ov017_0219e180(void* param, int id) {
@@ -35,7 +35,7 @@ extern "C" ARM void func_ov017_0219e180(void* param, int id) {
         if (monster == NULL) {
             continue;
         }
-        GameObject* found = _Z30FindCombatantByField2_021a2738Pvi(param, *(short*)((char*)monster + 2));
+        GameObject* found = FindCombatantByField2_021a2738(param, *(short*)((char*)monster + 2));
         if (found == NULL) {
             continue;
         }

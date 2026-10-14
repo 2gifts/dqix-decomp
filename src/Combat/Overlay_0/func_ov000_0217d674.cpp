@@ -34,7 +34,7 @@ struct TableEntry0217f8c0;
 extern struct Obj0205eaa0 data_02108760;
 
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(void* elements);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void* elements, int flag);
 extern "C" struct TableEntry0217f8c0* _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0(MenuState* menu);
 extern "C" int _Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(MenuState* menu);
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov000_0217d674(MenuState* menu, int arg1, int arg2) {
     menu->flags |= 0x100;
     menu->activeSum = _Z26GetActiveScaledSum0205d794P15Struct_0205c570(menu->elements);
     if (func_ov000_0217c594(menu, 0) != 0) {
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         int id = menu->slotIds[menu->activeSum];
         menu->field_0x1d6e = 0;
         menu->field_0x68 = func_020dd3cc(id);

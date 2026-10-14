@@ -23,34 +23,34 @@ struct SetFlagStruct;
 struct FlagBlob02027bac;
 struct SafeAllocator;
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 extern "C" SearchStruct* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
-extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
+FlagWord02046708* GetDataPtr02114e04_020d6c00();
 unsigned char* GetField0x3f8Address(GameState* gs);
 int IsField0Null(void** list);
 int GetByteField0x252(void* obj);
 int CheckSubstructByte0x7cPositive(signed char* obj);
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708* flags, unsigned int mask);
+int TestFlags02046708(FlagWord02046708* flags, unsigned int mask);
 int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
 int CheckField0xc4Low15BitsNonZero(BitField0203402c* obj);
-extern "C" int _Z22GetSignedField020c39c8PVt(volatile unsigned short* reg);
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08* obj);
+int GetSignedField020c39c8(volatile unsigned short* reg);
+int NormalizeField5_0200fb08(Struct0200fb08* obj);
 extern "C" int func_0202c508(SearchStruct* search);
 extern "C" int func_0202c540(SearchStruct* search);
-extern "C" void _Z20InitState53_021befe4P11Obj021befe4(Obj021befe4* obj);
+void InitState53_021befe4(Obj021befe4* obj);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int flag);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
+void CancelPendingAction020397cc(Obj020397cc* obj, int flag);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 extern "C" void func_ov017_021a5568(void* node);
 int GetByte0x26c(char* obj);
-extern "C" void _Z21InitObjState_021b2174Ph(unsigned char* obj);
-extern "C" void _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc(S021b2ba0* obj, char* name);
-extern "C" void _Z25SetFields30And34_021b2bd0Pvii(void* obj, int handler, int overlayId);
-extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int mode);
+void InitObjState_021b2174(unsigned char* obj);
+void SetNameChecked_021b2ba0(S021b2ba0* obj, char* name);
+void SetFields30And34_021b2bd0(void* obj, int handler, int overlayId);
+void SetCombatModeFromCase020dc2d0(int mode);
 void SetFlag0x9c6(SetFlagStruct* obj, int value);
 void SetFlagsAt0xa97(FlagBlob02027bac* obj, unsigned char value);
-extern "C" void _Z29AllocateAndCopyBuf28_0216ae2cP13SafeAllocatorPv(SafeAllocator* allocator, void* arg);
+void AllocateAndCopyBuf28_0216ae2c(SafeAllocator* allocator, void* arg);
 extern unsigned short data_02114e30;
 extern char data_02108760;
 extern char data_ov017_021d76dc;
@@ -128,10 +128,10 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
     Grotto021a51a4* grottoInfo;
     gs = GameState::GetInstance();
     unknown = (Unknown021a51a4*)gs->GetUnknownGameObject();
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     search = func_0202ae18();
     grottoInfo = *(Grotto021a51a4**)((char*)func_02012fe4() + 8);
-    flagWord = _Z27GetDataPtr02114e04_020d6c00v();
+    flagWord = GetDataPtr02114e04_020d6c00();
     field3f8 = GetField0x3f8Address(gs);
     if (!IsField0Null((void**)res->list)) {
         return;
@@ -152,7 +152,7 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
         return;
     }
     start = 0;
-    if (!_Z17TestFlags02046708P16FlagWord02046708j(flagWord, 0x800)) {
+    if (!TestFlags02046708(flagWord, 0x800)) {
         if ((TestFlag0SetAndFlag1Clear(&data_02114e30, 0x400) || res->pending == 1) && unknown->fac == 0) {
             if (!CheckField0xc4Low15BitsNonZero((BitField0203402c*)unknown)) {
                 start = 1;
@@ -163,16 +163,16 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
     }
     x = data_02114e54.x;
     y = data_02114e54.y;
-    if (_Z22GetSignedField020c39c8PVt((volatile unsigned short*)0x400006c) != 0) {
+    if (GetSignedField020c39c8((volatile unsigned short*)0x400006c) != 0) {
         return;
     }
     grotto = (unsigned char*)gs->GetGrottoStruct();
 #if !defined(jpn)
     Thresholds021d6a80 thresholds = data_ov017_021d6a80;
-    level = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)GameState::GetInstance());
+    level = NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance());
 #endif
     int touched;
-    if (data_02114e54.enabled && data_02114e54.active && 
+    if (data_02114e54.enabled && data_02114e54.active &&
 #if defined(jpn)
         0xb0 <= x
 #else
@@ -185,15 +185,15 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
     }
     if (func_0202c508(search) && grotto[0] != 0 && grottoInfo->kind == 0
         && (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x800) || touched)) {
-        _Z20InitState53_021befe4P11Obj021befe4(res->state53);
+        InitState53_021befe4(res->state53);
         AppendNodeToTail(res->list, (TailNode020469b4*)res->state53);
         return;
     }
     if (start) {
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)unknown, 1);
+        CancelPendingAction020397cc((Obj020397cc*)unknown, 1);
         unknown->fb2 = 0;
         res->pending = 0;
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 1, 0);
         func_ov017_021a5568(res->node);
         Node021a51a4* node = res->node;
         node->f24 = 0;
@@ -220,14 +220,14 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
     if (GetByte0x26c((char*)unknown)) {
         return;
     }
-    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)unknown, 1);
+    CancelPendingAction020397cc((Obj020397cc*)unknown, 1);
     unknown->fb2 = 0;
     dialog = res->dialog;
-    _Z21InitObjState_021b2174Ph(dialog);
-    _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)dialog, &data_ov017_021d76dc);
-    _Z25SetFields30And34_021b2bd0Pvii(dialog, (int)_Z29AllocateAndCopyBuf28_0216ae2cP13SafeAllocatorPv, OVERLAY_ID(4));
+    InitObjState_021b2174(dialog);
+    SetNameChecked_021b2ba0((S021b2ba0*)dialog, &data_ov017_021d76dc);
+    SetFields30And34_021b2bd0(dialog, (int)AllocateAndCopyBuf28_0216ae2c, OVERLAY_ID(4));
     AppendNodeToTail(res->list, (TailNode020469b4*)dialog);
-    _Z29SetCombatModeFromCase020dc2d0i(3);
+    SetCombatModeFromCase020dc2d0(3);
     SetFlag0x9c6(res->flags, 1);
     SetFlagsAt0xa97((FlagBlob02027bac*)res->flags, 1);
 }

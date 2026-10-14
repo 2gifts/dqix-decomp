@@ -23,22 +23,22 @@ struct Entry0203f370 {
 };
 struct Entry0203f370* GetListElementByIndex(struct List_0203f354* list, unsigned int index);
 
-extern "C" int _Z26CancelVRAMStagingOperationi(int value);
+int CancelVRAMStagingOperation(int value);
 extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
 
 struct Obj0203f370 {
-    struct List02040468* list;   // 0x0
+    struct List02040468* list;
     char pad1[0x28 - 4];
-    short field28;               // 0x28
+    short field28;
     char pad2[0x30 - 0x2a];
-    int field30;                 // 0x30
-    int field34;                 // 0x34
+    int field30;
+    int field34;
     char pad3[0x44 - 0x38];
-    int field44;                 // 0x44
-    int field48;                 // 0x48
-    int field4c;                 // 0x4c
+    int field44;
+    int field48;
+    int field4c;
     char pad4[0x58 - 0x50];
-    short field58;               // 0x58
+    short field58;
 };
 
 // USA: func_0203f370
@@ -55,7 +55,7 @@ extern "C" ARM void func_0203f370(struct Obj0203f370* self) {
     struct Entry0203f370* entry = GetListElementByIndex((struct List_0203f354*)((char*)element + 0x10), idx2);
     if (entry == 0 || entry->records == 0 || entry->count4 == 0) return;
 
-    _Z26CancelVRAMStagingOperationi(self->field58);
+    CancelVRAMStagingOperation(self->field58);
     self->field58 = _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(1, entry->field10, self->field4c, entry->fieldC, 0, 0);
     self->field44 = self->field30;
     self->field48 = self->field34;

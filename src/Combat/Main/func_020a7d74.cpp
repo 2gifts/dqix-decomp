@@ -8,16 +8,16 @@ struct Vec3 {
 
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" unsigned int _ZNK9GameState12GetTickCountEv(void* self);
-extern "C" int _Z13GetBit6At0xe0Ph(unsigned char* p);
-extern "C" void* _Z18GetFieldPtrAt0x11cPv(void* obj);
-extern "C" int _Z20CheckBits5To9NonZeroPt(unsigned short* obj);
-extern "C" short _Z8fix32cosi(int x);
-extern "C" short _Z8fix32sini(int x);
+int GetBit6At0xe0(unsigned char* p);
+void* GetFieldPtrAt0x11c(void* obj);
+int CheckBits5To9NonZero(unsigned short* obj);
+short fix32cos(int x);
+short fix32sin(int x);
 extern "C" void* _Z22GetField0xe4IfFlag0x40P15BitFlag02033f44(void* p);
 extern "C" void Vector3fix_Normalize(struct Vec3* in, struct Vec3* out);
 extern "C" int Vector3fix_InnerProduct(struct Vec3* a, struct Vec3* b);
-extern "C" int _Z26PackColorChannelsToDecimalPt(unsigned short* obj);
-extern "C" int _Z13GetBits10To14Pt(unsigned short* obj);
+int PackColorChannelsToDecimal(unsigned short* obj);
+int GetBits10To14(unsigned short* obj);
 
 struct F02033f44 {
     char pad0[0x24];
@@ -39,14 +39,14 @@ extern "C" ARM int func_020a7d74(struct Obj020a7d74* self, int* out1, int* out2)
     if (self->f134 == 0) {
         ok = 0;
     }
-    if (_Z13GetBit6At0xe0Ph((unsigned char*)self) == 0) {
+    if (GetBit6At0xe0((unsigned char*)self) == 0) {
         ok = 0;
     }
-    unsigned short* p = (unsigned short*)_Z18GetFieldPtrAt0x11cPv(self);
+    unsigned short* p = (unsigned short*)GetFieldPtrAt0x11c(self);
     if (p == 0) {
         ok = 0;
     }
-    if (_Z20CheckBits5To9NonZeroPt(p) == 0) {
+    if (CheckBits5To9NonZero(p) == 0) {
         ok = 0;
     }
     if (ok == 0) {
@@ -58,8 +58,8 @@ extern "C" ARM int func_020a7d74(struct Obj020a7d74* self, int* out1, int* out2)
     struct Vec3 t;
     struct Vec3 src = self->f50;
     int angle = src.y;
-    int cz = _Z8fix32cosi(angle);
-    dir.x = _Z8fix32sini(angle);
+    int cz = fix32cos(angle);
+    dir.x = fix32sin(angle);
     dir.y = 0;
     dir.z = cz;
     Vector3fix_Normalize(&dir, &dir);
@@ -81,7 +81,7 @@ extern "C" ARM int func_020a7d74(struct Obj020a7d74* self, int* out1, int* out2)
     if (self->f138 < 0x28) {
         return 0;
     }
-    *out1 = _Z26PackColorChannelsToDecimalPt(p);
-    *out2 = _Z13GetBits10To14Pt(p);
+    *out1 = PackColorChannelsToDecimal(p);
+    *out2 = GetBits10To14(p);
     return 1;
 }

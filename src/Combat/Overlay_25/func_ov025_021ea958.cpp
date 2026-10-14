@@ -31,8 +31,8 @@ struct ActionDisplay {
     unsigned char command[1];
 };
 void* GetActiveCombatWork();
-extern "C" List021600f8* _Z18GetSlotPtr02160f20Pv(void*);
-extern "C" ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8*, int);
+List021600f8* GetSlotPtr02160f20(void*);
+ListNode021600f8* GetNodeAtIndex021600f8(List021600f8*, int);
 extern "C" short func_ov000_0215ffa0(ListNode021600f8*);
 extern "C" void func_ov025_021ed380(void*, unsigned short, short, int, int, int, int);
 extern "C" void func_ov025_021ead5c(ActionDisplay*, int);
@@ -44,12 +44,12 @@ inline int IsPartyActor(int id) { return id >= 0 && id <= 3; }
 extern "C" ARM void func_ov025_021ea958(ActionDisplay* display, int party, int update, int actorId) {
     if (party && (data_ov025_021ef9a4 & 0x800)) return;
     if (!party && (data_ov025_021ef9a4 & 0x4000)) return;
-    List021600f8* list = _Z18GetSlotPtr02160f20Pv(GetActiveCombatWork());
+    List021600f8* list = GetSlotPtr02160f20(GetActiveCombatWork());
     if (display->blocked && !display->enabled) return;
     if (party && (list->flag0 || list->flag1)) actorId = -2;
     else if (!party && (list->flag3 || list->flag4)) actorId = -2;
     for (int i = 0; i < list->count; i++) {
-        ListNode021600f8* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, i);
+        ListNode021600f8* node = GetNodeAtIndex021600f8(list, i);
         if (node) {
             for (int j = 1; j < node->count; j++) {
                 if (node->states[j] == 1 || node->states[j] == 2) return;
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov025_021ea958(ActionDisplay* display, int party, int u
     if (actorId == -2) forced = 1;
     if (actorId < 0) {
         for (int i = 0; i < list->count; i++) {
-            ListNode021600f8* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, i);
+            ListNode021600f8* node = GetNodeAtIndex021600f8(list, i);
             if (node) {
                 int id = func_ov000_0215ffa0(node);
                 if (party) {

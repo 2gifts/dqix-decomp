@@ -3,11 +3,11 @@
 #include "GameState/GameState.h"
 extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(void*);
 extern "C" int _Z36CheckField0x14FiveFlagsClear020881c4Ph(void*);
-extern "C" void _Z26SetFlag0x800000AndByte0x24Pvh(void*,unsigned char);
-extern "C" void _Z24ResetAndSetFlag0x1000000Pv(void*);
+void SetFlag0x800000AndByte0x24(void*,unsigned char);
+void ResetAndSetFlag0x1000000(void*);
 extern "C" void* func_ov000_0215e958(void*);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void*,void*,int);
-extern "C" void _Z32AppendToChainAndIncCount0215ffc4PvS_i(void*,void*,int);
+void AddEntryAndIncrementCount0215a88c(void*,void*,int);
+void AppendToChainAndIncCount0215ffc4(void*,void*,int);
 extern "C" void func_ov000_02159eac(void*,unsigned long long*,int);
 extern "C" void func_ov000_0215cd44(void*,void*,GameObject*,short,unsigned long long,unsigned char);
 extern "C" void func_ov000_0215af54(void*,int,int);
@@ -24,9 +24,9 @@ extern "C" ARM void* func_ov024_021e191c(Obj021e191c* obj,int unused,int id,Para
  if(_Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(target) || !_Z36CheckField0x14FiveFlagsClear020881c4Ph(target->currentStats_)){
   void* entry=func_ov000_0215e958(obj->context);
   if(!entry)return 0;
-  _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,entry,0x1f);
+  AddEntryAndIncrementCount0215a88c(obj->context,entry,0x1f);
   func_ov000_0215cd44(obj->context,entry,target,0,0,obj->action->flag!=0);
-  _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->action,entry,0);
+  AppendToChainAndIncCount0215ffc4(obj->action,entry,0);
   ++*((unsigned char*)obj->context+0x8e02);
   obj->changed=1;
  }else{
@@ -35,9 +35,9 @@ extern "C" ARM void* func_ov024_021e191c(Obj021e191c* obj,int unused,int id,Para
   void* entry=func_ov000_0215e958(obj->context);
   if(!entry)return 0;
   func_ov000_0215cd44(obj->context,entry,target,stage,effects,obj->action->flag!=0);
-  _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->action,entry,0);
+  AppendToChainAndIncCount0215ffc4(obj->action,entry,0);
   ++*((unsigned char*)obj->context+0x8e02);
-  _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,entry,0x1bc);
+  AddEntryAndIncrementCount0215a88c(obj->context,entry,0x1bc);
   if(params->field4.code==0x20b){
    if(obj->mode || stage>=3)stage=3;
    else stage=2;
@@ -52,21 +52,21 @@ extern "C" ARM void* func_ov024_021e191c(Obj021e191c* obj,int unused,int id,Para
    void* step=func_ov000_0215e958(obj->context);
    if(!step)return 0;
    func_ov000_0215cd44(obj->context,step,target,stage,effects,obj->action->flag!=0);
-   _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->action,step,0);
+   AppendToChainAndIncCount0215ffc4(obj->action,step,0);
    ++*((unsigned char*)obj->context+0x8e02);
    obj->changed=1;
-   _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,step,message);
+   AddEntryAndIncrementCount0215a88c(obj->context,step,message);
   }
-  _Z26SetFlag0x800000AndByte0x24Pvh(target->currentStats_,3);
+  SetFlag0x800000AndByte0x24(target->currentStats_,3);
   }
   if(obj->mode || original>=3){
    void* last=func_ov000_0215e958(obj->context);
    if(!last)return 0;
-   _Z24ResetAndSetFlag0x1000000Pv(target->currentStats_);
-   _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,last,0x34);
+   ResetAndSetFlag0x1000000(target->currentStats_);
+   AddEntryAndIncrementCount0215a88c(obj->context,last,0x34);
    func_ov000_02159eac(obj->context,&effects,7);
    func_ov000_0215cd44(obj->context,last,target,4,effects,obj->action->flag!=0);
-   _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->action,last,0);
+   AppendToChainAndIncCount0215ffc4(obj->action,last,0);
    ++*((unsigned char*)obj->context+0x8e02);
    obj->changed=1;
    if(params->field4.code==0x20b)obj->action->other|=2;

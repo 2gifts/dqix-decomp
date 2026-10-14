@@ -8,7 +8,7 @@
 #include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
-extern "C" void _Z24DispatchByMode5_0218f22cPv(void* obj);
+void DispatchByMode5_0218f22c(void* obj);
 
 struct Vec3_02190348 { int x, y, z; };
 extern "C" void func_0208b610(struct Vec3_02190348 v, unsigned short p, int a, int b, int c, short d);
@@ -48,7 +48,7 @@ extern "C" ARM void func_ov015_02190348(struct Obj02190348* obj) {
     }
     struct ListNode02190348* node = obj->list;
     while (node != 0) {
-        _Z24DispatchByMode5_0218f22cPv(node->payload);
+        DispatchByMode5_0218f22c(node->payload);
         node = node->next;
     }
 }

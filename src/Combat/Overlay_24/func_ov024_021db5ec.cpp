@@ -6,7 +6,7 @@ int CanAdjustField0x58(void* obj, int dir);
 struct StatStageStruct020877c0;
 extern "C" int func_020877c0(struct StatStageStruct020877c0* p, int delta);
 void UpdateCombatantAttack(int unused, int combatantId);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 
 struct Params_021db5ec {
     char pad0[0x30];
@@ -64,7 +64,7 @@ extern "C" ARM void* func_ov024_021db5ec(struct Obj_021db5ec* obj, short arg, in
         if (decrease == 0) obj->field0x72 = 1;
     }
     func_ov024_021e8bf0(obj, obj->action, &sel);
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->ctx, entry, sel);
+    AddEntryAndIncrementCount0215a88c(obj->ctx, entry, sel);
     func_ov000_0215cd44(obj->ctx, entry, c, 0, res, obj->action->flag != 0);
     return entry;
 }

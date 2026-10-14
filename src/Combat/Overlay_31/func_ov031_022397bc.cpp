@@ -8,7 +8,7 @@ extern char data_ov031_0224c3c4[];
 extern char data_ov031_0224c3a4[];
 void SetField54IfTagNot9Or10(int);
 extern "C" void func_ov031_02239368(int);
-extern "C" int _Z32InvokeMaskAndSetField54_022398e8v();
+int InvokeMaskAndSetField54_022398e8();
 extern "C" int func_020d5d34(void*, int, int, int, int);
 
 // USA: func_ov031_022397bc
@@ -22,7 +22,7 @@ extern "C" ARM void func_ov031_022397bc(Message022397bc* message) {
     case 10:
         if (data_ov031_02290d18.session->state == 2) {
             if (data_ov031_02290d18.session->phase == 4) {
-                if (_Z32InvokeMaskAndSetField54_022398e8v()) return;
+                if (InvokeMaskAndSetField54_022398e8()) return;
                 if (data_ov031_02290d18.handler) data_ov031_02290d18.handler(0x08000000, data_ov031_0224c3c4);
                 func_ov031_02239368(9);
                 return;

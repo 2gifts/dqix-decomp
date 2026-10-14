@@ -3,7 +3,7 @@
 
 extern "C" void* func_02012fe4(void);
 extern "C" void func_ov017_021acd7c(void* obj);
-extern "C" void _Z37InitCombatPairAndResetGlobal_021adb50Pc(char* obj);
+void InitCombatPairAndResetGlobal_021adb50(char* obj);
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
@@ -13,7 +13,7 @@ extern "C" void VectorizedMemset(void* dst, int value, unsigned int length);
 struct ListHead02046b60;
 int ListContainsId(struct ListHead02046b60* list, int id);
 extern "C" void func_02046a8c(void* list, void* node);
-extern "C" int _Z24UpdatePlayClocks020ac4f8i(int commit);
+int UpdatePlayClocks020ac4f8(int commit);
 extern "C" void func_ov017_021d1118(int a, int b, int c, int d);
 
 struct Field3f8Struct0219577c {
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov017_0219577c(unsigned char mode, int resetField, int 
     node->field_281 = resetField == 0;
     node->field_282 = append == 0;
     if (mode == 0 && append != 0) {
-        _Z37InitCombatPairAndResetGlobal_021adb50Pc((char*)node);
+        InitCombatPairAndResetGlobal_021adb50((char*)node);
     }
     AppendNodeToTail((struct TailList020469b4*)list, (struct TailNode020469b4*)node);
 
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov017_0219577c(unsigned char mode, int resetField, int 
     if (ListContainsId((struct ListHead02046b60*)list, 0x40)) {
         func_02046a8c(list, *(void**)(ctx + 0x3000 + regionalExtra));
     }
-    _Z24UpdatePlayClocks020ac4f8i(1);
+    UpdatePlayClocks020ac4f8(1);
     if (mode) {
         func_ov017_021d1118(-1, 1, 1, 2);
     }

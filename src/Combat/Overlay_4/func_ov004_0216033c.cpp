@@ -6,29 +6,26 @@ enum { field7=6,fieldB=8,field6=4,field8=7,extensionOffset=0x144,statsOffset=0x7
 enum { field7=7,fieldB=0xb,field6=6,field8=8,extensionOffset=0x150,statsOffset=0x850 };
 #endif
 
-// ---- externs resolved by the scaffold ----
-extern "C" extern void _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(void* a, short v1, short v2, int flag);
+extern void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag);
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* battleStruct, int id);
 extern int GetFieldAt0x150(unsigned char* obj);
 extern "C" void* func_ov011_021849c8(void* p);
-extern "C" extern int _Z33AccumulateFlaggedSlotBits02085fb4Ph(unsigned char* actor);
-extern "C" extern int _Z33AccumulateFlaggedSlotBits02086020Ph(unsigned char* actor);
-extern "C" extern int _Z33AccumulateFlaggedSlotBits0208608cPh(unsigned char* actor);
-extern "C" extern int _Z33AccumulateFlaggedSlotBits020860f8Ph(unsigned char* actor);
-extern "C" extern int _Z33AccumulateFlaggedSlotBits02086164Ph(unsigned char* actor);
-extern "C" extern int _Z33AccumulateFlaggedSlotBits020861d0Ph(unsigned char* actor);
-extern "C" extern int _Z33AccumulateFlaggedSlotBits0208623cPh(unsigned char* actor);
-extern "C" extern int _Z35AccumulateSlotBitsFromTable020862a8Ph(unsigned char* actor);
-extern "C" extern int _Z35AccumulateSlotBitsFromTable02086314Ph(unsigned char* actor);
+extern int AccumulateFlaggedSlotBits02085fb4(unsigned char* actor);
+extern int AccumulateFlaggedSlotBits02086020(unsigned char* actor);
+extern int AccumulateFlaggedSlotBits0208608c(unsigned char* actor);
+extern int AccumulateFlaggedSlotBits020860f8(unsigned char* actor);
+extern int AccumulateFlaggedSlotBits02086164(unsigned char* actor);
+extern int AccumulateFlaggedSlotBits020861d0(unsigned char* actor);
+extern int AccumulateFlaggedSlotBits0208623c(unsigned char* actor);
+extern int AccumulateSlotBitsFromTable020862a8(unsigned char* actor);
+extern int AccumulateSlotBitsFromTable02086314(unsigned char* actor);
 extern "C" void _Z27SetField38IfState8_0215e49cPvis(void* a, int key, int value);
 extern "C" extern int func_ov023_021f6f10(void* self);
-extern "C" extern int _Z27CheckAfterTwoCalls_0215e460v(void);
+extern int CheckAfterTwoCalls_0215e460(void);
 extern "C" int func_ov004_0215e4e8(void* a, int key);
-extern "C" extern int _Z20GetTableByte020dd11cjj(unsigned int a, unsigned int b);
+extern int GetTableByte020dd11c(unsigned int a, unsigned int b);
 
-// same class already matched in SetScaledVecX_0215e574.cpp -- reused verbatim so the
-// GetVal0x20()/SetVal0x1c() ABI (hidden-return + this in r1, this in r0 + &param in r1) matches.
 struct Vector3i {
     int x, y, z;
     Vector3i& operator=(const Vector3i& o);
@@ -43,13 +40,10 @@ public:
 };
 extern "C" Node0215e47c* func_ov004_0215e47c(void* a, int key);
 
-
-extern "C" extern void* _Z24CheckNodeState6_0215e4c0Pvi(void* a, int key);
+extern void* CheckNodeState6_0215e4c0(void* a, int key);
 struct ObjE2_021f8944;
-extern "C" extern void _Z31SetFieldE2AndMaybeCall_021f8944P14ObjE2_021f8944iii(struct ObjE2_021f8944* obj, int a1, int a2, int a3);
+extern void SetFieldE2AndMaybeCall_021f8944(struct ObjE2_021f8944* obj, int a1, int a2, int a3);
 
-// the two globals every literal-pool load in this function resolves to (verified by
-// computing pc+8+imm for every `ldr rX,[pc,#N]` -- see HANDOFF).
 extern unsigned char data_ov004_021707e8;
 extern int data_ov004_02170854[];
 #define D0 (&data_ov004_021707e8)
@@ -150,7 +144,7 @@ extern "C" ARM int func_ov004_0216033c(void* a) {
     *(unsigned char*)((char*)D0 + field7) = 0x64;
     short v1 = *(signed char*)((char*)D0 + fieldB);
     short v2 = *(signed char*)((char*)D0 + field6);
-    _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(a, v1, v2, 0);
+    SetNodeFieldsAndMaybeNotify_0215f6f4(a, v1, v2, 0);
 
     int combatantId = *(int*)((char*)D0 + 0x1c);
     unsigned char sb = *(unsigned char*)((char*)D0 + field8);
@@ -200,18 +194,18 @@ extern "C" ARM int func_ov004_0216033c(void* a) {
             int entryOff = (t3 & 0xff) * 0xc;
             Packed3x10* entryBase = (Packed3x10*)(actorBase + entryOff);
 
-            st0 = (_Z33AccumulateFlaggedSlotBits02085fb4Ph(base150) + rowBase[0].a + entryBase[0].a);
-            st1 = (_Z33AccumulateFlaggedSlotBits02086020Ph(base150) + rowBase[0].b + entryBase[0].b);
-            st2 = (_Z33AccumulateFlaggedSlotBits0208608cPh(base150) + rowBase[0].c + entryBase[0].c);
-            st3 = (_Z33AccumulateFlaggedSlotBits020860f8Ph(base150) + rowBase[1].a + entryBase[1].a);
-            st4 = (_Z33AccumulateFlaggedSlotBits02086164Ph(base150) + rowBase[1].b + entryBase[1].b);
-            st5 = (_Z33AccumulateFlaggedSlotBits020861d0Ph(base150) + rowBase[1].c + entryBase[1].c);
-            st6 = (_Z33AccumulateFlaggedSlotBits0208623cPh(base150) + rowBase[2].a + entryBase[2].a);
-            st7 = (_Z35AccumulateSlotBitsFromTable020862a8Ph(base150) + rowBase[2].b + entryBase[2].b);
-            st8 = (_Z35AccumulateSlotBitsFromTable02086314Ph(base150) + rowBase[2].c + entryBase[2].c);
+            st0 = (AccumulateFlaggedSlotBits02085fb4(base150) + rowBase[0].a + entryBase[0].a);
+            st1 = (AccumulateFlaggedSlotBits02086020(base150) + rowBase[0].b + entryBase[0].b);
+            st2 = (AccumulateFlaggedSlotBits0208608c(base150) + rowBase[0].c + entryBase[0].c);
+            st3 = (AccumulateFlaggedSlotBits020860f8(base150) + rowBase[1].a + entryBase[1].a);
+            st4 = (AccumulateFlaggedSlotBits02086164(base150) + rowBase[1].b + entryBase[1].b);
+            st5 = (AccumulateFlaggedSlotBits020861d0(base150) + rowBase[1].c + entryBase[1].c);
+            st6 = (AccumulateFlaggedSlotBits0208623c(base150) + rowBase[2].a + entryBase[2].a);
+            st7 = (AccumulateSlotBitsFromTable020862a8(base150) + rowBase[2].b + entryBase[2].b);
+            st8 = (AccumulateSlotBitsFromTable02086314(base150) + rowBase[2].c + entryBase[2].c);
             st9 = st0;
             st10 = st2;
-            int reg11 = (short)(_Z33AccumulateFlaggedSlotBits02086164Ph(base150) + rowBase[3].a + entryBase[1].b);
+            int reg11 = (short)(AccumulateFlaggedSlotBits02086164(base150) + rowBase[3].a + entryBase[1].b);
 
             enum { CAP = 999 };
             if (st0 > CAP) st0 = CAP;
@@ -335,7 +329,7 @@ stats_done:
     case 10: r4 = 0xe; break;
     case 11: r4 = 0xf; break;
     }
-    if (_Z27CheckAfterTwoCalls_0215e460v() != 0) r4 = 4;
+    if (CheckAfterTwoCalls_0215e460() != 0) r4 = 4;
     _Z27SetField38IfState8_0215e49cPvis(a, 0xf, r4);
 
     int r5v = func_ov004_0215e4e8(a, 0xf);
@@ -373,10 +367,10 @@ stats_done:
     idx = 0;
     msgId = 0;
     hidden = 0;
-    if (_Z27CheckAfterTwoCalls_0215e460v() != 0) hidden = 1;
+    if (CheckAfterTwoCalls_0215e460() != 0) hidden = 1;
 
     for (k = 0; k < 5; k++) {
-        tv = _Z20GetTableByte020dd11cjj(D1[sb2] & 0xff, k & 0xff);
+        tv = GetTableByte020dd11c(D1[sb2] & 0xff, k & 0xff);
         switch (tv) {
         case 1: msgId = 0x12; break;
         case 2: msgId = 0x13; break;
@@ -466,10 +460,10 @@ stats_done:
         r5final = 1;
         kind = 3;
     }
-    void* node6 = _Z24CheckNodeState6_0215e4c0Pvi(a, 3);
+    void* node6 = CheckNodeState6_0215e4c0(a, 3);
     if (node6) {
         *(unsigned char*)((char*)node6 + 0x10a) = (unsigned char)kind;
-        _Z31SetFieldE2AndMaybeCall_021f8944P14ObjE2_021f8944iii((struct ObjE2_021f8944*)node6, (int)(long)a, r5final, 1);
+        SetFieldE2AndMaybeCall_021f8944((struct ObjE2_021f8944*)node6, (int)(long)a, r5final, 1);
     }
 
     return 0;

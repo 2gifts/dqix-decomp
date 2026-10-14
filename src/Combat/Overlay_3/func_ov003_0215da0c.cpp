@@ -15,14 +15,13 @@ enum { kRegionValue3BD_3D5 = 0x3bd };
 enum { kRegionValue998_868 = 0x998 };
 #endif
 
-
 struct Container020e0310;
 struct Entry_0205d6a0;
 
-extern "C" char* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z24ReinitController02043204Pc(char* ctrl);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(struct Entry_0205d6a0* list, int flag);
+char* GetGlobalField0x1c020421a0();
+void ReinitController02043204(char* ctrl);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+void ResetEntryList0205d6a0(struct Entry_0205d6a0* list, int flag);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* obj);
 extern "C" void func_ov003_0215cab0(void* self, int msg);
@@ -51,7 +50,7 @@ extern "C" ARM void func_ov003_0215da0c(struct BattleMenu_0215da0c* self) {
     int nonZero;
 
     gs = GameState::GetInstance();
-    global = _Z26GetGlobalField0x1c020421a0v();
+    global = GetGlobalField0x1c020421a0();
     ctx = func_0202ae18();
 
     zero = 0;
@@ -66,7 +65,7 @@ extern "C" ARM void func_ov003_0215da0c(struct BattleMenu_0215da0c* self) {
     step = self->step;
     if (step == 0) {
         if (self->skipMessage) {
-            _Z24ReinitController02043204Pc(global);
+            ReinitController02043204(global);
             self->step++;
             return;
         }
@@ -81,11 +80,11 @@ extern "C" ARM void func_ov003_0215da0c(struct BattleMenu_0215da0c* self) {
                 key = 0x73;
             }
         }
-        func_ov003_0215cab0(self, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages, key));
+        func_ov003_0215cab0(self, GetFieldByKey020e0434((struct Container020e0310*)self->messages, key));
         self->step++;
     }
     if (step == 1 && *(int*)(global + kRegionValue998_868) == 0) {
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)self->entries, 1);
+        ResetEntryList0205d6a0((struct Entry_0205d6a0*)self->entries, 1);
         self->mode = 5;
         self->step = 0;
     }

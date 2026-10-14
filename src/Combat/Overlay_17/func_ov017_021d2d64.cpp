@@ -67,32 +67,32 @@ struct MsgTable021d2d64 {
 int GetField0x3acValue(GameState* gs);
 void* GetPtrField0x2a04(GameState* gameState);
 extern "C" void func_ov017_021d2d00(void* dst, void* src);
-extern "C" void _Z25ClearFields0_2_4_021d35f8P12Obj_021d35f8(Obj_021d35f8* obj);
+void ClearFields0_2_4_021d35f8(Obj_021d35f8* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 int ArrayContainsByte(ArrayContainsByteStruct* s, int val);
 int ListContainsId(ListHead02046b60* list, int id);
-extern "C" void* _Z25GetGlobalResetObj020d7a50v(void);
+void* GetGlobalResetObj020d7a50(void);
 int IsField0Null(void** obj);
 int CheckSubstructByte0x7cPositive(signed char* obj);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 int GetByte0x150Bit6(BitFlags020d805c* obj);
 extern "C" int _Z31TestFlagBit55dIfActive_0218b628i(signed char bit);
 extern "C" void func_ov017_0218b5c0(int set, signed char bit);
 extern "C" void _Z32SetIndexedFieldsIfValid_02191ba0Pcit(char* res, int id, int value);
-extern "C" void _Z19InitContext020e1154Pv(void* obj);
+void InitContext020e1154(void* obj);
 int TryClearFlags0x130(unsigned char* obj, unsigned short flag);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void __clear(void* dst, unsigned int size);
-extern "C" int _Z34ComputeAndApplyWithCounter020e04f4iPviihi(int p0, void* p1, int p2, int p3, unsigned char p4, int p5);
+int ComputeAndApplyWithCounter020e04f4(int p0, void* p1, int p2, int p3, unsigned char p4, int p5);
 extern "C" void func_02046380(void* g);
-extern "C" void _Z20Clear12Bytes020e46c4Pv(void* p);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void* obj, int combatantId);
+void Clear12Bytes020e46c4(void* p);
+void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 void SetByteInRange(unsigned char* base, int index, unsigned char value);
 void StoreInArray0x8b0(StoreStruct* base, int index, int value);
 extern "C" void func_02046608(void* g, int mode, char* fmt, char* out, int size, int a, int b);
 extern "C" void func_020d7e10(void* receiver, void* input, int style, int flag, int a, int b);
-extern "C" void _Z26EnqueueEventTag37_021d2cc0Pv(void* src);
-extern "C" void _Z25CallHelperIfFlag_021a5a88iiiih(int a, int b, int c, int d, unsigned char e);
+void EnqueueEventTag37_021d2cc0(void* src);
+void CallHelperIfFlag_021a5a88(int a, int b, int c, int d, unsigned char e);
 
 extern const MsgTable021d2d64 data_ov017_021d6ce8;
 extern char data_ov017_021d8298[];
@@ -117,8 +117,8 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
     unsigned char count = local.count;
     signed char* ids = local.ids;
     for (int i = 0; i < 4; i++) {
-        _Z25ClearFields0_2_4_021d35f8P12Obj_021d35f8(&slotsA[i]);
-        _Z25ClearFields0_2_4_021d35f8P12Obj_021d35f8(&slotsB[i]);
+        ClearFields0_2_4_021d35f8(&slotsA[i]);
+        ClearFields0_2_4_021d35f8(&slotsB[i]);
     }
     int hud = (int)res->unknown_ptr_array_371c[0];
 
@@ -154,13 +154,13 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
         }
 
         if (ok) {
-            reset = (Reset021d2d64*)_Z25GetGlobalResetObj020d7a50v();
+            reset = (Reset021d2d64*)GetGlobalResetObj020d7a50();
             ok = 1;
             if (IsField0Null((void**)list) == 0) ok = 0;
             if (ListContainsId(list, 0x1a)) ok = 1;
             GameObject* leader = gs->GetUnknownGameObject();
             if (leader != 0 && CheckSubstructByte0x7cPositive((signed char*)leader)) ok = 0;
-            if (*(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x998) != 0 && GetByte0x150Bit6((BitFlags020d805c*)reset) == 0) ok = 0;
+            if (*(int*)(GetGlobalField0x1c020421a0() + 0x998) != 0 && GetByte0x150Bit6((BitFlags020d805c*)reset) == 0) ok = 0;
 
             for (int i = 0; i < local.count; i++) {
                 if (reset->state >= 3) ok = 0;
@@ -223,7 +223,7 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                             }
                             shown = 1;
                             if (ListContainsId(list, 0x1a)) {
-                                _Z19InitContext020e1154Pv((void*)0x1f4);
+                                InitContext020e1154((void*)0x1f4);
                             }
                             msgs.v[0] = 0x7955;
                         }
@@ -252,16 +252,16 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                 if (ok) {
                     for (int k = 0; k < 2; k++) {
                         if (reset->state >= 3) continue;
-                        g = (void*)_Z26GetGlobalField0x1c020421a0v();
+                        g = (void*)GetGlobalField0x1c020421a0();
                         msgId = msgs.v[k];
                         if (msgId < 0) continue;
                         char text[0x100];
                         __clear(text, 0x100);
-                        _Z34ComputeAndApplyWithCounter020e04f4iPviihi((int)text, data_ov017_021d8288, msgId, 0, 1, (int)data_ov017_021d8298);
+                        ComputeAndApplyWithCounter020e04f4((int)text, data_ov017_021d8288, msgId, 0, 1, (int)data_ov017_021d8298);
                         func_02046380(g);
                         char who[0xc];
-                        _Z20Clear12Bytes020e46c4Pv(who);
-                        _Z30InitObjFromCombatantId020e4bf4Pvi(who, unit->obj3D_.unknown_4_);
+                        Clear12Bytes020e46c4(who);
+                        InitObjFromCombatantId020e4bf4(who, unit->obj3D_.unknown_4_);
                         *(char**)((char*)g + 0x10) = who;
                         SetByteInRange((unsigned char*)g, 0, 0);
                         StoreInArray0x8b0((StoreStruct*)g, 0, v->lo);
@@ -288,7 +288,7 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
             }
         }
         local.fe = v3ac;
-        _Z26EnqueueEventTag37_021d2cc0Pv(&local);
+        EnqueueEventTag37_021d2cc0(&local);
         break;
     }
     case 2:
@@ -311,7 +311,7 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                 *((unsigned char*)slotsB + off) = 0;
             }
         }
-        _Z25CallHelperIfFlag_021a5a88iiiih(hud, (int)ids, (int)slotsA, (int)slotsB, count);
+        CallHelperIfFlag_021a5a88(hud, (int)ids, (int)slotsA, (int)slotsB, count);
         break;
     case 4:
         for (int i = 0; i < count; i++) {
@@ -320,7 +320,7 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
             slotsB[i].h2 = 0;
             slotsB[i].b0 = 2;
         }
-        _Z25CallHelperIfFlag_021a5a88iiiih(hud, (int)ids, (int)slotsA, (int)slotsB, count);
+        CallHelperIfFlag_021a5a88(hud, (int)ids, (int)slotsA, (int)slotsB, count);
         break;
     }
 }

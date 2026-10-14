@@ -39,17 +39,17 @@ struct Init02190884 {
     int v[8];
 };
 
-extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708* flags, unsigned int mask);
+FlagWord02046708* GetDataPtr02114e04_020d6c00();
+int TestFlags02046708(FlagWord02046708* flags, unsigned int mask);
 extern "C" void func_020dc548(signed char id, signed char* list, signed char* count);
 int GetByte0x26c(char* obj);
 extern "C" SearchStruct0202c1a4* func_0202ae18();
 GameObject* GetCombatantWithFlag0x200(GameState* battleStruct, int id);
 extern "C" char* func_02012fe4();
-extern "C" int _Z19IsIdInRange020981e4ii(int obj, int id);
+int IsIdInRange020981e4(int obj, int id);
 GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int id);
 int GetSignedByte0x2d0(void* obj);
-extern "C" int _Z40IsCombatantField2InMonsterRange_02190818i(int id);
+int IsCombatantField2InMonsterRange_02190818(int id);
 int GetSignedByte0x1ca(void* obj);
 int GetByteField0x252(void* obj);
 int GetByteField0x253(void* obj);
@@ -61,16 +61,16 @@ unsigned char GetField0x397cValue(GameState* battleStruct);
 void ClearByte0xc1Flag0x4(unsigned char* obj);
 extern "C" void _Z12SetByte0x1c8Phh(void* obj, int value);
 void SetByteField0x253(void* obj);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int flag);
+void CancelPendingAction020397cc(Obj020397cc* obj, int flag);
 void ClearFlag0x1ceBit0x4(unsigned char* obj);
 int CheckField0NonZero(int* obj);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* search);
 void SetByte0xc1Flag0x4(unsigned char* obj);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char* obj);
+void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
 extern "C" void _Z12SetByte0x1c9Phh(void* obj, int value);
 extern "C" void _Z12SetByte0x1caPhh(void* obj, int value);
 void ClearFlag0x1ceBit0x1(unsigned char* obj);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(Obj02033874* obj, int value);
+void SetVecYFromValue02033874(Obj02033874* obj, int value);
 void SetFlagBits0x55e(unsigned char* obj, int value);
 
 #if defined(jpn)
@@ -82,7 +82,7 @@ extern Init02190884 data_ov017_021d61dc;
 extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearBit1, int cancel, int reset) {
     GameState* gs = GameState::GetInstance();
 
-    if (_Z17TestFlags02046708P16FlagWord02046708j(_Z27GetDataPtr02114e04_020d6c00v(), 0x2000) != 0) {
+    if (TestFlags02046708(GetDataPtr02114e04_020d6c00(), 0x2000) != 0) {
         unsigned char* base = (unsigned char*)GetPtrField0x2a04(gs);
         int i;
         for (i = 0; i < base[0xf7c]; i++) {
@@ -118,7 +118,7 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
     int inRange = 0;
     int restore;
     GameObject* obj;
-    if (_Z19IsIdInRange020981e4ii((int)((Zone3D*)map)->unk_840, *(unsigned short*)map)) {
+    if (IsIdInRange020981e4((int)((Zone3D*)map)->unk_840, *(unsigned short*)map)) {
         inRange = 1;
     }
 
@@ -174,9 +174,9 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
         }
     }
 
-    if (inRange != 0 && _Z40IsCombatantField2InMonsterRange_02190818i(out[0])) {
+    if (inRange != 0 && IsCombatantField2InMonsterRange_02190818(out[0])) {
         for (int i = 1; i < *count; i++) {
-            if (!_Z40IsCombatantField2InMonsterRange_02190818i(out[i])) {
+            if (!IsCombatantField2InMonsterRange_02190818(out[i])) {
                 int t = out[i];
                 out[i] = out[0];
                 out[0] = t;
@@ -256,7 +256,7 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
                     SetByteField0x253(m);
                     m->obj3D_.DisableFlag(0x1000000);
                 } else {
-                    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)m, 1);
+                    CancelPendingAction020397cc((Obj020397cc*)m, 1);
                 }
             }
             ClearFlag0x1ceBit0x4((unsigned char*)m);
@@ -269,10 +269,10 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
             m->fieldB6 = 0x66;
             m->fieldB0 = 0x648;
             if (reset != 0) {
-                _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)m);
+                ClearBytesAndZeroBlock02039d24((unsigned char*)m);
             }
             if (cancel != 0) {
-                _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)m, 1);
+                CancelPendingAction020397cc((Obj020397cc*)m, 1);
             }
             m->obj3D_.EnableFlag(0x80);
         }
@@ -315,9 +315,9 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
             _Z12SetByte0x1c8Phh(m, last);
             m->fieldB6 = 0x66;
             m->fieldB0 = 0x648;
-            _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)m);
+            ClearBytesAndZeroBlock02039d24((unsigned char*)m);
             if (cancel != 0) {
-                _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)m, 1);
+                CancelPendingAction020397cc((Obj020397cc*)m, 1);
             }
             _Z12SetByte0x1c9Phh(m, total);
             m->fieldB4 = 0x189;
@@ -337,7 +337,7 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
             GameObject* m = gs->GetPartyMemberByIndex(out[i]);
             if (m != NULL) {
                 m->obj3D_.position_ = pos[i];
-                _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)m, rotY[i]);
+                SetVecYFromValue02033874((Obj02033874*)m, rotY[i]);
             }
         }
     }

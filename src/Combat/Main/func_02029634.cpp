@@ -19,7 +19,7 @@ extern "C" int func_0202aa94(Callback_0202a91c*);
 extern "C" int func_0201248c(unsigned short*, unsigned int);
 IndexNode_0202a9ac* GetNodeAtIndex(IndexList_0202a9ac*, int);
 void SetState0x6cAndInvoke(Callback_0202a91c*);
-extern "C" void _Z18Deactivate0202a8ccPci(char*, int);
+void Deactivate0202a8cc(char*, int);
 
 // USA: func_02029634
 extern "C" ARM void func_02029634(Callback_0202a91c* menu, int ticks) {
@@ -94,7 +94,7 @@ extern "C" ARM void func_02029634(Callback_0202a91c* menu, int ticks) {
             return;
         }
         if (node->kind != 1 || node->busy != 0) return;
-        _Z18Deactivate0202a8ccPci(reinterpret_cast<char*>(node), 1);
+        Deactivate0202a8cc(reinterpret_cast<char*>(node), 1);
         menu->state = 4;
         return;
     }

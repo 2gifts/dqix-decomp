@@ -3,7 +3,7 @@
 #include "Resource/GameResources.h"
 
 void* GetData02100044(void);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" int func_ov000_0215e9fc(void* obj, short* buf, int max, int flag);
 extern "C" int func_ov000_0215eb1c(void* obj, short* buf, int max, int flag);
@@ -28,7 +28,7 @@ extern "C" ARM void func_ov017_021c894c(unsigned short value) {
     GameState* battleStruct = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();
     void* data = GetData02100044();
-    void* field = _Z20GetField6b0_021b8470Pv(res->unknown_ptr_3718);
+    void* field = GetField6b0_021b8470(res->unknown_ptr_3718);
     if (field == NULL) {
         return;
     }

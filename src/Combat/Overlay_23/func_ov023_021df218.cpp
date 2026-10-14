@@ -5,21 +5,21 @@
 struct StructAcAe021db45c;
 
 extern "C" void func_0204c684(void* buf);
-extern "C" int _Z33InitBufferFromDataField4_021ddc34Pvssss(void* obj, short a, short b, short c, short d);
+int InitBufferFromDataField4_021ddc34(void* obj, short a, short b, short c, short d);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int length);
 extern "C" void* func_0205ec34();
 int TestBitInByteArray(int flags, unsigned char* flags2, int id);
-extern "C" int _Z28MatchesAnyTableEntry020dd19cji(unsigned int a, int b);
-extern "C" void _Z21SetByteField_021e29b8Pvih(void* a, int b, unsigned char v);
+int MatchesAnyTableEntry020dd19c(unsigned int a, int b);
+void SetByteField_021e29b8(void* a, int b, unsigned char v);
 extern "C" void* func_ov023_021e2550(void* obj, int unused, int index);
-extern "C" void _Z28UpdateEntryAndReset_021db45cPvP18StructAcAe021db45ciPsS2_(void* obj, struct StructAcAe021db45c* p1, int p2, short* p3, short* p4);
+void UpdateEntryAndReset_021db45c(void* obj, struct StructAcAe021db45c* p1, int p2, short* p3, short* p4);
 extern "C" void func_ov023_021e257c(void* obj);
-extern "C" void* _Z29CreateAndSetFields8A_021db544PvS_ii(void* a, void* b, int c, int d);
+void* CreateAndSetFields8A_021db544(void* a, void* b, int c, int d);
 extern "C" void* func_ov023_021db4e4(void* obj, int key);
 extern "C" int func_ov023_021ddc98(void* buf, int val, unsigned short len, int flag);
 extern "C" unsigned short* func_ov023_021db2b8(signed char screen, int bg1);
 extern "C" void _Z25CleanInvalidateCacheRangePKvj(void* p, unsigned size);
-extern "C" void _Z25ComputeShortPair_021e2bdcPviPsS0_(void* a, int unused, short* out1, short* out2);
+void ComputeShortPair_021e2bdc(void* a, int unused, short* out1, short* out2);
 
 struct Data021df218 {
     int f0;
@@ -82,7 +82,7 @@ extern "C" ARM void func_ov023_021df218(Obj021df218* self)
     unsigned short* base;
 
     func_0204c684(buf);
-    if (!_Z33InitBufferFromDataField4_021ddc34Pvssss(buf, 0, 0, 7, 0x10))
+    if (!InitBufferFromDataField4_021ddc34(buf, 0, 0, 7, 0x10))
         return;
 
     mask = 0;
@@ -119,7 +119,7 @@ extern "C" ARM void func_ov023_021df218(Obj021df218* self)
                     cur = 0xe;
                     if (nf->sel != 0)
                     {
-                        if (_Z28MatchesAnyTableEntry020dd19cji(i, nf->sel & 0xff) != 0)
+                        if (MatchesAnyTableEntry020dd19c(i, nf->sel & 0xff) != 0)
                             cur = 0xf;
                     }
                     else
@@ -131,20 +131,20 @@ extern "C" ARM void func_ov023_021df218(Obj021df218* self)
                         mask |= 1 << j;
                     {
                         short v = data_ov023_021fd64c[j];
-                        _Z21SetByteField_021e29b8Pvih(&self->list, v, 3);
+                        SetByteField_021e29b8(&self->list, v, 3);
                         func_ov023_021e2550(&self->list, v, i);
                     }
                 }
             }
 
-            _Z28UpdateEntryAndReset_021db45cPvP18StructAcAe021db45ciPsS2_(&self->list, (struct StructAcAe021db45c*)buf, 0x1b, &x, &y);
+            UpdateEntryAndReset_021db45c(&self->list, (struct StructAcAe021db45c*)buf, 0x1b, &x, &y);
             if (data_ov023_021ff9e0.f4 != 0)
             {
                 self->list.canvas_ = buf;
                 self->list.unk_12 = 1;
                 func_ov023_021e257c(&self->list);
             }
-            _Z29CreateAndSetFields8A_021db544PvS_ii(&self->list, (void*)0x1b, x, y);
+            CreateAndSetFields8A_021db544(&self->list, (void*)0x1b, x, y);
             e = (Entry021df218*)func_ov023_021db4e4(&self->list, 0x1b);
             if (e)
                 e->flags &= ~1;
@@ -171,7 +171,7 @@ extern "C" ARM void func_ov023_021df218(Obj021df218* self)
 
                     p0 = 0;
                     p1 = 0;
-                    _Z25ComputeShortPair_021e2bdcPviPsS0_(&self->list, data_ov023_021fd634[k], &p0, &p1);
+                    ComputeShortPair_021e2bdc(&self->list, data_ov023_021fd634[k], &p0, &p1);
                     a0 = p0 >> 3;
                     b = p1 >> 3;
                     p0 = (short)a0;

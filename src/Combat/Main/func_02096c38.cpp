@@ -14,7 +14,7 @@ struct Obj020968d0 {
     unsigned char startX, startY, endX, endY, flag;
 };
 struct Facing02096c38 { char pad_0[0xae]; short angle; };
-extern "C" int _Z31CheckAndComputeDistance020968d0P11Obj020968d0Pi(Obj020968d0*, int*);
+int CheckAndComputeDistance020968d0(Obj020968d0*, int*);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
 void RenderTransformedFlaggedIndexedEntry(StructAt020472e4*, int);
 void IssueCommand0x19(int);
@@ -51,7 +51,7 @@ extern "C" ARM void func_02096c38(Obj020968d0* object, int startX, int startY, i
     end.x = lastX;
     end.y = lastY;
     int useFacing = 0;
-    if (!_Z31CheckAndComputeDistance020968d0P11Obj020968d0Pi(object, &distance)) {
+    if (!CheckAndComputeDistance020968d0(object, &distance)) {
         if (!object->flag) return;
         distance = 0x8000;
         useFacing = 1;

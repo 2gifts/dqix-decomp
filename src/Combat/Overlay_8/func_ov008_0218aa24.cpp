@@ -86,7 +86,7 @@ struct Struct_0205d81c;
 
 extern char data_ov008_0218b590[];
 
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 extern "C" void __clear(void* p, unsigned int size);
 extern "C" void func_02046380(void* w);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void* w, int idx, char* str);
@@ -100,10 +100,10 @@ extern "C" Ent0218aa24* _Z15GetFieldAt0x150Ph(Member0218aa24* m);
 extern "C" void func_ov008_0218b240(Self0218aa24* self);
 extern "C" void func_02042764(const void* codes, char* text, int value);
 extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(void* s, int key);
-extern "C" int _Z11AppendXYTagPcii(char* dst, int x, int y);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
-extern "C" void _Z22AppendLineXTag02041cf4Pciiii(char* dst, int color, int a, int b, int c);
-extern "C" int _Z16AppendPaletteTagPci(char* dst, int palette);
+int AppendXYTag(char* dst, int x, int y);
+void AppendString02042058(char* text, const char* append);
+void AppendLineXTag02041cf4(char* dst, int color, int a, int b, int c);
+int AppendPaletteTag(char* dst, int palette);
 extern "C" void _Z14SetByteAtIndexPhih(void* base, int index, unsigned char value);
 extern "C" void _Z14SetByteInRangePhih(void* base, int index, unsigned char value);
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
@@ -114,7 +114,7 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
     char buf40[0x40];
     char name[0x30];
 
-    void* win = _Z26GetGlobalField0x1c020421a0v();
+    void* win = GetGlobalField0x1c020421a0();
     GameState* gs = GameState::GetInstance();
     __clear(buf40, 0x40);
     func_02046380(win);
@@ -175,9 +175,9 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
     }
     func_02042764(codes, name, 1);
     _Z23FindElementByC40205d81cP15Struct_0205d81ci(self->list, 0);
-    _Z11AppendXYTagPcii(self->text, (width - func_020420e8(name, 0)) / 2, 3);
-    _Z20AppendString02042058PcPKc(self->text, name);
-    _Z22AppendLineXTag02041cf4Pciiii(self->text, 0x7fff, 2, width - 2, 0xf);
+    AppendXYTag(self->text, (width - func_020420e8(name, 0)) / 2, 3);
+    AppendString02042058(self->text, name);
+    AppendLineXTag02041cf4(self->text, 0x7fff, 2, width - 2, 0xf);
 
     char* str;
     if (female) {
@@ -187,20 +187,20 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
     }
     int x = (width - func_020420e8(str, 0)) / 2;
     if (rank != 0) x -= 5;
-    _Z11AppendXYTagPcii(self->text, x, 0x12);
-    _Z20AppendString02042058PcPKc(self->text, str);
+    AppendXYTag(self->text, x, 0x12);
+    AppendString02042058(self->text, str);
     if (rank != 0) {
         if (rank >= 10) {
             rank = 10;
-            _Z16AppendPaletteTagPci(self->text, 0xd);
+            AppendPaletteTag(self->text, 0xd);
         } else {
-            _Z16AppendPaletteTagPci(self->text, 5);
+            AppendPaletteTag(self->text, 5);
         }
         int x2 = x + func_020420e8(str, 0);
         str = _Z14FindEntryByKeyP8TableA68i(self->texts, (short)(rank + 0x12c));
-        _Z11AppendXYTagPcii(self->text, x2 + 2, 0x12);
-        _Z20AppendString02042058PcPKc(self->text, str);
-        _Z16AppendPaletteTagPci(self->text, 0xf);
+        AppendXYTag(self->text, x2 + 2, 0x12);
+        AppendString02042058(self->text, str);
+        AppendPaletteTag(self->text, 0xf);
     }
 
     func_02046380(win);
@@ -208,15 +208,15 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
     _Z14SetByteAtIndexPhih(win, 0, 0);
     _Z14SetByteInRangePhih(win, 0, 3);
     func_02046608(win, 10, _Z14FindEntryByKeyP8TableA68i(self->texts, 0x1f6), buf80, 0x100, 0, 0);
-    _Z11AppendXYTagPcii(self->text, (width >> 1) - 13, 0x1e);
-    _Z20AppendString02042058PcPKc(self->text, buf80);
-    _Z22AppendLineXTag02041cf4Pciiii(self->text, 0x7fff, 2, width - 2, 0x28);
+    AppendXYTag(self->text, (width >> 1) - 13, 0x1e);
+    AppendString02042058(self->text, buf80);
+    AppendLineXTag02041cf4(self->text, 0x7fff, 2, width - 2, 0x28);
     memset(buf80, 0, 0x80);
     _Z22SetIndexedName02046574P11Obj02046574iPc(win, 0, _Z14FindEntryByKeyP8TableA68i(self->texts, (short)(self->e1c_title + 0x1f9)));
     _Z17StoreInArray0x8b0P11StoreStructii(win, 2, self->e1c_scroll);
     func_02046608(win, 10, _Z14FindEntryByKeyP8TableA68i(self->texts, 0x1f8), buf80, 0x100, 0, 0);
-    _Z11AppendXYTagPcii(self->text, 12, 0x2a);
-    _Z20AppendString02042058PcPKc(self->text, buf80);
+    AppendXYTag(self->text, 12, 0x2a);
+    AppendString02042058(self->text, buf80);
     func_0205d304(self->list, self->text, 0, 0, 0, 1, 0, 0);
     self->link->level115 = (signed char)level;
     self->link->level13d = (signed char)level;

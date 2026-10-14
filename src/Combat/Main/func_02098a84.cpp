@@ -13,7 +13,7 @@ struct S02098834 {
     unsigned char pad1[0xe8 - 0x14];
 };
 
-extern "C" extern struct S02098834* _Z18CopyStruct02098834P9S02098834S0_(struct S02098834* dst, struct S02098834* src);
+extern struct S02098834* CopyStruct02098834(struct S02098834* dst, struct S02098834* src);
 extern "C" void func_02098364(void* entry);
 
 struct ValueList02098e3c {
@@ -59,7 +59,7 @@ extern "C" ARM int func_02098a84(ValueList02098e3c* list) {
             if (freeIdx < 6) {
                 return freeIdx;
             }
-            _Z18CopyStruct02098834P9S02098834S0_(&arr[freeIdx], &arr[list->fallbackIndex]);
+            CopyStruct02098834(&arr[freeIdx], &arr[list->fallbackIndex]);
             func_02098364(&arr[list->fallbackIndex]);
             return list->fallbackIndex;
         }
@@ -84,7 +84,7 @@ extern "C" ARM int func_02098a84(ValueList02098e3c* list) {
         }
         if (Field0x1b68ContainsValue(list, e->valueId) == 0) {
             last = idx;
-            _Z18CopyStruct02098834P9S02098834S0_(&arr[recycle], e);
+            CopyStruct02098834(&arr[recycle], e);
             recycle = idx;
         }
     }
@@ -141,7 +141,7 @@ extern "C" ARM int func_02098a84(ValueList02098e3c* list) {
     if (last < 6) {
         return last;
     }
-    _Z18CopyStruct02098834P9S02098834S0_(resetSlot, &arr[list->fallbackIndex]);
+    CopyStruct02098834(resetSlot, &arr[list->fallbackIndex]);
     func_02098364(&arr[list->fallbackIndex]);
     return list->fallbackIndex;
 }

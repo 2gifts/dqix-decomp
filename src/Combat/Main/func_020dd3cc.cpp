@@ -7,7 +7,7 @@ enum { kIntrinsicOffset = 0x150, kTableIndexOffset = 0x950 };
 #include "GameState/GameState.h"
 
 int TestBitInArray0x8ec(unsigned char* obj, int index);
-extern "C" int _Z20GetTableByte020dd11cjj(unsigned int a, unsigned int b);
+int GetTableByte020dd11c(unsigned int a, unsigned int b);
 int CountMatchingRoundedShorts(int mask);
 extern unsigned short data_020f29f4[];
 
@@ -27,7 +27,7 @@ extern "C" ARM int func_020dd3cc(int combatantId) {
     unsigned char* obj = *(unsigned char**)((char*)combatant + kIntrinsicOffset);
     unsigned char a = (unsigned char)*(int*)(obj + kTableIndexOffset);
     for (unsigned char j = 0; j < 4; j++) {
-        unsigned int v = _Z20GetTableByte020dd11cjj(a, j);
+        unsigned int v = GetTableByte020dd11c(a, j);
         if (v == 0) {
             continue;
         }

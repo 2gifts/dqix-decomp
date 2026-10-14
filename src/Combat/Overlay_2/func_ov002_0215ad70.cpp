@@ -8,8 +8,8 @@ struct Offsets_0216c98a {
     short v[4];
 };
 
-extern "C" struct Elem_0205d81c *_Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c *s, int key);
-extern "C" void _Z22SetEntryFields02154bcciiPvihh(int a, int b, void *obj, int idx, unsigned char arg5, unsigned char arg6);
+struct Elem_0205d81c *FindElementByC40205d81c(struct Struct_0205d81c *s, int key);
+void SetEntryFields02154bcc(int a, int b, void *obj, int idx, unsigned char arg5, unsigned char arg6);
 void SetFourShortsAtIndex(ShortArrays0204c654 *arr, int idx, short a, short b, short c, short d);
 
 extern Offsets_0216c98a data_ov002_0216c98a;
@@ -17,7 +17,7 @@ extern Offsets_0216c98a data_ov002_0216c98a;
 // USA: func_ov002_0215ad70
 extern "C" ARM void func_ov002_0215ad70(unsigned char *obj) {
     struct Elem_0205d81c *elem =
-        _Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c *) (obj + 0x2c8 + 0xc00), 0x1c);
+        FindElementByC40205d81c((struct Struct_0205d81c *) (obj + 0x2c8 + 0xc00), 0x1c);
     if (elem == 0) {
         return;
     }
@@ -35,17 +35,17 @@ extern "C" ARM void func_ov002_0215ad70(unsigned char *obj) {
             short dy = offs.v[row];
             short px = (short) (dx + baseX);
             py       = (short) (dy + baseY);
-            _Z22SetEntryFields02154bcciiPvihh(px, py, *(void **) (obj + 0x1000 + 0xa68), tile++, (unsigned char) (k * 4 + 0xc),
+            SetEntryFields02154bcc(px, py, *(void **) (obj + 0x1000 + 0xa68), tile++, (unsigned char) (k * 4 + 0xc),
                                               0xff);
             idx = (short) (col + row * 4);
             if (*(short *) (obj + 0x1c00 + 6) == idx) {
-                _Z22SetEntryFields02154bcciiPvihh(px, py, *(void **) (obj + 0x1000 + 0xa68), 0x11, 8, 0xff);
+                SetEntryFields02154bcc(px, py, *(void **) (obj + 0x1000 + 0xa68), 0x11, 8, 0xff);
             }
             SetFourShortsAtIndex((ShortArrays0204c654 *) elem, idx, dx, dy, 0x18, 0x18);
             k++;
         }
     }
-    elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c *) (obj + 0x2c8 + 0xc00), 0x1d);
+    elem = FindElementByC40205d81c((struct Struct_0205d81c *) (obj + 0x2c8 + 0xc00), 0x1d);
     if (elem == 0) {
         return;
     }
@@ -53,5 +53,5 @@ extern "C" ARM void func_ov002_0215ad70(unsigned char *obj) {
     int y2 = *(short *) ((char *) elem + 0xae);
     x2     = (short) (x2 * 8) + 0x10;
     y2     = (short) (y2 * 8) + 0x18;
-    _Z22SetEntryFields02154bcciiPvihh(x2, y2, *(void **) (obj + 0x1000 + 0xa68), 0x14, 0x54, 8);
+    SetEntryFields02154bcc(x2, y2, *(void **) (obj + 0x1000 + 0xa68), 0x14, 0x54, 8);
 }

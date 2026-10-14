@@ -42,22 +42,22 @@ struct Battle {
     int workCount;
 };
 
-extern "C" ActionNode* _Z25GetWorkArrayEntry0215e9d8Pv(void* self);
-extern "C" ActionEntry* _Z28GetTableEntry0x8e00Bound0x48Pv(void* self);
-extern "C" TargetNode* _Z28GetTableEntry0x8e01Bound0x88Pv(void* self);
-extern "C" void _Z18InitStruct02160030Pv(void* obj);
-extern "C" void _Z19ResetStruct02157cdcPv(void* obj);
+ActionNode* GetWorkArrayEntry0215e9d8(void* self);
+ActionEntry* GetTableEntry0x8e00Bound0x48(void* self);
+TargetNode* GetTableEntry0x8e01Bound0x88(void* self);
+void InitStruct02160030(void* obj);
+void ResetStruct02157cdc(void* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 
-extern "C" SkillData* _Z24SearchBothTables02079e2cPci(char* data, int id);
+SkillData* SearchBothTables02079e2c(char* data, int id);
 extern "C" void _Z18AppendNode02160068P11Obj02160068P12Node02160068(ActionNode* obj, ActionEntry* node);
 extern "C" void _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(ActionNode* obj, TargetNode* node);
 extern "C" OutStruct0215ccbc* func_ov000_0215e958(void* self);
 extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(
     void* self, OutStruct0215ccbc* out, GameObject* combatant, short valC, short valA, short valB,
     int wordC, int wordD, unsigned char byteE);
-extern "C" void _Z32AppendToChainAndIncCount0215ffc4PvS_i(void* node, void* entry, int v);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* self, void* entry, int value);
+void AppendToChainAndIncCount0215ffc4(void* node, void* entry, int v);
+void AddEntryAndIncrementCount0215a88c(void* self, void* entry, int value);
 
 static inline GameObject* GetCombatant(int id) {
     GameState* gs = GameState::GetInstance();
@@ -70,17 +70,17 @@ static inline short CurrMP(GameObject* c) { SDK_NULL_ASSERT(c); return c->curren
 // USA: func_ov000_0215cac8
 extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, short action,
                                         unsigned short* values, unsigned char* valueCounts) {
-    ActionNode* work = _Z25GetWorkArrayEntry0215e9d8Pv(self);
-    ActionEntry* entry = _Z28GetTableEntry0x8e00Bound0x48Pv(self);
+    ActionNode* work = GetWorkArrayEntry0215e9d8(self);
+    ActionEntry* entry = GetTableEntry0x8e00Bound0x48(self);
     if (work == 0 || entry == 0) {
         return;
     }
-    _Z18InitStruct02160030Pv(work);
+    InitStruct02160030(work);
     memset(entry, 0, 0x30);
     entry->f1c = -1;
     entry->f30 = 0;
     work->action = action;
-    SkillData* sk = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)work->action);
+    SkillData* sk = SearchBothTables02079e2c((char*)GetData02108e10(), (short)work->action);
     if (sk != 0) {
         work->category = sk->category;
     }
@@ -93,11 +93,11 @@ extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, sho
     _Z18AppendNode02160068P11Obj02160068P12Node02160068(work, entry);
 
     for (int i = 0; i < count; i++) {
-        TargetNode* tn = _Z28GetTableEntry0x8e01Bound0x88Pv(self);
+        TargetNode* tn = GetTableEntry0x8e01Bound0x88(self);
         if (tn == 0) {
             continue;
         }
-        _Z19ResetStruct02157cdcPv(tn);
+        ResetStruct02157cdc(tn);
         GameObject* target = GetCombatant(ids[i]);
         OutStruct0215ccbc* out = func_ov000_0215e958(self);
         if (out == 0) {
@@ -107,9 +107,9 @@ extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, sho
             self, out, target, 0, CurrHP(target), CurrMP(target), 0, 0, 0);
         tn->id = ids[i];
         tn->active = 1;
-        _Z32AppendToChainAndIncCount0215ffc4PvS_i(tn, out, 0);
+        AppendToChainAndIncCount0215ffc4(tn, out, 0);
         for (int j = 0; j < valueCounts[i]; j++) {
-            _Z33AddEntryAndIncrementCount0215a88cPvS_i(self, out, *values++);
+            AddEntryAndIncrementCount0215a88c(self, out, *values++);
         }
         _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(work, tn);
         self->targetCount++;

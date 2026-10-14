@@ -20,7 +20,7 @@ struct Combatant02028a54 {
     char reserved13c[0x5c];
 };
 
-extern "C" void _Z37InitializeSubObjectsAndFields020289c4P17BigRecord020289c4(BigRecord020289c4*);
+void InitializeSubObjectsAndFields020289c4(BigRecord020289c4*);
 void ClearCombatantSlot(GameState*, int);
 void RegisterCombatantSlot(GameState*, int, GameObject*);
 extern "C" void func_0202ae18();
@@ -47,7 +47,7 @@ extern "C" ARM int func_02028a54(BigRecord020289c4* records, int id)
     }
     if (index < 0) return 0;
     BigRecord020289c4* record = &records[index];
-    _Z37InitializeSubObjectsAndFields020289c4P17BigRecord020289c4(record);
+    InitializeSubObjectsAndFields020289c4(record);
     record->flagB = 1;
     record->id = id;
     record->allocator->Reset();

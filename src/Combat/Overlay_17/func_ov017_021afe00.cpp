@@ -73,20 +73,20 @@ extern "C" void func_ov017_021d0b30(int a, int b, int c);
 int TestBitBySignedByteIndex(SearchStruct* obj, int index);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 int GetAxisIntValue(AxisFloats0203b57c* obj, int index);
-extern "C" int _Z26IsChannelValueZero0203b5e0Pvi(void* obj, int index);
+int IsChannelValueZero0203b5e0(void* obj, int index);
 unsigned short GetFieldAt0x7e(S_e830* obj);
 void Set3DClearColor(int a, int b, int c, int d, int e);
 unsigned int GetField4(unsigned int* obj);
 void ClearBitsInField4(unsigned int* obj, unsigned int mask);
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
 int CheckSubstructByte0x7cPositive(signed char* obj);
-extern "C" int _Z19GetField1c_021a193cPi(int* obj);
+int GetField1c_021a193c(int* obj);
 int GetField0x3acValue(GameState* gs);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 void* GetField0x74deForValidIndex(char* gs, unsigned int idx);
 unsigned int GetWord0x71f8(void* gs);
 void ClearAllTreasureMapUnknownBits(void* gs);
-extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int v);
+void SetCombatModeFromCase020dc2d0(int v);
 
 extern AllocatorUnion data_02114e20;
 
@@ -118,7 +118,7 @@ extern "C" ARM int func_ov017_021afe00(Step021afe00* self) {
             return 1;
         }
         self->axis = GetAxisIntValue((AxisFloats0203b57c*)res, 0);
-        if (_Z26IsChannelValueZero0203b5e0Pvi(res, 0) != 0) {
+        if (IsChannelValueZero0203b5e0(res, 0) != 0) {
             self->restoreDisplay = 1;
             DISPCNT = (DISPCNT & ~0x1f00) | 0x100;
             char* info = (char*)func_02012fe4();
@@ -148,7 +148,7 @@ extern "C" ARM int func_ov017_021afe00(Step021afe00* self) {
         }
         if (self->ptr4 != 0) {
             if (*self->ptr4 == 2) {
-                if (_Z19GetField1c_021a193cPi(*(int**)((char*)func_ov017_0218b5b0() + 0x3708)) != 0) {
+                if (GetField1c_021a193c(*(int**)((char*)func_ov017_0218b5b0() + 0x3708)) != 0) {
                     DISPCNT = (DISPCNT & ~0x1f00) | 0x700;
                 }
             } else {
@@ -209,7 +209,7 @@ extern "C" ARM int func_ov017_021afe00(Step021afe00* self) {
     GrottoHead021afe00* grotto = (GrottoHead021afe00*)gs->GetGrottoStruct();
     if (grotto->flag != 0 && self->state == 2) {
         ClearAllTreasureMapUnknownBits(gs);
-        _Z29SetCombatModeFromCase020dc2d0i(0);
+        SetCombatModeFromCase020dc2d0(0);
     }
     func_ov017_021d0b30(1, 0, 0);
     return 3;

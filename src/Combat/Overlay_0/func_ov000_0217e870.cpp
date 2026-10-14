@@ -35,26 +35,26 @@ struct PartyState {
 extern Obj0205eaa0 data_02108760;
 extern int data_ov000_02184294[2];
 int GetField0x3acValue(GameState*);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570*);
+int GetActiveScaledSum0205d794(Struct_0205c570*);
 extern "C" BattleCommand* func_ov000_02161318(BattleMenuState*, int);
 extern "C" int func_ov000_0217c594(BattleMenuState*, int);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_ov000_02176e3c(BattleMenuState*, BattleCommand*, int, int, int, int);
 extern "C" void func_ov000_02170db0(BattleCommand*);
-extern "C" int _Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(void*);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0*, int);
+int CheckFlagsOrField_0217c5f4_0217c5f4(void*);
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 extern "C" void func_ov000_0217c638(BattleMenuState*, int, int);
 extern "C" void func_ov000_02177038(BattleMenuState*, BattleCommand*, int, int, int);
 
 // USA: func_ov000_0217e870
 extern "C" ARM void func_ov000_0217e870(BattleMenuState* state, int first, int second) {
     state->flags |= 0x100;
-    state->current = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)state->entries);
+    state->current = GetActiveScaledSum0205d794((Struct_0205c570*)state->entries);
     GameState* game = GameState::GetInstance();
     PartyState* party = (PartyState*)GetPtrField0x2a04(game);
     BattleCommand* command = func_ov000_02161318(state, GetField0x3acValue(game));
     if (func_ov000_0217c594(state, 0)) {
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         if (!command) return;
         func_ov000_02176e3c(state, command, state->commands[state->selected], data_ov000_02184294[1], data_ov000_02184294[0], 1);
         state->flags &= ~0x100;
@@ -71,9 +71,9 @@ extern "C" ARM void func_ov000_0217e870(BattleMenuState* state, int first, int s
                 func_ov000_02170db0(candidate);
             }
         }
-    } else if (_Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(state)) {
+    } else if (CheckFlagsOrField_0217c5f4_0217c5f4(state)) {
         state->flags &= ~0x100;
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)state->entries, 0);
+        ResetEntryList0205d6a0((Entry_0205d6a0*)state->entries, 0);
         state->commands[state->selected] = 0;
         state->selected--;
         state->current = -1;

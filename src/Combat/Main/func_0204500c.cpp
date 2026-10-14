@@ -15,14 +15,14 @@ extern "C" void func_02044104(Struct0204394c*);
 extern "C" void func_020698d8(void*, int, const char*, char*);
 extern "C" void func_02069ecc(MessageSystem0219050c*, const char*, char*);
 extern "C" void func_0206c570(void*, const char*);
-extern "C" unsigned char* _Z20GetField4Ptr020e1b24Pv(void*);
+unsigned char* GetField4Ptr020e1b24(void*);
 extern "C" void func_020e1b2c(void*, int);
 extern "C" int func_020e1f1c(void*);
 extern "C" void func_020e2110(void*);
 extern "C" void func_020e23f4(void*);
 void InvokeSubHandlerIfPresent(int*);
-extern "C" void _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i(Entry020e2cc4*, int);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
+void SetEntryEnabled020e2cc4(Entry020e2cc4*, int);
+void CopyInternalFields0207df50(Foo0207df50*);
 extern int data_02108760;
 
 #else
@@ -30,33 +30,33 @@ extern int data_02108760;
 extern "C" void __clear(void* dst, int size);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int size);
 extern "C" void* memset(void* dst, int value, unsigned int size);
-extern "C" void* _Z20Clear12Bytes020e46c4Pv(void*);
-extern "C" void _Z31DispatchIfCountPositive020dcf7ciPv(int, void*);
+void* Clear12Bytes020e46c4(void*);
+void DispatchIfCountPositive020dcf7c(int, void*);
 int StringLength(const char*);
 extern "C" void func_02044f3c(struct MessageSystem* window, const char* text, int mode);
-extern "C" void _Z24DecrementSlotRef0206b198P19CombatSlots0206b198t(struct CombatSlots0206b198*, unsigned short);
+void DecrementSlotRef0206b198(struct CombatSlots0206b198*, unsigned short);
 extern "C" void func_0205e944(void* target, int level);
-extern "C" void _Z15Forward020416c0P13State0204166c(struct State0204166c*);
+void Forward020416c0(struct State0204166c*);
 extern "C" void func_02042b98(struct MessageSystem* window, int a, int b, int c, int d);
-extern "C" void _Z16ResetFoo02042fccP11Foo02042fcc(struct Foo02042fcc*);
-extern "C" void _Z25SetRingBufferSlot02045824P18RingBuffer02045824ii(struct RingBuffer02045824*, int, int);
+void ResetFoo02042fcc(struct Foo02042fcc*);
+void SetRingBufferSlot02045824(struct RingBuffer02045824*, int, int);
 extern "C" void func_02044d0c(void);
-extern "C" void _Z33PrepareEncodeStreamBuffer0204394cP14Struct0204394c(struct Struct0204394c*);
+void PrepareEncodeStreamBuffer0204394c(struct Struct0204394c*);
 extern "C" void func_0206831c(struct MessageSystem* window, const char* text, char* destination);
 extern "C" void func_02068418(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
 extern "C" void func_02068f40(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
 extern "C" void func_02069234(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
 extern "C" void func_020695f4(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
 extern "C" void func_02069fec(struct MessageSystem* window, const char* source, char* destination);
-extern "C" void _Z25InitContextString0206a974P11Ctx0206a974PKcPv(struct Ctx0206a974*, const char*, void*);
-extern "C" unsigned char* _Z20GetField4Ptr020e1b24Pv(void*);
+void InitContextString0206a974(struct Ctx0206a974*, const char*, void*);
+unsigned char* GetField4Ptr020e1b24(void*);
 extern "C" void func_020e1b2c(void*, int);
 extern "C" int func_020e1f1c(void*);
 extern "C" void func_020e2110(void*);
 extern "C" void func_020e23f4(void*);
 void InvokeSubHandlerIfPresent(int*);
-extern "C" void _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i(struct Entry020e2cc4*, int);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50*);
+void SetEntryEnabled020e2cc4(struct Entry020e2cc4*, int);
+void CopyInternalFields0207df50(struct Foo0207df50*);
 
 extern int data_02108760;
 
@@ -165,7 +165,7 @@ extern "C" ARM void func_0204500c(MessageSystem* window, const char* text, int m
         window->w1860 = 0xc;
         window->w1864 = 0x14;
         if (window->frame != 0) {
-            unsigned char* frame = _Z20GetField4Ptr020e1b24Pv(window->frame);
+            unsigned char* frame = GetField4Ptr020e1b24(window->frame);
             if (frame != 0) {
                 frame[0x38] = 2;
                 frame[0x39] = 0x74;
@@ -193,9 +193,9 @@ extern "C" ARM void func_0204500c(MessageSystem* window, const char* text, int m
         window->b19ca = 1;
         window->b19b4 = 0;
         for (int i = 0; i < 2; i++) {
-            _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i(&window->entries[i].prefix, 0);
+            SetEntryEnabled020e2cc4(&window->entries[i].prefix, 0);
         }
-        if (window->encoder != 0) _Z26CopyInternalFields0207df50P11Foo0207df50(window->encoder);
+        if (window->encoder != 0) CopyInternalFields0207df50(window->encoder);
     }
 }
 #else
@@ -205,13 +205,13 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
 
     short itemId = *reinterpret_cast<short*>(&gs->unk_6fc0[0x7f58 - 0x6fc0]);
     ItemNameText itemName;
-    _Z20Clear12Bytes020e46c4Pv(&itemName);
+    Clear12Bytes020e46c4(&itemName);
     if (itemId > 0) {
         char first[0x80] = {};
         char second[0x80] = {};
         itemName.first = first;
         itemName.second = second;
-        _Z31DispatchIfCountPositive020dcf7ciPv(itemId, &itemName);
+        DispatchIfCountPositive020dcf7c(itemId, &itemName);
         window->itemName = &itemName;
     }
     window->b19dc = 1;
@@ -248,7 +248,7 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
     } else {
         unsigned short lineGlyphCount = window->lineGlyphCount;
         for (unsigned short i = 0; i < lineGlyphCount; i++) {
-            _Z24DecrementSlotRef0206b198P19CombatSlots0206b198t((struct CombatSlots0206b198*)window, window->lineGlyphSlots[i]);
+            DecrementSlotRef0206b198((struct CombatSlots0206b198*)window, window->lineGlyphSlots[i]);
         }
         memset(window->lineGlyphSlots, 0xff01, sizeof(window->lineGlyphSlots));
         memset(window->slotData, 0, sizeof(window->slotData));
@@ -271,7 +271,7 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
         window->b19bd = 1;
         window->allocatedGlyphCount = 0;
         for (int slot = 0; slot < 0x80; ++slot) {
-            _Z15Forward020416c0P13State0204166c(&window->glyphs[slot]);
+            Forward020416c0(&window->glyphs[slot]);
             window->glyphReferences[slot] = 0;
         }
         window->b19bb = 1;
@@ -280,7 +280,7 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
         window->h187c = 0x7fff;
         window->w9a4 = 3;
         func_02042b98(window, 2, 0x80, 0xfc, 0x3e);
-        _Z16ResetFoo02042fccP11Foo02042fcc(&window->foo930);
+        ResetFoo02042fcc(&window->foo930);
         window->b19b8 = 0;
         window->b19b1 = 1;
         window->w990 = 0x80;
@@ -294,7 +294,7 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
         window->b19ac = 0;
         window->b19ad = 0;
         window->b1960 = 0;
-        _Z25SetRingBufferSlot02045824P18RingBuffer02045824ii((struct RingBuffer02045824*)window, 0, -1);
+        SetRingBufferSlot02045824((struct RingBuffer02045824*)window, 0, -1);
         window->b19c0 = 0;
         window->b195d = 0x1e;
         window->b19c1 = 0;
@@ -319,7 +319,7 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
         }
         if (window->b19ce != 0) {
             window->stream44 = 0;
-            _Z33PrepareEncodeStreamBuffer0204394cP14Struct0204394c((struct Struct0204394c*)window->encoder);
+            PrepareEncodeStreamBuffer0204394c((struct Struct0204394c*)window->encoder);
         }
         char* formatBuffer = window->formatBuffer;
         char* expandedBuffer = window->expandedBuffer;
@@ -329,14 +329,14 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
         func_02069234(window, formatBuffer, expandedBuffer, window->b19dc);
         func_020695f4(window, expandedBuffer, formatBuffer, window->b19dc);
         func_02069fec(window, formatBuffer, expandedBuffer);
-        _Z25InitContextString0206a974P11Ctx0206a974PKcPv((struct Ctx0206a974*)window, expandedBuffer, context);
+        InitContextString0206a974((struct Ctx0206a974*)window, expandedBuffer, context);
         func_02042b98(window, 2, 0x74, 0xfc, 0x4a);
         window->w1858 = 2;
         window->w185c = 0x7e;
         window->w1860 = 0xc;
         window->w1864 = 0x14;
         if (window->frame != 0) {
-            unsigned char* frame = _Z20GetField4Ptr020e1b24Pv(window->frame);
+            unsigned char* frame = GetField4Ptr020e1b24(window->frame);
             if (frame != 0) {
                 frame[0x38] = 2;
                 frame[0x39] = 0x74;
@@ -364,10 +364,10 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
         window->b19ca = 1;
         window->b19b4 = 0;
         for (int i = 0; i < 2; i++) {
-            _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i(&window->entries[i], 0);
+            SetEntryEnabled020e2cc4(&window->entries[i], 0);
         }
         if (window->encoder != 0) {
-            _Z26CopyInternalFields0207df50P11Foo0207df50(window->encoder);
+            CopyInternalFields0207df50(window->encoder);
         }
     }
     window->cursor30 = -1;

@@ -3,8 +3,8 @@
 #include "std_library_functions.h"
 
 extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" void* _Z19GetActiveCombatWorkv();
-extern "C" void* _Z18GetSlotPtr02160f20Pv(void* work);
+void* GetActiveCombatWork();
+void* GetSlotPtr02160f20(void* work);
 extern "C" void* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int idx);
 extern "C" void* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx);
 extern "C" void* _ZN9GameState20GetGameObjectByIndexEi(void* gs, int idx);
@@ -13,18 +13,18 @@ extern "C" void* _Z25GetCombatantWithFlag0x400P9GameStatei(void* gs, int idx);
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int idx);
 extern "C" int _ZNK8Object3D10GetField78Ev(void* obj);
 extern "C" int _ZNK8Object3D10GetField7aEv(void* obj);
-extern "C" void _Z26SetForwardAndStore0205ebc0Pvii(void* obj, int a, int b);
-extern "C" void _Z32ForwardToTargetOrDefault0205eabcPvS_i(void* obj, void* target, int arg);
+void SetForwardAndStore0205ebc0(void* obj, int a, int b);
+void ForwardToTargetOrDefault0205eabc(void* obj, void* target, int arg);
 extern "C" void* _Z24SearchBothTables02079e2cPci(void* data, int id);
-extern "C" int _Z27SetSlotEntryNoFlag_021eb42cPvss(void* self, short b, short c);
+int SetSlotEntryNoFlag_021eb42c(void* self, short b, short c);
 extern "C" int _Z21SetSlotEntry_021eb148Pvssh(void* self, short b, int c, unsigned char d);
 extern "C" void* func_ov000_0215ffa0(void* node);
-extern "C" void* _Z23FindNodeAtDepth0215fff4Pvii(void* node, int limit, int idx);
+void* FindNodeAtDepth0215fff4(void* node, int limit, int idx);
 extern "C" int func_ov000_0215fd90(void* obj, int flag);
-extern "C" void _Z24InitQueueStruct_021ed124Ph(unsigned char* obj);
-extern "C" void _Z22InitContainer_021ebab4Pc(char* obj);
+void InitQueueStruct_021ed124(unsigned char* obj);
+void InitContainer_021ebab4(char* obj);
 extern "C" void _Z23SetIntField360_021ed31cPci(char* obj, void* val);
-extern "C" void _Z15SetName021ed324PvPKc(void* obj, const char* name);
+void SetName021ed324(void* obj, const char* name);
 extern "C" void _Z23SetIntField356_021ed314Pci(char* obj, void* val);
 extern "C" void _Z19ResetStruct0216fe48P14Struct0216fe48(char* obj);
 extern "C" void _Z29SetField0FromCallFunc0202fa38P14Struct0216fd0c(char* obj);
@@ -35,7 +35,7 @@ extern int data_ov025_021efb88;
 #else
 extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(void* loader, const char* a, const char* b, void* alloc);
 #endif
-extern "C" void* _Z20GetOffsetPtr02160f08Pv(void* work);
+void* GetOffsetPtr02160f08(void* work);
 extern "C" short* _Z22FindEntryById_021dafd0Pci(void* p, int id);
 extern "C" void _ZN8Object3D10EnableFlagEi(void* obj, int flag);
 extern "C" void func_ov025_021ded50(void* work, void* rec);
@@ -115,8 +115,8 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
     int kb;
     void* gs = _ZN9GameState11GetInstanceEv();
     ActionDataTables* data = GetData02108e10();
-    void* work = _Z19GetActiveCombatWorkv();
-    Slot* slot = (Slot*)_Z18GetSlotPtr02160f20Pv(work);
+    void* work = GetActiveCombatWork();
+    Slot* slot = (Slot*)GetSlotPtr02160f20(work);
     *(char**)self = arg;
     *(int*)(self + 4) = *(int*)(arg + 8);
     int flag = 0;
@@ -143,7 +143,7 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
             if (obj != 0) {
                 int a = _ZNK8Object3D10GetField78Ev(obj);
                 int b = _ZNK8Object3D10GetField7aEv(obj);
-                _Z26SetForwardAndStore0205ebc0Pvii(&data_02108760, a, b);
+                SetForwardAndStore0205ebc0(&data_02108760, a, b);
             }
         }
     }
@@ -160,10 +160,10 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
         Node* n = (Node*)_Z22GetNodeAtIndex02160094P12List02160094i(slot, low);
         if (n->id <= 3) low = 1;
         if (low != 0) {
-            _Z27SetSlotEntryNoFlag_021eb42cPvss(self, 4, 0x14);
+            SetSlotEntryNoFlag_021eb42c(self, 4, 0x14);
             *(int*)(self + 0x1c4) |= 2;
         } else {
-            _Z27SetSlotEntryNoFlag_021eb42cPvss(self, 4, 0x6f);
+            SetSlotEntryNoFlag_021eb42c(self, 4, 0x6f);
         }
     }
     for (int i = 0; i < slot->count; i++) {
@@ -183,7 +183,7 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
                     }
                     flag = 1;
                 } else {
-                    _Z27SetSlotEntryNoFlag_021eb42cPvss(self, 0x22, 1);
+                    SetSlotEntryNoFlag_021eb42c(self, 0x22, 1);
                 }
             } else if (k == 2) {
                 _Z21SetSlotEntry_021eb148Pvssh(self, 0x20, 0x2c6, 3);
@@ -208,19 +208,19 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
             int m = 0;
             kn = node + k;
             for (; m < (unsigned char)kn[0x18]; m++) {
-                void* f = _Z23FindNodeAtDepth0215fff4Pvii(node, m, kb);
+                void* f = FindNodeAtDepth0215fff4(node, m, kb);
                 if (f != 0 && f != 0) {
                     if (func_ov000_0215fd90(f, 0xd)) {
-                        _Z27SetSlotEntryNoFlag_021eb42cPvss(self, 0x1b, 0x3c);
+                        SetSlotEntryNoFlag_021eb42c(self, 0x1b, 0x3c);
                     }
                     if (func_ov000_0215fd90(f, 0xc)) {
                         _Z21SetSlotEntry_021eb148Pvssh(self, 0x19, 0x38e, 2);
                     } else if (func_ov000_0215fd90(f, 6) == 0) {
-                        _Z32ForwardToTargetOrDefault0205eabcPvS_i(&data_02108760, 0, 0);
+                        ForwardToTargetOrDefault0205eabc(&data_02108760, 0, 0);
                         if (((unsigned char*)f)[0x1c] != 0 && flag != 0) {
                             unsigned int t = slot->type;
                             if (t == 0xf4 || t == 0xf5 || t == 0x48 || t == 0x70) {
-                                _Z27SetSlotEntryNoFlag_021eb42cPvss(self, 0x24, 0xb);
+                                SetSlotEntryNoFlag_021eb42c(self, 0x24, 0xb);
                             }
                         }
                     }
@@ -235,8 +235,8 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
     data_ov025_021ef9a8[3] = 0;
     data_ov025_021ef9a8[4] = 0;
     data_ov025_021ef9a8[5] = 0;
-    _Z24InitQueueStruct_021ed124Ph((unsigned char*)(self + 0x5e8));
-    _Z22InitContainer_021ebab4Pc(self + 0x22c);
+    InitQueueStruct_021ed124((unsigned char*)(self + 0x5e8));
+    InitContainer_021ebab4(self + 0x22c);
     *(char**)(self + 0x538) = self + 0x5e8;
     *(int*)(self + 0x540) = 0;
     *(int*)(self + 0x544) = 0;
@@ -281,7 +281,7 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
         self[0x5d0] = 1;
     }
     _Z23SetIntField360_021ed31cPci(self + 0x5e8, self + 0x798);
-    _Z15SetName021ed324PvPKc(self + 0x5e8, 0);
+    SetName021ed324(self + 0x5e8, 0);
     _Z23SetIntField356_021ed314Pci(self + 0x5e8, slot);
     _Z19ResetStruct0216fe48P14Struct0216fe48(self + 0x798);
     _Z29SetField0FromCallFunc0202fa38P14Struct0216fd0c(self + 0x798);
@@ -290,14 +290,14 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
     void* loader = _ZN16BackgroundLoader11GetInstanceEv();
     int id = 0;
     Node* nd = (Node*)_Z22GetNodeAtIndex02160094P12List02160094i(slot, 0);
-    void* offs = _Z20GetOffsetPtr02160f08Pv(work);
+    void* offs = GetOffsetPtr02160f08(work);
     short* e = 0;
     if (nd != 0) e = _Z22FindEntryById_021dafd0Pci(offs, nd->id);
     if (e != 0) id = e[0x2c / 2];
     if (slot->id != 0) id = slot->id;
     if (id > 0) {
         if (id == *(int*)(self + 0x884)) {
-            _Z15SetName021ed324PvPKc(self + 0x5e8, self + 0x83c);
+            SetName021ed324(self + 0x5e8, self + 0x83c);
 #if !defined(jpn)
             *(short*)(self + 0x794) = id;
 #endif
@@ -314,7 +314,7 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
     } else {
         *(int*)(self + 0x884) = 0;
         self[0x87c] = 1;
-        _Z15SetName021ed324PvPKc(self + 0x5e8, 0);
+        SetName021ed324(self + 0x5e8, 0);
     }
     for (Node* n = slot->head; n != 0; n = n->next) {
         void* c = _ZN9GameState19GetCombatantByIndexEi(gs, n->id);

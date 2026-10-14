@@ -10,7 +10,7 @@ struct Payload12_0215a480 {
     unsigned int w2;
 };
 
-extern "C" void _Z26EnqueueEventType8_0215a480Pv18Payload12_0215a480jj(void* ctx, struct Payload12_0215a480 payload, unsigned int a, unsigned int b);
+void EnqueueEventType8_0215a480(void* ctx, struct Payload12_0215a480 payload, unsigned int a, unsigned int b);
 
 // USA: func_ov001_0215c1d0
 extern "C" ARM int func_ov001_0215c1d0(void* self, int mode) {
@@ -29,6 +29,6 @@ extern "C" ARM int func_ov001_0215c1d0(void* self, int mode) {
     if (node == NULL) {
         return 0;
     }
-    _Z26EnqueueEventType8_0215a480Pv18Payload12_0215a480jj(node, v, a, b);
+    EnqueueEventType8_0215a480(node, v, a, b);
     return 1;
 }

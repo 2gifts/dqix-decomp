@@ -27,9 +27,9 @@ struct EquipmentMenu {
     unsigned char kind_;
 };
 
-extern "C" void _Z12Init0205bef8P15Struct_0205bef8(Struct_0205bef8* s);
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(Struct_0205ba68* s, int a, int count, int mode);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(Node0205bacc* s, int val);
+void Init0205bef8(Struct_0205bef8* s);
+void SetupPointerTable0205ba68(Struct_0205ba68* s, int a, int count, int mode);
+void SetField0AndPropagate0205bacc(Node0205bacc* s, int val);
 extern "C" void func_0205bb04(void* s, int index);
 
 // USA: func_ov005_021571d0
@@ -85,9 +85,9 @@ extern "C" ARM void func_ov005_021571d0(EquipmentMenu* self) {
         flagB = 0;
         break;
     }
-    _Z12Init0205bef8P15Struct_0205bef8((Struct_0205bef8*)&self->cursor_);
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((Struct_0205ba68*)&self->cursor_, cols, rows, mode);
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((Node0205bacc*)&self->cursor_, count);
+    Init0205bef8((Struct_0205bef8*)&self->cursor_);
+    SetupPointerTable0205ba68((Struct_0205ba68*)&self->cursor_, cols, rows, mode);
+    SetField0AndPropagate0205bacc((Node0205bacc*)&self->cursor_, count);
     self->cursor_.active_ = active;
     func_0205bb04(&self->cursor_, index);
     self->cursor_.unk_3c = flagA;

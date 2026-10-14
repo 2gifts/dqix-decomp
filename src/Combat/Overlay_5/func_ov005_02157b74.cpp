@@ -86,8 +86,8 @@ struct Menu02157b74 {
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
 extern "C" char* func_ov017_0218b5b0();
 extern "C" Context02157b74* _Z19GetField1c_021a193cPi(int p);
-extern "C" Combatant02157b74* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int idx);
-extern "C" char* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
+Combatant02157b74* GetCombatantWithFlag0x100(GameState* gs, int idx);
+char* GetPtrField0x2a04(GameState* gs);
 extern "C" short _Z28GetHalfwordEntryFromField150P22Field150Holder02052df8i(Combatant02157b74* c, int slot);
 extern "C" Item02157b74* _Z24FindElementByKey020dedd0P17Container020dedd0i(void* container, short key);
 extern "C" void func_02052d7c(Combatant02157b74* c, int slot, short id);
@@ -127,10 +127,10 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
     Context02157b74* ctx = _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708)));
     int bareArg;
     int actor = ctx->actor;
-    Combatant02157b74* who = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, actor);
+    Combatant02157b74* who = GetCombatantWithFlag0x100(gs, actor);
     if (who == 0) return;
 
-    bag = _Z17GetPtrField0x2a04P9GameState(gs);
+    bag = GetPtrField0x2a04(gs);
 
     if (key == 0xffff) {
         int slot = data_ov005_0215cd40[self->tab];

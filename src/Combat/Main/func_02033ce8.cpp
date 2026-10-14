@@ -17,8 +17,8 @@ struct Obj02033b68 {
 };
 
 extern "C" void func_02057924(void);
-extern "C" void _Z28ApplyStateTableValue02033dd4Ph(unsigned char* obj);
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68* obj, int newVal);
+void ApplyStateTableValue02033dd4(unsigned char* obj);
+void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 extern "C" int _ZNK8Object3D17GetInheritedAlphaEv(struct Obj02033b68* obj);
 extern "C" void _ZN8Object3D10MakeHiddenEv(struct Obj02033b68* obj);
 extern "C" void _ZN8Object3D17SetInheritedAlphaEi(struct Obj02033b68* obj, int val);
@@ -28,13 +28,13 @@ extern "C" void _ZN8Object3D24TransitionInheritedAlphaEii(struct Obj02033b68* ob
 extern "C" ARM void func_02033ce8(struct Obj02033b68* p) {
     int b;
     func_02057924();
-    _Z28ApplyStateTableValue02033dd4Ph((unsigned char*)p);
+    ApplyStateTableValue02033dd4((unsigned char*)p);
 
     if (p->fbe == 3 || p->fbe == 4) {
         if (p->fc0 == 7 || p->fc0 == 8) {
             if (p->fc0 != 7) return;
             if (p->fc1h == 0) return;
-            _Z24SetByteIfChanged02033b68P11Obj02033b68i(p, 0);
+            SetByteIfChanged02033b68(p, 0);
         }
         return;
     }

@@ -47,10 +47,10 @@ struct BattleWork {
 
 char GetField0x3acValue(GameState* gs);
 void* GetData02108ea8();
-extern "C" int _Z26MatchesActiveIndex020a36a8P17Combatant020A36A8(Combatant020A36A8* c);
-extern "C" unsigned char _Z23AssignEntrySlot0207db58P13Entry0207d9bctc(Entry0207d9bc* arr, unsigned short key, char val);
-extern "C" void _Z11Foo0216377cP14Struct0216377ch(Struct0216377c* obj, unsigned char val);
-extern "C" void _Z27EnqueueEventTag130_021cc050t(unsigned short tag);
+int MatchesActiveIndex020a36a8(Combatant020A36A8* c);
+unsigned char AssignEntrySlot0207db58(Entry0207d9bc* arr, unsigned short key, char val);
+void Foo0216377c(Struct0216377c* obj, unsigned char val);
+void EnqueueEventTag130_021cc050(unsigned short tag);
 
 extern "C" {
 int _Z13TestBitAt0x34Phj(PartyState* party, unsigned char bit);
@@ -87,15 +87,15 @@ extern "C" ARM void func_ov026_021dbd1c(BattleWork* self, int member, int notify
 
     if (member == party->myIndex) {
         if (func_0202c508(link)) {
-            _Z11Foo0216377cP14Struct0216377ch((Struct0216377c*)self, _Z23AssignEntrySlot0207db58P13Entry0207d9bctc((Entry0207d9bc*)entries, party->netId, GetField0x3acValue(gs)));
+            Foo0216377c((Struct0216377c*)self, AssignEntrySlot0207db58((Entry0207d9bc*)entries, party->netId, GetField0x3acValue(gs)));
         } else {
             func_ov017_021c9b90(party->netId, member);
         }
     }
     func_ov000_0215fb04(battle, member);
 
-    if (notify && self->state != 0x11 && wasMember && _Z26MatchesActiveIndex020a36a8P17Combatant020A36A8((Combatant020A36A8*)party)) {
+    if (notify && self->state != 0x11 && wasMember && MatchesActiveIndex020a36a8((Combatant020A36A8*)party)) {
         func_ov026_021dbf04(self);
-        _Z27EnqueueEventTag130_021cc050t(party->netId);
+        EnqueueEventTag130_021cc050(party->netId);
     }
 }

@@ -62,12 +62,12 @@ struct MenuB {
 
 extern "C" int *func_0202ae18();
 int CheckField0NonZero(int *);
-extern "C" short *_Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(Field150Holder02052e2c *);
-extern "C" EquipEntry *_Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0 *, int);
-extern "C" void *_Z22ZeroInitReturn020de824Pv(void *);
-extern "C" void _Z18InitStruct0207cbe8Pc(char *);
+short *GetField150Ptr0x488_02052e2c(Field150Holder02052e2c *);
+EquipEntry *FindElementByKey020dedd0(Container020dedd0 *, int);
+void *ZeroInitReturn020de824(void *);
+void InitStruct0207cbe8(char *);
 extern "C" void func_0207cc18(void *, EquipEntry *);
-extern "C" void _Z18InitStruct0207cc0cPc(char *);
+void InitStruct0207cc0c(char *);
 extern "C" int func_020dd4c4(int, void *);
 int GetHalfwordEntryFromField150(Field150Holder02052df8 *, int);
 extern "C" void func_02052d7c(Combatant0217599c *, int, short);
@@ -91,19 +91,19 @@ extern "C" ARM int func_ov003_0217599c(MenuB *menu) {
     int *search          = func_0202ae18();
     Combatant0217599c *c = (Combatant0217599c *) GetCombatantWithFlag0x100(gs, menu->character);
     if (!c) return 0;
-    if (!_Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c((Field150Holder02052e2c *) c)) return 0;
+    if (!GetField150Ptr0x488_02052e2c((Field150Holder02052e2c *) c)) return 0;
     EquipEntry *elem =
-        _Z24FindElementByKey020dedd0P17Container020dedd0i((Container020dedd0 *) (menu->container + 0x800), menu->selected);
+        FindElementByKey020dedd0((Container020dedd0 *) (menu->container + 0x800), menu->selected);
     if (!elem) return 0;
     unsigned int category = elem->category;
     TextContext context;
     context.allocator.ResetAllocatorPointer();
-    _Z22ZeroInitReturn020de824Pv(context.list);
-    _Z18InitStruct0207cbe8Pc((char *) &context);
-    _Z18InitStruct0207cbe8Pc((char *) &context);
+    ZeroInitReturn020de824(context.list);
+    InitStruct0207cbe8((char *) &context);
+    InitStruct0207cbe8((char *) &context);
     context.containerData = (Container020dedd0 *) (menu->container + 0x800);
     func_0207cc18(&context, elem);
-    _Z18InitStruct0207cc0cPc((char *) &context);
+    InitStruct0207cc0c((char *) &context);
     if (!IsType0217599c(category)) return 0;
     if (func_020dd4c4(menu->character, elem)) return 0;
     int slotId = data_ov003_0217faf4[category];
@@ -115,7 +115,7 @@ extern "C" ARM int func_ov003_0217599c(MenuB *menu) {
         func_02052d7c(c, slotId, menu->selected);
         func_0208358c(GetFieldAt0x150((unsigned char *) c), elem, -1);
     }
-    if (_Z24FindElementByKey020dedd0P17Container020dedd0i((Container020dedd0 *) (menu->container + 0x800), equippedId)) {
+    if (FindElementByKey020dedd0((Container020dedd0 *) (menu->container + 0x800), equippedId)) {
         func_0207c378(bag + 0x1d4, equippedId, 1, category);
     }
     menu->count--;

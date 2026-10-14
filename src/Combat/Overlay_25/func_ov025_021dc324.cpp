@@ -29,11 +29,11 @@ struct Global021dc324 { int field0; int active; };
 struct Timer021dc324 { unsigned char flag; char pad1; unsigned short remaining; };
 extern Global021dc324 data_ov025_021ef404;
 extern "C" Timer021dc324 _ZZ16GetTimer021ef974vE1s;
-extern "C" Slot021dc324* _Z18GetSlotPtr02160f20Pv(void*);
-extern "C" int _Z20GetByte2105_021ea46cPv(void*);
+Slot021dc324* GetSlotPtr02160f20(void*);
+int GetByte2105_021ea46c(void*);
 int GetByteField0x261Or1(void*);
-extern "C" Skill021dc324* _Z24SearchBothTables02079e2cPci(char*, int);
-extern "C" int _Z20IsMatchingID02163690i(int);
+Skill021dc324* SearchBothTables02079e2c(char*, int);
+int IsMatchingID02163690(int);
 int ClassifyField0x81fe(char*);
 extern "C" void func_ov025_021df5e4(void*, int, int);
 extern "C" int func_ov025_021df9f4(GameObject*);
@@ -48,9 +48,9 @@ extern "C" ARM void func_ov025_021dc324(BattleEffectWork021dc324* self) {
     GameState* game = GameState::GetInstance();
     char* battle = self->battle;
     Body021dc324* body;
-    Slot021dc324* slot = _Z18GetSlotPtr02160f20Pv(self);
+    Slot021dc324* slot = GetSlotPtr02160f20(self);
     body = &self->body;
-    if (!_Z20GetByte2105_021ea46cPv(&self->display)) return;
+    if (!GetByte2105_021ea46c(&self->display)) return;
     ActionDataTables* data = GetData02108e10();
     ObjectRegion021dc324* objectRegion = &self->objectRegion;
     if (data_ov025_021ef404.active) {
@@ -58,8 +58,8 @@ extern "C" ARM void func_ov025_021dc324(BattleEffectWork021dc324* self) {
         objectRegion->object.MakeHidden();
         self->object2.MakeHidden();
         int special = 0;
-        Skill021dc324* skill = _Z24SearchBothTables02079e2cPci((char*)data, (short)slot->id);
-        if (_Z20IsMatchingID02163690i(slot->id)) special = 1;
+        Skill021dc324* skill = SearchBothTables02079e2c((char*)data, (short)slot->id);
+        if (IsMatchingID02163690(slot->id)) special = 1;
         else if (skill) {
             if (skill->kind == 2) special = 1;
             if (skill->id == 0xae) special = 1;

@@ -98,7 +98,7 @@ struct Slot_021665b0 {
 
 extern "C" void _Z22InitStateArray02157ce0Pc(Cmd_021665b0* cmd);
 extern "C" void func_ov002_0215b814(Menu_021665b0* self);
-extern "C" Unit_021665b0* _Z19GetCombatantCheckedP9GameStatei(GameState* gs, int id);
+Unit_021665b0* GetCombatantChecked(GameState* gs, int id);
 extern "C" Unit_021665b0* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
 extern "C" Field_021665b0* _Z15GetFieldAt0x150Ph(Unit_021665b0* unit);
 extern "C" int _Z18GetBitInArray0x910Phi(Field_021665b0* field, int index);
@@ -110,13 +110,13 @@ extern "C" void func_ov002_021536e0(char** obj);
 extern "C" void* _Z26LookupElementByKey02079ee0Pvi(char* data, int key);
 extern "C" short func_ov002_021538e4(char** obj, Elem_021665b0* elem, void* sub, int target);
 extern "C" void func_ov002_021594e8(Menu_021665b0* self, int key, int target, int actor);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(unsigned short* flags, int mask);
+char* GetGlobalField0x1c020421a0(void);
+int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" int func_0205d97c(char* obj);
 extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(Menu_021665b0* self, int flag);
-extern "C" void _Z24ReinitController02043204Pc(char* ctl);
+void ReinitController02043204(char* ctl);
 extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(char* obj, int clear, int key);
 extern "C" void func_ov016_0218b5c0(int a, int b);
 extern "C" void func_ov017_0218b5f8(int a);
@@ -160,7 +160,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         int needed = 0;
         for (int i = 0; i < n; i++) {
             id = self->ids[i];
-            unit = _Z19GetCombatantCheckedP9GameStatei(gs, id);
+            unit = GetCombatantChecked(gs, id);
             if (unit == NULL) {
                 continue;
             }
@@ -195,7 +195,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             if (_Z25GetCombatantWithFlag0x100P9GameStatei(gs, id) == NULL) {
                 continue;
             }
-            unit = _Z19GetCombatantCheckedP9GameStatei(gs, id);
+            unit = GetCombatantChecked(gs, id);
             if (unit == NULL) {
                 continue;
             }
@@ -228,7 +228,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                     if (!_Z18GetBitInArray0x910Phi(field, 0x20)) {
                         continue;
                     }
-                    Unit_021665b0* caster = _Z19GetCombatantCheckedP9GameStatei(gs, other);
+                    Unit_021665b0* caster = GetCombatantChecked(gs, other);
                     if (_Z32ClampAndCompareThreshold02048448P14Struct02048448i(caster, (unsigned short)_Z24SearchBothTables02079e2cPci((char*)data, 0x23)->power)) {
                         found = 1;
                         break;
@@ -257,7 +257,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             int id = self->ids[i];
             slot = &slots[i];
             slot->id = id;
-            Unit_021665b0* unit = _Z19GetCombatantCheckedP9GameStatei(gs, id);
+            Unit_021665b0* unit = GetCombatantChecked(gs, id);
             if (unit == NULL) {
                 continue;
             }
@@ -424,7 +424,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                     t++;
                     continue;
                 }
-                if (_Z19GetCombatantCheckedP9GameStatei(gs, self->order[t].id)->status->flags & 1) {
+                if (GetCombatantChecked(gs, self->order[t].id)->status->flags & 1) {
                     t++;
                     continue;
                 }
@@ -435,7 +435,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                     }
                     cmd.key = 0x23;
                     Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci((char*)data, cmd.key);
-                    Unit_021665b0* caster = _Z19GetCombatantCheckedP9GameStatei(gs, self->order[t].id);
+                    Unit_021665b0* caster = GetCombatantChecked(gs, self->order[t].id);
                     if (!_Z32ClampAndCompareThreshold02048448P14Struct02048448i(caster, (unsigned short)elem->power)) {
                         t++;
                         continue;
@@ -452,7 +452,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             self->chosen = t;
             func_ov002_021594e8(self, self->key, self->order[t].id, actor);
             Unit_021665b0* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, actor);
-            Unit_021665b0* unit = _Z19GetCombatantCheckedP9GameStatei(gs, actor);
+            Unit_021665b0* unit = GetCombatantChecked(gs, actor);
             hp[actor] = member->status->hp;
             if (!(unit->status->flags & 2)) {
                 dead[actor] = 0;
@@ -463,7 +463,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         target = self->order[self->turn].id;
         signed char count = self->order[self->turn].count;
         self->target = target;
-        Unit_021665b0* unit = _Z19GetCombatantCheckedP9GameStatei(gs, actor);
+        Unit_021665b0* unit = GetCombatantChecked(gs, actor);
         if (count == 0) {
             self->turn = self->turn + 1;
             self->state = 2;
@@ -623,7 +623,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         done = 0;
         while (!done) {
             Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci((char*)data, self->key);
-            Unit_021665b0* caster = _Z19GetCombatantCheckedP9GameStatei(gs, target);
+            Unit_021665b0* caster = GetCombatantChecked(gs, target);
             if (caster == NULL || elem == NULL) {
                 continue;
             }
@@ -647,7 +647,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         int actor = self->ids[self->actorIdx];
         func_ov002_021594e8(self, self->key, self->order[self->turn].id, actor);
         Unit_021665b0* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, actor);
-        Unit_021665b0* unit = _Z19GetCombatantCheckedP9GameStatei(gs, actor);
+        Unit_021665b0* unit = GetCombatantChecked(gs, actor);
         hp[actor] = member->status->hp;
         if (!(unit->status->flags & 2)) {
             dead[actor] = 0;
@@ -662,20 +662,20 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         self->nextA = 0x17;
         self->nextB = 0x17;
         self->nextC = changed;
-        char* ctl = _Z26GetGlobalField0x1c020421a0v();
+        char* ctl = GetGlobalField0x1c020421a0();
         if (self->acted == 0 && self->result == 1) {
             self->result = 2;
         }
         signed char result = self->result;
         if (!(result != 0 && result != 1)) {
             ctl[0x19ca] = 0;
-            int pressed = _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0x601);
+            int pressed = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
             int cancel = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)((char*)self + 0xec8), 0x14)) ? 1 : 0;
             int single = func_0205d97c((char*)self + 0xec8) == 1 ? 1 : 0;
             int flagged = _Z29CheckFlagOrThreshold_02161b48Pci(self, 1);
-            int left = _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0xf0);
-            if (single | (flagged | (cancel | (left | _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0x100))))) {
-                _Z24ReinitController02043204Pc(ctl);
+            int left = TestFlag0SetAndFlag1Clear(&data_02114e30, 0xf0);
+            if (single | (flagged | (cancel | (left | TestFlag0SetAndFlag1Clear(&data_02114e30, 0x100))))) {
+                ReinitController02043204(ctl);
                 self->nextA = 0x15;
                 self->nextB = 0x2b;
                 _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((char*)self + 0xec8, 1, 0x29);
@@ -685,8 +685,8 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                 self->state = 0;
                 self->acted = 0;
                 changed = 1;
-            } else if (_Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0x800)) {
-                _Z24ReinitController02043204Pc(ctl);
+            } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x800)) {
+                ReinitController02043204(ctl);
                 self->nextA = 0x2b;
                 self->nextB = 0x2b;
                 self->result = 0;

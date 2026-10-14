@@ -18,15 +18,15 @@ struct Struct_0205d81c;
 
 extern "C" void func_ov000_0217964c(void* obj, void* entry);
 extern "C" void func_ov000_0217ab8c(void* entry, int a, int b);
-extern "C" int _Z18GetField0_0205bafcPv(void* obj);
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetField0_0205bafc(void* obj);
+int GetGlobalField0x1c020421a0();
 extern "C" void func_ov000_0217979c(void* obj, void* entry, void* buf);
 #if defined(jpn)
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
 #else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
 #endif
-extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 extern "C" void func_ov000_02176210(void* a, int b, int c);
 
 // USA: func_ov000_021794cc
@@ -57,9 +57,9 @@ extern "C" ARM void func_ov000_021794cc(char* obj, void* entry, int a, int b) {
     *(unsigned char*)(base + 0xb1) = 0x11;
 
     int many = 0;
-    if (_Z18GetField0_0205bafcPv(base + 0x54) > 4) many = 1;
+    if (GetField0_0205bafc(base + 0x54) > 4) many = 1;
 
-    int g = _Z26GetGlobalField0x1c020421a0v();
+    int g = GetGlobalField0x1c020421a0();
     void* buf = *(void**)((char*)g + REGION_OFFSET_0);
     memset(buf, 0, REGION_OFFSET_1);
     func_ov000_0217979c(obj, entry, buf);
@@ -69,7 +69,7 @@ extern "C" ARM void func_ov000_021794cc(char* obj, void* entry, int a, int b) {
     func_0205d304(base, buf, 0, 0, many, 1, 0, 0);
 #endif
 
-    struct Elem_0205d81c* e = _Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)base, 0x24);
+    struct Elem_0205d81c* e = FindElementByC40205d81c((struct Struct_0205d81c*)base, 0x24);
     if (e != NULL) e->fieldC2 = 0;
     func_ov000_02176210(obj + 0x188, 0x11, 0x24);
 }

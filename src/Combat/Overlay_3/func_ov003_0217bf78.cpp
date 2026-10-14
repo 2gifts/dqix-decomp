@@ -38,18 +38,18 @@ extern "C" GameResources *func_ov017_0218b5b0(void);
 void SetField0x238False(void *obj);
 void SetField0x23cTrue(void *obj);
 int GetField0x70(void *obj);
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z24ReinitController02043204Pc(char *obj);
+int GetGlobalField0x1c020421a0();
+void ReinitController02043204(char *obj);
 extern "C" void func_ov003_0217c974(Scene0217bf78 *self);
 void ApplyVec3Tail(void *obj, int *vec);
 void RegisterCombatantSlot(GameState *battleStruct, int id, GameObject *combatant);
 extern "C" void func_ov003_0217ca84(Scene0217bf78 *self, unsigned short fillValue);
-extern "C" void _Z32ResetSubBg1AndClearCache020a64e8v(void);
+void ResetSubBg1AndClearCache020a64e8(void);
 extern "C" void _ZN8Object3D10MakeHiddenEv(void *obj);
 void Set3DClearColor(int a, int b, int c, int d, int e);
-extern "C" int _Z24SetPowCnt1Bit15_0217c2a0i(int enable);
+int SetPowCnt1Bit15_0217c2a0(int enable);
 extern "C" void func_ov003_0217cb3c(Scene0217bf78 *self, int mainScreen, int alternate);
-extern "C" void _Z26SetForwardAndStore0205ebc0Pvii(void *sound, int a, int b);
+void SetForwardAndStore0205ebc0(void *sound, int a, int b);
 
 extern char data_ov003_02180bef[];
 extern char data_ov003_02180cf8[];
@@ -85,7 +85,7 @@ extern "C" ARM void func_ov003_0217bf78(Scene0217bf78 *self) {
             self->state = 0;
         }
         GameState *gs = GameState::GetInstance();
-        _Z24ReinitController02043204Pc((char *) _Z26GetGlobalField0x1c020421a0v());
+        ReinitController02043204((char *) GetGlobalField0x1c020421a0());
         func_ov003_0217c974(self);
         Camera0217bf78 *camera = (Camera0217bf78*)GetField0x3b0Value(gs);
         self->cameraPosition   = camera->position;
@@ -102,11 +102,11 @@ extern "C" ARM void func_ov003_0217bf78(Scene0217bf78 *self) {
             self->mode  = 4;
             self->state = 0;
         }
-        if (self->field_160 != 0) _Z32ResetSubBg1AndClearCache020a64e8v();
+        if (self->field_160 != 0) ResetSubBg1AndClearCache020a64e8();
         _ZN8Object3D10MakeHiddenEv(self->object);
         Set3DClearColor(0, 0x1f, 0x7fff, 0, 0);
         *(volatile unsigned int *) 0x4000000 = (*(volatile unsigned int *) 0x4000000 & ~0x1f00) | 0x100;
-        _Z24SetPowCnt1Bit15_0217c2a0i(1);
+        SetPowCnt1Bit15_0217c2a0(1);
         self->state++;
     } else if (self->state == 3) {
         if (!loader->GetTaskStatus(self->taskC)) return;
@@ -122,6 +122,6 @@ extern "C" ARM void func_ov003_0217bf78(Scene0217bf78 *self) {
         *(volatile unsigned int *) 0x4001000 &= ~0x1f00;
         self->mode  = 2;
         self->state = 0;
-        _Z26SetForwardAndStore0205ebc0Pvii(&data_02108760, 0x8b, 0x8b);
+        SetForwardAndStore0205ebc0(&data_02108760, 0x8b, 0x8b);
     }
 }

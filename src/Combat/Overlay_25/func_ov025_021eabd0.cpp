@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
-extern "C" void* _Z19GetActiveCombatWorkv();
-extern "C" void* _Z18GetSlotPtr02160f20Pv(void* work);
+void* GetActiveCombatWork();
+void* GetSlotPtr02160f20(void* work);
 extern "C" void* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx);
 extern "C" short func_ov000_0215ffa0(void* node);
 extern "C" int func_ov025_021ed380(char* obj, unsigned short id, short val2, int type, int val3, short val4, unsigned short val5);
@@ -28,7 +28,7 @@ static inline int IsPartyIndex(short idx) {
 
 // USA: func_ov025_021eabd0
 extern "C" ARM void func_ov025_021eabd0(char* self, int party) {
-    Slot021eabd0* slot = (Slot021eabd0*)_Z18GetSlotPtr02160f20Pv(_Z19GetActiveCombatWorkv());
+    Slot021eabd0* slot = (Slot021eabd0*)GetSlotPtr02160f20(GetActiveCombatWork());
     int found = -1;
     for (int i = 0; i < slot->count; i++) {
         void* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(slot, i);

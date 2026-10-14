@@ -4,8 +4,8 @@
 extern "C" int func_ov017_021d60f4(void*);
 extern "C" void* func_ov001_0215ab20(int);
 extern "C" int fix32_Atan2(int x, int z);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
-extern "C" int _Z8fix32absi(int x);
+int fix32ReduceAngle0To2Pi(int angle);
+int fix32abs(int x);
 
 struct Payload12_0215a480 {
     unsigned int w0;
@@ -27,7 +27,7 @@ extern "C" ARM int func_ov001_0215c5fc(void* obj, int mode) {
     int deltaX = *(int*)((char*)ctxB + 0x7c) - *(int*)((char*)ctxA + 0x7c);
     struct Payload12_0215a480 payload;
     memcpy(&payload, (char*)ctxA + 0x80, sizeof(payload));
-    payload.w1 = _Z22fix32ReduceAngle0To2Pii(fix32_Atan2(deltaY, deltaX));
+    payload.w1 = fix32ReduceAngle0To2Pi(fix32_Atan2(deltaY, deltaX));
 
     unsigned int a = func_ov017_021d60f4((char*)obj + 0x10);
     unsigned int b;
@@ -35,7 +35,7 @@ extern "C" ARM int func_ov001_0215c5fc(void* obj, int mode) {
         b = func_ov017_021d60f4((char*)obj + 0x18);
     } else {
         short diff = (short)(*(int*)((char*)ctxA + 0x84)) - (short)payload.w1;
-        if (_Z8fix32absi(diff) > 0x3244) {
+        if (fix32abs(diff) > 0x3244) {
             b = (diff < 0) ? 1 : 0;
         } else {
             if (diff < 0) {

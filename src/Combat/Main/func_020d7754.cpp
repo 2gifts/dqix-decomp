@@ -15,7 +15,7 @@ extern struct CallbackCache0214e33c data_0214e33c;
 struct Elem020d7754 { short a; short b; char* c; };
 
 int StringLength(const char* text);
-extern "C" void _Z22AppendListNode020d78e0PPvS_(void** headSlot, void* srcData);
+void AppendListNode020d78e0(void** headSlot, void* srcData);
 extern char data_020f2330[];
 
 // USA: func_020d7754
@@ -38,6 +38,6 @@ extern "C" ARM int func_020d7754(Script::Parameter* params) {
     if (entry.c == NULL) return 0;
     entry.c[length] = 0;
     sprintf(entry.c, data_020f2330, text);
-    _Z22AppendListNode020d78e0PPvS_(data_0214e33c.fieldC, (void*)&entry);
+    AppendListNode020d78e0(data_0214e33c.fieldC, (void*)&entry);
     return 1;
 }

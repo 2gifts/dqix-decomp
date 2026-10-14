@@ -6,7 +6,7 @@ extern char data_020feffc[];
 int GetGlobalField0x10(void);
 int AdvanceStateIfState2(void);
 void SleepCurrentContext(unsigned int);
-extern "C" int _Z12Init0202dc40iPv(int mode, void* src);
+int Init0202dc40(int mode, void* src);
 unsigned long long GetCurrentTimestamp(void);
 extern "C" int func_02001aec(void* a, void* b, int n);
 
@@ -49,7 +49,7 @@ extern "C" ARM int func_0202b900(int* obj, unsigned char* key) {
 
     for (; j < count; j++) {
         if (func_02001aec(key, entries + j * stride + 4, 6) == 0) {
-            _Z12Init0202dc40iPv(5, data_020feffc + j * stride);
+            Init0202dc40(5, data_020feffc + j * stride);
             *obj = 6;
             battleStruct = GameState::GetInstance();
             ts = GetCurrentTimestamp();

@@ -3,7 +3,7 @@
 #include "Resource/ResourceMutex.h"
 #include "Filesystem/OverlayFSManagement.h"
 
-extern "C" void _Z22DispatchByFlag020d9834i(int flag);
+void DispatchByFlag020d9834(int flag);
 void CallAndReturnTrue020cd584(OverlayMetadata* meta);
 
 extern volatile int data_01ffd348;
@@ -42,7 +42,7 @@ extern "C" ARM int func_020a1bb4(unsigned int id) {
     }
 
     while (data_01ffd340) {
-        _Z22DispatchByFlag020d9834i(0);
+        DispatchByFlag020d9834(0);
     }
 
     data_01ffd340 = 1;

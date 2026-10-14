@@ -20,19 +20,19 @@ struct Container020dedd0 {
     char pad;
 };
 struct Node021769ec;
-extern "C" struct Node021769ec* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* c, int key);
+struct Node021769ec* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 struct Container02080f8c;
-extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(struct Container02080f8c* obj, int id, int value);
+void SetEntryFirstField02080f8c(struct Container02080f8c* obj, int id, int value);
 struct Container02080cc0;
 void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
-extern "C" int _Z24SetEntryFlagById02080b40Pvi(void* obj, int id);
+int SetEntryFlagById02080b40(void* obj, int id);
 void SetEntryHalfword0xe(void* obj, int id, int value);
 struct Field150Holder02052df8;
 short GetHalfwordEntryFromField150(Field150Holder02052df8* obj, int index);
 struct Container02080fa8;
-extern "C" void _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(struct Container02080fa8* obj, int id, int value);
+void SetEntryFirstField02080fa8(struct Container02080fa8* obj, int id, int value);
 struct Container02080fc4;
-extern "C" void _Z26SetEntryFirstField02080fc4P17Container02080fc4ii(struct Container02080fc4* obj, int id, int value);
+void SetEntryFirstField02080fc4(struct Container02080fc4* obj, int id, int value);
 extern "C" int func_020dd4c4(int id, void* node);
 extern "C" int func_020dcc98(int combatantId);
 extern "C" int func_ov003_021753a0(void* obj, int id, void* a, void* b);
@@ -127,7 +127,7 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
     _Z35SetEntryLowNibbleAndElement02080c68Pvii(elemObj, group, 0);
     _Z22SetSublistEntriesFlag1Pvi(elemObj, group);
 
-    Node021769ec* node = _Z24FindElementByKey020dedd0P17Container020dedd0i(&self->list, self->party.key);
+    Node021769ec* node = FindElementByKey020dedd0(&self->list, self->party.key);
     bool valid = false;
     if (node != NULL) {
         valid = IsKindValid(node);
@@ -141,14 +141,14 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
             if (member != NULL) {
                 value = *(int*)((char*)member + 0x134);
             }
-            _Z26SetEntryFirstField02080f8cP17Container02080f8cii((struct Container02080f8c*)elemObj, id0, value);
+            SetEntryFirstField02080f8c((struct Container02080f8c*)elemObj, id0, value);
             SetEntryHighNibble0x13((struct Container02080cc0*)elemObj, id0, func_020dcc98(id));
-            _Z24SetEntryFlagById02080b40Pvi(elemObj, id0);
+            SetEntryFlagById02080b40(elemObj, id0);
 
             if (ready != 0) {
                 SetEntryHighNibble0x13((struct Container02080cc0*)elemObj, id4, 3);
                 SetEntryHalfword0xe(elemObj, id4, 0xb);
-                _Z24SetEntryFlagById02080b40Pvi(elemObj, id4);
+                SetEntryFlagById02080b40(elemObj, id4);
             } else {
                 SetEntryHighNibble0x13((struct Container02080cc0*)elemObj, id4, 0xf);
                 int index = data_ov003_0217fb18[node->kind];
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
                 short have = GetHalfwordEntryFromField150((Field150Holder02052df8*)member, index);
                 if (have == node->count) {
                     SetEntryHalfword0xe(elemObj, id4, 0x22);
-                    _Z24SetEntryFlagById02080b40Pvi(elemObj, id4);
+                    SetEntryFlagById02080b40(elemObj, id4);
                 } else {
                     unsigned short cur;
                     unsigned short max;
@@ -171,11 +171,11 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
                             nibble = 9;
                         }
                         SetEntryHighNibble0x13((struct Container02080cc0*)elemObj, id2, nibble);
-                        _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((struct Container02080fa8*)elemObj, id1, cur);
-                        _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((struct Container02080fa8*)elemObj, id2, max);
-                        _Z24SetEntryFlagById02080b40Pvi(elemObj, id1);
-                        _Z24SetEntryFlagById02080b40Pvi(elemObj, id2);
-                        _Z24SetEntryFlagById02080b40Pvi(elemObj, id3);
+                        SetEntryFirstField02080fa8((struct Container02080fa8*)elemObj, id1, cur);
+                        SetEntryFirstField02080fa8((struct Container02080fa8*)elemObj, id2, max);
+                        SetEntryFlagById02080b40(elemObj, id1);
+                        SetEntryFlagById02080b40(elemObj, id2);
+                        SetEntryFlagById02080b40(elemObj, id3);
                     } else {
                         float fcur;
                         float fmax;
@@ -188,11 +188,11 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
                             nibble = 9;
                         }
                         SetEntryHighNibble0x13((struct Container02080cc0*)elemObj, id7, nibble);
-                        _Z26SetEntryFirstField02080fc4P17Container02080fc4ii((struct Container02080fc4*)elemObj, id6, *(int*)&fcur);
-                        _Z26SetEntryFirstField02080fc4P17Container02080fc4ii((struct Container02080fc4*)elemObj, id7, *(int*)&fmax);
-                        _Z24SetEntryFlagById02080b40Pvi(elemObj, id6);
-                        _Z24SetEntryFlagById02080b40Pvi(elemObj, id7);
-                        _Z24SetEntryFlagById02080b40Pvi(elemObj, id3);
+                        SetEntryFirstField02080fc4((struct Container02080fc4*)elemObj, id6, *(int*)&fcur);
+                        SetEntryFirstField02080fc4((struct Container02080fc4*)elemObj, id7, *(int*)&fmax);
+                        SetEntryFlagById02080b40(elemObj, id6);
+                        SetEntryFlagById02080b40(elemObj, id7);
+                        SetEntryFlagById02080b40(elemObj, id3);
                     }
                 }
             }
@@ -206,7 +206,7 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
         }
 
         if (node->tier != 0) {
-            _Z24SetEntryFlagById02080b40Pvi(elemObj, id5);
+            SetEntryFlagById02080b40(elemObj, id5);
             SetEntryHalfword0xe(elemObj, id5, (short)(node->tier + 0x2f));
         }
     } else {

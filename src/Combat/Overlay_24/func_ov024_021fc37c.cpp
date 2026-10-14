@@ -5,7 +5,7 @@
 extern "C" int func_ov024_021fe698(void* obj, int arg);
 extern "C" void func_ov024_021f9874(void* obj, void* buf, int zero, int val);
 struct FieldObj_021fc498;
-extern "C" int _Z23GetFieldNibble_021fc498P17FieldObj_021fc498(struct FieldObj_021fc498* obj);
+int GetFieldNibble_021fc498(struct FieldObj_021fc498* obj);
 
 struct Sub_021fc37c {
 	char pad[4];
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov024_021fc37c(struct Obj_021fc37c* obj) {
 		threshold = 0.6f;
 		flag = 1;
 	}
-	if (_Z23GetFieldNibble_021fc498P17FieldObj_021fc498((struct FieldObj_021fc498*)c) <= 2) {
+	if (GetFieldNibble_021fc498((struct FieldObj_021fc498*)c) <= 2) {
 		threshold = 0.8f;
 		flag = 1;
 	}

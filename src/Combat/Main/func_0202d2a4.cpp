@@ -5,7 +5,7 @@ extern BattleState0202d2a4 data_021015a0;
 extern char data_02101f80[], data_021017a0[];
 extern "C" void func_0202d3e0();
 void SetField0x48UnlessState9Or10(int);
-extern "C" int _Z24BuildAndDispatch020d5898iiiitt(int, int, int, int, unsigned short, unsigned short);
+int BuildAndDispatch020d5898(int, int, int, int, unsigned short, unsigned short);
 // USA: func_0202d2a4
 extern "C" ARM void func_0202d2a4(BattleInput0202d2a4* input) {
     if (input->status) {
@@ -18,7 +18,7 @@ extern "C" ARM void func_0202d2a4(BattleInput0202d2a4* input) {
         if (input->command == 8) {}
         else if (input->command == 7) {
             data_021015a0.state = 4;
-            int result = _Z24BuildAndDispatch020d5898iiiitt((int)func_0202d3e0, (int)data_02101f80, (unsigned short)data_021015a0.field2c, (int)data_021017a0, (unsigned short)data_021015a0.field38, 1);
+            int result = BuildAndDispatch020d5898((int)func_0202d3e0, (int)data_02101f80, (unsigned short)data_021015a0.field2c, (int)data_021017a0, (unsigned short)data_021015a0.field38, 1);
             if (result == 2) result = 1;
             else { SetField0x48UnlessState9Or10(result); result = 0; }
             if (result == 0) data_021015a0.state = 3;

@@ -7,7 +7,7 @@
 #include "Filesystem/BackgroundLoader.h"
 
 extern "C" int func_ov009_02184a18(int handle);
-extern "C" void _Z20ResetXYField0203aa08Pv(void* p);
+void ResetXYField0203aa08(void* p);
 extern "C" void func_020bbd9c(void);
 extern int data_02108760;
 
@@ -24,6 +24,6 @@ ARM void ReleaseLocksAndReset_0218baf8(struct Obj0218baf8* obj) {
     if (func_ov009_02184a18(obj->field40) != 0) {
         obj->fieldb8 = 1;
     }
-    _Z20ResetXYField0203aa08Pv(&data_02108760);
+    ResetXYField0203aa08(&data_02108760);
     func_020bbd9c();
 }

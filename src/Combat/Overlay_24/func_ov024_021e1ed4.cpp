@@ -14,7 +14,7 @@ extern "C" int func_020877c0(void* stats, int delta);
 void UpdateCombatantDefense(int random, int combatantId);
 void UpdateCombatantAttack(int random, int combatantId);
 extern "C" void* func_ov000_0215e958(void* a0);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 struct Params_021e1ed4 {
@@ -42,7 +42,7 @@ extern "C" ARM void* func_ov024_021e1ed4(struct Obj_021e1ed4* obj, int unused, i
 		changed = 1;
 		int delta = func_020878b4(c->currentStats_, 1);
 		UpdateCombatantDefense((int)obj->field0x10, id);
-		_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, func_ov024_021e95d4(obj, id, params, 0, delta, 1, 1));
+		AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, func_ov024_021e95d4(obj, id, params, 0, delta, 1, 1));
 	}
 	if (CanAdjustStatStageBit21((StatStageStruct02087e18*)c->currentStats_, 0)) {
 		changed = 1;
@@ -53,16 +53,16 @@ extern "C" ARM void* func_ov024_021e1ed4(struct Obj_021e1ed4* obj, int unused, i
 			case 0: msg = 0x1af; break;
 			default: msg = 0x1b1; break;
 		}
-		_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, msg);
+		AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, msg);
 	}
 	if (CanAdjustField0x58(c->currentStats_, 0)) {
 		changed = 1;
 		int delta = func_020877c0(c->currentStats_, 1);
 		UpdateCombatantAttack((int)obj->field0x10, id);
-		_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, func_ov024_021e94c4(obj, id, params, 0, delta, 1, 1));
+		AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, func_ov024_021e94c4(obj, id, params, 0, delta, 1, 1));
 	}
 	if (!changed) {
-		_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, (unsigned short)params->b);
+		AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, (unsigned short)params->b);
 	}
 	struct Flag_021e1ed4* fl = (struct Flag_021e1ed4*)((char*)obj->field0xc + 0x1c);
 	func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, fl->flag != 0);

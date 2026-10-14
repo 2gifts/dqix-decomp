@@ -50,8 +50,8 @@ extern "C" void* _Z25LoadFileIntoNewAllocationPKcR13SafeAllocatorPj(const char* 
 extern "C" void _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo(struct Object3DState0208f588* obj, struct ObjectArchiveLoadInfo0208f588* info);
 extern "C" void _ZN8Object3D10MakeHiddenEv(struct Object3DState0208f588* obj);
 
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 
 // USA: func_0208f588
 extern "C" ARM int func_0208f588(struct ArchiveHolder0208f588* self, void* allocator, char* pairObj) {
@@ -89,10 +89,10 @@ extern "C" ARM int func_0208f588(struct ArchiveHolder0208f588* self, void* alloc
     info.data = self->data;
     info.size = self->size;
 
-    _Z25RestorePairTables0207df90Pc(pairObj);
+    RestorePairTables0207df90(pairObj);
     _ZN8Object3D10InitializeEv(&self->object);
     _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo(&self->object, &info);
     _ZN8Object3D10MakeHiddenEv(&self->object);
-    _Z24BackupPairTables0207dfacPc(pairObj);
+    BackupPairTables0207dfac(pairObj);
     return 1;
 }

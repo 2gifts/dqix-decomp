@@ -44,36 +44,36 @@ extern "C" int func_0206e558(void* obj);
 extern "C" int func_0202c508(void* p);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 extern "C" void __clear(void* dst, unsigned int size);
-extern "C" void _Z19ClearStruct020a8170P14Struct020a8170(Struct020a8170* s);
+void ClearStruct020a8170(Struct020a8170* s);
 extern "C" void func_020a818c(void* cont, SafeAllocator* alloc);
 extern "C" void func_020a8304(void* cont);
-extern "C" Entry020a83fc* _Z21FindEntryById020a83fcP17Container020a83fci(Container020a83fc* cont, int id);
+Entry020a83fc* FindEntryById020a83fc(Container020a83fc* cont, int id);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" void func_ov017_021d1a18(short a, short b, int c, int d);
-extern "C" void _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(unsigned short a, unsigned short b);
-extern "C" void _Z18InitStruct02070378Pc(char* obj);
-extern "C" void _Z27InitAndResetHeader_0219e310Phi(unsigned char* node, int v);
+void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a, unsigned short b);
+void InitStruct02070378(char* obj);
+void InitAndResetHeader_0219e310(unsigned char* node, int v);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
-extern "C" void _Z22ClearFlagBytes02017d7cPv(void* obj);
+void ClearFlagBytes02017d7c(void* obj);
 void ClearFlag0x1ceBit0x4(unsigned char* obj);
 void SetFlag0x1ceBit0x4(unsigned char* obj);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void _Z24ReinitController02043204Pc(char* obj);
+int GetGlobalField0x1c020421a0(void);
+void ReinitController02043204(char* obj);
 extern "C" int func_ov017_0219ff58(void* base, int a, int b, int c);
-extern "C" void _Z21InitObjState_021b2174Ph(unsigned char* obj);
-extern "C" void _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc(S021b2ba0* obj, char* name);
-extern "C" void _Z25SetFields30And34_021b2bd0Pvii(void* obj, int a, int b);
-extern "C" void _Z16SetBit4_021b2bf4P9S021b2bf4j(S021b2bf4* obj, unsigned int v);
-extern "C" void _Z16SetBit5_021b2c0cP9S021b2c0cj(S021b2c0c* obj, unsigned int v);
-extern "C" void _Z16SetBit3_021b2bdcP9S021b2bdcj(S021b2bdc* obj, unsigned int v);
+void InitObjState_021b2174(unsigned char* obj);
+void SetNameChecked_021b2ba0(S021b2ba0* obj, char* name);
+void SetFields30And34_021b2bd0(void* obj, int a, int b);
+void SetBit4_021b2bf4(S021b2bf4* obj, unsigned int v);
+void SetBit5_021b2c0c(S021b2c0c* obj, unsigned int v);
+void SetBit3_021b2bdc(S021b2bdc* obj, unsigned int v);
 int LoadFileIntoMemory(const char* path, void* buffer, unsigned int* outLength);
-extern "C" void _Z23ResetListHeader020727d8P12List020727d8(List020727d8* list);
+void ResetListHeader020727d8(List020727d8* list);
 int GetField5cb0Value(char* obj);
-extern "C" void _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(void* list, StreamHeader* header, int length, int id, void* out, unsigned char index);
+void SubmitAndRunScript02072928(void* list, StreamHeader* header, int length, int id, void* out, unsigned char index);
 int CompareStrings(const char* a, const char* b);
 extern "C" int func_02005a94(signed char* s);
-extern "C" void _Z20InitState16_021ba90cP11Obj021ba90c(Obj021ba90c* p);
-extern "C" void _Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv(SafeAllocator* a, void* target);
+void InitState16_021ba90c(Obj021ba90c* p);
+void AllocateAndCopyBuf20_021689d8(SafeAllocator* a, void* target);
 
 extern char data_ov017_021d75d0;
 extern char data_ov017_021d75dc;
@@ -119,10 +119,10 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
             alloc.ResetAllocatorPointer();
             alloc.CreateTypeA(buf, 0x533);
             char cont[0x10];
-            _Z19ClearStruct020a8170P14Struct020a8170((Struct020a8170*)cont);
+            ClearStruct020a8170((Struct020a8170*)cont);
             func_020a818c(cont, &alloc);
             func_020a8304(cont);
-            Entry020a83fc* entry = _Z21FindEntryById020a83fcP17Container020a83fci((Container020a83fc*)cont, sceneId);
+            Entry020a83fc* entry = FindEntryById020a83fc((Container020a83fc*)cont, sceneId);
             if (entry) {
                 *(unsigned short*)(field + kFieldXOffset) = entry->x;
                 *(unsigned short*)(field + kFieldYOffset) = entry->y;
@@ -138,23 +138,23 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         if (sceneId == 0x119a) {
             *(unsigned short*)(field + kFieldHalfwordAOffset) = 1;
             *(unsigned short*)(field + kFieldHalfwordBOffset) = 0;
-            _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(1, 0);
+            SetHalfFieldsAndEnqueueIfActive_021d1c2c(1, 0);
         }
     }
 
     if (node[2] == 0) {
-        _Z18InitStruct02070378Pc(record);
+        InitStruct02070378(record);
         *(unsigned short*)record = sceneId;
         record[0xc] = 0;
-        _Z27InitAndResetHeader_0219e310Phi(node, 0);
+        InitAndResetHeader_0219e310(node, 0);
         AppendNodeToTail(list, (TailNode020469b4*)node);
     } else if (node[3] == 0) {
-        _Z18InitStruct02070378Pc(record);
+        InitStruct02070378(record);
         *(unsigned short*)record = sceneId;
         record[0xc] = 0;
     }
 
-    _Z22ClearFlagBytes02017d7cPv(field);
+    ClearFlagBytes02017d7c(field);
     ((unsigned char*)record)[0x6e] |= 0x20;
     for (int i = 0; i < *(unsigned char*)(party + 0xf7c); i++) {
         GameObject* member = gs->GetPartyMemberByIndex(*(unsigned char*)(party + i + 0xf78));
@@ -173,17 +173,17 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         return;
     }
 
-    char* controller = (char*)_Z26GetGlobalField0x1c020421a0v();
+    char* controller = (char*)GetGlobalField0x1c020421a0();
     memset(*(void**)(controller + kControllerBufferOffset), 0, kControllerBufferSize);
-    _Z24ReinitController02043204Pc(controller);
+    ReinitController02043204(controller);
     if (func_ov017_0219ff58(res, 0, 0, 1)) {
         unsigned char* obj = (unsigned char*)res->unknown_ptr_array_3afc[0x14];
-        _Z21InitObjState_021b2174Ph(obj);
-        _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)obj, &data_ov017_021d75d0);
-        _Z25SetFields30And34_021b2bd0Pvii(obj, (int)_Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv, OVERLAY_ID(4));
-        _Z16SetBit4_021b2bf4P9S021b2bf4j((S021b2bf4*)obj, 1);
-        _Z16SetBit5_021b2c0cP9S021b2c0cj((S021b2c0c*)obj, 1);
-        _Z16SetBit3_021b2bdcP9S021b2bdcj((S021b2bdc*)obj, 0);
+        InitObjState_021b2174(obj);
+        SetNameChecked_021b2ba0((S021b2ba0*)obj, &data_ov017_021d75d0);
+        SetFields30And34_021b2bd0(obj, (int)AllocateAndCopyBuf20_021689d8, OVERLAY_ID(4));
+        SetBit4_021b2bf4((S021b2bf4*)obj, 1);
+        SetBit5_021b2c0c((S021b2c0c*)obj, 1);
+        SetBit3_021b2bdc((S021b2bdc*)obj, 0);
         AppendNodeToTail(list, (TailNode020469b4*)obj);
         return;
     }
@@ -197,7 +197,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
     }
 
     char scripts[8];
-    _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)scripts);
+    ResetListHeader020727d8((List020727d8*)scripts);
     char result[8];
     __clear(result, 8);
     short scriptId = *(int*)(party + 0x2c94);
@@ -212,8 +212,8 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         __clear(from, 8);
         char to[8];
         __clear(to, 8);
-        _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(scripts, (StreamHeader*)&data_0211e33c, length, scriptId, from, fromIndex);
-        _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(scripts, (StreamHeader*)&data_0211e33c, length, scriptId, to, toIndex);
+        SubmitAndRunScript02072928(scripts, (StreamHeader*)&data_0211e33c, length, scriptId, from, fromIndex);
+        SubmitAndRunScript02072928(scripts, (StreamHeader*)&data_0211e33c, length, scriptId, to, toIndex);
         int start = 0;
         int end = 0;
         if (CompareStrings(from, &data_ov017_021d75fa)) {
@@ -235,7 +235,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
             } else {
                 index = (unsigned int)j * 4 + 3;
             }
-            _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(scripts, (StreamHeader*)&data_0211e33c, length, scriptId, result, index);
+            SubmitAndRunScript02072928(scripts, (StreamHeader*)&data_0211e33c, length, scriptId, result, index);
             break;
         }
     }
@@ -246,7 +246,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         state = func_02005a94((signed char*)result);
     }
     if (state != 3) {
-        _Z20InitState16_021ba90cP11Obj021ba90c((Obj021ba90c*)marker);
+        InitState16_021ba90c((Obj021ba90c*)marker);
         marker[0x20] = mode;
         marker[0x21] = state;
         AppendNodeToTail(list, (TailNode020469b4*)marker);

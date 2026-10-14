@@ -5,7 +5,7 @@ extern "C" void func_ov031_0220da1c(int a);
 extern "C" void func_ov031_0220db6c(void);
 extern "C" void func_ov031_0220d984(int a, void* b, int c, int d);
 extern "C" void func_ov031_0220f394(int a);
-extern "C" void _Z23CallCallback28_0220ef9cPc(char* p);
+void CallCallback28_0220ef9c(char* p);
 
 extern void* data_ov031_0224e53c;
 
@@ -40,7 +40,7 @@ extern "C" ARM void func_ov031_0220e584(Msg0220e584* self) {
 			int x = h;
 			func_ov031_0220f394((x >> 8) & 0xff);
 			InvalidateDataCacheRange(self->field8, 0x620);
-			_Z23CallCallback28_0220ef9cPc((char*)self->field8);
+			CallCallback28_0220ef9c((char*)self->field8);
 			break;
 		}
 		default: {

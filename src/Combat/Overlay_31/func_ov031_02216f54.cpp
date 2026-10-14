@@ -13,7 +13,7 @@ extern Global02216f54 data_ov031_0224e5e8;
 extern char data_ov031_02249bd8, data_ov031_02249be8, data_ov031_0224e5f4;
 extern "C" int func_ov031_02218b8c(void*, int);
 extern "C" int func_ov031_0221712c();
-extern "C" int _Z15Update_0221c208Pvi(void*, int);
+int Update_0221c208(void*, int);
 extern "C" void func_ov031_0221c258(void*);
 extern "C" bool func_ov031_0221c1c4(int);
 // USA: func_ov031_02216f54
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov031_02216f54() {
         if (state == 0x4e22) {
             void* storage = allocate(&data_ov031_02249bd8, 0x71f);
             if (!storage) { data_ov031_0224e5e8.object->state = 0x4e84; return 2; }
-            if (_Z15Update_0221c208Pvi(&data_ov031_0224e5f4, ((int)storage + 31) & ~31) != 1) {
+            if (Update_0221c208(&data_ov031_0224e5f4, ((int)storage + 31) & ~31) != 1) {
                 release(&data_ov031_02249be8, storage, 0);
                 data_ov031_0224e5e8.object->state = 0x4e84;
                 return 15;

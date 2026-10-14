@@ -4,7 +4,7 @@ extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
 extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(void* self, int id);
 
 struct HandleState_02188d10;
-extern "C" void _Z20ResetHandle_02188d10P20HandleState_02188d10(HandleState_02188d10* h);
+void ResetHandle_02188d10(HandleState_02188d10* h);
 
 // USA: func_ov014_02184d08  (semantic: CancelPendingTasks_02184d08)
 extern "C" ARM void func_ov014_02184d08(char* obj) {
@@ -24,7 +24,7 @@ extern "C" ARM void func_ov014_02184d08(char* obj) {
                 ((short*)(obj + 0x86))[i] = -1;
             }
         }
-        _Z20ResetHandle_02188d10P20HandleState_02188d10((HandleState_02188d10*)(obj + 0x1c));
+        ResetHandle_02188d10((HandleState_02188d10*)(obj + 0x1c));
         *(unsigned char*)(obj + 0x7f) = 0;
     }
     unsigned char flags2 = *(unsigned char*)(obj + 0x81);

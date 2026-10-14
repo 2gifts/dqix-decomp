@@ -4,7 +4,7 @@
 #include "Grotto/Main/ActiveGrottoClass.h"
 
 GameObject* GetCombatantWithFlag0x400(GameState* gameState, int combatantId);
-extern "C" void* _Z29FindEntryForCombatant02153758Pvi(void* obj, int idx);
+void* FindEntryForCombatant02153758(void* obj, int idx);
 extern "C" char* func_02012fe4(void);
 
 struct MonsterEntry_02159dbc {
@@ -25,7 +25,7 @@ extern "C" ARM int func_ov000_02159dbc(char* battle, int combatantId) {
         return 1;
     }
     struct MonsterEntry_02159dbc* entry =
-        (struct MonsterEntry_02159dbc*)_Z29FindEntryForCombatant02153758Pvi(battle, combatantId);
+        (struct MonsterEntry_02159dbc*)FindEntryForCombatant02153758(battle, combatantId);
     if (entry == 0) {
         return 1;
     }

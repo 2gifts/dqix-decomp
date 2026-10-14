@@ -4,7 +4,7 @@
 
 struct Container02070e60;
 struct Element_021e1cbc { char pad0[8]; void* field8; };
-extern "C" Element_021e1cbc* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(Container02070e60* container, int key);
+Element_021e1cbc* SearchWithLow15Comparator02070fd0(Container02070e60* container, int key);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
@@ -46,7 +46,7 @@ extern "C" ARM void* func_ov024_021e1cbc(Obj_021e1cbc* obj, int unused, int id, 
 	int found = 0;
 	char* data = obj->battle->data;
 	for (int i = 0; i < obj->battle->flags.count; i++) {
-		Element_021e1cbc* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i((Container02070e60*)(data + 0x684), obj->battle->parties[i].key);
+		Element_021e1cbc* e = SearchWithLow15Comparator02070fd0((Container02070e60*)(data + 0x684), obj->battle->parties[i].key);
 		if (e && e->field8) found = 1;
 	}
 	if (!found) {

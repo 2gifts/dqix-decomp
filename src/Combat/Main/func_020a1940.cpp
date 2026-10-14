@@ -4,7 +4,7 @@
 #include "System/Mutex.h"
 
 extern "C" int func_020a1bb4(unsigned int id);
-extern "C" void _Z22DispatchByFlag020d9834i(int flag);
+void DispatchByFlag020d9834(int flag);
 bool LoadCompressedOverlay(const OverlayMetadata& overlay);
 void DecompressAndStaticInitializeOverlay(const OverlayMetadata& overlay);
 
@@ -37,7 +37,7 @@ extern "C" ARM int func_020a1940(int id) {
         if (mappedOverlay != id) {
             func_020a1bb4(mappedOverlay);
             while (data_01ffd340 != 0) {
-                _Z22DispatchByFlag020d9834i(0);
+                DispatchByFlag020d9834(0);
             }
             data_01ffd340 = 1;
             LockResourceMutex();

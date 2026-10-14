@@ -1,12 +1,12 @@
 #include <globaldefs.h>
 #include <GameState/GameState.h>
 
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState*);
+void* GetPtrField0x2a04(GameState*);
 
 extern "C" ARM void func_ov000_0217ee7c(signed char* indices, signed char* count,
                                      int removedIndex, int mode)
 {
-    unsigned char* inventory = static_cast<unsigned char*>(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()));
+    unsigned char* inventory = static_cast<unsigned char*>(GetPtrField0x2a04(GameState::GetInstance()));
     signed char remaining = *count;
     switch (mode) {
     case 0:

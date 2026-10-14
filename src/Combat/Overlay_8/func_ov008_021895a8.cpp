@@ -128,19 +128,19 @@ extern "C" void func_ov008_0218aa24(void* self);
 char* GetWord0x0(int* gameState);
 int IsField0Null(void** field);
 void SetBitsInWord(unsigned int* word, unsigned int bits);
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
+unsigned int* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int* field, unsigned int bits);
-extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem* GetGlobalField0x1c020421a0();
 PartyMemberData* GetFieldAt0x150(unsigned char* member);
 void SetWord0x18ClearByte0x1f(unsigned char* background, int);
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(AllocTarget0204b12c* background, SafeAllocator* allocator);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8* background, int, int);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8* background, void*);
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(Obj0204c7a8* canvas, SafeAllocator* allocator, int pixels, unsigned int size);
-extern "C" void _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h(Struct_0205cf78* window, Elem_0205cf78* canvases, unsigned char count);
-extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198* sprite);
-extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(ClearTarget0205a234* list);
-extern "C" void _Z18InitStruct0205a444Pc(char* renderer);
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* background, SafeAllocator* allocator);
+void DispatchViaTable0204b5e8(Obj0204b5e8* background, int, int);
+void FlushAndDispatchList0204b0e8(List0204b0e8* background, void*);
+void AllocateBuffer0204c7a8(Obj0204c7a8* canvas, SafeAllocator* allocator, int pixels, unsigned int size);
+void LinkArrayPrevPointers0205cf78(Struct_0205cf78* window, Elem_0205cf78* canvases, unsigned char count);
+void Init0205a198(Struct0205a198* sprite);
+void ClearField0And40205a234(ClearTarget0205a234* list);
+void InitStruct0205a444(char* renderer);
 int CountActiveEntries(ActiveEntry02046900* archive);
 void* FindRecordByIndex(Rec020467f0* archive, int index, void** name, int* size);
 
@@ -231,9 +231,9 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
 #endif
             return;
         SetBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
-        OrBitsIntoField0(_Z27GetDataPtr02114e04_020d6c00v(), 0xd);
+        OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0xd);
         unsigned int female;
-        self->text_ = (char*)_Z26GetGlobalField0x1c020421a0v()->unk_5c;
+        self->text_ = (char*)GetGlobalField0x1c020421a0()->unk_5c;
         female = 0;
         GuestData* guest = self->guest_;
         if (guest == NULL)
@@ -308,8 +308,8 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
                 background->unk_1c_0_ = 0;
                 background->unk_1c_4_ = layers[i];
                 func_0204b5b4(background, priorities[i]);
-                _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)background, &self->allocator_);
-                _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)background, 0, 0);
+                AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)background, &self->allocator_);
+                DispatchViaTable0204b5e8((Obj0204b5e8*)background, 0, 0);
             }
             REG_BG1CNT = (REG_BG1CNT & 0x43) | 0x1d00;
             REG_BG2CNT = (REG_BG2CNT & 0x43) | 0x1e00;
@@ -340,22 +340,22 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
             {
                 background = &self->backgrounds_[i];
                 func_0204bc74(background, 0, 0, 0, 0x20, 0x19, 0);
-                _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)background, 0);
+                FlushAndDispatchList0204b0e8((List0204b0e8*)background, 0);
             }
             self->pixels_ = self->allocator_.Allocate(0x800);
-            _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8*)&self->canvas_, &self->allocator_, (int)self->pixels_, 0x100);
+            AllocateBuffer0204c7a8((Obj0204c7a8*)&self->canvas_, &self->allocator_, (int)self->pixels_, 0x100);
             self->canvas_.background_ = &self->backgrounds_[1];
             self->window_.background_ = &self->backgrounds_[0];
             self->window_.unk_b2 = 2;
-            _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78*)&self->window_, (Elem_0205cf78*)&self->canvas_, 1);
+            LinkArrayPrevPointers0205cf78((Struct_0205cf78*)&self->window_, (Elem_0205cf78*)&self->canvas_, 1);
             for (unsigned char i = 0; i < 8; i++)
             {
                 int offset = i * sizeof(Sprite);
-                _Z12Init0205a198P14Struct0205a198((Struct0205a198*)((char*)self->sprites_ + offset));
+                Init0205a198((Struct0205a198*)((char*)self->sprites_ + offset));
                 ((Sprite*)((char*)self->sprites_ + offset))->unk_22 = i + 4;
             }
-            _Z23ClearField0And40205a234P19ClearTarget0205a234((ClearTarget0205a234*)self->animations_);
-            _Z18InitStruct0205a444Pc((char*)self->renderer_);
+            ClearField0And40205a234((ClearTarget0205a234*)self->animations_);
+            InitStruct0205a444((char*)self->renderer_);
             self->renderer_->unk_50 = 0;
             SpriteRenderer* renderer = self->renderer_;
             renderer->SetSprites(self->sprites_, 8);

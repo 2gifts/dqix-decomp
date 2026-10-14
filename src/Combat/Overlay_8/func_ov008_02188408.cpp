@@ -15,13 +15,13 @@ extern "C" int func_020420e8(const char* text, int large);
 extern "C" char* func_0205ec34();
 extern "C" void func_02046380(MessageSystem* messages);
 
-extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem* GetGlobalField0x1c020421a0();
 void AppendXYTag(char* text, int x, int y);
 void AppendYTag(char* text, int y);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
-extern "C" void _Z23AppendFormatted0204201cPcii(char* text, int append, int);
+void AppendString02042058(char* text, const char* append);
+void AppendFormatted0204201c(char* text, int append, int);
 int TestBitInByteArray(int, unsigned char*, int);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 extern "C" void _Z23LoadBattleBlock020ac4c0Pv(void* records);
 int GetFieldPercentOver307(BattleRecordSnapshot* records);
 int GetFieldPercentOver944(BattleRecordSnapshot* records);
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
 {
     if (text == NULL)
         return;
-    MessageSystem* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     if (records != NULL)
     {
         Hero* hero = (Hero*)GameState::GetInstance()->GetProtagonist();
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
             x = 0;
         AppendXYTag(text, x, 6);
         if (name != NULL)
-            _Z20AppendString02042058PcPKc(text, name);
+            AppendString02042058(text, name);
         return;
     }
     int count = 3;
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
         for (int i = 0; i < count; i++)
         {
             AppendXYTag(text, 4, i * 15 + 4);
-            _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, (short)(i + 0x82)));
+            AppendString02042058(text, GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x82)));
         }
     }
     else if (kind == 1)
@@ -174,7 +174,7 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
         for (int i = 0; i < count; i++)
         {
             AppendYTag(text, i * 15 + 4);
-            _Z23AppendFormatted0204201cPcii(text, (int)_Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, (short)(i + 0x8c)), 0x18);
+            AppendFormatted0204201c(text, (int)GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x8c)), 0x18);
         }
     }
 }

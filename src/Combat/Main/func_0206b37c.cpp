@@ -14,18 +14,18 @@ struct Entry0204254c {
     char pad_6[2];
 };
 
-extern "C" int _Z24GetWordFromTable02042648i(int);
-extern "C" bool _Z20IsHighByteFF02044494PvS_(void*, void*);
-extern "C" int _Z16Dispatch02044420PvS_(void*, void*);
-extern "C" int _Z22LookupKeyValue020425e4iii(int, int, int);
-extern "C" Entry0204254c* _Z22FindEntryByKey0204254cii(int, int);
-extern "C" int _Z27FindEntryIndexByKey020424e4ii(int, int);
-extern "C" int _Z25IsHalfwordInRange02067ad8iPv(int, void*);
+int GetWordFromTable02042648(int);
+bool IsHighByteFF02044494(void*, void*);
+int Dispatch02044420(void*, void*);
+int LookupKeyValue020425e4(int, int, int);
+Entry0204254c* FindEntryByKey0204254c(int, int);
+int FindEntryIndexByKey020424e4(int, int);
+int IsHalfwordInRange02067ad8(int, void*);
 
 // USA: func_0206b37c
 extern "C" ARM int func_0206b37c(TextContext* context, char* text) {
     if (!text) return 0;
-    unsigned char defaultWidth = _Z24GetWordFromTable02042648i(context->fontTable);
+    unsigned char defaultWidth = GetWordFromTable02042648(context->fontTable);
     int current = 0xff;
     unsigned char previous = current;
     int payloadWords;
@@ -33,14 +33,14 @@ extern "C" ARM int func_0206b37c(TextContext* context, char* text) {
     int width = 0;
     unsigned short command;
     short argument;
-    while (!_Z25IsHalfwordInRange02067ad8iPv((int)context, text)) {
+    while (!IsHalfwordInRange02067ad8((int)context, text)) {
         memcpy(&command, text, 2);
-        if (_Z20IsHighByteFF02044494PvS_(context, &command)) {
-            payloadWords = _Z16Dispatch02044420PvS_(context, &command);
+        if (IsHighByteFF02044494(context, &command)) {
+            payloadWords = Dispatch02044420(context, &command);
             switch (command) {
             case 0xff19:
                 previous = 0xff;
-                width += _Z22LookupKeyValue020425e4iii(previous, current, context->fontTable);
+                width += LookupKeyValue020425e4(previous, current, context->fontTable);
                 break;
             case 0xff20:
                 previous = 0xff;
@@ -57,10 +57,10 @@ extern "C" ARM int func_0206b37c(TextContext* context, char* text) {
         } else {
             step = 1;
             int glyphWidth = defaultWidth;
-            Entry0204254c* entry = _Z22FindEntryByKey0204254cii((int)text, context->fontTable);
+            Entry0204254c* entry = FindEntryByKey0204254c((int)text, context->fontTable);
             if (entry) {
-                current = (unsigned char)_Z27FindEntryIndexByKey020424e4ii((int)text, context->fontTable);
-                width += _Z22LookupKeyValue020425e4iii(previous, current, context->fontTable);
+                current = (unsigned char)FindEntryIndexByKey020424e4((int)text, context->fontTable);
+                width += LookupKeyValue020425e4(previous, current, context->fontTable);
                 previous = current;
                 current = 0xff;
                 step = entry->size;

@@ -2,8 +2,8 @@
 
 struct Args0223d884 { int a, b, c, d; };
 struct Args0223bf2c { int a, b, c, d; };
-extern "C" void _Z32ForwardFourArgsAsStruct_0223d88412Args0223d884(Args0223d884);
-extern "C" void _Z32ForwardFourArgsAsStruct_0223bf2c12Args0223bf2c(Args0223bf2c);
+void ForwardFourArgsAsStruct_0223d884(Args0223d884);
+void ForwardFourArgsAsStruct_0223bf2c(Args0223bf2c);
 extern "C" unsigned int func_ov031_0223cf70(void**);
 struct ResourcePair0223b870 {
     char pad_0[0x220];
@@ -15,12 +15,12 @@ extern ResourcePair0223b870* data_ov031_02290d28_arg;
 
 static inline void ReleaseFirstResource(void* resource) {
     typedef void (*ResourceRelease)(void*);
-    ResourceRelease release = (ResourceRelease)_Z32ForwardFourArgsAsStruct_0223d88412Args0223d884;
+    ResourceRelease release = (ResourceRelease)ForwardFourArgsAsStruct_0223d884;
     release(resource);
 }
 static inline void ReleaseSecondResource(void* resource) {
     typedef void (*ResourceRelease)(void*);
-    ResourceRelease release = (ResourceRelease)_Z32ForwardFourArgsAsStruct_0223bf2c12Args0223bf2c;
+    ResourceRelease release = (ResourceRelease)ForwardFourArgsAsStruct_0223bf2c;
     release(resource);
 }
 

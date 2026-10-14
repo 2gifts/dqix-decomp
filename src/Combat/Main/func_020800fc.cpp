@@ -50,11 +50,11 @@ struct Flags0208036c {
     unsigned int f0;
 };
 
-extern "C" void* _Z25FindSlotWithValue020810b4Phs(unsigned char* self, short val);
+void* FindSlotWithValue020810b4(unsigned char* self, short val);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
 extern "C" int func_02080e40(void* obj, int p1, int p2, int p3);
-extern "C" struct Node0208036c* _Z26FindEntryByShortId0207f6acP12List0207f6aci(struct List0207f6ac* list, int id);
-extern "C" struct Node0208036c* _Z22WalkListByMode0208036cPvP12Node0208036ciP13Flags0208036ch(void* unused, struct Node0208036c* start, int mode, struct Flags0208036c* flags, unsigned char setFlag);
+struct Node0208036c* FindEntryByShortId0207f6ac(struct List0207f6ac* list, int id);
+struct Node0208036c* WalkListByMode0208036c(void* unused, struct Node0208036c* start, int mode, struct Flags0208036c* flags, unsigned char setFlag);
 
 extern unsigned char data_02114e54[];
 
@@ -71,7 +71,7 @@ extern "C" ARM int func_020800fc(struct Ctx0208010c* self, short* outId, short i
     flags.f0 = 0;
     *outId = id;
     if (data_02114e54[0x55] != 0) {
-        slot = (struct Slot0208010c*)_Z25FindSlotWithValue020810b4Phs((unsigned char*)self, id);
+        slot = (struct Slot0208010c*)FindSlotWithValue020810b4((unsigned char*)self, id);
         if (slot != NULL) {
             SelectCoordsByFlag0x24(data_02114e54, &x, &y);
             ret = func_02080e40(self, slot->id, (short)x, (short)y);
@@ -98,7 +98,7 @@ extern "C" ARM int func_020800fc(struct Ctx0208010c* self, short* outId, short i
     if (sel == 0) {
         return flags.f0;
     }
-    e = _Z26FindEntryByShortId0207f6acP12List0207f6aci(&self->items, *outId);
+    e = FindEntryByShortId0207f6ac(&self->items, *outId);
     if (e == NULL) {
         return flags.f0;
     }
@@ -123,14 +123,14 @@ extern "C" ARM int func_020800fc(struct Ctx0208010c* self, short* outId, short i
     }
     if (node != NULL) {
         if (node->f2a & 2) {
-            node = _Z22WalkListByMode0208036cPvP12Node0208036ciP13Flags0208036ch(self, e, mode, &flags, setFlag);
+            node = WalkListByMode0208036c(self, e, mode, &flags, setFlag);
         }
         if (node != NULL) {
             *outId = node->f4;
         }
     } else {
         if (sel == 1) {
-            e = _Z22WalkListByMode0208036cPvP12Node0208036ciP13Flags0208036ch(self, e, mode, &flags, setFlag);
+            e = WalkListByMode0208036c(self, e, mode, &flags, setFlag);
         } else if (sel == 2 && setFlag != 0) {
             switch (mode) {
             case 0x10:

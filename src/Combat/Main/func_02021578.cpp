@@ -26,17 +26,17 @@ int IsAxisIntWithin16(struct AxisFloats0203b5a0* s, int axis);
 
 extern "C" int func_020420e8(void* p, int flag);
 
-extern "C" void _Z19TailForward0203b66cPc(char* obj);
-extern "C" void _Z21InitSubObject0203bd78Pc(char* obj);
-extern "C" void _Z25InitBattleContext0203bd24Pc(char* obj);
-extern "C" void _Z24SetArraySlotFlag0203b718Pviii(void* objPtr, int mode, int idx, int fillByte);
+void TailForward0203b66c(char* obj);
+void InitSubObject0203bd78(char* obj);
+void InitBattleContext0203bd24(char* obj);
+void SetArraySlotFlag0203b718(void* objPtr, int mode, int idx, int fillByte);
 extern "C" void func_0203ba74(void* obj);
 struct Struct0205a198;
-extern "C" void _Z12Init0205a198P14Struct0205a198(struct Struct0205a198* p);
-extern "C" void _Z18InitStruct0205a444Pc(char* obj);
+void Init0205a198(struct Struct0205a198* p);
+void InitStruct0205a444(char* obj);
 
-extern "C" int _Z26FormatAndCopyNames02020b98Pv(void* obj);
-extern "C" void _Z20ClearRecords02026644Pc(char* obj);
+int FormatAndCopyNames02020b98(void* obj);
+void ClearRecords02026644(char* obj);
 #if defined(jpn)
 extern "C" void func_020211b0(char* obj, int handle);
 #else
@@ -45,8 +45,8 @@ extern "C" void func_020211b0(char* obj, int* handle);
 #if defined(jpn)
 #else
 #endif
-extern "C" int _Z25InitAndCopyBuffer02023330Pvi(void* obj, int flag);
-extern "C" void _Z26InitFourEntrySlots02020aa0Pv(void* obj);
+int InitAndCopyBuffer02023330(void* obj, int flag);
+void InitFourEntrySlots02020aa0(void* obj);
 #if defined(jpn)
 extern "C" void func_02020fc4(void* obj, int handle, SafeAllocator* alloc);
 #else
@@ -57,7 +57,7 @@ extern "C" void func_0202445c(void* obj);
 extern "C" void func_ov017_02191234(void* obj);
 void DelayThenSyncBit0(void);
 extern "C" void func_0202343c(void* obj);
-extern "C" void _Z32MarkActiveCombatantSlots02026b7cPh(unsigned char* obj);
+void MarkActiveCombatantSlots02026b7c(unsigned char* obj);
 extern "C" void func_02026bdc(void* obj, int flag);
 
 extern const char* data_020ef460[];
@@ -107,7 +107,7 @@ extern "C" ARM void func_02021578(MapDisplay* self) {
             data_020ef460[0], (SafeAllocator*)0);
 #endif
         loader->AddFence();
-        self->namesTask = _Z26FormatAndCopyNames02020b98Pv(self);
+        self->namesTask = FormatAndCopyNames02020b98(self);
         self->fileTask984 = loader->QueueLoadFileInGP2(
             data_020ef460[REGION_VALUE(1, 2)],
             &data_020ef598, (SafeAllocator*)0);
@@ -141,17 +141,17 @@ extern "C" ARM void func_02021578(MapDisplay* self) {
         if (IsAxisIntWithin16((struct AxisFloats0203b5a0*)axis, 1) != 0) return;
         func_02020720(self);
         func_02020838(self);
-        _Z19TailForward0203b66cPc(table);
+        TailForward0203b66c(table);
         alloc->Reset();
-        _Z21InitSubObject0203bd78Pc(battleCtx);
-        _Z25InitBattleContext0203bd24Pc(battleCtx);
-        _Z24SetArraySlotFlag0203b718Pviii(table, 1, 0, 0);
-        _Z24SetArraySlotFlag0203b718Pviii(table, 1, 1, 0);
+        InitSubObject0203bd78(battleCtx);
+        InitBattleContext0203bd24(battleCtx);
+        SetArraySlotFlag0203b718(table, 1, 0, 0);
+        SetArraySlotFlag0203b718(table, 1, 1, 0);
         func_0203ba74(table);
         for (i0 = 0; i0 < 0x1c; i0++) {
-            _Z12Init0205a198P14Struct0205a198(&self->records[i0]);
+            Init0205a198(&self->records[i0]);
         }
-        _Z18InitStruct0205a444Pc((char*)&self->entryList);
+        InitStruct0205a444((char*)&self->entryList);
         self->entryList.active = 1;
         self->entryList.records = self->records;
         self->entryList.count = 0x1c;
@@ -193,7 +193,7 @@ extern "C" ARM void func_02021578(MapDisplay* self) {
         if (self->refreshRecords != 0) {
             self->field9b8 = 1;
             self->field9b9 = 0;
-            _Z20ClearRecords02026644Pc((char*)self);
+            ClearRecords02026644((char*)self);
         }
         loader->AddFence();
         sprintf(buf, &data_020ef5b9, self->name);
@@ -229,9 +229,9 @@ extern "C" ARM void func_02021578(MapDisplay* self) {
 #else
         char* vram = (char*)0x6600000;
         memcpy(self->savedTiles, vram + 0x2c20, 0x40);
-        _Z25InitAndCopyBuffer02023330Pvi(self, 1);
+        InitAndCopyBuffer02023330(self, 1);
 #endif
-        _Z26InitFourEntrySlots02020aa0Pv(self);
+        InitFourEntrySlots02020aa0(self);
         self->loadStage = self->loadStage + 1;
     }
     if (self->loadStage == REGION_VALUE(5, 6)) {
@@ -258,7 +258,7 @@ extern "C" ARM void func_02021578(MapDisplay* self) {
         DelayThenSyncBit0();
         func_0202343c(self);
         func_0202445c(self);
-        _Z32MarkActiveCombatantSlots02026b7cPh((unsigned char*)self);
+        MarkActiveCombatantSlots02026b7c((unsigned char*)self);
         func_02026bdc(self, 0);
     }
 }

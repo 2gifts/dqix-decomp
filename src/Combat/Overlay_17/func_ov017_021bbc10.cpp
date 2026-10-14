@@ -35,27 +35,27 @@ struct Overlay021bbc10 {
 };
 
 extern "C" int _Z12GetByte0x26cPc(GameObject* obj);
-extern "C" int _Z12GetField0x70Pv(void* obj);
+int GetField0x70(void* obj);
 extern "C" void* _Z15GetFieldIfFlag4Pc(GameState* gs);
 extern "C" int _Z18CheckField0NonZeroPi(void* p);
 extern "C" void _Z13SetBitsInWordPjj(void* obj, unsigned int mask);
 extern "C" int _Z15GetBitsInField0Pjj(void* obj, unsigned int mask);
-extern "C" int _Z13PeekInputLogAv(void);
+int PeekInputLogA(void);
 extern "C" void _Z13PushInputLogAi(unsigned int v);
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" void _Z16OrBitsIntoField0Pjj(unsigned int* p, unsigned int mask);
-extern "C" void _Z15ClearIntAt0x23cPh(unsigned char* obj);
-extern "C" void* _Z25GetGlobalResetObj020d7a50v(void);
-extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(Obj020d7aa0* obj);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int arg1);
+unsigned int* GetDataPtr02114e04_020d6c00(void);
+void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void ClearIntAt0x23c(unsigned char* obj);
+void* GetGlobalResetObj020d7a50(void);
+void TeardownAndResetState020d7aa0(Obj020d7aa0* obj);
+void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
 extern "C" void _Z13SetField0x158Pvi(GameObject* obj, int v);
-extern "C" void _Z29CaptureTransformState02053ed8Pv(void* obj);
-extern "C" int _Z18GetField0x3acValueP9GameState(GameState* gs);
-extern "C" void _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_(Base02010834* base, int index, int* out, int* outCount);
+void CaptureTransformState02053ed8(void* obj);
+int GetField0x3acValue(GameState* gs);
+void CopyCountedBytesToIntArray02010834(Base02010834* base, int index, int* out, int* outCount);
 extern "C" void _Z16SetFlag0x4At0xe0P13Flags02033fcc(GameObject* obj);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char* obj);
+void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
 extern "C" void _Z21InitTimerObj_021bb088P11Obj021bb088(void* obj);
-extern "C" int* _Z19GetFieldPtrAt0x5ca4Pv(void* obj);
+int* GetFieldPtrAt0x5ca4(void* obj);
 extern "C" void _Z32ClearAllocSlotsAndStore_0215aa14P13SafeAllocator(void* alloc);
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0202ae18(void);
@@ -88,7 +88,7 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
         self->flag01 = 1;
         return self->result0a;
     }
-    _Z16OrBitsIntoField0Pjj(_Z27GetDataPtr02114e04_020d6c00v(), 0x400e);
+    OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0x400e);
     if (res->unknown_4080 != 0) {
         return self->result0a;
     }
@@ -100,14 +100,14 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
         return self->result0a;
     }
     _Z13SetBitsInWordPjj(res, 0x10);
-    if (_Z15GetBitsInField0Pjj(res, 0x1000) == 0 && _Z13PeekInputLogAv() != 1) {
+    if (_Z15GetBitsInField0Pjj(res, 0x1000) == 0 && PeekInputLogA() != 1) {
         _Z13PushInputLogAi(1);
     }
     _Z32ClearAllocSlotsAndStore_0215aa14P13SafeAllocator(NULL);
-    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)unk, 1);
-    _Z15ClearIntAt0x23cPh(field4);
-    _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0((Obj020d7aa0*)_Z25GetGlobalResetObj020d7a50v());
-    *(unsigned short*)(field4 + 0x21e) = _Z12GetField0x70Pv(field4);
+    CancelPendingAction020397cc((Obj020397cc*)unk, 1);
+    ClearIntAt0x23c(field4);
+    TeardownAndResetState020d7aa0((Obj020d7aa0*)GetGlobalResetObj020d7a50());
+    *(unsigned short*)(field4 + 0x21e) = GetField0x70(field4);
 
     if (_Z18CheckField0NonZeroPi(search)) {
         char* arr = (char*)GetPtrField0x2a04(gs);
@@ -115,14 +115,14 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
             GameObject* combatant = GetCombatantWithFlag0x100(gs, *(unsigned char*)(arr + i + 0xf78));
             if (combatant != NULL) {
                 _Z13SetField0x158Pvi(combatant, 3);
-                _Z29CaptureTransformState02053ed8Pv(combatant);
+                CaptureTransformState02053ed8(combatant);
             }
         }
     }
 
     int count;
     int ids[4];
-    _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_((Base02010834*)gs, _Z18GetField0x3acValueP9GameState(gs), ids, &count);
+    CopyCountedBytesToIntArray02010834((Base02010834*)gs, GetField0x3acValue(gs), ids, &count);
     for (int i = 0; i < count; i++) {
         GameObject* member = gs->GetPartyMemberByIndex(ids[i]);
         if (member != NULL) {
@@ -130,15 +130,15 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
             if (_Z12GetByte0x26cPc(member) == 0 || GetFieldPtrAt0x26c(member)->command != 2) {
                 ((Object3D*)member)->MaybeSetRegularAnimation(data_ov017_021d7d6c, 0x10);
             }
-            _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)member);
+            ClearBytesAndZeroBlock02039d24((unsigned char*)member);
         }
     }
     GameObject* extra = gs->GetPartyMemberByIndex(0xce);
     if (extra != NULL) {
-        _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)extra);
+        ClearBytesAndZeroBlock02039d24((unsigned char*)extra);
     }
     _Z21InitTimerObj_021bb088P11Obj021bb088(self->timerObj_d0);
-    int* ptr5ca4 = _Z19GetFieldPtrAt0x5ca4Pv(gs);
+    int* ptr5ca4 = GetFieldPtrAt0x5ca4(gs);
     ptr5ca4[0] = 0;
     ptr5ca4[1] = 0;
     loader->AddFence();

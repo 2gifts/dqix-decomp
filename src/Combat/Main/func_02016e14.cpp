@@ -55,7 +55,7 @@ struct Node02016e14 {
     Object3D* object;
 };
 
-extern "C" void _Z27ClearGlobalFlagBits02016d8cPv(void* arg0);
+void ClearGlobalFlagBits02016d8c(void* arg0);
 extern "C" void Mat3x3_WriteRotationY(Matrix3x3* out, int sine, int cosine);
 
 // USA: func_02016e14
@@ -106,7 +106,7 @@ extern "C" ARM void func_02016e14(struct Context02016e14* ctx, void* parent, str
         fix32_t sine = fix32sin(angle);
         Matrix3x3 rotation;
         Mat3x3_WriteRotationY(&rotation, sine, cosine);
-        _Z27ClearGlobalFlagBits02016d8cPv(&rotation);
+        ClearGlobalFlagBits02016d8c(&rotation);
 
         Vector3i scale;
         scale.x = node->scale.x;

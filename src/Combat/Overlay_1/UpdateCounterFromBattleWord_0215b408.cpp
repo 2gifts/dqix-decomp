@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_ov017_021d60f4(void*);
-extern "C" void* _Z10GetWord0x0Pi(int*);
+void* GetWord0x0(int*);
 extern "C" void _Z16SetSubBrightnessP13GameResourcesii(void* obj, int value, int frames);
 
 // USA: func_ov001_0215b408
@@ -12,7 +12,7 @@ ARM int UpdateCounterFromBattleWord_0215b408(void* self, int mode) {
         func_ov017_021d60f4((char*)self + 0x8);
     }
     void* battle = GameState::GetInstance();
-    void* obj = _Z10GetWord0x0Pi((int*)battle);
+    void* obj = GetWord0x0((int*)battle);
     if (obj != NULL) {
         _Z16SetSubBrightnessP13GameResourcesii(obj, 0, frames);
         func_ov017_0218b5b0();

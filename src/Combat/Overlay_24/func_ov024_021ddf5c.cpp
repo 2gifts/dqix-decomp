@@ -5,10 +5,10 @@
 struct OutStruct0215ccbc;
 struct EffectWords_021ddf5c { int lo; int hi; };
 
-extern "C" short _Z20ApplyMPDelta0215a1d4PviiPs(void* unused, int id, int delta, short* outApplied);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int idx, int a, int b);
+short ApplyMPDelta0215a1d4(void* unused, int id, int delta, short* outApplied);
+unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" struct OutStruct0215ccbc* func_ov000_0215e958(void* ctx);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_02159eac(void* ctx, struct EffectWords_021ddf5c* words, int effect);
 extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(
     int unused, struct OutStruct0215ccbc* out, GameObject* combatant, short valC, short valA, short valB,
@@ -47,19 +47,19 @@ extern "C" ARM struct OutStruct0215ccbc* func_ov024_021ddf5c(struct Obj_021ddf5c
     unsigned short code = range->f4.code;
     if (code == 0x19b || code == 0x22e) amount = c->currentStats_->primaryStats.maxMP;
     short applied = 0;
-    short mp = _Z20ApplyMPDelta0215a1d4PviiPs(obj->ctx, id, amount, &applied);
+    short mp = ApplyMPDelta0215a1d4(obj->ctx, id, amount, &applied);
     int full = 0;
     if (!IsPartySlot(id) && c->currentStats_->primaryStats.currMP >= 0xff) full = 1;
     unsigned short sel;
     if (applied > 0 || full) {
-        sel = _Z31SelectByIndexRange0to3_021da644iii(id, range->f20.c, range->f24.a);
+        sel = SelectByIndexRange0to3_021da644(id, range->f20.c, range->f24.a);
         obj->healCount++;
     } else {
-        sel = _Z31SelectByIndexRange0to3_021da644iii(id, range->f24.b, range->f24.c);
+        sel = SelectByIndexRange0to3_021da644(id, range->f24.b, range->f24.c);
     }
     struct OutStruct0215ccbc* entry = func_ov000_0215e958(obj->ctx);
     if (!entry) return 0;
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->ctx, entry, sel);
+    AddEntryAndIncrementCount0215a88c(obj->ctx, entry, sel);
     struct EffectWords_021ddf5c words;
     words.lo = 0;
     words.hi = 0;

@@ -88,11 +88,11 @@ struct Panel0215c650 {
 };
 
 extern "C" void func_02074af4(struct MainBgControlBackup02074af4* obj);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(struct Struct020dfc40* p);
-extern "C" void _Z18InitStruct0205cfd4P18InitTarget0205cfd4(struct InitTarget0205cfd4* s);
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64* obj);
+void ResetStruct020dfc40(struct Struct020dfc40* p);
+void InitStruct0205cfd4(struct InitTarget0205cfd4* s);
+void ResetList0204af64(struct List0204af64* obj);
 extern "C" void func_0204c684(struct Elem0204c684* obj);
-extern "C" void _Z18InitStruct0205a444Pc(char* obj);
+void InitStruct0205a444(char* obj);
 
 // USA: func_ov003_0215c650
 extern "C" ARM void func_ov003_0215c650(struct Panel0215c650* self) {
@@ -106,22 +106,22 @@ extern "C" ARM void func_ov003_0215c650(struct Panel0215c650* self) {
     self->alloc28.ResetAllocatorPointer();
     self->alloc3c.ResetAllocatorPointer();
     self->alloc50.ResetAllocatorPointer();
-    _Z19ResetStruct020dfc40P14Struct020dfc40(&self->sub64);
+    ResetStruct020dfc40(&self->sub64);
 #if defined(jpn)
-    _Z19ResetStruct020dfc40P14Struct020dfc40(&self->sub7c);
+    ResetStruct020dfc40(&self->sub7c);
 #endif
     self->textBuf = 0;
-    _Z18InitStruct0205cfd4P18InitTarget0205cfd4(&self->sub98);
+    InitStruct0205cfd4(&self->sub98);
 
     for (int i = 0; i < 2; i++) {
-        _Z17ResetList0204af64P12List0204af64(&self->lists[i]);
+        ResetList0204af64(&self->lists[i]);
     }
     for (int j = 0; j < 2; j++) {
         func_0204c684(&self->elems[j]);
     }
 
     self->field354 = 0;
-    _Z18InitStruct0205a444Pc(self->sub358);
+    InitStruct0205a444(self->sub358);
     self->field3ac = 0;
     self->field3b0 = 0;
     self->field3b4 = 0;

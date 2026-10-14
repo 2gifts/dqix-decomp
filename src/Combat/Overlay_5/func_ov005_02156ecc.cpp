@@ -67,8 +67,8 @@ struct EquipmentMenu {
 
 extern unsigned char data_ov005_0215cd48[8];
 
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
-extern "C" void _Z23CopyThreeFields02157174P11Dst02157174P11Src02157174(Dst02157174* dst, Src02157174* src);
+MemberScreen* GetField1c_021a193c(int* p);
+void CopyThreeFields02157174(Dst02157174* dst, Src02157174* src);
 extern "C" void func_ov005_02157b74(EquipmentMenu* self, int item, int keep);
 extern "C" int func_ov005_02155670(EquipmentMenu* self, int x, int y);
 void* GetPtrField0x2a04(GameState* gs);
@@ -83,11 +83,11 @@ extern "C" ARM void func_ov005_02156ecc(EquipmentMenu* self, int x, int y) {
     if (self->dragged_ < 0)
         return;
     GameState::GetInstance();
-    MemberScreen* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+    MemberScreen* screen = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
     Vector3fix position = self->dragModel_.position_;
     MenuModel* model = self->slots_[self->dragged_].model_;
     position.z = 0;
-    _Z23CopyThreeFields02157174P11Dst02157174P11Src02157174((Dst02157174*)model, (Src02157174*)&position);
+    CopyThreeFields02157174((Dst02157174*)model, (Src02157174*)&position);
     model->unk_82 = 0;
     if (self->dragged_ >= 0 && self->dragged_ < 8)
         model->unk_82 = 0x1f;

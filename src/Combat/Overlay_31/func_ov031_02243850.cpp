@@ -16,8 +16,8 @@ extern char data_ov031_0224c90c[];
 extern char data_ov031_0224c920[];
 extern "C" void* func_0202ae18();
 int CheckField0NonZero(int*);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
+void CancelPendingAction020397cc(Obj020397cc*, int);
+unsigned int* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int*, unsigned int);
 void MarkContextStackTopUnknownSubspace(ProcessorContext*, unsigned int);
 
@@ -38,7 +38,7 @@ extern "C" ARM int func_ov031_02243850(void* state) {
     int result = 1;
     if (CheckField0NonZero(field)) return -1;
     GameObject* object = game->GetUnknownGameObject();
-    if (object) _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)object, 1);
+    if (object) CancelPendingAction020397cc((Obj020397cc*)object, 1);
     AllocationLength02243850 length = ArenaLength02243850;
     SafeAllocator* external = *(SafeAllocator**)((char*)state + 0x28);
     if (!external) return -1;
@@ -60,7 +60,7 @@ extern "C" ARM int func_ov031_02243850(void* state) {
         BackgroundLoader::RemoveLockGlobal();
     } else {
         *(void**)((char*)state + 0x4c) = allocator->Allocate(0x700);
-        OrBitsIntoField0(_Z27GetDataPtr02114e04_020d6c00v(), 0x80);
+        OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0x80);
     }
 #if defined(jpn)
     *(int*)((char*)func_ov017_0218b5b0() + 0x41e4) = 1;

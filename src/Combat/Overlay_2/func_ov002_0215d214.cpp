@@ -34,13 +34,13 @@ struct NameObj_0215d214 {
 };
 
 void *GetFieldAt0x150(unsigned char *member);
-extern "C" char *_Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0 *c, int key);
-extern "C" char *_Z26GetGlobalField0x1c020421a0v();
+char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
+char *GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void *messages);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void *obj, int combatantId);
+void InitObjFromCombatantId020e4bf4(void *obj, int combatantId);
 extern "C" int func_ov002_02159774(void *self, int idx, int a, int b, int c);
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08 *s);
-extern "C" char *_Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310 *c, int key);
+int NormalizeField5_0200fb08(Struct0200fb08 *s);
+char *GetFieldByKey020e0434(struct Container020e0310 *c, int key);
 extern "C" int sprintf(char *dst, const char *fmt, ...);
 extern "C" char *strstr(const char *str, const char *substr);
 extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
@@ -77,13 +77,13 @@ extern "C" ARM void func_ov002_0215d214(char *self, char *dst, int unused) {
     if (pm == 0) return;
     char *e = 0;
     if (*(short *) (self + 0x1c26) < 0) {
-        e = _Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0 *) (self + 0x3ec + 0x400),
+        e = FindElementByKey020dedd0((struct Container020dedd0 *) (self + 0x3ec + 0x400),
                                                               *(short *) (self + 0x1c22));
         if (e == 0) return;
     }
-    char *msgs = _Z26GetGlobalField0x1c020421a0v();
+    char *msgs = GetGlobalField0x1c020421a0();
     func_02046380(msgs);
-    _Z30InitObjFromCombatantId020e4bf4Pvi(&nameObj, cid);
+    InitObjFromCombatantId020e4bf4(&nameObj, cid);
     *(void **) msgs = &nameObj;
     int key;
     char *s130 = *(char **) (c + 0x130);
@@ -160,7 +160,7 @@ extern "C" ARM void func_ov002_0215d214(char *self, char *dst, int unused) {
             which = 1;
         }
         if (which >= 0) {
-            int x = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08 *) GameState::GetInstance());
+            int x = NormalizeField5_0200fb08((Struct0200fb08 *) GameState::GetInstance());
             for (int j = 0; j < 5; j++) {
                 if (x == data_ov002_0216cac4[j * 7]) {
                     mark = (data_ov002_0216cac5 + j * 7 + nameObj.kind)[which * 2];
@@ -172,7 +172,7 @@ extern "C" ARM void func_ov002_0215d214(char *self, char *dst, int unused) {
     if (n == 3) {
         arg = 3;
     }
-    sprintf(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310 *) (self + 0x20), key), arg, n);
+    sprintf(buf, GetFieldByKey020e0434((struct Container020e0310 *) (self + 0x20), key), arg, n);
     if (mark != 0) {
         char *p = strstr(buf, data_ov002_0216d280);
         if (p != 0) {

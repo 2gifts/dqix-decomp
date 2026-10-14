@@ -32,7 +32,7 @@ struct LookupBuf02198e30 {
 
 extern "C" struct ZoneMgr02198e30* func_0205ec34(void);
 extern "C" int func_020321e0(Vector3fix* pos, void* nodePos, int param, void* area, unsigned int flags);
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(void* a, int mode, void* c);
+int LookupAndForEachNode020649b0(void* a, int mode, void* c);
 extern "C" void func_0206f81c(void* p);
 
 // USA: func_ov017_02198e30
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov017_02198e30(unsigned char* self) {
         if (cur > -1) {
             struct LookupBuf02198e30 c1;
             c1.id = cur;
-            if (_Z28LookupAndForEachNode020649b0PviS_(mgr, 5, &c1)) {
+            if (LookupAndForEachNode020649b0(mgr, 5, &c1)) {
                 func_0206f81c(&c1);
             }
             mgr->activeId = -1;
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov017_02198e30(unsigned char* self) {
     struct LookupBuf02198e30 c2;
     if (cur > -1) {
         c2.id = cur;
-        if (_Z28LookupAndForEachNode020649b0PviS_(mgr, 5, &c2)) {
+        if (LookupAndForEachNode020649b0(mgr, 5, &c2)) {
             func_0206f81c(&c2);
         }
         c2.id = -1;
@@ -76,7 +76,7 @@ extern "C" ARM void func_ov017_02198e30(unsigned char* self) {
 
     self[kRegionalFieldOffset] = node->id;
     c2.id = node->id;
-    if (_Z28LookupAndForEachNode020649b0PviS_(mgr, 2, &c2)) {
+    if (LookupAndForEachNode020649b0(mgr, 2, &c2)) {
         func_0206f81c(&c2);
     }
 

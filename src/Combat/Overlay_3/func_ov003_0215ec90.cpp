@@ -27,11 +27,11 @@ struct NameInput0215ec90 {
 };
 
 extern "C" void __clear(void* buf, int size);
-extern "C" int _Z27FindEntryIndexByKey020424e4ii(int key, int tableIdx);
+int FindEntryIndexByKey020424e4(int key, int tableIdx);
 extern "C" int func_020426bc(void* src, void* dst, int flag);
 extern "C" void func_02042764(void* src, void* dst, int flag);
 extern "C" int func_020420e8(void* str, int flag);
-extern "C" struct Entry0204254c* _Z22FindEntryByKey0204254cii(int key, int tableIdx);
+struct Entry0204254c* FindEntryByKey0204254c(int key, int tableIdx);
 
 extern unsigned char data_ov003_0217f3b0[];
 
@@ -66,7 +66,7 @@ extern "C" ARM int func_ov003_0215ec90(struct NameInput0215ec90* input) {
         maxLen = input->maxLen;
 
         __clear(buf, 0x100);
-        ch = _Z27FindEntryIndexByKey020424e4ii(code, font);
+        ch = FindEntryIndexByKey020424e4(code, font);
         len = func_020426bc(text, buf, font);
         p = buf;
         for (i = 0; i < maxLen; i++, p++) {
@@ -88,7 +88,7 @@ extern "C" ARM int func_ov003_0215ec90(struct NameInput0215ec90* input) {
             if (*p == 0) {
                 if (widthLimit != 0) {
                     width = func_020420e8(text, 0);
-                    entry = _Z22FindEntryByKey0204254cii(code, 0);
+                    entry = FindEntryByKey0204254c(code, 0);
                     if (entry != 0) {
                         width += entry->width + 1;
                     }

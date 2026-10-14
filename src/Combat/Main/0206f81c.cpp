@@ -31,13 +31,13 @@ void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* no
 
 struct SetFlagStruct;
 void SetFlag0x9c6(struct SetFlagStruct* p, int value);
-extern "C" void _Z19InitContext020e1154Pv(void* obj);
+void InitContext020e1154(void* obj);
 
 extern "C" void* _Z20GetField0x3f8AddressP9GameState(struct BattleStruct* battleStruct);
-extern "C" void _Z18InitStruct02070378Pc(char* obj);
+void InitStruct02070378(char* obj);
 
 void* GetGlobalPtr021075f4(void);
-extern "C" void* _Z29FindEntryPointerByKey0203df78Pvi(void* base, int key);
+void* FindEntryPointerByKey0203df78(void* base, int key);
 int GetField0x8(int* obj);
 
 extern "C" void func_ov017_021b8d80(void*);
@@ -54,22 +54,22 @@ extern "C" int func_0202c540(void* p);
 extern "C" void func_ov017_021b7104(void* node, void* out);
 
 extern "C" void* _Z17GetPtrField0x2a04P9GameState(struct BattleStruct* battleStruct);
-extern "C" void* _Z22ZeroInitReturn020de824Pv(void* obj);
-extern "C" void _Z16ZeroInit020de848Pv(void* obj);
+void* ZeroInitReturn020de824(void* obj);
+void ZeroInit020de848(void* obj);
 extern char* data_020f2a38;
 extern char* data_020f2a30;
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
-extern "C" int _Z29BuildDescriptorFlag1_020de980PvS_S_ii(void* a, void* b, void* c, int d, int e);
-extern "C" void _Z18InitStruct0207cbe8Pc(char* obj);
+int BuildDescriptorFlag1_020de980(void* a, void* b, void* c, int d, int e);
+void InitStruct0207cbe8(char* obj);
 extern "C" void func_0207d300(void* obj, short id, int a, int b);
 
-extern "C" int _Z30DecrementKeyEverywhere02086d88Phi(unsigned char* self, int key);
+int DecrementKeyEverywhere02086d88(unsigned char* self, int key);
 unsigned char CopyOutRegion0x5718(char* obj, void* dst);
 struct CombatantStruct;
 extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
 int GetFieldAt0x150(unsigned char* obj);
 struct Container02083554;
-extern "C" void* _Z29FindEntryByShortField02083554P17Container02083554i(struct Container02083554* c, int id);
+void* FindEntryByShortField02083554(struct Container02083554* c, int id);
 extern "C" void func_02083738(void* obj, int bits);
 int CheckField0NonZero(int* obj);
 extern "C" void func_ov017_021c3fb4(int combatantId, int flag);
@@ -77,7 +77,7 @@ extern "C" void func_ov017_021c4418(int combatantId, signed char flag10);
 extern "C" void func_ov017_0218f5a4(void* a, int i, int b, int c, int d);
 
 struct Ctx021a3498;
-extern "C" void _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498(struct Ctx021a3498* self);
+void ClearIfMatchAndFinalize_021a3498(struct Ctx021a3498* self);
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 
@@ -85,20 +85,20 @@ extern "C" void* func_02012fe4(void);
 extern "C" void func_0206461c(void* a, int b);
 extern "C" int _Z18GetField0x3acValueP9GameState(struct BattleStruct* battleStruct);
 
-extern "C" void _Z23InitByteHeader_021c16a8Ph(unsigned char* self);
+void InitByteHeader_021c16a8(unsigned char* self);
 
 extern "C" void func_ov017_021b65e0(void* obj, int arg1);
 
 struct S021b2ba0;
-extern "C" void _Z21InitObjState_021b2174Ph(unsigned char* obj);
-extern "C" void _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc(S021b2ba0* obj, char* src);
-extern "C" void _Z25SetFields30And34_021b2bd0Pvii(void* obj, int a, int b);
+void InitObjState_021b2174(unsigned char* obj);
+void SetNameChecked_021b2ba0(S021b2ba0* obj, char* src);
+void SetFields30And34_021b2bd0(void* obj, int a, int b);
 struct S021b2bf4;
-extern "C" void _Z16SetBit4_021b2bf4P9S021b2bf4j(S021b2bf4* obj, unsigned int v);
+void SetBit4_021b2bf4(S021b2bf4* obj, unsigned int v);
 struct S021b2c0c;
-extern "C" void _Z16SetBit5_021b2c0cP9S021b2c0cj(S021b2c0c* obj, unsigned int v);
+void SetBit5_021b2c0c(S021b2c0c* obj, unsigned int v);
 struct S021b2bdc;
-extern "C" void _Z16SetBit3_021b2bdcP9S021b2bdcj(S021b2bdc* obj, unsigned int v);
+void SetBit3_021b2bdc(S021b2bdc* obj, unsigned int v);
 struct HeadList020469f8;
 struct HeadNode020469f8;
 void PrependNodeToHead(struct HeadList020469f8* list, struct HeadNode020469f8* node);
@@ -214,13 +214,13 @@ extern "C" ARM void func_0206f81c(void* a0) {
                 *(unsigned short*)((char*)node7 + 8) = *(unsigned short*)(node + 2);
                 AppendNodeToTail(tailList, node7);
                 SetFlag0x9c6(*(struct SetFlagStruct**)((char*)g + 0x3000 + REGION_VALUE(0x4c0, 0x6d0)), 1);
-                _Z19InitContext020e1154Pv((void*)0x1f4);
+                InitContext020e1154((void*)0x1f4);
                 break;
             }
 
             case 0x85: case 0x8a: case 0xe2: {
                 unsigned char* f3f8 = (unsigned char*)_Z20GetField0x3f8AddressP9GameState(battle);
-                _Z18InitStruct02070378Pc((char*)f3f8);
+                InitStruct02070378((char*)f3f8);
                 f3f8[2] = 1;
                 *(unsigned short*)(f3f8 + 0) = *(unsigned short*)(node + 2);
                 *(unsigned int*)(f3f8 + 0x20) = *(unsigned short*)(node + 4);
@@ -233,7 +233,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
             }
 
             case 0x76: {
-                void* entry = _Z29FindEntryPointerByKey0203df78Pvi(GetGlobalPtr021075f4(), *(unsigned short*)(node + 2));
+                void* entry = FindEntryPointerByKey0203df78(GetGlobalPtr021075f4(), *(unsigned short*)(node + 2));
                 int sb = 0;
                 if (entry != NULL) {
                     sb = GetField0x8((int*)entry);
@@ -262,7 +262,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
 
             case 0x79: case 0x89: case 0xe1: {
                 unsigned char* f3f8 = (unsigned char*)_Z20GetField0x3f8AddressP9GameState(battle);
-                _Z18InitStruct02070378Pc((char*)f3f8);
+                InitStruct02070378((char*)f3f8);
                 f3f8[2] = 1;
                 *(unsigned short*)(f3f8 + 0) = *(unsigned short*)(node + 2);
                 f3f8[0xc] = 1;
@@ -323,7 +323,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
             }
 
             case 0x7c: {
-                void* e = _Z29FindEntryPointerByKey0203df78Pvi(GetGlobalPtr021075f4(), *(unsigned short*)(node + 2));
+                void* e = FindEntryPointerByKey0203df78(GetGlobalPtr021075f4(), *(unsigned short*)(node + 2));
                 if (e != NULL) {
                     *(int*)e |= 0x8000;
                 }
@@ -338,8 +338,8 @@ extern "C" ARM void func_0206f81c(void* a0) {
 #else
                     void* r7base = ((AllocHolder0206f81c*)g)->GetAllocator(1);
 #endif
-                    _Z22ZeroInitReturn020de824Pv(eventBuf);
-                    _Z16ZeroInit020de848Pv(eventBuf);
+                    ZeroInitReturn020de824(eventBuf);
+                    ZeroInit020de848(eventBuf);
 #if defined(jpn)
                     func_020e04f8(eventBuf, (void*)r7base, data_020f2a38, *(short*)(node + 2), true);
 #else
@@ -347,15 +347,15 @@ extern "C" ARM void func_0206f81c(void* a0) {
                     unsigned int outSize = 0;
                     void* loaded = ExtractFileFromGP2(data_020f2a38, data_020f2a30, &outSize);
                     if (loaded != NULL) {
-                        _Z29BuildDescriptorFlag1_020de980PvS_S_ii(eventBuf, r7base, loaded, outSize, (int)(*(short*)(node + 2)));
+                        BuildDescriptorFlag1_020de980(eventBuf, r7base, loaded, outSize, (int)(*(short*)(node + 2)));
                     }
                     BackgroundLoader::RemoveLockGlobal();
 #endif
                     SelfBuf0206f81c selfBuf;
                     selfBuf.alloc.ResetAllocatorPointer();
-                    _Z22ZeroInitReturn020de824Pv(selfBuf.sub14);
-                    _Z18InitStruct0207cbe8Pc((char*)&selfBuf);
-                    _Z18InitStruct0207cbe8Pc((char*)&selfBuf);
+                    ZeroInitReturn020de824(selfBuf.sub14);
+                    InitStruct0207cbe8((char*)&selfBuf);
+                    InitStruct0207cbe8((char*)&selfBuf);
                     selfBuf.eventPtr = eventBuf;
                     func_0207d300(&selfBuf, *(short*)(node + 2), (signed char)*(unsigned short*)(node + 4), 0);
                 }
@@ -367,7 +367,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                 if (p2a04 != NULL) {
                     int matchCount = 0;
                     for (int total = 0; total < *(unsigned short*)(node + 4); total++) {
-                        if (_Z30DecrementKeyEverywhere02086d88Phi((unsigned char*)p2a04, *(short*)(node + 2)) != 0) matchCount++;
+                        if (DecrementKeyEverywhere02086d88((unsigned char*)p2a04, *(short*)(node + 2)) != 0) matchCount++;
                     }
                     if (matchCount < *(unsigned short*)(node + 4)) {
                         battle2 = _ZN9GameState11GetInstanceEv();
@@ -380,7 +380,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                             if (combatant != NULL) {
                                 int field150 = GetFieldAt0x150((unsigned char*)combatant);
                                 if (field150 != 0) {
-                                    struct Entry02083554* entry = (struct Entry02083554*)_Z29FindEntryByShortField02083554P17Container02083554i((struct Container02083554*)field150, *(unsigned short*)(node + 2));
+                                    struct Entry02083554* entry = (struct Entry02083554*)FindEntryByShortField02083554((struct Container02083554*)field150, *(unsigned short*)(node + 2));
                                     if (entry != NULL) {
                                         func_02083738((void*)field150, entry->kind);
                                         idArr[arrCount] = buf40[i];
@@ -405,9 +405,9 @@ extern "C" ARM void func_0206f81c(void* a0) {
                             func_ov017_0218f5a4(g2, idArr[j], 1, 0, 0);
                             while (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)field700) == 0x13) {
                                 inst->RemoveAllLocks();
-                                _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498((struct Ctx021a3498*)field700);
+                                ClearIfMatchAndFinalize_021a3498((struct Ctx021a3498*)field700);
                                 if (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)field704) == 0x14) {
-                                    _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498((struct Ctx021a3498*)field704);
+                                    ClearIfMatchAndFinalize_021a3498((struct Ctx021a3498*)field704);
                                 }
                             }
                         }
@@ -421,7 +421,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                     void* p2a04 = _Z17GetPtrField0x2a04P9GameState(battle);
                     if (p2a04 == NULL) break;
                     int found = 0;
-                    if (_Z30DecrementKeyEverywhere02086d88Phi((unsigned char*)p2a04, *(short*)(node + 4)) != 0) found = 1;
+                    if (DecrementKeyEverywhere02086d88((unsigned char*)p2a04, *(short*)(node + 4)) != 0) found = 1;
                     if (found == 0) {
                         unsigned char buf3c[4];
                         unsigned char count = CopyOutRegion0x5718((char*)battle, buf3c);
@@ -431,7 +431,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                             if (c != NULL) {
                                 int field150 = GetFieldAt0x150((unsigned char*)c);
                                 if (field150 != 0) {
-                                    struct Entry02083554* entry = (struct Entry02083554*)_Z29FindEntryByShortField02083554P17Container02083554i((struct Container02083554*)field150, *(short*)(node + 4));
+                                    struct Entry02083554* entry = (struct Entry02083554*)FindEntryByShortField02083554((struct Container02083554*)field150, *(short*)(node + 4));
                                     if (entry != NULL) {
                                         func_02083738((void*)field150, entry->kind);
                                         if (CheckField0NonZero((int*)func_0202ae18())) {
@@ -445,9 +445,9 @@ extern "C" ARM void func_0206f81c(void* a0) {
                                         func_ov017_0218f5a4(g2, cid, 1, 0, 0);
                                         while (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)field700) == 0x13) {
                                             inst->RemoveAllLocks();
-                                            _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498((struct Ctx021a3498*)field700);
+                                            ClearIfMatchAndFinalize_021a3498((struct Ctx021a3498*)field700);
                                             if (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)field704) == 0x14) {
-                                                _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498((struct Ctx021a3498*)field704);
+                                                ClearIfMatchAndFinalize_021a3498((struct Ctx021a3498*)field704);
                                             }
                                         }
                                         break;
@@ -464,8 +464,8 @@ extern "C" ARM void func_0206f81c(void* a0) {
 #else
                     void* r7base2 = ((AllocHolder0206f81c*)g)->GetAllocator(1);
 #endif
-                    _Z22ZeroInitReturn020de824Pv(eventBuf2);
-                    _Z16ZeroInit020de848Pv(eventBuf2);
+                    ZeroInitReturn020de824(eventBuf2);
+                    ZeroInit020de848(eventBuf2);
 #if defined(jpn)
                     func_020e04f8(eventBuf2, (void*)r7base2, data_020f2a38, *(short*)(node + 6), true);
 #else
@@ -473,15 +473,15 @@ extern "C" ARM void func_0206f81c(void* a0) {
                     unsigned int outSize2 = 0;
                     void* loaded2 = ExtractFileFromGP2(data_020f2a38, data_020f2a30, &outSize2);
                     if (loaded2 != NULL) {
-                        _Z29BuildDescriptorFlag1_020de980PvS_S_ii(eventBuf2, r7base2, loaded2, outSize2, (int)(*(short*)(node + 6)));
+                        BuildDescriptorFlag1_020de980(eventBuf2, r7base2, loaded2, outSize2, (int)(*(short*)(node + 6)));
                     }
                     BackgroundLoader::RemoveLockGlobal();
 #endif
                     SelfBuf0206f81c selfBuf2;
                     selfBuf2.alloc.ResetAllocatorPointer();
-                    _Z22ZeroInitReturn020de824Pv(selfBuf2.sub14);
-                    _Z18InitStruct0207cbe8Pc((char*)&selfBuf2);
-                    _Z18InitStruct0207cbe8Pc((char*)&selfBuf2);
+                    ZeroInitReturn020de824(selfBuf2.sub14);
+                    InitStruct0207cbe8((char*)&selfBuf2);
+                    InitStruct0207cbe8((char*)&selfBuf2);
                     selfBuf2.eventPtr = eventBuf2;
                     func_0207d300(&selfBuf2, *(short*)(node + 6), 1, 0);
                 }
@@ -505,30 +505,30 @@ extern "C" ARM void func_0206f81c(void* a0) {
                     ((struct FlagsRoot0206f81c*)((char*)battle + REGION_VALUE(0xc, 0x26c)))->flags.low |= 0x20;
                 case 5: {
                     unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + REGION_VALUE(0x92c, 0xb4c));
-                    _Z21InitObjState_021b2174Ph(r8node);
-                    _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)r8node, data_020f0b40);
-                    _Z25SetFields30And34_021b2bd0Pvii(r8node, (int)_Z24InitAndRegister_0215e25cPvS_, OVERLAY_ID(4));
+                    InitObjState_021b2174(r8node);
+                    SetNameChecked_021b2ba0((S021b2ba0*)r8node, data_020f0b40);
+                    SetFields30And34_021b2bd0(r8node, (int)_Z24InitAndRegister_0215e25cPvS_, OVERLAY_ID(4));
                     PrependNodeToHead(subTail, (struct HeadNode020469f8*)r8node);
                     break;
                 }
                 case 7: {
                     unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + REGION_VALUE(0x92c, 0xb4c));
-                    _Z21InitObjState_021b2174Ph(r8node);
-                    _Z16SetBit4_021b2bf4P9S021b2bf4j((S021b2bf4*)r8node, 1);
-                    _Z16SetBit5_021b2c0cP9S021b2c0cj((S021b2c0c*)r8node, 1);
-                    _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)r8node, data_020f0b4c);
-                    _Z25SetFields30And34_021b2bd0Pvii(r8node, (int)func_ov004_02168684, OVERLAY_ID(4));
+                    InitObjState_021b2174(r8node);
+                    SetBit4_021b2bf4((S021b2bf4*)r8node, 1);
+                    SetBit5_021b2c0c((S021b2c0c*)r8node, 1);
+                    SetNameChecked_021b2ba0((S021b2ba0*)r8node, data_020f0b4c);
+                    SetFields30And34_021b2bd0(r8node, (int)func_ov004_02168684, OVERLAY_ID(4));
                     PrependNodeToHead(subTail, (struct HeadNode020469f8*)r8node);
                     break;
                 }
                 case 8: {
                     unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + REGION_VALUE(0x92c, 0xb4c));
-                    _Z21InitObjState_021b2174Ph(r8node);
-                    _Z16SetBit4_021b2bf4P9S021b2bf4j((S021b2bf4*)r8node, 1);
-                    _Z16SetBit5_021b2c0cP9S021b2c0cj((S021b2c0c*)r8node, 1);
-                    _Z16SetBit3_021b2bdcP9S021b2bdcj((S021b2bdc*)r8node, 0);
-                    _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)r8node, data_020f0b56);
-                    _Z25SetFields30And34_021b2bd0Pvii(r8node, (int)_Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv, OVERLAY_ID(4));
+                    InitObjState_021b2174(r8node);
+                    SetBit4_021b2bf4((S021b2bf4*)r8node, 1);
+                    SetBit5_021b2c0c((S021b2c0c*)r8node, 1);
+                    SetBit3_021b2bdc((S021b2bdc*)r8node, 0);
+                    SetNameChecked_021b2ba0((S021b2ba0*)r8node, data_020f0b56);
+                    SetFields30And34_021b2bd0(r8node, (int)_Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv, OVERLAY_ID(4));
                     PrependNodeToHead(subTail, (struct HeadNode020469f8*)r8node);
                     break;
                 }
@@ -559,7 +559,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
         if (val1c != 0) {
             unsigned char* r4c = *(unsigned char**)((char*)g + 0x3000 + REGION_VALUE(0x938, 0xb58));
             if (r4c[2] == 0) {
-                _Z23InitByteHeader_021c16a8Ph(r4c);
+                InitByteHeader_021c16a8(r4c);
                 AppendNodeToTail(tailList, (struct TailNode020469b4*)r4c);
             }
         }

@@ -14,7 +14,7 @@ void UpdateCombatantDefense(int unused, int combatantId);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" unsigned short func_ov024_021e95d4(struct Obj_021db7c0* obj, int id, struct Info_021db7c0* info, unsigned char decrease, signed char adjustment, int changed, unsigned char flag);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
 struct Flag_021db7c0 {
@@ -75,7 +75,7 @@ extern "C" ARM void* func_ov024_021db7c0(struct Obj_021db7c0* obj, short a, int 
         if (!decrease) obj->field0x73 = 1;
     }
     func_ov024_021e8bf0(obj, obj->field0xc, &sel);
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+    AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
     struct Flag_021db7c0* fl = (struct Flag_021db7c0*)((char*)obj->field0xc + 0x1c);
     func_ov000_0215cd44(obj->field0x10, entry, c, 0, res, fl->flag != 0);
     return entry;

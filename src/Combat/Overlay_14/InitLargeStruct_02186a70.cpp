@@ -5,16 +5,16 @@ struct Obj02081ee4;
 struct Sub02081ee4;
 
 extern "C" void func_ov014_021844c4(void* obj);
-extern "C" void _Z29ClearFirstWordThen0xC020972b0Pi(int* p);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40* p);
-extern "C" void _Z18InitStruct0205a444Pc(char* p);
-extern "C" void _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4(Obj02081ee4* obj, Sub02081ee4* sub);
+void ClearFirstWordThen0xC020972b0(int* p);
+void ResetStruct020dfc40(Struct020dfc40* p);
+void InitStruct0205a444(char* p);
+void InitWithSub02081ee4(Obj02081ee4* obj, Sub02081ee4* sub);
 #include "std_library_functions.h"
 
 // USA: func_ov014_02186a70  (semantic: InitLargeStruct_02186a70)
 extern "C" ARM void func_ov014_02186a70(char* obj) {
     func_ov014_021844c4(obj);
-    _Z29ClearFirstWordThen0xC020972b0Pi((int*)(obj + 0xa4));
+    ClearFirstWordThen0xC020972b0((int*)(obj + 0xa4));
     *(int*)(obj + 0xb4) = 0;
     *(int*)(obj + 0xb8) = 0;
     *(int*)(obj + 0xbc) = 0;
@@ -26,9 +26,9 @@ extern "C" ARM void func_ov014_02186a70(char* obj) {
     *(int*)(obj + 0xd4) = 0;
     *(int*)(obj + 0xd8) = 0;
     *(int*)(obj + 0xdc) = 0;
-    _Z19ResetStruct020dfc40P14Struct020dfc40((Struct020dfc40*)(obj + 0xe0));
-    _Z18InitStruct0205a444Pc(obj + 0xf8);
-    _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4((Obj02081ee4*)(obj + 0x14c), (Sub02081ee4*)(obj + 0x158));
+    ResetStruct020dfc40((Struct020dfc40*)(obj + 0xe0));
+    InitStruct0205a444(obj + 0xf8);
+    InitWithSub02081ee4((Obj02081ee4*)(obj + 0x14c), (Sub02081ee4*)(obj + 0x158));
     *(int*)(obj + 0x15c) = 0;
     *(int*)(obj + 0x160) = 0;
     *(int*)(obj + 0x164) = 0;

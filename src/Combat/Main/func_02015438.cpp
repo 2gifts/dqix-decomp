@@ -8,13 +8,13 @@
 struct HeadNode02046b24;
 struct EntryList0217208;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
-extern "C" void _Z22ForEachElement02015518PvPc(void* a, char* list);
+void ForEachElement02015518(void* a, char* list);
 void SetByteField0x253(void* obj);
 extern "C" void func_02013e18(Zone3D* self);
 extern "C" void func_02017208(struct EntryList0217208* self);
 extern "C" void func_020158cc(Zone3D* self);
 extern "C" void func_020a84e0();
-extern "C" void _Z28SetBitFromValueRange0201ba68Pv(void*);
+void SetBitFromValueRange0201ba68(void*);
 void DispatchField0x744FlagsAndNotify(unsigned char*);
 
 // USA: func_02015438
@@ -35,7 +35,7 @@ extern "C" ARM void func_02015438(Zone3D* self) {
 
     char* p = (char*)self->firstBMDJStruct_41c_;
     while (p != 0) {
-        _Z22ForEachElement02015518PvPc(self, p);
+        ForEachElement02015518(self, p);
         p = *(char**)(p + 0x54);
     }
 
@@ -59,7 +59,7 @@ extern "C" ARM void func_02015438(Zone3D* self) {
     func_020158cc(self);
     LightingManager::GetInstance()->RecomputeAdvancedLighting();
     func_020a84e0();
-    _Z28SetBitFromValueRange0201ba68Pv(self);
+    SetBitFromValueRange0201ba68(self);
     DispatchField0x744FlagsAndNotify((unsigned char*)self);
     MaybeClearGrottoState0201bfd4(self);
 }

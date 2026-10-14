@@ -31,11 +31,11 @@ struct ProfileHeader {
     unsigned int showBirthday : 1;
 };
 
-extern "C" int _Z22AppendFrameTag02041c08Pciiiii(char* dst, int a1, int a2, int a3, int a4, int a5);
+int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
 int AppendCursorTag(char* dst, int cursor);
 void* FindEntryByKey(struct TableA68* table, int key);
 int AppendNameTag(char* dst, int n, const char* name);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+int AppendString02042058(char* dst, const char* src);
 
 // USA: func_ov012_0218a9ec
 extern "C" ARM void func_ov012_0218a9ec(unsigned char* self, char* dst, int c) {
@@ -46,14 +46,14 @@ extern "C" ARM void func_ov012_0218a9ec(unsigned char* self, char* dst, int c) {
         (ProfileHeader*)((char*)GameState::GetInstance() + kProfileOffset);
 
     if (c != 0) {
-        _Z22AppendFrameTag02041c08Pciiiii(dst, cursor, 8, 5, 5, 5);
+        AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
     AppendCursorTag(dst, cursor);
 
     int i;
     for (i = 0; i < 8; i++) {
         if (i != 0) {
-            _Z20AppendString02042058PcPKc(dst, *(char**)(self + kSeparatorOffset));
+            AppendString02042058(dst, *(char**)(self + kSeparatorOffset));
         }
         void* name = FindEntryByKey((struct TableA68*)(self + kStringsOffset),
                                     (short)(((short)profile->female) + i * 2 + 0x7530));

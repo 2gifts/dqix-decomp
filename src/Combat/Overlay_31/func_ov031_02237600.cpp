@@ -3,7 +3,7 @@
 ARM int CopyToBattleContextBuffer(void* src);
 ARM int IssueBattleCommandSlot1(int arg);
 ARM int IssueBattleCommandSlot2(int arg);
-extern "C" ARM int _Z24TailCallForward_0223e2e0iPv(int arg0, void* arg1);
+ARM int TailCallForward_0223e2e0(int arg0, void* arg1);
 extern "C" ARM unsigned int func_ov031_0223cf70(void** a);
 extern "C" void func_ov031_022376fc(void);
 
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov031_02237600(void) {
 
 	int field = *(unsigned int*)(data_ov031_02290d0c + 0x1b90);
 	if (field != 0) {
-		_Z24TailCallForward_0223e2e0iPv(0, (void*)field);
+		TailCallForward_0223e2e0(0, (void*)field);
 	}
 
 	while (*(volatile unsigned char*)(data_ov031_02290d0c + 0x1b94) != 2) {

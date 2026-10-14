@@ -31,13 +31,13 @@ extern "C" int func_02001aec(const void* lhs, const void* rhs, unsigned int leng
 extern "C" int _Z27FindEntryIndexByKey020424e4ii(const char* tag, int fontType);
 
 char* FindUnescapedAngleBracket(char*);
-extern "C" FontIndexFile::Glyph* _Z23GetBoundedEntry020425b4ii(int glyph, int fontType);
-extern "C" int _Z22LookupKeyValue020425e4iii(int leftGlyph, int rightGlyph, int fontType);
-extern "C" int _Z24GetWordFromTable02042648i(int fontType);
-extern "C" int _Z16Dispatch02044420PvS_(void*, void*);
-extern "C" bool _Z20IsHighByteFF02044494PvS_(void*, void*);
+FontIndexFile::Glyph* GetBoundedEntry020425b4(int glyph, int fontType);
+int LookupKeyValue020425e4(int leftGlyph, int rightGlyph, int fontType);
+int GetWordFromTable02042648(int fontType);
+int Dispatch02044420(void*, void*);
+bool IsHighByteFF02044494(void*, void*);
 int StringLength(const char*);
-extern "C" bool _Z26StringStartsWithCI020d85dcPKcS0_(const char* str, const char* initial);
+bool StringStartsWithCI020d85dc(const char* str, const char* initial);
 
 struct Struct_020e7e04
 {
@@ -85,7 +85,7 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
     bool leftAligned = true;
     bool iVar11 = 0;
 
-    unsigned char defaultSpacing = _Z24GetWordFromTable02042648i(fontType);
+    unsigned char defaultSpacing = GetWordFromTable02042648(fontType);
 
     while (true)
     {
@@ -94,9 +94,9 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
             break;
         unsigned short control;
         memcpy(&control, input, 2);
-        if (_Z20IsHighByteFF02044494PvS_(self, &control) && control != ControlWord_Unknown_ff19)
+        if (IsHighByteFF02044494(self, &control) && control != ControlWord_Unknown_ff19)
         {
-            int numControlWordBytes = (_Z16Dispatch02044420PvS_(self, &control) + 1) * 2;
+            int numControlWordBytes = (Dispatch02044420(self, &control) + 1) * 2;
             memcpy(output, input, numControlWordBytes);
             input += numControlWordBytes;
             output += numControlWordBytes;
@@ -186,7 +186,7 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
                 for (const NewlineCalculationTagProcessor* candidate = data_020e7ec4;
                     candidate->tag != NULL && candidate->proc != NULL; candidate++)
                 {
-                    if (!_Z26StringStartsWithCI020d85dcPKcS0_(tagInner, candidate->tag))
+                    if (!StringStartsWithCI020d85dc(tagInner, candidate->tag))
                         continue;
 
                     int procRet = candidate->proc(tagInner + StringLength(candidate->tag), &local_2c, fontType, margin);
@@ -234,10 +234,10 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
         }
         if (nextGlyphIndex >= 0)
         {
-            FontIndexFile::Glyph* glyph = _Z23GetBoundedEntry020425b4ii(nextGlyphIndex, fontType);
+            FontIndexFile::Glyph* glyph = GetBoundedEntry020425b4(nextGlyphIndex, fontType);
             ioCopyLength = glyph->tagLength;
             unsigned char nextGlyphUC = nextGlyphIndex;
-            int kerning = _Z22LookupKeyValue020425e4iii(lastGlyphIndex, nextGlyphUC, fontType);
+            int kerning = LookupKeyValue020425e4(lastGlyphIndex, nextGlyphUC, fontType);
             lastGlyphIndex = nextGlyphUC;
             glyphSpacing = kerning + glyph->width;
 

@@ -10,11 +10,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z15Forward0204359cPvi(void*, int);
+void* GetGlobalField0x1c020421a0();
+void Forward0204359c(void*, int);
 extern "C" void func_020439b0(void*, int);
 extern "C" void _Z19InitEntries0205d2bcP11Obj0205d2bc(void*);
-extern "C" void _Z23EmptyDestructor0205cb60Pv(void*);
+void EmptyDestructor0205cb60(void*);
 
 // USA: func_ov013_02184aec  (semantic: SetupBattleScaleData02184aec)
 extern "C" ARM void func_ov013_02184aec(void* obj) {
@@ -25,10 +25,10 @@ extern "C" ARM void func_ov013_02184aec(void* obj) {
     }
 
     void* battle = GameState::GetInstance();
-    void* field = _Z26GetGlobalField0x1c020421a0v();
+    void* field = GetGlobalField0x1c020421a0();
     int count = ((GameState*)battle)->GetTickCount();
-    _Z15Forward0204359cPvi(field, count);
+    Forward0204359c(field, count);
     func_020439b0(field, 0);
     _Z19InitEntries0205d2bcP11Obj0205d2bc(o + R(0x34,0x38));
-    _Z23EmptyDestructor0205cb60Pv(o + R(0x3d0,0x3d4));
+    EmptyDestructor0205cb60(o + R(0x3d0,0x3d4));
 }

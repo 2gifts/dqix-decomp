@@ -13,7 +13,6 @@ struct ViewerSlot
 
 struct Struct205563c;
 
-
 struct ObjectSizes
 {
     unsigned int sizes_[7];
@@ -25,9 +24,9 @@ struct PartSizes
 };
 
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" ViewerSlot* _Z20FindFreeSlot021931f8Pc(char* viewer);
-extern "C" ViewerSlot* _Z20FindFreeSlot0219322cPc(char* viewer);
-extern "C" ViewerSlot* _Z20FindFreeSlot02193260Pc(char* viewer);
+ViewerSlot* FindFreeSlot021931f8(char* viewer);
+ViewerSlot* FindFreeSlot0219322c(char* viewer);
+ViewerSlot* FindFreeSlot02193260(char* viewer);
 void ClearSevenWords(Struct205563c* obj);
 
 extern AllocatorUnion data_02114e20;
@@ -78,9 +77,9 @@ extern "C" ARM int func_ov015_0218bcb0(void* context)
         self->parts_[5] = 0x36b7;
         self->parts_[6] = 0x42e0;
         if (self->kind_ == 0)
-            self->slot_ = _Z20FindFreeSlot021931f8Pc(self->viewer_);
+            self->slot_ = FindFreeSlot021931f8(self->viewer_);
         else
-            self->slot_ = _Z20FindFreeSlot0219322cPc(self->viewer_);
+            self->slot_ = FindFreeSlot0219322c(self->viewer_);
         if (self->slot_ == NULL)
         {
             func_ov015_0218f0c4(self);
@@ -110,7 +109,7 @@ extern "C" ARM int func_ov015_0218bcb0(void* context)
             return 0;
         self->allocators_->CreateTypeA(buffer, sizes.sizes_[self->kind_]);
         self->allocators_->Reset();
-        self->slot_ = _Z20FindFreeSlot02193260Pc(self->viewer_);
+        self->slot_ = FindFreeSlot02193260(self->viewer_);
         if (self->slot_ == NULL)
         {
             func_ov015_0218f0c4(self);

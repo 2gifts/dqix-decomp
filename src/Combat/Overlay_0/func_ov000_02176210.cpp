@@ -10,13 +10,13 @@ struct Elem_0205d81c {
     short y;
 };
 
-extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
-extern "C" void _Z23ApplyElemFields0205d904Ph(unsigned char* obj);
+struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
+void ApplyElemFields0205d904(unsigned char* obj);
 
 // USA: func_ov000_02176210
 extern "C" ARM void func_ov000_02176210(struct Struct_0205d81c* s, int key1, int key2) {
-    struct Elem_0205d81c* first = _Z23FindElementByC40205d81cP15Struct_0205d81ci(s, key1);
-    struct Elem_0205d81c* second = _Z23FindElementByC40205d81cP15Struct_0205d81ci(s, key2);
+    struct Elem_0205d81c* first = FindElementByC40205d81c(s, key1);
+    struct Elem_0205d81c* second = FindElementByC40205d81c(s, key2);
     if (first == NULL || second == NULL) return;
 
     short firstY = first->y;
@@ -31,5 +31,5 @@ extern "C" ARM void func_ov000_02176210(struct Struct_0205d81c* s, int key1, int
     if (secondY + secondHeight > 0x18) secondY = firstY - secondHeight;
     second->x = secondX;
     second->y = secondY;
-    _Z23ApplyElemFields0205d904Ph((unsigned char*)s);
+    ApplyElemFields0205d904((unsigned char*)s);
 }

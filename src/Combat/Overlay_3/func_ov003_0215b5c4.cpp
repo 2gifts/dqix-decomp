@@ -12,8 +12,8 @@ extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
 struct Container020e0310;
 struct Struct0205de24;
 
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
+const char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" int func_020420e8(const char* text, int large);
 extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" void func_ov003_0215b6f0(char* base, char* dst, int flag);
@@ -48,14 +48,14 @@ struct Ctx0215b5c4 {
 
 // USA: func_ov003_0215b5c4
 extern "C" ARM void func_ov003_0215b5c4(Ctx0215b5c4* self) {
-    _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24*)self->window_, 0, 2);
+    FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)self->window_, 0, 2);
     short height = (self->count_ * 14 + 0x12) / 8;
 #if defined(jpn)
     short width = 0xb;
 #else
     int maxWidth = 0;
     for (int i = 0; i < self->count_; i++) {
-        short w = func_020420e8(_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->texts_, self->entries_[i]), 0);
+        short w = func_020420e8(GetFieldByKey020e0434((struct Container020e0310*)self->texts_, self->entries_[i]), 0);
         if (maxWidth < w) {
             maxWidth = w;
         }

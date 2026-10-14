@@ -7,7 +7,7 @@ struct StatStageStruct02087d78;
 int CanAdjustStatStageBit18(struct StatStageStruct02087d24* p, int decrease);
 int SetStatStageBit18(struct StatStageStruct02087d78* p, int delta);
 extern "C" void* func_ov000_0215e958(void* a0);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 struct Flag_021dd968 { unsigned char pad : 7; unsigned char flag : 1; };
@@ -38,7 +38,7 @@ extern "C" ARM void* func_ov024_021dd968(struct Obj_021dd968* obj, int unused, i
 	if (!entry) return 0;
 	unsigned short sel = func_ov024_021e97f4(obj, id, range, decrease, result, applied, flagArg);
 	func_ov024_021e8bf0(obj, obj->field0xc, &sel);
-	_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+	AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
 	struct Flag_021dd968* fl = (struct Flag_021dd968*)((char*)obj->field0xc + 0x1c);
 	func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, fl->flag != 0);
 	return entry;

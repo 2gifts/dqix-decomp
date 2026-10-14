@@ -127,7 +127,7 @@ struct FlagsA8_021f9874 {
 extern "C" void* __clear(void* dst, int size);
 extern "C" void func_ov024_021f6830(void* arr, struct InsertArg_021f9874* item);
 int GetFieldAt0x150(unsigned char* obj);
-extern "C" int _Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(GameObject* combatant);
+int IsCombatantFlag2Mask512_021eadfc(GameObject* combatant);
 
 static inline unsigned short GetMaxHP(GameObject* c) { return c->currentStats_->primaryStats.maxHP; }
 static inline unsigned short GetMaxMP(GameObject* c) { return c->currentStats_->primaryStats.maxMP; }
@@ -464,7 +464,7 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
         int mp0;
         if (fld != 0 && *(short*)(fld + 0x2ac) > 0 &&
             ((struct Bits29c_021f9874*)(fld + 0x29c))->val5 == 3 &&
-            !_Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(obj->f8) &&
+            !IsCombatantFlag2Mask512_021eadfc(obj->f8) &&
             (s0 = buf->entries[0].slot, s0 >= 0) && s0 < 8 &&
             obj->combatantList[s0] != 0 &&
             (mp0 = obj->combatantList[s0]->currentStats_->primaryStats.currMP, mp0 > 0)) {

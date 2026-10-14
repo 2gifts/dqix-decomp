@@ -16,10 +16,10 @@ struct Vec3 {
 extern "C" struct Vec3 func_02034104(GameObject* combatant);
 
 struct Obj02033834;
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int arg);
+void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
 
 struct Obj02033b68;
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68* obj, int newVal);
+void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 
 extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int bits);
 
@@ -61,10 +61,10 @@ extern "C" ARM int func_02078754(struct Entity02078754* self) {
     Vector3fix_Subtract((const Vector3fix*)&posCopy, (const Vector3fix*)&self->f44, (Vector3fix*)&delta);
     Vector3fix_Normalize((const Vector3fix*)&delta, (Vector3fix*)&delta);
     int angle = fix32_Atan2(delta.x, delta.z);
-    _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, angle);
+    SetVecYByMode02033834((struct Obj02033834*)self, angle);
 
     self->fb2 = 0;
-    _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)self, 0);
+    SetByteIfChanged02033b68((struct Obj02033b68*)self, 0);
     _ZN8Object3D10EnableFlagEi((unsigned char*)self, 0x80);
     _ZN8Object3D17SetInheritedAlphaEi((struct S02037418*)self, 0x1f);
     self->f17a = 0;

@@ -61,14 +61,14 @@ struct InitStruct02078484Struct {
     int f34; int f38; int f3c; int f40;
     int f44; int f48; int f4c;
 };
-extern "C" void _Z18InitStruct02078484P24InitStruct02078484Struct(struct InitStruct02078484Struct* p);
+void InitStruct02078484(struct InitStruct02078484Struct* p);
 
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 struct Vec3i_020374f0 { int x; int y; int z; };
 extern "C" struct Vec3i_020374f0 _ZNK8Object3D8GetScaleEv(unsigned char* src);
 
-extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, int a3);
+void FindNodeAndProcess02057fb4(void* list, int id, int a3);
 
 struct Actor02078398 {
     char pad0[0x44];
@@ -99,11 +99,11 @@ extern "C" ARM void func_02078398(struct Actor02078398* obj) {
             if (obj->f178 > 0) {
                 void* list = func_02057924();
                 struct InitStruct02078484Struct s;
-                _Z18InitStruct02078484P24InitStruct02078484Struct(&s);
+                InitStruct02078484(&s);
                 _ZN8Vector3iaSERKS_(&s.f2c, (int*)&obj->f44);
                 const struct Vec3i_020374f0& tmp = _ZNK8Object3D8GetScaleEv((unsigned char*)obj);
                 _ZN8Vector3iaSERKS_(&s.f44, (int*)&tmp);
-                _Z26FindNodeAndProcess02057fb4Pvii(list, (int)obj->f178, (int)&s);
+                FindNodeAndProcess02057fb4(list, (int)obj->f178, (int)&s);
             }
         }
     }

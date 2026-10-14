@@ -73,15 +73,15 @@ struct PartyLog02166e5c {
 struct RegionCode02166e5c { unsigned char bytes[4]; };
 
 extern "C" GameResources* func_ov017_0218b5b0();
-extern "C" void _Z25DestroyAllocators020545b8P9T020545b8(T020545b8*);
+void DestroyAllocators020545b8(T020545b8*);
 extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(InternalBlock02166e5c*);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
+void RestorePairTables0207df90(char*);
+void BackupPairTables0207dfac(char*);
 void ClearEightWords(Struct_203dafc*);
 extern "C" void _Z27ResetSelectionState02054664P11Obj02054664(Combatant02166e5c*);
 extern "C" void _Z21SetAndClearField0x19cPcP14Field0x19cData(Combatant02166e5c*, Field0x19cData*);
 extern "C" void func_02049c88(Combatant02166e5c*, CombatantModelState02166e5c*);
-extern "C" void _Z24RunOverlayScript0216d1c4iP12StreamHeaderiPi(int, StreamHeader*, int, int*);
+void RunOverlayScript0216d1c4(int, StreamHeader*, int, int*);
 void SetPtrFieldIfNonNull0x13c(void*, int);
 void RegisterCombatantSlot(GameState*, int, GameObject*);
 extern "C" void _Z35RegisterOrAllocateCombatant02053c74Pci(Combatant02166e5c*, int);
@@ -95,7 +95,7 @@ extern "C" void func_02083e28(CombatantData02166e5c*, int);
 extern "C" void _Z26SetBit0x954StoreIndex0x950Phi(CombatantData02166e5c*, int);
 extern "C" void _Z23ClearTwoRegions02083c18Pc(CombatantData02166e5c*);
 extern "C" void _Z18SetBitInArray0x910Phi(CombatantData02166e5c*, int);
-extern "C" void _Z17SetBitInField0x34Phi(unsigned char*, int);
+void SetBitInField0x34(unsigned char*, int);
 extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(Combatant02166e5c*, int);
 extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Combatant02166e5c*, int);
 extern "C" void _Z26CopyCombatantStats0208936cPcS_S_(char*, PrimaryCombatStats*, BaseCombatStats*);
@@ -112,10 +112,10 @@ extern "C" ARM void func_ov000_02166e5c(BattleWork02166e5c* self) {
     GameResources* resources = func_ov017_0218b5b0();
     SafeAllocator* allocator = &resources->allocator_array_38[3];
     blocks = (InternalBlock02166e5c*)resources->unknown_2cc;
-    _Z25DestroyAllocators020545b8P9T020545b8((T020545b8*)GetIndexedEntry_021a11f4(resources, 2));
+    DestroyAllocators020545b8((T020545b8*)GetIndexedEntry_021a11f4(resources, 2));
     allocator->Reset();
     _Z26CopyInternalFields0207df50P11Foo0207df50(&blocks[3]);
-    _Z25RestorePairTables0207df90Pc(blocks[3].bytes);
+    RestorePairTables0207df90(blocks[3].bytes);
     BackgroundLoader::AddLockGlobal();
     unsigned int size;
     if (!LoadFileIntoMemory(data_ov000_02183aa5, data_0211e33c, &size)) {
@@ -145,7 +145,7 @@ extern "C" ARM void func_ov000_02166e5c(BattleWork02166e5c* self) {
     unsigned int scriptSize;
     if (FindFilesInNarcBySubstring(data_0211e33c, data_ov000_021839e2, &script, &scriptSize, 1)) {
         int scriptState = 0;
-        _Z24RunOverlayScript0216d1c4iP12StreamHeaderiPi((int)allocator, (StreamHeader*)script, scriptSize, &scriptState);
+        RunOverlayScript0216d1c4((int)allocator, (StreamHeader*)script, scriptSize, &scriptState);
         SetPtrFieldIfNonNull0x13c(combatant, scriptState);
     }
     if (!LoadFileIntoMemory(data_ov000_02183abe, data_0211e33c, &size)) {
@@ -196,14 +196,14 @@ extern "C" ARM void func_ov000_02166e5c(BattleWork02166e5c* self) {
     data->vocationTable[0] = entry->vocation;
     data->mode = 0xb;
     data->phase = 3;
-    _Z17SetBitInField0x34Phi(self->roster, 1);
+    SetBitInField0x34(self->roster, 1);
     PartyLog02166e5c* log = (PartyLog02166e5c*)GetPtrField0x2a04(game);
     log->entries[log->count++] = 1;
     _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(combatant, 0);
     _Z27CancelPendingAction020397ccP11Obj020397cci(combatant, 1);
     _Z26CopyCombatantStats0208936cPcS_S_(combatant->savedStats, combatant->stats, combatant->baseStats);
     combatant->flags |= 0x20;
-    _Z24BackupPairTables0207dfacPc(blocks[3].bytes);
+    BackupPairTables0207dfac(blocks[3].bytes);
     int level = entry->level;
     CombatantData02166e5c* levelData = combatant->data;
     if (levelData) levelData->level = (unsigned char)level;

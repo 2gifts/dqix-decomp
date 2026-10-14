@@ -44,7 +44,7 @@ int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
 extern "C" void func_ov006_0215f4dc(AlchemyMenu* self);
 void SetElementFlag0x40(Obj2081* menu, int group, int flag);
 extern "C" void func_ov006_021570fc(AlchemyPot* pot, int show);
-extern "C" unsigned char _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* sound, int effect, int unk);
+unsigned char DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int unk);
 
 extern "C" unsigned short data_02114e30[];
 extern "C" char data_02108760[];
@@ -75,7 +75,7 @@ extern "C" ARM int func_ov006_021595b4(AlchemyMenu* self) {
         if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x300) || window) {
             AlchemyPot* pot = self->pot_;
             func_ov006_021570fc(pot, (pot->windowFlags_ & 0x800) ? 0 : 1);
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             return 1;
         }
     }

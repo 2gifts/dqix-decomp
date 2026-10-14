@@ -45,9 +45,9 @@ struct Glyph0204cd60 {
 
 extern "C" void* __clear(void* dst, int count);
 extern "C" int func_020420e8(char* str, int id);
-extern "C" int _Z27FindEntryIndexByKey020424e4ii(int key, int tableIdx);
-extern "C" Glyph0204cd60* _Z23GetBoundedEntry020425b4ii(int idx, int tableIdx);
-extern "C" int _Z22LookupKeyValue020425e4iii(int a, int b, int tableIdx);
+int FindEntryIndexByKey020424e4(int key, int tableIdx);
+Glyph0204cd60* GetBoundedEntry020425b4(int idx, int tableIdx);
+int LookupKeyValue020425e4(int a, int b, int tableIdx);
 extern "C" void func_0204cc68(Wnd0204cd60* wnd, int mode, short x0, short y0, short x1, short y1);
 extern "C" void func_0204f914(Wnd0204cd60* wnd, int mode, short x0, short y0, short x1, short y1);
 extern "C" void func_0204ea5c(Wnd0204cd60* wnd);
@@ -409,18 +409,18 @@ extern "C" ARM void func_0204cd60(Wnd0204cd60* wnd, char* text, short border, sh
             }
         }
         adv = data_020e7bdc[font] + 1;
-        int idx = _Z27FindEntryIndexByKey020424e4ii((int)cursor, font);
+        int idx = FindEntryIndexByKey020424e4((int)cursor, font);
         if (idx >= 0) {
             code = idx & 0xff;
-            glyph = _Z23GetBoundedEntry020425b4ii(idx, font);
-            x += _Z22LookupKeyValue020425e4iii(prev, code, font);
+            glyph = GetBoundedEntry020425b4(idx, font);
+            x += LookupKeyValue020425e4(prev, code, font);
             func_0204df9c(wnd, glyph, x, y, colorIdx, font);
             prev = code;
             adv = (unsigned char)(glyph->width + 1);
             cursor += glyph->skip;
         } else {
             if (ch != ' ') {
-                func_0204df9c(wnd, _Z23GetBoundedEntry020425b4ii(0, font), x, y, colorIdx, font);
+                func_0204df9c(wnd, GetBoundedEntry020425b4(0, font), x, y, colorIdx, font);
             }
             cursor++;
         }

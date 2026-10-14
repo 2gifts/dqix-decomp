@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 extern "C" void* func_0205ec34(void);
 void* GetData02105254(void);
 extern "C" void* func_02012fe4(void);
@@ -10,13 +9,13 @@ struct Bcb8Params;
 void ForwardParamsToB8bc(struct Bcb8Params* s, int arg1, int arg2);
 
 struct Obj_0201bb78 { unsigned short field0; };
-extern "C" int _Z31LookupBitFromValueRange0201bb78P12Obj_0201bb78j(struct Obj_0201bb78* obj, unsigned int val);
+int LookupBitFromValueRange0201bb78(struct Obj_0201bb78* obj, unsigned int val);
 
 void _Z24SetElementFields0202756cPviiihhthii(void* obj, int p1, int p2, int idx,
         unsigned char p5, unsigned char p6, unsigned short p7, unsigned char p8, int p9, int p10);
 
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
-extern "C" void _Z29ClampPositionToBounds0202630cPvPii(void* obj, int* pos, int margin);
+void ClampPositionToBounds0202630c(void* obj, int* pos, int margin);
 
 extern "C" int _u32_div_f(int a, int b);
 extern "C" int _s32_div_f(int a, int b);
@@ -61,7 +60,7 @@ extern "C" ARM void func_02025f28(unsigned char* obj) {
     int p6a = 1;
     for (int i = 0; i < *(unsigned char*)(obj + 0xa99); i++) {
         struct Elem0xa9c* arr = *(struct Elem0xa9c**)(obj + 0xa9c);
-        int result = _Z31LookupBitFromValueRange0201bb78P12Obj_0201bb78j((struct Obj_0201bb78*)g, (unsigned short)(arr[i].h0 * 100));
+        int result = LookupBitFromValueRange0201bb78((struct Obj_0201bb78*)g, (unsigned short)(arr[i].h0 * 100));
         if (result == 0) continue;
         struct Elem0xa9c* e = *(struct Elem0xa9c**)(obj + 0xa9c) + i;
         if (e->b2 == 1) {
@@ -96,7 +95,7 @@ extern "C" ARM void func_02025f28(unsigned char* obj) {
         struct Vec3i v = *(struct Vec3i*)((char*)g + 0x2774);
         v.x += 0x80000;
         v.z += 0x60000;
-        _Z29ClampPositionToBounds0202630cPvPii(obj, (int*)&v, 0x7000);
+        ClampPositionToBounds0202630c(obj, (int*)&v, 0x7000);
         v.x -= 0x4000;
         v.z -= 0x4000;
         _Z24SetElementFields0202756cPviiihhthii(obj, v.x, v.z, 0x19, 0x54, 0, 0xff, 0xff, 0x1000, 0x1000);
@@ -114,7 +113,7 @@ extern "C" ARM void func_02025f28(unsigned char* obj) {
     int d = 0x10 - c;
     ColorEffect_ConfigureAlphaBlend((unsigned int*)0x04001050, 0, 3, c, d);
 
-    _Z29ClampPositionToBounds0202630cPvPii(obj, posVec, 0x5000);
+    ClampPositionToBounds0202630c(obj, posVec, 0x5000);
     posVec[0] -= 0x4000;
     posVec[2] -= 0x4000;
 

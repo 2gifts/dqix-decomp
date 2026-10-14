@@ -46,7 +46,7 @@ void func_0205ac40(void*, Sprite*);
 }
 
 Canvas* FindElementByByte0xc4(Obj2081*, int);
-extern "C" void _Z25ComputeShortPair_021e2bdcPviPsS0_(void*, int, short*, short*);
+void ComputeShortPair_021e2bdc(void*, int, short*, short*);
 
 struct AlchemyMenu {
 #if !defined(jpn)
@@ -157,7 +157,7 @@ extern "C" ARM void func_ov006_02158914(AlchemyMenu* self)
         {
             short x;
             short y;
-            _Z25ComputeShortPair_021e2bdcPviPsS0_(self->layout_, id, &x, &y);
+            ComputeShortPair_021e2bdc(self->layout_, id, &x, &y);
             short index = data_ov006_0215ffc4[i];
             Sprite* sprite = &self->sprites_[index];
             if (i == 2 && !(self->pot_->windowFlags_ & 0x800))

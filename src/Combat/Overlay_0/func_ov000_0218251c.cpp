@@ -23,7 +23,7 @@ struct GaugeOrder0218251c {
     unsigned char order[5];
 };
 
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08* gs);
+int NormalizeField5_0200fb08(Struct0200fb08* gs);
 void SetVec3At0x1c(Vec3Target0203a46c* obj, int x, int y, int z);
 extern "C" void func_02047554(GaugeSprite0218251c* obj, int idx, int something);
 
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov000_0218251c(GaugeDisplay0218251c* self) {
     if (level <= 0) {
         return;
     }
-    int phase = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)GameState::GetInstance()) - 1;
+    int phase = NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance()) - 1;
     GaugeOrder0218251c order = data_ov000_021836d0;
     int t = 30 - self->timer;
 

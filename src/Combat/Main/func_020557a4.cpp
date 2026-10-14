@@ -5,7 +5,7 @@ struct S02055080;
 void* GetField0x4Field0x0Field0x0OrNull(struct S02055080* p);
 
 struct Wrap020578e8;
-extern "C" float _Z20ComputeSlope020578e8P12Wrap020578e8S0_(Wrap020578e8* a, Wrap020578e8* b);
+float ComputeSlope020578e8(Wrap020578e8* a, Wrap020578e8* b);
 
 struct Obj020557a4 {
     char pad0[4];
@@ -47,7 +47,7 @@ extern "C" ARM void func_020557a4(struct Obj020557a4* obj) {
             ((SignedAllocatorList*)((char*)obj->ptr30 + 0xec))->GetNthElement(obj->field5c);
         if (elem2 == NULL)
             goto b2;
-        obj->field4c = _Z20ComputeSlope020578e8P12Wrap020578e8S0_((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
+        obj->field4c = ComputeSlope020578e8((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
     }
 
 b2:
@@ -71,7 +71,7 @@ b2:
             ((SignedAllocatorList*)((char*)obj->ptr30 + 0xf8))->GetNthElement(obj->field5e);
         if (elem2 == NULL)
             goto b3;
-        obj->field50 = _Z20ComputeSlope020578e8P12Wrap020578e8S0_((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
+        obj->field50 = ComputeSlope020578e8((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
     }
 
 b3:
@@ -95,7 +95,7 @@ b3:
             ((SignedAllocatorList*)((char*)obj->ptr30 + 0x104))->GetNthElement(obj->field60);
         if (elem2 == NULL)
             goto b4;
-        obj->field54 = _Z20ComputeSlope020578e8P12Wrap020578e8S0_((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
+        obj->field54 = ComputeSlope020578e8((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
     }
 
 b4:
@@ -119,7 +119,7 @@ b4:
             ((SignedAllocatorList*)((char*)obj->ptr30 + 0x110))->GetNthElement(obj->field62);
         if (elem2 == NULL)
             goto done;
-        obj->field58 = _Z20ComputeSlope020578e8P12Wrap020578e8S0_((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
+        obj->field58 = ComputeSlope020578e8((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
     }
 
 done:

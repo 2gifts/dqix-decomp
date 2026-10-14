@@ -97,13 +97,12 @@ struct Self02174a80 {
     unsigned short h1046;
 };
 
-
 extern "C" void _ZN13SafeAllocator5ResetEv(SafeAllocator*);
-extern "C" void _Z16ZeroInit020de848Pv(void*);
+void ZeroInit020de848(void*);
 extern "C" void func_020dea64(void*, SafeAllocator*, void*, unsigned int, const char*, int);
 extern "C" void _Z14ZeroListHeaderP14Struct02072488(StreamHeader02072488*);
 extern "C" void _Z24InitCommandStreamSessioniiP12StreamHeaderi(StreamHeader02072488*, SafeAllocator*, int, int);
-extern "C" void* _Z15GetData02108d18v(void);
+void* GetData02108d18(void);
 extern "C" short _Z18GetHalfwordCheckedP12List0206f7f4i(void*, int);
 extern "C" Rec02174a80* _Z21FindEntryById020725d8P12List020725d8i(StreamHeader02072488*, int);
 extern "C" void _Z15InitObj02174408P18InitStruct02174408(void*);
@@ -125,9 +124,9 @@ extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(void*, void*);
 extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(void*, SafeAllocator*, void*, unsigned int);
 extern "C" void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(void*, SafeAllocator*, const char*, const char*);
 extern "C" int func_0207f9f4(void*);
-extern "C" void _Z18DispatchEntryOp0x8Pvi(void*, int);
+void DispatchEntryOp0x8(void*, int);
 extern "C" void func_0205a528(void*, void*, int, SafeAllocator*);
-extern "C" Glob02174a80* _Z26GetGlobalField0x1c020421a0v(void);
+Glob02174a80* GetGlobalField0x1c020421a0(void);
 extern "C" void func_ov003_02176798(void*);
 
 extern const char* data_020f2a38;
@@ -167,7 +166,7 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             loader->GetLoadedFileByID(self->taskId, &file, &size);
             SafeAllocator* alloc = &self->alloc->a[0];
             alloc->Reset();
-            _Z16ZeroInit020de848Pv((char*)self + kSelfField874);
+            ZeroInit020de848((char*)self + kSelfField874);
             func_020dea64((char*)self + kSelfField874, alloc, file, size, data_ov003_0217fab4, 9);
             loader->RemoveTask(self->taskId);
             self->taskId = -1;
@@ -191,7 +190,7 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             al->a[1].Reset();
             _Z14ZeroListHeaderP14Struct02072488(&hdr);
             _Z24InitCommandStreamSessioniiP12StreamHeaderi(&hdr, &al->a[1], (int)file, size);
-            self->h1034 = _Z18GetHalfwordCheckedP12List0206f7f4i(_Z15GetData02108d18v(), 0);
+            self->h1034 = _Z18GetHalfwordCheckedP12List0206f7f4i(GetData02108d18(), 0);
             Rec02174a80* rec = _Z21FindEntryById020725d8P12List020725d8i(&hdr, self->h1034);
             _Z15InitObj02174408P18InitStruct02174408(&self->b834);
             self->b834 = 0x63;
@@ -315,21 +314,21 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
 
     if (self->state == 9) {
         void* p = self->p89c;
-        _Z18DispatchEntryOp0x8Pvi(p, 0x21);
-        _Z18DispatchEntryOp0x8Pvi(p, 0x2c);
-        _Z18DispatchEntryOp0x8Pvi(p, 0x3c);
-        _Z18DispatchEntryOp0x8Pvi(p, 0x51);
+        DispatchEntryOp0x8(p, 0x21);
+        DispatchEntryOp0x8(p, 0x2c);
+        DispatchEntryOp0x8(p, 0x3c);
+        DispatchEntryOp0x8(p, 0x51);
 #if !defined(jpn)
-        _Z18DispatchEntryOp0x8Pvi(p, 0x52);
-        _Z18DispatchEntryOp0x8Pvi(p, 0x55);
+        DispatchEntryOp0x8(p, 0x52);
+        DispatchEntryOp0x8(p, 0x55);
 #endif
-        _Z18DispatchEntryOp0x8Pvi(p, 0x5c);
-        _Z18DispatchEntryOp0x8Pvi(p, 0x5f);
-        _Z18DispatchEntryOp0x8Pvi(p, 0x63);
-        _Z18DispatchEntryOp0x8Pvi(p, 0x70);
-        _Z18DispatchEntryOp0x8Pvi(p, 0x71);
-        _Z18DispatchEntryOp0x8Pvi(p, 0x75);
-        _Z18DispatchEntryOp0x8Pvi(p, 0xd2);
+        DispatchEntryOp0x8(p, 0x5c);
+        DispatchEntryOp0x8(p, 0x5f);
+        DispatchEntryOp0x8(p, 0x63);
+        DispatchEntryOp0x8(p, 0x70);
+        DispatchEntryOp0x8(p, 0x71);
+        DispatchEntryOp0x8(p, 0x75);
+        DispatchEntryOp0x8(p, 0xd2);
         BG0CNT = (BG0CNT & ~3) | 3;
         BG1CNT = (BG1CNT & ~3) | 2;
         BG2CNT = (BG2CNT & ~3) | 1;
@@ -359,7 +358,7 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             }
             loader->RemoveTask(self->taskId);
             self->taskId = -1;
-            Glob02174a80* g = _Z26GetGlobalField0x1c020421a0v();
+            Glob02174a80* g = GetGlobalField0x1c020421a0();
             g->p2d8 = (char*)self + kSelfField7D8;
             g->w2dc = self->w830;
             if (self->p0 != 0) {
@@ -372,7 +371,7 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
     }
 
     if (self->state == 11) {
-        if (_Z26GetGlobalField0x1c020421a0v()->w9a0 == 3) {
+        if (GetGlobalField0x1c020421a0()->w9a0 == 3) {
             self->h1046 |= 0x40;
             self->b1041 = 0;
             func_ov003_02176798(self);

@@ -41,13 +41,13 @@ struct B021d4bc8;
 struct Ctx021d4af8;
 struct Arg021d4af8;
 
-extern "C" extern void _Z25EnqueuePairEntry_021d4a38P11S1_021d4a3812Pair021d4a64(S1_021d4a38* obj, Pair021d4a64 v);
-extern "C" extern void _Z17CopyPair_021d4a64P12Pair021d4a64S0_(Pair021d4a64* dst, Pair021d4a64* src);
-extern "C" extern void _Z28SetEntryAndAdvance0_021d4a78P11S1_021d4a78i(S1_021d4a78* obj, int v);
-extern "C" extern void _Z28SetEntryAndAdvance2_021d4a98P11S1_021d4a98i(S1_021d4a98* obj, int v);
-extern "C" extern void _Z28SetEntryAndAdvance3_021d4ab8P11S1_021d4ab8i(S1_021d4ab8* obj, int v);
-extern "C" extern int _Z22PopStackEntry_021d4b9cP11Obj021d4b9c(Obj021d4b9c* obj);
-extern "C" extern void _Z32DispatchIndexedCallback_021d4bc8P9A021d4bc8P9B021d4bc8i(A021d4bc8* a, B021d4bc8* b, int c);
+extern void EnqueuePairEntry_021d4a38(S1_021d4a38* obj, Pair021d4a64 v);
+extern void CopyPair_021d4a64(Pair021d4a64* dst, Pair021d4a64* src);
+extern void SetEntryAndAdvance0_021d4a78(S1_021d4a78* obj, int v);
+extern void SetEntryAndAdvance2_021d4a98(S1_021d4a98* obj, int v);
+extern void SetEntryAndAdvance3_021d4ab8(S1_021d4ab8* obj, int v);
+extern int PopStackEntry_021d4b9c(Obj021d4b9c* obj);
+extern void DispatchIndexedCallback_021d4bc8(A021d4bc8* a, B021d4bc8* b, int c);
 extern "C" int func_ov017_021d4af8(Ctx021d4af8* self, Arg021d4af8* arg, int retAddr);
 
 extern "C" int _Z18OrNonZero_021d49ac9S021d49ac(Pair021d4a64 v);
@@ -64,10 +64,10 @@ extern int data_020eec2c;
 #define IsTruthy _Z18OrNonZero_021d49ac9S021d49ac
 #define Resolve _Z23CallHelperIfF0_021d498014Struct021d4980
 #define PushFloat _Z28SetEntryAndAdvance1_021d4ad8P11S1_021d4ad8i
-#define PushInt(s, v) _Z28SetEntryAndAdvance0_021d4a78P11S1_021d4a78i((S1_021d4a78*)(s), (v))
-#define PushCode(s, v) _Z28SetEntryAndAdvance2_021d4a98P11S1_021d4a98i((S1_021d4a98*)(s), (v))
-#define PushRef(s, v) _Z28SetEntryAndAdvance3_021d4ab8P11S1_021d4ab8i((S1_021d4ab8*)(s), (v))
-#define Push(s, v) _Z25EnqueuePairEntry_021d4a38P11S1_021d4a3812Pair021d4a64((S1_021d4a38*)(s), (v))
+#define PushInt(s, v) SetEntryAndAdvance0_021d4a78((S1_021d4a78*)(s), (v))
+#define PushCode(s, v) SetEntryAndAdvance2_021d4a98((S1_021d4a98*)(s), (v))
+#define PushRef(s, v) SetEntryAndAdvance3_021d4ab8((S1_021d4ab8*)(s), (v))
+#define Push(s, v) EnqueuePairEntry_021d4a38((S1_021d4a38*)(s), (v))
 
 #define SlotPtr(base, idx) (((Pair021d4a64*)(base)) + (idx))
 #define Slot(base, idx) (*SlotPtr((base), (idx)))
@@ -166,7 +166,7 @@ extern "C" ARM void func_ov017_021d4e38(Interp021d4e38* self, Instr021d4e38* sta
 
 		case 5:
 			stmp = Pop(self);
-			_Z17CopyPair_021d4a64P12Pair021d4a64S0_((Pair021d4a64*)Pop(self).i, &stmp);
+			CopyPair_021d4a64((Pair021d4a64*)Pop(self).i, &stmp);
 			Push(self, stmp);
 			break;
 
@@ -416,7 +416,7 @@ extern "C" ARM void func_ov017_021d4e38(Interp021d4e38* self, Instr021d4e38* sta
 		case 21:
 			self->stack -= self->pc->arg;
 			if (self->suspended == 0) {
-				_Z32DispatchIndexedCallback_021d4bc8P9A021d4bc8P9B021d4bc8i((A021d4bc8*)self, (B021d4bc8*)self->stack,
+				DispatchIndexedCallback_021d4bc8((A021d4bc8*)self, (B021d4bc8*)self->stack,
 				                                self->pc->arg);
 			}
 			break;
@@ -436,7 +436,7 @@ extern "C" ARM void func_ov017_021d4e38(Interp021d4e38* self, Instr021d4e38* sta
 			stmp = Pop(self);
 			if (self->callTop != self->callBase) {
 				self->stack = (Pair021d4a64*)self->frame;
-				self->pc = (Instr021d4e38*)_Z22PopStackEntry_021d4b9cP11Obj021d4b9c((Obj021d4b9c*)self);
+				self->pc = (Instr021d4e38*)PopStackEntry_021d4b9c((Obj021d4b9c*)self);
 			} else {
 				self->result = stmp.i;
 				Push(self, stmp);

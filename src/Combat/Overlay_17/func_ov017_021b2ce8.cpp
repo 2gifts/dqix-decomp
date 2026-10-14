@@ -13,7 +13,7 @@ void SetBitsInField4(unsigned int* obj, unsigned int mask);
 void ClearBitsInField4(unsigned int* obj, unsigned int mask);
 void SetBitsInWord(unsigned int* obj, unsigned int mask);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int arg1);
+void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
 int GetFieldIfFlag4(char* obj);
 void SetFlagsAt0x244(unsigned char* obj, unsigned char mask);
 void ClearFlagBits(unsigned char* obj, int mask);
@@ -56,7 +56,7 @@ extern "C" ARM void func_ov017_021b2ce8(Task_021b2ce8* self) {
     GameResources* res = GetWord0x0((int*)gs);
     SetBitsInField4((unsigned int*)res, 0xc0);
     GameObject* leader = gs->GetUnknownGameObject();
-    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)leader, 1);
+    CancelPendingAction020397cc((Obj020397cc*)leader, 1);
     unsigned char* camera = (unsigned char*)GetFieldIfFlag4((char*)gs);
     SetFlagsAt0x244(camera, 3);
     int ticks = gs->GetTickCount();

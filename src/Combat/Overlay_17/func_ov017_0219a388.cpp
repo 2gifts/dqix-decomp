@@ -2,8 +2,8 @@
 #include "GameState/GameState.h"
 
 extern "C" void __clear(void* dst, unsigned int size);
-extern "C" int _Z35GetCombatSignedByteAt0x2c8d02039730Pvi(void* unused, int index);
-extern "C" void _Z33AppendFieldTagWithLookup_0219a544PhPcii(unsigned char* a, char* buf, int type, int value);
+int GetCombatSignedByteAt0x2c8d02039730(void* unused, int index);
+void AppendFieldTagWithLookup_0219a544(unsigned char* a, char* buf, int type, int value);
 #if defined(jpn)
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
 #else
@@ -70,7 +70,7 @@ extern "C" ARM void func_ov017_0219a388(unsigned char* base) {
         win->type = type;
         win->field_b5 = 1;
         __clear(buf, 0x80);
-        _Z33AppendFieldTagWithLookup_0219a544PhPcii(base, buf, type, (signed char)_Z35GetCombatSignedByteAt0x2c8d02039730Pvi(protagonist, indices.v[i]));
+        AppendFieldTagWithLookup_0219a544(base, buf, type, (signed char)GetCombatSignedByteAt0x2c8d02039730(protagonist, indices.v[i]));
 #if defined(jpn)
         func_0205d304(win, buf, 0, 0, 0, 1, 0);
 #else

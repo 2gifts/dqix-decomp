@@ -27,8 +27,8 @@ struct BattleWork {
     struct RemapFlagOwner* remapFlags;
 };
 
-extern "C" void* _Z18GetSlotPtr02160f20Pv(void* obj);
-extern "C" int _Z23DispatchByIndex021820bcPviii(void* obj, int unused, int index, int arg);
+void* GetSlotPtr02160f20(void* obj);
+int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 struct BattleCombatant* GetCombatantWithFlag0x400(GameState* gameState, int combatantId);
 int GetSubstructByte0x56(unsigned char* obj);
 void SetRemappedBitAt0xa26(struct RemapFlagOwner* obj, int index);
@@ -54,11 +54,11 @@ extern "C" ARM void func_ov000_021626a0(BattleWork* work, int index, int show) {
     gs = GameState::GetInstance();
     field29c = work->field_0x29c;
     remap = work->remapFlags;
-    slot = _Z18GetSlotPtr02160f20Pv(work);
+    slot = GetSlotPtr02160f20(work);
     if (remap == NULL) {
         return;
     }
-    count = _Z23DispatchByIndex021820bcPviii(work->field_0x29c, (int)slot, index, (int)ids);
+    count = DispatchByIndex021820bc(work->field_0x29c, (int)slot, index, (int)ids);
     for (i = 0; i < count; i++) {
         obj = gs->GetGameObjectByIndex(ids[i]);
         if (obj == NULL) {

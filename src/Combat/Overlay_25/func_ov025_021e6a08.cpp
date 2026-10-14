@@ -11,27 +11,27 @@ struct ApproachCommand { int field0, field4, distance; };
 struct Obj02048c90;
 struct Bytes02033b88 { Object3D object; char padAc[0x14]; unsigned char animation; };
 struct CombatStatus { char pad0[0x14]; unsigned int flags; };
-extern "C" ListNode02160094* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094*, int);
-extern "C" ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8*, int);
-extern "C" void _Z20ResetStruct_021e3158P13Reset021e3158(Reset021e3158*);
+ListNode02160094* GetNodeAtIndex02160094(List02160094*, int);
+ListNode021600f8* GetNodeAtIndex021600f8(List021600f8*, int);
+void ResetStruct_021e3158(Reset021e3158*);
 void ClearSubstructFlag0x4(unsigned char*);
 int CheckSubstructFlag0x200(unsigned char*);
 int CheckFlag0x14Bit0x10Set(unsigned char*);
 extern "C" void func_02033920(GameObject*, int, int);
 int SetByte0xbeShiftPrev(Bytes02033b88*, int);
-extern "C" void _Z23ResetInnerState02048c90P11Obj02048c90(Obj02048c90*);
+void ResetInnerState02048c90(Obj02048c90*);
 extern Reset021e3158 data_ov025_021ef9a8;
 extern MovementState data_ov025_021ef988;
 
 // USA: func_ov025_021e6a08
 extern "C" ARM int func_ov025_021e6a08(ApproachCommand* command, List02160094* list) {
     GameState* game = GameState::GetInstance();
-    ListNode02160094* actorNode = _Z22GetNodeAtIndex02160094P12List02160094i(list, 0);
-    ListNode021600f8* targetNode = _Z22GetNodeAtIndex021600f8P12List021600f8i((List021600f8*)list, 0);
-    if (!actorNode || !targetNode) { _Z20ResetStruct_021e3158P13Reset021e3158(&data_ov025_021ef9a8); return 1; }
+    ListNode02160094* actorNode = GetNodeAtIndex02160094(list, 0);
+    ListNode021600f8* targetNode = GetNodeAtIndex021600f8((List021600f8*)list, 0);
+    if (!actorNode || !targetNode) { ResetStruct_021e3158(&data_ov025_021ef9a8); return 1; }
     GameObject* actor = game->GetCombatantByIndex(actorNode->id);
     GameObject* target = game->GetCombatantByIndex(targetNode->id);
-    if (!actor || !target) { _Z20ResetStruct_021e3158P13Reset021e3158(&data_ov025_021ef9a8); return 1; }
+    if (!actor || !target) { ResetStruct_021e3158(&data_ov025_021ef9a8); return 1; }
     int started = 0;
     if (data_ov025_021ef988.state == 0) {
         ClearSubstructFlag0x4((unsigned char*)actor);
@@ -47,8 +47,8 @@ extern "C" ARM int func_ov025_021e6a08(ApproachCommand* command, List02160094* l
         int radii = actor->obj3D_.GetRadius() + target->obj3D_.GetRadius();
         int desiredDistance = command->distance + radii / 2;
         int distance = Vector3fix_Distance(&position, &targetPosition);
-        if (!distance) { _Z20ResetStruct_021e3158P13Reset021e3158(&data_ov025_021ef9a8); return 1; }
-        if (distance < desiredDistance) { _Z20ResetStruct_021e3158P13Reset021e3158(&data_ov025_021ef9a8); return 1; }
+        if (!distance) { ResetStruct_021e3158(&data_ov025_021ef9a8); return 1; }
+        if (distance < desiredDistance) { ResetStruct_021e3158(&data_ov025_021ef9a8); return 1; }
         Vector3i delta;
         Vector3fix_Subtract(&targetPosition, &position, &delta);
         desiredDistance = distance - desiredDistance;
@@ -67,12 +67,12 @@ extern "C" ARM int func_ov025_021e6a08(ApproachCommand* command, List02160094* l
         actor->obj3D_.position_ = nextPosition;
         if (desiredDistance < 0x28 || (!started && ((Bytes02033b88*)actor)->animation == 0)) {
             SetByte0xbeShiftPrev((Bytes02033b88*)actor, 0);
-            _Z20ResetStruct_021e3158P13Reset021e3158(&data_ov025_021ef9a8);
+            ResetStruct_021e3158(&data_ov025_021ef9a8);
             return 1;
         }
     }
     if (started) {
-        _Z23ResetInnerState02048c90P11Obj02048c90((Obj02048c90*)actor);
+        ResetInnerState02048c90((Obj02048c90*)actor);
         if (((Bytes02033b88*)actor)->animation != 6) SetByte0xbeShiftPrev((Bytes02033b88*)actor, 1);
     }
     return 0;

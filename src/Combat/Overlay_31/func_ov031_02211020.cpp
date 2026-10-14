@@ -11,19 +11,19 @@ struct PoolState02211020 {
 extern PoolState02211020* data_ov031_0224e590;
 extern "C" int func_ov031_02211410();
 extern "C" void* func_ov031_02211b64(void*, void*, int);
-extern "C" void _Z35SetGlobal0224e598IfNotNine_02211864ii(int, int);
-extern "C" int _Z21GetConst4816_02210044v();
-extern "C" int _Z20GetConst8f4_0220f3f4v();
+void SetGlobal0224e598IfNotNine_02211864(int, int);
+int GetConst4816_02210044();
+int GetConst8f4_0220f3f4();
 extern "C" void func_ov031_0220f400(void*);
 extern "C" void func_ov031_02210050(void*, void*, int);
-extern "C" void _Z33SetGlobal0224e588Field30_022101aci(int);
-extern "C" void _Z35SetField4AndInvokeCallback_02211440Pv(void*);
+void SetGlobal0224e588Field30_022101ac(int);
+void SetField4AndInvokeCallback_02211440(void*);
 
 // USA: func_ov031_02211020
 extern "C" ARM void func_ov031_02211020(void* owner, int mode) {
     unsigned char* allocation = (unsigned char*)func_ov031_02211b64((void*)0x53574300, (void*)func_ov031_02211410(), 32);
     if (!allocation) {
-        _Z35SetGlobal0224e598IfNotNine_02211864ii(9, 9 - 10);
+        SetGlobal0224e598IfNotNine_02211864(9, 9 - 10);
         return;
     }
     int offset = 0;
@@ -31,11 +31,11 @@ extern "C" ARM void func_ov031_02211020(void* owner, int mode) {
     VectorizedMemset(allocation, offset, 0x48);
     offset += 0x60;
     data_ov031_0224e590->message = allocation + offset;
-    offset += ((unsigned int)(_Z21GetConst4816_02210044v() + 31) >> 5) << 5;
+    offset += ((unsigned int)(GetConst4816_02210044() + 31) >> 5) << 5;
     data_ov031_0224e590->context = allocation + offset;
-    _Z20GetConst8f4_0220f3f4v();
+    GetConst8f4_0220f3f4();
     data_ov031_0224e590->mode = mode;
     func_ov031_0220f400(data_ov031_0224e590->context);
     func_ov031_02210050(data_ov031_0224e590->message, owner, data_ov031_0224e590->mode);
-    _Z33SetGlobal0224e588Field30_022101aci((int)_Z35SetField4AndInvokeCallback_02211440Pv);
+    SetGlobal0224e588Field30_022101ac((int)SetField4AndInvokeCallback_02211440);
 }

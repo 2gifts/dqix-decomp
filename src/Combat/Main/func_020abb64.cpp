@@ -11,17 +11,17 @@ struct Flags020abb64 { unsigned int value:12, mode:4, index:5, field_0x0_21:4, b
 struct Fields020abb64 { unsigned int low:9, middle:10, high:11, bit30:1, bit31:1; };
 struct Config020abb64 { Flags020abb64 flags; Fields020abb64 fields; unsigned char statusByte; };
 struct State020abb64 { char pad[IS_JPN ? 0x543c : 0x569c]; Config020abb64 config; char pad2[0xcd8]; char buffer[0x54]; };
-extern "C" char* _Z20GetSlotEntry020108d8Pci(char*, int);
+char* GetSlotEntry020108d8(char*, int);
 extern "C" void func_02082828(char*);
-extern "C" int _Z35SendShortBufferOrReturnZero020aba5ci(int);
+int SendShortBufferOrReturnZero020aba5c(int);
 int SendBufferOrReturnZero(int);
-extern "C" void _Z28InitBigManagerStruct0208660cPc(char*);
+void InitBigManagerStruct0208660c(char*);
 // USA: func_020abb64
 extern "C" ARM int func_020abb64() {
     GameState* state = GameState::GetInstance();
-    for (int i = 0;i < 4;i++) { char* entry = _Z20GetSlotEntry020108d8Pci((char*)state, i); if (entry) func_02082828(entry); }
-    if (!_Z35SendShortBufferOrReturnZero020aba5ci(0)) return 0;
-    if (!_Z35SendShortBufferOrReturnZero020aba5ci(1)) return 0;
+    for (int i = 0;i < 4;i++) { char* entry = GetSlotEntry020108d8((char*)state, i); if (entry) func_02082828(entry); }
+    if (!SendShortBufferOrReturnZero020aba5c(0)) return 0;
+    if (!SendShortBufferOrReturnZero020aba5c(1)) return 0;
     if (!SendBufferOrReturnZero(0)) return 0;
     if (!SendBufferOrReturnZero(1)) return 0;
     State020abb64* storage = (State020abb64*)state;
@@ -42,7 +42,7 @@ extern "C" ARM int func_020abb64() {
     config->fields.middle = 300;
     config->fields.high = 706;
     config->statusByte = 0;
-    _Z28InitBigManagerStruct0208660cPc((char*)GetPtrField0x2a04(state));
+    InitBigManagerStruct0208660c((char*)GetPtrField0x2a04(state));
     VectorizedMemset(storage->buffer, 0, 0x54);
     return 1;
 }

@@ -12,7 +12,7 @@ struct Info_021e47f4;
 extern "C" int _Z29CheckPersonalityCode_021e9990P18RefStruct_021e9990iiia(struct RefStruct_021e9990* s, int id, struct Info_021e47f4* info, unsigned char decrease, signed char sb);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 struct Obj_021e8ca0;
-extern "C" void* _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i(struct Obj_021e8ca0* obj, int id);
+void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 struct Obj_021e47f4 { char pad0[0x10]; void* field0x10; };
@@ -40,7 +40,7 @@ extern "C" ARM unsigned long long func_ov024_021e47f4(struct Obj_021e47f4* obj, 
 	if (applied) {
 		int code = _Z29CheckPersonalityCode_021e9990P18RefStruct_021e9990iiia((struct RefStruct_021e9990*)obj, id, info, decrease, result);
 		func_ov000_02159eac(obj->field0x10, &local, 0x21);
-		void* entry = _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i((struct Obj_021e8ca0*)obj, code);
+		void* entry = AddEntryToListAndIncCount_021e8ca0((struct Obj_021e8ca0*)obj, code);
 		if (entry) {
 			func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, 0);
 		}

@@ -30,7 +30,7 @@ struct Elem0209998c {
     unsigned char pad;
 };
 struct List0209998c { struct Elem0209998c* data; int count; int cap; };
-extern "C" extern struct Elem0209998c* _Z25FindElementByName0209998cP12List0209998cPKc(struct List0209998c* list, const char* name);
+extern struct Elem0209998c* FindElementByName0209998c(struct List0209998c* list, const char* name);
 
 void* GetPtrField0x468(void* obj);
 
@@ -99,7 +99,7 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
                 char* name = _ZNK6Script9Parameter8ToStringEv((struct Param0201d638*)src);
                 src += 8;
                 rem += 1;
-                struct Elem0209998c* e = _Z25FindElementByName0209998cP12List0209998cPKc((struct List0209998c*)nameList, name);
+                struct Elem0209998c* e = FindElementByName0209998c((struct List0209998c*)nameList, name);
                 if (e == 0) return 0;
                 H(0x30) = e->f0;
             } else {
@@ -213,7 +213,7 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
             struct Param0201d638* vp = (struct Param0201d638*)(src + 0x20);
             src += 0x28;
             char* name = _ZNK6Script9Parameter8ToStringEv(vp);
-            struct Elem0209998c* e = _Z25FindElementByName0209998cP12List0209998cPKc((struct List0209998c*)nameList, name);
+            struct Elem0209998c* e = FindElementByName0209998c((struct List0209998c*)nameList, name);
             if (e == 0) return 0;
             H(0x32) = e->f0;
         } else {

@@ -8,7 +8,7 @@ struct Flags02033fdc;
 void ClearFlag0x4At0xe0(struct Flags02033fdc* p);
 void ClearCombatantSlot(GameState* battleStruct, int id);
 void* GetActiveCombatWork(void);
-extern "C" void _Z25ForwardField0xc0_0205ebecPv(void* obj);
+void ForwardField0xc0_0205ebec(void* obj);
 extern "C" void* func_02057924(void);
 extern "C" void func_02057f00(void* obj, int index);
 
@@ -44,7 +44,7 @@ struct Obj021e9558 {
     int loadTaskId;
 };
 
-extern "C" CombatSlot021e9558* _Z18GetSlotPtr02160f20Pv(void* work);
+CombatSlot021e9558* GetSlotPtr02160f20(void* work);
 extern "C" void func_ov025_021e8bc4(struct Obj021e9558* obj, int priority);
 
 extern unsigned int data_ov025_021ef990;
@@ -55,7 +55,7 @@ extern char data_02108760[];
 extern "C" ARM void func_ov025_021e9558(struct Obj021e9558* obj) {
     GameState* gs = GameState::GetInstance();
     CombatWork021e9558* work = (CombatWork021e9558*)GetActiveCombatWork();
-    CombatSlot021e9558* slot = _Z18GetSlotPtr02160f20Pv(work);
+    CombatSlot021e9558* slot = GetSlotPtr02160f20(work);
     void* list = func_02057924();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
 
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov025_021e9558(struct Obj021e9558* obj) {
 #else
     work->actors[1].MaybeSetRegularAnimation(data_ov025_021ef8dc, 1);
 #endif
-    _Z25ForwardField0xc0_0205ebecPv(data_02108760);
+    ForwardField0xc0_0205ebec(data_02108760);
     LightingManager::GetInstance()->BeginFade(0x1000, 1000);
     obj->field_0x1c4 = 0;
 }

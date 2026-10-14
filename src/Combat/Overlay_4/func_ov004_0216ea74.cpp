@@ -41,8 +41,8 @@ void SetBitsInWord(unsigned int* obj, unsigned int mask);
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
 void Set3DClearColor(int, int, int, int, int);
 void SetFogState(int, unsigned int, unsigned int, unsigned short);
-extern "C" int _Z21RegisterSlotA020cf0fci(int);
-extern "C" int _Z21RegisterSlotB020cf1a8i(int);
+int RegisterSlotA020cf0fc(int);
+int RegisterSlotB020cf1a8(int);
 
 struct AllocatorContext0216ea74 {
     unsigned char unknown00[4];
@@ -113,8 +113,8 @@ extern "C" ARM int func_ov004_0216ea74(SafeAllocator* a) {
 
     int slotA[4];
     int slotB[3];
-    _Z21RegisterSlotA020cf0fci((int)slotA);
-    _Z21RegisterSlotB020cf1a8i((int)slotB);
+    RegisterSlotA020cf0fc((int)slotA);
+    RegisterSlotB020cf1a8((int)slotB);
 
     data_ov004_02171048.ptr->cfg.low = slotA[0] + 0x7d0;
     data_ov004_02171048.ptr->cfg.f12 = slotA[1];

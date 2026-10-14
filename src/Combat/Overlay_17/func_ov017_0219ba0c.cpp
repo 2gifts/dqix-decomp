@@ -8,11 +8,10 @@
 #include "World/Object3D.h"
 #include "std_library_functions.h"
 
-
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
+char* GetGlobalField0x1c020421a0(void);
 extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char* obj);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 void CallFunc0202f310AtField0x19e0(char* base, void* alloc, void* data);
 
 extern char data_ov017_021d7504[];
@@ -29,14 +28,14 @@ extern "C" ARM void func_ov017_0219ba0c(GameResources* res, int skipModels) {
     unsigned int fileSize;
     unsigned int length;
     unsigned int size;
-    char* controller = _Z26GetGlobalField0x1c020421a0v();
+    char* controller = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     SafeAllocator* alloc = &res->allocator_array_38[6];
     char* tables = res->unknown_2cc + 0x2a0;
     loader->AddLockGlobal();
     alloc->Reset();
     _Z26CopyInternalFields0207df50P11Foo0207df50(tables);
-    _Z25RestorePairTables0207df90Pc(tables);
+    RestorePairTables0207df90(tables);
 
     char path[0x50];
     sprintf(path, data_ov017_021d7504, data_ov017_021d7510);
@@ -53,7 +52,7 @@ extern "C" ARM void func_ov017_0219ba0c(GameResources* res, int skipModels) {
     CallFunc0202f310AtField0x19e0(controller, alloc, data_0211e33c);
     if (skipModels) {
         narc.Destroy();
-        _Z24BackupPairTables0207dfacPc(tables);
+        BackupPairTables0207dfac(tables);
         BackgroundLoader::RemoveLockGlobal();
         return;
     }
@@ -72,7 +71,7 @@ extern "C" ARM void func_ov017_0219ba0c(GameResources* res, int skipModels) {
         info.unk_10 = 1;
         ((Object3D*)res->unknown_ptr_36cc)->LoadFromCHRArchive(&info);
     }
-    _Z24BackupPairTables0207dfacPc(tables);
+    BackupPairTables0207dfac(tables);
 
     if (!LoadFileIntoMemory(data_ov017_021d758d, data_0211e33c, &size)) {
         BackgroundLoader::RemoveLockGlobal();

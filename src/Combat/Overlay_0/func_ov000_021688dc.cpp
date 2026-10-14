@@ -128,32 +128,32 @@ void ClearBitsInField8(unsigned int* obj, unsigned int mask);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 
 struct Entry0207d9bc;
-extern "C" void _Z23ResetEntryByKey0207da7cP13Entry0207d9bct(struct Entry0207d9bc* arr, unsigned short key);
+void ResetEntryByKey0207da7c(struct Entry0207d9bc* arr, unsigned short key);
 int GetCombatWorkFlags0x55f4(void* work, int mask);
 void SetCombatWorkFlags0x55f4(void* work, int mask);
 int GetFieldAt0x150(unsigned char* obj);
 
 struct Entry_02028bd0;
-extern "C" struct Entry_02028bd0* _Z28FindEntryByCurrentId02027cb0v(void);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+struct Entry_02028bd0* FindEntryByCurrentId02027cb0(void);
+int GetGlobalField0x1c020421a0(void);
 void* GetData02108ea8(void);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void* GetDataPtr02114e04_020d6c00(void);
 
 void SetByteField0x253(void* obj);
 
 struct Obj02053f7c;
-extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(struct Obj02053f7c* obj, short a, int b);
+void SetField0x1b2IfMatchOrFlag02053f7c(struct Obj02053f7c* obj, short a, int b);
 struct Obj02049f50;
-extern "C" void _Z29SetField41AndScaleSub02049f50P11Obj02049f50ii(struct Obj02049f50* obj, int val, int count);
+void SetField41AndScaleSub02049f50(struct Obj02049f50* obj, int val, int count);
 int TestBitInArray0x8ec(unsigned char* obj, int index);
-extern "C" void _Z23ClearStateFlags0203400cPh(unsigned char* obj);
+void ClearStateFlags0203400c(unsigned char* obj);
 void SetFlag0x1ceBit0x4(unsigned char* obj);
 void ClearFlag0x1ceBit0x4(unsigned char* obj);
 void ClearFlag0x1ceBit0x1(unsigned char* obj);
 struct Obj02033874;
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(struct Obj02033874* obj, int arg);
-extern "C" int _Z32CallHelperIfCheckPasses_0218fcf8iii(int a, int b, int c);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char* obj);
+void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
+int CallHelperIfCheckPasses_0218fcf8(int a, int b, int c);
+void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
 void SetIntField0x264(void* obj, int val);
 
 struct SearchStruct;
@@ -165,39 +165,39 @@ void SetField0x158(void* obj, int value);
 
 struct Bytes02033b88;
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
-extern "C" GameObject* _Z32FindCombatantByField16a_021a278cPvi(void* unused, int val);
+GameObject* FindCombatantByField16a_021a278c(void* unused, int val);
 
 struct Foo0207df50;
-extern "C" void _Z36FormatAndAppendCombatMessage02072d58iPcS_(int combatantId, char* statsBuf, char* outBuf);
+void FormatAndAppendCombatMessage02072d58(int combatantId, char* statsBuf, char* outBuf);
 struct Obj02061bd8;
 int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void CopyInternalFields0207df50(struct Foo0207df50* p);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 
 struct Struct_203dafc;
 void ClearEightWords(struct Struct_203dafc* obj);
 
-extern "C" void _Z27SetupContextForMode0205ea20Pvi(void* objRaw, int mode);
+void SetupContextForMode0205ea20(void* objRaw, int mode);
 
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
-extern "C" void _Z25StoreBattleParams0201bf38Phiiit(unsigned char* obj, int set, int a, int b, unsigned short c);
+void StoreBattleParams0201bf38(unsigned char* obj, int set, int a, int b, unsigned short c);
 void SetOrClearBit1(unsigned char* obj, int set);
-extern "C" void _Z19InitContext020e1154Pv(void* obj);
-extern "C" void _Z19SetFlag320_02195530Ph(unsigned char* obj);
+void InitContext020e1154(void* obj);
+void SetFlag320_02195530(unsigned char* obj);
 struct FlagWord020466f4;
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(struct FlagWord020466f4* word, unsigned int mask);
+void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 int ClassifyField0x81fe(char* base);
-extern "C" void _Z26CallHelperWithBuf_021907dciiiii(int a, int b, int c, int d, int e);
+void CallHelperWithBuf_021907dc(int a, int b, int c, int d, int e);
 
 void* GetData02153634(void);
 int GetByte2IfGlobalFlagSet(unsigned char* p);
-extern "C" void _Z31ClearBitOrNotifyOverlay020e3798Ph(unsigned char* obj);
+void ClearBitOrNotifyOverlay020e3798(unsigned char* obj);
 
-extern "C" void _Z25ConfigurePairMode020bb48cji(unsigned int mode, int installHandlers);
+void ConfigurePairMode020bb48c(unsigned int mode, int installHandlers);
 extern "C" void _Z26EnqueueEventTag83_021c8c04thi(int a, int b, int c);
 extern "C" void _ZN8Object3D10SetField06Et(void* obj, int value);
 
@@ -248,12 +248,12 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
     void* p29c = *(void**)(work + kWorkData);
     struct ArrayContainsByteStruct* arrStruct = (struct ArrayContainsByteStruct*)GetPtrField0x2a04(battle);
     GameObject* prot = battle->GetProtagonist();
-    struct Entry_02028bd0* entry = _Z28FindEntryByCurrentId02027cb0v();
-    int globalBase = _Z26GetGlobalField0x1c020421a0v();
+    struct Entry_02028bd0* entry = FindEntryByCurrentId02027cb0();
+    int globalBase = GetGlobalField0x1c020421a0();
     void* dataPtr20 = GetData02108ea8();
     void* p1c = *(void**)(ovBase + kResourceNode);
     unsigned char* p18 = *(unsigned char**)(ovBase + kResourceParams);
-    _Z27GetDataPtr02114e04_020d6c00v();
+    GetDataPtr02114e04_020d6c00();
 
     if (*((unsigned char*)p29c + 0x8e97) != 0) {
         GameObject* c = battle->GetPartyMemberByIndex(GetField0x3acValue(battle));
@@ -286,7 +286,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
 
     ConfigureModeByByte_0218d274_0218d274((void*)ovBase);
     ClearBitsInField4((unsigned int*)ovBase, 0x200000);
-    _Z23ResetEntryByKey0207da7cP13Entry0207d9bct((struct Entry0207d9bc*)dataPtr20, *(unsigned short*)(*(unsigned char**)(work + kWorkConfig) + 8));
+    ResetEntryByKey0207da7c((struct Entry0207d9bc*)dataPtr20, *(unsigned short*)(*(unsigned char**)(work + kWorkConfig) + 8));
     *(unsigned char*)(globalBase + kGlobalTransitionFlag) = 0;
 
     if (GetCombatWorkFlags0x55f4(work, 0x400000)) {
@@ -338,14 +338,14 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
             GameObject* c = battle->GetPartyMemberByIndex(i);
             if (c != NULL) {
                 c->obj3D_.MakeVisible();
-                _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi((struct Obj02053f7c*)c, 0, 0);
-                _Z29SetField41AndScaleSub02049f50P11Obj02049f50ii((struct Obj02049f50*)c, 0x1f, 0);
+                SetField0x1b2IfMatchOrFlag02053f7c((struct Obj02053f7c*)c, 0, 0);
+                SetField41AndScaleSub02049f50((struct Obj02049f50*)c, 0x1f, 0);
                 func_ov017_02191aac(ovBase, 0, i, 2);
                 func_ov017_02191aac(ovBase, 0, i, 4);
 
                 if (GetCombatWorkFlags0x55f4(work, 1) && work[kWorkPlacementFlag] != 0) {
                     func_02048b0c(c, TestBitInArray0x8ec(*(unsigned char**)((char*)c + kCombatantRecord), 0x99) ? 1 : 0);
-                    _Z23ClearStateFlags0203400cPh((unsigned char*)c);
+                    ClearStateFlags0203400c((unsigned char*)c);
                 }
 
                 if (ArrayContainsByte(arrStruct, GetObjectId(c))) {
@@ -354,12 +354,12 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
                     }
                     if (GetCombatWorkFlags0x55f4(work, 1)) {
                         *(Vector3i*)((char*)c + 0x44) = *(Vector3i*)(work + kWorkPositions + leadId * 16);
-                        _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)c, *(short*)(work + leadId * 16 + kWorkHeightBase + kWorkHeightOffset));
+                        SetVecYFromValue02033874((struct Obj02033874*)c, *(short*)(work + leadId * 16 + kWorkHeightBase + kWorkHeightOffset));
                     }
                 } else {
                     if (GetCombatWorkFlags0x55f4(work, 1)) {
                         *(Vector3i*)((char*)c + 0x44) = *(Vector3i*)(work + kWorkPositions + i * 16);
-                        _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)c, *(short*)(work + i * 16 + kWorkHeightBase + kWorkHeightOffset));
+                        SetVecYFromValue02033874((struct Obj02033874*)c, *(short*)(work + i * 16 + kWorkHeightBase + kWorkHeightOffset));
                     }
                     if (*(unsigned short*)((char*)c + kCombatantHeightFlag) != 0) {
                         ClearFlag0x1ceBit0x4((unsigned char*)c);
@@ -368,8 +368,8 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
 
                 *(unsigned short*)((char*)c + 0x9c) = 0;
                 c->obj3D_.SetField9e(0);
-                _Z32CallHelperIfCheckPasses_0218fcf8iii(ovBase, i, 0);
-                _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)c);
+                CallHelperIfCheckPasses_0218fcf8(ovBase, i, 0);
+                ClearBytesAndZeroBlock02039d24((unsigned char*)c);
                 ClearFlag0x1ceBit0x1((unsigned char*)c);
                 SetIntField0x264(c, 0);
 
@@ -404,7 +404,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
     int sp14 = 0;
     if (!CheckField0NonZero((int*)search) ||
         GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)search) == 0) {
-        GameObject* c6 = _Z32FindCombatantByField16a_021a278cPvi((void*)ovBase,
+        GameObject* c6 = FindCombatantByField16a_021a278c((void*)ovBase,
             *(unsigned short*)(*(unsigned char**)(work + kWorkConfig) + 8));
         if (c6 != NULL) {
             if (func_ov000_02163c80(work, 0) != 0) {
@@ -433,7 +433,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
     *(volatile unsigned short*)0x04000304 &= ~0x8000;
     LockStagedTextureVRAMCopying();
     MapVRAMBanksToTextureImage(0xf);
-    _Z25ConfigurePairMode020bb48cji(4, 1);
+    ConfigurePairMode020bb48c(4, 1);
     DisableSubBGVRAMBanks();
     MapVRAMBanksToSubBG(0x80);
     MapVRAMBanksToSubObj(0x100);
@@ -505,7 +505,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
                         c->obj3D_.RemoveAllAnimationPackages();
                         ((SafeAllocator*)(model + 0x52c))->Reset();
                         ((SafeAllocator*)(model + 0x540))->Reset();
-                        _Z36FormatAndAppendCombatMessage02072d58iPcS_(i, statsName, outName);
+                        FormatAndAppendCombatMessage02072d58(i, statsName, outName);
 
                         if (CheckField0x56bLowNibble((struct Obj02061bd8*)c)) {
                             c->obj3D_.Destroy();
@@ -515,8 +515,8 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
                             }
                             alloc = (SafeAllocator*)(model + 4);
                             alloc->Reset();
-                            _Z26CopyInternalFields0207df50P11Foo0207df50((struct Foo0207df50*)(model + 0xcc));
-                            _Z25RestorePairTables0207df90Pc((char*)(model + 0xcc));
+                            CopyInternalFields0207df50((struct Foo0207df50*)(model + 0xcc));
+                            RestorePairTables0207df90((char*)(model + 0xcc));
                             LoadFileIntoMemory(name, data_0211e33c, &size);
                             buf = data_0211e33c;
                         } else {
@@ -536,7 +536,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
                         }
 
                         if (CheckField0x56bLowNibble((struct Obj02061bd8*)c)) {
-                            _Z24BackupPairTables0207dfacPc((char*)(model + 0xcc));
+                            BackupPairTables0207dfac((char*)(model + 0xcc));
                         } else {
                             sprintf(name, data_ov000_02183b55, outName);
                             if (DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, buf, size, capacity, name)) {
@@ -575,7 +575,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
 
     battle->SetGameSpeed(0x1000);
     SetCombatWorkFlags0x55f4(work, 0x400);
-    _Z27SetupContextForMode0205ea20Pvi(&data_02108760, 0x64);
+    SetupContextForMode0205ea20(&data_02108760, 0x64);
 
     unsigned char done;
     *(int*)((char*)battle + kBattleSelection) = 0;
@@ -611,22 +611,22 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
     ClearBitsInWord((unsigned int*)ovBase, 4);
 
     if (*(int*)(work + kWorkStoreParams) != 0) {
-        _Z25StoreBattleParams0201bf38Phiiit((unsigned char*)p30, 1, work[kWorkParamA], work[kWorkParamB], *(unsigned short*)(work + kWorkParamC));
+        StoreBattleParams0201bf38((unsigned char*)p30, 1, work[kWorkParamA], work[kWorkParamB], *(unsigned short*)(work + kWorkParamC));
     }
     if (*(int*)(work + kWorkOtherParams) != 0) {
         SetOrClearBit1((unsigned char*)p30, 1);
     }
     if (*(int*)(work + kWorkStoreParams) != 0 || *(int*)(work + kWorkOtherParams) != 0) {
-        _Z19InitContext020e1154Pv((void*)0xfa0);
+        InitContext020e1154((void*)0xfa0);
     }
-    _Z19SetFlag320_02195530Ph((unsigned char*)ovBase);
+    SetFlag320_02195530((unsigned char*)ovBase);
 
-    struct FlagWord020466f4* fw = (struct FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v();
-    _Z18ClearFlags020466f4P16FlagWord020466f4j(fw, 2);
-    _Z18ClearFlags020466f4P16FlagWord020466f4j(fw, 0x200);
-    _Z18ClearFlags020466f4P16FlagWord020466f4j(fw, 0x2000);
+    struct FlagWord020466f4* fw = (struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00();
+    ClearFlags020466f4(fw, 2);
+    ClearFlags020466f4(fw, 0x200);
+    ClearFlags020466f4(fw, 0x2000);
     ClearBitsInField8((unsigned int*)ovBase, 4);
-    _Z18ClearFlags020466f4P16FlagWord020466f4j(fw, 0x40000);
+    ClearFlags020466f4(fw, 0x40000);
 
     if (ClassifyField0x81fe((char*)p29c)) {
         GameObject* c0 = GetCombatantWithFlag0x100(battle, 0);
@@ -639,7 +639,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
     ClearBitsInField4((unsigned int*)ovBase, 0x400);
 
     if (func_0202c540(search)) {
-        _Z26CallHelperWithBuf_021907dciiiii(ovBase, 0, 1, 1, 1);
+        CallHelperWithBuf_021907dc(ovBase, 0, 1, 1, 1);
         func_ov017_02191234(ovBase);
     }
     *(unsigned short*)((char*)GetField0x3f8Address(battle) + 0x1e) = *(int*)(*(unsigned char**)(work + kWorkConfig) + 0xc);
@@ -647,7 +647,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
     if (CheckField0NonZero((int*)search)) {
         unsigned char* p4 = (unsigned char*)GetData02153634();
         if (GetByte2IfGlobalFlagSet(p4)) {
-            _Z31ClearBitOrNotifyOverlay020e3798Ph(p4);
+            ClearBitOrNotifyOverlay020e3798(p4);
         }
     }
 

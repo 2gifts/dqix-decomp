@@ -37,12 +37,12 @@ extern "C" void func_02027304(void* obj, int id);
 extern "C" void func_ov017_021b86f8(void* obj, int key, int a, int flag);
 extern "C" int func_0202c508(void* search);
 Entry0207d9bc* GetData02108ea8(void);
-extern "C" void _Z23ResetEntryByKey0207da7cP13Entry0207d9bct(Entry0207d9bc* arr, unsigned short key);
-extern "C" void _Z41EnqueueEventForFlaggedCombatants_021a33e0Pvi(void* ctx, int key);
+void ResetEntryByKey0207da7c(Entry0207d9bc* arr, unsigned short key);
+void EnqueueEventForFlaggedCombatants_021a33e0(void* ctx, int key);
 extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(Obj02053f7c* obj, unsigned short a, int b);
 #define _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi
-extern "C" void _Z26CallHelperWithBuf_021907dciiiii(int a, int b, int c, int d, int e);
-extern "C" void _Z30ClearMatchingHalfword_02197324Pht(unsigned char* obj, unsigned short key);
+void CallHelperWithBuf_021907dc(int a, int b, int c, int d, int e);
+void ClearMatchingHalfword_02197324(unsigned char* obj, unsigned short key);
 
 // USA: func_ov017_021c8c44
 extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs, unsigned char* ctx, void* search) {
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs,
 #endif
 
     if (func_0202c508(search)) {
-        _Z23ResetEntryByKey0207da7cP13Entry0207d9bct(GetData02108ea8(), key);
+        ResetEntryByKey0207da7c(GetData02108ea8(), key);
         if (target != -1) {
             IndexList021c8c44 list = data_ov017_021d6d18;
             int n = 0;
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs,
                 }
             }
             if (n == 1 && list.idx[0] != 0) {
-                _Z41EnqueueEventForFlaggedCombatants_021a33e0Pvi(ctx, target);
+                EnqueueEventForFlaggedCombatants_021a33e0(ctx, target);
             }
         }
     }
@@ -110,6 +110,6 @@ extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs,
         }
     }
 
-    _Z26CallHelperWithBuf_021907dciiiii((int)ctx, id, 1, 1, 1);
-    _Z30ClearMatchingHalfword_02197324Pht(ctx, key);
+    CallHelperWithBuf_021907dc((int)ctx, id, 1, 1, 1);
+    ClearMatchingHalfword_02197324(ctx, key);
 }

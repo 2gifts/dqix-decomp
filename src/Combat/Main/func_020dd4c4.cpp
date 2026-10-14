@@ -4,7 +4,7 @@
 struct Field150Holder02052df8;
 int GetHalfwordEntryFromField150(Field150Holder02052df8*, int);
 int GetField0x3acValue(GameState*);
-extern "C" int _Z32TestCombatantCategoryBit020dd200ii(int, int);
+int TestCombatantCategoryBit020dd200(int, int);
 int DispatchByField0x950Byte(int, int);
 struct Requirements020dd4c4 {
     unsigned int : 7;
@@ -70,7 +70,7 @@ extern "C" ARM int func_020dd4c4(int id, Entry020dd4c4* entry) {
     result |= (entry->requirements->protagonistOnly && id != GetField0x3acValue(state)) ? 0x100 : 0;
     int categoryError;
     if (entry->kind != 0 && entry->kind != 1) categoryError = 0;
-    else if (_Z32TestCombatantCategoryBit020dd200ii(id & 0xff, entry->requirements->category & 0xff)) categoryError = 0;
+    else if (TestCombatantCategoryBit020dd200(id & 0xff, entry->requirements->category & 0xff)) categoryError = 0;
     else {
         if (DispatchByField0x950Byte(id, entry->requirements->category & 0xff)) categoryError = 0;
         else categoryError = 1;

@@ -9,12 +9,12 @@ struct Obj020397cc;
 void* GetPtrField0x2a04(GameState* battleStruct);
 int GetSignedByte0x1c8(void* obj);
 void SetByteField0x253(void* obj);
-extern "C" void _Z26EnqueueEventTag35_021d2ad0hiiih(unsigned char a, int b, int c, int d, unsigned char e);
-extern "C" void _Z26EnqueueEventTag36_021d2c34hhh(unsigned char a, unsigned char b, unsigned char c);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(struct FlagWord020466f4* word, unsigned int mask);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(struct Obj02033874* obj, int value);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(struct Obj020397cc* obj, int arg1);
+void EnqueueEventTag35_021d2ad0(unsigned char a, int b, int c, int d, unsigned char e);
+void EnqueueEventTag36_021d2c34(unsigned char a, unsigned char b, unsigned char c);
+void* GetDataPtr02114e04_020d6c00();
+void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
+void SetVecYFromValue02033874(struct Obj02033874* obj, int value);
+void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 
 struct Combatant020a8d08 {
     Object3D obj;
@@ -61,14 +61,14 @@ extern "C" ARM void func_020a8d08(struct Obj020a8d08* obj, unsigned char index) 
             actor->obj.position_ = other->position_;
         }
         Vector3i v = actor->obj.position_;
-        _Z26EnqueueEventTag35_021d2ad0hiiih(index, v.x, v.y, v.z, 0);
-        _Z26EnqueueEventTag36_021d2c34hhh(index, 0x1f, 0);
-        _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v(), 0x402);
+        EnqueueEventTag35_021d2ad0(index, v.x, v.y, v.z, 0);
+        EnqueueEventTag36_021d2c34(index, 0x1f, 0);
+        ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x402);
     } else {
-        _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)actor, actor->y + obj->offsetY);
+        SetVecYFromValue02033874((struct Obj02033874*)actor, actor->y + obj->offsetY);
         if (actor->obj.unknown_4_ == other->unknown_4_) {
             obj->offsetY -= 40;
         }
-        _Z27CancelPendingAction020397ccP11Obj020397cci((struct Obj020397cc*)actor, 1);
+        CancelPendingAction020397cc((struct Obj020397cc*)actor, 1);
     }
 }

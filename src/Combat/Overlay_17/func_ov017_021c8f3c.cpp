@@ -26,8 +26,8 @@ struct Rec_021c90f8 {
     unsigned char f;
 };
 
-extern "C" void _Z18CopyStruct021c90b4P14Struct021c90b4S0_(Struct021c90b4* dst, Struct021c90b4* src);
-extern "C" void _Z16CopyRec_021c90f8P12Rec_021c90f8S0_(Rec_021c90f8* dst, Rec_021c90f8* src);
+void CopyStruct021c90b4(Struct021c90b4* dst, Struct021c90b4* src);
+void CopyRec_021c90f8(Rec_021c90f8* dst, Rec_021c90f8* src);
 
 struct FieldMonster {
     Object3D obj3D_;
@@ -87,11 +87,11 @@ extern "C" ARM void func_ov017_021c8f3c(int index, int mode) {
     void* data = GetData02100044();
     msg.tag = 0x83;
     msg.kind = 0;
-    _Z18CopyStruct021c90b4P14Struct021c90b4S0_(&msg.payload.info, &info);
+    CopyStruct021c90b4(&msg.payload.info, &info);
     func_0205e330(data, &msg, 0);
 
     msg.tag = 0x83;
     msg.kind = 1;
-    _Z16CopyRec_021c90f8P12Rec_021c90f8S0_(&msg.payload.pos, &pos);
+    CopyRec_021c90f8(&msg.payload.pos, &pos);
     func_0205e330(data, &msg, 0);
 }

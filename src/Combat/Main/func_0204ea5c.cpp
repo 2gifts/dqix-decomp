@@ -41,7 +41,7 @@ struct Wnd0204cd60 {
 
 extern "C" int func_0204fd00(Wnd0204cd60* ctx, int mask);
 extern "C" void func_0204f914(Wnd0204cd60* wnd, int mode, short x0, short y0, short x1, short y1);
-extern "C" void* _Z21GetTableEntry020421b0i(int idx);
+void* GetTableEntry020421b0(int idx);
 extern "C" void func_0204e1c8(Wnd0204cd60* wnd, char* entry, int x, int y, int w, int h, int color, int font);
 
 // USA: func_0204ea5c
@@ -51,28 +51,28 @@ extern "C" ARM void func_0204ea5c(Wnd0204cd60* wnd) {
     }
     if (!func_0204fd00(wnd, 1)) {
         func_0204f914(wnd, 0, 0, 0, 8, 8);
-        char* entry = (char*)_Z21GetTableEntry020421b0i(TopLeftId);
+        char* entry = (char*)GetTableEntry020421b0(TopLeftId);
         if (entry) {
             func_0204e1c8(wnd, entry, 0, 0, 8, 8, 0xf0, 0xf);
         }
     }
     if (!func_0204fd00(wnd, 2)) {
         func_0204f914(wnd, 0, (short)((wnd->fA8 - 1) << 3), 0, (short)(wnd->fA8 << 3), 8);
-        char* entry = (char*)_Z21GetTableEntry020421b0i(TopRightId);
+        char* entry = (char*)GetTableEntry020421b0(TopRightId);
         if (entry) {
             func_0204e1c8(wnd, entry, (short)((wnd->fA8 - 1) << 3), 0, 8, 8, 0xf0, 0xf);
         }
     }
     if (!func_0204fd00(wnd, 4)) {
         func_0204f914(wnd, 0, 0, (short)((wnd->fAA - 1) << 3), 8, (short)(wnd->fAA << 3));
-        char* entry = (char*)_Z21GetTableEntry020421b0i(BottomLeftId);
+        char* entry = (char*)GetTableEntry020421b0(BottomLeftId);
         if (entry) {
             func_0204e1c8(wnd, entry, 0, (short)((wnd->fAA - 1) << 3), 8, 8, 0xf0, 0xf);
         }
     }
     if (!func_0204fd00(wnd, 8)) {
         func_0204f914(wnd, 0, (short)((wnd->fA8 - 1) << 3), (short)((wnd->fAA - 1) << 3), (short)(wnd->fA8 << 3), (short)(wnd->fAA << 3));
-        char* entry = (char*)_Z21GetTableEntry020421b0i(BottomRightId);
+        char* entry = (char*)GetTableEntry020421b0(BottomRightId);
         if (entry) {
             func_0204e1c8(wnd, entry, (short)((wnd->fA8 - 1) << 3), (short)((wnd->fAA - 1) << 3), 8, 8, 0xf0, 0xf);
         }

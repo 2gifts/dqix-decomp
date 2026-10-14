@@ -6,8 +6,8 @@
 #include "std_library_functions.h"
 
 extern "C" int func_ov017_021d60f4(void* a);
-extern "C" int _Z28AbsPlus159IfNegative0215ad2ci(int x);
-extern "C" unsigned int _Z37LoadResourceIntoGlobalBuffer_0215a750PKcPPv(const char* path, void** outPtr);
+int AbsPlus159IfNegative0215ad2c(int x);
+unsigned int LoadResourceIntoGlobalBuffer_0215a750(const char* path, void** outPtr);
 void RegisterCombatantSlot(GameState* battleStruct, int id, GameObject* combatant);
 extern "C" void NSBXX_Model_SetPolygonID(NSBXXInternalModel* model, int id);
 
@@ -30,7 +30,7 @@ extern "C" ARM int func_ov001_0215ce4c(char* self, int argCount) {
 
     bs = GameState::GetInstance();
     loader = BackgroundLoader::GetInstance();
-    id = _Z28AbsPlus159IfNegative0215ad2ci(func_ov017_021d60f4(self));
+    id = AbsPlus159IfNegative0215ad2c(func_ov017_021d60f4(self));
     sel = 0;
     if (argCount >= 2) {
         sel = func_ov017_021d60f4(self + 8);
@@ -43,7 +43,7 @@ extern "C" ARM int func_ov001_0215ce4c(char* self, int argCount) {
     if (fileData == NULL) {
         BackgroundLoader::AddLockGlobal();
         locked = 1;
-        if (_Z37LoadResourceIntoGlobalBuffer_0215a750PKcPPv(path, &fileData) == 0) {
+        if (LoadResourceIntoGlobalBuffer_0215a750(path, &fileData) == 0) {
             BackgroundLoader::RemoveLockGlobal();
             return 0;
         }

@@ -11,8 +11,8 @@ struct Node020406f8;
 struct Obj02040adc;
 struct StateWithFourPtrs02040910;
 
-extern "C" void _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(struct Vec3_020406f8* dst, struct Node020406f8* n);
-extern "C" int _Z27GetField2eOrDefault02040adcP11Obj02040adc(struct Obj02040adc* obj);
+void SelectVec3FromSources020406f8(struct Vec3_020406f8* dst, struct Node020406f8* n);
+int GetField2eOrDefault02040adc(struct Obj02040adc* obj);
 int ProcessPendingSubStates(struct StateWithFourPtrs02040910* obj, int arg1);
 extern "C" void _Z23SyncBattleState0208f87cPviii(void* self, int b, int c, int d, int e);
 
@@ -62,8 +62,8 @@ extern "C" ARM void func_0203de84(void* self) {
         if (fl & 0x40) continue;
         Object3D* e = roster->nodes[i]->f18;
         if (e != NULL && e->GetFlag(0x10) != 0) continue;
-        _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(&vec, (struct Node020406f8*)roster->nodes[i]);
+        SelectVec3FromSources020406f8(&vec, (struct Node020406f8*)roster->nodes[i]);
         _Z23SyncBattleState0208f87cPviii(&vec, a, 0x1000, b,
-            _Z27GetField2eOrDefault02040adcP11Obj02040adc((struct Obj02040adc*)roster->nodes[i]));
+            GetField2eOrDefault02040adc((struct Obj02040adc*)roster->nodes[i]));
     }
 }

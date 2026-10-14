@@ -14,15 +14,15 @@ extern "C" void _Z20ClearRegions0206e080Pci(void* obj, int slot);
 #define _Z20ClearRegions0206e080Pci _Z20ClearRegions0206e080Pci
 extern "C" void _Z31ClearIndexedEntryFields0206e0d0Pci(void* obj, int slot);
 #define _Z31ClearIndexedEntryFields0206e0d0Pci _Z31ClearIndexedEntryFields0206e0d0Pci
-extern "C" void _Z20SetOrClearBitInArrayPvPhii(void* obj, unsigned char* arr, int idx, int flag);
-#define SetOrClearBitInArray _Z20SetOrClearBitInArrayPvPhii
+void SetOrClearBitInArray(void* obj, unsigned char* arr, int idx, int flag);
+#define SetOrClearBitInArray SetOrClearBitInArray
 
-extern "C" void _Z26SetField5cb0AndRecordByte0Pci(char* obj, int v);
-#define SetField5cb0AndRecordByte0 _Z26SetField5cb0AndRecordByte0Pci
-extern "C" void _Z26SetField5cb4AndRecordByte1Pci(char* obj, int v);
-#define SetField5cb4AndRecordByte1 _Z26SetField5cb4AndRecordByte1Pci
-extern "C" void _Z19SetSlotByte020107dcPci(char* base, int val);
-#define _Z19SetSlotByte020107dcPci _Z19SetSlotByte020107dcPci
+void SetField5cb0AndRecordByte0(char* obj, int v);
+#define SetField5cb0AndRecordByte0 SetField5cb0AndRecordByte0
+void SetField5cb4AndRecordByte1(char* obj, int v);
+#define SetField5cb4AndRecordByte1 SetField5cb4AndRecordByte1
+void SetSlotByte020107dc(char* base, int val);
+#define SetSlotByte020107dc SetSlotByte020107dc
 
 struct MsgQueueState02108d70 {
     unsigned char forceFlag;
@@ -65,7 +65,7 @@ extern "C" ARM int func_020716a4(struct Variant02030b0c* args, int count) {
     bs = GameState::GetInstance();
     SetField5cb0AndRecordByte0((char*)bs, a);
     SetField5cb4AndRecordByte1((char*)bs, b);
-    _Z19SetSlotByte020107dcPci((char*)bs, c);
+    SetSlotByte020107dc((char*)bs, c);
 
     entry = func_0205ec34();
     _Z20ClearRegions0206e080Pci(entry, *(unsigned char*)((char*)entry + 0x332));

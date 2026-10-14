@@ -32,15 +32,15 @@ void* GetGlobalPtr021075f4();
 int GetField5cb0Value(char*);
 int GetField5cb4Value(char*);
 int GetField5cb8Value(char*);
-extern "C" void _Z12Init0203cfb4P15Struct_0203cfb4(Struct_0203cfb4*);
+void Init0203cfb4(Struct_0203cfb4*);
 Pool020401fc* EmptyStub0203d004(void*);
-extern "C" void _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(Pool020401fc*, unsigned int, SafeAllocator*);
+void InitPool020401fc(Pool020401fc*, unsigned int, SafeAllocator*);
 void* GetPtrField0x94(void*);
 void* GetPtrField0x90(void*);
-extern "C" void _Z22ClearFirstWord0206da74Pi(int*);
-extern "C" void _Z22ClearFirstWord02064e20Pi(int*);
+void ClearFirstWord0206da74(int*);
+void ClearFirstWord02064e20(int*);
 extern "C" void func_0206da80(void*, int, int, int, int, SafeAllocator*, const void*, int);
-extern "C" void _Z32InitCommandStreamSession02064e2ciiiP12StreamHeaderi(int, int, int, StreamHeader*, int);
+void InitCommandStreamSession02064e2c(int, int, int, StreamHeader*, int);
 extern "C" void func_02064e88(void*, void*, SafeAllocator*);
 extern "C" void func_0203d028(void*, int, SafeAllocator*, unsigned char*);
 extern "C" void func_0203e2c4(void*, unsigned short);
@@ -66,7 +66,7 @@ extern "C" ARM int func_ov017_021a2c14(GameResources* object, Zone3D_StructPtr_8
     int field0 = GetField5cb0Value((char*)game);
     int field1 = GetField5cb4Value((char*)game);
     int field2 = GetField5cb8Value((char*)game);
-    _Z12Init0203cfb4P15Struct_0203cfb4((Struct_0203cfb4*)context);
+    Init0203cfb4((Struct_0203cfb4*)context);
     if (loader->GetNumQueuedTasks() > 0) return 0;
     char path[0x50];
     NarcHandle archive;
@@ -81,7 +81,7 @@ extern "C" ARM int func_ov017_021a2c14(GameResources* object, Zone3D_StructPtr_8
     BackgroundLoader::AddLockGlobal();
     sprintf(path, data_ov017_021d76a6, prefix);
     if (!LoadFileIntoMemory(path, data_0211e33c, &archiveSize)) {
-        _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(EmptyStub0203d004(context), 12, allocator);
+        InitPool020401fc(EmptyStub0203d004(context), 12, allocator);
         BackgroundLoader::RemoveLockGlobal();
         return 0;
     }
@@ -94,7 +94,7 @@ extern "C" ARM int func_ov017_021a2c14(GameResources* object, Zone3D_StructPtr_8
     unsigned int scriptIndex;
     int length;
     void* resourceList = GetPtrField0x94(context);
-    _Z22ClearFirstWord0206da74Pi((int*)resourceList);
+    ClearFirstWord0206da74((int*)resourceList);
     resourceIndex = 0;
     while (PrepareReadFileInNARCByID(&vm, &archive, resourceIndex)) {
         NitroVM_WriteOutFilePath(&vm, resourcePath, 0x50);
@@ -107,14 +107,14 @@ extern "C" ARM int func_ov017_021a2c14(GameResources* object, Zone3D_StructPtr_8
         ++resourceIndex;
     }
     void* scriptList = GetPtrField0x90(context);
-    _Z22ClearFirstWord02064e20Pi((int*)scriptList);
+    ClearFirstWord02064e20((int*)scriptList);
     scriptIndex = 0;
     while (PrepareReadFileInNARCByID(&vm, &archive, scriptIndex)) {
         NitroVM_WriteOutFilePath(&vm, scriptPath, 0x50);
         const void* data = archive.GetFileByIndex(scriptIndex);
         length = vm.fileInfo.endOffset - vm.fileInfo.startOffset;
         if (strstr(scriptPath, data_ov017_021d76c9)) {
-            _Z32InitCommandStreamSession02064e2ciiiP12StreamHeaderi((int)scriptList, (int)resourceList, (int)allocator, (StreamHeader*)data, length);
+            InitCommandStreamSession02064e2c((int)scriptList, (int)resourceList, (int)allocator, (StreamHeader*)data, length);
             if (strstr(scriptPath, data_ov017_021d76d1) && !strstr(scriptPath, data_ov017_021d76d4)) {
                 func_02064e88(scriptList, resourceList, allocator);
             }

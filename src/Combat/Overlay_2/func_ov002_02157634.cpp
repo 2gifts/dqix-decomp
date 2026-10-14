@@ -90,16 +90,16 @@ struct StateArray {
     int tail;
 };
 
-extern "C" struct Element02157634* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* c, int key);
-extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
-extern "C" int _Z24IsIdInSpecialSet0201b868Pvi(void* p, int id);
-extern "C" void _Z18Something_021a6b9cih(int a, unsigned char b);
+struct Element02157634* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
+void* SearchBothTables02079e2c(char* p, int key);
+int IsIdInSpecialSet0201b868(void* p, int id);
+void Something_021a6b9c(int a, unsigned char b);
 void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
 unsigned char GetField0x397cValue(GameState* gs);
 void* GetPtrField0x2a04(GameState* gs);
 unsigned char CopyOutRegion0x571d(char* obj, void* dst);
-extern "C" void _Z22InitStateArray02157ce0Pc(char* p);
-extern "C" void _Z19ClearStruct020a8170P14Struct020a8170(struct Struct020a8170* p);
+void InitStateArray02157ce0(char* p);
+void ClearStruct020a8170(struct Struct020a8170* p);
 extern "C" void _ZN13SafeAllocator5ResetEv(void* self);
 extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int size);
 extern "C" void* __clear(void* dst, int count);
@@ -124,7 +124,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
     struct StateArray st;
     unsigned char buf[4];
     void* ctx;
-    struct Element02157634* e = _Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0*)p->container7ec, p->command);
+    struct Element02157634* e = FindElementByKey020dedd0((struct Container020dedd0*)p->container7ec, p->command);
     if (e == 0) {
         return;
     }
@@ -150,8 +150,8 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             break;
         case 0x56f0:
             if (func_0202c508(check) != 0) {
-                if (_Z24IsIdInSpecialSet0201b868Pvi(obj, id) != 0) {
-                    _Z18Something_021a6b9cih((int)func_ov017_0218b5b0(), 1);
+                if (IsIdInSpecialSet0201b868(obj, id) != 0) {
+                    Something_021a6b9c((int)func_ov017_0218b5b0(), 1);
                     p->msgId = 0x7530;
                     p->msgId2 = -1;
                     p->nextState = 0x2b;
@@ -179,7 +179,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
         case 0x5603:
             _ZN13SafeAllocator5ResetEv(p->alloc8a0);
             p->anim = (struct Struct020a8170*)_ZN13SafeAllocator8AllocateEj(p->alloc8a0, 0x10);
-            _Z19ClearStruct020a8170P14Struct020a8170(p->anim);
+            ClearStruct020a8170(p->anim);
             func_020a818c(p->anim, p->alloc8a0);
             func_020a8304(p->anim);
             if (p->anim->count == 0) {
@@ -222,7 +222,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             if (e->kind == 0x1f) {
                 key = 0xfc;
             }
-            struct TableEntry* entry = (struct TableEntry*)_Z24SearchBothTables02079e2cPci((char*)tbl, key);
+            struct TableEntry* entry = (struct TableEntry*)SearchBothTables02079e2c((char*)tbl, key);
             if (entry != 0) {
                 if (entry->b10 & 1) {
                     p->flags.on = 1;
@@ -255,8 +255,8 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
         }
         ActionDataTables* tbl = GetData02108e10();
         GetPtrField0x2a04(gs);
-        _Z22InitStateArray02157ce0Pc((char*)&st);
-        _Z22InitStateArray02157ce0Pc((char*)&st);
+        InitStateArray02157ce0((char*)&st);
+        InitStateArray02157ce0((char*)&st);
         if (p->flags.on) {
             int key = e->key;
             if (e->kind == 0x1f) {
@@ -266,7 +266,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             st.actor = actor;
             st.count = 1;
             st.ids[0] = target;
-            struct TableEntry* entry = (struct TableEntry*)_Z24SearchBothTables02079e2cPci((char*)tbl, key);
+            struct TableEntry* entry = (struct TableEntry*)SearchBothTables02079e2c((char*)tbl, key);
             if (entry != 0) {
                 func_ov016_0218b5c0(0, -1);
                 if (entry->type == 3) {
@@ -296,7 +296,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
                 func_ov002_0216c42c(p, &st, entry);
                 p->cc6 = 1;
                 p->cc7 = 0;
-                _Z22InitStateArray02157ce0Pc(p->stateArray);
+                InitStateArray02157ce0(p->stateArray);
                 memcpy(p->stateArray, &st, 0x3c);
                 p->msgId = -1;
                 p->msgId2 = -1;

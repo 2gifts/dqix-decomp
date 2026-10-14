@@ -7,7 +7,7 @@ extern Data021707c8 data_ov004_021707c8;
 extern int data_02108760;
 
 struct FooA1698;
-extern "C" void _Z24InitAndBuildList020a1698P8FooA1698Pv(struct FooA1698*, void*);
+void InitAndBuildList020a1698(struct FooA1698*, void*);
 extern "C" void func_020a1614(void* a, int b);
 extern "C" void* func_ov011_021845f8(void* a, int b);
 extern "C" void* func_ov011_021849c8(void* obj);
@@ -18,11 +18,11 @@ extern "C" void* func_ov023_021fa598(void* obj);
 extern "C" void func_ov023_021f809c(void* obj, void* a);
 extern "C" void func_ov004_021561b0(void* a);
 extern "C" void __clear(void* dst, int len);
-extern "C" ARM int _Z23LoadBattleBlock020ac460Pv(void* dst);
+ARM int LoadBattleBlock020ac460(void* dst);
 struct Obj021f9bdc;
-extern "C" void _Z22DivModField26_021f9bdcP11Obj021f9bdci(struct Obj021f9bdc*, int);
+void DivModField26_021f9bdc(struct Obj021f9bdc*, int);
 struct Obj0205eaa0;
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0*, int, int);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0*, int, int);
 struct TableA68;
 void* FindEntryByKey(struct TableA68*, int);
 
@@ -56,14 +56,14 @@ extern "C" ARM int func_ov004_02156a00(void* a1) {
 
     struct Prot02156a00* prot = (struct Prot02156a00*)GameState::GetInstance()->GetProtagonist();
     if (((struct Head02156a00*)data_ov004_021707c8.fc)->kind == 0 || ((struct Head02156a00*)data_ov004_021707c8.fc)->kind == 1) {
-        _Z24InitAndBuildList020a1698P8FooA1698Pv((struct FooA1698*)data_ov004_021707c8.fc, (void*)(unsigned int)prot->f150->f49c);
+        InitAndBuildList020a1698((struct FooA1698*)data_ov004_021707c8.fc, (void*)(unsigned int)prot->f150->f49c);
     } else if (((struct Head02156a00*)data_ov004_021707c8.fc)->kind == 2) {
         func_020a1614(data_ov004_021707c8.fc, ((struct Head02156a00*)data_ov004_021707c8.fc)->kind);
     }
 
     memset(data_ov004_021707c8.f4, 0, 0x3c0);
     __clear(bitmap, 0x3c);
-    _Z23LoadBattleBlock020ac460Pv(bitmap);
+    LoadBattleBlock020ac460(bitmap);
 
     int count = 0;
     for (struct Entry02156a00* e = ((struct Head02156a00*)data_ov004_021707c8.fc)->head; e != 0; e = e->next) {
@@ -84,9 +84,9 @@ extern "C" ARM int func_ov004_02156a00(void* a1) {
 
     node->f5c = (short)(sb / 12);
     node->f5e = f5e;
-    _Z22DivModField26_021f9bdcP11Obj021f9bdci((struct Obj021f9bdc*)node, (unsigned short)(sb % 12));
+    DivModField26_021f9bdc((struct Obj021f9bdc*)node, (unsigned short)(sb % 12));
 
-    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 1, 0);
+    DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 1, 0);
 
     void* node_a = func_ov023_021f6880(obj, 0xa);
     if (node_a == 0) {

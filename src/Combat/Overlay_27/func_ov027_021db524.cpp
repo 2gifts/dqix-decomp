@@ -50,7 +50,7 @@ extern "C" void func_020d4770(int a, int b, int c);
 extern "C" void func_020c976c(unsigned int cycles);
 extern "C" void func_020c9be0(void);
 
-extern "C" void _Z31IssueIdleBattleCommand_021db490v(void);
+void IssueIdleBattleCommand_021db490(void);
 int IssueBattleCommandSlot7(int a, Ctx020d507c* ctx);
 int IssueBattleCommandSlot25(int a, int mode);
 int IssueBattleCommandSlot8(int a, int b);
@@ -69,7 +69,7 @@ extern "C" ARM void func_ov027_021db524(Msg021db524* msg) {
             Fn021db524 fn = *(Fn021db524*)(data_ov027_021e33e0.ptr + 0x51c);
             fn(0x100, msg);
         } else {
-            _Z31IssueIdleBattleCommand_021db490v();
+            IssueIdleBattleCommand_021db490();
         }
         break;
 

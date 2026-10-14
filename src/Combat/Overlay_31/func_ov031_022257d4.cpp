@@ -4,7 +4,7 @@ extern "C" void func_ov031_0223e2c0(int idx, void* obj);
 extern "C" void func_ov031_0223ba20(int a);
 
 struct Obj0223c534;
-extern "C" void _Z37ProcessField28AndDispatch670_0223c534P11Obj0223c534(Obj0223c534* obj);
+void ProcessField28AndDispatch670_0223c534(Obj0223c534* obj);
 
 struct FlagObj0223da58;
 extern "C" int func_ov031_0223da58(FlagObj0223da58* obj);
@@ -21,7 +21,7 @@ extern "C" ARM void func_ov031_022257d4(void* obj) {
 	do {
 		int j = 0;
 		do {
-			_Z37ProcessField28AndDispatch670_0223c534P11Obj0223c534((Obj0223c534*)((void*(*)[4])data_ov031_02250bfc)[i][j]);
+			ProcessField28AndDispatch670_0223c534((Obj0223c534*)((void*(*)[4])data_ov031_02250bfc)[i][j]);
 			if (i == 0) {
 				func_ov031_0223ba20(*(int*)((char*)data_ov031_02250bfc + j * 4 + 0x104));
 			}

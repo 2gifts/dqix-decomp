@@ -23,10 +23,10 @@ struct PlayTimeDisplay {
 struct SearchClock { char pad[0x100d]; unsigned char count; };
 struct TimeStamp020103f0;
 struct TimeStamp020104cc;
-extern "C" void _Z33ComputeElapsedPlayTimeHMS020103f0P17TimeStamp020103f0PtPhS2_(TimeStamp020103f0*, unsigned short*, unsigned char*, unsigned char*);
+void ComputeElapsedPlayTimeHMS020103f0(TimeStamp020103f0*, unsigned short*, unsigned char*, unsigned char*);
 extern "C" SearchClock* func_0202ae18();
 int GetFieldAt0x0(int*);
-extern "C" void _Z33ComputeElapsedPlayTimeHMS020104ccP17TimeStamp020104ccPtPhS2_(TimeStamp020104cc*, unsigned short*, unsigned char*, unsigned char*);
+void ComputeElapsedPlayTimeHMS020104cc(TimeStamp020104cc*, unsigned short*, unsigned char*, unsigned char*);
 void AddPlayClockHours020ac614(BattleRecordPlayClock*, int);
 void AddPlayClockMinutes020ac644(BattleRecordPlayClock*, int);
 static inline ClockTotals* GetTotals(GameState* game) { return &((GameClockTotals*)game)->totals; }
@@ -47,7 +47,7 @@ extern "C" ARM void func_ov008_0218747c(PlayTimeDisplay* display, int mode) {
     if (mode == 0) {
         output = &display->clocks[0];
         saved = singlePlayerSaved;
-        _Z33ComputeElapsedPlayTimeHMS020103f0P17TimeStamp020103f0PtPhS2_((TimeStamp020103f0*)game, &hours, &minutes, &seconds);
+        ComputeElapsedPlayTimeHMS020103f0((TimeStamp020103f0*)game, &hours, &minutes, &seconds);
     } else if (mode == 1) {
         output = &display->clocks[1];
         saved = multiplayerSaved;
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov008_0218747c(PlayTimeDisplay* display, int mode) {
         int state = GetFieldAt0x0((int*)search);
         int count = search->count;
         if ((state == 5 && count > 1) || state == 6) {
-            _Z33ComputeElapsedPlayTimeHMS020104ccP17TimeStamp020104ccPtPhS2_((TimeStamp020104cc*)game, &hours, &minutes, &seconds);
+            ComputeElapsedPlayTimeHMS020104cc((TimeStamp020104cc*)game, &hours, &minutes, &seconds);
         } else {
             hours = 0;
             minutes = 0;

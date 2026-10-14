@@ -13,10 +13,10 @@ struct Obj020dee58;
 
 unsigned char *FindElementByByte0xc4(Obj2081 *, int);
 bool IsField0x9cEqual3(unsigned char *);
-extern "C" Obj020dee58 *_Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0 *, int);
-extern "C" void _Z29GetLookAndTurnOffsets020809c4PviiPsS0_(void *, int, int, short *, short *);
+Obj020dee58 *FindElementByKey020dedd0(Container020dedd0 *, int);
+void GetLookAndTurnOffsets020809c4(void *, int, int, short *, short *);
 int LookupValueFromField8(Obj020dee58 *);
-extern "C" void _Z25InitEntryAtIndex_0217585cPviiih(void *, int, int, int, unsigned char);
+void InitEntryAtIndex_0217585c(void *, int, int, int, unsigned char);
 bool CheckField0x9cSetWhenField0xd4Present(unsigned char *);
 
 #if defined(jpn)
@@ -66,13 +66,13 @@ extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
         short a = 7;
         short b = (short) (self->page * 6);
         for (unsigned char i = 0; i < 6; i++) {
-            Obj020dee58 *it = _Z24FindElementByKey020dedd0P17Container020dedd0i(&self->entries,
+            Obj020dee58 *it = FindElementByKey020dedd0(&self->entries,
                                                                                 self->keys_[b]);
             if (it) {
                 short x, y;
-                _Z29GetLookAndTurnOffsets020809c4PviiPsS0_(obj, 3, a, &x, &y);
+                GetLookAndTurnOffsets020809c4(obj, 3, a, &x, &y);
                 int v = LookupValueFromField8(it);
-                _Z25InitEntryAtIndex_0217585cPviiih(self, x, y - 1, (v + 6) & 0xff, k);
+                InitEntryAtIndex_0217585c(self, x, y - 1, (v + 6) & 0xff, k);
             }
             k++;
             a++;
@@ -94,9 +94,9 @@ extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
             cx     = (short) (cx << 3) + 3;
             cy     = (short) (cy << 3) + 3;
 #if defined(jpn)
-            _Z25InitEntryAtIndex_0217585cPviiih(self, cx, cy, data_ov003_0217e34d[(self->selection + (k - 0x124)) & 0xff], k);
+            InitEntryAtIndex_0217585c(self, cx, cy, data_ov003_0217e34d[(self->selection + (k - 0x124)) & 0xff], k);
 #else
-            _Z25InitEntryAtIndex_0217585cPviiih(self, cx, cy, data_ov003_0217fabd[(self->selection + (k - 0x124)) & 0xff], k);
+            InitEntryAtIndex_0217585c(self, cx, cy, data_ov003_0217fabd[(self->selection + (k - 0x124)) & 0xff], k);
 #endif
             return;
         }
@@ -109,11 +109,11 @@ extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
     short a = 0x68;
     for (unsigned char i = 0; i < 8; i++) {
         short x, y;
-        _Z29GetLookAndTurnOffsets020809c4PviiPsS0_(obj, 0xe, a, &x, &y);
+        GetLookAndTurnOffsets020809c4(obj, 0xe, a, &x, &y);
 #if defined(jpn)
-        _Z25InitEntryAtIndex_0217585cPviiih(self, x, y - 1, data_ov003_0217e32c[i], k);
+        InitEntryAtIndex_0217585c(self, x, y - 1, data_ov003_0217e32c[i], k);
 #else
-        _Z25InitEntryAtIndex_0217585cPviiih(self, x, y - 1, data_ov003_0217fa9c[i], k);
+        InitEntryAtIndex_0217585c(self, x, y - 1, data_ov003_0217fa9c[i], k);
 #endif
         a++;
         k++;

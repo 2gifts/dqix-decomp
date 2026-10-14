@@ -2,8 +2,8 @@
 #include "GameState/GameState.h"
 
 struct FlagWord02046708;
-extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(struct FlagWord02046708* word, unsigned int mask);
+FlagWord02046708* GetDataPtr02114e04_020d6c00();
+int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 extern "C" int _Z27GetByteAtPtrOrZero_02191b58v(unsigned char* obj, int idx);
 extern "C" void _Z34SetupAndDispatchCombatant_02191e5ciisht(unsigned char* obj, int idx, short c, unsigned char d, unsigned short e);
 extern "C" void _Z33DispatchOrSetupCombatant_02191f4cii(unsigned char* obj, int idx);
@@ -19,7 +19,7 @@ extern "C" ARM void func_ov017_02191cc0(unsigned char* obj) {
 #else
  enum {regionalOffset0=0x3b50};
 #endif
-    if (_Z17TestFlags02046708P16FlagWord02046708j(_Z27GetDataPtr02114e04_020d6c00v(), 0x20000)) return;
+    if (TestFlags02046708(GetDataPtr02114e04_020d6c00(), 0x20000)) return;
     GameState* battle = GameState::GetInstance();
     GameObject* protagonist = battle->GetProtagonist();
     if (protagonist == 0) return;

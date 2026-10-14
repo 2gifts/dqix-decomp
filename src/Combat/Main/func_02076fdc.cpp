@@ -27,8 +27,8 @@ extern struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* table, 
 extern struct Row02076fdc* FindListEntryById(struct List_020283c0* list, int key);
 
 extern "C" int fix32_Atan2(int x, int z);
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int angle);
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68* obj, int value);
+void SetVecYByMode02033834(struct Obj02033834* obj, int angle);
+void SetByteIfChanged02033b68(struct Obj02033b68* obj, int value);
 extern "C" void* func_0202ae18(void);
 int CheckField0NonZero(int* obj);
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
@@ -61,7 +61,7 @@ extern "C" ARM int func_02076fdc(FieldMonsterState* self) {
         return 0;
     }
     Vector3fix_Normalize(&diff, &diff);
-    _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, fix32_Atan2(diff.x, diff.z));
+    SetVecYByMode02033834((struct Obj02033834*)self, fix32_Atan2(diff.x, diff.z));
     self->flags |= 0x40;
     switch (self->actor.unknown_139) {
     case 0:
@@ -81,7 +81,7 @@ extern "C" ARM int func_02076fdc(FieldMonsterState* self) {
         self->actor.base.fieldB2 = 0x1c2;
         break;
     }
-    _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)self, 1);
+    SetByteIfChanged02033b68((struct Obj02033b68*)self, 1);
     if (self->actor.unknown_134 == 4 || self->actor.unknown_134 == 5 || self->actor.unknown_134 == 6) {
         self->actor.base.object.DisableFlag(0x80);
     } else {

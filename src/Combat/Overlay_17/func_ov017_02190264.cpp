@@ -23,10 +23,10 @@ extern "C" int* func_0202ae18();
 extern "C" int func_ov017_021925e0();
 PartyExtension* GetFieldAt0x150(unsigned char*);
 extern "C" void func_02082828(PartyExtension*);
-extern "C" void _Z27SetFlagAndSyncVec3_021bd3d4Pvi(void*, int);
+void SetFlagAndSyncVec3_021bd3d4(void*, int);
 extern "C" PartySlot* func_ov017_021a4658(GameResources*, int);
 extern "C" void func_02046a8c(void*, PartySlot*);
-extern "C" void _Z30ResetEntriesAndNotify_021b33d8Pv(void*);
+void ResetEntriesAndNotify_021b33d8(void*);
 int CheckField0NonZero(int*);
 void* GetField0x74deForValidIndex(char*, unsigned int);
 int CheckSubstructByte0x7cPositive(signed char*);
@@ -61,14 +61,14 @@ extern "C" ARM void func_ov017_02190264(GameResources* resources, int index) {
                 func_02082828(extension);
                 extension->preserved = preserved;
             }
-            _Z27SetFlagAndSyncVec3_021bd3d4Pvi(node, (unsigned char)index);
+            SetFlagAndSyncVec3_021bd3d4(node, (unsigned char)index);
             return;
         }
     }
     PartySlot* slot = func_ov017_021a4658(resources, index);
     if (slot->active) {
         func_02046a8c(resources->unknown_ptr_array_36fc[1], slot);
-        _Z30ResetEntriesAndNotify_021b33d8Pv(slot);
+        ResetEntriesAndNotify_021b33d8(slot);
     }
     GameObject* combatant = GetCombatantWithFlag0x100(game, index);
     if (combatant) {

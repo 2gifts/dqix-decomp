@@ -14,8 +14,8 @@ struct SearchStruct {
 void PushInterruptDisableState(void);
 extern "C" void func_020d8694(void);
 int TestBitBySignedByteIndex(struct SearchStruct* obj, int value);
-extern "C" void _Z32StoreValidCombatantCount0202c3e0Pv(void* obj);
-extern "C" void _Z24UpdatePlayClocks020ac4f8i(int flag);
+void StoreValidCombatantCount0202c3e0(void* obj);
+void UpdatePlayClocks020ac4f8(int flag);
 unsigned long long GetCurrentTimestamp(void);
 
 // USA: func_0202c288
@@ -34,14 +34,14 @@ extern "C" ARM void func_0202c288(struct SearchStruct* obj) {
                 (*((unsigned char*)obj + 0x100d))++;
             }
         }
-        _Z32StoreValidCombatantCount0202c3e0Pv(obj);
+        StoreValidCombatantCount0202c3e0(obj);
     }
 
     if (*(int*)obj == 5) {
         unsigned char cur = obj->blk.count;
         if (cur == 1) {
             if (saved > 1) {
-                _Z24UpdatePlayClocks020ac4f8i(1);
+                UpdatePlayClocks020ac4f8(1);
                 goto done;
             }
         }

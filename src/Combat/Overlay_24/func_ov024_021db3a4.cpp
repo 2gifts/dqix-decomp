@@ -3,11 +3,11 @@
 #include "GameState/GameState.h"
 struct Obj021db3a4;
 struct Params021db3a4;
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState*);
+void* GetPtrField0x2a04(GameState*);
 extern "C" int _Z17ArrayContainsByteP23ArrayContainsByteStructi(void*, int);
 extern "C" float func_ov024_021db358(GameObject*);
 extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(void*, int);
-extern "C" short _Z20ApplyHPDelta0215a16cPviiPs(void*, int, int, short*);
+short ApplyHPDelta0215a16c(void*, int, int, short*);
 extern "C" unsigned short func_ov024_021e9b24(Obj021db3a4*, int, Params021db3a4*, int);
 extern "C" unsigned long long func_ov024_021e4b14(Obj021db3a4*, short, int, Params021db3a4*, int);
 extern "C" void* func_ov000_0215e958(void*);
@@ -24,11 +24,11 @@ extern "C" ARM void* func_ov024_021db3a4(Obj021db3a4* obj, short arg, int id, Pa
     if (!c) return 0;
     unsigned short code = params->field4.code;
     if (code == 0x21 || code == 0x310) amount = c->currentStats_->primaryStats.maxHP;
-    void* list = _Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
+    void* list = GetPtrField0x2a04(GameState::GetInstance());
     if (params->field4.code == 0x20 && _Z17ArrayContainsByteP23ArrayContainsByteStructi(list, arg) && func_ov024_021db358(c) <= 0.08f && enabled && amount > 0)
         _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(obj->context, 7);
     short applied = 0;
-    short hp = _Z20ApplyHPDelta0215a16cPviiPs(obj->context, id, amount, &applied);
+    short hp = ApplyHPDelta0215a16c(obj->context, id, amount, &applied);
     int failed = 0;
     if (applied <= 0) failed = 1;
     unsigned short selection = func_ov024_021e9b24(obj, id, params, failed);

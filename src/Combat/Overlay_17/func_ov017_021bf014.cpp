@@ -24,17 +24,17 @@ extern AllocatorUnion data_02114e20;
 extern char data_ov017_021d7ec0[];
 extern char data_ov017_021d7ed5[];
 extern "C" void func_0202ae18();
-extern "C" Obj02046574* _Z26GetGlobalField0x1c020421a0v();
+Obj02046574* GetGlobalField0x1c020421a0();
 extern "C" void* func_02012fe4();
 unsigned char* GetFieldIfFlag4(char*);
-extern "C" Obj020d7aa0* _Z25GetGlobalResetObj020d7a50v();
-extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(Obj020d7aa0*);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+Obj020d7aa0* GetGlobalResetObj020d7a50();
+void TeardownAndResetState020d7aa0(Obj020d7aa0*);
+void CancelPendingAction020397cc(Obj020397cc*, int);
 void ClearIntAt0x23c(unsigned char*);
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
 extern "C" void func_020728ac(TableA68*, SafeAllocator*, void*, unsigned int, int, int, int);
 extern "C" void func_02046380(Obj02046574*);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574*, int, char*);
+void SetIndexedName02046574(Obj02046574*, int, char*);
 char* FindEntryByKey(TableA68*, int);
 extern "C" void func_0204500c(Obj02046574*, char*, int
 #if !defined(jpn)
@@ -43,24 +43,24 @@ extern "C" void func_0204500c(Obj02046574*, char*, int
 );
 extern "C" int func_020457e0(Obj02046574*);
 void ClearAllTreasureMapUnknownBits(void*);
-extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int);
-extern "C" void _Z24ReinitController02043204Pc(char*);
+void SetCombatModeFromCase020dc2d0(int);
+void ReinitController02043204(char*);
 void SetByteField0x253(void*);
-extern "C" void _Z37ClearFieldsAndResetAllocator_021bf398Pc(char*);
+void ClearFieldsAndResetAllocator_021bf398(char*);
 
 // USA: func_ov017_021bf014
 extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
     GameState* game = GameState::GetInstance();
     func_0202ae18();
     func_ov017_0218b5b0();
-    Obj02046574* controller = _Z26GetGlobalField0x1c020421a0v();
+    Obj02046574* controller = GetGlobalField0x1c020421a0();
     func_02012fe4();
     GrottoStruct* grotto = game->GetGrottoStruct();
     GameObject* combatant = game->GetUnknownGameObject();
     unsigned char* field = GetFieldIfFlag4((char*)game);
     if (self->state == 0) {
-        _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)combatant, 1);
+        TeardownAndResetState020d7aa0(GetGlobalResetObj020d7a50());
+        CancelPendingAction020397cc((Obj020397cc*)combatant, 1);
         ClearIntAt0x23c(field);
         void* buffer = AllocateAligned4(&data_02114e20, TextHeapSize);
         self->allocator.CreateTypeA(buffer, TextHeapSize);
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
         BackgroundLoader::GetInstance()->RemoveTask(self->task);
         self->task = -1;
         func_02046380(controller);
-        _Z22SetIndexedName02046574P11Obj02046574iPc(controller, 0, game->GetUnknownGameObject()->baseStats_->unk);
+        SetIndexedName02046574(controller, 0, game->GetUnknownGameObject()->baseStats_->unk);
         BlankFunction02094b30(GetGlobal02109400(), 0x203, 0);
         self->state = 2;
     }
@@ -113,7 +113,7 @@ extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
         (*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + ChoiceOffset)) = 0;
         self->state = 5;
     } else if (self->state == 5) {
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)combatant, 1);
+        CancelPendingAction020397cc((Obj020397cc*)combatant, 1);
         if ((*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + DialogOffset))) return;
         grotto->unknown_0[2] = 1;
         int result = func_020457e0(controller);
@@ -121,19 +121,19 @@ extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
         else if (result == 1) self->state = 9;
     } else if (self->state == 6) {
         ClearAllTreasureMapUnknownBits(game);
-        _Z29SetCombatModeFromCase020dc2d0i(0);
+        SetCombatModeFromCase020dc2d0(0);
         self->state = 7;
     } else if (self->state == 7) {
         self->state = 8;
     } else if (self->state == 8) {
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)combatant, 1);
+        CancelPendingAction020397cc((Obj020397cc*)combatant, 1);
         if (!(*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + PendingOffset))) self->state = 9;
     } else if (self->state == 9) {
-        _Z24ReinitController02043204Pc((char*)controller);
+        ReinitController02043204((char*)controller);
         SetByteField0x253(combatant);
         FontBankLoader* global = GetGlobal02109400();
         BlankFunction02094b38(global, 0x203);
         func_02094ab0(global);
-        _Z37ClearFieldsAndResetAllocator_021bf398Pc((char*)self);
+        ClearFieldsAndResetAllocator_021bf398((char*)self);
     }
 }

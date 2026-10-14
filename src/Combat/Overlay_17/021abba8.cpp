@@ -69,7 +69,7 @@ struct Loader021abba8 {
 
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_02057924(void);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int arg1);
+void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
 int ListContainsId(ListHead02046b60* list, int id);
 extern "C" void func_ov017_021ac2a8(void* obj);
 extern "C" void func_02046a8c(void* list, void* node);
@@ -79,31 +79,31 @@ int GetGlobal02109400(void);
 extern "C" void func_02094ab0(int g);
 extern "C" void func_020a0cc4(unsigned int size);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50* p);
+void CopyInternalFields0207df50(Foo0207df50* p);
 extern "C" int func_02057e6c(void* mgr, int id, SafeAllocator* alloc, void* data, unsigned int length, Foo0207df50* fields);
-extern "C" void _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_(Base02010834* base, int index, int* out, int* outCount);
+void CopyCountedBytesToIntArray02010834(Base02010834* base, int index, int* out, int* outCount);
 extern "C" int func_0202c508(void* p);
 extern "C" void _ZN8Vector3iaSERKS_(Vector3i* dst, const Vector3i& src);
-extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, int params);
-extern "C" void _Z26SetForwardAndStore0205ebc0Pvii(void* obj, int arg1, int arg2);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(void* obj, int a, int b);
+void FindNodeAndProcess02057fb4(void* list, int id, int params);
+void SetForwardAndStore0205ebc0(void* obj, int arg1, int arg2);
+void DispatchIfField0xc4NonNeg_0205ebfc(void* obj, int a, int b);
 void SetBrightness(GameResources* resources, int brightness, int duration);
 int IsBrightnessTransitionActive(GameResources* resources);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
-extern "C" void _Z27CallListIfFlagsSet_02197528v(void);
+void CallListIfFlagsSet_02197528(void);
 void SetByteField0x253(void* obj);
-extern "C" void _Z25ForwardField0xc0_0205ebecPv(void* obj);
+void ForwardField0xc0_0205ebec(void* obj);
 extern "C" void* func_0205ec34(void);
 void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
 int CheckBitsInField0x63dc(void* obj, int mask);
-extern "C" void _Z21InitObjState_021b2174Ph(unsigned char* obj);
-extern "C" void _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc(S021b2ba0* obj, char* name);
-extern "C" void _Z25SetFields30And34_021b2bd0Pvii(void* obj, int a, int b);
-extern "C" void _Z16SetBit4_021b2bf4P9S021b2bf4j(S021b2bf4* obj, unsigned int v);
-extern "C" void _Z16SetBit5_021b2c0cP9S021b2c0cj(S021b2c0c* obj, unsigned int v);
-extern "C" void _Z16SetBit3_021b2bdcP9S021b2bdcj(S021b2bdc* obj, unsigned int v);
+void InitObjState_021b2174(unsigned char* obj);
+void SetNameChecked_021b2ba0(S021b2ba0* obj, char* name);
+void SetFields30And34_021b2bd0(void* obj, int a, int b);
+void SetBit4_021b2bf4(S021b2bf4* obj, unsigned int v);
+void SetBit5_021b2c0c(S021b2c0c* obj, unsigned int v);
+void SetBit3_021b2bdc(S021b2bdc* obj, unsigned int v);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
-extern "C" void _Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv(SafeAllocator* a, void* target);
+void AllocateAndCopyBuf20_021689d8(SafeAllocator* a, void* target);
 
 extern char data_ov017_021d78da;
 extern char data_ov017_021d78f1;
@@ -121,7 +121,7 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
     int delta = gs->GetTickCount();
 
     if (self->state == 0) {
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)leader, 1);
+        CancelPendingAction020397cc((Obj020397cc*)leader, 1);
         if (ListContainsId(list, 0x4e)) {
             self->done = 1;
             func_ov017_021ac2a8(self);
@@ -147,7 +147,7 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
             self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x2800), 0x2800);
             self->allocator.Reset();
             Foo0207df50* fields = (Foo0207df50*)(*(char**)((char*)gs->GetUnknownGameObject() + kContextPointerOffset) + 0x568);
-            _Z26CopyInternalFields0207df50P11Foo0207df50(fields);
+            CopyInternalFields0207df50(fields);
             void* copy = self->allocator.Allocate(length);
             memcpy(copy, data, length);
             func_02057e6c(mgr, 5, &self->allocator, copy, length, fields);
@@ -159,7 +159,7 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
         int ids[5];
         ObjParams02078484 params[5];
         if (self->active != 0) {
-            _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_((Base02010834*)gs, *(short*)((char*)leader + 4), ids, &count);
+            CopyCountedBytesToIntArray02010834((Base02010834*)gs, *(short*)((char*)leader + 4), ids, &count);
             for (int i = 0; i < count; i++) {
                 self->members |= 1 << ids[i];
             }
@@ -213,15 +213,15 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
                 params[k].b7 = 0;
                 _ZN8Vector3iaSERKS_(&params[k].position, ((Object3D*)member)->position_);
                 _ZN8Vector3iaSERKS_(&params[k].scale, ((Object3D*)member)->GetScale());
-                _Z26FindNodeAndProcess02057fb4Pvii(mgr, 5, (int)&params[k]);
+                FindNodeAndProcess02057fb4(mgr, 5, (int)&params[k]);
             }
         }
         self->state++;
     } else if (self->state == 3) {
         self->timer += delta;
         if (self->timer > 8) {
-            _Z26SetForwardAndStore0205ebc0Pvii(&data_02108760, 0xb1, 0xb1);
-            _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, 0, 0);
+            SetForwardAndStore0205ebc0(&data_02108760, 0xb1, 0xb1);
+            DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 0, 0);
             self->state++;
         }
     } else if (self->state == 4) {
@@ -255,11 +255,11 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
                 }
             }
             ClearBitsInWord((unsigned int*)res, 0x10);
-            _Z27CallListIfFlagsSet_02197528v();
+            CallListIfFlagsSet_02197528();
             self->done = 1;
             SetByteField0x253(leader);
             func_ov017_021ac2a8(self);
-            _Z25ForwardField0xc0_0205ebecPv(&data_02108760);
+            ForwardField0xc0_0205ebec(&data_02108760);
             if (func_0202c508(search)) {
                 unsigned char* flags = (unsigned char*)func_0205ec34();
                 SetOrClearBitInArray(flags, flags + 0x8c, 0x113d, 1);
@@ -268,12 +268,12 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
                 TailList020469b4* tail;
                 unsigned char* node = (unsigned char*)res->unknown_ptr_array_3afc[0x14];
                 tail = (TailList020469b4*)res->unknown_ptr_array_36fc[0];
-                _Z21InitObjState_021b2174Ph(node);
-                _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)node, &data_ov017_021d78f1);
-                _Z25SetFields30And34_021b2bd0Pvii(node, (int)_Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv, OVERLAY_ID(4));
-                _Z16SetBit4_021b2bf4P9S021b2bf4j((S021b2bf4*)node, 1);
-                _Z16SetBit5_021b2c0cP9S021b2c0cj((S021b2c0c*)node, 1);
-                _Z16SetBit3_021b2bdcP9S021b2bdcj((S021b2bdc*)node, 0);
+                InitObjState_021b2174(node);
+                SetNameChecked_021b2ba0((S021b2ba0*)node, &data_ov017_021d78f1);
+                SetFields30And34_021b2bd0(node, (int)AllocateAndCopyBuf20_021689d8, OVERLAY_ID(4));
+                SetBit4_021b2bf4((S021b2bf4*)node, 1);
+                SetBit5_021b2c0c((S021b2c0c*)node, 1);
+                SetBit3_021b2bdc((S021b2bdc*)node, 0);
                 AppendNodeToTail(tail, (TailNode020469b4*)node);
             }
         }

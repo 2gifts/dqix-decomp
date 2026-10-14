@@ -19,7 +19,7 @@ struct List0204af64 {
 extern char data_02107800;
 
 extern "C" void* func_ov017_0218b5b0(void*);
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64*);
+void ResetList0204af64(struct List0204af64*);
 extern "C" void func_0204b174(void* list, void* rec, void* alloc, int size);
 extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
 extern "C" unsigned int GetMainBG1ScreenBase(void);
@@ -53,7 +53,7 @@ extern "C" ARM void func_02044d0c(void) {
     char* rec = *(char**)((char*)func_ov017_0218b5b0(&data_02107800) + 0x2c);
 
     struct List0204af64 local;
-    _Z17ResetList0204af64P12List0204af64(&local);
+    ResetList0204af64(&local);
     local.b1c_lo = 0;
     local.b1c_hi = 3;
     func_0204b174(&local, rec, 0, 0);

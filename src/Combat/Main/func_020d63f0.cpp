@@ -35,8 +35,8 @@ struct Msg020d63f0 {
     Obj020d66dc* obj;
 };
 
-extern "C" void _Z28ClearAndSetBlockFlag020d6610P11Obj020d6610ii(Obj020d6610* obj, int bit, int extra);
-extern "C" void _Z31AdvanceBattleBlockQueue020d66dcP11Obj020d66dci(Obj020d66dc* obj, int mode);
+void ClearAndSetBlockFlag020d6610(Obj020d6610* obj, int bit, int extra);
+void AdvanceBattleBlockQueue020d66dc(Obj020d66dc* obj, int mode);
 
 // USA: func_020d63f0
 extern "C" ARM void func_020d63f0(Msg020d63f0* msg) {
@@ -45,11 +45,11 @@ extern "C" ARM void func_020d63f0(Msg020d63f0* msg) {
     if (msg->subType == 0) {
         switch (msg->event) {
         case 0x15:
-            _Z28ClearAndSetBlockFlag020d6610P11Obj020d6610ii((Obj020d6610*)obj, msg->bit, msg->param);
-            _Z31AdvanceBattleBlockQueue020d66dcP11Obj020d66dci(obj, 0);
+            ClearAndSetBlockFlag020d6610((Obj020d6610*)obj, msg->bit, msg->param);
+            AdvanceBattleBlockQueue020d66dc(obj, 0);
             break;
         case 7:
-            _Z31AdvanceBattleBlockQueue020d66dcP11Obj020d66dci(obj, 0);
+            AdvanceBattleBlockQueue020d66dc(obj, 0);
             break;
         case 0x19:
             break;
@@ -66,9 +66,9 @@ extern "C" ARM void func_020d63f0(Msg020d63f0* msg) {
                 obj->blocks[next].flagsA &= mask;
             }
             SetIRQInterruptState(state);
-            _Z31AdvanceBattleBlockQueue020d66dcP11Obj020d66dci(obj, 0);
+            AdvanceBattleBlockQueue020d66dc(obj, 0);
             if (obj->sub.state == 1) {
-                _Z31AdvanceBattleBlockQueue020d66dcP11Obj020d66dci(obj, 0);
+                AdvanceBattleBlockQueue020d66dc(obj, 0);
             }
             break;
         }

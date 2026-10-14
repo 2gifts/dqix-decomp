@@ -11,7 +11,7 @@ struct MoveData_021f66cc {
 	unsigned short handlerB;
 };
 
-extern "C" struct MoveData_021f66cc* _Z24SearchBothTables02079e2cPci(char* table, int key);
+struct MoveData_021f66cc* SearchBothTables02079e2c(char* table, int key);
 
 class AIHandler_021f66cc {
 public:
@@ -26,7 +26,7 @@ extern Handler_021f66cc data_ov024_021ff790[];
 extern "C" ARM int func_ov024_021f66cc(AIHandler_021f66cc* obj, int battle, int moveId, int id, int a4, int a5) {
 	obj->battle = battle;
 	GetCombatantWithFlag0x400(GameState::GetInstance(), id);
-	struct MoveData_021f66cc* move = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)moveId);
+	struct MoveData_021f66cc* move = SearchBothTables02079e2c((char*)GetData02108e10(), (short)moveId);
 	int handler = 0;
 	int kind = GetCombatantField0x148Bits3To4(obj->battle, (short)id);
 	switch (kind) {

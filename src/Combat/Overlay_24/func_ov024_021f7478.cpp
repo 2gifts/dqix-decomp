@@ -172,11 +172,11 @@ struct Obj_021f7478 {
     unsigned char f654;
 };
 
-extern "C" void _Z23InitElemArray4_021f68c8P13Elem_021f68c8(struct Elem_021f68c8* arr);
+void InitElemArray4_021f68c8(struct Elem_021f68c8* arr);
 struct Combatant_021f7478* GetCombatantWithFlag0x400ByID(int unused, int id);
 struct Combatant_021f7478* GetCombatantByID(int unused, int id);
 int IsFlag10088Set(struct S_10088* obj);
-extern "C" int _Z33IsCombatantFlag2Mask8192_021e6798P10GameObject(GameObject* obj);
+int IsCombatantFlag2Mask8192_021e6798(GameObject* obj);
 extern "C" float func_ov024_021db358(struct Combatant_021f7478* obj);
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
@@ -186,17 +186,17 @@ int GetFieldAt0x150(unsigned char* obj);
 extern "C" void* func_02012fe4(void);
 extern "C" int func_ov000_02159cb4(int a, int id);
 void* GetActiveCombatWork(void);
-extern "C" void* _Z20GetOffsetPtr02160f08Pv(void* obj);
-extern "C" void* _Z25FindByKeyIndexed_021f69b4Pci(char* base, int key);
-extern "C" int _Z20CountNonZero021719c0P9S021719c0(struct S021719c0* p);
+void* GetOffsetPtr02160f08(void* obj);
+void* FindByKeyIndexed_021f69b4(char* base, int key);
+int CountNonZero021719c0(struct S021719c0* p);
 extern "C" void func_ov000_0217c32c(void* p);
-extern "C" int _Z20IsBitFlagSet0217c4e8Pvi(void* p, int i);
-extern "C" struct MoveData_021f7478* _Z27GetBoundedField420_0217199cPvi(void* p, int i);
-extern "C" int _Z20CountNonZero02171698P9S02171698(struct S02171698* p);
-extern "C" struct MoveData_021f7478* _Z27GetBoundedField156_02171674Pvi(void* p, int i);
+int IsBitFlagSet0217c4e8(void* p, int i);
+struct MoveData_021f7478* GetBoundedField420_0217199c(void* p, int i);
+int CountNonZero02171698(struct S02171698* p);
+struct MoveData_021f7478* GetBoundedField156_02171674(void* p, int i);
 extern "C" int func_ov000_02171bc0(void* p);
-extern "C" struct LearnedMove_021f7478* _Z33GetPointerField_02171b9c_02171b9cPvi(void* p, int i);
-extern "C" struct MoveData_021f7478* _Z24SearchBothTables02079e2cPci(char* p, int key);
+struct LearnedMove_021f7478* GetPointerField_02171b9c_02171b9c(void* p, int i);
+struct MoveData_021f7478* SearchBothTables02079e2c(char* p, int key);
 int GetBits23To25At0x2f4(unsigned char* obj);
 extern "C" char* _ZN17ActiveGrottoClass15GetDetailedDataEv(void* grotto);
 extern "C" unsigned short _ZNK23DetailedTreasureMapData17LegacyBossMapData26MaybeGetCurrentAlternateIDEv(void* legacy);
@@ -249,9 +249,9 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
 
     obj->f170 = 0.4f;
     obj->numEntries = 0;
-    _Z23InitElemArray4_021f68c8P13Elem_021f68c8(obj->first);
+    InitElemArray4_021f68c8(obj->first);
     for (int i = 0; i < 14; i++) {
-        _Z23InitElemArray4_021f68c8P13Elem_021f68c8(obj->elems[i]);
+        InitElemArray4_021f68c8(obj->elems[i]);
     }
 
     GameState* gs = GameState::GetInstance();
@@ -267,7 +267,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
             struct Combatant_021f7478* c = GetCombatantWithFlag0x400ByID((int)obj->battle, (short)(groups[i].ids[j] + 0xc0));
             if (c == 0) continue;
             if (IsFlag10088Set((struct S_10088*)c)) continue;
-            if (_Z33IsCombatantFlag2Mask8192_021e6798P10GameObject((GameObject*)c)) continue;
+            if (IsCombatantFlag2Mask8192_021e6798((GameObject*)c)) continue;
             obj->list[obj->count] = c;
             obj->groupSlots[i][cnt] = obj->count;
             obj->hp[obj->count] = c->currentStats->primaryStats.currHP;
@@ -368,16 +368,16 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
         }
     }
 
-    void* work = _Z25FindByKeyIndexed_021f69b4Pci((char*)_Z20GetOffsetPtr02160f08Pv(GetActiveCombatWork()), obj->id);
-    int n = _Z20CountNonZero021719c0P9S021719c0((struct S021719c0*)work);
+    void* work = FindByKeyIndexed_021f69b4((char*)GetOffsetPtr02160f08(GetActiveCombatWork()), obj->id);
+    int n = CountNonZero021719c0((struct S021719c0*)work);
     if (n > 0) {
         if (data_ov024_02200154[obj->id] == 0) {
             func_ov000_0217c32c(work);
             data_ov024_02200154[obj->id] = 1;
         }
         for (int i = 0; i < n; i++) {
-            if (!_Z20IsBitFlagSet0217c4e8Pvi(work, i)) continue;
-            struct MoveData_021f7478* m = _Z27GetBoundedField420_0217199cPvi(work, i);
+            if (!IsBitFlagSet0217c4e8(work, i)) continue;
+            struct MoveData_021f7478* m = GetBoundedField420_0217199c(work, i);
             if (m == 0) continue;
             if (!m->usable) continue;
             struct Entry_021f7478* e = &entries[obj->numEntries];
@@ -389,9 +389,9 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
         }
     }
 
-    n = _Z20CountNonZero02171698P9S02171698((struct S02171698*)work);
+    n = CountNonZero02171698((struct S02171698*)work);
     for (int i = 0; i < n; i++) {
-        struct MoveData_021f7478* m = _Z27GetBoundedField156_02171674Pvi(work, i);
+        struct MoveData_021f7478* m = GetBoundedField156_02171674(work, i);
         if (m == 0) continue;
         if (!m->usable) continue;
         struct Entry_021f7478* e = &entries[obj->numEntries];
@@ -405,12 +405,12 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
     ActionDataTables* moveTable = GetData02108e10();
     int n3 = func_ov000_02171bc0(work);
     for (int i = 0; i < n3; i++) {
-        struct LearnedMove_021f7478* lm = _Z33GetPointerField_02171b9c_02171b9cPvi(work, i);
+        struct LearnedMove_021f7478* lm = GetPointerField_02171b9c_02171b9c(work, i);
         if (lm == 0) continue;
         if (lm->uses <= 0) continue;
         unsigned short moveId = lm->moveId;
         if (moveId == 0) continue;
-        struct MoveData_021f7478* m = _Z24SearchBothTables02079e2cPci((char*)moveTable, (short)moveId);
+        struct MoveData_021f7478* m = SearchBothTables02079e2c((char*)moveTable, (short)moveId);
         if (m == 0) continue;
         if (!m->usable) continue;
         unsigned char flag = lm->flag ? 1 : 0;
@@ -460,7 +460,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
                     if (!_ZN23DetailedTreasureMapData17LegacyBossMapData17CanUseLevelUpMoveEt(detail + 0x4c, moveId)) continue;
                 }
             }
-            struct MoveData_021f7478* m = _Z24SearchBothTables02079e2cPci((char*)moveTable2, (short)moveId);
+            struct MoveData_021f7478* m = SearchBothTables02079e2c((char*)moveTable2, (short)moveId);
             if (m == 0) continue;
             if (m->flags & 1) obj->flags69[3] = 1;
             if (m->targetKind == 1 || m->targetKind == 3) {

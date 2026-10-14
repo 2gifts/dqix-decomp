@@ -16,7 +16,7 @@ struct IPv4Packet02202e44 {
 struct NetworkState02202e44 { char unknown0[0x40]; void (*release)(void*); char unknown44[0xc]; unsigned int address; };
 extern NetworkState02202e44 data_ov031_0224c980;
 extern "C" int func_ov031_022007a4(unsigned int);
-extern "C" unsigned int _Z34ComputeNormalizedChecksum_02200684Pvj(void*, unsigned int);
+unsigned int ComputeNormalizedChecksum_02200684(void*, unsigned int);
 extern "C" void func_ov031_02200e38(void*, unsigned int, int);
 extern "C" IPv4Packet02202e44* func_ov031_02202b78(IPv4Packet02202e44*, int*);
 extern "C" void func_ov031_0220296c(IPv4Packet02202e44*, void*, unsigned int);
@@ -37,7 +37,7 @@ extern "C" ARM void func_ov031_02202e44(IPv4Packet02202e44* packet, unsigned int
     if (destination != source) {
         if (!func_ov031_022007a4(destination)) return;
         if (available < Swap16_02202e44(packet->length)) return;
-        if (_Z34ComputeNormalizedChecksum_02200684Pvj(packet, (packet->header & 15) << 2) != 0xffff) return;
+        if (ComputeNormalizedChecksum_02200684(packet, (packet->header & 15) << 2) != 0xffff) return;
         if (data_ov031_0224c980.address == DestinationAddress02202e44(packet))
             func_ov031_02200e38((char*)packet - 8, SourceAddress02202e44(packet), 1);
     }

@@ -27,7 +27,7 @@ enum {
 #include "GameState/GameState.h"
 
 extern "C" void* _Z10GetWord0x0Pi(void* battle);
-extern "C" void* _Z17GetGlobal02109400v();
+void* GetGlobal02109400();
 
 struct Struct0205de24;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
@@ -37,10 +37,10 @@ int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
 
 struct Obj0205eaa0;
 extern struct Obj0205eaa0 data_02108760;
-extern "C" int _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
+int DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
 struct Entry_0205d6a0;
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(struct Entry_0205d6a0* a, int flag);
+void ResetEntryList0205d6a0(struct Entry_0205d6a0* a, int flag);
 
 struct Obj021e6e20;
 int TestFlagsAndActiveElement2_021e6e20(struct Obj021e6e20* obj);
@@ -53,7 +53,7 @@ extern "C" void func_ov012_0218943c(void* self);
 extern "C" ARM void func_ov012_02186a7c(char* self) {
 	_Z10GetWord0x0Pi(GameState::GetInstance());
 	BackgroundLoader::GetInstance();
-	_Z17GetGlobal02109400v();
+	GetGlobal02109400();
 
 	unsigned char state = *(unsigned char*)(self + kStepOffset);
 	if (state == 0) {
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov012_02186a7c(char* self) {
 	if (func_ov023_021e6de4(self) != 0) {
 		*(unsigned char*)(self + kPreviousStateOffset) = *(unsigned char*)(self + kStateOffset);
 		*(unsigned char*)(self + kActiveOffset) = 0;
-		_Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+		DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
 
 		int v = *(int*)(self + kMainChoiceOffset);
 		switch (v) {
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov012_02186a7c(char* self) {
 	if (flag == 0) return;
 	*(unsigned char*)(self + kActiveOffset) = 0;
 	*(int*)(self + kMainChoiceOffset) = 0;
-	_Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)(self + kWindowOffset), 1);
+	ResetEntryList0205d6a0((struct Entry_0205d6a0*)(self + kWindowOffset), 1);
 	*(unsigned char*)(self + kStateOffset) = 0xf;
 	*(unsigned char*)(self + kStepOffset) = 0;
 }

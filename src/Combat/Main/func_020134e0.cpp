@@ -14,10 +14,10 @@ extern "C" void _ZN12LightingInfo10InitializeEv(void* obj);
 extern "C" void _ZN13SafeAllocator21ResetAllocatorPointerEv(void* obj);
 extern "C" void _ZN7Model3D5ClearEv(void* obj);
 extern "C" void _Z23ClearThreeWords02094d00P29ClearThreeWords02094d00Struct(void* obj);
-extern "C" void _Z19ResetFourSubStructsPc(char* obj);
+void ResetFourSubStructs(char* obj);
 extern "C" void func_020982b4(void* obj);
-extern "C" unsigned char _Z10GetByte0x4Pc(char* gs);
-extern "C" int _Z13GetWord0x7f6cPv(void* gs);
+unsigned char GetByte0x4(char* gs);
+int GetWord0x7f6c(void* gs);
 extern "C" unsigned char _Z18GetByteField0x63d6P20FieldBlock63d6_115a8(void* gs);
 
 // USA: func_020134e0
@@ -73,7 +73,7 @@ extern "C" ARM void func_020134e0(char* obj) {
     *(int*)(obj + 0x27bc + TailFieldDelta) = 0xa000;
     *(int*)(obj + 0x27c0 + TailFieldDelta) = 0;
     *(int*)(obj + 0x820 + MiddleFieldDelta) = 0;
-    _Z19ResetFourSubStructsPc(obj + 0x600 + MiddleFieldDelta);
+    ResetFourSubStructs(obj + 0x600 + MiddleFieldDelta);
     memset(obj + 0x27dc + TailFieldDelta, 0, 0x40);
 
     *(char*)(obj + 0x281c + TailFieldDelta) = 0;
@@ -84,7 +84,7 @@ extern "C" ARM void func_020134e0(char* obj) {
     *(int*)(obj + 0x274c + TailFieldDelta) = 1;
     *(int*)(obj + 0x2750 + TailFieldDelta) = 1;
 
-    if (_Z10GetByte0x4Pc((char*)gs) != 5) {
+    if (GetByte0x4((char*)gs) != 5) {
         *(short*)(obj + 0x27d8 + TailFieldDelta) = 0;
         *(short*)(obj + 0x27da + TailFieldDelta) = 0;
     }
@@ -94,8 +94,8 @@ extern "C" ARM void func_020134e0(char* obj) {
         return;
     }
 
-    if (_Z13GetWord0x7f6cPv(gs) == 5 || _Z10GetByte0x4Pc((char*)gs) == 4 ||
-        _Z10GetByte0x4Pc((char*)gs) == 2) {
+    if (GetWord0x7f6c(gs) == 5 || GetByte0x4((char*)gs) == 4 ||
+        GetByte0x4((char*)gs) == 2) {
         func_020982b4(obj + 0x840 + MiddleFieldDelta);
         *(short*)(obj + 0x27b4 + TailFieldDelta) = 2;
         *(short*)(obj + 0x27b6 + TailFieldDelta) = 0;

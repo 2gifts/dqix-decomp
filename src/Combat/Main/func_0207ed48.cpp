@@ -16,7 +16,7 @@ struct Elem0207f018 {
 struct Arr0207f018;
 struct Context0207ed48 { SafeAllocator* allocator; Arr0207f018* array; };
 extern Context0207ed48 data_02108ed8;
-extern "C" void _Z27AppendCappedElement0207f018P11Arr0207f018P12Elem0207f018(Arr0207f018*, Elem0207f018*);
+void AppendCappedElement0207f018(Arr0207f018*, Elem0207f018*);
 // USA: func_0207ed48
 extern "C" ARM int func_0207ed48(Script::Parameter* params) {
     Elem0207f018 elem;
@@ -43,6 +43,6 @@ extern "C" ARM int func_0207ed48(Script::Parameter* params) {
     elem.secondCount = params[8].ToInt();
     if (elem.firstCount) elem.firstBuffer = data_02108ed8.allocator->Allocate(elem.firstCount * 4);
     if (elem.secondCount) elem.secondBuffer = data_02108ed8.allocator->Allocate(elem.secondCount * 4);
-    _Z27AppendCappedElement0207f018P11Arr0207f018P12Elem0207f018(data_02108ed8.array, &elem);
+    AppendCappedElement0207f018(data_02108ed8.array, &elem);
     return 1;
 }

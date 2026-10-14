@@ -39,12 +39,12 @@ char* GetData02105254();
 void SetFlag0x9c6(SetFlagStruct*, int);
 extern "C" void func_02021428(void*, int);
 void InitSubScreenDisplay(void* context);
-extern "C" void _Z19TailForward0203b66cPc(char*);
-extern "C" void _Z25InitBattleContext0203bd24Pc(char*);
-extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198*);
-extern "C" void _Z18InitStruct0205a444Pc(char*);
+void TailForward0203b66c(char*);
+void InitBattleContext0203bd24(char*);
+void Init0205a198(Struct0205a198*);
+void InitStruct0205a444(char*);
 int IsAxisIntWithin16(AxisFloats0203b5a0*, int);
-extern "C" int _Z22ProcessRecords0205a498PvP11Rec020467f0iS_(void*, Rec020467f0*, int, void*);
+int ProcessRecords0205a498(void*, Rec020467f0*, int, void*);
 void* GetGlobalPtr02105244();
 extern "C" void* func_0203be4c(char*);
 extern "C" void func_020c9be0();
@@ -52,9 +52,9 @@ void DelayThenSyncBit0();
 #if defined(jpn)
 void FinalizeRecordListDisplay02020cb8(void*, int);
 #else
-extern "C" void _Z33FinalizeRecordListDisplay02020cb8PvPi(void*, int*);
+void FinalizeRecordListDisplay02020cb8(void*, int*);
 #endif
-extern "C" void _Z21ReleaseHandle02022b90PvPi(void*, int*);
+void ReleaseHandle02022b90(void*, int*);
 void SetToggleState(ToggleState*, int, int);
 extern const char data_020f2b78[];
 
@@ -77,11 +77,11 @@ extern "C" ARM void func_020e081c(char* self) {
         func_02021428(self, 0x19);
         InitSubScreenDisplay(self);
         allocator->Reset();
-        _Z19TailForward0203b66cPc(table);
-        _Z25InitBattleContext0203bd24Pc(battle);
+        TailForward0203b66c(table);
+        InitBattleContext0203bd24(battle);
         for (int i = 0; i < 28; ++i)
-            _Z12Init0205a198P14Struct0205a198(&((Struct0205a198*)(self + 0xe8))[i]);
-        _Z18InitStruct0205a444Pc(self + 0x94);
+            Init0205a198(&((Struct0205a198*)(self + 0xe8))[i]);
+        InitStruct0205a444(self + 0x94);
         Script020e081c* script = (Script020e081c*)(self + 0x94);
         script->active = 1;
         script->records = (Struct0205a198*)(self + 0xe8);
@@ -102,7 +102,7 @@ extern "C" ARM void func_020e081c(char* self) {
         void* file = 0;
         unsigned int length = 0;
         loader->GetLoadedFileByID(*(int*)(self + kObjectTask), &file, &length);
-        _Z22ProcessRecords0205a498PvP11Rec020467f0iS_(self + 0x94, (Rec020467f0*)file, length, allocator);
+        ProcessRecords0205a498(self + 0x94, (Rec020467f0*)file, length, allocator);
         *(int*)((char*)GetGlobalPtr02105244() + kDisplayWidth) = 0x2800;
         void* display = (char*)func_0203be4c(func_0203bd08()) + kDisplay;
         *(void**)GetGlobalPtr02105244() = display;
@@ -116,9 +116,9 @@ extern "C" ARM void func_020e081c(char* self) {
 #if defined(jpn)
         FinalizeRecordListDisplay02020cb8(self, *(int*)(self + kBaseTask));
 #else
-        _Z33FinalizeRecordListDisplay02020cb8PvPi(self, (int*)(self + kBaseTask));
+        FinalizeRecordListDisplay02020cb8(self, (int*)(self + kBaseTask));
 #endif
-        _Z21ReleaseHandle02022b90PvPi(self, (int*)(self + kObjectTask));
+        ReleaseHandle02022b90(self, (int*)(self + kObjectTask));
         SetToggleState((ToggleState*)self, 1, 3);
         *(unsigned char*)(self + kActive) = 0;
         ++*(signed char*)(self + kStage);

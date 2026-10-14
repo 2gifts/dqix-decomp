@@ -4,7 +4,7 @@
 int GetField0x17dBits4To5IfFlag8(unsigned char* obj);
 extern "C" int _ZNK8Object3D9GetRadiusEv(unsigned char* obj);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int arg);
+int fix32ReduceAngle0To2Pi(int arg);
 struct Obj02033874;
 void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
 
@@ -28,7 +28,7 @@ extern "C" ARM void func_0207964c(unsigned char* self) {
                 int scale = _ZNK8Object3D9GetRadiusEv(combatant) / 4 + _ZNK8Object3D9GetRadiusEv(self) / 2;
                 struct Vec3Fixed02037c80 vec = _ZNK8Object3D15GetPointInFrontEi((struct Obj02037c80*)combatant, scale);
                 int angleArg = *(int*)(combatant + 0x54) + 0x3244;
-                int aim = _Z22fix32ReduceAngle0To2Pii(angleArg);
+                int aim = fix32ReduceAngle0To2Pi(angleArg);
                 _ZN8Vector3iaSERKS_((int*)(self + 0x44), (int*)&vec);
                 SetVecYFromValue02033874((struct Obj02033874*)self, aim);
             }

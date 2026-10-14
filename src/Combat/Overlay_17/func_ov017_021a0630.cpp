@@ -10,7 +10,7 @@ enum { RegionOffset278 = 0x278, RegionOffsetad0 = 0xad0, RegionOffset2cc = 0x2cc
 
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 void RestorePairTableFromBuffer(int* out);
-extern "C" void _Z23WriteGlobalPair020bb92cPi(int* src);
+void WriteGlobalPair020bb92c(int* src);
 extern "C" void func_0207de48(void* p, int a, int b);
 
 extern AllocatorUnion data_02114e20;
@@ -40,7 +40,7 @@ extern "C" ARM void func_ov017_021a0630(char* self) {
     }
 
     RestorePairTableFromBuffer((int*)(self + RegionOffset278 + 0x2800));
-    _Z23WriteGlobalPair020bb92cPi((int*)(self + RegionOffsetad0 + 0x2000));
+    WriteGlobalPair020bb92c((int*)(self + RegionOffsetad0 + 0x2000));
 
     int cond;
     for (i = 0; (cond = data_ov017_021d681c[i].v) != 0; i++) {

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 char* FindUnescapedAngleBracket(char*);
-extern "C" int _Z21IsPrefixMatch020d857cPaS_(signed char*, signed char*);
+int IsPrefixMatch020d857c(signed char*, signed char*);
 int StringLength(const char*);
 extern "C" int func_02005a94(const char*);
 struct Tag0206831c {
@@ -22,7 +22,7 @@ extern "C" ARM void func_0206831c(void* context, signed char* input, signed char
                 Tag0206831c* tag = data_020e7e5c;
                 signed char* name = input + 1;
                 while (tag->name) {
-                    if (_Z21IsPrefixMatch020d857cPaS_(name, tag->name)) {
+                    if (IsPrefixMatch020d857c(name, tag->name)) {
                         if (tag->expand) {
                             int index = 0;
                             int length = StringLength((char*)tag->name);

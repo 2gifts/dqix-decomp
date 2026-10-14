@@ -9,9 +9,9 @@ struct ClearTarget0205a234;
 struct ActiveEntry02046900;
 struct Rec020467f0;
 
-extern "C" void _Z18InitStruct0205a444Pc(char* p);
-extern "C" void _Z12Init0205a198P14Struct0205a198(struct Struct0205a198* p);
-extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(struct ClearTarget0205a234* p);
+void InitStruct0205a444(char* p);
+void Init0205a198(struct Struct0205a198* p);
+void ClearField0And40205a234(struct ClearTarget0205a234* p);
 int CountActiveEntries(struct ActiveEntry02046900* entry);
 void* FindRecordByIndex(struct Rec020467f0* rec, int index, void** out, int* outLength);
 extern "C" void func_0205a528(void* a, void* b, int c, void* d);
@@ -79,11 +79,11 @@ extern "C" ARM void func_02043368(struct LoadController* self) {
         self->clearTarget = (struct ClearTarget0205a234*)self->allocator->Allocate(8);
 
         if (self->table != 0 && self->tableEntries != 0 && self->clearTarget != 0) {
-            _Z18InitStruct0205a444Pc((char*)self->table);
+            InitStruct0205a444((char*)self->table);
             for (unsigned short i = 0; i < 6; i++) {
-                _Z12Init0205a198P14Struct0205a198((struct Struct0205a198*)(self->tableEntries + i * 0x28));
+                Init0205a198((struct Struct0205a198*)(self->tableEntries + i * 0x28));
             }
-            _Z23ClearField0And40205a234P19ClearTarget0205a234(self->clearTarget);
+            ClearField0And40205a234(self->clearTarget);
             self->table->flag50 = 0;
             {
                 struct LoadTable* table = self->table;

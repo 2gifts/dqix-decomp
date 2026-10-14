@@ -15,21 +15,21 @@ extern "C" void __clear(void *dst, int count);
 extern "C" void func_02042764(void *src, void *dst, int flag);
 extern "C" void func_0204f41c(void *obj, short x, short y, void *str, int d, int e, short *outA, short *outB, int zero);
 struct Container020e0310;
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310 *c, int key);
+int GetFieldByKey020e0434(Container020e0310 *c, int key);
 extern "C" int func_020420e8(void *p, int flag);
 extern "C" void func_0204e038(void *canvas, char *str, int a, int b, int c, int d, int e, int f);
 struct List0204af64;
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64 *obj);
+void ResetList0204af64(struct List0204af64 *obj);
 void SetWord0x18ClearByte0x1f(unsigned char *obj, int value);
 struct Obj0204b5e8;
-extern "C" int _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(struct Obj0204b5e8 *obj, int a, int b);
+int DispatchViaTable0204b5e8(struct Obj0204b5e8 *obj, int a, int b);
 void CleanInvalidateCacheRange(const void *addr, unsigned int size);
 extern "C" int LoadToMainBG3ScreenData(int arg0, int arg1, unsigned int arg2);
 extern "C" void func_0204b174(void *graphics, void *file, SafeAllocator *allocator, unsigned int size);
 struct List0204b0e8;
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(struct List0204b0e8 *obj, void *buf);
+void FlushAndDispatchList0204b0e8(struct List0204b0e8 *obj, void *buf);
 struct List0204afb4;
-extern "C" void _Z23ResetRecordList0204afb4P12List0204afb4(struct List0204afb4 *obj);
+void ResetRecordList0204afb4(struct List0204afb4 *obj);
 
 extern char data_ov003_0218028b[];
 extern char data_ov003_0218029b[];
@@ -183,14 +183,14 @@ extern "C" ARM void func_ov003_0216e714(Menu0216e714 *self) {
                     case 9:
                     case 10: key = 3; break;
                 }
-                sprintf(text, (char *) _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310 *) self->texts, key));
+                sprintf(text, (char *) GetFieldByKey020e0434((Container020e0310 *) self->texts, key));
                 func_0204f41c(&canvas, 0xb0 - func_020420e8(text, 0), y, text, 10, 15, &outA, &outB, 0);
                 canvas.fontW = 8;
                 canvas.fontH = 8;
                 sprintf(text, data_ov003_021802b6, rec->level);
                 func_0204f41c(&canvas, 0xc8 - func_020420e8(text, 0), y, text, 10, 15, &outA, &outB, 0);
                 sprintf(text, data_ov003_021802b3,
-                        (char *) _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310 *) self->texts,
+                        (char *) GetFieldByKey020e0434((Container020e0310 *) self->texts,
                                                                                 (short) (rec->rank + 0xe)));
                 func_0204f41c(&canvas, 0xce, y, text, 10, 15, &outA, &outB, 0);
                 sprintf(text, data_ov003_021802b6, rec->year + 2000);
@@ -219,11 +219,11 @@ extern "C" ARM void func_ov003_0216e714(Menu0216e714 *self) {
             if (self->cursor >= self->count) {
                 self->cursor = self->count - 1;
             }
-            _Z17ResetList0204af64P12List0204af64((struct List0204af64 *) &bg);
+            ResetList0204af64((struct List0204af64 *) &bg);
             bg.lo = 0;
             bg.hi = 3;
             SetWord0x18ClearByte0x1f((unsigned char *) &bg, 0);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8 *) &bg, 0, 0);
+            DispatchViaTable0204b5e8((struct Obj0204b5e8 *) &bg, 0, 0);
             BG3CNT = (BG3CNT & 0x43) | 0xf00;
             for (int i = 0; i < numFiles; i++) {
                 if (i == 2) {
@@ -235,8 +235,8 @@ extern "C" ARM void func_ov003_0216e714(Menu0216e714 *self) {
                     func_0204b174(&bg, files[i], 0, sizes[i]);
                 }
             }
-            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((struct List0204b0e8 *) &bg, 0);
-            _Z23ResetRecordList0204afb4P12List0204afb4((struct List0204afb4 *) &bg);
+            FlushAndDispatchList0204b0e8((struct List0204b0e8 *) &bg, 0);
+            ResetRecordList0204afb4((struct List0204afb4 *) &bg);
             loader->RemoveTask(self->task);
             self->task = -1;
             if (!(self->flags & 0x20)) {

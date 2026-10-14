@@ -101,7 +101,7 @@ struct AlchemyPot {
 extern "C" void func_ov023_021dc354(ItemInfoWindow* window);
 extern "C" void func_ov006_02156e54(AlchemyPot* self);
 void SetField0x3b0Value(GameState* gameState, int camera);
-extern "C" void _Z17ResetTask020dbebcPv(void* effect);
+void ResetTask020dbebc(void* effect);
 extern "C" void func_ov006_02154614(AlchemyPot* self);
 
 // USA: func_ov006_021547c8
@@ -150,6 +150,6 @@ extern "C" ARM void func_ov006_021547c8(AlchemyPot* self) {
         self->effect_.Destroy();
         self->steam_.Destroy();
     }
-    _Z17ResetTask020dbebcPv(&self->subEffect_);
+    ResetTask020dbebc(&self->subEffect_);
     func_ov006_02154614(self);
 }

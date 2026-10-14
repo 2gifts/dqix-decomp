@@ -10,13 +10,13 @@ extern "C" void* func_ov011_021849c8(void* p);
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gameState, int id);
 extern int GetFieldAt0x150(unsigned char* obj);
-extern "C" void _Z19ClearField00209a804Pi(int* field);
+void ClearField00209a804(int* field);
 struct Ctx0209a810 { void* field0; };
-extern "C" void _Z33SetupAndRunBufferedScript0209a810P11Ctx0209a810Pv(Ctx0209a810* ctx, void* value);
+void SetupAndRunBufferedScript0209a810(Ctx0209a810* ctx, void* value);
 extern "C" void _Z27SetField38IfState8_0215e49cPvis(void* a, int key, int value);
-extern "C" int _Z27CheckAfterTwoCalls_0215e460v(void);
+int CheckAfterTwoCalls_0215e460(void);
 extern "C" void func_ov004_0215e574(void* a, int key, int c, int d, int e);
-extern "C" void _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(void* a, short v1, short v2, int flag);
+void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag);
 
 struct TagNode02161514 {
     char pad0[0xc];
@@ -96,8 +96,8 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         field = (unsigned char*)GetFieldAt0x150(combatant);
         if (!field) return 0;
         limit = *(unsigned short*)(field + D1[D0[field8]] * 2 + 0x16c);
-        _Z19ClearField00209a804Pi((int*)&ctx);
-        _Z33SetupAndRunBufferedScript0209a810P11Ctx0209a810Pv(&ctx, &buf);
+        ClearField00209a804((int*)&ctx);
+        SetupAndRunBufferedScript0209a810(&ctx, &buf);
         count = buf.counts[D1[D0[field8]]];
         rows = buf.rows[D1[D0[field8]]];
         cnt = 0;
@@ -107,7 +107,7 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         _Z27SetField38IfState8_0215e49cPvis(a, 0x32, 0x3a);
         _Z27SetField38IfState8_0215e49cPvis(a, 0xc, 0x3b);
         _Z27SetField38IfState8_0215e49cPvis(a, 0xd, 1);
-        if (_Z27CheckAfterTwoCalls_0215e460v()) {
+        if (CheckAfterTwoCalls_0215e460()) {
             _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 4);
         } else {
             _Z27SetField38IfState8_0215e49cPvis(a, 0xe, D1[D0[field8]] + 4);
@@ -152,7 +152,7 @@ extern "C" ARM int func_ov004_02161514(void* a) {
             func_ov004_0215e574(a, 0x32, 0xff, 0, 0);
             _Z27SetField38IfState8_0215e49cPvis(a, 0xc, 0x3b);
             _Z27SetField38IfState8_0215e49cPvis(a, 0xd, 1);
-            if (_Z27CheckAfterTwoCalls_0215e460v()) {
+            if (CheckAfterTwoCalls_0215e460()) {
                 _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 4);
             } else {
                 _Z27SetField38IfState8_0215e49cPvis(a, 0xe, D1[D0[field8]] + 4);
@@ -177,7 +177,7 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         func_ov004_0215e574(a, 0x32, 0xff, 0, 0);
         _Z27SetField38IfState8_0215e49cPvis(a, 0xc, 0x3b);
         _Z27SetField38IfState8_0215e49cPvis(a, 0xd, 1);
-        if (_Z27CheckAfterTwoCalls_0215e460v()) {
+        if (CheckAfterTwoCalls_0215e460()) {
             _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 4);
         } else {
             _Z27SetField38IfState8_0215e49cPvis(a, 0xe, D1[D0[field8]] + 4);
@@ -218,6 +218,6 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         if (d < 0) d += *(signed char*)(D0 + field6);
         *(signed char*)(D0 + fieldB) = d;
     }
-    _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(a, *(signed char*)(D0 + fieldB), *(signed char*)(D0 + field6), flag);
+    SetNodeFieldsAndMaybeNotify_0215f6f4(a, *(signed char*)(D0 + fieldB), *(signed char*)(D0 + field6), flag);
     return 0;
 }

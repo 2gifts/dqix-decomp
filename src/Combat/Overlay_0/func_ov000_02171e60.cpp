@@ -8,16 +8,16 @@
 #include "GameState/GameState.h"
 
 struct Container020e0310;
-extern "C" char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
+char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
 
 struct Obj0203c108 {
     char pad[0x14];
     short idx;
     short pad16;
 };
-extern "C" void _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(struct Obj0203c108* obj, char* fmt);
+void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* fmt);
 
-extern "C" void* _Z24SearchBothTables02079e2cPci(char* table, int key);
+void* SearchBothTables02079e2c(char* table, int key);
 extern "C" int func_ov000_02171210(void* rec, void* self);
 
 struct BattleInfo2a04 {
@@ -27,9 +27,9 @@ struct BattleInfo2a04 {
 
 extern "C" void __clear(void* buf, int n);
 extern "C" void func_020e4864(const char* src, char* dst, int a, int b, int c, int d);
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* src, char* dst, int flag);
+void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
 struct MessageSystem;
-extern "C" struct MessageSystem* _Z26GetGlobalField0x1c020421a0v();
+struct MessageSystem* GetGlobalField0x1c020421a0();
 extern "C" void func_02046608(struct MessageSystem* messages, int a, const char* format, char* output, int size, int b, int c);
 
 struct ActionEntry {
@@ -67,15 +67,15 @@ extern "C" ARM void func_ov000_02171e60(struct CommandMenu* self) {
         self->stackTop++;
         self->stack[self->stackTop] = 0xe;
         self->result = 0;
-        _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&self->message, _Z21GetFieldByKey020e0434P17Container020e0310i(self->texts, 5));
+        SwapGlobalEntry0203c108(&self->message, GetFieldByKey020e0434(self->texts, 5));
         return;
     }
-    void* rec = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), entry->recordId);
+    void* rec = SearchBothTables02079e2c((char*)GetData02108e10(), entry->recordId);
     if (rec == NULL) {
         self->stackTop++;
         self->stack[self->stackTop] = 0xe;
         self->result = 0;
-        _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&self->message, _Z21GetFieldByKey020e0434P17Container020e0310i(self->texts, 5));
+        SwapGlobalEntry0203c108(&self->message, GetFieldByKey020e0434(self->texts, 5));
         return;
     }
     self->stackTop++;
@@ -88,15 +88,15 @@ extern "C" ARM void func_ov000_02171e60(struct CommandMenu* self) {
         }
     }
 #if defined(jpn)
-    _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&self->message, (char*)entry->name);
+    SwapGlobalEntry0203c108(&self->message, (char*)entry->name);
 #else
     char text[0x80];
     __clear(text, 0x80);
     char format[0x80];
     __clear(format, 0x80);
     func_020e4864(entry->name, text, 1, 0, 0, 0);
-    _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(text, format, 0);
-    func_02046608(_Z26GetGlobalField0x1c020421a0v(), 10, format, text, 0x100, 0, 0);
-    _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&self->message, text);
+    CopyTextAndUppercaseIfFlagged0206819c(text, format, 0);
+    func_02046608(GetGlobalField0x1c020421a0(), 10, format, text, 0x100, 0, 0);
+    SwapGlobalEntry0203c108(&self->message, text);
 #endif
 }

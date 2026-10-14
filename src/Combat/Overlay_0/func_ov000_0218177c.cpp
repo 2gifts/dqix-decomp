@@ -5,14 +5,14 @@ struct ListNode02160094 {
     short id;
 };
 struct List02160094;
-extern "C" ListNode02160094* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094* list, int index);
+ListNode02160094* GetNodeAtIndex02160094(List02160094* list, int index);
 
 struct ListNode021600f8 {
     char pad0[0xe];
     short id;
 };
 struct List021600f8;
-extern "C" ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8* list, int index);
+ListNode021600f8* GetNodeAtIndex021600f8(List021600f8* list, int index);
 
 extern "C" int func_ov000_0215e9fc(void* obj, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(void* obj, short* buf, int max, int start);
@@ -30,13 +30,13 @@ extern "C" ARM int func_ov000_0218177c(void* obj, void* list, int useFirstList, 
     short buf[12];
     int id;
     if (useFirstList) {
-        ListNode02160094* node = _Z22GetNodeAtIndex02160094P12List02160094i((List02160094*)list, 0);
+        ListNode02160094* node = GetNodeAtIndex02160094((List02160094*)list, 0);
         if (node == 0) {
             return 0;
         }
         id = node->id;
     } else {
-        ListNode021600f8* node = _Z22GetNodeAtIndex021600f8P12List021600f8i((List021600f8*)list, 0);
+        ListNode021600f8* node = GetNodeAtIndex021600f8((List021600f8*)list, 0);
         if (node == 0) {
             return 0;
         }

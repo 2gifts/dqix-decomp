@@ -47,15 +47,15 @@ struct PlayerView021b1564 { char pad_0[0xae]; short angle; };
 struct ResourceBlock021b1564 { char initial[0x5b0]; char restored[1]; };
 struct EntryNode021b1564 { char pad_0[0x114]; void* entry; char pad_118[0xc]; int id; char pad_128[0x11]; unsigned char active; };
 GameResources* GetWord0x0(int*);
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" Controller021b1564* _Z26GetGlobalField0x1c020421a0v();
+unsigned int* GetDataPtr02114e04_020d6c00();
+Controller021b1564* GetGlobalField0x1c020421a0();
 unsigned char* GetFieldIfFlag4(char*);
 void ClearIntAt0x23c(unsigned char*);
 unsigned int GetWord(unsigned int*);
 unsigned int GetField4(unsigned int*);
 unsigned int GetField8(unsigned int*);
 void SetBitsInField4(unsigned int*, unsigned int);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+void CancelPendingAction020397cc(Obj020397cc*, int);
 #if defined(jpn)
 extern "C" void func_0204500c(void*, signed char*, int);
 #define func_ov006_021576a0 func_ov006_02158ca8
@@ -64,11 +64,11 @@ enum { TransitionArenaSize = 0x3b000, TransitionAllocationSize = 0x3c820 };
 extern "C" void func_0204500c(void*, signed char*, int, int);
 enum { TransitionArenaSize = 0x3cc00, TransitionAllocationSize = 0x3e420 };
 #endif
-extern "C" void _Z24ReinitController02043204Pc(char*);
+void ReinitController02043204(char*);
 extern "C" int func_020457e0(void*);
 void SetField0x23cTrue(void*);
 void SetBrightness(GameResources*, int, int);
-extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(Actor0209c678*, int);
+void DispatchContextByState0209c678(Actor0209c678*, int);
 void OrBitsIntoField0(unsigned int*, unsigned int);
 int IsBrightnessTransitionActive(GameResources*);
 void OrGlobalFlag0x40();
@@ -78,8 +78,8 @@ extern "C" void func_020a0c0c();
 extern "C" void func_02043124(void*);
 void PushInputLogA(int);
 void PushInputLogB(int);
-extern "C" void _Z24SetPowCnt1Bit15_021b1ca8i(int);
-extern "C" void _Z18InitStruct020979c0P11Obj020979c0h(Obj020979c0*, unsigned char);
+void SetPowCnt1Bit15_021b1ca8(int);
+void InitStruct020979c0(Obj020979c0*, unsigned char);
 extern "C" void func_ov006_02157a60(Overlay006021b1564*);
 extern "C" void func_ov006_021576a0(Overlay006021b1564*, SafeAllocator*, void*);
 extern "C" int func_02097a04(Obj020979c0*);
@@ -88,8 +88,8 @@ void BackupSubBgControlRegisters(SubBgControlBackup02074b64*);
 void* GetGlobalPtr021075f4();
 extern "C" Zone3D* func_02012fe4();
 extern "C" void func_0203e0a0(void*, unsigned short);
-extern "C" void _Z33ResetOverlayAndAllocator_0219bf74v();
-extern "C" int _Z19IsIdInRange020981e4ii(int, int);
+void ResetOverlayAndAllocator_0219bf74();
+int IsIdInRange020981e4(int, int);
 extern "C" void func_ov017_021a316c(GameResources*);
 void SetField0x98Bit0(unsigned char*);
 void SetBitsInWord(unsigned int*, unsigned int);
@@ -97,31 +97,31 @@ extern "C" int func_ov006_02157d7c(Overlay006021b1564*, unsigned int);
 extern "C" void func_ov006_02157cc0(Overlay006021b1564*);
 extern "C" void func_02097b34(Obj020979c0*);
 extern "C" void func_ov017_021b14ec(Transition021b1564*);
-extern "C" void _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(Actor0209c3b4*, int);
+void SetStateAndDispatch0209c3b4(Actor0209c3b4*, int);
 void ClearFlag0x10IfSet(Struct02074bd0*);
 void ClearFlag0x11IfSet(Struct02074bf4*);
 extern "C" void LoadToMainBG1CharacterData(void*, int, unsigned int);
 extern "C" void LoadToMainBG2CharacterData(void*, int, unsigned int);
 extern "C" void LoadToMainBG1ScreenData(void*, int, unsigned int);
 extern "C" void LoadToMainBG2ScreenData(void*, int, unsigned int);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion*, void*);
+void TailForward02012da4(AllocatorUnion*, void*);
 void ClearBitsInWord(unsigned int*, unsigned int);
 void ClearBitsInField4(unsigned int*, unsigned int);
 void ClearBitsInField8(unsigned int*, unsigned int);
 void SetBitsInField8(unsigned int*, unsigned int);
-extern "C" void _Z35ProcessCombatantsIfFlagged_0218f79cPv(void*);
+void ProcessCombatantsIfFlagged_0218f79c(void*);
 void SetAndLockMainBrightness(GameResources*, int, int);
 extern "C" void func_ov017_021921fc(Vector3i*, short, int);
 extern "C" void func_ov017_0219bd1c(int, int, int, int);
 extern "C" void func_ov017_021a2fa0(GameResources*);
 extern "C" void func_ov017_0219b624(GameResources*);
 extern "C" void func_ov017_0219ba0c(GameResources*, int);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
+void CopyInternalFields0207df50(Foo0207df50*);
+void RestorePairTables0207df90(char*);
 extern "C" void func_020432c4(void*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
+void BackupPairTables0207dfac(char*);
 void UnlockAndSetMainBrightness(GameResources*, int, int);
-extern "C" int* _Z29FindEntryPointerByKey0203df78Pvi(void*, int);
+int* FindEntryPointerByKey0203df78(void*, int);
 void* GetField0x8(int*);
 extern "C" void func_ov017_021b8d1c(EntryNode021b1564*);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
@@ -138,8 +138,8 @@ static inline int CurrentZone021b1564(Zone3D* zone) { SDK_NULL_ASSERT(zone); ret
 extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469b4* list) {
     GameState* game = GameState::GetInstance();
     GameResources* resources = GetWord0x0((int*)game);
-    unsigned int* global = _Z27GetDataPtr02114e04_020d6c00v();
-    Controller021b1564* controller = _Z26GetGlobalField0x1c020421a0v();
+    unsigned int* global = GetDataPtr02114e04_020d6c00();
+    Controller021b1564* controller = GetGlobalField0x1c020421a0();
     unsigned char* field = GetFieldIfFlag4((char*)game);
     GameObject* player = game->GetUnknownGameObject();
     if (field) ClearIntAt0x23c(field);
@@ -150,7 +150,7 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         SetBitsInField4((unsigned int*)resources, 0x40);
         if (!self->alternate) {
             GameObject* current = game->GetUnknownGameObject();
-            if (current) _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)current, 1);
+            if (current) CancelPendingAction020397cc((Obj020397cc*)current, 1);
             if (*controller->action) {
 #if defined(jpn)
                 func_0204500c(controller, controller->action, 0);
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
                 func_0204500c(controller, controller->action, 0, 0xe3);
 #endif
                 controller->busy = 1;
-            } else _Z24ReinitController02043204Pc((char*)controller);
+            } else ReinitController02043204((char*)controller);
             self->stage = 100;
             return;
         }
@@ -167,14 +167,14 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
     } else if (self->stage == 100) {
         if (controller->busy) return;
         if (func_020457e0(controller) == 1) {
-            _Z24ReinitController02043204Pc((char*)controller);
+            ReinitController02043204((char*)controller);
             self->inactive = 1;
             if (field) SetField0x23cTrue(field);
             return;
         }
-        _Z24ReinitController02043204Pc((char*)controller);
+        ReinitController02043204((char*)controller);
         SetBrightness(resources, -16, 16);
-        _Z30DispatchContextByState0209c678P13Actor0209c678i((Actor0209c678*)data_02109bf4, 15);
+        DispatchContextByState0209c678((Actor0209c678*)data_02109bf4, 15);
         OrBitsIntoField0(global, 1);
         self->stage = 1;
         return;
@@ -193,8 +193,8 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
             return;
         }
         BufferTail021b1564* tail = &buffer->tail;
-        Controller021b1564* current = _Z26GetGlobalField0x1c020421a0v();
-        _Z24ReinitController02043204Pc((char*)current);
+        Controller021b1564* current = GetGlobalField0x1c020421a0();
+        ReinitController02043204((char*)current);
         func_02043124(current);
         self->allocator.CreateTypeA(buffer, TransitionArenaSize);
         self->allocator.Reset();
@@ -208,8 +208,8 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         }
         PushInputLogA(6);
         PushInputLogB(1);
-        _Z24SetPowCnt1Bit15_021b1ca8i(1);
-        _Z18InitStruct020979c0P11Obj020979c0h(self->plugin, 2);
+        SetPowCnt1Bit15_021b1ca8(1);
+        InitStruct020979c0(self->plugin, 2);
         func_ov006_02157a60(data_ov017_021d83ec);
         if (self->alternate) data_ov017_021d83ec->flags |= 2;
         func_ov006_021576a0(data_ov017_021d83ec, &self->allocator, tail->work);
@@ -228,8 +228,8 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         void* entries = GetGlobalPtr021075f4();
         Zone3D* zone = func_02012fe4();
         func_0203e0a0(entries, zone->currentZoneID_);
-        _Z33ResetOverlayAndAllocator_0219bf74v();
-        if (_Z19IsIdInRange020981e4ii((int)zone->unk_840, CurrentZone021b1564(zone))) {
+        ResetOverlayAndAllocator_0219bf74();
+        if (IsIdInRange020981e4((int)zone->unk_840, CurrentZone021b1564(zone))) {
             func_ov017_021a316c(resources);
             resources->allocator_array_38[7].Reset();
         }
@@ -253,10 +253,10 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
             if (field) SetField0x23cTrue(field);
             return;
         }
-        _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i((Actor0209c3b4*)data_02109bf4, 7);
+        SetStateAndDispatch0209c3b4((Actor0209c3b4*)data_02109bf4, 7);
         func_ov006_02157cc0(data_ov017_021d83ec);
         data_ov017_021d83ec = 0;
-        _Z24SetPowCnt1Bit15_021b1ca8i(0);
+        SetPowCnt1Bit15_021b1ca8(0);
         func_02097b34(self->plugin);
         ClearFlag0x10IfSet((Struct02074bd0*)self->displayBackup);
         REG_MAIN_DISPLAY = (REG_MAIN_DISPLAY & ~0x1f00) | (self->mainDisplay << 8);
@@ -271,7 +271,7 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
             CleanInvalidateCacheRange(empty, 0x800);
             LoadToMainBG1ScreenData(empty, 0, 0x800);
             LoadToMainBG2ScreenData(empty, 0, 0x800);
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, empty);
+            TailForward02012da4(&data_02114e20, empty);
         }
         ClearBitsInWord((unsigned int*)resources, ~0u);
         ClearBitsInField4((unsigned int*)resources, ~0u);
@@ -279,7 +279,7 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         SetBitsInWord((unsigned int*)resources, self->savedFlags);
         SetBitsInField4((unsigned int*)resources, self->savedFlags4);
         SetBitsInField8((unsigned int*)resources, self->savedFlags8);
-        _Z35ProcessCombatantsIfFlagged_0218f79cPv(resources);
+        ProcessCombatantsIfFlagged_0218f79c(resources);
         SetAndLockMainBrightness(resources, -16, 1);
         func_ov017_021921fc(&player->obj3D_.position_, ((PlayerView021b1564*)player)->angle, 1);
         func_ov017_0219bd1c(1, 0, 0, 0);
@@ -287,11 +287,11 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         func_ov017_0219b624(resources);
         func_ov017_0219ba0c(resources, 0);
         ResourceBlock021b1564* block = (ResourceBlock021b1564*)resources->unknown_2cc;
-        Controller021b1564* current = _Z26GetGlobalField0x1c020421a0v();
-        _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)block->restored);
-        _Z25RestorePairTables0207df90Pc(block->restored);
+        Controller021b1564* current = GetGlobalField0x1c020421a0();
+        CopyInternalFields0207df50((Foo0207df50*)block->restored);
+        RestorePairTables0207df90(block->restored);
         func_020432c4(current);
-        _Z24BackupPairTables0207dfacPc(block->restored);
+        BackupPairTables0207dfac(block->restored);
         ++self->stage;
         return;
     } else if (self->stage == 6) {
@@ -307,7 +307,7 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
             UnlockAndSetMainBrightness(resources, 0, 15);
             finished = 1;
             if (!self->result) {
-                int* entry = _Z29FindEntryPointerByKey0203df78Pvi(GetGlobalPtr021075f4(), 100);
+                int* entry = FindEntryPointerByKey0203df78(GetGlobalPtr021075f4(), 100);
                 void* info;
                 if (entry) info = GetField0x8(entry);
                 EntryNode021b1564* node = (EntryNode021b1564*)resources->unknown_ptr_array_36fc[5];

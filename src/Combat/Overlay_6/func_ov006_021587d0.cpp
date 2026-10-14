@@ -37,7 +37,7 @@ extern const short data_ov006_0215ffe2[];
 extern const unsigned char data_ov006_0215ffc0[];
 }
 
-extern "C" void _Z25ComputeShortPair_021e2bdcPviPsS0_(void*, int, short*, short*);
+void ComputeShortPair_021e2bdc(void*, int, short*, short*);
 extern "C" void func_0205ac40(void*, Sprite*);
 
 struct AlchemyMenu {
@@ -153,7 +153,7 @@ extern "C" ARM void func_ov006_021587d0(AlchemyMenu* self)
     {
         short x;
         short y;
-        _Z25ComputeShortPair_021e2bdcPviPsS0_(self->layout_, ids[i], &x, &y);
+        ComputeShortPair_021e2bdc(self->layout_, ids[i], &x, &y);
         short index = data_ov006_0215ffe2[i];
         Sprite* sprite = &self->sprites_[index];
         if (index == 0xb && self->arrowUp_ != 0)

@@ -14,7 +14,7 @@ extern char data_020f0a7a;
 
 // USA: func_0206efd8
 // KEEP-NAME
-extern "C" ARM void _Z28LockedLookupDispatch0206efd8PvS_(void* a, void* b) {
+ARM void LockedLookupDispatch0206efd8(void* a, void* b) {
     BackgroundLoader::AddLockGlobal();
     unsigned int size;
 #if defined(jpn)

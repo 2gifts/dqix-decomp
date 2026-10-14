@@ -16,7 +16,7 @@ struct Timer021d9574 {
     long long fa8;
 };
 
-extern "C" long long _Z19GetCurrentTimestampv(void);
+long long GetCurrentTimestamp(void);
 extern "C" void _Z29DispatchHandlerTable_021d8d40P16PMFClass021d8d40t(
     struct PMFClass021d8d40* obj, int delta);
 
@@ -26,7 +26,7 @@ extern "C" ARM void func_ov028_021d9574(struct Timer021d9574* obj) {
         return;
     }
     obj->f94 = obj->f98;
-    obj->f8c = _Z19GetCurrentTimestampv();
+    obj->f8c = GetCurrentTimestamp();
     obj->f98 = (int)((unsigned long long)(obj->f8c - obj->f84) * 0x3c / 0x7fd88);
     if (obj->f98 == obj->f94) {
         return;

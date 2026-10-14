@@ -40,8 +40,8 @@ extern "C" int func_ov002_02155960(char*, int);
 extern "C" void func_ov002_021556fc(char*);
 extern "C" void func_ov017_021a55b0(BattleState021a5600*);
 extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
-extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+FlagWord02046708* GetDataPtr02114e04_020d6c00();
+void CancelPendingAction020397cc(Obj020397cc*, int);
 void SetBitsInField4(unsigned int*, unsigned int);
 void ClearBitsInField4(unsigned int*, unsigned int);
 unsigned char* GetFieldIfFlag4(char*);
@@ -54,11 +54,11 @@ void PushInputLogB(int);
 extern "C" void _Z26SetBytes485And486_021556ecPvii(void*, int, int);
 int ListContainsId(ListHead02046b60*, int);
 void SetByteField0x253(void*);
-extern "C" void _Z25InitPaletteTables0202ac74v();
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708*, unsigned int);
-extern "C" void _Z35SetByteIfDataAndCheckClear_021a01bcPh(unsigned char*);
+void InitPaletteTables0202ac74();
+int TestFlags02046708(FlagWord02046708*, unsigned int);
+void SetByteIfDataAndCheckClear_021a01bc(unsigned char*);
 void CopyByteField0x253To0x252(void*);
-extern "C" void _Z30CheckStackAndFinalize_021a5974Pc(char*);
+void CheckStackAndFinalize_021a5974(char*);
 extern AllocatorUnion data_02114e20;
 extern char* data_ov017_021d83ac;
 // USA: func_ov017_021a5600
@@ -66,8 +66,8 @@ extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
     GameState* game = GameState::GetInstance();
     GameResources* resources = func_ov017_0218b5b0();
     Obj020397cc* actor = (Obj020397cc*)game->GetUnknownGameObject();
-    FlagWord02046708* flags = _Z27GetDataPtr02114e04_020d6c00v();
-    _Z27CancelPendingAction020397ccP11Obj020397cci(actor, 1);
+    FlagWord02046708* flags = GetDataPtr02114e04_020d6c00();
+    CancelPendingAction020397cc(actor, 1);
     actor->field_b2 = 0;
     SetBitsInField4(&resources->brightnessFlags_0, 0xc0);
     unsigned char* action = GetFieldIfFlag4((char*)game);
@@ -122,17 +122,17 @@ extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
             SetByteField0x253(actor);
         }
         func_ov017_02191108(resources, 1, 1, 0, 1);
-        _Z25InitPaletteTables0202ac74v();
+        InitPaletteTables0202ac74();
         func_020a0c0c();
-        if (!_Z17TestFlags02046708P16FlagWord02046708j(flags, 0x100000)) {
+        if (!TestFlags02046708(flags, 0x100000)) {
             unsigned char* stopwatch = (unsigned char*)resources->unknown_ptr_36d0;
             func_0202738c(stopwatch, 0, 2, -1);
             func_02027304(stopwatch, -1);
         }
-        _Z35SetByteIfDataAndCheckClear_021a01bcPh((unsigned char*)resources);
+        SetByteIfDataAndCheckClear_021a01bc((unsigned char*)resources);
         SetByteField0x253(actor);
         CopyByteField0x253To0x252(actor);
         self->complete = 1;
-        _Z30CheckStackAndFinalize_021a5974Pc((char*)self);
+        CheckStackAndFinalize_021a5974((char*)self);
     }
 }

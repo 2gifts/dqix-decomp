@@ -10,13 +10,13 @@ struct Obj020d7aa0;
 struct S_a0af4;
 
 extern "C" void func_ov002_0215b2c8(char *self);
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24 *obj, unsigned char keyLow,
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 extern "C" void func_ov002_02161cf0(char *self);
 extern "C" void func_ov002_0215c614(char *self);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
+int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 extern "C" void func_ov002_0215b9a4(void *self, int mode, int flag);
-extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(struct Struct_0205def8 *s, int clear, int key);
+void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int clear, int key);
 void SetElementFieldC2(struct Struct_0205d81c *s, int key, int value);
 int TestFlagMask(unsigned short *pad, int mask);
 int TestFlag0SetAndFlag1Clear(unsigned short *pad, int buttons);
@@ -25,16 +25,16 @@ extern "C" void func_ov002_0215b458(char *self, int v);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 int GetField0x3acValue(GameState *gs);
-extern "C" Obj020d7aa0 *_Z25GetGlobalResetObj020d7a50v();
-extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(Obj020d7aa0 *obj);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *obj, int a, int b);
-extern "C" int _Z29GetFieldC54ArrayValue021573f8Pvi(void *self, int v);
-extern "C" int _Z22GetCountByType02157108Pvi(void *self, int type);
+Obj020d7aa0 *GetGlobalResetObj020d7a50();
+void TeardownAndResetState020d7aa0(Obj020d7aa0 *obj);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *obj, int a, int b);
+int GetFieldC54ArrayValue021573f8(void *self, int v);
+int GetCountByType02157108(void *self, int type);
 unsigned char *GetFieldAt0x150(unsigned char *obj);
 void *GetPtrField0x2a04(GameState *gameState);
-extern "C" int _Z20FindKeyIndex020a0af4P7S_a0af4i(struct S_a0af4 *s, int key);
-extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *self, int v);
-extern "C" void _Z37ResetAllocatorsAndClearFields0215b428Ph(unsigned char *obj);
+int FindKeyIndex020a0af4(struct S_a0af4 *s, int key);
+int CheckFlagOrThreshold_02161b48(char *self, int v);
+void ResetAllocatorsAndClearFields0215b428(unsigned char *obj);
 extern "C" void func_ov002_02156e90(void *obj);
 
 extern "C" unsigned short data_02114e30;
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov002_02162964(char *self) {
         func_ov002_0215b2c8(self);
         CUR = 0;
         SEL = *(int *) (self + CUR * 4 + 0x1c3c);
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) OBJ, 0, 2);
+        FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) OBJ, 0, 2);
         func_ov002_02161cf0(self);
         func_ov002_0215c614(self);
         *(int *) (self + 0x1bc0) += 1;
@@ -68,7 +68,7 @@ extern "C" ARM void func_ov002_02162964(char *self) {
         *(short *) (self + 0x1bf0) = -1;
         *(unsigned int *) (self + 0x247c) |= 4;
         short old = CUR;
-        CUR       = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570 *) OBJ);
+        CUR       = GetActiveScaledSum0205d794((struct Struct_0205c570 *) OBJ);
         func_ov002_0215b9a4(self, *(int *) (self + 0x1bb8) & 0xff, 0);
         signed char prev = SEL;
         SEL              = *(signed char *) (self + CUR + 0x1c6e);
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov002_02162964(char *self) {
         }
         if (prev != SEL) {
             func_ov002_0215b9a4(self, 5, 0);
-            _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8 *) OBJ, SEL >= 0 ? 1 : 0, 5);
+            SetElementFlag0x20ByKey0205def8((struct Struct_0205def8 *) OBJ, SEL >= 0 ? 1 : 0, 5);
         }
         SetElementFieldC2((struct Struct_0205d81c *) OBJ, 5, 1);
         if (TestFlagMask(&data_02114e30, 0x40)) {
@@ -105,10 +105,10 @@ extern "C" ARM void func_ov002_02162964(char *self) {
         int ok = (t | u) ? 1 : 0;
         if (ok || pick) {
             *(unsigned char *) (self + 0x1c21) = GetField0x3acValue(GameState::GetInstance());
-            _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
+            TeardownAndResetState020d7aa0(GetGlobalResetObj020d7a50());
             *(unsigned char *) (self + 0xf80) = *(int *) (self + 0x1bb8);
             *(unsigned int *) (self + 0x247c) &= ~4;
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) &data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) &data_02108760, 1, 0);
             if (CUR == LAST + 1) {
                 if (LAST != 1) {
                     *(int *) (self + 0x1bb8) = 0xb;
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov002_02162964(char *self) {
                     *(unsigned char *) (self + 0x1c32) = 0;
                     SetElementFieldC2((struct Struct_0205d81c *) OBJ, 4, 1);
                     *(short *) (self + 0x1bf0) = *(unsigned char *) (self + 0x2521) = 1;
-                    SEL                                = _Z29GetFieldC54ArrayValue021573f8Pvi(self, 1);
+                    SEL                                = GetFieldC54ArrayValue021573f8(self, 1);
                     *(short *) (self + 0x1c12)         = 0;
                     *(short *) (self + 0x1c28)         = 0x238d;
                     *(short *) (self + 0x1c2a)         = -1;
@@ -129,7 +129,7 @@ extern "C" ARM void func_ov002_02162964(char *self) {
             }
             *(int *) (self + 0x1bb8) = 5;
             *(int *) (self + 0x1bc0) = 0;
-            if (!_Z22GetCountByType02157108Pvi(self, SEL)) {
+            if (!GetCountByType02157108(self, SEL)) {
                 *(short *) (self + 0x1c28) = 0x2369;
                 *(short *) (self + 0x1c2a) = -1;
                 int in                     = 0;
@@ -155,12 +155,12 @@ extern "C" ARM void func_ov002_02162964(char *self) {
             }
             unsigned char *q = GetFieldAt0x150((unsigned char *) hero);
             *(short *) (self + 0x1be8) =
-                _Z20FindKeyIndex020a0af4P7S_a0af4i((struct S_a0af4 *) GetPtrField0x2a04(gs), *(short *) (q + 0x958));
+                FindKeyIndex020a0af4((struct S_a0af4 *) GetPtrField0x2a04(gs), *(short *) (q + 0x958));
             if (*(short *) (self + 0x1be8) == -1) {
                 *(short *) (self + 0x1be8) = 0;
             }
-        } else if (_Z29CheckFlagOrThreshold_02161b48Pci(self, 1)) {
-            _Z37ResetAllocatorsAndClearFields0215b428Ph((unsigned char *) self);
+        } else if (CheckFlagOrThreshold_02161b48(self, 1)) {
+            ResetAllocatorsAndClearFields0215b428((unsigned char *) self);
             SEL                                = -1;
             CUR                                = -1;
             *(unsigned char *) (self + 0x2521) = 0;

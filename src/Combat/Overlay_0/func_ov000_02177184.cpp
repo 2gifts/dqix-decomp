@@ -4,15 +4,15 @@
 struct Canvas0204e998;
 struct Entry_0205d6a0;
 int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
-extern "C" void _Z30InitAndFillIndexBuffer0204c964P14Canvas0204e998(struct Canvas0204e998* canvas);
-extern "C" void* _Z22CopyStaticData02174da4iPv(int unused, void* dest);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(struct Entry_0205d6a0* a, int flag);
-extern "C" void _Z23SetChannelBFlag0205cf04Pv(void* obj);
-extern "C" void _Z23SetChannelAFlag0205cef8Pv(void* obj);
-extern "C" void _Z30SetupDualPointerTables0205cf28Phiii(unsigned char* obj, int a, int count, int b);
+void InitAndFillIndexBuffer0204c964(struct Canvas0204e998* canvas);
+void* CopyStaticData02174da4(int unused, void* dest);
+void ResetEntryList0205d6a0(struct Entry_0205d6a0* a, int flag);
+void SetChannelBFlag0205cf04(void* obj);
+void SetChannelAFlag0205cef8(void* obj);
+void SetupDualPointerTables0205cf28(unsigned char* obj, int a, int count, int b);
 extern "C" void func_0205bb04(void* cursor, int index);
 extern "C" void func_0205d7a0(unsigned char* obj, int val);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 extern "C" void func_ov000_0217737c(void* obj, void* buf);
 #if defined(jpn)
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
@@ -60,12 +60,12 @@ extern "C" ARM void func_ov000_02177184(struct Menu02177184* menu, int active) {
     struct Window02177184* window = &menu->window;
     unsigned char* canvas = window->canvas;
     if (CheckField0x9cSetWhenField0xd4Present(canvas)) {
-        _Z30InitAndFillIndexBuffer0204c964P14Canvas0204e998((struct Canvas0204e998*)canvas);
+        InitAndFillIndexBuffer0204c964((struct Canvas0204e998*)canvas);
         menu->flags &= ~2;
         return;
     }
     int entries[4];
-    _Z22CopyStaticData02174da4iPv((int)menu, entries);
+    CopyStaticData02174da4((int)menu, entries);
     int count = 0;
     for (int i = 0; i < 4; i++) {
         if (entries[i] >= 0) {
@@ -73,10 +73,10 @@ extern "C" ARM void func_ov000_02177184(struct Menu02177184* menu, int active) {
         }
     }
     menu->selection = 0;
-    _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)window, 1);
-    _Z23SetChannelBFlag0205cf04Pv(window);
-    _Z23SetChannelAFlag0205cef8Pv(window);
-    _Z30SetupDualPointerTables0205cf28Phiii((unsigned char*)window, 1, count, 0);
+    ResetEntryList0205d6a0((struct Entry_0205d6a0*)window, 1);
+    SetChannelBFlag0205cf04(window);
+    SetChannelAFlag0205cef8(window);
+    SetupDualPointerTables0205cf28((unsigned char*)window, 1, count, 0);
     window->field_0x58 = 1;
     func_0205bb04(window->cursor, 0);
     if (count == 3) {
@@ -102,10 +102,10 @@ extern "C" ARM void func_ov000_02177184(struct Menu02177184* menu, int active) {
     window->field_0xb1 = 1;
     func_0205d7a0((unsigned char*)window, menu->selection);
 #if defined(jpn)
-    void* buf = *(void**)(_Z26GetGlobalField0x1c020421a0v() + 0x28);
+    void* buf = *(void**)(GetGlobalField0x1c020421a0() + 0x28);
     memset(buf, 0, 0x800);
 #else
-    void* buf = *(void**)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+    void* buf = *(void**)(GetGlobalField0x1c020421a0() + 0x5c);
     memset(buf, 0, 0x960);
 #endif
     func_ov000_0217737c(menu, buf);

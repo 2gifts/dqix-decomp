@@ -3,10 +3,10 @@
 
 extern AllocatorUnion data_02114e20;
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" extern void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
+extern void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 struct ResetStruct0218eef0;
-extern "C" void _Z29InitCombatFieldStruct0218eef0P19ResetStruct0218eef0(struct ResetStruct0218eef0* s);
+void InitCombatFieldStruct0218eef0(struct ResetStruct0218eef0* s);
 
 struct Obj0218ef7c;
 struct SrcState0218ef7c;
@@ -33,25 +33,25 @@ extern "C" ARM void* func_ov015_021919e4(struct Obj021919e4* obj, void* p1) {
     node->next = 0;
     node->payload = AllocateAligned4(&data_02114e20, 0x5c);
     if (node->payload == 0) {
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, node);
+        TailForward02012da4(&data_02114e20, node);
         return 0;
     }
     void* payload = node->payload;
 
-    _Z29InitCombatFieldStruct0218eef0P19ResetStruct0218eef0((struct ResetStruct0218eef0*)payload);
+    InitCombatFieldStruct0218eef0((struct ResetStruct0218eef0*)payload);
     int status = func_ov015_0218ef7c((struct Obj0218ef7c*)payload, (struct SrcState0218ef7c*)obj, (struct P0218ef7c*)p1);
     if (status == 0) {
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, node->payload);
+        TailForward02012da4(&data_02114e20, node->payload);
         node->payload = 0;
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, node);
+        TailForward02012da4(&data_02114e20, node);
         return 0;
     }
 
     if (!func_ov015_0218f27c(payload, p1)) {
         func_ov015_0218f0c4(node->payload);
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, node->payload);
+        TailForward02012da4(&data_02114e20, node->payload);
         node->payload = 0;
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, node);
+        TailForward02012da4(&data_02114e20, node);
         return 0;
     }
 

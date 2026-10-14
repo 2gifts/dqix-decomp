@@ -74,34 +74,34 @@ extern "C" void func_02029634(DebugMenu* menu, int ticks);
 DebugMenuItem* GetNodeAtIndex(IndexList_0202a9ac*, int);
 void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
 void SetState0x6cAndInvoke(Callback_0202a91c*);
-extern "C" void _Z18Deactivate0202a8ccPci(char*, int);
-extern "C" void _Z25FormatAndDispatch0202ad98iiiPKcz(int a, int b, int c, const char* fmt, ...);
-extern "C" void _Z25FormatAndDispatch020290e8iiPKcz(int a, int b, const char* fmt, ...);
+void Deactivate0202a8cc(char*, int);
+void FormatAndDispatch0202ad98(int a, int b, int c, const char* fmt, ...);
+void FormatAndDispatch020290e8(int a, int b, const char* fmt, ...);
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 int TestFlagMask(unsigned short*, int);
 extern "C" int func_0201248c(unsigned short*, unsigned int);
 void AdjustValueWrapOrClamp(WrapField_0202a678*, int);
 extern "C" void func_0202a6c4(DebugMenu* menu);
 extern "C" void* __clear(void*, int);
-extern "C" int _Z21SetupViewport02029384iiii(int, int, int, int);
-extern "C" void _Z20PackRegister02029470iiiiii(int, int, int, int, int, int);
+int SetupViewport02029384(int, int, int, int);
+void PackRegister02029470(int, int, int, int, int, int);
 extern "C" void func_020292ec(int a0, int a1, int a2, int a3, int a4);
 
 extern TouchInput data_02114e54;
 extern Metrics020ef74c data_020ef74c;
 extern TextColor020fe9a4 data_020fe9a4;
 extern unsigned short data_02114e30;
-extern const char data_020ef75c[]; // "%s"
-extern const char data_020ef75f[]; // "<>>"
-extern const char data_020ef763[]; // "   "
-extern const char data_020ef767[]; // "[*]"
-extern const char data_020ef76b[]; // "[-]"
-extern const char data_020ef76f[]; // "%x"
-extern const char data_020ef772[]; // "%c"
-extern const char data_020ef775[]; // "%d"
-extern const char data_020ef778[]; // "[%x]"
-extern const char data_020ef77d[]; // "[%c]"
-extern const char data_020ef782[]; // "[%d]"
+extern const char data_020ef75c[];
+extern const char data_020ef75f[];
+extern const char data_020ef763[];
+extern const char data_020ef767[];
+extern const char data_020ef76b[];
+extern const char data_020ef76f[];
+extern const char data_020ef772[];
+extern const char data_020ef775[];
+extern const char data_020ef778[];
+extern const char data_020ef77d[];
+extern const char data_020ef782[];
 
 static inline DebugMenuItem* GetItem(DebugMenu* menu, int index) {
     return GetNodeAtIndex((IndexList_0202a9ac*)menu, index);
@@ -190,7 +190,7 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
                                 return;
                             }
                             if (cur->type != 1) return;
-                            _Z18Deactivate0202a8ccPci((char*)cur, 1);
+                            Deactivate0202a8cc((char*)cur, 1);
                             menu->state = 4;
                             return;
                         }
@@ -211,10 +211,10 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
         }
 
         if (data_020ef74c.font == 0) {
-            _Z25FormatAndDispatch0202ad98iiiPKcz(menu->x / 8 + 1, menu->y / 8 + 1, 7, menu->text);
+            FormatAndDispatch0202ad98(menu->x / 8 + 1, menu->y / 8 + 1, 7, menu->text);
         } else if (data_020ef74c.font >= 3 && data_020ef74c.font <= 6) {
             data_020fe9a4.highlight = 0;
-            _Z25FormatAndDispatch020290e8iiPKcz(menu->x + data_020ef74c.columnWidth, menu->y + data_020ef74c.rowHeight, menu->text);
+            FormatAndDispatch020290e8(menu->x + data_020ef74c.columnWidth, menu->y + data_020ef74c.rowHeight, menu->text);
         }
 
         {
@@ -226,11 +226,11 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
                 data_020fe9a4.highlight = 0;
                 if (item->disabled) data_020fe9a4.highlight = 1;
                 if (data_020ef74c.font == 0) {
-                    _Z25FormatAndDispatch0202ad98iiiPKcz(menu->x / 8 + 1, menu->y / 8 + 2 + row, 7, buf);
+                    FormatAndDispatch0202ad98(menu->x / 8 + 1, menu->y / 8 + 2 + row, 7, buf);
                 } else if (data_020ef74c.font >= 3 && data_020ef74c.font <= 6) {
                     int px = menu->x + data_020ef74c.columnWidth;
                     int py = data_020ef74c.rowHeight * (row + 2);
-                    _Z25FormatAndDispatch020290e8iiPKcz(px, py + menu->y, buf);
+                    FormatAndDispatch020290e8(px, py + menu->y, buf);
                 }
                 item = item->next;
             }
@@ -245,11 +245,11 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
                 data_020fe9a4.highlight = 0;
                 if (item->disabled) data_020fe9a4.highlight = 1;
                 if (data_020ef74c.font == 0) {
-                    _Z25FormatAndDispatch0202ad98iiiPKcz(menu->x / 8 + 1, menu->y / 8 + 2 + row, 7, buf);
+                    FormatAndDispatch0202ad98(menu->x / 8 + 1, menu->y / 8 + 2 + row, 7, buf);
                 } else if (data_020ef74c.font >= 3 && data_020ef74c.font <= 6) {
                     int px = menu->x + data_020ef74c.columnWidth;
                     int py = data_020ef74c.rowHeight * (row + 2);
-                    _Z25FormatAndDispatch020290e8iiPKcz(px, py + menu->y, buf);
+                    FormatAndDispatch020290e8(px, py + menu->y, buf);
                 }
                 item = item->next;
             }
@@ -358,11 +358,11 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
                         len += strlen(number);
                     }
                     if (data_020ef74c.font == 0) {
-                        _Z25FormatAndDispatch0202ad98iiiPKcz(menu->x / 8 + 1, menu->y / 8 + 2 + (first + (row - menu->visibleFirst)), 7, line);
+                        FormatAndDispatch0202ad98(menu->x / 8 + 1, menu->y / 8 + 2 + (first + (row - menu->visibleFirst)), 7, line);
                     } else if (data_020ef74c.font >= 3 && data_020ef74c.font <= 6) {
                         int px = menu->x + data_020ef74c.columnWidth;
                         int py = data_020ef74c.rowHeight * (first + (row - menu->visibleFirst) + 2);
-                        _Z25FormatAndDispatch020290e8iiPKcz(px, py + menu->y, line);
+                        FormatAndDispatch020290e8(px, py + menu->y, line);
                     }
                 }
                 item = item->next;
@@ -375,18 +375,18 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
         if (cur != NULL && cur->type == 1) {
             func_02029988(cur, ticks);
             if (cur->state == 1 ? 1 : 0) {
-                _Z18Deactivate0202a8ccPci((char*)menu, 0);
+                Deactivate0202a8cc((char*)menu, 0);
             }
         }
     }
 
     switch (menu->state) {
     case 0:
-        if (_Z21SetupViewport02029384iiii(menu->x, menu->y, menu->width, menu->height)) {
+        if (SetupViewport02029384(menu->x, menu->y, menu->width, menu->height)) {
             if (menu->visibleLast - menu->visibleFirst + 1 < menu->count) {
-                _Z20PackRegister02029470iiiiii(0, 1, 3, 0, 0, 0);
+                PackRegister02029470(0, 1, 3, 0, 0, 0);
                 func_020292ec(menu->x + menu->width - 9, menu->y + 1, 8, menu->height - 2, 0x7fff);
-                _Z20PackRegister02029470iiiiii(0, 1, 3, 0, 0x1f, 0);
+                PackRegister02029470(0, 1, 3, 0, 0x1f, 0);
                 if (barH < 0 || barH >= 0x100) {
                     barY = menu->y + 1;
                     barH = menu->height - 2;
@@ -400,12 +400,12 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
     case 2:
         menu->shownHeight = menu->height;
         menu->state = 0;
-        _Z21SetupViewport02029384iiii(menu->x, menu->y, menu->width, menu->shownHeight);
+        SetupViewport02029384(menu->x, menu->y, menu->width, menu->shownHeight);
         break;
     case 3:
         menu->shownHeight = 0;
         menu->state = 1;
-        _Z21SetupViewport02029384iiii(menu->x, menu->y, menu->width, menu->shownHeight);
+        SetupViewport02029384(menu->x, menu->y, menu->width, menu->shownHeight);
         break;
     }
 }

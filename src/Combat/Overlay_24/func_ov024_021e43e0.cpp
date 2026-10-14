@@ -23,13 +23,13 @@ struct Stats_021e43e0 {
 	unsigned char resistRate;
 };
 
-extern "C" int _Z31CheckField0x14Bit0Clear02088840Ph(unsigned char* obj);
+int CheckField0x14Bit0Clear02088840(unsigned char* obj);
 extern "C" int func_ov024_021e9198(struct Obj_021e43e0* ctx, int id, short code, int mode);
-extern "C" int _Z26IsFlagAllowedMask_021eb4b0iii(int a0, int flags, int mask);
+int IsFlagAllowedMask_021eb4b0(int a0, int flags, int mask);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 void SetFlag0x40AndBytes(unsigned char* obj);
 struct Obj_021e8ca0;
-extern "C" void* _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i(struct Obj_021e8ca0* obj, int id);
+void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 static inline int IsPartyMember(int id) {
@@ -55,16 +55,16 @@ extern "C" ARM unsigned long long func_ov024_021e43e0(struct Obj_021e43e0* obj, 
 	local.lo = 0;
 	local.hi = 0;
 	int code = action->code;
-	if (_Z31CheckField0x14Bit0Clear02088840Ph((unsigned char*)c->currentStats_) && roll < chance) {
+	if (CheckField0x14Bit0Clear02088840((unsigned char*)c->currentStats_) && roll < chance) {
 		msg = func_ov024_021e9198(obj, id, code, 1);
 		if (!msg) msg = 0xf5;
-		if (_Z26IsFlagAllowedMask_021eb4b0iii((int)obj, ((struct Stats_021e43e0*)c->currentStats_)->flags, 0x40)) {
+		if (IsFlagAllowedMask_021eb4b0((int)obj, ((struct Stats_021e43e0*)c->currentStats_)->flags, 0x40)) {
 			func_ov000_02159eac(obj->field0x10, &local, 0x2b);
 		}
 		SetFlag0x40AndBytes((unsigned char*)c->currentStats_);
 		((struct Stats_021e43e0*)c->currentStats_)->code = (unsigned char)code;
 	}
-	void* entry = _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i((struct Obj_021e8ca0*)obj, msg);
+	void* entry = AddEntryToListAndIncCount_021e8ca0((struct Obj_021e8ca0*)obj, msg);
 	if (entry) {
 		func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, 0);
 	}

@@ -62,11 +62,11 @@ struct GroupEvent02197a64 {
 
 extern "C" void* func_02012fe4(void);
 void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
-extern "C" Obj020968d0* _Z21GetField4328_0218d268Pv(void* res);
-extern "C" void _Z15InitObj0219a674Ph(unsigned char* self);
+Obj020968d0* GetField4328_0218d268(void* res);
+void InitObj0219a674(unsigned char* self);
 extern "C" int func_02094b9c(void* a, void* b);
-extern "C" int _Z27BuildAndForwardVec_0218da48Pviiih(void* obj, int angle, int c, int d, unsigned char e);
-extern "C" int _Z31CheckAndComputeDistance020968d0P11Obj020968d0Pi(Obj020968d0* obj, int* outDist);
+int BuildAndForwardVec_0218da48(void* obj, int angle, int c, int d, unsigned char e);
+int CheckAndComputeDistance020968d0(Obj020968d0* obj, int* outDist);
 int TestFlagMask(unsigned short* flags, int mask);
 extern "C" void __clear(void* buf, int count);
 extern "C" short _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_(Vector3fix* from, int baseAngle, Vector3fix* to);
@@ -85,17 +85,17 @@ extern "C" ARM void func_ov017_02197a64(Self02197a64* self) {
     Leader02197a64* leader = (Leader02197a64*)gs->GetUnknownGameObject();
     Vector3fix filter = leader->position;
     GroupNode02197a64* node = (GroupNode02197a64*)GetPointerFromArray0x3c((unsigned char*)cache + RegionOffset6c, 2);
-    Obj020968d0* field = _Z21GetField4328_0218d268Pv(res);
+    Obj020968d0* field = GetField4328_0218d268(res);
     int notify = 0;
     GroupEvent02197a64 event;
-    _Z15InitObj0219a674Ph((unsigned char*)&event);
+    InitObj0219a674((unsigned char*)&event);
     int counted = 0;
     int built = 0;
 
     while (node != NULL && event.count < 2) {
         if (!(node->flags & 1) && !(node->flags & 4) && func_02094b9c(node, &filter)) {
             if (!built) {
-                built = _Z27BuildAndForwardVec_0218da48Pviiih(self, node->angle, FACING_LIMIT, FACING_LIMIT >> 3, 0);
+                built = BuildAndForwardVec_0218da48(self, node->angle, FACING_LIMIT, FACING_LIMIT >> 3, 0);
             }
             Vector3fix dir;
             int c = fix32cos(node->angle);
@@ -113,7 +113,7 @@ extern "C" ARM void func_ov017_02197a64(Self02197a64* self) {
             int facing = Vector3fix_InnerProduct(&dir, &fwd);
             int along = Vector3fix_InnerProduct(&dir, &heading);
             if ((heading.x != 0 || heading.z != 0) &&
-                (_Z31CheckAndComputeDistance020968d0P11Obj020968d0Pi(field, NULL) != 0 || TestFlagMask(&data_02114e30, 0xf0) != 0)) {
+                (CheckAndComputeDistance020968d0(field, NULL) != 0 || TestFlagMask(&data_02114e30, 0xf0) != 0)) {
                 facing = along;
             }
             if (node->flags & 0x10) {

@@ -86,46 +86,46 @@ struct MessageController {
 };
 struct ActorFlags { char pad0[0xc1]; unsigned char fieldc1; unsigned char low : 4; unsigned char visible : 1; unsigned char high : 3; };
 extern "C" Reset_021eefac* _ZZ17GetGlobal021ffefcvE1s;
-extern "C" MessageController* _Z26GetGlobalField0x1c020421a0v();
+MessageController* GetGlobalField0x1c020421a0();
 extern "C" void* func_0202ae18();
 int ArrayContainsByte(ArrayContainsByteStruct*, int);
-extern "C" void _Z31ScaleOrResetCombatants_021ed988Pci(char*, int);
+void ScaleOrResetCombatants_021ed988(char*, int);
 extern "C" void func_ov000_02163b90(BattleWork*, int);
 extern "C" void func_ov000_021626a0(BattleWork*, int, int);
-extern "C" void _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(GatherObj02163a7c*);
+void ApplyField41ToGatheredCombatants02163a7c(GatherObj02163a7c*);
 extern "C" void func_ov000_021639b4(BattleWork*);
 void ClearBitsInField4(unsigned int*, unsigned int);
-extern "C" void _Z38RunFlagPassAndSetMode02167dd8_02167dd8Ph(unsigned char*);
+void RunFlagPassAndSetMode02167dd8_02167dd8(unsigned char*);
 extern "C" int func_ov000_02153e40(void*, short*, int, int);
 extern "C" void func_02048cf0(GameObject*, int);
 extern "C" void func_ov000_0216e3c4(void*);
-extern "C" unsigned char* _Z16GetField02163524Pv(void*);
+unsigned char* GetField02163524(void*);
 int TestBitAt0x34(unsigned char*, unsigned int);
-extern "C" void _Z26ResetCombatantSlot020d7334Phi(unsigned char*, int);
+void ResetCombatantSlot020d7334(unsigned char*, int);
 int IsFlag10088Set(S_10088*);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
-extern "C" void _Z23ClearStateFlags0203400cPh(unsigned char*);
+void ClearStateFlags0203400c(unsigned char*);
 GameObject* GetCombatantWithFlag0x400(GameState*, int);
 GameObject* GetCombatantWithFlag0x100(GameState*, int);
 GameObject* GetCombatantWithFlag0x1000(GameState*, int);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0*, int);
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 void SetCombatWorkFlags0x55f4(void*, int);
 extern "C" void func_ov023_021d8a40(BattleEntry*);
-extern "C" void _Z24CopyEntryFields_021d8cb4PvS_(void*, void*);
-extern "C" void _Z24CopyAndStoreLen_021d9988P11Obj021d9988Pvj(Obj021d9988*, void*, unsigned int);
+void CopyEntryFields_021d8cb4(void*, void*);
+void CopyAndStoreLen_021d9988(Obj021d9988*, void*, unsigned int);
 extern "C" void func_02046380(MessageController*);
 extern "C" void func_ov023_021d8ddc(BattleEntry*, int*);
 int GetCheckedSignedByte(void*, unsigned int);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void*, int);
+void InitObjFromCombatantId020e4bf4(void*, int);
 char* FindEntryByKey(TableA68*, int);
 #if !defined(jpn)
 extern "C" void func_0204500c(MessageController*, char*, int, int);
 #endif
-extern "C" BattleResultEntry* _Z24FindByByteAt118_021f0360Pvi(void*, int);
+BattleResultEntry* FindByByteAt118_021f0360(void*, int);
 extern "C" int func_02082490(LoadedEntry*, void*, unsigned int, unsigned char, int);
 extern "C" int func_ov023_021f4438(BattleWork*);
 extern "C" int func_ov023_021f4fc8();
-extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(Reset_021eefac*);
+void ResetFields_021eefac(Reset_021eefac*);
 
 #if defined(jpn)
 extern "C" void func_0204500c(MessageController*,char*,int);
@@ -144,19 +144,19 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
     short ids[12];
     GameState* game = GameState::GetInstance();
     Reset_021eefac* state = _ZZ17GetGlobal021ffefcvE1s;
-    MessageController* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageController* messages = GetGlobalField0x1c020421a0();
     func_0202ae18();
     GameResources* resources = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     ArrayContainsByte((ArrayContainsByteStruct*)GetPtrField0x2a04(game), state->actorId);
     if (state->state == 0) {
-        if (work->levelUp) _Z31ScaleOrResetCombatants_021ed988Pci((char*)work, 0);
+        if (work->levelUp) ScaleOrResetCombatants_021ed988((char*)work, 0);
         func_ov000_02163b90(work, 1);
         func_ov000_021626a0(work, 4, 0);
-        _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c((GatherObj02163a7c*)work);
+        ApplyField41ToGatheredCombatants02163a7c((GatherObj02163a7c*)work);
         func_ov000_021639b4(work);
         ClearBitsInField4((unsigned int*)resources, 0x400);
-        _Z38RunFlagPassAndSetMode02167dd8_02167dd8Ph((unsigned char*)work);
+        RunFlagPassAndSetMode02167dd8_02167dd8((unsigned char*)work);
         void* battle = work->battle;
         int count;
         GameState* combatGame = GameState::GetInstance();
@@ -166,17 +166,17 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
             if (actor) func_02048cf0(actor, 0);
         }
         func_ov000_0216e3c4(work->cameraTask);
-        unsigned char* field = _Z16GetField02163524Pv(work);
+        unsigned char* field = GetField02163524(work);
         GameState* partyGame = GameState::GetInstance();
         for (int i = 0; i < 4; i++) {
             if (TestBitAt0x34((unsigned char*)work->info, (unsigned char)i)) {
-                if (field) _Z26ResetCombatantSlot020d7334Phi(field, i);
+                if (field) ResetCombatantSlot020d7334(field, i);
                 GameObject* actor = partyGame->GetCombatantByIndex(i);
                 if (actor && !IsFlag10088Set((S_10088*)actor)) {
                     ((ActorFlags*)actor)->fieldc1 &= ~0xf0;
                     SetByte0xbeShiftPrev((Bytes02033b88*)actor, 0);
                     actor->obj3D_.SkipAnimationTransition();
-                    _Z23ClearStateFlags0203400cPh((unsigned char*)actor);
+                    ClearStateFlags0203400c((unsigned char*)actor);
                     actor->obj3D_.MakeVisible();
                 }
             }
@@ -185,18 +185,18 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
             GameObject* actor = GetCombatantWithFlag0x400(partyGame, i + 0xc0);
             if (actor && ((ActorFlags*)actor)->visible) actor->obj3D_.MakeVisible();
         }
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(&work->entries, 1);
+        ResetEntryList0205d6a0(&work->entries, 1);
         SetCombatWorkFlags0x55f4(work, 0x40000);
         work->allocator.Reset();
         work->result = (BattleEntry*)work->allocator.Allocate(0x12c);
         func_ov023_021d8a40(work->result);
-        _Z24CopyEntryFields_021d8cb4PvS_(work->result, work->entry);
+        CopyEntryFields_021d8cb4(work->result, work->entry);
         Reset_021eefac* global = _ZZ17GetGlobal021ffefcvE1s;
         unsigned char countEntries = global->count;
         BattleEntry* result = work->result;
         result->entries = global->entries;
         result->count = countEntries;
-        _Z24CopyAndStoreLen_021d9988P11Obj021d9988Pvj((Obj021d9988*)work->result, _ZZ17GetGlobal021ffefcvE1s->copyData, _ZZ17GetGlobal021ffefcvE1s->copyLength);
+        CopyAndStoreLen_021d9988((Obj021d9988*)work->result, _ZZ17GetGlobal021ffefcvE1s->copyData, _ZZ17GetGlobal021ffefcvE1s->copyLength);
         state->state++;
     } else if (state->state == 1) {
         if (work->result->state != 0xff) goto done;
@@ -219,7 +219,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
 #if defined(jpn)
 
 #else
-                    _Z30InitObjFromCombatantId020e4bf4Pvi(actorName, id);
+                    InitObjFromCombatantId020e4bf4(actorName, id);
 #endif
 
 #endif
@@ -238,7 +238,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
 #if defined(jpn)
 
 #else
-                    _Z30InitObjFromCombatantId020e4bf4Pvi(actorName, id);
+                    InitObjFromCombatantId020e4bf4(actorName, id);
 #endif
 
 #endif
@@ -258,7 +258,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
                     stats = actor->baseStats_;
 #else
                 if (GetCombatantWithFlag0x100(game, i) && TestBitAt0x34((unsigned char*)work->info, (unsigned char)i) && !GetCombatantWithFlag0x1000(game, i))
-                    _Z30InitObjFromCombatantId020e4bf4Pvi(actorName, i);
+                    InitObjFromCombatantId020e4bf4(actorName, i);
 #endif
 
             }
@@ -284,7 +284,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
         messages->field998 = 1;
         state->state++;
     } else if (state->state == 2) {
-        BattleResultEntry* entry = _Z24FindByByteAt118_021f0360Pvi(_ZZ17GetGlobal021ffefcvE1s, state->member);
+        BattleResultEntry* entry = FindByByteAt118_021f0360(_ZZ17GetGlobal021ffefcvE1s, state->member);
         if (!entry) {
             state->member++;
             if (state->member >= 4) state->state = 4;
@@ -300,7 +300,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
         int member = state->member;
         loader->GetLoadedFileByID(state->task, &file, &length);
         loader->RemoveTask(state->task);
-        BattleResultEntry* entry = _Z24FindByByteAt118_021f0360Pvi(_ZZ17GetGlobal021ffefcvE1s, member);
+        BattleResultEntry* entry = FindByByteAt118_021f0360(_ZZ17GetGlobal021ffefcvE1s, member);
         if (file && func_02082490(&work->loaded[member], file, length, entry->type, entry->experience)) {
             if (!entry->flag) state->loaded[member] = 1;
         }
@@ -320,7 +320,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
             messages->field19af = 0;
         }
         if (func_ov023_021f4fc8()) {
-            _Z20ResetFields_021eefacP14Reset_021eefac(state);
+            ResetFields_021eefac(state);
             return 7;
         }
     }

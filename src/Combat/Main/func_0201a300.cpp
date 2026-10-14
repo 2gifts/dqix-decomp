@@ -12,18 +12,18 @@ struct Container02028170;
 struct List_020283c0;
 struct AppendPairList;
 struct TimeStamp020105a8;
-extern "C" void _Z24InitializeStruct020280f8P10InitStruct(InitStruct*);
+void InitializeStruct020280f8(InitStruct*);
 void InitializeStruct(InitStruct*);
-extern "C" void _Z35AllocateAndClearHeaderArray020286fcP13Array020286fcP13SafeAllocatori(Array020286fc*, SafeAllocator*, int);
-extern "C" void _Z26AllocateClearArray02028754P13Array02028754P13SafeAllocatori(Array02028754*, SafeAllocator*, int);
-extern "C" void _Z21AllocateArray0202834cP13Array0202834cP13SafeAllocatori(Array0202834c*, SafeAllocator*, int);
+void AllocateAndClearHeaderArray020286fc(Array020286fc*, SafeAllocator*, int);
+void AllocateClearArray02028754(Array02028754*, SafeAllocator*, int);
+void AllocateArray0202834c(Array0202834c*, SafeAllocator*, int);
 void AppendHalfwordPairCapped(BoundedHalfwordPairList*, HalfwordPair*);
 int GenerateGrottoObjectPositionOrientation(void*, int, int, int*, int*, const TileFeaturePlacementData*, bool);
-extern "C" void _Z27AppendCappedElement02028170P17Container02028170P12Elem02028170(Container02028170*, Elem02028170*);
+void AppendCappedElement02028170(Container02028170*, Elem02028170*);
 Elem02028170* FindListEntryById(List_020283c0*, int);
 void AppendPairToBoundedList(AppendPairList*, AppendEntry*);
 extern "C" void func_02028214(GrottoTileLists0201a300*, SafeAllocator*);
-extern "C" void _Z26ComputeElapsedTime020105a8P17TimeStamp020105a8Pi(TimeStamp020105a8*, int*);
+void ComputeElapsedTime020105a8(TimeStamp020105a8*, int*);
 
 static inline unsigned int GrottoTileId0201a300(unsigned int x, unsigned int y) {
     SDK_ASSERT(x < 16 && y < 16);
@@ -58,11 +58,11 @@ extern "C" ARM int func_0201a300(Zone3D* zone, int floor, GrottoTileOwner0201a30
     }
     int remaining = 0x1020 - ((count << 4) + (neighbors << 3));
     if (remaining < 0) neighbors -= abs(remaining / 8) + 1;
-    _Z24InitializeStruct020280f8P10InitStruct((InitStruct*)&owner->lists);
+    InitializeStruct020280f8((InitStruct*)&owner->lists);
     InitializeStruct((InitStruct*)&owner->lists);
-    _Z35AllocateAndClearHeaderArray020286fcP13Array020286fcP13SafeAllocatori((Array020286fc*)&owner->lists, owner->allocator, count);
-    _Z26AllocateClearArray02028754P13Array02028754P13SafeAllocatori((Array02028754*)&owner->lists, owner->allocator, neighbors);
-    _Z21AllocateArray0202834cP13Array0202834cP13SafeAllocatori((Array0202834c*)&owner->lists, owner->allocator, 1);
+    AllocateAndClearHeaderArray020286fc((Array020286fc*)&owner->lists, owner->allocator, count);
+    AllocateClearArray02028754((Array02028754*)&owner->lists, owner->allocator, neighbors);
+    AllocateArray0202834c((Array0202834c*)&owner->lists, owner->allocator, 1);
     HalfwordPair origin;
     origin.first = 0;
     origin.second = 0;
@@ -90,7 +90,7 @@ extern "C" ARM int func_0201a300(Zone3D* zone, int floor, GrottoTileOwner0201a30
             feature.z = tileZ >> 12;
             if (value == 4) feature.flags |= 2;
             feature.id = id;
-            _Z27AppendCappedElement02028170P17Container02028170P12Elem02028170((Container02028170*)&owner->lists, &feature);
+            AppendCappedElement02028170((Container02028170*)&owner->lists, &feature);
             int leftId = x - 1 + (y << 4);
             int left = tiles[leftId];
             int aboveId = x + (previousY << 4);
@@ -113,7 +113,7 @@ extern "C" ARM int func_0201a300(Zone3D* zone, int floor, GrottoTileOwner0201a30
     }
     func_02028214(&owner->lists, owner->allocator);
     int elapsed;
-    _Z26ComputeElapsedTime020105a8P17TimeStamp020105a8Pi((TimeStamp020105a8*)state, &elapsed);
+    ComputeElapsedTime020105a8((TimeStamp020105a8*)state, &elapsed);
     srand(elapsed);
     return 1;
 }

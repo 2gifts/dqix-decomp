@@ -14,13 +14,13 @@ struct List0204af64 {
 };
 
 extern "C" void func_02074af4(void* obj);
-extern "C" void _Z18InitStruct0205cfd4P18InitTarget0205cfd4(struct InitTarget0205cfd4* s);
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64* obj);
+void InitStruct0205cfd4(struct InitTarget0205cfd4* s);
+void ResetList0204af64(struct List0204af64* obj);
 extern "C" void func_0204c684(void* obj);
-extern "C" void _Z18InitStruct0205a444Pc(char* obj);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(struct Struct020dfc40* p);
-extern "C" void _Z20ClearFields_021e20c0Pv(void* p);
-extern "C" void _Z24ClearFlagFields_02169658Pv(void* obj);
+void InitStruct0205a444(char* obj);
+void ResetStruct020dfc40(struct Struct020dfc40* p);
+void ClearFields_021e20c0(void* p);
+void ClearFlagFields_02169658(void* obj);
 
 struct CanvasSlot021681c8 {
     unsigned char data[0xe0];
@@ -77,18 +77,18 @@ extern "C" ARM void func_ov003_021681c8(BattleView021681c8* view) {
     view->allocs[1].ResetAllocatorPointer();
     view->allocs[0].ResetAllocatorPointer();
 
-    _Z18InitStruct0205cfd4P18InitTarget0205cfd4((struct InitTarget0205cfd4*)view->field_0xe4);
+    InitStruct0205cfd4((struct InitTarget0205cfd4*)view->field_0xe4);
     for (int i = 0; i < 2; i++) {
-        _Z17ResetList0204af64P12List0204af64(&view->lists[i]);
+        ResetList0204af64(&view->lists[i]);
     }
     for (int i = 0; i < 3; i++) {
         func_0204c684(&view->canvases[i]);
     }
-    _Z18InitStruct0205a444Pc(view->field_0x480);
+    InitStruct0205a444(view->field_0x480);
     view->field_0x4d4 = 0;
     view->field_0x4d8 = 0;
-    _Z19ResetStruct020dfc40P14Struct020dfc40((struct Struct020dfc40*)view->field_0x64);
-    _Z20ClearFields_021e20c0Pv(view->field_0x80);
+    ResetStruct020dfc40((struct Struct020dfc40*)view->field_0x64);
+    ClearFields_021e20c0(view->field_0x80);
 
     view->field_0x4dc = 0;
     view->field_0x4ec = 0;
@@ -109,5 +109,5 @@ extern "C" ARM void func_ov003_021681c8(BattleView021681c8* view) {
     view->field_0x5a4 = 0;
     view->field_0x5a5 = 0;
     view->field_0x59f = 0;
-    _Z24ClearFlagFields_02169658Pv(view);
+    ClearFlagFields_02169658(view);
 }

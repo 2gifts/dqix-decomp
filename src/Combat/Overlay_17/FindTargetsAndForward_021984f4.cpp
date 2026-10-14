@@ -12,9 +12,9 @@ extern "C" void* func_02012fe4(void);
 void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 extern "C" int func_02094b9c(void* a, void* b);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
-extern "C" int _Z24fix32SignedAngleDistanceii(int a, int b);
-extern "C" int _Z8fix32absi(int x);
+int fix32ReduceAngle0To2Pi(int angle);
+int fix32SignedAngleDistance(int a, int b);
+int fix32abs(int x);
 void InitObj0219a674(unsigned char* self);
 void BuildAndForwardVec_0218da48(void* obj, int angle, int c, int d, unsigned char e);
 extern "C" void func_ov017_0219b33c(void* obj, void* eventBuf);
@@ -63,9 +63,9 @@ extern "C" ARM void func_ov017_021984f4(void* obj) {
     unsigned char idx = 0;
     while (node != NULL) {
         if (func_02094b9c(node, &filter) != 0) {
-            int angle = (short)_Z22fix32ReduceAngle0To2Pii(node->angle + 0x3244);
+            int angle = (short)fix32ReduceAngle0To2Pi(node->angle + 0x3244);
             BuildAndForwardVec_0218da48(obj, angle, 0xccc, -819, idx);
-            int delta = _Z8fix32absi(_Z24fix32SignedAngleDistanceii(*(int*)((char*)c + 0x54), node->angle));
+            int delta = fix32abs(fix32SignedAngleDistance(*(int*)((char*)c + 0x54), node->angle));
             if ((float)delta < 8364.19921875f) {
                 if (delta < best) {
                     best = delta;

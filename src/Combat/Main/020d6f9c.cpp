@@ -14,9 +14,9 @@ struct Struct205563c {
 struct EffectObject020d6f9c { unsigned char pad0[0xe8]; Matrix4x3 matrix; };
 struct Obj02055660 { void* field0; void* field4; int field8; int fieldc; };
 
-extern "C" void _Z18InitStruct02059cc8Ph(unsigned char* obj);
+void InitStruct02059cc8(unsigned char* obj);
 void ClearSevenWords(Struct205563c* obj);
-extern "C" int _Z17MaybeInit02055660P11Obj02055660iii(Obj02055660* obj, int data, int model, int allocator);
+int MaybeInit02055660(Obj02055660* obj, int data, int model, int allocator);
 extern const Vector3fix data_020ee20c;
 extern const Vector3fix data_020ee200;
 
@@ -95,7 +95,7 @@ extern "C" ARM void func_020d6f9c(void* param0, int combatantId, int reason) {
     if (combatantId >= 0xc0) combatantId -= 0xbc;
     if (manager->mask & (1 << combatantId)) {
         if (manager->slots[combatantId].reason == reason) return;
-        _Z18InitStruct02059cc8Ph((unsigned char*)&manager->slots[combatantId]);
+        InitStruct02059cc8((unsigned char*)&manager->slots[combatantId]);
         manager->slots[combatantId].active = 0;
     }
     ReactionConfig020d6f9c config;
@@ -177,7 +177,7 @@ extern "C" ARM void func_020d6f9c(void* param0, int combatantId, int reason) {
         manager->slots[combatantId].velocity = config.velocity;
         manager->slots[combatantId].flags.bit1 = config.flags.bit0 != 0;
         ClearSevenWords(&manager->slots[combatantId].payload.clearHeader);
-        _Z17MaybeInit02055660P11Obj02055660iii(&manager->slots[combatantId].payload.effect, (int)&node->effectData, (int)&node->model, (int)&manager->allocator);
+        MaybeInit02055660(&manager->slots[combatantId].payload.effect, (int)&node->effectData, (int)&node->model, (int)&manager->allocator);
         Matrix4x3 matrix;
         Mat4x3_WriteIdentity(&matrix);
         Mat4x3_ApplyTranslation(&matrix, &matrix, config.position.x, config.position.y, config.position.z);

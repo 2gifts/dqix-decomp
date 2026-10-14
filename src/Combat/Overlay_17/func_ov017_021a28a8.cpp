@@ -17,13 +17,13 @@ struct ResourceArena021a28a8 {
     SafeAllocator allocator;
     char pairTables[0x20];
 };
-extern "C" void _Z29ClearSlotsAndProcess_021a27e8Pv(void*);
-extern "C" ResourceEntry021a28a8* _Z28FindEntryByCurrentId02027cb0v();
-extern "C" int _Z16GetCount0209c0ecPc(char*);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
+void ClearSlotsAndProcess_021a27e8(void*);
+ResourceEntry021a28a8* FindEntryByCurrentId02027cb0();
+int GetCount0209c0ec(char*);
+void RestorePairTables0207df90(char*);
+void BackupPairTables0207dfac(char*);
 int GetCheckedHalfword(void*, int);
-extern "C" ResourceInfo021a28a8* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(BinarySearchByComparatorStruct*, int);
+ResourceInfo021a28a8* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
 void* FindNodeBySignedId(void*, int);
 bool FindFilesInNarcBySubstring(const void*, const char*, const void**, unsigned int*, unsigned int);
 void* DecompressLZ77FileIntoAllocatedSpace(SafeAllocator&, const void*, unsigned int&);
@@ -41,12 +41,12 @@ extern "C" ARM void func_ov017_021a28a8(ResourceArena021a28a8* arena) {
     GameState* state = GameState::GetInstance();
     SafeAllocator* allocator = &arena->allocator;
     char* tables = arena->pairTables;
-    _Z29ClearSlotsAndProcess_021a27e8Pv(arena);
-    ResourceEntry021a28a8* area = _Z28FindEntryByCurrentId02027cb0v();
+    ClearSlotsAndProcess_021a27e8(arena);
+    ResourceEntry021a28a8* area = FindEntryByCurrentId02027cb0();
     if (!area) return;
-    ResourceObject021a28a8* objects = (ResourceObject021a28a8*)allocator->Allocate(_Z16GetCount0209c0ecPc(area->ids) * 0xb0);
+    ResourceObject021a28a8* objects = (ResourceObject021a28a8*)allocator->Allocate(GetCount0209c0ec(area->ids) * 0xb0);
     if (!objects) return;
-    _Z25RestorePairTables0207df90Pc(tables);
+    RestorePairTables0207df90(tables);
     BackgroundLoader::AddLockGlobal();
     BackgroundLoader::FreeAllocationsGlobal();
     GPCReadPair archive;
@@ -57,9 +57,9 @@ extern "C" ARM void func_ov017_021a28a8(ResourceArena021a28a8* arena) {
     if (LoadAndDecompressGPCHeaderAndInnerFileInfo(&archive.pGPCFile, archive.machine, data_ov017_021d7668, data_0211e33c, headerLength, 0x30000, false, 0)) {
         unsigned int start = headerLength;
         unsigned int available = 0x30000 - start;
-        for (int i = 0; i < _Z16GetCount0209c0ecPc(area->ids); ++i) {
+        for (int i = 0; i < GetCount0209c0ec(area->ids); ++i) {
             int id = GetCheckedHalfword(area->ids, i);
-            ResourceInfo021a28a8* info = _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi((BinarySearchByComparatorStruct*)area->monsters, (short)id);
+            ResourceInfo021a28a8* info = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)area->monsters, (short)id);
             void* node = FindNodeBySignedId(area->nodes, (short)id);
             if (info && node) {
                 char filename[16];
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov017_021a28a8(ResourceArena021a28a8* arena) {
         archive.Reset();
     }
     BackgroundLoader::RemoveLockGlobal();
-    _Z24BackupPairTables0207dfacPc(tables);
+    BackupPairTables0207dfac(tables);
     func_ov017_021a2b1c(arena);
     archive.Reset();
     ZeroDestroyGPCPointer(&archive.pGPCFile);

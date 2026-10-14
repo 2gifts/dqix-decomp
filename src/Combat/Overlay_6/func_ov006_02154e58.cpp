@@ -110,12 +110,12 @@ struct Data0210a010 {
 };
 extern Data0210a010 data_0210a010;
 
-extern "C" void _Z28InitCombatController020a2010Pv(void* camera);
+void InitCombatController020a2010(void* camera);
 void SetFields0x10To0x18(unsigned char* camera, int x, int y, int z);
 extern "C" void func_0202e5d8(void* camera, int x, int y, int z);
 extern "C" void func_0202e0a4(void* camera);
 void SetField0x238False(void* camera);
-extern "C" void _Z23InitCombatEntry021542f4Pv(void* camera);
+void InitCombatEntry021542f4(void* camera);
 
 // USA: func_ov006_02154e58
 extern "C" ARM void func_ov006_02154e58(AlchemyPot* self) {
@@ -135,7 +135,7 @@ extern "C" ARM void func_ov006_02154e58(AlchemyPot* self) {
         BG1CNT = (BG1CNT & ~3) | 1;
         BG2CNT = (BG2CNT & ~3) | 2;
         if (camera != 0) {
-            _Z28InitCombatController020a2010Pv(camera);
+            InitCombatController020a2010(camera);
             SetFields0x10To0x18((unsigned char*)self->camera_, 0, -0x1e8f, 0);
             func_0202e5d8(self->camera_, 0, 0x2bae, 0x9199);
             func_0202e0a4(self->camera_);
@@ -143,7 +143,7 @@ extern "C" ARM void func_ov006_02154e58(AlchemyPot* self) {
         }
         self->resetBlend_ = 0;
     } else {
-        _Z23InitCombatEntry021542f4Pv(self->camera_);
+        InitCombatEntry021542f4(self->camera_);
     }
     self->protagonist_.Draw(true);
     self->pot_.Draw(true);

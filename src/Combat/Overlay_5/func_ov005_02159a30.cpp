@@ -29,12 +29,12 @@ struct EquipmentMenu {
     unsigned char menuState_;
 };
 
-extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char* text, int a, int b, int c, int d, int e);
+void AppendFrameTag02041c08(char* text, int a, int b, int c, int d, int e);
 void AppendCursorTag(char* text, int a);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 extern "C" int func_020420e8(const char* text, int large);
 void AppendNameTag(char* text, int item, const char* itemText);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+void AppendString02042058(char* text, const char* append);
 
 // USA: func_ov005_02159a30
 extern "C" ARM void func_ov005_02159a30(EquipmentMenu* self, char* text, int framed) {
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov005_02159a30(EquipmentMenu* self, char* text, int fra
         return;
     int choice = self->menuChoice_;
     if (framed)
-        _Z22AppendFrameTag02041c08Pciiiii(text, choice, 8, 5, 5, 5);
+        AppendFrameTag02041c08(text, choice, 8, 5, 5, 5);
     AppendCursorTag(text, choice);
     int count = 4;
     int shifted = 0;
@@ -54,18 +54,18 @@ extern "C" ARM void func_ov005_02159a30(EquipmentMenu* self, char* text, int fra
     for (int i = 0; i < count; i++) {
         if (shifted) {
             if (i == 0)
-                AppendNameTag(text, i, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->messages, 4));
+                AppendNameTag(text, i, GetFieldByKey020e0434(&self->messages, 4));
             else
-                AppendNameTag(text, i, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->messages, (short)(i + 1)));
+                AppendNameTag(text, i, GetFieldByKey020e0434(&self->messages, (short)(i + 1)));
         } else {
-            AppendNameTag(text, i, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->messages, (short)i));
+            AppendNameTag(text, i, GetFieldByKey020e0434(&self->messages, (short)i));
         }
         if (i != count - 1)
-            _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->messages, 0x64));
+            AppendString02042058(text, GetFieldByKey020e0434(&self->messages, 0x64));
     }
 #else
     Container020e0310* strings = &self->messages;
-    const char* separator = _Z21GetFieldByKey020e0434P17Container020e0310i(strings, 0x64);
+    const char* separator = GetFieldByKey020e0434(strings, 0x64);
     int maxWidth = 0;
     for (int i = 0; i < count; i++) {
         short key = i;
@@ -74,13 +74,13 @@ extern "C" ARM void func_ov005_02159a30(EquipmentMenu* self, char* text, int fra
             if (i == 0)
                 key = 4;
         }
-        const char* name = _Z21GetFieldByKey020e0434P17Container020e0310i(strings, key);
+        const char* name = GetFieldByKey020e0434(strings, key);
         int width = func_020420e8(name, 0);
         if (maxWidth < width)
             maxWidth = width;
         AppendNameTag(text, i, name);
         if (i != count - 1)
-            _Z20AppendString02042058PcPKc(text, separator);
+            AppendString02042058(text, separator);
     }
     int tiles = ((maxWidth + 0x1b) & ~7) >> 3;
     tiles += tiles & 1;

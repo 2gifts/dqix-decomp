@@ -11,18 +11,18 @@ extern "C" GameState *_ZN9GameState11GetInstanceEv();
 extern "C" void func_ov002_02157480(void *self, int *slots);
 void *GetCombatantWithFlag0x100(GameState *gs, int slot);
 unsigned char *GetFieldAt0x150(unsigned char *c);
-extern "C" const char *_Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310 *tbl, int key);
+const char *GetFieldByKey020e0434(Container020e0310 *tbl, int key);
 extern "C" void __clear(void *buffer, unsigned long size);
-extern "C" void _Z27AppendTaggedString_0215b8c8P17DstHolder0215b8c8PKci(DstHolder0215b8c8 *dst, const char *src, int n);
-extern "C" void _Z23AppendFormatted02041facPcii(char *buf, int str, int n);
-extern "C" void *_Z26GetGlobalField0x1c020421a0v();
+void AppendTaggedString_0215b8c8(DstHolder0215b8c8 *dst, const char *src, int n);
+void AppendFormatted02041fac(char *buf, int str, int n);
+void *GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void *messages);
 void StoreInArray0x8b0(StoreStruct *messages, int index, int value);
 void SetByteInRange(unsigned char *messages, int index, unsigned char digits);
 void SetByteAtIndex(unsigned char *messages, int index, unsigned char value);
 void AppendHeightTag(char *buf, int h);
 extern "C" void func_02046608(void *messages, int a, const char *format, char *output, int size, int b, int c);
-extern "C" void _Z20AppendString02042058PcPKc(char *buf, const char *str);
+void AppendString02042058(char *buf, const char *str);
 
 // USA: func_ov002_021605d4
 extern "C" ARM void func_ov002_021605d4(char *self, char *buf) {
@@ -41,19 +41,19 @@ extern "C" ARM void func_ov002_021605d4(char *self, char *buf) {
     if (c == 0) return;
     unsigned char *f = GetFieldAt0x150(c);
     if (f == 0) return;
-    const char *name = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310 *) (self + 0x20), 0x1005);
+    const char *name = GetFieldByKey020e0434((Container020e0310 *) (self + 0x20), 0x1005);
     __clear(text, sizeof(text));
     holder.dst = text;
-    _Z27AppendTaggedString_0215b8c8P17DstHolder0215b8c8PKci(&holder, name, 0);
-    _Z23AppendFormatted02041facPcii(buf, (int) text, 0x10);
-    void *msg = _Z26GetGlobalField0x1c020421a0v();
+    AppendTaggedString_0215b8c8(&holder, name, 0);
+    AppendFormatted02041fac(buf, (int) text, 0x10);
+    void *msg = GetGlobalField0x1c020421a0();
     func_02046380(msg);
     StoreInArray0x8b0((StoreStruct *) msg, 0, *(unsigned short *) (f + 0x564));
     SetByteInRange((unsigned char *) msg, 0, 4);
     SetByteAtIndex((unsigned char *) msg, 0, 1);
     __clear(line, sizeof(line));
     AppendHeightTag(buf, -1);
-    func_02046608(msg, 8, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310 *) (self + 0x20), 0x1006), line,
+    func_02046608(msg, 8, GetFieldByKey020e0434((Container020e0310 *) (self + 0x20), 0x1006), line,
                   0x100, 0, 0);
-    _Z20AppendString02042058PcPKc(buf, line);
+    AppendString02042058(buf, line);
 }

@@ -34,7 +34,7 @@ struct Appearance02184654 {
 struct TableA68;
 struct Container020e0310;
 extern "C" void* func_0202ae18();
-extern "C" unsigned char* _Z15GetFieldAt0x150Ph(unsigned char*);
+unsigned char* GetFieldAt0x150(unsigned char*);
 int CalculateAge(int, int, int);
 void* FindEntryByKey(TableA68*, int);
 int GetFieldByKey020e0434(Container020e0310*, int);
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov012_02184654(char* editor) {
     unsigned char* characterData = 0;
     GameObject* protagonist = gameState->GetProtagonist();
     if (protagonist)
-        characterData = _Z15GetFieldAt0x150Ph((unsigned char*)protagonist);
+        characterData = GetFieldAt0x150((unsigned char*)protagonist);
     if (!characterData) return;
     *(void**)(editor + 0x1408) = characterData + 0x3c;
 
@@ -172,10 +172,10 @@ struct ProfileEditor02184654
 };
 
 extern "C" void* func_0202ae18();
-extern "C" unsigned char* _Z15GetFieldAt0x150Ph(unsigned char* obj);
+unsigned char* GetFieldAt0x150(unsigned char* obj);
 int CalculateAge(int year, int month, int day);
 void* FindEntryByKey(struct TableA68* table, int key);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* texts, int key);
+int GetFieldByKey020e0434(struct Container020e0310* texts, int key);
 extern "C" void func_ov023_021e66ac(ProfileEditor02184654* self);
 
 static inline Profile02184654* GetProfile02184654(GameState* gameState)
@@ -197,7 +197,7 @@ extern "C" ARM void func_ov012_02184654(ProfileEditor02184654* self)
     Field02184654* field = 0;
     Member02184654* protagonist = (Member02184654*)gameState->GetProtagonist();
     if (protagonist != 0)
-        field = (Field02184654*)_Z15GetFieldAt0x150Ph((unsigned char*)protagonist);
+        field = (Field02184654*)GetFieldAt0x150((unsigned char*)protagonist);
     if (field == 0)
         return;
 
@@ -229,7 +229,7 @@ extern "C" ARM void func_ov012_02184654(ProfileEditor02184654* self)
     memcpy(self->accoladeText_, name2, strlen((char*)name2));
 
     if (profile->accolade_ < 700)
-        name2 = (void*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->texts_, (short)profile->accolade_);
+        name2 = (void*)GetFieldByKey020e0434((struct Container020e0310*)self->texts_, (short)profile->accolade_);
     else
         name2 = FindEntryByKey((struct TableA68*)self->strings_, (short)(profile->accolade_ + 20000));
     memcpy(self->nameText_, name2, strlen((char*)name2));

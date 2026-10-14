@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 struct Window0204fa0c { char unknown0[0xc5]; unsigned char flags; };
-extern "C" char* _Z21GetTableEntry020421b0i(int);
+char* GetTableEntry020421b0(int);
 extern "C" void func_0204e1c8(Window0204fa0c*, char*, int, int, int, int, int, int);
 // USA: func_0204fa0c
 extern "C" ARM void func_0204fa0c(Window0204fa0c* window, short x, short y) {
@@ -21,7 +21,7 @@ extern "C" ARM void func_0204fa0c(Window0204fa0c* window, short x, short y) {
     ys[3] = bottom;
     unsigned char graphicIndex = 16;
     for (unsigned char i = 0; i < 4; ++i) {
-        char* graphic = _Z21GetTableEntry020421b0i(graphicIndex);
+        char* graphic = GetTableEntry020421b0(graphicIndex);
         if (graphic) {
             func_0204e1c8(window, graphic, xs[i], ys[i], 8, 8, 0xf0, 15);
         }

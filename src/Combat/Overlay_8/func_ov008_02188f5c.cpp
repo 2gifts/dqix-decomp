@@ -62,11 +62,11 @@ extern "C" void func_020426bc(const char* name, char* codes, int);
 extern "C" void func_ov008_021843f8(void* records);
 extern "C" void func_ov017_021d1014(signed char member, int, int);
 extern "C" void func_ov017_021d1118(signed char member, int, int, int);
-extern "C" void _Z18InitStruct0205cfd4P18InitTarget0205cfd4(InitTarget0205cfd4* window);
-extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64* background);
-extern "C" void _Z23ResetListHeader020727d8P12List020727d8(List020727d8* texts);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40* texts);
-extern "C" void _Z22ResetSubStruct02189228Pv(void* entry);
+void InitStruct0205cfd4(InitTarget0205cfd4* window);
+void ResetList0204af64(List0204af64* background);
+void ResetListHeader020727d8(List020727d8* texts);
+void ResetStruct020dfc40(Struct020dfc40* texts);
+void ResetSubStruct02189228(void* entry);
 PartyMemberData* GetFieldAt0x150(unsigned char* member);
 int CheckField0NonZero(int*);
 
@@ -139,13 +139,13 @@ extern "C" ARM void func_ov008_02188f5c(VisitorTalk* self, signed char member, G
     func_02074af4(self);
     self->layers_ = (REG_DISPCNT & 0x1f00) >> 8;
     REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | 0x100;
-    _Z18InitStruct0205cfd4P18InitTarget0205cfd4((InitTarget0205cfd4*)&self->window_);
-    _Z17ResetList0204af64P12List0204af64((List0204af64*)&self->backgrounds_[0]);
-    _Z17ResetList0204af64P12List0204af64((List0204af64*)&self->backgrounds_[1]);
+    InitStruct0205cfd4((InitTarget0205cfd4*)&self->window_);
+    ResetList0204af64((List0204af64*)&self->backgrounds_[0]);
+    ResetList0204af64((List0204af64*)&self->backgrounds_[1]);
     func_0204c684(&self->canvas_);
-    _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)&self->texts_);
-    _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)&self->profileTexts_);
-    _Z19ResetStruct020dfc40P14Struct020dfc40((Struct020dfc40*)&self->titles_);
+    ResetListHeader020727d8((List020727d8*)&self->texts_);
+    ResetListHeader020727d8((List020727d8*)&self->profileTexts_);
+    ResetStruct020dfc40((Struct020dfc40*)&self->titles_);
     self->renderer_ = NULL;
     self->sprites_ = NULL;
     self->animations_ = NULL;
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov008_02188f5c(VisitorTalk* self, signed char member, G
     self->text_ = NULL;
     self->pixels_ = NULL;
     func_ov008_021843f8(&self->records_);
-    _Z22ResetSubStruct02189228Pv(&self->entry_);
+    ResetSubStruct02189228(&self->entry_);
     self->profile_.year_ = 2000;
     self->profile_.month_ = 1;
     self->profile_.day_ = 1;
@@ -213,7 +213,7 @@ extern "C" ARM void func_ov008_02188f5c(VisitorTalk* self, signed char member, G
             PartyMemberData* data = GetFieldAt0x150((unsigned char*)object);
             if (data != NULL)
             {
-                _Z22ResetSubStruct02189228Pv(&self->entry_);
+                ResetSubStruct02189228(&self->entry_);
 #if defined(jpn)
                 memcpy(self->entry_.name_, data->name_, sizeof(self->entry_.name_));
 #else

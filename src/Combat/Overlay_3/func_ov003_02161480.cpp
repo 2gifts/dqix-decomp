@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 int GetField0x3acValue(GameState* battleStruct);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char* obj);
+void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
 
 struct PartyRoster02161480 {
     char pad0[0xf78];
@@ -19,7 +19,7 @@ extern "C" ARM void func_ov003_02161480(void) {
         if (activeId != roster->memberIds[i]) {
             GameObject* c = bs->GetPartyMemberByIndex(roster->memberIds[i]);
             if (c != NULL) {
-                _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)c);
+                ClearBytesAndZeroBlock02039d24((unsigned char*)c);
             }
         }
     }

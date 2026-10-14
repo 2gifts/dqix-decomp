@@ -12,7 +12,7 @@ struct Point4_020578e8 {
 };
 
 struct Wrap020578e8;
-extern "C" float _Z20ComputeSlope020578e8P12Wrap020578e8S0_(Wrap020578e8* a, Wrap020578e8* b);
+float ComputeSlope020578e8(Wrap020578e8* a, Wrap020578e8* b);
 
 struct Elem02055ccc {
     Point4_020578e8* p;
@@ -60,7 +60,7 @@ extern "C" ARM void func_02055ccc(struct Obj02055ccc* self) {
         Elem02055ccc* elem2 = (Elem02055ccc*)((SignedAllocatorList*)((char*)self->ptr30 + 0x80 + i * 12))->GetNthElement(self->fieldBC[i]);
         if (elem2 == 0)
             continue;
-        self->fieldA4[i] = _Z20ComputeSlope020578e8P12Wrap020578e8S0_((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
+        self->fieldA4[i] = ComputeSlope020578e8((Wrap020578e8*)elem, (Wrap020578e8*)elem2);
     }
 
     if (sub->f13 <= 1)

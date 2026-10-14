@@ -1,84 +1,84 @@
 #include <globaldefs.h>
 
-extern "C" unsigned int _Z16GetSharedWordDa0i(int i);
-extern "C" unsigned int _Z16GetSharedWordDc4i(int i);
-extern "C" unsigned int _Z22GetConst25980_0218fc78v(void);
-extern "C" unsigned int _Z21GetConst9600_0218fc84v(void);
+unsigned int GetSharedWordDa0(int i);
+unsigned int GetSharedWordDc4(int i);
+unsigned int GetConst25980_0218fc78(void);
+unsigned int GetConst9600_0218fc84(void);
 extern "C" void _Z16SetData_0218fc8cPvj(unsigned int a, unsigned int n);
 extern "C" void _Z20SetupHandle_0218fcacPvi(unsigned int a, unsigned int n);
 extern "C" void _Z18NitroVM_InitializeP7NitroVM(void* vm);
 extern "C" int _Z29NitroVM_PrepareReadFileByPathP7NitroVMPKc(void* vm, const char* path);
 extern "C" void _Z18NitroVM_FinishReadP7NitroVM(void* vm);
 extern "C" void* func_ov016_0218e558(void* vm, int n);
-extern "C" unsigned int _Z22CallIfNonNull_0218e690Pv(void* p);
-extern "C" unsigned int _Z22CallIfNonNull_0218e6a8Pv(void* p);
-extern "C" unsigned int _Z22CallIfNonNull_0218e678Pv(void* p);
+unsigned int CallIfNonNull_0218e690(void* p);
+unsigned int CallIfNonNull_0218e6a8(void* p);
+unsigned int CallIfNonNull_0218e678(void* p);
 extern "C" void* func_ov016_0218e660(void* p);
 extern "C" unsigned int func_ov016_0218e750(void* p);
-extern "C" int _Z26CallIfNonNullBool_0218e6c0Pv(void* p);
-extern "C" void _Z26CallIfNonNullBool_0218e6e4Pv(void* p);
-extern "C" void _Z26CallIfNonNullBool_0218e72cPv(void* p);
-extern "C" void _Z22ClearAndReset_0218e640Pv(void* p);
+int CallIfNonNullBool_0218e6c0(void* p);
+void CallIfNonNullBool_0218e6e4(void* p);
+void CallIfNonNullBool_0218e72c(void* p);
+void ClearAndReset_0218e640(void* p);
 int CheckStateEqualsOne_0218e768(void* p, void* buf);
 extern "C" void func_ov016_0218bce8(void* p, unsigned int n);
 extern "C" void func_ov016_0218bec4(void* p, int n);
 extern "C" void func_020d1f0c(int a, int b, int c, int d);
-extern "C" void _Z16EnqueueEvent0x1Bii(int a, int b);
+void EnqueueEvent0x1B(int a, int b);
 extern "C" void func_020d24c4(int a);
 extern "C" void func_020c9778(int a, int b);
 extern "C" void func_020bbd9c(void);
 extern "C" int func_020ce89c(int a, int b, int c);
-extern "C" unsigned short _Z24XorMaskKeyInput_0218ca70v(void);
-extern "C" int _Z15SetData020f2284v(void);
+unsigned short XorMaskKeyInput_0218ca70(void);
+int SetData020f2284(void);
 extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int n);
 extern "C" void _ZN13SafeAllocator4FreeEPv(void* self, void* p);
 extern "C" void* memset(void* p, int c, unsigned int n);
-extern "C" void _Z14CleanDataCachev(void);
-extern "C" void _Z15CleanCacheRangePKvj(const void* p, unsigned int n);
+void CleanDataCache(void);
+void CleanCacheRange(const void* p, unsigned int n);
 extern "C" void _Z19ZeroInitializeAlarmP5Alarm(void* a);
-extern "C" unsigned long long _Z19GetCurrentTimestampv(void);
+unsigned long long GetCurrentTimestamp(void);
 extern "C" void _Z11SetIntervalP5AlarmyyPFvPP16ProcessorContextES3_(void* a, unsigned long long residue,
     unsigned long long interval, void* fn, void* arg);
 extern "C" void _Z11CancelAlarmP5Alarm(void* a);
 extern "C" void _Z28SetKeyAndApplyRecord0203ad14PvtS_i(void* a, int id, void* b, int c);
 extern "C" void _Z29TryDispatchOrFallback0203aba8P11Obj0203aba8PvS1_(void* a, int id, void* b);
-extern "C" void _Z32UpdateScaleOrApplyRecord0203ae4cPviS_(void* a, int b, void* c);
-extern "C" void _Z22ScaleAndNotify0203ad88PvS_i(void* a, void* b, int c);
-extern "C" void _Z29SetContextAndDispatch0203ac10PvS_i(void* a, void* b, int c);
+void UpdateScaleOrApplyRecord0203ae4c(void* a, int b, void* c);
+void ScaleAndNotify0203ad88(void* a, void* b, int c);
+void SetContextAndDispatch0203ac10(void* a, void* b, int c);
 extern "C" void func_02012538(void* p);
-extern "C" void _Z22SelectCoordsByFlag0x24PhPiS0_(unsigned char* p, int* x, int* y);
+void SelectCoordsByFlag0x24(unsigned char* p, int* x, int* y);
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(void* gs);
-extern "C" void _Z33SetFlagAndMaybeIncrement_0218c024v(void);
+void SetFlagAndMaybeIncrement_0218c024(void);
 
 struct Info_0218c04c {
 	char pad0[0x10];
-	unsigned char isSet;	// 0x10
+	unsigned char isSet;
 	char pad11;
-	short id;				// 0x12
-	unsigned int delay;		// 0x14
+	short id;
+	unsigned int delay;
 };
 
 struct State_0218c04c {
-	int mute;					// 0x00
-	int flag4;					// 0x04
-	void* alloc;				// 0x08
-	char padc[4];				// 0x0c
-	int started;				// 0x10
-	volatile int ready;			// 0x14
-	int counter18;				// 0x18
-	int f1c;					// 0x1c
-	int f20;					// 0x20
-	unsigned int frames;		// 0x24
-	int pos;					// 0x28
-	short* bufR;				// 0x2c
-	short* bufL;				// 0x30
-	Info_0218c04c* info;		// 0x34
-	int busy;					// 0x38
-	int counter3c;				// 0x3c
-	unsigned long long startTime;	// 0x40
-	volatile long long read;	// 0x48
-	long long written;			// 0x50
+	int mute;
+	int flag4;
+	void* alloc;
+	char padc[4];
+	int started;
+	volatile int ready;
+	int counter18;
+	int f1c;
+	int f20;
+	unsigned int frames;
+	int pos;
+	short* bufR;
+	short* bufL;
+	Info_0218c04c* info;
+	int busy;
+	int counter3c;
+	unsigned long long startTime;
+	volatile long long read;
+	long long written;
 };
 
 struct Touch_02114e54 {
@@ -118,18 +118,18 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 	state = 0;
 	prevKeys = 0;
 	quit = false;
-	base3 = _Z16GetSharedWordDa0i(3);
-	sz3 = _Z16GetSharedWordDc4i(3) - base3;
-	if (sz3 >= _Z22GetConst25980_0218fc78v()) {
-		sz3 = _Z22GetConst25980_0218fc78v();
+	base3 = GetSharedWordDa0(3);
+	sz3 = GetSharedWordDc4(3) - base3;
+	if (sz3 >= GetConst25980_0218fc78()) {
+		sz3 = GetConst25980_0218fc78();
 	}
-	base4 = _Z16GetSharedWordDa0i(4);
-	sz4 = _Z16GetSharedWordDc4i(4) - base4;
-	if (sz4 >= _Z21GetConst9600_0218fc84v()) {
-		sz4 = _Z21GetConst9600_0218fc84v();
+	base4 = GetSharedWordDa0(4);
+	sz4 = GetSharedWordDc4(4) - base4;
+	if (sz4 >= GetConst9600_0218fc84()) {
+		sz4 = GetConst9600_0218fc84();
 	}
-	_Z16SetData_0218fc8cPvj(_Z16GetSharedWordDa0i(3), sz3);
-	_Z20SetupHandle_0218fcacPvi(_Z16GetSharedWordDa0i(4), sz4);
+	_Z16SetData_0218fc8cPvj(GetSharedWordDa0(3), sz3);
+	_Z20SetupHandle_0218fcacPvi(GetSharedWordDa0(4), sz4);
 	_Z18NitroVM_InitializeP7NitroVM(vm);
 
 	if (_Z29NitroVM_PrepareReadFileByPathP7NitroVMPKc(vm, path)) {
@@ -138,10 +138,10 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 		unsigned int frame = 0;
 
 		cnt = 0;
-		limitCnt = _Z22CallIfNonNull_0218e690Pv(node);
-		unit = _Z22CallIfNonNull_0218e6a8Pv(node);
+		limitCnt = CallIfNonNull_0218e690(node);
+		unit = CallIfNonNull_0218e6a8(node);
 		q = (int)(((unsigned long long)(unsigned int)func_ov016_0218e660(node) << 24) /
-			((unsigned long long)unit * _Z22CallIfNonNull_0218e678Pv(node)));
+			((unsigned long long)unit * CallIfNonNull_0218e678(node)));
 		data_ov016_0219d0c0.frames = (q + 1) * 7;
 		data_ov016_0219d0c0.bufL = (short*)_ZN13SafeAllocator8AllocateEj(data_ov016_0219d0c0.alloc,
 			data_ov016_0219d0c0.frames * unit * 2);
@@ -149,7 +149,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 			data_ov016_0219d0c0.frames * unit * 2);
 		memset(data_ov016_0219d0c0.bufL, 0, data_ov016_0219d0c0.frames * unit * 2);
 		memset(data_ov016_0219d0c0.bufR, 0, data_ov016_0219d0c0.frames * unit * 2);
-		_Z14CleanDataCachev();
+		CleanDataCache();
 		paused = 0;
 		data_ov016_0219d0c0.read = paused;
 		data_ov016_0219d0c0.pos = paused;
@@ -161,20 +161,20 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 		data_ov016_0219d0c0.f20 = paused;
 		_Z19ZeroInitializeAlarmP5Alarm(&data_ov016_0219d118);
 		{
-			unsigned long long now = _Z19GetCurrentTimestampv();
-			unsigned long long per = (0xf4240ULL << 24) / _Z22CallIfNonNull_0218e678Pv(node);
+			unsigned long long now = GetCurrentTimestamp();
+			unsigned long long per = (0xf4240ULL << 24) / CallIfNonNull_0218e678(node);
 			unsigned long long iv = ((per * 0x82ea) >> 6) / 1000;
 			_Z11SetIntervalP5AlarmyyPFvPP16ProcessorContextES3_(&data_ov016_0219d118, now + 5, (unsigned int)iv,
-				(void*)_Z33SetFlagAndMaybeIncrement_0218c024v, 0);
+				(void*)SetFlagAndMaybeIncrement_0218c024, 0);
 		}
-		data_ov016_0219d0c0.startTime = (_Z19GetCurrentTimestampv() << 6) / 0x82ea;
-		scale = (float)_Z22CallIfNonNull_0218e678Pv(node) / 16777216.0f;
+		data_ov016_0219d0c0.startTime = (GetCurrentTimestamp() << 6) / 0x82ea;
+		scale = (float)CallIfNonNull_0218e678(node) / 16777216.0f;
 		lastFrame = 0;
 
-		while (_Z26CallIfNonNullBool_0218e6c0Pv(node)) {
+		while (CallIfNonNullBool_0218e6c0(node)) {
 			if (data_ov016_0219d0c0.started == 0) {
 				Info_0218c04c* p = data_ov016_0219d0c0.info;
-				unsigned long long t = (_Z19GetCurrentTimestampv() << 6) / 0x82ea;
+				unsigned long long t = (GetCurrentTimestamp() << 6) / 0x82ea;
 				if (data_ov016_0219d0c0.startTime + p->delay <= t) {
 					if (p->isSet != 0) {
 						_Z28SetKeyAndApplyRecord0203ad14PvtS_i(&data_02109bf4, p->id, 0, 0);
@@ -189,20 +189,20 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 			if ((*(unsigned short*)0x27fffa8 & 0x8000) >> 15) {
 				data_ov016_0219d0c0.busy = 1;
 				if (data_ov016_0219d0c0.info->isSet != 0) {
-					_Z32UpdateScaleOrApplyRecord0203ae4cPviS_(&data_02109bf4, 1, 0);
+					UpdateScaleOrApplyRecord0203ae4c(&data_02109bf4, 1, 0);
 					func_020ce89c(0xc, 0, 0);
 					*(unsigned int*)(&data_02109bf4 + 0xa8) =
 						(unsigned int)(1000.0f * ((float)(frame - lastFrame) / scale));
-					_Z32UpdateScaleOrApplyRecord0203ae4cPviS_(&data_02109bf4, 0, 0);
+					UpdateScaleOrApplyRecord0203ae4c(&data_02109bf4, 0, 0);
 				} else {
 					func_020ce89c(0xc, 0, 0);
 				}
 				data_ov016_0219d0c0.busy = 0;
 			}
-			_Z26CallIfNonNullBool_0218e6e4Pv(node);
+			CallIfNonNullBool_0218e6e4(node);
 			frame++;
 
-			if ((_Z15SetData020f2284v() & 0x40000000) || (_Z15SetData020f2284v() & 0x80000000)) {
+			if ((SetData020f2284() & 0x40000000) || (SetData020f2284() & 0x80000000)) {
 				if (func_ov016_0218e660(node) != 0) {
 					unsigned long long total = func_ov016_0218e750(node);
 					int j = 0;
@@ -214,8 +214,8 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 						}
 						CheckStateEqualsOne_0218e768(node, data_ov016_0219d0c0.bufL + pos);
 						CheckStateEqualsOne_0218e768(node, data_ov016_0219d0c0.bufR + data_ov016_0219d0c0.pos);
-						_Z15CleanCacheRangePKvj(data_ov016_0219d0c0.bufL + data_ov016_0219d0c0.pos, bytes);
-						_Z15CleanCacheRangePKvj(data_ov016_0219d0c0.bufR + data_ov016_0219d0c0.pos, bytes);
+						CleanCacheRange(data_ov016_0219d0c0.bufL + data_ov016_0219d0c0.pos, bytes);
+						CleanCacheRange(data_ov016_0219d0c0.bufR + data_ov016_0219d0c0.pos, bytes);
 						pos = data_ov016_0219d0c0.pos + unit;
 						data_ov016_0219d0c0.pos = pos;
 						if (pos == data_ov016_0219d0c0.frames * unit) {
@@ -233,7 +233,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 				int diff = (int)(data_ov016_0219d0c0.written - data_ov016_0219d0c0.read);
 				if (data_ov016_0219d0c0.busy != 0 ||
 					(diff <= (q + 1) * 3 && paused == 0 && func_ov016_0218e660(node) != 0)) {
-					_Z26CallIfNonNullBool_0218e72cPv(node);
+					CallIfNonNullBool_0218e72c(node);
 					paused = 1;
 				} else {
 					func_ov016_0218bec4(node, arg1);
@@ -242,7 +242,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 			}
 
 			{
-				unsigned short keys = _Z24XorMaskKeyInput_0218ca70v();
+				unsigned short keys = XorMaskKeyInput_0218ca70();
 				if (data_ov016_0219d0c0.mute == 0) {
 					keys &= ~0xa;
 				}
@@ -256,19 +256,19 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 					} else if (keys & 8) {
 						if (state == 1) {
 							func_020d1f0c(3, 0, 1, 0);
-							_Z16EnqueueEvent0x1Bii(3, 0);
+							EnqueueEvent0x1B(3, 0);
 							func_020d24c4(1);
 						}
-						while (_Z24XorMaskKeyInput_0218ca70v() != 0) {
+						while (XorMaskKeyInput_0218ca70() != 0) {
 							func_020c9778(0, 1);
 						}
-						while ((_Z24XorMaskKeyInput_0218ca70v() & 8) == 0) {
+						while ((XorMaskKeyInput_0218ca70() & 8) == 0) {
 							func_020c9778(0, 1);
 						}
 						if (state == 1) {
 							memset(data_ov016_0219d0c0.bufL, 0, data_ov016_0219d0c0.frames * unit * 2);
 							memset(data_ov016_0219d0c0.bufR, 0, data_ov016_0219d0c0.frames * unit * 2);
-							_Z14CleanDataCachev();
+							CleanDataCache();
 							data_ov016_0219d0c0.written = data_ov016_0219d0c0.written - data_ov016_0219d0c0.read;
 							data_ov016_0219d0c0.read = 0;
 							data_ov016_0219d0c0.pos = (int)data_ov016_0219d0c0.written * unit;
@@ -288,7 +288,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 				int lo0, hi0, lo1, hi1;
 				int touched;
 				func_02012538(&data_02114e54);
-				_Z22SelectCoordsByFlag0x24PhPiS0_((unsigned char*)&data_02114e54, &sx, &sy);
+				SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &sx, &sy);
 				touched = (data_02114e54.b5f != 0 && data_02114e54.h24 != 0) ? 1 : 0;
 				switch (_Z24NormalizeField5_0200fb08P14Struct0200fb08(_ZN9GameState11GetInstanceEv())) {
 				case 1:
@@ -335,23 +335,23 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 		}
 		while (data_ov016_0219d0c0.ready == 0) {
 		}
-		if ((_Z15SetData020f2284v() & 0x40000000) || (_Z15SetData020f2284v() & 0x80000000)) {
+		if ((SetData020f2284() & 0x40000000) || (SetData020f2284() & 0x80000000)) {
 			if (state == 1) {
 				func_020d1f0c(3, 0, 1, 0);
-				_Z16EnqueueEvent0x1Bii(3, 0);
+				EnqueueEvent0x1B(3, 0);
 				func_020d24c4(1);
 			}
 		}
 		_Z11CancelAlarmP5Alarm(&data_ov016_0219d118);
 		_ZN13SafeAllocator4FreeEPv(data_ov016_0219d0c0.alloc, data_ov016_0219d0c0.bufL);
 		_ZN13SafeAllocator4FreeEPv(data_ov016_0219d0c0.alloc, data_ov016_0219d0c0.bufR);
-		_Z22ClearAndReset_0218e640Pv(node);
+		ClearAndReset_0218e640(node);
 		_Z18NitroVM_FinishReadP7NitroVM(vm);
 		if (data_ov016_0219d0c0.info->id > -1) {
 			if (data_ov016_0219d0c0.info->isSet != 0) {
-				_Z22ScaleAndNotify0203ad88PvS_i(&data_02109bf4, 0, 0);
+				ScaleAndNotify0203ad88(&data_02109bf4, 0, 0);
 			} else {
-				_Z29SetContextAndDispatch0203ac10PvS_i(&data_02109bf4, &data_ov016_0219d0cc, 0);
+				SetContextAndDispatch0203ac10(&data_02109bf4, &data_ov016_0219d0cc, 0);
 			}
 			func_020bbd9c();
 		}

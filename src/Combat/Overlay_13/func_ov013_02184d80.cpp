@@ -11,17 +11,17 @@ extern char data_ov013_02188d20[];
 #include "System/Graphics.h"
 
 extern "C" void func_020dfec0(void* texts, SafeAllocator* allocator, void* file, unsigned int size);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void _Z23SetChannelAFlag0205cef8Pv(void* window);
-extern "C" void _Z23SetChannelBFlag0205cf04Pv(void* window);
-extern "C" void _Z15InitTag02185310Ph(unsigned char* self);
+void* GetGlobalField0x1c020421a0(void);
+void SetChannelAFlag0205cef8(void* window);
+void SetChannelBFlag0205cf04(void* window);
+void InitTag02185310(unsigned char* self);
 extern "C" void func_ov013_02185cc0(void* self);
 void SetWord0x18ClearByte0x1f(unsigned char* graphics, int value);
 extern "C" void func_0204b5b4(void* graphics, int priority);
 struct AllocTarget0204b12c;
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(AllocTarget0204b12c* graphics, SafeAllocator* allocator);
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* graphics, SafeAllocator* allocator);
 struct Obj0204b5e8;
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8* graphics, int a, int b);
+void DispatchViaTable0204b5e8(Obj0204b5e8* graphics, int a, int b);
 struct ActiveEntry02046900;
 int CountActiveEntries(ActiveEntry02046900* pac);
 struct Rec020467f0;
@@ -29,12 +29,12 @@ void* FindRecordByIndex(Rec020467f0* pac, int index, void** outName, int* outSiz
 extern "C" void func_0204b174(void* graphics, void* file, SafeAllocator* allocator, unsigned int size);
 extern "C" void func_0204bc74(void* graphics, int a, int b, int c, int d, int e, int f);
 struct List0204b0e8;
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8* graphics, void* characters);
+void FlushAndDispatchList0204b0e8(List0204b0e8* graphics, void* characters);
 struct Obj0204c7a8;
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(Obj0204c7a8* canvas, SafeAllocator* allocator, int pixels, unsigned int size);
+void AllocateBuffer0204c7a8(Obj0204c7a8* canvas, SafeAllocator* allocator, int pixels, unsigned int size);
 struct Struct_0205cf78;
 struct Elem_0205cf78;
-extern "C" void _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h(Struct_0205cf78* window, Elem_0205cf78* canvases, unsigned char count);
+void LinkArrayPrevPointers0205cf78(Struct_0205cf78* window, Elem_0205cf78* canvases, unsigned char count);
 
 extern char data_ov013_02187e00[];
 extern char data_ov013_02187e19[];
@@ -129,7 +129,7 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
         }
         else if (self->step_ == 2)
         {
-            self->text_ = *(char**)((char*)_Z26GetGlobalField0x1c020421a0v()
+            self->text_ = *(char**)((char*)GetGlobalField0x1c020421a0()
 #if defined(jpn)
                 + 0x28);
 #else
@@ -139,9 +139,9 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
             BG0CNTSUB = (BG0CNTSUB & ~3) | 2;
             BG1CNTSUB = (BG1CNTSUB & ~3) | 3;
             DISPCNTSUB = (DISPCNTSUB & ~0x1f00) | 0x1700;
-            _Z23SetChannelAFlag0205cef8Pv(&self->window_);
-            _Z23SetChannelBFlag0205cf04Pv(&self->window_);
-            _Z15InitTag02185310Ph((unsigned char*)self);
+            SetChannelAFlag0205cef8(&self->window_);
+            SetChannelBFlag0205cf04(&self->window_);
+            InitTag02185310((unsigned char*)self);
             func_ov013_02185cc0(self);
             self->step_ = 0;
             self->state_ = 1;
@@ -160,7 +160,7 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
         {
             if (AlwaysTrue02094b4c(GetGlobal02109400()))
             {
-                self->text_ = *(char**)((char*)_Z26GetGlobalField0x1c020421a0v()
+                self->text_ = *(char**)((char*)GetGlobalField0x1c020421a0()
 #if defined(jpn)
                 + 0x28);
 #else
@@ -171,15 +171,15 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
                 self->backgrounds_[0].unk_1c_0_ = 0;
                 self->backgrounds_[0].unk_1c_4_ = 1;
                 func_0204b5b4(&self->backgrounds_[0], 1);
-                _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)&self->backgrounds_[0], &self->allocator_);
-                _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)&self->backgrounds_[0], 0, 0);
+                AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->backgrounds_[0], &self->allocator_);
+                DispatchViaTable0204b5e8((Obj0204b5e8*)&self->backgrounds_[0], 0, 0);
                 BG1CNT = (BG1CNT & (3 | 0x40)) | (0x1d << 8);
                 SetWord0x18ClearByte0x1f((unsigned char*)&self->backgrounds_[1], 0);
                 self->backgrounds_[1].unk_1c_0_ = 0;
                 self->backgrounds_[1].unk_1c_4_ = 2;
                 func_0204b5b4(&self->backgrounds_[1], 0);
-                _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)&self->backgrounds_[1], &self->allocator_);
-                _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)&self->backgrounds_[1], 0, 0);
+                AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->backgrounds_[1], &self->allocator_);
+                DispatchViaTable0204b5e8((Obj0204b5e8*)&self->backgrounds_[1], 0, 0);
                 BG2CNT = (BG2CNT & (3 | 0x40)) | (0x1e << 8);
 #else
                 BackgroundGraphics02184d80* background = self->backgrounds_;
@@ -189,8 +189,8 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
                     background->unk_1c_0_ = 0;
                     background->unk_1c_4_ = data_ov013_02187d8a[i];
                     func_0204b5b4(background, data_ov013_02187d88[i]);
-                    _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)background, &self->allocator_);
-                    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)background, 0, 0);
+                    AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)background, &self->allocator_);
+                    DispatchViaTable0204b5e8((Obj0204b5e8*)background, 0, 0);
                 }
                 BG1CNT = (BG1CNT & (3 | 0x40)) | (0x1d << 8);
                 BG2CNT = (BG2CNT & (3 | 0x40)) | (0x1e << 8);
@@ -223,18 +223,18 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
                 loader->RemoveTask(self->task_);
                 self->task_ = -1;
                 func_0204bc74(&self->backgrounds_[0], 0, 0, 0, 0x20, 0x19, 0);
-                _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)&self->backgrounds_[0], NULL);
+                FlushAndDispatchList0204b0e8((List0204b0e8*)&self->backgrounds_[0], NULL);
                 func_0204bc74(&self->backgrounds_[1], 0, 0, 0, 0x20, 0x19, 0);
-                _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)&self->backgrounds_[1], NULL);
+                FlushAndDispatchList0204b0e8((List0204b0e8*)&self->backgrounds_[1], NULL);
                 self->canvasPixels_ = self->allocator_.Allocate(0x3c00);
                 for (int i = 0; i < 3; i++)
                 {
-                    _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8*)&self->canvases_[i], &self->allocator_, (int)self->canvasPixels_, 0x380);
+                    AllocateBuffer0204c7a8((Obj0204c7a8*)&self->canvases_[i], &self->allocator_, (int)self->canvasPixels_, 0x380);
                     self->canvases_[i].background_ = &self->backgrounds_[1];
                 }
                 self->window_.background_ = &self->backgrounds_[0];
                 self->window_.unk_b2 = 2;
-                _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78*)&self->window_, (Elem_0205cf78*)self->canvases_, 3);
+                LinkArrayPrevPointers0205cf78((Struct_0205cf78*)&self->window_, (Elem_0205cf78*)self->canvases_, 3);
     #if defined(jpn)
             self->task_ = loader->QueueLoadFile(data_ov013_02188d20, NULL);
 #else
@@ -263,9 +263,9 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
             BG1CNT = (BG1CNT & ~3) | 1;
             BG2CNT = BG2CNT & ~3;
             DISPCNT = (DISPCNT & ~0x1f00) | 0x1700;
-            _Z23SetChannelAFlag0205cef8Pv(&self->window_);
-            _Z23SetChannelBFlag0205cf04Pv(&self->window_);
-            _Z15InitTag02185310Ph((unsigned char*)self);
+            SetChannelAFlag0205cef8(&self->window_);
+            SetChannelBFlag0205cf04(&self->window_);
+            InitTag02185310((unsigned char*)self);
             func_ov013_02185cc0(self);
             self->step_ = 0;
             self->state_ = 1;

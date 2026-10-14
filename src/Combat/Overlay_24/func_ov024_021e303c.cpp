@@ -27,12 +27,12 @@ union EffectFlags { struct { int low; int high; }; unsigned long long value; };
 
 int CheckFlag0x1ClearAndFlag0x1000000Clear(unsigned char*);
 int CheckFlags0x1And0x1000000ClearAndKindNot2(Combatant_20885e0*);
-extern "C" int _Z30SelectMessageByFlags2_021e939cP12Ctx_021e939ciii(Ctx_021e939c*, int, int, int);
-extern "C" int _Z26IsFlagAllowedMask_021eb4b0iii(int, int, int);
+int SelectMessageByFlags2_021e939c(Ctx_021e939c*, int, int, int);
+int IsFlagAllowedMask_021eb4b0(int, int, int);
 extern "C" void func_ov000_02159eac(void*, EffectFlags*, int);
 void ResetAndSetFlag0x2AndBits(unsigned char*);
 void SetFlag0x2AndKind1(Combatant_2088624*);
-extern "C" void* _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i(Obj_021e8ca0*, int);
+void* AddEntryToListAndIncCount_021e8ca0(Obj_021e8ca0*, int);
 extern "C" void func_ov000_0215cd44(void*, void*, GameObject*, int, int, int, int);
 
 // USA: func_ov024_021e303c
@@ -56,16 +56,16 @@ extern "C" ARM unsigned long long func_ov024_021e303c(CombatAction* self, int ac
     int kind = 0;
     if (chance->kind_ > 0) kind = 1;
     if ((float)roll >= probability) return 0;
-    int message = _Z30SelectMessageByFlags2_021e939cP12Ctx_021e939ciii((Ctx_021e939c*)self, targetID, kind, 1);
+    int message = SelectMessageByFlags2_021e939c((Ctx_021e939c*)self, targetID, kind, 1);
     EffectFlags effects;
     effects.low = 0;
     effects.high = 0;
-    if (_Z26IsFlagAllowedMask_021eb4b0iii((int)self, ((StatusFields*)target->currentStats_)->flags_, 2))
+    if (IsFlagAllowedMask_021eb4b0((int)self, ((StatusFields*)target->currentStats_)->flags_, 2))
         func_ov000_02159eac(self->context_, &effects, 0x2b);
     if (kind) ResetAndSetFlag0x2AndBits((unsigned char*)target->currentStats_);
     else SetFlag0x2AndKind1((Combatant_2088624*)target->currentStats_);
     func_ov000_02159eac(self->context_, &effects, 0xf);
-    void* entry = _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i((Obj_021e8ca0*)self, message);
+    void* entry = AddEntryToListAndIncCount_021e8ca0((Obj_021e8ca0*)self, message);
     if (entry) func_ov000_0215cd44(self->context_, entry, target, 0, 0, 0, 0);
     return effects.value;
 }

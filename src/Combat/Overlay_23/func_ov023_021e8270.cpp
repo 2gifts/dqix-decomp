@@ -3,13 +3,13 @@
 #include "GameState/GameState.h"
 
 struct Struct_0205d81c;
-extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+void* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 extern "C" int func_02050064(void* obj);
 extern "C" void* __clear(void* dst, int count);
 extern "C" int func_020426bc(void* src, void* dst, int flag);
-extern "C" int _Z12StringLengthPKc(const char* s);
+int StringLength(const char* s);
 extern "C" void func_ov023_021e709c(void* ctx, void* arr, int index);
-extern "C" void* _Z21GetTableEntry0204a5e4ii(int a, int b);
+void* GetTableEntry0204a5e4(int a, int b);
 extern "C" void _Z25CleanInvalidateCacheRangePKvj(void* p, unsigned size);
 extern "C" void _Z15CleanCacheRangePKvj(void* p, unsigned size);
 
@@ -27,7 +27,7 @@ struct Nibbles_021e8270 {
 // USA: func_ov023_021e8270
 extern "C" ARM void func_ov023_021e8270(char* obj) {
     char* src = *(char**)(obj + 0x600);
-    void* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)(obj + 0x78), 0xd);
+    void* elem = FindElementByC40205d81c((struct Struct_0205d81c*)(obj + 0x78), 0xd);
     if (elem == 0) return;
 
     char* dst = *(char**)((char*)elem + 0x8);
@@ -47,7 +47,7 @@ extern "C" ARM void func_ov023_021e8270(char* obj) {
     if (src != 0) {
         len = func_020426bc(src, buf, 1);
     } else {
-        len = _Z12StringLengthPKc(battle + 8);
+        len = StringLength(battle + 8);
         memcpy(buf, battle + 8, len);
     }
 
@@ -57,7 +57,7 @@ extern "C" ARM void func_ov023_021e8270(char* obj) {
 
     if (!(data_ov023_021ffa44.flags & 1)) {
         struct Nibbles_021e8270* nib = (struct Nibbles_021e8270*)((char*)field4 + 0x1c);
-        data_ov023_021ffa44.fn = (void(*)(void*, void*, unsigned))_Z21GetTableEntry0204a5e4ii(nib->lo, nib->hi);
+        data_ov023_021ffa44.fn = (void(*)(void*, void*, unsigned))GetTableEntry0204a5e4(nib->lo, nib->hi);
         data_ov023_021ffa44.flags |= 1;
     }
     _Z25CleanInvalidateCacheRangePKvj(dst, size);

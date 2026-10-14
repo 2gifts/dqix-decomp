@@ -38,16 +38,16 @@ struct Obj_0201bb78;
 
 extern "C" unsigned int func_ov014_0218934c(NatTable* table);
 extern "C" bool func_ov014_02188b20(NatTable* table, bool alreadyRelocated);
-extern "C" void _Z28InitEntryFromSource_02189244P9S02189244S0_Pci(S02189244* table, S02189244* file, char* alreadyRelocated, int func);
+void InitEntryFromSource_02189244(S02189244* table, S02189244* file, char* alreadyRelocated, int func);
 extern "C" int func_ov014_02188b18(NatEntry* entry);
 extern "C" NatEntry* func_ov014_021892d4(NatTable* table, int key, int (*getKey)(NatEntry* entry));
 extern "C" char* func_ov014_02188ba0(NatTable* table, char* pointer, char* defaultValue);
 extern "C" char* func_0205ec34();
 bool TestBitInByteArray(int, unsigned char*, int flag);
 extern "C" void* func_02012fe4();
-extern "C" char* _Z26AllocateStringCopy020da150P13SafeAllocatorPKc(SafeAllocator* allocator, const char* string);
-extern "C" bool _Z17IsInRange0201b588i(int zoneID);
-extern "C" bool _Z31LookupBitFromValueRange0201bb78P12Obj_0201bb78j(Obj_0201bb78* zoneStruct, unsigned int zoneID);
+char* AllocateStringCopy020da150(SafeAllocator* allocator, const char* string);
+bool IsInRange0201b588(int zoneID);
+bool LookupBitFromValueRange0201bb78(Obj_0201bb78* zoneStruct, unsigned int zoneID);
 
 // USA: func_ov014_02188d48
 extern "C" ARM bool func_ov014_02188d48(HabitatTable* self, SafeAllocator* allocator, void* file, unsigned int fileSize, short monsterID) {
@@ -83,7 +83,7 @@ extern "C" ARM bool func_ov014_02188d48(HabitatTable* self, SafeAllocator* alloc
         NatEntry* entry;
 
         memset(&source, 0, sizeof(source));
-        _Z28InitEntryFromSource_02189244P9S02189244S0_Pci((S02189244*)&source, (S02189244*)file, (char*)&alreadyRelocated, NULL);
+        InitEntryFromSource_02189244((S02189244*)&source, (S02189244*)file, (char*)&alreadyRelocated, NULL);
         entry = func_ov014_021892d4(&source, monsterID, func_ov014_02188b18);
         if (entry != NULL) {
             char* flags;
@@ -150,12 +150,12 @@ extern "C" ARM bool func_ov014_02188d48(HabitatTable* self, SafeAllocator* alloc
                     memcpy(newPointers, pointers + group->pointerIndex_, sizeof(char*));
                     group->pointerIndex_ = pointerIndex;
                     group->firstIndex_ = indexTotal;
-                    *newPointers = _Z26AllocateStringCopy020da150P13SafeAllocatorPKc(allocator, func_ov014_02188ba0(&source, *newPointers, NULL));
+                    *newPointers = AllocateStringCopy020da150(allocator, func_ov014_02188ba0(&source, *newPointers, NULL));
 
                     known = count == 0;
                     zoneID = newIndices;
                     for (int j = 0; j < count; j++, zoneID++) {
-                        known = (_Z17IsInRange0201b588i(*zoneID) && grottosKnown) || _Z31LookupBitFromValueRange0201bb78P12Obj_0201bb78j((Obj_0201bb78*)zoneStruct, *zoneID);
+                        known = (IsInRange0201b588(*zoneID) && grottosKnown) || LookupBitFromValueRange0201bb78((Obj_0201bb78*)zoneStruct, *zoneID);
                         if (known)
                             break;
                     }

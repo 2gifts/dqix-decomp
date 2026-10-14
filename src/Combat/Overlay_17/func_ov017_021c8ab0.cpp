@@ -3,7 +3,7 @@
 
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
 void SetSubstructByte0x1c(unsigned char* obj, unsigned char value);
 
 struct Ret021c8ab0 {
@@ -33,7 +33,7 @@ extern "C" ARM void func_ov017_021c8ab0(int unused0, struct Evt021c8ab0* evt, Ga
     Ret021c8ab0* r = (Ret021c8ab0*)func_ov017_021b8478(table);
     if (r == NULL) return;
     if (!func_ov017_021b8468(table)) return;
-    if (!_Z20GetField6b0_021b8470Pv(table)) return;
+    if (!GetField6b0_021b8470(table)) return;
 
     struct Payload021c8ab0* p = &evt->payload;
     if (r->field8 != p->fieldC) return;

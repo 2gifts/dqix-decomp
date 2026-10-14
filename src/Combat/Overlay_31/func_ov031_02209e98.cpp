@@ -6,7 +6,7 @@ extern int (*data_ov031_0224c9c0)(void*);
 
 extern "C" void func_ov031_02209158(void* obj, void* out, int mode);
 extern "C" void func_ov031_02209234(void* obj, void* out, int mode);
-extern "C" void _Z24InitTwoSections_022098acPvii(void* base, int b, int c);
+void InitTwoSections_022098ac(void* base, int b, int c);
 extern "C" void* func_ov031_0220963c(void* ctx, void* data);
 extern "C" void func_ov031_022037a8(void* a, void* b, int c, int d, void* e);
 
@@ -45,7 +45,7 @@ extern "C" ARM int func_ov031_02209e98(void* self) {
 	func_ov031_02209234(ctx, buf + 0x1f, 0);
 	VectorizedInvertedMemcpy((char*)ctx + 0x348, (char*)ctx + 0x2ec, 0x5c);
 
-	_Z24InitTwoSections_022098acPvii(ctx, (int)(buf + 0xb), 0x28);
+	InitTwoSections_022098ac(ctx, (int)(buf + 0xb), 0x28);
 
 	void* r = func_ov031_0220963c(ctx, buf + 0x6);
 	func_ov031_022037a8(buf, (char*)r + 0x6, 0, 0, self);

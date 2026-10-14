@@ -2,23 +2,22 @@
 
 class FlagWord02046708;
 
-extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" bool _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708* flags, unsigned int mask);
+FlagWord02046708* GetDataPtr02114e04_020d6c00();
+bool TestFlags02046708(FlagWord02046708* flags, unsigned int mask);
 
-// Offset inside an 8-pixel tile, always in 0..7 for positive input and never negative.
 #define TILE_PHASE02027438(v) ((v) < 0 ? (v) % 8 + 8 : (v) % 8)
 
 struct ScrollState02027438 {
     char pad0[0x14];
-    int mode;                 // 0x14
+    int mode;
     char pad1[0x44 - 0x18];
-    int scrollX;              // 0x44
-    int scrollY;              // 0x48
+    int scrollX;
+    int scrollY;
 };
 
 // USA: func_02027438  (semantic: UpdateSubBG0ScrollForMode02027438)
 extern "C" ARM void func_02027438(struct ScrollState02027438* state) {
-    if (_Z17TestFlags02046708P16FlagWord02046708j(_Z27GetDataPtr02114e04_020d6c00v(), 0x41)) {
+    if (TestFlags02046708(GetDataPtr02114e04_020d6c00(), 0x41)) {
         return;
     }
     switch (state->mode) {

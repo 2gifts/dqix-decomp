@@ -8,8 +8,8 @@ ArrayContainsByteStruct *GetPtrField0x2a04(GameState *gs);
 extern "C" int *func_0202ae18(void);
 int ArrayContainsByte(ArrayContainsByteStruct *arr, int value);
 int CheckField0NonZero(int *p);
-extern "C" int _Z34HasPositiveField304Short4_02154a34Pvi(void *self, int id);
-extern "C" int _Z36HasPositiveField256Short178_02154b94Pvi(void *self, int id);
+int HasPositiveField304Short4_02154a34(void *self, int id);
+int HasPositiveField256Short178_02154b94(void *self, int id);
 
 struct Entry02153ea4 {
     unsigned char state;
@@ -53,11 +53,11 @@ extern "C" ARM int func_ov002_02153ea4(void *self, Info02153ea4 *info, int enabl
             e->state = 1;
             continue;
         }
-        if (_Z36HasPositiveField256Short178_02154b94Pvi(self, id)) {
+        if (HasPositiveField256Short178_02154b94(self, id)) {
             e->state = 2;
             continue;
         }
-        if (!_Z34HasPositiveField304Short4_02154a34Pvi(self, id)) continue;
+        if (!HasPositiveField304Short4_02154a34(self, id)) continue;
         if (e->absent) {
             e->value = 1;
             e->state = 3;

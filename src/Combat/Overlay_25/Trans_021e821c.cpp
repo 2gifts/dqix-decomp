@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" void* _Z19GetActiveCombatWorkv();
+void* GetActiveCombatWork();
 extern "C" void _Z20SetShortTriple0x6e44Pvttt(void* obj, short a, unsigned short b, unsigned short c);
 
 struct Trans021e821cArg {
@@ -19,6 +19,6 @@ extern "C" ARM int func_ov025_021e821c(Trans021e821cArg* arg) {
     short a = arg->GetA();
     unsigned short b = arg->GetB();
     unsigned short c = arg->GetC();
-    _Z20SetShortTriple0x6e44Pvttt(_Z19GetActiveCombatWorkv(), a, b, c);
+    _Z20SetShortTriple0x6e44Pvttt(GetActiveCombatWork(), a, b, c);
     return 1;
 }

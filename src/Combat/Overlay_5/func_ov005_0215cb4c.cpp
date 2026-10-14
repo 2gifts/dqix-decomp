@@ -17,8 +17,8 @@ struct EquipmentMenu
     unsigned char fadeStep_;
 };
 
-extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(Struct0209c830* p, unsigned short value);
-extern "C" int _Z25IsAnimationActive0209ca2cPv(void* obj);
+void SetValueAndActivate0209c830(Struct0209c830* p, unsigned short value);
+int IsAnimationActive0209ca2c(void* obj);
 
 extern "C" Struct0209c830 data_02109bf4;
 
@@ -30,12 +30,12 @@ extern "C" ARM int func_ov005_0215cb4c(EquipmentMenu* self)
     unsigned char step = self->fadeStep_;
     if (step == 0)
     {
-        _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x3d);
+        SetValueAndActivate0209c830(&data_02109bf4, 0x3d);
         self->fadeStep_++;
     }
     if (step == 1)
     {
-        if (_Z25IsAnimationActive0209ca2cPv(&data_02109bf4))
+        if (IsAnimationActive0209ca2c(&data_02109bf4))
             return 1;
         self->flags_ &= ~0x10000;
         self->fadeStep_ = 0;

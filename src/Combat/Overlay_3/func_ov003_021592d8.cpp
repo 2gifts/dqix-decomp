@@ -49,13 +49,13 @@ struct BattleMenu021592d8 {
     char messages[0x18];
 };
 
-extern "C" struct MessageWork021592d8* _Z26GetGlobalField0x1c020421a0v();
+struct MessageWork021592d8* GetGlobalField0x1c020421a0();
 struct VocationData021592d8* GetFieldAt0x150(unsigned char* obj);
 extern "C" void func_02046380(void* obj);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void* obj, int combatantId);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(struct Obj02046574* obj, int index, char* str);
-extern "C" void* _Z22Clear0x54Bytes0208247cPv(void* obj);
+void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
+void* Clear0x54Bytes0208247c(void* obj);
 extern "C" int func_02082490(void* output, void* resource, unsigned int size, int selection, int extra);
 void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 void SetByteInRange(unsigned char* base, int index, unsigned char value);
@@ -70,21 +70,21 @@ extern "C" ARM void func_ov003_021592d8(struct BattleMenu021592d8* self, struct 
     if (out == NULL || combatant == NULL) {
         return;
     }
-    struct MessageWork021592d8* work = _Z26GetGlobalField0x1c020421a0v();
+    struct MessageWork021592d8* work = GetGlobalField0x1c020421a0();
     struct VocationData021592d8* data = GetFieldAt0x150((unsigned char*)combatant);
     int vocation = data->vocation;
     func_02046380(work);
 #if defined(jpn)
-    _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)work, 0, combatant->name);
+    SetIndexedName02046574((struct Obj02046574*)work, 0, combatant->name);
 #else
     struct UnitObj021592d8 unit;
-    _Z30InitObjFromCombatantId020e4bf4Pvi(&unit, combatant->id);
+    InitObjFromCombatantId020e4bf4(&unit, combatant->id);
     work->subject = &unit;
 #endif
     int key;
     if (data->levels[vocation] == 99) {
-        _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)work, 1,
-                               (char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages,
+        SetIndexedName02046574((struct Obj02046574*)work, 1,
+                               (char*)GetFieldByKey020e0434((struct Container020e0310*)self->messages,
                                                             (short)(data->vocation + 0x1e)));
         key = 0x3fe;
     } else {
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov003_021592d8(struct BattleMenu021592d8* self, struct 
         BackgroundLoader::AddLockGlobal();
         void* file = LoadFileIntoMemory(path, data_0211e33c, &size);
         struct LevelEntry021592d8 next;
-        _Z22Clear0x54Bytes0208247cPv(&next);
+        Clear0x54Bytes0208247c(&next);
         if (file != NULL) {
             func_02082490(&next, file, size, data->levels[vocation] + 1, 0);
         }
@@ -113,9 +113,9 @@ extern "C" ARM void func_ov003_021592d8(struct BattleMenu021592d8* self, struct 
         BackgroundLoader::RemoveLockGlobal();
     }
 #if defined(jpn)
-    func_020474a8(work, 0xc, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages, key), out);
+    func_020474a8(work, 0xc, (const char*)GetFieldByKey020e0434((struct Container020e0310*)self->messages, key), out);
 #else
-    func_02046608(work, 0xc, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages, key), out,
+    func_02046608(work, 0xc, (const char*)GetFieldByKey020e0434((struct Container020e0310*)self->messages, key), out,
                   0xe3, 0, 1);
 #endif
 }

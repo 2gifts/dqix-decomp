@@ -22,10 +22,10 @@ struct Slots0208386c { unsigned char pad[0x454]; short slots[8]; };
 struct S_a0504;
 
 int IsField8Bit19Set(unsigned int* obj);
-extern "C" void _Z27RemoveSlotShiftDown0208386cP13Slots0208386ci(struct Slots0208386c* s, int idx);
-extern "C" void* _Z33GetPointerField_02171b9c_02171b9cPvi(void* obj, int idx);
+void RemoveSlotShiftDown0208386c(struct Slots0208386c* s, int idx);
+void* GetPointerField_02171b9c_02171b9c(void* obj, int idx);
 int GetFieldAt0x150(unsigned char* obj);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+int LoadBattleBlock020ac4c0(void* dst);
 void AddClamped7BitField(struct S_a0504* p, unsigned int amount);
 int CopyInBattleField0x7540(void* src);
 extern "C" void func_02083738(void* o, int a1);
@@ -48,7 +48,7 @@ extern "C" ARM int func_020ddb38(int n, int idx, struct Container020ddb38* conta
     fail:
         return 0;
     ok:
-        elem = (struct Element020ddb38*)_Z33GetPointerField_02171b9c_02171b9cPvi(container, idx);
+        elem = (struct Element020ddb38*)GetPointerField_02171b9c_02171b9c(container, idx);
     } else {
         elem = (struct Element020ddb38*)((char*)(*(struct Slots0208386c**)((char*)combatant + CombatantSlotsOffset)) + 0x2d4);
     }
@@ -58,7 +58,7 @@ extern "C" ARM int func_020ddb38(int n, int idx, struct Container020ddb38* conta
     case 8:
     case 9:
     case 0xa:
-        _Z27RemoveSlotShiftDown0208386cP13Slots0208386ci(*(struct Slots0208386c**)((char*)combatant + CombatantSlotsOffset), (signed char)idx);
+        RemoveSlotShiftDown0208386c(*(struct Slots0208386c**)((char*)combatant + CombatantSlotsOffset), (signed char)idx);
         break;
     default:
         if (*(short*)((char*)elem + 0x18) == 0x4667) {
@@ -71,7 +71,7 @@ extern "C" ARM int func_020ddb38(int n, int idx, struct Container020ddb38* conta
         return 0;
     }
     if (((struct ElementFlagsWord020ddb38*)&elem->v[2])->topFlag) {
-        _Z23LoadBattleBlock020ac4c0Pv(localBuf);
+        LoadBattleBlock020ac4c0(localBuf);
         AddClamped7BitField((struct S_a0504*)localBuf, 1);
         CopyInBattleField0x7540(localBuf);
     }

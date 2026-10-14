@@ -56,8 +56,8 @@ struct EquipmentMenu {
 extern int data_02108760;
 
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
+MemberScreen* GetField1c_021a193c(int* p);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 extern "C" void func_ov005_021579ec(EquipmentMenu* self, unsigned int state, unsigned char slot);
 extern "C" int func_ov005_02157ae8(EquipmentMenu* self, int member);
 extern "C" void func_0205bb04(void* cursor, int index);
@@ -66,7 +66,7 @@ extern "C" int func_ov005_02155670(EquipmentMenu* self, int x, int y);
 // USA: func_ov005_021567ac
 extern "C" ARM void func_ov005_021567ac(EquipmentMenu* self, int x, int y) {
     GameState::GetInstance();
-    MemberScreen* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+    MemberScreen* screen = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
     if (!func_ov005_02157ae8(self, screen->member_))
         return;
     self->dragged_ = func_ov005_02155670(self, x, y);
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov005_021567ac(EquipmentMenu* self, int x, int y) {
         self->swapped_ = (self->slot_ - 8) + self->page_ * 16;
         self->unk_3dc0 = 0;
         self->flags_ |= 0x80;
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 2, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 2, 0);
         screen->flags_ &= ~1;
         screen->flags_ &= ~0x80;
         self->flags_ &= ~4;

@@ -6,7 +6,7 @@
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 extern "C" int func_ov024_021ede2c(void* obj);
 struct FlagObj_021da9b0;
-extern "C" int _Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0(struct FlagObj_021da9b0* obj);
+int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
 
 struct Obj_021f4d6c { int field0; };
 
@@ -23,7 +23,7 @@ extern "C" ARM int func_ov024_021f4d6c(struct Obj_021f4d6c* obj, int unused1, in
     for (int i = 0; i < count; i++) {
         GameObject* c = GetCombatantByID(obj->field0, buf.v[i]);
         if (!c) continue;
-        if (_Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0((struct FlagObj_021da9b0*)c)) continue;
+        if (IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)c)) continue;
         int value = *((unsigned char*)c->currentStats_ + 0x4e);
         if (value <= 0) continue;
         outArr[(*outCount)++] = buf.v[i];

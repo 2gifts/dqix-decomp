@@ -26,10 +26,10 @@ extern unsigned char data_02114e54[];
 }
 
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
-extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(Outer020e28dc*);
+int GetInnerFlagBit0020e28dc(Outer020e28dc*);
 int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
-extern "C" int _Z28IsPointInsideElement02080d54P7Obj2081iii(Obj2081*, int, int, int);
+int IsPointInsideElement02080d54(Obj2081*, int, int, int);
 
 struct AlchemyMenu {
 #if !defined(jpn)
@@ -132,7 +132,7 @@ extern "C" ARM unsigned char func_ov006_02158b78(AlchemyMenu* self)
     unsigned char cancelled = 0;
     if (TestFlag0SetAndFlag1Clear(data_02114e30, 2))
         cancelled = 1;
-    if (self->choice_ != 0 && _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc((Outer020e28dc*)self->choice_))
+    if (self->choice_ != 0 && GetInnerFlagBit0020e28dc((Outer020e28dc*)self->choice_))
     {
         if (IsFlag0x2Active020e2984((struct Outer020e28dc*)self->choice_))
             cancelled = 1;
@@ -142,7 +142,7 @@ extern "C" ARM unsigned char func_ov006_02158b78(AlchemyMenu* self)
         int x;
         int y;
         SelectCoordsByFlag0x24(data_02114e54, &x, &y);
-        if (!_Z28IsPointInsideElement02080d54P7Obj2081iii((Obj2081*)self->menu_, self->group_, (short)x, (short)y))
+        if (!IsPointInsideElement02080d54((Obj2081*)self->menu_, self->group_, (short)x, (short)y))
             cancelled = 1;
     }
     return cancelled;

@@ -32,14 +32,14 @@ struct ActionParams {
 };
 union EffectFlags { struct { int low; int high; }; unsigned long long value; };
 
-extern "C" int _Z25LookupValueByKey_021e8fa4P23FieldRefStruct_021e8fa4ii(struct FieldRefStruct_021e8fa4*, int, int);
+int LookupValueByKey_021e8fa4(struct FieldRefStruct_021e8fa4*, int, int);
 extern "C" void func_ov000_02159eac(void*, EffectFlags*, int);
 int IsValidTargetCombatant(TargetObj02088418*, int, int);
-extern "C" int _Z26IsFlagAllowedMask_021eb4b0iii(int, int, int);
-extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(FlagObj_021dd260*);
-extern "C" int _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998(FlagObj_021da998*);
-extern "C" void _Z24ResetTargetFlags02088474Pvii(void*, int, int);
-extern "C" void* _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i(Obj_021e8ca0*, int);
+int IsFlagAllowedMask_021eb4b0(int, int, int);
+int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
+int IsFlagBit8388608Set_021da998(FlagObj_021da998*);
+void ResetTargetFlags02088474(void*, int, int);
+void* AddEntryToListAndIncCount_021e8ca0(Obj_021e8ca0*, int);
 extern "C" void func_ov000_0215cd44(void*, void*, GameObject*, int, int, int, int);
 extern "C" void func_ov024_021e8cfc(CombatAction*, GameObject*, int, int);
 
@@ -62,33 +62,33 @@ extern "C" ARM unsigned long long func_ov024_021e2bd0(CombatAction* self, int ac
         }
         if ((float)roll >= probability) return 0;
     }
-    int kind = _Z25LookupValueByKey_021e8fa4P23FieldRefStruct_021e8fa4ii((FieldRefStruct_021e8fa4*)self, targetID, params->kind_);
+    int kind = LookupValueByKey_021e8fa4((FieldRefStruct_021e8fa4*)self, targetID, params->kind_);
     if (!kind) return 0;
     EffectFlags effects;
     effects.low = 0;
     effects.high = 0;
     func_ov000_02159eac(self->context_, &effects, (unsigned char)kind);
     if (!IsValidTargetCombatant((TargetObj02088418*)target->currentStats_, (unsigned char)params->kind_, (unsigned short)params->id_)) return 0;
-    if (_Z26IsFlagAllowedMask_021eb4b0iii((int)self, ((StatusFields*)target->currentStats_)->flags_, 0x80000)) {
+    if (IsFlagAllowedMask_021eb4b0((int)self, ((StatusFields*)target->currentStats_)->flags_, 0x80000)) {
         if (kind == 0x12 || kind == 0x15 || kind == 0x1b || kind == 0x1c)
             func_ov000_02159eac(self->context_, &effects, 0x2b);
     }
-    int bit24 = _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260((FlagObj_021dd260*)target);
-    int special = _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998((FlagObj_021da998*)target);
-    _Z24ResetTargetFlags02088474Pvii(target->currentStats_, (unsigned char)params->kind_, (unsigned short)params->id_);
+    int bit24 = IsFlagBit24Set_021dd260((FlagObj_021dd260*)target);
+    int special = IsFlagBit8388608Set_021da998((FlagObj_021da998*)target);
+    ResetTargetFlags02088474(target->currentStats_, (unsigned char)params->kind_, (unsigned short)params->id_);
     if (params->category_ != 10) {
         int message = 0;
         switch (params->kind_) {
         case 2: message = 0x150; break;
         case 5: message = 0x5e; break;
         }
-        void* entry = _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i((Obj_021e8ca0*)self, message);
+        void* entry = AddEntryToListAndIncCount_021e8ca0((Obj_021e8ca0*)self, message);
         if (entry) func_ov000_0215cd44(self->context_, entry, target, 0, 0, 0, 0);
     }
     if (special) {
         func_ov024_021e8cfc(self, target, 0, 0);
     } else if (bit24) {
-        if (!_Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260((FlagObj_021dd260*)target))
+        if (!IsFlagBit24Set_021dd260((FlagObj_021dd260*)target))
             func_ov024_021e8cfc(self, target, 8, 0);
     }
     return effects.value;

@@ -46,7 +46,7 @@ extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv(void);
 extern "C" void* func_ov017_0218b5b0(void);
 extern "C" Combatant021b2fac* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
-extern "C" void _Z30ResetEntriesAndNotify_021b33d8Pv(void* p);
+void ResetEntriesAndNotify_021b33d8(void* p);
 extern "C" void _ZN8Object3D7DestroyEv(void* o);
 extern "C" void _ZN13SafeAllocator5ResetEv(void* a);
 extern "C" void* _ZN13SafeAllocator8AllocateEj(void* a, unsigned int n);
@@ -67,15 +67,15 @@ extern "C" void func_ov017_021b3678(struct Task021b2fac* t);
 extern "C" int func_ov017_021b3780(struct Task021b2fac* t);
 extern "C" int func_ov017_021b3e14(struct Task021b2fac* t);
 extern "C" void _Z32CallHelperIfCheckPasses_0218fcf8iii(void* a, int b, int c);
-extern "C" void _Z19ResetStruct020d3c08Pc(char* p);
+void ResetStruct020d3c08(char* p);
 extern "C" void _Z36InitHandlerArrayAndRunScript020d3c84P24HandlerSlotArray020d3c84P12StreamHeaderi(char* p, void* hdr, unsigned int n);
 extern "C" void* _Z15FindEntryByKindP32FindEntryByKindContainer020d3d90i(char* c, int kind);
 extern "C" void memcpy(void* d, const void* s, unsigned int n);
 extern "C" void func_ov017_02191508(int id, void* e);
 extern "C" void sprintf(char* buf, const char* fmt, ...);
 extern "C" void _Z15ClearEightWordsP14Struct_203dafc(void* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* p);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* p);
+void RestorePairTables0207df90(char* p);
+void BackupPairTables0207dfac(char* p);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* o, void* info, void* cb);
 extern "C" void _ZN8Object3D8SetScaleEiii(void* o, int x, int y, int z);
 extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(void* o, int v);
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
     mgr = func_ov017_0218b5b0();
     c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, task->combatantId);
     if (c == 0) {
-        _Z30ResetEntriesAndNotify_021b33d8Pv(task);
+        ResetEntriesAndNotify_021b33d8(task);
         task->done = 1;
         return;
     }
@@ -181,7 +181,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
             if (_ZN16BackgroundLoader21GetDetailedTaskStatusEi(loader, task->taskId) == 2) {
                 _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, task->taskId, &file4, &size4);
                 if (file4 != 0) {
-                    _Z19ResetStruct020d3c08Pc(handlers);
+                    ResetStruct020d3c08(handlers);
                     _Z36InitHandlerArrayAndRunScript020d3c84P24HandlerSlotArray020d3c84P12StreamHeaderi(handlers, file4, size4);
                     kind = c->stats != 0 ? c->stats->kind : 0;
                     src = _Z15FindEntryByKindP32FindEntryByKindContainer020d3d90i(handlers, kind);
@@ -216,9 +216,9 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
                     info.data = file5;
                     info.size = size5;
                     info.alloc = alloc4;
-                    _Z25RestorePairTables0207df90Pc(a5->tables);
+                    RestorePairTables0207df90(a5->tables);
                     _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(c, &info, 0);
-                    _Z24BackupPairTables0207dfacPc(a5->tables);
+                    BackupPairTables0207dfac(a5->tables);
                 }
             }
             _ZN8Object3D8SetScaleEiii(c, 0x10a, 0x10a, 0x10a);

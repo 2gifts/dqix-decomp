@@ -43,29 +43,29 @@ struct S_a0b8c;
 
 extern "C" int func_ov004_02157128(void* obj);
 extern "C" Container020dedd0* func_ov004_02156fd4(void* obj, int key);
-extern "C" TableA68* _Z34DispatchAdjustmentIfType4_02157018Pvi(void* obj, int key);
+TableA68* DispatchAdjustmentIfType4_02157018(void* obj, int key);
 extern "C" Grid021f9b30* func_ov004_02156ed0(void* obj, int key);
 extern "C" Node0215a31c* func_ov004_02156f04(void* obj, int key);
 extern "C" Node0215a31c* func_ov004_02156f38(void* obj, int key);
 void* FindEntryByKey(TableA68* table, int key);
-extern "C" int _Z26CountNonZeroValues020a0b8cP7S_a0b8c(S_a0b8c* p);
-extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void* obj, int id, int mask);
+int CountNonZeroValues020a0b8c(S_a0b8c* p);
+void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
 unsigned char* GetFieldAt0x150(unsigned char* obj);
 extern "C" int func_020dcc98(int combatantId);
 extern "C" void func_ov023_021f65d4(void* obj, int id, int mask);
-extern "C" Element0215a31c* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
+Element0215a31c* FindElementByKey020dedd0(Container020dedd0* c, int key);
 extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30* self, unsigned short val, unsigned int x, unsigned int y);
 extern "C" void func_ov023_021f9ba8(Grid021f9b30* grid, int v);
 extern "C" void* func_ov004_02156f6c(void* obj, int kind);
 extern "C" void func_ov023_021f809c(void* node, void* obj);
-extern "C" void* _Z24CheckThenNotify_02157088Pvi(void* object, int key);
+void* CheckThenNotify_02157088(void* object, int key);
 extern "C" void func_ov023_021dcae0(void* obj, int v);
 
 // USA: func_ov004_0215a31c
 extern "C" ARM int func_ov004_0215a31c(void* obj) {
     int flag = func_ov004_02157128(obj);
     Container020dedd0* items = func_ov004_02156fd4(obj, 5);
-    TableA68* table = _Z34DispatchAdjustmentIfType4_02157018Pvi(obj, 3);
+    TableA68* table = DispatchAdjustmentIfType4_02157018(obj, 3);
     short* keys;
     Grid021f9b30* grid = func_ov004_02156ed0(obj, 0x63);
     int i;
@@ -84,7 +84,7 @@ extern "C" ARM int func_ov004_0215a31c(void* obj) {
         short pageCount = grid->pageCount;
         if (!(page > 0 && pageCount > 0)) {
             page = 0;
-            pageCount = (_Z26CountNonZeroValues020a0b8cP7S_a0b8c((S_a0b8c*)list) - 1) / 8 + 1;
+            pageCount = (CountNonZeroValues020a0b8c((S_a0b8c*)list) - 1) / 8 + 1;
             if (pageCount < 1) pageCount = 1;
             grid->page = 0;
             grid->pageCount = pageCount;
@@ -94,13 +94,13 @@ extern "C" ARM int func_ov004_0215a31c(void* obj) {
         if (node) node->flags &= ~8;
         func_ov004_02156f38(obj, 0x456)->SetValue(page + 1);
         func_ov004_02156f38(obj, 0x457)->SetValue(pageCount);
-        _Z26ClearNodeMaskById_021f6600Pvii(obj, 0x456, 8);
-        _Z26ClearNodeMaskById_021f6600Pvii(obj, 0x457, 8);
-        _Z26ClearNodeMaskById_021f6600Pvii(obj, 0x469, 8);
-        _Z26ClearNodeMaskById_021f6600Pvii(obj, 0x46a, 8);
+        ClearNodeMaskById_021f6600(obj, 0x456, 8);
+        ClearNodeMaskById_021f6600(obj, 0x457, 8);
+        ClearNodeMaskById_021f6600(obj, 0x469, 8);
+        ClearNodeMaskById_021f6600(obj, 0x46a, 8);
         for (i = 0; i < 8; i++) {
-            _Z26ClearNodeMaskById_021f6600Pvii(obj, i + 0x459, 8);
-            _Z26ClearNodeMaskById_021f6600Pvii(obj, i + 0x461, 8);
+            ClearNodeMaskById_021f6600(obj, i + 0x459, 8);
+            ClearNodeMaskById_021f6600(obj, i + 0x461, 8);
             func_ov004_02156f38(obj, i + 0x461)->SetValue(counts[i]);
         }
     } else {
@@ -125,7 +125,7 @@ extern "C" ARM int func_ov004_0215a31c(void* obj) {
     }
 
     for (slot = 0; slot < 8; slot++) {
-        Element0215a31c* elem = _Z24FindElementByKey020dedd0P17Container020dedd0i(items, keys[slot]);
+        Element0215a31c* elem = FindElementByKey020dedd0(items, keys[slot]);
         Node0215a31c* node = func_ov004_02156f04(obj, slot + 0x44c);
         if (!elem) {
             node->flags |= 8;
@@ -144,7 +144,7 @@ extern "C" ARM int func_ov004_0215a31c(void* obj) {
     func_ov023_021f9ba8(grid, 0);
     void* list = func_ov004_02156f6c(obj, 0x17);
     if (list) func_ov023_021f809c(list, obj);
-    void* notified = _Z24CheckThenNotify_02157088Pvi(obj, 7);
+    void* notified = CheckThenNotify_02157088(obj, 7);
     if (notified) func_ov023_021dcae0(notified, -1);
     return 0;
 }

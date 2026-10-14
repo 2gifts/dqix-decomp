@@ -25,11 +25,11 @@
 
 #include "Memory/SafeAllocator.h"
 
-extern "C" void _Z25ForwardField0xc0_0205eb80Pv(void* obj);
-extern "C" void _Z22ResetBigStruct02013750Pvi(void* obj, int flag);
+void ForwardField0xc0_0205eb80(void* obj);
+void ResetBigStruct02013750(void* obj, int flag);
 extern "C" void func_ov000_02172720(void* obj);
 
-extern "C" void _Z23ClearTwoRegions02079f9cPc(char* obj);
+void ClearTwoRegions02079f9c(char* obj);
 extern "C" void* func_02057924(void);
 extern "C" void func_02057f00(void* obj, int index);
 extern "C" void func_ov023_021eb26c(void* obj);
@@ -53,14 +53,14 @@ struct CombatWork_021604f0 {
 // USA: func_ov000_021604f0
 extern "C" ARM void func_ov000_021604f0(struct CombatWork_021604f0* work) {
     if (work->displayActive) {
-        _Z25ForwardField0xc0_0205eb80Pv(data_02108760);
+        ForwardField0xc0_0205eb80(data_02108760);
         work->displayActive = 0;
     }
-    _Z22ResetBigStruct02013750Pvi(work->zone, 1);
+    ResetBigStruct02013750(work->zone, 1);
     if (!(work->flags & 0x800)) {
         func_ov000_02172720(work->field_3760);
     }
-    _Z23ClearTwoRegions02079f9cPc((char*)GetData02108e10());
+    ClearTwoRegions02079f9c((char*)GetData02108e10());
     void* slots = func_02057924();
     for (int* p = data_ov000_02182fe0; *p >= 0; p++) {
         func_02057f00(slots, *p);

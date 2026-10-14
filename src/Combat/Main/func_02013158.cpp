@@ -44,9 +44,9 @@ struct Node13158
 extern "C" void Mat3x3_WriteRotationY(Matrix3x3* out, int sine, int cosine);
 extern "C" void Mat3x3_ApplyToVector(const Vector3fix* inVec, const Matrix3x3* inMat, Vector3fix* out);
 extern "C" void Vector3fix_Add(const Vector3fix* a, const Vector3fix* b, Vector3fix* out);
-extern "C" int _Z8fix32cosi(int x);
-extern "C" int _Z8fix32sini(int x);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
+int fix32cos(int x);
+int fix32sin(int x);
+int fix32ReduceAngle0To2Pi(int angle);
 
 // USA: func_02013158
 extern "C" ARM void func_02013158(Node13158* self, const Vector3fix* base, int* angle, const Vector3fix* scale)
@@ -55,15 +55,15 @@ extern "C" ARM void func_02013158(Node13158* self, const Vector3fix* base, int* 
     int sine;
     int cosine;
     Node13158* n;
-    cosine = _Z8fix32cosi(*angle);
-    sine = _Z8fix32sini(*angle);
+    cosine = fix32cos(*angle);
+    sine = fix32sin(*angle);
     Mat3x3_WriteRotationY(&mat, sine, cosine);
     if (self->model != 0)
     {
         Vector3fix v;
         Mat3x3_ApplyToVector(&self->model->offset, &mat, &v);
         Vector3fix_Add(&v, base, &self->pos);
-        self->heading = (int16_t)_Z22fix32ReduceAngle0To2Pii(*angle + self->model->rotZ);
+        self->heading = (int16_t)fix32ReduceAngle0To2Pi(*angle + self->model->rotZ);
         self->rot.x = FIX32_MULTIPLY(self->model->m1, scale->x);
         self->rot.y = FIX32_MULTIPLY(self->model->m2, scale->y);
         self->rot.z = FIX32_MULTIPLY(self->model->m3, scale->z);
@@ -79,7 +79,7 @@ extern "C" ARM void func_02013158(Node13158* self, const Vector3fix* base, int* 
             {
                 Mat3x3_ApplyToVector(&n->model->offset, &mat, &w);
                 Vector3fix_Add(&w, base, &n->pos);
-                n->heading = (int16_t)_Z22fix32ReduceAngle0To2Pii(*angle + n->model->rotZ);
+                n->heading = (int16_t)fix32ReduceAngle0To2Pi(*angle + n->model->rotZ);
                 n->rot.x = FIX32_MULTIPLY(n->model->m1, scale->x);
                 n->rot.y = FIX32_MULTIPLY(n->model->m2, scale->y);
                 n->rot.z = FIX32_MULTIPLY(n->model->m3, scale->z);

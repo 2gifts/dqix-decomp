@@ -4,7 +4,7 @@
 #include "GameState/GameState.h"
 
 struct FontBankLoader;
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void*, int);
 extern "C" void func_ov016_0218b5c0(int, int);
 extern "C" void func_ov017_0218b5f8(int);
@@ -14,8 +14,8 @@ extern "C" void func_0204500c(void*, void*, int);
 #else
 extern "C" void func_0204500c(void*, void*, int, int);
 #endif
-extern "C" void _Z18InitFields02042b3cPv(void*);
-extern "C" void _Z24ReinitController02043204Pc(char*);
+void InitFields02042b3c(void*);
+void ReinitController02043204(char*);
 extern char data_020f2348[];
 
 struct QueuedTextEntry {
@@ -67,7 +67,7 @@ extern "C" ARM void func_020d7b04(TextMessageQueue* queue) {
     char formattedText[0xc8];
     GameState* game = GameState::GetInstance();
     FontBankLoader* fonts = GetGlobal02109400();
-    MessageWindowState* window = static_cast<MessageWindowState*>(_Z26GetGlobalField0x1c020421a0v());
+    MessageWindowState* window = static_cast<MessageWindowState*>(GetGlobalField0x1c020421a0());
     if (queue->fontRequested && !AlwaysTrue02094b4c(fonts)) return;
 
     void* requests = func_ov017_0218b5b0()->unknown_ptr_array_36fc[0];
@@ -125,7 +125,7 @@ extern "C" ARM void func_020d7b04(TextMessageQueue* queue) {
                 func_0204500c(window, formattedText, 0, 0x100);
             }
 #endif
-            _Z18InitFields02042b3cPv(window);
+            InitFields02042b3c(window);
             window->active = 1;
             window->state = 1;
             queue->windowActive = 1;
@@ -141,7 +141,7 @@ extern "C" ARM void func_020d7b04(TextMessageQueue* queue) {
             queue->fontRequested = 0;
         }
         if (queue->windowActive) {
-            _Z24ReinitController02043204Pc(static_cast<char*>(_Z26GetGlobalField0x1c020421a0v()));
+            ReinitController02043204(static_cast<char*>(GetGlobalField0x1c020421a0()));
             queue->windowActive = 0;
         }
     }

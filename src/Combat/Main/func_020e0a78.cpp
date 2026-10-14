@@ -14,8 +14,8 @@ struct CombatResBuildView {
     unsigned int size;
 };
 
-extern "C" void *_Z27GetDataPtr02114e04_020d6c00v();
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708 *flags, unsigned int mask);
+void *GetDataPtr02114e04_020d6c00();
+int TestFlags02046708(FlagWord02046708 *flags, unsigned int mask);
 extern "C" void VectorizedInvertedMemcpy(void *dst, void *src, unsigned int size);
 extern "C" void _Z29SetupWeightedEntriesAndSubmitPvii(void *obj, void *buf, int offset, int dead_r3);
 extern "C" void _Z41SetupWeightedEntriesAndSubmitPair020e0cfcPvii(void *obj, void *buf, int offset, int dead_r3);
@@ -32,7 +32,7 @@ extern "C" ARM int func_020e0a78(void *receiver) {
     if (state->allocator == 0) {
         return 0;
     }
-    if (_Z17TestFlags02046708P16FlagWord02046708j(static_cast<FlagWord02046708 *>(_Z27GetDataPtr02114e04_020d6c00v()), 0x41)) {
+    if (TestFlags02046708(static_cast<FlagWord02046708 *>(GetDataPtr02114e04_020d6c00()), 0x41)) {
         return 0;
     }
 

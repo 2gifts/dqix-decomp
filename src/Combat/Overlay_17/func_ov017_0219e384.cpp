@@ -254,8 +254,8 @@ extern "C" void* _Z22FindEntryByHalfwordKeyP11SearchTablei(void* table, int key)
 extern "C" int func_0209cd50(int id);
 extern "C" int _Z14GetShortAt0xb8P23ShortField0xb8_0209cae8(void* obj);
 extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(void* actor, int v);
-extern "C" int _Z29IsScaledFieldPositive0203adfcPvS_(void* a, void* b);
-extern "C" void _Z22ScaleAndNotify0203ad88PvS_i(void* a, void* b, int c);
+int IsScaledFieldPositive0203adfc(void* a, void* b);
+void ScaleAndNotify0203ad88(void* a, void* b, int c);
 extern "C" int _Z13IsAxisIntZeroP18AxisFloats0203b5f8i(void* obj, int axis);
 extern "C" int _Z29GetBrightnessTransitionStatesP13GameResources(int* obj);
 extern "C" int _Z15GetAxisIntValueP18AxisFloats0203b57ci(void* obj, int axis);
@@ -266,9 +266,9 @@ extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(void* obj, int a)
 extern "C" void func_ov017_021c4664(int mapId, struct Vec3 v, int w);
 extern "C" int func_0202c540(void* search);
 extern "C" int _Z19GetField0x397cValueP9GameState(struct BattleStruct* battle);
-extern "C" void _Z27EnqueueEventTag150_021d035chhh(unsigned char a, unsigned char b, unsigned char c);
-extern "C" void _Z26EnqueueEventTag31_021d257chi(unsigned char id, int a);
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(void* obj, int kind, void* out);
+void EnqueueEventTag150_021d035c(unsigned char a, unsigned char b, unsigned char c);
+void EnqueueEventTag31_021d257c(unsigned char id, int a);
+int LookupAndForEachNode020649b0(void* obj, int kind, void* out);
 extern "C" void func_0206f81c(void* node);
 extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
 int CheckSubstructByte0x7cPositive(signed char* obj);
@@ -278,12 +278,12 @@ int IsField0Null(void** obj);
 void* GetGlobalContext020daf90(void);
 extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void* list, int id);
 int GetField0x50(void* obj);
-extern "C" void _Z33DispatchWithGlobalContext020daf9ciiii(int a, int b, int c, int d);
+void DispatchWithGlobalContext020daf9c(int a, int b, int c, int d);
 int CheckField0NonZero(int* obj);
 extern "C" void* _Z30GetSearchStructCurrentArrEntryP20SearchStruct0202c1a4(struct SearchStruct* search);
 extern "C" int _Z15GetBitsInField0Pjj(void* obj, unsigned int mask);
 extern "C" int _ZNK9GameState21GetEffectiveDeltaTimeEv(struct BattleStruct* battle);
-extern "C" void _Z15SetFlagBitAt0xeP12SearchStructi(struct SearchStruct* search, int v);
+void SetFlagBitAt0xe(struct SearchStruct* search, int v);
 extern "C" void _Z15SetBitsInField4Pjj(void* obj, unsigned int mask);
 extern "C" void _Z16OrBitsIntoField0Pjj(void* obj, unsigned int mask);
 extern "C" void _Z13SetBitsInWordPjj(void* obj, unsigned int mask);
@@ -295,14 +295,14 @@ extern "C" struct InlineEntry* _Z19FindInlineEntryByIdP14Entry_02028bd0i(struct 
 extern "C" signed char* _ZN9GameState15GetGrottoStructEv(struct BattleStruct* battle);
 int IsInRange0201b588(int v);
 extern "C" void _Z19InitStruct_021b46d8P14Struct021b46d8(struct GrottoSlot* slot);
-extern "C" int _Z22IsValueInRange0201b5d8i(int v);
+int IsValueInRange0201b5d8(int v);
 extern "C" unsigned char* _ZN17ActiveGrottoClass15GetDetailedDataEv(void* self);
 extern "C" unsigned short _ZNK23DetailedTreasureMapData17LegacyBossMapData26MaybeGetCurrentAlternateIDEv(void* self);
 extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(void* list, void* node);
 extern "C" int func_0202c508(void* search);
 extern "C" void func_ov017_021c4854(Zone3D* run, int a, int b, int* vec, int c, int d);
 extern "C" void* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battle, int index);
-extern "C" int _Z23GetByteFieldMasked0x1cePvi(void* obj, int mask);
+int GetByteFieldMasked0x1ce(void* obj, int mask);
 extern "C" void func_ov017_021bd4d0(void* obj, unsigned char index, int a, int b);
 extern "C" void func_ov017_021ce400(unsigned char v, int mapId);
 extern "C" void* func_0208e0a8(void);
@@ -344,40 +344,40 @@ extern "C" void _Z34SetupCombatantAllocations_021901acv(void* ov);
 extern "C" void func_020a6aac(void* ov, int a, int b);
 extern "C" void func_020acecc(void* ov, int a, int b);
 extern "C" int _ZNK9GameState12GetTimeOfDayEv(struct BattleStruct* battle);
-extern "C" int _Z30FindAndApplyEntryVec3_021a01f4PviiS_Pi(void* ov, int mapId, int index, void* combatant, int* out);
+int FindAndApplyEntryVec3_021a01f4(void* ov, int mapId, int index, void* combatant, int* out);
 extern "C" void func_ov017_0219fc88(void* self, int v);
 extern "C" void func_ov017_021b6f18(void* node);
 extern "C" void _Z19InitStruct_02196c08Ph(struct Msg021b6e70* fnMsg);
 extern "C" int _Z18GetField0x3acValueP9GameState(struct BattleStruct* battle);
 extern "C" void func_ov017_021b6e70(struct Msg021b6e70* fnMsg, int v);
 extern "C" void func_ov017_021b7104(void* node, struct Msg021b6e70* fnMsg);
-extern "C" int _Z16Dispatch020649f4PvS_(void* obj, void* out);
+int Dispatch020649f4(void* obj, void* out);
 extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv(void);
-extern "C" int _Z18LoadFileIntoMemoryPKcPvPj(const char* name, void* dst, unsigned int* size);
+int LoadFileIntoMemory(const char* name, void* dst, unsigned int* size);
 extern "C" int _Z24InitStreamAndRun0208dc00P12StreamHeaderii(void* header, int a, int b);
-extern "C" int _Z18TestBitInByteArrayiPhi(int a, unsigned char* arr, int bit);
+int TestBitInByteArray(int a, unsigned char* arr, int bit);
 extern "C" void func_ov017_021bba08(struct ListNode021bba08* node, void* header);
-extern "C" void _Z20SetOrClearBitInArrayPvPhii(void* a, unsigned char* arr, int bit, int set);
+void SetOrClearBitInArray(void* a, unsigned char* arr, int bit, int set);
 extern "C" void _ZN16BackgroundLoader16RemoveLockGlobalEv(void);
-extern "C" void _Z27EnqueueEventTag158_021d23bct(unsigned short v);
-extern "C" void _Z13SetField0x246Pvs(void* obj, short v);
+void EnqueueEventTag158_021d23bc(unsigned short v);
+void SetField0x246(void* obj, short v);
 extern "C" void _Z33SetVec3ComponentsAndApply020a27ccP14Struct020a27cc(void* obj);
 extern "C" void _Z29ConfigureVec3AndApply020a2800P14Struct020A2800(void* obj);
-extern "C" void _Z25InitVec3ParamsVariant8b33Pv(void* obj);
+void InitVec3ParamsVariant8b33(void* obj);
 extern "C" void _Z33SetVec3ComponentsAndApply020a2868P14Struct020a2868(void* obj);
 extern "C" int _Z13GetField0x218P9S020a3570(void* obj);
 extern "C" void _Z34CopyVec3ToField0x10AndCall0202e5d8PcPi(void* obj, int* vec);
 extern "C" void func_ov017_021982ac(void* ov);
 extern "C" void _Z22ApplyVecFromField0x246Pc(void* obj);
-extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int v);
+void SetCombatModeFromCase020dc2d0(int v);
 extern "C" void _Z14SetByteAt0x2c5P23ByteField0x2c5_020a2cbch(void* obj, int v);
 extern "C" void func_020ae53c(int v);
-extern "C" void _Z23NotifyOv017OnFlag0x1130v(void);
+void NotifyOv017OnFlag0x1130(void);
 extern "C" void _Z32MarkActiveCombatantSlots02026b7cPh(void* obj);
 void SyncVec3ForFlaggedCombatants_021a3338(void* ov);
-extern "C" void _Z29InitAndAppendState61_021a65c4Pvhi(void* ov, unsigned char a, int b);
-extern "C" void _Z27EnqueueEventTag147_021cdaa0v(void);
-extern "C" void _Z17SetByteField0x253Pv(void* obj);
+void InitAndAppendState61_021a65c4(void* ov, unsigned char a, int b);
+void EnqueueEventTag147_021cdaa0(void);
+void SetByteField0x253(void* obj);
 extern "C" void _ZN8Object3D10EnableFlagEi(void* obj, unsigned int mask);
 extern "C" void _Z26EnqueueEventTag35_021d2ad0hiiih(short id, int x, int y, int z, unsigned char f);
 void* GetGlobalField0x1c020421a0(void);
@@ -457,8 +457,8 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			if (self->active != 0) {
 				_Z30DispatchContextByState0209c678P13Actor0209c678i(&data_02109bf4, 0);
 			}
-			if (_Z29IsScaledFieldPositive0203adfcPvS_(&data_02108760, 0) != 0) {
-				_Z22ScaleAndNotify0203ad88PvS_i(&data_02109bf4, 0, 0);
+			if (IsScaledFieldPositive0203adfc(&data_02108760, 0) != 0) {
+				ScaleAndNotify0203ad88(&data_02109bf4, 0, 0);
 				self->active = 1;
 			}
 			cnt = *(unsigned short*)((char*)actor->p130 + 4);
@@ -498,14 +498,14 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				*(unsigned short*)(ov + Field44ac) = 0;
 			}
 			if (fld->flagE != 0) {
-				_Z27EnqueueEventTag150_021d035chhh(0, _Z19GetField0x397cValueP9GameState(battle), 1);
+				EnqueueEventTag150_021d035c(0, _Z19GetField0x397cValueP9GameState(battle), 1);
 			}
 			runMapId = run->currentZoneID_;
 			if (fld->mapId != runMapId) {
 				struct GrottoIds* list2a04 = _Z17GetPtrField0x2a04P9GameState(battle);
 				int i;
 				for (i = 0; i < list2a04->count; i++) {
-					_Z26EnqueueEventTag31_021d257chi(list2a04->ids[i], 0);
+					EnqueueEventTag31_021d257c(list2a04->ids[i], 0);
 				}
 			}
 			if (*(unsigned char*)(ov + Field42e9) != 0) {
@@ -513,7 +513,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			}
 			obj = func_0205ec34();
 			workHi.turnNode.mapId = run->currentZoneID_;
-			if (fld->active == 0 && _Z28LookupAndForEachNode020649b0PviS_(obj, 0x1e, &workHi.turnNode) != 0) {
+			if (fld->active == 0 && LookupAndForEachNode020649b0(obj, 0x1e, &workHi.turnNode) != 0) {
 				func_0206f81c(&workHi.turnNode);
 			}
 			if (axis == 0) {
@@ -551,7 +551,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			if (GetField0x50(context) != 0) {
 				return;
 			}
-			_Z33DispatchWithGlobalContext020daf9ciiii(1, 0, 1, 0);
+			DispatchWithGlobalContext020daf9c(1, 0, 1, 0);
 			_Z13SetBrightnessP13GameResourcesii(ov, -16, 0);
 			return;
 		}
@@ -562,7 +562,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			self->accum = self->accum + _ZNK9GameState21GetEffectiveDeltaTimeEv(battle);
 			if (self->accum > 15000) {
 				self->expired = 1;
-				_Z15SetFlagBitAt0xeP12SearchStructi(search, 0);
+				SetFlagBitAt0xe(search, 0);
 			}
 #endif
 			if (self->expired == 0) {
@@ -621,7 +621,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			if (slot->used == 0) {
 				_Z19InitStruct_021b46d8P14Struct021b46d8(slot);
 				slot->entry = entry;
-				if (_Z22IsValueInRange0201b5d8i(run->currentZoneID_) != 0 && ((unsigned char*)grotto)[3] == 0) {
+				if (IsValueInRange0201b5d8(run->currentZoneID_) != 0 && ((unsigned char*)grotto)[3] == 0) {
 					unsigned char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv(runSub2);
 					if (detail != 0) {
 						unsigned char tag = detail[1];
@@ -640,7 +640,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			}
 			self->state = 4;
 		} else {
-			if (_Z22IsValueInRange0201b5d8i(run->currentZoneID_) != 0 && ((unsigned char*)grotto)[3] == 0) {
+			if (IsValueInRange0201b5d8(run->currentZoneID_) != 0 && ((unsigned char*)grotto)[3] == 0) {
 				unsigned char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv(runSub2);
 				if (detail != 0) {
 					unsigned char tag = detail[1];
@@ -661,7 +661,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		}
 		*(unsigned char*)((char*)run + Field281f) = 0;
 		if (fld->f20 > 0 || fld->f24 > 0) {
-			_Z27EnqueueEventTag150_021d035chhh(1, actor->s4, 1);
+			EnqueueEventTag150_021d035c(1, actor->s4, 1);
 		}
 		func_ov017_021c4854(run, kind, value, actor->vec44, (short)actor->f54, hasFlag);
 		{
@@ -670,7 +670,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				int i;
 				for (i = 0; i < 4; i++) {
 					void* c = _ZN9GameState21GetPartyMemberByIndexEi(battle, i);
-					if (c != 0 && _Z23GetByteFieldMasked0x1cePvi(c, 0x20) != 0) {
+					if (c != 0 && GetByteFieldMasked0x1ce(c, 0x20) != 0) {
 						func_ov017_021bd4d0(target, i, 0, 1);
 					}
 				}
@@ -726,7 +726,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			    func_0202c540(search) != 0) {
 				unsigned char* sub = (unsigned char*)runContext;
 				if (sub[0x1b62] == 0) {
-					_Z33DispatchWithGlobalContext020daf9ciiii(1, 0, 1, 0);
+					DispatchWithGlobalContext020daf9c(1, 0, 1, 0);
 					_Z13SetBrightnessP13GameResourcesii(ov, -16, 0);
 					self->state = 7;
 					return;
@@ -848,14 +848,14 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		func_020a6aac(ov, mapId, subId);
 		func_020acecc(ov, mapId, subId);
 		if ((fld->flags6e & 2) == 0 && func_0202c540(search) != 0 && actor != 0) {
-			if (_Z30FindAndApplyEntryVec3_021a01f4PviiS_Pi(ov, mapId, _ZNK9GameState12GetTimeOfDayEv(battle), actor, (int*)&workHi.entryVec) != 0 && actor != 0) {
+			if (FindAndApplyEntryVec3_021a01f4(ov, mapId, _ZNK9GameState12GetTimeOfDayEv(battle), actor, (int*)&workHi.entryVec) != 0 && actor != 0) {
 				_ZN8Vector3iaSERKS_(actor->vec44, (int*)&workHi.entryVec);
 			}
 		}
 		if (moving != 0) {
 			func_ov017_0219fc88(self, fld->f20);
 		} else if (fld->f28 >= 0 && fld->f2c == run->currentZoneID_ && fld->s1e != fld->f28) {
-			if (_Z22IsValueInRange0201b5d8i(run->currentZoneID_) == 0) {
+			if (IsValueInRange0201b5d8(run->currentZoneID_) == 0) {
 			void* n = *(void**)(ov + Field3718);
 			func_ov017_021b6f18(n);
 			_Z19InitStruct_02196c08Ph(&workHi.msg);
@@ -878,15 +878,15 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			void* obj2 = func_0205ec34();
 			int listed;
 			workHi.node.mapId = mapId;
-			if (fld->active == 0 && _Z16Dispatch020649f4PvS_(obj2, &workHi.node) != 0) {
+			if (fld->active == 0 && Dispatch020649f4(obj2, &workHi.node) != 0) {
 				func_0206f81c(&workHi.node);
 			}
 			listed = _Z14ListContainsIdP16ListHead02046b60i(tailList, 4);
 			if (CheckField0NonZero((int*)search) == 0 || func_0202c508(search) != 0) {
 				_ZN16BackgroundLoader13AddLockGlobalEv();
-				if (_Z18LoadFileIntoMemoryPKcPvPj(data_ov017_021d761e, data_0211e33c, &workLo.size) != 0 &&
+				if (LoadFileIntoMemory(data_ov017_021d761e, data_0211e33c, &workLo.size) != 0 &&
 				    _Z24InitStreamAndRun0208dc00P12StreamHeaderii(data_0211e33c, workLo.size, (int)&workHi.slot) != 0 &&
-				    _Z18TestBitInByteArrayiPhi((int)obj2, (unsigned char*)obj2 + 0x8c, workHi.slot + 0xea + 0xb00) == 0) {
+				    TestBitInByteArray((int)obj2, (unsigned char*)obj2 + 0x8c, workHi.slot + 0xea + 0xb00) == 0) {
 					if (listed == 0) {
 						struct ListNode021bba08* n2 = *(struct ListNode021bba08**)(ov + Field3734);
 						func_ov017_021bba08(n2, (unsigned char*)run->pUnknownStruct_8_);
@@ -894,7 +894,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 						_Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(tailList, n2);
 						fld->f20 = -1;
 					} else {
-						_Z20SetOrClearBitInArrayPvPhii(obj2, (unsigned char*)obj2 + 0x8c, workHi.slot + 0xea + 0xb00, 1);
+						SetOrClearBitInArray(obj2, (unsigned char*)obj2 + 0x8c, workHi.slot + 0xea + 0xb00, 1);
 					}
 				}
 				_ZN16BackgroundLoader16RemoveLockGlobalEv();
@@ -903,11 +903,11 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		fld->s1e = -1;
 		node = *(struct ListNode021bba08**)(ov + Field3734);
 		if (node->flag2 == 0 || node->f9c != 0 || node->f8 == 0) {
-			_Z27EnqueueEventTag158_021d23bct(0xffff);
+			EnqueueEventTag158_021d23bc(0xffff);
 		}
 		if (fld->active == 0) {
 			if (runVars != 0) {
-				_Z13SetField0x246Pvs(flag4, *(short*)(runVars + FieldRunValue));
+				SetField0x246(flag4, *(short*)(runVars + FieldRunValue));
 			}
 			switch (((unsigned int)header[0xc] << 25) >> 30) {
 			case 0:
@@ -917,7 +917,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				_Z29ConfigureVec3AndApply020a2800P14Struct020A2800(flag4);
 				break;
 			case 2:
-				_Z25InitVec3ParamsVariant8b33Pv(flag4);
+				InitVec3ParamsVariant8b33(flag4);
 				break;
 			case 3:
 				_Z33SetVec3ComponentsAndApply020a2868P14Struct020a2868(flag4);
@@ -941,11 +941,11 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		}
 		if ((fld->flags6e & 1) == 0) {
 			_Z18ClearFlags020466f4P16FlagWord020466f4j(flags14e04, 1);
-			_Z29SetCombatModeFromCase020dc2d0i(0);
+			SetCombatModeFromCase020dc2d0(0);
 		}
 		_Z14SetByteAt0x2c5P23ByteField0x2c5_020a2cbch(flag4, ((struct HdrFlags4*)(header + 4))->noSkip == 0 ? 1 : 0);
 		func_020ae53c(1);
-		_Z23NotifyOv017OnFlag0x1130v();
+		NotifyOv017OnFlag0x1130();
 		_Z32MarkActiveCombatantSlots02026b7cPh(*(void**)(ov + Field36d0));
 		SyncVec3ForFlaggedCombatants_021a3338(ov);
 		if ((fld->flags6e & 8) != 0) {
@@ -972,7 +972,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		int i;
 
 		if (fld->f69 != 0 && _Z14ListContainsIdP16ListHead02046b60i(list, 0x3d) == 0) {
-			_Z29InitAndAppendState61_021a65c4Pvhi(ov, 1, 0);
+			InitAndAppendState61_021a65c4(ov, 1, 0);
 		}
 		wantCounter = 1;
 		wantByte = 1;
@@ -990,13 +990,13 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			wantCounter = 0;
 		}
 		if (func_0202c508(search) != 0) {
-			_Z27EnqueueEventTag147_021cdaa0v();
+			EnqueueEventTag147_021cdaa0();
 		}
 		if (wantCounter != 0) {
 			_Z17SetMainBrightnessP13GameResourcesii(ov, 0, 15);
 		}
 		if (wantByte != 0) {
-			_Z17SetByteField0x253Pv(actor);
+			SetByteField0x253(actor);
 		}
 		for (i = 0; i < ids->count; i++) {
 			struct Combatant0219e384* c = (struct Combatant0219e384*)

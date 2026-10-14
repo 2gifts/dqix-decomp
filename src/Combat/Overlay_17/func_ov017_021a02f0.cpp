@@ -4,7 +4,7 @@
 
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 void BackupPairTableToBuffer(int* out);
-extern "C" void _Z22ReadGlobalPair020bb910Pi(int* dst);
+void ReadGlobalPair020bb910(int* dst);
 extern "C" int func_020bb588(unsigned int size, int a, int b);
 extern "C" void func_0207de48(void* pObj, int a, int b);
 extern "C" void func_020542b4(void* a, void* b, void* c);
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov017_021a02f0(Battle021a02f0* self) {
     }
 
     BackupPairTableToBuffer(self->backups[0].table);
-    _Z22ReadGlobalPair020bb910Pi(self->backups[0].pair);
+    ReadGlobalPair020bb910(self->backups[0].pair);
     func_020bb588(0x20000, 0, 0);
     func_020bb588(0x20000, 0, 0);
 
@@ -76,12 +76,12 @@ extern "C" ARM void func_ov017_021a02f0(Battle021a02f0* self) {
                       data_ov017_021d6924[i].b);
         if (i == 1) {
             BackupPairTableToBuffer(self->backups[2].table);
-            _Z22ReadGlobalPair020bb910Pi(self->backups[2].pair);
+            ReadGlobalPair020bb910(self->backups[2].pair);
         }
     }
 
     BackupPairTableToBuffer(self->backups[1].table);
-    _Z22ReadGlobalPair020bb910Pi(self->backups[1].pair);
+    ReadGlobalPair020bb910(self->backups[1].pair);
 
     for (int j = 0; j < 4; j++) {
         func_020542b4(&self->groups[j], &self->allocators[j + 1], &self->slots[j + 1]);

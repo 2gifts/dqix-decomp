@@ -8,7 +8,7 @@
 #define data_ov000_021830d8 data_ov000_02184184
 #endif
 extern "C" int func_ov000_02153e40(void* obj, short* buf, int max, int start);
-extern "C" void _Z24StoreThreeFields02167b54Piiii(int* obj, int a, int b, int c);
+void StoreThreeFields02167b54(int* obj, int a, int b, int c);
 int GetSubstructByte0x1c(unsigned char* obj);
 void SetSubstructByte0x1c(unsigned char* obj, unsigned char value);
 void SetSubstructFields0x10And0x18ClearFlag0x1(unsigned char* obj, int* src);
@@ -41,14 +41,14 @@ extern "C" ARM void func_ov000_02167fb0(struct Battle02167fb0* battle, GameObjec
     int isParty = (target->obj3D_.unknown_4_ >= 0 && target->obj3D_.unknown_4_ <= 3) ? 1 : 0;
     if (isParty) {
         cells = data_ov000_02183198;
-        _Z24StoreThreeFields02167b54Piiii(rotation, 0, 0x3244, 0);
+        StoreThreeFields02167b54(rotation, 0, 0x3244, 0);
     } else {
         int isGuest = (target->obj3D_.unknown_4_ >= 0xc0 && target->obj3D_.unknown_4_ <= 0xc7) ? 1 : 0;
         if (!isGuest) {
             return;
         }
         cells = data_ov000_021831d8;
-        _Z24StoreThreeFields02167b54Piiii(rotation, 0, 0, 0);
+        StoreThreeFields02167b54(rotation, 0, 0, 0);
     }
     for (int i = 0; i < 0x10; i++) {
         int cell = cells[i];

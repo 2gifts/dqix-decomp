@@ -47,7 +47,7 @@ extern "C" Combatant02162db0* _Z25GetCombatantWithFlag0x100P9GameStatei(GameStat
 extern "C" short* _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(Combatant02162db0* combatant);
 extern "C" int _Z28GetHalfwordEntryFromField150P22Field150Holder02052df8i(Combatant02162db0* combatant, int index);
 extern "C" void func_02052d7c(Combatant02162db0* combatant, int index, short value);
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState* gameState);
+void* GetPtrField0x2a04(GameState* gameState);
 void ClearBitsInWord(unsigned int* word, unsigned int mask);
 extern "C" void func_ov017_0218f5a4(GameResources* resources, int combatantId, int a, int b, int c);
 
@@ -103,7 +103,7 @@ extern "C" ARM int func_ov001_02162db0(void* args, int argc) {
 
     resources = func_ov017_0218b5b0();
     saved = (SavedSlot02162db0*)resources->unknown_ptr_array_371c[6];
-    _Z17GetPtrField0x2a04P9GameState(gameState);
+    GetPtrField0x2a04(gameState);
     gameState->GetGameObjectByIndex(data_ov001_02164d44[slot]);
 
     if (mode == 0) {

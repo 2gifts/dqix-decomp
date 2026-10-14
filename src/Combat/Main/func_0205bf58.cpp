@@ -33,9 +33,9 @@ struct NavigationRepeatDirections { unsigned char values[4]; };
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 int TestFlagMask(unsigned short*, int);
 int TestFlagInSecondWord(unsigned short*, unsigned int);
-extern "C" void _Z18ResetState0205bf3cP15Struct_0205bf3c(Struct_0205bf3c*);
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(Struct_0205bb84*);
-extern "C" void _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(Struct_0205c4a8*, int);
+void ResetState0205bf3c(Struct_0205bf3c*);
+int ComputeScaledSum0205bb84(Struct_0205bb84*);
+void AdvanceWrappedAccumulator0205c4a8(Struct_0205c4a8*, int);
 extern "C" void func_0205bb04(Struct_0205bf3c*, int);
 extern const NavigationKeys data_020e7db8;
 extern const NavigationSteps data_020e7dc4;
@@ -55,7 +55,7 @@ extern "C" ARM int func_0205bf58(Struct_0205bf3c* navigation, unsigned int ticks
         unsigned short key = keys.values[index];
         if (TestFlag0SetAndFlag1Clear(&data_02114e30, key)) {
             if (navigation->rowRepeat | navigation->columnRepeat) {
-                _Z18ResetState0205bf3cP15Struct_0205bf3c(navigation);
+                ResetState0205bf3c(navigation);
                 break;
             }
             NavigationSteps steps = data_020e7dc4;
@@ -74,16 +74,16 @@ extern "C" ARM int func_0205bf58(Struct_0205bf3c* navigation, unsigned int ticks
                     else if (navigation->row < 0) navigation->row = navigation->rows - 1;
                     if (navigation->key == 0x40) {
                         int total = navigation->count;
-                        if (total <= _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(navigation))
+                        if (total <= ComputeScaledSum0205bb84(navigation))
                             func_0205bb04(navigation, total - 1);
                     } else if (navigation->key == 0x80) {
-                        if (navigation->count <= _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(navigation))
+                        if (navigation->count <= ComputeScaledSum0205bb84(navigation))
                             navigation->row = 0;
                     }
                 } else {
                     if (navigation->rows <= navigation->row) navigation->row = previous;
                     else if (navigation->row < 0) navigation->row = previous;
-                    if (_Z24ComputeScaledSum0205bb84P15Struct_0205bb84(navigation) >= navigation->count)
+                    if (ComputeScaledSum0205bb84(navigation) >= navigation->count)
                         navigation->row = previous;
                 }
             } else if (navigation->key == 0x20 || navigation->key == 0x10) {
@@ -92,31 +92,31 @@ extern "C" ARM int func_0205bf58(Struct_0205bf3c* navigation, unsigned int ticks
                 if (navigation->columns <= navigation->column) {
                     if (navigation->wrapColumns) {
                         navigation->column = 0;
-                        if (navigation->pages > 1) _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(navigation, 1);
+                        if (navigation->pages > 1) AdvanceWrappedAccumulator0205c4a8(navigation, 1);
                     } else {
                         if (navigation->pages == 1) navigation->column = previous;
                         else {
                             navigation->column = 0;
-                            _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(navigation, 1);
+                            AdvanceWrappedAccumulator0205c4a8(navigation, 1);
                         }
                     }
                 } else if (navigation->column < 0) {
                     if (navigation->wrapColumns) {
                         navigation->column = navigation->columns - 1;
-                        if (navigation->pages > 1) _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(navigation, -1);
+                        if (navigation->pages > 1) AdvanceWrappedAccumulator0205c4a8(navigation, -1);
                     } else {
                         if (navigation->pages == 1) navigation->column = previous;
                         else {
                             navigation->column = navigation->columns - 1;
-                            _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(navigation, -1);
+                            AdvanceWrappedAccumulator0205c4a8(navigation, -1);
                         }
                     }
                 }
-                if (_Z24ComputeScaledSum0205bb84P15Struct_0205bb84(navigation) >= navigation->count) {
+                if (ComputeScaledSum0205bb84(navigation) >= navigation->count) {
                     if (navigation->pages == 1) navigation->column = previous;
                     else {
                         navigation->column = 0;
-                        _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(navigation, 1);
+                        AdvanceWrappedAccumulator0205c4a8(navigation, 1);
                     }
                 }
             }
@@ -136,19 +136,19 @@ extern "C" ARM int func_0205bf58(Struct_0205bf3c* navigation, unsigned int ticks
                 if (navigation->rows <= navigation->row) navigation->row = navigation->rows - 1;
                 else if (navigation->row < 0) navigation->row = 0;
                 int total = navigation->count;
-                if (total <= _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(navigation))
+                if (total <= ComputeScaledSum0205bb84(navigation))
                     func_0205bb04(navigation, total - 1);
                 if (navigation->key == 0x40 || navigation->key == 0x20) {
                     int total = navigation->count;
-                    if (total <= _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(navigation))
+                    if (total <= ComputeScaledSum0205bb84(navigation))
                         func_0205bb04(navigation, total - 1);
                 } else if (navigation->key == 0x80 || navigation->key == 0x10) {
-                    if (navigation->count <= _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(navigation))
+                    if (navigation->count <= ComputeScaledSum0205bb84(navigation))
                         navigation->row = 0;
                 }
             }
         }
-        if (TestFlagInSecondWord(&data_02114e30, 0xf0)) _Z18ResetState0205bf3cP15Struct_0205bf3c(navigation);
+        if (TestFlagInSecondWord(&data_02114e30, 0xf0)) ResetState0205bf3c(navigation);
         return 1;
     } else if (navigation->columnRepeat) {
         if (TestFlagMask(&data_02114e30, 0xf0)) {
@@ -161,21 +161,21 @@ extern "C" ARM int func_0205bf58(Struct_0205bf3c* navigation, unsigned int ticks
                 navigation->column += navigation->step;
                 if (navigation->columns <= navigation->column) {
                     navigation->column = navigation->columns - 1;
-                    _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(navigation, 1);
+                    AdvanceWrappedAccumulator0205c4a8(navigation, 1);
                 } else if (navigation->column < 0) {
                     navigation->column = 0;
-                    _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(navigation, -1);
+                    AdvanceWrappedAccumulator0205c4a8(navigation, -1);
                 }
-                if (_Z24ComputeScaledSum0205bb84P15Struct_0205bb84(navigation) >= navigation->count) {
+                if (ComputeScaledSum0205bb84(navigation) >= navigation->count) {
                     if (navigation->pages == 1) navigation->column = 0;
                     else {
                         navigation->column = 0;
-                        _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(navigation, 1);
+                        AdvanceWrappedAccumulator0205c4a8(navigation, 1);
                     }
                 }
             }
         }
-        if (TestFlagInSecondWord(&data_02114e30, 0xf0)) _Z18ResetState0205bf3cP15Struct_0205bf3c(navigation);
+        if (TestFlagInSecondWord(&data_02114e30, 0xf0)) ResetState0205bf3c(navigation);
         return 1;
     }
     return 0;

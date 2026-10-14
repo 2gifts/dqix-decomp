@@ -2,8 +2,8 @@
 
 int InvokeWithTempHandlerOverride020ce704(int a, int b);
 extern "C" void func_020ce234(int value, int* ptr);
-extern "C" void _Z35WaitWhileInterruptsDisabled020ce188v(void);
-extern "C" void _Z33WaitForCallbackCompletion020ce148v(void);
+void WaitWhileInterruptsDisabled020ce188(void);
+void WaitForCallbackCompletion020ce148(void);
 extern void (*data_020f2298)(void);
 
 // USA: func_020ce758  (semantic: InvokeAndAwaitCallback020ce758)
@@ -13,8 +13,8 @@ extern "C" ARM int func_020ce758(void) {
     if (result != 0) {
         return result;
     }
-    data_020f2298 = _Z35WaitWhileInterruptsDisabled020ce188v;
+    data_020f2298 = WaitWhileInterruptsDisabled020ce188;
     data_020f2298();
-    data_020f2298 = _Z33WaitForCallbackCompletion020ce148v;
+    data_020f2298 = WaitForCallbackCompletion020ce148;
     return local;
 }

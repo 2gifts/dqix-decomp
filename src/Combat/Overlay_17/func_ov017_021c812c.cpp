@@ -3,7 +3,7 @@
 #include "std_library_functions.h"
 
 void* GetData02100044(void);
-extern "C" ARM void* _Z20GetField6b0_021b8470Pv(void* obj);
+ARM void* GetField6b0_021b8470(void* obj);
 extern "C" int func_ov000_0215e9fc(void* obj, short* buf, int max, int start);
 extern "C" int func_ov000_0215eb1c(void* obj, short* buf, int max, int start);
 int GetSubstructByte0x1c(unsigned char* obj);
@@ -49,7 +49,7 @@ extern "C" ARM void func_ov017_021c812c(unsigned char mode, int flag) {
         for (int i = 0; i < 8; i++) {
             fp->monsters[i] = 0xff;
         }
-        void* obj = _Z20GetField6b0_021b8470Pv(*(void**)(base + 0x3000 + regionalOffset));
+        void* obj = GetField6b0_021b8470(*(void**)(base + 0x3000 + regionalOffset));
         if (obj != NULL) {
             short buf[8];
             int n = func_ov000_0215e9fc(obj, buf, 8, 0x10);

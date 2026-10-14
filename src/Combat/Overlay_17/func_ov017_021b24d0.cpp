@@ -18,8 +18,8 @@ void PushInputLogB(int value);
 void PushInputLogA(int value);
 extern "C" void func_ov011_0218438c(char* obj);
 extern "C" void func_ov011_02184550(char* obj, SafeAllocator* allocator, void* data, unsigned int length);
-extern "C" void _Z26InitAndCreateTypeB021845c8PcPvj(char* obj, void* buffer, unsigned int size);
-extern "C" void _Z17InitEntry02184640PcS_(char* obj, char* entry);
+void InitAndCreateTypeB021845c8(char* obj, void* buffer, unsigned int size);
+void InitEntry02184640(char* obj, char* entry);
 extern "C" void func_ov011_02184694(char* obj);
 void SetBitsInField4(unsigned int* field, unsigned int bits);
 void Set3DClearColor(int a, int b, int c, int d, int e);
@@ -89,8 +89,8 @@ extern "C" ARM int func_ov017_021b24d0(Task021b24d0* task) {
         task->onAllocate(&task->allocator, data_ov017_021d83f0.scene);
     }
     unsigned int size = task->allocator.GetMaxPossibleAllocation();
-    _Z26InitAndCreateTypeB021845c8PcPvj(data_ov017_021d83f0.scene, task->allocator.Allocate(size), size);
-    _Z17InitEntry02184640PcS_(data_ov017_021d83f0.scene, ((Region2cc*)((char*)res + Field2cc))->entry);
+    InitAndCreateTypeB021845c8(data_ov017_021d83f0.scene, task->allocator.Allocate(size), size);
+    InitEntry02184640(data_ov017_021d83f0.scene, ((Region2cc*)((char*)res + Field2cc))->entry);
     loader->RemoveTask(task->taskId);
 #if !defined(jpn)
     task->taskId = -1;

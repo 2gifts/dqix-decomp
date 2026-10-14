@@ -14,12 +14,12 @@ struct TaggedNumber02184c30 {
     union { int i; float f; } value;
 };
 
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" int _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(struct TaggedNumber02184c30* v);
+void* GetGlobalField0x1c020421a0();
+int GetTaggedValueAsInt_02184c30(struct TaggedNumber02184c30* v);
 
 // USA: func_ov011_02188014  (semantic: Trans_02188014)
 extern "C" ARM int func_ov011_02188014(struct TaggedNumber02184c30* params, int count) {
-    int value = _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[0]);
-    *(int*)((char*)_Z26GetGlobalField0x1c020421a0v() + R(0x86c, 0x99c)) = value;
+    int value = GetTaggedValueAsInt_02184c30(&params[0]);
+    *(int*)((char*)GetGlobalField0x1c020421a0() + R(0x86c, 0x99c)) = value;
     return 1;
 }

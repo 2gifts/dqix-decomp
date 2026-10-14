@@ -5,12 +5,12 @@
 #if defined(jpn)
 #define _Z35NotifyLocalizedResourceLoad020dcfc8iPc func_020de9cc
 #endif
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 extern "C" void _Z35NotifyLocalizedResourceLoad020dcfc8iPc(int id, char* buf);
 extern "C" void func_02046608(int a, int b, void* fmt, void* dst, int p4, int p5, int p6);
 struct Struct_0205d81c;
 struct Elem_0205d81c;
-extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 struct StructA0205d5d0;
 #if defined(jpn)
 extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
@@ -37,11 +37,11 @@ extern "C" ARM void func_ov000_021781f8(char* obj, struct InStruct_021781f8* in)
 #if !defined(jpn)
     char text[0x800];
 #endif
-    char* buf = *(char**)(_Z26GetGlobalField0x1c020421a0v() + textOffset);
+    char* buf = *(char**)(GetGlobalField0x1c020421a0() + textOffset);
     memset(buf, 0, textSize);
     _Z35NotifyLocalizedResourceLoad020dcfc8iPc(*(short*)(obj + 0x26 + *(signed char*)(obj + cursorOffset) * 2), buf);
 #if !defined(jpn)
-    func_02046608(_Z26GetGlobalField0x1c020421a0v(), 0xa, buf, text, 0x72, 0, 0);
+    func_02046608(GetGlobalField0x1c020421a0(), 0xa, buf, text, 0x72, 0, 0);
 #endif
     s = obj + 0x188;
 #if defined(jpn)
@@ -49,7 +49,7 @@ extern "C" ARM void func_ov000_021781f8(char* obj, struct InStruct_021781f8* in)
 #else
     msg = text;
 #endif
-    if (_Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)s, 0x21)) {
+    if (FindElementByC40205d81c((struct Struct_0205d81c*)s, 0x21)) {
         APPLY_TEXT((struct StructA0205d5d0*)s, 0x21, msg);
         return;
     }

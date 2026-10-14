@@ -7,14 +7,14 @@ struct TableA68;
 struct Struct0200fb08;
 struct Obj_02184ad8;
 
-extern "C" void _Z22SetModeClamped0209ca70Pvi(void* obj, int val);
-extern "C" void _Z27SetStateAndDispatch0205e9f4P11Obj0205e9f4i(struct Obj0205e9f4* obj, int state);
-extern "C" void _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(struct Actor0209c3b4* actor, int val);
+void SetModeClamped0209ca70(void* obj, int val);
+void SetStateAndDispatch0205e9f4(struct Obj0205e9f4* obj, int state);
+void SetStateAndDispatch0209c3b4(struct Actor0209c3b4* actor, int val);
 void SetByte0x7f70(void* obj, unsigned char value);
-extern "C" void* _Z38SetFieldAndClearBufferIfType7_0216b1c4Pvi(void* a, int id);
-extern "C" void* _Z23GetNodeIfType6_0216ae9cPvi(void* a, int id);
-extern "C" unsigned char _Z24NormalizeField5_0200fb08P14Struct0200fb08(struct Struct0200fb08* obj);
-extern "C" void _Z24SetField1c8True_02184ad8P12Obj_02184ad8(struct Obj_02184ad8* obj);
+void* SetFieldAndClearBufferIfType7_0216b1c4(void* a, int id);
+void* GetNodeIfType6_0216ae9c(void* a, int id);
+unsigned char NormalizeField5_0200fb08(struct Struct0200fb08* obj);
+void SetField1c8True_02184ad8(struct Obj_02184ad8* obj);
 void* FindEntryByKey(struct TableA68* table, int key);
 
 class UiNode0216c810 {
@@ -72,7 +72,7 @@ extern "C" int func_ov004_0216b2c8(void* obj, int id, int a, int b);
 extern "C" void func_ov004_0216b20c(void* a0, int key, int b, int c);
 extern "C" void func_ov023_021f9ba8(void* node, unsigned short count);
 extern "C" struct TableA68* func_ov023_021fa598(void* node);
-extern "C" MessageWindow0216c810* _Z26GetGlobalField0x1c020421a0v();
+MessageWindow0216c810* GetGlobalField0x1c020421a0();
 extern "C" void func_0204500c(MessageWindow0216c810* win, void* entry, int a, int b);
 extern "C" void func_ov023_021f8120(void* node);
 extern "C" void func_ov023_021f7eb8(void* node, void* a, int buf, int mode, int a5, int a6, int a7, int a8, int a9, int a10);
@@ -92,13 +92,13 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
     int msg;
     UiNode0216c810* node;
 
-    _Z22SetModeClamped0209ca70Pvi(data_02109bf4, 3);
-    _Z27SetStateAndDispatch0205e9f4P11Obj0205e9f4i(&data_02108760, 3);
+    SetModeClamped0209ca70(data_02109bf4, 3);
+    SetStateAndDispatch0205e9f4(&data_02108760, 3);
     data_ov004_02171034.byte4 = 3;
     data_ov004_02171034.byte1 = 3;
     data_ov004_02171034.messageId = 0;
     if (data_ov004_02171034.state3 != 4) {
-        _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i((struct Actor0209c3b4*)data_02109bf4, 2);
+        SetStateAndDispatch0209c3b4((struct Actor0209c3b4*)data_02109bf4, 2);
     }
     gs = GameState::GetInstance();
     GetPtrField0x2a04(gs);
@@ -117,7 +117,7 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
         mode = 1;
         sub = 0;
         msg = 0x12e;
-        _Z38SetFieldAndClearBufferIfType7_0216b1c4Pvi(a, msg);
+        SetFieldAndClearBufferIfType7_0216b1c4(a, msg);
         data_ov004_02171034.messageId = msg;
         func_ov004_0216b498(a, mode, sub);
         for (int i = 0; i < 3; i++) {
@@ -157,7 +157,7 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
         mode = 2;
         sub = 0;
         msg = 0x12d;
-        _Z38SetFieldAndClearBufferIfType7_0216b1c4Pvi(a, msg);
+        SetFieldAndClearBufferIfType7_0216b1c4(a, msg);
         data_ov004_02171034.messageId = msg;
         func_ov004_0216b498(a, mode, sub);
         for (int i = 0; i < 2; i++) {
@@ -176,7 +176,7 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
     } else if (data_ov004_02171034.state3 == 3) {
         mode = 3;
         msg = 0x12c;
-        _Z38SetFieldAndClearBufferIfType7_0216b1c4Pvi(a, msg);
+        SetFieldAndClearBufferIfType7_0216b1c4(a, msg);
         data_ov004_02171034.messageId = msg;
         func_ov004_0216b498(a, mode, sub);
         func_ov004_0216b2c8(a, msg, 0x32, sub);
@@ -195,7 +195,7 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
         mode = 1;
         sub = 0;
         msg = 0x12e;
-        _Z38SetFieldAndClearBufferIfType7_0216b1c4Pvi(a, msg);
+        SetFieldAndClearBufferIfType7_0216b1c4(a, msg);
         data_ov004_02171034.messageId = msg;
         func_ov004_0216b498(a, mode, sub);
         for (int i = 0; i < 3; i++) {
@@ -223,7 +223,7 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
         if (text == 0) return 0;
         if (func_ov023_021f6f10(text) != 4) return 0;
         struct TableA68* table = func_ov023_021fa598(text);
-        MessageWindow0216c810* win = _Z26GetGlobalField0x1c020421a0v();
+        MessageWindow0216c810* win = GetGlobalField0x1c020421a0();
         win->busy = 1;
         func_0204500c(win, FindEntryByKey(table, 0x5dc), 0, 0xe3);
         win->flag19ca = 0;
@@ -236,12 +236,12 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
         return 0;
     }
 
-    _Z24SetField1c8True_02184ad8P12Obj_02184ad8((struct Obj_02184ad8*)a);
+    SetField1c8True_02184ad8((struct Obj_02184ad8*)a);
     int y;
-    void* panel = _Z23GetNodeIfType6_0216ae9cPvi(a, 0xd2);
+    void* panel = GetNodeIfType6_0216ae9c(a, 0xd2);
     func_ov023_021f8120(panel);
     y = 0x60;
-    unsigned char kind = _Z24NormalizeField5_0200fb08P14Struct0200fb08((struct Struct0200fb08*)GameState::GetInstance());
+    unsigned char kind = NormalizeField5_0200fb08((struct Struct0200fb08*)GameState::GetInstance());
     Bytes6 rows = data_ov004_02170174;
     int n;
     switch (mode) {
@@ -274,7 +274,7 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
         break;
     }
     data_ov004_02171034.cursorY = y;
-    _Z24SetField1c8True_02184ad8P12Obj_02184ad8((struct Obj_02184ad8*)a);
+    SetField1c8True_02184ad8((struct Obj_02184ad8*)a);
     if (mode == 1 && data_ov004_02171034.state3 != 5) {
         func_ov004_0216ba70(a);
     }

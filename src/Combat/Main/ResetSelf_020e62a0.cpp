@@ -2,11 +2,11 @@
 
 #pragma define_section initcode ".init" RX
 
-extern "C" void _Z26ResetAndReturnSelf0208e870Pc(char* obj);
+void ResetAndReturnSelf0208e870(char* obj);
 
 extern char data_02108fe4;
 
 // USA: func_020e62a0
 extern "C" __declspec(initcode) ARM void __sinit_020e62a0(void) {
-    _Z26ResetAndReturnSelf0208e870Pc(&data_02108fe4);
+    ResetAndReturnSelf0208e870(&data_02108fe4);
 }

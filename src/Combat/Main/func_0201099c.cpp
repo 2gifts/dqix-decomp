@@ -169,31 +169,31 @@ struct Ctx0209a810 {
 };
 
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
-extern "C" void _Z26ResetAndReturnSelf020dfc2cPv(void* p);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40* p);
-extern "C" void _Z22ResetAndDetach020dfc6cP14Struct020dfc40(Struct020dfc40* p);
+void TailForward02012da4(AllocatorUnion* alloc, void* data);
+void ResetAndReturnSelf020dfc2c(void* p);
+void ResetStruct020dfc40(Struct020dfc40* p);
+void ResetAndDetach020dfc6c(Struct020dfc40* p);
 extern "C" void func_020dfec0(Struct020dfc40* table, SafeAllocator* alloc, void* data, unsigned int size);
 void ResetStructFields(ResetFieldsStruct* s);
-extern "C" void _Z32ForwardResetStructFields02089ddcP17ResetFieldsStruct(ResetFieldsStruct* s);
-extern "C" void _Z39SetupHeaderAndRunBufferedScript02089de8PvS_PKc(void* param0, void* param1, const char* param2);
+void ForwardResetStructFields02089ddc(ResetFieldsStruct* s);
+void SetupHeaderAndRunBufferedScript02089de8(void* param0, void* param1, const char* param2);
 void* GetElementStride0x40(unsigned char* obj, int index);
 extern "C" void func_02086404(CombatSelection* selection);
 void SetFlagBitAndIndex(SetFlagBitStruct* s, int n);
-extern "C" char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* c, int key);
+char* GetFieldByKey020e0434(Container020e0310* c, int key);
 extern "C" void __clear(void* dst, unsigned int size);
 extern "C" int func_020426bc(void* a, void* b, int flag);
-extern "C" void _Z19ClearField00209a804Pi(int* p);
-extern "C" void _Z33SetupAndRunBufferedScript0209a810P11Ctx0209a810Pv(Ctx0209a810* ctx, void* value);
+void ClearField00209a804(int* p);
+void SetupAndRunBufferedScript0209a810(Ctx0209a810* ctx, void* value);
 int GetFieldAt0x50(Struct020865b0* p);
-extern "C" void _Z21SetBitInArray020865b8P25SetBitArrayStruct020865b8i(SetBitArrayStruct020865b8* s, int n);
-extern "C" void _Z22ZeroInitReturn020de824Pv(void* p);
-extern "C" void _Z16ZeroInit020de848Pv(void* p);
+void SetBitInArray020865b8(SetBitArrayStruct020865b8* s, int n);
+void ZeroInitReturn020de824(void* p);
+void ZeroInit020de848(void* p);
 extern "C" int func_020dea64(void* a, void* b, void* c, unsigned int d, const void* e, short f);
-extern "C" void* _Z22Clear0x54Bytes0208247cPv(void* obj);
+void* Clear0x54Bytes0208247c(void* obj);
 extern "C" void func_02082828(CharacterRecord0201099c* record);
 extern "C" void func_02083cbc(void* dst, void* src, void* tail);
-extern "C" Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
+Element020de650* FindElementByKey020dedd0(Container020dedd0* c, int key);
 extern "C" void func_02083e28(void* a, int arg2);
 
 extern AllocatorUnion data_02114e20;
@@ -267,8 +267,8 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
     nameAlloc.ResetAllocatorPointer();
     nameAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x5000), 0x5000);
     Struct020dfc40 names;
-    _Z26ResetAndReturnSelf020dfc2cPv(&names);
-    _Z19ResetStruct020dfc40P14Struct020dfc40(&names);
+    ResetAndReturnSelf020dfc2c(&names);
+    ResetStruct020dfc40(&names);
     BackgroundLoader::AddLockGlobal();
     unsigned int nameSize = 0;
     void* nameData = ExtractFileFromGP2(data_020ef08c, data_020ef0a5, &nameSize);
@@ -289,7 +289,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
     scriptAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x800), 0x800);
 #endif
     ResetStructFields(&templates);
-    _Z39SetupHeaderAndRunBufferedScript02089de8PvS_PKc(&templates, &scriptAlloc, NULL);
+    SetupHeaderAndRunBufferedScript02089de8(&templates, &scriptAlloc, NULL);
     int templateCount = templates.count;
 
     for (i = 0; i < 3; i++) {
@@ -361,7 +361,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
             }
         } while (found);
         used.ids[i] = nameId;
-        char* nameStr = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&names, nameId);
+        char* nameStr = GetFieldByKey020e0434((Container020e0310*)&names, nameId);
         unsigned char nameBuf[12];
         __clear(nameBuf, sizeof(nameBuf));
         func_020426bc(nameStr, nameBuf, 1);
@@ -380,16 +380,16 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
         gs->memberCount++;
     }
 
-    _Z32ForwardResetStructFields02089ddcP17ResetFieldsStruct(&templates);
+    ForwardResetStructFields02089ddc(&templates);
     SignedAllocatorHeader* scriptHeader = scriptAlloc.GetSignedAllocator();
     scriptAlloc.Destroy();
-    _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, scriptHeader);
+    TailForward02012da4(&data_02114e20, scriptHeader);
 #if !defined(jpn)
-    _Z22ResetAndDetach020dfc6cP14Struct020dfc40(&names);
+    ResetAndDetach020dfc6c(&names);
     SignedAllocatorHeader* nameHeader = nameAlloc.GetSignedAllocator();
     if (nameHeader != NULL) {
         nameAlloc.Destroy();
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, nameHeader);
+        TailForward02012da4(&data_02114e20, nameHeader);
     }
 
 #endif
@@ -397,8 +397,8 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
     if (templateCount > 0) {
         CharacterRecord0201099c record;
         Ctx0209a810 ctx;
-        _Z19ClearField00209a804Pi(&ctx.handle);
-        _Z33SetupAndRunBufferedScript0209a810P11Ctx0209a810Pv(&ctx, &skills);
+        ClearField00209a804(&ctx.handle);
+        SetupAndRunBufferedScript0209a810(&ctx, &skills);
         for (int j = 0; j < gs->memberCount; j++) {
             m = &gs->members[j];
             unsigned char vocation = GetFieldAt0x50((Struct020865b0*)m);
@@ -406,7 +406,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
             SkillUnlock0201099c* row = skills.rows[vocation];
             for (int k = 0; k < 20; k++) {
                 if (level >= row[k].level && row[k].level != 0) {
-                    _Z21SetBitInArray020865b8P25SetBitArrayStruct020865b8i((SetBitArrayStruct020865b8*)m, row[k].skill);
+                    SetBitInArray020865b8((SetBitArrayStruct020865b8*)m, row[k].skill);
                 }
             }
         }
@@ -421,8 +421,8 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
 #endif
         itemAlloc.Reset();
         Container020dedd0 items;
-        _Z22ZeroInitReturn020de824Pv(&items);
-        _Z16ZeroInit020de848Pv(&items);
+        ZeroInitReturn020de824(&items);
+        ZeroInit020de848(&items);
 #if defined(jpn)
         func_020e052c(&items, &itemAlloc, data_020f2a38, data_020e7610, 8, 1);
 #else
@@ -448,7 +448,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
                 ResourceScriptEntry* res = &entry;
                 for (int j = 0; j < gs->memberCount; j++) {
                     m = &gs->members[j];
-                    _Z22Clear0x54Bytes0208247cPv(res);
+                    Clear0x54Bytes0208247c(res);
                     func_02082490(res, data_0211e33c, size, m->levels[v], 0);
                     m->experience[v] = res->initial.value0;
                     m->skillPoints += res->initial.value4High;
@@ -459,7 +459,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
                         func_02083cbc(rec, &entry, entry.variants);
                         short* equipment = m->appearance.equipment;
                         for (int k = 0; k < 8; k++) {
-                            Element020de650* item = _Z24FindElementByKey020dedd0P17Container020dedd0i(&items, equipment[GetSlotMap0201099c(k)->appearanceIndex]);
+                            Element020de650* item = FindElementByKey020dedd0(&items, equipment[GetSlotMap0201099c(k)->appearanceIndex]);
                             if (item != NULL) {
                                 memcpy(&record.equipment[GetSlotMap0201099c(k)->recordIndex], item, sizeof(Element020de650));
                             }
@@ -487,6 +487,6 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
         BackgroundLoader::RemoveLockGlobal();
         SignedAllocatorHeader* itemHeader = itemAlloc.GetSignedAllocator();
         itemAlloc.Destroy();
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, itemHeader);
+        TailForward02012da4(&data_02114e20, itemHeader);
     }
 }

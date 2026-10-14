@@ -16,7 +16,7 @@ struct Struct0208f820 {
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0208f820
-extern "C" ARM void _Z30MaybeNotifyGrottoState0208f820P14Struct0208f820(struct Struct0208f820* p) {
+ARM void MaybeNotifyGrottoState0208f820(struct Struct0208f820* p) {
     if (p->flagB4 != 0 && p->flagB6 != 0) {
         if (_ZNK8Object3D9IsVisibleEv((unsigned char*)p + 8) == 0) {
             return;

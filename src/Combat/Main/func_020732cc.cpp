@@ -6,7 +6,7 @@ extern void* GetPtrField0x2a04(GameState* battleStruct);
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
 
 struct Field150Holder02052e2c;
-extern "C" short* _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(struct Field150Holder02052e2c* obj);
+short* GetField150Ptr0x488_02052e2c(struct Field150Holder02052e2c* obj);
 extern "C" void _Z18TryClearFlags0x130Pht(void* obj, unsigned short flag);
 
 struct KeyedList0207c378;
@@ -21,7 +21,6 @@ struct Slot020732cc {
 
 extern signed short data_020e8854[];
 extern signed short data_020e8864[];
-
 
 #if defined(jpn)
 enum { CombatantSlotOffset = 0x144 };
@@ -43,7 +42,7 @@ extern "C" ARM void func_020732cc(int arg0) {
             signed short idx = data_020e8854[i];
             char* base = *(char**)((char*)combatant + CombatantSlotOffset) + 0x194;
             slot = (struct Slot020732cc*)(base + (unsigned char)data_020e8864[idx] * 0x20);
-            list = _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(
+            list = GetField150Ptr0x488_02052e2c(
                 (struct Field150Holder02052e2c*)combatant);
             if (list != NULL && slot != NULL) {
                 if (list[idx] > 0) {

@@ -26,14 +26,14 @@ struct DigitPanel02169d10
 extern "C" void __clear(void* buf, int size);
 void AppendXYTag(char* text, int x, int y);
 void AppendPaletteTag(char* text, int palette);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
-extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char* text, int a, int b, int c, int d, int e);
+void AppendString02042058(char* text, const char* append);
+void AppendFrameTag02041c08(char* text, int a, int b, int c, int d, int e);
 void AppendUaTag(char* text, int a, int b, int c);
 void AppendDbTag(char* text, int a, int b, int c);
 void AppendSizeTag(char* text, int size);
 void AppendNameTag(char* text, int item, const char* itemText);
 void AppendXTag(char* text, int x);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* c, int key);
+const char* GetFieldByKey020e0434(Container020e0310* c, int key);
 
 extern "C" const char data_ov003_02180137[];
 extern "C" const char data_ov003_02180145[];
@@ -55,17 +55,17 @@ extern "C" ARM void func_ov003_02169d10(DigitPanel02169d10* self, char* text, in
         AppendPaletteTag(text, 0xd);
     else
         AppendPaletteTag(text, 0xf);
-    _Z20AppendString02042058PcPKc(text, data_ov003_02180137);
+    AppendString02042058(text, data_ov003_02180137);
     AppendXYTag(text, cursor * 8 + 0x23, 0x1b);
     if (self->downActive_)
         AppendPaletteTag(text, 0xd);
     else
         AppendPaletteTag(text, 0xf);
-    _Z20AppendString02042058PcPKc(text, data_ov003_02180145);
+    AppendString02042058(text, data_ov003_02180145);
     AppendPaletteTag(text, 0xf);
  #endif
     if (framed)
-        _Z22AppendFrameTag02041c08Pciiiii(text, cursor, 3, 0xb, 3, 0xa);
+        AppendFrameTag02041c08(text, cursor, 3, 0xb, 3, 0xa);
     AppendUaTag(text, cursor, self->upActive_, 2);
     AppendDbTag(text, cursor, self->downActive_, 2);
     AppendSizeTag(text, 0xc);
@@ -79,10 +79,10 @@ extern "C" ARM void func_ov003_02169d10(DigitPanel02169d10* self, char* text, in
         if (i < 4)
             AppendNameTag(text, i, buf);
         else
-            _Z20AppendString02042058PcPKc(text, data_ov003_02180159);
+            AppendString02042058(text, data_ov003_02180159);
     }
 #if !defined(jpn)
     AppendXTag(text, 0x5c);
 #endif
-    _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 0x66));
+    AppendString02042058(text, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x66));
 }

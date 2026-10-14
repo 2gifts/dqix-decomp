@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Memory/HMRFAllocator.h"
 
-extern "C" void _Z29ProcessCurrentContext020bdc60v();
+void ProcessCurrentContext020bdc60();
 extern "C" int func_020bd99c(void* obj);
 extern "C" int func_020bdc24(void* objPtr);
 
@@ -42,7 +42,7 @@ extern "C" ARM void func_020bdb0c(struct Obj020bdb0c* obj, int arg2) {
     }
     obj->allocator->RestoreState(arg2);
     if (anyInvoked) {
-        _Z29ProcessCurrentContext020bdc60v();
+        ProcessCurrentContext020bdc60();
     }
     obj->allocator->SaveCurrentState(obj->list.numElements);
     func_020bdc24(obj);

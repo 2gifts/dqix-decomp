@@ -13,7 +13,7 @@ static inline int IsTypeRange0207cc18(unsigned char type) { return type >= 8 && 
 extern "C" Save0207cc18* func_0205ec34(void*);
 int TestBitInByteArray(int, unsigned char*, int);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void*);
+int LoadBattleBlock020ac4c0(void*);
 void AddClamped11BitFieldAt0x14(S_a04c8*, unsigned int);
 void AddClamped9BitFieldMidAt0x14(S_a0494*, unsigned int);
 int CopyInBattleField0x7540(void*);
@@ -27,7 +27,7 @@ extern "C" ARM void func_0207cc18(void* obj, Entry0207cc18* entry) {
             if (!TestBitInByteArray((int)save, save->bits, index)) {
                 SetOrClearBitInArray(save, save->bits, index, 1);
                 BattleBlock0207cc18 block;
-                _Z23LoadBattleBlock020ac4c0Pv(&block);
+                LoadBattleBlock020ac4c0(&block);
                 unsigned char type = entry->type;
                 if (IsType0207cc18(type))
                     AddClamped11BitFieldAt0x14((S_a04c8*)&block, 1);

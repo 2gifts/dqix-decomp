@@ -1,12 +1,12 @@
 #include <globaldefs.h>
 
 struct Struct_0205c570;
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" int _Z26GetActiveScaledSum0205c570P15Struct_0205c570(struct Struct_0205c570* s);
+int GetGlobalField0x1c020421a0(void);
+int GetActiveScaledSum0205c570(struct Struct_0205c570* s);
 void SetField0x1e20(void* obj, void* value);
 void EmitScaledField0x440(void* obj, int a, int b);
 void InitSelfPointer(unsigned char* base);
-extern "C" int _Z35CheckGlobalObjState2AndInit0205cde8Ph(unsigned char* p);
+int CheckGlobalObjState2AndInit0205cde8(unsigned char* p);
 extern "C" void func_02045f3c(void* ctx, void* ptr, int a, int b, int c, int d, int e, int flag, int g, int h);
 
 struct Foo02042fcc {
@@ -29,16 +29,16 @@ struct Entry0205a3d0 {
     char pad8[0xd];
     unsigned char f15;
 };
-extern "C" void _Z26SetEntryFlag2ByKey0205a370P17Container0205a3d0i(struct Container0205a3d0* c, int key);
-extern "C" struct Entry0205a3d0* _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i(struct Container0205a3d0* c, int key);
+void SetEntryFlag2ByKey0205a370(struct Container0205a3d0* c, int key);
+struct Entry0205a3d0* FindEntryByHalfword0205a3d0(struct Container0205a3d0* c, int key);
 extern "C" void func_0205ae8c(void* obj);
 
 // USA: func_0205c96c
 extern "C" ARM void func_0205c96c(unsigned char* obj, int flag) {
     if (obj[0x233] != 0 && obj[0x232] != 0) {
-        unsigned char* ctx = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
+        unsigned char* ctx = (unsigned char*)GetGlobalField0x1c020421a0();
         int bound50 = *(int*)(obj + 0x50);
-        int sum = _Z26GetActiveScaledSum0205c570P15Struct_0205c570((struct Struct_0205c570*)(obj + 0x1c));
+        int sum = GetActiveScaledSum0205c570((struct Struct_0205c570*)(obj + 0x1c));
         int poolVal = 0x7fff;
         if (obj[0x234] == 0) poolVal = 0x3def;
 
@@ -50,7 +50,7 @@ extern "C" ARM void func_0205c96c(unsigned char* obj, int flag) {
             InitSelfPointer(ctx);
         }
 
-        if (_Z35CheckGlobalObjState2AndInit0205cde8Ph(obj) != 0) {
+        if (CheckGlobalObjState2AndInit0205cde8(obj) != 0) {
             ctx[0x19b0] = 1;
 
             int a = *(int*)(obj + 0x7c);
@@ -88,10 +88,10 @@ extern "C" ARM void func_0205c96c(unsigned char* obj, int flag) {
                 unsigned short ev = *(unsigned short*)(ctx + 0x2e4);
 
                 if (p2d8 != NULL && ctx2 != NULL) {
-                    _Z26SetEntryFlag2ByKey0205a370P17Container0205a3d0i((struct Container0205a3d0*)ctx2, ev);
-                    struct Entry0205a3d0* entry = _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i((struct Container0205a3d0*)ctx2, ev);
+                    SetEntryFlag2ByKey0205a370((struct Container0205a3d0*)ctx2, ev);
+                    struct Entry0205a3d0* entry = FindEntryByHalfword0205a3d0((struct Container0205a3d0*)ctx2, ev);
                     if (entry != NULL) entry->f15 |= 8;
-                    struct Entry0205a3d0* entry2 = _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i((struct Container0205a3d0*)ctx2, ev);
+                    struct Entry0205a3d0* entry2 = FindEntryByHalfword0205a3d0((struct Container0205a3d0*)ctx2, ev);
                     if (entry2 != NULL) {
                         entry2->f4 = val1;
                         entry2->f6 = val2;

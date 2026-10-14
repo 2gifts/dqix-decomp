@@ -4,7 +4,7 @@
 #include "Util/Random.h"
 struct Container02070e60;
 struct Element021e2298 { unsigned short key; unsigned char type2; unsigned char type3; int unused; void* field8; unsigned short fieldC; };
-extern "C" Element021e2298* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(Container02070e60*,int);
+Element021e2298* SearchWithLow15Comparator02070fd0(Container02070e60*,int);
 extern "C" short func_ov000_0215cda0(void*);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" void func_ov000_0215cd44(void*,void*,GameObject*,int,int,int,int);
@@ -34,7 +34,7 @@ extern "C" ARM void* func_ov024_021e2298(Obj021e2298* obj,int unused,int id){
         int low=obj->battle->flags.low;
         for(int i=0;i<obj->battle->flags.count;i++){
             Party021e2298* party=&obj->battle->parties[i];
-            Element021e2298* e=_Z33SearchWithLow15Comparator02070fd0P17Container02070e60i((Container02070e60*)(data+0x400),party->key);
+            Element021e2298* e=SearchWithLow15Comparator02070fd0((Container02070e60*)(data+0x400),party->key);
             if(e){
                 if(e->field8)flags|=1;
                 if(e->fieldC)flags|=2;

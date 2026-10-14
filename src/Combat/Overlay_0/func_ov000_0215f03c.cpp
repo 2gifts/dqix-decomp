@@ -15,7 +15,7 @@ struct Container02070e60 {
     char pad0[4];
 };
 
-extern "C" Element0215f03c* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(struct Container02070e60* container, int key);
+Element0215f03c* SearchWithLow15Comparator02070fd0(struct Container02070e60* container, int key);
 
 struct Unit0215f03c {
     char pad0[0x3e];
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov000_0215f03c(Battle0215f03c* self) {
         members = group->members;
         for (j = 0; j < group->memberCount; j++) {
             unit = &units[members[j]];
-            Element0215f03c* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(&table->container, key);
+            Element0215f03c* e = SearchWithLow15Comparator02070fd0(&table->container, key);
             if (e != NULL) {
                 unit->name = e->name;
                 unit->field54 = e->field82;

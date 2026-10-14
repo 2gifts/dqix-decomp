@@ -26,10 +26,10 @@ struct Obj0218c178 {
     struct Container0205a3d0* container;
 };
 
-extern "C" void _Z26SetEntryFlag2ByKey0205a370P17Container0205a3d0i(struct Container0205a3d0*, int);
-extern "C" struct Entry0205a3d0* _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i(struct Container0205a3d0*, int);
-extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(struct Container0205a330*, int);
-extern "C" void _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(struct Container0205a3d0*, int, int);
+void SetEntryFlag2ByKey0205a370(struct Container0205a3d0*, int);
+struct Entry0205a3d0* FindEntryByHalfword0205a3d0(struct Container0205a3d0*, int);
+void IterateEntries0205a330(struct Container0205a330*, int);
+void SetEntryByte14ByKey0205a42c(struct Container0205a3d0*, int, int);
 extern "C" void func_0205ae8c(void*);
 
 // USA: func_ov019_0218c178  (semantic: ApplyBattleEntryState_0218c178)
@@ -39,25 +39,25 @@ extern "C" ARM void func_ov019_0218c178(struct Obj0218c178* obj) {
         struct Container0205a3d0* c = obj->container;
         if (c != NULL) {
             struct Entry0205a3d0* e;
-            _Z26SetEntryFlag2ByKey0205a370P17Container0205a3d0i(c, 1);
-            e = _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i(c, 1);
+            SetEntryFlag2ByKey0205a370(c, 1);
+            e = FindEntryByHalfword0205a3d0(c, 1);
             if (e != NULL) {
                 e->f15 = e->f15 | 8;
             }
-            _Z22IterateEntries0205a330P17Container0205a330i(
+            IterateEntries0205a330(
                 (struct Container0205a330*)c, battle->GetTickCount());
-            e = _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i(c, 1);
+            e = FindEntryByHalfword0205a3d0(c, 1);
             if (e != NULL) {
                 e->f4 = 0xd7;
                 e->f6 = 0x96;
             }
-            _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(c, 1, 0x24);
+            SetEntryByte14ByKey0205a42c(c, 1, 0x24);
         }
         func_0205ae8c((char*)obj + kAnimationOffset);
     } else {
         struct Container0205a3d0* c = obj->container;
         if (c != NULL) {
-            struct Entry0205a3d0* e = _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i(c, 1);
+            struct Entry0205a3d0* e = FindEntryByHalfword0205a3d0(c, 1);
             if (e != NULL) {
                 e->f15 = e->f15 & ~8;
             }

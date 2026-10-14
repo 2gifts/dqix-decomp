@@ -17,8 +17,8 @@ struct StructInit36e0;
 struct AlchemyPot;
 
 extern "C" void func_ov006_021547c8(AlchemyPot*);
-extern "C" void _Z27TailCallInitStruct_02153730P14StructInit36e0(StructInit36e0*);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v();
+void TailCallInitStruct_02153730(StructInit36e0*);
+char* GetGlobalField0x1c020421a0();
 
 class BackgroundLoader {
 public:
@@ -88,8 +88,8 @@ extern "C" ARM void func_ov006_02157cc0(AlchemyMenu* self)
         loader->RemoveTask(self->unk_358);
         self->unk_358 = -1;
     }
-    _Z27TailCallInitStruct_02153730P14StructInit36e0((StructInit36e0*)self->ingredients_);
-    *(int*)(_Z26GetGlobalField0x1c020421a0v() + R(0x228, 0x2d8)) = 0;
+    TailCallInitStruct_02153730((StructInit36e0*)self->ingredients_);
+    *(int*)(GetGlobalField0x1c020421a0() + R(0x228, 0x2d8)) = 0;
     if (self->allocators_ == 0)
         return;
     for (unsigned char i = 0; i < 10; i++)

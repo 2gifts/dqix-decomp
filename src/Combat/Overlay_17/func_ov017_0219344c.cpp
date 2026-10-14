@@ -59,7 +59,7 @@ unsigned int GetBitsInField0(unsigned int* obj, unsigned int mask);
 int TestFlagMask(unsigned short* pad, int buttons);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24** head);
 void ClearFlags0x40And0x80At0xe0(ByteFlags02033f2c* p);
-extern "C" int _Z29NotifyEntriesFlag256_0218df50PvS_(void* a, void* b);
+int NotifyEntriesFlag256_0218df50(void* a, void* b);
 extern "C" int func_ov017_0218dfd8(Actor0219344c* self);
 int GetField0xe4IfFlag0x40(BitFlag02033f44* p);
 int IsFlag0x1ceBit0x8Set(unsigned char* p);
@@ -69,10 +69,10 @@ extern "C" int func_ov017_02192b48(Grid0219344c* grid, Probe0219344c* probe, int
 unsigned char GetField0x397cValue(GameState* gs);
 void SetByteField0x253(void* obj);
 int SetByte0xbeShiftPrev(Bytes02033b88* p, int val);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int val);
+void CancelPendingAction020397cc(Obj020397cc* obj, int val);
 extern "C" void func_020531f0(GameObject* obj);
 unsigned char* GetElementStride0x24(unsigned char* p, int i);
-extern "C" void _Z27GetDeltaAndForward_0218daa8PvP4Vec3iih(void* res, Vec3* pos, int speed, int a, unsigned char b);
+void GetDeltaAndForward_0218daa8(void* res, Vec3* pos, int speed, int a, unsigned char b);
 unsigned char* GetActorEntryByIndex(ActorListManager* list, int i);
 
 #define SETUP_PROBE()                                          \
@@ -169,7 +169,7 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
         if (mode == 2 && i == 0 && outA != NULL && outB != NULL) {
             saved = self->position_;
             dest = &saved;
-            notifyA |= _Z29NotifyEntriesFlag256_0218df50PvS_(self, 0);
+            notifyA |= NotifyEntriesFlag256_0218df50(self, 0);
             notifyB |= notifyA;
             notifyB |= func_ov017_0218dfd8(self);
             Vector3i cur = self->position_;
@@ -187,7 +187,7 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
                     break;
                 }
                 if (GetField0xe4IfFlag0x40((BitFlag02033f44*)self)) {
-                    *outA |= _Z29NotifyEntriesFlag256_0218df50PvS_(self, 0);
+                    *outA |= NotifyEntriesFlag256_0218df50(self, 0);
                     *outB |= *outA;
                     *outB |= func_ov017_0218dfd8(self);
                     if (*outB != 0) {
@@ -200,7 +200,7 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
             Vector3fix_Add(&next, &step, &next);
             self->position_ = next;
             if (outA != NULL && outB != NULL) {
-                *outA |= _Z29NotifyEntriesFlag256_0218df50PvS_(self, 0);
+                *outA |= NotifyEntriesFlag256_0218df50(self, 0);
                 *outB |= *outA;
                 *outB |= func_ov017_0218dfd8(self);
                 if (GetField0xe4IfFlag0x40((BitFlag02033f44*)self) && *outB != 0) {
@@ -260,7 +260,7 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
     } else if (oldAC == 0) {
         SetByte0xbeShiftPrev((Bytes02033b88*)self, 0);
         if (player->obj3D_.unknown_4_ == self->unknown_4_) {
-            _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)player, 1);
+            CancelPendingAction020397cc((Obj020397cc*)player, 1);
             if (!player->obj3D_.GetFlag(0x1000)) {
                 func_020531f0(player);
             }
@@ -275,12 +275,12 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
         if (link->kind == 2) {
             unsigned char* elem = GetElementStride0x24(zone2, link->index);
             if (elem != NULL) {
-                _Z27GetDeltaAndForward_0218daa8PvP4Vec3iih(res2, (Vec3*)elem, 0xccc, 0, 0);
+                GetDeltaAndForward_0218daa8(res2, (Vec3*)elem, 0xccc, 0, 0);
             }
         } else if (hits == 0 && found == 0 && link->kind == 5) {
             unsigned char* actor = GetActorEntryByIndex((ActorListManager*)zone2, link->index);
             if (actor != NULL) {
-                _Z27GetDeltaAndForward_0218daa8PvP4Vec3iih(res2, (Vec3*)(actor + 0x24), 0xc51, 0, 0);
+                GetDeltaAndForward_0218daa8(res2, (Vec3*)(actor + 0x24), 0xc51, 0, 0);
             }
         }
     }

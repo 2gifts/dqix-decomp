@@ -12,23 +12,23 @@ extern "C" ARM void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3Fixed
 
 extern "C" int _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, char* data, int mode);
 extern "C" int fix32_Atan2(int x, int z);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
+int fix32ReduceAngle0To2Pi(int angle);
 
 extern char data_020efe6c;
 extern char data_020efe71;
 
 struct Obj02041470 {
     char pad0[0x44];
-    struct Vec3 posTarget;   // 0x44
+    struct Vec3 posTarget;
     char pad1[0xac - 0x50];
-    unsigned short fac;      // 0xac
-    int fb0;                 // 0xb0
-    struct Vec3 posCurrent;  // 0xb4
+    unsigned short fac;
+    int fb0;
+    struct Vec3 posCurrent;
     char pad2[0xd0 - 0xc0];
-    int fd0;                 // 0xd0
+    int fd0;
     unsigned char bit0d4 : 1;
     unsigned char runFlag : 1;
-    unsigned char restd4 : 6; // 0xd4
+    unsigned char restd4 : 6;
 };
 
 // USA: func_02041470  (semantic: MoveTowardTargetAndSetAnim_02041470)
@@ -51,6 +51,6 @@ extern "C" ARM void func_02041470(struct Obj02041470* obj, struct Vec3* target) 
         int scale = fix32_Divide(0x1000, dist);
         _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&diff, scale, (struct Vec3Fixed02030e2c*)&diff);
         int angle = fix32_Atan2(diff.x, diff.z);
-        obj->fb0 = _Z22fix32ReduceAngle0To2Pii(angle);
+        obj->fb0 = fix32ReduceAngle0To2Pi(angle);
     }
 }

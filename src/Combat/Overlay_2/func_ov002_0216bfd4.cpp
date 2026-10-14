@@ -3,21 +3,21 @@
 struct Entry_0205d6a0;
 struct Outer020e28dc;
 struct Obj020e25e8;
-extern "C" char *_Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z24ReinitController02043204Pc(char *p);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(struct Entry_0205d6a0 *e, int a);
-extern "C" void _Z27ResetSelectionState020e25e8P11Obj020e25e8(struct Obj020e25e8 *o);
-extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(struct Outer020e28dc *o);
+char *GetGlobalField0x1c020421a0();
+void ReinitController02043204(char *p);
+void ResetEntryList0205d6a0(struct Entry_0205d6a0 *e, int a);
+void ResetSelectionState020e25e8(struct Obj020e25e8 *o);
+int GetInnerFlagBit0020e28dc(struct Outer020e28dc *o);
 extern "C" void func_ov002_0215b9a4(char *self, unsigned char key, int flag);
 
 // USA: func_ov002_0216bfd4
 extern "C" ARM void func_ov002_0216bfd4(char *base, unsigned char mode) {
-    char *g = _Z26GetGlobalField0x1c020421a0v();
+    char *g = GetGlobalField0x1c020421a0();
     if (*(unsigned char *) (base + 0x1000 + 0xc2e) != 0) {
         *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
         *(unsigned char *) (base + 0x1000 + 0xc2e) = 0;
         func_ov002_0215b9a4(base, *(int *) (base + 0x1000 + 0xbb8), 1);
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0 *) (base + 0x2c8 + 0xc00), 0);
+        ResetEntryList0205d6a0((struct Entry_0205d6a0 *) (base + 0x2c8 + 0xc00), 0);
     }
     *(unsigned char *) (base + 0x1000 + 0xc79) = mode;
     *(unsigned char *) (base + 0x1000 + 0xc30) = 1;
@@ -89,15 +89,15 @@ extern "C" ARM void func_ov002_0216bfd4(char *base, unsigned char mode) {
             break;
     }
     if (reset && *(void **) (base + 4) != NULL &&
-        _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(*(struct Outer020e28dc **) (base + 4)))
+        GetInnerFlagBit0020e28dc(*(struct Outer020e28dc **) (base + 4)))
     {
-        _Z27ResetSelectionState020e25e8P11Obj020e25e8(*(struct Obj020e25e8 **) (base + 4));
+        ResetSelectionState020e25e8(*(struct Obj020e25e8 **) (base + 4));
     }
     if (reinit) {
         if (!next) {
-            _Z24ReinitController02043204Pc(g);
+            ReinitController02043204(g);
         } else if (force) {
-            _Z24ReinitController02043204Pc(g);
+            ReinitController02043204(g);
         }
         *(int *) (base + 0x1000 + 0xbbc)           = 9;
         *(unsigned char *) (base + 0x1000 + 0xc30) = 0;

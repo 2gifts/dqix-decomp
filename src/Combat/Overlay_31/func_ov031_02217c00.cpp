@@ -33,7 +33,7 @@ struct ResourceWork02217c00 {
         char pad_30[0x1dc];
     } storage;
 };
-extern "C" int _Z14Setup_022187a4PcPvi(char*, void*, int);
+int Setup_022187a4(char*, void*, int);
 extern "C" int func_ov031_022188e4(ResourceWork02217c00*, const char*);
 extern "C" int func_ov031_02218468(ResourceWork02217c00*);
 extern const char data_ov031_02249db4[];
@@ -60,7 +60,7 @@ extern "C" ARM int func_ov031_02217c00(ResourceWork02217c00* work, ResourceConfi
         work->header.result = 1;
         return 1;
     }
-    switch (_Z14Setup_022187a4PcPvi((char*)work, &work->storage, work->header.config.fields.capacity)) {
+    switch (Setup_022187a4((char*)work, &work->storage, work->header.config.fields.capacity)) {
     case 0: {
         ResourceWork02217c00::Header* header = ResourceHeader02217c00(work);
         int result = 1;

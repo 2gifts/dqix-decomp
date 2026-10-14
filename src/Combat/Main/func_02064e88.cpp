@@ -37,9 +37,9 @@ struct LabelNode02064e88 {
 
 extern "C" unsigned short* func_02012fe4(void);
 int GetTableValueMod100(int, int);
-extern "C" int _Z19LookupTable020982a4ii(int, int);
+int LookupTable020982a4(int, int);
 void ClearField0xcBits24To29(struct Elem020984b0*);
-extern "C" int _Z28CollectEntriesByType020984dcP13Entry020984dciPS0_(struct Entry020984dc*, int, struct Entry020984dc**);
+int CollectEntriesByType020984dc(struct Entry020984dc*, int, struct Entry020984dc**);
 void* FindNodeByByteId(void*, int);
 extern "C" void __clear(void* buf, int size);
 extern "C" void func_02042764(struct Entry020984dc* entry, void* buf, int flag);
@@ -90,10 +90,10 @@ extern "C" ARM int func_02064e88(struct LabelNode02064e88** head, void* nodeDb, 
 
     global = func_02012fe4();
     zone = *global;
-    base = _Z19LookupTable020982a4ii((int)((char*)global + kResourceOffset),
+    base = LookupTable020982a4((int)((char*)global + kResourceOffset),
                                GetTableValueMod100((int)((char*)global + kResourceOffset), zone));
     ClearField0xcBits24To29((struct Elem020984b0*)((char*)global + kResourceOffset));
-    count = _Z28CollectEntriesByType020984dcP13Entry020984dciPS0_((struct Entry020984dc*)((char*)global + kResourceOffset),
+    count = CollectEntriesByType020984dc((struct Entry020984dc*)((char*)global + kResourceOffset),
                                          GetTableValueMod100((int)((char*)global + kResourceOffset), zone), entries);
     for (i = 0; i < count; i++) {
         id = i + 1 + base;

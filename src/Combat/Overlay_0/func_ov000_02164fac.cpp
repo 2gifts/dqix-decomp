@@ -17,24 +17,24 @@ extern "C" GameResources* func_ov017_0218b5b0();
 extern "C" void* func_0202ae18(void);
 extern "C" void func_02012de8(void);
 
-extern "C" void _Z24RunOverlayScript0216d1c4iP12StreamHeaderiPi(int, StreamHeader*, int, int*);
+void RunOverlayScript0216d1c4(int, StreamHeader*, int, int*);
 int CheckField0NonZero(int* obj);
-extern "C" void _Z21BlankFunction020d84f4v(void);
-extern "C" void* _Z24ResetObjectState02079a3cPv(void* obj);
+void BlankFunction020d84f4(void);
+void* ResetObjectState02079a3c(void* obj);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 int CheckField0x56bLowNibble(Obj02061bd8* obj);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
-extern "C" void _Z25FormatEffectStats02072c9ciPc(int combatantId, char* buf);
+void CopyInternalFields0207df50(Foo0207df50* p);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
+void FormatEffectStats02072c9c(int combatantId, char* buf);
 void ClearEightWords(Struct_203dafc* obj);
 extern "C" void func_02049c88(void* obj, void* state);
 void SetPtrFieldIfNonNull0x13c(void*, int);
 struct CombatantData02164fac;
 CombatantData02164fac* GetFieldAt0x150(unsigned char* obj);
 extern "C" void func_ov000_02166a94(void* work);
-extern "C" int _Z20GetFieldB08_0219e008Pv(void* ov);
-extern "C" void _Z17CopyState0207dfc8P13State0207dfc8S0_(State0207dfc8* src, State0207dfc8* dst);
+int GetFieldB08_0219e008(void* ov);
+void CopyState0207dfc8(State0207dfc8* src, State0207dfc8* dst);
 
 extern const char data_ov000_02183960[];
 extern const char data_ov000_02183976[];
@@ -109,7 +109,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
     SafeAllocator* allocator = GetAllocator38(res, 7);
     blocks = (Slot70*)res->unknown_2cc;
     allocator->Reset();
-    _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)&blocks[7]);
+    CopyInternalFields0207df50((Foo0207df50*)&blocks[7]);
     BackgroundLoader::AddLockGlobal();
     func_02012de8();
     ActionDataTables* table = GetData02108e10();
@@ -121,16 +121,16 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
         GetFileInNarc(data_0211e33c, data_ov000_02183976, &script, &scriptSize, 0);
         if (script != NULL) {
             func_02012de8();
-            _Z24RunOverlayScript0216d1c4iP12StreamHeaderiPi(work->scriptOwner, (StreamHeader*)script, scriptSize, &work->scriptState);
+            RunOverlayScript0216d1c4(work->scriptOwner, (StreamHeader*)script, scriptSize, &work->scriptState);
         }
     }
     if (CheckField0NonZero(search)) {
-        _Z21BlankFunction020d84f4v();
+        BlankFunction020d84f4();
     }
 
     unsigned char* buf = data_0211e33c;
     int capacity = 0x30000;
-    _Z24ResetObjectState02079a3cPv(&pair);
+    ResetObjectState02079a3c(&pair);
     const char* path = data_ov000_02183983;
     if (LoadAndDecompressGPCHeaderAndInnerFileInfo(&pair.pGPCFile, pair.machine,
             path, buf, size, capacity, false, 0)) {
@@ -156,12 +156,12 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
                 }
                 alloc = (SafeAllocator*)(model + 4);
                 alloc->Reset();
-                _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)(model + 0xcc));
-                _Z25RestorePairTables0207df90Pc((char*)(model + 0xcc));
+                CopyInternalFields0207df50((Foo0207df50*)(model + 0xcc));
+                RestorePairTables0207df90((char*)(model + 0xcc));
                 LoadFileIntoMemory(name, data_0211e33c, &size);
                 buf = data_0211e33c;
             } else {
-                _Z25FormatEffectStats02072c9ciPc(i, statsName);
+                FormatEffectStats02072c9c(i, statsName);
                 if (c->data->flags.male == 1) {
                     statsName[0] = 'w';
                 }
@@ -185,7 +185,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
             func_02049c88(c, &work->models[i]);
             func_02012de8();
             if (CheckField0x56bLowNibble((Obj02061bd8*)c)) {
-                _Z24BackupPairTables0207dfacPc((char*)(model + 0xcc));
+                BackupPairTables0207dfac((char*)(model + 0xcc));
                 if (c->info != NULL) {
                     sprintf(name, data_ov000_021839c0, c->info[0x11]);
                 }
@@ -208,7 +208,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
                 info2.fileData = buf;
                 c->object.LoadFromCCHROrCMOTArchive(&info2, NULL);
                 if (FindFilesInNarcBySubstring(buf, data_ov000_021839e2, &script2, &scriptSize2, 1)) {
-                    _Z24RunOverlayScript0216d1c4iP12StreamHeaderiPi((int)(model + 0x540), (StreamHeader*)script2, scriptSize2, &scriptState);
+                    RunOverlayScript0216d1c4((int)(model + 0x540), (StreamHeader*)script2, scriptSize2, &scriptState);
                     SetPtrFieldIfNonNull0x13c(c, scriptState);
                 }
             }
@@ -222,7 +222,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
                 }
             }
             if (CheckField0NonZero(search)) {
-                _Z21BlankFunction020d84f4v();
+                BlankFunction020d84f4();
             }
         }
     }
@@ -235,10 +235,10 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
     if (mem != NULL) {
         work->effectAllocator.CreateTypeA(mem, effectSize);
     }
-    if (_Z20GetFieldB08_0219e008Pv(res) == 0) {
-        _Z17CopyState0207dfc8P13State0207dfc8S0_((State0207dfc8*)res->unknown_2cc, (State0207dfc8*)work->state);
+    if (GetFieldB08_0219e008(res) == 0) {
+        CopyState0207dfc8((State0207dfc8*)res->unknown_2cc, (State0207dfc8*)work->state);
     } else {
-        _Z17CopyState0207dfc8P13State0207dfc8S0_((State0207dfc8*)&blocks[7], (State0207dfc8*)work->state);
+        CopyState0207dfc8((State0207dfc8*)&blocks[7], (State0207dfc8*)work->state);
     }
     pair.Reset();
     ZeroDestroyGPCPointer(&pair.pGPCFile);

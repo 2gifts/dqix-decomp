@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" void _Z28LockStagedTextureVRAMCopyingv();
+void LockStagedTextureVRAMCopying();
 extern "C" void MapVRAMBanksToTextureImage(int handle);
 extern "C" void MapVRAMBanksToTexturePalette(int value);
 extern "C" void MapVRAMBanksToMainBG(int v);
@@ -8,8 +8,8 @@ extern "C" void MapVRAMBanksToMainObj(int mode);
 ARM void ConfigurePairMode020bb48c(unsigned int mode, int installHandlers);
 extern "C" void MapVRAMBanksToSubBG(int);
 extern "C" void MapVRAMBanksToSubObj(int value);
-extern "C" void _Z26UpdateVRAMStagingVRAMBanksv(void);
-extern "C" void _Z30UnlockStagedTextureVRAMCopyingv(void);
+void UpdateVRAMStagingVRAMBanks(void);
+void UnlockStagedTextureVRAMCopying(void);
 
 struct Obj02097b34 {
     unsigned int field0;
@@ -24,7 +24,7 @@ struct Obj02097b34 {
 
 // USA: func_02097b34
 extern "C" ARM void func_02097b34(struct Obj02097b34* obj) {
-    _Z28LockStagedTextureVRAMCopyingv();
+    LockStagedTextureVRAMCopying();
     if (obj->field1e & 1) {
         unsigned int mask;
         unsigned short count;
@@ -46,6 +46,6 @@ extern "C" ARM void func_02097b34(struct Obj02097b34* obj) {
         MapVRAMBanksToSubBG(obj->field10);
         MapVRAMBanksToSubObj(obj->field14);
     }
-    _Z26UpdateVRAMStagingVRAMBanksv();
-    _Z30UnlockStagedTextureVRAMCopyingv();
+    UpdateVRAMStagingVRAMBanks();
+    UnlockStagedTextureVRAMCopying();
 }

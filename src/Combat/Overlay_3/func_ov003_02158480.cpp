@@ -14,24 +14,24 @@ struct PartyStatusPanel {
     signed char selected;
 };
 
-extern "C" void _Z22SetSublistEntriesFlag1Pvi(void*, int);
-extern "C" void _Z22SetSublistEntriesFlag2Pvi(void*, int);
-extern "C" void _Z24SetEntryFlagById02080b40Pvi(void*, int);
-extern "C" void _Z18DispatchEntryOp0x8Pvi(void*, int);
+void SetSublistEntriesFlag1(void*, int);
+void SetSublistEntriesFlag2(void*, int);
+void SetEntryFlagById02080b40(void*, int);
+void DispatchEntryOp0x8(void*, int);
 extern "C" int _Z28CountNonZeroEntries_0215570cP11Obj0215570c(PartyStatusPanel*);
-extern "C" unsigned char* _Z15GetFieldAt0x150Ph(unsigned char*);
-extern "C" void _Z31ClearSublistEntryFlag2_020806c4Pvi(void*, int);
-extern "C" void _Z19SetEntryHalfword0xePvii(void*, int, int);
+unsigned char* GetFieldAt0x150(unsigned char*);
+void ClearSublistEntryFlag2_020806c4(void*, int);
+void SetEntryHalfword0xe(void*, int, int);
 extern "C" void _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(void*, int, int);
-extern "C" void _Z27GetEntryFieldsAt0x602080828PviPsS0_(void*, int, short*, short*);
-extern "C" void _Z23GetEntryOutputs020808c8PviPsS0_(void*, int, short*, short*);
-extern "C" void _Z27SetEntryFieldsAt0x602080854Pviii(void*, int, int, int);
-extern "C" void _Z30ResolveEntryValueByKey02080fe0Pvii(void*, int, int);
+void GetEntryFieldsAt0x602080828(void*, int, short*, short*);
+void GetEntryOutputs020808c8(void*, int, short*, short*);
+void SetEntryFieldsAt0x602080854(void*, int, int, int);
+void ResolveEntryValueByKey02080fe0(void*, int, int);
 extern "C" void _Z22SetEntryHighNibble0x13P17Container02080cc0ii(void*, int, int);
-extern "C" void _Z32GetSublistEntryScaledXY_020807c4PviPsS0_(void*, int, short*, short*);
-extern "C" void _Z27GetEntryFieldsAt0xE02080878PviPsS0_(void*, int, short*, short*);
-extern "C" void _Z24SetEntryScaledXY020807fcPviii(void*, int, int, int);
-extern "C" void _Z27SetEntryFieldsAt0xE020808a4Pviii(void*, int, int, int);
+void GetSublistEntryScaledXY_020807c4(void*, int, short*, short*);
+void GetEntryFieldsAt0xE02080878(void*, int, short*, short*);
+void SetEntryScaledXY020807fc(void*, int, int, int);
+void SetEntryFieldsAt0xE020808a4(void*, int, int, int);
 extern "C" void func_020813ec(void*, int);
 
 // USA: func_ov003_02158480
@@ -42,10 +42,10 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
     short sub = 0x2b;
     short cell = 0x37;
 
-    _Z22SetSublistEntriesFlag1Pvi(entries, 6);
-    _Z22SetSublistEntriesFlag2Pvi(entries, 6);
-    _Z24SetEntryFlagById02080b40Pvi(entries, 0x43);
-    _Z18DispatchEntryOp0x8Pvi(entries, 0x43);
+    SetSublistEntriesFlag1(entries, 6);
+    SetSublistEntriesFlag2(entries, 6);
+    SetEntryFlagById02080b40(entries, 0x43);
+    DispatchEntryOp0x8(entries, 0x43);
 
     int count = _Z28CountNonZeroEntries_0215570cP11Obj0215570c(self);
     int r8 = -1;
@@ -60,15 +60,15 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
     GameState* gs = GameState::GetInstance();
     unsigned char* member = (unsigned char*)gs->GetPartyMemberByIndex(self->selected);
     if (member != NULL) {
-        unsigned char* base = _Z15GetFieldAt0x150Ph(member);
+        unsigned char* base = GetFieldAt0x150(member);
         for (unsigned char i = 0; i < 12; i++) {
             int slot = self->slots[i];
             if (slot != 0) {
-                _Z31ClearSublistEntryFlag2_020806c4Pvi(entries, row);
-                _Z24SetEntryFlagById02080b40Pvi(entries, row);
-                _Z24SetEntryFlagById02080b40Pvi(entries, col);
-                _Z24SetEntryFlagById02080b40Pvi(entries, sub);
-                _Z19SetEntryHalfword0xePvii(entries, row, (short)(slot - 1));
+                ClearSublistEntryFlag2_020806c4(entries, row);
+                SetEntryFlagById02080b40(entries, row);
+                SetEntryFlagById02080b40(entries, col);
+                SetEntryFlagById02080b40(entries, sub);
+                SetEntryHalfword0xe(entries, row, (short)(slot - 1));
                 _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(entries, sub,
                     *(unsigned short*)(base + 0x16c + slot * 2));
 
@@ -82,11 +82,11 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
                     }
 
                     short a, b, c, d;
-                    _Z27GetEntryFieldsAt0x602080828PviPsS0_(entries, row, &a, &b);
-                    _Z23GetEntryOutputs020808c8PviPsS0_(entries, row, &c, &d);
-                    _Z27SetEntryFieldsAt0x602080854Pviii(entries, cell, (short)(a + c + 1), b);
-                    _Z24SetEntryFlagById02080b40Pvi(entries, cell);
-                    _Z30ResolveEntryValueByKey02080fe0Pvii(entries, cell, hi);
+                    GetEntryFieldsAt0x602080828(entries, row, &a, &b);
+                    GetEntryOutputs020808c8(entries, row, &c, &d);
+                    SetEntryFieldsAt0x602080854(entries, cell, (short)(a + c + 1), b);
+                    SetEntryFlagById02080b40(entries, cell);
+                    ResolveEntryValueByKey02080fe0(entries, cell, hi);
                     _Z22SetEntryHighNibble0x13P17Container02080cc0ii(entries, cell, shade);
                 }
             }
@@ -99,12 +99,12 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
 
     if (r8 > 0) {
         short e, f, g, h;
-        _Z32GetSublistEntryScaledXY_020807c4PviPsS0_(entries, r8, &e, &f);
-        _Z27GetEntryFieldsAt0xE02080878PviPsS0_(entries, r8, &g, &h);
-        _Z24SetEntryScaledXY020807fcPviii(entries, 6, e, f);
-        _Z27SetEntryFieldsAt0xE020808a4Pviii(entries, 6, g, h);
-        _Z32GetSublistEntryScaledXY_020807c4PviPsS0_(entries, 6, &e, &f);
-        _Z27GetEntryFieldsAt0xE02080878PviPsS0_(entries, 6, &g, &h);
+        GetSublistEntryScaledXY_020807c4(entries, r8, &e, &f);
+        GetEntryFieldsAt0xE02080878(entries, r8, &g, &h);
+        SetEntryScaledXY020807fc(entries, 6, e, f);
+        SetEntryFieldsAt0xE020808a4(entries, 6, g, h);
+        GetSublistEntryScaledXY_020807c4(entries, 6, &e, &f);
+        GetEntryFieldsAt0xE02080878(entries, 6, &g, &h);
     }
     func_020813ec(entries, 6);
 }

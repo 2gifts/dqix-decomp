@@ -22,13 +22,11 @@ struct Element0x318_02028bac {
 };
 struct Element0x318_02028bac* GetElementStride0x318(struct Element0x318_02028bac* base, int index);
 struct BigRecord020289c4;
-extern "C" void _Z37InitializeSubObjectsAndFields020289c4P17BigRecord020289c4(struct BigRecord020289c4* obj);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
+void InitializeSubObjectsAndFields020289c4(struct BigRecord020289c4* obj);
+void TailForward02012da4(AllocatorUnion* alloc, void* data);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z20Clear12Bytes020a8e88Pv(void* p);
+void Clear12Bytes020a8e88(void* p);
 void ClearCombatantSlot(GameState* battleStruct, int id);
-// Passed a trailing source-length argument that _Z33DeserializeElementBuffers020a8e9cP11Obj020a8e9cP13SafeAllocatorPv ignores, so the mangled
-// name is spelled out instead of being re-derived from this declaration.
 extern "C" void _Z33DeserializeElementBuffers020a8e9cP11Obj020a8e9cP13SafeAllocatorPv(
 	void* obj, SafeAllocator* allocator, void* src, unsigned int srcSize);
 
@@ -44,11 +42,11 @@ extern "C" ARM void func_ov017_0219fda0(void) {
 	struct Entry_02028bd0* entryTable = GetEntryTableBase();
 	for (int i = 0; i < 4; i++) {
 		struct Element0x318_02028bac* elem = GetElementStride0x318((struct Element0x318_02028bac*)entryTable, i);
-		_Z37InitializeSubObjectsAndFields020289c4P17BigRecord020289c4((struct BigRecord020289c4*)elem);
+		InitializeSubObjectsAndFields020289c4((struct BigRecord020289c4*)elem);
 		void* signedAlloc = (void*)elem->allocator->GetSignedAllocator();
 		if (signedAlloc) {
 			elem->allocator->Destroy();
-			_Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, signedAlloc);
+			TailForward02012da4(&data_02114e20, signedAlloc);
 		}
 	}
 	for (int id = 0x70; id <= 0x9f; id++) {
@@ -61,7 +59,7 @@ extern "C" ARM void func_ov017_0219fda0(void) {
 	void* buffer = AllocateAligned4(&data_02114e20, size);
 	elem0->allocator->CreateTypeA(buffer, size);
 	if (elem0 == NULL) return;
-	_Z20Clear12Bytes020a8e88Pv(elem0->buffers);
+	Clear12Bytes020a8e88(elem0->buffers);
 	BackgroundLoader::AddLockGlobal();
 	unsigned int fileSize;
 	if (LoadFileIntoMemory(data_ov017_021d7638, data_0211e33c, &fileSize) != NULL) {

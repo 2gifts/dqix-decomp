@@ -6,7 +6,7 @@ extern "C" void func_ov031_0220bf5c(unsigned short*, unsigned short*, int);
 extern "C" void func_ov031_0220be38(unsigned short*, unsigned short*, unsigned short*, int);
 extern "C" void func_ov031_0220bb7c(unsigned short*, unsigned short*, unsigned short*, int);
 extern "C" void func_ov031_0220bcbc(unsigned short*, unsigned short*, unsigned short*, int);
-extern "C" int _Z31CompareShortArraysDesc_0220bdccPtS_i(unsigned short*, unsigned short*, int);
+int CompareShortArraysDesc_0220bdcc(unsigned short*, unsigned short*, int);
 
 // USA: func_ov031_0220c59c
 extern "C" ARM void func_ov031_0220c59c(unsigned short* value, unsigned short* backup,
@@ -23,7 +23,7 @@ extern "C" ARM void func_ov031_0220c59c(unsigned short* value, unsigned short* b
     func_ov031_0220bb7c(value, value, modulusProduct, count);
     memmove(value, value + shift, remainingBytes);
     VectorizedMemset(value + count - shift, 0, shift * 2);
-    int comparison = _Z31CompareShortArraysDesc_0220bdccPtS_i(value, modulus, count);
+    int comparison = CompareShortArraysDesc_0220bdcc(value, modulus, count);
     switch (comparison) {
     case 0:
         VectorizedMemset(value, 0, bytes);

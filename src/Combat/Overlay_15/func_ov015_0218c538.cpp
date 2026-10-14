@@ -17,7 +17,7 @@
 #include "Combat/Overlay15ViewerContext.h"
 
 extern "C" void* __clear(void* dst, int count);
-extern "C" void _Z24ResetObjectState02079a3cPv(void* obj);
+void ResetObjectState02079a3c(void* obj);
 
 struct Struct_203dafc;
 void ClearEightWords(struct Struct_203dafc* obj);
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov015_0218c538(Obj0218c274* self, char* arg) {
     char* buffer = reinterpret_cast<char*>(data_0211e33c);
     unsigned int room = 0x30000;
     GPCReadPair pair;
-    _Z24ResetObjectState02079a3cPv(&pair);
+    ResetObjectState02079a3c(&pair);
 
     if (LoadAndDecompressGPCHeaderAndInnerFileInfo(&pair.pGPCFile, pair.machine,
             data_ov015_02194020, buffer, size, room, false, 0)) {

@@ -1,12 +1,12 @@
 #include <globaldefs.h>
 #include "System/Memory.h"
 
-extern "C" int _Z31TrimTrailingZeroShorts_0220bb24Pti(unsigned short*, int);
+int TrimTrailingZeroShorts_0220bb24(unsigned short*, int);
 
 // USA: func_ov031_0220bcbc
 extern "C" ARM void func_ov031_0220bcbc(unsigned short* destination, unsigned short* left, unsigned short* right, int length) {
-    int leftLength = _Z31TrimTrailingZeroShorts_0220bb24Pti(left, length);
-    int rightLength = _Z31TrimTrailingZeroShorts_0220bb24Pti(right, length);
+    int leftLength = TrimTrailingZeroShorts_0220bb24(left, length);
+    int rightLength = TrimTrailingZeroShorts_0220bb24(right, length);
     int limit = leftLength;
     if (limit < rightLength) limit = rightLength;
     int i;

@@ -7,12 +7,12 @@ struct List02160094;
 struct List021600f8;
 struct Obj02033874;
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" struct List02160094* _Z22GetNodeAtIndex02160094P12List02160094i(struct List02160094* list, int idx);
-extern "C" struct List021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(struct List021600f8* list, int idx);
-extern "C" int _Z23DispatchByIndex021820bcPviii(void* obj, int unused, int index, int arg);
-extern "C" void* _Z18GetField0x3b0ValueP9GameState(GameState* gs);
+struct List02160094* GetNodeAtIndex02160094(struct List02160094* list, int idx);
+struct List021600f8* GetNodeAtIndex021600f8(struct List021600f8* list, int idx);
+int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
+void* GetField0x3b0Value(GameState* gs);
 int GetField0x70(void* obj);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(struct Obj02033874* obj, int arg);
+void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
 void StoreVec3AtField0x50(unsigned char* obj, int x, int y, int z);
 extern "C" void* __clear(void* dst, int count);
 
@@ -59,10 +59,10 @@ struct Obj021e514c {
 // USA: func_ov025_021e514c
 extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List02160094* p1, int unused, void* p3) {
     GameState* bs = GameState::GetInstance();
-    struct Node021e514c_A* nodeA = (struct Node021e514c_A*)_Z22GetNodeAtIndex02160094P12List02160094i(p1, 0);
-    struct Node021e514c_B* nodeB = (struct Node021e514c_B*)_Z22GetNodeAtIndex021600f8P12List021600f8i((struct List021600f8*)p1, 0);
+    struct Node021e514c_A* nodeA = (struct Node021e514c_A*)GetNodeAtIndex02160094(p1, 0);
+    struct Node021e514c_B* nodeB = (struct Node021e514c_B*)GetNodeAtIndex021600f8((struct List021600f8*)p1, 0);
     int ids[8];
-    int count = _Z23DispatchByIndex021820bcPviii(p3, (int)p1, self->idxA, (int)ids);
+    int count = DispatchByIndex021820bc(p3, (int)p1, self->idxA, (int)ids);
     Vector3fix result;
     __clear(&result, sizeof(result));
     int yaw = 0;
@@ -97,7 +97,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
         if (flagB) dir = 2; else dir = 1;
         break;
     case 3: {
-        void* target = _Z18GetField0x3b0ValueP9GameState(bs);
+        void* target = GetField0x3b0Value(bs);
         if (target) {
             Matrix4x3 m = RotationMatrixY(GetField0x70(target));
             Mat4x3_ApplyToVector(&self->vec, &m, &result);
@@ -131,7 +131,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
             if (t) {
                 _ZN8Vector3iaSERKS_((int*)((char*)t + 0x44), (int*)&off);
                 if (((Obj021e514c*)t)->flags & 2) {
-                    _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)t, angle);
+                    SetVecYFromValue02033874((struct Obj02033874*)t, angle);
                 } else {
                     StoreVec3AtField0x50((unsigned char*)t, 0, angle, 0);
                 }
@@ -141,7 +141,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
     }
     case 7: {
         int out[12];
-        _Z23DispatchByIndex021820bcPviii(p3, (int)p1, self->idxB, (int)out);
+        DispatchByIndex021820bc(p3, (int)p1, self->idxB, (int)out);
         GameObject* obj = bs->GetGameObjectByIndex(out[0]);
         if (obj) {
             _ZN8Vector3iaSERKS_((int*)&result, (int*)((char*)obj + 0x44));
@@ -159,7 +159,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
         break;
     }
     case 8: {
-        int* tgt = (int*)_Z18GetField0x3b0ValueP9GameState(bs);
+        int* tgt = (int*)GetField0x3b0Value(bs);
         if (!tgt) return 1;
         Case8Local021e514c L;
         _ZN8Vector3iaSERKS_((int*)&L.b, tgt + 4);
@@ -210,7 +210,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
         if (t) {
             _ZN8Vector3iaSERKS_((int*)((char*)t + 0x44), (int*)&result);
             if (((Obj021e514c*)t)->flags & 2) {
-                _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)t, yaw);
+                SetVecYFromValue02033874((struct Obj02033874*)t, yaw);
             } else {
                 StoreVec3AtField0x50((unsigned char*)t, 0, yaw, 0);
             }

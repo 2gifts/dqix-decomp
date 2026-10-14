@@ -131,12 +131,12 @@ struct Entry_0205d6a0;
 struct Manager02187664;
 struct Struct_0205d81c;
 
-extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem* GetGlobalField0x1c020421a0();
 int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int value);
+void ResetEntryList0205d6a0(Entry_0205d6a0* window, int value);
 void SetMainBrightness(GameResources* resources, int screen, int brightness);
-extern "C" void _Z18InitConfig02187664P15Manager02187664i(Manager02187664* self, int records);
-extern "C" Canvas* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* window, int canvas);
+void InitConfig02187664(Manager02187664* self, int records);
+Canvas* FindElementByC40205d81c(Struct_0205d81c* window, int canvas);
 int IsBrightnessTransitionActive(GameResources* resources);
 
 extern "C" {
@@ -157,7 +157,7 @@ void func_ov008_02186cec(BattleRecords* self);
 // USA: func_ov008_02185a70
 extern "C" ARM void func_ov008_02185a70(BattleRecords* self, unsigned int ticks)
 {
-    MessageSystem* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     GameResources* resources = func_ov017_0218b5b0();
     BackgroundLoader::GetInstance();
     FontBankLoader* music = GetGlobal02109400();
@@ -214,7 +214,7 @@ extern "C" ARM void func_ov008_02185a70(BattleRecords* self, unsigned int ticks)
     }
     if (step == 5)
     {
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)&self->window_, 1);
+        ResetEntryList0205d6a0((Entry_0205d6a0*)&self->window_, 1);
         BlankFunction02094b40(music);
         BlankFunction02094b34(music, 0x6b, 0x1fc, 0, 0);
         self->step_++;
@@ -233,12 +233,12 @@ extern "C" ARM void func_ov008_02185a70(BattleRecords* self, unsigned int ticks)
     {
         SetMainBrightness(resources, 0, 0xf);
         func_ov008_0218712c(self, NULL);
-        _Z18InitConfig02187664P15Manager02187664i((Manager02187664*)self, 0);
+        InitConfig02187664((Manager02187664*)self, 0);
         func_ov008_02187a70(self, NULL);
         func_ov008_02187f6c(self, NULL);
         for (int i = 0; i < 6; i++)
         {
-            Canvas* canvas = _Z23FindElementByC40205d81cP15Struct_0205d81ci((Struct_0205d81c*)&self->window_, (unsigned char)i);
+            Canvas* canvas = FindElementByC40205d81c((Struct_0205d81c*)&self->window_, (unsigned char)i);
             if (canvas != NULL)
                 canvas->unk_c2 = 0;
         }

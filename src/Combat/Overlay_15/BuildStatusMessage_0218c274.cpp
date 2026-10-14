@@ -4,7 +4,7 @@
 
 struct Container020dedd0;
 struct Element020de650;
-extern "C" struct Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* c, int key);
+struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 extern "C" void* __clear(void* dst, int count);
 
 struct Sub0218c274 {
@@ -22,9 +22,9 @@ extern char data_ov015_02194013[13];
 // USA: func_ov015_0218c274  (semantic: BuildStatusMessage_0218c274)
 extern "C" ARM void func_ov015_0218c274(struct Obj0218c274* obj, char* outBuf, int flag) {
     short key1 = (short)obj->parts_[8];
-    struct Element020de650* e1 = _Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0*)((char*)obj->viewer_ + 0x4c), key1);
+    struct Element020de650* e1 = FindElementByKey020dedd0((struct Container020dedd0*)((char*)obj->viewer_ + 0x4c), key1);
     short key2 = (short)obj->parts_[0];
-    struct Element020de650* e2 = _Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0*)((char*)obj->viewer_ + 0x4c), key2);
+    struct Element020de650* e2 = FindElementByKey020dedd0((struct Container020dedd0*)((char*)obj->viewer_ + 0x4c), key2);
 
     int val2 = 0;
     int val1 = val2;

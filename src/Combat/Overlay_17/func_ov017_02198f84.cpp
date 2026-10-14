@@ -48,11 +48,11 @@ struct Self02198f84 {
 
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0205ec34(void);
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(void* a, int mode, void* c);
+int LookupAndForEachNode020649b0(void* a, int mode, void* c);
 extern "C" void func_0206f81c(void* p);
-extern "C" void _Z19InitState6_021ab250P14Struct021ab250(struct Struct021ab250* p);
+void InitState6_021ab250(struct Struct021ab250* p);
 Pending02198f84* GetField0x3f8Address(GameState* state);
-extern "C" void _Z29SetIntField_021ab698_021ab698Pci(char* p, int v);
+void SetIntField_021ab698_021ab698(char* p, int v);
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
@@ -70,13 +70,13 @@ extern "C" ARM void func_ov017_02198f84(Self02198f84* self) {
         q.field_0x28 = node->unk_20;
         q.field_0x1e = node->unk_2c.type2.unk_1;
         q.field_0x1c = node->unk_2c.type2.unk_0;
-        if (_Z28LookupAndForEachNode020649b0PviS_(r, 0x11, &q)) {
+        if (LookupAndForEachNode020649b0(r, 0x11, &q)) {
             func_0206f81c(&q);
         }
         if (!(node->unk_2c.type2.unk_2_high & 4)) {
             func_02018300(ctx, node, 1, 1, 1);
             if ((node->unk_2c.type2.unk_2_high & 8) && node->unk_2c.type2.maybeZone != 0) {
-                _Z19InitState6_021ab250P14Struct021ab250(self->state6);
+                InitState6_021ab250(self->state6);
                 Pending02198f84* pending = GetField0x3f8Address(GameState::GetInstance());
                 if (pending->pending != 0) {
                     node->unk_2c.type2.maybeZone = pending->id;
@@ -88,7 +88,7 @@ extern "C" ARM void func_ov017_02198f84(Self02198f84* self) {
                     node->unk_2c.type2.vectors_c[3] = pending->vecC;
                     pending->pending = 0;
                 }
-                _Z29SetIntField_021ab698_021ab698Pci((char*)self->state6, (int)node);
+                SetIntField_021ab698_021ab698((char*)self->state6, (int)node);
                 AppendNodeToTail(self->tailList, (struct TailNode020469b4*)self->state6);
             } else if (!(node->unk_2c.type2.unk_2_high & 8)) {
                 clear = 1;

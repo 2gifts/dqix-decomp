@@ -48,16 +48,16 @@ extern "C" BattleResources* func_ov017_0218b5b0(void);
 extern "C" char* func_0203bd08(void);
 int* GetGlobalPtr02105244();
 extern "C" void MapVRAMBanksToTextureImage(int handle);
-extern "C" void _Z25ConfigurePairMode020bb48cji(unsigned int mode, int installHandlers);
+void ConfigurePairMode020bb48c(unsigned int mode, int installHandlers);
 extern "C" void MapVRAMBanksToSubObj(int value);
 extern "C" void MapVRAMBanksToSubBG(int value);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* p);
-extern "C" void _Z25InitBattleContext0203bd24Pc(char* context);
+void CopyInternalFields0207df50(struct Foo0207df50* p);
+void InitBattleContext0203bd24(char* context);
 extern "C" void func_0203c35c(int* ptr);
-extern "C" void _Z21ClearFlag320_02195540Ph(unsigned char* obj);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
+void ClearFlag320_02195540(unsigned char* obj);
+void RestorePairTables0207df90(char* obj);
 extern "C" void func_0207de48(void* p, int a, int b);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void BackupPairTables0207dfac(char* obj);
 
 // USA: func_ov000_02164280
 extern "C" ARM void func_ov000_02164280(BattleScreen* screen) {
@@ -66,7 +66,7 @@ extern "C" ARM void func_ov000_02164280(BattleScreen* screen) {
     int* global = GetGlobalPtr02105244();
     LockStagedTextureVRAMCopying();
     MapVRAMBanksToTextureImage(7);
-    _Z25ConfigurePairMode020bb48cji(3, 1);
+    ConfigurePairMode020bb48c(3, 1);
     MapVRAMBanksToSubObj(8);
     *(volatile unsigned int*)0x4001000 = (*(volatile unsigned int*)0x4001000 & 0xffcfffef) | 0x10 | 0x200000;
     MapVRAMBanksToSubBG(0x180);
@@ -79,15 +79,15 @@ extern "C" ARM void func_ov000_02164280(BattleScreen* screen) {
     screen->pairTables.p2 = res->pairTables[27].p2;
     screen->pairTables.e = res->pairTables[27].e;
     screen->pairTables.f = res->pairTables[27].f;
-    _Z26CopyInternalFields0207df50P11Foo0207df50(&screen->pairTables);
+    CopyInternalFields0207df50(&screen->pairTables);
 
-    _Z25InitBattleContext0203bd24Pc(context);
+    InitBattleContext0203bd24(context);
     func_0203c35c(global);
-    _Z21ClearFlag320_02195540Ph((unsigned char*)res);
-    _Z26CopyInternalFields0207df50P11Foo0207df50(res->pairTables);
-    _Z25RestorePairTables0207df90Pc((char*)res->pairTables);
+    ClearFlag320_02195540((unsigned char*)res);
+    CopyInternalFields0207df50(res->pairTables);
+    RestorePairTables0207df90((char*)res->pairTables);
     func_0207de48(screen->workBuf, 0x18000, 0x800);
-    _Z24BackupPairTables0207dfacPc((char*)res->pairTables);
+    BackupPairTables0207dfac((char*)res->pairTables);
     UpdateVRAMStagingVRAMBanks();
     UnlockStagedTextureVRAMCopying();
 }

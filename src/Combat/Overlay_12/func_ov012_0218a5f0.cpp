@@ -20,10 +20,10 @@ struct ProfileWindowNavigation {
     ProfileNavigation* GetNavigation() { return &navigation; }
 };
 
-extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char*, int, int, int, int, int);
+void AppendFrameTag02041c08(char*, int, int, int, int, int);
 int AppendCursorTag(char*, int);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_(UnkStruct0205c508*, int*, int*);
+void* GetGlobalField0x1c020421a0();
+void ComputeProductSums0205c508(UnkStruct0205c508*, int*, int*);
 int AppendString02042058(char*, const char*);
 const char* FindEntryByKey(TableA68*, int);
 int AppendNameTag(char*, int, const char*);
@@ -39,15 +39,15 @@ extern "C" ARM void func_ov012_0218a5f0(char* editor, char* text, int hidden) {
     if (!text) return;
     int selection = *(int*)(editor + 0x1444) % 10;
     if (hidden)
-        _Z22AppendFrameTag02041c08Pciiiii(text, selection, 8, 5, 5, 5);
+        AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
     AppendCursorTag(text, selection);
-    void* messages = _Z26GetGlobalField0x1c020421a0v();
+    void* messages = GetGlobalField0x1c020421a0();
     int i;
     ProfileNavigation* navigation = ((ProfileWindowNavigation*)(editor + 0x90))->GetNavigation();
     int page = navigation->page;
     int pages = navigation->pages;
     int first, last;
-    _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_((UnkStruct0205c508*)navigation, &first, &last);
+    ComputeProductSums0205c508((UnkStruct0205c508*)navigation, &first, &last);
     func_0202ae18();
     GameState::GetInstance();
     for (i = first; i < last; ++i) {
@@ -119,16 +119,16 @@ struct ProfileEditor0218a5f0
     Window0218a5f0* GetWindow() { return &window_; }
 };
 
-extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char* text, int a, int b, int c, int d, int e);
+void AppendFrameTag02041c08(char* text, int a, int b, int c, int d, int e);
 void AppendCursorTag(char* text, int a);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_(UnkStruct0205c508* cursor, int* first, int* last);
+void* GetGlobalField0x1c020421a0();
+void ComputeProductSums0205c508(UnkStruct0205c508* cursor, int* first, int* last);
 extern "C" void func_0202ae18();
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+void AppendString02042058(char* text, const char* append);
 const char* FindEntryByKey(TableA68* texts, int id);
 void AppendNameTag(char* text, int item, const char* itemText);
 extern "C" void __clear(void* buffer, unsigned long size);
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* text, char* output, int a);
+void CopyTextAndUppercaseIfFlagged0206819c(const char* text, char* output, int a);
 extern "C" void func_ov012_021842a0(ProfileEditor0218a5f0* self, int canvas, int color, int shadow);
 
 // USA: func_ov012_0218a5f0
@@ -139,9 +139,9 @@ extern "C" ARM void func_ov012_0218a5f0(ProfileEditor0218a5f0* self, char* text,
 
     int selection = self->selections_[5] % 10;
     if (hidden)
-        _Z22AppendFrameTag02041c08Pciiiii(text, selection, 8, 5, 5, 5);
+        AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
     AppendCursorTag(text, selection);
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     Protagonist0218a5f0* protagonist;
     int i;
     Cursor0218a5f0* cursor = self->GetWindow()->GetCursor();
@@ -149,14 +149,14 @@ extern "C" ARM void func_ov012_0218a5f0(ProfileEditor0218a5f0* self, char* text,
     int color = cursor->unk_4;
     int first;
     int last;
-    _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_((UnkStruct0205c508*)cursor, &first, &last);
+    ComputeProductSums0205c508((UnkStruct0205c508*)cursor, &first, &last);
     func_0202ae18();
     protagonist = (Protagonist0218a5f0*)GameState::GetInstance()->GetProtagonist();
     int base = 0x50dc;
     for (i = first; i < last; i++)
     {
         if (i != first)
-            _Z20AppendString02042058PcPKc(text, self->unk_1378);
+            AppendString02042058(text, self->unk_1378);
         if (i == 0)
         {
             int id = base;
@@ -173,7 +173,7 @@ extern "C" ARM void func_ov012_0218a5f0(ProfileEditor0218a5f0* self, char* text,
             const char* name = FindEntryByKey((TableA68*)self->strings_, (short)(id + i - 1));
             char converted[0x80];
             __clear(converted, sizeof(converted));
-            _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(name, converted, 0);
+            CopyTextAndUppercaseIfFlagged0206819c(name, converted, 0);
             AppendNameTag(text, i % 10, converted);
         }
     }

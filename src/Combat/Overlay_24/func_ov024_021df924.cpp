@@ -85,27 +85,27 @@ extern float data_ov024_021fe860[];
 GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* obj);
-extern "C" int _Z31IsIdOrEffectMatchTarget0215fd24ii(int world, int id);
+int IsIdOrEffectMatchTarget0215fd24(int world, int id);
 extern "C" unsigned short* func_02012fe4(void);
 static inline int GetActionID() { return *func_02012fe4(); }
 extern "C" int func_ov024_021df71c(Fighter021df924* self, unsigned short actionID, int alternate, unsigned short* resultID, unsigned short* combatantKey, unsigned short* entryID);
 short GetHalfwordEntryFromField150(Field150Holder02052df8* holder, int part);
 void* GetActiveCombatWork();
-extern "C" char* _Z20GetOffsetPtr02160f08Pv(void* work);
-extern "C" void* _Z22ZeroInitReturn020de824Pv(void* obj);
-extern "C" void _Z18InitStruct0207cbe8Pc(char* obj);
+char* GetOffsetPtr02160f08(void* work);
+void* ZeroInitReturn020de824(void* obj);
+void InitStruct0207cbe8(char* obj);
 extern "C" void _Z28SetShortFields0x8e4aTo0x8e4ePviii(void* world, short a, short b, short c);
 extern "C" int func_0207ccf0(void* buf, int a, int b, int c, int d, int e, int f);
 int CopyIndexedRegion0x75f0(void* unused, short* indices, int* dest, int count);
 extern "C" void func_020abe84(void* unused, short* indices, Counts021df924* values, int count);
-extern "C" void _Z23LoadBattleBlock020ac4c0Pv(void* block);
+void LoadBattleBlock020ac4c0(void* block);
 void AddClamped24BitField(S_a0720* block, unsigned int value);
 void AddClampedLow16BitFieldAt0x8(S_9fffc* block, unsigned int value);
 void AddCappedValue(Field0x30* block, unsigned int value);
 void AddClampedHigh16BitFieldAt0x8(S_a0038* block, unsigned int value);
 void CopyInBattleField0x7540(void* block);
 extern "C" void* func_ov000_0215e958(void* world);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* world, void* entry, int value);
+void AddEntryAndIncrementCount0215a88c(void* world, void* entry, int value);
 extern "C" void func_ov000_0215cd44(void* world, void* entry, GameObject* target, int a, int b, int c, int d);
 
 // USA: func_ov024_021df924
@@ -140,7 +140,7 @@ extern "C" ARM void* func_ov024_021df924(Action021df924* self, short id, int tar
         combatantKey = 0;
         int found = 0;
         void* scene = func_0202ae18();
-        if (self->world->pending == 0 && func_0202c508(scene) && _Z31IsIdOrEffectMatchTarget0215fd24ii((int)self->world, id)) {
+        if (self->world->pending == 0 && func_0202c508(scene) && IsIdOrEffectMatchTarget0215fd24((int)self->world, id)) {
             found = func_ov024_021df71c(target, GetActionID(), i != 0, &resultID, &combatantKey, &entryID);
         }
         if (((Stats021df924*)target->currentStats_)->rank != 0 && !found) continue;
@@ -161,14 +161,14 @@ extern "C" ARM void* func_ov024_021df924(Action021df924* self, short id, int tar
         self->message->id = *msg;
         stolen = 1;
         ((Stats021df924*)target->currentStats_)->rank = i + 1;
-        if (_Z31IsIdOrEffectMatchTarget0215fd24ii((int)self->world, id)) {
-            char* work = _Z20GetOffsetPtr02160f08Pv(GetActiveCombatWork());
+        if (IsIdOrEffectMatchTarget0215fd24((int)self->world, id)) {
+            char* work = GetOffsetPtr02160f08(GetActiveCombatWork());
             char* special = work + 0xd0;
             char* normal = work + 0xe8;
             loader.alloc.ResetAllocatorPointer();
-            _Z22ZeroInitReturn020de824Pv(loader.body);
-            _Z18InitStruct0207cbe8Pc((char*)&loader);
-            _Z18InitStruct0207cbe8Pc((char*)&loader);
+            ZeroInitReturn020de824(loader.body);
+            InitStruct0207cbe8((char*)&loader);
+            InitStruct0207cbe8((char*)&loader);
             if (found) {
                 self->message->id = resultID;
                 _Z28SetShortFields0x8e4aTo0x8e4ePviii(self->world, entryID, combatantKey, resultID);
@@ -201,7 +201,7 @@ extern "C" ARM void* func_ov024_021df924(Action021df924* self, short id, int tar
         break;
     }
     char block[0xb0];
-    _Z23LoadBattleBlock020ac4c0Pv(block);
+    LoadBattleBlock020ac4c0(block);
     char* tail = block + 0x68;
     AddClamped24BitField((S_a0720*)block, 1);
     AddClampedLow16BitFieldAt0x8((S_9fffc*)tail, 1);
@@ -218,7 +218,7 @@ extern "C" ARM void* func_ov024_021df924(Action021df924* self, short id, int tar
     CopyInBattleField0x7540(block);
     void* entry = func_ov000_0215e958(self->world);
     if (!entry) return 0;
-    if (message) _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->world, entry, message);
+    if (message) AddEntryAndIncrementCount0215a88c(self->world, entry, message);
     func_ov000_0215cd44(self->world, entry, target, 0, 0, 0, self->flags->alternate != 0);
     return entry;
 }

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #pragma define_section initcode ".init" RX
 
-extern "C" void _Z38InitTwoSubObjectsWithCallbacks0203a878Pv(void* obj);
+void InitTwoSubObjectsWithCallbacks0203a878(void* obj);
 class Container0203a54c;
 void InitSubObjectArraysReturnSelf(Container0203a54c* obj);
 
@@ -18,6 +18,6 @@ extern struct Node0200efd0 data_02104b60;
 
 // USA: func_020e5c00  (semantic: InitEntries020e5c00)
 extern "C" __declspec(initcode) ARM void __sinit_020e5c00(void) {
-    _Z38InitTwoSubObjectsWithCallbacks0203a878Pv(&data_02104b6c);
+    InitTwoSubObjectsWithCallbacks0203a878(&data_02104b6c);
     __register_global_object((int)&data_02104b6c, (int)InitSubObjectArraysReturnSelf, &data_02104b60);
 }

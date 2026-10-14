@@ -71,55 +71,55 @@ struct Self021b8e8c {
 extern "C" int func_ov017_021959b4(void);
 extern "C" void func_ov017_021b8d80(Self021b8e8c* self);
 extern "C" unsigned short* func_02012fe4(void);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
+char* GetGlobalField0x1c020421a0(void);
 void* GetGlobalPtr021075f4(void);
 extern "C" void* func_0205ec34(void);
 int GetFieldIfFlag4(char* obj);
-extern "C" void _Z24ReinitController02043204Pc(char* obj);
+void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
 void SetField0x23cTrue(void* obj);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int arg1);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
-extern "C" void* _Z29FindEntryPointerByKey0203df78Pvi(void* base, int key);
+void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
+void* FindEntryPointerByKey0203df78(void* base, int key);
 void SetByteField0x253(void* obj);
-extern "C" Obj020d7aa0* _Z25GetGlobalResetObj020d7a50v(void);
-extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(struct Obj020d7aa0* obj);
-extern "C" int _Z19IsIdInRange020981e4ii(int a, int id);
+Obj020d7aa0* GetGlobalResetObj020d7a50(void);
+void TeardownAndResetState020d7aa0(struct Obj020d7aa0* obj);
+int IsIdInRange020981e4(int a, int id);
 int IsInRange1To63(int a, int x);
 extern "C" Vec3_021b8e8c _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(struct Node020406f8* n);
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int arg);
-extern "C" int _Z22FindEntryByKey0203dfdcPvi(void* base, int key);
+void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
+int FindEntryByKey0203dfdc(void* base, int key);
 int GetFieldFromActiveChild(struct Owner02040a90* obj);
 int GetField0x8(int* obj);
 void SetCombatFlags0x5c(struct Struct0203cedc* obj, int b, int c);
 int GetField5cb0Value(char* obj);
 int GetField5cb4Value(char* obj);
-extern "C" Entry0209854c* _Z25FindEntryByFieldC0209854cP13Entry0209854ci(struct Entry0209854c* list, int target);
+Entry0209854c* FindEntryByFieldC0209854c(struct Entry0209854c* list, int target);
 extern "C" void func_ov017_021a967c(TailNode020469b4* node, int id);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
-extern "C" int _Z28GetTableEntryOrZero_0218d2c4i(int id);
+int GetTableEntryOrZero_0218d2c4(int id);
 void ClearIntAt0x23c(unsigned char* obj);
 extern "C" void func_ov008_02184754(void* obj);
-extern "C" int _Z17GetNibble0206ec1ciiPhj(int a, int b, unsigned char* c, unsigned int d);
-extern "C" void _Z23IncrementNibble0206ec64iiPhj(int a, int b, unsigned char* c, unsigned int d);
+int GetNibble0206ec1c(int a, int b, unsigned char* c, unsigned int d);
+void IncrementNibble0206ec64(int a, int b, unsigned char* c, unsigned int d);
 extern "C" int func_ov017_021ba810(const void* code, unsigned int length, int id, int a3, int a4, int a5, int a6);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
-extern "C" unsigned char* _Z15GetData02108d18v(void);
-extern "C" void _Z12Init0206f510Pc(char* obj);
+int AppendString02042058(char* dst, const char* src);
+unsigned char* GetData02108d18(void);
+void Init0206f510(char* obj);
 extern "C" int func_0206f550(unsigned char* s, char* in, char* out);
-extern "C" int _Z23CommandDispatch0206f6ccPhi(unsigned char* obj, int arg);
+int CommandDispatch0206f6cc(unsigned char* obj, int arg);
 int ListContainsId(ListHead02046b60* list, int id);
 extern "C" void func_020a0cc4(unsigned int size);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z32InitAllocatorsAndBuffers0208b8c4P11Obj0208b8c4P13SafeAllocator(struct Obj0208b8c4* obj, SafeAllocator* allocator);
+void InitAllocatorsAndBuffers0208b8c4(struct Obj0208b8c4* obj, SafeAllocator* allocator);
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
 extern "C" void func_0208bb78(void* timer, unsigned int ticks);
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(void* a, int mode, void* c);
+int LookupAndForEachNode020649b0(void* a, int mode, void* c);
 extern "C" void func_0206f81c(void* p);
-extern "C" void _Z30SetByteB10AndClearB11_02184a3cPch(char* obj, unsigned char value);
+void SetByteB10AndClearB11_02184a3c(char* obj, unsigned char value);
 void SetFlag0x2IfByte0xd4Not3(unsigned char* obj);
-extern "C" void _Z25SetFields120_138_021bd38cPvii(void* obj, int a, int b);
+void SetFields120_138_021bd38c(void* obj, int a, int b);
 
 extern "C" void __clear(void* buf, int n);
 
@@ -140,7 +140,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
     GameResources* res = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     unsigned short* area = func_02012fe4();
-    char* msg = _Z26GetGlobalField0x1c020421a0v();
+    char* msg = GetGlobalField0x1c020421a0();
     void* table = GetGlobalPtr021075f4();
     GameObject* leader = gs->GetUnknownGameObject();
     void* events = func_0205ec34();
@@ -151,7 +151,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
 
     if (func_ov017_021959b4() != 0) {
         func_ov017_021b8d80(self);
-        _Z24ReinitController02043204Pc(msg);
+        ReinitController02043204(msg);
         func_02043124(msg);
         SetField0x23cTrue(hud);
         ClearBitsInWord((unsigned int*)res, 0x2000);
@@ -159,16 +159,16 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         return;
     }
 
-    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)leader, 1);
+    CancelPendingAction020397cc((Obj020397cc*)leader, 1);
 
     switch (self->state) {
     case 0: {
         if (self->quiet == 0) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 1, 0);
         }
         *(short*)((char*)leader + 0xb2) = 0;
         Vec3_021b8e8c from = *(Vec3_021b8e8c*)((char*)leader + 0x44);
-        Entry021b8e8c* entry = (Entry021b8e8c*)_Z29FindEntryPointerByKey0203df78Pvi(table, self->rec->id);
+        Entry021b8e8c* entry = (Entry021b8e8c*)FindEntryPointerByKey0203df78(table, self->rec->id);
         if (entry == NULL) {
             SetByteField0x253(leader);
             if (hud != NULL) {
@@ -177,15 +177,15 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
             self->done = 1;
             break;
         }
-        _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
+        TeardownAndResetState020d7aa0(GetGlobalResetObj020d7a50());
         self->lastId = self->rec->id;
-        if (_Z19IsIdInRange020981e4ii((int)((char*)area + 0x840), areaId) &&
+        if (IsIdInRange020981e4((int)((char*)area + 0x840), areaId) &&
             IsInRange1To63((int)((char*)area + 0x840), self->rec->id)) {
             self->hasSub = 1;
         }
         Vec3_021b8e8c to = _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8((Node020406f8*)entry);
-        _Z21SetVecYByMode02033834P11Obj02033834i((Obj02033834*)leader, fix32ReduceAngle0To2Pi(fix32_Atan2(to.x - from.x, to.z - from.z)));
-        *(int*)(msg + 0x1838) = _Z22FindEntryByKey0203dfdcPvi(table, self->rec->id);
+        SetVecYByMode02033834((Obj02033834*)leader, fix32ReduceAngle0To2Pi(fix32_Atan2(to.x - from.x, to.z - from.z)));
+        *(int*)(msg + 0x1838) = FindEntryByKey0203dfdc(table, self->rec->id);
         *(int*)(msg + 0x183c) = GetFieldFromActiveChild((Owner02040a90*)entry);
         char* info = (char*)GetField0x8((int*)entry);
         if (info != NULL && strstr(info + 4, &data_ov017_021d7c90) != NULL && !(entry->flags & 0x4000) &&
@@ -196,12 +196,12 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         char prefix[0xc];
         strcpy(prefix, *(char**)((char*)area + 8) + 5);
         prefix[3] = 0;
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)leader, 1);
+        CancelPendingAction020397cc((Obj020397cc*)leader, 1);
         if (self->hasSub != 0) {
             TailList020469b4* tail;
             TailNode020469b4* node = (TailNode020469b4*)res->unknown_ptr_array_3afc[0x22];
             tail = (TailList020469b4*)res->unknown_ptr_array_36fc[0];
-            Entry0209854c* found = _Z25FindEntryByFieldC0209854cP13Entry0209854ci((Entry0209854c*)((char*)area + 0x840), *(unsigned short*)info);
+            Entry0209854c* found = FindEntryByFieldC0209854c((Entry0209854c*)((char*)area + 0x840), *(unsigned short*)info);
             func_ov017_021a967c(node, -1);
             *(Entry0209854c**)((char*)node + 0x54) = found;
             AppendNodeToTail(tail, node);
@@ -209,7 +209,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
             break;
         }
         char path[0x50];
-        sprintf(path, &data_ov017_021d7c95, prefix, _Z28GetTableEntryOrZero_0218d2c4i(tableId));
+        sprintf(path, &data_ov017_021d7c95, prefix, GetTableEntryOrZero_0218d2c4(tableId));
         if (hud != NULL) {
             ClearIntAt0x23c((unsigned char*)hud);
         }
@@ -235,7 +235,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
                 SetField0x23cTrue(hud);
             }
             self->done = 1;
-            _Z24ReinitController02043204Pc(msg);
+            ReinitController02043204(msg);
             func_02043124(msg);
             break;
         }
@@ -244,8 +244,8 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         loader->GetLoadedFileByID(self->task, &data, &length);
         int arg = GetField5cb4Value((char*)gs);
         unsigned short id = self->rec->id;
-        int lo = _Z17GetNibble0206ec1ciiPhj((int)nibbles, id, nibbles, 0x80);
-        int hi = _Z17GetNibble0206ec1ciiPhj((int)nibbles, id, nibbles + 0x80, 0x80);
+        int lo = GetNibble0206ec1c((int)nibbles, id, nibbles, 0x80);
+        int hi = GetNibble0206ec1c((int)nibbles, id, nibbles + 0x80, 0x80);
         char* text = (char*)func_ov017_021ba810(data, length, id, arg, self->f124, lo, hi);
         if (text == NULL) {
             loader->RemoveTask(self->task);
@@ -255,12 +255,12 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
                 SetField0x23cTrue(hud);
             }
             self->done = 1;
-            _Z24ReinitController02043204Pc(msg);
+            ReinitController02043204(msg);
             func_02043124(msg);
             break;
         }
-        _Z23IncrementNibble0206ec64iiPhj((int)nibbles, id, nibbles, 0x80);
-        _Z23IncrementNibble0206ec64iiPhj((int)nibbles, id, nibbles + 0x80, 0x80);
+        IncrementNibble0206ec64((int)nibbles, id, nibbles, 0x80);
+        IncrementNibble0206ec64((int)nibbles, id, nibbles + 0x80, 0x80);
         *(int*)(msg + 0x99c) = self->rec->kind;
         char* out = *(char**)(msg + 0x5c);
         char* in = *(char**)(msg + 0x60);
@@ -269,12 +269,12 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         if (strlen(text) >= 0x960) {
             text[0x95f] = 0;
         }
-        _Z20AppendString02042058PcPKc(in, text);
+        AppendString02042058(in, text);
         loader->RemoveTask(self->task);
         self->task = -1;
-        unsigned char* script = _Z15GetData02108d18v();
-        _Z12Init0206f510Pc((char*)script);
-        if (func_0206f550(script, in, out) != 0 && _Z23CommandDispatch0206f6ccPhi(script, 0) == 0) {
+        unsigned char* script = GetData02108d18();
+        Init0206f510((char*)script);
+        if (func_0206f550(script, in, out) != 0 && CommandDispatch0206f6cc(script, 0) == 0) {
             self->state = 8;
             BlankFunction02094b34(GetGlobal02109400(), 0x6f, 0x1388, 1, 1);
             break;
@@ -319,7 +319,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
     case 2: {
         func_020a0cc4(0xa000);
         self->allocA.CreateTypeA(AllocateAligned4(&data_02114e20, 0xa000), 0xa000);
-        _Z32InitAllocatorsAndBuffers0208b8c4P11Obj0208b8c4P13SafeAllocator((Obj0208b8c4*)self->timer, &self->allocA);
+        InitAllocatorsAndBuffers0208b8c4((Obj0208b8c4*)self->timer, &self->allocA);
         char* buffer = *(char**)(msg + 0x5c);
         int scroll = 1;
         switch (areaId) {
@@ -354,13 +354,13 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         }
         self->done = 1;
         func_ov017_021b8d80(self);
-        if (_Z29FindEntryPointerByKey0203df78Pvi(table, self->rec->id) == NULL) {
+        if (FindEntryPointerByKey0203df78(table, self->rec->id) == NULL) {
             break;
         }
         Query021b8e8c query;
         query.id = self->rec->id;
         query.value = self->f124;
-        if (_Z28LookupAndForEachNode020649b0PviS_(events, 1, &query) != 0) {
+        if (LookupAndForEachNode020649b0(events, 1, &query) != 0) {
             func_0206f81c(&query);
         }
         break;
@@ -374,7 +374,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
             func_ov008_02184754(self->sub);
         }
         if (*(int*)(msg + 0x9a0) == 3) {
-            _Z24ReinitController02043204Pc(msg);
+            ReinitController02043204(msg);
             func_02043124(msg);
         }
         if (*(int*)(msg + 0x998) != 0) {
@@ -382,7 +382,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         }
         if (self->hasSub != 0) {
             if (self->subStep == 0) {
-                _Z30SetByteB10AndClearB11_02184a3cPch((char*)self->sub, 0xd);
+                SetByteB10AndClearB11_02184a3c((char*)self->sub, 0xd);
                 self->subStep++;
                 break;
             }
@@ -391,7 +391,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
             }
             self->subStep = 0;
         }
-        Entry021b8e8c* entry = (Entry021b8e8c*)_Z29FindEntryPointerByKey0203df78Pvi(table, self->rec->id);
+        Entry021b8e8c* entry = (Entry021b8e8c*)FindEntryPointerByKey0203df78(table, self->rec->id);
         if (entry == NULL) {
             break;
         }
@@ -423,7 +423,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         Query021b8e8c query;
         query.id = self->rec->id;
         query.value = self->f124;
-        if (_Z28LookupAndForEachNode020649b0PviS_(events, 1, &query) != 0) {
+        if (LookupAndForEachNode020649b0(events, 1, &query) != 0) {
             func_0206f81c(&query);
         }
         if (was == 0 && party[2] != 0) {
@@ -438,7 +438,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
                 SetFlag0x2IfByte0xd4Not3(self->timer);
                 break;
             }
-            _Z25SetFields120_138_021bd38cPvii(res->unknown_ptr_array_36fc[14], (int)self->timer, (int)&self->allocA);
+            SetFields120_138_021bd38c(res->unknown_ptr_array_36fc[14], (int)self->timer, (int)&self->allocA);
             self->finished = 1;
         }
         SetByteField0x253(leader);

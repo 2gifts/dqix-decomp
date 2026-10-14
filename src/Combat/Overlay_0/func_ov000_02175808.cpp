@@ -41,8 +41,8 @@ extern "C" void __clear(void*, unsigned long);
 extern "C" void func_ov000_021757ac(Struct0217f8c0*, unsigned short);
 int GetField0x3acValue(GameState*);
 extern "C" CombatCommand* func_ov000_02161318(Struct0217f8c0*, int);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0*, int);
-extern "C" int _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0(Struct0217f8c0*);
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
+int FindMatchingTableEntry0217f8c0(Struct0217f8c0*);
 extern "C" void func_ov000_02176634(Struct0217f8c0*, int, int, int, int);
 extern unsigned short data_ov000_0218342a[];
 extern int data_ov000_02184288[3];
@@ -79,11 +79,11 @@ extern "C" ARM void func_ov000_02175808(Struct0217f8c0* self) {
         CombatCommand* command = func_ov000_02161318(self, party->ids[i]);
         if (command) command->commands[command->index] = 13;
     }
-    _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(&self->list, 1);
+    ResetEntryList0205d6a0(&self->list, 1);
     self->step = 0;
     ++self->commandIndex;
     self->commands[self->commandIndex] = 0x17;
-    int entry = _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0(self);
+    int entry = FindMatchingTableEntry0217f8c0(self);
     func_ov000_02176634(self, entry, 0x17, data_ov000_02183ff0, data_ov000_02184288[1]);
     self->state = 0;
 }

@@ -44,12 +44,12 @@ struct Obj02046574 {
     unsigned char state;
 };
 struct CombatantInfo02092e0c { int fields[3]; };
-extern "C" Obj02046574* _Z26GetGlobalField0x1c020421a0v();
+Obj02046574* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void*);
 int GetField0x3acValue(GameState*);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574*, int, char*);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void*, int);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310*, int);
+void SetIndexedName02046574(Obj02046574*, int, char*);
+void InitObjFromCombatantId020e4bf4(void*, int);
+int GetFieldByKey020e0434(Container020e0310*, int);
 #if !defined(jpn)
 extern "C" void func_0204500c(Obj02046574*, int, int, int);
 #endif
@@ -61,15 +61,15 @@ extern "C" void func_02043270(Obj02046574*, int, int, int, int);
 // USA: func_02092e0c
 extern "C" ARM void func_02092e0c(MessageController* messages) {
     if (messages->messageKey >= 0) {
-        Obj02046574* display = _Z26GetGlobalField0x1c020421a0v();
+        Obj02046574* display = GetGlobalField0x1c020421a0();
         func_02046380(display);
         GameState* state = GameState::GetInstance();
         GameObject* member = state->GetPartyMemberByIndex(GetField0x3acValue(state));
-        if (member) _Z22SetIndexedName02046574P11Obj02046574iPc(display, 0, member->baseStats_->unk);
+        if (member) SetIndexedName02046574(display, 0, member->baseStats_->unk);
 #if defined(jpn)
         member = state->GetPartyMemberByIndex(messages->namedPartySlot);
-        if (member) _Z22SetIndexedName02046574P11Obj02046574iPc(display, 1, member->baseStats_->unk);
-        func_0204500c(display, _Z21GetFieldByKey020e0434P17Container020e0310i(&messages->messages, messages->messageKey), 0);
+        if (member) SetIndexedName02046574(display, 1, member->baseStats_->unk);
+        func_0204500c(display, GetFieldByKey020e0434(&messages->messages, messages->messageKey), 0);
         display->active = 1;
         if ((messages->flags & 1) && (messages->flags & 2)) {
             display->state = 0;
@@ -80,9 +80,9 @@ extern "C" ARM void func_02092e0c(MessageController* messages) {
         }
 #else
         CombatantInfo02092e0c info;
-        _Z30InitObjFromCombatantId020e4bf4Pvi(&info, messages->namedPartySlot);
+        InitObjFromCombatantId020e4bf4(&info, messages->namedPartySlot);
         display->combatant = &info;
-        func_0204500c(display, _Z21GetFieldByKey020e0434P17Container020e0310i(&messages->messages, messages->messageKey), 0, 0xe3);
+        func_0204500c(display, GetFieldByKey020e0434(&messages->messages, messages->messageKey), 0, 0xe3);
         display->active = 1;
         if ((messages->flags & 1) && (messages->flags & 2)) {
             display->state = 0;

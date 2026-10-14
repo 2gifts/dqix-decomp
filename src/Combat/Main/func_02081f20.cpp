@@ -19,7 +19,7 @@ struct Obj0208203c {
     signed char field_8;
 };
 
-extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(struct Obj0208203c* obj);
+void ResetWithSub0208203c(struct Obj0208203c* obj);
 
 // USA: func_02081f20
 extern "C" ARM unsigned short func_02081f20(struct Obj0208203c* obj, int ticks) {
@@ -56,7 +56,7 @@ extern "C" ARM unsigned short func_02081f20(struct Obj0208203c* obj, int ticks) 
             }
             goto end;
         }
-        _Z20ResetWithSub0208203cP11Obj0208203c(obj);
+        ResetWithSub0208203c(obj);
     }
 end:
     return obj->field_0->field_2;

@@ -5,7 +5,7 @@
 
 extern "C" void* __clear(void*, int);
 struct Vec3copy0202ec84 { unsigned int v[3]; };
-extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
+int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 
 struct SlotEntry02039fec {
     unsigned char pad0[5];
@@ -58,7 +58,7 @@ extern "C" ARM void func_0203a5e8(Obj02039fec* obj, int index) {
         for (int i = 0; i < 16; i++) {
             if (projection->slots[i].timer > 0) {
                 int x, y = 0;
-                _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(camera, &projection->slots[i].vector, &x, &y);
+                ComputeTwoFromVec3_0202ec84(camera, &projection->slots[i].vector, &x, &y);
                 x += projection->slots[i].horizontalOffset;
                 y += projection->slots[i].verticalOffset;
                 ys[i] = y;

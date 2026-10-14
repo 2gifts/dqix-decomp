@@ -40,26 +40,26 @@ struct FlagWord02046708;
 struct Obj020214f0;
 extern State_1f9b8 data_020fdcb0[4];
 extern Stopwatch0201f9e8 data_020fdc60[4];
-extern "C" void _Z19InitStruct_0201f9b8P11State_1f9b8(State_1f9b8*);
+void InitStruct_0201f9b8(State_1f9b8*);
 extern "C" void InitStopwatch0201f9e8(Stopwatch0201f9e8*);
 unsigned short GetTableValue(void*);
-extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708*, unsigned int);
+FlagWord02046708* GetDataPtr02114e04_020d6c00(void);
+int TestFlags02046708(FlagWord02046708*, unsigned int);
 #if defined(jpn)
 extern "C" void func_02022644(MapDisplay*);
 #else
 extern "C" void func_02022bb0(MapDisplay*);
 #endif
 extern "C" void func_020e0688(MapDisplay*);
-extern "C" void _Z25HandleQueuedEntry02026694Pc(char*);
-extern "C" void _Z27HandleStateDispatch020214f0P11Obj020214f0(Obj020214f0*);
+void HandleQueuedEntry02026694(char*);
+void HandleStateDispatch020214f0(Obj020214f0*);
 extern "C" void func_02026bdc(MapDisplay*, int);
 
 // USA: func_02022dc8
 extern "C" ARM void func_02022dc8(MapDisplay* receiver) {
     GameState* game = GameState::GetInstance();
     for (int i = 0; i < 4; ++i) {
-        if (!game->GetPartyMemberByIndex(i)) _Z19InitStruct_0201f9b8P11State_1f9b8(&data_020fdcb0[i]);
+        if (!game->GetPartyMemberByIndex(i)) InitStruct_0201f9b8(&data_020fdcb0[i]);
     }
     int memberCount = receiver->field75c;
     if (memberCount) {
@@ -101,7 +101,7 @@ extern "C" ARM void func_02022dc8(MapDisplay* receiver) {
             state->reset = 0;
         }
     }
-    if (_Z17TestFlags02046708P16FlagWord02046708j(_Z27GetDataPtr02114e04_020d6c00v(), 1)) {
+    if (TestFlags02046708(GetDataPtr02114e04_020d6c00(), 1)) {
 #if defined(jpn)
         func_02022644(receiver);
 #else
@@ -109,8 +109,8 @@ extern "C" ARM void func_02022dc8(MapDisplay* receiver) {
 #endif
     } else {
         if (receiver->field9c5 && receiver->field764) func_020e0688(receiver);
-        if (receiver->field9b8) _Z25HandleQueuedEntry02026694Pc((char*)receiver);
-        if (receiver->field9c3) _Z27HandleStateDispatch020214f0P11Obj020214f0((Obj020214f0*)receiver);
+        if (receiver->field9b8) HandleQueuedEntry02026694((char*)receiver);
+        if (receiver->field9c3) HandleStateDispatch020214f0((Obj020214f0*)receiver);
         else func_02026bdc(receiver, 1);
     }
 }

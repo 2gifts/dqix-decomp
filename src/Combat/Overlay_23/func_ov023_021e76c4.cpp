@@ -79,17 +79,17 @@ struct Obj0204c7a8;
 struct Struct_0205cf78;
 struct Elem_0205cf78;
 
-extern "C" MessageSystem_021e76c4* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem_021e76c4* GetGlobalField0x1c020421a0();
 void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(AllocTarget0204b12c* obj, SafeAllocator* alloc);
-extern "C" int _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8* obj, int a, int b);
-extern "C" void _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(Foo0204af38* obj, int count, SafeAllocator* alloc);
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* obj, SafeAllocator* alloc);
+int DispatchViaTable0204b5e8(Obj0204b5e8* obj, int a, int b);
+void AllocateArray0204af38(Foo0204af38* obj, int count, SafeAllocator* alloc);
 int CountActiveEntries(ActiveEntry02046900* entry);
 void* FindRecordByIndex(Rec020467f0* rec, int index, void** out, int* out44);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8* obj, void* buf);
+void FlushAndDispatchList0204b0e8(List0204b0e8* obj, void* buf);
 ScreenData_021e76c4* GetEntryByIndexStride0x10(EntryList0204af14* list, unsigned int index);
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(Obj0204c7a8* obj, SafeAllocator* alloc, int val, unsigned int len);
-extern "C" void _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h(Struct_0205cf78* s, Elem_0205cf78* arr, unsigned char count);
+void AllocateBuffer0204c7a8(Obj0204c7a8* obj, SafeAllocator* alloc, int val, unsigned int len);
+void LinkArrayPrevPointers0205cf78(Struct_0205cf78* s, Elem_0205cf78* arr, unsigned char count);
 
 extern "C" {
 void __clear(void* buffer, unsigned long size);
@@ -155,7 +155,7 @@ extern "C" ARM int func_ov023_021e76c4(ProfileCard_021e76c4* self)
     else if (self->step_ == 2)
     {
         self->allocators_[0].Reset();
-        self->text_ = (char*)_Z26GetGlobalField0x1c020421a0v()->unk_5c;
+        self->text_ = (char*)GetGlobalField0x1c020421a0()->unk_5c;
         __clear(screens, sizeof(screens));
         BackgroundGraphics_021e76c4* background;
         int i;
@@ -166,10 +166,10 @@ extern "C" ARM int func_ov023_021e76c4(ProfileCard_021e76c4* self)
             background->unk_1c_0_ = 1;
             background->unk_1c_4_ = i;
             func_0204b5b4(background, i);
-            _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)background, &self->allocators_[1]);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)background, 0, 0);
+            AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)background, &self->allocators_[1]);
+            DispatchViaTable0204b5e8((Obj0204b5e8*)background, 0, 0);
         }
-        _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((Foo0204af38*)&self->backgrounds_[1], 1, &self->allocators_[1]);
+        AllocateArray0204af38((Foo0204af38*)&self->backgrounds_[1], 1, &self->allocators_[1]);
         DisableSubBGVRAMBanks();
         MapVRAMBanksToSubBG(0x80);
         REG_BG0CNT_SUB = (REG_BG0CNT_SUB & 0x43) | 0xe00;
@@ -198,7 +198,7 @@ extern "C" ARM int func_ov023_021e76c4(ProfileCard_021e76c4* self)
             loader->RemoveTask(self->task_);
             self->task_ = -1;
             func_0204bc74(&self->backgrounds_[0], 0, 0, 0, 0x20, 0x19, 0);
-            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)&self->backgrounds_[0], 0);
+            FlushAndDispatchList0204b0e8((List0204b0e8*)&self->backgrounds_[0], 0);
             ScreenData_021e76c4* screen = GetEntryByIndexStride0x10((EntryList0204af14*)&self->backgrounds_[1], 0);
             if (screen != NULL)
             {
@@ -215,15 +215,15 @@ extern "C" ARM int func_ov023_021e76c4(ProfileCard_021e76c4* self)
             for (j = 0; j < 4; j++)
             {
                 canvas = &self->canvases_[j];
-                _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8*)canvas, &self->allocators_[1], (int)self->pixels_, 0x600);
+                AllocateBuffer0204c7a8((Obj0204c7a8*)canvas, &self->allocators_[1], (int)self->pixels_, 0x600);
                 canvas->background_ = &self->backgrounds_[0];
             }
             canvas = &self->canvases_[4];
-            _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8*)canvas, &self->allocators_[1], (int)self->pixels_, 0x40);
+            AllocateBuffer0204c7a8((Obj0204c7a8*)canvas, &self->allocators_[1], (int)self->pixels_, 0x40);
             canvas->background_ = &self->backgrounds_[0];
             self->window_.background_ = &self->backgrounds_[0];
             self->window_.unk_b2 = 1;
-            _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78*)&self->window_, (Elem_0205cf78*)self->canvases_, 5);
+            LinkArrayPrevPointers0205cf78((Struct_0205cf78*)&self->window_, (Elem_0205cf78*)self->canvases_, 5);
             self->step_++;
         }
         result = 0;

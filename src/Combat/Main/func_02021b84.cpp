@@ -24,10 +24,10 @@ struct AxisFloats0203b5a0;
 int IsAxisIntWithin16(struct AxisFloats0203b5a0* s, int axis);
 
 void InitSubScreenDisplay(void* context);
-extern "C" void _Z19TailForward0203b66cPc(char* obj);
-extern "C" void _Z21InitSubObject0203bd78Pc(char* obj);
-extern "C" void _Z25InitBattleContext0203bd24Pc(char* obj);
-extern "C" void _Z24SetArraySlotFlag0203b718Pviii(void* objPtr, int mode, int idx, int fillByte);
+void TailForward0203b66c(char* obj);
+void InitSubObject0203bd78(char* obj);
+void InitBattleContext0203bd24(char* obj);
+void SetArraySlotFlag0203b718(void* objPtr, int mode, int idx, int fillByte);
 extern "C" void func_0203ba74(void* obj);
 void DelayThenSyncBit0(void);
 #if defined(jpn)
@@ -40,15 +40,15 @@ void RefreshRecordListDisplay02020e58(void* self, int* handle);
 void CopyStringOrDefault02026428(void* obj, const char* name);
 void SetEventStringAndAccumulateLength02026470(void* obj, int flag);
 struct Struct0205a198;
-extern "C" void _Z12Init0205a198P14Struct0205a198(struct Struct0205a198* p);
-extern "C" void _Z18InitStruct0205a444Pc(char* obj);
+void Init0205a198(struct Struct0205a198* p);
+void InitStruct0205a444(char* obj);
 struct Rec020467f0;
-extern "C" int _Z22ProcessRecords0205a498PvP11Rec020467f0iS_(void* a, struct Rec020467f0* b, int flag, void* d);
-extern "C" void _Z29SetBitfieldStoreBytes0205af38iPcii(int a, char* obj, int c, int d);
+int ProcessRecords0205a498(void* a, struct Rec020467f0* b, int flag, void* d);
+void SetBitfieldStoreBytes0205af38(int a, char* obj, int c, int d);
 void* GetGlobalPtr02105244();
 int InitAndCopyBuffer020233b8(void* arg0, int flag1);
 extern "C" void* func_0203be4c(void);
-extern "C" void _Z26InitFourEntrySlots02020aa0Pv(void* obj);
+void InitFourEntrySlots02020aa0(void* obj);
 #if defined(jpn)
 extern "C" void func_02026898(void* obj);
 #else
@@ -56,9 +56,9 @@ extern "C" void func_02026f34(void* obj);
 #endif
 extern "C" void func_ov017_02191234(void* obj);
 extern "C" void func_0202343c(void* obj);
-extern "C" void _Z32MarkActiveCombatantSlots02026b7cPh(unsigned char* obj);
+void MarkActiveCombatantSlots02026b7c(unsigned char* obj);
 extern "C" void func_02026bdc(void* obj, int flag);
-extern "C" int _Z26FormatAndCopyNames02020b98Pv(void* obj);
+int FormatAndCopyNames02020b98(void* obj);
 
 extern char data_020ef5c0[];
 extern char data_020ef5d8[];
@@ -120,7 +120,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
 #endif
             path, (SafeAllocator*)0);
         strcpy((char*)self->bytesa45, grotto->activeMapImageName);
-        self->namesTask = _Z26FormatAndCopyNames02020b98Pv(self);
+        self->namesTask = FormatAndCopyNames02020b98(self);
         self->taska04 = loader->QueueLoadFile(
 #if defined(jpn)
             data_020ef4d0,
@@ -137,11 +137,11 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         func_02020720(self);
         InitSubScreenDisplay(self);
         alloc->Reset();
-        _Z19TailForward0203b66cPc(table);
-        _Z21InitSubObject0203bd78Pc(battleCtx);
-        _Z25InitBattleContext0203bd24Pc(battleCtx);
-        _Z24SetArraySlotFlag0203b718Pviii(table, 1, 0, 0);
-        _Z24SetArraySlotFlag0203b718Pviii(table, 1, 1, 0);
+        TailForward0203b66c(table);
+        InitSubObject0203bd78(battleCtx);
+        InitBattleContext0203bd24(battleCtx);
+        SetArraySlotFlag0203b718(table, 1, 0, 0);
+        SetArraySlotFlag0203b718(table, 1, 1, 0);
         func_0203ba74(table);
         DelayThenSyncBit0();
 #if defined(jpn)
@@ -188,15 +188,15 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         fileLength = 0;
         loader->GetLoadedFileByID(self->taska04, &fileData, &fileLength);
         for (int i = 0; i < 0x1c; i++) {
-            _Z12Init0205a198P14Struct0205a198(&self->records[i]);
+            Init0205a198(&self->records[i]);
         }
-        _Z18InitStruct0205a444Pc((char*)&self->entryList);
+        InitStruct0205a444((char*)&self->entryList);
         self->entryList.active = 1;
         self->entryList.records = self->records;
         self->entryList.count = 0x18;
-        _Z22ProcessRecords0205a498PvP11Rec020467f0iS_((char*)&self->entryList, (struct Rec020467f0*)fileData, fileLength, alloc);
-        _Z29SetBitfieldStoreBytes0205af38iPcii((int)((char*)&self->entryList), (char*)&self->records[9], 1, 1);
-        _Z29SetBitfieldStoreBytes0205af38iPcii((int)((char*)&self->entryList), (char*)&self->records[11], 1, 1);
+        ProcessRecords0205a498((char*)&self->entryList, (struct Rec020467f0*)fileData, fileLength, alloc);
+        SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[9], 1, 1);
+        SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[11], 1, 1);
         *(int*)((char*)GetGlobalPtr02105244() +
 #if defined(jpn)
                 0x608
@@ -223,7 +223,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         *(char**)GetGlobalPtr02105244() = p;
         BackgroundLoader::GetInstance()->RemoveTask(self->taska04);
         self->taska04 = -1;
-        _Z26InitFourEntrySlots02020aa0Pv(self);
+        InitFourEntrySlots02020aa0(self);
 #if defined(jpn)
         func_02026898(self);
 #else
@@ -236,7 +236,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         self->loadStage = self->loadStage + 1;
         DelayThenSyncBit0();
         func_0202343c(self);
-        _Z32MarkActiveCombatantSlots02026b7cPh((unsigned char*)self);
+        MarkActiveCombatantSlots02026b7c((unsigned char*)self);
         func_02026bdc(self, 0);
     }
 }

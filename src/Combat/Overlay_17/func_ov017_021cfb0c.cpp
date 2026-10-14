@@ -44,9 +44,9 @@ extern "C" int func_0202c508(struct SearchStruct0202c1a4* search);
 extern "C" unsigned short* func_02012fe4(void);
 void* GetField0x3f8Address(GameState* battleStruct);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24** list);
-extern "C" int _Z17IsInRange0201b588i(int v);
+int IsInRange0201b588(int v);
 int ListContainsId(ListHead02046b60* list, int id);
-extern "C" void _Z15InitObj021be40cP11Obj021be40c(struct Obj021be40c* obj);
+void InitObj021be40c(struct Obj021be40c* obj);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 
 // USA: func_ov017_021cfb0c
@@ -71,11 +71,11 @@ extern "C" ARM void func_ov017_021cfb0c(int unused0, void* unused1, GameState* b
     flag = 0;
     cur = (unsigned short*)GetField0x3f8Address(battleStruct);
     if (GetHeadNodeIdOrMinusOne(list) == 3) {
-        if (_Z17IsInRange0201b588i(*cur)) {
+        if (IsInRange0201b588(*cur)) {
             flag = 1;
         }
     }
-    if (!_Z17IsInRange0201b588i(zoneId) && !flag) {
+    if (!IsInRange0201b588(zoneId) && !flag) {
         return;
     }
 
@@ -86,7 +86,7 @@ extern "C" ARM void func_ov017_021cfb0c(int unused0, void* unused1, GameState* b
         if (id == 0xc3b5) {
             return;
         }
-        if (!_Z17IsInRange0201b588i(id)) {
+        if (!IsInRange0201b588(id)) {
             return;
         }
     }
@@ -101,7 +101,7 @@ extern "C" ARM void func_ov017_021cfb0c(int unused0, void* unused1, GameState* b
     }
 
     node = ov->node;
-    _Z15InitObj021be40cP11Obj021be40c(node);
+    InitObj021be40c(node);
     node->pos = pos;
     node->zoneId = grotto->zoneId;
     AppendNodeToTail((TailList020469b4*)list, (TailNode020469b4*)node);

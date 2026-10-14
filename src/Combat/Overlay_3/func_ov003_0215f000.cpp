@@ -41,7 +41,7 @@ struct TouchState0215f000 {
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 int TestFlagMask(unsigned short* obj, int mask);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* x, int* y);
-extern "C" struct LookupTable0215e930* _Z24FindEntryByMask_0215e8f4P12Self0215e8f4(struct Self0215e8f4* self);
+struct LookupTable0215e930* FindEntryByMask_0215e8f4(struct Self0215e8f4* self);
 extern "C" int func_ov003_0215e930(struct LookupTable0215e930* table, short id, signed char* col, signed char* row);
 extern "C" void func_ov003_0215e9ec(struct Self0215e8f4* self, int dx, int dy);
 extern "C" int func_ov003_0215ef54(struct Self0215e8f4* self);
@@ -108,7 +108,7 @@ extern "C" ARM int func_ov003_0215f000(struct Self0215e8f4* self, int elapsed) {
                         signed char curCol;
                         signed char prevRow;
                         signed char prevCol;
-                        struct LookupTable0215e930* table = _Z24FindEntryByMask_0215e8f4P12Self0215e8f4(self);
+                        struct LookupTable0215e930* table = FindEntryByMask_0215e8f4(self);
                         struct MenuCell0215f000* cur = self->cell;
                         if (func_ov003_0215e930(table, prev->id, &prevCol, &prevRow) == 0
                             && func_ov003_0215e930(table, cur->id, &curCol, &curRow) == 0) {

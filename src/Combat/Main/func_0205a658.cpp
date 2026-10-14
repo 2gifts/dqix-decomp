@@ -28,7 +28,7 @@ struct CellScript0205a658 {
 };
 int GetCellBankBlock(void*, void**);
 void* GetEntryVarStride(Hdr02b00e0*, unsigned int);
-extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198*);
+void Init0205a198(Struct0205a198*);
 
 // USA: func_0205a658
 extern "C" ARM int func_0205a658(CellScript0205a658* self, void* data, unsigned int length, SafeAllocator* allocator) {
@@ -44,7 +44,7 @@ extern "C" ARM int func_0205a658(CellScript0205a658* self, void* data, unsigned 
     if (allocator && !self->records) {
         self->recordCount = header->count;
         self->records = (Struct0205a198*)allocator->Allocate(self->recordCount * sizeof(Struct0205a198));
-        for (unsigned short i = 0; i < self->recordCount; ++i) _Z12Init0205a198P14Struct0205a198(&self->records[i]);
+        for (unsigned short i = 0; i < self->recordCount; ++i) Init0205a198(&self->records[i]);
     }
     Struct0205a198* records;
     unsigned short recordCount = self->recordCount;

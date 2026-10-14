@@ -5,7 +5,7 @@
 
 int GetFieldAt0x150(unsigned char* obj);
 struct Field150Holder02052e2c;
-extern "C" short* _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(Field150Holder02052e2c* obj);
+short* GetField150Ptr0x488_02052e2c(Field150Holder02052e2c* obj);
 struct StructDE234_020de234 {
     int a, b, c, d;
     unsigned int field10Low : 10;
@@ -14,7 +14,7 @@ struct StructDE234_020de234 {
     unsigned int field10Unused : 4;
     short e, f, g, h, i;
 };
-extern "C" unsigned short _Z31GetPreferredPackedField020de234P20StructDE234_020de234i(StructDE234_020de234* p, int preferMid);
+unsigned short GetPreferredPackedField020de234(StructDE234_020de234* p, int preferMid);
 struct EffectTable02072e94 {
     short values[10];
     unsigned char preferred : 1;
@@ -34,9 +34,9 @@ extern "C" ARM int func_02072e94(char* out, int combatantId, int kind,
                                 StructDE234_020de234* entry, void* optional) {
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
     unsigned char* fields = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
-    EffectTable02072e94* table = (EffectTable02072e94*)_Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c((Field150Holder02052e2c*)combatant);
+    EffectTable02072e94* table = (EffectTable02072e94*)GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)combatant);
     int preferred = table->preferred;
-    int value = _Z31GetPreferredPackedField020de234P20StructDE234_020de234i(entry, table->preferred);
+    int value = GetPreferredPackedField020de234(entry, table->preferred);
     StructDE234_020de234* alternate = NULL;
     StructDE234_020de234* primary = NULL;
     if (optional != NULL) {
@@ -54,7 +54,7 @@ extern "C" ARM int func_02072e94(char* out, int combatantId, int kind,
     }
     int alternateValue = -1;
     if (alternate != NULL && alternate->g > -1) {
-        alternateValue = _Z31GetPreferredPackedField020de234P20StructDE234_020de234i(alternate, preferred);
+        alternateValue = GetPreferredPackedField020de234(alternate, preferred);
     }
     if (kind == 3) {
         letter[0] = 'a';
@@ -76,7 +76,7 @@ extern "C" ARM int func_02072e94(char* out, int combatantId, int kind,
     }
     if (kind == 5 && primary != NULL) {
         if (table->values[4] == 8010 || table->values[4] < 0) {
-            value = _Z31GetPreferredPackedField020de234P20StructDE234_020de234i(primary, preferred);
+            value = GetPreferredPackedField020de234(primary, preferred);
         }
         strcpy(suffix.text, data_020f0d04);
     }

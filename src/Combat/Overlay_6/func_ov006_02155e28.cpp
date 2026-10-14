@@ -29,7 +29,7 @@
 extern "C" void __clear(void* dst, int size);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 
-extern "C" void _Z18InitStruct0205a444Pc(char* obj);
+void InitStruct0205a444(char* obj);
 struct ActiveEntry02046900;
 int CountActiveEntries(struct ActiveEntry02046900* data);
 struct Rec020467f0;
@@ -42,15 +42,15 @@ struct List0204af64 {
     unsigned char slot : 4;
     unsigned char pad1d[3];
 };
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64* list);
+void ResetList0204af64(struct List0204af64* list);
 void SetWord0x18ClearByte0x1f(unsigned char* list, int value);
 extern "C" void func_0204b5b4(void* list, int priority);
 struct AllocTarget0204b12c;
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(struct AllocTarget0204b12c* list, SafeAllocator* alloc);
+void AllocateAndClearBuffer0204b12c(struct AllocTarget0204b12c* list, SafeAllocator* alloc);
 struct Obj0204b5e8;
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(struct Obj0204b5e8* list, int a, int b);
+void DispatchViaTable0204b5e8(struct Obj0204b5e8* list, int a, int b);
 struct Obj0204b010;
-extern "C" void _Z19ClearBuffer0204b010P11Obj0204b010Pv(struct Obj0204b010* list, void* buffer);
+void ClearBuffer0204b010(struct Obj0204b010* list, void* buffer);
 extern "C" void func_0204b174(void* list, void* data, void* alloc, int size);
 
 struct Obj0204c7a8 {
@@ -59,7 +59,7 @@ struct Obj0204c7a8 {
     unsigned char pad8[0xe0 - 8];
 };
 extern "C" void func_0204c684(void* node);
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(struct Obj0204c7a8* node, SafeAllocator* alloc, int a, unsigned int size);
+void AllocateBuffer0204c7a8(struct Obj0204c7a8* node, SafeAllocator* alloc, int a, unsigned int size);
 
 struct Manager0207f7f0 {
     unsigned char pad0[R(0x20,0x2c)];
@@ -78,7 +78,7 @@ extern "C" void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(struct 
 extern "C" void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(struct Obj0207f914* mgr, int alloc, int nameA, int nameB);
 #endif
 extern "C" int func_0207f9f4(void* mgr);
-extern "C" void _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(struct Manager0207f7f0* mgr, struct Node0207f7f0* nodes, int count);
+void InitNodeChain0207f7f0(struct Manager0207f7f0* mgr, struct Node0207f7f0* nodes, int count);
 
 struct Entry021e20f0 {
     short id;
@@ -92,7 +92,7 @@ struct Table021e20f0 {
     unsigned char padc[8];
     unsigned short count;
 };
-extern "C" void _Z20ClearFields_021e20c0Pv(void* table);
+void ClearFields_021e20c0(void* table);
 extern "C" void func_ov023_021e20f0(void* table, void* alloc, void* data, unsigned int size);
 
 struct Progress02012fe4 {
@@ -108,24 +108,24 @@ char* GetWord0x0(int* gs);
 int GetFieldIfFlag4(char* gs);
 void SetField0x3b0Value(GameState* gs, int value);
 struct Foo0207df50;
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void CopyInternalFields0207df50(struct Foo0207df50* p);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 struct Fields020407b4;
 void SetFields0x44(struct Fields020407b4* dst, int a, int b, int c);
 struct Target02059f38;
 struct Vec3_02059f38;
 void CopyVec3ToField0x44(struct Target02059f38* dst, struct Vec3_02059f38* src);
-extern "C" void _Z23InitCombatEntry021542f4Pv(void* entry);
+void InitCombatEntry021542f4(void* entry);
 struct Obj0215426c;
-extern "C" void _Z30ProcessPendingCommands0215426cP11Obj0215426c(struct Obj0215426c* obj);
+void ProcessPendingCommands0215426c(struct Obj0215426c* obj);
 void SetModelRenderContextRenderCommandHook(ModelRenderContext* context, void (*hook)(RenderCommandHandler*), int a, int b, int c);
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* reg, int planeA, int planeB, int evA, int evB);
 struct BattleTask020dbf18 {
     unsigned char pad0[0x10];
     int status;
 };
-extern "C" void _Z17BeginTask020dbf18P18BattleTask020dbf18iiii(struct BattleTask020dbf18* task, int name, int alloc, int tables, int count);
+void BeginTask020dbf18(struct BattleTask020dbf18* task, int name, int alloc, int tables, int count);
 
 struct Bytes3_0215ff54 { unsigned char v[3]; };
 struct Bytes8_0215ff64 { signed char v[8]; };
@@ -200,7 +200,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
     unsigned char state = self->state;
 
     if (state == 0) {
-        _Z18InitStruct0205a444Pc((char*)&self->records);
+        InitStruct0205a444((char*)&self->records);
         self->records.count = 0;
         self->records.owner = self->field1e0;
         self->records.capacity = 0x11;
@@ -235,22 +235,22 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         struct Bytes3_0215ff54 priority = data_ov006_0215ff54;
         for (unsigned char i = 0; i < 2; i++) {
             struct List0204af64* list = &self->lists[i];
-            _Z17ResetList0204af64P12List0204af64(list);
+            ResetList0204af64(list);
             list->kind = 0;
             list->slot = i + 1;
             SetWord0x18ClearByte0x1f((unsigned char*)list, 0);
             func_0204b5b4(list, priority.v[i]);
-            _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((struct AllocTarget0204b12c*)list, alloc);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8*)list, 0, 0);
+            AllocateAndClearBuffer0204b12c((struct AllocTarget0204b12c*)list, alloc);
+            DispatchViaTable0204b5e8((struct Obj0204b5e8*)list, 0, 0);
         }
-        _Z19ClearBuffer0204b010P11Obj0204b010Pv((struct Obj0204b010*)&self->lists[0], NULL);
-        _Z19ClearBuffer0204b010P11Obj0204b010Pv((struct Obj0204b010*)&self->lists[1], NULL);
+        ClearBuffer0204b010((struct Obj0204b010*)&self->lists[0], NULL);
+        ClearBuffer0204b010((struct Obj0204b010*)&self->lists[1], NULL);
         SafeAllocator* nodeAlloc = self->allocs;
         nodeAlloc[3].Reset();
         for (unsigned char j = 0; j < 1; j++) {
             struct Obj0204c7a8* node = &self->nodes[j];
             func_0204c684(node);
-            _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(node, &nodeAlloc[3], self->field1a4, 0x1c0);
+            AllocateBuffer0204c7a8(node, &nodeAlloc[3], self->field1a4, 0x1c0);
             node->lists = self->lists;
         }
         self->taskId = loader->QueueLoadFile(data_ov006_021600c4, NULL);
@@ -309,7 +309,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         if (data != NULL) {
             SafeAllocator* alloc = self->allocs;
             alloc[1].Reset();
-            _Z20ClearFields_021e20c0Pv(self->table);
+            ClearFields_021e20c0(self->table);
             func_ov023_021e20f0(self->table, &alloc[1], data, size);
             struct Entry021e20f0* entry;
             struct Entry021e20f0* arr = self->table->entries;
@@ -363,8 +363,8 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
             GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
             SafeAllocator* alloc = GetAllocator(res, 0);
             alloc->Reset();
-            _Z26CopyInternalFields0207df50P11Foo0207df50((struct Foo0207df50*)res->unknown_2cc);
-            _Z25RestorePairTables0207df90Pc(res->unknown_2cc);
+            CopyInternalFields0207df50((struct Foo0207df50*)res->unknown_2cc);
+            RestorePairTables0207df90(res->unknown_2cc);
             ObjectArchiveLoadInfo info;
             info.fileData = data;
             info.unk_8 = size;
@@ -372,7 +372,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
             info.unk_10 = 1;
             self->objs[0].LoadFromCHRArchive(&info);
             self->objs[0].MaybeSetBCFGAnimation(0, 0);
-            _Z24BackupPairTables0207dfacPc(res->unknown_2cc);
+            BackupPairTables0207dfac(res->unknown_2cc);
             SetFields0x44((struct Fields020407b4*)&self->objs[0], -0x3800, -0xb3b, 0x60a3);
         }
         loader->RemoveTask(self->taskId);
@@ -389,7 +389,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         if (data != NULL) {
             GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
             SafeAllocator* alloc = GetAllocator(res, 0);
-            _Z25RestorePairTables0207df90Pc(res->unknown_2cc);
+            RestorePairTables0207df90(res->unknown_2cc);
             ObjectArchiveLoadInfo info;
             info.fileData = data;
             info.unk_8 = size;
@@ -397,7 +397,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
             info.unk_10 = 1;
             self->objs[1].LoadFromCCHROrCMOTArchive(&info, NULL);
             self->objs[1].MaybeSetBCFGAnimation(0, 0);
-            _Z24BackupPairTables0207dfacPc(res->unknown_2cc);
+            BackupPairTables0207dfac(res->unknown_2cc);
             self->objs[1].SetScale(0x10a, 0x10a, 0x10a);
             SetFields0x44((struct Fields020407b4*)&self->objs[1], -0x41, -0xaac, 0x61f3);
         }
@@ -415,7 +415,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         if (data != NULL) {
             GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
             SafeAllocator* alloc = GetAllocator(res, 0);
-            _Z25RestorePairTables0207df90Pc(res->unknown_2cc);
+            RestorePairTables0207df90(res->unknown_2cc);
             ObjectArchiveLoadInfo info;
             info.fileData = data;
             info.unk_8 = size;
@@ -423,7 +423,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
             info.unk_10 = 1;
             self->objs[2].LoadFromCCHROrCMOTArchive(&info, NULL);
             self->objs[2].MaybeSetBCFGAnimation(0, 0);
-            _Z24BackupPairTables0207dfacPc(res->unknown_2cc);
+            BackupPairTables0207dfac(res->unknown_2cc);
             self->objs[2].SetScale(0x10a, 0x10a, 0x10a);
             CopyVec3ToField0x44((struct Target02059f38*)&self->objs[2], (struct Vec3_02059f38*)&self->objs[1].position_);
         }
@@ -438,7 +438,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         GameResources* res = func_ov017_0218b5b0();
         self->modelAlloc.CreateTypeA(res->allocator_array_38[0].Allocate(0x8000), 0x8000);
         self->modelAlloc.Reset();
-        _Z25RestorePairTables0207df90Pc(res->unknown_2cc);
+        RestorePairTables0207df90(res->unknown_2cc);
         void* data;
         unsigned int size;
         loader->GetLoadedFileByID(self->taskId, &data, &size);
@@ -454,7 +454,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
             CopyVec3ToField0x44((struct Target02059f38*)&self->objs[3], (struct Vec3_02059f38*)&self->objs[1].position_);
             self->objs[3].StopCurrentAnimation();
         }
-        _Z24BackupPairTables0207dfacPc(res->unknown_2cc);
+        BackupPairTables0207dfac(res->unknown_2cc);
         loader->RemoveTask(self->taskId);
         self->taskId = -1;
         self->state++;
@@ -469,7 +469,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         if (data != NULL) {
             GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
             SafeAllocator* alloc = GetAllocator(res, 0);
-            _Z25RestorePairTables0207df90Pc(res->unknown_2cc);
+            RestorePairTables0207df90(res->unknown_2cc);
             ObjectArchiveLoadInfo info;
             info.fileData = data;
             info.unk_8 = size;
@@ -478,7 +478,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
             Object3D* obj = &self->objs[4];
             obj->LoadFromCCHROrCMOTArchive(&info, NULL);
             obj->MaybeSetBCFGAnimation(0, 0);
-            _Z24BackupPairTables0207dfacPc(res->unknown_2cc);
+            BackupPairTables0207dfac(res->unknown_2cc);
             obj->SetScale(0x10a, 0x10a, 0x10a);
             CopyVec3ToField0x44((struct Target02059f38*)obj, (struct Vec3_02059f38*)&self->objs[1].position_);
             obj->StopCurrentAnimation();
@@ -499,7 +499,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
                     context = &model->renderContext_;
                 }
                 if (context != NULL) {
-                    SetModelRenderContextRenderCommandHook(context, (void (*)(RenderCommandHandler*))_Z30ProcessPendingCommands0215426cP11Obj0215426c, 0, 6, 3);
+                    SetModelRenderContextRenderCommandHook(context, (void (*)(RenderCommandHandler*))ProcessPendingCommands0215426c, 0, 6, 3);
                 }
             }
         }
@@ -513,12 +513,12 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         self->objs[2].MaybeSetBCFGAnimation(0, 0);
         GameState* gs = GameState::GetInstance();
         self->field1a0 = GetFieldIfFlag4((char*)gs);
-        _Z23InitCombatEntry021542f4Pv(self->entry);
+        InitCombatEntry021542f4(self->entry);
         SetField0x3b0Value(gs, (int)self->entry);
         struct Manager0207f7f0* mgr = self->mgr;
         mgr->lists = self->lists;
         mgr->mode = 2;
-        _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(self->mgr, (struct Node0207f7f0*)self->nodes, 1);
+        InitNodeChain0207f7f0(self->mgr, (struct Node0207f7f0*)self->nodes, 1);
         self->mgr->active = 1;
         volatile unsigned int* dispcnt = (volatile unsigned int*)0x4000000;
         *dispcnt = (*dispcnt & ~0x1f00) | 0x1f00;
@@ -526,7 +526,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         self->flags = self->flags | 0x1000;
         self->flags = self->flags & ~0x40;
         GameResources* res = (GameResources*)GetWord0x0((int*)gs);
-        _Z17BeginTask020dbf18P18BattleTask020dbf18iiii(&self->task, (int)data_ov006_0216019a, (int)&self->allocs[5],
+        BeginTask020dbf18(&self->task, (int)data_ov006_0216019a, (int)&self->allocs[5],
                           (int)res->unknown_2cc, 0x18);
         self->state++;
     } else if (state == 19) {

@@ -169,17 +169,17 @@ extern char data_ov008_0218b49b[];
 extern char data_ov008_0218b4b0[];
 extern char data_ov008_0218b4c1[];
 
-extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z20Clear12Bytes020e46c4Pv(void* name);
-extern "C" void _Z28InitObjFromCombatant020e4c74PvP10GameObject(void* name, GameObject* object);
-extern "C" void _Z23ResetListHeader020727d8P12List020727d8(List020727d8* list);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
+MessageSystem* GetGlobalField0x1c020421a0();
+void Clear12Bytes020e46c4(void* name);
+void InitObjFromCombatant020e4c74(void* name, GameObject* object);
+void ResetListHeader020727d8(List020727d8* list);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 const char* FindEntryByKey(TableA68* texts, int id);
-extern "C" void _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(void* list, StreamHeader* file, int size, int id, void* output, unsigned char female);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574* messages, int index, char* text);
+void SubmitAndRunScript02072928(void* list, StreamHeader* file, int size, int id, void* output, unsigned char female);
+void SetIndexedName02046574(Obj02046574* messages, int index, char* text);
 char* FindSubstring(char* text, char* search);
 void AppendYTag(char* text, int y);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+void AppendString02042058(char* text, const char* append);
 
 extern "C" {
 void __clear(void* buffer, unsigned long size);
@@ -201,7 +201,7 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
         return;
     GameState* gameState = GameState::GetInstance();
     BackgroundLoader::GetInstance();
-    MessageSystem* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     char name[0x30];
     __clear(name, sizeof(name));
     short title = 0;
@@ -228,8 +228,8 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
                 title = vocations - 20000 + data->vocation_;
             }
             female = hero->partyData_->female_;
-            _Z20Clear12Bytes020e46c4Pv(&heroName);
-            _Z28InitObjFromCombatant020e4c74PvP10GameObject(&heroName, hero);
+            Clear12Bytes020e46c4(&heroName);
+            InitObjFromCombatant020e4c74(&heroName, hero);
             messages->unk_10 = &heroName;
         }
     }
@@ -240,21 +240,21 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
             title = guest->title_;
         female = guest->female_;
         func_02042764(codes, name, 1);
-        _Z20Clear12Bytes020e46c4Pv(&guestName);
+        Clear12Bytes020e46c4(&guestName);
         func_020e4b34(&guestName, name, name, 0, 0, 0, 0, female, 0, 1, 0, 1);
         messages->unk_10 = &guestName;
     }
     if (title > 0)
     {
         TextList list;
-        _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)&list);
+        ResetListHeader020727d8((List020727d8*)&list);
         const char* titleText = NULL;
         unsigned int size = 0;
         if (title < 700)
         {
             if (self->guestTitles_ != NULL)
             {
-                titleText = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->guestTitles_, title);
+                titleText = GetFieldByKey020e0434((Container020e0310*)self->guestTitles_, title);
             }
             else
             {
@@ -284,13 +284,13 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
                 void* file = ExtractFileFromGP2(data_ov008_0218b49b, data_ov008_0218b4b0, &size);
                 if (file != NULL)
                 {
-                    _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(&list, (StreamHeader*)file, size, (short)(title + 20000), buffer, 0);
+                    SubmitAndRunScript02072928(&list, (StreamHeader*)file, size, (short)(title + 20000), buffer, 0);
                     titleText = buffer;
                 }
                 BackgroundLoader::RemoveLockGlobal();
             }
         }
-        _Z22SetIndexedName02046574P11Obj02046574iPc((Obj02046574*)messages, 0, (char*)titleText);
+        SetIndexedName02046574((Obj02046574*)messages, 0, (char*)titleText);
     }
     char* output = self->text_;
     int format = 100;
@@ -300,7 +300,7 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
         format = 101;
         width = 0xdf;
     }
-    func_02046608(messages, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, format), output + 0x760, width, 1, 0);
+    func_02046608(messages, 10, GetFieldByKey020e0434((Container020e0310*)&self->texts_, format), output + 0x760, width, 1, 0);
     int color = 7;
     if (FindSubstring(output + 0x760, data_ov008_0218b4c1) != NULL)
         color = 2;
@@ -311,5 +311,5 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
             self->titleX_ = 0xe0000;
     }
     AppendYTag(text, color);
-    _Z20AppendString02042058PcPKc(text, output + 0x760);
+    AppendString02042058(text, output + 0x760);
 }

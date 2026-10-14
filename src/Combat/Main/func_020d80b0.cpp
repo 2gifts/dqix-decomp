@@ -25,10 +25,10 @@ extern char data_020f2371[];
 extern "C" void func_0202ae18(GameState*);
 extern "C" Zone3D* func_02012fe4();
 extern "C" void* func_0205ec34();
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 int GetFieldIfFlag4(char*);
-extern "C" void _Z22ShutdownObject020d8484P11Obj020d8484(Obj020d8484*);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+void ShutdownObject020d8484(Obj020d8484*);
+void CancelPendingAction020397cc(Obj020397cc*, int);
 void ClearIntAt0x23c(unsigned char*);
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
 extern "C" void func_020728ac(TableA68*, SafeAllocator*, void*, unsigned int, int, int, int);
@@ -37,9 +37,9 @@ int TestBitInByteArray(int, unsigned char*, int);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
 void* FindEntryByKey(TableA68*, int);
 extern "C" void func_0204500c(void*, char*, int, int);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 void SetByteField0x253(void*);
-extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int);
+void SetCombatModeFromCase020dc2d0(int);
 struct Dialog020d80b0 {
     unsigned char field0[0x5c];
     char* text;
@@ -55,7 +55,7 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
     GameState* state = GameState::GetInstance();
     func_0202ae18(state);
     GameResources* resources = func_ov017_0218b5b0();
-    Dialog020d80b0* dialog = (Dialog020d80b0*)_Z26GetGlobalField0x1c020421a0v();
+    Dialog020d80b0* dialog = (Dialog020d80b0*)GetGlobalField0x1c020421a0();
     GameObject* object;
     Bits020d80b0* bits;
     Zone3D_StructPtr_8* zone = func_02012fe4()->pUnknownStruct_8_;
@@ -65,10 +65,10 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
     unsigned char* field = (unsigned char*)GetFieldIfFlag4((char*)state);
     if (grotto->activeMapData.GetDiscoveryState() != 1) {
         self->state = 7;
-        _Z22ShutdownObject020d8484P11Obj020d8484(self);
+        ShutdownObject020d8484(self);
     }
     if (self->state == 0) {
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)object, 1);
+        CancelPendingAction020397cc((Obj020397cc*)object, 1);
         ClearIntAt0x23c(field);
         self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x300), 0x300);
         self->task = BackgroundLoader::GetInstance()->QueueLoadFileInGP2(data_020f235c, data_020f2371, 0);
@@ -103,7 +103,7 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
         self->state = 4;
     } else if (self->state == 4) {
         if (!dialog->busy) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
             self->state = 5;
         }
     } else if (self->state == 5) {
@@ -115,7 +115,7 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
         self->state = 6;
     } else if (self->state == 6) {
         if (!dialog->busy) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
             self->state = 7;
         }
     } else if (self->state == 7) {
@@ -123,15 +123,15 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
         FontBankLoader* global = GetGlobal02109400();
         BlankFunction02094b38(global, 0x203);
         func_02094ab0(global);
-        if (zone && !zone->unknown_c_low_) _Z22ShutdownObject020d8484P11Obj020d8484(self);
+        if (zone && !zone->unknown_c_low_) ShutdownObject020d8484(self);
         else {
             SetSubBrightness(resources, -16, 15);
             self->state = 8;
         }
     } else if (self->state == 8) {
         if (!IsBrightnessTransitionActive(resources)) {
-            _Z29SetCombatModeFromCase020dc2d0i(2);
+            SetCombatModeFromCase020dc2d0(2);
             self->state = 9;
         }
-    } else if (self->state == 9) _Z22ShutdownObject020d8484P11Obj020d8484(self);
+    } else if (self->state == 9) ShutdownObject020d8484(self);
 }

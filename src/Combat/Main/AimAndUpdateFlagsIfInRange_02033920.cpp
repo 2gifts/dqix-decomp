@@ -1,13 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 struct Vec3 { int x; int y; int z; };
 extern "C" int func_02032424(struct Vec3*, struct Vec3*);
 struct Obj02033834;
 void SetVecYByMode02033834(struct Obj02033834*, int);
-extern "C" int _Z24fix32SignedAngleDistanceii(int a, int b);
-extern "C" int _Z8fix32absi(int x);
+int fix32SignedAngleDistance(int a, int b);
+int fix32abs(int x);
 extern "C" int _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, char* data, int mode);
 extern char data_020efa3c;
 
@@ -37,8 +36,8 @@ extern "C" ARM void func_02033920(struct Entity02033920* obj, int id, int flag) 
     SetVecYByMode02033834((struct Obj02033834*)obj, angle);
     if (flag == 0) return;
     if (obj->fbe != 0) return;
-    int d = _Z24fix32SignedAngleDistanceii(obj->f54, obj->fae);
-    int ad = _Z8fix32absi(d);
+    int d = fix32SignedAngleDistance(obj->f54, obj->fae);
+    int ad = fix32abs(d);
     if (ad <= 0x1000) return;
     if (obj->fb0 > 0x10c) return;
     int r = _ZN8Object3D24MaybeSetRegularAnimationEPKci(obj, &data_020efa3c, 0x11);

@@ -2,7 +2,7 @@
 #include "std_library_functions.h"
 
 struct Struct0205de24;
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
 #if defined(jpn)
 #define func_ov013_02185e40 func_ov013_02186f4c
 extern "C" void func_0205d304(void*, char*, int, int, int, int, void*);
@@ -19,8 +19,8 @@ struct Sprite02185cc0 {
     char unk_0[8];
     unsigned short* unk_8;
 };
-extern "C" Sprite02185cc0* _Z23GetArrayElement02184338Pvj(void* renderer, unsigned int index);
-extern "C" void* _Z21GetTableEntry020421b0i(int index);
+Sprite02185cc0* GetArrayElement02184338(void* renderer, unsigned int index);
+void* GetTableEntry020421b0(int index);
 void CleanInvalidateCacheRange(const void* start, unsigned int size);
 void CleanCacheRange(const void* start, unsigned int size);
 extern "C" void LoadToSubObjVRAM(const void* src, unsigned int offset, unsigned int size);
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov013_02185cc0(SkillPointMenu02185cc0* self) {
     void* renderer;
     void* pixels;
     unsigned char vocation;
-    _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24*)&self->window_, 0, 2);
+    FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)&self->window_, 0, 2);
     self->window_.width_ = 0xf;
     self->window_.height_ = 0xb;
     self->window_.unk_a4 = 1;
@@ -99,11 +99,11 @@ extern "C" ARM void func_ov013_02185cc0(SkillPointMenu02185cc0* self) {
         const int* icon = data_ov013_02187da4;
         if (subScreen)
             icon = data_ov013_02187d9c;
-        Sprite02185cc0* sprite = _Z23GetArrayElement02184338Pvj(renderer, (unsigned short)icon[0]);
+        Sprite02185cc0* sprite = GetArrayElement02184338(renderer, (unsigned short)icon[0]);
         unsigned short* oam;
         if (sprite != NULL && (oam = sprite->unk_8) != NULL)
         {
-            memcpy(pixels, _Z21GetTableEntry020421b0i((unsigned char)(vocation * 4 + 0x28)), 0x80);
+            memcpy(pixels, GetTableEntry020421b0((unsigned char)(vocation * 4 + 0x28)), 0x80);
             unsigned int offset = (unsigned short)(oam[2] & 0x3ff) << icon[1];
             CleanInvalidateCacheRange(pixels, 0x80);
             if (subScreen)

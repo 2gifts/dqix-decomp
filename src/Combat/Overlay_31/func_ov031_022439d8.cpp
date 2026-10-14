@@ -24,8 +24,8 @@ struct Struct022439d8 {
 extern SafeAllocator data_ov031_02291e3c;
 extern "C" void func_ov023_021f5b9c(void* a, void* b, int c, void* d);
 void SetByteField0x253(void* p);
-extern "C" FlagWord020466f4* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(FlagWord020466f4* p, unsigned int flags);
+FlagWord020466f4* GetDataPtr02114e04_020d6c00(void);
+void ClearFlags020466f4(FlagWord020466f4* p, unsigned int flags);
 
 // USA: func_ov031_022439d8
 extern "C" ARM int func_ov031_022439d8(Struct022439d8* ctx) {
@@ -74,7 +74,7 @@ extern "C" ARM int func_ov031_022439d8(Struct022439d8* ctx) {
 		}
 	}
 	if ((ctx->f374 & 0x20) == 0) {
-		_Z18ClearFlags020466f4P16FlagWord020466f4j(_Z27GetDataPtr02114e04_020d6c00v(), 0x80);
+		ClearFlags020466f4(GetDataPtr02114e04_020d6c00(), 0x80);
 	}
 	ctx->f30 = 1;
 	return 2;

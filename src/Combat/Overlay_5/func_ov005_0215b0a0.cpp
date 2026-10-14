@@ -22,10 +22,10 @@ struct NameSprite {
 #endif
 };
 struct CombatDisplay { char pad0[0xdf4]; Container020dedd0* container; char pad1[LOW_REGION(0x2f38, 0x2fc0)]; unsigned char state; char pad2[3]; unsigned char selected; char pad3[0xc7]; NameSprite names[8]; unsigned char raised[8]; };
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 short* GetField150Ptr0x488(Field150Holder02052e14*);
-extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0*, int);
-extern "C" CombatObject* _Z19GetField1c_021a193cPi(int*);
+void* FindElementByKey020dedd0(Container020dedd0*, int);
+CombatObject* GetField1c_021a193c(int*);
 #if defined(jpn)
 extern "C" void func_02045f3c(void*, unsigned short*, int, int, int, int, int, int);
 #else
@@ -37,9 +37,9 @@ extern unsigned char data_ov005_0215cbfc[];
 
 // USA: func_ov005_0215b0a0
 extern "C" ARM void func_ov005_0215b0a0(CombatDisplay* display) {
-    void* renderer = _Z26GetGlobalField0x1c020421a0v();
+    void* renderer = GetGlobalField0x1c020421a0();
     GameState* game = GameState::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(game, _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->index);
+    GameObject* combatant = GetCombatantWithFlag0x100(game, GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->index);
     if (!combatant) return;
     short* effects = GetField150Ptr0x488((Field150Holder02052e14*)combatant);
     int y = LOW_REGION(29, 28);
@@ -49,10 +49,10 @@ extern "C" ARM void func_ov005_0215b0a0(CombatDisplay* display) {
     if (display->state == 0) {
         for (int i = 0; i < 8; i++) {
 #if defined(jpn)
-            if (_Z24FindElementByKey020dedd0P17Container020dedd0i(display->container, effects[data_ov005_0215cbfc[i]])) color = 0x7fff;
+            if (FindElementByKey020dedd0(display->container, effects[data_ov005_0215cbfc[i]])) color = 0x7fff;
             else color = 0x3def;
 #else
-            int color = _Z24FindElementByKey020dedd0P17Container020dedd0i(display->container, effects[data_ov005_0215cbfc[i]]) ? 0x7fff : 0x3def;
+            int color = FindElementByKey020dedd0(display->container, effects[data_ov005_0215cbfc[i]]) ? 0x7fff : 0x3def;
 #endif
             if (i == display->selected) color = 0xf0a;
             int row = i * 24;
@@ -74,10 +74,10 @@ extern "C" ARM void func_ov005_0215b0a0(CombatDisplay* display) {
         }
     } else {
 #if defined(jpn)
-        if (_Z24FindElementByKey020dedd0P17Container020dedd0i(display->container, effects[data_ov005_0215cbfc[display->selected]])) color = 0x7fff;
+        if (FindElementByKey020dedd0(display->container, effects[data_ov005_0215cbfc[display->selected]])) color = 0x7fff;
         else color = 0x3def;
 #else
-        int color = _Z24FindElementByKey020dedd0P17Container020dedd0i(display->container, effects[data_ov005_0215cbfc[display->selected]]) ? 0x7fff : 0x3def;
+        int color = FindElementByKey020dedd0(display->container, effects[data_ov005_0215cbfc[display->selected]]) ? 0x7fff : 0x3def;
 #endif
         if (display->state == 3) color = 0xf0a;
 #if !defined(jpn)

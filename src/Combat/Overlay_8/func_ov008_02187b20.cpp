@@ -172,7 +172,7 @@ struct Container020e0310;
 extern char data_ov008_0218b4c3[];
 #endif
 
-extern "C" unsigned char* _Z26GetGlobalField0x1c020421a0v();
+unsigned char* GetGlobalField0x1c020421a0();
 void CopyOutBattleField0x7ac0(void* count);
 void StoreInArray0x8b0(StoreStruct* messages, int index, int value);
 void SetByteInRange(unsigned char* messages, int index, unsigned char digits);
@@ -180,8 +180,8 @@ void SetByteAtIndex(unsigned char* messages, int index, unsigned char value);
 void AppendPaletteTag(char* text, int color);
 int TestBitInByteArray(int store, unsigned char* bits, int flag);
 void AppendXYTag(char* text, int x, int y);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
+void AppendString02042058(char* text, const char* append);
 
 extern "C" {
 void __clear(void* buffer, unsigned long size);
@@ -199,7 +199,7 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
     int y;
     if (text == NULL)
         return;
-    unsigned char* messages = _Z26GetGlobalField0x1c020421a0v();
+    unsigned char* messages = GetGlobalField0x1c020421a0();
     int count1;
     unsigned int count2;
     unsigned char shown;
@@ -299,20 +299,20 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
         {
 #if defined(jpn)
             AppendXYTag(text, 2, line * 15 + 1);
-            _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, (short)(i + 0x78)));
+            AppendString02042058(text, GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x78)));
 #else
             char label[0x40];
             y = line * 14;
             AppendXYTag(text, 2, y + 7);
             __clear(label, sizeof(label));
-            const char* name = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, (short)(i + 0x78));
+            const char* name = GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x78));
             memcpy(label, name, strlen(name));
             char* value = strstr(label, data_ov008_0218b4c3);
             if (value != NULL)
                 *value = 0;
-            _Z20AppendString02042058PcPKc(text, label);
+            AppendString02042058(text, label);
             AppendXYTag(text, 0x62, y + 7);
-            _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, (short)(i + 500)));
+            AppendString02042058(text, GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 500)));
 #endif
             line++;
         }

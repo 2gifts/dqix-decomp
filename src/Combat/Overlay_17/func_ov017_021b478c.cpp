@@ -8,15 +8,15 @@
 
 extern "C" Zone3D* func_02012fe4(void);
 void* GetPtrField0x468(void* obj);
-extern "C" int _Z17IsInRange0201b5b0i(int id);
+int IsInRange0201b5b0(int id);
 void ClearHalfword0x18(void* obj);
-extern "C" void _Z19ClearBuffer0209bc84Pv(void* obj);
+void ClearBuffer0209bc84(void* obj);
 struct ResetObject0209af34Struct;
-extern "C" void _Z19ResetObject0209af34P25ResetObject0209af34Struct(struct ResetObject0209af34Struct* obj);
-extern "C" void _Z20Clear12Bytes0206efc4Pv(void* obj);
+void ResetObject0209af34(struct ResetObject0209af34Struct* obj);
+void Clear12Bytes0206efc4(void* obj);
 struct ZeroWordAndByte0206ee60Struct;
-extern "C" void _Z23ZeroWordAndByte0206ee60P29ZeroWordAndByte0206ee60Struct(struct ZeroWordAndByte0206ee60Struct* obj);
-extern "C" void _Z20Clear12Bytes020a8e88Pv(void* obj);
+void ZeroWordAndByte0206ee60(struct ZeroWordAndByte0206ee60Struct* obj);
+void Clear12Bytes020a8e88(void* obj);
 
 extern const char data_ov017_021d7afc[];
 extern const char data_ov017_021d7b06[];
@@ -68,18 +68,18 @@ extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
 
     monster = (char*)request->monster;
     ClearHalfword0x18(monster + regionalOffset1);
-    _Z19ClearBuffer0209bc84Pv(monster + regionalOffset2);
-    _Z19ResetObject0209af34P25ResetObject0209af34Struct((struct ResetObject0209af34Struct*)(monster + regionalOffset3));
-    _Z20Clear12Bytes0206efc4Pv(monster + regionalOffset4);
-    _Z23ZeroWordAndByte0206ee60P29ZeroWordAndByte0206ee60Struct((struct ZeroWordAndByte0206ee60Struct*)(monster + regionalOffset5));
-    _Z20Clear12Bytes020a8e88Pv(monster + regionalOffset6);
+    ClearBuffer0209bc84(monster + regionalOffset2);
+    ResetObject0209af34((struct ResetObject0209af34Struct*)(monster + regionalOffset3));
+    Clear12Bytes0206efc4(monster + regionalOffset4);
+    ZeroWordAndByte0206ee60((struct ZeroWordAndByte0206ee60Struct*)(monster + regionalOffset5));
+    Clear12Bytes020a8e88(monster + regionalOffset6);
 
     if (request->monster->zoneId == 3 || request->monster->allocator->GetSignedAllocator() == NULL) {
         request->done = 1;
         return;
     }
 
-    if (!_Z17IsInRange0201b5b0i(id)) {
+    if (!IsInRange0201b5b0(id)) {
         char name[0x14];
         char path[0x50];
         if (strlen(entry->name) < 6) {
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
         return;
     }
 
-    if (_Z17IsInRange0201b5b0i(id)) {
+    if (IsInRange0201b5b0(id)) {
         int floor = id % 20;
         if (grotto->floorMap_.pMapData == NULL || zone->unknown_424_ != 0) {
             return;

@@ -38,7 +38,7 @@ struct Loader021b5070 {
 extern "C" void __clear(void* buf, int size);
 extern "C" void* memset(void* dst, int value, unsigned int size);
 unsigned short CopyHalfwordArrayByCount(HalfwordArray* src, HalfwordArray* dst);
-extern "C" void _Z33SetupAndRunBufferedScript0209af58PvP12StreamHeaderiii(void* param0, StreamHeader* param1, int param2, int param3, int param4);
+void SetupAndRunBufferedScript0209af58(void* param0, StreamHeader* param1, int param2, int param3, int param4);
 
 void* LoadFileIntoMemory(const char* path, void* buffer, unsigned int* outLength);
 
@@ -62,9 +62,9 @@ extern "C" ARM void func_ov017_021b5070(Loader021b5070* self) {
         if (file != NULL) {
             Scene021b5070* scene = self->scene;
 #if defined(jpn)
-            _Z33SetupAndRunBufferedScript0209af58PvP12StreamHeaderiii(scene->scriptBuffer, (StreamHeader*)file, length, scene->scriptArg, (int)scene->scriptContext);
+            SetupAndRunBufferedScript0209af58(scene->scriptBuffer, (StreamHeader*)file, length, scene->scriptArg, (int)scene->scriptContext);
 #else
-            _Z33SetupAndRunBufferedScript0209af58PvP12StreamHeaderiii(scene->scriptBuffer, (StreamHeader*)file, length, self->scene->scriptArg, (int)scene->scriptContext);
+            SetupAndRunBufferedScript0209af58(scene->scriptBuffer, (StreamHeader*)file, length, self->scene->scriptArg, (int)scene->scriptContext);
 #endif
 
         }

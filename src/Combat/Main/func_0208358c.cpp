@@ -13,9 +13,9 @@ struct Object0208358c { char pad[0x194]; Record020836e4 records[11];
 #endif
     Block0208358c blocks[11]; };
 struct StructDE1D4;
-extern "C" void _Z18InitStruct020de1d4P11StructDE1D4(StructDE1D4*);
-extern "C" void _Z18CopyStruct020836e4P14Record020836e4S0_(Record020836e4*, Record020836e4*);
-extern "C" unsigned char* _Z30GetIndexedBlockPointer0208349cPhi(unsigned char*, int);
+void InitStruct020de1d4(StructDE1D4*);
+void CopyStruct020836e4(Record020836e4*, Record020836e4*);
+unsigned char* GetIndexedBlockPointer0208349c(unsigned char*, int);
 // USA: func_0208358c
 extern "C" ARM void func_0208358c(Object0208358c* obj, Record020836e4* src, int arg) {
     if (!src) return;
@@ -45,12 +45,12 @@ extern "C" ARM void func_0208358c(Object0208358c* obj, Record020836e4* src, int 
     *text = 0;
     if (src->text) { memset(text, 0, 0x30); sprintf(text, src->text); }
 #endif
-    _Z18InitStruct020de1d4P11StructDE1D4((StructDE1D4*)dst);
-    _Z18CopyStruct020836e4P14Record020836e4S0_(dst, src);
+    InitStruct020de1d4((StructDE1D4*)dst);
+    CopyStruct020836e4(dst, src);
     dst->block = &obj->blocks[index];
 #if defined(jpn)
     dst->text = (char*)obj + 0x56f + index * 0x15;
 #else
-    dst->text = (char*)_Z30GetIndexedBlockPointer0208349cPhi((unsigned char*)obj, index);
+    dst->text = (char*)GetIndexedBlockPointer0208349c((unsigned char*)obj, index);
 #endif
 }

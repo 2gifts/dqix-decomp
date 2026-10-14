@@ -10,10 +10,10 @@ extern "C" int func_0202c508(void* obj);
 int CheckField0NonZero(int* obj);
 
 struct Obj02033834;
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int arg);
+void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
 
 struct Obj02033b68;
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68* obj, int newVal);
+void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 
 extern "C" int _s32_div_f(int a, int b);
 
@@ -36,14 +36,14 @@ extern "C" ARM int func_02077a34(FieldMonsterState* self) {
         Vector3fix_Subtract(&posCopy, &self->actor.base.object.position_, &delta);
         Vector3fix_Normalize(&delta, &delta);
         scale = fix32_Atan2(delta.x, delta.z);
-        _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, scale);
+        SetVecYByMode02033834((struct Obj02033834*)self, scale);
         Vector3fixMultiplyScalar(&delta, 0xa000, &delta);
         Vector3fix_Add(&self->actor.base.object.position_, &delta, &self->targetPosition);
     }
 
     self->actor.base.fieldB4 = 0x1c2;
     self->actor.base.fieldB2 = 0x1c2;
-    _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)self, 1);
+    SetByteIfChanged02033b68((struct Obj02033b68*)self, 1);
 
     int a = battleStruct->GetProtagonist()->obj3D_.GetField06();
     int b = self->actor.base.object.GetField06();

@@ -61,9 +61,9 @@ extern "C" int func_ov023_021f6f10(Node02162108* node);
 extern "C" struct TableA68* func_ov023_021fa598(Node02162108* node);
 extern "C" char* _Z14FindEntryByKeyP8TableA68i(struct TableA68* table, short key);
 char* FindSubstring(char* str, char* sub);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 extern "C" void func_02046608(int g, int mode, char* fmt, char* dst, int size, int a, int b);
-extern "C" void _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(void* a, short v1, short v2, int flag);
+void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag);
 
 extern struct MenuState02162108 data_ov004_021707e8;
 extern struct MenuPage02162108 data_ov004_02170b90[];
@@ -169,7 +169,7 @@ extern "C" ARM int func_ov004_02162108(void* self) {
                         memset(text, 0, 0x80);
                         indent = 0;
                         if (FindSubstring(_Z14FindEntryByKeyP8TableA68i(table, key), data_ov004_02170527)) indent = 0x14;
-                        func_02046608(_Z26GetGlobalField0x1c020421a0v(), 0, _Z14FindEntryByKeyP8TableA68i(table, key), text, 0x78 - indent, 0, 0);
+                        func_02046608(GetGlobalField0x1c020421a0(), 0, _Z14FindEntryByKeyP8TableA68i(table, key), text, 0x78 - indent, 0, 0);
                         label = func_ov004_0215e47c(self, id);
                         if (label != 0 && func_ov023_021f6f10(label) == 8) label->data = text;
                     }
@@ -220,6 +220,6 @@ extern "C" ARM int func_ov004_02162108(void* self) {
         node = func_ov023_021f6880(obj, btn + 0x64);
         if (node != 0 && func_ov023_021f6f10(node) == 0x13) node->SetState(state);
     }
-    _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(self, data_ov004_021707e8.fieldB, data_ov004_021707e8.field6, dim);
+    SetNodeFieldsAndMaybeNotify_0215f6f4(self, data_ov004_021707e8.fieldB, data_ov004_021707e8.field6, dim);
     return 0;
 }

@@ -30,11 +30,11 @@ extern char data_ov008_0218c0d5[];
 extern "C" void func_0205d304(TextWindow* window, char* text, int, int, int, int, int, int);
 #endif
 
-extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem* GetGlobalField0x1c020421a0();
 void AppendXYTag(char* text, int x, int y);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+void AppendString02042058(char* text, const char* append);
 int TestBitInByteArray(int, unsigned char*, int);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 
 extern char data_ov008_0218b465[];
 extern char data_ov008_0218b47c[];
@@ -121,7 +121,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
         char* text = self->text_;
         if (text != NULL)
         {
-            _Z26GetGlobalField0x1c020421a0v();
+            GetGlobalField0x1c020421a0();
             if (records != NULL)
             {
     #if defined(jpn)
@@ -137,7 +137,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
             y = 6;
             if (length != StringLength(name)) y = 8;
             AppendXYTag(text, x, y);
-            _Z20AppendString02042058PcPKc(text, name);
+            AppendString02042058(text, name);
 #else
             Hero* hero = (Hero*)GameState::GetInstance()->GetProtagonist();
                 char* name = self->text_ + 0x8e0;
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
                     x = 0;
                 AppendXYTag(text, x, 6);
                 if (name != NULL)
-                    _Z20AppendString02042058PcPKc(text, name);
+                    AppendString02042058(text, name);
 #endif
             }
             else
@@ -171,7 +171,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
                 for (i = 0; i < count; i++)
                 {
                     AppendXYTag(text, 4, i * 15 + 4);
-                    _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, (short)(i + 0x82)));
+                    AppendString02042058(text, GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x82)));
                 }
             }
         }
@@ -198,7 +198,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
     char* labels = self->text_;
     if (labels != NULL)
     {
-        _Z26GetGlobalField0x1c020421a0v();
+        GetGlobalField0x1c020421a0();
         if (records != NULL)
         {
 #if defined(jpn)
@@ -214,7 +214,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
             y = 6;
             if (length != StringLength(name)) y = 8;
             AppendXYTag(labels, x, y);
-            _Z20AppendString02042058PcPKc(labels, name);
+            AppendString02042058(labels, name);
 #else
             Hero* hero = (Hero*)GameState::GetInstance()->GetProtagonist();
             char* name = self->text_ + 0x8e0;
@@ -235,7 +235,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
                 x = 0;
             AppendXYTag(labels, x, 6);
             if (name != NULL)
-                _Z20AppendString02042058PcPKc(labels, name);
+                AppendString02042058(labels, name);
 #endif
         }
         else
@@ -248,7 +248,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
             for (i = 0; i < count; i++)
             {
                 AppendXYTag(labels, 4, i * 15 + 4);
-                _Z20AppendString02042058PcPKc(labels, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, (short)(i + 0x82)));
+                AppendString02042058(labels, GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x82)));
             }
         }
     }

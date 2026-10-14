@@ -34,22 +34,22 @@ struct Obj0218d50c {
 };
 
 extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
-extern "C" void _Z17DelayThenSyncBit0v();
-extern "C" void _Z24ResetObjectState02079a3cPv(void*);
+void DelayThenSyncBit0();
+void ResetObjectState02079a3c(void*);
 extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char*);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
+void RestorePairTables0207df90(char*);
+void BackupPairTables0207dfac(char*);
 extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(void*, int);
 extern "C" int func_ov015_0218c03c(void* self, char* buf, int i, int one);
 extern "C" void func_ov015_0218c3a4(void* self, int v);
 extern "C" void func_ov015_0218c920(void* self, int zero);
-extern "C" void* _Z28GetVariantShortTable02109928v();
-extern "C" void _Z28LockStagedTextureVRAMCopyingv();
-extern "C" void _Z30UnlockStagedTextureVRAMCopyingv();
+void* GetVariantShortTable02109928();
+void LockStagedTextureVRAMCopying();
+void UnlockStagedTextureVRAMCopying();
 extern "C" void MemoryMapTexturePalette();
 extern "C" void LoadToTexturePalette(void* dst, const void* src, int size);
 extern "C" void MemoryUnmapTexturePalette();
-extern "C" void _Z25CleanInvalidateCacheRangePKvj(const void*, unsigned int);
+void CleanInvalidateCacheRange(const void*, unsigned int);
 extern "C" void _ZN7Model3D22ApplyTexturesFromModelEPS_(void*, void*);
 extern "C" int fix32_Divide(int, int);
 
@@ -74,7 +74,7 @@ extern "C" ARM int func_ov015_0218d50c(Obj0218d50c* self) {
 
     BackgroundLoader::AddLockGlobal();
     BackgroundLoader::FreeAllocationsGlobal();
-    _Z17DelayThenSyncBit0v();
+    DelayThenSyncBit0();
     id = self->GetEnt(7)->unknown_2_;
     if (self->ids[7] != id) {
         self->GetEnt(3)->unknown_2_ = -1;
@@ -96,7 +96,7 @@ extern "C" ARM int func_ov015_0218d50c(Obj0218d50c* self) {
     unsigned int room = 0x30000;
     GPCReadPair pair;
     char name[0x80];
-    _Z24ResetObjectState02079a3cPv(&pair);
+    ResetObjectState02079a3c(&pair);
     if (LoadAndDecompressGPCHeaderAndInnerFileInfo(&pair.pGPCFile, pair.machine, &data_ov015_02194094,
                                                    buf, size, room, false, 0)) {
         buf += size;
@@ -159,33 +159,33 @@ extern "C" ARM int func_ov015_0218d50c(Obj0218d50c* self) {
                     self->f58 = 0;
                 }
             }
-            _Z25RestorePairTables0207df90Pc(pairs + off70);
+            RestorePairTables0207df90(pairs + off70);
             DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, buf, size, room, name);
             self->ents[i].SetModelFromFileCopy((SafeAllocator*)((char*)alloc + off14), buf, size, Model3D::TextureStagingMode_Normal);
             buf += size;
             room -= size;
-            _Z24BackupPairTables0207dfacPc(pairs + off70);
+            BackupPairTables0207dfac(pairs + off70);
             if (i == 4 && self->GetEnt(3)->pModel_ != 0) {
                 _ZN7Model3D22ApplyTexturesFromModelEPS_(self->GetEnt(3)->pModel_, self->ents[i].pModel_);
             }
         }
         pair.Reset();
     }
-    char* tbl = (char*)_Z28GetVariantShortTable02109928v();
+    char* tbl = (char*)GetVariantShortTable02109928();
     unsigned int n = ((Pal0218d50c*)*self->pairsRoot)->count;
     unsigned int cnt = (n << 16) >> 13;
     if (cnt != 0) {
-        _Z25CleanInvalidateCacheRangePKvj(tbl + self->c3c * 4, 4);
-        _Z25CleanInvalidateCacheRangePKvj(tbl + 0x108 + self->c3d * 4, 4);
-        _Z25CleanInvalidateCacheRangePKvj(tbl + 0x88 + self->c3e * 16, 0x10);
-        _Z17DelayThenSyncBit0v();
-        _Z28LockStagedTextureVRAMCopyingv();
+        CleanInvalidateCacheRange(tbl + self->c3c * 4, 4);
+        CleanInvalidateCacheRange(tbl + 0x108 + self->c3d * 4, 4);
+        CleanInvalidateCacheRange(tbl + 0x88 + self->c3e * 16, 0x10);
+        DelayThenSyncBit0();
+        LockStagedTextureVRAMCopying();
         MemoryMapTexturePalette();
         LoadToTexturePalette(tbl + self->c3c * 4, (char*)cnt + 0x24, 4);
         LoadToTexturePalette(tbl + 0x108 + self->c3d * 4, (char*)cnt + 0x28, 4);
         LoadToTexturePalette(tbl + 0x88 + self->c3e * 16, (char*)cnt + 0x30, 0x10);
         MemoryUnmapTexturePalette();
-        _Z30UnlockStagedTextureVRAMCopyingv();
+        UnlockStagedTextureVRAMCopying();
     }
     for (int k = 0; data_ov015_02193d64[k] >= 0; k++) {
         func_ov015_0218c3a4(self, data_ov015_02193d64[k]);

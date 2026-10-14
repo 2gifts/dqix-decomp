@@ -20,14 +20,14 @@ extern "C" void* _ZN9GameState11GetInstanceEv();
 extern "C" Party02154720* _Z17GetPtrField0x2a04P9GameState(void*);
 extern "C" void _Z18InitStruct0205a444Pc(void*);
 extern "C" void _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4(void*,void*);
-extern "C" void _Z22Clear0x54Bytes0208247cPv(void*);
+void Clear0x54Bytes0208247c(void*);
 extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(void*);
-extern "C" void _Z20ClearFields_021e20c0Pv(void*);
-extern "C" void _Z16ZeroInit020de848Pv(void*);
+void ClearFields_021e20c0(void*);
+void ZeroInit020de848(void*);
 extern "C" unsigned int _Z18GetField0x3acValueP9GameState(void*);
 extern "C" void* memset(void*,int,unsigned int);
 extern "C" unsigned int _Z19CopyOutRegion0x571dPcPv(void*,void*);
-extern "C" void _Z20ResetFields_0215873cPv(void*);
+void ResetFields_0215873c(void*);
 // USA: func_ov003_02154720
 extern "C" ARM void func_ov003_02154720(void* memory,unsigned char flagIn) {
  unsigned char flag=flagIn;
@@ -45,11 +45,11 @@ extern "C" ARM void func_ov003_02154720(void* memory,unsigned char flagIn) {
  self->p0=0;self->p4=0;self->pc=0;self->p8=0;self->p10=0;self->p14=0;self->p18=0;self->p20=0;self->p24=0;self->p28=0;
  _Z18InitStruct0205a444Pc(self->init2c);
  _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4(self->selector,self->sub);
- _Z22Clear0x54Bytes0208247cPv(self->clear90);
+ Clear0x54Bytes0208247c(self->clear90);
  _Z19ResetStruct020dfc40P14Struct020dfc40(self->resetE4);
  _Z19ResetStruct020dfc40P14Struct020dfc40(self->resetFc);
- _Z20ClearFields_021e20c0Pv(self->clear114);
- _Z16ZeroInit020de848Pv(self->zero178);
+ ClearFields_021e20c0(self->clear114);
+ ZeroInit020de848(self->zero178);
  self->task=-1;self->field1d4=0;self->changed=0;self->scale=0;
  self->field1e0=-1;self->field1e2=-1;self->field1e4=-1;self->element=-1;self->previous=-1;self->field1ea=-1;self->field1ee=-1;self->pending=self->field1ee;self->field1f0=-1;
  self->current=_Z18GetField0x3acValueP9GameState(gs);
@@ -69,7 +69,7 @@ extern "C" ARM void func_ov003_02154720(void* memory,unsigned char flagIn) {
  for(k=0;k<count-1;k++) {
   if(self->ids[k]==0xff) for(int j=k+1;j<count;j++) if(self->ids[j]!=0xff) {self->ids[k]=self->ids[j];self->ids[j]=0xff;break;}
  }
- _Z20ResetFields_0215873cPv(self);
+ ResetFields_0215873c(self);
  if(flag) self->flags|=1;
  self->multiplayer=party->count!=1;
 }

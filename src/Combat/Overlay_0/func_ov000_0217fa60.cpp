@@ -3,9 +3,9 @@
 #include "Combat/Main/BattleList.h"
 
 struct Struct02170fd0;
-extern "C" void _Z28UpdateSlotStatField_02175754Pv(void* obj);
-extern "C" int _Z29HasAnyFlags_021719f8_021719f8Pi(int* obj);
-extern "C" void _Z27CallHandlerIfF38Set02170fd0P14Struct02170fd0i(struct Struct02170fd0* obj, int b);
+void UpdateSlotStatField_02175754(void* obj);
+int HasAnyFlags_021719f8_021719f8(int* obj);
+void CallHandlerIfF38Set02170fd0(struct Struct02170fd0* obj, int b);
 
 struct Slot_0217fa60 {
     char pad0[0x24];
@@ -48,7 +48,7 @@ static inline int IsValidSlotIndex(int index) {
 
 // USA: func_ov000_0217fa60
 extern "C" ARM void func_ov000_0217fa60(struct Owner_0217fa60* obj) {
-    _Z28UpdateSlotStatField_02175754Pv(obj);
+    UpdateSlotStatField_02175754(obj);
     for (unsigned char i = 0; i < 4; i++) {
         GetSlot(obj, obj->order[i])->active = 0;
     }
@@ -62,9 +62,9 @@ extern "C" ARM void func_ov000_0217fa60(struct Owner_0217fa60* obj) {
         slot = &obj->slots[obj->order[i]];
         if (slot->field4c < 0) continue;
         if (slot->active == 0) continue;
-        if (_Z29HasAnyFlags_021719f8_021719f8Pi((int*)slot)) continue;
+        if (HasAnyFlags_021719f8_021719f8((int*)slot)) continue;
         if (slot->field445 == 0) continue;
-        _Z27CallHandlerIfF38Set02170fd0P14Struct02170fd0i((struct Struct02170fd0*)slot, 0);
+        CallHandlerIfF38Set02170fd0((struct Struct02170fd0*)slot, 0);
         slot->field24 &= ~4;
         if (first < 0) {
             first = slot->field4c;

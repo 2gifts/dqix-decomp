@@ -7,10 +7,10 @@ extern "C" struct Vec3 func_020341e0(void* obj);
 extern "C" struct Vec3 func_02034104(void* obj);
 
 struct Obj02033834;
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int arg);
+void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
 
 struct Obj02033b68;
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68* obj, int newVal);
+void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 
 struct U16Field0x6_020375f8;
 extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
@@ -50,12 +50,12 @@ extern "C" ARM int func_020776a0(struct Entity020776a0* self) {
     Vector3fix_Subtract((const Vector3fix*)&posCopy, (const Vector3fix*)&self->f44, (Vector3fix*)&delta);
     Vector3fix_Normalize((const Vector3fix*)&delta, (Vector3fix*)&delta);
     int angle = fix32_Atan2(delta.x, delta.z);
-    _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, angle);
+    SetVecYByMode02033834((struct Obj02033834*)self, angle);
 
     self->fb0 = 0x97;
     self->fb4 = 0x1c2;
     self->fb2 = 0x1c2;
-    _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)self, 1);
+    SetByteIfChanged02033b68((struct Obj02033b68*)self, 1);
 
     GameObject* protagonist = battleStruct->GetProtagonist();
     unsigned short a = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)protagonist);

@@ -5,7 +5,7 @@ int GetFieldAt0x150(unsigned char* obj);
 void SetBit0x954StoreIndex0x950(unsigned char* obj, int index);
 int GetField0x3acValue(GameState* battle);
 extern "C" void func_020897b4(int a, int b, int c, int d, int e, int f, int g, int h, int i);
-extern "C" void _Z27InitAndRequeueEntry020e3b8cPciiiiiih(char* mgr, int index, int p3, int p4, int p5, int p6, int p7, unsigned char p8);
+void InitAndRequeueEntry020e3b8c(char* mgr, int index, int p3, int p4, int p5, int p6, int p7, unsigned char p8);
 
 struct Evt021cc830 {
     unsigned char tag;
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov017_021cc830(void* unused0, struct Evt021cc830* evt, 
             int flags = 0;
             flags |= 3;
             if (evt->fielde == 0) flags |= 4;
-            _Z27InitAndRequeueEntry020e3b8cPciiiiiih(mgr, evt->id, evt->value, slot, 0, flags, evt->field8, evt->fielde);
+            InitAndRequeueEntry020e3b8c(mgr, evt->id, evt->value, slot, 0, flags, evt->field8, evt->fielde);
             return;
         }
     }

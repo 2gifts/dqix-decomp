@@ -11,7 +11,7 @@
 #define data_020f228c data_020f23f8
 #endif
 
-extern char data_020f228c[]; // "rom"
+extern char data_020f228c[];
 
 CBool CreateFileAccessor(NitroFileAccessor* outAccessor, const char* path)
 {
@@ -29,8 +29,6 @@ CBool NitroVM_PrepareRead(NitroVM* vm, NitroHandle* handle,
     vm->args_SetFilePointers.startOffset = start;
     vm->args_SetFilePointers.endOffset = end;
 
-    // Operand 7 copies capacity into base_a,
-    // start into base_b and base_d, end into base_c.
     if (!NitroVM_QueueCommand(vm, NITROVM_OPCODE_SET_FILE_POINTERS))
         return false;
 
@@ -38,7 +36,6 @@ CBool NitroVM_PrepareRead(NitroVM* vm, NitroHandle* handle,
     return true;
 }
 
-// Accessor passed by value (in registers r1, r2)
 bool NitroVM_PrepareReadFileByID(NitroVM* vm, NitroFileAccessor volatile accessor)
 {
     NitroHandle* handle = accessor.handle;
@@ -69,8 +66,6 @@ bool NitroVM_PrepareReadFileByPath(NitroVM* vm, const char* path)
 
 CBool NitroVM_FinishRead(NitroVM* vm)
 {
-    // this opcode executes synchronously, so when control returns here all
-    // VMs before it will have executed their instructions
     if (!NitroVM_QueueCommand(vm, NITROVM_OPCODE_NOP))
         return false;
 
@@ -102,7 +97,6 @@ CBool NitroVM_AwaitCommandCompletion(NitroVM* vm)
 
     if (GET_FLAG_BIT(vm->flags, NITROVM_FLAG_IN_HANDLE_QUEUE))
     {
-        // Execute iff flag 6 and flag 2 are both clear.
         executionPending = !(vm->flags & ((1 << NITROVM_FLAG_READY_TO_EXECUTE) | (1 << NITROVM_FLAG_SYNCHRONOUS)));
 
         if (executionPending)
@@ -110,7 +104,7 @@ CBool NitroVM_AwaitCommandCompletion(NitroVM* vm)
             vm->flags |= (1 << NITROVM_FLAG_SYNCHRONOUS);
             do {
                 BlockCurrentContext(&vm->blockedContexts);
-            } while (!(vm->flags & (1 << NITROVM_FLAG_READY_TO_EXECUTE))); // why the different format here?
+            } while (!(vm->flags & (1 << NITROVM_FLAG_READY_TO_EXECUTE)));
         }
         else
         {
@@ -134,7 +128,6 @@ void NitroVM_CancelCommand(NitroVM* vm)
 
     if (GET_FLAG_BIT(vm->flags, NITROVM_FLAG_IN_HANDLE_QUEUE))
     {
-        // mark for removal from the handle's list of attached VMs
         vm->flags |= (1 << NITROVM_FLAG_MARKED_FOR_UNLINK_FROM_HANDLE);
         vm->linkedHandle->flags |= (1 << NITROHANDLE_FLAG_VM_LIST_DIRTY);
     }
@@ -155,19 +148,19 @@ CBool NitroVM_Seek(NitroVM* vm, int offset, int whence)
 {
     switch (whence)
     {
-    case 0: // SEEK_SET
+    case 0:
         offset += vm->fileInfo.startOffset;
         break;
-    case 1: // SEEK_CUR
+    case 1:
         offset += vm->fileInfo.cursorPos;
         break;
-    case 2: // SEEK_END
+    case 2:
         offset += vm->fileInfo.endOffset;
         break;
     default:
         return false;
     }
-        
+
     if (offset < vm->fileInfo.startOffset)
         offset = vm->fileInfo.startOffset;
     if (offset > vm->fileInfo.endOffset)
@@ -189,10 +182,10 @@ CBool SetROMFilesystemRoot(const char* path)
     return true;
 }
 
-extern "C" int _Z21GetGlobalWord02112140v(void);
+int GetGlobalWord02112140(void);
 void OnCartridgeDataLoadCompletion(NitroHandle* handle)
 {
-    int result = _Z21GetGlobalWord02112140v() ? NITRO_RESULT_5 : NITRO_RESULT_SUCCESS;
+    int result = GetGlobalWord02112140() ? NITRO_RESULT_5 : NITRO_RESULT_SUCCESS;
     NitroHandle_OnTaskCompletion(handle, result);
 }
 
@@ -221,10 +214,9 @@ int ROMFilesystemOpcodeOverride(NitroVM* vm, int opcode)
             return NITRO_RESULT_SUCCESS;
         }
     }
-    else // opcode = 1 (save), not possible for ROM data
+    else
         return NITRO_RESULT_COMMAND_UNSUPPORTED;
 
-    // Override does not implement command
     return NITRO_RESULT_OPCODE_NOT_IMPLEMENTED;
 }
 
@@ -253,7 +245,7 @@ void InitializeROMFilesystem_Internal(unsigned int channel)
 
     const BootIndicator* biosData = (BootIndicator*)BIOS_ADDR_BOOT_INDICATOR;
     const CartridgeHeader& cartridgeHeader = biosData->cartHeader;
-    if (IsDownloadPlay()) // is this even a thing for DQ9?
+    if (IsDownloadPlay())
     {
         data_0211173c.arm9Data.start = (void*)-1;
         data_0211173c.arm9Data.size = 0;
@@ -273,8 +265,8 @@ void InitializeROMFilesystem_Internal(unsigned int channel)
         cartridgeHeader.fileAllocTableOffset == -1 ||
         cartridgeHeader.fileAllocTableOffset == 0)
         return;
-    
-    NitroHandle_Populate(&data_02111754, NULL, 
+
+    NitroHandle_Populate(&data_02111754, NULL,
         cartridgeHeader.fileAllocTableOffset,
         cartridgeHeader.fileAllocTableSize,
         cartridgeHeader.fileNameTableOffset,

@@ -25,10 +25,10 @@ void UpdateCombatantAgility(int, int);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" int func_ov024_021e95d4(StageAction*, int, StageParameters*, unsigned char, signed char, unsigned char, unsigned char);
 extern "C" int func_ov024_021e96e4(StageAction*, int, StageParameters*, unsigned char, signed char, unsigned char, unsigned char);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void*, void*, int);
+void AddEntryAndIncrementCount0215a88c(void*, void*, int);
 extern "C" void func_ov000_02159eac(void*, void*, int);
 extern "C" void func_ov000_0215cd44(void*, void*, GameObject*, int, int, int, int);
-extern "C" void _Z32AppendToChainAndIncCount0215ffc4PvS_i(void*, void*, int);
+void AppendToChainAndIncCount0215ffc4(void*, void*, int);
 
 // USA: func_ov024_021e4910
 extern "C" ARM unsigned long long func_ov024_021e4910(StageAction* action, int unused, short id, StageParameters* parameters) {
@@ -50,7 +50,7 @@ extern "C" ARM unsigned long long func_ov024_021e4910(StageAction* action, int u
     }
     if (defenseChanged) {
         int code = func_ov024_021e95d4(action, id, parameters, (unsigned char)decrease, (signed char)result, 1, 1);
-        _Z33AddEntryAndIncrementCount0215a88cPvS_i(action->battle, entry, code);
+        AddEntryAndIncrementCount0215a88c(action->battle, entry, code);
     }
     int agilityChanged = 0;
     if (CanAdjustStatStageBit6((StatStageStruct02087954*)combatant->currentStats_, decrease & 0xff)) {
@@ -60,7 +60,7 @@ extern "C" ARM unsigned long long func_ov024_021e4910(StageAction* action, int u
     }
     if (agilityChanged) {
         int code = func_ov024_021e96e4(action, id, parameters, (unsigned char)decrease, (signed char)result, 1, 1);
-        _Z33AddEntryAndIncrementCount0215a88cPvS_i(action->battle, entry, code);
+        AddEntryAndIncrementCount0215a88c(action->battle, entry, code);
     }
     union { struct { int low; int high; }; unsigned long long value; } effects;
     effects.low = 0;
@@ -69,7 +69,7 @@ extern "C" ARM unsigned long long func_ov024_021e4910(StageAction* action, int u
         func_ov000_02159eac(action->battle, &effects, 0x1e);
         func_ov000_02159eac(action->battle, &effects, 0x1f);
         func_ov000_0215cd44(action->battle, entry, combatant, 0, 0, 0, 0);
-        _Z32AppendToChainAndIncCount0215ffc4PvS_i(action->chain, entry, 1);
+        AppendToChainAndIncCount0215ffc4(action->chain, entry, 1);
         action->battle->entryCount++;
     }
     return effects.value;

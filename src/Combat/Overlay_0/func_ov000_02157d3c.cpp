@@ -28,7 +28,7 @@ extern "C" void func_ov000_02155e94(Battle* battle);
 extern "C" int func_ov000_0215e9fc(Battle* battle, short* buf, int max, int start);
 extern "C" void func_ov000_0215858c(Battle* battle, int combatantId, ActionEntry* entry);
 extern "C" void func_ov000_021599f4(Battle* battle, int combatantId);
-extern "C" ActionEntry* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094* list, int index);
+ActionEntry* GetNodeAtIndex02160094(List02160094* list, int index);
 
 // USA: func_ov000_02157d3c
 extern "C" ARM void func_ov000_02157d3c(Battle* battle, List02160094* action, int flag) {
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov000_02157d3c(Battle* battle, List02160094* action, in
     if (battle->result == 0 && flag == 0) {
         int i;
         for (i = 0; i < action->entryCount; i++) {
-            ActionEntry* entry = _Z22GetNodeAtIndex02160094P12List02160094i(action, i);
+            ActionEntry* entry = GetNodeAtIndex02160094(action, i);
             if (entry != 0) {
                 func_ov000_0215858c(battle, entry->combatantId, entry);
                 func_ov000_021599f4(battle, entry->combatantId);

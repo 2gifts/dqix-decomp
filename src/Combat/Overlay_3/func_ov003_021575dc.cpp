@@ -19,24 +19,24 @@ extern "C" void* _Z17GetPtrField0x2a04P9GameState(struct BattleStruct* battleStr
 extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
-extern "C" int _Z26FindMappedMemberId02080468Pvi(void* obj, int id);
+int FindMappedMemberId02080468(void* obj, int id);
 extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(void* obj);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void* obj, int a, int b);
 extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void* obj);
-extern "C" int _Z26IsTableValueNot99_02155ffcPvi(void* obj, int id);
-extern "C" int _Z39IsCombatantFlagit2Set_02155f88_02155f88Pvi(void* obj, int id);
-extern "C" void _Z20ResetFields_0215873cPv(void* obj);
+int IsTableValueNot99_02155ffc(void* obj, int id);
+int IsCombatantFlagit2Set_02155f88_02155f88(void* obj, int id);
+void ResetFields_0215873c(void* obj);
 extern "C" void _Z25SetFlag_02158a50_02158a50Ph(void* obj);
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void* obj, unsigned short val);
-extern "C" int _Z25IsAnimationActive0209ca2cPv(void* obj);
+int IsAnimationActive0209ca2c(void* obj);
 extern "C" int _ZNK8Object3D19HasAnimationStoppedEv(void* obj);
-extern "C" void _Z20SetOrClearBitInArrayPvPhii(void* a, unsigned char* b, int c, int d);
-extern "C" void* _Z22ZeroInitReturn020de824Pv(void* obj);
-extern "C" void _Z18InitStruct0207cbe8Pc(char* obj);
-extern "C" void _Z18InitStruct0207cc0cPc(char* obj);
-extern "C" int _Z27TestBattleBlockBit_021ed6cci(int tag);
+void SetOrClearBitInArray(void* a, unsigned char* b, int c, int d);
+void* ZeroInitReturn020de824(void* obj);
+void InitStruct0207cbe8(char* obj);
+void InitStruct0207cc0c(char* obj);
+int TestBattleBlockBit_021ed6cc(int tag);
 extern "C" void _Z19ClearStruct020a13c4P9S020a13c4(void* obj);
-extern "C" void _Z31SetupGlobalAndRunScript020a13e4PvS_ith(void* p0, void* p1, int p2, unsigned short p3, unsigned char p4);
+void SetupGlobalAndRunScript020a13e4(void* p0, void* p1, int p2, unsigned short p3, unsigned char p4);
 extern "C" void _Z19ResetBitfieldRecordP22BitfieldRecord020a1380(void* obj);
 extern "C" void _Z20InitBuffers_021580a0P14Struct021580a0(void* obj);
 extern "C" void* _Z26FindElementByField020a15bcP13Array020a15bci(void* arr, int id);
@@ -107,7 +107,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         case 4: *(short*)(s + 0x1e6) = 5; break;
         }
         if (*(short*)(s + 0x1e2) < 0) {
-            short id = (short)_Z26FindMappedMemberId02080468Pvi(obj18, *(short*)(s + 0x1e6));
+            short id = (short)FindMappedMemberId02080468(obj18, *(short*)(s + 0x1e6));
             *(short*)(s + 0x1e2) = id;
             *(short*)(s + 0x1e8) = *(short*)(s + 0x1e2);
         }
@@ -122,7 +122,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
             _Z20ResetWithSub0208203cP11Obj0208203c(s + 0x80);
             *(void**)(s + 8) = 0;
-            int mm = _Z26FindMappedMemberId02080468Pvi(obj18, *(short*)(s + 0x1e6));
+            int mm = FindMappedMemberId02080468(obj18, *(short*)(s + 0x1e6));
             short diff = *(short*)(s + 0x1e2) - mm;
             unsigned char v = *(unsigned char*)(s + 0x1f2 + diff);
             *(unsigned char*)(s + 0x1f7) = v;
@@ -136,7 +136,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         }
     } else if (state == 2) {
         signed char idx = *(signed char*)(s + 0x1f7);
-        if (_Z26IsTableValueNot99_02155ffcPvi(self, idx) != 0) {
+        if (IsTableValueNot99_02155ffc(self, idx) != 0) {
             evt[0] = 0x10;
             *(unsigned char*)(s + 0x1f8) = 7;
             return;
@@ -150,7 +150,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             return;
         }
         idx = *(signed char*)(s + 0x1f7);
-        if (_Z39IsCombatantFlagit2Set_02155f88_02155f88Pvi(self, idx) != 0) {
+        if (IsCombatantFlagit2Set_02155f88_02155f88(self, idx) != 0) {
             evt[1] = 0x12;
             *(unsigned char*)(s + 0x1f8) = 7;
             _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(obj18);
@@ -226,7 +226,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             ZeroInit020de848(s + 0x178);
             BuildDescriptorFlag1_020de980(s + 0x178, *(char**)s + 0x78, outPtr, outLen, f0val);
             *(unsigned char*)(s + 0x338) = 1;
-            _Z20ResetFields_0215873cPv(self);
+            ResetFields_0215873c(self);
             *(unsigned char*)(s + 0x1f9) = 0x32;
         }
     } else if (state == 9) {
@@ -235,7 +235,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x34);
         *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
     } else if (state == 0xa) {
-        if (_Z25IsAnimationActive0209ca2cPv(&data_02109bf4) != 0) {
+        if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) {
             goto tail;
         }
         if (_ZNK8Object3D19HasAnimationStoppedEv(s + 0x280) == 0) {
@@ -253,19 +253,19 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         if (field950 > 0) {
             void* base = func_0205ec34();
             if (TestBitInByteArray((int)base, (unsigned char*)base + 0x8c, field950 + 0x8b + 0x1100) == 0) {
-                _Z20SetOrClearBitInArrayPvPhii(base, (unsigned char*)base + 0x8c, field950 + 0x8b + 0x1100, 1);
+                SetOrClearBitInArray(base, (unsigned char*)base + 0x8c, field950 + 0x8b + 0x1100, 1);
                 evt[0] = 0x16;
                 evt[1] = 0x17;
                 *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
 
                 char bufFc[0x38];
                 ((SafeAllocator*)bufFc)->ResetAllocatorPointer();
-                _Z22ZeroInitReturn020de824Pv(bufFc + 0x14);
-                _Z18InitStruct0207cbe8Pc(bufFc);
-                _Z18InitStruct0207cbe8Pc(bufFc);
+                ZeroInitReturn020de824(bufFc + 0x14);
+                InitStruct0207cbe8(bufFc);
+                InitStruct0207cbe8(bufFc);
                 *(void**)(bufFc + 0x2c) = s + 0x178;
                 func_0207d300(bufFc, *(short*)(s + 0x1f0), 1, 0);
-                _Z18InitStruct0207cc0cPc(bufFc);
+                InitStruct0207cc0c(bufFc);
                 return;
             }
         }
@@ -284,7 +284,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             void* p150 = *(void**)((char*)combatant + 0x150);
             if (*(unsigned char*)((char*)p150 + (unsigned char)i + 0x186) >= 0xa) {
                 short tag = data_ov003_0217f2ce[i];
-                if (_Z27TestBattleBlockBit_021ed6cci(tag) == 0) {
+                if (TestBattleBlockBit_021ed6cc(tag) == 0) {
                     tagBuffer[sbCount] = tag;
                     sbCount++;
                 }
@@ -296,7 +296,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             ((SafeAllocator*)((char*)root + 0x64))->Reset();
             char scratch[0x14];
             _Z19ClearStruct020a13c4P9S020a13c4(scratch);
-            _Z31SetupGlobalAndRunScript020a13e4PvS_ith(scratch, (char*)root + 0x64, (int)tagBuffer, sbCount, 8);
+            SetupGlobalAndRunScript020a13e4(scratch, (char*)root + 0x64, (int)tagBuffer, sbCount, 8);
 
             char arr[12 * 0x244];
             char* p = arr;

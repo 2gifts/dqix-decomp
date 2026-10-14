@@ -12,7 +12,7 @@ int LookupAndForEachNode020649b0(void* a, int mode, void* c);
 extern "C" void func_0206f81c(void* p);
 void InitObj_021adc58(unsigned char* self);
 unsigned char GetField0x397cValue(GameState* battleStruct);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
+int fix32ReduceAngle0To2Pi(int angle);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 struct TailList020469b4;
 struct TailNode020469b4;
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov017_0219922c(unsigned char* self) {
     node[8] = (unsigned char)fv;
 
     int angle = val_c6 + 0x3244;
-    int r = _Z22fix32ReduceAngle0To2Pii(angle);
+    int r = fix32ReduceAngle0To2Pi(angle);
     node = *(unsigned char**)(self + 0x3000 + RegionOffsetb24);
     *(unsigned short*)(node + 0x10) = (unsigned short)r;
 

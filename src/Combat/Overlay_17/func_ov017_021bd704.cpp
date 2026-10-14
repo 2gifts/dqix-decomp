@@ -27,10 +27,10 @@ void SetFlag0x1ceBit0x4(unsigned char*);
 int fix32sin(int);
 int fix32cos(int);
 unsigned char GetByte0x26c(char*);
-extern "C" void _Z24ResetObjectState02039d84P11Obj02039d84(Obj02039d84*);
-extern "C" void _Z31EnqueueEventTag60Field_021d440ci(int);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(Obj02033874*, int);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char*);
+void ResetObjectState02039d84(Obj02039d84*);
+void EnqueueEventTag60Field_021d440c(int);
+void SetVecYFromValue02033874(Obj02033874*, int);
+void ClearBytesAndZeroBlock02039d24(unsigned char*);
 extern "C" void func_ov017_021c3e18(int);
 
 // USA: func_ov017_021bd704
@@ -81,13 +81,13 @@ extern "C" ARM void func_ov017_021bd704(FormationState021bd704* self) {
                 }
             }
             if (self->id != 8100 && GetByte0x26c((char*)member)) {
-                _Z24ResetObjectState02039d84P11Obj02039d84((Obj02039d84*)member);
-                _Z31EnqueueEventTag60Field_021d440ci(-1);
+                ResetObjectState02039d84((Obj02039d84*)member);
+                EnqueueEventTag60Field_021d440c(-1);
             }
             member->obj3D_.position_ = position;
-            _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)member, angle);
+            SetVecYFromValue02033874((Obj02033874*)member, angle);
             member->obj3D_.EnableFlag(0x4000000);
-            _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)member);
+            ClearBytesAndZeroBlock02039d24((unsigned char*)member);
         }
     }
     if (func_0202c508(search)) func_ov017_021c3e18(0);

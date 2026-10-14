@@ -11,7 +11,7 @@ struct ListHead02046b60;
 
 extern unsigned short data_02114e30;
 extern "C" void* func_02012fe4(void);
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
+unsigned int* GetDataPtr02114e04_020d6c00();
 int TestFlagMask(unsigned short* flags, int mask);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 int CheckField0xc4Low15BitsNonZero(BitField0203402c* obj);
@@ -24,7 +24,7 @@ void OrBitsIntoField0(unsigned int* field, unsigned int bits);
 extern "C" ARM void func_ov017_021975e4(GameResources* state) {
     GameState* game = GameState::GetInstance();
     Zone3D* zone = (Zone3D*)func_02012fe4();
-    unsigned int* flags = _Z27GetDataPtr02114e04_020d6c00v();
+    unsigned int* flags = GetDataPtr02114e04_020d6c00();
     GameObject* player = game->GetUnknownGameObject();
     Vector3i anchor = player->obj3D_.position_;
     SubBlock02038508* current = GetFieldPtrAt0x26c(player);

@@ -37,9 +37,9 @@ void SetVec3At0x0020a6aa4(Vector3i* obj, int x, int y, int z);
 void* GetPointerAt0x32c(struct PointerField32c_ffc0* p);
 struct Obj0201b600* FindElemByKeys(struct Obj0201b600* p, int a, short b);
 void SetFlag0x40AndToggle0x4(struct Struct02013380* p, int a, int b);
-extern "C" void _Z25ApplyElementFlags0201b8c8P11Obj0201b600iii(struct Obj0201b600* p, int a, int b, int c);
-extern "C" void* _Z27FindNodeByField0x2c0201b754Pvi(void* p, int v);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(struct Obj02033874* p, int v);
+void ApplyElementFlags0201b8c8(struct Obj0201b600* p, int a, int b, int c);
+void* FindNodeByField0x2c0201b754(void* p, int v);
+void SetVecYFromValue02033874(struct Obj02033874* p, int v);
 
 // USA: func_020a72ac
 extern "C" ARM void func_020a72ac(struct Ctx020a72ac* p) {
@@ -60,16 +60,16 @@ extern "C" ARM void func_020a72ac(struct Ctx020a72ac* p) {
                 if (e) SetFlag0x40AndToggle0x4((struct Struct02013380*)e, 0, 1);
             } else if (obj) {
                 obj->MakeVisible();
-                SavedObjectNode* node = static_cast<SavedObjectNode*>(_Z27FindNodeByField0x2c0201b754Pvi(p, p->field2784));
+                SavedObjectNode* node = static_cast<SavedObjectNode*>(FindNodeByField0x2c0201b754(p, p->field2784));
                 if (node) {
                     obj->position_ = node->position;
                     reinterpret_cast<WorldObjectPositionView*>(obj)->secondaryPosition = node->position;
-                    _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)obj, node->angle);
+                    SetVecYFromValue02033874((struct Obj02033874*)obj, node->angle);
                 }
             }
         } else {
             if (p->key == 0x170c) {
-                _Z25ApplyElementFlags0201b8c8P11Obj0201b600iii((struct Obj0201b600*)p, 0, 1, 0);
+                ApplyElementFlags0201b8c8((struct Obj0201b600*)p, 0, 1, 0);
             } else if (p->key == 0x2774 || p->key == 0x2710) {
                 if (obj) obj->MakeVisible();
             } else if (obj) {
@@ -80,7 +80,7 @@ extern "C" ARM void func_020a72ac(struct Ctx020a72ac* p) {
         if (p->field2786 == p->key) {
             if (obj) obj->MakeHidden();
         } else if (p->key == 0x170c) {
-            _Z25ApplyElementFlags0201b8c8P11Obj0201b600iii((struct Obj0201b600*)p, 1, 0, 1);
+            ApplyElementFlags0201b8c8((struct Obj0201b600*)p, 1, 0, 1);
             Vector3i local = actor->obj3D_.position_;
             if (local.z >= 0x6000 && local.x >= -0x8333 && local.x <= -0x5ccc) {
                 SetVec3At0x0020a6aa4(&local, -0x7000, 0x2e1, 0x5e66);

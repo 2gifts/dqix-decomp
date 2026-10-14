@@ -22,7 +22,7 @@ extern "C" void _ZN8Object3D26RemoveAnimationPackageByIDEi(struct Container02037
 extern "C" void _ZN8Object3D20StopCurrentAnimationEv(unsigned char* obj);
 
 extern "C" void* __clear(void* dst, int count);
-extern "C" void* _Z18LoadFileIntoMemoryPKcPvPj(const char* path, void* buf, unsigned int* outLen);
+void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outLen);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
 extern "C" int _ZN8Object3D21MaybeSetBCFGAnimationEii(void* obj, int id, int flags);
 
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov015_0218cb2c(void* self, int val) {
 
         unsigned int length = 0;
         sprintf(buf, &data_ov015_02194078, val);
-        void* buffer = _Z18LoadFileIntoMemoryPKcPvPj(buf, &data_0211e33c, &length);
+        void* buffer = LoadFileIntoMemory(buf, &data_0211e33c, &length);
 
         if (buffer != 0) {
             struct Params02036804 params;

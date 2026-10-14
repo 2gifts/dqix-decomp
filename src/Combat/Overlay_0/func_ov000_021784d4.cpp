@@ -39,7 +39,7 @@ struct TextWorkspace {
     char* textBuffer;
 };
 
-extern "C" TextWorkspace* _Z26GetGlobalField0x1c020421a0v();
+TextWorkspace* GetGlobalField0x1c020421a0();
 
 extern "C" void func_ov000_0217c638(struct Owner_021784d4* obj, int a, int b);
 extern "C" void func_ov000_02178648(struct Owner_021784d4* obj, void* textBuffer);
@@ -87,7 +87,7 @@ extern "C" ARM void func_ov000_021784d4(struct Owner_021784d4* obj, struct InStr
         panel->field_0xae = 0xb;
     }
     panel->field_0xb1 = 8;
-    char* textBuffer = _Z26GetGlobalField0x1c020421a0v()->textBuffer;
+    char* textBuffer = GetGlobalField0x1c020421a0()->textBuffer;
 #if defined(jpn)
     memset(textBuffer, 0, 0x800);
 #else

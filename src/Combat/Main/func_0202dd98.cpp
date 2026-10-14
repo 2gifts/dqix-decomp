@@ -9,11 +9,11 @@ extern BattleDispatchState data_021015a0;
 extern BattleEffectContext data_021023c0, data_02102be0;
 int AdvanceStateIfState2();
 void TryIssueBattleCommandAndUpdateState();
-extern "C" int _Z42ForwardClearBattleSubEffectAt0x800020d68d0Pv(void*);
+int ForwardClearBattleSubEffectAt0x800020d68d0(void*);
 void SetField0x48UnlessState9Or10(int);
-extern "C" int _Z29SetState3AndDispatch_0202d54cv();
+int SetState3AndDispatch_0202d54c();
 int ClearBattleSubEffectAt0x800(void*);
-extern "C" int _Z29SetState3AndDispatch_0202cca4v();
+int SetState3AndDispatch_0202cca4();
 
 static inline int CurrentState() { return data_021015a0.state_; }
 
@@ -37,9 +37,9 @@ extern "C" ARM void func_0202dd98() {
         if (state != 6) result = 0;
         else {
             data_021015a0.state_ = state;
-            int status = _Z42ForwardClearBattleSubEffectAt0x800020d68d0Pv(&data_021023c0);
+            int status = ForwardClearBattleSubEffectAt0x800020d68d0(&data_021023c0);
             if (status) { SetField0x48UnlessState9Or10(status); result = 0; }
-            else if (!_Z29SetState3AndDispatch_0202d54cv()) result = 0;
+            else if (!SetState3AndDispatch_0202d54c()) result = 0;
             else result = 1;
         }
         if (!result) TryIssueBattleCommandAndUpdateState();
@@ -48,13 +48,13 @@ extern "C" ARM void func_0202dd98() {
     case 5:
         if (ClearBattleSubEffectAt0x800(&data_02102be0)) { TryIssueBattleCommandAndUpdateState(); break; }
     case 1:
-        if (!_Z29SetState3AndDispatch_0202d54cv()) TryIssueBattleCommandAndUpdateState();
+        if (!SetState3AndDispatch_0202d54c()) TryIssueBattleCommandAndUpdateState();
         break;
     case 2: {
         int result;
-        int status = _Z42ForwardClearBattleSubEffectAt0x800020d68d0Pv(&data_021023c0);
+        int status = ForwardClearBattleSubEffectAt0x800020d68d0(&data_021023c0);
         if (status) { SetField0x48UnlessState9Or10(status); result = 0; }
-        else if (_Z29SetState3AndDispatch_0202cca4v()) result = 1;
+        else if (SetState3AndDispatch_0202cca4()) result = 1;
         else { TryIssueBattleCommandAndUpdateState(); result = 0; }
         if (!result) TryIssueBattleCommandAndUpdateState();
         break;
@@ -62,7 +62,7 @@ extern "C" ARM void func_0202dd98() {
     case 4:
         if (ClearBattleSubEffectAt0x800(&data_02102be0)) { TryIssueBattleCommandAndUpdateState(); break; }
     case 0:
-        if (!_Z29SetState3AndDispatch_0202cca4v()) TryIssueBattleCommandAndUpdateState();
+        if (!SetState3AndDispatch_0202cca4()) TryIssueBattleCommandAndUpdateState();
         break;
     }
 }

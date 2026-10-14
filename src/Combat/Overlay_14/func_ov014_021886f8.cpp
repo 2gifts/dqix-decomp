@@ -80,18 +80,18 @@ struct List0204b0e8;
 struct Obj0204c7a8;
 
 int CountActiveEntries(ActiveEntry02046900*);
-extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64*);
+void ResetList0204af64(List0204af64*);
 void SetWord0x18ClearByte0x1f(unsigned char*, int);
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(AllocTarget0204b12c*, SafeAllocator*);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8*, int, int);
-extern "C" void _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(Foo0204af38*, int, SafeAllocator*);
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
+void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
+void AllocateArray0204af38(Foo0204af38*, int, SafeAllocator*);
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08*);
-extern "C" void _Z19ClearBuffer0204b010P11Obj0204b010Pv(Obj0204b010*, void*);
-extern "C" void _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit(Obj0204b988*, unsigned int, int, int, unsigned short);
-extern "C" void _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8*, void*);
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(Obj0204c7a8*, SafeAllocator*, int, unsigned int);
+int NormalizeField5_0200fb08(Struct0200fb08*);
+void ClearBuffer0204b010(Obj0204b010*, void*);
+void DispatchIndexedEntry0204b988(Obj0204b988*, unsigned int, int, int, unsigned short);
+void DispatchEntry0204b8d0(Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
+void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
+void AllocateBuffer0204c7a8(Obj0204c7a8*, SafeAllocator*, int, unsigned int);
 
 extern "C" {
 void func_0204b5b4(BackgroundGraphics* graphics, int);
@@ -136,17 +136,17 @@ extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
         numFiles = CountActiveEntries((ActiveEntry02046900*)file);
         allocators = self->listAllocators_;
         allocators[1].Reset();
-        _Z17ResetList0204af64P12List0204af64((List0204af64*)&graphics);
+        ResetList0204af64((List0204af64*)&graphics);
         SetWord0x18ClearByte0x1f((unsigned char*)&graphics, 0);
         graphics.unk_1c_0_ = 1;
         graphics.unk_1c_4_ = 2;
         func_0204b5b4(&graphics, 2);
-        _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)&graphics, &allocators[1]);
-        _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)&graphics, 0, 0);
+        AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&graphics, &allocators[1]);
+        DispatchViaTable0204b5e8((Obj0204b5e8*)&graphics, 0, 0);
 #if defined(jpn)
-        _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((Foo0204af38*)&graphics, 1, &allocators[1]);
+        AllocateArray0204af38((Foo0204af38*)&graphics, 1, &allocators[1]);
 #else
-        _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((Foo0204af38*)&graphics, 5, &allocators[1]);
+        AllocateArray0204af38((Foo0204af38*)&graphics, 5, &allocators[1]);
 #endif
         for (int i = 1; i < numFiles; i++)
         {
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
         self->listBackgroundTaskID_ = -1;
 
 #if !defined(jpn)
-        int language = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)gameState);
+        int language = NormalizeField5_0200fb08((Struct0200fb08*)gameState);
         int title = 0;
         switch (language)
         {
@@ -176,26 +176,26 @@ extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
             break;
         }
 #endif
-        _Z19ClearBuffer0204b010P11Obj0204b010Pv((Obj0204b010*)&graphics, 0);
-        _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit((Obj0204b988*)&graphics, 0, 0, 0, 0xffff);
+        ClearBuffer0204b010((Obj0204b010*)&graphics, 0);
+        DispatchIndexedEntry0204b988((Obj0204b988*)&graphics, 0, 0, 0, 0xffff);
 
 #if !defined(jpn)
         if (title != 0)
-            _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((Obj0204b8d0*)&graphics, title, 0, 0, 0x16, 2, 9, 2, 0xffff);
+            DispatchEntry0204b8d0((Obj0204b8d0*)&graphics, title, 0, 0, 0x16, 2, 9, 2, 0xffff);
 #endif
-        _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)&graphics, 0);
+        FlushAndDispatchList0204b0e8((List0204b0e8*)&graphics, 0);
 
         allocators[1].Reset();
         for (unsigned char i = 0; i < 2; i++)
         {
             BackgroundGraphics* background = &self->backgrounds_[i];
-            _Z17ResetList0204af64P12List0204af64((List0204af64*)background);
+            ResetList0204af64((List0204af64*)background);
             background->unk_1c_0_ = 1;
             background->unk_1c_4_ = i;
             SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
             func_0204b5b4(background, i);
-            _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)background, &allocators[1]);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)background, 0, 0);
+            AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)background, &allocators[1]);
+            DispatchViaTable0204b5e8((Obj0204b5e8*)background, 0, 0);
         }
         void* data = FindRecordByIndex((Rec020467f0*)file, 0, &name, (int*)&dataSize);
         if (data != NULL)
@@ -203,14 +203,14 @@ extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
         for (unsigned char i = 0; i < 2; i++)
         {
             BackgroundGraphics* background = &self->backgrounds_[i];
-            _Z19ClearBuffer0204b010P11Obj0204b010Pv((Obj0204b010*)background, 0);
-            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)background, 0);
+            ClearBuffer0204b010((Obj0204b010*)background, 0);
+            FlushAndDispatchList0204b0e8((List0204b0e8*)background, 0);
         }
         for (unsigned char i = 0; i < 4; i++)
         {
             Canvas* canvas = &self->canvases_[i];
             func_0204c684(canvas);
-            _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8*)canvas, &allocators[1], (int)self->canvasBuffer_, 0x600);
+            AllocateBuffer0204c7a8((Obj0204c7a8*)canvas, &allocators[1], (int)self->canvasBuffer_, 0x600);
             canvas->background_ = self->backgrounds_;
         }
         self->listBackgroundStep_ = 0;

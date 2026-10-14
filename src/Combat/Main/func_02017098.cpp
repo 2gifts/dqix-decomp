@@ -14,7 +14,7 @@ extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
 extern "C" float _fflt(int value);
 extern "C" float _fmul(float a, float b);
 extern "C" int _ffix(float value);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
 extern char data_020ef222[];
 extern int data_02108760;
@@ -60,9 +60,9 @@ extern "C" ARM void func_02017098(struct ActorListManager* manager, int index) {
         LootableContainerManager::GetMainInstance()->GetContainerByID(e->id, NULL);
     if (container != NULL) {
         if (container->containerType == 1) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x10, 0);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x10, 0);
         } else if (container->containerType == 2) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x11, 0);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x11, 0);
         }
     }
 

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 int FindFirstDigitAndParse(signed char* s);
-extern "C" int _Z28FormatAbsIntToString02042658Pvi(void* obj, int value);
+int FormatAbsIntToString02042658(void* obj, int value);
 extern "C" int sprintf(char* buf, const char* fmt, ...);
 
 extern char data_020f08df;
@@ -24,7 +24,7 @@ extern "C" ARM void func_02068238(signed char* s, char** buf, struct Msg02068238
     unsigned char flag = m->flag[idx];
     unsigned char mode = m->mode[idx];
     if (flag != 0) {
-        int w = (flag << 3) - _Z28FormatAbsIntToString02042658Pvi(0, val);
+        int w = (flag << 3) - FormatAbsIntToString02042658(0, val);
         switch (mode) {
             case 0:
                 *buf += sprintf(*buf, &data_020f08df, val, w);

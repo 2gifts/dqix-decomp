@@ -28,11 +28,11 @@ struct FormationStats {
 Object3D* GetField0x21c(S0204a438*);
 int ClassifyField0x81fe(char*);
 int TestBitAt0x34(unsigned char*, unsigned int);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(Obj02033874*, int);
+void SetVecYFromValue02033874(Obj02033874*, int);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void SetField0x3b0Value(GameState*, int);
-extern "C" void _Z30InitCombatantPosition_0216118cPvi(void*, int);
-extern "C" void _Z38RunFlaglearAndSetMode02167e6c_02167e6cPh(unsigned char*);
+void InitCombatantPosition_0216118c(void*, int);
+void RunFlaglearAndSetMode02167e6c_02167e6c(unsigned char*);
 void ClearCombatantSlot(GameState*, int);
 void ClearByte0x63d5(FieldBlock63d5_12050*);
 extern "C" {
@@ -82,7 +82,7 @@ extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* sel
                             position.z = bone->matrix.translation.z;
                             Vector3fixMultiplyScalar(&position, 266, &position);
                             member->obj3D_.position_ = position;
-                            _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)member, fix32_Atan2(bone->matrix.rotation.rows[2].x, bone->matrix.rotation.rows[2].z));
+                            SetVecYFromValue02033874((Obj02033874*)member, fix32_Atan2(bone->matrix.rotation.rows[2].x, bone->matrix.rotation.rows[2].z));
                             Vector3fix_Add(&center, &position, &center);
                         }
                     }
@@ -111,13 +111,13 @@ extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* sel
                 if (member) {
                     member->obj3D_.RemoveAnimationPackageByID(3);
                     SetByte0xbeShiftPrev((Bytes02033b88*)member, 0);
-                    _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)member, 0x3244);
+                    SetVecYFromValue02033874((Obj02033874*)member, 0x3244);
                 }
             }
         }
         SetField0x3b0Value(game, func_ov000_02160f14(self));
-        _Z30InitCombatantPosition_0216118cPvi(self, 1);
-        _Z38RunFlaglearAndSetMode02167e6c_02167e6cPh((unsigned char*)self);
+        InitCombatantPosition_0216118c(self, 1);
+        RunFlaglearAndSetMode02167e6c_02167e6c((unsigned char*)self);
         func_ov026_021daec8(battle, (BattleView*)func_ov000_02160f14(self), 1);
         func_ov000_021626a0(self, 0x26, 0);
         func_ov000_021626a0(self, 0x27, 1);

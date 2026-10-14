@@ -13,15 +13,15 @@
 extern "C" void* __clear(void* dst, int count);
 
 struct Foo0207df50;
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void CopyInternalFields0207df50(struct Foo0207df50* p);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 
 struct Struct_203dafc;
 void ClearEightWords(struct Struct_203dafc* obj);
 
 struct Obj02055718;
-extern "C" int _Z27InitAllocatedObject02055718P11Obj02055718ii(struct Obj02055718* p, int a, int b);
+int InitAllocatedObject02055718(struct Obj02055718* p, int a, int b);
 
 extern "C" void func_02054f80(void* obj);
 extern "C" int func_02055180(void* a, void* b, void* c, void* d);
@@ -64,8 +64,8 @@ extern "C" ARM int func_ov015_0218e02c(void* self, int* desc) {
 
     int ok = 1;
     struct Foo0207df50* palette = *(struct Foo0207df50**)*(void**)((char*)self + 4);
-    _Z26CopyInternalFields0207df50P11Foo0207df50(palette);
-    _Z25RestorePairTables0207df90Pc((char*)palette);
+    CopyInternalFields0207df50(palette);
+    RestorePairTables0207df90((char*)palette);
 
     sprintf(path, data_ov015_0219413f, desc[1]);
 
@@ -121,7 +121,7 @@ extern "C" ARM int func_ov015_0218e02c(void* self, int* desc) {
         info.one = onePtr;
         (*(Object3D**)((char*)self + 0x24))->LoadFromCHRArchive((ObjectArchiveLoadInfo*)&info);
 
-        _Z27InitAllocatedObject02055718P11Obj02055718ii(*(struct Obj02055718**)((char*)self + 0x28),
+        InitAllocatedObject02055718(*(struct Obj02055718**)((char*)self + 0x28),
                                     *(int*)((char*)self + 0x24), *(int*)((char*)self + 8));
 
         Vector3i v = data_ov015_02193d08;
@@ -132,7 +132,7 @@ extern "C" ARM int func_ov015_0218e02c(void* self, int* desc) {
     }
 
     BackgroundLoader::RemoveLockGlobal();
-    _Z24BackupPairTables0207dfacPc((char*)palette);
+    BackupPairTables0207dfac((char*)palette);
 
     if (ok == 0) {
         return 0;

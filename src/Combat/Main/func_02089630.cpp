@@ -2,7 +2,7 @@
 #include "Util/Random.h"
 
 struct Struct02082d38;
-extern "C" void _Z18CopyStruct02082d38P14Struct02082d38S0_(struct Struct02082d38* dst, struct Struct02082d38* src);
+void CopyStruct02082d38(struct Struct02082d38* dst, struct Struct02082d38* src);
 
 extern "C" void func_020891cc(void* dst, void* src, int useExactValue);
 
@@ -37,5 +37,5 @@ extern "C" ARM void func_02089630(char* dst, char* src, int useExactValue) {
     ((Packed3c_89630*)(dst + 0x10))->fieldA = (unsigned short)((Packed3c_89630*)(src + 0x3c))->fieldA;
     ((Packed3c_89630*)(dst + 0x10))->fieldB = (unsigned short)((Packed3c_89630*)(src + 0x3c))->fieldB;
     ((Packed3c_89630*)(dst + 0x10))->fieldC = (unsigned short)((Packed3c_89630*)(src + 0x3c))->fieldC;
-    _Z18CopyStruct02082d38P14Struct02082d38S0_((struct Struct02082d38*)(dst + 0x3e), (struct Struct02082d38*)(src + 0x40));
+    CopyStruct02082d38((struct Struct02082d38*)(dst + 0x3e), (struct Struct02082d38*)(src + 0x40));
 }

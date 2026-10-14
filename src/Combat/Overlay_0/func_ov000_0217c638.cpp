@@ -7,20 +7,20 @@ struct Struct_0205bcdc;
 struct Struct0205cf1c;
 
 void* GetPtrField0x2a04(GameState*);
-extern "C" void _Z22CopyStaticData02174da4iPv(int, void*);
+void CopyStaticData02174da4(int, void*);
 extern "C" void* func_0202ae18();
 int CheckField0NonZero(int*);
 int GetField0x3acValue(GameState*);
 int CountSetBitsLow12_0x68(void*);
 extern "C" void* func_ov000_02161318(void*, int);
 void* GetFieldAt0x150(unsigned char*);
-extern "C" void _Z25ClearChannelAFlag0205cf10Pv(void*);
-extern "C" void _Z21ClearFlagByte0205cf1cP14Struct0205cf1c(Struct0205cf1c*);
-extern "C" void _Z23SetChannelAFlag0205cef8Pv(void*);
-extern "C" void _Z23SetChannelBFlag0205cf04Pv(void*);
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(Struct_0205ba68*, int, int, int);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(Node0205bacc*, int);
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(Struct_0205bcdc*, int);
+void ClearChannelAFlag0205cf10(void*);
+void ClearFlagByte0205cf1c(Struct0205cf1c*);
+void SetChannelAFlag0205cef8(void*);
+void SetChannelBFlag0205cf04(void*);
+void SetupPointerTable0205ba68(Struct_0205ba68*, int, int, int);
+void SetField0AndPropagate0205bacc(Node0205bacc*, int);
+void SetIndexIfValid0205bcdc(Struct_0205bcdc*, int);
 extern "C" void func_0205bb04(void*, int);
 
 #if defined(jpn)
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov000_0217c638(Battle0217c638* battle, int a, int b) {
     case 1: {
         int buf[4];
         total = 0;
-        _Z22CopyStaticData02174da4iPv((int)battle, buf);
+        CopyStaticData02174da4((int)battle, buf);
         for (int i = 0; i < 4; i++) {
             if (buf[i] >= 0) total++;
         }
@@ -173,18 +173,18 @@ extern "C" ARM void func_ov000_0217c638(Battle0217c638* battle, int a, int b) {
         selected = battle->byte1c;
         break;
     default:
-        _Z25ClearChannelAFlag0205cf10Pv(battle->flags);
-        _Z21ClearFlagByte0205cf1cP14Struct0205cf1c((Struct0205cf1c*)battle->flags);
+        ClearChannelAFlag0205cf10(battle->flags);
+        ClearFlagByte0205cf1c((Struct0205cf1c*)battle->flags);
         return;
     }
-    _Z23SetChannelAFlag0205cef8Pv(battle->flags);
-    _Z23SetChannelBFlag0205cf04Pv(battle->flags);
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((Struct_0205ba68*)&battle->first, columns, rows, 0);
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((Struct_0205ba68*)&battle->second, columns, rows, 0);
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((Node0205bacc*)&battle->first, total);
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((Node0205bacc*)&battle->second, total);
+    SetChannelAFlag0205cef8(battle->flags);
+    SetChannelBFlag0205cf04(battle->flags);
+    SetupPointerTable0205ba68((Struct_0205ba68*)&battle->first, columns, rows, 0);
+    SetupPointerTable0205ba68((Struct_0205ba68*)&battle->second, columns, rows, 0);
+    SetField0AndPropagate0205bacc((Node0205bacc*)&battle->first, total);
+    SetField0AndPropagate0205bacc((Node0205bacc*)&battle->second, total);
     battle->first.level = pages;
     battle->second.level = pages;
-    _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((Struct_0205bcdc*)&battle->first, selected);
+    SetIndexIfValid0205bcdc((Struct_0205bcdc*)&battle->first, selected);
     func_0205bb04(&battle->second, selected);
 }

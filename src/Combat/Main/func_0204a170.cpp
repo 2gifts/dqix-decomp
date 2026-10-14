@@ -10,13 +10,13 @@ extern "C" void _ZN8Object3D24MaybeUpdateBonePositionsEv(void* obj);
 extern "C" void func_020a2d14(void* actor);
 extern "C" void func_0204a4ac(void* self);
 extern "C" void func_0202eab8(void* obj);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
+int fix32ReduceAngle0To2Pi(int angle);
 
 struct S020a3570;
 int GetField0x218(struct S020a3570* p);
 
 struct Obj02033874;
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(struct Obj02033874* obj, int arg);
+void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
 
 extern Matrix4x3 data_02107874;
 extern Matrix4x3 data_021078ac;
@@ -46,7 +46,6 @@ extern "C" ARM void func_0204a170(struct Obj0204a170* self) {
     Matrix4x3 m1;
     Matrix4x3 m2;
     Matrix4x3 m3;
-
 
     if (self->f21c == NULL) return;
 
@@ -95,7 +94,7 @@ extern "C" ARM void func_0204a170(struct Obj0204a170* self) {
 struct Obj3D0204a170* t = self->f220;
     if (t == NULL) return;
 
-    int angle = _Z22fix32ReduceAngle0To2Pii(fix32_Atan2(v3.x - t->pos.x,
+    int angle = fix32ReduceAngle0To2Pi(fix32_Atan2(v3.x - t->pos.x,
                                                         v3.z - t->pos.z));
     struct Obj3D0204a170* u = self->f220;
     _ZN8Vector3iaSERKS_((int*)&u->pos, (int*)&v3);
@@ -104,10 +103,10 @@ struct Obj3D0204a170* t = self->f220;
 
     self->f264++;
     if (self->f264 >= 3) {
-        _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)u,
+        SetVecYFromValue02033874((struct Obj02033874*)u,
             FIX32_MULTIPLY(t->rot.y + angle, 0x800));
         self->f264 = 0;
     } else {
-        _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)u, t->rot.y);
+        SetVecYFromValue02033874((struct Obj02033874*)u, t->rot.y);
     }
 }

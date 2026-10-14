@@ -79,8 +79,8 @@ struct SlotState02082d6c {
 };
 
 extern "C" void func_02082828(struct SlotState02082d6c*);
-extern "C" void _Z33LoadAndApplyResourceEntry02082fc4PvS_(void*, void*);
-extern "C" void _Z18Copy3Words02082fa8P13Words02082fa8S0_(struct Words02082fa8*, struct Words02082fa8*);
+void LoadAndApplyResourceEntry02082fc4(void*, void*);
+void Copy3Words02082fa8(struct Words02082fa8*, struct Words02082fa8*);
 extern "C" void __clear(void*, unsigned int);
 extern "C" void func_02042764(void*, void*, int);
 extern char data_020ef078[];
@@ -99,9 +99,9 @@ extern "C" ARM void func_02082d6c(struct SlotState02082d6c* dst, struct SlotReco
         dst->b186[i] = src->val0f[i];
         dst->w138[i] = src->w1c[i];
     }
-    _Z33LoadAndApplyResourceEntry02082fc4PvS_(dst, NULL);
+    LoadAndApplyResourceEntry02082fc4(dst, NULL);
     for (int i = 0; i < 13; i++) {
-        _Z18Copy3Words02082fa8P13Words02082fa8S0_(&dst->tr850[i], &src->tr58[i]);
+        Copy3Words02082fa8(&dst->tr850[i], &src->tr58[i]);
     }
     dst->h564 = src->h_f4;
     for (int j = 0; j < 27; j++) {

@@ -5,18 +5,18 @@ extern "C" int _fleq(float a, float b);
 extern "C" float _fdiv(float a, float b);
 extern "C" float _fmul(float a, float b);
 extern "C" int _ffix(float v);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
+int fix32ReduceAngle0To2Pi(int angle);
 
 struct GameState {
     static GameState* GetInstance();
     int GetTickCount() const;
 };
 
-extern "C" void* _Z18GetField0x3b0ValueP9GameState(GameState* gs);
+void* GetField0x3b0Value(GameState* gs);
 extern "C" void _Z33SetField0x7cClearFields0x1ec0x1eePht(unsigned char* obj, short val);
 
 struct AngleTrig0202e9a4;
-extern "C" void _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i(struct AngleTrig0202e9a4* obj, int angle);
+void SetAngleAndTrigTable0202e9a4(struct AngleTrig0202e9a4* obj, int angle);
 
 struct Object3D {
     void AdvanceEffects();
@@ -46,10 +46,10 @@ extern "C" ARM int func_0204700c(char* self) {
 
     *(float*)(self + 0xc) = _fsub(*(float*)(self + 0xc), 0.4333f);
 
-    void* obj = _Z18GetField0x3b0ValueP9GameState(gs);
-    short ang16 = _Z22fix32ReduceAngle0To2Pii(_ffix(_fmul(4096.0f, ang)));
+    void* obj = GetField0x3b0Value(gs);
+    short ang16 = fix32ReduceAngle0To2Pi(_ffix(_fmul(4096.0f, ang)));
     _Z33SetField0x7cClearFields0x1ec0x1eePht((unsigned char*)obj, ang16);
-    _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i((struct AngleTrig0202e9a4*)obj,
+    SetAngleAndTrigTable0202e9a4((struct AngleTrig0202e9a4*)obj,
                                  _ffix(_fmul(4096.0f, *(float*)(self + 0xc))));
 
     Object3D* eff = *(Object3D**)(self + 0xe8);

@@ -17,9 +17,9 @@ void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
-extern "C" int _Z8fix32sini(int angle);
-extern "C" int _Z8fix32cosi(int angle);
+int fix32ReduceAngle0To2Pi(int angle);
+int fix32sin(int angle);
+int fix32cos(int angle);
 
 struct Vec3 { int x; int y; int z; };
 extern "C" int fix32_Atan2(int x, int z);
@@ -47,25 +47,25 @@ void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* no
 
 struct PosData_021ab280 {
     char pad0[8];
-    int x, y, z;               // 0x8, 0xc, 0x10
+    int x, y, z;
     char pad1[0x20 - 0x14];
-    short angle;                 // 0x20
+    short angle;
     char pad2[0x30 - 0x22];
-    unsigned short half30;        // 0x30
+    unsigned short half30;
     char pad3[0x38 - 0x32];
-    struct Vec3 vecArr[4];         // 0x38, 0x44, 0x50, 0x5c
-    short half68;                   // 0x68
-    short half6a;                    // 0x6a
+    struct Vec3 vecArr[4];
+    short half68;
+    short half6a;
 };
 
 struct Obj_021ab280 {
     char pad0[1];
-    unsigned char field1;        // 0x1
+    unsigned char field1;
     char pad1[8 - 2];
-    int state;                     // 0x8
-    int counter;                    // 0xc
-    struct PosData_021ab280* pos;    // 0x10
-    struct Vec3 vec14;                // 0x14
+    int state;
+    int counter;
+    struct PosData_021ab280* pos;
+    struct Vec3 vec14;
 };
 
 // USA: func_ov017_021ab280
@@ -83,10 +83,10 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
 
         struct Vec3 dir;
         struct Vec3 saved = *(struct Vec3*)((char*)combatant + 0x44);
-        int angleY = _Z22fix32ReduceAngle0To2Pii(obj->pos->angle + (int)0xffffcdc3);
-        dir.x = _Z8fix32sini(angleY);
+        int angleY = fix32ReduceAngle0To2Pi(obj->pos->angle + (int)0xffffcdc3);
+        dir.x = fix32sin(angleY);
         dir.y = 0;
-        dir.z = _Z8fix32cosi(angleY);
+        dir.z = fix32cos(angleY);
         Vector3fix_Normalize((const Vector3fix*)&dir, (Vector3fix*)&dir);
         Vector3fix_Add((const Vector3fix*)((struct Vec3*)&obj->pos->x), (const Vector3fix*)&dir, (Vector3fix*)&obj->vec14);
         Vector3fix_Subtract((const Vector3fix*)&obj->vec14, (const Vector3fix*)&saved, (Vector3fix*)&dir);

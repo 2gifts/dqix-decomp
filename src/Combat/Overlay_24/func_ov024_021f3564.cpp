@@ -7,9 +7,9 @@ int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
 struct S88514;
 int CheckFlag0x2AndState2(struct S88514* obj);
 struct FlagObj_021df6ec;
-extern "C" int _Z22IsFlagBit6Set_021df6ecP16FlagObj_021df6ec(struct FlagObj_021df6ec* obj);
+int IsFlagBit6Set_021df6ec(struct FlagObj_021df6ec* obj);
 struct FlagObj_021dd010;
-extern "C" int _Z22IsFlagBit8Set_021dd010P16FlagObj_021dd010(struct FlagObj_021dd010* obj);
+int IsFlagBit8Set_021dd010(struct FlagObj_021dd010* obj);
 
 struct BuffWord_021f3564 {
     signed int attackBuff : 3;
@@ -33,8 +33,8 @@ extern "C" ARM int func_ov024_021f3564(struct Wrapper_021f3564* a, int id, int u
 	int n = 0;
 	if (CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_)) n++;
 	if (CheckFlag0x2AndState2((struct S88514*)c->currentStats_)) n++;
-	if (_Z22IsFlagBit6Set_021df6ecP16FlagObj_021df6ec((struct FlagObj_021df6ec*)c)) n++;
-	if (_Z22IsFlagBit8Set_021dd010P16FlagObj_021dd010((struct FlagObj_021dd010*)c)) n++;
+	if (IsFlagBit6Set_021df6ec((struct FlagObj_021df6ec*)c)) n++;
+	if (IsFlagBit8Set_021dd010((struct FlagObj_021dd010*)c)) n++;
 	struct BuffWord_021f3564* bw = (struct BuffWord_021f3564*)((char*)c->currentStats_ + 0x58);
 	if (bw->attackBuff < 0) n++;
 	if (bw->defenseBuff < 0) n++;

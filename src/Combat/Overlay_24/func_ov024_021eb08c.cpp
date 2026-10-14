@@ -3,11 +3,11 @@
 #include "Util/Random.h"
 
 GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
-extern "C" int _Z33IsValidAndFlag0x1000Clear02088dd8Ph(unsigned char* obj);
+int IsValidAndFlag0x1000Clear02088dd8(unsigned char* obj);
 void SetByte0x7eSetFlag0x1000(unsigned char* obj, unsigned char val);
 void SetBool0x17fClear0x180(unsigned char* obj, int value);
 int GetField0x3acValue(GameState* battleStruct);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+int LoadBattleBlock020ac4c0(void* dst);
 struct S_a056c;
 void AddClamped16BitHighAt0x1c(struct S_a056c* p, unsigned int amount);
 int CopyInBattleField0x7540(void* src);
@@ -38,7 +38,7 @@ extern "C" ARM int func_ov024_021eb08c(struct Obj_021eb08c* obj, int slot, int i
 	if (!IsValidSlot_021eb08c(slot)) return 0;
 	rng = obj->rng;
 	unsigned int roll = NextRandomMax(rng, 100);
-	if (!_Z33IsValidAndFlag0x1000Clear02088dd8Ph((unsigned char*)c->currentStats_)) return 0;
+	if (!IsValidAndFlag0x1000Clear02088dd8((unsigned char*)c->currentStats_)) return 0;
 	int turns = NextRandomBetween(rng, effect->minTurns, effect->maxTurns);
 	int result = 0;
 	if (kind == effect->kindA) {
@@ -58,7 +58,7 @@ extern "C" ARM int func_ov024_021eb08c(struct Obj_021eb08c* obj, int slot, int i
 	}
 	if (result && slot == GetField0x3acValue(GameState::GetInstance())) {
 		char block[0xb0];
-		_Z23LoadBattleBlock020ac4c0Pv(block);
+		LoadBattleBlock020ac4c0(block);
 		AddClamped16BitHighAt0x1c((struct S_a056c*)block, 1);
 		CopyInBattleField0x7540(block);
 	}

@@ -28,9 +28,9 @@ struct Message0220f8a8 {
 extern Context0220f8a8* data_ov031_0224e580;
 extern "C" int func_ov031_0220fe44(int (*)(int*));
 extern "C" int func_ov031_0220ff34(int*);
-extern "C" int _Z26IsField0Unchanged_0220ff18Pv(void*);
-extern "C" void _Z30WaitForField2CNonZero_0220fea0v();
-extern "C" void _Z31ClearField28SetField2C_0220fed8v();
+int IsField0Unchanged_0220ff18(void*);
+void WaitForField2CNonZero_0220fea0();
+void ClearField28SetField2C_0220fed8();
 
 // USA: func_ov031_0220f8a8
 extern "C" ARM void func_ov031_0220f8a8() {
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov031_0220f8a8() {
     message->parameter = data_ov031_0224e580->request->parameter;
     VectorizedInvertedMemcpy(source, message->payload, consumed);
     if (func_ov031_0220fe44(func_ov031_0220ff34)) {
-        if (_Z26IsField0Unchanged_0220ff18Pv(storage)) {
+        if (IsField0Unchanged_0220ff18(storage)) {
             int last = 1;
             if (consumed < data_ov031_0224e580->request->length) do {
                 unsigned int amount = data_ov031_0224e580->request->length - consumed;
@@ -58,16 +58,16 @@ extern "C" ARM void func_ov031_0220f8a8() {
                 message->parameter = !last;
                 message->length = amount;
                 VectorizedInvertedMemcpy(source + consumed, message->payload, amount);
-                if (!_Z26IsField0Unchanged_0220ff18Pv(storage)) break;
+                if (!IsField0Unchanged_0220ff18(storage)) break;
                 consumed += amount;
                 data_ov031_0224e580->request->consumed = consumed;
             } while (consumed < data_ov031_0224e580->request->length);
             if (last) {
-                _Z30WaitForField2CNonZero_0220fea0v();
+                WaitForField2CNonZero_0220fea0();
                 Request0220f8a8* request = data_ov031_0224e580->request;
                 if (consumed != request->received) request->successful = 0;
             }
         }
     }
-    _Z31ClearField28SetField2C_0220fed8v();
+    ClearField28SetField2C_0220fed8();
 }

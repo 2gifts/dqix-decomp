@@ -17,7 +17,7 @@ struct Node0215e4e8 {
 extern "C" void* func_ov011_021849c8(void* a);
 extern "C" Node0215e4e8* func_ov023_021f6880(void* obj, int key);
 extern "C" unsigned int func_ov023_021f6f10(void* self);
-extern "C" int _Z12StringLengthPKc(const char* text);
+int StringLength(const char* text);
 extern "C" void* func_ov023_021fa598(void* p);
 extern "C" int func_020420e8(void* value, int flag);
 
@@ -39,7 +39,7 @@ extern "C" ARM int func_ov004_0215e4e8(void* a, int key) {
     int result = 0;
     if (entry) {
 #if defined(jpn)
-        unsigned int length = _Z12StringLengthPKc((const char*)entry);
+        unsigned int length = StringLength((const char*)entry);
         result = (int)(length * node->field44) >> 1;
 #else
         result = func_020420e8(entry, IsValueEqual12(node->field44));

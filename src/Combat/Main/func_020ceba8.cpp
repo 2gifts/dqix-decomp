@@ -25,7 +25,7 @@ extern PMStatics data_021117ec;
 
 extern "C" void func_020c976c(unsigned long cycles);
 void DelayThenSyncBit0();
-extern "C" unsigned long _Z34IssueRequestAndPumpHandler020ce614i(int status);
+unsigned long IssueRequestAndPumpHandler020ce614(int status);
 unsigned long RemapRequestTypeAndRunHandler(int led, void (*callback)(), int* arg);
 unsigned long InvokeReg0x10IfPowcntBit0Set(int value);
 
@@ -41,10 +41,10 @@ extern "C" ARM int func_020ceba8(int sw, int led, int skip, int isSync)
         {
             if (isSync)
             {
-                if (_Z34IssueRequestAndPumpHandler020ce614i(led) != PM_SUCCESS)
+                if (IssueRequestAndPumpHandler020ce614(led) != PM_SUCCESS)
                     do
                         func_020c976c(RETRY_WAIT_CYCLES);
-                    while (_Z34IssueRequestAndPumpHandler020ce614i(led) != PM_SUCCESS);
+                    while (IssueRequestAndPumpHandler020ce614(led) != PM_SUCCESS);
             }
             else
             {
@@ -76,10 +76,10 @@ extern "C" ARM int func_020ceba8(int sw, int led, int skip, int isSync)
         {
             if (isSync)
             {
-                if (_Z34IssueRequestAndPumpHandler020ce614i(led) != PM_SUCCESS)
+                if (IssueRequestAndPumpHandler020ce614(led) != PM_SUCCESS)
                     do
                         func_020c976c(RETRY_WAIT_CYCLES);
-                    while (_Z34IssueRequestAndPumpHandler020ce614i(led) != PM_SUCCESS);
+                    while (IssueRequestAndPumpHandler020ce614(led) != PM_SUCCESS);
             }
             else
             {

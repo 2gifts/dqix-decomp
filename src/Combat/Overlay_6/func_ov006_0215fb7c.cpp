@@ -98,7 +98,7 @@ void SetEntryHalfword0xe(void* menu, int id, int text);
 void DispatchEntryOp0x8(void* menu, int id);
 void SetEntryFlag0x2ByShortId(StatusOwner02081164* menu, int id, int flag);
 extern "C" void func_020813ec(void* menu, int id);
-extern "C" void _Z35SetEntryLowNibbleAndElement02080c68Pvii(void* menu, int id, int value);
+void SetEntryLowNibbleAndElement02080c68(void* menu, int id, int value);
 void ClearElementFlag0x20(Obj2081* menu, int id);
 
 // USA: func_ov006_0215fb7c
@@ -179,6 +179,6 @@ extern "C" ARM void func_ov006_0215fb7c(AlchemyMenu* self) {
     DispatchEntryOp0x8(menu, 0x59);
     SetEntryFlag0x2ByShortId((StatusOwner02081164*)menu, 0xe, 1);
     func_020813ec(menu, 0xe);
-    _Z35SetEntryLowNibbleAndElement02080c68Pvii(menu, 0xe, 2);
+    SetEntryLowNibbleAndElement02080c68(menu, 0xe, 2);
     ClearElementFlag0x20((Obj2081*)menu, 0xe);
 }

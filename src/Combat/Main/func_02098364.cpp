@@ -3,7 +3,7 @@
 #include "System/Memory.h"
 
 struct Obj020827c4 { char field_0x0[0x1c]; };
-extern "C" void _Z26InitFlagsAndTimers020827c4P11Obj020827c4(Obj020827c4*);
+void InitFlagsAndTimers020827c4(Obj020827c4*);
 
 struct Settings02098364 {
     char field_0x0[11];
@@ -74,7 +74,7 @@ extern "C" ARM void func_02098364(Settings02098364* settings) {
     settings->duration = 300;
     settings->scale = 706;
     settings->field_0x74 = 0;
-    _Z26InitFlagsAndTimers020827c4P11Obj020827c4(&settings->timers);
+    InitFlagsAndTimers020827c4(&settings->timers);
     VectorizedMemset(settings->field_0x38, 0, 0x18);
     VectorizedMemset(settings->field_0x50, 0, 0x1c);
 }

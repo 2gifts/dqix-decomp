@@ -30,7 +30,7 @@ GameObject* GetCombatantWithFlag0x200(GameState* battleStruct, int combatantId);
 int GetField0x158(void* obj);
 extern "C" unsigned short _ZNK8Object3D10GetField06Ev(void* obj);
 void ClearCombatantSlot(GameState* battleStruct, int id);
-extern "C" void _Z37InitializeSubObjectsAndFields020289c4P17BigRecord020289c4(BigRecord020289c4*);
+void InitializeSubObjectsAndFields020289c4(BigRecord020289c4*);
 
 // USA: func_020288e0
 extern "C" ARM void func_020288e0(BigRecord020289c4* records)
@@ -56,6 +56,6 @@ extern "C" ARM void func_020288e0(BigRecord020289c4* records)
         for (int k = 0; k < 12; ++k) {
             ClearCombatantSlot(state, k + (i * 12 + 0x70));
         }
-        _Z37InitializeSubObjectsAndFields020289c4P17BigRecord020289c4(record);
+        InitializeSubObjectsAndFields020289c4(record);
     }
 }

@@ -20,11 +20,11 @@ extern "C" void func_0204c684(void *canvas);
 extern "C" Zone02172a14 *func_02012fe4(void);
 extern "C" void __clear(void *dst, int count);
 extern "C" void func_0204f41c(void *canvas, int a, int b, char *text, int c, int d, short *outA, short *outB, int e);
-extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64 *obj);
+void ResetList0204af64(List0204af64 *obj);
 void SetWord0x18ClearByte0x1f(unsigned char *obj, int a);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8 *obj, int a, int b);
-extern "C" void _Z21DispatchByTag0204b2e0PvPc(void *obj, char *str);
-extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(SelfTag0204b3a0 *self, char *str);
+void DispatchViaTable0204b5e8(Obj0204b5e8 *obj, int a, int b);
+void DispatchByTag0204b2e0(void *obj, char *str);
+void DispatchByTagLookup0204b3a0(SelfTag0204b3a0 *self, char *str);
 extern "C" void ColorEffect_ConfigureAlphaBlend(int control, int a, int b, int c, int d);
 void SetMainBrightness(GameResources *resources, int a, int b);
 extern "C" void func_020728ac(void *a, void *b, void *file, unsigned int size, int c, int d, int e);
@@ -151,14 +151,14 @@ extern "C" ARM void func_ov003_02172a14(Self02172a14 *self) {
         if (v > 9999) v = 9999;
         sprintf(text, data_ov003_021809f4, v);
         func_0204f41c(&canvas, 0xb0, 0x48, text, 8, 1, &outA, &outB, 0);
-        _Z17ResetList0204af64P12List0204af64((List0204af64 *) &list);
+        ResetList0204af64((List0204af64 *) &list);
         list.lo_ = 0;
         list.hi_ = 1;
         SetWord0x18ClearByte0x1f((unsigned char *) &list, 0);
-        _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8 *) &list, 0, 0);
+        DispatchViaTable0204b5e8((Obj0204b5e8 *) &list, 0, 0);
         for (int i = 0; i < count; i++) {
-            _Z21DispatchByTag0204b2e0PvPc(&list, (char *) datas[i]);
-            _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc((SelfTag0204b3a0 *) &list, (char *) datas[i]);
+            DispatchByTag0204b2e0(&list, (char *) datas[i]);
+            DispatchByTagLookup0204b3a0((SelfTag0204b3a0 *) &list, (char *) datas[i]);
         }
         ColorEffect_ConfigureAlphaBlend(0x04000050, 1, 0x12, 0x1f, 0x1f);
         SetMainBrightness(res, 0, 0x18);

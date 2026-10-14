@@ -32,24 +32,24 @@ struct Self021b848c {
     unsigned char field_6c6;
 };
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 int GetField0x3acValue(GameState* battleStruct);
 extern "C" void func_ov017_021c9c64(unsigned short a0, unsigned char a1);
-extern "C" void _Z27EnqueueEventTag122_021c8b78t(unsigned short param);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(FlagWord020466f4* word, unsigned int mask);
+void EnqueueEventTag122_021c8b78(unsigned short param);
+void* GetDataPtr02114e04_020d6c00(void);
+void ClearFlags020466f4(FlagWord020466f4* word, unsigned int mask);
 void OrBitsIntoField0(unsigned int* obj, unsigned int mask);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(struct Obj020397cc* obj, int arg1);
+void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 void SetBitInField0x34(unsigned char* obj, int index);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 extern "C" void func_020c9be0(void);
-extern "C" void _Z35EnqueueEventTag127ForParty_021c3f70t(unsigned short tag);
+void EnqueueEventTag127ForParty_021c3f70(unsigned short tag);
 
 // USA: func_ov017_021b848c
 extern "C" ARM void func_ov017_021b848c(Self021b848c* self, signed char* present, int member, int arg3,
                                          unsigned short arg4, signed char arg5, int arg6, int arg7) {
     GameState* battle = GameState::GetInstance();
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     unsigned short state = self->state;
     if (state == 4 || state == 6 || state == 0) return;
     if (present[GetField0x3acValue(battle)] == 0) return;
@@ -57,17 +57,17 @@ extern "C" ARM void func_ov017_021b848c(Self021b848c* self, signed char* present
     int valid = member >= 0 && member <= 3;
     if (!valid || present[member] == 0 || battle->GetGameObjectByIndex(member) == NULL) {
         func_ov017_021c9c64(self->id, 0);
-        _Z27EnqueueEventTag122_021c8b78t(self->id);
+        EnqueueEventTag122_021c8b78(self->id);
         self->state = 5;
         return;
     }
 
-    void* flags = _Z27GetDataPtr02114e04_020d6c00v();
-    _Z18ClearFlags020466f4P16FlagWord020466f4j((FlagWord020466f4*)flags, 0x200);
+    void* flags = GetDataPtr02114e04_020d6c00();
+    ClearFlags020466f4((FlagWord020466f4*)flags, 0x200);
     OrBitsIntoField0((unsigned int*)flags, 0x40000);
     GameObject* actor = battle->GetUnknownGameObject();
     if (actor != NULL) {
-        _Z27CancelPendingAction020397ccP11Obj020397cci((struct Obj020397cc*)actor, 1);
+        CancelPendingAction020397cc((struct Obj020397cc*)actor, 1);
         *(unsigned short*)((char*)actor + 0xb2) = 0;
     }
     if (present[0] != 0 && battle->GetGameObjectByIndex(0) != NULL) {
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov017_021b848c(Self021b848c* self, signed char* present
         self->field_51 = arg5;
         if (self->context != NULL) self->context->field_8e49 = arg5;
     }
-    _Z35EnqueueEventTag127ForParty_021c3f70t(self->id);
+    EnqueueEventTag127ForParty_021c3f70(self->id);
     if (member != GetField0x3acValue(battle)) {
         if (arg6 != 0) self->field_6c6 = 1;
         self->field_6b8 = 0;

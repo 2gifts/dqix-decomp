@@ -36,16 +36,16 @@ enum { DisplayFlagsOffset = 0x18c };
 
 void* GetFieldAt0x150(unsigned char*);
 extern "C" void func_02083e28(void*, int);
-extern "C" unsigned short _Z20GetField6b4_021b8480Pv(void*);
+unsigned short GetField6b4_021b8480(void*);
 void SetFlags0x180At0x18c(void*);
 void ClearFlag0x80SetFlag0x100(void*);
 extern "C" void func_ov017_0218b5f8(int);
 void SetBoolFlagAt558(unsigned char*, int, int);
-extern "C" void _Z25SetArrayEntryFlag02026f20ii(int, int);
+void SetArrayEntryFlag02026f20(int, int);
 int GetSignedByte0x2d0(void*);
 int GetField0x397cValue(GameState*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-extern "C" void _Z26CallHelperWithBuf_021907dciiiii(int, int, int, int, int);
+void CallHelperWithBuf_021907dc(int, int, int, int, int);
 extern "C" void func_ov017_02191108(void*, int, int, int, int);
 
 // USA: func_ov017_021c9f18
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov017_021c9f18(void* unused, const PartyStatsEvent* eve
     if (event->resetEffect != 0) func_02083e28(effect, 0);
     BattlePolicy* policy = static_cast<BattlePolicy*>(controller->unknown_ptr_3718);
     allowVisibility = 1;
-    if (policy->enabled != 0 && _Z20GetField6b4_021b8480Pv(policy) == 0) allowVisibility = 0;
+    if (policy->enabled != 0 && GetField6b4_021b8480(policy) == 0) allowVisibility = 0;
     if (event->updateVisibility != 0) {
         if (allowVisibility != 0) {
             if (event->hp == 0) (*reinterpret_cast<unsigned int*>(reinterpret_cast<char*>(member) + DisplayFlagsOffset)) |= 1;
@@ -89,12 +89,12 @@ extern "C" ARM void func_ov017_021c9f18(void* unused, const PartyStatsEvent* eve
     MapDisplay* flagTable = controller->unknown_ptr_36d0;
     if (flagTable != NULL) {
         SetBoolFlagAt558((unsigned char*)flagTable, (unsigned char)index, event->special);
-        if (event->special != 0 && (oldHP != event->hp || oldMP != event->mp)) _Z25SetArrayEntryFlag02026f20ii((int)flagTable, index & 0xff);
+        if (event->special != 0 && (oldHP != event->hp || oldMP != event->mp)) SetArrayEntryFlag02026f20((int)flagTable, index & 0xff);
     }
     if (changed == 0) return;
     memberIndex = index;
     if ((member->obj3D_.unknown_0_ & 0x1000) != 0) memberIndex = GetSignedByte0x2d0(member);
     GetField0x397cValue(game);
-    if (memberIndex != GetSearchStructCurrentArrEntry(search)) _Z26CallHelperWithBuf_021907dciiiii((int)controller, memberIndex, 1, 1, 1);
+    if (memberIndex != GetSearchStructCurrentArrEntry(search)) CallHelperWithBuf_021907dc((int)controller, memberIndex, 1, 1, 1);
     else func_ov017_02191108(controller, 1, 1, 1, 1);
 }

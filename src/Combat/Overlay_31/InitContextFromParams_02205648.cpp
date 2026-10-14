@@ -17,7 +17,7 @@ struct FourWords;
 int ComputeAlignedSizePair_022054fc(SizeInputStruct022054fc* p);
 void InitStruct020c7de4(InitData020c7de4* s, int e, int f);
 extern "C" void _Z19ZeroInitializeMutexP5Mutex(FourWords* p);
-extern "C" void _Z15PopulateContextP16ProcessorContextjjjjj(ProcessorContext*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+void PopulateContext(ProcessorContext*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 void MarkContextReadyAndSwitch(ProcessorContext* context);
 extern "C" void func_ov031_022052b4(void);
 
@@ -26,7 +26,7 @@ ARM int InitContextFromParams_02205648(int a, void* ctx, SizeInputStruct022054fc
 	int totalSize = ComputeAlignedSizePair_022054fc(p);
 	InitStruct020c7de4((InitData020c7de4*)ctx, a, p->field3);
 	_Z19ZeroInitializeMutexP5Mutex((FourWords*)((char*)ctx + 0xe0));
-	_Z15PopulateContextP16ProcessorContextjjjjj((ProcessorContext*)((char*)ctx + 0x20), (unsigned int)func_ov031_022052b4, (unsigned int)ctx, a + totalSize, p->field0, p->field2);
+	PopulateContext((ProcessorContext*)((char*)ctx + 0x20), (unsigned int)func_ov031_022052b4, (unsigned int)ctx, a + totalSize, p->field0, p->field2);
 	MarkContextReadyAndSwitch((ProcessorContext*)((char*)ctx + 0x20));
 	return a + totalSize;
 }

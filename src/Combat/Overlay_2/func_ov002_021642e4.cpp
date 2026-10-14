@@ -4,11 +4,11 @@
 struct Struct0205de24;
 struct Struct_0205c570;
 
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24 *obj, unsigned char keyLow,
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
-extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *self, int flag);
-extern "C" void *_Z27GetDataPtr02114e04_020d6c00v(void);
+int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
+int CheckFlagOrThreshold_02161b48(char *self, int flag);
+void *GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int *p, unsigned int mask);
 extern "C" int GetInventoryItemByID(char *self, int idx, int member);
 extern "C" void func_ov002_02161cf0(char *self);
@@ -26,10 +26,10 @@ extern "C" ARM void func_ov002_021642e4(char *self) {
     int phase = *(int *) (self + 0x1bc0);
     if (phase == 0) {
         *(short *) (self + 0x1be8) = 0;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (self + 0xec8), 0, 2);
+        FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (self + 0xec8), 0, 2);
         func_ov002_02161cf0(self);
         func_ov002_0215d864(self);
-        OrBitsIntoField0((unsigned int *) _Z27GetDataPtr02114e04_020d6c00v(), 1);
+        OrBitsIntoField0((unsigned int *) GetDataPtr02114e04_020d6c00(), 1);
         if (*(int *) (self + 0x247c) & 1) {
             ((SafeAllocator *) (self + 0x864))->Reset();
             func_ov023_021dc9e8(self + 0x50, (SafeAllocator *) (self + 0x864),
@@ -53,10 +53,10 @@ extern "C" ARM void func_ov002_021642e4(char *self) {
         *(int *) (self + 0x247c) |= 4;
         func_ov002_02161b98(self);
         *(short *) (self + 0x1be8) =
-            _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570 *) (self + 0xec8));
+            GetActiveScaledSum0205d794((struct Struct_0205c570 *) (self + 0xec8));
         *(short *) (self + 0x1c22) = GetInventoryItemByID(self, *(short *) (self + 0x1be8), *(signed char *) (self + 0x1c20));
         func_ov023_021dcae0(self + 0x50, *(short *) (self + 0x1c22));
-        if (_Z29CheckFlagOrThreshold_02161b48Pci(self, 1)) {
+        if (CheckFlagOrThreshold_02161b48(self, 1)) {
             *(short *) (self + 0x1c22) = -1;
             *(short *) (self + 0x1be8) = -1;
             func_ov002_02156e90(self);

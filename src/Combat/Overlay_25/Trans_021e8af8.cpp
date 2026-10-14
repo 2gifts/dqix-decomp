@@ -10,7 +10,7 @@ struct Trans_021e8af8_Obj {
     unsigned char index;
 };
 
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
+void CopyInternalFields0207df50(Foo0207df50*);
 extern "C" void _ZN13SafeAllocator4FreeEPv(SafeAllocator*, void*);
 extern "C" void _ZN13SafeAllocator7DestroyEv(SafeAllocator*, unsigned int);
 extern "C" void* _ZNK13SafeAllocator18GetSignedAllocatorEv(SafeAllocator*);
@@ -25,6 +25,6 @@ extern "C" ARM void func_ov025_021e8af8(Trans_021e8af8_Obj* self) {
     void* signedAllocator = _ZNK13SafeAllocator18GetSignedAllocatorEv(self->allocators[self->index]);
     _ZN13SafeAllocator7DestroyEv(self->allocators[self->index], self->index);
     _ZN13SafeAllocator4FreeEPv(self->allocators[self->index - 1], signedAllocator);
-    _Z26CopyInternalFields0207df50P11Foo0207df50(self->fields[self->index]);
+    CopyInternalFields0207df50(self->fields[self->index]);
     self->index--;
 }

@@ -22,15 +22,15 @@ extern char data_020f102e[];
 extern unsigned char data_0211e33c[0x30000];
 
 int GetFieldAt0x150(unsigned char* obj);
-extern "C" void* _Z22Clear0x54Bytes0208247cPv(void* obj);
-extern "C" int _Z24InitAndRunScript0208274cPvP12StreamHeaderii(void* spellTable, StreamHeader* script, int size, int arg3);
+void* Clear0x54Bytes0208247c(void* obj);
+int InitAndRunScript0208274c(void* spellTable, StreamHeader* script, int size, int arg3);
 extern "C" void func_02083cbc(void* dst, void* src, void* tail);
 extern "C" void func_02083e28(void* model, int arg);
-extern "C" void _Z28SetBitsFromIndexList02083b8cPhS_j(unsigned char* obj, unsigned char* learnedSpells, unsigned int count);
-extern "C" void _Z19ClearField00209a804Pi(int* field);
-extern "C" void _Z33SetupAndRunBufferedScript0209a8b4P11Ctx0209a8b4P13SafeAllocatorP12StreamHeaderi(Ctx0209a8b4* spellTable, SafeAllocator* spellAllocator, StreamHeader* buffer, int length);
+void SetBitsFromIndexList02083b8c(unsigned char* obj, unsigned char* learnedSpells, unsigned int count);
+void ClearField00209a804(int* field);
+void SetupAndRunBufferedScript0209a8b4(Ctx0209a8b4* spellTable, SafeAllocator* spellAllocator, StreamHeader* buffer, int length);
 extern "C" int func_0209aa54(void* holder, unsigned char* path, unsigned char* out, int threshold);
-extern "C" void _Z27EnqueueEventTag176_021ce614hhh(unsigned char combatantId, unsigned char level, unsigned char vocation);
+void EnqueueEventTag176_021ce614(unsigned char combatantId, unsigned char level, unsigned char vocation);
 
 struct VocationRecord {
     unsigned char unknown0[0x138];
@@ -81,8 +81,8 @@ extern "C" ARM void func_020897b4(unsigned char combatantId, unsigned char level
         levelScriptSize = size;
     }
 
-    _Z22Clear0x54Bytes0208247cPv(&entry);
-    _Z24InitAndRunScript0208274cPvP12StreamHeaderii(&entry, (StreamHeader*)levelScript, levelScriptSize, level);
+    Clear0x54Bytes0208247c(&entry);
+    InitAndRunScript0208274c(&entry, (StreamHeader*)levelScript, levelScriptSize, level);
 
     ResourceScriptEntry* const levelData = &entry;
     VocationRecord* record = reinterpret_cast<VocationRecord*>(GetFieldAt0x150((unsigned char*)combatant));
@@ -110,15 +110,15 @@ extern "C" ARM void func_020897b4(unsigned char combatantId, unsigned char level
     if (spellScript != 0) {
         spellAllocator.ResetAllocatorPointer();
         spellAllocator.CreateTypeA(heap, 0x600);
-        _Z19ClearField00209a804Pi((int*)&spellTable);
-        _Z33SetupAndRunBufferedScript0209a8b4P11Ctx0209a8b4P13SafeAllocatorP12StreamHeaderi(&spellTable, &spellAllocator, (StreamHeader*)spellScript, spellScriptSize);
+        ClearField00209a804((int*)&spellTable);
+        SetupAndRunBufferedScript0209a8b4(&spellTable, &spellAllocator, (StreamHeader*)spellScript, spellScriptSize);
         unsigned int count = func_0209aa54(&spellTable, (unsigned char*)combatant, learnedSpells, 0);
-        _Z28SetBitsFromIndexList02083b8cPhS_j(reinterpret_cast<unsigned char*>(record), learnedSpells, count);
+        SetBitsFromIndexList02083b8c(reinterpret_cast<unsigned char*>(record), learnedSpells, count);
         spellAllocator.Destroy();
     }
 
     if (notifyLevelChange != 0) {
-        _Z27EnqueueEventTag176_021ce614hhh(combatantId, level, restoreHpMp);
+        EnqueueEventTag176_021ce614(combatantId, level, restoreHpMp);
     }
 
     BackgroundLoader::RemoveLockGlobal();

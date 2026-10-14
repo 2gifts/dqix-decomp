@@ -184,21 +184,21 @@ extern TouchState data_02114e54;
 extern Obj0205eaa0 data_02108760;
 
 GameResources* GetWord0x0(int* gameState);
-extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem* GetGlobalField0x1c020421a0();
 void SetSubBrightness(GameResources* resources, int brightness, int frames);
 int IsBrightnessTransitionActive(GameResources* resources);
 void* LoadFileIntoMemory(const char* path, void* archive, unsigned int* size);
-extern "C" void _Z23ResetListHeader020727d8P12List020727d8(List020727d8* list);
+void ResetListHeader020727d8(List020727d8* list);
 extern "C" void _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(void* list, StreamHeader* file, int size, int id, void* output, int female);
 int GetField0x3acValue(GameState* gameState);
 PartyMember* GetCombatantWithFlag0x100(GameState* gameState, int index);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
-extern "C" Canvas* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* window, int canvas);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
+void AppendString02042058(char* text, const char* append);
+Canvas* FindElementByC40205d81c(Struct_0205d81c* window, int canvas);
 extern "C" void _Z18InitConfig02187664P15Manager02187664i(BattleRecords* self, ClearRecords* records);
 int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
 void SelectCoordsByFlag0x24(unsigned char* touch, int* x, int* y);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* sound, int effect, int value);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int value);
 
 extern "C" {
 void* memset(void* buffer, int value, unsigned long size);
@@ -229,7 +229,7 @@ extern "C" ARM void func_ov008_02186388(BattleRecords* self)
     GameState* gameState = GameState::GetInstance();
     GameResources* resources = GetWord0x0((int*)gameState);
     BackgroundLoader::GetInstance();
-    MessageSystem* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     ClearRecords* clear = GetClearRecords(GetSavedRecords(gameState), 0);
     messages->unk_19ae = 0;
     unsigned char step = self->step_;
@@ -247,7 +247,7 @@ extern "C" ARM void func_ov008_02186388(BattleRecords* self)
         func_ov008_02187f6c(self, clear);
         for (int i = 0; i < 5; i++)
         {
-            Canvas* canvas = _Z23FindElementByC40205d81cP15Struct_0205d81ci((Struct_0205d81c*)&self->window_, (unsigned char)i);
+            Canvas* canvas = FindElementByC40205d81c((Struct_0205d81c*)&self->window_, (unsigned char)i);
             if (canvas != NULL)
                 canvas->unk_c2 = 0;
         }
@@ -275,21 +275,21 @@ extern "C" ARM void func_ov008_02186388(BattleRecords* self)
             void* file = LoadFileIntoMemory(data_ov008_0218b400, data_0211e33c, &size);
             if (file != NULL)
             {
-                _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)&list);
+                ResetListHeader020727d8((List020727d8*)&list);
                 _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(&list, (StreamHeader*)file, size, 1001, path, 0);
-                _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)&list);
+                ResetListHeader020727d8((List020727d8*)&list);
                 _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(&list, (StreamHeader*)file, size, 1001, inner, 1);
             }
             file = ExtractFileFromGP2(path, inner, &size);
             if (file != NULL)
             {
                 PartyMember* member = GetCombatantWithFlag0x100(gameState, GetField0x3acValue(gameState));
-                _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)&list);
+                ResetListHeader020727d8((List020727d8*)&list);
                 int female = member->data_->female_;
                 _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(&list, (StreamHeader*)file, size, clear->title_, comment, female);
             }
             BackgroundLoader::RemoveLockGlobal();
-            _Z20AppendString02042058PcPKc(comment, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 1000));
+            AppendString02042058(comment, GetFieldByKey020e0434((Container020e0310*)&self->texts_, 1000));
             func_0204500c(messages, comment, 0, 0xe3);
             messages->unk_19b2 = 1;
             messages->unk_19c8 = 1;
@@ -328,7 +328,7 @@ extern "C" ARM void func_ov008_02186388(BattleRecords* self)
         }
         if (ok)
         {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
             self->step_++;
         }
     }
@@ -345,7 +345,7 @@ extern "C" ARM void func_ov008_02186388(BattleRecords* self)
         func_ov008_02187f6c(self, NULL);
         for (int i = 0; i < 6; i++)
         {
-            Canvas* canvas = _Z23FindElementByC40205d81cP15Struct_0205d81ci((Struct_0205d81c*)&self->window_, (unsigned char)i);
+            Canvas* canvas = FindElementByC40205d81c((Struct_0205d81c*)&self->window_, (unsigned char)i);
             if (canvas != NULL)
                 canvas->unk_c2 = 0;
         }

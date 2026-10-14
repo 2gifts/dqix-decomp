@@ -9,7 +9,7 @@ enum { NodeListOffset = 0x41c };
 
 extern "C" void* func_0205ec34(void);
 void* GetField0x3f8Address(GameState* battleStruct);
-extern "C" void _Z16CallLoop0206eb20PvS_ii(void* a, void* b, int c, int limit);
+void CallLoop0206eb20(void* a, void* b, int c, int limit);
 extern "C" void func_0206ea8c(void* obj, unsigned char a, short b, int flag);
 
 struct SubElem_02017c58 {
@@ -45,8 +45,8 @@ extern "C" ARM void func_02017c58(void* obj) {
 
     int i;
     for (i = 0; i < 2; i++) {
-        _Z16CallLoop0206eb20PvS_ii(ctx, (void*)(unsigned char)i, 0, 0x7f);
-        _Z16CallLoop0206eb20PvS_ii(ctx, (void*)(unsigned char)(unsigned int)i, 0x80, 0xff);
+        CallLoop0206eb20(ctx, (void*)(unsigned char)i, 0, 0x7f);
+        CallLoop0206eb20(ctx, (void*)(unsigned char)(unsigned int)i, 0x80, 0xff);
     }
 
     int count;

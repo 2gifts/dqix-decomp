@@ -39,9 +39,9 @@ Equipment0216276c* GetFieldAt0x150(unsigned char*);
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void func_ov004_0215e574(void*, int, int, int, int);
 extern "C" SlotNode0216276c* func_ov023_021f6880(void*, int);
-extern "C" int _Z31GetFlagBitFromField150_0215eb20Pvi(void*, int);
-extern "C" int _Z27CheckAfterTwoCalls_0215e460v();
-extern "C" void _Z27SetField38IfState8_0215e49cPvis(void*, int, short);
+int GetFlagBitFromField150_0215eb20(void*, int);
+int CheckAfterTwoCalls_0215e460();
+void SetField38IfState8_0215e49c(void*, int, short);
 typedef void (*SetSlotValue0216276c)(void*, int, int);
 extern "C" int func_ov004_0215e4e8(void*, short);
 extern "C" SlotNode0216276c* func_ov004_0215e47c(void*, int);
@@ -75,18 +75,18 @@ extern "C" ARM int func_ov004_0216276c(void* self) {
     int* slots = data_ov004_0216fe5c;
     for (int index = 0; index < 12; ++index) {
         int tableIndex = index + 1;
-        if (!_Z31GetFlagBitFromField150_0215eb20Pvi(combatant, slots[tableIndex]) || !data_ov004_02170845[tableIndex]) continue;
+        if (!GetFlagBitFromField150_0215eb20(combatant, slots[tableIndex]) || !data_ov004_02170845[tableIndex]) continue;
         SlotNode0216276c* node = func_ov023_021f6880(list, row + 13);
         if (!node) continue;
         node->flags &= ~8;
         node = func_ov023_021f6880(list, row + 25);
         if (!node) continue;
         node->flags &= ~8;
-        if (_Z27CheckAfterTwoCalls_0215e460v())
-            reinterpret_cast<SetSlotValue0216276c>(_Z27SetField38IfState8_0215e49cPvis)(self, row + 13, 4);
+        if (CheckAfterTwoCalls_0215e460())
+            reinterpret_cast<SetSlotValue0216276c>(SetField38IfState8_0215e49c)(self, row + 13, 4);
         else
-            reinterpret_cast<SetSlotValue0216276c>(_Z27SetField38IfState8_0215e49cPvis)(self, row + 13, slots[tableIndex] + 4);
-        _Z27SetField38IfState8_0215e49cPvis(self, row + 25, 0x1f1);
+            reinterpret_cast<SetSlotValue0216276c>(SetField38IfState8_0215e49c)(self, row + 13, slots[tableIndex] + 4);
+        SetField38IfState8_0215e49c(self, row + 25, 0x1f1);
         node = func_ov023_021f6880(list, row + 0x51);
         if (!node) continue;
         int slot = slots[index + 1];

@@ -46,8 +46,8 @@ extern "C" MenuElement* _Z21FindElementForFieldB0P15Struct_0205d81c(void* window
 int GetInnerFlagBit0020e28dc(Outer020e28dc* p);
 extern "C" void func_0205ae8c(void* obj);
 int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570* window);
-extern "C" void* _Z19GetField1c_021a193cPi(int* p);
+int GetActiveScaledSum0205d794(Struct_0205c570* window);
+void* GetField1c_021a193c(int* p);
 extern "C" void func_ov023_021e3304(void* cursor, short x, short y);
 
 // USA: func_ov005_0215a7ec
@@ -62,18 +62,18 @@ extern "C" ARM void func_ov005_0215a7ec(EquipmentMenu* self) {
             short y = (short)(elem->row_ << 3) + elem->offsetY_;
             if (kind == 2) {
                 x = 0xd4;
-                int sum = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->window_);
+                int sum = GetActiveScaledSum0205d794((Struct_0205c570*)self->window_);
                 if (sum == 0)
                     y = 0x57;
                 else if (sum == 1)
                     y = 0x65;
             }
-            func_ov023_021e3304(_Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]), x - 8, y - 2);
+            func_ov023_021e3304(GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]), x - 8, y - 2);
         }
     }
     if (self->state_ == 0) {
         short y = self->kind_ * 0x18 + 4;
-        void* cursor = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+        void* cursor = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
         func_ov023_021e3304(cursor, 0x74, y);
     }
 }

@@ -7,7 +7,7 @@ extern "C" void _ZN8Object3D24TransitionInheritedAlphaEii(void* obj, int a, int 
 extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, void* a3);
 
 struct Obj0205eaa0;
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern unsigned char data_02108760;
 
 struct Vec3i02048690 {
@@ -116,7 +116,7 @@ extern "C" ARM void func_02048690(void* selfp) {
     s.f4c = f;
 
     _Z26FindNodeAndProcess02057fb4Pvii(list, 2, &s);
-    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x32, 0);
+    DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x32, 0);
 
     self->flagE0 = 0;
 }

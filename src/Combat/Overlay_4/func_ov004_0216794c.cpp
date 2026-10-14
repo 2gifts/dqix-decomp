@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 struct Obj02086aec;
-extern "C" short _Z30SumCombatantKeyMatches02086aecP11Obj02086aeci(struct Obj02086aec* obj, int key);
+short SumCombatantKeyMatches02086aec(struct Obj02086aec* obj, int key);
 
 struct TauntThreshold {
     short threshold;
@@ -13,7 +13,7 @@ extern struct TauntThreshold data_ov004_02170010[];
 // USA: func_ov004_0216794c
 extern "C" ARM void func_ov004_0216794c(short* current, short* matches, short* threshold, char* reached, int* index) {
     *current = *(int*)((char*)GetPtrField0x2a04(GameState::GetInstance()) + 0xf74);
-    *matches = _Z30SumCombatantKeyMatches02086aecP11Obj02086aeci((struct Obj02086aec*)GetPtrField0x2a04(GameState::GetInstance()), 0x5617);
+    *matches = SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04(GameState::GetInstance()), 0x5617);
     *reached = 0;
     short cur = *current;
     int i;

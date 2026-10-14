@@ -100,39 +100,39 @@ extern "C" void* memcpy(void* dst, const void* src, unsigned int length);
 
 int IsMainBrightnessTransitionActive(GameResources* resources);
 void SetBitsInField4(unsigned int* field, unsigned int bits);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* tables);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* tables);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50* tables);
-extern "C" void _Z16ZeroInit020de848Pv(void* descriptor);
-extern "C" void _Z29BuildDescriptorFlag1_020dea40PvS_S_ii(void* descriptor, void* allocator, void* data, int size, int flag);
+void RestorePairTables0207df90(char* tables);
+void BackupPairTables0207dfac(char* tables);
+void CopyInternalFields0207df50(Foo0207df50* tables);
+void ZeroInit020de848(void* descriptor);
+void BuildDescriptorFlag1_020dea40(void* descriptor, void* allocator, void* data, int size, int flag);
 int GetMaxOfHalfwords0And4(Pair020deb08* descriptor);
-extern "C" void _Z23GetEntryByIndex020deb24P17EntryList020deb24i(EntryList020deb24* descriptor, int index);
-extern "C" void _Z40InitTenAllocatorsAndClearFields_021e4e8cPv(void* model);
-extern "C" void _Z24CreateTenAndOne_021e4f64PvP13SafeAllocator(void* model, SafeAllocator* allocator);
-extern "C" void _Z23InitBlockArray_021e4fd8Pv(void* model);
-extern "C" void _Z18SetIntC0C_021e6198Pvi(void* model, int value);
-extern "C" void _Z19SetByteC11_021e6150Pvh(void* model, unsigned char value);
-extern "C" void _Z22InitWordsQuad_021e60e0Pvj(void* model, unsigned int value);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void GetEntryByIndex020deb24(EntryList020deb24* descriptor, int index);
+void InitTenAllocatorsAndClearFields_021e4e8c(void* model);
+void CreateTenAndOne_021e4f64(void* model, SafeAllocator* allocator);
+void InitBlockArray_021e4fd8(void* model);
+void SetIntC0C_021e6198(void* model, int value);
+void SetByteC11_021e6150(void* model, unsigned char value);
+void InitWordsQuad_021e60e0(void* model, unsigned int value);
+void* GetGlobalField0x1c020421a0();
 void SetField0x1e28(void* messages, void* tables);
 void SetField0x3b0Value(GameState* gameState, int camera);
 int GetField0x3acValue(GameState* gameState);
-extern "C" void _Z28InitCombatController020a2010Pv(void* camera);
+void InitCombatController020a2010(void* camera);
 void SetVec3At0x4(Vec3Target0202e5c0* camera, int x, int y, int z);
 void SetFields0x10To0x18(unsigned char* camera, int x, int y, int z);
 void SetField0x238False(void* camera);
 void SetFogState(int a, unsigned int b, unsigned int c, unsigned short d);
-extern "C" void _Z18InitStruct0205a444Pc(char* list);
-extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198* entry);
+void InitStruct0205a444(char* list);
+void Init0205a198(Struct0205a198* entry);
 int CountActiveEntries(ActiveEntry02046900* file);
 void* FindRecordByIndex(Rec020467f0* file, int index, void** record, int* size);
-extern "C" void _Z20Clear12Bytes020e46c4Pv(void* arg);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void* arg, int combatant);
-extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* container, int key);
-extern "C" void _Z20ClearFields_021e20c0Pv(void* table);
+void Clear12Bytes020e46c4(void* arg);
+void InitObjFromCombatantId020e4bf4(void* arg, int combatant);
+void* GetFieldByKey020e0434(Container020e0310* container, int key);
+void ClearFields_021e20c0(void* table);
 void* GetFieldAt0x150(unsigned char* combatant);
 void CallWithAddr4000330(int addr);
-extern "C" void _Z43CopyByteFieldToNextAndSet_021e33a0_021e33a0Pca(char* self, signed char mode);
+void CopyByteFieldToNextAndSet_021e33a0_021e33a0(char* self, signed char mode);
 extern "C" void _Z36InitEntryManagerAndAllocator02159c24P11Obj02159c24ii(void* battle, void* extra, void* sprites);
 
 extern "C" {
@@ -195,14 +195,14 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
             unsigned int size;
             loader->GetLoadedFileByID(self->task_630, &data, &size);
             SetBitsInField4((unsigned int*)resources, 0x601fe);
-            _Z25RestorePairTables0207df90Pc(self->pairTables_8);
+            RestorePairTables0207df90(self->pairTables_8);
             self->allocator_14->Reset();
-            _Z16ZeroInit020de848Pv(self->descriptor_a4);
-            _Z29BuildDescriptorFlag1_020dea40PvS_S_ii(self->descriptor_a4, self->allocator_14, data, size, 0xb);
+            ZeroInit020de848(self->descriptor_a4);
+            BuildDescriptorFlag1_020dea40(self->descriptor_a4, self->allocator_14, data, size, 0xb);
             self->maxEntry_be = GetMaxOfHalfwords0And4((Pair020deb08*)self->descriptor_a4);
             self->entryCount_bc = self->maxEntry_be + 0x31;
             for (int i = 0; i < self->entryCount_bc; i++)
-                _Z23GetEntryByIndex020deb24P17EntryList020deb24i((EntryList020deb24*)self->descriptor_a4, (short)i);
+                GetEntryByIndex020deb24((EntryList020deb24*)self->descriptor_a4, (short)i);
             self->allocator_14->Reset();
 
             if (self->mode_4e5 == 3)
@@ -232,21 +232,21 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
             self->dataAllocator_90.CreateTypeA(self->allocator_4->Allocate(0x200), 0x200);
 
             self->models_120[0] = (Model021e33b4*)self->allocator_4->Allocate(0xc20);
-            _Z40InitTenAllocatorsAndClearFields_021e4e8cPv(self->models_120[0]);
-            _Z24CreateTenAndOne_021e4f64PvP13SafeAllocator(self->models_120[0], self->allocator_4);
-            _Z23InitBlockArray_021e4fd8Pv(self->models_120[0]);
-            _Z18SetIntC0C_021e6198Pvi(self->models_120[0], (int)self->descriptor_a4);
-            _Z19SetByteC11_021e6150Pvh(self->models_120[0], 1);
+            InitTenAllocatorsAndClearFields_021e4e8c(self->models_120[0]);
+            CreateTenAndOne_021e4f64(self->models_120[0], self->allocator_4);
+            InitBlockArray_021e4fd8(self->models_120[0]);
+            SetIntC0C_021e6198(self->models_120[0], (int)self->descriptor_a4);
+            SetByteC11_021e6150(self->models_120[0], 1);
 
             self->models_120[1] = (Model021e33b4*)self->allocator_4->Allocate(0xc20);
-            _Z40InitTenAllocatorsAndClearFields_021e4e8cPv(self->models_120[1]);
-            _Z24CreateTenAndOne_021e4f64PvP13SafeAllocator(self->models_120[1], self->allocator_4);
-            _Z23InitBlockArray_021e4fd8Pv(self->models_120[1]);
-            _Z18SetIntC0C_021e6198Pvi(self->models_120[1], (int)self->descriptor_a4);
-            _Z19SetByteC11_021e6150Pvh(self->models_120[1], 1);
+            InitTenAllocatorsAndClearFields_021e4e8c(self->models_120[1]);
+            CreateTenAndOne_021e4f64(self->models_120[1], self->allocator_4);
+            InitBlockArray_021e4fd8(self->models_120[1]);
+            SetIntC0C_021e6198(self->models_120[1], (int)self->descriptor_a4);
+            SetByteC11_021e6150(self->models_120[1], 1);
 
             self->allocator_14->Reset();
-            _Z16ZeroInit020de848Pv(self->descriptor_a4);
+            ZeroInit020de848(self->descriptor_a4);
             func_020dea64(self->descriptor_a4, self->allocator_14, data, size, data_ov023_021fd66c, 9);
 
             self->buffer_638 = self->bufferAllocator_2c.Allocate(0x2a0);
@@ -258,21 +258,21 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
                 *(void**)((char*)self->battle_0 + 0xdf4) = self->descriptor_a4;
 
             func_0207de48(self->pairTables_474, 0x4000, 0x40);
-            _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)self->pairTables_474);
+            CopyInternalFields0207df50((Foo0207df50*)self->pairTables_474);
             if (self->mode_4e5 == 3 && self->battle_0 != NULL)
                 func_ov005_02153b20(self->battle_0);
 
             func_0207de48(self->pairTables_404, 0, 0);
-            _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)self->pairTables_404);
+            CopyInternalFields0207df50((Foo0207df50*)self->pairTables_404);
 
-            void* messages = _Z26GetGlobalField0x1c020421a0v();
+            void* messages = GetGlobalField0x1c020421a0();
             SetField0x1e28(messages, self->pairTables_474);
-            _Z25RestorePairTables0207df90Pc(self->pairTables_474);
+            RestorePairTables0207df90(self->pairTables_474);
             func_020432c4(messages);
-            _Z24BackupPairTables0207dfacPc(self->pairTables_474);
+            BackupPairTables0207dfac(self->pairTables_474);
 
             self->camera_138 = GetField0x3b0Value(gameState);
-            _Z28InitCombatController020a2010Pv(self->camera_13c);
+            InitCombatController020a2010(self->camera_13c);
             SetVec3At0x4((Vec3Target0202e5c0*)self->camera_13c, 0xb666, 0xa800, 0x42ccc);
             SetFields0x10To0x18((unsigned char*)self->camera_13c, 0xb666, 0xa800, 0);
             SetField0x238False(self->camera_13c);
@@ -298,12 +298,12 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
             loader->RemoveTask(self->task_630);
             self->task_630 = -1;
 
-            _Z18InitStruct0205a444Pc((char*)self->sprites_c8);
+            InitStruct0205a444((char*)self->sprites_c8);
             self->sprites_c8->flag_50 = 0;
             self->sprites_c8->SetEntries(self->spriteEntries_cc, 0x10);
             self->sprites_c8->ptr_3c = self->spriteExtra_d0;
             for (int i = 0; i < 0x10; i++)
-                _Z12Init0205a198P14Struct0205a198((Struct0205a198*)(self->spriteEntries_cc + i * 0x28));
+                Init0205a198((Struct0205a198*)(self->spriteEntries_cc + i * 0x28));
 
             self->task_630 = loader->QueueLoadFileInGP2(data_ov023_021fdca4, data_ov023_021fdcb6, NULL);
             self->step_4e4++;
@@ -342,16 +342,16 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
     else if (self->step_4e4 == 7)
     {
         TextArg021e33b4 arg;
-        _Z20Clear12Bytes020e46c4Pv(&arg);
-        _Z30InitObjFromCombatantId020e4bf4Pvi(&arg, GetField0x3acValue(gameState));
-        void* messages = _Z26GetGlobalField0x1c020421a0v();
+        Clear12Bytes020e46c4(&arg);
+        InitObjFromCombatantId020e4bf4(&arg, GetField0x3acValue(gameState));
+        void* messages = GetGlobalField0x1c020421a0();
         Container020e0310* texts = (Container020e0310*)((char*)self->battle_0 + 0xdf8);
         for (int i = 0; i < 2; i++)
         {
             arg.index_8 = i;
             func_02046380(messages);
             *(TextArg021e33b4**)messages = &arg;
-            func_02046608(messages, 8, _Z21GetFieldByKey020e0434P17Container020e0310i(texts, 0x226), self->buffers_640[i], 0x100, 0, 0);
+            func_02046608(messages, 8, GetFieldByKey020e0434(texts, 0x226), self->buffers_640[i], 0x100, 0, 0);
         }
         self->task_630 = loader->QueueLoadFile(data_ov023_021fdcc4, NULL);
         self->step_4e4++;
@@ -366,7 +366,7 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
             if (data != NULL)
             {
                 self->tableAllocator_7c.Reset();
-                _Z20ClearFields_021e20c0Pv(self->table_d4);
+                ClearFields_021e20c0(self->table_d4);
                 func_ov023_021e20f0(self->table_d4, &self->tableAllocator_7c, data, size);
                 func_ov023_021e3d3c(self->table_d4, 1, 1);
             }
@@ -380,7 +380,7 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
         void* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), self->combatant_4fc);
         if (combatant != NULL)
         {
-            _Z22InitWordsQuad_021e60e0Pvj(self->models_120[0], 0x1eb);
+            InitWordsQuad_021e60e0(self->models_120[0], 0x1eb);
             func_ov023_021e5974(self->models_120[0], GetFieldAt0x150((unsigned char*)combatant), self->combatant_4fc, 0, 0);
         }
         self->current_128[0] = self->models_120[0];
@@ -398,7 +398,7 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
         func_ov023_021e3d3c(self->table_d4, 0x1b, 1);
         func_ov023_021e3d3c(self->table_d4, 0x20, 1);
         func_ov023_021e2ce8(self->combatant_4fc, self->sprites_c8);
-        _Z43CopyByteFieldToNextAndSet_021e33a0_021e33a0Pca((char*)self, self->mode_4e5);
+        CopyByteFieldToNextAndSet_021e33a0_021e33a0((char*)self, self->mode_4e5);
         self->step_4e4 = 0;
         self->flags_634 &= ~0x2000;
     }

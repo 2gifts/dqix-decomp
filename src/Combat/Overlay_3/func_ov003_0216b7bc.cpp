@@ -38,10 +38,10 @@ struct Msg0216b7bc {
     char names[4];
 };
 
-extern "C" struct MsgCtl0216b7bc* _Z26GetGlobalField0x1c020421a0v();
+struct MsgCtl0216b7bc* GetGlobalField0x1c020421a0();
 extern "C" void* func_02012fe4(void);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+const char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
+int AppendString02042058(char* dst, const char* src);
 extern "C" void func_02046380(struct MsgCtl0216b7bc* ctl);
 #if !defined(jpn)
 extern "C" void func_0204500c(struct MsgCtl0216b7bc* ctl, char* text, int a, int b);
@@ -58,7 +58,7 @@ extern char data_ov003_021801c2[];
 
 // USA: func_ov003_0216b7bc
 extern "C" ARM void func_ov003_0216b7bc(struct Msg0216b7bc* obj) {
-    struct MsgCtl0216b7bc* ctl = _Z26GetGlobalField0x1c020421a0v();
+    struct MsgCtl0216b7bc* ctl = GetGlobalField0x1c020421a0();
     GameState::GetInstance();
     if (obj->request == 3) {
         obj->subState = 2;
@@ -74,28 +74,28 @@ extern "C" ARM void func_ov003_0216b7bc(struct Msg0216b7bc* obj) {
         char* buf = ctl->textBuf;
 #endif
         memset(buf, 0, REGION_LAYOUT(0x800, 0x960));
-        _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)obj->names, 0));
+        AppendString02042058(buf, GetFieldByKey020e0434((struct Container020e0310*)obj->names, 0));
         if (progress->rewardFlags == 0) {
-            _Z20AppendString02042058PcPKc(buf, data_ov003_021801b2);
+            AppendString02042058(buf, data_ov003_021801b2);
         } else {
-            _Z20AppendString02042058PcPKc(buf, data_ov003_021801c2);
+            AppendString02042058(buf, data_ov003_021801c2);
         }
         unsigned char flags = progress->rewardFlags;
 #if defined(jpn)
         if (flags & 0x1) {
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)obj->names, 1));
+            AppendString02042058(buf, GetFieldByKey020e0434((struct Container020e0310*)obj->names, 1));
         }
         else if (flags & 0x2) {
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)obj->names, 2));
+            AppendString02042058(buf, GetFieldByKey020e0434((struct Container020e0310*)obj->names, 2));
         }
         else if (flags & 0x4) {
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)obj->names, 3));
+            AppendString02042058(buf, GetFieldByKey020e0434((struct Container020e0310*)obj->names, 3));
         }
         else if (flags & 0x8) {
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)obj->names, 4));
+            AppendString02042058(buf, GetFieldByKey020e0434((struct Container020e0310*)obj->names, 4));
         }
         else if (flags & 0x10) {
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)obj->names, 5));
+            AppendString02042058(buf, GetFieldByKey020e0434((struct Container020e0310*)obj->names, 5));
         }
 #else
         int idx = -1;
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov003_0216b7bc(struct Msg0216b7bc* obj) {
             idx = 5;
         }
         if (idx >= 0) {
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)obj->names, idx));
+            AppendString02042058(buf, GetFieldByKey020e0434((struct Container020e0310*)obj->names, idx));
         }
 #endif
         progress->rewardFlags &= ~0xff;

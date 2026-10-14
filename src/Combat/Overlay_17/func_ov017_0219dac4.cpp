@@ -29,8 +29,8 @@ extern "C" void func_ov017_0219cdc0(unsigned short value, int a1, signed char id
 void ClearField0xc4KeepBit0x8000(unsigned char* obj);
 extern "C" int func_0202c540(void* p);
 extern "C" int func_0202c508(void* p);
-extern "C" void _Z35SetByteIfDataAndCheckClear_021a01bcPh(unsigned char* self);
-extern "C" void _Z27EnqueueEventTag147_021cdaa0v(void);
+void SetByteIfDataAndCheckClear_021a01bc(unsigned char* self);
+void EnqueueEventTag147_021cdaa0(void);
 
 // USA: func_ov017_0219dac4
 extern "C" ARM void func_ov017_0219dac4(unsigned char* self, int id, int value) {
@@ -77,9 +77,9 @@ extern "C" ARM void func_ov017_0219dac4(unsigned char* self, int id, int value) 
     }
 
     if (func_0202c540(ctx) && id == 0 && value == *current && prev != value) {
-        _Z35SetByteIfDataAndCheckClear_021a01bcPh(self);
+        SetByteIfDataAndCheckClear_021a01bc(self);
     }
     if (value == *current && func_0202c508(ctx)) {
-        _Z27EnqueueEventTag147_021cdaa0v();
+        EnqueueEventTag147_021cdaa0();
     }
 }

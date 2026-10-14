@@ -14,13 +14,13 @@ struct EntryTable02087574 {
 };
 
 int GetFieldAt0x150(unsigned char* obj);
-extern "C" struct Entry02087574* _Z27FindEntryBySignedId02087574P18EntryTable02087574i(struct EntryTable02087574* obj, int id);
+struct Entry02087574* FindEntryBySignedId02087574(struct EntryTable02087574* obj, int id);
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_020875c4
-extern "C" ARM void _Z33ArchiveEntryToCombatantField0x150P18EntryTable02087574ii(
+ARM void ArchiveEntryToCombatantField0x150(
     struct EntryTable02087574* table, int id, int memberIndex) {
-    struct Entry02087574* entry = _Z27FindEntryBySignedId02087574P18EntryTable02087574i(table, id);
+    struct Entry02087574* entry = FindEntryBySignedId02087574(table, id);
     if (entry == 0) {
         return;
     }

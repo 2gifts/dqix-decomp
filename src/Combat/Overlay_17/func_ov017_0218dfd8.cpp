@@ -54,7 +54,7 @@ unsigned int IsFlag0x1ceBit0x8Set(unsigned char* obj);
 extern "C" short _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_(Vector3fix* from, int baseAngle, Vector3fix* to);
 int IsField0Null(void** obj);
 int CheckSubstructByte0x7cPositive(signed char* obj);
-extern "C" void _Z15InitObj0219a674Ph(unsigned char* self);
+void InitObj0219a674(unsigned char* self);
 extern "C" void func_ov017_0219b33c(GameResources* res, Event0218dfd8* event);
 
 // USA: func_ov017_0218dfd8
@@ -112,7 +112,7 @@ extern "C" ARM int func_ov017_0218dfd8(Actor0218dfd8* self) {
     if (best != NULL && IsField0Null(list) != 0 &&
         CheckSubstructByte0x7cPositive((signed char*)self) == 0 && !(self->flags & 0x40) && bestAngle < 0xc91) {
         Event0218dfd8 event;
-        _Z15InitObj0219a674Ph((unsigned char*)&event);
+        InitObj0219a674((unsigned char*)&event);
         event.tag = 5;
         event.angle = bestAngle;
         event.target = best;

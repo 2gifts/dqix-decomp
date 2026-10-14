@@ -10,7 +10,7 @@ struct Sprite
 
 struct SpriteRenderer;
 
-extern "C" void _Z19SetBitfield0205af84iPvi(int renderer, void* sprite, int);
+void SetBitfield0205af84(int renderer, void* sprite, int);
 extern "C" void func_0205ac40(SpriteRenderer* renderer, Sprite* sprite);
 
 extern const signed char data_ov008_0218b300[2];
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov008_02188934(BattleRecords* self)
             Sprite* sprite = &self->sprites_[data_ov008_0218b300[i]];
             sprite->x_ = 0x46000;
             sprite->y_ = data_ov008_0218b314[i];
-            _Z19SetBitfield0205af84iPvi((int)self->renderer_, &self->sprites_[data_ov008_0218b300[i]], 1);
+            SetBitfield0205af84((int)self->renderer_, &self->sprites_[data_ov008_0218b300[i]], 1);
             func_0205ac40(self->renderer_, &self->sprites_[data_ov008_0218b300[i]]);
         }
     }

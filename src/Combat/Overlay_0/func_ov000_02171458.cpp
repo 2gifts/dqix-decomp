@@ -9,13 +9,13 @@
 extern "C" void* func_02012fe4(void);
 
 struct Container020e0310;
-extern "C" char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
+char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
 
 struct Obj0203c108 {
     char pad[0x14];
     short idx;
 };
-extern "C" void _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(struct Obj0203c108* obj, char* fmt);
+void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* fmt);
 
 int IsFlag0x18Bit0x200Set(GameObject* obj);
 int AdjustValueByFieldFlag(void* obj, unsigned int value);
@@ -34,7 +34,7 @@ extern "C" void* __clear(void* dst, int count);
 #if !defined(jpn)
 extern "C" void func_020e4864(int a, char* b, int c, int d, int e, int f);
 #endif
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* src, char* dst, int flag);
+void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
 
 struct MenuState02171458 {
     char pad0[6];
@@ -69,7 +69,7 @@ extern "C" ARM void func_ov000_02171458(struct Menu02171458* menu) {
         state->depth++;
         state->results[menu->state.depth] = 0xe;
         state->field15 = 0;
-        _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&menu->label, _Z21GetFieldByKey020e0434P17Container020e0310i(menu->container, 5));
+        SwapGlobalEntry0203c108(&menu->label, GetFieldByKey020e0434(menu->container, 5));
         return;
     }
     GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), menu->combatantId);
@@ -96,14 +96,14 @@ extern "C" ARM void func_ov000_02171458(struct Menu02171458* menu) {
         return;
     }
 #if defined(jpn)
-    _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&menu->label, (char*)entry->name);
+    SwapGlobalEntry0203c108(&menu->label, (char*)entry->name);
 #else
     char buf1[0x80];
     __clear(buf1, 0x80);
     char buf2[0x80];
     __clear(buf2, 0x80);
     func_020e4864(entry->name, buf1, 1, 0, 0, 0);
-    _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(buf1, buf2, 0);
-    _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&menu->label, buf2);
+    CopyTextAndUppercaseIfFlagged0206819c(buf1, buf2, 0);
+    SwapGlobalEntry0203c108(&menu->label, buf2);
 #endif
 }

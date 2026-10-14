@@ -6,7 +6,6 @@ enum { kRegionValue90_8C = 0x8c };
 enum { kRegionValue90_8C = 0x90 };
 #endif
 
-
 extern unsigned char data_02114e54[];
 
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
@@ -20,14 +19,14 @@ struct Elem_0205d81c {
 };
 
 struct Struct_0205d81c;
-extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 
 struct Struct_0205c4a8;
-extern "C" void _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(struct Struct_0205c4a8* s, int delta);
+void AdvanceWrappedAccumulator0205c4a8(struct Struct_0205c4a8* s, int delta);
 struct Struct_0205bb84;
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(struct Struct_0205bb84* s);
+int ComputeScaledSum0205bb84(struct Struct_0205bb84* s);
 struct Struct_0205bcdc;
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(struct Struct_0205bcdc* s, int index);
+void SetIndexIfValid0205bcdc(struct Struct_0205bcdc* s, int index);
 extern "C" void func_0205bb04(void* s, int value);
 
 struct ScrollList {
@@ -49,7 +48,7 @@ extern "C" ARM int func_ov003_0217e1e4(struct Obj0217e1e4* self) {
         goto fail;
     }
     SelectCoordsByFlag0x24(data_02114e54, &x, &y);
-    struct Elem_0205d81c* e = _Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)self->list, 0);
+    struct Elem_0205d81c* e = FindElementByC40205d81c((struct Struct_0205d81c*)self->list, 0);
     if (e == NULL) {
         goto fail;
     }
@@ -63,14 +62,14 @@ extern "C" ARM int func_ov003_0217e1e4(struct Obj0217e1e4* self) {
         struct ScrollList* list = self->list;
         short left = e->x << 3;
         if (x >= left && x < left + 16) {
-            _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i((struct Struct_0205c4a8*)list->scrollState, -1);
+            AdvanceWrappedAccumulator0205c4a8((struct Struct_0205c4a8*)list->scrollState, -1);
         }
         right <<= 3;
         if (right - 16 <= x && x < right) {
-            _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i((struct Struct_0205c4a8*)list->scrollState, 1);
+            AdvanceWrappedAccumulator0205c4a8((struct Struct_0205c4a8*)list->scrollState, 1);
         }
-        int index = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((struct Struct_0205bb84*)list->scrollState);
-        _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((struct Struct_0205bcdc*)list->indexState, index);
+        int index = ComputeScaledSum0205bb84((struct Struct_0205bb84*)list->scrollState);
+        SetIndexIfValid0205bcdc((struct Struct_0205bcdc*)list->indexState, index);
         func_0205bb04(list->scrollState, index);
     }
     return 1;

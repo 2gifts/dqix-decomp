@@ -3,16 +3,16 @@
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 
-extern "C" int _Z44HasNonZeroByteAtOfField498_0218d75c_0218d75cPv(void* obj);
+int HasNonZeroByteAtOfField498_0218d75c_0218d75c(void* obj);
 int GetByteField0x252(void* obj);
 void SetByteField0x253(void* obj);
 int GetFieldIfFlag4(char* obj);
 void SetField0x23cTrue(void* obj);
 void ClearBitsInField4(unsigned int* obj, unsigned int mask);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 
 struct Vec3copy0202ec84 { unsigned int v[3]; };
-extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void* obj, struct Vec3copy0202ec84* src, int* out1, int* out2);
+int ComputeTwoFromVec3_0202ec84(void* obj, struct Vec3copy0202ec84* src, int* out1, int* out2);
 
 struct StructAt020473c8;
 void RenderFlaggedIndexedEntry(struct StructAt020473c8* obj, int param1);
@@ -41,7 +41,7 @@ extern "C" ARM int func_ov017_021bfc40(struct Obj021bfc40* self) {
 
     if (self->skip != 0) {
         GameResources* res2 = func_ov017_0218b5b0();
-        if (_Z44HasNonZeroByteAtOfField498_0218d75c_0218d75cPv(res2) != 0) {
+        if (HasNonZeroByteAtOfField498_0218d75c_0218d75c(res2) != 0) {
             return 4;
         }
         GameObject* combatant = battle->GetUnknownGameObject();
@@ -73,7 +73,7 @@ extern "C" ARM int func_ov017_021bfc40(struct Obj021bfc40* self) {
     int screenY;
     int screenX;
     if (ptr3b0 != NULL) {
-        _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(ptr3b0, &vecBuf, &screenX, &screenY);
+        ComputeTwoFromVec3_0202ec84(ptr3b0, &vecBuf, &screenX, &screenY);
     }
 
     int x = (screenX - 0xc) << 0xc;
@@ -111,7 +111,7 @@ extern "C" ARM int func_ov017_021bfc40(struct Obj021bfc40* self) {
         }
     }
 
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     if (ticks < self->countdown) {
         self->countdown -= ticks;
     } else {

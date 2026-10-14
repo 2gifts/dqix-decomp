@@ -70,7 +70,7 @@ extern TouchState data_02114e54;
 extern int data_02108760;
 
 void SelectCoordsByFlag0x24(unsigned char* state, int* x, int* y);
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
+MemberScreen* GetField1c_021a193c(int* p);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
 extern "C" void func_ov005_02156658(EquipmentMenu* self, int x, int y);
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov005_021562b8(EquipmentMenu* self) {
     if (data_02114e54.touching_) {
         if (x == 0 || y == 0)
             return;
-        MemberScreen* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+        MemberScreen* screen = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
         if (!(self->flags_ & 0x400) && (screen->flags_ & 0x800)) {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 0x1b, 0);
             func_ov005_0215792c(self, 1);

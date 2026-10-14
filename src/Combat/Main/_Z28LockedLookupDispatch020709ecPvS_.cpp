@@ -9,7 +9,7 @@ extern char data_020f0b64;
 
 // USA: func_020709ec
 // KEEP-NAME
-extern "C" ARM void _Z28LockedLookupDispatch020709ecPvS_(void* destination, void* allocator) {
+ARM void LockedLookupDispatch020709ec(void* destination, void* allocator) {
     unsigned int size;
     BackgroundLoader::AddLockGlobal();
     void* buf = LoadFileIntoMemory(&data_020f0b64, data_0211e33c, &size);

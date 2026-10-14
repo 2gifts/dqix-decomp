@@ -67,17 +67,17 @@ struct Menu02159274 {
 
 extern "C" char data_02108760[];
 
-extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(Outer020e28dc* o);
-extern "C" void _Z27UpdateEntryStateAndPositionP11Ctx020e263ci(Ctx020e263c* w, int value);
+int GetInnerFlagBit0020e28dc(Outer020e28dc* o);
+void UpdateEntryStateAndPosition(Ctx020e263c* w, int value);
 extern "C" void func_ov005_021589f4(void* self);
 extern "C" void func_ov005_02159b74(void* self);
 extern "C" int func_ov005_02158b3c(void* object, void* buffer);
 extern "C" int _Z26GetField0x15UnlessInactivePa(void* w);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 extern "C" void _Z27ResetSelectionState020e25e8P11Obj020e25e8(void* w);
 int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
-extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
-extern "C" int _Z23GetFlagFromField0x8BitsP14Struct020dd768(Struct020dd768* s);
+void* FindElementByKey020dedd0(Container020dedd0* c, int key);
+int GetFlagFromField0x8Bits(Struct020dd768* s);
 extern "C" void func_ov005_02157b74(void* self, int key, int keep);
 extern "C" char* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 extern "C" void _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(char* list, int key, int a, int b);
@@ -89,8 +89,8 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
     if (sel == 0)
         sel = 1;
 
-    if (self->yesNo_ != 0 && _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc((Outer020e28dc*)self->yesNo_))
-        _Z27UpdateEntryStateAndPositionP11Ctx020e263ci((Ctx020e263c*)self->yesNo_, sel);
+    if (self->yesNo_ != 0 && GetInnerFlagBit0020e28dc((Outer020e28dc*)self->yesNo_))
+        UpdateEntryStateAndPosition((Ctx020e263c*)self->yesNo_, sel);
 
     if (self->step_ == 0) {
         self->message_ = 8;
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
     if (self->step_ == 1) {
         sel = _Z26GetField0x15UnlessInactivePa(self->yesNo_);
         if (sel >= 0) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
         } else if (IsFlag0x2Active020e2984((struct Outer020e28dc*)self->yesNo_)) {
             _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
@@ -112,10 +112,10 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
             void* item;
             int notfound;
             int flag;
-            item = _Z24FindElementByKey020dedd0P17Container020dedd0i(
+            item = FindElementByKey020dedd0(
                 self->items_,
                 self->slots[self->selectedSlot].id);
-            flag = _Z23GetFlagFromField0x8BitsP14Struct020dd768((Struct020dd768*)item);
+            flag = GetFlagFromField0x8Bits((Struct020dd768*)item);
             if (flag == 1) {
                 self->message_ = 0xa;
                 memset(self->text_, 0, kTextBytes);
@@ -204,7 +204,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
     if (self->step_ == 3) {
         sel = _Z26GetField0x15UnlessInactivePa(self->yesNo_);
         if (sel >= 0) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
         } else if (IsFlag0x2Active020e2984((struct Outer020e28dc*)self->yesNo_)) {
             _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
@@ -217,7 +217,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
             memset(self->text_, 0, kTextBytes);
             func_ov005_02158b3c(self, self->text_);
             if (self->selectedSlot >= 0 && self->selectedSlot < 8) {
-                item = _Z24FindElementByKey020dedd0P17Container020dedd0i(
+                item = FindElementByKey020dedd0(
                     self->items_,
                     self->slots[self->selectedSlot].id);
                 if (((ItemBits02159274*)((char*)item + 8))->flag18) {
@@ -237,7 +237,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                 func_ov005_02157b74(self, 0xffff, 1);
             } else if (self->selectedSlot >= 8 && self->selectedSlot < 0x18) {
                 char* list = _Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
-                item = _Z24FindElementByKey020dedd0P17Container020dedd0i(
+                item = FindElementByKey020dedd0(
                     self->items_,
                     self->slots[self->selectedSlot].id);
                 sel = *(short*)((char*)item + 0x18);

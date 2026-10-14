@@ -17,7 +17,7 @@ struct Combatant020adda4 {
 extern "C" ARM short _Z8fix32sini(int x);
 extern "C" ARM short _Z8fix32cosi(int x);
 extern "C" ARM void _ZN8Vector3iaSERKS_(int* dst, const int* src);
-extern "C" ARM void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(const Vector3fix* in, fix32_t scale, Vector3fix* out);
+ARM void Vector3fixMultiplyScalar(const Vector3fix* in, fix32_t scale, Vector3fix* out);
 
 // USA: func_020adda4
 extern "C" ARM void func_020adda4(Combatant020adda4* self) {
@@ -55,7 +55,7 @@ extern "C" ARM void func_020adda4(Combatant020adda4* self) {
     Vector3fix_Normalize(&aim2, &aim2);
 
     _ZN8Vector3iaSERKS_((int*)&step, (int*)&aim);
-    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&step, 0xe66, &step);
+    Vector3fixMultiplyScalar(&step, 0xe66, &step);
     Vector3fix_Subtract(&pos, &step, &goal);
     Vector3fix_Subtract(&goal, &self->pivot, &dir);
     Vector3fix_Normalize(&dir, &dir);
@@ -63,14 +63,14 @@ extern "C" ARM void func_020adda4(Combatant020adda4* self) {
     step.x = -dir.x;
     step.y = -dir.y;
     step.z = -dir.z;
-    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&step, 0xe66, &step);
+    Vector3fixMultiplyScalar(&step, 0xe66, &step);
     Vector3fix_Add(&goal, &step, &self->pivot);
 
     self->bearing = fix32_Atan2(dir.x, dir.z);
     self->bearing = fix32ReduceAngle0To2Pi(self->bearing);
 
     _ZN8Vector3iaSERKS_((int*)&step, (int*)&dir);
-    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&step, 0xe66, &step);
+    Vector3fixMultiplyScalar(&step, 0xe66, &step);
     Vector3fix_Subtract(&self->pivot, &step, &goal2);
     Vector3fix_Subtract(&goal2, &self->pivot2, &aim2);
     Vector3fix_Normalize(&aim2, &aim2);
@@ -78,7 +78,7 @@ extern "C" ARM void func_020adda4(Combatant020adda4* self) {
     step.x = -aim2.x;
     step.y = -aim2.y;
     step.z = -aim2.z;
-    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&step, 0xe66, &step);
+    Vector3fixMultiplyScalar(&step, 0xe66, &step);
     Vector3fix_Add(&goal2, &step, &self->pivot2);
 
     self->bearing2 = fix32_Atan2(aim2.x, aim2.z);

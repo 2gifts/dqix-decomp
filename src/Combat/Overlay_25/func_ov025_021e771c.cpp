@@ -25,8 +25,8 @@ CombatWork021e771c* GetActiveCombatWork(void);
 extern "C" void func_ov000_02166804(CombatWork021e771c* work);
 void* LoadFileIntoMemory(const char* path, void* dst, unsigned int* outSize);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
-extern "C" void* _Z19ClearStruct020709d8Pv(void* obj);
-extern "C" void* _Z20Clear12Bytes0206efc4Pv(void* obj);
+void* ClearStruct020709d8(void* obj);
+void* Clear12Bytes0206efc4(void* obj);
 extern "C" void func_02070b6c(void* table, void* owner, void* data, unsigned int size, int a, int b);
 #if defined(jpn)
 extern "C" void func_0206f230(void* table, void* owner, void* data, unsigned int size, int a, int b);
@@ -34,7 +34,7 @@ extern "C" void func_0206f230(void* table, void* owner, void* data, unsigned int
 extern "C" void func_0206f230(void* table, void* owner, void* data, unsigned int size, int a, int b, int c, int d);
 #endif
 
-extern "C" unsigned int _Z19LoadGPCFile02166008PvP11GPCReadPairi(void* unused, GPCReadPair* readPair, int flag);
+unsigned int LoadGPCFile02166008(void* unused, GPCReadPair* readPair, int flag);
 extern "C" void func_ov000_02166070(CombatWork021e771c* work, GPCReadPair* readPair, int index, int id, int flag, unsigned int length);
 void ResetGPCReadPairAndHalveCounter(void* unused, GPCReadPair* pair, int flag);
 
@@ -66,7 +66,7 @@ extern "C" ARM int func_ov025_021e771c(short* ids, int count, int a, int b) {
 #endif
 
     if (data != 0) {
-        _Z19ClearStruct020709d8Pv(tableB);
+        ClearStruct020709d8(tableB);
         func_02070b6c(tableB, owner, data, size, a, b);
 #if defined(jpn)
         void* data2 = LoadFileIntoMemory(data_ov025_021efb3a, data_0211e33c, &size);
@@ -75,7 +75,7 @@ extern "C" ARM int func_ov025_021e771c(short* ids, int count, int a, int b) {
 #endif
 
         if (data2 != 0) {
-            _Z20Clear12Bytes0206efc4Pv(tableA);
+            Clear12Bytes0206efc4(tableA);
 #if defined(jpn)
             func_0206f230(tableA, owner, data2, size, a, b);
 #else
@@ -87,7 +87,7 @@ extern "C" ARM int func_ov025_021e771c(short* ids, int count, int a, int b) {
             readPair++;
             ZeroInitGPCPointer(&(readPair - 1)->pGPCFile);
             (readPair - 1)->ZeroInitializeMachine();
-            unsigned int length = _Z19LoadGPCFile02166008PvP11GPCReadPairi(work, &pair, 0);
+            unsigned int length = LoadGPCFile02166008(work, &pair, 0);
             for (int i = 0; i < count; i++) {
                 func_ov000_02166070(work, &pair, i, ids[i], 0, length);
             }

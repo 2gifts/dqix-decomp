@@ -18,19 +18,19 @@ extern StatusState_02155d54* data_ov004_021707c4;
 
 extern "C" void* func_ov011_021849c8(void* a);
 extern "C" Node02155d54* func_ov023_021f6880(void* obj, int key);
-extern "C" void _Z26SetByteAtOffset60_021f9da0Pvh(void* obj, unsigned char v);
+void SetByteAtOffset60_021f9da0(void* obj, unsigned char v);
 extern "C" int func_ov004_0215513c(void* obj, short* pB, short* pC, short* pD);
 extern "C" int func_ov004_02155090(void);
 extern "C" int func_ov004_02155104(void);
-extern "C" int _Z26GetField38IfKind8_021f6378Pvi(void* a, int key);
-extern "C" void* _Z21Lookup4Entry_021f63acPvii(void* a, int b, int c);
+int GetField38IfKind8_021f6378(void* a, int key);
+void* Lookup4Entry_021f63ac(void* a, int b, int c);
 extern "C" void func_ov023_021f645c(void* a, int b, unsigned short c, int d);
 extern "C" void func_ov023_021f64a8(void* a, int b, unsigned short c, int d);
-extern "C" int _Z29DispatchNodeIfState6_021f6680Pvi(void* obj, int id);
+int DispatchNodeIfState6_021f6680(void* obj, int id);
 
 // USA: func_ov004_02155d54
 extern "C" ARM int func_ov004_02155d54(void* self) {
-    _Z26SetByteAtOffset60_021f9da0Pvh(func_ov023_021f6880(func_ov011_021849c8(self), 5), 1);
+    SetByteAtOffset60_021f9da0(func_ov023_021f6880(func_ov011_021849c8(self), 5), 1);
 
     short b, c, d;
     func_ov004_0215513c(self, &b, &c, &d);
@@ -49,7 +49,7 @@ extern "C" ARM int func_ov004_02155d54(void* self) {
 
     Node02155d54* node = func_ov023_021f6880(func_ov011_021849c8(self), 0x14);
     if (node) {
-        char* entry = (char*)_Z21Lookup4Entry_021f63acPvii(self, 4, _Z26GetField38IfKind8_021f6378Pvi(self, 0x19));
+        char* entry = (char*)Lookup4Entry_021f63ac(self, 4, GetField38IfKind8_021f6378(self, 0x19));
         if (entry == 0 || *entry == 0) {
             Node02155d54* src = func_ov023_021f6880(func_ov011_021849c8(self), 0x19);
             if (src) {
@@ -61,6 +61,6 @@ extern "C" ARM int func_ov004_02155d54(void* self) {
 
     func_ov023_021f645c(self, 7, mode, 0xf);
     func_ov023_021f64a8(self, 0x14, value, 0xf);
-    _Z29DispatchNodeIfState6_021f6680Pvi(self, 0x10);
+    DispatchNodeIfState6_021f6680(self, 0x10);
     return 0;
 }

@@ -10,15 +10,14 @@ enum { kRegionValue4FC_4F8 = 0x4fc };
 enum { kRegionValue4F7_4F3 = 0x4f7 };
 #endif
 
-
 struct Struct_0205bef8;
-extern "C" void _Z12Init0205bef8P15Struct_0205bef8(struct Struct_0205bef8* s);
+void Init0205bef8(struct Struct_0205bef8* s);
 
 struct Struct_0205ba68;
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(struct Struct_0205ba68* s, int a, int b, int mode);
+void SetupPointerTable0205ba68(struct Struct_0205ba68* s, int a, int b, int mode);
 
 struct Node0205bacc;
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node0205bacc* s, int val);
+void SetField0AndPropagate0205bacc(struct Node0205bacc* s, int val);
 
 extern "C" void func_0205bb04(void* s, int n);
 
@@ -54,17 +53,17 @@ extern "C" ARM void func_ov003_021696f4(struct Ctx021696f4* self, int index) {
     }
     if (index <= first) isLast = 0;
 
-    _Z12Init0205bef8P15Struct_0205bef8((struct Struct_0205bef8*)&self->table);
+    Init0205bef8((struct Struct_0205bef8*)&self->table);
     if (isLast) {
         int limit = self->limits[index];
-        _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68*)&self->table, 1, limit + 1, 0);
+        SetupPointerTable0205ba68((struct Struct_0205ba68*)&self->table, 1, limit + 1, 0);
         self->table.field4 = 1;
-        _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)&self->table, limit + 1);
+        SetField0AndPropagate0205bacc((struct Node0205bacc*)&self->table, limit + 1);
         func_0205bb04(&self->table, limit - base);
     } else {
-        _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68*)&self->table, 1, 10, 0);
+        SetupPointerTable0205ba68((struct Struct_0205ba68*)&self->table, 1, 10, 0);
         self->table.field4 = 1;
-        _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)&self->table, 10);
+        SetField0AndPropagate0205bacc((struct Node0205bacc*)&self->table, 10);
         func_0205bb04(&self->table, 9 - base);
     }
 }

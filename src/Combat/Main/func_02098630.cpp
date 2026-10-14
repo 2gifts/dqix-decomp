@@ -44,9 +44,9 @@ struct SlotRegistration02098630
 
 extern "C" int func_02001aec(const void*, const void*, int);
 extern "C" int func_02098a84(Base020989cc*);
-extern "C" S02098834* _Z18CopyStruct02098834P9S02098834S0_(S02098834*, S02098834*);
-extern "C" void _Z23UpdateRankLevel020989ccP12Base020989cc(Base020989cc*);
-extern "C" int _Z21RegisterSlotA020cf0fci(int);
+S02098834* CopyStruct02098834(S02098834*, S02098834*);
+void UpdateRankLevel020989cc(Base020989cc*);
+int RegisterSlotA020cf0fc(int);
 
 // USA: func_02098630
 extern "C" ARM int func_02098630(Base020989cc* self, S02098834* source, int advanceSerial, int updateRank)
@@ -71,20 +71,20 @@ extern "C" ARM int func_02098630(Base020989cc* self, S02098834* source, int adva
     if (++self->count > 30)
         self->count = 30;
     S02098834* record = &self->records[index];
-    _Z18CopyStruct02098834P9S02098834S0_(record, source);
+    CopyStruct02098834(record, source);
     record->category = 2;
     record->used = 2;
     record->dirty = 1;
     record->serial = self->nextSerial;
     SlotRegistration02098630 registration;
-    if (_Z21RegisterSlotA020cf0fci((int)&registration) == 0)
+    if (RegisterSlotA020cf0fc((int)&registration) == 0)
     {
         self->records[index].slot = (unsigned char)registration.slot;
         self->records[index].priority = registration.priority;
         self->records[index].level = registration.level;
     }
     if (updateRank)
-        _Z23UpdateRankLevel020989ccP12Base020989cc(self);
+        UpdateRankLevel020989cc(self);
     unsigned int serial = record->serial;
     for (int i = 0; i < 3; i++)
     {

@@ -2,14 +2,14 @@
 #include "Memory/SafeAllocator.h"
 
 struct InitStruct020dde3c;
-extern "C" void _Z20InitAndClear020dde3cP18InitStruct020dde3c(InitStruct020dde3c* obj);
+void InitAndClear020dde3c(InitStruct020dde3c* obj);
 void SetField0x0Short(void* obj, short value);
 void SetField0x2Short(void* obj, short value);
-extern "C" void _Z28SetFieldsAt0x8And0xc020dde84Pcii(char* obj, int a, int b);
+void SetFieldsAt0x8And0xc020dde84(char* obj, int a, int b);
 void SetField0x20(void* obj, int value);
 
 struct Struct020db0c4;
-extern "C" void _Z18InitStruct020db0c4P14Struct020db0c4(Struct020db0c4* p);
+void InitStruct020db0c4(Struct020db0c4* p);
 
 extern unsigned char data_020ee688[];
 extern unsigned char data_020ee68b[];
@@ -63,12 +63,12 @@ extern "C" ARM void func_020dafd4(Manager020dafd4* mgr) {
     mgr->b54 = 0;
     for (int i = 0; i < 3; i++) {
         Slot020dafd4* slot = &mgr->slots[i];
-        _Z20InitAndClear020dde3cP18InitStruct020dde3c((InitStruct020dde3c*)slot);
+        InitAndClear020dde3c((InitStruct020dde3c*)slot);
         SetField0x0Short(slot, data_020ee688[i]);
         SetField0x2Short(slot, data_020ee68b[i]);
-        _Z28SetFieldsAt0x8And0xc020dde84Pcii((char*)slot, (i * 0x12 + 0xbc) & 0xff, 0xa4);
+        SetFieldsAt0x8And0xc020dde84((char*)slot, (i * 0x12 + 0xbc) & 0xff, 0xa4);
         SetField0x20(slot, (int)(((long long)(i << 12) * 0x28 + 0x800) >> 12) + 0x85 + 0x300);
     }
     mgr->sh6e = 0;
-    _Z18InitStruct020db0c4P14Struct020db0c4((Struct020db0c4*)mgr);
+    InitStruct020db0c4((Struct020db0c4*)mgr);
 }

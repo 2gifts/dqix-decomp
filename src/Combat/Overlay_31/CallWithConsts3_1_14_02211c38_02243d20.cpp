@@ -9,7 +9,7 @@ extern "C" void func_ov031_02211ca0(void);
 extern "C" void func_ov031_02211e08(void);
 extern "C" int func_ov031_02211db0(void);
 extern "C" int func_ov031_02211f24(void);
-extern "C" void _Z32SetField34AndClear35_37_02245528P15Struct_02245528i(struct Struct_02245528* p, int v);
+void SetField34AndClear35_37_02245528(struct Struct_02245528* p, int v);
 extern "C" void func_ov031_022120f8(void);
 extern "C" void func_ov031_02245478(void);
 
@@ -65,11 +65,11 @@ extern "C" ARM void func_ov031_02243d20(S02243d20* obj) {
 		}
 		break;
 	case 6:
-		_Z32SetField34AndClear35_37_02245528P15Struct_02245528i((struct Struct_02245528*)obj, 3);
+		SetField34AndClear35_37_02245528((struct Struct_02245528*)obj, 3);
 		break;
 	case 7:
 		func_ov031_022120f8();
-		_Z32SetField34AndClear35_37_02245528P15Struct_02245528i((struct Struct_02245528*)obj, 0);
+		SetField34AndClear35_37_02245528((struct Struct_02245528*)obj, 0);
 		break;
 	case 8:
 		func_ov031_02245478();

@@ -3,9 +3,9 @@
 
 extern "C" int func_ov017_021d60f4(void*);
 struct AllocatorUnion;
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(struct AllocatorUnion*, void*);
+void TailForward02012da4(struct AllocatorUnion*, void*);
 struct Struct02012dd0;
-extern "C" unsigned int _Z19GetMaxAlloc02012dd0P14Struct02012dd0(struct Struct02012dd0*);
+unsigned int GetMaxAlloc02012dd0(struct Struct02012dd0*);
 
 extern SafeAllocator* data_ov001_021658b8[8];
 extern struct AllocatorUnion data_02114e20;
@@ -19,8 +19,8 @@ ARM int DestroyAllocatorAtIndex_0215ea40(void* self) {
     SignedAllocatorHeader* signedAlloc = alloc->GetSignedAllocator();
     if (signedAlloc != NULL) {
         alloc->Destroy();
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, signedAlloc);
+        TailForward02012da4(&data_02114e20, signedAlloc);
     }
-    _Z19GetMaxAlloc02012dd0P14Struct02012dd0((struct Struct02012dd0*)&data_02114e20);
+    GetMaxAlloc02012dd0((struct Struct02012dd0*)&data_02114e20);
     return 1;
 }

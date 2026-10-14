@@ -10,7 +10,7 @@ extern "C" void* func_02012fe4();
 extern "C" int func_020aaf84(void* buf, int a, int b, int c);
 extern "C" void* func_0205ec34();
 extern "C" void func_020a9a50(void* ctx, char* dst, int flag);
-extern "C" void _Z32CopyBlobIntoBattleStruct020a9ba4Pv(void* blob);
+void CopyBlobIntoBattleStruct020a9ba4(void* blob);
 void LoadBattleRegion0x5cdc(unsigned char* p);
 extern "C" void func_020a9b2c(void* p);
 void ClearAllTreasureMapUnknownBits(void* p);
@@ -36,7 +36,7 @@ extern "C" ARM int func_020abd20() {
         unsigned char* base = (unsigned char*)&data_0211e33c[0] + 0x28000;
         func_020a9a50(base + 0x2cac, (char*)func_0205ec34(), 1);
         memcpy(((unsigned char*)GameState::GetInstance()) + 0x5e6c, base + 0x6c3c, 0x110);
-        _Z32CopyBlobIntoBattleStruct020a9ba4Pv(base + 0x5a04);
+        CopyBlobIntoBattleStruct020a9ba4(base + 0x5a04);
         LoadBattleRegion0x5cdc(base + 0x33c0);
         func_020a9b2c(base + 0x3ec4);
         unsigned char* sub = base + 4;

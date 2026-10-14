@@ -5,7 +5,7 @@
 struct OutStruct0215ccbc;
 struct EffectWords_021e0bf4 { int lo; int hi; };
 
-extern "C" short _Z17ConsumeMP0215a124Pvii(void* unused, int id, int amount);
+short ConsumeMP0215a124(void* unused, int id, int amount);
 extern "C" void func_ov000_02159eac(void* ctx, struct EffectWords_021e0bf4* words, int effect);
 extern "C" struct OutStruct0215ccbc* func_ov000_0215e958(void* ctx);
 extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(
@@ -25,7 +25,7 @@ extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e0bf4(struct Obj_021e0bf4
     GameObject* c = GetCombatantByID((int)obj->ctx, id);
     if (!c) return 0;
     if (c->currentStats_->primaryStats.currMP < amount) amount = c->currentStats_->primaryStats.currMP;
-    short mp = _Z17ConsumeMP0215a124Pvii(obj->ctx, id, amount);
+    short mp = ConsumeMP0215a124(obj->ctx, id, amount);
     struct EffectWords_021e0bf4 words;
     words.lo = 0;
     words.hi = 0;

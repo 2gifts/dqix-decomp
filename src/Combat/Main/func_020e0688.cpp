@@ -17,9 +17,9 @@ struct Obj020e0688 {
 };
 
 struct FlagWord02046708;
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(struct FlagWord02046708* word, unsigned int mask);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" void _Z21ReleaseHandle02022b90PvPi(void* owner, int* handle);
+int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
+void* GetDataPtr02114e04_020d6c00(void);
+void ReleaseHandle02022b90(void* owner, int* handle);
 void DelayThenSyncBit0(void);
 
 struct ActiveEntry02046900;
@@ -29,25 +29,25 @@ struct Rec020467f0;
 void* FindRecordByIndex(struct Rec020467f0* rec, int index, void** out, int* out44);
 
 struct List0204af64;
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64* obj);
+void ResetList0204af64(struct List0204af64* obj);
 
 void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
 
 extern "C" void func_0204b5b4(void*, int);
 
 struct Obj0204b5e8;
-extern "C" int _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(struct Obj0204b5e8* obj, int a, int b);
+int DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
 
-extern "C" void _Z21DispatchByTag0204b2e0PvPc(void* obj, char* str);
+void DispatchByTag0204b2e0(void* obj, char* str);
 
 struct SelfTag0204b3a0;
-extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(struct SelfTag0204b3a0* self, char* str);
+void DispatchByTagLookup0204b3a0(struct SelfTag0204b3a0* self, char* str);
 
 struct List0204b0e8;
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(struct List0204b0e8* obj, void* buf);
+void FlushAndDispatchList0204b0e8(struct List0204b0e8* obj, void* buf);
 
 struct List0204afb4;
-extern "C" void _Z23ResetRecordList0204afb4P12List0204afb4(struct List0204afb4* obj);
+void ResetRecordList0204afb4(struct List0204afb4* obj);
 
 struct LocalList020e0688 {
     unsigned char pad0[0x1c];
@@ -62,7 +62,7 @@ extern "C" ARM void func_020e0688(struct Obj020e0688* self) {
         return;
     }
 
-    if (_Z17TestFlags02046708P16FlagWord02046708j((struct FlagWord02046708*)_Z27GetDataPtr02114e04_020d6c00v(), 0x41)) {
+    if (TestFlags02046708((struct FlagWord02046708*)GetDataPtr02114e04_020d6c00(), 0x41)) {
         return;
     }
 
@@ -90,23 +90,23 @@ extern "C" ARM void func_020e0688(struct Obj020e0688* self) {
         }
 
         DelayThenSyncBit0();
-        _Z17ResetList0204af64P12List0204af64((struct List0204af64*)&s);
+        ResetList0204af64((struct List0204af64*)&s);
         s.lo = 1;
         s.hi = 0;
         func_0204b5b4(&s, 2);
         SetWord0x18ClearByte0x1f((unsigned char*)&s, 0);
-        _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8*)&s, 0, 0);
+        DispatchViaTable0204b5e8((struct Obj0204b5e8*)&s, 0, 0);
 
         for (int i = 0; i < count; i++) {
-            _Z21DispatchByTag0204b2e0PvPc(&s, (char*)arrayC[i]);
-            _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc((struct SelfTag0204b3a0*)&s, (char*)arrayC[i]);
+            DispatchByTag0204b2e0(&s, (char*)arrayC[i]);
+            DispatchByTagLookup0204b3a0((struct SelfTag0204b3a0*)&s, (char*)arrayC[i]);
         }
 
-        _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((struct List0204b0e8*)&s, 0);
-        _Z23ResetRecordList0204afb4P12List0204afb4((struct List0204afb4*)&s);
+        FlushAndDispatchList0204b0e8((struct List0204b0e8*)&s, 0);
+        ResetRecordList0204afb4((struct List0204afb4*)&s);
     }
 
-    _Z21ReleaseHandle02022b90PvPi(self, &self->handle_a0c);
+    ReleaseHandle02022b90(self, &self->handle_a0c);
     self->flag_55c = 1;
     self->flag_9c5 = 0;
 }

@@ -15,10 +15,10 @@ extern "C" void __clear(void* buf, int n);
 struct Struct020865b0;
 int GetFieldAt0x50(struct Struct020865b0* p);
 
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
+void* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int* word, unsigned int bits);
 struct FlagWord020466f4;
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(struct FlagWord020466f4* word, unsigned int bits);
+void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int bits);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 int VerifyAndApplySaveBuffer(int flag);
 
@@ -49,7 +49,7 @@ extern "C" ARM int func_020ab5d4(void* param0, int param1, int param2, void* par
     }
     BackgroundLoader::AddLockGlobal();
     BackgroundLoader::FreeAllocationsGlobal();
-    unsigned int* flags = (unsigned int*)_Z27GetDataPtr02114e04_020d6c00v();
+    unsigned int* flags = (unsigned int*)GetDataPtr02114e04_020d6c00();
     OrBitsIntoField0(flags, 0x2000000);
     unsigned char* base = (unsigned char*)&data_0211e33c[0] + 0x28000;
     GameState* gs = GameState::GetInstance();
@@ -84,10 +84,10 @@ extern "C" ARM int func_020ab5d4(void* param0, int param1, int param2, void* par
     memcpy(param3, (char*)(((struct Sz3c00_020ab5d4*)(base + 0x1d8)) + 1) + 0x3c, 4);
     if (VerifyAndApplySaveBuffer(0) == 0) {
         BackgroundLoader::RemoveLockGlobal();
-        _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)flags, 0x2000000);
+        ClearFlags020466f4((struct FlagWord020466f4*)flags, 0x2000000);
         return 0;
     }
     BackgroundLoader::RemoveLockGlobal();
-    _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)flags, 0x2000000);
+    ClearFlags020466f4((struct FlagWord020466f4*)flags, 0x2000000);
     return 1;
 }

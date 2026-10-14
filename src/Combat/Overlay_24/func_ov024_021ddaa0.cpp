@@ -7,9 +7,9 @@ struct Obj02087e6c;
 
 extern "C" int _Z23CanAdjustStatStageBit21P23StatStageStruct02087e18i(struct StatStageStruct02087e18* p, unsigned char decrease);
 int ClampAndUpdateField0x58(struct Obj02087e6c* obj, int delta);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int idx, int a, int b);
+unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
@@ -71,16 +71,16 @@ extern "C" ARM void* func_ov024_021ddaa0(struct Obj_021ddaa0* obj, int unused, i
             }
         }
     } else {
-        sel = _Z31SelectByIndexRange0to3_021da644iii(id, info->f24.b, info->f24.c);
+        sel = SelectByIndexRange0to3_021da644(id, info->f24.b, info->f24.c);
     }
-    int extra = _Z31SelectByIndexRange0to3_021da644iii(id, info->f20.c, info->f24.a);
+    int extra = SelectByIndexRange0to3_021da644(id, info->f20.c, info->f24.a);
     void* entry = func_ov000_0215e958(obj->field0x10);
     if (!entry) return 0;
     if (extra) {
-        _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, extra);
+        AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, extra);
     }
     func_ov024_021e8bf0(obj, obj->field0xc, &sel);
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+    AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
     struct Flag_021ddaa0* fl = (struct Flag_021ddaa0*)((char*)obj->field0xc + 0x1c);
     func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, fl->flag != 0);
     return entry;

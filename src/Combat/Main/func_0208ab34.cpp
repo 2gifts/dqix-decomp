@@ -23,12 +23,12 @@ public:
 };
 extern "C" int* func_0202ae18();
 Container020e34bc* GetData02153637();
-extern "C" int _Z28GetEntryStatusForKey020e34bcP17Container020e34bci(Container020e34bc*, int);
+int GetEntryStatusForKey020e34bc(Container020e34bc*, int);
 int CheckField0NonZero(int*);
 void StoreInFirstEmptySlot(unsigned char*, unsigned char);
-extern "C" void _Z37ClearEntryIfCurrentArrMatches020e3468P13Entry020e3054i(Entry020e3054*, int);
-extern "C" void _Z31InitFieldsIfHandleValid0208ad1cPv(void*);
-extern "C" void _Z16Dispatch020e3428Pvi(void*, int);
+void ClearEntryIfCurrentArrMatches020e3468(Entry020e3054*, int);
+void InitFieldsIfHandleValid0208ad1c(void*);
+void Dispatch020e3428(void*, int);
 extern unsigned char data_020e8cc6[];
 extern unsigned char data_020e8cc5[];
 
@@ -40,7 +40,7 @@ extern "C" ARM void func_0208ab34(TimedPartyEntries* entries, void* context) {
     int dispatched = 0;
     Container020e34bc* requests = GetData02153637();
     for (int i = 0; i < roster->count; ++i) {
-        int status = _Z28GetEntryStatusForKey020e34bcP17Container020e34bci(requests, 1);
+        int status = GetEntryStatusForKey020e34bc(requests, 1);
         int id = roster->ids[i];
         if ((!CheckField0NonZero(session) ||
              (CheckField0NonZero(session) && status != 1)) &&
@@ -62,7 +62,7 @@ extern "C" ARM void func_0208ab34(TimedPartyEntries* entries, void* context) {
                         entries->Activate(id);
                     }
                 } else if ((unsigned int)(status - 3) <= 2) {
-                    _Z37ClearEntryIfCurrentArrMatches020e3468P13Entry020e3054i((Entry020e3054*)requests, 1);
+                    ClearEntryIfCurrentArrMatches020e3468((Entry020e3054*)requests, 1);
                 }
             } else {
                 ++entries->timers[id];
@@ -70,6 +70,6 @@ extern "C" ARM void func_0208ab34(TimedPartyEntries* entries, void* context) {
             }
         }
     }
-    if (activated) _Z31InitFieldsIfHandleValid0208ad1cPv(entries);
-    if (dispatched) _Z16Dispatch020e3428Pvi(requests, 1);
+    if (activated) InitFieldsIfHandleValid0208ad1c(entries);
+    if (dispatched) Dispatch020e3428(requests, 1);
 }

@@ -24,8 +24,8 @@ struct Config0220764c {
 };
 extern Config0220764c data_ov031_0224e234;
 extern char data_ov031_0224e274;
-extern "C" void* _Z31AllocateWithSizeHeader_022075f4j(unsigned int);
-extern "C" void _Z27FreeWithSizeHeader_02207620Pv(void*);
+void* AllocateWithSizeHeader_022075f4(unsigned int);
+void FreeWithSizeHeader_02207620(void*);
 extern "C" void func_ov031_02204dbc(void*);
 // USA: func_ov031_0220764c
 extern "C" ARM void func_ov031_0220764c(Input0220764c* input) {
@@ -35,8 +35,8 @@ extern "C" ARM void func_ov031_0220764c(Input0220764c* input) {
     data_ov031_0224e234.field_0x4c = (((input->field_0x18 >> 24) & 0xff) | ((input->field_0x18 >> 8) & 0xff00) | ((input->field_0x18 << 8) & 0xff0000) | ((input->field_0x18 << 24) & 0xff000000));
     data_ov031_0224e234.field_0x50 = (((input->field_0x1c >> 24) & 0xff) | ((input->field_0x1c >> 8) & 0xff00) | ((input->field_0x1c << 8) & 0xff0000) | ((input->field_0x1c << 24) & 0xff000000));
     data_ov031_0224e234.field_0x54 = (((input->field_0x20 >> 24) & 0xff) | ((input->field_0x20 >> 8) & 0xff00) | ((input->field_0x20 << 8) & 0xff0000) | ((input->field_0x20 << 24) & 0xff000000));
-    data_ov031_0224e234.allocateWithHeader = _Z31AllocateWithSizeHeader_022075f4j;
-    data_ov031_0224e234.freeWithHeader = _Z27FreeWithSizeHeader_02207620Pv;
+    data_ov031_0224e234.allocateWithHeader = AllocateWithSizeHeader_022075f4;
+    data_ov031_0224e234.freeWithHeader = FreeWithSizeHeader_02207620;
     data_ov031_0224e234.allocate = input->allocate;
     data_ov031_0224e234.free = input->free;
     data_ov031_0224e234.field_0x60 = 0x40;

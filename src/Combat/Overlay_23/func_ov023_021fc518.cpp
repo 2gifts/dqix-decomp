@@ -108,21 +108,21 @@ extern "C" void func_ov023_021f6ed8(ObjBase021f6ed8* obj);
 extern "C" void* func_ov011_021849c8(void* ctx);
 extern "C" MenuNode_021fc518* func_ov023_021f6880(void* list, int tag);
 extern "C" HeapNode_021fc518* func_ov011_021845f8(void* ctx, int heap);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* p);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* p);
-extern "C" void _Z40InitTenAllocatorsAndClearFields_021e4e8cPv(void* model);
-extern "C" void _Z24CreateTenAndOne_021e4f64PvP13SafeAllocator(void* model, SafeAllocator* allocator);
-extern "C" void _Z23InitBlockArray_021e4fd8Pv(void* model);
-extern "C" void _Z18SetIntC0C_021e6198Pvi(void* model, int value);
-extern "C" void _Z19SetByteC11_021e6150Pvh(void* model, unsigned char value);
-extern "C" void _Z22InitWordsQuad_021e60e0Pvj(void* model, unsigned int value);
+void CopyInternalFields0207df50(Foo0207df50* p);
+void RestorePairTables0207df90(char* p);
+void BackupPairTables0207dfac(char* p);
+void InitTenAllocatorsAndClearFields_021e4e8c(void* model);
+void CreateTenAndOne_021e4f64(void* model, SafeAllocator* allocator);
+void InitBlockArray_021e4fd8(void* model);
+void SetIntC0C_021e6198(void* model, int value);
+void SetByteC11_021e6150(void* model, unsigned char value);
+void InitWordsQuad_021e60e0(void* model, unsigned int value);
 extern "C" void func_ov023_021fc71c(void* obj, int id, int flagArg);
 char* GetFieldIfFlag4(char* gameState);
 void SetVec3At0x4(Vec3Target0202e5c0* camera, int x, int y, int z);
 void SetFields0x10To0x18(unsigned char* camera, int x, int y, int z);
 int GetField0x58(void* camera);
-extern "C" void _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i(AngleTrig0202e9a4* camera, int angle);
+void SetAngleAndTrigTable0202e9a4(AngleTrig0202e9a4* camera, int angle);
 void SetField0x238False(void* camera);
 
 // USA: func_ov023_021fc518
@@ -150,19 +150,19 @@ extern "C" ARM int func_ov023_021fc518(MenuCharacter_021fc518* self, void* ctx, 
 #else
     char* pairTables = func_ov017_0218b5b0()->unknown_2cc;
 #endif
-    _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)pairTables);
-    _Z25RestorePairTables0207df90Pc(pairTables);
+    CopyInternalFields0207df50((Foo0207df50*)pairTables);
+    RestorePairTables0207df90(pairTables);
     for (int i = 0; i < 2; i++) {
-        _Z40InitTenAllocatorsAndClearFields_021e4e8cPv(&self->models_[i]);
-        _Z24CreateTenAndOne_021e4f64PvP13SafeAllocator(&self->models_[i], &heapNode->allocator);
-        _Z23InitBlockArray_021e4fd8Pv(&self->models_[i]);
-        _Z18SetIntC0C_021e6198Pvi(&self->models_[i], perspective);
-        _Z19SetByteC11_021e6150Pvh(&self->models_[i], 1);
+        InitTenAllocatorsAndClearFields_021e4e8c(&self->models_[i]);
+        CreateTenAndOne_021e4f64(&self->models_[i], &heapNode->allocator);
+        InitBlockArray_021e4fd8(&self->models_[i]);
+        SetIntC0C_021e6198(&self->models_[i], perspective);
+        SetByteC11_021e6150(&self->models_[i], 1);
     }
-    _Z24BackupPairTables0207dfacPc(pairTables);
+    BackupPairTables0207dfac(pairTables);
 
-    _Z22InitWordsQuad_021e60e0Pvj(&self->models_[0], 0x1eb);
-    _Z22InitWordsQuad_021e60e0Pvj(&self->models_[1], 0x1eb);
+    InitWordsQuad_021e60e0(&self->models_[0], 0x1eb);
+    InitWordsQuad_021e60e0(&self->models_[1], 0x1eb);
     if (character >= 0)
         func_ov023_021fc71c(self, character, 0);
 
@@ -170,7 +170,7 @@ extern "C" ARM int func_ov023_021fc518(MenuCharacter_021fc518* self, void* ctx, 
     SetVec3At0x4((Vec3Target0202e5c0*)camera, 0xb666, 0xb800, 0x42ccc);
     SetFields0x10To0x18((unsigned char*)camera, 0xb666, 0xb800, 0);
     self->perspective_ = GetField0x58(camera);
-    _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i((AngleTrig0202e9a4*)camera, 0xf000);
+    SetAngleAndTrigTable0202e9a4((AngleTrig0202e9a4*)camera, 0xf000);
     SetField0x238False(camera);
     return 1;
 }

@@ -54,7 +54,7 @@ struct KeyboardScreen {
     char texts_[4];
 };
 
-extern "C" KeyboardCanvas* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+KeyboardCanvas* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 const char* FindEntryByKey(struct TableA68* table, int key);
 extern "C" int func_020420e8(const char* text, int large);
 void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char* obj, int value, unsigned char key);
@@ -65,7 +65,7 @@ extern "C" void func_0204f3bc(KeyboardCanvas* ctx, int value);
 extern "C" void func_ov003_0215ec68(int size, short* width, short* height);
 extern "C" void func_0204f914(KeyboardCanvas* obj, int mode, short x0, short y0, short x1, short y1);
 struct Obj0204fbf8;
-extern "C" void _Z36InvokeHandlerAfterCacheFlush0204fbf8P11Obj0204fbf8(struct Obj0204fbf8* obj);
+void InvokeHandlerAfterCacheFlush0204fbf8(struct Obj0204fbf8* obj);
 
 // USA: func_ov012_0218ab34
 extern "C" ARM void func_ov012_0218ab34(KeyboardScreen* self, int skip)
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov012_0218ab34(KeyboardScreen* self, int skip)
     if (skip != 0)
         return;
 
-    KeyboardCanvas* canvas = _Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)self->elements_, 0xe);
+    KeyboardCanvas* canvas = FindElementByC40205d81c((struct Struct_0205d81c*)self->elements_, 0xe);
     if (canvas == NULL)
         return;
 
@@ -128,5 +128,5 @@ extern "C" ARM void func_ov012_0218ab34(KeyboardScreen* self, int skip)
         func_0204f41c(canvas, width + x, y + 2, text, 0xc, 0xf, &outA, &outB, palette);
     }
 
-    _Z36InvokeHandlerAfterCacheFlush0204fbf8P11Obj0204fbf8((struct Obj0204fbf8*)canvas);
+    InvokeHandlerAfterCacheFlush0204fbf8((struct Obj0204fbf8*)canvas);
 }

@@ -25,10 +25,10 @@ struct Skill_0209a594 {
     unsigned short h8;
 };
 
-extern "C" int _Z28CollectSetBitIndices020839dcP16BitArray020839dcPhi(struct BitArray020839dc *s, unsigned char *out, int max);
+int CollectSetBitIndices020839dc(struct BitArray020839dc *s, unsigned char *out, int max);
 extern "C" void *__clear(void *dst, int count);
 int LookupValuesByIds(Holder0209a9dc *holder, unsigned char *bits, unsigned int count, unsigned short *out);
-extern "C" Entry_02157174 *_Z24SearchBothTables02079e2cPci(char *p, int key);
+Entry_02157174 *SearchBothTables02079e2c(char *p, int key);
 extern "C" void *memset(void *dst, int value, unsigned int length);
 extern "C" int func_0209ab7c(void *holder, void *member, unsigned char *bits);
 int TestBitInArray0x8ec(unsigned char *obj, int index);
@@ -62,13 +62,13 @@ extern "C" ARM void func_ov002_02157174(char *self, int combatantId) {
     if (pm == 0) {
         return;
     }
-    n = _Z28CollectSetBitIndices020839dcP16BitArray020839dcPhi((struct BitArray020839dc *) pm, bits, 0x42);
+    n = CollectSetBitIndices020839dc((struct BitArray020839dc *) pm, bits, 0x42);
     __clear(ids, 0x84);
     n     = LookupValuesByIds((Holder0209a9dc *) (self + 0x44 + 0x2400), bits, n, (unsigned short *) ids);
     count = 0;
     table = GetData02108e10();
     for (j = 0; j < n; j++) {
-        Entry_02157174 *e = _Z24SearchBothTables02079e2cPci((char*)table, ids[j]);
+        Entry_02157174 *e = SearchBothTables02079e2c((char*)table, ids[j]);
         if (e != 0 && bits[j] == 0x3c) {
             if (e->flag8 & 1) {
                 out[count] = e;
@@ -78,7 +78,7 @@ extern "C" ARM void func_ov002_02157174(char *self, int combatantId) {
     }
     if (*(int *) (*(char **) (member + 0x150) + 0x950) == 0) {
         memset(bits, 0, 0x42);
-        n = _Z28CollectSetBitIndices020839dcP16BitArray020839dcPhi((struct BitArray020839dc *) pm, bits, 0x42);
+        n = CollectSetBitIndices020839dc((struct BitArray020839dc *) pm, bits, 0x42);
     } else {
         memset(bits, 0, 0x42);
         n = func_0209ab7c(self + 0x44 + 0x2400, member, bits);
@@ -86,7 +86,7 @@ extern "C" ARM void func_ov002_02157174(char *self, int combatantId) {
     memset(ids, 0, 0x84);
     n = LookupValuesByIds((Holder0209a9dc *) (self + 0x44 + 0x2400), bits, n, (unsigned short *) ids);
     for (k = 0; k < n; k++) {
-        Entry_02157174 *e = _Z24SearchBothTables02079e2cPci((char*)table, ids[k]);
+        Entry_02157174 *e = SearchBothTables02079e2c((char*)table, ids[k]);
         if (e != 0 && bits[k] != 0x3c) {
             if (e->flag8 & 1) {
                 out[count] = e;
@@ -98,7 +98,7 @@ extern "C" ARM void func_ov002_02157174(char *self, int combatantId) {
         if (TestBitInArray0x8ec(pm, b)) {
             Skill_0209a594 *s = func_0209a594(self + 0x3c + 0x2400, b);
             if (s != 0 && s->h8 != 0) {
-                Entry_02157174 *e = _Z24SearchBothTables02079e2cPci((char*)table, (short) s->h8);
+                Entry_02157174 *e = SearchBothTables02079e2c((char*)table, (short) s->h8);
                 if (e != 0 && e->kind18 == 1) {
                     if (e->flag8 & 1) {
                         out[count] = e;

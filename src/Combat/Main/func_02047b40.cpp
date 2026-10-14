@@ -8,7 +8,7 @@ extern "C" void func_02047f70(void* obj, void* buf, unsigned int size, SafeAlloc
 struct Obj02047ed4;
 struct Struct020478bc;
 
-extern "C" void _Z32DuplicateBufferIfFlagged02047ed4P11Obj02047ed4PiPvjP13SafeAllocator(struct Obj02047ed4* obj, int* outSize, void* buf, unsigned int size, SafeAllocator* alloc);
+void DuplicateBufferIfFlagged02047ed4(struct Obj02047ed4* obj, int* outSize, void* buf, unsigned int size, SafeAllocator* alloc);
 void RecomputeField0x7c(struct Struct020478bc* o, int newIndex);
 
 struct Array02048090 {
@@ -16,7 +16,7 @@ struct Array02048090 {
     void* buffer;
 };
 
-extern "C" void _Z21AllocateArray02048090P13Array02048090iP13SafeAllocator(struct Array02048090* obj, int count, SafeAllocator* alloc);
+void AllocateArray02048090(struct Array02048090* obj, int count, SafeAllocator* alloc);
 
 struct PackedTexture {
     int size;
@@ -116,10 +116,10 @@ extern "C" ARM void func_02047b40(struct Obj02047b40* obj, unsigned char* src, S
             if (obj->mode == 3) {
                 shift = 1;
                 size = h * w;
-                _Z32DuplicateBufferIfFlagged02047ed4P11Obj02047ed4PiPvjP13SafeAllocator((Obj02047ed4*)obj, &tex->size, data, size >> 1, alloc);
+                DuplicateBufferIfFlagged02047ed4((Obj02047ed4*)obj, &tex->size, data, size >> 1, alloc);
             } else {
                 size = h * w;
-                _Z32DuplicateBufferIfFlagged02047ed4P11Obj02047ed4PiPvjP13SafeAllocator((Obj02047ed4*)obj, &tex->size, data, size, alloc);
+                DuplicateBufferIfFlagged02047ed4((Obj02047ed4*)obj, &tex->size, data, size, alloc);
             }
             data += size >> shift;
             tex->info = (ft->hlog << 4) | ft->wlog;
@@ -140,7 +140,7 @@ extern "C" ARM void func_02047b40(struct Obj02047b40* obj, unsigned char* src, S
     data += 0x1e;
     memcpy(&obj->frames, data, 4);
     data += 4;
-    _Z21AllocateArray02048090P13Array02048090iP13SafeAllocator(&obj->frames, obj->frames.count, alloc);
+    AllocateArray02048090(&obj->frames, obj->frames.count, alloc);
     if (obj->frames.count > 0) {
         for (n = 0; n < obj->frames.count; n++) {
             memcpy((char*)obj->frames.buffer + n * 0x1e, data, 0x1e);

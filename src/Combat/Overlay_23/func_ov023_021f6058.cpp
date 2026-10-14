@@ -2,7 +2,7 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
-extern "C" unsigned long long _Z23ComputeModHash_021f6324iPh(int count, unsigned char* ptr);
+unsigned long long ComputeModHash_021f6324(int count, unsigned char* ptr);
 extern "C" void func_ov031_022118a8(void* ctx, unsigned char* key, int keylen);
 extern "C" void Rc4Crypt_02211938(unsigned char* ctx, const unsigned char* in, int len, unsigned char* out);
 extern unsigned char data_ov023_021fe3c8[];
@@ -34,7 +34,7 @@ extern "C" ARM int func_ov023_021f6058(unsigned char* buf, int len, unsigned cha
  enum {regionalOffset0=0x5e6c, regionalOffset1=0x6380};
 #endif
     char local[0x430];
-    if (_Z23ComputeModHash_021f6324iPh(len, buf) != 0) {
+    if (ComputeModHash_021f6324(len, buf) != 0) {
         return 0;
     }
     char ctx[0x104];

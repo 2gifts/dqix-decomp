@@ -10,19 +10,19 @@ struct TargetMenu { char pad0[0xb8]; char messages[0x20]; char pad1[0x1d94 - 0xd
 struct TargetMenu { char pad0[0xb8]; char messages[0x20]; char pad1[0x1c44]; int kinds[8]; int combatants[8]; };
 #endif
 struct TargetSelection { char pad[0x1d]; signed char index; };
-extern "C" int _Z27CountMatchingValues02175348Pvi(void*, int);
+int CountMatchingValues02175348(void*, int);
 int IsField0x118Equal2(void*);
-extern "C" StoreStruct* _Z26GetGlobalField0x1c020421a0v();
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310*, int);
-extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char*, int, int, int, int, int);
+StoreStruct* GetGlobalField0x1c020421a0();
+int GetFieldByKey020e0434(Container020e0310*, int);
+void AppendFrameTag02041c08(char*, int, int, int, int, int);
 void AppendCursorTag(char*, int);
-extern "C" void _Z20AppendString02042058PcPKc(char*, const char*);
+void AppendString02042058(char*, const char*);
 extern "C" void __clear(void*, int);
 extern "C" void func_02046380(StoreStruct*);
-extern "C" void _Z20Clear12Bytes020e46c4Pv(void*);
+void Clear12Bytes020e46c4(void*);
 GameObject* GetCombatantWithFlag0x400(GameState*, int);
 extern "C" void func_020e4ce8(NameParts*, GameObject*, int);
-extern "C" void _Z31TrimTrailingLetterCode_0217aa08PcS_(char*, char*);
+void TrimTrailingLetterCode_0217aa08(char*, char*);
 extern "C" void func_020e4f18(NameParts*, NameParts*, int);
 void StoreInArray0x8b0(StoreStruct*, int, int);
 extern "C" void func_02046608(StoreStruct*, int, const char*, char*, int, int, int);
@@ -53,32 +53,32 @@ extern "C" ARM void func_ov000_02178938(TargetMenu* menu, TargetSelection* selec
         int kind = menu->kinds[i];
         if (previous != kind) {
             previous = kind;
-            int groupSize = _Z27CountMatchingValues02175348Pvi(menu, kind);
+            int groupSize = CountMatchingValues02175348(menu, kind);
             if (i <= selected && selected < i + groupSize) selectedStart = i;
         }
     }
     int showCursor = IsField0x118Equal2(menu);
-    StoreStruct* formatter = _Z26GetGlobalField0x1c020421a0v();
+    StoreStruct* formatter = GetGlobalField0x1c020421a0();
 #if !defined(jpn)
     GameState* game = GameState::GetInstance();
-    const char* separator = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0);
-    const char* format = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x754f);
+    const char* separator = (const char*)GetFieldByKey020e0434((Container020e0310*)menu->messages, 0);
+    const char* format = (const char*)GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x754f);
 #endif
     previous = -1;
     if (showCursor) {
-        _Z22AppendFrameTag02041c08Pciiiii(output, selectedStart, 8, 5, 5, 5);
+        AppendFrameTag02041c08(output, selectedStart, 8, 5, 5, 5);
     }
     AppendCursorTag(output, selectedStart);
     for (int i = 0; i < count; i++) {
         int kind = menu->kinds[i];
         if (previous != kind) {
             previous = kind;
-            int groupSize = _Z27CountMatchingValues02175348Pvi(menu, kind);
+            int groupSize = CountMatchingValues02175348(menu, kind);
             if (groupSize) {
 #if defined(jpn)
-                if (appended) _Z20AppendString02042058PcPKc(output, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0));
+                if (appended) AppendString02042058(output, (const char*)GetFieldByKey020e0434((Container020e0310*)menu->messages, 0));
 #else
-                if (appended) _Z20AppendString02042058PcPKc(output, separator);
+                if (appended) AppendString02042058(output, separator);
 #endif
 #if defined(jpn)
                 char nameText[0x20];
@@ -98,16 +98,16 @@ extern "C" ARM void func_ov000_02178938(TargetMenu* menu, TargetSelection* selec
                     __clear(original, sizeof(original));
                     memcpy(original, nameText, sizeof(original));
                     memset(nameText, 0, sizeof(nameText));
-                    _Z31TrimTrailingLetterCode_0217aa08PcS_(original, nameText);
+                    TrimTrailingLetterCode_0217aa08(original, nameText);
                 }
                 func_02046380(formatter);
                 _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, nameText);
                 StoreInArray0x8b0(formatter, 0, groupSize);
-                func_020474a8(formatter, 10, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x754f), text);
+                func_020474a8(formatter, 10, (const char*)GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x754f), text);
 #else
                 func_02046380(formatter);
                 NameParts name;
-                _Z20Clear12Bytes020e46c4Pv(&name);
+                Clear12Bytes020e46c4(&name);
                 GameObject* combatant = GetCombatantWithFlag0x400(game, menu->combatants[index]);
                 char singular[128];
                 char plural[128];
@@ -117,8 +117,8 @@ extern "C" ARM void func_ov000_02178938(TargetMenu* menu, TargetSelection* selec
                     func_020e4ce8(&name, combatant, 1);
                     NameParts unusedName;
                     func_020e4ce8(&unusedName, combatant, 0);
-                    _Z31TrimTrailingLetterCode_0217aa08PcS_(name.singular, singular);
-                    _Z31TrimTrailingLetterCode_0217aa08PcS_(name.plural, plural);
+                    TrimTrailingLetterCode_0217aa08(name.singular, singular);
+                    TrimTrailingLetterCode_0217aa08(name.plural, plural);
                     name.singular = singular;
                     name.plural = plural;
                     func_020e4f18(&unusedName, &name, 2);
@@ -134,6 +134,6 @@ extern "C" ARM void func_ov000_02178938(TargetMenu* menu, TargetSelection* selec
         }
     }
 #if !defined(jpn)
-    _Z20AppendString02042058PcPKc(output, data_ov000_02184060);
+    AppendString02042058(output, data_ov000_02184060);
 #endif
 }

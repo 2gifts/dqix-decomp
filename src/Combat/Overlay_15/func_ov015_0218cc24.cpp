@@ -36,11 +36,11 @@ struct Obj0218cc24 {
 };
 
 extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
-extern "C" void _Z17DelayThenSyncBit0v();
-extern "C" void _Z24ResetObjectState02079a3cPv(void*);
+void DelayThenSyncBit0();
+void ResetObjectState02079a3c(void*);
 extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char*);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
+void RestorePairTables0207df90(char*);
+void BackupPairTables0207dfac(char*);
 extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(void*, int);
 extern "C" int func_ov015_0218c03c(void* self, char* buf, int i, int one);
 extern "C" void func_ov015_0218c538(void* self, int zero);
@@ -71,7 +71,7 @@ extern "C" ARM int func_ov015_0218cc24(Obj0218cc24* self) {
     SafeAllocator* alloc;
     short id;
 
-    _Z17DelayThenSyncBit0v();
+    DelayThenSyncBit0();
     id = self->GetEnt(7)->unknown_2_;
     if (self->ids[7] != id) {
         self->GetEnt(3)->unknown_2_ = -1;
@@ -96,7 +96,7 @@ extern "C" ARM int func_ov015_0218cc24(Obj0218cc24* self) {
     unsigned int room = 0x30000;
     GPCReadPair pair;
     char name[0x80];
-    _Z24ResetObjectState02079a3cPv(&pair);
+    ResetObjectState02079a3c(&pair);
     if (LoadAndDecompressGPCHeaderAndInnerFileInfo(&pair.pGPCFile, pair.machine, &data_ov015_021940c0,
                                                    buf, size, room, false, 0)) {
         buf += size;
@@ -182,12 +182,12 @@ extern "C" ARM int func_ov015_0218cc24(Obj0218cc24* self) {
                     _Z13SetFields0x44P14Fields020407b4iii(&self->ents[i], (int)(((long long)v * 0x2000LL + 0x800) >> 12), 0, 0);
                 }
             }
-            _Z25RestorePairTables0207df90Pc(pairs + off70);
+            RestorePairTables0207df90(pairs + off70);
             DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, buf, size, room, name);
             self->ents[i].SetModelFromFileCopy((SafeAllocator*)((char*)alloc + off14), buf, size, Model3D::TextureStagingMode_Normal);
             buf += size;
             room -= size;
-            _Z24BackupPairTables0207dfacPc(pairs + off70);
+            BackupPairTables0207dfac(pairs + off70);
             if (i == 4 && self->GetEnt(3)->pModel_ != 0) {
                 _ZN7Model3D22ApplyTexturesFromModelEPS_(self->GetEnt(3)->pModel_, self->ents[i].pModel_);
             }

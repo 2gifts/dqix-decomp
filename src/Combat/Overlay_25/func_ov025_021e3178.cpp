@@ -87,14 +87,14 @@ extern int data_ov025_021eef40[];
 extern "C" void func_ov025_021eb044(void* obj, ...);
 extern "C" int func_ov000_0215fd90(void* entry, unsigned char effect);
 extern "C" void func_ov000_02162c14(void* work, int id, struct Buf021e3178* out);
-extern "C" void* _Z19GetActiveCombatWorkv(void);
+void* GetActiveCombatWork(void);
 extern "C" struct Rec021e3178* _Z24SearchBothTables02079e2cPci(void* table, int key);
 extern "C" struct Node021e3178* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int index);
 extern "C" struct Node021e3178* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int index);
 extern "C" struct Node021e3178* _Z22GetNodeAtIndex0215feb4Pcii(void* base, int index, int slot);
-extern "C" void* _Z23FindNodeAtDepth0215fff4Pvii(void* node, int index, int depth);
+void* FindNodeAtDepth0215fff4(void* node, int index, int depth);
 extern "C" struct Combatant021e3178* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
-extern "C" int _Z15TestBit2At0x2f4Ph(unsigned char* flags);
+int TestBit2At0x2f4(unsigned char* flags);
 extern "C" int _ZNK8Object3D9GetRadiusEv(void* obj);
 extern "C" void __clear(void* p, int n);
 
@@ -316,7 +316,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         break;
     }
     case 15: {
-        void* w = _Z19GetActiveCombatWorkv();
+        void* w = GetActiveCombatWork();
         if (w && *(unsigned char*)((char*)w + WorkFlag)) NOTIFY();
         break;
     }
@@ -340,7 +340,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         struct Ent021e3178* ent = b->ents;
         if (!ent) break;
         int id = ent->id;
-        void* w = _Z19GetActiveCombatWorkv();
+        void* w = GetActiveCombatWork();
         if (!w) break;
         struct Buf021e3178 buf;
         func_ov000_02162c14(w, id, &buf);
@@ -358,7 +358,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         if (!g) break;
         struct Combatant021e3178* c = _Z25GetCombatantWithFlag0x100P9GameStatei(g, id);
         if (!c) break;
-        if (_Z15TestBit2At0x2f4Ph(c->flags)) {
+        if (TestBit2At0x2f4(c->flags)) {
             NOTIFY();
             return 1;
         }
@@ -401,7 +401,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         struct Node021e3178* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(b, 0);
         if (!node) return 0;
         if (!node) return 0;
-        void* p = _Z23FindNodeAtDepth0215fff4Pvii(node, 0, 0);
+        void* p = FindNodeAtDepth0215fff4(node, 0, 0);
         if (!p) return 0;
         if (!p) return 0;
         for (int* t = data_ov025_021eef40; *t != -1; t++) {

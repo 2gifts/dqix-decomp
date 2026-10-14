@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void __clear(void* dst, int count);
-extern "C" int _Z21IsPrefixMatch020d857cPaS_(signed char* a, signed char* b);
+int IsPrefixMatch020d857c(signed char* a, signed char* b);
 extern "C" char* strcpy(char* dst, const char* src);
 extern "C" void* memcpy(void* dst, void* src, unsigned int length);
 int StringLength(const char* s);
@@ -33,9 +33,9 @@ extern "C" ARM void func_ov003_02170a7c(signed char* str, void* outBuf) {
         int cursor = index;
         while (data_ov003_0217f600[index].value != 0 && remaining != 0) {
             int matched = 0;
-            if (_Z21IsPrefixMatch020d857cPaS_(str, data_ov003_0217f600[index].value) != 0) {
+            if (IsPrefixMatch020d857c(str, data_ov003_0217f600[index].value) != 0) {
                 matched = 1;
-            } else if (_Z21IsPrefixMatch020d857cPaS_(str, data_ov003_0217f604[index].value) != 0) {
+            } else if (IsPrefixMatch020d857c(str, data_ov003_0217f604[index].value) != 0) {
                 matched = 1;
             }
             if (matched == 0) {

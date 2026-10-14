@@ -7,7 +7,7 @@ extern "C" void* func_0205ec34(void);
 void* GetField0x3f8Address(GameState* battleStruct);
 int GetBitmapPixel(unsigned char* base, int row, int col);
 void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
-extern "C" int _Z35LookupAndForEachNodeIfMatch02064b24PvitS_(void* a, int mode, unsigned short id, void* c);
+int LookupAndForEachNodeIfMatch02064b24(void* a, int mode, unsigned short id, void* c);
 
 struct Obj0201b600;
 struct Elem0201b600;
@@ -94,8 +94,8 @@ extern "C" ARM void func_02017a94(Zone3D* zone) {
         }
         struct AppendContext02017a94 ctx;
         ctx.zoneId = zone->currentZoneID_;
-        _Z35LookupAndForEachNodeIfMatch02064b24PvitS_(bmp, 3, 0x6c, &ctx);
-        _Z35LookupAndForEachNodeIfMatch02064b24PvitS_(bmp, 0x14, 0x6c, &ctx);
+        LookupAndForEachNodeIfMatch02064b24(bmp, 3, 0x6c, &ctx);
+        LookupAndForEachNodeIfMatch02064b24(bmp, 0x14, 0x6c, &ctx);
         zone->unk_276c[0x281d - 0x276c] = 0;
     }
 }

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" void _Z15EnqueueEvent0x4ii(int, int);
+void EnqueueEvent0x4(int, int);
 
 struct S020bc594 {
     unsigned char pad[0x2e];
@@ -12,7 +12,7 @@ struct S020bc594 {
 // USA: func_020bc594  (semantic: SetStateAndEnqueueEvent020bc594)
 extern "C" ARM void func_020bc594(S020bc594* obj, int val) {
     if (obj != 0 && val != obj->state) {
-        _Z15EnqueueEvent0x4ii(obj->kind, val);
+        EnqueueEvent0x4(obj->kind, val);
         obj->state = (unsigned char)val;
     }
 }

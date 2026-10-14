@@ -5,7 +5,7 @@ class GameState;
 extern "C" GameState *_ZN9GameState11GetInstanceEv();
 unsigned char *GetCombatantWithFlag0x100(GameState *gs, int slot);
 extern "C" int func_020dc920(int a, int b, int c, int d);
-extern "C" int _Z31TestFlagBit55dIfActive_0218b628i(int bit);
+int TestFlagBit55dIfActive_0218b628(int bit);
 extern int data_020fdcb0[][8];
 
 struct Stat02159774 {
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov002_02159774(char *self, int id, int check, int a, uns
     cur    = (float) e[0];
     max    = (float) e[2];
     if ((*(int *) (self + 0x247c) & 1) || *(int *) (self + 0x1bb8) == 4) {
-        if (_Z31TestFlagBit55dIfActive_0218b628i((signed char) id)) {
+        if (TestFlagBit55dIfActive_0218b628((signed char) id)) {
             cur = (float) (int) *(unsigned short *) (*(unsigned char **) (c + 0x130) + 4);
             max = (float) (int) *(unsigned short *) (*(unsigned char **) (c + 0x134) + 0x30);
         } else {

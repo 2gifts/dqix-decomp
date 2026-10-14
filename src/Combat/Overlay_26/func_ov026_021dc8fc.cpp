@@ -79,24 +79,24 @@ struct StatusView {
 };
 
 int GetFieldAt0x150(unsigned char*);
-extern "C" CommandSlot* _Z21FindSlotById_021dae60P18Container_021dae60i(Container_021dae60*, int);
-extern "C" void _Z29ZeroArr1a4AndFlag0x840217193cP14Struct0217193c(Struct0217193c*);
-extern "C" void _Z28ZeroArr9cAndFlag0x8202171614P14Struct02171614(Struct02171614*);
-extern "C" Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0*, int);
+CommandSlot* FindSlotById_021dae60(Container_021dae60*, int);
+void ZeroArr1a4AndFlag0x840217193c(Struct0217193c*);
+void ZeroArr9cAndFlag0x8202171614(Struct02171614*);
+Element020de650* FindElementByKey020dedd0(Container020dedd0*, int);
 void SetBitInArray0x8ec(unsigned char*, int);
 void ClearBitInArray0x8ec(unsigned char*, int);
 int TestBitInArray0x8ec(unsigned char*, int);
-extern "C" int _Z28CollectSetBitIndices020839dcP16BitArray020839dcPhi(BitArray020839dc*, unsigned char*, int);
-extern "C" Entry0209a9dc* _Z21FindEntryById0209a9dcP14Holder0209a9dci(Holder0209a9dc*, int);
-extern "C" CommandEntry* _Z24SearchBothTables02079e2cPci(char*, int);
-extern "C" void _Z30SetFieldAndUpdateCount02171640P9S02171698ii(S02171698*, int, int);
-extern "C" void _Z30SetFieldAndUpdateCount02171968P9S021719c0ii(S021719c0*, int, int);
-extern "C" int _Z26CountPositiveSlots02083960P13Slots02083960(Slots02083960*);
-extern "C" void _Z29ZeroArr3f0AndFlag0x8602171b3cP14Struct02171b3c(Struct02171b3c*);
-extern "C" void _Z28SetPointerField0x3f002171b68PviS_(void*, int, void*);
-extern "C" Entry02083554* _Z29FindEntryByShortField02083554P17Container02083554i(Container02083554*, int);
+int CollectSetBitIndices020839dc(BitArray020839dc*, unsigned char*, int);
+Entry0209a9dc* FindEntryById0209a9dc(Holder0209a9dc*, int);
+CommandEntry* SearchBothTables02079e2c(char*, int);
+void SetFieldAndUpdateCount02171640(S02171698*, int, int);
+void SetFieldAndUpdateCount02171968(S021719c0*, int, int);
+int CountPositiveSlots02083960(Slots02083960*);
+void ZeroArr3f0AndFlag0x8602171b3c(Struct02171b3c*);
+void SetPointerField0x3f002171b68(void*, int, void*);
+Entry02083554* FindEntryByShortField02083554(Container02083554*, int);
 int CheckFlag0x14Bit0x10Set(unsigned char*);
-extern "C" int _Z22IsFlagBit8Set_021dce1cP16FlagObj_021dce1c(FlagObj_021dce1c*);
+int IsFlagBit8Set_021dce1c(FlagObj_021dce1c*);
 extern "C" AbilityEntry* func_0209a594(void*, int);
 extern "C" int func_0209ab7c(Holder0209a9dc*, GameObject*, unsigned char*);
 
@@ -108,10 +108,10 @@ extern "C" ARM void func_ov026_021dc8fc(void*, void*, void*, Container_021dae60*
     if (!object) return;
     LearnedCommands* learned = (LearnedCommands*)GetFieldAt0x150((unsigned char*)object);
     if (!learned) return;
-    CommandSlot* slot = _Z21FindSlotById_021dae60P18Container_021dae60i(work, id);
+    CommandSlot* slot = FindSlotById_021dae60(work, id);
     if (!slot) return;
-    _Z29ZeroArr1a4AndFlag0x840217193cP14Struct0217193c((Struct0217193c*)slot);
-    _Z28ZeroArr9cAndFlag0x8202171614P14Struct02171614((Struct02171614*)slot);
+    ZeroArr1a4AndFlag0x840217193c((Struct0217193c*)slot);
+    ZeroArr9cAndFlag0x8202171614((Struct02171614*)slot);
     short commandIds[0x11f];
     unsigned char extraIds[0x42];
     CommandEntry* entries[0xd5];
@@ -124,7 +124,7 @@ extern "C" ARM void func_ov026_021dc8fc(void*, void*, void*, Container_021dae60*
         for (int i = 0; i < 8; ++i) {
             if (key == equipped[i]) { found = 1; break; }
         }
-        Element020de650* entry = _Z24FindElementByKey020dedd0P17Container020dedd0i(&work->commands, (short)key);
+        Element020de650* entry = FindElementByKey020dedd0(&work->commands, (short)key);
         if (entry && entry->learnedType == 0x1f) {
             if (found) SetBitInArray0x8ec((unsigned char*)learned, entry->bitIndex);
             else ClearBitInArray0x8ec((unsigned char*)learned, entry->bitIndex);
@@ -152,14 +152,14 @@ extern "C" ARM void func_ov026_021dc8fc(void*, void*, void*, Container_021dae60*
     }
     int extraCount;
     if (((CombatantView*)object)->commands->useSpecialList == 0)
-        extraCount = _Z28CollectSetBitIndices020839dcP16BitArray020839dcPhi((BitArray020839dc*)learned, extraIds, 0x80);
+        extraCount = CollectSetBitIndices020839dc((BitArray020839dc*)learned, extraIds, 0x80);
     else extraCount = func_0209ab7c(holder, object, extraIds);
     for (int i = 0; i < extraCount; ++i) {
-        Entry0209a9dc* entry = _Z21FindEntryById0209a9dcP14Holder0209a9dci(holder, extraIds[i]);
+        Entry0209a9dc* entry = FindEntryById0209a9dc(holder, extraIds[i]);
         if (entry && entry->command) commandIds[count++] = entry->command;
     }
     ActionDataTables* commandTable = GetData02108e10();
-    for (int i = 0; i < count; ++i) entries[i] = _Z24SearchBothTables02079e2cPci((char*)commandTable, commandIds[i]);
+    for (int i = 0; i < count; ++i) entries[i] = SearchBothTables02079e2c((char*)commandTable, commandIds[i]);
     int secondaryCount = 0;
     int commandIndex;
     int primaryCount = 0;
@@ -167,28 +167,28 @@ extern "C" ARM void func_ov026_021dc8fc(void*, void*, void*, Container_021dae60*
         CommandEntry* entry = entries[commandIndex];
         if (entry && (entry->availability & 2)) {
             if (entry->commandType == 2) {
-                _Z30SetFieldAndUpdateCount02171640P9S02171698ii((S02171698*)slot, secondaryCount, (int)entry);
+                SetFieldAndUpdateCount02171640((S02171698*)slot, secondaryCount, (int)entry);
                 ++secondaryCount;
             } else if (entry->commandType == 1) {
-                _Z30SetFieldAndUpdateCount02171968P9S021719c0ii((S021719c0*)slot, primaryCount, (int)entry);
+                SetFieldAndUpdateCount02171968((S021719c0*)slot, primaryCount, (int)entry);
                 ++primaryCount;
             }
         }
     }
-    int equippedCount = _Z26CountPositiveSlots02083960P13Slots02083960((Slots02083960*)learned);
+    int equippedCount = CountPositiveSlots02083960((Slots02083960*)learned);
     for (int i = 0; i < 8; ++i) equippedIds[i] = learned->equipped[i];
     short* equipment = learned->equipment;
     int stored;
     unsigned char order[8] = {7, 8, 0, 1, 6, 4, 5, 0xff};
     int equipmentIndex;
     stored = 0;
-    _Z29ZeroArr3f0AndFlag0x8602171b3cP14Struct02171b3c((Struct02171b3c*)slot);
+    ZeroArr3f0AndFlag0x8602171b3c((Struct02171b3c*)slot);
     for (equipmentIndex = 0; equipmentIndex < 16; ++equipmentIndex) {
         if (equipmentIndex < 8) {
             if (equipmentIndex < equippedCount) {
-                Element020de650* entry = _Z24FindElementByKey020dedd0P17Container020dedd0i(&work->commands, (short)equippedIds[equipmentIndex]);
+                Element020de650* entry = FindElementByKey020dedd0(&work->commands, (short)equippedIds[equipmentIndex]);
                 if (entry) {
-                    _Z28SetPointerField0x3f002171b68PviS_(slot, stored, entry);
+                    SetPointerField0x3f002171b68(slot, stored, entry);
                     ++stored;
                 }
             }
@@ -199,11 +199,11 @@ extern "C" ARM void func_ov026_021dc8fc(void*, void*, void*, Container_021dae60*
             }
             unsigned char index = order[equipmentIndex - 8];
             if (index == 0xff) continue;
-            Entry02083554* entry = _Z29FindEntryByShortField02083554P17Container02083554i((Container02083554*)learned, equipment[index]);
+            Entry02083554* entry = FindEntryByShortField02083554((Container02083554*)learned, equipment[index]);
             if (entry && entry->id > 0) {
                 int usable = entry->category <= 7 ? 1 : 0;
                 if (usable) {
-                    _Z28SetPointerField0x3f002171b68PviS_(slot, stored, entry);
+                    SetPointerField0x3f002171b68(slot, stored, entry);
                     ++stored;
                 }
             }
@@ -219,7 +219,7 @@ extern "C" ARM void func_ov026_021dc8fc(void*, void*, void*, Container_021dae60*
     if (combatant) {
         if (CheckFlag0x14Bit0x10Set((unsigned char*)combatant->currentStats_) ||
             ((StatusView*)combatant->currentStats_)->blocked ||
-            _Z22IsFlagBit8Set_021dce1cP16FlagObj_021dce1c((FlagObj_021dce1c*)combatant)) {
+            IsFlagBit8Set_021dce1c((FlagObj_021dce1c*)combatant)) {
             slot->eligible = 0;
             slot->selections[slot->selection] = 100;
         } else if (listed) slot->eligible = 1;

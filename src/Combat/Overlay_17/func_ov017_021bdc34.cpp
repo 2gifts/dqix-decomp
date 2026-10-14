@@ -34,12 +34,12 @@ struct LoadState021bdc34 {
     unsigned char stage;
     unsigned char mode;
 };
-extern "C" LoadEntry021bdc34* _Z26FindNegativeEntry_021a11b4P9S021a11b4(S021a11b4*);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
-extern "C" void _Z36SetFieldndDispatch_021bdb78_021bdb78i(int);
-extern "C" void _Z32CallHelperIfCheckPasses_0218fcf8iii(int, int, int);
+LoadEntry021bdc34* FindNegativeEntry_021a11b4(S021a11b4*);
+void CopyInternalFields0207df50(Foo0207df50*);
+void RestorePairTables0207df90(char*);
+void BackupPairTables0207dfac(char*);
+void SetFieldndDispatch_021bdb78_021bdb78(int);
+void CallHelperIfCheckPasses_0218fcf8(int, int, int);
 extern "C" void func_ov017_0218f5a4(void*, int, int, int, int);
 extern const char data_ov017_021d7e14[], data_ov017_021d7e2e[], data_ov017_021d7e46[];
 extern const char data_ov017_021d7e61[], data_ov017_021d7e6c[], data_ov017_021d7e75[], data_ov017_021d7e7b[];
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     LoadActor021bdc34* actor = (LoadActor021bdc34*)GetCombatantWithFlag0x100(game, 0);
     if (actor == 0) return;
-    LoadEntry021bdc34* entry = _Z26FindNegativeEntry_021a11b4P9S021a11b4((S021a11b4*)globals);
+    LoadEntry021bdc34* entry = FindNegativeEntry_021a11b4((S021a11b4*)globals);
     if (entry == 0) {
         self->done = 1;
         return;
@@ -76,7 +76,7 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
                 self->tasks[3] = loader->QueueLoadFileInGP2(data_ov017_021d7e46, data_ov017_021d7e6c, 0);
                 for (int i = 0; i < 4; i++) {
                     allocators[i]->Reset();
-                    _Z26CopyInternalFields0207df50P11Foo0207df50(pairs[i]);
+                    CopyInternalFields0207df50(pairs[i]);
                 }
             } else {
                 for (int i = 0; i < 4; i++) self->tasks[i] = -1;
@@ -115,10 +115,10 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
                     info.allocator = allocator;
                     info.unk_8 = length;
                     Foo0207df50* pair = pairs[i];
-                    _Z25RestorePairTables0207df90Pc((char*)pair);
+                    RestorePairTables0207df90((char*)pair);
                     object->Initialize();
                     object->LoadFromCCHROrCMOTArchive(&info, 0);
-                    _Z24BackupPairTables0207dfacPc((char*)pair);
+                    BackupPairTables0207dfac((char*)pair);
                     switch (i) {
                     case 0: globals->first = object; break;
                     case 1: globals->second = object; break;
@@ -132,10 +132,10 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
         }
         if (!pending) self->stage = 2;
     } else if (self->stage == 2) {
-        if (self->mode == 1) _Z36SetFieldndDispatch_021bdb78_021bdb78i(0);
+        if (self->mode == 1) SetFieldndDispatch_021bdb78_021bdb78(0);
         else {
             actor->object.unknown_9c_ = 0;
-            _Z32CallHelperIfCheckPasses_0218fcf8iii((int)globals, 0, 0);
+            CallHelperIfCheckPasses_0218fcf8((int)globals, 0, 0);
         }
         if (globals->first != 0) {
             if (self->mode == 1) globals->first->MaybeSetRegularAnimation(data_ov017_021d7e75, 0);

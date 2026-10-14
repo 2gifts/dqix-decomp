@@ -7,7 +7,7 @@ void PostEvent0x0E(int p0, int p1, int p2, int p3, int p4, int p5, int p6, int p
 int EnqueueEvent0x12(int a, int b, int c, int d, int e);
 int EnqueueEvent0x0C(int a, int b, int c, int d);
 extern "C" void func_020d24c4(int);
-extern "C" void _Z19IncCounter_0218bcc4v(void);
+void IncCounter_0218bcc4(void);
 
 struct StateBlock_0219d0c0 {
     #if defined(jpn)
@@ -40,7 +40,7 @@ extern "C" ARM void func_ov016_0218bce8(unsigned int id, unsigned int count) {
     PostEvent0x0E(1, 1, (int)g->f2c, 1,
         0, (g->f24 * count) >> 1, 0x7f, 0, divResult, 0x7f);
 
-    EnqueueEvent0x12(0, scaled, scaled, (int)_Z19IncCounter_0218bcc4v, 0);
+    EnqueueEvent0x12(0, scaled, scaled, (int)IncCounter_0218bcc4, 0);
     EnqueueEvent0x0C(3, 0, 1, 0);
     func_020d24c4(1);
 }

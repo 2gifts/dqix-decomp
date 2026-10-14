@@ -7,7 +7,7 @@ struct AllocatorUnion;
 #define func_ov008_021842a0 func_ov010_021842a0
 #endif
 extern "C" int func_ov010_02184354(void* obj);
-extern "C" void _Z30ForwardAndClearField8_021c2710Ph(unsigned char* self);
+void ForwardAndClearField8_021c2710(unsigned char* self);
 extern "C" void func_020a1940(unsigned int id);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern "C" void func_020c9be0(void);
@@ -20,7 +20,7 @@ extern "C" ARM void func_ov017_021c26ac(unsigned char* self) {
         if (func_ov010_02184354(*(void**)(self + 8)) == 0) {
             return;
         }
-        _Z30ForwardAndClearField8_021c2710Ph(self);
+        ForwardAndClearField8_021c2710(self);
         return;
     }
     func_020a1940(OVERLAY_ID(10));

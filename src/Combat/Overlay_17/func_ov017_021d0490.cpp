@@ -12,10 +12,10 @@ int GetField5cb0Value(char* obj);
 int GetField5cb4Value(char* obj);
 int GetField5cb8Value(char* obj);
 struct Battle021d0490;
-extern "C" Battle021d0490* _Z20GetField6b0_021b8470Pv(void* obj);
+Battle021d0490* GetField6b0_021b8470(void* obj);
 
 struct Obj_021bd3a4;
-extern "C" int _Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(Obj_021bd3a4* obj);
+int HasFlag3orFlag2And9a_021bd3a4(Obj_021bd3a4* obj);
 
 struct Actor021d0490 {
     unsigned char pad0[0x12];
@@ -107,9 +107,9 @@ extern "C" ARM void func_ov017_021d0490(int mode) {
         p->field_0x1 = GetField5cb4Value((char*)battle);
         p->field_0x2 = GetField5cb8Value((char*)battle);
         p->field_0x4 = *data;
-        Battle021d0490* field = _Z20GetField6b0_021b8470Pv(zone);
+        Battle021d0490* field = GetField6b0_021b8470(zone);
 
-        if (_Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4((Obj_021bd3a4*)actor) && actor->id != 0 && actor->busy == 0) {
+        if (HasFlag3orFlag2And9a_021bd3a4((Obj_021bd3a4*)actor) && actor->id != 0 && actor->busy == 0) {
             p->kind = 1;
             p->field_0x8 = actor->id;
             p->field_0xa = actor->field_0x52;

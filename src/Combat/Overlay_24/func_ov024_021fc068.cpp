@@ -7,7 +7,7 @@ int GetFieldAt0x150(unsigned char* obj);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 int IsFlag10088Set(struct S_10088* obj);
 struct AddEntryList_021f6a1c;
-extern "C" void _Z31AddEntryIfUnderLimit16_021f6a1cP21AddEntryList_021f6a1cPv(struct AddEntryList_021f6a1c* obj, void* src);
+void AddEntryIfUnderLimit16_021f6a1c(struct AddEntryList_021f6a1c* obj, void* src);
 extern "C" void func_ov024_021f9874(void* obj, void* buf, int slot, int value);
 
 struct Stats_021fc068 {
@@ -99,7 +99,7 @@ extern "C" ARM void func_ov024_021fc068(struct Obj_021fc068* obj) {
 		entry.slot = i;
 		entry.rate = (int)rate;
 		entry.kind = 5;
-		_Z31AddEntryIfUnderLimit16_021f6a1cP21AddEntryList_021f6a1cPv((struct AddEntryList_021f6a1c*)&buf, &entry);
+		AddEntryIfUnderLimit16_021f6a1c((struct AddEntryList_021f6a1c*)&buf, &entry);
 		if (action->targetType == 2 || action->targetType == 1) {
 			func_ov024_021f9874(obj, &buf, 0, (unsigned char)c->id);
 			memset(&buf, 0, sizeof(buf));

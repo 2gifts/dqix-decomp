@@ -40,7 +40,7 @@ extern unsigned char data_02101b80[0x400];
 extern DispatchInfo0202cefc data_02101640;
 extern DispatchEntry0202cefc data_021016e0;
 void SetField0x48UnlessState9Or10(int);
-extern "C" int _Z26IsDispatchComplete0202d0e0v();
+int IsDispatchComplete0202d0e0();
 void InvalidateDataCacheRange(const void*, unsigned int);
 extern "C" int func_020c0290(DispatchEntry0202cefc*);
 extern "C" int func_0202cddc();
@@ -55,7 +55,7 @@ extern "C" ARM void func_0202cefc(DispatchReply0202cefc* reply) {
     }
     if (data_021015a0.state != 2) {
         data_021015a0.active = 0;
-        if (!_Z26IsDispatchComplete0202d0e0v()) data_021015a0.state = 9;
+        if (!IsDispatchComplete0202d0e0()) data_021015a0.state = 9;
         return;
     }
     if (reply->type != 4 && reply->type == 5) {
@@ -84,7 +84,7 @@ finished:
         if (found) {
             if (data_021015a0.callback) data_021015a0.callback(&data_021016e0);
             if (data_021015a0.active != 0) {
-                if (!_Z26IsDispatchComplete0202d0e0v()) data_021015a0.state = 9;
+                if (!IsDispatchComplete0202d0e0()) data_021015a0.state = 9;
                 return;
             }
         }

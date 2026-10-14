@@ -62,11 +62,11 @@ struct Action021e7890 {
 };
 
 extern "C" Res021e7890* func_ov017_021b8478(void* node);
-extern "C" void* _Z19GetActiveCombatWorkv(void);
-extern "C" Node02160094* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094* list, int index);
-extern "C" int _Z23GetElementCount02070fe4P14Struct02070fe4(Struct02070fe4* p);
+void* GetActiveCombatWork(void);
+Node02160094* GetNodeAtIndex02160094(List02160094* list, int index);
+int GetElementCount02070fe4(Struct02070fe4* p);
 Element02070f98* GetElementIfInBounds(List02070f98* list, int index);
-extern "C" void _Z18ClearCombatantSlotP9GameStatei(GameState* battleStruct, int id);
+void ClearCombatantSlot(GameState* battleStruct, int id);
 extern "C" void __clear(void* buf, int n);
 extern "C" int func_ov025_021e771c(short* ids, int count, int a, int b);
 extern "C" void func_ov000_02161c0c(void* work, int id);
@@ -93,8 +93,8 @@ extern "C" ARM int func_ov025_021e7890(int self, Action021e7890* action) {
     res = (GameRes021e7890*)func_ov017_0218b5b0();
     state = GameState::GetInstance();
     r = func_ov017_021b8478(res->sub.ptr);
-    work = _Z19GetActiveCombatWorkv();
-    node = _Z22GetNodeAtIndex02160094P12List02160094i((List02160094*)action, 0);
+    work = GetActiveCombatWork();
+    node = GetNodeAtIndex02160094((List02160094*)action, 0);
     if (node == 0) return 1;
     GameObj021e7890* unit = (GameObj021e7890*)state->GetCombatantByIndex(node->id);
     if (unit == 0) return 1;
@@ -114,7 +114,7 @@ extern "C" ARM int func_ov025_021e7890(int self, Action021e7890* action) {
         return 1;
     }
     tb = &r->tableB;
-    int count = _Z23GetElementCount02070fe4P14Struct02070fe4(&tb->list.head);
+    int count = GetElementCount02070fe4(&tb->list.head);
     for (int i = 0; i < count; i++) {
         Element02070f98* elem = GetElementIfInBounds(&tb->list, i);
         if (elem == 0) continue;
@@ -137,7 +137,7 @@ extern "C" ARM int func_ov025_021e7890(int self, Action021e7890* action) {
     func_ov000_02161c0c(work, node->id);
     for (i2 = 0; i2 < 8; i2++) {
         short id = (short)(i2 + 0xc0);
-        if (node->id != id) _Z18ClearCombatantSlotP9GameStatei(state, id);
+        if (node->id != id) ClearCombatantSlot(state, id);
     }
     func_ov000_021677fc(work);
     _Z38RunFlaglearAndSetMode02167e6c_02167e6cPh(work);

@@ -2,9 +2,9 @@
 #include "Memory/SafeAllocator.h"
 
 struct Foo0207df50;
-extern "C" ARM void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* p);
-extern "C" ARM void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" ARM void _Z24BackupPairTables0207dfacPc(char* obj);
+ARM void CopyInternalFields0207df50(struct Foo0207df50* p);
+ARM void RestorePairTables0207df90(char* obj);
+ARM void BackupPairTables0207dfac(char* obj);
 extern "C" void func_0207de48(void* p, int a, int b);
 
 struct PairEntry02054464 { int a; int b; };
@@ -19,8 +19,8 @@ extern "C" ARM int func_02054464(char* obj, SafeAllocator* alloc, char* p) {
     void* buf;
 
     alloc->Reset();
-    _Z26CopyInternalFields0207df50P11Foo0207df50((struct Foo0207df50*)p);
-    _Z25RestorePairTables0207df90Pc(p);
+    CopyInternalFields0207df50((struct Foo0207df50*)p);
+    RestorePairTables0207df90(p);
 
     for (i = 0; i < 10; i++) {
         size = data_020e7c18[i];
@@ -34,7 +34,7 @@ extern "C" ARM int func_02054464(char* obj, SafeAllocator* alloc, char* p) {
     }
 
     func_0207de48(obj + 0x168 + 0x400, 0x240, 0x20);
-    _Z24BackupPairTables0207dfacPc(p);
+    BackupPairTables0207dfac(p);
 
     buf = alloc->Allocate(0x2000);
     ((SafeAllocator*)(obj + 0x12c + 0x400))->CreateTypeA(buf, 0x2000);

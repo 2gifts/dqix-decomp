@@ -8,8 +8,8 @@ extern "C" void func_ov024_021ed8c0(void* context, int id, int recordAddress, in
 
 struct FlagInner_021da9b0 { char unk[0x14]; int flags; };
 struct FlagObj_021da9b0 { char unk[0x138]; struct FlagInner_021da9b0* inner; };
-extern "C" int _Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0(struct FlagObj_021da9b0* obj);
-extern "C" int _Z31IsCombatantFlagMask512_021eda60P10GameObject(GameObject* combatant);
+int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
+int IsCombatantFlagMask512_021eda60(GameObject* combatant);
 
 extern unsigned short data_ov024_021feb3c;
 
@@ -33,8 +33,8 @@ extern "C" ARM int func_ov024_021ee574(int* a0, int a1, int a2, int* a3, short* 
 	*a3 = 0;
 	for (int i = 0; i < count; i++) {
 		GameObject* c = GetCombatantByID(*a0, buf[i]);
-		if (c && !_Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0((struct FlagObj_021da9b0*)c) &&
-		    !_Z31IsCombatantFlagMask512_021eda60P10GameObject(c)) {
+		if (c && !IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)c) &&
+		    !IsCombatantFlagMask512_021eda60(c)) {
 			a4[*a3] = buf[i];
 			*a3 = *a3 + 1;
 		}

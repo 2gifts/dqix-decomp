@@ -8,7 +8,7 @@ extern unsigned short __attribute__((aligned(4))) data_020e8a8c[];
 #endif
 
 int TestBitInArray0x8ec(unsigned char* obj, int index);
-extern "C" int _Z19GetSlotBits0201137cPci(char* base, int id);
+int GetSlotBits0201137c(char* base, int id);
 
 // USA: func_02085cd0
 extern "C" ARM int func_02085cd0(unsigned char* actor, int mode) {
@@ -100,7 +100,7 @@ extern "C" ARM int func_02085cd0(unsigned char* actor, int mode) {
     short idx;
     for (i = 0; (idx = ids[i]) != -1; i++) {
         if (TestBitInArray0x8ec(actor, idx)) {
-            total += _Z19GetSlotBits0201137cPci((char*)bs, idx);
+            total += GetSlotBits0201137c((char*)bs, idx);
         }
     }
     return total;

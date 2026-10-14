@@ -32,12 +32,12 @@ void ClearFlag0x1(unsigned int*);
 int IsField0Null(void**);
 int IsMainBrightnessTransitionActive(struct GameResources*);
 int GetMainBrightnessTransitionState(struct GameResources*);
-extern "C" void _Z28SetActiveChildFields02040774P12Node02040774iii(struct Node02040774*, int, int, int);
-extern "C" void _Z34PropagateValueToActiveSlot02040b2cP11Obj02040b2ci(struct Obj02040b2c*, int);
-extern "C" void _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(struct Vec3_020406f8*, struct Node020406f8*);
+void SetActiveChildFields02040774(struct Node02040774*, int, int, int);
+void PropagateValueToActiveSlot02040b2c(struct Obj02040b2c*, int);
+void SelectVec3FromSources020406f8(struct Vec3_020406f8*, struct Node020406f8*);
 void SetOrClearFlag0x8(struct Struct_203cec4*, int);
 void SetField40IfPositive(struct Struct_0203fc5c*, float);
-extern "C" void _Z29DispatchOnActiveChild020409b0P12Node020409b0i(struct Node020409b0*, int);
+void DispatchOnActiveChild020409b0(struct Node020409b0*, int);
 
 // USA: func_020aeb34
 extern "C" ARM void func_020aeb34(void) {
@@ -69,8 +69,8 @@ extern "C" ARM void func_020aeb34(void) {
         if (elem->angle != 0) return;
         for (int j = 0; j < 4; j++) {
             EntryPositionState* s = (EntryPositionState*)GetField0xc02040538((S02040538*)arr[j]);
-            _Z28SetActiveChildFields02040774P12Node02040774iii((struct Node02040774*)arr[j], s->x, s->y, s->z);
-            _Z34PropagateValueToActiveSlot02040b2cP11Obj02040b2ci((struct Obj02040b2c*)arr[j], s->value);
+            SetActiveChildFields02040774((struct Node02040774*)arr[j], s->x, s->y, s->z);
+            PropagateValueToActiveSlot02040b2c((struct Obj02040b2c*)arr[j], s->value);
         }
         return;
     }
@@ -105,7 +105,7 @@ extern "C" ARM void func_020aeb34(void) {
 
         vecA.x = vecAx;
         struct Entry_203dce4* entry = arr[k];
-        _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(&sel, (struct Node020406f8*)entry);
+        SelectVec3FromSources020406f8(&sel, (struct Node020406f8*)entry);
         vecA.z = -0x970;
         vecA.y = sel.y;
 
@@ -113,7 +113,7 @@ extern "C" ARM void func_020aeb34(void) {
 
         if ((*(void**)((char*)entry + 0x14)) != NULL) SetOrClearFlag0x8((struct Struct_203cec4*)(*(void**)((char*)entry + 0x14)), 1);
         if ((*(void**)((char*)entry + 0x14)) != NULL) SetField40IfPositive((struct Struct_0203fc5c*)(*(void**)((char*)entry + 0x14)), 0.8f);
-        _Z29DispatchOnActiveChild020409b0P12Node020409b0i((struct Node020409b0*)entry, (int)&out);
-        _Z28SetActiveChildFields02040774P12Node02040774iii((struct Node02040774*)entry, out.x, out.y, out.z);
+        DispatchOnActiveChild020409b0((struct Node020409b0*)entry, (int)&out);
+        SetActiveChildFields02040774((struct Node02040774*)entry, out.x, out.y, out.z);
     }
 }

@@ -18,11 +18,11 @@ struct Display02066a6c {
     char pad19c5[0x17]; unsigned char table;
     char pad19dd[3]; Holder02042c24 holder;
 };
-extern "C" void _Z25LoadStateBytePair0206b804PcPiS0_(char*, int*, int*);
+void LoadStateBytePair0206b804(char*, int*, int*);
 void GetField440XY(Field440XYObj*, short*, short*);
-extern "C" void _Z22SetSubstructXY02042c24P14Holder02042c24ii(Holder02042c24*, int, int);
+void SetSubstructXY02042c24(Holder02042c24*, int, int);
 void EmitScaledField0x440(void*, int, int);
-extern "C" int _Z24GetWordFromTable02042648i(int);
+int GetWordFromTable02042648(int);
 void SetIntIntShortAt0xc(SetIntIntShortAt0xcStruct*, int, int, short);
 extern "C" void func_020417b0(SetIntIntShortAt0xcStruct*, int, int, int);
 extern "C" void func_020654b8(Display02066a6c*, void*, SetIntIntShortAt0xcStruct*, int, int, int);
@@ -45,7 +45,7 @@ extern "C" ARM void func_02066a6c(Display02066a6c* obj, int absolute) {
     if (text) {
         int offsetX, offsetY;
         short x, y;
-        _Z25LoadStateBytePair0206b804PcPiS0_((char*)obj, &offsetX, &offsetY);
+        LoadStateBytePair0206b804((char*)obj, &offsetX, &offsetY);
         GetField440XY((Field440XYObj*)holder, &x, &y);
         y -= 19;
         holder->transform = &obj->active;
@@ -54,15 +54,15 @@ extern "C" ARM void func_02066a6c(Display02066a6c* obj, int absolute) {
             holder->transform->scaleY = 4096;
         }
         if (holder->transform) holder->transform->mode = 2;
-        if (absolute) _Z22SetSubstructXY02042c24P14Holder02042c24ii(holder, x, y);
+        if (absolute) SetSubstructXY02042c24(holder, x, y);
         else {
-            _Z22SetSubstructXY02042c24P14Holder02042c24ii(holder, (short)(x + offsetX), (short)(y + offsetY));
+            SetSubstructXY02042c24(holder, (short)(x + offsetX), (short)(y + offsetY));
             EmitScaledField0x440(holder, 1, 0);
         }
         short remainder = 8 - (obj->width & 7);
         x += (remainder + 18) >> 1;
         y += 5;
-        unsigned char fontWidth = _Z24GetWordFromTable02042648i(obj->table);
+        unsigned char fontWidth = GetWordFromTable02042648(obj->table);
         for (i = 0; i < count; i++) {
             spacing = fontWidth + 1;
             unsigned short code = text[i];

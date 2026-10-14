@@ -12,30 +12,30 @@ enum { kRegion960 = 0x960 };
 
 #include "GameState/GameState.h"
 
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
+void* GetGlobalField0x1c020421a0(void);
 extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(void*, int, int);
 extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
 extern "C" void func_ov003_02159250(void*, void*);
 extern "C" void _Z25AppendFieldTwice_02159290Pvii(void*, unsigned short, int);
 extern "C" void _Z27SetFieldB0AndUpdate0205dee8P11Obj0205dee8i(void*, int);
-extern "C" void _Z21ResetAndApply0215be20Pv(void*);
-extern "C" int _Z24StepStateMachine0215bd34Pv(void*);
+void ResetAndApply0215be20(void*);
+int StepStateMachine0215bd34(void*);
 extern "C" void func_ov003_0215c01c(void*, int, int);
 extern "C" void* memset(void*, int, unsigned int);
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, int);
-extern "C" unsigned char* _Z15GetFieldAt0x150Ph(unsigned char*);
+unsigned char* GetFieldAt0x150(unsigned char*);
 extern "C" int _s32_div_f(int, int);
 extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(void*, int, int);
-extern "C" void _Z14SetByteInRangePhih(unsigned char*, int, unsigned char);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void*, int);
+void SetByteInRange(unsigned char*, int, unsigned char);
+void InitObjFromCombatantId020e4bf4(void*, int);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, char*);
 extern "C" int func_ov003_0215bf18(void*, int);
 extern "C" int _Z26AddCappedFieldF6c_0215b580ii(void*, int);
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void*, int);
-extern "C" int _Z25IsAnimationActive0209ca2cPv(void*);
+int IsAnimationActive0209ca2c(void*);
 extern "C" void func_02048150(void*, int, int);
 extern "C" void _Z18TryClearFlags0x130Pht(void*, unsigned short);
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState*);
+void* GetPtrField0x2a04(GameState*);
 extern "C" void func_0207c378(void*, short, int, int);
 extern "C" void func_02052d7c(void*, signed char, int);
 extern "C" void* func_0202ae18(void);
@@ -73,7 +73,7 @@ struct NameBuf0215a740 {
 extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
     unsigned char* s = (unsigned char*)self;
     GameState* game = GameState::GetInstance();
-    unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
+    unsigned char* g = (unsigned char*)GetGlobalField0x1c020421a0();
 
     if (*(int*)(g + kRegion9a0) == 3) {
         *(unsigned char*)(g + 0x1000 + kRegion9ae) = 0;
@@ -94,13 +94,13 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
         if (*(int*)(g + kRegion9a0) != 3) return;
         _Z27SetFieldB0AndUpdate0205dee8P11Obj0205dee8i(s + 0xf4, 2);
         *(unsigned char*)(s + 0x585) = 0;
-        _Z21ResetAndApply0215be20Pv(self);
+        ResetAndApply0215be20(self);
         *(unsigned char*)(s + 0x59f) = *(unsigned char*)(s + 0x59f) | 4;
         *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
     }
 
     if (state == 2) {
-        int r = _Z24StepStateMachine0215bd34Pv(self);
+        int r = StepStateMachine0215bd34(self);
         if (r == -1) return;
         if (r == -2) {
             func_ov003_0215c01c(self, 1, 0);
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
             unsigned char* combatant =
                 (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(game,
                     *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591));
-            unsigned char* sub = _Z15GetFieldAt0x150Ph(combatant);
+            unsigned char* sub = GetFieldAt0x150(combatant);
             int x = *(int*)(sub + 0x950);
             *(int*)(s + 0x5a4) = *(int*)(combatant + 0x134);
             *(int*)(s + 0x5a8) = *(int*)(*(int**)(combatant + 0x130));
@@ -143,14 +143,14 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
             }
             if (flag != 0) {
                 _Z17StoreInArray0x8b0P11StoreStructii(g, 0, *(int*)(s + 0x5ac));
-                _Z14SetByteInRangePhih(g, 0, 0);
+                SetByteInRange(g, 0, 0);
                 memset(*(void**)(s + 0x7c), 0, kRegion960);
                 _Z25AppendFieldTwice_02159290Pvii(self, 0x425, 0x42e);
                 func_ov003_02159250(self, *(void**)(s + 0x7c));
                 *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
             } else {
                 NameBuf0215a740 nb;
-                _Z30InitObjFromCombatantId020e4bf4Pvi(&nb,
+                InitObjFromCombatantId020e4bf4(&nb,
                     *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591));
                 *(void**)(g + 0x10) = &nb;
                 _Z22SetIndexedName02046574P11Obj02046574iPc((void*)g, 0, *(char**)(s + 0x5a4));
@@ -183,7 +183,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
             } else {
                 *(unsigned char*)(s + 0x59f) = *(unsigned char*)(s + 0x59f) | 0x10;
                 NameBuf0215a740 nb;
-                _Z30InitObjFromCombatantId020e4bf4Pvi(&nb,
+                InitObjFromCombatantId020e4bf4(&nb,
                     *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591));
                 *(void**)(g + 0x10) = &nb;
                 func_ov003_02159250(self,
@@ -206,7 +206,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
         if (*(int*)(g + kRegion9a0) == 3) {
             *(unsigned char*)(g + 0x1000 + kRegion9ae) = 0;
         }
-        if (_Z25IsAnimationActive0209ca2cPv(&data_02109bf4) != 0) return;
+        if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) return;
         int cid = *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591);
         unsigned char* combatant = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(game, cid);
         switch (p2) {
@@ -223,7 +223,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
             break;
         case 0x406 + 20: {
             _Z18TryClearFlags0x130Pht(combatant, 4);
-            unsigned char* c4 = (unsigned char*)_Z17GetPtrField0x2a04P9GameState(game);
+            unsigned char* c4 = (unsigned char*)GetPtrField0x2a04(game);
             int flag = 0;
             for (int i = 0; i < 0xb; i++) {
                 if (i == 2 || i == 3 || i == 4) continue;

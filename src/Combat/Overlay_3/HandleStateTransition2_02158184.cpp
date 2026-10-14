@@ -8,8 +8,7 @@ enum { kRegionValue1F9_1F5 = 0x1f9 };
 enum { kRegionValue1F8_1F4 = 0x1f8 };
 #endif
 
-
-extern "C" int _Z21IsFieldEq3At_021538e0Pv(void*);
+int IsFieldEq3At_021538e0(void*);
 void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
@@ -38,7 +37,7 @@ ARM void HandleStateTransition2_02158184(void* self) {
         return;
     }
     if (state != 1) return;
-    if (_Z21IsFieldEq3At_021538e0Pv(p4) == 0) return;
+    if (IsFieldEq3At_021538e0(p4) == 0) return;
 
     ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 1);
     SetCombatModeFromCase020dc2d0(0);

@@ -14,7 +14,7 @@ struct Unit021e1d54 {
 
 int GetSubstructByte0x1c(unsigned char* obj);
 void SetSubstructByte0x1d(unsigned char* obj, unsigned char value);
-extern "C" void _Z27ClearMatchingBytes_021e169cPhi(unsigned char* p, int val);
+void ClearMatchingBytes_021e169c(unsigned char* p, int val);
 extern "C" void func_ov000_0216f82c(Neighbors021e1d54* out, const int* cell);
 extern "C" void func_ov025_021e13e0(unsigned char* grid, Unit021e1d54* unit);
 extern "C" void __clear(void* p, int n);
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov025_021e1d54(Unit021e1d54* unit, unsigned char* grid)
     }
     if (bestCell >= 0x51) return;
     if (freeCount < best || unit->force != 0) {
-        _Z27ClearMatchingBytes_021e169cPhi(grid, unit->marker);
+        ClearMatchingBytes_021e169c(grid, unit->marker);
         if (bestCell < 0x51) {
             func_ov025_021e13e0(grid, unit);
         }

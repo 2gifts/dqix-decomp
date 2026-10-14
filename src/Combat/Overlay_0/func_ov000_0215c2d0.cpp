@@ -45,11 +45,11 @@ struct Battle {
 };
 
 extern "C" ActionEntry* _Z22GetNodeAtIndex02160094P12List02160094i(ActionNode* list, int index);
-extern "C" ActionNode* _Z25GetWorkArrayEntry0215e9d8Pv(void* self);
-extern "C" ActionEntry* _Z28GetTableEntry0x8e00Bound0x48Pv(void* self);
-extern "C" TargetNode* _Z28GetTableEntry0x8e01Bound0x88Pv(void* self);
-extern "C" void _Z18InitStruct02160030Pv(void* obj);
-extern "C" void _Z19ResetStruct02157cdcPv(void* obj);
+ActionNode* GetWorkArrayEntry0215e9d8(void* self);
+ActionEntry* GetTableEntry0x8e00Bound0x48(void* self);
+TargetNode* GetTableEntry0x8e01Bound0x88(void* self);
+void InitStruct02160030(void* obj);
+void ResetStruct02157cdc(void* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int n);
 extern "C" void _Z18AppendNode02160068P11Obj02160068P12Node02160068(ActionNode* obj, ActionEntry* node);
@@ -58,7 +58,7 @@ extern "C" ResultEntry* func_ov000_0215e958(void* self);
 extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(
     void* self, ResultEntry* out, GameObject* combatant, short valC, short valA, short valB,
     int wordC, int wordD, unsigned char byteE);
-extern "C" void _Z32AppendToChainAndIncCount0215ffc4PvS_i(void* node, void* entry, int v);
+void AppendToChainAndIncCount0215ffc4(void* node, void* entry, int v);
 
 static inline GameObject* GetCombatant(int id) {
     GameState* gs = GameState::GetInstance();
@@ -83,23 +83,23 @@ extern "C" ARM void func_ov000_0215c2d0(Battle* self, ActionNode* src) {
         if (hits <= 0) {
             continue;
         }
-        ActionNode* work = _Z25GetWorkArrayEntry0215e9d8Pv(self);
+        ActionNode* work = GetWorkArrayEntry0215e9d8(self);
         if (work == 0) {
             continue;
         }
-        _Z18InitStruct02160030Pv(work);
-        ActionEntry* entry = _Z28GetTableEntry0x8e00Bound0x48Pv(self);
+        InitStruct02160030(work);
+        ActionEntry* entry = GetTableEntry0x8e00Bound0x48(self);
         if (entry == 0) {
             continue;
         }
         memset(entry, 0, 0x30);
         entry->f1c = -1;
         entry->f30 = 0;
-        TargetNode* tn = _Z28GetTableEntry0x8e01Bound0x88Pv(self);
+        TargetNode* tn = GetTableEntry0x8e01Bound0x88(self);
         if (tn == 0) {
             continue;
         }
-        _Z19ResetStruct02157cdcPv(tn);
+        ResetStruct02157cdc(tn);
         ResultEntry* out = func_ov000_0215e958(self);
         if (out == 0) {
             continue;
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov000_0215c2d0(Battle* self, ActionNode* src) {
             self, out, c, 0, CurrHP(c), CurrMP(c), 0, 0, 0);
         tn->id = e->id;
         tn->active = 1;
-        _Z32AppendToChainAndIncCount0215ffc4PvS_i(tn, out, 0);
+        AppendToChainAndIncCount0215ffc4(tn, out, 0);
         work->flags |= 4;
         _Z18AppendNode02160068P11Obj02160068P12Node02160068(work, entry);
         _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(work, tn);

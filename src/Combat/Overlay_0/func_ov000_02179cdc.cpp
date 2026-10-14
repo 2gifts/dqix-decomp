@@ -69,27 +69,27 @@ struct PartyMember {
 #endif
 extern unsigned short data_ov000_02183510[];
 
-extern "C" StoreStruct* _Z26GetGlobalField0x1c020421a0v(void);
+StoreStruct* GetGlobalField0x1c020421a0(void);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" PartyMember* _ZN9GameState21GetPartyMemberByIndexEi(GameState* gs, int idx);
 extern "C" SkillEntry* func_ov000_02170cf8(MenuEntry* entry, int key);
-extern "C" GameObject* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int idx);
+GameObject* GetCombatantWithFlag0x100(GameState* gs, int idx);
 #if defined(jpn)
 #define _Z35NotifyLocalizedResourceLoad020dd040iPc func_020dea34
 #endif
 extern "C" void _Z35NotifyLocalizedResourceLoad020dd040iPc(int id, char* buf);
 extern "C" void func_02046608(StoreStruct* store, int kind, char* src, char* dst, int a, int b, int c);
 extern "C" void func_02046380(StoreStruct* store);
-extern "C" int _Z21IsFlag0x18Bit0x200SetP10GameObject(GameObject* obj);
+int IsFlag0x18Bit0x200Set(GameObject* obj);
 extern "C" int _Z22AdjustValueByFieldFlagPvj(GameObject* obj, unsigned int flag);
-extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(StoreStruct* store, int index, int value);
-extern "C" const char* _Z28CallFunc020e0434With02153694i(int key);
-extern "C" void _Z20AppendString02042058PcPKc(char* dst, const char* src);
+void StoreInArray0x8b0(StoreStruct* store, int index, int value);
+const char* CallFunc020e0434With02153694(int key);
+void AppendString02042058(char* dst, const char* src);
 extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(ElemList* list, int key);
 #if defined(jpn)
 extern "C" void func_0205d304(ElemList* list, char* text, int a, int b, int c, int d, int e);
-extern "C" void _Z14SetByteInRangePhih(unsigned char*, int, unsigned char);
-extern "C" void _Z14SetByteAtIndexPhih(unsigned char*, int, unsigned char);
+void SetByteInRange(unsigned char*, int, unsigned char);
+void SetByteAtIndex(unsigned char*, int, unsigned char);
 extern char data_ov000_02185169[];
 #else
 extern "C" void func_0205d304(ElemList* list, char* text, int a, int b, int c, int d, int e, int f);
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov000_02179cdc(BattleMenu* menu, MenuEntry* entry) {
     if (entry == 0) {
         return;
     }
-    char* buf = _Z26GetGlobalField0x1c020421a0v()->textBuffer;
+    char* buf = GetGlobalField0x1c020421a0()->textBuffer;
 #if defined(jpn)
     memset(buf, 0, 0x800);
 #else
@@ -118,7 +118,7 @@ extern "C" ARM void func_ov000_02179cdc(BattleMenu* menu, MenuEntry* entry) {
         return;
     }
     SkillEntry* skill = func_ov000_02170cf8(entry, data_ov000_02183510[member->stats->vocation]);
-    GameObject* flagged = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, entry->combatantId);
+    GameObject* flagged = GetCombatantWithFlag0x100(gs, entry->combatantId);
     if (flagged == 0) {
         return;
     }
@@ -129,29 +129,29 @@ extern "C" ARM void func_ov000_02179cdc(BattleMenu* menu, MenuEntry* entry) {
 #if defined(jpn)
     msg = buf;
 #else
-    func_02046608(_Z26GetGlobalField0x1c020421a0v(), 10, buf, text, 0x72, 0, 0);
+    func_02046608(GetGlobalField0x1c020421a0(), 10, buf, text, 0x72, 0, 0);
     msg = text;
 #endif
-    store = _Z26GetGlobalField0x1c020421a0v();
+    store = GetGlobalField0x1c020421a0();
     func_02046380(store);
     int value;
-    if (_Z21IsFlag0x18Bit0x200SetP10GameObject(combatant) != 0) {
+    if (IsFlag0x18Bit0x200Set(combatant) != 0) {
         value = 0;
     } else if (skill->adjustFlag >= 0xff) {
         value = entry->value;
     } else {
         value = _Z22AdjustValueByFieldFlagPvj(flagged, skill->adjustFlag);
     }
-    _Z17StoreInArray0x8b0P11StoreStructii(store, 0, value);
-    _Z17StoreInArray0x8b0P11StoreStructii(store, 1, entry->value);
+    StoreInArray0x8b0(store, 0, value);
+    StoreInArray0x8b0(store, 1, entry->value);
 #if defined(jpn)
-    _Z14SetByteInRangePhih((unsigned char*)store, 0, 3);
-    _Z14SetByteInRangePhih((unsigned char*)store, 1, 3);
-    _Z14SetByteAtIndexPhih((unsigned char*)store, 0, 1);
-    _Z14SetByteAtIndexPhih((unsigned char*)store, 1, 1);
-    _Z20AppendString02042058PcPKc(msg, data_ov000_02185169);
+    SetByteInRange((unsigned char*)store, 0, 3);
+    SetByteInRange((unsigned char*)store, 1, 3);
+    SetByteAtIndex((unsigned char*)store, 0, 1);
+    SetByteAtIndex((unsigned char*)store, 1, 1);
+    AppendString02042058(msg, data_ov000_02185169);
 #else
-    _Z20AppendString02042058PcPKc(msg, _Z28CallFunc020e0434With02153694i(0x3ec));
+    AppendString02042058(msg, CallFunc020e0434With02153694(0x3ec));
 #endif
     ElemList* list = &menu->elements;
     if (_Z23FindElementByC40205d81cP15Struct_0205d81ci(list, 0x16) != 0) {

@@ -28,9 +28,9 @@ struct Summary020dd8b4 {
 };
 char* GetFieldAt0x150(unsigned char*);
 int AccumulateSlotBits20To29AsTenths(char*);
-extern "C" int _Z23AccumulateCharm02084ee8Pv(void*);
-extern "C" int _Z30AccumulateMagicalMight02084f58Pv(void*);
-extern "C" int _Z32AccumulateMagicalMending02084e78Pv(void*);
+int AccumulateCharm02084ee8(void*);
+int AccumulateMagicalMight02084f58(void*);
+int AccumulateMagicalMending02084e78(void*);
 extern "C" void func_02083e28(char*, Details020dd8b4*);
 static inline int IsPartyMember020dd8b4(int id) { return id >= 0 && id <= 3; }
 // USA: func_020dd8b4
@@ -45,9 +45,9 @@ extern "C" ARM void func_020dd8b4(Summary020dd8b4* obj, int id, int arg, unsigne
     obj->attack = combatant->stats->primaryStats.attack;
     obj->defense = combatant->stats->primaryStats.defense;
     obj->slotBonus = AccumulateSlotBits20To29AsTenths(data);
-    obj->charmBonus = _Z23AccumulateCharm02084ee8Pv(data);
-    obj->mightBonus = _Z30AccumulateMagicalMight02084f58Pv(data);
-    obj->mendingBonus = _Z32AccumulateMagicalMending02084e78Pv(data);
+    obj->charmBonus = AccumulateCharm02084ee8(data);
+    obj->mightBonus = AccumulateMagicalMight02084f58(data);
+    obj->mendingBonus = AccumulateMagicalMending02084e78(data);
     obj->intrinsicAgility = combatant->intrinsic->agility;
     obj->agility = combatant->stats->primaryStats.agility;
     obj->might = combatant->stats->primaryStats.magicalMight;

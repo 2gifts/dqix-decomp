@@ -15,15 +15,15 @@ extern "C" void _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(void*, 
 extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*, int, int);
 extern "C" int DisableSubObjVRAMBanks();
 extern "C" int DisableSubBGVRAMBanks();
-extern "C" void _Z12SetSubBgModej(unsigned int);
+void SetSubBgMode(unsigned int);
 extern "C" void MapVRAMBanksToSubObj(unsigned short value);
 extern "C" void MapVRAMBanksToSubBG(int);
 extern "C" void func_ov020_0218cd64(int, int, int, int, int);
 extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv();
-extern "C" void _Z18LoadFileIntoMemoryPKcPvPj(const char*, void*, unsigned int*);
+void LoadFileIntoMemory(const char*, void*, unsigned int*);
 extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void*);
 extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, int*);
-extern "C" void _Z21DispatchByTag0204b2e0PvPc(void*, char*);
+void DispatchByTag0204b2e0(void*, char*);
 extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(void*, char*);
 extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(void*, void*);
 extern "C" void _Z23ResetRecordList0204afb4P12List0204afb4(void*);
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov020_0218d32c(struct SetupContext0218d32c* self, int m
 
     DisableSubObjVRAMBanks();
     DisableSubBGVRAMBanks();
-    _Z12SetSubBgModej(0);
+    SetSubBgMode(0);
 
     volatile unsigned int* reg1000 = (volatile unsigned int*)0x4001000;
     *reg1000 = (*reg1000 & ~0x1f00) | 0x100;
@@ -104,9 +104,9 @@ extern "C" ARM void func_ov020_0218d32c(struct SetupContext0218d32c* self, int m
     _ZN16BackgroundLoader13AddLockGlobalEv();
 
     if (mode == 1) {
-        _Z18LoadFileIntoMemoryPKcPvPj((const char*)&data_ov020_0218dce2, (void*)&data_0211e33c, &outLen);
+        LoadFileIntoMemory((const char*)&data_ov020_0218dce2, (void*)&data_0211e33c, &outLen);
     } else {
-        _Z18LoadFileIntoMemoryPKcPvPj((const char*)&data_ov020_0218dcf8, (void*)&data_0211e33c, &outLen);
+        LoadFileIntoMemory((const char*)&data_ov020_0218dcf8, (void*)&data_0211e33c, &outLen);
     }
 
     int count = _Z18CountActiveEntriesP19ActiveEntry02046900((void*)&data_0211e33c);
@@ -123,7 +123,7 @@ extern "C" ARM void func_ov020_0218d32c(struct SetupContext0218d32c* self, int m
     _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(list3, 0, 0);
 
     for (int j = 0; j < 3; j++) {
-        _Z21DispatchByTag0204b2e0PvPc(list3, resultsArray[j]);
+        DispatchByTag0204b2e0(list3, resultsArray[j]);
         _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(list3, resultsArray[j]);
     }
 

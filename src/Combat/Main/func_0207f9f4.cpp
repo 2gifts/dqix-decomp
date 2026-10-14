@@ -6,12 +6,12 @@ struct StreamHeader;
 struct List020727d8;
 struct ActiveEntry02046900;
 
-extern "C" void _Z23ResetListHeader020727d8P12List020727d8(List020727d8* list);
+void ResetListHeader020727d8(List020727d8* list);
 extern "C" void func_020728ac(void* list, void* alloc, void* buffer, int length, int a, int b, int c);
 extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void* entry);
 extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void* rec, int index, void** out, int* outSize);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z24InitStreamAndRun0207f524PvS_P12StreamHeaderi(void* a, void* b, StreamHeader* c, int d);
+char* GetGlobalField0x1c020421a0();
+void InitStreamAndRun0207f524(void* a, void* b, StreamHeader* c, int d);
 extern "C" void _Z32LoadEntryArrayFromStream0207ef74P18EntryArray0207efdcP13SafeAllocatorP12StreamHeaderi(
     void* a, void* b, StreamHeader* c, int d);
 
@@ -55,13 +55,13 @@ extern "C" ARM int func_0207f9f4(Menu0207f9f4* self) {
             unsigned int size;
             loader->GetLoadedFileByID(ids[0], &file, &size);
             self->field0 = self->field14->Allocate(8);
-            _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)self->field0);
+            ResetListHeader020727d8((List020727d8*)self->field0);
             if (file != 0) {
                 func_020728ac(self->field0, self->field14, file, size, 0, 0, 0);
             }
             loader->GetLoadedFileByID(ids[1], &file, &size);
             if (file != 0) {
-                _Z24InitStreamAndRun0207f524PvS_P12StreamHeaderi(self->sub4, self->field14, (StreamHeader*)file, size);
+                InitStreamAndRun0207f524(self->sub4, self->field14, (StreamHeader*)file, size);
             }
             loader->GetLoadedFileByID(ids[2], &file, &size);
             if (file != 0) {
@@ -75,9 +75,9 @@ extern "C" ARM int func_0207f9f4(Menu0207f9f4* self) {
                 ids++;
             }
     #ifdef jpn
-        self->field18 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x28);
+        self->field18 = *(int*)(GetGlobalField0x1c020421a0() + 0x28);
 #else
-        self->field18 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+        self->field18 = *(int*)(GetGlobalField0x1c020421a0() + 0x5c);
 #endif
             return 0;
         }
@@ -98,17 +98,17 @@ extern "C" ARM int func_0207f9f4(Menu0207f9f4* self) {
             recs[i] = _Z17FindRecordByIndexP11Rec020467f0iPPvPi(file, i, &out, &outs[i]);
         }
         self->field0 = self->field14->Allocate(8);
-        _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)self->field0);
+        ResetListHeader020727d8((List020727d8*)self->field0);
         func_020728ac(self->field0, self->field14, recs[0], outs[0], 0, 0, 0);
-        _Z24InitStreamAndRun0207f524PvS_P12StreamHeaderi(self->sub4, self->field14, (StreamHeader*)recs[1], outs[1]);
+        InitStreamAndRun0207f524(self->sub4, self->field14, (StreamHeader*)recs[1], outs[1]);
         _Z32LoadEntryArrayFromStream0207ef74P18EntryArray0207efdcP13SafeAllocatorP12StreamHeaderi(
             self->arrC, self->field14, (StreamHeader*)recs[2], outs[2]);
         loader->RemoveTask(self->field1c);
         self->field1c = -1;
 #ifdef jpn
-        self->field18 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x28);
+        self->field18 = *(int*)(GetGlobalField0x1c020421a0() + 0x28);
 #else
-        self->field18 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+        self->field18 = *(int*)(GetGlobalField0x1c020421a0() + 0x5c);
 #endif
         return 0;
     }

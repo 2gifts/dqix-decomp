@@ -18,7 +18,7 @@ struct SkillSortEntry02187a58 {
 };
 extern "C" SkillEntry02187a58* func_0208e934(void* list, int kind, int index);
 extern "C" SkillEntry02187a58* func_0208e97c(void* list, int id);
-extern "C" int _Z20GetTableByte020dd11cjj(unsigned int, unsigned int);
+int GetTableByte020dd11c(unsigned int, unsigned int);
 int GetFieldAt0x150(unsigned char*);
 struct TableA68;
 void* FindEntryByKey(TableA68*, int);
@@ -40,7 +40,7 @@ extern "C" ARM void func_ov013_02187a58(void* self, void* canvas) {
     int palette;
     unsigned char* stats = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
     if (!stats) return;
-    int kind = _Z20GetTableByte020dd11cjj(*(unsigned int*)(stats + 0x8b8) & 0xff, menu[0x54]);
+    int kind = GetTableByte020dd11c(*(unsigned int*)(stats + 0x8b8) & 0xff, menu[0x54]);
     int availablePoints = (stats + kind)[0x464];
     int y = 30;
     const char* title = (const char*)FindEntryByKey((TableA68*)(menu + 4), kind);
@@ -106,12 +106,12 @@ struct List0208e024;
 struct List0208e06c;
 struct TableA68;
 
-extern "C" ARM struct Node02187a58* _Z25FindNthNodeByKind0208e024P12List0208e024ii(struct List0208e024* list, int kind, int index);
-extern "C" ARM struct Node02187a58* _Z20FindNodeById0208e06cP12List0208e06ci(struct List0208e06c* list, int id);
+ARM struct Node02187a58* FindNthNodeByKind0208e024(struct List0208e024* list, int kind, int index);
+ARM struct Node02187a58* FindNodeById0208e06c(struct List0208e06c* list, int id);
 ARM void* FindEntryByKey(struct TableA68* table, int key);
-extern "C" ARM int _Z20GetTableByte020dd11cjj(unsigned int a, unsigned int b);
+ARM int GetTableByte020dd11c(unsigned int a, unsigned int b);
 int GetFieldAt0x150(unsigned char* obj);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
+void* GetGlobalField0x1c020421a0(void);
 
 extern "C" void __clear(void* buf, int n);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
@@ -150,7 +150,7 @@ extern "C" ARM void func_ov013_02187a58(void* self, void* ctx) {
         return;
     }
 
-    int kind = _Z20GetTableByte020dd11cjj(*(unsigned int*)(field + 0x950) & 0xff, obj[0x68]);
+    int kind = GetTableByte020dd11c(*(unsigned int*)(field + 0x950) & 0xff, obj[0x68]);
     int cap = (field + kind)[0x464];
     int y = 0x1e;
     void* label = FindEntryByKey((struct TableA68*)(obj + 4), kind);
@@ -168,7 +168,7 @@ extern "C" ARM void func_ov013_02187a58(void* self, void* ctx) {
     memset((void*)entries, (int)(0), (unsigned int)(0x50));
     for (unsigned char i = 0; i < 10; i++) {
         struct Entry02187a58* e = &entries[i];
-        struct Node02187a58* n = _Z25FindNthNodeByKind0208e024P12List0208e024ii((struct List0208e024*)(obj + 0xc), kind, i);
+        struct Node02187a58* n = FindNthNodeByKind0208e024((struct List0208e024*)(obj + 0xc), kind, i);
         if (n != 0) {
             e->id = n->id;
             e->weight = _ffltu(n->level);
@@ -177,7 +177,7 @@ extern "C" ARM void func_ov013_02187a58(void* self, void* ctx) {
     func_020749ac(entries, 0, 9, 0);
 
     struct Node02187a58* first =
-        _Z20FindNodeById0208e06cP12List0208e06ci((struct List0208e06c*)(obj + 0xc), (short)entries[0].id);
+        FindNodeById0208e06c((struct List0208e06c*)(obj + 0xc), (short)entries[0].id);
     int k = 0;
     while (data_ov013_02187dc8[k] >= 0) {
         if (data_ov013_02187dc8[k] == first->kind) {
@@ -190,7 +190,7 @@ extern "C" ARM void func_ov013_02187a58(void* self, void* ctx) {
     for (unsigned char j = 0; j < 10; j++) {
         palette = 3;
         struct Node02187a58* n =
-            _Z20FindNodeById0208e06cP12List0208e06ci((struct List0208e06c*)(obj + 0xc), (short)entries[j].id);
+            FindNodeById0208e06c((struct List0208e06c*)(obj + 0xc), (short)entries[j].id);
         if (n != 0) {
             int level = n->level;
             if (cap >= level) {
@@ -203,7 +203,7 @@ extern "C" ARM void func_ov013_02187a58(void* self, void* ctx) {
 
             __clear(rawBuf, 0x100);
             __clear(nameBuf, 0x100);
-            func_02046608(_Z26GetGlobalField0x1c020421a0v(), 0xa, n->field4, rawBuf, 0x100, 0, 0);
+            func_02046608(GetGlobalField0x1c020421a0(), 0xa, n->field4, rawBuf, 0x100, 0, 0);
             func_020e4864(rawBuf, nameBuf, 1, 0, 0, 0);
 
             if (n->high != 0 && *(signed char*)(obj + 0x6a) >= 0) {

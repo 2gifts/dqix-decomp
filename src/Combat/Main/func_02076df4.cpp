@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 struct U16Field0x6_020375f8 { char unk[0x6]; unsigned short field; };
 extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
@@ -19,7 +18,7 @@ unsigned short FindAndCacheListIndex(struct Obj02079040* obj, unsigned char* out
 
 extern "C" unsigned short func_02078e60(void* obj, char* out);
 
-extern "C" int _Z18TrySetMode02076cccPvi(void*, int);
+int TrySetMode02076ccc(void*, int);
 
 struct Actor02076df4 {
     char pad0[0x134];
@@ -87,22 +86,22 @@ extern "C" ARM void func_02076df4(struct Actor02076df4* obj) {
             obj->field164 = func_02078e60((void*)obj, (char*)&localByte);
         }
         if (flag40 == 0 && localByte == 0) {
-            _Z18TrySetMode02076cccPvi(obj, 2);
+            TrySetMode02076ccc(obj, 2);
             return;
         }
         if ((oldField164 == obj->field164 && flag40 == 0) || localByte != 0) {
-            _Z18TrySetMode02076cccPvi(obj, 1);
+            TrySetMode02076ccc(obj, 1);
         } else {
-            _Z18TrySetMode02076cccPvi(obj, 2);
+            TrySetMode02076ccc(obj, 2);
         }
         return;
     case 2:
         obj->field17d |= 0x40;
         obj->field164 = func_02078e60((void*)obj, (char*)&localByte);
         if (oldField164 == obj->field164 && flag40 == 0) {
-            _Z18TrySetMode02076cccPvi(obj, 1);
+            TrySetMode02076ccc(obj, 1);
         } else {
-            _Z18TrySetMode02076cccPvi(obj, 3);
+            TrySetMode02076ccc(obj, 3);
         }
         return;
     }

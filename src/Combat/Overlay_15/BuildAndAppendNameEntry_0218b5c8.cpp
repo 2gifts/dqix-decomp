@@ -21,7 +21,7 @@ struct List0218b9d4 {
     int pad4;
     int count;
 };
-extern "C" void _Z19AppendEntry0218b9d4P12List0218b9d4P13Entry0218b9d4(struct List0218b9d4* list, struct Entry0218b9d4* src);
+void AppendEntry0218b9d4(struct List0218b9d4* list, struct Entry0218b9d4* src);
 
 extern AllocatorUnion data_02114e20;
 extern struct List0218b9d4* data_ov015_02194560;
@@ -61,6 +61,6 @@ extern "C" ARM int func_ov015_0218b5c8(char* obj) {
     entry.c = (unsigned short)v1;
     entry.d = (unsigned char)v2;
     entry.e = (unsigned char)v3;
-    _Z19AppendEntry0218b9d4P12List0218b9d4P13Entry0218b9d4(data_ov015_02194560, &entry);
+    AppendEntry0218b9d4(data_ov015_02194560, &entry);
     return 1;
 }

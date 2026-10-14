@@ -3,13 +3,13 @@
 
 struct Bytes02033b88;
 void ClearSubstructFlag0x100(unsigned char*);
-extern "C" void _Z23ClearStateFlags0203400cPh(unsigned char*);
+void ClearStateFlags0203400c(unsigned char*);
 void ClearFlagBit(unsigned char* base, int bit);
 extern "C" int func_ov000_02159f18(void* unused, unsigned long long bits, unsigned int bit);
 void SetByte0xbeShiftPrev(Bytes02033b88* obj, int v);
 void SetBits0x40000AndFlag0x2(unsigned char*);
 void SetSubstructFlag0x100(unsigned char*);
-extern "C" void _Z26ResetCombatantSlot020d7334Phi(unsigned char*, int);
+void ResetCombatantSlot020d7334(unsigned char*, int);
 extern "C" void func_020d6f9c(void* param0, int combatantId, int reason);
 
 extern const char data_ov000_021838d8[];
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov000_02162dc4(Battle02162dc4* self, Combatant02162dc4*
     if (actor == NULL || (slots = self->slots) == NULL) return;
     id = actor->id;
     ClearSubstructFlag0x100((unsigned char*)actor);
-    _Z23ClearStateFlags0203400cPh((unsigned char*)actor);
+    ClearStateFlags0203400c((unsigned char*)actor);
     if (flags & 1) {
         ClearFlagBit(slots, id);
         return;
@@ -130,7 +130,7 @@ extern "C" ARM void func_ov000_02162dc4(Battle02162dc4* self, Combatant02162dc4*
         if ((unsigned int)(current - KIND_3) <= KIND_5 - KIND_3) actor->kind = 0;
     }
     if (reason == REASON_NONE) {
-        _Z26ResetCombatantSlot020d7334Phi(slots, id);
+        ResetCombatantSlot020d7334(slots, id);
     } else {
         func_020d6f9c(slots, id, reason);
     }

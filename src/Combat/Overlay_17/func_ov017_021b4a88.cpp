@@ -14,9 +14,9 @@
 extern "C" Zone3D* func_02012fe4(void);
 extern "C" void func_020a0cc4(unsigned int size);
 extern "C" void func_020a0c0c(void);
-extern "C" int _Z17IsInRange0201b5b0i(int id);
+int IsInRange0201b5b0(int id);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
+void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 extern AllocatorUnion data_02114e20;
 #if defined(jpn)
@@ -89,7 +89,7 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
             floorAllocator.ResetAllocatorPointer();
             floorAllocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x600), 0x600);
             floorAllocator.Reset();
-            if (_Z17IsInRange0201b5b0i(id)) {
+            if (IsInRange0201b5b0(id)) {
                 int width = grotto->CalculateAndStoreFloorWidth(floor);
                 int height = grotto->CalculateAndStoreFloorHeight(floor);
                 ActiveGrottoClass* current = &zone->grotto_;
@@ -103,15 +103,15 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
                 current->CalculateFloorMap(floor, width, height, &map);
                 func_02019728(zone, floor, &features, buffer, &map);
                 func_0201a300(zone, floor, request->target, buffer, &map);
-                _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, buffer);
+                TailForward02012da4(&data_02114e20, buffer);
                 map.Clear2();
             }
             void* scriptHeap = scriptAllocator.GetSignedAllocator();
             scriptAllocator.Destroy();
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, scriptHeap);
+            TailForward02012da4(&data_02114e20, scriptHeap);
             void* floorHeap = floorAllocator.GetSignedAllocator();
             floorAllocator.Destroy();
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, floorHeap);
+            TailForward02012da4(&data_02114e20, floorHeap);
             func_020a0c0c();
         }
         loader->RemoveTask(request->taskId);

@@ -8,11 +8,11 @@ struct StatStageStruct02087c84;
 int SetStatStageBit15(struct StatStageStruct02087c84* p, int delta);
 void UpdateCombatantMagicalMending(int unused, int combatantId);
 struct RefStruct_021e9990;
-extern "C" unsigned short _Z29CheckPersonalityCode_021e9990P18RefStruct_021e9990iiia(struct RefStruct_021e9990* s, int id, int unused2, int flag, signed char sb);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int idx, int a, int b);
+unsigned short CheckPersonalityCode_021e9990(struct RefStruct_021e9990* s, int id, int unused2, int flag, signed char sb);
+unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 struct PackedPair_021dee84 {
@@ -46,14 +46,14 @@ extern "C" ARM void* func_ov024_021dee84(struct Obj_021dee84* obj, int unused, i
 	}
 	unsigned short sel = 0;
 	if (applied) {
-		sel = _Z29CheckPersonalityCode_021e9990P18RefStruct_021e9990iiia((struct RefStruct_021e9990*)obj, id, (int)action, (unsigned char)decrease, result);
+		sel = CheckPersonalityCode_021e9990((struct RefStruct_021e9990*)obj, id, (int)action, (unsigned char)decrease, result);
 	} else {
-		sel = _Z31SelectByIndexRange0to3_021da644iii(id, action->f24.b, action->f24.c);
+		sel = SelectByIndexRange0to3_021da644(id, action->f24.b, action->f24.c);
 	}
 	void* entry = func_ov000_0215e958(obj->field0x10);
 	if (!entry) return 0;
 	func_ov024_021e8bf0(obj, obj->field0xc, &sel);
-	_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+	AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
 	struct Flag_021dee84* fl = (struct Flag_021dee84*)((char*)obj->field0xc + 0x1c);
 	func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, fl->flag != 0);
 	return entry;

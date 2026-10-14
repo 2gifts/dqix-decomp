@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" void _Z32FilterSlotsWithFlag0x800020dc4d0PaS_(signed char*, signed char*);
+void FilterSlotsWithFlag0x800020dc4d0(signed char*, signed char*);
 GameObject* GetCombatantWithFlag0x1000(GameState*, int);
 int GetSignedByte0x2d0(void*);
 static inline int ValidPartyIndex(int index) { return index >= 0 && index <= 3; }
@@ -11,7 +11,7 @@ extern "C" ARM void func_020dc548(int index, signed char* out, signed char* outC
     if (!ValidPartyIndex(index)) { *outCount = 0; return; }
     GameState* game = GameState::GetInstance();
     signed char slots[4], count;
-    _Z32FilterSlotsWithFlag0x800020dc4d0PaS_(slots, &count);
+    FilterSlotsWithFlag0x800020dc4d0(slots, &count);
     signed char groups[4][4];
     int leader = -1;
     signed char member = 0;

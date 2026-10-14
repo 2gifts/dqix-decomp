@@ -16,11 +16,11 @@ struct State0207dfc8;
 extern "C" void* func_02057924(void);
 extern "C" void func_020a0cc4(unsigned int);
 extern "C" int func_02057e6c(void* list, int p1, SafeAllocator* alloc, int p2, int p3, State0207dfc8* p4);
-extern "C" unsigned int _Z19GetMaxAlloc02012dd0P14Struct02012dd0(Struct02012dd0*);
+unsigned int GetMaxAlloc02012dd0(Struct02012dd0*);
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
-extern "C" void _Z17CopyState0207dfc8P13State0207dfc8S0_(State0207dfc8*, State0207dfc8*);
-extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void*, int, int);
-extern "C" void _Z26EnqueueEventTag30_021d24a8i(int);
+void CopyState0207dfc8(State0207dfc8*, State0207dfc8*);
+void FindNodeAndProcess02057fb4(void*, int, int);
+void EnqueueEventTag30_021d24a8(int);
 
 extern AllocatorUnion data_02114e20;
 extern char data_ov017_021d7f6c[];
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov017_021c2b6c(Obj021c2b6c* self) {
     PartyEntry021c2b6c entries[4];
     unsigned int len;
     if (self->step == 0) {
-        if (_Z19GetMaxAlloc02012dd0P14Struct02012dd0((Struct02012dd0*)&data_02114e20) < 0x8000) {
+        if (GetMaxAlloc02012dd0((Struct02012dd0*)&data_02114e20) < 0x8000) {
             func_020a0cc4(0x8000);
             self->needsPool = 1;
         }
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov017_021c2b6c(Obj021c2b6c* self) {
         self->alloc.CreateTypeA(buf, 0x8000);
         self->alloc.Reset();
         char* pool = res->unknown_2cc;
-        _Z17CopyState0207dfc8P13State0207dfc8S0_((State0207dfc8*)(pool + 0xc40), (State0207dfc8*)self->state);
+        CopyState0207dfc8((State0207dfc8*)(pool + 0xc40), (State0207dfc8*)self->state);
         len = 0;
         void* data = LoadFileIntoNewAllocation(data_ov017_021d7f6c, self->alloc, &len);
         if (data == 0) {
@@ -128,9 +128,9 @@ extern "C" ARM void func_ov017_021c2b6c(Obj021c2b6c* self) {
             e->bit7 = 0;
             e->pos = m->obj3D_.position_;
             e->scale = m->obj3D_.GetScale();
-            _Z26FindNodeAndProcess02057fb4Pvii(list, 0x11, (int)e);
+            FindNodeAndProcess02057fb4(list, 0x11, (int)e);
         }
         self->done = 1;
-        _Z26EnqueueEventTag30_021d24a8i(self->memberIndex);
+        EnqueueEventTag30_021d24a8(self->memberIndex);
     }
 }

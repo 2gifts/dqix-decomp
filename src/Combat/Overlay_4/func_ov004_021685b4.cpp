@@ -12,17 +12,17 @@ struct Obj02040b2c {
 };
 
 void* GetGlobalPtr021075f4(void);
-extern "C" void* _Z29FindEntryPointerByKey0203df78Pvi(void* base, int key);
-extern "C" void _Z34PropagateValueToActiveSlot02040b2cP11Obj02040b2ci(struct Obj02040b2c* self, int value);
+void* FindEntryPointerByKey0203df78(void* base, int key);
+void PropagateValueToActiveSlot02040b2c(struct Obj02040b2c* self, int value);
 extern "C" int _Z28SetWordCCAndDispatch020415b0P11Obj020415b0i(struct Obj020415b0* obj, const char* name, int flags);
 
 extern char data_ov004_021706fd[];
 
 // USA: func_ov004_021685b4
 extern "C" ARM int func_ov004_021685b4(void) {
-    struct Obj02040b2c* entry = (struct Obj02040b2c*)_Z29FindEntryPointerByKey0203df78Pvi(GetGlobalPtr021075f4(), 0x67);
+    struct Obj02040b2c* entry = (struct Obj02040b2c*)FindEntryPointerByKey0203df78(GetGlobalPtr021075f4(), 0x67);
     if (entry) {
-        _Z34PropagateValueToActiveSlot02040b2cP11Obj02040b2ci(entry, 0);
+        PropagateValueToActiveSlot02040b2c(entry, 0);
         entry->model->animFlags = 1;
         _Z28SetWordCCAndDispatch020415b0P11Obj020415b0i(entry->model, data_ov004_021706fd, 1);
     }

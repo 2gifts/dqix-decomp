@@ -2,7 +2,7 @@
 
 #pragma optimize_for_size off
 
-extern "C" void _Z24InvalidateDataCacheRangePKvj(const void* addr, unsigned int len);
+void InvalidateDataCacheRange(const void* addr, unsigned int len);
 extern "C" int func_02001aec(const void* a, const void* b, unsigned int len);
 
 typedef void (*NotifyCallback_022378e4)(int);
@@ -57,7 +57,7 @@ extern "C" ARM void func_ov031_022378e4(PeerList_022378e4* list) {
         }
         return;
     }
-    _Z24InvalidateDataCacheRangePKvj(state->cacheBlock, 0x400);
+    InvalidateDataCacheRange(state->cacheBlock, 0x400);
 
     count = list->count;
     i = 0;

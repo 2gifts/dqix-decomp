@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Header_0223bd28;
-extern "C" void _Z26ExtractPackedHiLo_0223bd28P15Header_0223bd28iPjS1_(Header_0223bd28*, int, unsigned int*, unsigned int*);
+void ExtractPackedHiLo_0223bd28(Header_0223bd28*, int, unsigned int*, unsigned int*);
 extern "C" unsigned char _Z18GetFieldC_0223baacP21StructFieldC_0223baac(void*);
 extern "C" ARM void func_ov031_0223bab4(void* obj, int index, int val, int zero);
 
@@ -16,7 +16,7 @@ extern "C" ARM void func_ov031_02238370(Header_0223bd28* obj, int threshold) {
     int fullVal = 0x200;
     do {
         unsigned int hi, lo;
-        _Z26ExtractPackedHiLo_0223bd28P15Header_0223bd28iPjS1_(obj, i, &hi, &lo);
+        ExtractPackedHiLo_0223bd28(obj, i, &hi, &lo);
         int val;
         if ((int)lo < threshold)
             goto setFull;

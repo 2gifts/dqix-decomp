@@ -72,7 +72,7 @@ extern "C" void func_ov006_0215fe34(Obj0215e69c* self, void* list);
 extern "C" int func_ov006_0215fecc(Obj0215e69c* self);
 extern "C" void func_ov006_02159db0(Obj0215e69c* self);
 extern "C" int func_ov006_02159e50(Obj0215e69c* self);
-extern "C" void* _Z11GetBTRandomv(void);
+void* GetBTRandom(void);
 extern "C" unsigned int _Z13NextRandomMaxP6Randomi(void* rng, int max);
 extern "C" void _Z18SetElementFlag0x20P7Obj2081i(void* elements, int key);
 extern "C" void _Z20ClearElementFlag0x20P7Obj2081i(void* elements, int key);
@@ -80,24 +80,24 @@ extern "C" int _Z26CheckFlagOrByte55_02158c70v(Obj0215e69c* self);
 extern "C" void func_ov006_02153cbc(void* table, int a, int b, void* out);
 extern "C" void func_ov006_0215759c(void* list, Entry0215e69c* entry, int count);
 extern "C" void func_ov006_02158de0(Obj0215e69c* self);
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" void _Z16OrBitsIntoField0Pjj(unsigned int* p, unsigned int bits);
+unsigned int* GetDataPtr02114e04_020d6c00(void);
+void OrBitsIntoField0(unsigned int* p, unsigned int bits);
 extern "C" void _Z19ClearStruct020a9ea4P14Struct020a9ea4(void* p);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
 extern "C" int func_020aad1c(void* loader, void* name, int a, int b);
 extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(unsigned int* p, unsigned int bits);
-extern "C" void** _Z16CallFunc020e52a0Pvi(void* lookup, int id);
+void** CallFunc020e52a0(void* lookup, int id);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" void func_020e4864(void* src, void* dst, int a, int b, int c, int d);
 extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(void* elements, int key, void* value);
-extern "C" void _Z31Forward0207f7acObjPlus4Size0x40Pvi(void* elements, int key);
+void Forward0207f7acObjPlus4Size0x40(void* elements, int key);
 extern "C" void func_020813ec(void* elements, int key);
 extern "C" void _Z30InitHandleAndDispatch_021571fcPc(Ctx0215e69c* ctx);
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void* p, int value);
 extern "C" void _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(void* elements, int key);
 extern "C" void _Z25SetByte_0215728c_0215728cPv(Ctx0215e69c* ctx);
-extern "C" void _Z35SetEntryLowNibbleAndElement02080c68Pvii(void* elements, int key, int value);
+void SetEntryLowNibbleAndElement02080c68(void* elements, int key, int value);
 extern "C" void _Z34ToggleElementFlagsAndByte_0215e5f8P20Flags394Obj_0215e5f8P7Obj2081iPh(Obj0215e69c* self, void* elements, int flag, unsigned char* out);
 
 static inline short* ChancePtr(Obj0215e69c* self) { return (short*)((char*)self + 0x382); }
@@ -118,7 +118,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
             _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 0);
             _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 1);
-            _Z35SetEntryLowNibbleAndElement02080c68Pvii(self->elements, 9, 0);
+            SetEntryLowNibbleAndElement02080c68(self->elements, 9, 0);
             self->flags &= ~0x40;
             if (self->entry->count >= 0) {
                 self->chance = func_ov006_02153f24(self->table, self->entry->count);
@@ -126,7 +126,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
                 self->messageTimer = 0;
                 self->flags |= 0x20;
                 self->state++;
-                if (_Z13NextRandomMaxP6Randomi(_Z11GetBTRandomv(), 10000) / 100 < self->chance) {
+                if (_Z13NextRandomMaxP6Randomi(GetBTRandom(), 10000) / 100 < self->chance) {
                     self->flags |= 0x40;
                 }
                 _Z13Func_0215a33cP11Obj0215a33c(self, self->IsCritical());
@@ -235,7 +235,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
     } else if (self->state == 0xa) {
         self->flags |= 0x200;
         if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() <= 0) {
-            _Z16OrBitsIntoField0Pjj(_Z27GetDataPtr02114e04_020d6c00v(), 0x80);
+            OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0x80);
             _Z19ClearStruct020a9ea4P14Struct020a9ea4(self->loader);
             self->state++;
         }
@@ -248,7 +248,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
             size = 0x14;
         }
         if (func_020aad1c(self->loader, &data_0211e33c, size, 0) == 1) {
-            _Z18ClearFlags020466f4P16FlagWord020466f4j(_Z27GetDataPtr02114e04_020d6c00v(), 0x80);
+            _Z18ClearFlags020466f4P16FlagWord020466f4j(GetDataPtr02114e04_020d6c00(), 0x80);
             self->state++;
             self->flags &= ~0x200;
         }
@@ -283,13 +283,13 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         void** res;
         int sound;
         self->busy = 1;
-        res = _Z16CallFunc020e52a0Pvi(self->lookup, self->lookupId);
+        res = CallFunc020e52a0(self->lookup, self->lookupId);
         if (res != 0) {
             memset(*self->buffer, 0, 0x80);
             func_020e4864(*res, *self->buffer, 1, 0, 0, 0);
             _Z26SetEntryFirstField02080f8cP17Container02080f8cii(self->elements, 0x7f, *self->buffer);
         }
-        _Z31Forward0207f7acObjPlus4Size0x40Pvi(self->elements, 0x7f);
+        Forward0207f7acObjPlus4Size0x40(self->elements, 0x7f);
         func_020813ec(self->elements, 0x12);
         ctx->flags |= 0x400;
         self->field42f = 1;
@@ -355,13 +355,13 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         self->cursorA = a;
         self->cursorB = b;
         self->busy = 1;
-        res = _Z16CallFunc020e52a0Pvi(self->lookup, self->lookupId);
+        res = CallFunc020e52a0(self->lookup, self->lookupId);
         if (res != 0) {
             memset(*self->buffer, 0, 0x80);
             func_020e4864(*res, *self->buffer, 1, 0, 0, 0);
             _Z26SetEntryFirstField02080f8cP17Container02080f8cii(self->elements, 0x7f, *self->buffer);
         }
-        _Z31Forward0207f7acObjPlus4Size0x40Pvi(self->elements, 0x7f);
+        Forward0207f7acObjPlus4Size0x40(self->elements, 0x7f);
         func_020813ec(self->elements, 0x12);
         ctx->flags |= 0x400;
         self->field42f = 1;

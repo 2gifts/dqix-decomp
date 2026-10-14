@@ -111,13 +111,13 @@ struct Battle0219d250 {
 };
 
 extern "C" char* func_02012fe4(void);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void* _Z17GetEntryTableBasev(void);
+char* GetGlobalField0x1c020421a0(void);
+void* GetEntryTableBase(void);
 extern "C" void* func_02057924(void);
 extern "C" void* _Z16GetPtrField0x468Pv(GameState* gs);
-extern "C" Request0219d250* _Z20GetField0x3f8AddressP9GameState(GameState* gs);
+Request0219d250* GetField0x3f8Address(GameState* gs);
 extern "C" void* func_0202ae18(void);
-extern "C" void* _Z20GetGlobalPtr021075f4v(void);
+void* GetGlobalPtr021075f4(void);
 extern "C" GrottoIds0219d250* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 extern "C" void* func_0205ec34(void);
 extern "C" void _Z32ClearMonsterFlagEntries_02191bdcPhi(Battle0219d250* self, int v);
@@ -131,7 +131,7 @@ extern "C" int _Z30GetSearchStructCurrentArrEntryP20SearchStruct0202c1a4(void* s
 extern "C" Combatant0219d250* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int i);
 extern "C" int func_0206e558(void* flags);
 extern "C" int func_ov017_0219c774(Entry0219d250* entry, int a, int b);
-extern "C" void* _Z17GetGlobal02109030v(void);
+void* GetGlobal02109030(void);
 extern "C" void func_02094030(void* p, int a, int b, int c);
 extern "C" void _Z18InitStruct0203e074Pc(void* p);
 extern "C" int func_0209cd50(int id);
@@ -145,15 +145,15 @@ extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 extern "C" void func_020531f0(void* obj);
 void ClearField0xc4KeepBit0x8000(unsigned char* obj);
-extern "C" void _Z24ReinitController02043204Pc(char* c);
+void ReinitController02043204(char* c);
 extern "C" void func_02043124(char* c);
 extern "C" void _Z29SetBitIfValueInTable_0219e290Pvt(Battle0219d250* self, unsigned short v);
-extern "C" void _Z22Clear0x80Bytes0206ebc8Pv(void* p);
+void Clear0x80Bytes0206ebc8(void* p);
 extern "C" void _Z28Clear0x80BytesAt0x800206ebdcPh(void* p);
 extern "C" void func_ov017_021a316c(Battle0219d250* self);
 extern "C" void func_ov017_0219de70(Battle0219d250* self, Entry0219d250* other, Entry0219d250* entry);
 extern "C" void _Z13SetByte0x63d5Pv(GameState* gs);
-extern "C" unsigned char _Z18GetField0x3acValueP9GameState(GameState* gs);
+unsigned char GetField0x3acValue(GameState* gs);
 extern "C" void func_ov017_0218f5a4(Battle0219d250* self, int id, int b, int c, int d);
 extern "C" void func_0208fa8c(void* p);
 extern "C" void* _Z19FindInlineEntryByIdP14Entry_02028bd0i(void* table, int id);
@@ -213,15 +213,15 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
 
     gs = GameState::GetInstance();
     char* field = func_02012fe4();
-    controller = _Z26GetGlobalField0x1c020421a0v();
-    entryTable = _Z17GetEntryTableBasev();
+    controller = GetGlobalField0x1c020421a0();
+    entryTable = GetEntryTableBase();
     combatants = func_02057924();
     hero = gs->GetProtagonist();
     unknown = gs->GetUnknownGameObject();
     searchTable = _Z16GetPtrField0x468Pv(gs);
-    request = _Z20GetField0x3f8AddressP9GameState(gs);
+    request = GetField0x3f8Address(gs);
     search = func_0202ae18();
-    extRegion = _Z20GetGlobalPtr021075f4v();
+    extRegion = GetGlobalPtr021075f4();
     party = _Z17GetPtrField0x2a04P9GameState(gs);
     char* status = (char*)&((Zone3D*)field)->grotto_;
     func_0205ec34();
@@ -281,7 +281,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
                 }
                 if (changed) {
                     if (self->b42e9 != 0) {
-                        func_02094030(_Z17GetGlobal02109030v(), 0x4e23, -1, 0);
+                        func_02094030(GetGlobal02109030(), 0x4e23, -1, 0);
                     }
                     request->flags6e &= ~2;
                     _Z18InitStruct0203e074Pc(extRegion);
@@ -337,7 +337,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     }
     ClearField0xc4KeepBit0x8000((unsigned char*)hero);
     if (((MessageSystem*)controller)->active != NULL) {
-        _Z24ReinitController02043204Pc(controller);
+        ReinitController02043204(controller);
     }
     func_02043124(controller);
 
@@ -350,7 +350,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     _Z29SetBitIfValueInTable_0219e290Pvt(self, request->id);
     if (request->active == 0) {
         if (moved) {
-            _Z22Clear0x80Bytes0206ebc8Pv(self->regions);
+            Clear0x80Bytes0206ebc8(self->regions);
         }
         if (id != heroZone) {
             _Z28Clear0x80BytesAt0x800206ebdcPh(self->regions);
@@ -371,7 +371,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
         _Z13SetByte0x63d5Pv(gs);
     }
     if (request->pending != 0) {
-        func_ov017_0218f5a4(self, _Z18GetField0x3acValueP9GameState(gs), 1, 0, 0);
+        func_ov017_0218f5a4(self, GetField0x3acValue(gs), 1, 0, 0);
         request->pending = 0;
     }
     func_0208fa8c(status);

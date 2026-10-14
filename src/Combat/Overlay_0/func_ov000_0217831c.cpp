@@ -31,15 +31,15 @@ struct BattleItemMenu {
     signed char cursor;
 };
 
-extern "C" void _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_(struct UnkStruct0205c508* s, int* first, int* last);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" struct ActiveSub02054000* _Z21GetActiveSub_02054000P14Outer_02054000(struct Outer_02054000* p);
+void ComputeProductSums0205c508(struct UnkStruct0205c508* s, int* first, int* last);
+const char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
+struct ActiveSub02054000* GetActiveSub_02054000(struct Outer_02054000* p);
 int IsField0x118Equal2(void* obj);
-extern "C" int _Z22AppendFrameTag02041c08Pciiiii(char* dst, int a1, int a2, int a3, int a4, int a5);
+int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
 int AppendCursorTag(char* dst, int cursor);
-extern "C" struct ItemNameEntry* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* c, int key);
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* src, char* dst, int flag);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+struct ItemNameEntry* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
+void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
+int AppendString02042058(char* dst, const char* src);
 #if defined(jpn)
 extern "C" int func_02042158(char* dst, int w);
 #define AppendWidthTag func_02042158
@@ -54,31 +54,31 @@ extern "C" ARM void func_ov000_0217831c(BattleItemMenu* menu, char* dst)
 {
     int first;
     int last;
-    _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_((struct UnkStruct0205c508*)menu->range, &first, &last);
+    ComputeProductSums0205c508((struct UnkStruct0205c508*)menu->range, &first, &last);
     signed char start = first;
     signed char end = last;
     struct Container020e0310* texts = (struct Container020e0310*)menu->textTable;
-    const char* separator = _Z21GetFieldByKey020e0434P17Container020e0310i(texts, 0);
+    const char* separator = GetFieldByKey020e0434(texts, 0);
     signed char cursor = menu->cursor;
-    const char* unknownName = _Z21GetFieldByKey020e0434P17Container020e0310i(texts, 5);
+    const char* unknownName = GetFieldByKey020e0434(texts, 5);
     int n = 0;
     signed char combatantId = menu->combatantIds[menu->currentCombatant];
     int selectedKey = -1;
     GameState* state = GameState::GetInstance();
     GameObject* combatant = GetCombatantWithFlag0x100(state, combatantId);
-    struct ActiveSub02054000* sub = _Z21GetActiveSub_02054000P14Outer_02054000((struct Outer_02054000*)combatant);
+    struct ActiveSub02054000* sub = GetActiveSub_02054000((struct Outer_02054000*)combatant);
     if (sub != NULL) {
         selectedKey = sub->itemKey;
     }
     if (IsField0x118Equal2(menu)) {
-        _Z22AppendFrameTag02041c08Pciiiii(dst, cursor - start, 8, 5, 5, 5);
+        AppendFrameTag02041c08(dst, cursor - start, 8, 5, 5, 5);
     }
     AppendCursorTag(dst, cursor - start);
     for (signed char i = start; i < end; i++) {
         char line[0x40];
         __clear(line, sizeof(line));
         int key = menu->itemKeys[i];
-        struct ItemNameEntry* item = _Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0*)menu->itemTable, key);
+        struct ItemNameEntry* item = FindElementByKey020dedd0((struct Container020dedd0*)menu->itemTable, key);
         const char* name = unknownName;
         if (item != NULL) {
 #if defined(jpn)
@@ -86,22 +86,22 @@ extern "C" ARM void func_ov000_0217831c(BattleItemMenu* menu, char* dst)
 #else
             char text[0x100];
             __clear(text, sizeof(text));
-            _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(item->name, text, 0);
+            CopyTextAndUppercaseIfFlagged0206819c(item->name, text, 0);
             name = text;
 #endif
         }
         if (selectedKey == key) {
-            _Z20AppendString02042058PcPKc(line, _Z21GetFieldByKey020e0434P17Container020e0310i(texts, 0x13));
+            AppendString02042058(line, GetFieldByKey020e0434(texts, 0x13));
 #if !defined(jpn)
             AppendWidthTag(line, 3);
 #endif
         } else {
             AppendWidthTag(line, 8);
         }
-        _Z20AppendString02042058PcPKc(line, name);
+        AppendString02042058(line, name);
         AppendNameTag(dst, n, line);
         if (i != end - 1) {
-            _Z20AppendString02042058PcPKc(dst, separator);
+            AppendString02042058(dst, separator);
         }
         n++;
     }

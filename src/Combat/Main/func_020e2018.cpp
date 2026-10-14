@@ -14,10 +14,10 @@ struct Panel020e2018 {
 };
 struct Owner020e2018 { int buffer; Panel020e2018* panel; };
 void ClearZeroStruct(ZeroStruct*);
-extern "C" void _Z19ClearStruct02020520P14Struct02020520(Struct02020520*);
+void ClearStruct02020520(Struct02020520*);
 void ClearTwoWordsAndByte(S_b20c*);
-extern "C" void _Z18SetField0_0205b220Pvi(void*, int);
-extern "C" void _Z29SetFieldsAt0x4And0x8_0205b228Pvih(void*, int, unsigned char);
+void SetField0_0205b220(void*, int);
+void SetFieldsAt0x4And0x8_0205b228(void*, int, unsigned char);
 extern "C" void func_0205b734(S_b20c*, int, int, int, int, int);
 // USA: func_020e2018
 extern "C" ARM void func_020e2018(Owner020e2018* owner) {
@@ -35,12 +35,12 @@ extern "C" ARM void func_020e2018(Owner020e2018* owner) {
     int height = owner->panel->height - 4;
     if (height <= panel->clipping.height) panel->clipping.height = height;
     Struct02020520 layout;
-    _Z19ClearStruct02020520P14Struct02020520(&layout);
+    ClearStruct02020520(&layout);
     layout.width = image->width;
     layout.height = image->height;
     S_b20c destination;
     ClearTwoWordsAndByte(&destination);
-    _Z18SetField0_0205b220Pvi(&destination, owner->buffer + (owner->panel->offset + owner->panel->stride));
-    _Z29SetFieldsAt0x4And0x8_0205b228Pvih(&destination, (int)&layout, 1);
+    SetField0_0205b220(&destination, owner->buffer + (owner->panel->offset + owner->panel->stride));
+    SetFieldsAt0x4And0x8_0205b228(&destination, (int)&layout, 1);
     func_0205b734(&destination, 0, 0, panel->clipping.width, panel->clipping.height, 1);
 }

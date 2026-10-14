@@ -7,14 +7,14 @@ extern "C" void func_0200ee94(void* array, int count, int size, void* ctor, void
 void* ResetNameTableThenNotify(void* obj);
 void* NotifyThenResetNameTable(void* obj);
 extern "C" void func_ov030_021d9340(unsigned char* self);
-extern "C" void* _Z29ResetHeaderAndReturn_021d9250Pv(void* p);
-extern "C" void* _Z29ResetHeaderAndReturn_021d9264Pv(void* p);
-extern "C" void* _Z29ResetHeaderAndReturn_021d9278Pv(void* p);
-extern "C" void* _Z29ResetHeaderAndReturn_021d928cPv(void* p);
-extern "C" void* _Z29ResetHeaderAndReturn_021d92a0Pv(void* p);
-extern "C" void* _Z29ResetHeaderAndReturn_021d92b4Pv(void* p);
-extern "C" void* _Z29ResetHeaderAndReturn_021d92c8Pv(void* p);
-extern "C" void* _Z29ResetHeaderAndReturn_021d92dcPv(void* p);
+void* ResetHeaderAndReturn_021d9250(void* p);
+void* ResetHeaderAndReturn_021d9264(void* p);
+void* ResetHeaderAndReturn_021d9278(void* p);
+void* ResetHeaderAndReturn_021d928c(void* p);
+void* ResetHeaderAndReturn_021d92a0(void* p);
+void* ResetHeaderAndReturn_021d92b4(void* p);
+void* ResetHeaderAndReturn_021d92c8(void* p);
+void* ResetHeaderAndReturn_021d92dc(void* p);
 
 enum { kSceneDataSize = 0x36c0 };
 
@@ -228,8 +228,8 @@ extern "C" ARM BattleScene* func_ov030_021d8a40(AllocatorUnion* alloc, unsigned 
         scene->p36fc[13] = q3730;
         scene->p36fc[14] = q3734;
         scene->p36fc[15] = q3738;
-        func_0200ee94(scene->entries373c, 0xc, 0x48, (void*)_Z29ResetHeaderAndReturn_021d9250Pv, (void*)_Z29ResetHeaderAndReturn_021d9264Pv);
-        func_0200ee94(scene->entries3a9c, 4, 0x18, (void*)_Z29ResetHeaderAndReturn_021d9278Pv, (void*)_Z29ResetHeaderAndReturn_021d928cPv);
+        func_0200ee94(scene->entries373c, 0xc, 0x48, (void*)ResetHeaderAndReturn_021d9250, (void*)ResetHeaderAndReturn_021d9264);
+        func_0200ee94(scene->entries3a9c, 4, 0x18, (void*)ResetHeaderAndReturn_021d9278, (void*)ResetHeaderAndReturn_021d928c);
 
         scene->p3afc[0] = q3afc;
         scene->p3afc[1] = q3b00;
@@ -282,8 +282,8 @@ extern "C" ARM BattleScene* func_ov030_021d8a40(AllocatorUnion* alloc, unsigned 
         scene->p3afc[48] = q3bbc;
         scene->p3afc[49] = q3bc0;
         scene->p3afc[50] = q3bc4;
-        func_0200ee94(scene->entries3bc8, 3, 0x14, (void*)_Z29ResetHeaderAndReturn_021d92a0Pv, (void*)_Z29ResetHeaderAndReturn_021d92b4Pv);
-        func_0200ee94(scene->entries3c04, 4, 0x28, (void*)_Z29ResetHeaderAndReturn_021d92c8Pv, (void*)_Z29ResetHeaderAndReturn_021d92dcPv);
+        func_0200ee94(scene->entries3bc8, 3, 0x14, (void*)ResetHeaderAndReturn_021d92a0, (void*)ResetHeaderAndReturn_021d92b4);
+        func_0200ee94(scene->entries3c04, 4, 0x28, (void*)ResetHeaderAndReturn_021d92c8, (void*)ResetHeaderAndReturn_021d92dc);
 
         scene->p3ca4 = q3ca4;
         scene->p3ca8 = q3ca8;

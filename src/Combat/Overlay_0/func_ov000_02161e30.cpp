@@ -65,15 +65,15 @@ struct Combatant {
     unsigned char previousGroup, variant;
 };
 extern "C" int* func_0202ae18();
-extern "C" FieldStruct02048934* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(Container02070e60*, int);
-extern "C" Param02048850* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(BinarySearchByComparatorStruct*, int);
+FieldStruct02048934* SearchWithLow15Comparator02070fd0(Container02070e60*, int);
+Param02048850* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
 Combatant* GetCombatantWithFlag0x400(GameState*, int);
-extern "C" void _Z18ZeroStruct021620d8P22ZeroableStruct021620d8(ZeroableStruct021620d8*);
-extern "C" void _Z24FindOrAssignSlot02167c28Phi(unsigned char*, int);
+void ZeroStruct021620d8(ZeroableStruct021620d8*);
+void FindOrAssignSlot02167c28(unsigned char*, int);
 extern "C" void func_020891cc(CombatBlob*);
 extern "C" void func_02089630(CombatBlob*, void*, int);
-extern "C" void _Z28SetupFieldsFromParam02048850P11Obj02048850P13Param02048850(Obj02048850*, Param02048850*);
-extern "C" void _Z31SetRandomizedShort0x18802048934PvP19FieldStruct02048934P6Random(void*, FieldStruct02048934*, Random*);
+void SetupFieldsFromParam02048850(Obj02048850*, Param02048850*);
+void SetRandomizedShort0x18802048934(void*, FieldStruct02048934*, Random*);
 extern "C" int func_ov000_02161bb8(ZeroableStruct021620d8*);
 void IncrementByteCounterWrapAt0x12(unsigned char*);
 static inline void* GetEntryPayload(FieldStruct02048934* entry) { return entry->payload; }
@@ -90,8 +90,8 @@ extern "C" ARM void func_ov000_02161e30(BattleState* state, int id, int key) {
     func_0202ae18();
     BattleResources* resources = state->resources;
     BinarySearchByComparatorStruct* params = (BinarySearchByComparatorStruct*)state->resources->params;
-    entry = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i((Container02070e60*)resources->entries, key);
-    Param02048850* param = _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(params, (short)key);
+    entry = SearchWithLow15Comparator02070fd0((Container02070e60*)resources->entries, key);
+    Param02048850* param = SearchWithComparator0206f4f0(params, (short)key);
     if (!entry || !param) return;
     actor = GetCombatantWithFlag0x400(game, id);
     int group = actor->group;
@@ -114,21 +114,21 @@ extern "C" ARM void func_ov000_02161e30(BattleState* state, int id, int key) {
     if (!found) {
         index = GetGroupCount(roster);
         roster->groupCount = index + 1;
-        _Z18ZeroStruct021620d8P22ZeroableStruct021620d8(&roster->groups[index]);
+        ZeroStruct021620d8(&roster->groups[index]);
         roster->groups[index].key = key;
         roster->groups[index].cursor = 1;
     }
-    _Z24FindOrAssignSlot02167c28Phi((unsigned char*)state, id);
+    FindOrAssignSlot02167c28((unsigned char*)state, id);
     CombatBlob* blob = actor->blob;
     func_020891cc(blob);
     func_02089630(blob, GetEntryPayload(entry), 0);
     actor->entry = entry;
     int height = ((Object3D*)actor)->GetHeight();
     int radius = ((Object3D*)actor)->GetRadius();
-    _Z28SetupFieldsFromParam02048850P11Obj02048850P13Param02048850((Obj02048850*)actor, param);
+    SetupFieldsFromParam02048850((Obj02048850*)actor, param);
     ((Object3D*)actor)->SetHeight(height);
     ((Object3D*)actor)->SetRadius(radius);
-    _Z31SetRandomizedShort0x18802048934PvP19FieldStruct02048934P6Random(actor, entry, &state->mirror->random);
+    SetRandomizedShort0x18802048934(actor, entry, &state->mirror->random);
     unsigned short first = actor->first;
     unsigned short second = actor->second;
     actor->blob->first = first;

@@ -8,24 +8,24 @@ struct SearchStruct;
 extern "C" GameState* _ZN9GameState11GetInstanceEv(void);
 extern "C" unsigned int _ZNK9GameState21GetEffectiveDeltaTimeEv(GameState* gs);
 extern "C" int _ZNK9GameState12GetTickCountEv(GameState* gs);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
+char* GetGlobalField0x1c020421a0(void);
 extern "C" SearchStruct* func_0202ae18(void);
-extern "C" char* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
+char* GetCombatantWithFlag0x100(GameState* gs, int id);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, const void* src);
-extern "C" int _Z16TestFlagBitAt0xeP12SearchStructi(SearchStruct* s, int bit);
+int TestFlagBitAt0xe(SearchStruct* s, int bit);
 extern "C" int _Z35DecrementOrClearCounterC74_0216c628Phi(char* obj, int amount);
 extern "C" void func_ov002_0215b6c0(char* self);
 extern "C" void func_ov002_0215a7b4(char* self, int a, int b, int c, int d);
 extern "C" void func_ov002_02159900(char* self, char* arr, int flag);
 extern "C" void func_ov002_0215a0a4(char* self, char* arr, int flag);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void* obj, int a, int b);
-extern "C" void _Z22InitStateArray02157ce0Pc(char* arr);
+void InitStateArray02157ce0(char* arr);
 extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(char* obj, unsigned char lo, unsigned char hi);
-extern "C" void _Z21InitBattleTag02161174Pc(char* self);
+void InitBattleTag02161174(char* self);
 extern "C" void func_ov002_0216bfd4(char* self, int v);
-extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char* self, int v);
-extern "C" void _Z27EnqueueEventTag170_021d0198iiii(int a, int b, int c, int d);
-extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(unsigned short* obj, int mask);
+int CheckFlagOrThreshold_02161b48(char* self, int v);
+void EnqueueEventTag170_021d0198(int a, int b, int c, int d);
+int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void func_ov002_0216c28c(char* self, int v);
@@ -43,9 +43,9 @@ extern "C" void func_0205d7a0(char* obj, int v);
 extern "C" void func_ov002_0215c988(char* self, void* buf, int v);
 extern "C" void _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(char* obj, unsigned char a, void* b, int c, unsigned char d);
 extern "C" void func_ov002_0215b9a4(char* self, int key, int flag);
-extern "C" void _Z26SetForwardAndStore0205ebc0Pvii(void* obj, int a, int b);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(void* obj, int a, int b);
-extern "C" void _Z24ReinitController02043204Pc(char* g);
+void SetForwardAndStore0205ebc0(void* obj, int a, int b);
+void DispatchIfField0xc4NonNeg_0205ebfc(void* obj, int a, int b);
+void ReinitController02043204(char* g);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(char* obj, int v);
 extern "C" char* _Z23FindElementByC40205d81cP15Struct_0205d81ci(char* obj, int v);
 
@@ -89,7 +89,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
     }
 
     GameState* gs = _ZN9GameState11GetInstanceEv();
-    char* g = _Z26GetGlobalField0x1c020421a0v();
+    char* g = GetGlobalField0x1c020421a0();
     SearchStruct* search = func_0202ae18();
 
     int sumA = 0;
@@ -119,7 +119,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
                 S32(0x2530) = 10000;
             }
         }
-        char* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, S8(0x1c21));
+        char* c = GetCombatantWithFlag0x100(gs, S8(0x1c21));
         if (c != 0) {
             int pos[3];
             _ZN8Vector3iaSERKS_(pos, c + 0x44);
@@ -142,7 +142,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
         if (U8(0x1c7b) == 0x14) {
             int found = 0;
             for (int i = 0; i < U8(0x1ccb); i++) {
-                if (_Z16TestFlagBitAt0xeP12SearchStructi(search, *(signed char*)(self + i + 0x1ccc))) {
+                if (TestFlagBitAt0xe(search, *(signed char*)(self + i + 0x1ccc))) {
                     found = 1;
                     break;
                 }
@@ -194,7 +194,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
                     S32(0x1bbc) = 0x11;
                 }
             }
-            _Z22InitStateArray02157ce0Pc(self + 0xc8 + 0x1c00);
+            InitStateArray02157ce0(self + 0xc8 + 0x1c00);
             U8(0x1c7a) = 0;
             U8(0x1c7b) = 0;
         }
@@ -205,7 +205,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             S16(0x1c16) = 0;
             S16(0x1c18) = 0;
             _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(self + 0x2c8 + 0xc00, 0, 3);
-            _Z21InitBattleTag02161174Pc(self);
+            InitBattleTag02161174(self);
             S32(0x247c) &= ~4;
             S32(0x1bc0) = 1;
             return;
@@ -239,7 +239,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
                 break;
             case 2:
                 if (*(int*)(g + 0x9a0) == 3) {
-                    if (_Z29CheckFlagOrThreshold_02161b48Pci(self, 0) != 0 || data_02114e54[0x55] != 0) {
+                    if (CheckFlagOrThreshold_02161b48(self, 0) != 0 || data_02114e54[0x55] != 0) {
                         func_ov002_0216bfd4(self, 3);
                     }
                 }
@@ -250,7 +250,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
                 } else {
                     func_ov002_0215a7b4(self, 4, S16(0x1c22), S16(0x1be8), 0);
                 }
-                _Z27EnqueueEventTag170_021d0198iiii(3, S8(0x1c20), S8(0x1c21), S16(0x1c22));
+                EnqueueEventTag170_021d0198(3, S8(0x1c20), S8(0x1c21), S16(0x1c22));
                 func_ov002_0216bfd4(self, 9);
                 break;
             }
@@ -260,10 +260,10 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             int ticks = _ZNK9GameState12GetTickCountEv(_ZN9GameState11GetInstanceEv());
             if (ticks == 0) ticks = 1;
             int ok = 0;
-            int flag = _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0x601);
+            int flag = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
             if (AnySet(flag, IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0x2c8 + 0xc00), 0x14)) ||
-                _Z29CheckFlagOrThreshold_02161b48Pci(self, 1) != 0 ||
-                _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0xf0) != 0 || data_02114e54[0x55] != 0) {
+                CheckFlagOrThreshold_02161b48(self, 1) != 0 ||
+                TestFlag0SetAndFlag1Clear(&data_02114e30, 0xf0) != 0 || data_02114e54[0x55] != 0) {
                 ok = 1;
             }
             switch (U8(0x1c7b)) {
@@ -297,7 +297,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             return;
         }
         if (U8(0x2522) != 0 && *(int*)(g + 0x9a0) != 3) {
-            char* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, S8(0x1c21));
+            char* c = GetCombatantWithFlag0x100(gs, S8(0x1c21));
             if (c != 0) {
                 int pos[3];
                 _ZN8Vector3iaSERKS_(pos, c + 0x44);
@@ -381,8 +381,8 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             U8(0x248a) = 0;
             S32(0x1bc0) = 0;
             if (S16(0x1c28) == 0x7532 || S16(0x1c28) == 0x7531) {
-                _Z26SetForwardAndStore0205ebc0Pvii(&data_02108760, 0x75, 0x75);
-                _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, 0, 0);
+                SetForwardAndStore0205ebc0(&data_02108760, 0x75, 0x75);
+                DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 0, 0);
             }
             return;
         }
@@ -394,7 +394,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             S32(0x1bb8) = S32(0x1bbc);
             S32(0x1bc0) = 0;
         } else {
-            _Z24ReinitController02043204Pc(g);
+            ReinitController02043204(g);
             func_ov016_0218b5c0(1, -1);
             func_ov017_0218b5f8(-1);
             if (S8(0x1caf) == 4) {
@@ -402,8 +402,8 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
                 U8(0x1caf) = 0;
             }
             if (S16(0x1c28) == 0x7530) {
-                _Z26SetForwardAndStore0205ebc0Pvii(&data_02108760, 0x75, 0x75);
-                _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, 0, 0);
+                SetForwardAndStore0205ebc0(&data_02108760, 0x75, 0x75);
+                DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 0, 0);
             }
             char* e = _Z20GetLastEntry0205d888P14Struct0205d888(self + 0x2c8 + 0xc00);
             if (U8(0x2521) != 0) {

@@ -6,7 +6,7 @@ int GenerateLockOwnerID(void);
 extern "C" void func_020c9be0(void);
 void SelectBattleContextMode2(int mode);
 int DispatchCartridgeReadToArm7(void* handle);
-extern "C" void _Z24PrepareAndCommit020d0050i(int value);
+void PrepareAndCommit020d0050(int value);
 
 struct Flag02108dfc {
     unsigned char flag;
@@ -33,6 +33,6 @@ ARM void InitBattleModeAndCommit020758a8(void) {
     data_02108dfc.value = (unsigned short)id;
     SelectBattleContextMode2((int)data_02108dfc.value);
     DispatchCartridgeReadToArm7((void*)0x1001);
-    _Z24PrepareAndCommit020d0050i((int)data_02108dfc.value);
+    PrepareAndCommit020d0050((int)data_02108dfc.value);
     data_020f0dc8 = 1;
 }

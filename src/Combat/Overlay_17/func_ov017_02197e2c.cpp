@@ -17,18 +17,18 @@ struct InteractionRequest { unsigned char type; char pad1; short index; int fiel
 struct S02046b1c;
 struct Vec3;
 extern "C" Zone3D* func_02012fe4();
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 void* GetField0x3b0Value(GameState*);
 bool CheckSubstructByte0x7cPositive(signed char*);
-extern "C" void* _Z23GetField0x0List02046b1cP9S02046b1c(S02046b1c*);
+void* GetField0x0List02046b1c(S02046b1c*);
 ZoneChestRenderRecord* GetElementStride0x24(unsigned char*, int);
 int fix32abs(int);
 extern "C" int func_020c32f8(int);
 extern "C" int func_020c3260(int);
 extern "C" float func_0200c700(int);
-extern "C" int _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_(Vec3*, int, Vec3*);
-extern "C" InteractionReset* _Z25GetGlobalResetObj020d7a50v();
-extern "C" void _Z15InitObj0219a674Ph(unsigned char*);
+int GetAbsAngleDeltaBetween_021a4754(Vec3*, int, Vec3*);
+InteractionReset* GetGlobalResetObj020d7a50();
+void InitObj0219a674(unsigned char*);
 extern "C" void func_ov017_0219b33c(GameResources*, InteractionRequest*);
 
 static inline int MultiplyFix(int a, int b) { return (int)(((long long)a * b + 0x800) >> 12); }
@@ -37,7 +37,7 @@ static inline int MultiplyFix(int a, int b) { return (int)(((long long)a * b + 0
 extern "C" ARM void func_ov017_02197e2c(GameResources* resources) {
     GameState* game = GameState::GetInstance();
     Zone3D* zone = func_02012fe4();
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     GetField0x3b0Value(game);
     InteractionPlayer* player = (InteractionPlayer*)game->GetUnknownGameObject();
     Vector3i* position = &player->obj.position_;
@@ -45,7 +45,7 @@ extern "C" ARM void func_ov017_02197e2c(GameResources* resources) {
     if (!zone->numChests_) return;
     int direction = 0;
     int hasList = 0;
-    void* list = _Z23GetField0x0List02046b1cP9S02046b1c((S02046b1c*)resources->unknown_ptr_array_36fc[0]);
+    void* list = GetField0x0List02046b1c((S02046b1c*)resources->unknown_ptr_array_36fc[0]);
     if (list) hasList = 1;
     int bestAngle = 0x3244;
     ZoneChestRenderRecord* candidate = 0;
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov017_02197e2c(GameResources* resources) {
         Matrix3x3 rotation;
         Mat3x3_WriteRotationY(&rotation, sine, cosine);
         Mat3x3_ApplyToVector(&rotated, &rotation, &rotated);
-        int difference = _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_((Vec3*)position, (short)player->obj.rotation_.y, (Vec3*)&point);
+        int difference = GetAbsAngleDeltaBetween_021a4754((Vec3*)position, (short)player->obj.rotation_.y, (Vec3*)&point);
         if (difference >= bestAngle) continue;
         bestAngle = difference;
         selectedIndex = i;
@@ -83,14 +83,14 @@ extern "C" ARM void func_ov017_02197e2c(GameResources* resources) {
     if (hasList || selectedIndex < 0 || !candidate || !selected) return;
     if (player->mode != 0 && player->mode != 1) return;
     if ((selected->secondPass == 1 || selected->secondPass == 2) && selected->active != 1) return;
-    InteractionReset* reset = _Z25GetGlobalResetObj020d7a50v();
+    InteractionReset* reset = GetGlobalResetObj020d7a50();
     int enabled = selected->active == 1 ? 1 : 0;
     if (!enabled) return;
     if (reset->mode > 1) return;
     InteractionRequest request;
-    _Z15InitObj0219a674Ph((unsigned char*)&request);
+    InitObj0219a674((unsigned char*)&request);
     request.type = 2;
-    request.angle = _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_((Vec3*)&player->obj.position_, (short)player->obj.rotation_.y, (Vec3*)&selected->position);
+    request.angle = GetAbsAngleDeltaBetween_021a4754((Vec3*)&player->obj.position_, (short)player->obj.rotation_.y, (Vec3*)&selected->position);
     request.point = selected;
     request.index = selectedIndex;
     request.direction = direction;

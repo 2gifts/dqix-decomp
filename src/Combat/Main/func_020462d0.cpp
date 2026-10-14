@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct State0204166c;
-extern "C" void _Z15Forward020416c0P13State0204166c(struct State0204166c* s);
+void Forward020416c0(struct State0204166c* s);
 
 struct Slot020462d0 {
     char pad0[8];
@@ -41,7 +41,7 @@ extern "C" ARM void func_020462d0(char* obj, unsigned short* codes, int count) {
         if ((cnt & 0xff) != 0) {
             continue;
         }
-        _Z15Forward020416c0P13State0204166c((struct State0204166c*)slot);
+        Forward020416c0((struct State0204166c*)slot);
         int* counter = (int*)(obj + 0x9b4);
         *counter = (*counter - 1) & 0x7f;
     }

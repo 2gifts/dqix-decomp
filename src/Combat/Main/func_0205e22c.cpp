@@ -4,7 +4,7 @@
 extern "C" void* memset(void* dst, int value, unsigned int length);
 
 struct Struct0205e16c;
-extern "C" ARM void _Z23ClearThreeWords0205e16cP14Struct0205e16c(struct Struct0205e16c* p);
+ARM void ClearThreeWords0205e16c(struct Struct0205e16c* p);
 
 struct QNode0205e18c {
     char pad[0x18];
@@ -31,9 +31,9 @@ struct Elem0205e22c {
 
 // USA: func_0205e22c
 extern "C" ARM void func_0205e22c(void* obj) {
-    _Z23ClearThreeWords0205e16cP14Struct0205e16c((struct Struct0205e16c*)((char*)obj + 0x1500));
-    _Z23ClearThreeWords0205e16cP14Struct0205e16c((struct Struct0205e16c*)((char*)obj + 0x150c));
-    _Z23ClearThreeWords0205e16cP14Struct0205e16c((struct Struct0205e16c*)((char*)obj + 0x1518));
+    ClearThreeWords0205e16c((struct Struct0205e16c*)((char*)obj + 0x1500));
+    ClearThreeWords0205e16c((struct Struct0205e16c*)((char*)obj + 0x150c));
+    ClearThreeWords0205e16c((struct Struct0205e16c*)((char*)obj + 0x1518));
 
     memset(obj, 0, 0x1500);
 

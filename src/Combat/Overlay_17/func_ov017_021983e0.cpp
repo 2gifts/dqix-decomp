@@ -13,7 +13,7 @@ extern "C" void* func_02012fe4(void);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
 extern "C" int func_02094b9c(void* a, void* b);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
+int fix32ReduceAngle0To2Pi(int angle);
 void InitObj0219a674(unsigned char* self);
 void BuildAndForwardVec_0218da48(void* obj, int angle, int c, int d, unsigned char e);
 struct Vec3 { int x, y, z; };
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov017_021983e0(unsigned char* obj) {
             struct TargetNode021983e0* node = (struct TargetNode021983e0*)GetPointerFromArray0x3c((unsigned char*)cache + RegionOffset6c, 5);
             while (node != NULL) {
                 if (func_02094b9c(node, &filter) != 0) {
-                    int angle = (short)_Z22fix32ReduceAngle0To2Pii(node->angle + 0x3244);
+                    int angle = (short)fix32ReduceAngle0To2Pi(node->angle + 0x3244);
                     BuildAndForwardVec_0218da48(obj, angle, 0xccc, 0x800 - 0xccc, 0);
                     struct EventBuf021983e0 buf;
                     InitObj0219a674((unsigned char*)&buf);

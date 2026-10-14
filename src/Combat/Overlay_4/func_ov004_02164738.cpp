@@ -18,21 +18,21 @@ struct Info02011930;
 
 int CopyToBattleRegion0x64f4(void* arg);
 extern "C" void* func_02012fe4(void);
-extern "C" void _Z18FreeBuffer020263e4P14Struct020263e4(Struct020263e4* buf);
+void FreeBuffer020263e4(Struct020263e4* buf);
 void SetByteFieldAt0x764(unsigned char* buf, unsigned char val);
-extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int mode);
+void SetCombatModeFromCase020dc2d0(int mode);
 extern "C" void* func_ov011_021845f8(void* obj, int idx);
-extern "C" void _Z28ReleaseBattleBuffers020a39d8P13SafeAllocator(SafeAllocator* alloc);
-extern "C" unsigned char _Z32GetAndConsumeNameEntries02011930PvP12Info02011930S_S_(void* obj, struct Info02011930* info, void* name1, void* name2);
+void ReleaseBattleBuffers020a39d8(SafeAllocator* alloc);
+unsigned char GetAndConsumeNameEntries02011930(void* obj, struct Info02011930* info, void* name1, void* name2);
 extern "C" void* func_0205ec34(void);
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(void* a, int mode, void* c);
+int LookupAndForEachNode020649b0(void* a, int mode, void* c);
 extern "C" void func_0206f81c(void* p);
-extern "C" int _Z22IsValueInRange0201b5d8i(int x);
-extern "C" void _Z19InitContext020e1154Pv(void* obj);
+int IsValueInRange0201b5d8(int x);
+void InitContext020e1154(void* obj);
 void ResetState(void* obj);
 void ClearByte0x6480(void* obj);
-extern "C" void _Z25ClearRegion0x649e02011ad4Pc(char* obj);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+void ClearRegion0x649e02011ad4(char* obj);
+int GetGlobalField0x1c020421a0(void);
 
 extern char* data_ov004_02171010;
 
@@ -58,12 +58,12 @@ extern "C" ARM int func_ov004_02164738(void* a) {
     GameResources* res = func_ov017_0218b5b0();
     unsigned char* buf = (unsigned char*)res->unknown_ptr_36d0;
     res->unknown_41c8[0x42e0 - 0x41c8] = *(unsigned char*)(data_ov004_02171010 + 0x1000 + flagOffset);
-    _Z18FreeBuffer020263e4P14Struct020263e4((Struct020263e4*)buf);
+    FreeBuffer020263e4((Struct020263e4*)buf);
     SetByteFieldAt0x764(buf, 0);
     *(int*)(buf + 0x14) = *(int*)(data_ov004_02171010 + 0x1000 + valueOffset);
     strcpy(zone + 0x26, data_ov004_02171010 + nameOffset);
     res->allocator_array_38[12].Reset();
-    _Z29SetCombatModeFromCase020dc2d0i(0);
+    SetCombatModeFromCase020dc2d0(0);
 
     for (i = 0; i < 8; i++) {
         ((DetailedTreasureMapData*)(data_ov004_02171010 + 0xad4 + i * recordStride))->BlankFunction();
@@ -73,23 +73,23 @@ extern "C" ARM int func_ov004_02164738(void* a) {
     if (owner != NULL && data_ov004_02171010 != NULL) {
         ((SafeAllocator*)(owner + 4))->Free(data_ov004_02171010);
         data_ov004_02171010 = NULL;
-        _Z28ReleaseBattleBuffers020a39d8P13SafeAllocator((SafeAllocator*)(owner + 4));
+        ReleaseBattleBuffers020a39d8((SafeAllocator*)(owner + 4));
     }
 
-    if (_Z32GetAndConsumeNameEntries02011930PvP12Info02011930S_S_(state, NULL, NULL, NULL) != 0) {
+    if (GetAndConsumeNameEntries02011930(state, NULL, NULL, NULL) != 0) {
         if (*((unsigned char*)state + 0x6000 + stateFlag) != 0) {
-            if (_Z28LookupAndForEachNode020649b0PviS_(func_0205ec34(), 0x1b, request)) {
+            if (LookupAndForEachNode020649b0(func_0205ec34(), 0x1b, request)) {
                 func_0206f81c(request);
             }
         }
-        if (_Z22IsValueInRange0201b5d8i(*(unsigned short*)zone)) {
-            _Z19InitContext020e1154Pv((void*)0x7d0);
+        if (IsValueInRange0201b5d8(*(unsigned short*)zone)) {
+            InitContext020e1154((void*)0x7d0);
         }
     }
 
     ResetState(state);
     ClearByte0x6480(state);
-    _Z25ClearRegion0x649e02011ad4Pc((char*)state);
-    *(unsigned char*)(_Z26GetGlobalField0x1c020421a0v() + 0x1000 + resetOffset) = 0;
+    ClearRegion0x649e02011ad4((char*)state);
+    *(unsigned char*)(GetGlobalField0x1c020421a0() + 0x1000 + resetOffset) = 0;
     return 0;
 }

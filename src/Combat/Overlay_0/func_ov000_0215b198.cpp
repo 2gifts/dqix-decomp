@@ -30,10 +30,10 @@ struct Battle {
 };
 
 extern "C" void* memcpy(void* dst, const void* src, unsigned int n);
-extern "C" void* _Z25GetWorkArrayEntry0215e9d8Pv(void* work);
-extern "C" void _Z18InitStruct02160030Pv(void* obj);
-extern "C" ActionEntry* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094* list, int index);
-extern "C" void* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8* list, int index);
+void* GetWorkArrayEntry0215e9d8(void* work);
+void InitStruct02160030(void* obj);
+ActionEntry* GetNodeAtIndex02160094(List02160094* list, int index);
+void* GetNodeAtIndex021600f8(List021600f8* list, int index);
 int IsFlag10088Set(S_10088* obj);
 int IsFlag0x18Bit0x2000Set(GameObject* combatant);
 
@@ -41,17 +41,17 @@ int IsFlag0x18Bit0x2000Set(GameObject* combatant);
 extern "C" ARM void func_ov000_0215b198(Battle* battle) {
     int i;
     for (i = battle->actionsDone; i < battle->actionCount; i++) {
-        void* work = _Z25GetWorkArrayEntry0215e9d8Pv(battle);
+        void* work = GetWorkArrayEntry0215e9d8(battle);
         if (work == 0) {
             return;
         }
-        _Z18InitStruct02160030Pv(work);
+        InitStruct02160030(work);
         List02160094* action = &battle->actions[i];
-        ActionEntry* entry = _Z22GetNodeAtIndex02160094P12List02160094i(action, 0);
+        ActionEntry* entry = GetNodeAtIndex02160094(action, 0);
         if (entry == 0) {
             continue;
         }
-        if (_Z22GetNodeAtIndex021600f8P12List021600f8i((List021600f8*)action, 0) == 0) {
+        if (GetNodeAtIndex021600f8((List021600f8*)action, 0) == 0) {
             continue;
         }
         int id = entry->combatantId;

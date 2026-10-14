@@ -28,7 +28,7 @@ struct AlchemyMenu {
 extern "C" short func_ov023_021e2868(void* layout);
 extern "C" short func_ov023_021e29d0(void* layout);
 extern "C" unsigned short func_02081f20(void* repeat, int ticks);
-extern "C" unsigned short _Z26GetDeref_021599ac_021599acPPv(void** repeat);
+unsigned short GetDeref_021599ac_021599ac(void** repeat);
 extern "C" int func_ov006_02153a78(void* ingredients, int times);
 extern "C" void func_ov006_0215f9e8(AlchemyMenu* self);
 extern "C" void func_ov006_0215a5dc(AlchemyMenu* self);
@@ -60,7 +60,7 @@ extern "C" ARM unsigned char func_ov006_021599c0(AlchemyMenu* self) {
         cancel = element == 0x14 ? 1 : 0;
     }
     if ((unsigned short)(func_02081f20(self->repeat_, GameState::GetInstance()->GetTickCount()) + 0xffff) <= 1) {
-        unsigned short buttons = _Z26GetDeref_021599ac_021599acPPv((void**)self->repeat_);
+        unsigned short buttons = GetDeref_021599ac_021599ac((void**)self->repeat_);
         if (buttons == 0x40)
             change = 1;
         if (buttons == 0x80)

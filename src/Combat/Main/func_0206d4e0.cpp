@@ -14,9 +14,9 @@ extern "C" bool _ZNK9GameState21IsMorningDayOrEveningEv(struct GameState* self);
 
 extern "C" char* func_0205ec34();
 int TestBitInByteArray(int, unsigned char*, int);
-extern "C" int _Z23TestBitWithBias0206eb98Phi(unsigned char*, int);
-extern "C" void _Z26UnlinkNodeByByteId0206dd68Pvi(void*, int);
-extern "C" void _Z23ClearWorkRecord0206bf2cP11Rec0206bf2c(struct Rec0206bf2c*);
+int TestBitWithBias0206eb98(unsigned char*, int);
+void UnlinkNodeByByteId0206dd68(void*, int);
+void ClearWorkRecord0206bf2c(struct Rec0206bf2c*);
 extern "C" void func_0206db48(void*, struct Rec0206bf2c*);
 
 struct Data02108cec {
@@ -69,7 +69,7 @@ extern "C" ARM int func_0206d4e0(void* param0, int param1) {
                 return 1;
             }
         } else if (mode == 2) {
-            int hit = _Z23TestBitWithBias0206eb98Phi((unsigned char*)ctx, (unsigned short)packed);
+            int hit = TestBitWithBias0206eb98((unsigned char*)ctx, (unsigned short)packed);
             if ((second != 0 && hit == 0) || (second == 0 && hit != 0)) {
                 return 1;
             }
@@ -93,7 +93,7 @@ extern "C" ARM int func_0206d4e0(void* param0, int param1) {
     int a = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)arg + 8));
     int b = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)arg + 0x10));
     if (a != data_02108cec.field0xc) {
-        _Z26UnlinkNodeByByteId0206dd68Pvi(data_02108cec.field0x10, b);
+        UnlinkNodeByByteId0206dd68(data_02108cec.field0x10, b);
         return 1;
     }
 
@@ -101,12 +101,12 @@ extern "C" ARM int func_0206d4e0(void* param0, int param1) {
     if (rec == 0) {
         return 0;
     }
-    _Z23ClearWorkRecord0206bf2cP11Rec0206bf2c(rec);
+    ClearWorkRecord0206bf2c(rec);
     rec->field0x2 = (unsigned short)a;
     int rem = param1 - half * 2 - even;
     rec->field0x0 = (unsigned char)b;
     if (rem < 4) {
-        _Z26UnlinkNodeByByteId0206dd68Pvi(data_02108cec.field0x10, rec->field0x0);
+        UnlinkNodeByByteId0206dd68(data_02108cec.field0x10, rec->field0x0);
         return 1;
     }
 

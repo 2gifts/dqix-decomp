@@ -12,9 +12,9 @@ void SetCombatantState2(struct StateWrapObj02088724* obj);
 void SetCombatantState3(struct StateWrapObj0208876c* obj);
 void SetCombatantState4(struct StateWrapObj020887b4* obj);
 void SetFlag0x80AndState5(unsigned char* obj);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int idx, int a, int b);
+unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 struct PackedPair_021dff3c {
@@ -41,7 +41,7 @@ extern "C" ARM void* func_ov024_021dff3c(struct Obj_021dff3c* obj, int unused, i
     unsigned short sel;
     if (range->state > 0) {
         if (CheckFlag0x14Bit0Clear((unsigned char*)c->currentStats_) && flagArg != 0) {
-            sel = _Z31SelectByIndexRange0to3_021da644iii(id, range->f20.c, range->f24.a);
+            sel = SelectByIndexRange0to3_021da644(id, range->f20.c, range->f24.a);
             switch (range->state) {
                 case 1:
                     SetCombatantState1((struct StateWrapObj020886dc*)c->currentStats_);
@@ -60,14 +60,14 @@ extern "C" ARM void* func_ov024_021dff3c(struct Obj_021dff3c* obj, int unused, i
                     break;
             }
         } else {
-            sel = _Z31SelectByIndexRange0to3_021da644iii(id, range->f24.b, range->f24.c);
+            sel = SelectByIndexRange0to3_021da644(id, range->f24.b, range->f24.c);
         }
     } else {
-        sel = _Z31SelectByIndexRange0to3_021da644iii(id, range->f24.b, range->f24.c);
+        sel = SelectByIndexRange0to3_021da644(id, range->f24.b, range->f24.c);
     }
     void* entry = func_ov000_0215e958(obj->field0x10);
     if (!entry) return 0;
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+    AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
     struct Flag_021dff3c* fl = (struct Flag_021dff3c*)((char*)obj->field0xc + 0x1c);
     func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, fl->flag != 0);
     return entry;

@@ -10,16 +10,16 @@ extern "C" void func_020531f0(GameObject* c);
 extern "C" void func_02043124(char* g);
 extern "C" void func_020945ac(struct Ctx0209459c* ctx);
 void ClearSubstructBytes(void* obj);
-extern "C" void _Z24ReinitController02043204Pc(char* obj);
+void ReinitController02043204(char* obj);
 void ResetAndEnableFieldFlag(struct FieldFlagBlock* obj);
 void ClearFieldKeepBit0x10(void* obj);
-extern "C" void _Z26InitAndInsertNode_021acd30Pchhh(char* self, unsigned char a, unsigned char b, unsigned char c);
-extern "C" void _Z32EnqueueEventTag57WithAB_021cf4b0ii(int a, int b);
+void InitAndInsertNode_021acd30(char* self, unsigned char a, unsigned char b, unsigned char c);
+void EnqueueEventTag57WithAB_021cf4b0(int a, int b);
 extern "C" void _Z27EnqueueEventTag173_021d1810tth(int a, int b, signed char c);
 int GetField0x3acValue(GameState* gs);
 int GetWord0x0(int* obj);
 int* GetGlobal02109030(void);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
+char* GetGlobalField0x1c020421a0(void);
 int CheckSubstructByte0x7cPositive(signed char* p);
 
 struct BattlePhaseState02093428 {
@@ -71,7 +71,7 @@ struct CombatantFields02093428 {
 // USA: func_02093428
 extern "C" ARM void func_02093428(struct BattlePhaseState02093428* s) {
     GameState* bs = GameState::GetInstance();
-    char* gf = _Z26GetGlobalField0x1c020421a0v();
+    char* gf = GetGlobalField0x1c020421a0();
     func_02012fe4();
     unsigned char v = GetField0x3acValue(bs);
     unsigned char state = s->field35;
@@ -104,7 +104,7 @@ extern "C" ARM void func_02093428(struct BattlePhaseState02093428* s) {
         if (r != 1) return;
         s->field30 = 3;
         s->field35 = 4;
-        _Z32EnqueueEventTag57WithAB_021cf4b0ii(v, 3);
+        EnqueueEventTag57WithAB_021cf4b0(v, 3);
         _Z27EnqueueEventTag173_021d1810tth(10000, -1, (signed char)GetField0x3acValue(bs));
         return;
     }
@@ -115,7 +115,7 @@ extern "C" ARM void func_02093428(struct BattlePhaseState02093428* s) {
             s->field35 = 4;
             return;
         }
-        _Z32EnqueueEventTag57WithAB_021cf4b0ii(v, 2);
+        EnqueueEventTag57WithAB_021cf4b0(v, 2);
         unsigned char flag = 0;
         GameObject* c = GetCombatantWithFlag0x100(bs, 0);
         if (c != 0) {
@@ -130,7 +130,7 @@ extern "C" ARM void func_02093428(struct BattlePhaseState02093428* s) {
                 }
             }
         }
-        _Z26InitAndInsertNode_021acd30Pchhh((char*)GetWord0x0((int*)bs), 1, flag, 0);
+        InitAndInsertNode_021acd30((char*)GetWord0x0((int*)bs), 1, flag, 0);
         ClearFieldKeepBit0x10(bs);
         if (((struct GameStateFlags02093428*)bs)->field7f75 != 0) {
             ResetAndEnableFieldFlag((struct FieldFlagBlock*)bs);
@@ -142,7 +142,7 @@ extern "C" ARM void func_02093428(struct BattlePhaseState02093428* s) {
     }
 
     if (state == 3) {
-        _Z24ReinitController02043204Pc(gf);
+        ReinitController02043204(gf);
         func_02043124(gf);
         func_020945ac((struct Ctx0209459c*)GetGlobal02109030());
         s->field34 = 4;

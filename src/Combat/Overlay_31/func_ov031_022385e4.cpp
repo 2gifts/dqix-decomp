@@ -16,7 +16,7 @@ namespace DuplicatePool {
 }
 extern unsigned char data_ov031_02249394[];
 extern "C" void func_ov031_0223ba20(void*);
-extern "C" void _Z37ProcessField28AndDispatch670_0223c534P11Obj0223c534(Obj0223c534*);
+void ProcessField28AndDispatch670_0223c534(Obj0223c534*);
 extern "C" void func_ov031_0223e2c0(int, int);
 extern "C" void func_ov031_0223cf70(Scene022385e4**);
 #define REG_DISPLAY_CONTROL (*(volatile unsigned int*)0x04000000)
@@ -32,7 +32,7 @@ extern "C" ARM void func_ov031_022385e4(int callback) {
             func_ov031_0223ba20(data_ov031_02290d10->entries[index]);
         index++;
     } while (index < data_ov031_02249394[data_ov031_02290d10->mode]);
-    _Z37ProcessField28AndDispatch670_0223c534P11Obj0223c534(data_ov031_02290d10->object);
+    ProcessField28AndDispatch670_0223c534(data_ov031_02290d10->object);
     func_ov031_0223e2c0(1, callback);
     func_ov031_0223cf70(&DuplicatePool::data_ov031_02290d10);
 }

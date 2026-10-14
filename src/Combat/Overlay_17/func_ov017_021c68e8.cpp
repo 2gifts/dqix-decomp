@@ -6,7 +6,7 @@ signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
 void SetByteField0x43eOnEntry(void* self, int index, unsigned char value);
 GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
 int GetFieldAt0x150(unsigned char* obj);
@@ -23,7 +23,7 @@ struct StructAt3c_02162aac {
     unsigned short f8;
 };
 
-extern "C" void _Z29ProcessCombatantSlot_02162aacPviP19StructAt3c_02162aac(void* self, int a, struct StructAt3c_02162aac* s);
+void ProcessCombatantSlot_02162aac(void* self, int a, struct StructAt3c_02162aac* s);
 
 struct Hdr021c68e8 {
     unsigned char pad0[8];
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov017_021c68e8(int unused0, Evt021c68e8* evt, GameState
     if (!a) return;
     void* b = func_ov017_021b8468(table);
     if (!b) return;
-    void* work = _Z20GetField6b0_021b8470Pv(table);
+    void* work = GetField6b0_021b8470(table);
     if (!work) return;
     if (a->field8 != evt->field4) return;
 
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov017_021c68e8(int unused0, Evt021c68e8* evt, GameState
     }
 
     if (ok) {
-        _Z29ProcessCombatantSlot_02162aacPviP19StructAt3c_02162aac(b, evt->combatantId, &s);
+        ProcessCombatantSlot_02162aac(b, evt->combatantId, &s);
     }
     SetBoundedArrayField0x4f4((char*)b, (signed char)evt->index, evt->flag0 ? 1 : 0);
     if (evt->flag1) {

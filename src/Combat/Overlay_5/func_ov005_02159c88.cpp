@@ -17,7 +17,7 @@ extern "C" void _Z23CopyThreeFields02157174P11Dst02157174P11Src02157174(void* ds
 extern "C" void _Z25RenderFlaggedIndexedEntryP16StructAt020473c8i(void* entry, int flag);
 extern "C" void func_02047554(void* obj, int val, int param1);
 extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(void* container, short key);
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
+MemberScreen* GetField1c_021a193c(int* p);
 extern "C" int func_020dd4c4(char a, void* b);
 extern "C" void func_ov005_02154d18(void* obj, int a, int b);
 extern "C" void func_ov005_02154d34(void* obj, int a, int b);
@@ -159,7 +159,7 @@ extern "C" ARM void func_ov005_02159c88(Menu02159c88* self) {
                 if (elem != 0) {
                     Obj02159c88* o = s->obj;
                     GameResources* res = func_ov017_0218b5b0();
-                    MemberScreen* holder = _Z19GetField1c_021a193cPi((int*)res->unknown_ptr_array_36fc[3]);
+                    MemberScreen* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
                     if (func_020dd4c4(holder->member, elem) != 0) {
                         int px = s->x;
                         int py = s->y;

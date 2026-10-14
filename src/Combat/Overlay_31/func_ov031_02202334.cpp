@@ -16,7 +16,7 @@ struct Packet02202334 { unsigned short pad[2]; unsigned short sequenceHigh; unsi
 extern "C" Connection02202334* func_ov031_02201e0c(void*, Packet02202334*, int);
 extern "C" int func_ov031_02201fac(void*, Packet02202334*, unsigned int, int);
 extern "C" void func_ov031_02201e70(Packet02202334*, Connection02202334*);
-extern "C" void _Z23TailCallType16_02201f84ii(int, int);
+void TailCallType16_02201f84(int, int);
 #define Swap16_02202334(value) (unsigned short)(((value) >> 8) | ((value) << 8))
 
 // USA: func_ov031_02202334
@@ -31,7 +31,7 @@ extern "C" ARM void func_ov031_02202334(void* obj, Packet02202334* packet, int l
     connection->acknowledgement = ((unsigned int)Swap16_02202334(packet->acknowledgementHigh) << 16) | Swap16_02202334(packet->acknowledgementLow);
     connection->window = Swap16_02202334(packet->window);
     func_ov031_02201e70(packet, connection);
-    _Z23TailCallType16_02201f84ii((int)connection, 0);
+    TailCallType16_02201f84((int)connection, 0);
     connection->state = 4;
     if (connection->pending == 1) {
         connection->pending = 0;

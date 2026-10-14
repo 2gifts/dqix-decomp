@@ -28,7 +28,7 @@ extern "C" unsigned short* func_02012fe4();
 int GetPackedNibbleFlag0x8(PackedNibbleArray0206e2dc*, int);
 int CheckField0NonZero(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-extern "C" int _Z29ForEachNodeUntilFalse02064704PvP12Node02064704S_(void*, Node02064704*, void*);
+int ForEachNodeUntilFalse02064704(void*, Node02064704*, void*);
 int GetPackedNibbleField(PackedNibbleArray0206e120*, int);
 int IsNibbleFieldZeroOrOne(PackedNibbleArray0206e120*, int);
 void GetEntry3Bytes(EntryDEE8*, int, unsigned char*, unsigned char*, unsigned char*);
@@ -54,7 +54,7 @@ extern "C" ARM void func_02095b30(SearchTable* table, int checkThreshold) {
             if (node->whole * 100 + node->fraction > (unsigned int)(components[2] * 100 + components[1])) continue;
         }
         arguments.category = *func_02012fe4();
-        if (!_Z29ForEachNodeUntilFalse02064704PvP12Node02064704S_(values, node->conditions, &arguments)) continue;
+        if (!ForEachNodeUntilFalse02064704(values, node->conditions, &arguments)) continue;
         if (IsSearchState(values, node->index, 3) && !node->allowDuringSearch) continue;
         if (!IsNibbleFieldZeroOrOne(values, node->index)) {
             if (!IsSearchState(values, node->index, 3) || !node->blocked) continue;

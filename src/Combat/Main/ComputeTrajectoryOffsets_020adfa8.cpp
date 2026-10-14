@@ -2,8 +2,8 @@
 
 struct Vec3_020adfa8 { int x, y, z; };
 
-extern "C" short _Z8fix32cosi(int x);
-extern "C" short _Z8fix32sini(int x);
+short fix32cos(int x);
+short fix32sin(int x);
 
 struct Vec3s32_020c2f18;
 extern "C" void Vector3fix_Normalize(struct Vec3s32_020c2f18* v, struct Vec3s32_020c2f18* out);
@@ -36,8 +36,8 @@ extern "C" ARM void func_020adfa8(ObjFields020adfa8* obj) {
     Vec3_020adfa8 v = obj->f44;
     int angle = obj->fae;
     Vec3_020adfa8 dir;
-    int zval = _Z8fix32cosi(angle);
-    dir.x = _Z8fix32sini(angle);
+    int zval = fix32cos(angle);
+    dir.x = fix32sin(angle);
     dir.y = 0;
     dir.z = zval;
     Vector3fix_Normalize((struct Vec3s32_020c2f18*)&dir, (struct Vec3s32_020c2f18*)&dir);

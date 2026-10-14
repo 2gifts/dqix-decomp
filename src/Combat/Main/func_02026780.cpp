@@ -8,8 +8,8 @@ extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
 extern "C" void* func_02012fe4(void);
 
-extern "C" void _Z20ClearRecords02026644Pc(char* obj);
-extern "C" void _Z20AppendRecord020269e4PcPKv(char* obj, const void* src);
+void ClearRecords02026644(char* obj);
+void AppendRecord020269e4(char* obj, const void* src);
 
 struct Cont02026780 {
     unsigned short uniqueID;
@@ -83,7 +83,7 @@ extern "C" ARM int func_02026780(Obj02026780* self, void* fileBuf, unsigned int 
     }
 
     if (func_0202c540(func_0202ae18()) != 0) {
-        _Z20ClearRecords02026644Pc((char*)self);
+        ClearRecords02026644((char*)self);
         return 0;
     }
 
@@ -142,7 +142,7 @@ extern "C" ARM int func_02026780(Obj02026780* self, void* fileBuf, unsigned int 
                     rec.pos.x = ax + fix32_Divide(c->position.x, 9830);
                     rec.pos.z = az + fix32_Divide(c->position.z, 9830);
                 }
-                _Z20AppendRecord020269e4PcPKv((char*)self, &rec);
+                AppendRecord020269e4((char*)self, &rec);
             }
         }
 

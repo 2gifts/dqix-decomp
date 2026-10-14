@@ -46,7 +46,7 @@ int ListContainsId(ListHead02046b60*, int);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 extern "C" void func_0208f748(void*, int);
 void FillBits5cd0(S_020113e0*);
-extern "C" int _Z17IsInRange0201b588i(int);
+int IsInRange0201b588(int);
 
 // USA: func_ov017_021cf86c
 extern "C" ARM void func_ov017_021cf86c(void*, GrottoPacket* packet, GameState* state, GrottoOverlay* overlay, SearchStruct0202c1a4* search) {
@@ -91,5 +91,5 @@ extern "C" ARM void func_ov017_021cf86c(void*, GrottoPacket* packet, GameState* 
         }
     }
     if (grotto->unknown_0[0] && packet->control_.bits_.refresh_ && (grotto->activeMapData.GetDiscoveryState() == 2 || grotto->activeMapData.GetDiscoveryState() == 3)) FillBits5cd0((S_020113e0*)state);
-    if (_Z17IsInRange0201b588i(state->GetPartyMemberByIndex(0)->obj3D_.GetField06()) && packet->control_.bits_.refresh_) FillBits5cd0((S_020113e0*)state);
+    if (IsInRange0201b588(state->GetPartyMemberByIndex(0)->obj3D_.GetField06()) && packet->control_.bits_.refresh_) FillBits5cd0((S_020113e0*)state);
 }

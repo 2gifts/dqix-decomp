@@ -5,30 +5,30 @@
 #include "System/Graphics.h"
 
 struct Struct020dfc40;
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40* texts);
+void ResetStruct020dfc40(Struct020dfc40* texts);
 extern "C" void func_020dfec0(void* texts, SafeAllocator* allocator, void* file, unsigned int size);
 void SetWord0x18ClearByte0x1f(unsigned char* graphics, int value);
 extern "C" void func_0204b5b4(void* graphics, int priority);
 struct Obj0204b5e8;
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8* graphics, int a, int b);
-extern "C" int _Z26SetBg1ControlBits_02199964iiiii(int size, int colorMode, int mapBase, int tileBase, int wrap);
-extern "C" int _Z22SetBg2CntFull_021999b4iiii(int screenSize, int colorMode, int screenBase, int charBase);
+void DispatchViaTable0204b5e8(Obj0204b5e8* graphics, int a, int b);
+int SetBg1ControlBits_02199964(int size, int colorMode, int mapBase, int tileBase, int wrap);
+int SetBg2CntFull_021999b4(int screenSize, int colorMode, int screenBase, int charBase);
 struct ActiveEntry02046900;
 int CountActiveEntries(ActiveEntry02046900* pac);
 struct Rec020467f0;
 void* FindRecordByIndex(Rec020467f0* pac, int index, void** outName, int* outSize);
 extern "C" void func_0204b174(void* graphics, void* file, SafeAllocator* allocator, unsigned int size);
 struct Entry_02199684;
-extern "C" void _Z27FillEntriesEncoded_02199684P14Entry_02199684ii(Entry_02199684* arr, int count, int value);
-extern "C" void _Z30ClearAndEncodeEntries_021996bcP14Entry_02199684i(Entry_02199684* arr, int count);
+void FillEntriesEncoded_02199684(Entry_02199684* arr, int count, int value);
+void ClearAndEncodeEntries_021996bc(Entry_02199684* arr, int count);
 extern "C" void func_0204bc74(void* graphics, int a, int b, int c, int d, int e, int f);
 struct List0204b0e8;
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8* graphics, void* characters);
+void FlushAndDispatchList0204b0e8(List0204b0e8* graphics, void* characters);
 struct Obj0204c7a8;
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(Obj0204c7a8* canvas, SafeAllocator* allocator, int pixels, unsigned int size);
+void AllocateBuffer0204c7a8(Obj0204c7a8* canvas, SafeAllocator* allocator, int pixels, unsigned int size);
 struct Struct_0205cf78;
 struct Elem_0205cf78;
-extern "C" void _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h(Struct_0205cf78* window, Elem_0205cf78* canvases, unsigned char count);
+void LinkArrayPrevPointers0205cf78(Struct_0205cf78* window, Elem_0205cf78* canvases, unsigned char count);
 
 struct FieldMenu021999fc;
 extern "C" void func_ov017_0219a388(FieldMenu021999fc* self);
@@ -87,7 +87,7 @@ extern "C" ARM void func_ov017_021999fc(FieldMenu021999fc* self) {
     {
         self->allocator_.Reset();
         self->texts_ = (Struct020dfc40*)self->allocator_.Allocate(0x18);
-        _Z19ResetStruct020dfc40P14Struct020dfc40(self->texts_);
+        ResetStruct020dfc40(self->texts_);
         self->task_ = BackgroundLoader::GetInstance()->QueueLoadFileInGP2(data_ov017_021d73f8, data_ov017_021d7412, NULL);
         self->step_++;
     }
@@ -117,11 +117,11 @@ extern "C" ARM void func_ov017_021999fc(FieldMenu021999fc* self) {
             background->unk_1c_0_ = 0;
             background->unk_1c_4_ = nibbles.values[i];
             func_0204b5b4(background, priorities.values[i]);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)background, 0, 0);
+            DispatchViaTable0204b5e8((Obj0204b5e8*)background, 0, 0);
         }
         DISPCNT = (DISPCNT & ~0x1f00) | 0x100;
-        _Z26SetBg1ControlBits_02199964iiiii(0, 0, 0x1d, 0, 0);
-        _Z22SetBg2CntFull_021999b4iiii(0, 0, 0x1e, 0);
+        SetBg1ControlBits_02199964(0, 0, 0x1d, 0, 0);
+        SetBg2CntFull_021999b4(0, 0, 0x1e, 0);
         ColorEffect_ConfigureAlphaBlend(0x04000050, 2, 1, 0xa, 6);
         self->task_ = BackgroundLoader::GetInstance()->QueueLoadFile(data_ov017_021d7423, NULL);
         self->step_++;
@@ -149,27 +149,27 @@ extern "C" ARM void func_ov017_021999fc(FieldMenu021999fc* self) {
             }
             loader->RemoveTask(self->task_);
             self->task_ = -1;
-            _Z27FillEntriesEncoded_02199684P14Entry_02199684ii((Entry_02199684*)self->backgrounds_, 2, 0x800);
+            FillEntriesEncoded_02199684((Entry_02199684*)self->backgrounds_, 2, 0x800);
             BackgroundGraphics021999fc* background;
             for (int i = 0; i < 2; i++)
             {
                 background = &self->backgrounds_[i];
                 func_0204bc74(background, 0, 0, 0, 0x20, 0x19, 0);
-                _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)background, NULL);
+                FlushAndDispatchList0204b0e8((List0204b0e8*)background, NULL);
             }
-            _Z30ClearAndEncodeEntries_021996bcP14Entry_02199684i((Entry_02199684*)self->backgrounds_, 2);
+            ClearAndEncodeEntries_021996bc((Entry_02199684*)self->backgrounds_, 2);
             self->canvasPixels_ = self->allocator_.Allocate(0x400);
             Canvas021999fc* canvas;
             for (int i = 0; i < 4; i++)
             {
                 canvas = &self->canvases_[i];
-                _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8*)canvas, &self->allocator_, (int)self->canvasPixels_, 0x40);
+                AllocateBuffer0204c7a8((Obj0204c7a8*)canvas, &self->allocator_, (int)self->canvasPixels_, 0x40);
                 canvas->background_ = &self->backgrounds_[1];
             }
             TextWindow021999fc* window = self->window_;
             window->background_ = &self->backgrounds_[0];
             window->unk_b2 = 2;
-            _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78*)self->window_, (Elem_0205cf78*)self->canvases_, 4);
+            LinkArrayPrevPointers0205cf78((Struct_0205cf78*)self->window_, (Elem_0205cf78*)self->canvases_, 4);
             BG0CNT = (BG0CNT & ~3) | 2;
             BG1CNT = (BG1CNT & ~3) | 1;
             BG2CNT = BG2CNT & ~3;

@@ -12,19 +12,19 @@ struct Layout02189284;
 struct Manager0218936c;
 
 extern "C" SearchStruct* func_0202ae18(void);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int flag);
+void CancelPendingAction020397cc(Obj020397cc* obj, int flag);
 void SetBitsInField4(unsigned int* field, unsigned int bits);
 void ClearBitsInField4(unsigned int* field, unsigned int bits);
 extern "C" void func_020a0cc4(unsigned int size);
 extern "C" void func_020a0c0c(void);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" Obj020d7aa0* _Z25GetGlobalResetObj020d7a50v();
-extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(Obj020d7aa0* obj);
+Obj020d7aa0* GetGlobalResetObj020d7a50();
+void TeardownAndResetState020d7aa0(Obj020d7aa0* obj);
 void PushInputLogB(int value);
 void PopStack1AndTrigger(int value);
 extern "C" void func_020a1940(unsigned int id);
 extern "C" void func_ov008_02188f5c(void* scene, int index, int arg);
-extern "C" void _Z24SetupAllocators_02189284P14Layout02189284P13SafeAllocator(Layout02189284* layout, SafeAllocator* allocator);
+void SetupAllocators_02189284(Layout02189284* layout, SafeAllocator* allocator);
 unsigned char Dispatch0218936c(Manager0218936c* manager, unsigned int ticks);
 int TestFlagBitAt0xe(SearchStruct* search, int index);
 extern "C" void func_ov008_0218b240(void* scene);
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
     GameResources* res = func_ov017_0218b5b0();
     GameObject* unknown = gs->GetUnknownGameObject();
     SearchStruct* search = func_0202ae18();
-    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)unknown, 1);
+    CancelPendingAction020397cc((Obj020397cc*)unknown, 1);
     SetBitsInField4((unsigned int*)res, 0xc0);
     if (task->step == 0) {
 #if defined(jpn)
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
             task->failed = 1;
             return;
         }
-        _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
+        TeardownAndResetState020d7aa0(GetGlobalResetObj020d7a50());
 #if defined(jpn)
         task->allocator.CreateTypeA(buffer, 0x1c704);
 #else
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
         } else {
             func_ov008_02188f5c(task->scene, -1, task->f54);
         }
-        _Z24SetupAllocators_02189284P14Layout02189284P13SafeAllocator((Layout02189284*)task->scene, &task->allocator);
+        SetupAllocators_02189284((Layout02189284*)task->scene, &task->allocator);
         task->step++;
         return;
     }

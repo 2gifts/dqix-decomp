@@ -26,7 +26,7 @@ extern "C" int func_ov000_0215e9fc(Random*, short*, int, int);
 extern "C" void func_0202e5d8(BattleCamera*, int, int, int);
 CameraCombatant* GetCombatantWithFlag0x400(GameState*, int);
 void SetFields0x10To0x18(unsigned char*, int, int, int);
-extern "C" void _Z22StoreVec3Words0216d368P16Vec3Ints0216d368iii(Vec3Ints0216d368*, int, int, int);
+void StoreVec3Words0216d368(Vec3Ints0216d368*, int, int, int);
 void ApplyField0x70Tail(GlobalObj0202e6a8*, int);
 
 // USA: func_ov000_0216e3c4
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov000_0216e3c4(BattleCamera* camera) {
     camera->mode = 14;
     camera->active = 1;
     Vec3Ints0216d368 sum;
-    _Z22StoreVec3Words0216d368P16Vec3Ints0216d368iii(&sum, 0, 0, 0);
+    StoreVec3Words0216d368(&sum, 0, 0, 0);
     for (int i = 0; i < 8; i++) {
         CameraCombatant* object = GetCombatantWithFlag0x400(game, i + 0xc0);
         if (object && object->included) {

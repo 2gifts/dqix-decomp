@@ -109,18 +109,18 @@ int IsField0x1b4Or0x1b8Positive(int* obj);
 int GetByte0x26c(char* obj);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 int GetIntField0x264(void* obj);
-extern "C" int _Z28GetField0x8OrDefault02077a20P13Outer02077a20(Outer02077a20* p);
-extern "C" void _Z15InitObj0219a674Ph(unsigned char* self);
-extern "C" short _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_(Vec3* p0, int baseAngle, Vec3* p2);
+int GetField0x8OrDefault02077a20(Outer02077a20* p);
+void InitObj0219a674(unsigned char* self);
+short GetAbsAngleDeltaBetween_021a4754(Vec3* p0, int baseAngle, Vec3* p2);
 extern "C" void func_ov017_0219b33c(Ctx02196430* self, Msg02196430* msg);
-extern "C" int _Z28HasMatchingHalfword_0219735cPht(unsigned char* obj, unsigned short key);
+int HasMatchingHalfword_0219735c(unsigned char* obj, unsigned short key);
 int GetField0x17dBits4To5IfFlag8(unsigned char* obj);
 int ArrayContainsByte(ArrayContainsByteStruct* arr, int value);
-extern "C" int _Z23CheckProximity_02196fc8PhS_i(unsigned char* self, unsigned char* other, int extra);
+int CheckProximity_02196fc8(unsigned char* self, unsigned char* other, int extra);
 int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mode);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 int GetField0x3acValue(GameState* state);
-extern "C" void _Z18TrySetMode02076cccPvi(void* obj, int mode);
+void TrySetMode02076ccc(void* obj, int mode);
 extern "C" unsigned short func_ov017_021971c4(Ctx02196430* self);
 extern "C" int func_0202c508(void* obj);
 extern "C" int func_0202c540(void* obj);
@@ -128,7 +128,7 @@ struct Entry0207d9bc;
 Entry0207d9bc* GetData02108ea8();
 EventEntry02196430* FindEntryByHalfword(Entry0207d9bc* table, unsigned short id);
 extern "C" void func_ov017_021b6f18(void* node);
-extern "C" void _Z19InitStruct_02196c08Ph(unsigned char* obj);
+void InitStruct_02196c08(unsigned char* obj);
 extern "C" void func_ov017_021b6e70(Event02196430* evt, int index);
 extern "C" int func_ov017_021970a0(int mode);
 extern "C" void func_ov017_021b7104(void* node, Event02196430* evt);
@@ -220,7 +220,7 @@ extern "C" ARM int func_ov017_02196430(Ctx02196430* self) {
                     other->obj3D.position_.y + otherHeight < player->obj3D.position_.y) {
                     touching = 0;
                 } else {
-                    int reach = (player->obj3D.GetRadius() >> 1) + (_Z28GetField0x8OrDefault02077a20P13Outer02077a20((Outer02077a20*)other) >> 1);
+                    int reach = (player->obj3D.GetRadius() >> 1) + (GetField0x8OrDefault02077a20((Outer02077a20*)other) >> 1);
                     int dist = Vector3fix_Distance(&player->obj3D.position_, &other->obj3D.position_);
                     Vector3fix_Subtract(&player->obj3D.position_, &other->obj3D.position_, &dir);
                     Vector3fix_Normalize(&dir, &dir);
@@ -234,10 +234,10 @@ extern "C" ARM int func_ov017_02196430(Ctx02196430* self) {
                     touching = dist < reach + 0x1000;
                 }
                 if (touching && func_0202c508(session)) {
-                    _Z15InitObj0219a674Ph((unsigned char*)&approachMsg);
+                    InitObj0219a674((unsigned char*)&approachMsg);
                     approachMsg.kind = 9;
                     approachMsg.field2 = other->obj3D.unknown_4_;
-                    approachMsg.angle = _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_((Vec3*)&player->obj3D.position_, (short)player->obj3D.rotation_.y, (Vec3*)&other->obj3D.position_);
+                    approachMsg.angle = GetAbsAngleDeltaBetween_021a4754((Vec3*)&player->obj3D.position_, (short)player->obj3D.rotation_.y, (Vec3*)&other->obj3D.position_);
                     if (approachMsg.angle < 0x1922) {
                         func_ov017_0219b33c(self, &approachMsg);
                     }
@@ -248,7 +248,7 @@ extern "C" ARM int func_ov017_02196430(Ctx02196430* self) {
                 if (other->flags17d & 1) {
                     continue;
                 }
-                if (_Z28HasMatchingHalfword_0219735cPht((unsigned char*)self, other->eventId)) {
+                if (HasMatchingHalfword_0219735c((unsigned char*)self, other->eventId)) {
                     continue;
                 }
                 if (!(other->HasPartyFlag() &&
@@ -256,18 +256,18 @@ extern "C" ARM int func_ov017_02196430(Ctx02196430* self) {
                     if (allowRepeat != 0) {
                         continue;
                     }
-                    if (!_Z23CheckProximity_02196fc8PhS_i((unsigned char*)player, (unsigned char*)other, 0)) {
+                    if (!CheckProximity_02196fc8((unsigned char*)player, (unsigned char*)other, 0)) {
                         continue;
                     }
                 }
             } else {
-                if (!_Z23CheckProximity_02196fc8PhS_i((unsigned char*)player, (unsigned char*)other, 0x1000)) {
+                if (!CheckProximity_02196fc8((unsigned char*)player, (unsigned char*)other, 0x1000)) {
                     continue;
                 }
                 if (!other->obj3D.IsVisible()) {
                     continue;
                 }
-                _Z15InitObj0219a674Ph((unsigned char*)&contactMsg);
+                InitObj0219a674((unsigned char*)&contactMsg);
                 contactMsg.kind = 0xe;
                 func_ov017_0219b33c(self, &contactMsg);
                 if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1) == 0 && self->forceEvent == 0) {
@@ -300,15 +300,15 @@ extern "C" ARM int func_ov017_02196430(Ctx02196430* self) {
             }
             if (other->mode != 8 && other->mode != 9 && other->mode != 0) {
                 other->field166 = GetField0x3acValue(game);
-                _Z18TrySetMode02076cccPvi(other, 8);
+                TrySetMode02076ccc(other, 8);
             }
             id = other->eventId;
             doEvent = 1;
-            if (9007.6f < (float)_Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_((Vec3*)&other->obj3D.position_, (short)other->obj3D.rotation_.y, (Vec3*)&player->obj3D.position_)) {
+            if (9007.6f < (float)GetAbsAngleDeltaBetween_021a4754((Vec3*)&other->obj3D.position_, (short)other->obj3D.rotation_.y, (Vec3*)&player->obj3D.position_)) {
                 facing = 1;
                 break;
             }
-            if (9007.6f < (float)_Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_((Vec3*)&player->obj3D.position_, (short)player->obj3D.rotation_.y, (Vec3*)&other->obj3D.position_)) {
+            if (9007.6f < (float)GetAbsAngleDeltaBetween_021a4754((Vec3*)&player->obj3D.position_, (short)player->obj3D.rotation_.y, (Vec3*)&other->obj3D.position_)) {
                 facing = 2;
             }
             break;
@@ -317,7 +317,7 @@ extern "C" ARM int func_ov017_02196430(Ctx02196430* self) {
 
     unsigned short nearbyId = func_ov017_021971c4(self);
     if (nearbyId != 0) {
-        _Z15InitObj0219a674Ph((unsigned char*)&nearbyMsg);
+        InitObj0219a674((unsigned char*)&nearbyMsg);
         nearbyMsg.kind = 0xe;
         func_ov017_0219b33c(self, &nearbyMsg);
     }
@@ -351,7 +351,7 @@ extern "C" ARM int func_ov017_02196430(Ctx02196430* self) {
     }
     if (doEvent) {
         func_ov017_021b6f18(self->node);
-        _Z19InitStruct_02196c08Ph((unsigned char*)&evt);
+        InitStruct_02196c08((unsigned char*)&evt);
         evt.kind = 1;
         if (special) {
             evt.field_0xe = 1;

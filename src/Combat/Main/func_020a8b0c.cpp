@@ -15,13 +15,13 @@ struct Manager020a8b0c { char pad[kManagerPrefix]; HeadNode02046b24** head; };
 struct Obj020397cc;
 struct Obj02033874;
 Field020a8b0c* GetField0x3f8Address(GameState*);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+void CancelPendingAction020397cc(Obj020397cc*, int);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
-extern "C" void _Z25ForwardField0xc0_0205eb80Pv(void*);
-extern "C" void _Z26SetForwardAndStore0205eb54Pvii(void*, int, int);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205eb90Pvii(void*, int, int);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(Obj02033874*, int);
-extern "C" void _Z31ApplyToListedCombatants020874bcP13Party020874bci(Party020874bc*, int);
+void ForwardField0xc0_0205eb80(void*);
+void SetForwardAndStore0205eb54(void*, int, int);
+void DispatchIfField0xc4NonNeg_0205eb90(void*, int, int);
+void SetVecYFromValue02033874(Obj02033874*, int);
+void ApplyToListedCombatants020874bc(Party020874bc*, int);
 int fix32abs(int);
 extern char data_02108760;
 // USA: func_020a8b0c
@@ -35,7 +35,7 @@ extern "C" ARM void func_020a8b0c(Obj020a8b0c* self, int index) {
     party = (Party020874bc*)GetPtrField0x2a04(state);
     int height = actor->height;
     field->flag = 0;
-    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)actor, 1);
+    CancelPendingAction020397cc((Obj020397cc*)actor, 1);
     self->progress+=self->step;
     if (self->limit < self->progress) self->progress = self->limit;
     int difference;
@@ -43,16 +43,16 @@ extern "C" ARM void func_020a8b0c(Obj020a8b0c* self, int index) {
     else {
         difference = height-self->progress;
         if (fix32abs(difference) < 40) {
-            _Z25ForwardField0xc0_0205eb80Pv(&data_02108760);
-            _Z26SetForwardAndStore0205eb54Pvii(&data_02108760, 114, 114);
-            _Z34DispatchIfField0xc4NonNeg_0205eb90Pvii(&data_02108760, 3, 0);
+            ForwardField0xc0_0205eb80(&data_02108760);
+            SetForwardAndStore0205eb54(&data_02108760, 114, 114);
+            DispatchIfField0xc4NonNeg_0205eb90(&data_02108760, 3, 0);
         }
     }
     actor->height = difference;
     if (difference < 0) {
         int y = actor->y;
-        _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)actor, y+labs(difference));
-        _Z31ApplyToListedCombatants020874bcP13Party020874bci(party, self->count);
+        SetVecYFromValue02033874((Obj02033874*)actor, y+labs(difference));
+        ApplyToListedCombatants020874bc(party, self->count);
         int count = self->count;
         if (count > 0) count--;
         self->count = count;

@@ -24,7 +24,7 @@ struct Obj0205eaa0;
 
 extern "C" char data_02108760[];
 
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* sound, int effect, int unk);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int unk);
 
 // USA: func_ov005_021585fc
 extern "C" ARM int func_ov005_021585fc(EquipmentMenu* self, int direction) {
@@ -39,7 +39,7 @@ extern "C" ARM int func_ov005_021585fc(EquipmentMenu* self, int direction) {
     if (next == page)
         changed = 0;
     if (changed) {
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
         if (direction < 0)
             self->flags_ |= 0x20000;
         else

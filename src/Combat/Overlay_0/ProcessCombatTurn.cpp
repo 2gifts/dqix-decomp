@@ -109,7 +109,7 @@ extern "C" void _Z22UpdateCombatantAgilityii(void* self, int id);
 extern "C" void _Z20UpdateCombatantCharmii(void* self, int id);
 extern "C" void _Z27UpdateCombatantMagicalMightii(void* self, int id);
 extern "C" void _Z29UpdateCombatantMagicalMendingii(void* self, int id);
-extern "C" void _Z24ClearData4Bytes_021f67f8v(void);
+void ClearData4Bytes_021f67f8(void);
 extern "C" void __clear(void* buf, int n);
 extern "C" int _Z13NextRandomMaxP6Randomi(void* rng, int max);
 extern "C" int _Z19ClassifyField0x81fePc(void* self);
@@ -122,16 +122,16 @@ extern "C" Combatant* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id
 extern "C" Combatant* _Z25GetCombatantWithFlag0x400P9GameStatei(void* gs, int id);
 extern "C" PartyInfo* _Z19GetField0x19cOrNullP9S02053dc0(Combatant* c);
 extern "C" void func_020dc548(signed char id, signed char* out, signed char* count);
-extern "C" void _Z18InitStruct02160030Pv(void* obj);
+void InitStruct02160030(void* obj);
 extern "C" void _Z18ResetEntry02157d14P11Obj02157d14(ActionEntry* e);
-extern "C" void _Z19ResetStruct02157cdcPv(void* obj);
+void ResetStruct02157cdc(void* obj);
 extern "C" int func_ov000_02155f9c(void* self, int id, int checkSub);
 extern "C" void func_ov024_021f73b8(Big* b);
 extern "C" void func_ov024_021f9030(Big* b, void* self, int id, ActionNode* node);
 extern "C" int _Z30GetCombatantField0x148Bits3To4ii(void* self, int id);
-extern "C" void _Z16ClearInt0208a910Pi(int* out);
+void ClearInt0208a910(int* out);
 extern "C" int func_0208a91c(int* p0, void* self, int id, int* outCount, short* outTargets);
-extern "C" SkillData* _Z24SearchBothTables02079e2cPci(char* data, int id);
+SkillData* SearchBothTables02079e2c(char* data, int id);
 extern "C" void* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(void* container, int key);
 extern "C" void _Z29ReplaceEntryAndFormat0204887cP11Obj0204887cPc(Combatant* c, void* e);
 extern "C" void _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(ActionNode* obj, TargetNode* node);
@@ -142,8 +142,8 @@ extern "C" void func_ov000_0215f1ac(void* self);
 extern "C" int _Z14IsFlag10088SetP7S_10088(Combatant* c);
 extern "C" int _Z22IsFlag0x18Bit0x2000SetP10GameObject(Combatant* c);
 extern "C" int _Z31IsCombatantModStatsFlag0x100SetP10GameObject(Combatant* c);
-extern "C" ActionNode* _Z25GetWorkArrayEntry0215e9d8Pv(void* self);
-extern "C" ActionEntry* _Z28GetTableEntry0x8e00Bound0x48Pv(void* self);
+ActionNode* GetWorkArrayEntry0215e9d8(void* self);
+ActionEntry* GetTableEntry0x8e00Bound0x48(void* self);
 extern "C" TargetNode* _Z22GetNodeAtIndex021600f8P12List021600f8i(ActionNode* list, int index);
 extern "C" ActionEntry* _Z22GetNodeAtIndex02160094P12List02160094i(ActionNode* list, int index);
 extern "C" void func_ov000_0215767c(void* self, ActionNode* src, ActionNode* dst);
@@ -193,7 +193,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         _Z29UpdateCombatantMagicalMendingii(self, id);
     }
 
-    _Z24ClearData4Bytes_021f67f8v();
+    ClearData4Bytes_021f67f8();
 
     Candidate cands[16];
     __clear(cands, sizeof(cands));
@@ -285,7 +285,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
 
     for (long i = 0; i < count; i++) {
         ActionNode* node = &self->actions[self->actionCount];
-        _Z18InitStruct02160030Pv(node);
+        InitStruct02160030(node);
         node->entryCount = 1;
         node->entry = &self->entries[self->entryCount];
         _Z18ResetEntry02157d14P11Obj02157d14(node->entry);
@@ -345,9 +345,9 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                 Combatant* me = GetFlagged0x400(selfId);
                 if (kind != 2) {
                     int work;
-                    _Z16ClearInt0208a910Pi(&work);
+                    ClearInt0208a910(&work);
                     node->action = func_0208a91c(&work, self, (unsigned short)node->entry->id, &numTargets, targets.v);
-                    SkillData* sk = _Z24SearchBothTables02079e2cPci((char*)data, (short)node->action);
+                    SkillData* sk = SearchBothTables02079e2c((char*)data, (short)node->action);
                     if (sk != 0) {
                         while (sk->type == 0x22) {
                             void* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(self->field8e18 + 0x684, sk->linked);
@@ -358,7 +358,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                             memset(targets.v, -1, sizeof(targets));
                             numTargets = 0;
                             node->action = func_0208a91c(&work, self, (unsigned short)node->entry->id, &numTargets, targets.v);
-                            sk = _Z24SearchBothTables02079e2cPci((char*)data, (short)node->action);
+                            sk = SearchBothTables02079e2c((char*)data, (short)node->action);
                             if (sk == 0) {
                                 break;
                             }
@@ -378,7 +378,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         node->targetCount = 0;
         for (int j = 0; j < numTargets; j++) {
             TargetNode* tn = &self->targets[self->targetCount];
-            _Z19ResetStruct02157cdcPv(tn);
+            ResetStruct02157cdc(tn);
             tn->id = targets.v[j];
             tn->active = 1;
             _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(node, tn);
@@ -390,7 +390,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         int extra = func_ov000_0215f57c(self, ids.v[i]);
         for (int k = 0; k < extra; k++) {
             ActionNode* node2 = &self->actions[self->actionCount];
-            _Z18InitStruct02160030Pv(node2);
+            InitStruct02160030(node2);
             node2->entryCount = 1;
             node2->entry = &self->entries[self->entryCount];
             _Z18ResetEntry02157d14P11Obj02157d14(node2->entry);
@@ -406,9 +406,9 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                 Combatant* me = _Z25GetCombatantWithFlag0x400P9GameStatei(gs, node2->entry->id);
                 if (kind != 2) {
                     int work2;
-                    _Z16ClearInt0208a910Pi(&work2);
+                    ClearInt0208a910(&work2);
                     node2->action = func_0208a91c(&work2, self, (unsigned short)node2->entry->id, &numTargets2, targets2.v);
-                    SkillData* sk = _Z24SearchBothTables02079e2cPci((char*)data, (short)node2->action);
+                    SkillData* sk = SearchBothTables02079e2c((char*)data, (short)node2->action);
                     if (sk != 0) {
                         while (sk->type == 0x22) {
                             void* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(self->field8e18 + 0x684, sk->linked);
@@ -419,7 +419,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                             memset(targets2.v, -1, sizeof(targets2));
                             numTargets2 = 0;
                             node2->action = func_0208a91c(&work2, self, (unsigned short)node2->entry->id, &numTargets2, targets2.v);
-                            sk = _Z24SearchBothTables02079e2cPci((char*)data, (short)node2->action);
+                            sk = SearchBothTables02079e2c((char*)data, (short)node2->action);
                             if (sk == 0) {
                                 break;
                             }
@@ -438,7 +438,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
             node2->targetCount = 0;
             for (int j = 0; j < numTargets2; j++) {
                 TargetNode* tn = &self->targets[self->targetCount];
-                _Z19ResetStruct02157cdcPv(tn);
+                ResetStruct02157cdc(tn);
                 tn->id = targets2.v[j];
                 tn->active = 1;
                 _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(node2, tn);
@@ -480,11 +480,11 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         }
 
         int modFlag = _Z31IsCombatantModStatsFlag0x100SetP10GameObject(c);
-        ActionNode* w = _Z25GetWorkArrayEntry0215e9d8Pv(self);
+        ActionNode* w = GetWorkArrayEntry0215e9d8(self);
         if (w == 0) {
             break;
         }
-        _Z18InitStruct02160030Pv(w);
+        InitStruct02160030(w);
         func_ov000_0215767c(self, node, w);
         Sim sim;
         _Z19InitStruct_021eb510Pv(&sim);
@@ -519,14 +519,14 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
             continue;
         }
 
-        SkillData* sk = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)w->action);
+        SkillData* sk = SearchBothTables02079e2c((char*)GetData02108e10(), (short)w->action);
         int again = 1;
         if (sk != 0 && (sk->flags & 0x400) && sk->kind != 0x1c) {
             ActionNode* echo = &self->actions[0x47];
-            ActionNode* w2 = _Z25GetWorkArrayEntry0215e9d8Pv(self);
+            ActionNode* w2 = GetWorkArrayEntry0215e9d8(self);
             if (w2 != 0) {
-                _Z18InitStruct02160030Pv(w2);
-                _Z18InitStruct02160030Pv(echo);
+                InitStruct02160030(w2);
+                InitStruct02160030(echo);
                 w2->action = echo->action = w->action;
                 for (int j = 0; j < w->targetCount; j++) {
                     TargetNode* src = _Z22GetNodeAtIndex021600f8P12List021600f8i(w, j);
@@ -542,7 +542,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                         break;
                     }
                     TargetNode* tn = &self->targets[self->targetCount];
-                    _Z19ResetStruct02157cdcPv(tn);
+                    ResetStruct02157cdc(tn);
                     tn->id = src->id;
                     tn->active = 1;
                     _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(echo, tn);
@@ -561,7 +561,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     if (_Z22IsFlag0x18Bit0x2000SetP10GameObject(t) != 0) {
                         break;
                     }
-                    ActionEntry* e = _Z28GetTableEntry0x8e00Bound0x48Pv(self);
+                    ActionEntry* e = GetTableEntry0x8e00Bound0x48(self);
                     if (e == 0) {
                         break;
                     }

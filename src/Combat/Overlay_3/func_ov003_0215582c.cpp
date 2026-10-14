@@ -102,21 +102,21 @@ struct Party0215582c {
 
 void* GetPtrField0x2a04(GameState* battleStruct);
 struct Stats0215582c* GetFieldAt0x150(unsigned char* obj);
-extern "C" int _Z29OffsetByIndexTimes16_02155e14ii(int base, int idx);
+int OffsetByIndexTimes16_02155e14(int base, int idx);
 short* GetField150Ptr0x488(struct Field150Holder02052e14* obj);
 extern "C" int func_0207c378(void* obj, int value, int amount, int key);
-extern "C" int _Z29GetArrayEntryByIndex_02156034Pv(void* obj);
+int GetArrayEntryByIndex_02156034(void* obj);
 void SetBit0x954StoreIndex0x950(unsigned char* obj, int index);
 int GetField0x3acValue(GameState* battleStruct);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+int LoadBattleBlock020ac4c0(void* dst);
 void AddClamped10BitFieldHighAt0x28(struct S_a06ec* p, unsigned int amount);
 void AddClamped10BitFieldAt0x1c(struct S_a0258* p, unsigned int amount);
 int CopyInBattleField0x7540(void* src);
 extern "C" int func_0207c7a0(void* map, int value, int key);
-extern "C" struct ItemEntry0215582c* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* c, int key);
+struct ItemEntry0215582c* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 extern "C" void func_02052d7c(void* obj, int index, int value);
-extern "C" int _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(struct KeyedList0207c484* obj, int value, int amount, int key);
-extern "C" short* _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(struct Field150Holder02052e2c* obj);
+int DecrementKeyedStackAmount0207c484(struct KeyedList0207c484* obj, int value, int amount, int key);
+short* GetField150Ptr0x488_02052e2c(struct Field150Holder02052e2c* obj);
 extern "C" void func_02083738(void* o, int a1);
 extern "C" void func_02083cbc(void* a, void* obj, void* tail);
 void SetBitInArray0x910(unsigned char* obj, int index);
@@ -155,7 +155,7 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
         self->mpRatio = (float)mp / (float)value;
     }
 
-    short* set = (short*)_Z29OffsetByIndexTimes16_02155e14ii((int)sets, c->data->equipSet);
+    short* set = (short*)OffsetByIndexTimes16_02155e14((int)sets, c->data->equipSet);
     short* equipped = GetField150Ptr0x488((struct Field150Holder02052e14*)c);
     if (set != NULL && equipped != NULL) {
         set[0] = equipped[7];
@@ -175,7 +175,7 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
         }
     }
 
-    SetBit0x954StoreIndex0x950((unsigned char*)stats, _Z29GetArrayEntryByIndex_02156034Pv(self));
+    SetBit0x954StoreIndex0x950((unsigned char*)stats, GetArrayEntryByIndex_02156034(self));
 
     value = GetField0x3acValue(gs);
     if (value == c->id) {
@@ -192,14 +192,14 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
             w->id = base - 20000 + equipSet;
         }
         int buf[0x2c];
-        _Z23LoadBattleBlock020ac4c0Pv(buf);
+        LoadBattleBlock020ac4c0(buf);
         AddClamped10BitFieldHighAt0x28((struct S_a06ec*)buf, 1);
         AddClamped10BitFieldAt0x1c((struct S_a0258*)(buf + 0x1a), 1);
         CopyInBattleField0x7540(buf);
     }
 
     int unchanged = 0;
-    set = (short*)_Z29OffsetByIndexTimes16_02155e14ii((int)sets, _Z29GetArrayEntryByIndex_02156034Pv(self));
+    set = (short*)OffsetByIndexTimes16_02155e14((int)sets, GetArrayEntryByIndex_02156034(self));
     if (set != NULL) {
         if (set[0] == equipped[7] && set[1] == equipped[0] && set[2] == equipped[8] && set[3] == equipped[6] &&
             set[4] == equipped[4] && set[5] == equipped[1] && set[6] == equipped[5] && set[7] == equipped[9]) {
@@ -210,7 +210,7 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
     if (set[7] == 0x4680 && func_0207c7a0(party->bag, 0x4680, 7) == 0) {
         bool allowed[2];
         for (int i = 0; i < 7; i++) {
-            struct ItemEntry0215582c* e = _Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0*)self->list, set[i]);
+            struct ItemEntry0215582c* e = FindElementByKey020dedd0((struct Container020dedd0*)self->list, set[i]);
             struct ItemFlags0215582c* d;
             if (e != NULL && (d = e->data) != NULL) {
                 allowed[0] = d->allowedMale;
@@ -232,10 +232,10 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
             if (data_ov003_0217f2bc[k] != 0xff) {
                 func_02052d7c(c, data_ov003_0217f2bc[k], item);
             }
-            _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii((struct KeyedList0207c484*)party->bag, item, 1, kind);
+            DecrementKeyedStackAmount0207c484((struct KeyedList0207c484*)party->bag, item, 1, kind);
             used = 1;
             if (data_ov003_0217f2bc[k] == 4) {
-                short* p = _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c((struct Field150Holder02052e2c*)c);
+                short* p = GetField150Ptr0x488_02052e2c((struct Field150Holder02052e2c*)c);
                 p[0xb] = -1;
                 if (equipped[0] > 0) {
                     p[0xb] = equipped[0] % 1000 + 14000;
@@ -245,10 +245,10 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
         if (used == 0) {
             if (data_ov003_0217f2bc[k] != 0xff) {
                 if (data_ov003_0217f2bc[k] == 0) {
-                    _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c((struct Field150Holder02052e2c*)c)[0xb] = -1;
+                    GetField150Ptr0x488_02052e2c((struct Field150Holder02052e2c*)c)[0xb] = -1;
                 }
                 if (data_ov003_0217f2bc[k] == 4) {
-                    short* p = _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c((struct Field150Holder02052e2c*)c);
+                    short* p = GetField150Ptr0x488_02052e2c((struct Field150Holder02052e2c*)c);
                     p[0xb] = -1;
                     if (equipped[0] > 0) {
                         p[0xb] = equipped[0] % 1000 + 14000;
@@ -275,7 +275,7 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
     }
 
     func_02083cbc(stats, self->f90, self->fcc);
-    switch (_Z29GetArrayEntryByIndex_02156034Pv(self)) {
+    switch (GetArrayEntryByIndex_02156034(self)) {
     case 2:
         SetBitInArray0x910((unsigned char*)stats, 0x1a);
         break;

@@ -9,21 +9,21 @@ extern Data021707d8_0215cec4 data_ov004_021707d8[];
 struct MemberIds_0215cec4 { int ids[4]; };
 extern MemberIds_0215cec4 data_ov004_0216fb70;
 
-extern "C" int _Z28DispatchNodeIfType7_02156e2cPvi(void* a, int key);
+int DispatchNodeIfType7_02156e2c(void* a, int key);
 struct Entry_0215cec4 { short key; };
-extern "C" Entry_0215cec4* _Z20GetEntryFor_021570a4Pvi(void* obj, int index);
+Entry_0215cec4* GetEntryFor_021570a4(void* obj, int index);
 struct Container020dedd0;
 struct Element020de650 { char pad[8]; unsigned int kind : 4; };
 extern "C" Container020dedd0* func_ov004_02156fd4(void* obj, int key);
-extern "C" Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
+Element020de650* FindElementByKey020dedd0(Container020dedd0* c, int key);
 extern "C" void func_020dd7ac(void* buf);
 extern "C" void* func_ov004_02156f04(void* a, int key);
 extern "C" int func_020dcc98(signed char combatantId);
 int IsValueInCombatantField150List(int combatantId, int value);
 extern "C" void func_ov023_021f65d4(void* obj, int id, int mask);
-extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void* obj, int id, int mask);
+void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
 extern "C" int func_020dd4c4(int id, void* node);
-extern "C" void _Z13Setup020ddaf4iiiiii(int a, int b, int c, int d, int e, int f);
+void Setup020ddaf4(int a, int b, int c, int d, int e, int f);
 extern "C" void* func_ov004_02156f38(void* obj, int key);
 extern "C" void* func_ov011_021849c8(void* a);
 extern "C" void* func_ov023_021f6880(void* obj, int key);
@@ -63,13 +63,13 @@ struct TitlePanel_0215cec4 { char pad[0x38]; short style; };
 // USA: func_ov004_0215cec4
 extern "C" ARM int func_ov004_0215cec4(void* a) {
     GameState* bs = GameState::GetInstance();
-    int key = _Z28DispatchNodeIfType7_02156e2cPvi(a, 0x5b);
+    int key = DispatchNodeIfType7_02156e2c(a, 0x5b);
     if (key < 0) return 0;
-    Entry_0215cec4* entry = _Z20GetEntryFor_021570a4Pvi(a, key & 0xff);
+    Entry_0215cec4* entry = GetEntryFor_021570a4(a, key & 0xff);
     if (!entry) return 0;
     Container020dedd0* node = func_ov004_02156fd4(a, 5);
     if (!node) return 0;
-    Element020de650* elem = _Z24FindElementByKey020dedd0P17Container020dedd0i(node, entry->key);
+    Element020de650* elem = FindElementByKey020dedd0(node, entry->key);
     if (!elem) return 0;
 
     MessageSlotTable_020dd7ac buf;
@@ -103,26 +103,26 @@ extern "C" ARM int func_ov004_0215cec4(void* a) {
                 func_ov023_021f65d4(a, j + 0x1ce, 8);
                 func_ov023_021f65d4(a, j + 0x1ca, 8);
                 func_ov023_021f65d4(a, j + 0x1d2, 8);
-                _Z26ClearNodeMaskById_021f6600Pvii(a, j + 0x1d7, 8);
+                ClearNodeMaskById_021f6600(a, j + 0x1d7, 8);
             } else if (func_020dd4c4((signed char)id, elem)) {
                 func_ov023_021f65d4(a, j + 0x1c6, 8);
                 func_ov023_021f65d4(a, j + 0x1ce, 8);
                 func_ov023_021f65d4(a, j + 0x1ca, 8);
-                _Z26ClearNodeMaskById_021f6600Pvii(a, j + 0x1d2, 8);
+                ClearNodeMaskById_021f6600(a, j + 0x1d2, 8);
                 func_ov023_021f65d4(a, j + 0x1d7, 8);
             } else {
-                _Z26ClearNodeMaskById_021f6600Pvii(a, j + 0x1c6, 8);
-                _Z26ClearNodeMaskById_021f6600Pvii(a, j + 0x1ce, 8);
-                _Z26ClearNodeMaskById_021f6600Pvii(a, j + 0x1ca, 8);
+                ClearNodeMaskById_021f6600(a, j + 0x1c6, 8);
+                ClearNodeMaskById_021f6600(a, j + 0x1ce, 8);
+                ClearNodeMaskById_021f6600(a, j + 0x1ca, 8);
                 func_ov023_021f65d4(a, j + 0x1d2, 8);
                 func_ov023_021f65d4(a, j + 0x1d7, 8);
 
                 func_020dd7ac(&buf);
                 unsigned short valA, valB;
                 if (elem->kind == 0) {
-                    _Z13Setup020ddaf4iiiiii((int)&buf, id, (int)elem, 0, (int)&valA, (int)&valB);
+                    Setup020ddaf4((int)&buf, id, (int)elem, 0, (int)&valA, (int)&valB);
                 } else {
-                    _Z13Setup020ddaf4iiiiii((int)&buf, id, (int)elem, 1, (int)&valA, (int)&valB);
+                    Setup020ddaf4((int)&buf, id, (int)elem, 1, (int)&valA, (int)&valB);
                 }
 
                 NodeE0_0215cec4* hA = (NodeE0_0215cec4*)func_ov004_02156f38(a, j + 0x1c6);

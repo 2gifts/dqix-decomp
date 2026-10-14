@@ -47,9 +47,9 @@ struct Obj02178ba8 {
     Struct_0205d81c panel;
 };
 
-extern "C" GlobalField1c* _Z26GetGlobalField0x1c020421a0v();
-extern "C" int _Z18GetField0_0205bafcPv(void* obj);
-extern "C" Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* s, int key);
+GlobalField1c* GetGlobalField0x1c020421a0();
+int GetField0_0205bafc(void* obj);
+Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c* s, int key);
 extern "C" void func_ov000_02178d28(Obj02178ba8* obj, Entry02178ba8* entry);
 extern "C" void func_ov000_0217ab8c(Entry02178ba8* entry, int a, int b);
 extern "C" void func_ov000_02178f28(Obj02178ba8* obj, Entry02178ba8* entry, void* buf);
@@ -85,10 +85,10 @@ extern "C" ARM void func_ov000_02178ba8(Obj02178ba8* obj, Entry02178ba8* entry, 
     panel->fieldAE = 0xc;
     panel->fieldB1 = 0xf;
     int flag = 0;
-    if (_Z18GetField0_0205bafcPv(&panel->field54) > 4) {
+    if (GetField0_0205bafc(&panel->field54) > 4) {
         flag = 1;
     }
-    void* buf = _Z26GetGlobalField0x1c020421a0v()->buffer;
+    void* buf = GetGlobalField0x1c020421a0()->buffer;
     memset(buf, 0, REGION_OFFSET_1);
     func_ov000_02178f28(obj, entry, buf);
 #if defined(jpn)
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov000_02178ba8(Obj02178ba8* obj, Entry02178ba8* entry, 
 #else
     func_0205d304(panel, buf, 0, 0, flag, 1, 0, 0);
 #endif
-    Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci(panel, 0x22);
+    Elem_0205d81c* elem = FindElementByC40205d81c(panel, 0x22);
     if (elem != NULL) {
         elem->fieldC2 = 0;
     }

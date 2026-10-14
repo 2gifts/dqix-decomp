@@ -50,8 +50,8 @@ struct MenuEntry_021716d0 {
     SpellData_021716d0* spells[1];
 };
 
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" void _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(struct Obj0203c108* obj, char* text);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* text);
 int IsFlag0x18Bit0x200Set(GameObject* obj);
 int AdjustValueByFieldFlag(void* obj, unsigned int value);
 extern "C" int func_ov000_02171210(void* a, void* b);
@@ -60,7 +60,7 @@ extern "C" void __clear(void* dst, int size);
 #if !defined(jpn)
 extern "C" void func_020e4864(int a, char* b, int c, int d, int e, int f);
 #endif
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* src, char* dst, int flag);
+void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
 
 // USA: func_ov000_021716d0
 extern "C" ARM void func_ov000_021716d0(MenuEntry_021716d0* self) {
@@ -70,7 +70,7 @@ extern "C" ARM void func_ov000_021716d0(MenuEntry_021716d0* self) {
         state->depth++;
         state->stack[self->state.depth] = 0xe;
         state->field15 = 0;
-        _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc((struct Obj0203c108*)self->message, (char*)_Z21GetFieldByKey020e0434P17Container020e0310i(self->strings, 5));
+        SwapGlobalEntry0203c108((struct Obj0203c108*)self->message, (char*)GetFieldByKey020e0434(self->strings, 5));
         return;
     }
 
@@ -103,14 +103,14 @@ extern "C" ARM void func_ov000_021716d0(MenuEntry_021716d0* self) {
     if (entry == NULL) return;
 
 #if defined(jpn)
-    _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc((struct Obj0203c108*)self->message, (char*)*entry);
+    SwapGlobalEntry0203c108((struct Obj0203c108*)self->message, (char*)*entry);
 #else
     char text[0x80];
     __clear(text, 0x80);
     char upper[0x80];
     __clear(upper, 0x80);
     func_020e4864(*entry, text, 1, 0, 0, 0);
-    _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(text, upper, 0);
-    _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc((struct Obj0203c108*)self->message, upper);
+    CopyTextAndUppercaseIfFlagged0206819c(text, upper, 0);
+    SwapGlobalEntry0203c108((struct Obj0203c108*)self->message, upper);
 #endif
 }

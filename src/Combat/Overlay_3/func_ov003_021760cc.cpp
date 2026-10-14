@@ -54,21 +54,21 @@ struct Menu021760cc {
     short field1048;
 };
 
-extern "C" int _Z20AppendString02042058PcPKc(char *, const char *);
-extern "C" Messages021760cc *_Z26GetGlobalField0x1c020421a0v();
+int AppendString02042058(char *, const char *);
+Messages021760cc *GetGlobalField0x1c020421a0();
 extern "C" void __clear(void *, int);
-extern "C" void _Z20Clear12Bytes020e46c4Pv(void *);
+void Clear12Bytes020e46c4(void *);
 extern "C" void func_020e5334(Loaded021760cc *, void *, unsigned int, int);
 extern "C" void func_02046380(Messages021760cc *);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void *, int);
-extern "C" Element021760cc *_Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0 *, int);
-extern "C" int _Z21ComputeRatio_02175898PcPv(char *, void *);
+void InitObjFromCombatantId020e4bf4(void *, int);
+Element021760cc *FindElementByKey020dedd0(Container020dedd0 *, int);
+int ComputeRatio_02175898(char *, void *);
 struct StoreStruct;
 void StoreInArray0x8b0(StoreStruct *, int, int);
-extern "C" const char *_Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310 *, int);
+const char *GetFieldByKey020e0434(Container020e0310 *, int);
 extern "C" void func_0204500c(Messages021760cc *, const char *, int, int);
 extern "C" void func_ov003_021749c0(char *);
-extern "C" void _Z24ReinitController02043204Pc(char *);
+void ReinitController02043204(char *);
 extern "C" void func_02043124(Messages021760cc *);
 
 extern const char data_ov003_02180b9f[];
@@ -77,7 +77,7 @@ extern const char data_ov003_02180bb5[];
 // USA: func_ov003_021760cc
 extern "C" ARM void func_ov003_021760cc(Menu021760cc *menu) {
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
-    Messages021760cc *msgs   = _Z26GetGlobalField0x1c020421a0v();
+    Messages021760cc *msgs   = GetGlobalField0x1c020421a0();
     if (menu->step == 0) {
         if (menu->task >= 0) {
             loader->RemoveTask(menu->task);
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov003_021760cc(Menu021760cc *menu) {
             Loaded021760cc loaded;
             __clear(first, 0x48);
             __clear(second, 0x48);
-            _Z20Clear12Bytes020e46c4Pv(&loaded);
+            Clear12Bytes020e46c4(&loaded);
             loaded.a = first;
             loaded.b = second;
             char name[12];
@@ -110,12 +110,12 @@ extern "C" ARM void func_ov003_021760cc(Menu021760cc *menu) {
             menu->task = -1;
             short cur  = menu->cur;
             func_02046380(msgs);
-            _Z30InitObjFromCombatantId020e4bf4Pvi(name, menu->character);
+            InitObjFromCombatantId020e4bf4(name, menu->character);
             msgs->target             = name;
-            Element021760cc *element = _Z24FindElementByKey020dedd0P17Container020dedd0i(
+            Element021760cc *element = FindElementByKey020dedd0(
                 (Container020dedd0 *) (menu->container + 0x800), menu->selected);
             if (element) {
-                int value = (menu->mode == 4 ? _Z21ComputeRatio_02175898PcPv((char *) menu, element) : element->value);
+                int value = (menu->mode == 4 ? ComputeRatio_02175898((char *) menu, element) : element->value);
                 value *= menu->count;
                 StoreInArray0x8b0((StoreStruct *) msgs, 0, value);
                 StoreInArray0x8b0((StoreStruct *) msgs, 1, menu->count);
@@ -123,8 +123,8 @@ extern "C" ARM void func_ov003_021760cc(Menu021760cc *menu) {
             msgs->loaded = &loaded;
             if (menu->flags & 0x200) {
                 char *text = msgs->text;
-                _Z20AppendString02042058PcPKc(
-                    text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310 *) (menu->messages), cur));
+                AppendString02042058(
+                    text, GetFieldByKey020e0434((Container020e0310 *) (menu->messages), cur));
                 char *buffer = msgs->buffer;
                 memset(buffer, 0, 0x960);
                 memcpy(buffer, text, 0x960);
@@ -132,7 +132,7 @@ extern "C" ARM void func_ov003_021760cc(Menu021760cc *menu) {
                 menu->flags &= ~0x200;
             } else {
                 func_0204500c(msgs,
-                              _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310 *) (menu->messages), cur), 0,
+                              GetFieldByKey020e0434((Container020e0310 *) (menu->messages), cur), 0,
                               0xe3);
             }
             msgs->field99c = menu->fieldff0;
@@ -151,12 +151,12 @@ extern "C" ARM void func_ov003_021760cc(Menu021760cc *menu) {
                     menu->flags &= ~0x2000;
                 }
             } else if (msgs->state == 3) {
-                *(unsigned char *) ((char *) _Z26GetGlobalField0x1c020421a0v() + 0x19ae) = 0;
+                *(unsigned char *) ((char *) GetGlobalField0x1c020421a0() + 0x19ae) = 0;
                 menu->cur                                                                = menu->next;
                 menu->next                                                               = -1;
                 if (menu->cur < 0) {
                     if (menu->flags & 0x20) {
-                        _Z24ReinitController02043204Pc((char *) msgs);
+                        ReinitController02043204((char *) msgs);
                         func_02043124(msgs);
                         menu->flags &= ~0x20;
                     }

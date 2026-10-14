@@ -16,7 +16,7 @@ extern "C" void func_ov028_021d8c20(void* obj);
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_ov028_021d94e4  (semantic: ResetFields_021d94e4)
-extern "C" ARM void _Z20ResetFields_021d94e4Pv(void* p) {
+ARM void ResetFields_021d94e4(void* p) {
     struct Timer021d94e4* obj = (struct Timer021d94e4*)p;
     obj->f9c = 0;
     obj->f98 = 0;

@@ -52,32 +52,32 @@ struct Globals0217101c {
 };
 
 extern "C" void* func_0205ec34();
-extern "C" void _Z33DispatchStateTransitions_02166608Pv(void*);
+void DispatchStateTransitions_02166608(void*);
 extern "C" Grid021f9b30* func_ov023_021f6524(void*, int);
 GetTableByteOrFFData* GetGlobal02109418();
-extern "C" void _Z26GetGlobalField0x1c020421a0v();
+void GetGlobalField0x1c020421a0();
 extern "C" void func_ov023_021f65d4(void*, int, int);
-extern "C" Found0208d994* _Z24FindElementByKey0208d994P12List0208d994i(List0208d994*, int);
+Found0208d994* FindElementByKey0208d994(List0208d994*, int);
 extern "C" void _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30*, unsigned short, unsigned int, unsigned int);
-extern "C" Node02165ea4* _Z33SetFieldIfType1_02165ea4_02165ea4Pvii(void*, int, int);
+Node02165ea4* SetFieldIfType1_02165ea4_02165ea4(void*, int, int);
 extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(GameState*);
 unsigned int GetTableByteOrFF(GetTableByteOrFFData*, unsigned int);
 extern "C" int _Z26TestBitInByteArray02096100iPhi(GetTableByteOrFFData*, unsigned char*, int);
-extern "C" const char* _Z21Lookup4Entry_021f63acPvii(void*, int, int);
+const char* Lookup4Entry_021f63ac(void*, int, int);
 extern "C" void* memset(void*, int, unsigned int);
 void AppendXTag(char*, int);
-extern "C" void _Z20AppendString02042058PcPKc(char*, const char*);
+void AppendString02042058(char*, const char*);
 extern "C" void func_ov023_021f63f8(void*, int, char*, int);
-extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void*, int, int);
+void ClearNodeMaskById_021f6600(void*, int, int);
 extern "C" void func_ov023_021f9d14(Grid021f9b30*, void*);
-extern "C" void _Z21DispatchNode_021f6630iiss(int, int, short, short);
+void DispatchNode_021f6630(int, int, short, short);
 
 extern Globals0217101c data_ov004_0217101c;
 
 // USA: func_ov004_02166bd8
 extern "C" ARM int func_ov004_02166bd8(void* a) {
     func_0205ec34();
-    _Z33DispatchStateTransitions_02166608Pv(a);
+    DispatchStateTransitions_02166608(a);
     short page = 0;
     short field5e = 1;
     Grid021f9b30* grid = func_ov023_021f6524(a, 0x5b);
@@ -98,7 +98,7 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
         entry = entry->next;
     }
     GetTableByteOrFFData* table = GetGlobal02109418();
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     unsigned char* bits = table->bits;
     for (short i = 0; i < 8; idA++, idB++, idC++, idD++, i++) {
         int shown = 0;
@@ -107,13 +107,13 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
         func_ov023_021f65d4(a, idC, 8);
         func_ov023_021f65d4(a, idD, 8);
         if (entry) {
-            Found0208d994* found = _Z24FindElementByKey0208d994P12List0208d994i(&lists->list, entry->key);
+            Found0208d994* found = FindElementByKey0208d994(&lists->list, entry->key);
             if (found) {
                 shown = 1;
                 _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(grid, idA, (unsigned short)i, 0);
                 int extra = 0;
                 if (!entry->skipNode) {
-                    Node02165ea4* node = _Z33SetFieldIfType1_02165ea4_02165ea4Pvii(a, idD, 6);
+                    Node02165ea4* node = SetFieldIfType1_02165ea4_02165ea4(a, idD, 6);
                     node->field44 = 4;
                     node->field46 = 0;
                     node->hidden = (i != 0);
@@ -143,7 +143,7 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
                 case 0:
                 case 1:
                     if (!seen)
-                        text = _Z21Lookup4Entry_021f63acPvii(a, 3, 10);
+                        text = Lookup4Entry_021f63ac(a, 3, 10);
                     break;
                 case 2:
                     type = 11;
@@ -155,16 +155,16 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
                 char* buf = data_ov004_0217101c.buffers[i];
                 memset(buf, 0, 0x80);
                 AppendXTag(buf, 0x1c);
-                _Z20AppendString02042058PcPKc(buf, entry->name);
+                AppendString02042058(buf, entry->name);
                 AppendXTag(buf, 0x2e);
                 if (text)
-                    _Z20AppendString02042058PcPKc(buf, text);
+                    AppendString02042058(buf, text);
                 func_ov023_021f63f8(a, idA, buf, 0xf);
-                _Z33SetFieldIfType1_02165ea4_02165ea4Pvii(a, idC, type)->hidden = 0;
-                _Z26ClearNodeMaskById_021f6600Pvii(a, idA, 8);
-                _Z26ClearNodeMaskById_021f6600Pvii(a, idC, 8);
+                SetFieldIfType1_02165ea4_02165ea4(a, idC, type)->hidden = 0;
+                ClearNodeMaskById_021f6600(a, idA, 8);
+                ClearNodeMaskById_021f6600(a, idC, 8);
                 if (extra)
-                    _Z26ClearNodeMaskById_021f6600Pvii(a, idD, 8);
+                    ClearNodeMaskById_021f6600(a, idD, 8);
             }
             entry = entry->next;
         }
@@ -172,6 +172,6 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
             _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(grid, 0, (unsigned short)i, 0);
     }
     func_ov023_021f9d14(grid, a);
-    _Z21DispatchNode_021f6630iiss((int)a, 0x17, page, field5e);
+    DispatchNode_021f6630((int)a, 0x17, page, field5e);
     return 0;
 }

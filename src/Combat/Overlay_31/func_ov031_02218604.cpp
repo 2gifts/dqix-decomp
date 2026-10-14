@@ -3,7 +3,7 @@
 
 extern "C" int func_ov031_0221aae4(int a, int b, char* out, int size);
 extern "C" int func_ov031_0221883c(void* self, void* buf, int extra);
-extern "C" int _Z23VariadicForward020c7170iiiz(int a, int b, int c, ...);
+int VariadicForward020c7170(int a, int b, int c, ...);
 
 extern const char data_ov031_02249edc[];
 extern const char data_ov031_02249ee0[];
@@ -44,7 +44,7 @@ extern "C" ARM int func_ov031_02218604(Printer_02218604* self, const char* name,
         cur = buf->cur;
         avail = buf->end - cur;
     }
-    written = _Z23VariadicForward020c7170iiiz((int)cur, avail, (int)fmt, name);
+    written = VariadicForward020c7170((int)cur, avail, (int)fmt, name);
     buf->cur = buf->cur + written;
     if (func_ov031_0221aae4(a, b, buf->cur, buf->end - buf->cur - 1) >= 0) {
         buf->cur = buf->cur + len;

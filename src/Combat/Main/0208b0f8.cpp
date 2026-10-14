@@ -13,21 +13,21 @@ extern "C" void* __clear(void*, int);
 extern "C" void func_0206f81c(void*);
 extern "C" void func_ov017_021c9e00(int, int, int, int);
 unsigned int GetBitsInField4(unsigned int*, unsigned int);
-extern "C" void _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_(Base02010834*, int, int*, int*);
+void CopyCountedBytesToIntArray02010834(Base02010834*, int, int*, int*);
 int IsField0Null(void**);
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(void*, int, void*);
+int LookupAndForEachNode020649b0(void*, int, void*);
 void* GetData02153637();
-extern "C" int _Z28GetEntryStatusForKey020e34bcP17Container020e34bci(Container020e34bc*, int);
+int GetEntryStatusForKey020e34bc(Container020e34bc*, int);
 int CheckField0NonZero(int*);
 unsigned char GetByte0x26c(char*);
-extern "C" int _Z36CountFlaggedSlotBit14Matches020852a4Ph(unsigned char*);
-extern "C" int _Z36CountFlaggedSlotBit15Matches02085318Ph(unsigned char*);
+int CountFlaggedSlotBit14Matches020852a4(unsigned char*);
+int CountFlaggedSlotBit15Matches02085318(unsigned char*);
 void StoreInFirstEmptySlot(unsigned char*, unsigned char);
 void SetBoolFlagAt558(unsigned char*, int, int);
 int RestoreMaxHpByAmount(Combatant02048228*, int);
 int RestoreMaxMpByAmount(Combatant02048284*, int);
-extern "C" void _Z16Dispatch020e3428Pvi(void*, int);
-extern "C" void _Z37ClearEntryIfCurrentArrMatches020e3468P13Entry020e3054i(Entry020e3054*, int);
+void Dispatch020e3428(void*, int);
+void ClearEntryIfCurrentArrMatches020e3468(Entry020e3054*, int);
 
 struct Actor0208b0f8 {
     char pad0[4];
@@ -91,13 +91,13 @@ extern "C" ARM void func_0208b0f8(void* receiver) {
     int ids[4];
     int count;
     __clear(ids, sizeof(ids));
-    _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_((Base02010834*)game, leader->slot, ids, &count);
+    CopyCountedBytesToIntArray02010834((Base02010834*)game, leader->slot, ids, &count);
     if (IsField0Null(list) && leader->active != 0 && self->countdown != 0) {
         self->countdown--;
         if (self->countdown == 0) {
             Record0208b0f8 record;
             record.zone = *(unsigned short*)func_02012fe4();
-            if (_Z28LookupAndForEachNode020649b0PviS_(data, 0x19, &record)) {
+            if (LookupAndForEachNode020649b0(data, 0x19, &record)) {
                 func_0206f81c(&record);
             }
         }
@@ -107,7 +107,7 @@ extern "C" ARM void func_0208b0f8(void* receiver) {
     hpTimer = self->hpTimers;
     mpTimer = self->mpTimers;
     for (i = 0; i < count; i++) {
-        status = _Z28GetEntryStatusForKey020e34bcP17Container020e34bci((Container020e34bc*)entries, 1);
+        status = GetEntryStatusForKey020e34bc((Container020e34bc*)entries, 1);
         party = (Actor0208b0f8*)game->GetPartyMemberByIndex(ids[i]);
         if (!CheckField0NonZero(search) || (CheckField0NonZero(search) && status != 1)) {
             if (party == NULL || leader->active == 0 || GetByte0x26c((char*)leader) != 0 ||
@@ -116,7 +116,7 @@ extern "C" ARM void func_0208b0f8(void* receiver) {
                 continue;
             }
         }
-        hp = _Z36CountFlaggedSlotBit14Matches020852a4Ph(party->skills);
+        hp = CountFlaggedSlotBit14Matches020852a4(party->skills);
         if (hp > 0 && self->enabled && !blocked) {
             if (hpTimer[i] == 0) {
                 if (status != 2 && status != 1) StoreInFirstEmptySlot((unsigned char*)entries, 1);
@@ -129,7 +129,7 @@ extern "C" ARM void func_0208b0f8(void* receiver) {
                 }
             } else hpTimer[i]--;
         }
-        mp = _Z36CountFlaggedSlotBit15Matches02085318Ph(party->skills);
+        mp = CountFlaggedSlotBit15Matches02085318(party->skills);
         if (mp > 0 && self->enabled && !blocked) {
             if (mpTimer[i] == 0) {
                 if (status != 2 && status != 1) StoreInFirstEmptySlot((unsigned char*)entries, 1);
@@ -144,8 +144,8 @@ extern "C" ARM void func_0208b0f8(void* receiver) {
         }
     }
     if (changed) {
-        int status = _Z28GetEntryStatusForKey020e34bcP17Container020e34bci((Container020e34bc*)entries, 1);
-        if (status == 1) _Z16Dispatch020e3428Pvi(entries, 1);
-        else if ((unsigned int)(status - 3) <= 2) _Z37ClearEntryIfCurrentArrMatches020e3468P13Entry020e3054i((Entry020e3054*)entries, 1);
+        int status = GetEntryStatusForKey020e34bc((Container020e34bc*)entries, 1);
+        if (status == 1) Dispatch020e3428(entries, 1);
+        else if ((unsigned int)(status - 3) <= 2) ClearEntryIfCurrentArrMatches020e3468((Entry020e3054*)entries, 1);
     }
 }

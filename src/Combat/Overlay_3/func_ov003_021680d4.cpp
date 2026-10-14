@@ -15,10 +15,9 @@ enum { kRegionValue280_140 = 0x280 };
 enum { kRegionValue5C_28 = 0x5c };
 #endif
 
-
 extern "C" void _Z12Init0205a198P14Struct0205a198(void* p);
 extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(void* p);
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 
 struct Obj021680d4 {
     SafeAllocator alloc0;
@@ -62,5 +61,5 @@ extern "C" ARM void func_ov003_021680d4(struct Obj021680d4* obj, SafeAllocator* 
     obj->field4d8 = p7;
     _Z23ClearField0And40205a234P19ClearTarget0205a234(p7);
 
-    obj->field7c = *(int*)(_Z26GetGlobalField0x1c020421a0v() + kRegionValue5C_28);
+    obj->field7c = *(int*)(GetGlobalField0x1c020421a0() + kRegionValue5C_28);
 }

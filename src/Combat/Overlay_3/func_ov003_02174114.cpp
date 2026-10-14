@@ -77,15 +77,15 @@ struct Battle02174114 {
     unsigned char b104f_;
 };
 
-extern "C" Global020421a0 *_Z26GetGlobalField0x1c020421a0v(void);
+Global020421a0 *GetGlobalField0x1c020421a0(void);
 extern "C" void func_0204500c(Global020421a0 *, int, int, int);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40 *);
+void ResetStruct020dfc40(Struct020dfc40 *);
 extern "C" void func_02074af4(void *);
 extern "C" void func_ov023_021dc134(void *, int, int);
-extern "C" void _Z18InitStruct0205a444Pc(char *);
-extern "C" void _Z15InitObj02174408P18InitStruct02174408(InitStruct02174408 *);
-extern "C" void _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4(Obj02081ee4 *, Sub02081ee4 *);
-extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64 *);
+void InitStruct0205a444(char *);
+void InitObj02174408(InitStruct02174408 *);
+void InitWithSub02081ee4(Obj02081ee4 *, Sub02081ee4 *);
+void ResetList0204af64(List0204af64 *);
 extern "C" void func_0204c684(void *);
 unsigned char CopyOutRegion0x5718(char *, void *);
 GameObject *GetCombatantWithFlag0x100(GameState *, int);
@@ -96,7 +96,7 @@ public:
 
 // USA: func_ov003_02174114
 extern "C" ARM void func_ov003_02174114(Battle02174114 *self) {
-    Global020421a0 *g = _Z26GetGlobalField0x1c020421a0v();
+    Global020421a0 *g = GetGlobalField0x1c020421a0();
     int p             = g->p5c_;
     self->fff0_       = g->f99c_;
     func_0204500c(g, p, 0, 0xe3);
@@ -105,7 +105,7 @@ extern "C" ARM void func_ov003_02174114(Battle02174114 *self) {
 
     self->f4_ = 0;
     self->f8_ = 0;
-    _Z19ResetStruct020dfc40P14Struct020dfc40((Struct020dfc40 *) (self->s0c_));
+    ResetStruct020dfc40((Struct020dfc40 *) (self->s0c_));
     self->b34_ = 0;
     self->b35_ = 0;
     func_02074af4(self->s24_);
@@ -115,13 +115,13 @@ extern "C" ARM void func_ov003_02174114(Battle02174114 *self) {
     v                          = *reg;
     *reg                       = (v & ~0x1f00u) | 0x100u;
     func_ov023_021dc134((char *) self + 0x3c, -1, 0);
-    _Z18InitStruct0205a444Pc(self->s7d8_);
+    InitStruct0205a444(self->s7d8_);
     self->f830_ = 0;
-    _Z15InitObj02174408P18InitStruct02174408((InitStruct02174408 *) self->s834_);
-    _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4((Obj02081ee4 *) self->s88c_, (Sub02081ee4 *) self->s898_);
+    InitObj02174408((InitStruct02174408 *) self->s834_);
+    InitWithSub02081ee4((Obj02081ee4 *) self->s88c_, (Sub02081ee4 *) self->s898_);
     self->f89c_ = 0;
     for (int i = 0; i < 2; i++)
-        _Z17ResetList0204af64P12List0204af64((List0204af64 *) (self->lists_ + i * 32));
+        ResetList0204af64((List0204af64 *) (self->lists_ + i * 32));
     for (int j = 0; j < 8; j++)
         func_0204c684(self->slots_ + j * 0xe0);
 

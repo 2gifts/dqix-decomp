@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int);
+int fix32ReduceAngle0To2Pi(int);
 extern "C" int fix32_Sqrt(int value);
 
 struct Vec3;
@@ -30,7 +30,7 @@ extern "C" ARM void func_0202e5d8(void* obj, int angleArg, int radiusY, int heig
     struct Vec3Local_0202e5d8 v;
     struct Mtx43_02030d84 mtxCopy;
 
-    rotAngle = _Z22fix32ReduceAngle0To2Pii(angleArg);
+    rotAngle = fix32ReduceAngle0To2Pi(angleArg);
     *(int*)((char*)obj + 0x70) = rotAngle;
     *(int*)((char*)obj + 0x74) = radiusY;
     *(int*)((char*)obj + 0x78) = heightZ;

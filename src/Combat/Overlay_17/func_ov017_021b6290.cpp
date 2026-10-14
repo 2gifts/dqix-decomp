@@ -33,22 +33,22 @@ extern "C" void func_0209c2e0(Actor0209c678*, int, int);
 extern "C" void func_0205e944(void*, int);
 extern "C" void func_02043124(void*);
 extern "C" int abs(int);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
-extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(Actor0209c678*, int);
+void CancelPendingAction020397cc(Obj020397cc*, int);
+void DispatchContextByState0209c678(Actor0209c678*, int);
 int ListContainsId(ListHead02046b60*, int);
 void SetBitsInField4(unsigned int*, unsigned int);
 void SetBitsInWord(unsigned int*, unsigned int);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 RootEntries* GetGlobalPtr021075f4();
 void SetOrClearBit0x10OnEntries(RootEntries*, int);
 float GetIntAt0xc(unsigned char*);
 int GetAxisIntValue(AxisFloats0203b57c*, int);
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
+unsigned int* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int*, unsigned int);
 void EmptyStub02047198(Struct02046f84*);
-extern "C" void _Z31ResetObjectAndAllocator02046f84P14Struct02046f84(Struct02046f84*);
+void ResetObjectAndAllocator02046f84(Struct02046f84*);
 void ConfigureModeByByte_0218d274_0218d274(void* controller);
-extern "C" void _Z35ProcessCombatantsIfFlagged_0218f79cPv(void*);
+void ProcessCombatantsIfFlagged_0218f79c(void*);
 void ProcessSlotField58_021a2840(GameResources*);
 extern char data_ov017_021d7c10[];
 extern Actor0209c678 data_02109bf4;
@@ -63,11 +63,11 @@ extern "C" ARM void func_ov017_021b6290(BattleLoad021b6290* self) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     void* streamOwner = resources->unknown_ptr_3718;
     if (self->state == 0) {
-        _Z27CancelPendingAction020397ccP11Obj020397cci(actor, 1);
+        CancelPendingAction020397cc(actor, 1);
         actor->field_b2 = 0;
         if (self->streamID >= 0) {
             self->task = loader->QueueLoadFile(data_ov017_021d7c10, 0);
-            _Z30DispatchContextByState0209c678P13Actor0209c678i(&data_02109bf4, 10);
+            DispatchContextByState0209c678(&data_02109bf4, 10);
         }
         if (self->streamID <= 0) self->delay = 0;
         if (self->flag8) func_02017c58(func_02012fe4());
@@ -98,7 +98,7 @@ extern "C" ARM void func_ov017_021b6290(BattleLoad021b6290* self) {
             func_0209c2e0(&data_02109bf4, 127, 0);
             func_0205e944(data_02108760, 127);
             SetBitsInField4(&resources->brightnessFlags_0, 0x40);
-            func_02043124(_Z26GetGlobalField0x1c020421a0v());
+            func_02043124(GetGlobalField0x1c020421a0());
             SetOrClearBit0x10OnEntries(GetGlobalPtr021075f4(), 0);
             if ((int)GetIntAt0xc(timing) > 30 || abs(GetAxisIntValue((AxisFloats0203b57c*)resources, 0)) == 16) {
                 SetMainBrightness(resources, -16, 0);
@@ -116,11 +116,11 @@ extern "C" ARM void func_ov017_021b6290(BattleLoad021b6290* self) {
             SetBitsInField4(&resources->brightnessFlags_0, 16);
             SetBitsInField4(&resources->brightnessFlags_0, 2);
             SetBitsInWord(&resources->brightnessFlags_0, 4);
-            OrBitsIntoField0(_Z27GetDataPtr02114e04_020d6c00v(), 1);
+            OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 1);
             EmptyStub02047198(&self->action);
-            _Z31ResetObjectAndAllocator02046f84P14Struct02046f84(&self->action);
+            ResetObjectAndAllocator02046f84(&self->action);
             ConfigureModeByByte_0218d274_0218d274(resources);
-            _Z35ProcessCombatantsIfFlagged_0218f79cPv(resources);
+            ProcessCombatantsIfFlagged_0218f79c(resources);
             ProcessSlotField58_021a2840(resources);
             SetOrClearBit0x10OnEntries(GetGlobalPtr021075f4(), 1);
             self->complete = 1;

@@ -72,10 +72,10 @@ struct Act_021da9e0 {
 extern "C" float func_ov024_021db358(GameObject* c);
 extern "C" int _Z19ClassifyField0x81fePc(void* world);
 extern "C" int func_ov000_0215ffa0(void* node);
-extern "C" void* _Z23FindNodeAtDepth0215fff4Pvii(void* node, int index, int slot);
+void* FindNodeAtDepth0215fff4(void* node, int index, int slot);
 extern "C" struct Entry_021da9e0* func_ov000_0215e958(void* world);
 extern "C" void func_ov000_0215cd44(void* world, void* entry, GameObject* c, int d, unsigned long long e, int g);
-extern "C" void _Z32AppendToChainAndIncCount0215ffc4PvS_i(void* node, void* entry, int v);
+void AppendToChainAndIncCount0215ffc4(void* node, void* entry, int v);
 extern "C" void _Z28SetFirstEmptySlot48_021eb4e4P24SlotArrayStruct_021eb4e4i(struct Act_021da9e0* self, struct Node_021da9e0* n);
 extern "C" unsigned long long func_ov024_021e4b14(struct Act_021da9e0* self, int a, int id, struct Rec_021da9e0* rec, int dmg);
 extern "C" int func_ov000_02159f18(void* world, unsigned long long bits, int bit);
@@ -83,11 +83,11 @@ extern "C" struct Node_021da9e0* _Z22GetNodeAtIndex02160094P12List02160094i(void
 extern "C" struct Rec_021da9e0* _Z24SearchBothTables02079e2cPci(void* table, int id);
 extern "C" short func_ov000_0215a004(void* world, int a, int id, int dmg, void* effects, struct Rec_021da9e0* rec, int flag, int mode);
 extern "C" void func_ov000_02159eac(void* world, void* effects, int bit);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* world, void* entry, int v);
+void AddEntryAndIncrementCount0215a88c(void* world, void* entry, int v);
 extern "C" int func_ov024_021eb08c(struct Act_021da9e0* self, int a, int id, int kind);
 extern "C" void func_ov000_0215a908(void* world, int id);
 extern "C" unsigned short func_ov024_021e9b24(struct Act_021da9e0* self, int id, struct Rec_021da9e0* rec, int flag);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int idx, int a, int b);
+unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(void* world, void* entry, GameObject* c, short a, short b, short d, unsigned long long f, unsigned char h);
 
 static inline int IsPartySlot_021da9e0(int id) {
@@ -136,7 +136,7 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
                     struct Entry_021da9e0** link = &n->entries[j];
                     struct Entry_021da9e0* dst = 0;
                     if (obj->fc->counts[1] != 0)
-                        dst = (struct Entry_021da9e0*)_Z23FindNodeAtDepth0215fff4Pvii(obj->fc, obj->fc->counts[1] - 1, 1);
+                        dst = (struct Entry_021da9e0*)FindNodeAtDepth0215fff4(obj->fc, obj->fc->counts[1] - 1, 1);
                     while (e) {
                         struct Link_021da9e0* x = e->chain;
                         if (x) {
@@ -144,7 +144,7 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
                                 dst = func_ov000_0215e958(obj->world);
                                 if (!dst) return 0;
                                 func_ov000_0215cd44(obj->world, dst, c, 0, 0, 0);
-                                _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->fc, dst, 1);
+                                AppendToChainAndIncCount0215ffc4(obj->fc, dst, 1);
                                 ((unsigned char*)obj->world)[0x8e02]++;
                             }
                             struct Link_021da9e0** p = &dst->chain;
@@ -202,7 +202,7 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
         obj->fc->counts[2] = 0;
         if (obj->list && func_ov000_02159f18(obj->world, effects.value, 2) && rec->f4.id != 0x61) {
             if (IsPartySlot_021da9e0(id))
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->world, entry, (unsigned short)rec->f28.a);
+                AddEntryAndIncrementCount0215a88c(obj->world, entry, (unsigned short)rec->f28.a);
             obj->f68 = entry;
         }
     } else if (!func_ov000_02159f18(obj->world, effects.value, 0x29)) {
@@ -218,7 +218,7 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
         }
     }
     if (rec->f4.id == 0x61) {
-        if (obj->f18 > 0) _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->world, entry, 0x1f0);
+        if (obj->f18 > 0) AddEntryAndIncrementCount0215a88c(obj->world, entry, 0x1f0);
         unsigned short sel;
         if (dmg > 0) {
             sel = func_ov024_021e9b24(obj, id, rec, 0);
@@ -227,14 +227,14 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
             if (fc && (fc->f1c.b1 || fc->f1c.b2 || fc->f1c.b3 || fc->f1c.b4 || fc->f1c.b5 || fc->f1c.b6))
                 sel = 0;
             else
-                sel = _Z31SelectByIndexRange0to3_021da644iii(id, 0x26d, 0x1b);
+                sel = SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);
         }
-        if (sel) _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->world, entry, sel);
+        if (sel) AddEntryAndIncrementCount0215a88c(obj->world, entry, sel);
         if (obj->list && func_ov000_02159f18(obj->world, effects.value, 2)) {
             if (IsPartySlot_021da9e0(id))
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->world, entry, (unsigned short)rec->f28.a);
+                AddEntryAndIncrementCount0215a88c(obj->world, entry, (unsigned short)rec->f28.a);
             else
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->world, entry, (unsigned short)rec->f28.b);
+                AddEntryAndIncrementCount0215a88c(obj->world, entry, (unsigned short)rec->f28.b);
             *flags |= 2;
             obj->fc->entries[1] = 0;
             obj->fc->counts[1] = 0;
@@ -246,14 +246,14 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
         dmg = 0;
         hp = 0;
         if (IsPartySlot_021da9e0(id))
-            _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->world, entry, 8);
+            AddEntryAndIncrementCount0215a88c(obj->world, entry, 8);
         else
-            _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->world, entry, 0x45);
+            AddEntryAndIncrementCount0215a88c(obj->world, entry, 0x45);
         obj->f6e = 1;
     } else if (func_ov000_02159f18(obj->world, effects.value, 0x29)) {
         dmg = 0;
         hp = 1;
-        _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->world, entry, 0xc8);
+        AddEntryAndIncrementCount0215a88c(obj->world, entry, 0xc8);
         obj->f6e = 1;
     }
     _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(obj->world, entry, c, dmg, hp, CurrMP_021da9e0(c), effects.value, obj->fc->f1c.b7 != 0);

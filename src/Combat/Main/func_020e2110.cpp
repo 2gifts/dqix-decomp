@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" ARM void* _Z21GetTableEntry020421b0i(int idx);
+ARM void* GetTableEntry020421b0(int idx);
 extern "C" ARM void func_0205b530(void* mgr, void* entry, short x, short y, int w, int h);
 extern "C" ARM void* __clear(void* dst, int count);
 
@@ -13,8 +13,8 @@ extern "C" ARM void func_020e2110(void* obj) {
     unsigned char width = ((unsigned char*)ctx)[0x3a];
     unsigned char height = ((unsigned char*)ctx)[0x3b];
 
-    void* e1 = _Z21GetTableEntry020421b0i(1);
-    void* e6 = _Z21GetTableEntry020421b0i(6);
+    void* e1 = GetTableEntry020421b0(1);
+    void* e6 = GetTableEntry020421b0(6);
     if (e1 != 0 && e6 != 0) {
         int x, i;
         int n = width - 9;
@@ -24,8 +24,8 @@ extern "C" ARM void func_020e2110(void* obj) {
         }
     }
 
-    void* e3 = _Z21GetTableEntry020421b0i(3);
-    void* e4 = _Z21GetTableEntry020421b0i(4);
+    void* e3 = GetTableEntry020421b0(3);
+    void* e4 = GetTableEntry020421b0(4);
     if (e3 != 0 && e4 != 0) {
         int y, j;
         int m = height - 9;
@@ -49,7 +49,7 @@ extern "C" ARM void func_020e2110(void* obj) {
     int k;
     for (k = 0; k < 4; k++) {
         int idx = (&data_020ee94c)[k];
-        void* entry = _Z21GetTableEntry020421b0i(idx);
+        void* entry = GetTableEntry020421b0(idx);
         if (entry != 0) {
             func_0205b530(mgr, entry, xs[k], ys[k], 8, 0xf);
         }

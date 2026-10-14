@@ -4,11 +4,11 @@
 
 unsigned char CopyOutRegion0x571d(char* obj, void* dst);
 int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
-extern "C" unsigned short _Z31GetFlagBitFromField150_0215eb20Pvi(void* obj, int bit);
+unsigned short GetFlagBitFromField150_0215eb20(void* obj, int bit);
 struct Obj0205eaa0;
 extern struct Obj0205eaa0 data_02108760;
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
-extern "C" void* _Z24CheckNodeState6_0215e4c0Pvi(void* a, int key);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
+void* CheckNodeState6_0215e4c0(void* a, int key);
 struct Obj021f809c;
 extern "C" void func_ov023_021f809c(struct Obj021f809c*, void*);
 extern "C" void func_ov023_021fc71c(void*, int, int);
@@ -23,7 +23,7 @@ extern "C" void func_ov004_02161514(void*);
 extern "C" void func_ov004_02161c18(void*);
 extern "C" void func_ov004_02162108(void*);
 extern "C" void func_ov004_0216276c(void*);
-extern "C" void _Z26CallVTableFnAt240_021f66bcPviS_(void* a, int b, void* c);
+void CallVTableFnAt240_021f66bc(void* a, int b, void* c);
 
 struct Sub950 {
     char pad[0x950];
@@ -181,9 +181,9 @@ extern "C" ARM int func_ov004_0215fdfc(void* a) {
         if (key == data_ov004_02170854[data_ov004_021707e8.entry]) break;
     }
     for (int k = 0; k < 13; k++) {
-        if (_Z31GetFlagBitFromField150_0215eb20Pvi(c, data_ov004_02170854[k]) != 0) data_ov004_02170838[k] = 1;
+        if (GetFlagBitFromField150_0215eb20(c, data_ov004_02170854[k]) != 0) data_ov004_02170838[k] = 1;
         else data_ov004_02170838[k] = 0;
-        if (_Z31GetFlagBitFromField150_0215eb20Pvi(c, data_ov004_0216fe5c[k]) != 0) data_ov004_02170845[k] = 1;
+        if (GetFlagBitFromField150_0215eb20(c, data_ov004_0216fe5c[k]) != 0) data_ov004_02170845[k] = 1;
         else data_ov004_02170845[k] = 0;
     }
     data_ov004_021707e8.f3 = data_ov004_021707e8.entry;
@@ -195,7 +195,7 @@ extern "C" ARM int func_ov004_0215fdfc(void* a) {
     func_ov004_0215eb40(a);
     func_ov004_0215ef14();
     data_ov004_021707e8.f1 = 1;
-    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+    DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     Node0215e47c* nd = func_ov004_0215e47c(a, 0x82);
     func_ov023_021fc71c(nd, data_ov004_021707e8.combatant, 1);
     data_ov004_021707e8.fb = 0;
@@ -224,11 +224,11 @@ extern "C" ARM int func_ov004_0215fdfc(void* a) {
     }
     func_020dc7e8(2, (signed char)data_ov004_021707e8.combatant);
     func_020dc7e8(5, (signed char)data_ov004_021707e8.combatant);
-    NodeShorts* node = (NodeShorts*)_Z24CheckNodeState6_0215e4c0Pvi(a, 3);
+    NodeShorts* node = (NodeShorts*)CheckNodeState6_0215e4c0(a, 3);
     node->s104 = data_ov004_021707e8.fb;
     node->s106 = data_ov004_021707e8.f6;
     func_ov023_021f809c((struct Obj021f809c*)node, a);
     data_ov004_021707e8.busy = 0;
-    _Z26CallVTableFnAt240_021f66bcPviS_(a, 0x85, (void*)1);
+    CallVTableFnAt240_021f66bc(a, 0x85, (void*)1);
     return 0;
 }

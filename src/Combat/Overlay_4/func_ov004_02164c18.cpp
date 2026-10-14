@@ -25,7 +25,7 @@ struct Node02164c18 {
 };
 
 extern "C" void func_02012fe4(GameState* state);
-extern "C" int _Z31GetScaledStat_021634dc_021634dcPv(void* a);
+int GetScaledStat_021634dc_021634dc(void* a);
 extern "C" void* func_ov011_021849c8(void* obj);
 extern "C" struct Node02164c18* func_ov023_021f6880(void* list, int id);
 extern "C" int func_ov023_021f6f10(void* obj);
@@ -43,7 +43,7 @@ extern "C" ARM int func_ov004_02164c18(void* a) {
         return 0;
     }
     func_02012fe4(GameState::GetInstance());
-    int index = _Z31GetScaledStat_021634dc_021634dcPv(a);
+    int index = GetScaledStat_021634dc_021634dc(a);
     if (data_ov004_02171010->maps[index].GetInitialByteUnknownBit()) {
         return 0;
     }

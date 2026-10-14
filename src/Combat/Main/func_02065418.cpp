@@ -11,7 +11,7 @@ enum { kRegionalFieldOffset = 0x36fc };
 
 struct HeadNode02046b24;
 
-extern "C" int _Z27IsIndexMappedToSelf020a18f4j(unsigned int idx);
+int IsIndexMappedToSelf020a18f4(unsigned int idx);
 int GetWord0x0(int* obj);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24** head);
 
@@ -25,7 +25,7 @@ static inline void SetVisiblePlanes(int planes) {
 
 // USA: func_02065418
 extern "C" ARM void func_02065418(int keepPlanes) {
-    if (!_Z27IsIndexMappedToSelf020a18f4j(OVERLAY_ID(17))) {
+    if (!IsIndexMappedToSelf020a18f4(OVERLAY_ID(17))) {
         return;
     }
     HeadNode02046b24** head = *(HeadNode02046b24***)((char*)GetWord0x0((int*)GameState::GetInstance()) + kRegionalFieldOffset);

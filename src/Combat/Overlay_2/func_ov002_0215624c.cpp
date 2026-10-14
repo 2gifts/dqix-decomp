@@ -23,43 +23,43 @@ unsigned char *FindElementForFieldB0(struct Struct_0205d81c *s);
 int IsField0x9cEqual3(unsigned char *obj);
 void SetFieldAt0x30(void *obj, int value);
 extern "C" int func_0205d0e0(void *obj, int val);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
+int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 void PushInputLogB(int id);
 int GetWord0x0(int *obj);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 void SetWord0x18ClearByte0x1f(unsigned char *obj, int value);
 extern "C" void func_0204b5b4(void *obj, int val);
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(struct AllocTarget0204b12c *obj,
+void AllocateAndClearBuffer0204b12c(struct AllocTarget0204b12c *obj,
                                                                                          SafeAllocator *alloc);
-extern "C" int _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(struct Obj0204b5e8 *obj, int a, int b);
+int DispatchViaTable0204b5e8(struct Obj0204b5e8 *obj, int a, int b);
 extern "C" void ColorEffect_ConfigureAlphaBlend(int reg, int a, int b, int c, int d);
 extern "C" void func_0204bc74(void *obj, unsigned short tile, int x, int y, int w, int h, unsigned short palette);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(struct List0204b0e8 *obj, void *buf);
+void FlushAndDispatchList0204b0e8(struct List0204b0e8 *obj, void *buf);
 extern "C" void func_0204b174(void *obj, void *data, SafeAllocator *alloc, int size);
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(struct Obj0204c7a8 *obj, SafeAllocator *alloc,
+void AllocateBuffer0204c7a8(struct Obj0204c7a8 *obj, SafeAllocator *alloc,
                                                                            int buf, unsigned int size);
-extern "C" void _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h(struct Struct_0205cf78 *s,
+void LinkArrayPrevPointers0205cf78(struct Struct_0205cf78 *s,
                                                                                      struct Elem_0205cf78 *arr,
                                                                                      unsigned char count);
 extern "C" void *memset(void *dst, int value, unsigned int length);
 extern "C" void *memcpy(void *dst, const void *src, unsigned int length);
-extern "C" void *_Z21GetTableEntry020421b0i(int idx);
+void *GetTableEntry020421b0(int idx);
 void CleanInvalidateCacheRange(const void *where, unsigned int len);
 extern "C" void LoadToMainBG1CharacterData(const void *data, unsigned int offset, unsigned int length);
 extern "C" void LoadToMainBG3CharacterData(const void *data, unsigned int offset, unsigned int length);
-extern "C" void _Z12Init0205a198P14Struct0205a198(struct Struct0205a198 *s);
-extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(struct ClearTarget0205a234 *t);
-extern "C" void _Z18InitStruct0205a444Pc(char *p);
+void Init0205a198(struct Struct0205a198 *s);
+void ClearField0And40205a234(struct ClearTarget0205a234 *t);
+void InitStruct0205a444(char *p);
 void *FindRecordByIndex(struct Rec020467f0 *rec, int index, void **out, int *out44);
 extern "C" void func_0205a528(void *a, void *ptr, int val, void *d);
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24 *obj, unsigned char keyLow,
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int CountActiveEntries(struct ActiveEntry02046900 *entry);
 extern "C" void func_020dfec0(void *dest, void *allocator, void *fileData, unsigned int size);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310 *c, int key);
+int GetFieldByKey020e0434(struct Container020e0310 *c, int key);
 extern "C" void func_020dc7e8(int a, int b);
-extern "C" void _Z21InitBattleTag0215bf34Pc(char *self);
-extern "C" void _Z21InitBattleTag0215c028Pc(char *self);
+void InitBattleTag0215bf34(char *self);
+void InitBattleTag0215c028(char *self);
 extern "C" void func_ov002_0215bba8(char *self);
 extern "C" void func_ov002_02161cf0(char *self);
 extern "C" void func_ov002_0215c0f8(char *self);
@@ -132,7 +132,7 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
     }
     S32(0x1bc8) = func_0205d0e0(self + 0xec8, S32(0x1ba0));
     short old   = S16(0x1be0);
-    S16(0x1be0) = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570 *) (self + 0xec8));
+    S16(0x1be0) = GetActiveScaledSum0205d794((struct Struct_0205c570 *) (self + 0xec8));
     if (S32(0x1bc0) >= 1 && old != S16(0x1be0)) {
         S32(0x1bc8) = 1;
         int saved   = S32(0x1bb8);
@@ -144,7 +144,7 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
     if (S32(0x1bc0) == 0) {
         PushInputLogB(1);
         char *w     = (char *) GetWord0x0((int *) GameState::GetInstance());
-        S32(0x1bd0) = *(int *) ((char *) _Z26GetGlobalField0x1c020421a0v() + 0x5c);
+        S32(0x1bd0) = *(int *) ((char *) GetGlobalField0x1c020421a0() + 0x5c);
         ((SafeAllocator *) (self + 0x828))->Reset();
 
         struct Bytes3_0215624c prio  = data_ov002_0216c96c.prio;
@@ -156,9 +156,9 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
             o->lo = 0;
             o->hi = prio.v[i];
             func_0204b5b4(o, layer.v[i]);
-            _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((struct AllocTarget0204b12c *) o,
+            AllocateAndClearBuffer0204b12c((struct AllocTarget0204b12c *) o,
                                                                                      (SafeAllocator *) (self + 0x828));
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8 *) o, 0, 0);
+            DispatchViaTable0204b5e8((struct Obj0204b5e8 *) o, 0, 0);
         }
 
         REG16(0x0400000a) = (REG16(0x0400000a) & 0x43) | 0x1d00;
@@ -170,7 +170,7 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
         for (int i = 0; i < 3; i++) {
             o2 = self + 0xf84 + i * 0x20;
             func_0204bc74(o2, 0, 0, 0, 0x20, 0x19, 0);
-            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((struct List0204b0e8 *) o2, 0);
+            FlushAndDispatchList0204b0e8((struct List0204b0e8 *) o2, 0);
         }
 
         void *gfx = *(void **) (w + 0x2c);
@@ -186,27 +186,27 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
         S32(0x1bd8) = (int) ((SafeAllocator *) (self + 0x828))->Allocate(0x4400);
         for (int i = 0; i < 12; i++) {
             char *o = self + 0xfe4 + i * 0xe0;
-            _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((struct Obj0204c7a8 *) o,
+            AllocateBuffer0204c7a8((struct Obj0204c7a8 *) o,
                                                                        (SafeAllocator *) (self + 0x828), S32(0x1bd8), 0x400);
             *(char **) (o + 4) = self + 0xfa4;
         }
         *(char **) (self + 0xf60) = self + 0xf84;
         U8(0xf7a)                 = 3;
-        _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((struct Struct_0205cf78 *) (self + 0xec8),
+        LinkArrayPrevPointers0205cf78((struct Struct_0205cf78 *) (self + 0xec8),
                                                                              (struct Elem_0205cf78 *) (self + 0xfe4), 12);
 
         memset((void *) S32(0x1bd8), 0, 0x60);
         memset((char *) S32(0x1bd8) + 0x20, 0x11111111, 0x20);
-        memcpy((char *) S32(0x1bd8) + 0x40, _Z21GetTableEntry020421b0i(0x15), 0x20);
+        memcpy((char *) S32(0x1bd8) + 0x40, GetTableEntry020421b0(0x15), 0x20);
         CleanInvalidateCacheRange((void *) S32(0x1bd8), 0x60);
         LoadToMainBG1CharacterData((void *) S32(0x1bd8), 0, 0x60);
         LoadToMainBG3CharacterData((void *) S32(0x1bd8), 0, 0x60);
 
         for (unsigned char i = 0; i < 0x2b; i++) {
-            _Z12Init0205a198P14Struct0205a198((struct Struct0205a198 *) (S32(0x1a64) + i * 0x28));
+            Init0205a198((struct Struct0205a198 *) (S32(0x1a64) + i * 0x28));
         }
-        _Z23ClearField0And40205a234P19ClearTarget0205a234((struct ClearTarget0205a234 *) S32(0x1a6c));
-        _Z18InitStruct0205a444Pc((char *) S32(0x1a68));
+        ClearField0And40205a234((struct ClearTarget0205a234 *) S32(0x1a6c));
+        InitStruct0205a444((char *) S32(0x1a68));
         *(unsigned char *) (S32(0x1a68) + 0x50) = 0;
         {
             char *p               = (char *) S32(0x1a68);
@@ -225,11 +225,11 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
         }
 
         S16(0x1be0) = 0;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (self + 0xec8), 0, 2);
+        FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (self + 0xec8), 0, 2);
 
         if (U8(0x2485) == 0 && U8(0x253c) == 0) {
-            _Z21InitBattleTag0215bf34Pc(self);
-            _Z21InitBattleTag0215c028Pc(self);
+            InitBattleTag0215bf34(self);
+            InitBattleTag0215c028(self);
             int saved   = S32(0x1bb8);
             S32(0x1bb8) = 1;
             func_ov002_02161cf0(self);
@@ -276,10 +276,10 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
             loader->GetLoadedFileByID(S32(0x1ba4), &data, &len);
             int n = CountActiveEntries((struct ActiveEntry02046900 *) data);
             for (unsigned char i = 0; i < 0x2b; i++) {
-                _Z12Init0205a198P14Struct0205a198((struct Struct0205a198 *) (S32(0x1a64) + i * 0x28));
+                Init0205a198((struct Struct0205a198 *) (S32(0x1a64) + i * 0x28));
             }
-            _Z23ClearField0And40205a234P19ClearTarget0205a234((struct ClearTarget0205a234 *) S32(0x1a6c));
-            _Z18InitStruct0205a444Pc((char *) S32(0x1a68));
+            ClearField0And40205a234((struct ClearTarget0205a234 *) S32(0x1a6c));
+            InitStruct0205a444((char *) S32(0x1a68));
             *(unsigned char *) (S32(0x1a68) + 0x50) = 0;
             {
                 char *p               = (char *) S32(0x1a68);
@@ -302,7 +302,7 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
             loader->GetLoadedFileByID(S32(0x1ba8), &data, &len);
             ((SafeAllocator *) (self + 0x83c))->Reset();
             func_020dfec0(self + 0x20, self + 0x83c, data, len);
-            S32(0x1bdc) = _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310 *) (self + 0x20), 0);
+            S32(0x1bdc) = GetFieldByKey020e0434((struct Container020e0310 *) (self + 0x20), 0);
             loader->RemoveTask(S32(0x1ba8));
             S32(0x1ba8) = -1;
         }

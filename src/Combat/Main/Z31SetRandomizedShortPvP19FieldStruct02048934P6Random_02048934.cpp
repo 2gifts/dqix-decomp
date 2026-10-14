@@ -20,7 +20,7 @@ struct Obj02048934 {
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_02048934
-extern "C" ARM void _Z31SetRandomizedShort0x18802048934PvP19FieldStruct02048934P6Random(void* p, struct FieldStruct02048934* f, struct Random* r) {
+ARM void SetRandomizedShort0x18802048934(void* p, struct FieldStruct02048934* f, struct Random* r) {
     if (f != NULL) {
         unsigned short v = f->field5c;
         ((struct Obj02048934*)p)->field188 = 0.5f + v * NextRandomFloatBetween(r, 0.8f, 1.0f);

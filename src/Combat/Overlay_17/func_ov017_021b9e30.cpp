@@ -15,7 +15,7 @@ struct PackedNibbleArray0206e120;
 struct PackedNibbleArray0206e260;
 struct PackedNibbleArray0206e2dc;
 extern "C" PackedNibbleArray0206e120* func_0205ec34(GameState*);
-extern "C" int _Z29CheckFlagAndThreshold0206e31cii(int, int);
+int CheckFlagAndThreshold0206e31c(int, int);
 int GetPackedNibbleField(PackedNibbleArray0206e120*, int);
 int GetPackedNibbleFlag0x4(PackedNibbleArray0206e260*, int);
 int GetPackedNibbleFlag0x8(PackedNibbleArray0206e2dc*, int);
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov017_021b9e30(Script::Parameter* params, int count) {
     if (data_ov017_021d7c54.pending > -1) return 1;
     PackedNibbleArray0206e120* fields = func_0205ec34(GameState::GetInstance());
     int index = params->ToInt();
-    if (!_Z29CheckFlagAndThreshold0206e31cii((int)fields, index)) return 1;
+    if (!CheckFlagAndThreshold0206e31c((int)fields, index)) return 1;
     if (data_ov017_021d7c54.selected != index && data_ov017_021d7c54.selected > -1 && !NibbleEquals021b9e30(fields, index, 1) && !NibbleEquals021b9e30(fields, index, 2)) {
         if (!NibbleEquals021b9e30(fields, data_ov017_021d7c54.selected, 3) || !NibbleEquals021b9e30(fields, index, 3) || data_ov017_021d7c54.selected > index) return 1;
     }

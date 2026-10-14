@@ -18,17 +18,17 @@ extern Obj0205eaa0 data_02108760;
 
 struct Src02157174;
 struct Dst02157174;
-extern "C" void _Z23CopyThreeFields02157174P11Dst02157174P11Src02157174(Dst02157174*, Src02157174*);
+void CopyThreeFields02157174(Dst02157174*, Src02157174*);
 
-extern "C" void _Z22SelectCoordsByFlag0x24PhPiS0_(unsigned char*, int*, int*);
+void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
 
 struct Struct_0205bb84;
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(Struct_0205bb84*);
+int ComputeScaledSum0205bb84(Struct_0205bb84*);
 extern "C" int func_0205bf58(void*, int);
 int CheckFlag30Or401_02157190(void*);
-extern "C" char* _Z19GetField1c_021a193cPi(int*);
+char* GetField1c_021a193c(int*);
 extern "C" void _Z28DispatchByIdxAndCond021551fcPchi(char*, int, int);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_ov005_021555c0(void*);
 extern "C" void func_ov005_0215792c(void*, unsigned char);
 extern "C" unsigned char func_ov005_021586c4(void*, int, int);
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov005_0215b2bc(Menu* self) {
         int by;
         if ((&data_02114e54)[0x55] != 0) {
             hasCoords = 1;
-            _Z22SelectCoordsByFlag0x24PhPiS0_(&data_02114e54, &bx, &by);
+            SelectCoordsByFlag0x24(&data_02114e54, &bx, &by);
             sel = func_ov005_021586c4(self, bx, by);
             if (sel != 255) {
                 found = hasCoords;
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov005_0215b2bc(Menu* self) {
             found = 1;
             unsigned int tick = GameState::GetInstance()->GetTickCount();
             func_0205bf58(self->scale_, tick ? tick : found);
-            sel = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((Struct_0205bb84*)&self->scale_[0]);
+            sel = ComputeScaledSum0205bb84((Struct_0205bb84*)&self->scale_[0]);
             if (CheckFlag30Or401_02157190(self)) flag2 = 1;
         }
         if (found != 0 && self->kind_ != sel) {
@@ -127,10 +127,10 @@ extern "C" ARM void func_ov005_0215b2bc(Menu* self) {
             self->page_ = self->pages_[sel & 0xff];
         }
         self->f3dbb_ = self->kind_;
-        MenuTail* hold = (MenuTail*)_Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+        MenuTail* hold = (MenuTail*)GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
         _Z28DispatchByIdxAndCond021551fcPchi((char*)self, hold->index, 0);
         if (flag2 == 0) return;
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         func_ov005_021555c0(self);
         self->flags_ |= 0x40;
         self->f3daa_ = 0;
@@ -145,7 +145,7 @@ extern "C" ARM void func_ov005_0215b2bc(Menu* self) {
             Src02157174* m = (Src02157174*)s->model_;
             Triplet t = *(Triplet*)((char*)m + 0x1c);
             t.b = 0x17000;
-            _Z23CopyThreeFields02157174P11Dst02157174P11Src02157174((Dst02157174*)m, (Src02157174*)&t);
+            CopyThreeFields02157174((Dst02157174*)m, (Src02157174*)&t);
         }
     }
 }

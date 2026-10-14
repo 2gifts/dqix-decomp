@@ -1,13 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" int _Z23DispatchByIndex021820bcPviii(void* obj, int unused, int index, int arg);
+int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 
 // USA: func_ov025_021e6f44
 extern "C" ARM int func_ov025_021e6f44(void* unused0, int v1, int unused2, void* a3) {
     int local[12];
     GameState* bs = GameState::GetInstance();
-    _Z23DispatchByIndex021820bcPviii(a3, v1, 0x17, (int)&local[0]);
+    DispatchByIndex021820bc(a3, v1, 0x17, (int)&local[0]);
     int id = local[0];
     GameObject* obj = bs->GetGameObjectByIndex(id);
     if (obj == NULL) {

@@ -18,11 +18,11 @@
 #include "GameState/GameState.h"
 
 extern "C" void* _Z10GetWord0x0Pi(void* battle);
-extern "C" void _Z16OrGlobalFlag0x40v();
+void OrGlobalFlag0x40();
 extern "C" void func_02074af4(void*);
-extern "C" unsigned int _Z7GetWordPj(unsigned int*);
-extern "C" unsigned int _Z9GetField4Pj(unsigned int*);
-extern "C" unsigned int _Z9GetField8Pj(unsigned int*);
+unsigned int GetWord(unsigned int*);
+unsigned int GetField4(unsigned int*);
+unsigned int GetField8(unsigned int*);
 void SetBitsInField4(unsigned int*, unsigned int);
 extern "C" void _Z13SetBrightnessP13GameResourcesii(void*, int, int);
 
@@ -33,7 +33,7 @@ extern "C" void func_02097c18(void*, int, int, int, int, int, int, int);
 extern "C" void _Z17ResetList0204af64P12List0204af64(void*);
 extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
 extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*, int, int);
-extern "C" void _Z21DispatchByTag0204b2e0PvPc(void*, char*);
+void DispatchByTag0204b2e0(void*, char*);
 extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(void*, char*);
 
 extern "C" void LoadToSubBGStandardPalette(int, int, unsigned int);
@@ -62,11 +62,11 @@ extern "C" ARM void func_ov028_021d8dd0(unsigned char* self) {
             self[0x81] = self[0x81] + 1;
         }
     } else if (state == 2) {
-        _Z16OrGlobalFlag0x40v();
+        OrGlobalFlag0x40();
         func_02074af4(self + 0xc);
-        *(unsigned int*)(self + 0x74) = _Z7GetWordPj((unsigned int*)word);
-        *(unsigned int*)(self + 0x78) = _Z9GetField4Pj((unsigned int*)word);
-        *(unsigned int*)(self + 0x7c) = _Z9GetField8Pj((unsigned int*)word);
+        *(unsigned int*)(self + 0x74) = GetWord((unsigned int*)word);
+        *(unsigned int*)(self + 0x78) = GetField4((unsigned int*)word);
+        *(unsigned int*)(self + 0x7c) = GetField8((unsigned int*)word);
         SetBitsInField4((unsigned int*)word, 0x90);
         void* buf40 = *(void**)(self + 0x40);
         SetFieldGroupFromFlags02097bc4((struct FieldSet02097bc4*)(self + 0x20), 2);
@@ -85,7 +85,7 @@ extern "C" ARM void func_ov028_021d8dd0(unsigned char* self) {
         _Z24SetWord0x18ClearByte0x1fPhi(list, 0);
         _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(list, 0, 0);
         int tag = *(int*)((char*)word + 0x2c);
-        _Z21DispatchByTag0204b2e0PvPc(list, (char*)tag);
+        DispatchByTag0204b2e0(list, (char*)tag);
         _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(list, (char*)tag);
 
         unsigned short tmpVal = 0x67f5;

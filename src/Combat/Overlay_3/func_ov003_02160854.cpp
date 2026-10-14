@@ -32,11 +32,11 @@ struct Ctx02160854 {
 
 int GetWord0x0(int* obj);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-extern "C" int _Z27IsFieldNotPositive_021a4e70Ph(unsigned char* base);
-extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(Outer020e28dc* o);
+int IsFieldNotPositive_021a4e70(unsigned char* base);
+int GetInnerFlagBit0020e28dc(Outer020e28dc* o);
 int GetField0x15UnlessInactive(signed char* obj);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
-extern "C" int _Z26RunAndCheckFlagBit02080dd4PviiiPhh(void* obj, int p1, int p2, int p3, unsigned char* outFlag, unsigned char extra);
+int RunAndCheckFlagBit02080dd4(void* obj, int p1, int p2, int p3, unsigned char* outFlag, unsigned char extra);
 
 extern "C" {
 extern unsigned short data_02114e30[];
@@ -53,12 +53,12 @@ extern "C" ARM unsigned char func_ov003_02160854(Ctx02160854* self) {
     unsigned char confirmed = 0;
     unsigned char* battleWord = (unsigned char*)GetWord0x0((int*)GameState::GetInstance());
     if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x401)) {
-        if (_Z27IsFieldNotPositive_021a4e70Ph(battleWord)) {
+        if (IsFieldNotPositive_021a4e70(battleWord)) {
             confirmed = 1;
         }
     }
 
-    if (_Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(self->choice_)) {
+    if (GetInnerFlagBit0020e28dc(self->choice_)) {
         int choice = GetField0x15UnlessInactive((signed char*)self->choice_);
         if (choice >= 0) {
             confirmed = 1;
@@ -69,7 +69,7 @@ extern "C" ARM unsigned char func_ov003_02160854(Ctx02160854* self) {
         int y;
         Menu02160854* menu = self->menu_;
         SelectCoordsByFlag0x24(data_02114e54, &x, &y);
-        int item = _Z26RunAndCheckFlagBit02080dd4PviiiPhh(menu, self->group_, (short)x, (short)y, &confirmed, 0);
+        int item = RunAndCheckFlagBit02080dd4(menu, self->group_, (short)x, (short)y, &confirmed, 0);
         if (item < 0)
             return 0;
 

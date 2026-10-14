@@ -20,12 +20,12 @@ extern "C" unsigned char* func_0205ec34();
 extern "C" int func_0202c508(void* obj);
 extern "C" void func_ov017_021baedc(void* obj, int flag);
 struct FindEntryById02096134Table* GetGlobal02109418();
-extern "C" struct FindEntryById02096134Elem* _Z21FindEntryById02096134P26FindEntryById02096134Tablei(struct FindEntryById02096134Table*, int);
+struct FindEntryById02096134Elem* FindEntryById02096134(struct FindEntryById02096134Table*, int);
 void AppendNodeToTail(struct TailList020469b4*, struct TailNode020469b4*);
 int TestBitInByteArray(int, unsigned char*, int);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
-extern "C" void _Z15InitObj021beba4Pc(char*);
-extern "C" int _Z17IsInRange0201b588i(int);
+void InitObj021beba4(char*);
+int IsInRange0201b588(int);
 void* GetField0x3f8Address(GameState* battleStruct);
 
 // JPN: func_02090544
@@ -63,7 +63,7 @@ extern "C" ARM void func_0208fc30(ActiveGrottoClass* obj) {
     grotto = game->GetGrottoStruct();
 #endif
 
-    if (_Z17IsInRange0201b588i(zoneId) && !_Z17IsInRange0201b588i(nextZoneId) &&
+    if (IsInRange0201b588(zoneId) && !IsInRange0201b588(nextZoneId) &&
         (nextZoneId < 0x7530 || nextZoneId > 0x9c3f)) {
 #if defined(jpn)
         changed = false;
@@ -84,7 +84,7 @@ extern "C" ARM void func_0208fc30(ActiveGrottoClass* obj) {
 #endif
                 TestBitInByteArray((int)state, state + 0x8c, 0x12) &&
                 !TestBitInByteArray((int)state, state + 0x8c, 0x2d) &&
-                !_Z21FindEntryById02096134P26FindEntryById02096134Tablei(table, 0xae)->b14) {
+                !FindEntryById02096134(table, 0xae)->b14) {
                 ((struct GrottoListNode*)node)->h8 = 0x5105;
                 AppendNodeToTail(list, (struct TailNode020469b4*)node);
                 changed = true;
@@ -92,7 +92,7 @@ extern "C" ARM void func_0208fc30(ActiveGrottoClass* obj) {
             } else if (obj->GetActiveGrottoEnviron() == 2 &&
                        TestBitInByteArray((int)state, state + 0x8c, 0x13) &&
                        !TestBitInByteArray((int)state, state + 0x8c, 0x2e) &&
-                       !_Z21FindEntryById02096134P26FindEntryById02096134Tablei(table, 0xc1)->b14) {
+                       !FindEntryById02096134(table, 0xc1)->b14) {
                 ((struct GrottoListNode*)node)->h8 = 0x51c3;
                 AppendNodeToTail(list, (struct TailNode020469b4*)node);
                 changed = true;
@@ -101,13 +101,13 @@ extern "C" ARM void func_0208fc30(ActiveGrottoClass* obj) {
         }
         if (!changed && (unsigned char)obj->unknown_260_[0] == 0) {
             void* node = resources->unknown_ptr_array_3afc[28];
-            _Z15InitObj021beba4Pc((char*)node);
+            InitObj021beba4((char*)node);
             AppendNodeToTail(list, (struct TailNode020469b4*)node);
         }
     } else {
         if ((unsigned char)obj->unknown_260_[1] != 0) {
             void* node = resources->unknown_ptr_array_3afc[28];
-            _Z15InitObj021beba4Pc((char*)node);
+            InitObj021beba4((char*)node);
             AppendNodeToTail(list, (struct TailNode020469b4*)node);
             obj->unknown_260_[1] = 0;
         }

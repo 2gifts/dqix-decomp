@@ -11,18 +11,18 @@ struct KeyMap020a095c;
 struct Obj02061bd8;
 struct Obj0207cf30Field;
 
-extern "C" extern struct Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* c, int key);
-extern "C" extern void* _Z35InitAllocatorAndLoadGp2File0207d6dcP13SafeAllocatorii(SafeAllocator* self, int param1, int param2);
+extern struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
+extern void* InitAllocatorAndLoadGp2File0207d6dc(SafeAllocator* self, int param1, int param2);
 extern void* GetPtrField0x2a04(GameState* battleStruct);
-extern "C" extern int _Z24LookupValueByKey020a0b3cP14KeyMap020a0b3ci(struct KeyMap020a0b3c* map, int key);
-extern "C" extern int _Z26AddKeyValueClamped020a095cP14KeyMap020a095cii(struct KeyMap020a095c* map, int key, int amount);
+extern int LookupValueByKey020a0b3c(struct KeyMap020a0b3c* map, int key);
+extern int AddKeyValueClamped020a095c(struct KeyMap020a095c* map, int key, int amount);
 extern int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
 extern struct Obj0207cf30Field* GetFieldAt0x150(unsigned char* obj);
 extern GameObject* GetCombatantWithFlag0x100(GameState* gs, int id);
 
 extern "C" void func_0207cc18(void* self, struct Element020de650* elem);
 
-extern "C" extern void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
+extern void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 extern AllocatorUnion data_02114e20 __attribute__((aligned(4)));
 
@@ -42,24 +42,24 @@ struct Obj0207cf30 {
 extern "C" ARM int func_0207cf30(struct Obj0207cf30* self, short key, int max, int enable) {
     int flag = 0;
     if (self->container == NULL) {
-        _Z35InitAllocatorAndLoadGp2File0207d6dcP13SafeAllocatorii((SafeAllocator*)self, (int)&key, 1);
+        InitAllocatorAndLoadGp2File0207d6dc((SafeAllocator*)self, (int)&key, 1);
         flag = 1;
     }
     int ret = 0;
-    struct Element020de650* elem = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->container, key);
+    struct Element020de650* elem = FindElementByKey020dedd0(self->container, key);
     if (elem != NULL) {
         GameState* gs = GameState::GetInstance();
         char* p = (char*)GetPtrField0x2a04(gs);
         int n = max;
         short i = 0;
         if (enable) {
-            int v = _Z24LookupValueByKey020a0b3cP14KeyMap020a0b3ci((struct KeyMap020a0b3c*)GetPtrField0x2a04(gs), key);
+            int v = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)GetPtrField0x2a04(gs), key);
             v = 99 - v;
             if (v > max)
                 v = max;
             n = (short)v;
         }
-        ret = _Z26AddKeyValueClamped020a095cP14KeyMap020a095cii((struct KeyMap020a095c*)p, key, (signed char)n);
+        ret = AddKeyValueClamped020a095c((struct KeyMap020a095c*)p, key, (signed char)n);
         i += n;
         if (ret) {
             func_0207cc18(self, elem);
@@ -95,7 +95,7 @@ extern "C" ARM int func_0207cf30(struct Obj0207cf30* self, short key, int max, i
         SafeAllocator* alloc = (SafeAllocator*)self;
         SignedAllocatorHeader* sig = alloc->GetSignedAllocator();
         alloc->Destroy();
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, sig);
+        TailForward02012da4(&data_02114e20, sig);
         self->container = NULL;
     }
     return ret;

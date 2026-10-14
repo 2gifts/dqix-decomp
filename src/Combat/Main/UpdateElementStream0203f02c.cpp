@@ -17,7 +17,7 @@ struct Element0203f02c {
 };
 struct Element0203f02c* GetValidElement02040468(struct List02040468* list, int index);
 
-extern "C" int _Z26CancelVRAMStagingOperationi(int value);
+int CancelVRAMStagingOperation(int value);
 extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
 
 struct Obj0203f02c {
@@ -46,7 +46,7 @@ ARM void UpdateElementStream0203f02c(struct Obj0203f02c* obj, int param1, int pa
     if (element != NULL) {
         int v = func_020bb588(element->field0x34, 0, 0);
         obj->field0x4c = ((unsigned int)v << 16) >> 13;
-        _Z26CancelVRAMStagingOperationi(obj->field0x5a);
+        CancelVRAMStagingOperation(obj->field0x5a);
         obj->field0x5a = _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(0, element->field0x20, element->field0x24, element->field0x1c << 1, 0, 0);
     }
 

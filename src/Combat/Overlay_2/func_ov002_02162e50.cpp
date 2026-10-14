@@ -8,16 +8,16 @@ struct Obj_0205da38;
 struct Obj0205eaa0;
 struct Struct_0205d81c;
 struct Obj0205dee8;
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24 *obj, unsigned char keyLow,
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
+int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *o, int a, int b);
-extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *base, int a);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
+int CheckFlagOrThreshold_02161b48(char *base, int a);
 void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
-extern "C" void _Z27SetFieldB0AndUpdate0205dee8P11Obj0205dee8i(struct Obj0205dee8 *o, int v);
-extern "C" void *_Z27GetDataPtr02114e04_020d6c00v();
+void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8 *o, int v);
+void *GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int *p, unsigned int mask);
 unsigned char *GetFieldAt0x150(unsigned char *p);
 extern "C" int GetInventoryItemByID(char *self, int idx, int member);
@@ -43,15 +43,15 @@ extern "C" ARM void func_ov002_02162e50(char *base) {
     int state = *(int *) (base + 0x1000 + 0xbc0);
     if (state == 0) {
         *(short *) (base + 0x1b00 + 0xfa) = -1;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 2);
+        FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 2);
         func_ov002_02161cf0(base);
         func_ov002_0215b9a4(base, 5, 0);
         *(int *) (base + 0x1000 + 0xbc0) += 1;
         SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 1);
         SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 5, 0);
-        _Z27SetFieldB0AndUpdate0205dee8P11Obj0205dee8i((struct Obj0205dee8 *) (base + 0x2c8 + 0xc00), 5);
+        SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) (base + 0x2c8 + 0xc00), 5);
         int item = GetInventoryItemByID(base, *(short *) (base + 0x1b00 + 0xe8), *(signed char *) (base + 0x1c00 + 0x20));
-        OrBitsIntoField0((unsigned int *) _Z27GetDataPtr02114e04_020d6c00v(), 1);
+        OrBitsIntoField0((unsigned int *) GetDataPtr02114e04_020d6c00(), 1);
         if (*(unsigned int *) (base + 0x2000 + 0x47c) & 1) {
             ((SafeAllocator *) (base + 0x64 + 0x800))->Reset();
             func_ov023_021dc9e8(base + 0x50, (SafeAllocator *) (base + 0x64 + 0x800), item, base + 0x3ec + 0x400, 0x50);
@@ -72,7 +72,7 @@ extern "C" ARM void func_ov002_02162e50(char *base) {
         func_ov002_02161b98(base);
         int prev = *(short *) (base + 0x1b00 + 0xe8);
         *(short *) (base + 0x1b00 + 0xe8) =
-            _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
+            GetActiveScaledSum0205d794((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
         if (TestFlag0SetAndFlag1Clear(data_02114e30, 4) || func_0205df38(base + 0x2c8 + 0xc00, 0x28)) {
             if (*(short *) (base + 0x1b00 + 0xe6) == *(signed char *) (base + 0x1c00 + 0x73)) {
                 func_ov002_0215b458(base, 1);
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov002_02162e50(char *base) {
         if ((a | b) ? 1 : 0) {
             *(unsigned char *) (base + 0xf80) = *(int *) (base + 0x1000 + 0xbb8);
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
             if (*(unsigned char *) (base + 0x2000 + 0x485))
                 *(int *) (base + 0x1000 + 0xbb8) = 0x27;
             else
@@ -104,12 +104,12 @@ extern "C" ARM void func_ov002_02162e50(char *base) {
             GameObject *p = GameState::GetInstance()->GetProtagonist();
             if (p == NULL) return;
             *(short *) (GetFieldAt0x150((unsigned char *) p) + 0x900 + 0x58) = *(short *) (base + 0x1c00 + 0x22);
-        } else if (_Z29CheckFlagOrThreshold_02161b48Pci(base, 1)) {
+        } else if (CheckFlagOrThreshold_02161b48(base, 1)) {
             *(short *) (base + 0x1c00 + 0x22) = -1;
             *(short *) (base + 0x1b00 + 0xe8) = -1;
             *(int *) (base + 0x1000 + 0xbb8)  = 4;
             *(int *) (base + 0x1000 + 0xbc0)  = 1;
-            _Z27SetFieldB0AndUpdate0205dee8P11Obj0205dee8i((struct Obj0205dee8 *) (base + 0x2c8 + 0xc00), 4);
+            SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) (base + 0x2c8 + 0xc00), 4);
             SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 0);
             func_ov002_02161cf0(base);
             func_ov023_021dca88(base + 0x50);

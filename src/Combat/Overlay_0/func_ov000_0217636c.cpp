@@ -5,12 +5,12 @@ struct Entry_0205d6a0;
 struct Node0205bacc;
 struct Struct_0205bcdc;
 
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(struct Entry_0205d6a0* list, int mode);
-extern "C" void _Z23SetChannelAFlag0205cef8Pv(void* chan);
-extern "C" void _Z23SetChannelBFlag0205cf04Pv(void* chan);
-extern "C" void _Z30SetupDualPointerTables0205cf28Phiii(unsigned char* p, int a, int b, int c);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node0205bacc* node, int val);
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(struct Struct_0205bcdc* obj, int index);
+void ResetEntryList0205d6a0(struct Entry_0205d6a0* list, int mode);
+void SetChannelAFlag0205cef8(void* chan);
+void SetChannelBFlag0205cf04(void* chan);
+void SetupDualPointerTables0205cf28(unsigned char* p, int a, int b, int c);
+void SetField0AndPropagate0205bacc(struct Node0205bacc* node, int val);
+void SetIndexIfValid0205bcdc(struct Struct_0205bcdc* obj, int index);
 extern "C" void func_0205bb04(void* obj, int v);
 
 struct GlobalField0x1c {
@@ -21,7 +21,7 @@ struct GlobalField0x1c {
 #endif
     void* tileBuffer;
 };
-extern "C" struct GlobalField0x1c* _Z26GetGlobalField0x1c020421a0v();
+struct GlobalField0x1c* GetGlobalField0x1c020421a0();
 
 #if defined(jpn)
 extern "C" void func_0205d304(void* window, void* buf, int a, int b, int c, int d, int e);
@@ -68,13 +68,13 @@ extern "C" ARM void func_ov000_0217636c(struct Combatant* obj, int arg) {
     if (window != 0) {
         int x = obj->posX;
         int y = obj->posY;
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)window, 1);
-        _Z23SetChannelAFlag0205cef8Pv(window);
-        _Z23SetChannelBFlag0205cf04Pv(window);
-        _Z30SetupDualPointerTables0205cf28Phiii((unsigned char*)window, 2, 3, 0);
-        _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)&window->nodeA, 6);
-        _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)&window->nodeB, 6);
-        _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((struct Struct_0205bcdc*)&window->nodeA, 0);
+        ResetEntryList0205d6a0((struct Entry_0205d6a0*)window, 1);
+        SetChannelAFlag0205cef8(window);
+        SetChannelBFlag0205cf04(window);
+        SetupDualPointerTables0205cf28((unsigned char*)window, 2, 3, 0);
+        SetField0AndPropagate0205bacc((struct Node0205bacc*)&window->nodeA, 6);
+        SetField0AndPropagate0205bacc((struct Node0205bacc*)&window->nodeB, 6);
+        SetIndexIfValid0205bcdc((struct Struct_0205bcdc*)&window->nodeA, 0);
         func_0205bb04(&window->nodeB, 0);
         window->nodeA.unk4 = 1;
         window->nodeB.unk4 = 1;
@@ -87,7 +87,7 @@ extern "C" ARM void func_ov000_0217636c(struct Combatant* obj, int arg) {
         window->unkAC = 0xa;
         window->unkAE = 0xe;
         window->unkB1 = 0xd;
-        void* buf = _Z26GetGlobalField0x1c020421a0v()->tileBuffer;
+        void* buf = GetGlobalField0x1c020421a0()->tileBuffer;
 #if defined(jpn)
         memset(buf, 0, 0x800);
 #else

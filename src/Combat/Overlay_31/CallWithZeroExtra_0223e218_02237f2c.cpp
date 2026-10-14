@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Header_0223bd28;
-extern "C" void _Z26ExtractPackedHiLo_0223bd28P15Header_0223bd28iPjS1_(Header_0223bd28*, int, unsigned int*, unsigned int*);
+void ExtractPackedHiLo_0223bd28(Header_0223bd28*, int, unsigned int*, unsigned int*);
 extern "C" void func_ov031_022381c8(int);
 ARM void* CallWithZeroExtra_0223e218(void* a, void* b, void* c, int d);
 extern "C" void func_ov031_0223815c(void);
@@ -23,7 +23,7 @@ extern unsigned short data_ov031_02249336[];
 #pragma optimize_for_size off
 extern "C" ARM void func_ov031_02237f2c(void* arg) {
     unsigned int outHi, outLo;
-    _Z26ExtractPackedHiLo_0223bd28P15Header_0223bd28iPjS1_(data_ov031_02290d10->header, 0, &outHi, &outLo);
+    ExtractPackedHiLo_0223bd28(data_ov031_02290d10->header, 0, &outHi, &outLo);
     outLo = outLo - 0xc;
     unsigned short threshold = data_ov031_02249336[data_ov031_02290d10->field1c * 2];
     if ((int)outLo > threshold) {

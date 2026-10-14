@@ -12,20 +12,20 @@ struct Flags0215505c {
     unsigned char rest : 7;
 };
 
-extern "C" void *_Z20Clear12Bytes020e46c4Pv(void *p);
+void *Clear12Bytes020e46c4(void *p);
 extern "C" void _Z17ClearObj_021e1318P11Obj021e1318(void *obj);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(struct Struct020dfc40 *s);
+void ResetStruct020dfc40(struct Struct020dfc40 *s);
 extern "C" void func_02074af4(void *state);
-extern "C" void _Z18InitStruct0205cfd4P18InitTarget0205cfd4(struct InitTarget0205cfd4 *t);
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64 *l);
+void InitStruct0205cfd4(struct InitTarget0205cfd4 *t);
+void ResetList0204af64(struct List0204af64 *l);
 extern "C" void func_0204c684(void *p);
 extern "C" void *memset(void *dst, int value, unsigned int length);
 int CopyOutRegion0x5718(char *obj, void *dst);
 extern "C" char *func_0205ec34(void);
-extern "C" unsigned short _Z20BuildBitmask0206e384Ph(unsigned char *obj);
-extern "C" short _Z25GetShortFromTable0206e3d4ii(int unused, int index);
+unsigned short BuildBitmask0206e384(unsigned char *obj);
+short GetShortFromTable0206e3d4(int unused, int index);
 extern "C" void func_ov002_0215b234(char *self);
-extern "C" void _Z19ClearStruct020a9ea4P14Struct020a9ea4(struct Struct020a9ea4 *s);
+void ClearStruct020a9ea4(struct Struct020a9ea4 *s);
 extern "C" void func_ov016_0218b5c0(int a, int b);
 extern "C" void func_ov002_0215b814(char *base);
 
@@ -40,8 +40,8 @@ extern "C" unsigned char data_ov002_0216d3ac;
 // USA: func_ov002_0215505c
 extern "C" ARM void func_ov002_0215505c(char *self) {
     unsigned char buf[4];
-    _Z20Clear12Bytes020e46c4Pv(self + 8);
-    _Z20Clear12Bytes020e46c4Pv(self + 0x14);
+    Clear12Bytes020e46c4(self + 8);
+    Clear12Bytes020e46c4(self + 0x14);
     RESET(0x88c);
     RESET(0x878);
     RESET(0x850);
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov002_0215505c(char *self) {
     RESET(0x810);
     _Z17ClearObj_021e1318P11Obj021e1318(self + 0x804);
     RESET(0x8a0);
-    _Z19ResetStruct020dfc40P14Struct020dfc40((struct Struct020dfc40 *) (self + 0x20));
+    ResetStruct020dfc40((struct Struct020dfc40 *) (self + 0x20));
     U8(0x48) = 0;
     U8(0x49) = 0;
     func_02074af4(self + 0x38);
@@ -60,9 +60,9 @@ extern "C" ARM void func_ov002_0215505c(char *self) {
     for (int i = 0; i < 5; i++) {
         *(int *) (self + i * 4 + 0x1ba4) = -1;
     }
-    _Z18InitStruct0205cfd4P18InitTarget0205cfd4((struct InitTarget0205cfd4 *) (self + 0x2c8 + 0xc00));
+    InitStruct0205cfd4((struct InitTarget0205cfd4 *) (self + 0x2c8 + 0xc00));
     for (int i = 0; i < 3; i++) {
-        _Z17ResetList0204af64P12List0204af64((struct List0204af64 *) (self + 0x384 + 0xc00 + i * 0x20));
+        ResetList0204af64((struct List0204af64 *) (self + 0x384 + 0xc00 + i * 0x20));
     }
     for (int i = 0; i < 12; i++) {
         func_0204c684(self + 0x3e4 + 0xc00 + i * 0xe0);
@@ -194,11 +194,11 @@ extern "C" ARM void func_ov002_0215505c(char *self) {
     U8(0x2478)        = 0;
     U8(0x247a)        = 0;
     char *x           = func_0205ec34();
-    unsigned int bits = (_Z20BuildBitmask0206e384Ph((unsigned char *) x) << 16) | 0xffff;
+    unsigned int bits = (BuildBitmask0206e384((unsigned char *) x) << 16) | 0xffff;
     S32(0x2480)       = 0;
     for (int i = 0; i < 0x20; i++) {
         if (bits & 1) {
-            short n = _Z25GetShortFromTable0206e3d4ii((int) x, (short) (i + 1));
+            short n = GetShortFromTable0206e3d4((int) x, (short) (i + 1));
             *(unsigned int *) (self + 0x2480) |= 1 << (n - 1);
         }
         bits >>= 1;
@@ -229,7 +229,7 @@ extern "C" ARM void func_ov002_0215505c(char *self) {
     RESET(0x864);
     RESET(0x878);
     RESET(0x88c);
-    _Z19ClearStruct020a9ea4P14Struct020a9ea4((struct Struct020a9ea4 *) (self + 0x98 + 0x2400));
+    ClearStruct020a9ea4((struct Struct020a9ea4 *) (self + 0x98 + 0x2400));
     for (unsigned char j = 0; j < 0x20; j++) {
         *(int *) (self + j * 4 + 0x24a0) = 0;
     }

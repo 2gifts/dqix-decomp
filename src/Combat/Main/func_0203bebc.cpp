@@ -21,13 +21,13 @@ struct Glyph020425b4 {
 };
 
 void ClearTwoWordsAndByte(struct S_b20c* obj);
-extern "C" void _Z18SetField0_0205b220Pvi(void* obj, int value);
-extern "C" void _Z29SetFieldsAt0x4And0x8_0205b228Pvih(void* obj, int value, unsigned char flag);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void* _Z23GetBoundedEntry020425b4ii(int idx, int tableIdx);
-extern "C" int _Z22LookupKeyValue020425e4iii(int a, int b, int tableIdx);
-extern "C" int _Z24GetWordFromTable02042648i(int idx);
-extern "C" void _Z25CleanInvalidateCacheRangePKvj(const void* p, unsigned int len);
+void SetField0_0205b220(void* obj, int value);
+void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
+void* GetGlobalField0x1c020421a0(void);
+void* GetBoundedEntry020425b4(int idx, int tableIdx);
+int LookupKeyValue020425e4(int a, int b, int tableIdx);
+int GetWordFromTable02042648(int idx);
+void CleanInvalidateCacheRange(const void* p, unsigned int len);
 extern "C" void LoadToSubObjVRAM(const void* data, unsigned int offset, unsigned int length);
 extern "C" int func_0205b36c(void* self, void* glyph, short a, int b, unsigned char c, unsigned char d);
 
@@ -146,7 +146,7 @@ extern "C" ARM void func_0203bebc(void* entry, void* buf, void* dest)
     }
 #else
     int limit;
-    char* g = (char*)_Z26GetGlobalField0x1c020421a0v();
+    char* g = (char*)GetGlobalField0x1c020421a0();
     void* fp = *(void**)(g + 0x60);
     memset(fp, 0, 0x400);
 
@@ -166,8 +166,8 @@ extern "C" ARM void func_0203bebc(void* entry, void* buf, void* dest)
 
     struct S_b20c localObj;
     ClearTwoWordsAndByte(&localObj);
-    _Z18SetField0_0205b220Pvi(&localObj, (int)fp);
-    _Z29SetFieldsAt0x4And0x8_0205b228Pvih(&localObj, (int)arr, 4);
+    SetField0_0205b220(&localObj, (int)fp);
+    SetFieldsAt0x4And0x8_0205b228(&localObj, (int)arr, 4);
 
     *(short*)((char*)entry + 0x22) = (short)((unsigned int)dest >> 7);
     memset(entry, 0, 0x20);
@@ -176,7 +176,7 @@ extern "C" ARM void func_0203bebc(void* entry, void* buf, void* dest)
     int total = 0;
     limit = ((unsigned char*)entry)[0x20];
     int prev = 0xff;
-    int font = _Z24GetWordFromTable02042648i(0);
+    int font = GetWordFromTable02042648(0);
     unsigned char ch;
     int cnt = 0;
     unsigned char* p = (unsigned char*)buf;
@@ -184,18 +184,18 @@ extern "C" ARM void func_0203bebc(void* entry, void* buf, void* dest)
         ch = *p;
         if (ch == 0) break;
         int c = font;
-        struct Glyph020425b4* gl = (struct Glyph020425b4*)_Z23GetBoundedEntry020425b4ii(ch, 0);
+        struct Glyph020425b4* gl = (struct Glyph020425b4*)GetBoundedEntry020425b4(ch, 0);
         if (gl != 0) {
             c = gl->width;
             func_0205b36c(&localObj, gl, (short)total, 0, 0xf, 0);
         }
-        int w = total + _Z22LookupKeyValue020425e4iii(prev, ch, 0);
+        int w = total + LookupKeyValue020425e4(prev, ch, 0);
         total = w + (c + 1);
         prev = ch;
         p++;
     }
 
-    _Z25CleanInvalidateCacheRangePKvj(fp, 0x400);
+    CleanInvalidateCacheRange(fp, 0x400);
     LoadToSubObjVRAM(fp, (unsigned int)dest, 0x400);
     ((unsigned char*)entry)[0x21] = total - 1;
 #endif

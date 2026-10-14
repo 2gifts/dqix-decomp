@@ -122,15 +122,15 @@ struct Obj02192700 {
 };
 
 extern "C" void __clear(void* buf, int n);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
-extern "C" void* _Z16AllocateAligned4P14AllocatorUnionj(AllocatorUnion* alloc, unsigned int size);
+void TailForward02012da4(AllocatorUnion* alloc, void* data);
+void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern "C" void _Z21SetState0x6cAndInvokeP17Callback_0202a91c(struct MenuList02192700* menu);
 extern "C" void func_02029568(struct MenuList02192700* menu);
 extern "C" void func_020294cc(void* self, const char* src);
 extern "C" void _Z12Init0202949cPc(struct MenuItem02192700* item);
-extern "C" const char* _Z28CallFunc020e0434With02153694i(int id);
+const char* CallFunc020e0434With02153694(int id);
 extern "C" void _Z24AppendNodeToList0202a944P16ListHead0202a944P16ListNode0202a944(struct MenuList02192700* menu, struct MenuItem02192700* item);
-extern "C" struct Entry8_0218bb14* _Z18GetEntry8_0218bb14P14List8_0218bb14i(struct List8_0218bb14* list, int idx);
+struct Entry8_0218bb14* GetEntry8_0218bb14(struct List8_0218bb14* list, int idx);
 extern "C" struct MenuEntry02192700* func_ov015_02193160(struct Obj02192700* obj, int state, int* pIdx);
 extern "C" struct SearchResult02192700* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(void* s, int key);
 extern "C" int func_ov015_02190d08(struct Obj02192700* obj);
@@ -200,7 +200,7 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
     int count;
 
     if (obj->items != 0) {
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, obj->items);
+        TailForward02012da4(&data_02114e20, obj->items);
         obj->items = 0;
     }
     obj->field354 = a1;
@@ -348,16 +348,16 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 count++;
             }
             if (count == 0) {
-                obj->items = (struct MenuItem02192700*)_Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, sizeof(struct MenuItem02192700));
+                obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, sizeof(struct MenuItem02192700));
             } else {
-                obj->items = (struct MenuItem02192700*)_Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, count * sizeof(struct MenuItem02192700));
+                obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, count * sizeof(struct MenuItem02192700));
             }
             if (count == 0) {
                 _Z12Init0202949cPc(obj->items);
 #if defined(jpn)
                 func_020294cc(obj->items, data_ov015_021950f0);
 #else
-                func_020294cc(obj->items, _Z28CallFunc020e0434With02153694i(1000));
+                func_020294cc(obj->items, CallFunc020e0434With02153694(1000));
 #endif
                 _Z24AppendNodeToList0202a944P16ListHead0202a944P16ListNode0202a944(&obj->menu, obj->items);
                 count = 1;
@@ -371,9 +371,9 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 }
             }
         } else if (obj->state == 40) {
-            obj->items = (struct MenuItem02192700*)_Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, obj->entries.count * sizeof(struct MenuItem02192700));
+            obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, obj->entries.count * sizeof(struct MenuItem02192700));
             for (; count < obj->entries.count; count++) {
-                struct Entry8_0218bb14* entry = _Z18GetEntry8_0218bb14P14List8_0218bb14i(&obj->entries, count);
+                struct Entry8_0218bb14* entry = GetEntry8_0218bb14(&obj->entries, count);
                 _Z12Init0202949cPc(&obj->items[count]);
                 func_020294cc(&obj->items[count], entry->name);
                 _Z24AppendNodeToList0202a944P16ListHead0202a944P16ListNode0202a944(&obj->menu, &obj->items[count]);
@@ -388,7 +388,7 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 count++;
                 entry = func_ov015_02193160(obj, obj->state, &idx);
             }
-            obj->items = (struct MenuItem02192700*)_Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, count * sizeof(struct MenuItem02192700));
+            obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, count * sizeof(struct MenuItem02192700));
             count = 0;
             idx = 0;
             entry = func_ov015_02193160(obj, obj->state, &idx);
@@ -470,7 +470,7 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 count += _ZNK4BCFG16GetNumAnimationsEv(bcfg);
             }
         }
-        obj->items = (struct MenuItem02192700*)_Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, count * sizeof(struct MenuItem02192700));
+        obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, count * sizeof(struct MenuItem02192700));
         holder = func_ov015_0218f344(obj->field30);
         idx = 0;
         for (; holder != 0; holder = holder->next) {

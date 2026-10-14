@@ -37,9 +37,9 @@ struct BattleTargetMenu {
     GroupSelection groups;
 };
 
-extern "C" TextWorkspace* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(struct Struct_0205ba68* s, int a, int b, int mode);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node0205bacc* s, int val);
+TextWorkspace* GetGlobalField0x1c020421a0();
+void SetupPointerTable0205ba68(struct Struct_0205ba68* s, int a, int b, int mode);
+void SetField0AndPropagate0205bacc(struct Node0205bacc* s, int val);
 extern "C" void func_0205bb04(void* s, int n);
 extern "C" int func_ov000_0217538c(void* objRaw);
 extern "C" int func_ov000_021753d8(void* objRaw, int targetIndex);
@@ -87,11 +87,11 @@ extern "C" ARM void func_ov000_021787b8(BattleTargetMenu* menu, struct InStruct_
     panel->fieldAC = 0xa;
     panel->fieldAE = 0x10;
     panel->elementId = 0xe;
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68*)&menu->groups, 1, groupCount, 0);
+    SetupPointerTable0205ba68((struct Struct_0205ba68*)&menu->groups, 1, groupCount, 0);
     menu->groups.pages = 1;
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)&menu->groups, groupCount);
+    SetField0AndPropagate0205bacc((struct Node0205bacc*)&menu->groups, groupCount);
     func_0205bb04(&menu->groups, group);
-    char* text = _Z26GetGlobalField0x1c020421a0v()->textBuffer;
+    char* text = GetGlobalField0x1c020421a0()->textBuffer;
 #if defined(jpn)
     memset(text, 0, 0x800);
 #else

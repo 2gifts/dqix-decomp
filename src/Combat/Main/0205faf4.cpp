@@ -64,7 +64,7 @@ struct S02040538;
 void* GetField0xc02040538(struct S02040538* p);
 extern "C" struct CombatantStruct* _ZN9GameState20GetUnknownGameObjectEv(struct BattleStruct* battleStruct);
 extern "C" struct CombatantStruct* _ZN9GameState20GetGameObjectByIndexEi(struct BattleStruct* battleStruct, int combatantId);
-extern "C" int _Z17GetField5cb8ValuePc(char* p);
+int GetField5cb8Value(char* p);
 extern "C" int _Z18GetField0x3acValueP9GameState(struct BattleStruct* battleStruct);
 struct Base02010834;
 void CopyCountedBytesToIntArray02010834(struct Base02010834* base, int index, int* out, int* outCount);
@@ -333,7 +333,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return 0;
     }
     case 35:
-        return CU16(2) == _Z17GetField5cb8ValuePc((char*)_ZN9GameState11GetInstanceEv());
+        return CU16(2) == GetField5cb8Value((char*)_ZN9GameState11GetInstanceEv());
     case 36: {
         struct CombatantStruct* c = _ZN9GameState20GetGameObjectByIndexEi((struct BattleStruct*)_ZN9GameState11GetInstanceEv(), 0);
         unsigned short v = CU16(2);

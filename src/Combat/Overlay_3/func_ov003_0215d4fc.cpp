@@ -49,34 +49,34 @@ extern int data_02108760;
 
 extern "C" int *func_0202ae18();
 extern "C" void *_Z10GetWord0x0Pi(GameState *);
-extern "C" Ctl *_Z26GetGlobalField0x1c020421a0v();
-extern "C" void *_Z20GetGlobalPtr021075f4v();
-extern "C" unsigned char *_Z15GetData02153637v();
+Ctl *GetGlobalField0x1c020421a0();
+void *GetGlobalPtr021075f4();
+unsigned char *GetData02153637();
 extern "C" int func_0202c508(int *);
 extern "C" void _Z24ReinitController02043204Pc(void *);
 extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 extern "C" void *_Z21GetFieldByKey020e0434P17Container020e0310i(void *, int);
 extern "C" void func_ov003_0215cab0(Scene *, void *);
-extern "C" void *_Z29FindEntryPointerByKey0203df78Pvi(void *, int);
+void *FindEntryPointerByKey0203df78(void *, int);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void *, int);
 extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(void *, int);
 extern "C" void _Z13SetBrightnessP13GameResourcesii(void *, int, int);
 extern "C" void func_0205e944(void *, int);
 extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(void *);
 extern "C" void _Z24InitActorContext0209c20cP13Actor0209c20c(void *);
-extern "C" void _Z36ResetAndDispatchActorContext0209c6d8Pvs(void *, short);
-extern "C" void _Z21StoreInFirstEmptySlotPhh(unsigned char *, unsigned char);
+void ResetAndDispatchActorContext0209c6d8(void *, short);
+void StoreInFirstEmptySlot(unsigned char *, unsigned char);
 extern "C" int _Z28GetEntryStatusForKey020e34bcP17Container020e34bci(unsigned char *, int);
-extern "C" char *_Z19GetCombatantCheckedP9GameStatei(GameState *, int);
+char *GetCombatantChecked(GameState *, int);
 extern "C" void func_ov017_021c9e00(int, int, int, int);
-extern "C" void _Z16Dispatch020e3428Pvi(void *, int);
+void Dispatch020e3428(void *, int);
 extern "C" void _Z37ClearEntryIfCurrentArrMatches020e3468P13Entry020e3054i(void *, int);
 extern "C" void func_ov017_021a2fa0(void *);
 extern "C" void func_02012fe4();
 extern "C" void func_ov017_0219bd1c(int, int, int, int);
 extern "C" void func_ov017_021921fc(void *, int, int);
-extern "C" int _Z25IsAnimationActive0209ca2cPv(void *);
-extern "C" void _Z20StopAndReset0209c7fcPv(void *);
+int IsAnimationActive0209ca2c(void *);
+void StopAndReset0209c7fc(void *);
 extern "C" void _Z34PropagateValueToActiveSlot02040b2cP11Obj02040b2ci(void *, int);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void *, int, void *);
 
@@ -84,11 +84,11 @@ extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void *, int, void *)
 extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
     GameState *gs    = GameState::GetInstance();
     void *res        = _Z10GetWord0x0Pi(gs);
-    Ctl *ctl         = _Z26GetGlobalField0x1c020421a0v();
+    Ctl *ctl         = GetGlobalField0x1c020421a0();
     int *a           = func_0202ae18();
-    void *b          = _Z20GetGlobalPtr021075f4v();
+    void *b          = GetGlobalPtr021075f4();
     GameObject *c    = gs->GetUnknownGameObject();
-    unsigned char *d = _Z15GetData02153637v();
+    unsigned char *d = GetData02153637();
     unsigned char state;
     int i;
     int sb;
@@ -126,7 +126,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
         }
         func_ov003_0215cab0(self, _Z21GetFieldByKey020e0434P17Container020e0310i(self->cont64, key));
         self->b3bb = 2;
-        void *e = _Z29FindEntryPointerByKey0203df78Pvi(b, (*(Ent **) ((char *) func_ov017_0218b5b0() + 0x3000 + 0x710))->key);
+        void *e = FindEntryPointerByKey0203df78(b, (*(Ent **) ((char *) func_ov017_0218b5b0() + 0x3000 + 0x710))->key);
         if (e != 0) {
             self->w3f8 = GetOffset0x54FromFallbackChain((Entry_203dce4*)e);
         }
@@ -148,12 +148,12 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
             return;
         }
         _Z24InitActorContext0209c20cP13Actor0209c20c(&data_02109bf4);
-        _Z36ResetAndDispatchActorContext0209c6d8Pvs(&data_02109bf4, 0x37);
+        ResetAndDispatchActorContext0209c6d8(&data_02109bf4, 0x37);
         self->w3e8  = 0xb4;
         self->state = self->state + 1;
     }
     if (state == 3) {
-        _Z21StoreInFirstEmptySlotPhh(d, 1);
+        StoreInFirstEmptySlot(d, 1);
         self->state = self->state + 1;
     }
     if (state == 4) {
@@ -163,7 +163,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
             *(unsigned int *) (p + 0xf6c) = *(unsigned int *) (p + 0xf6c) - self->w3cc;
             for (i = 0; i < 4; i++) {
                 if (self->ids[i] != 0xff) {
-                    char *m                                          = _Z19GetCombatantCheckedP9GameStatei(gs, self->ids[i]);
+                    char *m                                          = GetCombatantChecked(gs, self->ids[i]);
                     *(unsigned short *) (*(char **) (m + 0x130) + 4) = *(unsigned short *) (*(char **) (m + 0x134) + 0x30);
                     *(unsigned short *) (*(char **) (m + 0x130) + 6) = *(unsigned short *) (*(char **) (m + 0x134) + 0x32);
                     func_ov017_021c9e00(self->ids[i], 0, 0, 1);
@@ -175,7 +175,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
                     case 3: gs->SetDayTimer(self->f3e0); break;
                 }
             }
-            _Z16Dispatch020e3428Pvi(d, 1);
+            Dispatch020e3428(d, 1);
             self->state = self->state + 1;
         } else if ((unsigned int) (status - 3) <= 2) {
             _Z37ClearEntryIfCurrentArrMatches020e3468P13Entry020e3054i(d, 1);
@@ -192,15 +192,15 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
         }
     }
     if (state == 6) {
-        if (_Z25IsAnimationActive0209ca2cPv(&data_02109bf4) != 0) {
+        if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) {
             return;
         }
-        _Z20StopAndReset0209c7fcPv(&data_02109bf4);
+        StopAndReset0209c7fc(&data_02109bf4);
         _Z13SetBrightnessP13GameResourcesii(res, 0, 0x3c);
         func_0205e944(&data_02108760, 0x7f);
         self->b3ec = 1;
         self->b3ed = 0;
-        void *e = _Z29FindEntryPointerByKey0203df78Pvi(b, (*(Ent **) ((char *) func_ov017_0218b5b0() + 0x3000 + 0x710))->key);
+        void *e = FindEntryPointerByKey0203df78(b, (*(Ent **) ((char *) func_ov017_0218b5b0() + 0x3000 + 0x710))->key);
         if (e != 0) {
             _Z34PropagateValueToActiveSlot02040b2cP11Obj02040b2ci(e, self->w3f8);
         }

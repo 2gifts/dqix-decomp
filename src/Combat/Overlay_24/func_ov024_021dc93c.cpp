@@ -1,19 +1,19 @@
 #include <globaldefs.h>
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState*);
+void* GetPtrField0x2a04(GameState*);
 extern "C" int _Z17ArrayContainsByteP23ArrayContainsByteStructi(void*,int);
 extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(void*,int);
 extern "C" int _Z36CheckField0x14FiveFlagsClear020881c4Ph(void*);
 extern "C" int _Z36CheckField0x14FiveFlagsClear0208810cPh(void*);
 extern "C" void _Z26SetFlag0x800000AndByte0x24Pvh(void*,int);
 extern "C" int _Z30SetFlag0x800000AndCall02088208Pvi(void*,void*);
-extern "C" void _Z24ResetAndSetFlag0x1000000Pv(void*);
+void ResetAndSetFlag0x1000000(void*);
 extern "C" int _Z27GetCodeForCategory_021e8c48Pvi(void*,signed char);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int,int,int);
+unsigned short SelectByIndexRange0to3_021da644(int,int,int);
 extern "C" void* func_ov000_0215e958(void*);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void*,void*,int);
-extern "C" void _Z32AppendToChainAndIncCount0215ffc4PvS_i(void*,void*,int);
+void AddEntryAndIncrementCount0215a88c(void*,void*,int);
+void AppendToChainAndIncCount0215ffc4(void*,void*,int);
 extern "C" void func_ov000_02159eac(void*,unsigned long long*,int);
 extern "C" void func_ov000_0215cd44(void*,void*,GameObject*,short,unsigned long long,unsigned char);
 extern "C" void func_ov000_0215af54(void*,int,int);
@@ -49,9 +49,9 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
     void* entry=func_ov000_0215e958(obj->context);
     if(!entry)return 0;
     func_ov000_0215cd44(obj->context,entry,target,stage,effects,obj->action->flag!=0);
-    _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->action,entry,0);
+    AppendToChainAndIncCount0215ffc4(obj->action,entry,0);
     ++*((unsigned char*)obj->context+0x8e02);
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,entry,0x152);
+    AddEntryAndIncrementCount0215a88c(obj->context,entry,0x152);
     if(stage<count){
      message=0;
      while(stage<3){
@@ -62,22 +62,22 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
       void* step=func_ov000_0215e958(obj->context);
       if(!step)return 0;
       func_ov000_0215cd44(obj->context,step,target,stage,effects,obj->action->flag!=0);
-      _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->action,step,0);
+      AppendToChainAndIncCount0215ffc4(obj->action,step,0);
       ++*((unsigned char*)obj->context+0x8e02);
       obj->changed=1;
-      _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,step,message);
+      AddEntryAndIncrementCount0215a88c(obj->context,step,message);
      }
      if(count>=4){
       entry=func_ov000_0215e958(obj->context);
       if(!entry)return 0;
-      _Z24ResetAndSetFlag0x1000000Pv(target->currentStats_);
-      _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,entry,0x34);
+      ResetAndSetFlag0x1000000(target->currentStats_);
+      AddEntryAndIncrementCount0215a88c(obj->context,entry,0x34);
       func_ov000_02159eac(obj->context,&effects,7);
       func_ov000_0215cd44(obj->context,entry,target,stage,effects,obj->action->flag!=0);
-      _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->action,entry,0);
+      AppendToChainAndIncCount0215ffc4(obj->action,entry,0);
       ++*((unsigned char*)obj->context+0x8e02);
       obj->changed=1;
-      _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,entry,message);
+      AddEntryAndIncrementCount0215a88c(obj->context,entry,message);
       func_ov000_0215af54(obj->context,id,0);
      }else{
       _Z26SetFlag0x800000AndByte0x24Pvh(target->currentStats_,count);
@@ -99,7 +99,7 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
      if(result==4){
       func_ov000_02159eac(obj->context,&effects,7);
       func_ov000_0215af54(obj->context,id,0);
-      void* list=_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
+      void* list=GetPtrField0x2a04(GameState::GetInstance());
       if(_Z17ArrayContainsByteP23ArrayContainsByteStructi(list,sourceID) && code==0xa8)
        _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(obj->context,3);
      }
@@ -108,20 +108,20 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
      result=0;
     }
     func_ov000_0215cd44(obj->context,entry,target,result,effects,obj->action->flag!=0);
-    _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->action,entry,0);
+    AppendToChainAndIncCount0215ffc4(obj->action,entry,0);
     ++*((unsigned char*)obj->context+0x8e02);
     obj->changed=1;
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,entry,message);
+    AddEntryAndIncrementCount0215a88c(obj->context,entry,message);
    }
    done=1;
   }else{
    void* entry=func_ov000_0215e958(obj->context);
    if(!entry)return 0;
    func_ov000_0215cd44(obj->context,entry,target,0,0,obj->action->flag!=0);
-   _Z32AppendToChainAndIncCount0215ffc4PvS_i(obj->action,entry,0);
+   AppendToChainAndIncCount0215ffc4(obj->action,entry,0);
    ++*((unsigned char*)obj->context+0x8e02);
    obj->changed=1;
-   _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->context,entry,_Z31SelectByIndexRange0to3_021da644iii(id,params->field24.b,params->field24.c));
+   AddEntryAndIncrementCount0215a88c(obj->context,entry,SelectByIndexRange0to3_021da644(id,params->field24.b,params->field24.c));
   }
  }
  if(IsPartyIndex(id) && done)obj->done=1;

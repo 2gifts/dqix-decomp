@@ -12,7 +12,7 @@
 #include "GameState/GameState.h"
 
 struct Outer_02054000;
-extern "C" void* _Z21GetActiveSub_02054000P14Outer_02054000(struct Outer_02054000* p);
+void* GetActiveSub_02054000(struct Outer_02054000* p);
 int TestBitInArray0x8ec(unsigned char* obj, int index);
 
 struct CombatantFlags02f4 {
@@ -89,7 +89,7 @@ extern "C" ARM int func_ov000_02171ffc(struct Combatant* obj) {
     }
     if (actionId == 1) {
         if (combatant != 0) {
-            struct ActiveSub* sub = (struct ActiveSub*)_Z21GetActiveSub_02054000P14Outer_02054000((struct Outer_02054000*)combatant);
+            struct ActiveSub* sub = (struct ActiveSub*)GetActiveSub_02054000((struct Outer_02054000*)combatant);
             if (sub != 0 && sub->count > 0) {
                 struct CombatantFlags02f4* flags = &combatant->data->flags;
                 if (flags->bit1) {

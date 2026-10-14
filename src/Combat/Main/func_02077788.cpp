@@ -32,10 +32,10 @@ struct Obj02033b68;
 struct Outer02077a20;
 int GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 int GetField0xe4IfFlag0x40(struct BitFlag02033f44* obj);
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int angle);
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68* obj, int value);
-extern "C" void _Z18TrySetMode02076cccPvi(void* obj, int mode);
-extern "C" int _Z28GetField0x8OrDefault02077a20P13Outer02077a20(struct Outer02077a20* obj);
+void SetVecYByMode02033834(struct Obj02033834* obj, int angle);
+void SetByteIfChanged02033b68(struct Obj02033b68* obj, int value);
+void TrySetMode02076ccc(void* obj, int mode);
+int GetField0x8OrDefault02077a20(struct Outer02077a20* obj);
 int GetIntField0x264(void* obj);
 
 // USA: func_02077788
@@ -52,11 +52,11 @@ extern "C" ARM void func_02077788(struct Entity02077788* self) {
     Vector3fix_Subtract(&pos, &self->object.position_, &delta);
     Vector3fix_Normalize(&delta, &delta);
     int angle = fix32_Atan2(delta.x, delta.z);
-    _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, angle);
+    SetVecYByMode02033834((struct Obj02033834*)self, angle);
 
     self->fb4 = 0x1c2;
     self->fb2 = 0x1c2;
-    _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)self, 1);
+    SetByteIfChanged02033b68((struct Obj02033b68*)self, 1);
 
     int flag = GetField0xe4IfFlag0x40((struct BitFlag02033f44*)self);
     int inRange = 0;
@@ -67,7 +67,7 @@ extern "C" ARM void func_02077788(struct Entity02077788* self) {
         }
     }
     if (inRange) {
-        _Z18TrySetMode02076cccPvi(self, 1);
+        TrySetMode02076ccc(self, 1);
         self->f154 = 0;
         if (CheckField0NonZero((int*)g)) {
             func_020794f8(self, 0, 0);
@@ -83,12 +83,12 @@ extern "C" ARM void func_02077788(struct Entity02077788* self) {
         Vector3fix pos2 = func_020341e0(combatant);
         int radius = combatant->obj3D_.GetRadius();
         int scaledSpacing = self->object.GetScale().x * 15;
-        int halfSpacingFactor = _Z28GetField0x8OrDefault02077a20P13Outer02077a20((struct Outer02077a20*)self) >> 1;
+        int halfSpacingFactor = GetField0x8OrDefault02077a20((struct Outer02077a20*)self) >> 1;
         long long spacingProduct = (long long)halfSpacingFactor * scaledSpacing;
         int distanceThreshold = (radius >> 1) + (int)((spacingProduct + 0x800) >> 12);
         int dist = Vector3fix_Distance(&pos2, &self->object.position_);
         if ((dist != 0 && distanceThreshold > dist) || dist > 0x7800) {
-            _Z18TrySetMode02076cccPvi(self, 1);
+            TrySetMode02076ccc(self, 1);
             self->f154 = 0;
             self->f17b = 1;
             if (CheckField0NonZero((int*)g)) {
@@ -103,7 +103,7 @@ extern "C" ARM void func_02077788(struct Entity02077788* self) {
     }
     if (static_cast<unsigned char>(combatant->unk_ac[0xc0 - 0xac]) == 6 ||
         GetIntField0x264(battleStruct->GetProtagonist()) == 2) {
-        _Z18TrySetMode02076cccPvi(self, 1);
+        TrySetMode02076ccc(self, 1);
         self->f154 = 0;
         if (CheckField0NonZero((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
             func_020794f8(self, 0, 0);

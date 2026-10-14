@@ -9,7 +9,7 @@ extern "C" int func_ov017_0218b5b0(void);
 
 struct Cont0208e778;
 struct Node0208e778;
-extern "C" void _Z31AppendNodeToCountedList0208e778P12Cont0208e778P12Node0208e778(struct Cont0208e778*, struct Node0208e778*);
+void AppendNodeToCountedList0208e778(struct Cont0208e778*, struct Node0208e778*);
 
 extern int data_02108fe4;
 
@@ -72,6 +72,6 @@ extern "C" ARM int func_0208e0c4(char* v) {
     }
     node->dw2 = 0;
     node->dw1.raw &= 0xe01fffff;
-    _Z31AppendNodeToCountedList0208e778P12Cont0208e778P12Node0208e778((Cont0208e778*)&data_02108fe4, (Node0208e778*)node);
+    AppendNodeToCountedList0208e778((Cont0208e778*)&data_02108fe4, (Node0208e778*)node);
     return 1;
 }

@@ -4,8 +4,8 @@ struct Struct_0205c570;
 struct Struct_0205bb84;
 
 extern "C" int func_0205bf58(void* obj, int v);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570* s);
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(struct Struct_0205bb84* s);
+int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
+int ComputeScaledSum0205bb84(struct Struct_0205bb84* s);
 extern "C" int func_ov000_021753d8(void* obj, int targetIndex);
 extern "C" void func_0205bb04(void* obj, int value);
 extern "C" void func_0205d7a0(unsigned char* obj, int val);
@@ -40,8 +40,8 @@ extern "C" ARM void func_ov000_0217f304(struct Menu_0217f304* menu, int unused, 
     int type = cmd->types[cmd->typeIndex];
     if (type != 0xe && type != 0x19) return;
     func_0205bf58(menu->groupCursor, 1);
-    position = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)menu->cursor);
-    int group = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((struct Struct_0205bb84*)menu->groupCursor);
+    position = GetActiveScaledSum0205d794((struct Struct_0205c570*)menu->cursor);
+    int group = ComputeScaledSum0205bb84((struct Struct_0205bb84*)menu->groupCursor);
     int target = cmd->targetPosition;
     int currentGroup = func_ov000_021753d8(menu, position);
     if (type == 0x19) target = menu->defaultPosition;

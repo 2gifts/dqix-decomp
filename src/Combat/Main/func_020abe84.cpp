@@ -21,7 +21,7 @@ struct GameProgressRecords {
 
 static inline unsigned int FieldA(const Entry020abe84* e) { return e->fieldA; }
 
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void*);
+int LoadBattleBlock020ac4c0(void*);
 void AddClamped9BitField(BattleRecordSnapshot*, unsigned int);
 int CopyInBattleField0x7540(void*);
 
@@ -41,7 +41,7 @@ extern "C" ARM int func_020abe84(void* unused, short* indices, Entry020abe84* va
         }
         memcpy(&table[idx], src, sizeof(*src));
     }
-    _Z23LoadBattleBlock020ac4c0Pv(&block);
+    LoadBattleBlock020ac4c0(&block);
     AddClamped9BitField(&block, added);
     CopyInBattleField0x7540(&block);
     return 1;

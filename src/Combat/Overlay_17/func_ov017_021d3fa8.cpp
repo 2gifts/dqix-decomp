@@ -24,10 +24,10 @@ extern const PartyOrder021d3fa8 data_ov017_021d6cfc, data_ov017_021d6d08;
 extern const char data_ov017_021d82b1[], data_ov017_021d82bb[], data_ov017_021d82c6[];
 extern "C" void func_020dc548(signed char, PartyOrder021d3fa8*, signed char*);
 void SetFlag0x1ceBit0x4(unsigned char*);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char*);
+void ClearBytesAndZeroBlock02039d24(unsigned char*);
 extern "C" int func_0202c540(void*);
-extern "C" void _Z26CallHelperWithBuf_021907dciiiii(int, int, int, int, int);
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(Obj02033b68*, int);
+void CallHelperWithBuf_021907dc(int, int, int, int, int);
+void SetByteIfChanged02033b68(Obj02033b68*, int);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 
 // USA: func_ov017_021d3fa8
@@ -55,9 +55,9 @@ extern "C" ARM void func_ov017_021d3fa8(int unused, AnimationPacket021d3fa8* pac
                 other->obj3D_.SetInheritedAlpha(31);
                 SetFlag0x1ceBit0x4((unsigned char*)other);
             }
-            _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)other);
+            ClearBytesAndZeroBlock02039d24((unsigned char*)other);
         }
-        if (func_0202c540(search)) _Z26CallHelperWithBuf_021907dciiiii((int)globals, 0, 1, 1, 1);
+        if (func_0202c540(search)) CallHelperWithBuf_021907dc((int)globals, 0, 1, 1, 1);
     }
     if (member == 0) return;
     unsigned int member_id = member->obj3D_.GetField06();
@@ -76,12 +76,12 @@ extern "C" ARM void func_ov017_021d3fa8(int unused, AnimationPacket021d3fa8* pac
                 if (!(flags & 2)) {
                     other->obj3D_.position_ = member->obj3D_.position_;
                     other->obj3D_.SetInheritedAlpha(31);
-                    _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)other, 0);
+                    SetByteIfChanged02033b68((Obj02033b68*)other, 0);
                     SetFlag0x1ceBit0x4((unsigned char*)other);
                 }
-                _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)other);
+                ClearBytesAndZeroBlock02039d24((unsigned char*)other);
             }
-            if (func_0202c540(search)) _Z26CallHelperWithBuf_021907dciiiii((int)globals, 0, 1, 1, 1);
+            if (func_0202c540(search)) CallHelperWithBuf_021907dc((int)globals, 0, 1, 1, 1);
         }
     } else if (command == 0) {
         member->obj3D_.DisableFlag(0x1000);

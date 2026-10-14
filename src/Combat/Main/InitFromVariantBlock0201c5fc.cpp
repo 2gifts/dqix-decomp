@@ -9,7 +9,7 @@ enum { kAngleOffset = 0x34, kWordAOffset = 0x38, kWordBOffset = 0x3c };
 
 #include "std_library_functions.h"
 
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int v);
+int fix32ReduceAngle0To2Pi(int v);
 
 extern int data_020ef2bc;
 extern int data_020fdc14;
@@ -45,7 +45,7 @@ ARM int InitFromVariantBlock0201c5fc(void* obj) {
     parameters[12].ToInt();
 
     *(unsigned short*)(*(char**)((char*)&data_020fdc14 + 0x4) + kAngleOffset) =
-        (unsigned short)_Z22fix32ReduceAngle0To2Pii((int)(4096.0f * parameters[13].ToFloat()));
+        (unsigned short)fix32ReduceAngle0To2Pi((int)(4096.0f * parameters[13].ToFloat()));
 
     *(int*)(*(char**)((char*)&data_020fdc14 + 0x4) + kWordAOffset) =
         (int)(4096.0f * parameters[14].ToFloat());

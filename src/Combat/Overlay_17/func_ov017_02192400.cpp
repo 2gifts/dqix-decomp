@@ -7,7 +7,7 @@ enum { RegionOffset445c = 0x445c };
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" void _Z54SetAllEntriesFieldits24To29IfField54_021923e0_021923e0Pvj(void* obj, unsigned int value);
+void SetAllEntriesFieldits24To29IfField54_021923e0_021923e0(void* obj, unsigned int value);
 
 struct ObjectIndexList {
     short v[8];
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov017_02192400(unsigned char* self, int idx) {
     for (i = 0; objs.v[i] > -1; i++) {
         GameObject* c = battle->GetGameObjectByIndex(objs.v[i]);
         if (c && ids.v[i] >= 0) {
-            _Z54SetAllEntriesFieldits24To29IfField54_021923e0_021923e0Pvj(c, ids.v[i]);
+            SetAllEntriesFieldits24To29IfField54_021923e0_021923e0(c, ids.v[i]);
         }
     }
 }

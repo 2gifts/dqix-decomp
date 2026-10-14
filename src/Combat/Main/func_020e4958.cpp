@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 struct Struct0200fb08;
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08*);
+int NormalizeField5_0200fb08(Struct0200fb08*);
 int StringLength(const char*);
 extern "C" int func_02001aec(const char*, const char*, unsigned int);
 extern "C" int sprintf(char*, const char*, ...);
@@ -35,7 +35,7 @@ extern "C" ARM void func_020e4958(char** destination, int value, int inputMode, 
     char expanded[0x100];
     mode = 1 - mode;
     __clear(expanded, 0x100);
-    if (choice == -1 && _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)GameState::GetInstance()) == 3) choice = 0;
+    if (choice == -1 && NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance()) == 3) choice = 0;
     char* input;
     char* output = expanded;
     input = source;

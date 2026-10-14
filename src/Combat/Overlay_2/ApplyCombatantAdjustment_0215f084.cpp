@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" int _Z22AdjustValueByFieldFlagPvj(void *obj, unsigned int flag);
-extern "C" void *_Z26GetGlobalField0x1c020421a0v();
+int AdjustValueByFieldFlag(void *obj, unsigned int flag);
+void *GetGlobalField0x1c020421a0();
 extern "C" void func_02046380();
 extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(void *g, int idx, int val);
 extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(void *c, int key);
@@ -35,10 +35,10 @@ extern "C" ARM void func_ov002_0215f084(void *objPtr, int param2) {
     }
     struct FlagsField8 { unsigned int byte0 : 8; unsigned int rest : 24; };
     unsigned int flagByte = ((FlagsField8*)((char*)entry + 8))->byte0;
-    int adjResult = _Z22AdjustValueByFieldFlagPvj(combatant, flagByte);
+    int adjResult = AdjustValueByFieldFlag(combatant, flagByte);
     short s = *(short*)((char*)combatant + 4);
     Struct020fdcb0 *e = &data_020fdcb0[s];
-    void *g = _Z26GetGlobalField0x1c020421a0v();
+    void *g = GetGlobalField0x1c020421a0();
     func_02046380();
     _Z17StoreInArray0x8b0P11StoreStructii(g, 0, adjResult);
     _Z17StoreInArray0x8b0P11StoreStructii(g, 1, e->f4);

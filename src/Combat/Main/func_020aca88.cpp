@@ -32,16 +32,16 @@ struct Obj02033874;
 struct Flags02033fdc;
 
 void* GetPointerAt0x330(struct PointerField330_ffd0* obj);
-extern "C" void _Z15InitObj020ad59cPv(void* obj);
+void InitObj020ad59c(void* obj);
 void ClearEightWords(struct Struct_203dafc* obj);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* tables);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* tables);
+void RestorePairTables0207df90(char* tables);
+void BackupPairTables0207dfac(char* tables);
 extern "C" void func_02012fe4();
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(struct Obj02033874* obj, int value);
+void SetVecYFromValue02033874(struct Obj02033874* obj, int value);
 void ClearFlag0x4At0xe0(struct Flags02033fdc* obj);
 void RegisterCombatantSlot(GameState* state, int slot, GameObject* obj);
 extern "C" void func_020adfa8(struct Prop020aca88* prop);
-extern "C" void _Z37ResetContainerAndHandleFields020da1acPv(void* container);
+void ResetContainerAndHandleFields020da1ac(void* container);
 
 extern const char data_020f1c08[];
 extern const char data_020f1c20[];
@@ -73,14 +73,14 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         if (prop == NULL) {
             return;
         }
-        _Z15InitObj020ad59cPv(prop);
+        InitObj020ad59c(prop);
         ClearEightWords((struct Struct_203dafc*)&info);
-        _Z25RestorePairTables0207df90Pc(tables);
+        RestorePairTables0207df90(tables);
         info.unk_8 = size;
         info.fileData = file;
         info.allocator = alloc;
         prop->obj3D.LoadFromCHRArchive(&info);
-        _Z24BackupPairTables0207dfacPc(tables);
+        BackupPairTables0207dfac(tables);
         func_02012fe4();
 
         GameObject* hero = state->GetUnknownGameObject();
@@ -92,7 +92,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         prop->obj3D.position_ = pos;
         prop->homePosition_154 = pos;
         prop->obj3D.SetScale(&scale);
-        _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)prop, 0x3244);
+        SetVecYFromValue02033874((struct Obj02033874*)prop, 0x3244);
         prop->kind_b0 = 0xc9;
         prop->obj3D.MakeVisible();
         ClearFlag0x4At0xe0((struct Flags02033fdc*)prop);
@@ -111,12 +111,12 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         }
         obj->Initialize();
         ClearEightWords((struct Struct_203dafc*)&info);
-        _Z25RestorePairTables0207df90Pc(tables);
+        RestorePairTables0207df90(tables);
         info.unk_8 = size;
         info.fileData = file;
         info.allocator = alloc;
         obj->LoadFromCHRArchive(&info);
-        _Z24BackupPairTables0207dfacPc(tables);
+        BackupPairTables0207dfac(tables);
         obj->position_ = pos;
         obj->SetScale(&scale);
         obj->MakeVisible();
@@ -134,12 +134,12 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         }
         obj->Initialize();
         ClearEightWords((struct Struct_203dafc*)&info);
-        _Z25RestorePairTables0207df90Pc(tables);
+        RestorePairTables0207df90(tables);
         info.unk_8 = size;
         info.fileData = file;
         info.allocator = alloc;
         obj->LoadFromCHRArchive(&info);
-        _Z24BackupPairTables0207dfacPc(tables);
+        BackupPairTables0207dfac(tables);
         pos = hero->obj3D_.position_;
         pos.y = 0;
         scale.y = 0x300;
@@ -161,12 +161,12 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         }
         obj->Initialize();
         ClearEightWords((struct Struct_203dafc*)&info);
-        _Z25RestorePairTables0207df90Pc(tables);
+        RestorePairTables0207df90(tables);
         info.unk_8 = size;
         info.fileData = file;
         info.allocator = alloc;
         obj->LoadFromCHRArchive(&info);
-        _Z24BackupPairTables0207dfacPc(tables);
+        BackupPairTables0207dfac(tables);
         pos = hero->obj3D_.position_;
         pos.y = 0;
         scale.y = 0x300;
@@ -181,7 +181,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         SafeAllocator* subAlloc = (SafeAllocator*)alloc->Allocate(0x14);
         subAlloc->ResetAllocatorPointer();
         subAlloc->CreateTypeA(alloc->Allocate(0x3c00), 0x3c00);
-        _Z37ResetContainerAndHandleFields020da1acPv(&data_ov017_021d82fc);
+        ResetContainerAndHandleFields020da1ac(&data_ov017_021d82fc);
         data_ov017_021d82fc.allocator = subAlloc;
         data_ov017_021d82fc.tables = tables;
     }

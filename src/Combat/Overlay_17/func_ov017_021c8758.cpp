@@ -4,7 +4,7 @@
 #include "std_library_functions.h"
 
 void* GetData02100044(void);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
 extern "C" int func_ov000_0215e9fc(void* obj, short* buf, int max, int flag);
 extern "C" int func_ov000_0215eb1c(void* obj, short* buf, int max, int flag);
 extern "C" void func_0205e330(void* a, void* b, int c);
@@ -31,7 +31,7 @@ extern "C" ARM void func_ov017_021c8758(unsigned short id) {
     GameState* bs = GameState::GetInstance();
     unsigned char* base = (unsigned char*)func_ov017_0218b5b0();
     void* data = GetData02100044();
-    void* field = _Z20GetField6b0_021b8470Pv(*(void**)(base + 0x3000 + regionalOffset));
+    void* field = GetField6b0_021b8470(*(void**)(base + 0x3000 + regionalOffset));
     if (field == NULL) {
         return;
     }

@@ -8,27 +8,26 @@ struct Obj9b6c;
 struct Obj02046574;
 extern "C" void* func_ov023_021f6524(void* ctx, int value);
 extern "C" struct TableA68* func_ov004_02168b08(void* a, int key);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 void* GetFieldAt0x150(unsigned char* obj);
 extern "C" void* func_0205ec34(void* obj);
 extern "C" int func_ov023_021f9bc8(char* obj);
-extern "C" unsigned int _Z22GetTableEntry_021f9b6cP7Obj9b6cjj(struct Obj9b6c* obj, unsigned int a, unsigned int b);
+unsigned int GetTableEntry_021f9b6c(struct Obj9b6c* obj, unsigned int a, unsigned int b);
 extern "C" void __clear(void* buf, int len);
 extern "C" void func_02042764(const char* name, char* dest, int flag);
-extern "C" void* _Z23GetNodeIfType8_02168a6cPvi(void* a, int id);
+void* GetNodeIfType8_02168a6c(void* a, int id);
 char* FindEntryByKey(struct TableA68* table, int key);
 extern "C" void func_02046380(void* global);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(struct Obj02046574* obj, int index, char* str);
+void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 extern "C" void func_02046608(void* a, int b, char* c, char* d, int e, int f, int g);
 char* FindSubstring(char* haystack, char* needle);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+int LoadBattleBlock020ac4c0(void* dst);
 void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 void SetByteInRange(unsigned char* base, int index, unsigned char value);
 void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
-extern "C" int _Z29DispatchNodeIfState6_021f6680Pvi(void* obj, int id);
+int DispatchNodeIfState6_021f6680(void* obj, int id);
 
-// the 0x18-byte packed record (ctx->f194, or +0x14 into a 0x2c area entry)
 struct Packed02169b4c {
     unsigned int w0A : 14;
     unsigned int w0B : 17;
@@ -59,7 +58,6 @@ struct Area02169b4c {
     struct Packed02169b4c rec;
 };
 
-// the 0xb0 block filled in by LoadBattleBlock020ac4c0
 struct Blk02169b4c {
     unsigned short f00;
     unsigned char f02;
@@ -118,7 +116,7 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
 
     struct Grid02169b4c* grid = (struct Grid02169b4c*)func_ov023_021f6524(a, 0x64);
     struct TableA68* tblA = func_ov004_02168b08(a, 3);
-    void* g = (void*)_Z26GetGlobalField0x1c020421a0v();
+    void* g = (void*)GetGlobalField0x1c020421a0();
     unsigned char* prot = (unsigned char*)GetFieldAt0x150((unsigned char*)GameState::GetInstance()->GetProtagonist());
     unsigned char* flags = (unsigned char*)func_0205ec34(prot);
     struct TableA68* tbl9 = func_ov004_02168b08(a, 9);
@@ -127,7 +125,7 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     short f5c = grid->f5c;
     int areaIdx = func_ov023_021f9bc8((char*)grid);
     int idx = areaIdx + f5c * 8;
-    if (!_Z22GetTableEntry_021f9b6cP7Obj9b6cjj((struct Obj9b6c*)grid, (unsigned short)areaIdx, 0)) return 0;
+    if (!GetTableEntry_021f9b6c((struct Obj9b6c*)grid, (unsigned short)areaIdx, 0)) return 0;
 
     struct Area02169b4c* area = (struct Area02169b4c*)(areas + 4) + idx;
     char buf[0x30];
@@ -147,25 +145,25 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     memset(out, 0, 4);
     Node02169b4c* node;
 
-    node = (Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, 0x190);
+    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x190);
     node->mode = 2;
     sprintf(out, FindEntryByKey(tblA, 0x23), rec->w0A);
     node->text = out;
     out += strlen(out) + 1;
 
-    node = (Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, 0x1c2);
+    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x1c2);
     node->mode = 2;
     sprintf(out, FindEntryByKey(tblA, 0x23), rec->w8A);
     node->text = out;
     out += strlen(out) + 1;
 
-    node = (Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, 0x191);
+    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x191);
     node->mode = 2;
     sprintf(out, FindEntryByKey(tblA, 0x23), rec->w4A);
     node->text = out;
     out += strlen(out) + 1;
 
-    node = (Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, 0x1c3);
+    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x1c3);
     node->mode = 2;
     sprintf(out, FindEntryByKey(tblA, 0x23), rec->w8B);
     node->text = out;
@@ -180,11 +178,11 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     } else {
         title = FindEntryByKey(tbl6, rec->f14);
     }
-    _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)g, 0, title);
-    _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)g, 1, name);
+    SetIndexedName02046574((struct Obj02046574*)g, 0, title);
+    SetIndexedName02046574((struct Obj02046574*)g, 1, name);
     func_02046608(g, 0xa, FindEntryByKey(tblA, 0x22), out, 0xf0, 1, 0);
 
-    node = (Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, 0x192);
+    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x192);
     node->text = out;
     struct Triple02169b4c t = node->Get();
     t.b = 0x7000;
@@ -196,7 +194,7 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     unsigned char count = 0;
     unsigned char mask = 0;
     struct Blk02169b4c blk;
-    _Z23LoadBattleBlock020ac4c0Pv(&blk);
+    LoadBattleBlock020ac4c0(&blk);
     mask |= 1;
     StoreInArray0x8b0((struct StoreStruct*)g, count++, rec->w4B);
     if (TestBitInByteArray((int)flags, flags + 0x8c, 0x1198)) {
@@ -226,12 +224,12 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
             SetByteAtIndex((unsigned char*)g, k, 1);
             strcpy(out, FindEntryByKey(tblA, (short)(i + 0x28)));
             int base = k * 3;
-            node = (Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, base + 0x1f4);
+            node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f4);
             if (!node) continue;
             node->text = out;
             out += strlen(out) + 1;
             func_02046608(g, 8, FindEntryByKey(tblA, (short)(k + 0x14)), out, 0x100, 0, 0);
-            node = (Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, base + 0x1f5);
+            node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f5);
             if (!node) continue;
             node->text = out;
             out += strlen(out) + 1;
@@ -244,7 +242,7 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
                 key = 0x2e;
             }
             strcpy(out, FindEntryByKey(tblA, key));
-            node = (Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, base + 0x1f6);
+            node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f6);
             if (!node) continue;
             node->text = out;
             out += strlen(out) + 1;
@@ -253,9 +251,9 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     }
     for (int j = k; j < 6; j++) {
         int base = j * 3;
-        ((Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, base + 0x1f4))->hidden = 1;
-        ((Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, base + 0x1f5))->hidden = 1;
-        ((Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, base + 0x1f6))->hidden = 1;
+        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f4))->hidden = 1;
+        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f5))->hidden = 1;
+        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f6))->hidden = 1;
     }
 
     func_02046380(g);
@@ -275,20 +273,20 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     int rows = (mask & 2) ? 4 : 3;
     for (int r = 0; r < rows; r++) {
         func_02046608(g, 8, FindEntryByKey(tblA, (short)(r + 0x1e)), out, 0x100, 0, 0);
-        ((Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, r * 2 + 6 + 0x200))->text = out;
+        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, r * 2 + 6 + 0x200))->text = out;
         out += strlen(out) + 1;
     }
     if (rows == 3) {
-        ((Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, 0x19c))->hidden = 1;
-        ((Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, 0x20c))->hidden = 1;
-        ((Node02169b4c*)_Z23GetNodeIfType8_02168a6cPvi(a, 0x20d))->hidden = 1;
+        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x19c))->hidden = 1;
+        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x20c))->hidden = 1;
+        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x20d))->hidden = 1;
     }
 
-    _Z29DispatchNodeIfState6_021f6680Pvi(a, 0x18);
-    _Z29DispatchNodeIfState6_021f6680Pvi(a, 0x19);
-    _Z29DispatchNodeIfState6_021f6680Pvi(a, 0x1c);
-    _Z29DispatchNodeIfState6_021f6680Pvi(a, 0x1a);
-    _Z29DispatchNodeIfState6_021f6680Pvi(a, 0x1d);
-    _Z29DispatchNodeIfState6_021f6680Pvi(a, 0x1b);
+    DispatchNodeIfState6_021f6680(a, 0x18);
+    DispatchNodeIfState6_021f6680(a, 0x19);
+    DispatchNodeIfState6_021f6680(a, 0x1c);
+    DispatchNodeIfState6_021f6680(a, 0x1a);
+    DispatchNodeIfState6_021f6680(a, 0x1d);
+    DispatchNodeIfState6_021f6680(a, 0x1b);
     return 0;
 }

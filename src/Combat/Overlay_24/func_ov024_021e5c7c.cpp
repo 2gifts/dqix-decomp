@@ -31,10 +31,10 @@ struct GoldCombatant : GameObject {
 GameObject* GetCombatantWithFlag0x400ByID(int, int);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" int func_ov000_0215ffa0(void*);
-extern "C" int _Z31IsIdOrEffectMatchTarget0215fd24ii(int, int);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void*, void*, int);
+int IsIdOrEffectMatchTarget0215fd24(int, int);
+void AddEntryAndIncrementCount0215a88c(void*, void*, int);
 extern "C" void func_ov000_0215cd44(void*, void*, GameObject*, int, int, int, int);
-extern "C" void _Z32AppendToChainAndIncCount0215fe84PvS_i(void*, void*, int);
+void AppendToChainAndIncCount0215fe84(void*, void*, int);
 static inline int IsPartyMember(int id) { return id >= 0 && id <= 3; }
 
 // USA: func_ov024_021e5c7c
@@ -59,27 +59,27 @@ extern "C" ARM void func_ov024_021e5c7c(GoldAction* action, int id, int unused, 
             amount = (int)(0.1f * (float)(unsigned int)monster->monster->gold);
             if (amount > 100) amount = 100;
             if (amount > 0) {
-                if (_Z31IsIdOrEffectMatchTarget0215fd24ii((int)action->battle, id)) {
+                if (IsIdOrEffectMatchTarget0215fd24((int)action->battle, id)) {
                     unsigned int total = inventory->gold + amount;
                     if (total > 9999999) inventory->gold = 9999999;
                     else inventory->gold = total;
                 }
                 source->amount = amount;
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(action->battle, entry, 0x172);
+                AddEntryAndIncrementCount0215a88c(action->battle, entry, 0x172);
             }
         }
     } else {
         amount = (int)(0.1f * (float)inventory->gold);
         if (amount > 100) amount = 100;
         if (amount > 0) {
-            if (_Z31IsIdOrEffectMatchTarget0215fd24ii((int)action->battle, other)) inventory->gold -= amount;
+            if (IsIdOrEffectMatchTarget0215fd24((int)action->battle, other)) inventory->gold -= amount;
             source->amount = amount;
-            _Z33AddEntryAndIncrementCount0215a88cPvS_i(action->battle, entry, 0x172);
+            AddEntryAndIncrementCount0215a88c(action->battle, entry, 0x172);
         }
     }
     if (amount > 0) {
         func_ov000_0215cd44(action->battle, entry, combatant, (short)amount, 0, 0, 0);
-        _Z32AppendToChainAndIncCount0215fe84PvS_i(action->chain, entry, 2);
+        AppendToChainAndIncCount0215fe84(action->chain, entry, 2);
         action->battle->entryCount++;
     }
 }

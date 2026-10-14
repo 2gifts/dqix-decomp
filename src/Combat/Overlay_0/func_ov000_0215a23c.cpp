@@ -45,12 +45,12 @@ Field_0215a23c* _Z15GetFieldAt0x150Ph(Unit_0215a23c* unit);
 }
 
 int ClassifyField0x81fe(char* base);
-extern "C" int _Z30HasFlaggedSlotBit12Set02085230Ph(unsigned char* slots);
-extern "C" int _Z28IsCombatantFlag0x80000000SetP10GameObject(GameObject* c);
-extern "C" int _Z28IsCombatantFlag0x40000000SetP10GameObject(GameObject* c);
+int HasFlaggedSlotBit12Set02085230(unsigned char* slots);
+int IsCombatantFlag0x80000000Set(GameObject* c);
+int IsCombatantFlag0x40000000Set(GameObject* c);
 int GetTableValue(void* c);
-extern "C" short _Z20ApplyHPDelta0215a16cPviiPs(void* unused, int id, int delta, short* outApplied);
-extern "C" short _Z20ApplyMPDelta0215a1d4PviiPs(void* unused, int id, int delta, short* outApplied);
+short ApplyHPDelta0215a16c(void* unused, int id, int delta, short* outApplied);
+short ApplyMPDelta0215a1d4(void* unused, int id, int delta, short* outApplied);
 int TestBitInArray0x8ec(unsigned char* obj, int index);
 int CheckFlag0x2AndState2(S88514* obj);
 float NextRandomFloatBetween(Random* random, float minimum, float maximum);
@@ -91,10 +91,10 @@ extern "C" ARM void func_ov000_0215a23c(void* self) {
         Unit_0215a23c* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids[i]);
         if (c != 0) {
             int amount = 0;
-            if (_Z30HasFlaggedSlotBit12Set02085230Ph(c->f150)) {
+            if (HasFlaggedSlotBit12Set02085230(c->f150)) {
                 amount += 0x19;
             }
-            if (_Z28IsCombatantFlag0x80000000SetP10GameObject((GameObject*)c)) {
+            if (IsCombatantFlag0x80000000Set((GameObject*)c)) {
                 int bonus = 10;
                 int half = GetTableValue(c) >> 1;
                 if (half > 10) {
@@ -103,7 +103,7 @@ extern "C" ARM void func_ov000_0215a23c(void* self) {
                 amount += bonus;
             }
             if (amount > 0) {
-                res[n] = _Z20ApplyHPDelta0215a16cPviiPs(self, ids[i], amount, &applied[n]);
+                res[n] = ApplyHPDelta0215a16c(self, ids[i], amount, &applied[n]);
                 tgt[n] = ids[i];
                 bits[n] = 0;
                 bits[n] |= 0x4000000000ULL;
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov000_0215a23c(void* self) {
             continue;
         }
         int amount = 0;
-        if (_Z28IsCombatantFlag0x40000000SetP10GameObject((GameObject*)c)) {
+        if (IsCombatantFlag0x40000000Set((GameObject*)c)) {
             amount = GetTableValue(c) / 10;
             if (amount < 3) {
                 amount = 3;
@@ -139,7 +139,7 @@ extern "C" ARM void func_ov000_0215a23c(void* self) {
             amount += (int)(1.0f + NextRandomFloatBetween((Random*)self, 0.0f, range));
         }
         if (amount > 0) {
-            res[n] = _Z20ApplyMPDelta0215a1d4PviiPs(self, ids[i], amount, &applied[n]);
+            res[n] = ApplyMPDelta0215a1d4(self, ids[i], amount, &applied[n]);
             tgt[n] = ids[i];
             bits[n] |= 0x800000000ULL;
             if (applied[n] > 0) {
@@ -181,13 +181,13 @@ extern "C" ARM void func_ov000_0215a23c(void* self) {
         if (c != 0) {
             int amount = 0;
             short mp = 0;
-            if (_Z28IsCombatantFlag0x40000000SetP10GameObject((GameObject*)c)) {
+            if (IsCombatantFlag0x40000000Set((GameObject*)c)) {
                 amount = func_ov000_02159dbc(self, ids[i]);
                 if (amount < 3) {
                     amount = 3;
                 }
             }
-            _Z20ApplyMPDelta0215a1d4PviiPs(self, ids[i], amount, &mp);
+            ApplyMPDelta0215a1d4(self, ids[i], amount, &mp);
         }
     }
 

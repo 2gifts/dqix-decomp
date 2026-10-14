@@ -327,25 +327,25 @@ unsigned char* GetPointerAt0xbf0(void* roster, unsigned int idx);
 short GetShortFromArray0xc10(unsigned char* roster, unsigned int idx);
 unsigned char GetByteFromArray0xc28(unsigned char* roster, unsigned int idx);
 unsigned short* GetField0x74deForValidIndex(char* gs, unsigned int idx);
-extern "C" unsigned char _Z20GetField0xcc0209ca98Pc(char* p);
+unsigned char GetField0xcc0209ca98(char* p);
 unsigned char GetByteFieldAt0xcc(unsigned char* p);
 int GetField5cb0Value(char* gs);
 int GetField5cb4Value(char* gs);
 int GetField5cb8Value(char* gs);
 int GetField5cbcValue(char* gs);
-extern "C" void _Z24UpdatePlayClocks020ac4f8i(int running);
-extern "C" int _Z17IsInRange0201b588i(int mapId);
+void UpdatePlayClocks020ac4f8(int running);
+int IsInRange0201b588(int mapId);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* p);
+void TailForward02012da4(AllocatorUnion* alloc, void* p);
 int CopyOutRegion0x5718(char* gs, void* out);
-extern "C" void _Z18CopyStruct020a99d0P14Struct020a99d0S0_(Struct020a99d0* dst, Struct020a99d0* src);
-extern "C" int _Z37SendBattleSaveBufferOrSetFlag020ac7b4i(int flag);
-extern "C" void _Z31EnqueueEventTag23Field_021d0d58v(void);
+void CopyStruct020a99d0(Struct020a99d0* dst, Struct020a99d0* src);
+int SendBattleSaveBufferOrSetFlag020ac7b4(int flag);
+void EnqueueEventTag23Field_021d0d58(void);
 Entry_02028bd0* GetEntryTableBase(void);
 Entry_02028bd0* FindInlineEntryById(Entry_02028bd0* base, int id);
 EntryList_203dce4* GetGlobalPtr021075f4(void);
-extern "C" int _Z32FindNearestEntryDistance0203e524P17EntryList_203dce4P16Vec3s32_020c3030P19OutVec3s16_0203e524(EntryList_203dce4* list, Vec3s32_020c3030* pos, OutVec3s16_0203e524* out);
-extern "C" Entry02087574* _Z27FindEntryBySignedId02087574P18EntryTable02087574i(EntryTable02087574* table, int id);
+int FindNearestEntryDistance0203e524(EntryList_203dce4* list, Vec3s32_020c3030* pos, OutVec3s16_0203e524* out);
+Entry02087574* FindEntryBySignedId02087574(EntryTable02087574* table, int id);
 
 extern char data_020f1bf0[];
 extern AllocatorUnion data_02114e20;
@@ -423,7 +423,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
     header.info.version = 1;
     header.checksum = CalcSaveChecksum(&header, sizeof(header));
     func_02075acc(0x10, &header, sizeof(header), 0);
-    _Z37SendBattleSaveBufferOrSetFlag020ac7b4i(0);
+    SendBattleSaveBufferOrSetFlag020ac7b4(0);
 
     char* base = (char*)body - 0x84;
     inspect = 0;
@@ -494,7 +494,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
                 save->areaId = battle2->areaId;
                 view2->value7e74 = battle2->areaId;
                 if (func_0202c508(session2)) {
-                    _Z31EnqueueEventTag23Field_021d0d58v();
+                    EnqueueEventTag23Field_021d0d58();
                 }
             } else {
                 save->areaId = view2->value7e74;
@@ -505,7 +505,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
             save->words[1] = words[1];
             save->words[2] = words[2];
             save->words[3] = words[3];
-            save->globalByte = _Z20GetField0xcc0209ca98Pc((char*)&data_02109bf4);
+            save->globalByte = GetField0xcc0209ca98((char*)&data_02109bf4);
             save->globalByte2 = GetByteFieldAt0xcc(data_02108760);
             save->byteF7d = battle2->byteF7d;
             save->byte63dc = view2->byte63dc;
@@ -553,7 +553,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
             memcpy(save->block4a8, global2->block4a8, sizeof(global2->block4a8));
             save->inspect = inspect;
             func_02075acc((char*)&body->battle - base, save, sizeof(BattleSave), 0);
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, save);
+            TailForward02012da4(&data_02114e20, save);
         }
         func_020a0c0c();
         if (TestBitInByteArray((int)record, record->flagBits, 0x113c)) {
@@ -572,7 +572,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
             stats.value5cb4 = GetField5cb4Value((char*)gs3);
             stats.value5cb8 = GetField5cb8Value((char*)gs3);
             stats.value5cbc = GetField5cbcValue((char*)gs3);
-            _Z18CopyStruct020a99d0P14Struct020a99d0S0_(&stats.record, record);
+            CopyStruct020a99d0(&stats.record, record);
             func_02075acc((char*)&body->stats - base, &stats, sizeof(stats), 0);
         }
     }
@@ -584,7 +584,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
             block->value = view4->byte5cda;
             memcpy(block->data, view4->block5cdc, sizeof(block->data));
             func_02075acc((char*)&body->block194 - base, block, sizeof(Block194), 0);
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, block);
+            TailForward02012da4(&data_02114e20, block);
         }
         int offset = (char*)body->field - base;
         FieldSubState* sub = &func_02012fe4()->sub;
@@ -600,7 +600,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
             fieldSave->byte1b61 = sub->byte1b61;
             fieldSave->zero = 0;
             func_02075acc(offset + sizeof(sub->current), fieldSave, sizeof(FieldSave), 0);
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, fieldSave);
+            TailForward02012da4(&data_02114e20, fieldSave);
         }
         func_020a0c0c();
         GameStateSaveView* view5 = reinterpret_cast<GameStateSaveView*>(GameState::GetInstance());
@@ -623,7 +623,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
     if ((state == 5 && subState > 1) || state == 6) {
         running = 1;
     }
-    _Z24UpdatePlayClocks020ac4f8i(running);
+    UpdatePlayClocks020ac4f8(running);
 
     func_02075acc((char*)body->block7504 - base, reinterpret_cast<GameStateSaveView*>(GameState::GetInstance())->block7504, 0xec, 0);
 
@@ -638,7 +638,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
             offset += 0x8000;
         }
         VectorizedInvertedMemcpy(&reinterpret_cast<GameStateSaveView*>(gs5)->treasureMaps, &maps, sizeof(maps));
-        if (!_Z17IsInRange0201b588i(field5->mapId)) {
+        if (!IsInRange0201b588(field5->mapId)) {
             TreasureMapMetadata* map = maps.maps;
             for (n = 0; n < maps.numMaps; n++) {
                 map->ClearInitialByteUnknownBit();
@@ -669,7 +669,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
             position.area = entry->area;
         }
         position.globalBit = data_02109bf4.bit2;
-        position.distance = _Z32FindNearestEntryDistance0203e524P17EntryList_203dce4P16Vec3s32_020c3030P19OutVec3s16_0203e524(GetGlobalPtr021075f4(), (Vec3s32_020c3030*)&obj->obj3D_.position_, &position.nearest);
+        position.distance = FindNearestEntryDistance0203e524(GetGlobalPtr021075f4(), (Vec3s32_020c3030*)&obj->obj3D_.position_, &position.nearest);
         func_02075acc((char*)&body->position - base, &position, sizeof(position), 0);
     }
 
@@ -698,7 +698,7 @@ extern "C" ARM int func_020a9eb8(SaveTask* task, SaveBody* body, unsigned int fl
         memset(&entries, 0, sizeof(entries));
         count = 0;
         for (i = 0; i < battle8->memberCount; i++) {
-            Entry02087574* entry = _Z27FindEntryBySignedId02087574P18EntryTable02087574i((EntryTable02087574*)battle8, battle8->members[i].entryId);
+            Entry02087574* entry = FindEntryBySignedId02087574((EntryTable02087574*)battle8, battle8->members[i].entryId);
             if (entry != NULL) {
                 memcpy(&entries.entries[count], entry, sizeof(Entry02087574));
                 count++;

@@ -41,7 +41,7 @@ struct MenuWork {
     MenuData* data;
 };
 struct PartySlots { char pad_0[0xf78]; signed char slots[4]; unsigned char count; };
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+void CancelPendingAction020397cc(Obj020397cc*, int);
 int GetWord0x0(int*);
 void SetBitsInField4(unsigned int*, unsigned int);
 int GetFieldIfFlag4(char*);
@@ -71,7 +71,7 @@ extern "C" void func_0206e424(void*, int);
 extern "C" ARM void func_ov017_021b688c(MenuWork* work) {
     GameState* game = GameState::GetInstance();
     Obj020397cc* object = (Obj020397cc*)game->GetUnknownGameObject();
-    _Z27CancelPendingAction020397ccP11Obj020397cci(object, 1);
+    CancelPendingAction020397cc(object, 1);
     GameResources* resources = (GameResources*)GetWord0x0((int*)game);
     SetBitsInField4((unsigned int*)resources, 0xc0);
     SetFlagsAt0x244((unsigned char*)GetFieldIfFlag4((char*)game), 1);
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov017_021b688c(MenuWork* work) {
         work->complete = 1;
         ListHead02046b60* list = (ListHead02046b60*)resources->unknown_ptr_array_36fc[0];
         if (ListContainsId(list, 4) || ListContainsId(list, 0x18)) {
-            _Z27CancelPendingAction020397ccP11Obj020397cci(object, 1);
+            CancelPendingAction020397cc(object, 1);
             return;
         }
         ClearBitsInField4((unsigned int*)resources, 0xc0);

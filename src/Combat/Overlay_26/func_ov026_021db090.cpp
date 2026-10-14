@@ -93,15 +93,15 @@ struct TextBuffers {
 };
 
 extern "C" void __clear(void* p, int size);
-extern "C" MessageWindow* _Z26GetGlobalField0x1c020421a0v();
+MessageWindow* GetGlobalField0x1c020421a0();
 int IsFlag10088Set(struct S_10088*);
-extern "C" void _Z28InitObjFromCombatant020e4c74PvP10GameObject(void*, GameObject*);
+void InitObjFromCombatant020e4c74(void*, GameObject*);
 void SetField0x158(void*, int);
-extern "C" void _Z26EnqueueEventTag86_021c9ad4t(unsigned short);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
-extern "C" void _Z24ReinitController02043204Pc(char*);
+void EnqueueEventTag86_021c9ad4(unsigned short);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
+void ReinitController02043204(char*);
 void SetFieldsAndSignalData02184220(void*, int);
-extern "C" CommandSlot* _Z21FindSlotById_021dae60P18Container_021dae60i(Container_021dae60*, int);
+CommandSlot* FindSlotById_021dae60(Container_021dae60*, int);
 
 extern "C" {
 int func_ov000_0215e9fc(BattleState*, short*, int, int);
@@ -133,7 +133,7 @@ extern Obj0205eaa0 data_02108760;
 // USA: func_ov026_021db090
 extern "C" ARM void func_ov026_021db090(BattleWork* self) {
     GameState* gs = GameState::GetInstance();
-    MessageWindow* win = _Z26GetGlobalField0x1c020421a0v();
+    MessageWindow* win = GetGlobalField0x1c020421a0();
 
     if (self->state == 0) {
 #if defined(jpn)
@@ -200,14 +200,14 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
             strcat(name, data_ov026_021df3fa);
         }
 #else
-        _Z28InitObjFromCombatant020e4c74PvP10GameObject(&ref, gs->GetPartyMemberByIndex(picked.ids[0]));
+        InitObjFromCombatant020e4c74(&ref, gs->GetPartyMemberByIndex(picked.ids[0]));
 #endif
 
         if (self->mode == 2) {
 #if defined(jpn)
             sprintf(message, data_ov026_021df3ff, name);
 #else
-            text = ((TextBuffers*)_Z26GetGlobalField0x1c020421a0v())->text;
+            text = ((TextBuffers*)GetGlobalField0x1c020421a0())->text;
             memset(text, 0, 0x960);
             func_020dd0b0(1, text);
             strcat(message, text);
@@ -227,13 +227,13 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
             GameResources* res = func_ov017_0218b5b0();
             func_02012fe4();
             unsigned short netId = self->party->netId;
-            _Z26EnqueueEventTag86_021c9ad4t(netId);
+            EnqueueEventTag86_021c9ad4(netId);
             func_ov017_021a23b0(res, netId);
         } else if (self->mode == 4) {
 #if defined(jpn)
             sprintf(message, data_ov026_021df423, name);
 #else
-            text = ((TextBuffers*)_Z26GetGlobalField0x1c020421a0v())->text;
+            text = ((TextBuffers*)GetGlobalField0x1c020421a0())->text;
             memset(text, 0, 0x960);
             func_020dd0b0(2, text);
             strcat(message, text);
@@ -242,7 +242,7 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
 #if defined(jpn)
             sprintf(message, data_ov026_021df465, name);
 #else
-            text = ((TextBuffers*)_Z26GetGlobalField0x1c020421a0v())->text;
+            text = ((TextBuffers*)GetGlobalField0x1c020421a0())->text;
             memset(text, 0, 0x960);
             func_020dd0b0(3, text);
             strcat(message, text);
@@ -260,18 +260,18 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
         win->b19be = 1;
         win->flags |= 2;
         win->active = 1;
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 9, 0);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 9, 0);
         self->state++;
     } else if (win->busy == 0) {
         self->state++;
         if (self->state >= 0x1e) {
-            _Z24ReinitController02043204Pc((char*)win);
+            ReinitController02043204((char*)win);
             func_02043124(win);
             if (self->mode == 2) {
                 SetFieldsAndSignalData02184220(self, 4);
             } else {
                 for (int i = 0; i < 4; i++) {
-                    CommandSlot* slot = _Z21FindSlotById_021dae60P18Container_021dae60i(&self->list, i);
+                    CommandSlot* slot = FindSlotById_021dae60(&self->list, i);
                     if (slot != NULL && slot->kind == 6) {
                         slot->selections[slot->selection] = 0x66;
                     }

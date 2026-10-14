@@ -13,7 +13,7 @@ extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f
 struct Object3D;
 extern "C" int func_02079238(Object3D* obj, int arg);
 extern "C" short func_020793c0(Object3D* obj, int maximumDistance);
-extern "C" int _Z18TrySetMode02076cccPvi(void* obj, int mode);
+int TrySetMode02076ccc(void* obj, int mode);
 
 struct Vec3Zero020790ac { int a; int b; int c; };
 extern "C" void func_ov017_021c95ec(int c1, int rem, int f2val, int tag, int phase,
@@ -57,7 +57,7 @@ extern "C" ARM void func_020790ac(struct Obj020790ac* obj) {
     if (phase == -1) return;
 
     obj->f166 = phase;
-    _Z18TrySetMode02076cccPvi(obj, 0xa);
+    TrySetMode02076ccc(obj, 0xa);
 
     void* g2 = func_0202ae18();
     if (!CheckField0NonZero((int*)g2) || GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g2) != 0) {

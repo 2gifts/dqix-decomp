@@ -6,7 +6,7 @@
 #include <globaldefs.h>
 
 struct Struct021931b4 { char pad[0x1a8]; int arr[32]; int count; };
-extern "C" ARM void _Z22PushArrayValue021931b4P14Struct021931b4i(struct Struct021931b4* s, int v);
+ARM void PushArrayValue021931b4(struct Struct021931b4* s, int v);
 
 struct Obj021900dc {
     void* ptr0;
@@ -15,7 +15,7 @@ struct Obj021900dc {
     char pad4c[0x4c - 0x3a];
     int field4c;
 };
-extern "C" ARM void _Z21UpdateField4c021900dcP11Obj021900dc(struct Obj021900dc* obj);
+ARM void UpdateField4c021900dc(struct Obj021900dc* obj);
 
 extern "C" void func_ov015_02192700(void* obj, int flag);
 
@@ -37,12 +37,12 @@ extern "C" ARM void func_ov015_02191ba0(void* obj, int count) {
     switch (state) {
     case 0:
     case 1:
-        _Z22PushArrayValue021931b4P14Struct021931b4i((struct Struct021931b4*)obj, *(int*)((char*)obj + 0x1a4));
+        PushArrayValue021931b4((struct Struct021931b4*)obj, *(int*)((char*)obj + 0x1a4));
         *(int*)((char*)obj + 0x1a4) = 0x22;
         func_ov015_02192700(obj, 0);
         return;
     case 2:
-        _Z22PushArrayValue021931b4P14Struct021931b4i((struct Struct021931b4*)obj, *(int*)((char*)obj + 0x1a4));
+        PushArrayValue021931b4((struct Struct021931b4*)obj, *(int*)((char*)obj + 0x1a4));
         *(int*)((char*)obj + 0x1a4) = 0x21;
         func_ov015_02192700(obj, 0);
         return;
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov015_02191ba0(void* obj, int count) {
         *(int*)((char*)obj + 0x194) = 1;
         func_ov015_02192700(obj, 0);
         *(unsigned short*)((char*)*(void**)((char*)obj + 0x30) + 0x38) = 0;
-        _Z21UpdateField4c021900dcP11Obj021900dc((struct Obj021900dc*)*(void**)((char*)obj + 0x30));
+        UpdateField4c021900dc((struct Obj021900dc*)*(void**)((char*)obj + 0x30));
         return;
     }
 }

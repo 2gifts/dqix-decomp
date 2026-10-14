@@ -25,9 +25,9 @@ struct Obj0204b8d0 {
     char unknown18[5];
     unsigned char count;
 };
-extern "C" void _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(struct Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
+void DispatchEntry0204b8d0(struct Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
 struct Obj0204b010;
-extern "C" void _Z19ClearBuffer0204b010P11Obj0204b010Pv(struct Obj0204b010* obj, void* p);
+void ClearBuffer0204b010(struct Obj0204b010* obj, void* p);
 extern "C" void func_0204b04c(void* p, int flag);
 extern "C" void func_02047554(void* obj, int val, int param1);
 extern "C" void func_ov005_0215792c(void* obj, unsigned char mode);
@@ -35,7 +35,7 @@ extern "C" void func_ov005_021579ec(void* obj, unsigned int a, unsigned char b);
 extern "C" void func_ov005_02154d34(void* obj, int a, int b);
 extern "C" void func_ov005_02154d7c(void* obj, int a, int b);
 extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
+MemberScreen* GetField1c_021a193c(int* p);
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
 extern "C" short* _Z19GetField150Ptr0x488P22Field150Holder02052e14(void* holder);
 
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
         self->flags |= 0x100;
         void* gs = _ZN9GameState11GetInstanceEv();
         GameResources* res = func_ov017_0218b5b0();
-        MemberScreen* holder = _Z19GetField1c_021a193cPi((int*)res->unknown_ptr_array_36fc[3]);
+        MemberScreen* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
         short* tbl = _Z19GetField150Ptr0x488P22Field150Holder02052e14(
             _Z25GetCombatantWithFlag0x100P9GameStatei(gs, holder->member));
         self->accum += self->step;
@@ -182,11 +182,11 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
                 self->phase = 1;
             }
         }
-        _Z19ClearBuffer0204b010P11Obj0204b010Pv((struct Obj0204b010*)&self->list, 0);
-        _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(&self->list, 0, 0, 0, 0x20 - self->level, 0, 0x10, 0x16, 0xffff);
+        ClearBuffer0204b010((struct Obj0204b010*)&self->list, 0);
+        DispatchEntry0204b8d0(&self->list, 0, 0, 0, 0x20 - self->level, 0, 0x10, 0x16, 0xffff);
         unsigned char cursor = self->cursor;
         short y = cursor * 2 + 0xf;
-        _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(&self->list, (unsigned char)(cursor + 1), 0, 0, y + 0x10 - self->level, 0, 4, 3, 0xffff);
+        DispatchEntry0204b8d0(&self->list, (unsigned char)(cursor + 1), 0, 0, y + 0x10 - self->level, 0, 4, 3, 0xffff);
         func_0204b04c(&self->list, 0);
         if (self->phase == 1) {
             self->state++;
@@ -213,11 +213,11 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
                 self->phase = 2;
             }
         }
-        _Z19ClearBuffer0204b010P11Obj0204b010Pv((struct Obj0204b010*)&self->list, 0);
-        _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(&self->list, 0, 0, 0, self->level + 0x10, 0, 0x10, 0x16, 0xffff);
+        ClearBuffer0204b010((struct Obj0204b010*)&self->list, 0);
+        DispatchEntry0204b8d0(&self->list, 0, 0, 0, self->level + 0x10, 0, 0x10, 0x16, 0xffff);
         unsigned char cursor = self->cursor;
         short y = cursor * 2 + 0xf;
-        _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(&self->list, (unsigned char)(cursor + 1), 0, 0, y + self->level, 0, 4, 3, 0xffff);
+        DispatchEntry0204b8d0(&self->list, (unsigned char)(cursor + 1), 0, 0, y + self->level, 0, 4, 3, 0xffff);
         func_0204b04c(&self->list, 0);
         if (self->phase == 2) {
             self->state++;
@@ -227,7 +227,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
     } else if (state == 1 && self->phase == 2) {
         void* gs = _ZN9GameState11GetInstanceEv();
         GameResources* res = func_ov017_0218b5b0();
-        MemberScreen* holder = _Z19GetField1c_021a193cPi((int*)res->unknown_ptr_array_36fc[3]);
+        MemberScreen* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
         short* tbl = _Z19GetField150Ptr0x488P22Field150Holder02052e14(
             _Z25GetCombatantWithFlag0x100P9GameStatei(gs, holder->member));
         self->accum += self->step;
@@ -291,7 +291,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
         }
     }
 #if defined(jpn)
-    _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+    GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
     short item = self->slots[self->modeB].item;
     self->infoWindow.flags |= 0x80;
     func_ov023_021dcba4(&self->infoWindow, item);

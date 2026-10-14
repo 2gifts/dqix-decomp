@@ -32,7 +32,7 @@ struct Ctx02094030 {
     unsigned char flags;
 };
 
-extern "C" void _Z19ClearRegion02093980Pc(char* obj);
+void ClearRegion02093980(char* obj);
 void CopyRecord(struct CopyableRecord* dst, struct CopyableRecord* src);
 int ClassifyByTenThousands(int x);
 extern "C" void* func_0202ae18(void);
@@ -51,7 +51,7 @@ extern "C" ARM int func_02094030(struct Ctx02094030* queue, int requestId, int u
     if (queue->count >= 8) return 1;
 
     struct CopyableRecord* request = &queue->records[queue->count];
-    _Z19ClearRegion02093980Pc((char*)request);
+    ClearRegion02093980((char*)request);
 
     if (combatant == 0 || requestId == 3) {
         char* name = cachedNames->partyNames[slot];

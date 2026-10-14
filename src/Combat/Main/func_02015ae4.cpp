@@ -2,7 +2,7 @@
 #include <System/Matrix.h>
 
 struct Obj0205eaa0;
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 int fix32sin(int);
 extern int data_02108760;
 
@@ -17,8 +17,8 @@ extern "C" ARM int func_02015ae4(Obj02015ae4* self) {
     unsigned short counter = self->counter;
     int firstDuration = 0xbff4;
     if ((float)counter <= (float)firstDuration / 4096.0f) {
-        if (counter == 0) _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 13, 0);
-        else if (counter == 16) _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 14, 0);
+        if (counter == 0) DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 13, 0);
+        else if (counter == 16) DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 14, 0);
         unsigned int currentCounter = self->counter;
         int square = (self->counter * currentCounter) << 12;
         int coefficient = fix32_Divide(-7290, 0x8fee0);

@@ -24,10 +24,10 @@ struct Struct0205ec40 {
     int f14;
 };
 
-extern "C" void _Z19ClearStruct0205ec40P14Struct0205ec40(struct Struct0205ec40* s);
+void ClearStruct0205ec40(struct Struct0205ec40* s);
 extern "C" void func_0205ec70(SafeAllocator* alloc, int limit, struct Variant02030b0c* arr, void* dst8, void* dstc);
 struct Node020643fc;
-extern "C" void _Z23InsertNodeByKey020643fcPvP12Node020643fc(void* unused, struct Node020643fc* node);
+void InsertNodeByKey020643fc(void* unused, struct Node020643fc* node);
 
 extern char data_02108844;
 
@@ -57,7 +57,7 @@ extern "C" ARM int func_0205f9cc(struct Variant02030b0c* arr, int b) {
         return 1;
     }
 
-    _Z19ClearStruct0205ec40P14Struct0205ec40(node);
+    ClearStruct0205ec40(node);
     node->f0 = id;
     node->f2 = startSec;
     node->f3 = endSec;
@@ -67,6 +67,6 @@ extern "C" ARM int func_0205f9cc(struct Variant02030b0c* arr, int b) {
 
     func_0205ec70(alloc, b - 6, &arr[6], &node->f8, &node->fc);
 
-    _Z23InsertNodeByKey020643fcPvP12Node020643fc(&data_02108844, (struct Node020643fc*)node);
+    InsertNodeByKey020643fc(&data_02108844, (struct Node020643fc*)node);
     return 1;
 }

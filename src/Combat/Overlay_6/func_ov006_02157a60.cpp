@@ -16,14 +16,14 @@ struct Obj02157c78;
 extern "C" void* func_0205ec34();
 int TestBitInByteArray(int, unsigned char*, int);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
-extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64*);
-extern "C" void _Z19InitStruct_021536e0P14StructInit36e0(StructInit36e0*);
-extern "C" void _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4(Obj02081ee4*, Sub02081ee4*);
-extern "C" void _Z18InitStruct0205a444Pc(char*);
-extern "C" void _Z20ClearFields_021e20c0Pv(void*);
+void ResetList0204af64(List0204af64*);
+void InitStruct_021536e0(StructInit36e0*);
+void InitWithSub02081ee4(Obj02081ee4*, Sub02081ee4*);
+void InitStruct0205a444(char*);
+void ClearFields_021e20c0(void*);
 void ClearListHeader(Struct02071be8*);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40*);
-extern "C" void _Z16InitObj_02157c78P11Obj02157c78(Obj02157c78*);
+void ResetStruct020dfc40(Struct020dfc40*);
+void InitObj_02157c78(Obj02157c78*);
 
 struct PartyMemberData {
     char unk_0[0x49c];
@@ -172,15 +172,15 @@ extern "C" ARM void func_ov006_02157a60(AlchemyMenu* self)
     self->items_ = 0;
     self->counts_ = 0;
     self->sizes_ = 0;
-    _Z17ResetList0204af64P12List0204af64((List0204af64*)&self->subBackground_);
-    _Z19InitStruct_021536e0P14StructInit36e0((StructInit36e0*)self->ingredients_);
-    _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4((Obj02081ee4*)self->repeat_, (Sub02081ee4*)&self->buttons_);
-    _Z18InitStruct0205a444Pc((char*)self->renderer_);
-    _Z20ClearFields_021e20c0Pv(self->layout_);
+    ResetList0204af64((List0204af64*)&self->subBackground_);
+    InitStruct_021536e0((StructInit36e0*)self->ingredients_);
+    InitWithSub02081ee4((Obj02081ee4*)self->repeat_, (Sub02081ee4*)&self->buttons_);
+    InitStruct0205a444((char*)self->renderer_);
+    ClearFields_021e20c0(self->layout_);
     ClearListHeader((Struct02071be8*)self->table_);
-    _Z19ResetStruct020dfc40P14Struct020dfc40((Struct020dfc40*)self->menuTexts_);
+    ResetStruct020dfc40((Struct020dfc40*)self->menuTexts_);
     for (unsigned char i = 0; i < 4; i++)
-        _Z16InitObj_02157c78P11Obj02157c78((Obj02157c78*)&self->results_[i]);
+        InitObj_02157c78((Obj02157c78*)&self->results_[i]);
     self->menuResult_ = 0;
     self->task_ = -1;
     self->unk_358 = -1;

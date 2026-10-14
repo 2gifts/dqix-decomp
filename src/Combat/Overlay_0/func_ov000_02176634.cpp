@@ -126,25 +126,25 @@ extern "C" void func_ov000_0217992c(Menu02176634*, Entry02176634*, int, int);
 extern "C" void func_ov000_02179b70(Menu02176634*, Entry02176634*, int, int);
 extern "C" void func_ov000_02179f94(Menu02176634*, Entry02176634*, int, int);
 extern "C" void func_ov000_0217a514(Menu02176634*, Entry02176634*, int, int);
-extern "C" Formatter02176634* _Z26GetGlobalField0x1c020421a0v();
+Formatter02176634* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(Formatter02176634*);
 extern "C" void __clear(void*, int);
-extern "C" void _Z20Clear12Bytes020e46c4Pv(void*);
+void Clear12Bytes020e46c4(void*);
 extern "C" void* memset(void*, int, unsigned int);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void*, int);
-extern "C" char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310*, int);
+void InitObjFromCombatantId020e4bf4(void*, int);
+char* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Formatter02176634*, int, char*);
 extern "C" Node02176634* func_ov000_02161318(Menu02176634*, int);
 extern "C" Skill02176634* _Z27GetBoundedField420_0217199cPvi(Entry02176634*, int);
 extern "C" int _Z26GetAdjustedByteField0x1d6bPv(Menu02176634*);
 extern "C" Item02176634* _Z32FindElementByComputedKey021815e4Pc(Menu02176634*);
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
-extern "C" char* _Z17GetPtrField0x2a04P9GameState(GameState*);
-extern "C" Combatant02176634* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, int);
+char* GetPtrField0x2a04(GameState*);
+Combatant02176634* GetCombatantWithFlag0x100(GameState*, int);
 extern "C" PartyData02176634* _Z15GetFieldAt0x150Ph(Combatant02176634*);
 extern "C" Item02176634* _Z21GetActiveSub_02054000P14Outer_02054000(Combatant02176634*);
-extern "C" void _Z31DispatchIfCountPositive020dcf7ciPv(int, void*);
-extern "C" void _Z36ResetAndDispatchActorContext0209c6d8Pvs(void*, short);
+void DispatchIfCountPositive020dcf7c(int, void*);
+void ResetAndDispatchActorContext0209c6d8(void*, short);
 extern "C" void func_0207c378(char*, short, int, int);
 extern "C" void func_02052d7c(Combatant02176634*, int, short);
 extern "C" void _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(char*, short, int, int);
@@ -252,13 +252,13 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
         return;
     }
 
-    Formatter02176634* formatter = _Z26GetGlobalField0x1c020421a0v();
+    Formatter02176634* formatter = GetGlobalField0x1c020421a0();
     func_02046380(formatter);
 #if defined(jpn)
     char name[0x20];
     __clear(name, 0x20);
     int kind;
-    buf = _Z26GetGlobalField0x1c020421a0v()->GetTextBuffer();
+    buf = GetGlobalField0x1c020421a0()->GetTextBuffer();
     memset(buf, 0, 0x800);
     memset(buf, 0, 0x800);
     func_0203bdf4((char*)entry + 0x88, name);
@@ -267,17 +267,17 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
     switch (mode) {
     case 0xc:
         kind = 0xc;
-        AppendString02042058(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7554));
+        AppendString02042058(buf, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7554));
         break;
     case 0x29:
         kind = 0x29;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7558));
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7555), buf);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7558));
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7555), buf);
         break;
     case 0x2a:
         kind = 0x2a;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7557));
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7555), buf);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7557));
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7555), buf);
         break;
     case 0x2b: {
         Node02176634* node = func_ov000_02161318(menu, menu->slots[menu->slot]);
@@ -287,7 +287,7 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
         }
         kind = 0x2b;
         _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, name);
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x23), buf);
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x23), buf);
         break;
     }
     case 0x1a: {
@@ -295,25 +295,25 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
         Skill02176634* skill = _Z27GetBoundedField420_0217199cPvi(entry, entry->cursor);
         if (skill != NULL && skill->kind == 6) msgId = 0x22;
         kind = 0x1a;
-        AppendString02042058(buf, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, msgId));
+        AppendString02042058(buf, GetFieldByKey020e0434((Container020e0310*)menu->messages, msgId));
         break;
     }
     case 0x1b:
         kind = 0x1b;
         _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, name);
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7545));
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7547), buf);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7545));
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7547), buf);
         break;
     case 0x1c:
         kind = 0x1c;
         _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, name);
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7546));
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7547), buf);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7546));
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7547), buf);
         break;
     case 0x1d:
         kind = 0x1d;
         _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, name);
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7548), buf);
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7548), buf);
         break;
     case 0x1e: {
         short msgId = 0x18;
@@ -327,7 +327,7 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
             }
         }
         kind = 0x1e;
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, msgId), buf);
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, msgId), buf);
         break;
     }
     case 0x1f: {
@@ -341,7 +341,7 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
             }
         }
         kind = 0x1f;
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, msgId), buf);
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, msgId), buf);
         break;
     }
     case 0x20: {
@@ -350,8 +350,8 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
         combatantId = _Z26GetAdjustedByteField0x1d6bPv(menu);
         elem = _Z32FindElementByComputedKey021815e4Pc(menu);
         GameState* gs = _ZN9GameState11GetInstanceEv();
-        bag = _Z17GetPtrField0x2a04P9GameState(gs);
-        combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, combatantId);
+        bag = GetPtrField0x2a04(gs);
+        combatant = GetCombatantWithFlag0x100(gs, combatantId);
         data = _Z15GetFieldAt0x150Ph(combatant);
         Item02176634* sub = _Z21GetActiveSub_02054000P14Outer_02054000(combatant);
         kind = 0x20;
@@ -368,7 +368,7 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
             handled = 1;
             msgId = 0x25;
             _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, (char*)sub->f4);
-            _Z36ResetAndDispatchActorContext0209c6d8Pvs(data_02109bf4, 0x3d);
+            ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x3d);
             menu->dispatched = 1;
         }
         if (handled == 0) {
@@ -383,35 +383,35 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
                 _Z16TrySetFlags0x130Pht(combatant, 4);
                 data->flags |= 4;
                 func_ov017_021c9e00(combatantId, 0, 0, 1);
-                _Z36ResetAndDispatchActorContext0209c6d8Pvs(data_02109bf4, 0x3d);
+                ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x3d);
                 menu->dispatched = 1;
             }
         }
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, msgId), buf);
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, msgId), buf);
         break;
     }
     case 0x25:
         kind = 0x25;
         _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, name);
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7545));
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7555), buf);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7545));
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7555), buf);
         break;
     case 0x26:
         kind = 0x26;
         _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, name);
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7546));
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7555), buf);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7546));
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7555), buf);
         break;
     case 0x27:
         kind = 0x27;
         _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, name);
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7556));
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7555), buf);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7556));
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7555), buf);
         break;
     case 0x28:
         kind = 0x28;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7559));
-        func_020474a8(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7555), buf);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7559));
+        func_020474a8(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7555), buf);
         break;
     default:
         return;
@@ -424,15 +424,15 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
     __clear(plural, 0x80);
     NameParts02176634 targetName;
     NameParts02176634 itemName;
-    _Z20Clear12Bytes020e46c4Pv(&itemName);
+    Clear12Bytes020e46c4(&itemName);
     itemName.singular = singular;
     itemName.plural = plural;
     int kind;
     short msgId = 0x7554;
-    buf = _Z26GetGlobalField0x1c020421a0v()->textBuffer;
+    buf = GetGlobalField0x1c020421a0()->textBuffer;
     memset(buf, 0, 0x960);
     memset(buf, 0, 0x960);
-    _Z30InitObjFromCombatantId020e4bf4Pvi(&targetName, entry->combatantId);
+    InitObjFromCombatantId020e4bf4(&targetName, entry->combatantId);
     left = (x >> 3) + 9;
     top = (short)(y >> 3) + 1;
     formatter->target = &targetName;
@@ -444,18 +444,18 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
         break;
     case 0x29:
         kind = 0x29;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7558));
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7558));
         msgId = 0x7555;
         break;
     case 0x2a:
         kind = 0x2a;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7557));
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7557));
         msgId = 0x7555;
         break;
     case 0x2b: {
         Node02176634* node = func_ov000_02161318(menu, menu->slots[menu->slot]);
         if (node != NULL) {
-            _Z30InitObjFromCombatantId020e4bf4Pvi(&targetName, node->combatantId);
+            InitObjFromCombatantId020e4bf4(&targetName, node->combatantId);
         }
         kind = 0x2b;
         msgId = 0x23;
@@ -472,12 +472,12 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
     }
     case 0x1b:
         kind = 0x1b;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7545));
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7545));
         msgId = 0x7547;
         break;
     case 0x1c:
         kind = 0x1c;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7546));
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7546));
         msgId = 0x7547;
         break;
     case 0x1d:
@@ -504,13 +504,13 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
         combatantId = _Z26GetAdjustedByteField0x1d6bPv(menu);
         elem = _Z32FindElementByComputedKey021815e4Pc(menu);
         GameState* gs = _ZN9GameState11GetInstanceEv();
-        bag = _Z17GetPtrField0x2a04P9GameState(gs);
-        combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, combatantId);
+        bag = GetPtrField0x2a04(gs);
+        combatant = GetCombatantWithFlag0x100(gs, combatantId);
         data = _Z15GetFieldAt0x150Ph(combatant);
         Item02176634* sub = _Z21GetActiveSub_02054000P14Outer_02054000(combatant);
         kind = 0x20;
         item = elem->id;
-        _Z30InitObjFromCombatantId020e4bf4Pvi(&targetName, combatantId);
+        InitObjFromCombatantId020e4bf4(&targetName, combatantId);
         if (sub != NULL && elem->id == sub->id) {
             msgId += 2;
             item = -1;
@@ -519,9 +519,9 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
         if (sub != NULL && sub->id > 0 && sub->category == 0 && sub->rank <= 0xb && sub->cursed) {
             handled = 1;
             msgId = 0x25;
-            _Z31DispatchIfCountPositive020dcf7ciPv(sub->id, &itemName);
+            DispatchIfCountPositive020dcf7c(sub->id, &itemName);
             formatter->item = &itemName;
-            _Z36ResetAndDispatchActorContext0209c6d8Pvs(data_02109bf4, 0x3d);
+            ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x3d);
             menu->dispatched = 1;
         }
         if (handled == 0) {
@@ -529,9 +529,9 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
                 func_0207c378(bag + 0x1d4, sub->id, 1, sub->category);
             }
             if (item < 0) {
-                _Z31DispatchIfCountPositive020dcf7ciPv(sub->id, &itemName);
+                DispatchIfCountPositive020dcf7c(sub->id, &itemName);
             } else {
-                _Z31DispatchIfCountPositive020dcf7ciPv(item, &itemName);
+                DispatchIfCountPositive020dcf7c(item, &itemName);
             }
             formatter->item = &itemName;
             func_02052d7c(combatant, 7, item);
@@ -544,7 +544,7 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
                 _Z16TrySetFlags0x130Pht(combatant, 4);
                 data->flags |= 4;
                 func_ov017_021c9e00(combatantId, 0, 0, 1);
-                _Z36ResetAndDispatchActorContext0209c6d8Pvs(data_02109bf4, 0x3d);
+                ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x3d);
                 menu->dispatched = 1;
             }
         }
@@ -552,29 +552,29 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
     }
     case 0x25:
         kind = 0x25;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7545));
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7545));
         msgId = 0x7555;
         break;
     case 0x26:
         kind = 0x26;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7546));
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7546));
         msgId = 0x7555;
         break;
     case 0x27:
         kind = 0x27;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7556));
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7556));
         msgId = 0x7555;
         break;
     case 0x28:
         kind = 0x28;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, 0x7559));
+        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x7559));
         msgId = 0x7555;
         break;
     default:
         return;
     }
 
-    func_02046608(formatter, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)menu->messages, msgId), buf, 0xa4, 0, 0);
+    func_02046608(formatter, 10, GetFieldByKey020e0434((Container020e0310*)menu->messages, msgId), buf, 0xa4, 0, 0);
 #endif
     func_ov000_0217ab8c(entry, a, b);
     Window02176634* window = &menu->window;

@@ -40,9 +40,9 @@ extern char data_ov023_021fdb35[];
 extern char data_ov023_021fdb39[];
 extern char data_ov023_021fdb3b[];
 extern char data_ov023_021fdb3e[];
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 extern "C" int sprintf(char*, const char*, ...);
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char*, char*, int);
+void CopyTextAndUppercaseIfFlagged0206819c(const char*, char*, int);
 extern "C" void func_02046608(void*, int, const char*, char*, int, int, int);
 #if defined(jpn)
 extern "C" void func_02050678(void*, short, short, const char*, int, int, short*, short*);
@@ -70,7 +70,7 @@ extern "C" ARM void func_ov023_021dcedc(StatusTextState* state, void* canvas) {
     }
     char text[64] = {};
 #if !defined(jpn)
-    void* formatter = _Z26GetGlobalField0x1c020421a0v();
+    void* formatter = GetGlobalField0x1c020421a0();
 #endif
     for (int i = 0; i < 3; i++) {
         const char* name = state->names[i];
@@ -89,7 +89,7 @@ extern "C" ARM void func_ov023_021dcedc(StatusTextState* state, void* canvas) {
 #else
             char source[256] = {};
             char converted[256] = {};
-            _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(name, source, 0);
+            CopyTextAndUppercaseIfFlagged0206819c(name, source, 0);
             func_02046608(formatter, 10, source, converted, 0x400, 0, 0);
             DrawStatusText(canvas, ExpandedNameX, y, converted, 10, color);
 #endif
@@ -129,7 +129,7 @@ extern "C" ARM void func_ov023_021dcedc(StatusTextState* state, void* canvas) {
 #else
             char source[256] = {};
             char converted[256] = {};
-            _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(name, source, 0);
+            CopyTextAndUppercaseIfFlagged0206819c(name, source, 0);
             func_02046608(formatter, 10, source, converted, 0x400, 0, 0);
             DrawStatusText(canvas, CollapsedNameX, y, converted, 10, color);
 #endif

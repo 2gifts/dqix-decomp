@@ -48,10 +48,10 @@ struct AnimationTiming02057334
     unsigned char interval;
 };
 
-extern "C" int _Z40CheckListStableAndField8LtField402057854P16ListNode02057854(ListNode02057854*);
-extern "C" void _Z18InitStruct02058c88P14Struct02058c88(Struct02058c88*);
+int CheckListStableAndField8LtField402057854(ListNode02057854*);
+void InitStruct02058c88(Struct02058c88*);
 void* GetSubField0x8(S02055080*);
-extern "C" void _Z41UpdateCounterAndMaybeComputeSlope02055c30P11Obj02055c30(Obj02055c30*);
+void UpdateCounterAndMaybeComputeSlope02055c30(Obj02055c30*);
 extern "C" void func_02056d80(ListNode02057854*);
 extern "C" void func_020557a4(ListNode02057854*);
 extern "C" void func_020559cc(ListNode02057854*);
@@ -65,14 +65,14 @@ extern "C" ARM int func_02057334(ListNode02057854* self)
     int steps = 0;
     int skip = 0;
     int ticks = GameState::GetInstance()->GetTickCount();
-    if (!_Z40CheckListStableAndField8LtField402057854P16ListNode02057854(self))
+    if (!CheckListStableAndField8LtField402057854(self))
     {
         if (self->frame > self->endFrame && self->flags)
         {
             Struct02058c88* child = self->head;
             while (child)
             {
-                _Z18InitStruct02058c88P14Struct02058c88(child);
+                InitStruct02058c88(child);
                 child = child->next;
             }
         }
@@ -119,11 +119,11 @@ extern "C" ARM int func_02057334(ListNode02057854* self)
             self->duration += self->durationSlope * (float)ticks;
             func_020557a4(self);
             func_020559cc(self);
-            _Z41UpdateCounterAndMaybeComputeSlope02055c30P11Obj02055c30((Obj02055c30*)self);
+            UpdateCounterAndMaybeComputeSlope02055c30((Obj02055c30*)self);
             func_02055ccc(self);
         }
     }
-    if (!_Z40CheckListStableAndField8LtField402057854P16ListNode02057854(self) || !self->flags)
+    if (!CheckListStableAndField8LtField402057854(self) || !self->flags)
     {
         Struct02058c88* child = self->head;
         while (child)
@@ -136,7 +136,7 @@ extern "C" ARM int func_02057334(ListNode02057854* self)
     {
         func_02055f5c(self, ticks, steps);
     }
-    if (!_Z40CheckListStableAndField8LtField402057854P16ListNode02057854(self))
+    if (!CheckListStableAndField8LtField402057854(self))
     {
         self->frame += ticks;
     }

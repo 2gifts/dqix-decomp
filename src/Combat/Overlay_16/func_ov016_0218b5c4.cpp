@@ -53,12 +53,11 @@ struct NodeList0218b5c4 {
     int owner;
 };
 
-// returns int: declared void, the straight-line block before Set3DClearColor splits one statement late
-extern "C" int _Z25EncodeSignFlaggedHalfwordPsi(short* out, int value);
+int EncodeSignFlaggedHalfword(short* out, int value);
 extern "C" void MapVRAMBanksToMainBG(int v);
 void SetDispcntModeAndFlags020c391c(int mode, int flagsA, int valB);
 extern "C" void func_020a0cc4(unsigned int);
-extern "C" void* _Z16AllocateAligned4P14AllocatorUnionj(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 void SetStructFieldsFromCode02028d68(int code);
 void SetBuffer02028ddc(void* ptr);
 void UploadPendingPalette02028dec(int);
@@ -134,8 +133,8 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
     unsigned int size;
 
     GameState* gs = GameState::GetInstance();
-    _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400006c, -16);
-    _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400106c, -16);
+    EncodeSignFlaggedHalfword((short*)0x400006c, -16);
+    EncodeSignFlaggedHalfword((short*)0x400106c, -16);
     MapVRAMBanksToMainBG(1);
     GX_SetBGCharOffset(0);
     GX_SetBGScrOffset(0);
@@ -146,7 +145,7 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
     ColorEffect_ConfigureAlphaBlend(0x4000050, BLEND_TARGET_BG0, BLEND_TARGET_BACKDROP, 0x1f, 0x1f);
     ColorEffect_ConfigureAlphaBlend(0x4000050, BLEND_TARGET_BG1, BLEND_TARGET_BG0, 0x1f, 0);
     func_020a0cc4(0x100000);
-    self->allocator.CreateTypeB(_Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, 0x100000), 0x100000, 4);
+    self->allocator.CreateTypeB(AllocateAligned4(&data_02114e20, 0x100000), 0x100000, 4);
     void* buffer = self->allocator.Allocate(0x6000);
     SetStructFieldsFromCode02028d68(3);
     SetBuffer02028ddc(buffer);
@@ -186,8 +185,8 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
     RestoreDisplayMode();
     DISPCNTSUB |= 0x10000;
     DISPCNT = (DISPCNT & ~0x1f00) | 0x300;
-    _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400006c, -16);
-    _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400106c, -16);
+    EncodeSignFlaggedHalfword((short*)0x400006c, -16);
+    EncodeSignFlaggedHalfword((short*)0x400106c, -16);
 
     int id = -1;
     if (GetByteField0x63d6((FieldBlock63d6_115a8*)gs) != 0) {
@@ -216,8 +215,8 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
         DelayThenSyncBit0();
         ProcessRingJobs020bbcb4();
         FlushOrClearBuffer020290ac(0);
-        _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400006c, 0);
-        _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400106c, -16);
+        EncodeSignFlaggedHalfword((short*)0x400006c, 0);
+        EncodeSignFlaggedHalfword((short*)0x400106c, -16);
     }
 
     ClearThreeWords020e57e0(&script);
@@ -251,8 +250,8 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
     }
 
     if (id >= 0) {
-        _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400006c, -16);
-        _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400106c, -16);
+        EncodeSignFlaggedHalfword((short*)0x400006c, -16);
+        EncodeSignFlaggedHalfword((short*)0x400106c, -16);
         ScriptNode0218b5c4* node = _Z21FindNodeByID_0218e124PP12Node0218e124t(&nodes, id);
         if (node != 0) {
             if (node->fade != 0) {
@@ -290,8 +289,8 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
         }
     }
 
-    _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400006c, -16);
-    _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400106c, -16);
+    EncodeSignFlaggedHalfword((short*)0x400006c, -16);
+    EncodeSignFlaggedHalfword((short*)0x400106c, -16);
     SignedAllocatorHeader* signedAlloc = self->allocator.GetSignedAllocator();
     self->allocator.Destroy();
     TailForward02012da4(&data_02114e20, signedAlloc);

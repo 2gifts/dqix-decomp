@@ -5,8 +5,8 @@
 extern int data_ov023_021fdd6c;
 extern "C" void* __clear(void* dst, int count);
 extern "C" int func_020426bc(void* src, void* dst, int flag);
-extern "C" int _Z12StringLengthPKc(const char* s);
-extern "C" int _Z27FindEntryIndexByKey020424e4ii(int key, int tableIdx);
+int StringLength(const char* s);
+int FindEntryIndexByKey020424e4(int key, int tableIdx);
 extern "C" void func_02042764(void* a, void* b, int flag);
 
 struct Entry0204254c {
@@ -16,10 +16,10 @@ struct Entry0204254c {
     signed char unused2 : 2;
     char pad6[2];
 };
-extern "C" struct Entry0204254c* _Z22FindEntryByKey0204254cii(int key, int tableIdx);
-extern "C" int _Z10AppendXTagPci(char* dst, int x);
-extern "C" void _Z20AppendString02042058PcPKc(char* dst, const char* src);
-extern "C" int _Z10AppendYTagPci(char* dst, int y);
+struct Entry0204254c* FindEntryByKey0204254c(int key, int tableIdx);
+int AppendXTag(char* dst, int x);
+void AppendString02042058(char* dst, const char* src);
+int AppendYTag(char* dst, int y);
 
 #if defined(jpn)
 extern "C" void func_020420e8(char*, int);
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
     char* battle = (char*)GameState::GetInstance() + 0x3c + 0x5400;
     func_020420e8(dst, 8);
     func_02042428(dst, 12);
-    _Z20AppendString02042058PcPKc(dst, FindEntryByKey(*(TableA68**)(obj + 0x5f4), 0x73));
+    AppendString02042058(dst, FindEntryByKey(*(TableA68**)(obj + 0x5f4), 0x73));
     dst += strlen(dst);
     char* src = battle + 8;
     if (*(char**)(obj + 0x600)) src = *(char**)(obj + 0x600);
@@ -65,11 +65,11 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
     if (src != 0) {
         len = func_020426bc(src, buf, 1);
     } else {
-        len = _Z12StringLengthPKc(battle + 8);
+        len = StringLength(battle + 8);
         memcpy(buf, battle + 8, len);
     }
 
-    signed char idxByte = (signed char)_Z27FindEntryIndexByKey020424e4ii((int)&data_ov023_021fdd6c, 1);
+    signed char idxByte = (signed char)FindEntryIndexByKey020424e4((int)&data_ov023_021fdd6c, 1);
     for (; len < 0x39; len++) buf[len] = idxByte;
 
     func_02042764(buf, buf + 0x3a, 1);
@@ -82,10 +82,10 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
     for (;;) {
         if (*p == 0) return;
         int step = 1;
-        struct Entry0204254c* e = _Z22FindEntryByKey0204254cii((int)p, step);
+        struct Entry0204254c* e = FindEntryByKey0204254c((int)p, step);
         if (e != 0) {
-            _Z10AppendXTagPci(dst, x);
-            _Z20AppendString02042058PcPKc(dst, (const char*)e->val);
+            AppendXTag(dst, x);
+            AppendString02042058(dst, (const char*)e->val);
             step = e->field5;
         }
         col++;
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
             y += 0x13;
             x = resetX;
             col = 0;
-            _Z10AppendYTagPci(dst, y);
+            AppendYTag(dst, y);
         }
     }
 #endif

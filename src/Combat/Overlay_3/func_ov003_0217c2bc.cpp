@@ -15,13 +15,13 @@ struct Scene0217c2bc {
 };
 
 extern "C" GameResources *func_ov017_0218b5b0(void);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(void *obj, int a, int b);
+void DispatchIfField0xc4NonNeg_0205ebfc(void *obj, int a, int b);
 extern "C" void func_ov003_0217cb3c(Scene0217c2bc *self, int mainScreen, int alternate);
 extern "C" void _ZN8Object3D11MakeVisibleEv(void *obj);
 extern "C" void _ZN8Object3D10InitializeEv(void *p);
 void Set3DClearColor(int a, int b, int c, int d, int e);
 extern "C" void func_ov003_0217c974(Scene0217c2bc *self);
-extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(struct Struct0209c830 *, unsigned short);
+void SetValueAndActivate0209c830(struct Struct0209c830 *, unsigned short);
 
 extern int data_02108760;
 extern struct Struct0209c830 data_02109bf4;
@@ -35,7 +35,7 @@ extern "C" ARM void func_ov003_0217c2bc(Scene0217c2bc *self) {
         self->state++;
     } else if (self->state == 1) {
         if (--self->timer != 0) return;
-        _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, 0, 0);
+        DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 0, 0);
         func_ov003_0217cb3c(self, 1, 0);
         _ZN8Object3D11MakeVisibleEv(self->object);
         Set3DClearColor(0, 0, 0x7fff, 0, 0);
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov003_0217c2bc(Scene0217c2bc *self) {
         self->state++;
     } else if (self->state == 12) {
         if (IsBrightnessTransitionActive(resources)) return;
-        _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x43);
+        SetValueAndActivate0209c830(&data_02109bf4, 0x43);
         SetBrightness(resources, 0, 0x3c);
         func_ov003_0217cb3c(self, 0, 1);
         self->state++;

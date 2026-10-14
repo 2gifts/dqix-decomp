@@ -31,8 +31,8 @@ struct Owner020675fc {
 EntryList_203dce4* GetGlobalPtr021075f4();
 Entry_203dce4* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
 void* GetField0x3b0Value(GameState*);
-extern "C" void _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(Vec3_020406f8*, Node020406f8*);
-extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
+void SelectVec3FromSources020406f8(Vec3_020406f8*, Node020406f8*);
+int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
 extern unsigned char data_020e7e08[];
 
@@ -47,9 +47,9 @@ extern "C" ARM void func_020675fc(Owner020675fc* owner) {
         int y;
         Vec3copy0202ec84 copied;
         VectorBuffer020675fc vector;
-        _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(&vector.selected, (Node020406f8*)entry);
+        SelectVec3FromSources020406f8(&vector.selected, (Node020406f8*)entry);
         copied = vector.copied;
-        _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(view, &copied, &x, &y);
+        ComputeTwoFromVec3_0202ec84(view, &copied, &x, &y);
         x -= 12;
         y -= 62;
         int scaledX = x << 12;

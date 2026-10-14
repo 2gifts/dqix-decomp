@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void* func_ov017_021b8478(void* obj);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
 int GetField0x3acValue(GameState* battleStruct);
 
 struct Nibbles021c6534 {
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov017_021c6534(int unused0, Evt021c6534* evt, GameState
     Field021c6534* fieldObj = (Field021c6534*)func_ov017_021b8478(table);
     if (!fieldObj) return;
 
-    void* state = _Z20GetField6b0_021b8470Pv(table);
+    void* state = GetField6b0_021b8470(table);
     if (!state) return;
 
     if (fieldObj->field_0x2a == GetField0x3acValue(battleStruct)) return;

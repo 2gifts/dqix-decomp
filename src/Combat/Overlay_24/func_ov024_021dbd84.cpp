@@ -3,17 +3,17 @@
 #include "GameState/GameState.h"
 
 int CheckField0x14Flags0x9Clear(unsigned char* obj);
-extern "C" void _Z24ResetStateFields02088338Ph(unsigned char* obj);
+void ResetStateFields02088338(unsigned char* obj);
 struct Ctx_021e929c;
-extern "C" int _Z29SelectMessageByFlags_021e929cP12Ctx_021e929cii(struct Ctx_021e929c* ctx, int id, int flag);
+int SelectMessageByFlags_021e929c(struct Ctx_021e929c* ctx, int id, int flag);
 struct FlagObj_021da998;
-extern "C" int _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998(struct FlagObj_021da998* obj);
-extern "C" int _Z26IsFlagAllowedMask_021eb4b0iii(int a0, int flags, int mask);
+int IsFlagBit8388608Set_021da998(struct FlagObj_021da998* obj);
+int IsFlagAllowedMask_021eb4b0(int a0, int flags, int mask);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" void* func_ov024_021e8cfc(void* obj, void* c, int kind, int notifyExtra);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov024_021e8bf0(void* unused0, void* obj, unsigned short* sel);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
 struct PackedPair_021dbd84 {
@@ -51,14 +51,14 @@ extern "C" ARM void* func_ov024_021dbd84(struct Obj_021dbd84* obj, int unused, i
     if (clear && flagArg) special = 1;
     local.lo = 0;
     local.hi = 0;
-    unsigned short sel = _Z29SelectMessageByFlags_021e929cP12Ctx_021e929cii((struct Ctx_021e929c*)obj, id, special);
-    int flagA = _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998((struct FlagObj_021da998*)c);
+    unsigned short sel = SelectMessageByFlags_021e929c((struct Ctx_021e929c*)obj, id, special);
+    int flagA = IsFlagBit8388608Set_021da998((struct FlagObj_021da998*)c);
     if (special) {
         if (range->field4.low12 == 0x233) sel = range->f20.c;
-        if (_Z26IsFlagAllowedMask_021eb4b0iii((int)obj, ((struct StatsFlags_021dbd84*)c->currentStats_)->flags, 0x10)) {
+        if (IsFlagAllowedMask_021eb4b0((int)obj, ((struct StatsFlags_021dbd84*)c->currentStats_)->flags, 0x10)) {
             func_ov000_02159eac(obj->field0x10, &local, 0x2b);
         }
-        _Z24ResetStateFields02088338Ph((unsigned char*)c->currentStats_);
+        ResetStateFields02088338((unsigned char*)c->currentStats_);
         func_ov000_02159eac(obj->field0x10, &local, 0xe);
         obj->field0x14++;
         if (flagA) func_ov024_021e8cfc(obj, c, 0, 0);
@@ -68,7 +68,7 @@ extern "C" ARM void* func_ov024_021dbd84(struct Obj_021dbd84* obj, int unused, i
     void* entry = func_ov000_0215e958(obj->field0x10);
     if (!entry) return 0;
     func_ov024_021e8bf0(obj, obj->field0xc, &sel);
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+    AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
     struct Flag_021dbd84* fl = (struct Flag_021dbd84*)((char*)obj->field0xc + 0x1c);
     func_ov000_0215cd44(obj->field0x10, entry, c, 0, local.v, fl->flag != 0);
     return entry;

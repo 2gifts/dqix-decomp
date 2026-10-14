@@ -27,14 +27,14 @@ typedef int (*ElementCallback020dfa68)(struct Container020dfa68 *, struct Elemen
 
 extern int GetScaledFieldSum(struct ScaledPair020dfbc0 *);
 extern "C" int func_020df77c(struct Container020dfa68 *, struct Element020dfa68 *);
-extern "C" extern int _Z22ForEachElement020dfa68P17Container020dfa68PFiS0_P15Element020dfa68E(struct Container020dfa68 *, ElementCallback020dfa68);
-extern "C" extern int _Z22MergeContainer020dfabcP23MergedContainer020dfabcS0_PcPFiP17Container020dfa68P15Element020dfa68E(struct MergedContainer020dfabc *, struct MergedContainer020dfabc *, char *, ElementCallback020dfa68);
+extern int ForEachElement020dfa68(struct Container020dfa68 *, ElementCallback020dfa68);
+extern int MergeContainer020dfabc(struct MergedContainer020dfabc *, struct MergedContainer020dfabc *, char *, ElementCallback020dfa68);
 
 struct Container020dfb48;
 typedef int (*Comparator020dfb48)(void *);
-extern "C" extern void *_Z32BinarySearchByComparator020dfb48P17Container020dfb48iPFiPvE(struct Container020dfb48 *, int, Comparator020dfb48);
+extern void *BinarySearchByComparator020dfb48(struct Container020dfb48 *, int, Comparator020dfb48);
 
-extern "C" char *_Z26AllocateStringCopy020da150P13SafeAllocatorPKc(SafeAllocator *, const char *);
+char *AllocateStringCopy020da150(SafeAllocator *, const char *);
 short GetShortAt0x0(short *);
 
 // USA: func_020df850
@@ -65,13 +65,13 @@ extern "C" ARM int func_020df850(struct MergedContainer020dfabc *self, SafeAlloc
             if (self->elements != NULL) memcpy(self->elements, (char *)src + 8, size);
             if (self->end != NULL)
                 memcpy(self->end, (char *)src + (GetScaledFieldSum((struct ScaledPair020dfbc0 *)self) + 8), mask);
-            if ((ElementCallback020dfa68)func_020df77c) _Z22ForEachElement020dfa68P17Container020dfa68PFiS0_P15Element020dfa68E((struct Container020dfa68 *)self, (ElementCallback020dfa68)func_020df77c);
+            if ((ElementCallback020dfa68)func_020df77c) ForEachElement020dfa68((struct Container020dfa68 *)self, (ElementCallback020dfa68)func_020df77c);
             self->doneFlag = 1;
         }
     } else {
         memset(&local, 0, 0x10);
-        _Z22MergeContainer020dfabcP23MergedContainer020dfabcS0_PcPFiP17Container020dfa68P15Element020dfa68E(&local, src, &flag, func_020df77c);
-        elem = (struct Element020df850 *)_Z32BinarySearchByComparator020dfb48P17Container020dfb48iPFiPvE(
+        MergeContainer020dfabc(&local, src, &flag, func_020df77c);
+        elem = (struct Element020df850 *)BinarySearchByComparator020dfb48(
             (struct Container020dfb48 *)&local, mode, (Comparator020dfb48)GetShortAt0x0);
         if (elem != NULL) {
             memset(self, 0, 0x10);
@@ -91,7 +91,7 @@ extern "C" ARM int func_020df850(struct MergedContainer020dfabc *self, SafeAlloc
                     dstArr = (struct Element020df850 *)((struct Element020df850 *)self->elements)->c;
                     memcpy(dstArr, srcArr, n * 8);
                     for (i = 0; i < n; i++, dstArr++, srcArr++) {
-                        dstArr->c = (int)_Z26AllocateStringCopy020da150P13SafeAllocatorPKc(alloc, (const char *)srcArr->c);
+                        dstArr->c = (int)AllocateStringCopy020da150(alloc, (const char *)srcArr->c);
                     }
                 }
             }

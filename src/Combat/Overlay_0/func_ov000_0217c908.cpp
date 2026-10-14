@@ -15,7 +15,7 @@ extern "C" void _Z19InitEntries0205d2bcP11Obj0205d2bc(void*);
 #endif
 
 struct Entry_0205d6a0;
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(struct Entry_0205d6a0* list, int flag);
+void ResetEntryList0205d6a0(struct Entry_0205d6a0* list, int flag);
 
 struct Battle0217c908;
 extern "C" int func_ov000_0217f910(struct Battle0217c908* battle);
@@ -52,7 +52,7 @@ struct Battle0217c908 {
 // USA: func_ov000_0217c908
 extern "C" ARM void func_ov000_0217c908(struct Battle0217c908* battle, int arg1, int arg2) {
     if (func_ov000_0217f910(battle) == 0) {
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)battle->entryList, 1);
+        ResetEntryList0205d6a0((struct Entry_0205d6a0*)battle->entryList, 1);
         return;
     }
     switch (battle->kinds[battle->kindIndex]) {
@@ -118,7 +118,7 @@ extern "C" ARM void func_ov000_0217c908(struct Battle0217c908* battle, int arg1,
         _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(battle->entryList);
         _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(battle->entryList);
         _Z19InitEntries0205d2bcP11Obj0205d2bc(battle->entryList);
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)battle->entryList, 1);
+        ResetEntryList0205d6a0((struct Entry_0205d6a0*)battle->entryList, 1);
         battle->flags |= 2;
     }
 #endif

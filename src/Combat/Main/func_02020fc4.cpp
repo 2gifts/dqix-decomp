@@ -13,9 +13,9 @@ struct Obj0203bb3c;
 struct Bcb8Params;
 
 void ClearFields0x8(struct State0xbb1c* obj);
-extern "C" void _Z36SetupAndDispatchCharTransfer0203bb3cP11Obj0203bb3cPcP13SafeAllocatorit(struct Obj0203bb3c* obj, char* src, SafeAllocator* allocator, int category, unsigned short arg5);
+void SetupAndDispatchCharTransfer0203bb3c(struct Obj0203bb3c* obj, char* src, SafeAllocator* allocator, int category, unsigned short arg5);
 void ForwardParamsToB8bc(struct Bcb8Params* s, int arg1, int arg2);
-extern "C" int _Z28DispatchCharTransfer0203b784Piiiijj(int* arr1, int idx, int category, int addr, unsigned int len, unsigned int len2);
+int DispatchCharTransfer0203b784(int* arr1, int idx, int category, int addr, unsigned int len, unsigned int len2);
 void* GetData02105254(void);
 
 struct CharTileTask_02020fc4 {
@@ -46,7 +46,7 @@ extern "C" ARM void func_02020fc4(struct CharTileTask_02020fc4* task, TaskHandle
         unsigned int fileLength = 0;
         loader->GetLoadedFileByID((IS_JPN ? (int)taskID : *(int*)taskID), &fileData, &fileLength);
         ClearFields0x8((struct State0xbb1c*)((char*)task + 0x78));
-        _Z36SetupAndDispatchCharTransfer0203bb3cP11Obj0203bb3cPcP13SafeAllocatorit((struct Obj0203bb3c*)((char*)task + 0x78), (char*)fileData, allocator, 1, 1);
+        SetupAndDispatchCharTransfer0203bb3c((struct Obj0203bb3c*)((char*)task + 0x78), (char*)fileData, allocator, 1, 1);
 
         int row;
         for (row = 0; row < 0x20 / task->tileHeight; row++) {
@@ -60,7 +60,7 @@ extern "C" ARM void func_02020fc4(struct CharTileTask_02020fc4* task, TaskHandle
         int buffer[8];
         task->totalSize = task->tileWidth * task->tileHeight + task->charBaseOffset;
         memset(buffer, 0, 0x20);
-        _Z28DispatchCharTransfer0203b784Piiiijj(charTable, 1, 0, (int)buffer, 0x20, 1);
+        DispatchCharTransfer0203b784(charTable, 1, 0, (int)buffer, 0x20, 1);
     }
 
     BackgroundLoader::GetInstance()->RemoveTask(IS_JPN ? (int)taskID : *(int*)taskID);

@@ -17,7 +17,7 @@ struct BattleBlk_0215a004 {
 extern "C" void func_ov000_021554f4(void* self, int id, void* arg, int a3, unsigned char a4, int a5);
 extern "C" void func_ov000_02155184(void* self, int id, int a2);
 extern "C" void _Z15InitObj02088e80P11Obj02088e80(struct ModifiableCombatStats* stats, int id);
-extern "C" int _Z18GetField0x3acValueP9GameState(GameState* gs);
+int GetField0x3acValue(GameState* gs);
 extern "C" void _Z23LoadBattleBlock020ac4c0Pv(struct BattleBlk_0215a004* b);
 extern "C" void _Z24AddClamped16BitLowAt0x24P7S_a0608j(struct BattleBlk_0215a004* b, unsigned int v);
 extern "C" void _Z29AddClamped16BitFieldMidAt0x1cP7S_a0294j(struct BattleBlkSub_0215a004* b, unsigned int v);
@@ -39,7 +39,7 @@ extern "C" ARM short func_ov000_0215a004(void* self, void* arg, int id, int dama
         func_ov000_021554f4(self, id, arg, a5, a6, a7);
         _Z15InitObj02088e80P11Obj02088e80(c->currentStats_, (signed char)c->obj3D_.unknown_4_);
         func_ov000_02155184(self, id, a7);
-        if (id == _Z18GetField0x3acValueP9GameState(GameState::GetInstance())) {
+        if (id == GetField0x3acValue(GameState::GetInstance())) {
             struct BattleBlk_0215a004 blk;
             _Z23LoadBattleBlock020ac4c0Pv(&blk);
             _Z24AddClamped16BitLowAt0x24P7S_a0608j(&blk, 1);

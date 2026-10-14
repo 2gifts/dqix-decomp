@@ -2,14 +2,14 @@
 
 struct Struct_0205d81c;
 struct Elem_0205d81c;
-extern "C" Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* s, int key);
+Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c* s, int key);
 
 extern unsigned char data_02114e54;
 
 // USA: func_ov023_021e63bc  (semantic: CheckElemNearTouchPoint_021e63bc)
 extern "C" ARM int func_ov023_021e63bc(unsigned char* obj) {
     int key = obj[0x1371];
-    Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci((Struct_0205d81c*)(obj + 0xac), key);
+    Elem_0205d81c* elem = FindElementByC40205d81c((Struct_0205d81c*)(obj + 0xac), key);
     short* pos = (short*)((char*)elem + 0xac);
     unsigned char* d = &data_02114e54;
     int boundA = *(int*)(d + 0x38);

@@ -8,8 +8,7 @@ enum { kRegionValue9A0_870 = 0x9a0 };
 enum { kRegionValue9AE_7DE = 0x9ae };
 #endif
 
-
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
+void* GetGlobalField0x1c020421a0(void);
 extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(void*, int, int);
 
 struct Obj0205dee8;
@@ -20,7 +19,7 @@ int StepStateMachine0215b7a4(void* p);
 // USA: func_ov003_02159c04
 extern "C" ARM void func_ov003_02159c04(void* self) {
     unsigned char* s = (unsigned char*)self;
-    unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
+    unsigned char* g = (unsigned char*)GetGlobalField0x1c020421a0();
 
     if (*(int*)(g + kRegionValue9A0_870) == 3) {
         *(unsigned char*)(g + 0x1000 + kRegionValue9AE_7DE) = 0;

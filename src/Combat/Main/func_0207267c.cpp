@@ -5,7 +5,7 @@
 
 struct Elem02072a28 { short a; int b; };
 struct List02072a28;
-extern "C" void _Z27AppendShortWordPair02072a28P12List02072a28P12Elem02072a28(List02072a28* list, Elem02072a28* src);
+void AppendShortWordPair02072a28(List02072a28* list, Elem02072a28* src);
 int StringLength(const char* text);
 struct ScriptStringState0207267c {
     unsigned char skipCount;
@@ -47,6 +47,6 @@ extern "C" ARM int func_0207267c(Script::Parameter* params) {
     if (entry.b == 0) return 0;
     ((char*)entry.b)[length] = 0;
     if (entry.b != 0) sprintf((char*)entry.b, data_020f0cf0, text);
-    _Z27AppendShortWordPair02072a28P12List02072a28P12Elem02072a28(data_02108db0.list, &entry);
+    AppendShortWordPair02072a28(data_02108db0.list, &entry);
     return 1;
 }

@@ -25,7 +25,7 @@ struct BattleStruct {
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 struct Struct_020652b4 { int field0; };
-extern "C" int _Z20IsListEmpty_020652b4P15Struct_020652b4(struct Struct_020652b4* p);
+int IsListEmpty_020652b4(struct Struct_020652b4* p);
 int IsField0Zero(int* p);
 
 struct Pool020401fc {
@@ -35,9 +35,9 @@ struct Pool020401fc {
     unsigned char pad6[2];
     void* elements;
 };
-extern "C" void _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(struct Pool020401fc* pool, unsigned int count, SafeAllocator* alloc);
+void InitPool020401fc(struct Pool020401fc* pool, unsigned int count, SafeAllocator* alloc);
 
-extern "C" int _Z21GetFieldAt0x0020652c8Pi(int* obj);
+int GetFieldAt0x0020652c8(int* obj);
 
 struct Sub1840_02012fe4 {
     char pad0[0xb5c];
@@ -50,12 +50,12 @@ struct Global02012fe4 {
     struct Sub1840_02012fe4* GetSub1840() { return &sub1840; }
 };
 extern "C" struct Global02012fe4* func_02012fe4(void);
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v(void);
+unsigned int* GetDataPtr02114e04_020d6c00(void);
 
-extern "C" int _Z19IsIdInRange020981e4ii(int a, int id);
-extern "C" int _Z17IsIdInSet02098210ii(int a, int id);
+int IsIdInRange020981e4(int a, int id);
+int IsIdInSet02098210(int a, int id);
 
-extern "C" void _Z12Init020404c0Pi(int* obj);
+void Init020404c0(int* obj);
 
 struct NodeInfo0203d028 {
     char pad0[0xa];
@@ -95,7 +95,7 @@ struct State02041244 {
     int field_d0;
     unsigned char flags_d4;
 };
-extern "C" void _Z18ResetState02041244P13State02041244(struct State02041244* obj);
+void ResetState02041244(struct State02041244* obj);
 
 struct Struct_203dafc {
     int field0;
@@ -109,16 +109,16 @@ struct Struct_203dafc {
 };
 void ClearEightWords(struct Struct_203dafc* obj);
 
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
 
 struct Entry0209854c;
-extern "C" struct Entry0209854c* _Z25FindEntryByFieldC0209854cP13Entry0209854ci(struct Entry0209854c* list, int target);
+struct Entry0209854c* FindEntryByFieldC0209854c(struct Entry0209854c* list, int target);
 
-extern "C" void* _Z24GetGlobalContext020daf90v(void);
+void* GetGlobalContext020daf90(void);
 int GetField0x50(void* obj);
-extern "C" void _Z33DispatchWithGlobalContext020daf9ciiii(int a, int b, int c, int d);
+void DispatchWithGlobalContext020daf9c(int a, int b, int c, int d);
 
 extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* mgr, int a, int b);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
@@ -137,28 +137,28 @@ extern "C" void _ZN8Object3D10SetField06Et(struct U16Field0x6_020375f0* obj, int
 extern "C" int* func_ov017_021a4658(void* mgr, int a);
 
 struct Ctx021a3498;
-extern "C" void _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498(struct Ctx021a3498* ctx);
+void ClearIfMatchAndFinalize_021a3498(struct Ctx021a3498* ctx);
 
 struct HeadNode02046b24 { signed char id; };
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 
-extern "C" void _Z30InitializeRandomMotion0203c794Pv(void* obj);
+void InitializeRandomMotion0203c794(void* obj);
 void StoreValueViaField0x14(unsigned char* obj, int val);
 
 struct Obj0203f02c;
-extern "C" void _Z27UpdateElementStream0203f02cP11Obj0203f02ciiPcii(struct Obj0203f02c* obj, int param1, int param2, char* param3, int param5, int param6);
+void UpdateElementStream0203f02c(struct Obj0203f02c* obj, int param1, int param2, char* param3, int param5, int param6);
 
 extern "C" void func_0203f138(void* obj, int b);
 
 extern "C" void func_0203e8f8(void* a, void* b, void* c);
 
 struct Foo0207df50;
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* p);
+void CopyInternalFields0207df50(struct Foo0207df50* p);
 
 extern "C" void _Z18ClearCombatantSlotP9GameStatei(struct BattleStruct* battleStruct, int id);
 
 struct FlagWord020466f4 { unsigned int flags; };
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(struct FlagWord020466f4* word, unsigned int mask);
+void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 
 struct FieldsA02040774 { char pad4[4]; int a; int b; int c; };
 struct Node02040774 {
@@ -167,7 +167,7 @@ struct Node02040774 {
     void* f18;
     void* f1c;
 };
-extern "C" void _Z28SetActiveChildFields02040774P12Node02040774iii(struct Node02040774* obj, int a, int b, int c);
+void SetActiveChildFields02040774(struct Node02040774* obj, int a, int b, int c);
 
 struct State0xcda8;
 struct Obj0204085c {
@@ -176,7 +176,7 @@ struct Obj0204085c {
     unsigned char* field18;
     unsigned char* field1c;
 };
-extern "C" void _Z22HandleObjEvent0204085cP11Obj0204085ciii(struct Obj0204085c* obj, int a, int b, int c);
+void HandleObjEvent0204085c(struct Obj0204085c* obj, int a, int b, int c);
 
 struct Struct_203cec4;
 struct S02037418;
@@ -190,7 +190,7 @@ struct Obj02040540 {
     struct Struct_203cec4* b;
     struct S02037418* c;
 };
-extern "C" void _Z26ApplyFlagsToTarget02040540P11Obj02040540(struct Obj02040540* obj);
+void ApplyFlagsToTarget02040540(struct Obj02040540* obj);
 
 extern "C" int _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo(int a, int b);
 extern "C" void _ZN8Object3D10InitializeEv(void* obj);
@@ -208,7 +208,7 @@ struct Node020408c8 {
     void* f18;
     void* f1c;
 };
-extern "C" void _Z28SetActiveChildShorts020408c8P12Node020408c8sss(struct Node020408c8* obj, short a, short b, short c);
+void SetActiveChildShorts020408c8(struct Node020408c8* obj, short a, short b, short c);
 
 struct Obj02041598 {
     char pad_00[0xc4];
@@ -245,7 +245,7 @@ struct Obj02040bfc {
     struct TargetB02040bfc* b;
     struct TargetC02040bfc* c;
 };
-extern "C" void _Z27StoreToFirstNonNull02040bfcP11Obj02040bfci(struct Obj02040bfc* obj, int value);
+void StoreToFirstNonNull02040bfc(struct Obj02040bfc* obj, int value);
 
 struct RegNode0203d028 {
     unsigned short id;
@@ -310,26 +310,26 @@ static inline void SetX90_0203d028(void* motion, int v)
 // USA: func_0203d028
 extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, SafeAllocator* sb, char* fp)
 {
-    if (_Z20IsListEmpty_020652b4P15Struct_020652b4((struct Struct_020652b4*)&self->listHead) ||
+    if (IsListEmpty_020652b4((struct Struct_020652b4*)&self->listHead) ||
         IsField0Zero((int*)&self->nodeTableBase))
     {
-        _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(&self->pool, 0xc, sb);
+        InitPool020401fc(&self->pool, 0xc, sb);
         return;
     }
 
     struct BattleStruct* battleStruct = _ZN9GameState11GetInstanceEv();
     GameResources* mgr = func_ov017_0218b5b0();
-    struct RegNode0203d028* entry = (struct RegNode0203d028*)_Z21GetFieldAt0x0020652c8Pi(&self->listHead);
+    struct RegNode0203d028* entry = (struct RegNode0203d028*)GetFieldAt0x0020652c8(&self->listHead);
     struct Global02012fe4* globalStruct = func_02012fe4();
-    unsigned int* dataFlags = _Z27GetDataPtr02114e04_020d6c00v();
+    unsigned int* dataFlags = GetDataPtr02114e04_020d6c00();
     unsigned int idVal = *(unsigned short*)globalStruct;
     void* childModelPtr = 0;
     unsigned int loopIndex = 0;
     int assignedFlag = 0;
-    _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(&self->pool, 0xc, sb);
+    InitPool020401fc(&self->pool, 0xc, sb);
 
-    if (_Z19IsIdInRange020981e4ii((int)((char*)globalStruct + 0x840), idVal) &&
-        _Z17IsIdInSet02098210ii((int)((char*)globalStruct + 0x840), idVal) == 0) {
+    if (IsIdInRange020981e4((int)((char*)globalStruct + 0x840), idVal) &&
+        IsIdInSet02098210((int)((char*)globalStruct + 0x840), idVal) == 0) {
         self->pool.field5 = 1;
     } else {
         self->pool.field5 = 0;
@@ -341,7 +341,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
     while (entry != 0) {
         struct Node0203d028* node = (struct Node0203d028*)sb->Allocate(0x20);
         if (node == 0) goto abort_unlock;
-        _Z12Init020404c0Pi((int*)node);
+        Init020404c0((int*)node);
         struct NodeInfo0203d028* info = FindNodeByByteId(&self->nodeTableBase, entry->id);
         SetField0x8((int*)node, (int)entry);
         SetField0xc((int*)node, (int)info);
@@ -366,28 +366,28 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
         if (entry->type == 2) {
             node->state = (struct State02041244*)sb->Allocate(0xd8);
             if (node->state == 0) goto abort_unlock;
-            _Z18ResetState02041244P13State02041244(node->state);
+            ResetState02041244(node->state);
             char pathBuf[40];
             sprintf(pathBuf, &data_020efdc4, entry->name);
             void* loadedPtr = LoadFileIntoNewAllocation(pathBuf, *sb, &outLen);
             if (loadedPtr == 0) goto abort_unlock;
             struct Struct_203dafc params;
             ClearEightWords(&params);
-            _Z25RestorePairTables0207df90Pc(fp);
+            RestorePairTables0207df90(fp);
             params.fieldc = (int)sb;
             params.field4 = (int)loadedPtr;
             params.field8 = (int)outLen;
             _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(node->state, &params, 0);
-            _Z24BackupPairTables0207dfacPc(fp);
+            BackupPairTables0207dfac(fp);
         }
         else if (entry->type == 4) {
             unsigned char* table = globalStruct->GetSub1840()->tableB5c;
             int slot = 5;
-            struct Entry0209854c* found = _Z25FindEntryByFieldC0209854cP13Entry0209854ci((struct Entry0209854c*)((char*)globalStruct + 0x840), entry->id);
+            struct Entry0209854c* found = FindEntryByFieldC0209854c((struct Entry0209854c*)((char*)globalStruct + 0x840), entry->id);
             if (found != 0) {
                 {
-                    if (GetField0x50(_Z24GetGlobalContext020daf90v()) == 0) {
-                        _Z33DispatchWithGlobalContext020daf9ciiii(1, 0, 1, 0);
+                    if (GetField0x50(GetGlobalContext020daf90()) == 0) {
+                        DispatchWithGlobalContext020daf9c(1, 0, 1, 0);
                         _Z17SetMainBrightnessP13GameResourcesii(mgr, ~0xf, 0);
                     }
                     OrBitsIntoField0(dataFlags, 0x400000);
@@ -415,20 +415,20 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
 
                     while (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)ctxA) == 0x13) {
                         instance->RemoveAllLocks();
-                        _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498((struct Ctx021a3498*)ctxA);
+                        ClearIfMatchAndFinalize_021a3498((struct Ctx021a3498*)ctxA);
                         if (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)ctxB) == 0x14) {
-                            _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498((struct Ctx021a3498*)ctxB);
+                            ClearIfMatchAndFinalize_021a3498((struct Ctx021a3498*)ctxB);
                         }
                     }
 
                     node->stateB = sb->Allocate(0x9c);
                     if (node->stateB == 0) goto abort_unlock;
-                    _Z30InitializeRandomMotion0203c794Pv(node->stateB);
+                    InitializeRandomMotion0203c794(node->stateB);
                     StoreValueViaField0x14((unsigned char*)node, (int)self);
 
                     const char* motName = &data_020efdda;
                     if (node->stateB != 0) {
-                        _Z27UpdateElementStream0203f02cP11Obj0203f02ciiPcii(*(struct Obj0203f02c**)((char*)node + 0x14), (int)motName, (int)sb, fp, 0, 0);
+                        UpdateElementStream0203f02c(*(struct Obj0203f02c**)((char*)node + 0x14), (int)motName, (int)sb, fp, 0, 0);
                     }
                     if (node->stateB != 0) {
                         func_0203f138(node->stateB, 1);
@@ -446,16 +446,16 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     char* buf930 = &GetResourceBuffer(mgr, 0x930);
                     entry->type = 0;
                     alloc3->Reset();
-                    _Z26CopyInternalFields0207df50P11Foo0207df50((struct Foo0207df50*)buf930);
+                    CopyInternalFields0207df50((struct Foo0207df50*)buf930);
                     _Z18ClearCombatantSlotP9GameStatei(battleStruct, 5);
-                    _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)dataFlags, 0x400000);
+                    ClearFlags020466f4((struct FlagWord020466f4*)dataFlags, 0x400000);
                 }
             }
         }
         else if (entry->type == 5) {
             node->state = (struct State02041244*)sb->Allocate(0xd8);
             if (node->state == 0) goto abort_unlock;
-            _Z18ResetState02041244P13State02041244(node->state);
+            ResetState02041244(node->state);
             BackgroundLoader::FreeAllocationsGlobal();
 
             GPCReadPair pair;
@@ -494,12 +494,12 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
 
             struct Struct_203dafc params;
             ClearEightWords(&params);
-            _Z25RestorePairTables0207df90Pc(fp);
+            RestorePairTables0207df90(fp);
             params.fieldc = (int)sb;
             params.field4 = (int)decompressed;
             params.field8 = (int)decompSize;
             _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(node->state, &params, 0);
-            _Z24BackupPairTables0207dfacPc(fp);
+            BackupPairTables0207dfac(fp);
 
             node->state->flags_d4 |= 2;
             pair.Reset();
@@ -509,7 +509,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
         else {
             node->stateB = sb->Allocate(0x9c);
             if (node->stateB == 0) goto abort_unlock;
-            _Z30InitializeRandomMotion0203c794Pv(node->stateB);
+            InitializeRandomMotion0203c794(node->stateB);
             StoreValueViaField0x14((unsigned char*)node, (int)self);
 
             if (entry->name[0] != 0 && entry->type == 0) {
@@ -530,7 +530,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     sprintf(pathBuf, &data_020efe27, entry->name);
                 }
                 if (node->stateB != 0) {
-                    _Z27UpdateElementStream0203f02cP11Obj0203f02ciiPcii(*(struct Obj0203f02c**)((char*)node + 0x14), (int)pathBuf, (int)sb, fp, 0, 0);
+                    UpdateElementStream0203f02c(*(struct Obj0203f02c**)((char*)node + 0x14), (int)pathBuf, (int)sb, fp, 0, 0);
                 }
                 if (node->stateB != 0) {
                     func_0203f138(node->stateB, 1);
@@ -545,9 +545,9 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
         }
 
         if (info != 0) {
-            _Z28SetActiveChildFields02040774P12Node02040774iii((struct Node02040774*)node, info->field10, info->field14, info->field18);
-            _Z22HandleObjEvent0204085cP11Obj0204085ciii((struct Obj0204085c*)node, 0, info->field1c, 0);
-            _Z26ApplyFlagsToTarget02040540P11Obj02040540((struct Obj02040540*)node);
+            SetActiveChildFields02040774((struct Node02040774*)node, info->field10, info->field14, info->field18);
+            HandleObjEvent0204085c((struct Obj0204085c*)node, 0, info->field1c, 0);
+            ApplyFlagsToTarget02040540((struct Obj02040540*)node);
 
             if (handledFlag == 0 && info->field54 != 0) {
                 char buf[60];
@@ -583,12 +583,12 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     if (mdlPtr != 0) {
                         struct Struct_203dafc mdlParams;
                         ClearEightWords(&mdlParams);
-                        _Z25RestorePairTables0207df90Pc(fp);
+                        RestorePairTables0207df90(fp);
                         mdlParams.field4 = (int)mdlPtr;
                         mdlParams.field8 = (int)mdlOutLen;
                         mdlParams.fieldc = (int)sb;
                         _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo((int)childModelPtr, (int)&mdlParams);
-                        _Z24BackupPairTables0207dfacPc(fp);
+                        BackupPairTables0207dfac(fp);
                     }
                     _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)childModelPtr, 0x10a, 0x10a, 0x10a);
                     _ZN8Object3D9SetFlag16Ev((unsigned char*)childModelPtr);
@@ -607,7 +607,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             }
 
             if (node->stateB != 0) {
-                _Z28SetActiveChildShorts020408c8P12Node020408c8sss((struct Node020408c8*)node, 0x8f, 0x8f, 0x8f);
+                SetActiveChildShorts020408c8((struct Node020408c8*)node, 0x8f, 0x8f, 0x8f);
             }
             else if (node->state != 0) {
                 _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)node->state, 0x10a, 0x10a, 0x10a);
@@ -639,7 +639,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                 localVec3[1] = func_02018fbc(globalStruct, localVec3);
                 _ZN8Vector3iaSERKS_((int*)((char*)node->combatant + 0x44), localVec3);
             }
-            _Z27StoreToFirstNonNull02040bfcP11Obj02040bfci((struct Obj02040bfc*)node, info->field38);
+            StoreToFirstNonNull02040bfc((struct Obj02040bfc*)node, info->field38);
 
             SetX90_0203d028(node->stateB, info->field3c);
         }

@@ -32,7 +32,7 @@ struct Battle02162cbc {
 };
 
 extern "C" int func_ov000_02153e40(void* obj, short* buf, int max, int start);
-extern "C" void _Z30ClearSubFlag56IfActive02049efcP11Obj02049efc(struct Obj02049efc* obj);
+void ClearSubFlag56IfActive02049efc(struct Obj02049efc* obj);
 extern "C" void func_ov000_02162dc4(Battle02162cbc* self, GameObject* lead, Combatant02162cbc* actor, unsigned int flags,
                                     int b1d, int b1e, unsigned long long mask, int zero);
 
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov000_02162cbc(Battle02162cbc* self) {
     for (int i = 0; i < count; i++) {
         Combatant02162cbc* c = (Combatant02162cbc*)bs->GetCombatantByIndex(ids[i]);
         if (!c) continue;
-        _Z30ClearSubFlag56IfActive02049efcP11Obj02049efc((struct Obj02049efc*)c);
+        ClearSubFlag56IfActive02049efc((struct Obj02049efc*)c);
         if (c->status->flags & 1) continue;
         c->fieldC1 &= ~0xf0;
         func_ov000_02162dc4(self, NULL, c, c->status->GetFlags(), c->status->GetB1d(), c->status->GetB1e(), 0, 0);

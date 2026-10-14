@@ -28,7 +28,7 @@ struct PackedSlot {
 };
 struct SlotCollection { PackedSlot* entries_; unsigned short count_; unsigned short used_; };
 extern "C" int func_020de574(Container020de5b0*, Slot*);
-extern "C" int _Z34RemapSlotIndicesToPointers020de5b0P17Container020de5b0(Container020de5b0*);
+int RemapSlotIndicesToPointers020de5b0(Container020de5b0*);
 
 // USA: func_ov023_021dad8c
 extern "C" ARM void func_ov023_021dad8c(SlotCollection* self, SafeAllocator* allocator, SlotHeader* source, void* context) {
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov023_021dad8c(SlotCollection* self, SafeAllocator* all
             source->mapped_ = 1;
         }
     }
-    if (!mapped) _Z34RemapSlotIndicesToPointers020de5b0P17Container020de5b0(&container);
+    if (!mapped) RemapSlotIndicesToPointers020de5b0(&container);
     int count = container.header_.count_;
     {
         Slot* slot = container.slots_;

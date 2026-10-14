@@ -59,22 +59,22 @@ extern "C" void* func_02057924(void);
 extern "C" int func_ov000_0215e9fc(void* party, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(void* party, short* buf, int max, int start);
 int CountValidCombatants02058618(void* mgr);
-extern "C" unsigned char* _Z15GetData02104b6cv(void);
-extern "C" int _Z25CheckFields6d0And6d4EqualPh(unsigned char* data);
-extern "C" int _Z13Check021ed2f4Pv(void* obj);
-extern "C" int _Z24IsByteFieldZero_021ed0fcPv(void* obj);
-extern "C" int _Z25IsAnimationActive0209ca2cPv(void* obj);
+unsigned char* GetData02104b6c(void);
+int CheckFields6d0And6d4Equal(unsigned char* data);
+int Check021ed2f4(void* obj);
+int IsByteFieldZero_021ed0fc(void* obj);
+int IsAnimationActive0209ca2c(void* obj);
 extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(GameObject* obj, int value);
 extern "C" void __clear(void* dst, int size);
-extern "C" Slot_021dc940* _Z18GetSlotPtr02160f20Pv(void* obj);
+Slot_021dc940* GetSlotPtr02160f20(void* obj);
 extern "C" void _Z19SetFlag0x2_021754e0ii(void* list, int id);
 extern "C" void func_ov000_0218142c(void* list, int id);
-extern "C" void _Z23SetPosAndFields0216f1e4PvPiii(void* obj, int* pos, int a, int b);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
+void SetPosAndFields0216f1e4(void* obj, int* pos, int a, int b);
+void* GetGlobalField0x1c020421a0(void);
 extern "C" void func_02043124(void* obj);
-extern "C" void _Z20StopAndReset0209c7fcPv(void* obj);
-extern "C" void _Z26DispatchActorState0209c73cP13Actor0209c73c(Actor0209c73c* actor);
-extern "C" void _Z25ClearGlobalBuffer02107850v(void);
+void StopAndReset0209c7fc(void* obj);
+void DispatchActorState0209c73c(Actor0209c73c* actor);
+void ClearGlobalBuffer02107850(void);
 
 extern int data_02109bf4;
 
@@ -121,16 +121,16 @@ extern "C" ARM int func_ov025_021dc940(Obj_021dc940* obj) {
     if (CountValidCombatants02058618(mgr) > 0) {
         return 0;
     }
-    if (_Z25CheckFields6d0And6d4EqualPh(_Z15GetData02104b6cv()) == 0) {
+    if (CheckFields6d0And6d4Equal(GetData02104b6c()) == 0) {
         return 0;
     }
-    if (_Z13Check021ed2f4Pv(obj->msg890) == 0) {
+    if (Check021ed2f4(obj->msg890) == 0) {
         return 0;
     }
-    if (_Z24IsByteFieldZero_021ed0fcPv(obj->sub4d4) == 0) {
+    if (IsByteFieldZero_021ed0fc(obj->sub4d4) == 0) {
         return 0;
     }
-    if (_Z25IsAnimationActive0209ca2cPv(&data_02109bf4) != 0) {
+    if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) {
         return 0;
     }
 
@@ -167,7 +167,7 @@ extern "C" ARM int func_ov025_021dc940(Obj_021dc940* obj) {
     obj->f6ff8 = 0;
     obj->f6fd4 = 0;
 
-    Slot_021dc940* slot = _Z18GetSlotPtr02160f20Pv(obj);
+    Slot_021dc940* slot = GetSlotPtr02160f20(obj);
     Entry_021dc940* entry;
     if (slot != NULL && (entry = slot->entry) != NULL && !slot->disabled) {
         int id = entry->id;
@@ -176,15 +176,15 @@ extern "C" ARM int func_ov025_021dc940(Obj_021dc940* obj) {
             func_ov000_0218142c(obj->entryList, id);
         }
     }
-    _Z23SetPosAndFields0216f1e4PvPiii(obj->cameraBase, obj->cameraPos, 0, 0);
-    func_02043124(_Z26GetGlobalField0x1c020421a0v());
+    SetPosAndFields0216f1e4(obj->cameraBase, obj->cameraPos, 0, 0);
+    func_02043124(GetGlobalField0x1c020421a0());
 
     Battle_021dc940* battle = obj->battle;
     if (((TurnBlock_021dc940*)((int)obj + 0x5000))->turn == battle->f8e24 - 1 && battle->f8e14 != 0) {
-        _Z20StopAndReset0209c7fcPv(&data_02109bf4);
+        StopAndReset0209c7fc(&data_02109bf4);
     } else {
-        _Z26DispatchActorState0209c73cP13Actor0209c73c((Actor0209c73c*)&data_02109bf4);
+        DispatchActorState0209c73c((Actor0209c73c*)&data_02109bf4);
     }
-    _Z25ClearGlobalBuffer02107850v();
+    ClearGlobalBuffer02107850();
     return 1;
 }

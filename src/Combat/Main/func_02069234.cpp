@@ -37,11 +37,11 @@ struct TagContext02069234 {
     signed char combatantId;
 };
 
-extern "C" Combatant02069234* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gameState, int combatantId);
+Combatant02069234* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
 
 char* FindUnescapedAngleBracket(char* str);
-extern "C" int _Z21IsPrefixMatch020d857cPaS_(signed char* a, signed char* b);
+int IsPrefixMatch020d857c(signed char* a, signed char* b);
 int StringLength(const char* s);
 extern "C" int func_02005a94(void* p);
 extern "C" int func_02001aec(void* a, void* b, int n);
@@ -93,7 +93,7 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
             char* tag = str + 1;
             struct PrefixEntry02069234* rec = data_020e7e8c;
             for (; rec->prefix != 0; rec++) {
-                if (!_Z21IsPrefixMatch020d857cPaS_((signed char*)tag, (signed char*)rec->prefix)) {
+                if (!IsPrefixMatch020d857c((signed char*)tag, (signed char*)rec->prefix)) {
                     continue;
                 }
                 if (rec->handler != 0) {
@@ -169,7 +169,7 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
             if (func_02001aec(str, data_020f0904, 4) == 0) {
                 str += 4;
                 GameState* gameState = _ZN9GameState11GetInstanceEv();
-                Combatant02069234* combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(gameState, sb->combatantId);
+                Combatant02069234* combatant = GetCombatantWithFlag0x100(gameState, sb->combatantId);
                 if (combatant != 0) {
                     StatusEffectEntry02069234* eff = combatant->statusTable->GetEffect();
                     if (eff != 0) {

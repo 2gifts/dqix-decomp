@@ -4,7 +4,7 @@ int GetSharedHalfwordOrBattleDefault();
 void SetField54IfTagNot9Or10(int);
 extern "C" void func_ov031_02239368(int);
 extern "C" void func_ov031_02239d70(void*);
-extern "C" int _Z29IssueSlotCommand3_17_02239e48is(int, short);
+int IssueSlotCommand3_17_02239e48(int, short);
 typedef int (*IssueSlot02239cd4)(int, unsigned short);
 
 // USA: func_ov031_02239cd4
@@ -26,5 +26,5 @@ extern "C" ARM unsigned short func_ov031_02239cd4(unsigned short slot) {
             if (slot > 16) return 24;
         } while (!(mask & (1 << (slot - 1))));
     }
-    return reinterpret_cast<IssueSlot02239cd4>(_Z29IssueSlotCommand3_17_02239e48is)(reinterpret_cast<int>(func_ov031_02239d70), slot);
+    return reinterpret_cast<IssueSlot02239cd4>(IssueSlotCommand3_17_02239e48)(reinterpret_cast<int>(func_ov031_02239d70), slot);
 }

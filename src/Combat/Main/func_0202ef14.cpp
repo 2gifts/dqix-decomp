@@ -4,9 +4,9 @@ struct DispatchObj020a0dec {
     int selector;
 };
 
-extern "C" int _Z26CheckField0NonZero020a10a8Pi(int*);
-extern "C" void _Z24DispatchMemberFn020a0decP19DispatchObj020a0dec(struct DispatchObj020a0dec*);
-extern "C" void _Z30RotateOffsetAndAdvance0202e894Pvi(void*, int);
+int CheckField0NonZero020a10a8(int*);
+void DispatchMemberFn020a0dec(struct DispatchObj020a0dec*);
+void RotateOffsetAndAdvance0202e894(void*, int);
 int fix32ReduceAngle0To2Pi(int);
 
 struct Obj0202ef14 {
@@ -35,8 +35,8 @@ extern "C" ARM void func_0202ef14(struct Obj0202ef14* self) {
     if (flags & 2) {
         struct DispatchTable0202ef14 table = data_020e73e4;
         for (i = 0; i < 3; i++) {
-            if (_Z26CheckField0NonZero020a10a8Pi((int*)arr[i])) {
-                _Z24DispatchMemberFn020a0decP19DispatchObj020a0dec(arr[i]);
+            if (CheckField0NonZero020a10a8((int*)arr[i])) {
+                DispatchMemberFn020a0dec(arr[i]);
                 void* arg = (void*)((char*)arr[i] + 4);
                 (self->*table.fns[i])(arg);
             }
@@ -44,8 +44,8 @@ extern "C" ARM void func_0202ef14(struct Obj0202ef14* self) {
     } else {
         struct DispatchTable0202ef14 table = data_020e73cc;
         for (i = 0; i < 3; i++) {
-            if (_Z26CheckField0NonZero020a10a8Pi((int*)arr[i])) {
-                _Z24DispatchMemberFn020a0decP19DispatchObj020a0dec(arr[i]);
+            if (CheckField0NonZero020a10a8((int*)arr[i])) {
+                DispatchMemberFn020a0dec(arr[i]);
                 void* arg = (void*)((char*)arr[i] + 4);
                 (self->*table.fns[i])(arg);
             }
@@ -59,7 +59,7 @@ extern "C" ARM void func_0202ef14(struct Obj0202ef14* self) {
 
     if (*(unsigned short*)(obj + 0x210) != 0) {
         *(unsigned short*)(obj + 0x210) -= 1;
-        _Z30RotateOffsetAndAdvance0202e894Pvi(obj, *(short*)(obj + 0x20e));
+        RotateOffsetAndAdvance0202e894(obj, *(short*)(obj + 0x20e));
     }
 
     if (*(unsigned short*)(obj + 0x216) != 0) {

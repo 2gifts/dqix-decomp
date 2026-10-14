@@ -10,24 +10,24 @@ int IsFlag10088Set(struct S_10088* obj);
 struct S88514;
 int CheckFlag0x2AndState2(struct S88514* obj);
 struct FlagObj_021da9b0;
-extern "C" int _Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0(struct FlagObj_021da9b0* p);
+int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* p);
 int CheckFlag0x14Bit0x10Set(unsigned char* p);
 struct FlagObj_021de25c;
-extern "C" int _Z22IsFlagBit5Set_021de25cP16FlagObj_021de25c(struct FlagObj_021de25c* p);
+int IsFlagBit5Set_021de25c(struct FlagObj_021de25c* p);
 struct Combatant_2088660;
 int IsField0x18Flag0x80Set(struct Combatant_2088660* p);
 struct S_flag2b;
-extern "C" int _Z22IsFlagBit2Set_021fb430P8S_flag2b(struct S_flag2b* p);
+int IsFlagBit2Set_021fb430(struct S_flag2b* p);
 struct S_flag4b;
-extern "C" int _Z22IsFlagBit4Set_021fb448P8S_flag4b(struct S_flag4b* p);
+int IsFlagBit4Set_021fb448(struct S_flag4b* p);
 struct S_flag131072;
-extern "C" int _Z27IsFlagBit131072Set_021fb478P12S_flag131072(struct S_flag131072* p);
+int IsFlagBit131072Set_021fb478(struct S_flag131072* p);
 struct S_flag4000000;
-extern "C" int _Z29IsFlagBit67108864Set_021edc08P13S_flag4000000(struct S_flag4000000* p);
+int IsFlagBit67108864Set_021edc08(struct S_flag4000000* p);
 struct FlagObj_021e47dc;
-extern "C" int _Z23IsFlagBit22Set_021e47dcP16FlagObj_021e47dc(struct FlagObj_021e47dc* p);
+int IsFlagBit22Set_021e47dc(struct FlagObj_021e47dc* p);
 struct AddEntryList_021f6a1c;
-extern "C" void _Z31AddEntryIfUnderLimit16_021f6a1cP21AddEntryList_021f6a1cPv(struct AddEntryList_021f6a1c* obj, void* src);
+void AddEntryIfUnderLimit16_021f6a1c(struct AddEntryList_021f6a1c* obj, void* src);
 extern "C" void func_ov024_021f6a4c(void* dst, void* src);
 extern "C" void func_ov024_021fd858(void* obj);
 extern "C" void func_ov024_021f9874(void* obj, void* buf, int unused, int val);
@@ -122,11 +122,11 @@ extern "C" ARM void func_ov024_021fd954(struct Obj_021fd954* obj, int statusType
         if (statusType == 2) {
             if (CheckFlag0x2AndState2((struct S88514*)c->stats)) ok = true;
         } else if (statusType == 3) {
-            if (_Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0((struct FlagObj_021da9b0*)c)) ok = true;
+            if (IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)c)) ok = true;
         } else if (statusType == 4) {
             if (CheckFlag0x14Bit0x10Set((unsigned char*)c->stats)) ok = true;
         } else if (statusType == 7) {
-            if (_Z22IsFlagBit5Set_021de25cP16FlagObj_021de25c((struct FlagObj_021de25c*)c)) ok = true;
+            if (IsFlagBit5Set_021de25c((struct FlagObj_021de25c*)c)) ok = true;
         } else if (statusType == 0x11) {
             struct ModifiableCombatStats* s = c->stats;
             if (s->attackBuff <= 0) ok = true;
@@ -162,18 +162,18 @@ extern "C" ARM void func_ov024_021fd954(struct Obj_021fd954* obj, int statusType
             if (!IsField0x18Flag0x80Set((struct Combatant_2088660*)c->stats)) ok = true;
             code = 7;
         } else if (statusType == 0xe) {
-            if (!_Z22IsFlagBit2Set_021fb430P8S_flag2b((struct S_flag2b*)c) && !_Z22IsFlagBit4Set_021fb448P8S_flag4b((struct S_flag4b*)c)
-                && !_Z27IsFlagBit131072Set_021fb478P12S_flag131072((struct S_flag131072*)c)) ok = true;
+            if (!IsFlagBit2Set_021fb430((struct S_flag2b*)c) && !IsFlagBit4Set_021fb448((struct S_flag4b*)c)
+                && !IsFlagBit131072Set_021fb478((struct S_flag131072*)c)) ok = true;
             code = 7;
         } else if (statusType == 0xf) {
-            if (!_Z22IsFlagBit2Set_021fb430P8S_flag2b((struct S_flag2b*)c) && !_Z22IsFlagBit4Set_021fb448P8S_flag4b((struct S_flag4b*)c)
-                && !_Z27IsFlagBit131072Set_021fb478P12S_flag131072((struct S_flag131072*)c)) ok = true;
+            if (!IsFlagBit2Set_021fb430((struct S_flag2b*)c) && !IsFlagBit4Set_021fb448((struct S_flag4b*)c)
+                && !IsFlagBit131072Set_021fb478((struct S_flag131072*)c)) ok = true;
             code = 7;
         } else if (statusType == 0x10) {
-            if (!_Z29IsFlagBit67108864Set_021edc08P13S_flag4000000((struct S_flag4000000*)c)) ok = true;
+            if (!IsFlagBit67108864Set_021edc08((struct S_flag4000000*)c)) ok = true;
             code = 7;
         } else if (statusType == 0xb) {
-            if (!_Z23IsFlagBit22Set_021e47dcP16FlagObj_021e47dc((struct FlagObj_021e47dc*)c)) ok = true;
+            if (!IsFlagBit22Set_021e47dc((struct FlagObj_021e47dc*)c)) ok = true;
             code = 7;
         }
 
@@ -190,7 +190,7 @@ extern "C" ARM void func_ov024_021fd954(struct Obj_021fd954* obj, int statusType
         e.index = i;
         e.percent = percent;
         e.code = code;
-        _Z31AddEntryIfUnderLimit16_021f6a1cP21AddEntryList_021f6a1cPv((struct AddEntryList_021f6a1c*)&list, &e);
+        AddEntryIfUnderLimit16_021f6a1c((struct AddEntryList_021f6a1c*)&list, &e);
         if (action->kind != 0) {
             obj->list = &list;
             func_ov024_021f6a4c(&obj->entry, &e);

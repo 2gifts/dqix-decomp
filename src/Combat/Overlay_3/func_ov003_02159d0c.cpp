@@ -14,10 +14,10 @@ enum { kRegionValue998_868 = 0x998 };
 enum { kRegionValue34C0_3280 = 0x34c0 };
 #endif
 
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void* GetGlobalField0x1c020421a0(void);
+void* GetDataPtr02114e04_020d6c00(void);
 extern "C" void* func_0202ae18(void);
-extern "C" void _Z25AppendFieldTwice_02159290Pvii(void*, int, int);
+void AppendFieldTwice_02159290(void*, int, int);
 extern "C" void func_ov003_02159250(void*, void*);
 extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(void*, int, int);
 extern "C" int _Z18CheckField0NonZeroPi(void*);
@@ -26,20 +26,20 @@ extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
 extern "C" int func_ov003_0215bf18(void*, int);
 extern "C" int func_020457e0(void*);
 extern "C" void* func_0205ec34(void);
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(void*, int, void*);
+int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(void*);
 extern "C" void _Z16OrBitsIntoField0Pjj(void*, unsigned int);
 extern "C" void func_ov017_021d1118(int, int, int, int);
 extern "C" void func_ov017_021d1014(int, int, int);
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void*, int);
-extern "C" int _Z23CountEntriesType1WithIdi(int);
+int CountEntriesType1WithId(int);
 extern "C" void _Z19ClearStruct020a9ea4P14Struct020a9ea4(void*);
 extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv(void);
 extern "C" void _ZN16BackgroundLoader21FreeAllocationsGlobalEv(void);
 extern "C" int func_020aad1c(void*, void*, int, int);
 extern "C" void _ZN16BackgroundLoader16RemoveLockGlobalEv(void);
-extern "C" void _Z20StopAndReset0209c7fcPv(void*);
+void StopAndReset0209c7fc(void*);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv(void);
 extern "C" int _ZN16BackgroundLoader17GetNumQueuedTasksEv(void);
 extern "C" void* _ZN9GameState20GetUnknownGameObjectEv(void);
@@ -56,8 +56,8 @@ extern int data_0211e33c;
 // USA: func_ov003_02159d0c
 extern "C" ARM void func_ov003_02159d0c(void* self) {
     unsigned char* s = (unsigned char*)self;
-    unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
-    void* dp = _Z27GetDataPtr02114e04_020d6c00v();
+    unsigned char* g = (unsigned char*)GetGlobalField0x1c020421a0();
+    void* dp = GetDataPtr02114e04_020d6c00();
     void* f = func_0202ae18();
     char buf[0x34];
 
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
         if (*(unsigned char*)(s + 0x5b4) != 0) {
             if (*(unsigned char*)(s + 0x59d) != 0) return;
             memset(*(void**)(s + 0x7c), 0, kRegionValue960_800);
-            _Z25AppendFieldTwice_02159290Pvii(self, 0x3e8, 0x64);
+            AppendFieldTwice_02159290(self, 0x3e8, 0x64);
             func_ov003_02159250(self, *(void**)(s + 0x7c));
             *(unsigned char*)(s + 0x5b3) = 5;
             *(unsigned char*)(s + 0x580) = 2;
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
         if (r == -1) return;
         if (r == -2 || r == 1) {
             memset(*(void**)(s + 0x7c), 0, kRegionValue960_800);
-            _Z25AppendFieldTwice_02159290Pvii(self, 0x3f4, 0x3f5);
+            AppendFieldTwice_02159290(self, 0x3f4, 0x3f5);
             func_ov003_02159250(self, *(void**)(s + 0x7c));
             *(unsigned char*)(s + 0x580) = 4;
         } else if (r == 0) {
@@ -123,7 +123,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
             if (ok) return;
         }
         *(unsigned char*)(s + 0x59f) = *(unsigned char*)(s + 0x59f) | 0x10;
-        if (_Z28LookupAndForEachNode020649b0PviS_(func_0205ec34(), 0xc, buf)) {
+        if (LookupAndForEachNode020649b0(func_0205ec34(), 0xc, buf)) {
             func_0206f81c(buf);
         }
         if (*(unsigned char*)(s + 0x5b4) == 0) {
@@ -155,7 +155,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
 
     if (state == 0x65) {
         if (*(int*)(g + kRegionValue9A0_870) != 3) return;
-        if (_Z23CountEntriesType1WithIdi(0x3c) == 0) return;
+        if (CountEntriesType1WithId(0x3c) == 0) return;
         if (*(int*)(g + kRegionValue9A0_870) == 3) {
             *(unsigned char*)(g + 0x1000 + kRegionValue9AE_7DE) = 0;
         }
@@ -181,7 +181,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
         if (*(int*)(g + kRegionValue9A0_870) == 3) {
             *(unsigned char*)(g + 0x1000 + kRegionValue9AE_7DE) = 0;
         }
-        _Z20StopAndReset0209c7fcPv(&data_02109bf4);
+        StopAndReset0209c7fc(&data_02109bf4);
         _ZN16BackgroundLoader11GetInstanceEv();
         if (_ZN16BackgroundLoader17GetNumQueuedTasksEv() > 0) return;
         *(unsigned char*)(s + 0x59f) = *(unsigned char*)(s + 0x59f) & ~2;
@@ -194,7 +194,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
             _Z20AppendString02042058PcPKc(*(void**)(s + 0x7c),
                 _Z21GetFieldByKey020e0434P17Container020e0310i(s + 0x64, 0x3f3));
         } else {
-            _Z25AppendFieldTwice_02159290Pvii(self, 0x3f3, 0x3f5);
+            AppendFieldTwice_02159290(self, 0x3f3, 0x3f5);
         }
         func_ov003_02159250(self, *(void**)(s + 0x7c));
         _Z18ClearFlags020466f4P16FlagWord020466f4j(dp, 0x80);

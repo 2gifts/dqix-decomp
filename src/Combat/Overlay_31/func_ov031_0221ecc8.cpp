@@ -12,7 +12,7 @@ extern State0221ecc8 data_ov031_0224f620;
 int DispatchOnZeroPair_0220cdd4(int, int, int);
 extern "C" int func_ov031_0220d010(int, int, int);
 extern "C" int func_ov031_0220cce4();
-extern "C" void _Z33ClearHandleIfStatusReady_0220ca88v();
+void ClearHandleIfStatusReady_0220ca88();
 
 // USA: func_ov031_0221ecc8
 extern "C" THUMB void func_ov031_0221ecc8(Event0221ecc8* event) {
@@ -116,7 +116,7 @@ extern "C" THUMB void func_ov031_0221ecc8(Event0221ecc8* event) {
     case 2:
         if (event->result == 0) {
             if (data_ov031_0224f620.state == 2) {
-                _Z33ClearHandleIfStatusReady_0220ca88v();
+                ClearHandleIfStatusReady_0220ca88();
                 data_ov031_0224f620.state = 0;
                 if (data_ov031_0224f620.handler) data_ov031_0224f620.handler(20, 0);
             }

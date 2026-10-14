@@ -34,13 +34,13 @@ enum { kRegion2e0 = 0x2e0 };
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+int GetGlobalField0x1c020421a0(void);
+void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord020466f4;
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(struct FlagWord020466f4* word, unsigned int mask);
+void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 struct ClearTarget0205a244;
-extern "C" void _Z23ClearField0And40205a244P19ClearTarget0205a244(struct ClearTarget0205a244* target);
-extern "C" void _Z23EmptyDestructor0205a494Pv(void* obj);
+void ClearField0And40205a244(struct ClearTarget0205a244* target);
+void EmptyDestructor0205a494(void* obj);
 extern "C" void _Z32ResetSubBg1AndClearCache020a64e8v(void* obj);
 struct Struct02074bd0;
 void ClearFlag0x10IfSet(struct Struct02074bd0* obj);
@@ -53,7 +53,7 @@ struct List020727d8 {
     short capacity;
     short count;
 };
-extern "C" void _Z23ResetListHeader020727ecP12List020727d8(struct List020727d8* list);
+void ResetListHeader020727ec(struct List020727d8* list);
 void CleanCacheRange(const void* addr, unsigned int size);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" int LoadToMainBG1CharacterData(const void* src, unsigned int offset, unsigned int size);
@@ -79,11 +79,11 @@ struct BattleScene_02173d40 {
 extern "C" ARM void func_ov003_02173d40(BattleScene_02173d40* scene) {
     GameState* gs = GameState::GetInstance();
     GameResources* resources = func_ov017_0218b5b0();
-    unsigned char* global = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
-    _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v(), 0x1000);
+    unsigned char* global = (unsigned char*)GetGlobalField0x1c020421a0();
+    ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x1000);
     global[0x1000 + kRegion9be] = 0;
-    _Z23ClearField0And40205a244P19ClearTarget0205a244(scene->field_0x12c);
-    _Z23EmptyDestructor0205a494Pv(scene->field_0x130);
+    ClearField0And40205a244(scene->field_0x12c);
+    EmptyDestructor0205a494(scene->field_0x130);
     _Z32ResetSubBg1AndClearCache020a64e8v(scene->field_0xd8);
     *(volatile int*)0x4001010 = 0;
     ClearFlag0x10IfSet((struct Struct02074bd0*)scene->field_0xfa);
@@ -96,9 +96,9 @@ extern "C" ARM void func_ov003_02173d40(BattleScene_02173d40* scene) {
 
     ClearBitsInWord(&resources->brightnessFlags_0, 4);
     ClearBitsInField4(&resources->brightnessFlags_0, 0x81e);
-    _Z23ResetListHeader020727ecP12List020727d8(&scene->lists[0]);
-    _Z23ResetListHeader020727ecP12List020727d8(&scene->lists[1]);
-    _Z23ResetListHeader020727ecP12List020727d8(&scene->lists[2]);
+    ResetListHeader020727ec(&scene->lists[0]);
+    ResetListHeader020727ec(&scene->lists[1]);
+    ResetListHeader020727ec(&scene->lists[2]);
     scene->allocators[0].Destroy();
     scene->allocators[1].Destroy();
     scene->allocators[2].Destroy();

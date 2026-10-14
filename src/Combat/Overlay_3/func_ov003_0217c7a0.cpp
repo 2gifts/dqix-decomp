@@ -41,15 +41,15 @@ struct Scene0217c7a0
 };
 
 extern "C" GameResources* func_ov017_0218b5b0(void);
-extern "C" void _Z19ClearBuffer0204b010P11Obj0204b010Pv(Obj0204b010* obj, void* buf);
+void ClearBuffer0204b010(Obj0204b010* obj, void* buf);
 extern "C" void func_0204b04c(void* obj, int flag);
 extern "C" void func_0204b088(void* obj, int flag);
-extern "C" void _Z23ResetRecordList0204afb4P12List0204afb4(List0204afb4* list);
+void ResetRecordList0204afb4(List0204afb4* list);
 void Set3DClearColor(int a, int b, int c, int d, int e);
 void ApplyVec3Tail(void* obj, int* vec);
 void SetField0x238True(void* obj);
 void ApplyVecFromField0x21e(char* obj);
-extern "C" int _Z24SetPowCnt1Bit15_0217c2a0i(int enable);
+int SetPowCnt1Bit15_0217c2a0(int enable);
 void ClearCombatantSlot(GameState* gs, int id);
 
 // USA: func_ov003_0217c7a0
@@ -96,14 +96,14 @@ extern "C" ARM void func_ov003_0217c7a0(Scene0217c7a0* self)
         loader->RemoveTask(self->taskC);
         self->taskC = -1;
 
-        _Z19ClearBuffer0204b010P11Obj0204b010Pv((Obj0204b010*)&self->listA, 0);
+        ClearBuffer0204b010((Obj0204b010*)&self->listA, 0);
         func_0204b04c(&self->listA, 0);
         func_0204b088(&self->listA, 0);
-        _Z23ResetRecordList0204afb4P12List0204afb4((List0204afb4*)&self->listA);
-        _Z19ClearBuffer0204b010P11Obj0204b010Pv((Obj0204b010*)&self->listB, 0);
+        ResetRecordList0204afb4((List0204afb4*)&self->listA);
+        ClearBuffer0204b010((Obj0204b010*)&self->listB, 0);
         func_0204b04c(&self->listB, 0);
         func_0204b088(&self->listB, 0);
-        _Z23ResetRecordList0204afb4P12List0204afb4((List0204afb4*)&self->listB);
+        ResetRecordList0204afb4((List0204afb4*)&self->listB);
 
         Set3DClearColor(0, 0, 0x7fff, 0, 0);
         Camera0217c7a0* camera = (Camera0217c7a0*)GetField0x3b0Value(gs);
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov003_0217c7a0(Scene0217c7a0* self)
         ApplyVec3Tail(camera, self->cameraTail);
         SetField0x238True(camera);
         ApplyVecFromField0x21e((char*)camera);
-        _Z24SetPowCnt1Bit15_0217c2a0i(0);
+        SetPowCnt1Bit15_0217c2a0(0);
         ClearCombatantSlot(gs, 0xa0);
         self->finished = 1;
     }

@@ -9,7 +9,7 @@ struct Obj020979c0;
 extern "C" void func_020a0cc4(unsigned int size);
 extern "C" void func_020a0c0c(void);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z18InitStruct020979c0P11Obj020979c0h(Obj020979c0* obj, unsigned char flag);
+void InitStruct020979c0(Obj020979c0* obj, unsigned char flag);
 extern "C" void func_020a1940(unsigned int id);
 void PushInputLogB(int value);
 void PopStack1AndTrigger(int value);
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov017_021c03a4(Task021c03a4* task) {
             task->failed = 1;
             return;
         }
-        _Z18InitStruct020979c0P11Obj020979c0h((Obj020979c0*)task->f1c, 1);
+        InitStruct020979c0((Obj020979c0*)task->f1c, 1);
         func_020a1940(OVERLAY_ID(14));
         PushInputLogB(1);
         func_ov014_02186a70(task->f20);

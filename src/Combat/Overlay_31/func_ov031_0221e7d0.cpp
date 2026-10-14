@@ -10,7 +10,7 @@ struct Handlers0221e7d0 {
     void* context;
     void (*completion)(void*);
 };
-extern "C" void _Z18InitStruct020c7de4P16InitData020c7de4ii(InitData020c7de4* queue, int buffer, int capacity);
+void InitStruct020c7de4(InitData020c7de4* queue, int buffer, int capacity);
 extern "C" int func_ov031_0221f26c(int (*handler)(int), void* context, int size);
 extern "C" int func_ov031_0221e7a8(int message);
 extern "C" int func_020c7ea0(InitData020c7de4* queue, int* message, int blocking);
@@ -21,7 +21,7 @@ extern Handlers0221e7d0 data_ov031_0224f4c0;
 // USA: func_ov031_0221e7d0
 extern "C" THUMB int func_ov031_0221e7d0(void* (*allocate)(void*), void (*completion)(void*)) {
     int running = 1;
-    _Z18InitStruct020c7de4P16InitData020c7de4ii(&data_ov031_0224f4e0, (int)data_ov031_0224f4d0, 4);
+    InitStruct020c7de4(&data_ov031_0224f4e0, (int)data_ov031_0224f4d0, 4);
     if (allocate == NULL || completion == NULL) return -1;
     int interruptState = DisableIRQInterrupts();
     data_ov031_0224f4c0.allocate = allocate;

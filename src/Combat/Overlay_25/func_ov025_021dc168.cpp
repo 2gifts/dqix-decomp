@@ -4,7 +4,7 @@
 
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(int a, short* buf, int max, int start);
-extern "C" void* _Z18GetSlotPtr02160f20Pv(void* obj);
+void* GetSlotPtr02160f20(void* obj);
 int CheckSubstructFlag0x10(unsigned char* obj);
 extern "C" void func_ov025_021dc220(void* obj);
 
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov025_021dc168(struct Obj021dc168* obj) {
     n = n + func_ov000_0215ec1c(field29c, buf + n, 12 - n, 0);
 
     if (obj->field_eac == 2) {
-        struct List021dc168* list = (struct List021dc168*)_Z18GetSlotPtr02160f20Pv(obj);
+        struct List021dc168* list = (struct List021dc168*)GetSlotPtr02160f20(obj);
         struct ListNode021dc168* node = list->head;
         int ready = 1;
         while (node != NULL) {

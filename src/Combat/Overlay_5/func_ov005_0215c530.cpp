@@ -140,18 +140,18 @@ struct StructDE1D4;
 struct Obj0205eaa0;
 
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
-extern "C" unsigned char* _Z17GetPtrField0x2a04P9GameState(GameState*);
-extern "C" short* _Z24GetPointerFromArray0xbd0Phj(unsigned char*, unsigned int);
-extern "C" signed char* _Z17GetPointerAt0xbf0Pvj(void*, unsigned int);
-extern "C" void _Z15Compact0207c51cPhi(unsigned char*, int);
-extern "C" void _Z22ClearElements_021e1518Pv(void*);
-extern "C" void _Z19BuildChain_021e1b5cPviii(void*, int, int, int);
-extern "C" void _Z19BuildChain_021e1b0cPviii(void*, int, int, int);
-extern "C" Member0215c530* _Z19GetField1c_021a193cPi(int*);
-extern "C" void _Z18InitStruct020de1d4P11StructDE1D4(StructDE1D4*);
+unsigned char* GetPtrField0x2a04(GameState*);
+short* GetPointerFromArray0xbd0(unsigned char*, unsigned int);
+signed char* GetPointerAt0xbf0(void*, unsigned int);
+void Compact0207c51c(unsigned char*, int);
+void ClearElements_021e1518(void*);
+void BuildChain_021e1b5c(void*, int, int, int);
+void BuildChain_021e1b0c(void*, int, int, int);
+Member0215c530* GetField1c_021a193c(int*);
+void InitStruct020de1d4(StructDE1D4*);
 extern "C" void* memset(void*, int, unsigned int);
 extern "C" void* memcpy(void*, const void*, unsigned int);
-extern "C" Entry0215c530* _Z22FindEntryById_021db08cPvi(void*, int);
+Entry0215c530* FindEntryById_021db08c(void*, int);
 extern "C" int func_020dd4c4(int, Item0215c530*);
 extern "C" void func_ov005_021579ec(Menu0215c530*, unsigned int, unsigned char);
 extern "C" void func_0205bb04(void*, int);
@@ -171,24 +171,24 @@ extern char data_02108760[];
 // USA: func_ov005_0215c530
 extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
 {
-    unsigned char* bag = _Z17GetPtrField0x2a04P9GameState(_ZN9GameState11GetInstanceEv());
+    unsigned char* bag = GetPtrField0x2a04(_ZN9GameState11GetInstanceEv());
     int count = self->counts[self->tab];
-    short* ids = _Z24GetPointerFromArray0xbd0Phj(bag + 0x1d4, data_ov005_0215cd08[self->tab]);
-    signed char* amounts = _Z17GetPointerAt0xbf0Pvj(bag + 0x1d4, data_ov005_0215cd08[self->tab]);
-    _Z15Compact0207c51cPhi(bag + 0x1d4, data_ov005_0215cd00[self->tab]);
+    short* ids = GetPointerFromArray0xbd0(bag + 0x1d4, data_ov005_0215cd08[self->tab]);
+    signed char* amounts = GetPointerAt0xbf0(bag + 0x1d4, data_ov005_0215cd08[self->tab]);
+    Compact0207c51c(bag + 0x1d4, data_ov005_0215cd00[self->tab]);
 
     int rebuild = 0;
     int reorder = 0;
     if (self->modes[self->tab] == 0 || self->modes[self->tab] == 1)
     {
-        _Z22ClearElements_021e1518Pv(&self->head);
-        _Z19BuildChain_021e1b5cPviii(&self->head, -1, data_ov005_0215cd00[self->tab], -1);
+        ClearElements_021e1518(&self->head);
+        BuildChain_021e1b5c(&self->head, -1, data_ov005_0215cd00[self->tab], -1);
         rebuild = 1;
     }
     else if (self->modes[self->tab] == 3)
     {
-        _Z22ClearElements_021e1518Pv(&self->head);
-        _Z19BuildChain_021e1b0cPviii(&self->head, -1, data_ov005_0215cd00[self->tab], -1);
+        ClearElements_021e1518(&self->head);
+        BuildChain_021e1b0c(&self->head, -1, data_ov005_0215cd00[self->tab], -1);
         rebuild = 1;
     }
     else if (self->modes[self->tab] == 2)
@@ -230,10 +230,10 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
         }
         else
         {
-            signed char member = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->member;
+            signed char member = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->member;
             Item0215c530 item;
             ItemDef0215c530 def;
-            _Z18InitStruct020de1d4P11StructDE1D4((StructDE1D4*)&item);
+            InitStruct020de1d4((StructDE1D4*)&item);
             memset(&def, 0, 0x20);
             item.def = &def;
             int n = 0;
@@ -243,11 +243,11 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
                 short id = ids[i];
                 if (id > 0)
                 {
-                    _Z18InitStruct020de1d4P11StructDE1D4((StructDE1D4*)&item);
+                    InitStruct020de1d4((StructDE1D4*)&item);
                     memset(&def, 0, 0x20);
                     Entry0215c530* entry;
                     item.def = &def;
-                    entry = _Z22FindEntryById_021db08cPvi(&self->entryList, id);
+                    entry = FindEntryById_021db08c(&self->entryList, id);
                     if (entry)
                     {
                         item.id = entry->id;
@@ -275,7 +275,7 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
                     }
                 }
             }
-            _Z15Compact0207c51cPhi(bag + 0x1d4, data_ov005_0215cd00[self->tab]);
+            Compact0207c51c(bag + 0x1d4, data_ov005_0215cd00[self->tab]);
             memcpy(outIds + n, ids, rejected * 2);
             memcpy(outAmounts + n, amounts, rejected);
         }

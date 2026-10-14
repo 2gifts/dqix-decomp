@@ -63,21 +63,21 @@ enum { WindowAllocationSize = 0x500 };
 #endif
 void SetWord0x18ClearByte0x1f(unsigned char*, int);
 extern "C" void func_0204b5b4(Node0x20_021a5ad0*, unsigned char);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8*, int, int);
+void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 extern "C" void ColorEffect_ConfigureAlphaBlend(void*, int, int, int, int);
 int CountActiveEntries(ActiveEntry02046900*);
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 extern "C" void func_0204b174(Node0x20_021a5ad0*, void*, SafeAllocator*, int);
-extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198*);
-extern "C" void _Z18InitStruct0205a444Pc(char*);
+void Init0205a198(Struct0205a198*);
+void InitStruct0205a444(char*);
 extern "C" int func_0205a528(Script021a5cbc*, void*, int, SafeAllocator*);
-extern "C" void _Z29FillFieldWithEncoded_021a5ad0P17Node0x20_021a5ad0ii(Node0x20_021a5ad0*, int, int);
+void FillFieldWithEncoded_021a5ad0(Node0x20_021a5ad0*, int, int);
 extern "C" void func_0204bc74(Node0x20_021a5ad0*, int, int, int, int, int, int);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8*, void*);
-extern "C" void _Z30ClearAndEncodeField14_021a5b08P17Node0x20_021a5ad0i(Node0x20_021a5ad0*, int);
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(Obj0204c7a8*, SafeAllocator*, int, unsigned int);
-extern "C" void _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h(Struct_0205cf78*, Elem_0205cf78*, unsigned char);
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08*);
+void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
+void ClearAndEncodeField14_021a5b08(Node0x20_021a5ad0*, int);
+void AllocateBuffer0204c7a8(Obj0204c7a8*, SafeAllocator*, int, unsigned int);
+void LinkArrayPrevPointers0205cf78(Struct_0205cf78*, Elem_0205cf78*, unsigned char);
+int NormalizeField5_0200fb08(Struct0200fb08*);
 extern "C" void func_0205d304(Config021a5cbc*, const char*, int, unsigned char, unsigned char, unsigned char, void*
 #if !defined(jpn)
     , unsigned char
@@ -109,7 +109,7 @@ extern "C" ARM void func_ov017_021a5cbc(GameResources* self) {
             node->low = 0;
             node->high = priorities.values[i];
             func_0204b5b4(node, styles.values[i]);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)node, 0, 0);
+            DispatchViaTable0204b5e8((Obj0204b5e8*)node, 0, 0);
         }
         REG_DISPLAY_CONTROL = (REG_DISPLAY_CONTROL & ~0x1f00) | 0x100;
         REG_BACKGROUND_1 = (REG_BACKGROUND_1 & 0x43) | 0x1d00;
@@ -133,8 +133,8 @@ extern "C" ARM void func_ov017_021a5cbc(GameResources* self) {
         }
         loader->RemoveTask((*reinterpret_cast<int*>(self->unknown_4094 + 0x128)));
         (*reinterpret_cast<int*>(self->unknown_4094 + 0x128)) = -1;
-        for (int i = 0; i < 7; ++i) _Z12Init0205a198P14Struct0205a198(&reinterpret_cast<Struct0205a198*>(self->unknown_41c8)[i]);
-        _Z18InitStruct0205a444Pc((char*)static_cast<Script021a5cbc*>(self->unknown_ptr_41c4));
+        for (int i = 0; i < 7; ++i) Init0205a198(&reinterpret_cast<Struct0205a198*>(self->unknown_41c8)[i]);
+        InitStruct0205a444((char*)static_cast<Script021a5cbc*>(self->unknown_ptr_41c4));
         static_cast<Script021a5cbc*>(self->unknown_ptr_41c4)->active = 0;
         Script021a5cbc* script = static_cast<Script021a5cbc*>(self->unknown_ptr_41c4);
         script->records = reinterpret_cast<Struct0205a198*>(self->unknown_41c8);
@@ -160,20 +160,20 @@ extern "C" ARM void func_ov017_021a5cbc(GameResources* self) {
         }
         loader->RemoveTask((*reinterpret_cast<int*>(self->unknown_4094 + 0x128)));
         (*reinterpret_cast<int*>(self->unknown_4094 + 0x128)) = -1;
-        _Z29FillFieldWithEncoded_021a5ad0P17Node0x20_021a5ad0ii(reinterpret_cast<Node0x20_021a5ad0*>(self->unknown_4094), 2, 0x800);
+        FillFieldWithEncoded_021a5ad0(reinterpret_cast<Node0x20_021a5ad0*>(self->unknown_4094), 2, 0x800);
         for (int i = 0; i < 2; ++i) {
             Node0x20_021a5ad0* node = &reinterpret_cast<Node0x20_021a5ad0*>(self->unknown_4094)[i];
             func_0204bc74(node, 0, 0, 0, 0x20, 0x19, 0);
-            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)node, 0);
+            FlushAndDispatchList0204b0e8((List0204b0e8*)node, 0);
         }
-        _Z30ClearAndEncodeField14_021a5b08P17Node0x20_021a5ad0i(reinterpret_cast<Node0x20_021a5ad0*>(self->unknown_4094), 2);
+        ClearAndEncodeField14_021a5b08(reinterpret_cast<Node0x20_021a5ad0*>(self->unknown_4094), 2);
         (*reinterpret_cast<void**>(self->unknown_4094 + 0x120)) = self->allocator_array_38[16].Allocate(WindowAllocationSize);
-        _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(&(*reinterpret_cast<Obj0204c7a8*>(self->unknown_4094 + 0x40)), &self->allocator_array_38[16], (int)(*reinterpret_cast<void**>(self->unknown_4094 + 0x120)), 0x40);
+        AllocateBuffer0204c7a8(&(*reinterpret_cast<Obj0204c7a8*>(self->unknown_4094 + 0x40)), &self->allocator_array_38[16], (int)(*reinterpret_cast<void**>(self->unknown_4094 + 0x120)), 0x40);
         (*reinterpret_cast<Obj0204c7a8*>(self->unknown_4094 + 0x40)).head = reinterpret_cast<Node0x20_021a5ad0*>(self->unknown_4094 + sizeof(Node0x20_021a5ad0));
         Config021a5cbc* nodeConfig = static_cast<Config021a5cbc*>(self->unknown_ptr_array_4088[2]);
         nodeConfig->nodes = reinterpret_cast<Node0x20_021a5ad0*>(self->unknown_4094);
         nodeConfig->count = 2;
-        _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78*)static_cast<Config021a5cbc*>(self->unknown_ptr_array_4088[2]), (Elem_0205cf78*)&(*reinterpret_cast<Obj0204c7a8*>(self->unknown_4094 + 0x40)), 1);
+        LinkArrayPrevPointers0205cf78((Struct_0205cf78*)static_cast<Config021a5cbc*>(self->unknown_ptr_array_4088[2]), (Elem_0205cf78*)&(*reinterpret_cast<Obj0204c7a8*>(self->unknown_4094 + 0x40)), 1);
         REG_BACKGROUND_0 = (REG_BACKGROUND_0 & ~3) | 2;
         REG_BACKGROUND_1 = (REG_BACKGROUND_1 & ~3) | 1;
         REG_BACKGROUND_2 = REG_BACKGROUND_2 & ~3;
@@ -184,7 +184,7 @@ extern "C" ARM void func_ov017_021a5cbc(GameResources* self) {
         int left = 9;
 #else
         Widths021a5cbc widths = *(const Widths021a5cbc*)data_ov017_021d6a94;
-        int index = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)GameState::GetInstance());
+        int index = NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance());
         int left = widths.values[index - 1];
 #endif
         config->left = left;

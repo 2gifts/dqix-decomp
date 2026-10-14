@@ -10,9 +10,9 @@ enum { SelectedEntryOffset = 0x5cda, PackedEntriesOffset = 0x5cdc };
 extern "C" int _ZN9GameState11GetInstanceEv();
 
 struct Struct0208e9f4;
-extern "C" void _Z20InitDefaults0208e9f4P14Struct0208e9f4(struct Struct0208e9f4*);
+void InitDefaults0208e9f4(struct Struct0208e9f4*);
 
-extern "C" void _Z29SetByte0x5cdaAndClearField0xaPhh(unsigned char* obj, unsigned char value);
+void SetByte0x5cdaAndClearField0xa(unsigned char* obj, unsigned char value);
 extern "C" void func_0208ec04(struct Struct0208e9f4*);
 extern "C" void* func_0208e0a8(void);
 extern "C" int rand(void);
@@ -23,7 +23,7 @@ extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct Rese
 extern "C" int _ZN6Script4LoadEPKvj(struct ResetStruct0208ea10*, const void*, unsigned int);
 extern "C" int _ZN6Script7ExecuteEv(struct ResetStruct0208ea10*);
 
-extern "C" void* _Z18LoadFileIntoMemoryPKcPvPj(const char*, void*, unsigned int*);
+void* LoadFileIntoMemory(const char*, void*, unsigned int*);
 extern "C" void* _Z13GetFileInNarcPKvPKcPS0_Pjj(const void*, const char*, void**, void**, unsigned int);
 
 extern "C" void __clear(void*, int);
@@ -67,8 +67,8 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
     unsigned char* gs = (unsigned char*)_ZN9GameState11GetInstanceEv();
 
     if (gs[SelectedEntryOffset] == 8) {
-        _Z20InitDefaults0208e9f4P14Struct0208e9f4((struct Struct0208e9f4*)p0);
-        _Z29SetByte0x5cdaAndClearField0xaPhh(gs, rand() % 8);
+        InitDefaults0208e9f4((struct Struct0208e9f4*)p0);
+        SetByte0x5cdaAndClearField0xa(gs, rand() % 8);
     } else {
         func_0208ec04((struct Struct0208e9f4*)p0);
         return;
@@ -78,7 +78,7 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
     __clear(name, 0x40);
     fileLen = 0;
 
-    if (_Z18LoadFileIntoMemoryPKcPvPj(data_020f1330, data_0211e33c, &fileLen) != 0) {
+    if (LoadFileIntoMemory(data_020f1330, data_0211e33c, &fileLen) != 0) {
         if (_Z13GetFileInNarcPKvPKcPS0_Pjj(data_0211e33c, data_020f134a, (void**)&ptr, (void**)&size, 0) != 0) {
             _ZN6Script10InitializeEv((struct ResetStruct0208ea10*)scriptFirst);
             _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct0208ea10*)scriptFirst, &data_020f1308);

@@ -23,42 +23,42 @@ struct Node0217df08 {
 
 struct Messages0217df08 {
     char pad0[0x10];
-    void* names;                       // 0x10
+    void* names;
     char pad14[0x20 - 0x14];
-    NameParts0217df08* parts;          // 0x20
+    NameParts0217df08* parts;
     char pad24[0x30 - 0x24];
-    signed char count30;               // 0x30
-    signed char count31;               // 0x31
+    signed char count30;
+    signed char count31;
     char pad32[0x5c - 0x32];
-    char* work;                        // 0x5c
-    char* text;                        // 0x60
+    char* work;
+    char* text;
     char pad64[0x998 - 0x64];
-    int active;                        // 0x998
+    int active;
 };
 
 struct Battle0217df08 {
     char pad0[0xb8];
     char messages[0x90c - 0xb8];
-    int taskId;                        // 0x90c
+    int taskId;
     char pad910[0x950 - 0x910];
-    int f950;                          // 0x950
-    unsigned char f954;                // 0x954
-    unsigned char f955;                // 0x955
+    int f950;
+    unsigned char f954;
+    unsigned char f955;
     char pad956[0x1d3c - 0x956];
-    int combatantIds[8];               // 0x1d3c
+    int combatantIds[8];
     char pad1d5c[0x1d60 - 0x1d5c];
-    signed char commands[8];           // 0x1d60
-    signed char index;                 // 0x1d68
+    signed char commands[8];
+    signed char index;
     char pad1d69[0x1d70 - 0x1d69];
-    unsigned char state;               // 0x1d70
+    unsigned char state;
     char pad1d71;
-    unsigned short flags;              // 0x1d72
+    unsigned short flags;
 };
 
-extern "C" Messages0217df08* _Z26GetGlobalField0x1c020421a0v();
+Messages0217df08* GetGlobalField0x1c020421a0();
 extern "C" Node0217df08* func_ov000_02161318(void* obj, int id);
 int IsFlag0x28Bit0Set(void*);
-extern "C" void _Z20Clear12Bytes020e46c4Pv(void*);
+void Clear12Bytes020e46c4(void*);
 extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
 extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" int sprintf(char* buffer, const char* format, ...);
@@ -67,11 +67,11 @@ extern "C" void func_020e4ce8(NameParts0217df08*, Combatant0217df08*, int);
 extern "C" int func_ov000_0217ff34(void* self, int id, int* amount);
 extern "C" void func_02046380(Messages0217df08*);
 void InitObjFromCombatantId020e4bf4(void*, int);
-extern "C" void _Z20AppendString02042058PcPKc(char*, const char*);
+void AppendString02042058(char*, const char*);
 extern "C" char* func_020e046c(char* buf, void* data, unsigned int size, int idx);
 extern "C" void func_02046608(Messages0217df08*, int, char*, char*, int, int, int);
 extern "C" void __clear(void*, int);
-extern "C" void _Z31TrimTrailingLetterCode_0217aa08PcS_(char*, char*);
+void TrimTrailingLetterCode_0217aa08(char*, char*);
 extern "C" void func_020e4f18(NameParts0217df08*, NameParts0217df08*, int);
 extern "C" void func_0204500c(Messages0217df08*, char*, int, int);
 extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(void* p, int mask);
@@ -87,7 +87,7 @@ extern unsigned char data_02114e30;
 // USA: func_ov000_0217df08
 extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2) {
     GameState* gs = GameState::GetInstance();
-    Messages0217df08* g = _Z26GetGlobalField0x1c020421a0v();
+    Messages0217df08* g = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
 
     if (self->state == 0) {
@@ -119,8 +119,8 @@ extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2
                 NameParts0217df08 names;
                 NameParts0217df08 parts;
                 NameParts0217df08 original;
-                _Z20Clear12Bytes020e46c4Pv(&names);
-                _Z20Clear12Bytes020e46c4Pv(&parts);
+                Clear12Bytes020e46c4(&names);
+                Clear12Bytes020e46c4(&parts);
                 const char* separator = _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, 6);
                 char* work = g->work;
                 char* text = g->text;
@@ -160,12 +160,12 @@ extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2
                             g->parts = &parts;
                             g->names = &names;
                             if (appended != 0) {
-                                _Z20AppendString02042058PcPKc(text, separator);
+                                AppendString02042058(text, separator);
                             }
                             appended = 1;
                             memset(work, 0, 0x960);
                             func_020e046c(work, data, size, msg);
-                            _Z20AppendString02042058PcPKc(text, work);
+                            AppendString02042058(text, work);
                             memset(work, 0, 0x960);
                             g->count30 = present;
                             g->count31 = ready;
@@ -189,8 +189,8 @@ extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2
                     __clear(singular, 0x80);
                     char plural[0x80];
                     __clear(plural, 0x80);
-                    _Z31TrimTrailingLetterCode_0217aa08PcS_(parts.singular, singular);
-                    _Z31TrimTrailingLetterCode_0217aa08PcS_(parts.plural, plural);
+                    TrimTrailingLetterCode_0217aa08(parts.singular, singular);
+                    TrimTrailingLetterCode_0217aa08(parts.plural, plural);
                     parts.singular = singular;
                     parts.plural = plural;
                     func_020e4f18(&original, &parts, 2);

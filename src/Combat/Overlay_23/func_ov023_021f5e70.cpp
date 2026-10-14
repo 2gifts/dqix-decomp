@@ -65,7 +65,7 @@ struct RC4Context_021f5e70
     char unk_0[0x104];
 };
 
-extern "C" unsigned long long _Z23ComputeModHash_021f6324iPh(int size, unsigned char* data);
+unsigned long long ComputeModHash_021f6324(int size, unsigned char* data);
 extern "C" void func_ov031_022118a8(RC4Context_021f5e70* context, const char* key, int length);
 extern "C" void Rc4Crypt_02211938(RC4Context_021f5e70* context, const void* input, int size, void* output);
 
@@ -79,7 +79,7 @@ extern "C" ARM int func_ov023_021f5e70(unsigned char* data, int size, void* buff
 {
     Script counter;
     Script script;
-    if (_Z23ComputeModHash_021f6324iPh(size, data) != 0)
+    if (ComputeModHash_021f6324(size, data) != 0)
         return 0;
     int i;
     RC4Context_021f5e70 context;

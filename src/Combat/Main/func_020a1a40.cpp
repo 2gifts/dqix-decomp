@@ -4,8 +4,8 @@
 #include "Filesystem/OverlayFSManagement.h"
 #include "Filesystem/FSInnerDefs.h"
 
-extern "C" void _Z22DispatchByFlag020d9834i(int flag);
-extern "C" void _Z18NitroVM_InitializeP7NitroVM(NitroVM* vm);
+void DispatchByFlag020d9834(int flag);
+void NitroVM_Initialize(NitroVM* vm);
 extern "C" unsigned int _Z21LoadCompressedOverlayRK15OverlayMetadataP7NitroVM(const OverlayMetadata* overlay, NitroVM* machine);
 extern "C" void _Z18NitroVM_FinishReadP7NitroVM(NitroVM* vm);
 extern "C" void _Z36DecompressAndStaticInitializeOverlayRK15OverlayMetadata(const OverlayMetadata* overlay);
@@ -38,12 +38,12 @@ extern "C" ARM int func_020a1a40(unsigned int id) {
         if (cur != (int)id) {
             func_020a1ccc(cur);
             while (data_01ffd340) {
-                _Z22DispatchByFlag020d9834i(0);
+                DispatchByFlag020d9834(0);
             }
             data_01ffd340 = 1;
             LockResourceMutex();
             meta = &data_01ffd394[id];
-            _Z18NitroVM_InitializeP7NitroVM(&machine);
+            NitroVM_Initialize(&machine);
             ok = _Z21LoadCompressedOverlayRK15OverlayMetadataP7NitroVM(meta, &machine);
             UnlockResourceMutex();
             if (ok) {
@@ -52,7 +52,7 @@ extern "C" ARM int func_020a1a40(unsigned int id) {
                     if (!GET_FLAG_BIT(machine.flags, NITROVM_FLAG_IN_HANDLE_QUEUE)) {
                         break;
                     }
-                    _Z22DispatchByFlag020d9834i(0);
+                    DispatchByFlag020d9834(0);
                 }
                 LockResourceMutex();
                 _Z18NitroVM_FinishReadP7NitroVM(&machine);

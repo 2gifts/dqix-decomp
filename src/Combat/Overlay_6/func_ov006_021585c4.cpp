@@ -30,8 +30,8 @@ struct Canvas;
 
 Canvas* FindElementByByte0xc4(Obj2081*, int);
 int CheckField0x9cSetWhenField0xd4Present(unsigned char*);
-extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(Outer020e28dc*);
-extern "C" void _Z29GetLookAndTurnOffsets020809c4PviiPsS0_(void*, int, int, short*, short*);
+int GetInnerFlagBit0020e28dc(Outer020e28dc*);
+void GetLookAndTurnOffsets020809c4(void*, int, int, short*, short*);
 void UpdateEntryStateAndPosition(Ctx020e263c*, int);
 void SetEntryPositionFromObject(WinObj020e28f0*, short, short);
 extern "C" void func_0205ae8c(void*);
@@ -143,11 +143,11 @@ extern "C" ARM void func_ov006_021585c4(AlchemyMenu* self)
         return;
     if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)canvas) || self->choice_ == 0)
         return;
-    if (_Z24GetInnerFlagBit0020e28dcP13Outer020e28dc((Outer020e28dc*)self->choice_))
+    if (GetInnerFlagBit0020e28dc((Outer020e28dc*)self->choice_))
         return;
     short x;
     short y;
-    _Z29GetLookAndTurnOffsets020809c4PviiPsS0_(self->menu_, self->group_, *self->cursor_, &x, &y);
+    GetLookAndTurnOffsets020809c4(self->menu_, self->group_, *self->cursor_, &x, &y);
     UpdateEntryStateAndPosition((Ctx020e263c*)self->choice_, self->ticks_);
     x -= 0x10;
     y -= 3;

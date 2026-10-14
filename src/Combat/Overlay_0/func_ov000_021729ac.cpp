@@ -6,10 +6,10 @@
 extern "C" void* func_0203bd08(void);
 extern "C" unsigned short GetSubBGVRAMBanks(void);
 extern "C" void MapVRAMBanksToSubBG(int banks);
-extern "C" char* _Z20GetGlobalPtr02105244v();
+char* GetGlobalPtr02105244();
 extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(void* obj);
 extern "C" void func_020dfec0(void* dest, void* allocator, void* fileData, unsigned int size);
-extern "C" void _Z16ZeroInit020de848Pv(void* obj);
+void ZeroInit020de848(void* obj);
 extern "C" void func_020dea64(void* list, void* alloc, void* data, unsigned int size, const void* entries, int count);
 extern "C" void __clear(void* dst, unsigned int size);
 extern "C" char* func_ov017_021b8478(void* obj);
@@ -18,8 +18,8 @@ extern "C" int _Z23GetElementCount02070fe4P14Struct02070fe4(void* list);
 extern "C" int func_020de9a4(void* list, void* alloc, void* data, unsigned int size, void* entries, unsigned short count);
 extern "C" char* _Z21GetFieldByKey020e0434P17Container020e0310i(void* container, int key);
 extern "C" void _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(void* obj, char* fmt);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z20Clear12Bytes020e46c4Pv(void* buf);
+void* GetGlobalField0x1c020421a0();
+void Clear12Bytes020e46c4(void* buf);
 extern "C" void func_02046380(void* g);
 extern "C" void func_02046608(void* a, int b, char* c, void* d, int e, int f, int g);
 extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void* entry);
@@ -27,8 +27,8 @@ extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void* rec, int index,
 extern "C" void func_0205a528(void* a, void* ptr, int val, void* d);
 extern "C" void _Z20WrapAddByteField0x22iPcji(void* a, char* b, unsigned int c, int d);
 extern "C" void _Z29SetBitfieldStoreBytes0205af38iPcii(void* a, char* obj, int c, int d);
-extern "C" int* _Z15GetData02105254v();
-extern "C" void _Z24SetupBankModeAndTransferPiii(int* obj, int a, int b);
+int* GetData02105254();
+void SetupBankModeAndTransfer(int* obj, int a, int b);
 extern "C" void _Z19TailForward0203b66cPc(int* obj);
 extern "C" void _Z25ClearThreeRegions0203b634Pc(int* obj);
 void ConfigureSubBg0Control_02172944(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
@@ -38,7 +38,7 @@ extern "C" void func_0204b5b4(void* obj, int value);
 extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(void* obj, SafeAllocator* alloc);
 extern "C" void _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(void* obj, int count, SafeAllocator* alloc);
 extern "C" void func_0204c684(void* obj);
-extern "C" char* _Z28CallFunc020e0434With02153694i(int key);
+char* CallFunc020e0434With02153694(int key);
 extern "C" void func_0204f914(void* obj, int a, short x0, short y0, short x1, short y1);
 extern "C" void func_0204f41c(void* obj, short x, short y, void* str, int d, int e, short* outA, short* outB, int zero);
 extern "C" void func_0204b174(void* obj, void* data, SafeAllocator* alloc, int size);
@@ -106,49 +106,49 @@ struct List021729ac {
 
 struct Canvas021729ac {
     char pad0[8];
-    char* text;                            // 0x08
+    char* text;
     char pad1[0xa8 - 0xc];
-    short width;                           // 0xa8
-    short height;                          // 0xaa
+    short width;
+    short height;
     char pad2[0xe0 - 0xac];
 };
 
 struct Elem0e0_021729ac {
     char pad0[4];
-    List021729ac* list;                    // 0x04
+    List021729ac* list;
     char pad1[0xe0 - 8];
 };
 
 struct Menu021729ac {
     char pad0[0xb8];
-    char container[0x18];                  // 0x00b8
-    char desc[2][0x18];                    // 0x00d0
+    char container[0x18];
+    char desc[2][0x18];
     char pad1[0x11c - 0x100];
-    char records[0x158 - 0x11c];           // 0x011c
-    char* f158;                            // 0x0158
-    char* f15c;                            // 0x015c
+    char records[0x158 - 0x11c];
+    char* f158;
+    char* f15c;
     char pad2[0x168 - 0x160];
-    short f168;                            // 0x0168
+    short f168;
     char pad3[2];
-    unsigned char f16c;                    // 0x016c
+    unsigned char f16c;
     char pad4[3];
-    char* f170;                            // 0x0170
-    char* f174;                            // 0x0174
-    void* buffer;                          // 0x0178
+    char* f170;
+    char* f174;
+    void* buffer;
     char pad5[4];
-    BgField021729ac bg0;                   // 0x0180
-    BgField021729ac bg1;                   // 0x0182
-    int banks;                             // 0x0184
-    char linkHead[0x220 - 0x188];          // 0x0188
-    List021729ac* linkList;                // 0x0220
+    BgField021729ac bg0;
+    BgField021729ac bg1;
+    int banks;
+    char linkHead[0x220 - 0x188];
+    List021729ac* linkList;
     char pad6[0x23a - 0x224];
-    unsigned char linkFlag;                // 0x023a
+    unsigned char linkFlag;
     char pad7[0x284 - 0x23b];
-    Elem0e0_021729ac elems[7];             // 0x0284
-    List021729ac lists[3];                 // 0x08a4
-    int planes;                            // 0x0904
-    int state;                             // 0x0908
-    int handle;                            // 0x090c
+    Elem0e0_021729ac elems[7];
+    List021729ac lists[3];
+    int planes;
+    int state;
+    int handle;
 
 #if defined(jpn)
     char pad8[0x1b78 - 0x910];
@@ -156,14 +156,13 @@ struct Menu021729ac {
     char pad8[0x1a78 - 0x910];
 #endif
 
-    SafeAllocator allocs[6];               // 0x1a78
+    SafeAllocator allocs[6];
 
 #if defined(jpn)
     char pad9[0x1c0c - 0x1bf0];
 #else
     char pad9[0x1b54 - 0x1af0];
 #endif
-
 
 #if defined(jpn)
     char entries[2][0x38];
@@ -183,7 +182,7 @@ struct Menu021729ac {
     char pad10[0x1d72 - 0x1c5c];
 #endif
 
-    unsigned short f1d72;                  // 0x1d72
+    unsigned short f1d72;
 };
 
 // USA: func_ov000_021729ac
@@ -218,11 +217,10 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
         *(int*)func_0203bd08() = 0;
 
 #if defined(jpn)
-        *(int*)(_Z20GetGlobalPtr02105244v() + 0x608) = 0x1d000;
+        *(int*)(GetGlobalPtr02105244() + 0x608) = 0x1d000;
 #else
-        *(int*)(_Z20GetGlobalPtr02105244v() + 0x508) = 0x18000;
+        *(int*)(GetGlobalPtr02105244() + 0x508) = 0x18000;
 #endif
-
 
 #if defined(jpn)
         self->handle = loader->QueueLoadFile(data_ov000_02183ff5, 0);
@@ -255,10 +253,10 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
             loader->GetLoadedFileByID(self->handle, &file2, &len2);
             if (file2 != 0) {
                 self->allocs[4].Reset();
-                _Z16ZeroInit020de848Pv(self->desc[0]);
+                ZeroInit020de848(self->desc[0]);
                 func_020dea64(self->desc[0], &self->allocs[4], file2, len2, data_ov000_02183302, 3);
                 self->allocs[5].Reset();
-                _Z16ZeroInit020de848Pv(self->desc[1]);
+                ZeroInit020de848(self->desc[1]);
                 __clear(codes, sizeof(codes));
                 unsigned short n = 0;
 
@@ -293,10 +291,10 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
                 _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(self->labels[i], _Z21GetFieldByKey020e0434P17Container020e0310i(self->container, data_ov000_02183418[i]));
             }
 #else
-            void* g = _Z26GetGlobalField0x1c020421a0v();
+            void* g = GetGlobalField0x1c020421a0();
             for (int i = 0; i < 9; i++) {
                 __clear(text, sizeof(text));
-                _Z20Clear12Bytes020e46c4Pv(&param);
+                Clear12Bytes020e46c4(&param);
                 if (i >= 5) {
                     param.mode = 1;
                 }
@@ -363,9 +361,9 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
             self->state++;
         }
     } else if (self->state == 5) {
-        int* bank = _Z15GetData02105254v();
-        _Z24SetupBankModeAndTransferPiii(bank, 1, 0);
-        _Z24SetupBankModeAndTransferPiii(bank, 1, 1);
+        int* bank = GetData02105254();
+        SetupBankModeAndTransfer(bank, 1, 0);
+        SetupBankModeAndTransfer(bank, 1, 1);
         _Z19TailForward0203b66cPc(bank);
         _Z25ClearThreeRegions0203b634Pc(bank);
         ConfigureSubBg0Control_02172944(0, self->bg0.colorMode, 5, self->bg0.charBase, self->bg1.bit13);
@@ -393,7 +391,6 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
         _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(list, 10, &self->allocs[3]);
 #endif
 
-
         list = &self->lists[2];
         _Z24SetWord0x18ClearByte0x1fPhi(list, 0);
         list->lo = 1;
@@ -417,8 +414,8 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
                         canvas.height = 0x20;
                         canvas.text = (char*)rec + 0x10;
                         char* label1;
-                        char* label0 = _Z28CallFunc020e0434With02153694i(0xc9);
-                        label1 = _Z28CallFunc020e0434With02153694i(0xca);
+                        char* label0 = CallFunc020e0434With02153694(0xc9);
+                        label1 = CallFunc020e0434With02153694(0xca);
                         short x;
                         short y0;
                         short y1;

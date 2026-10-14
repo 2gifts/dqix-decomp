@@ -9,11 +9,11 @@ struct Struct_0205bcdc;
 extern char data_02114e54;
 
 void SelectCoordsByFlag0x24(unsigned char *obj, int *out1, int *out2);
-extern "C" struct Elem_0205d81c *_Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c *s, int key);
+struct Elem_0205d81c *FindElementByC40205d81c(struct Struct_0205d81c *s, int key);
 int SelectField0x8Or0x58ByFlags(unsigned char *p);
-extern "C" void _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(struct Struct_0205c4a8 *s, int delta);
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(struct Struct_0205bb84 *s);
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(struct Struct_0205bcdc *p, int v);
+void AdvanceWrappedAccumulator0205c4a8(struct Struct_0205c4a8 *s, int delta);
+int ComputeScaledSum0205bb84(struct Struct_0205bb84 *s);
+void SetIndexIfValid0205bcdc(struct Struct_0205bcdc *p, int v);
 extern "C" void func_0205bb04(void *p, int v);
 
 // USA: func_ov002_02161b98
@@ -28,7 +28,7 @@ extern "C" ARM int func_ov002_02161b98(char *base) {
         goto ret0;
     }
     SelectCoordsByFlag0x24((unsigned char *) &data_02114e54, &cx, &cy);
-    elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00),
+    elem = FindElementByC40205d81c((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00),
                                    *(int *) (base + 0x1000 + 0xbb8) & 0xff);
     if (elem == 0) {
         goto ret0;
@@ -50,17 +50,17 @@ extern "C" ARM int func_ov002_02161b98(char *base) {
         }
         int ex8 = (short) (ex * 8);
         if (ex8 <= cx && cx < ex8 + 16) {
-            _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i((struct Struct_0205c4a8 *) (list + 0x54), -1);
+            AdvanceWrappedAccumulator0205c4a8((struct Struct_0205c4a8 *) (list + 0x54), -1);
             *(int *) (base + 0x1000 + 0xbc8) = 1;
         }
         int cxv = cx;
         int W = (short) (sx * 8);
         if (W - 16 <= cxv && cxv < W) {
-            _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i((struct Struct_0205c4a8 *) (list + 0x54), 1);
+            AdvanceWrappedAccumulator0205c4a8((struct Struct_0205c4a8 *) (list + 0x54), 1);
             *(int *) (base + 0x1000 + 0xbc8) = 1;
         }
-        int total = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((struct Struct_0205bb84 *) (list + 0x54));
-        _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((struct Struct_0205bcdc *) (list + 4), total);
+        int total = ComputeScaledSum0205bb84((struct Struct_0205bb84 *) (list + 0x54));
+        SetIndexIfValid0205bcdc((struct Struct_0205bcdc *) (list + 4), total);
         func_0205bb04(list + 0x54, total);
     }
     return 1;

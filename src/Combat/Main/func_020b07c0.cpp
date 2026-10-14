@@ -15,7 +15,7 @@ struct Obj020b07c0 {
     char pad8[0x18];
 };
 
-extern "C" void _Z28SetIndexedFieldAt0x8020b035cPcii(char* base, int index, int value);
+void SetIndexedFieldAt0x8020b035c(char* base, int index, int value);
 
 // USA: func_020b07c0
 extern "C" ARM void func_020b07c0(LocalRes020b07c0* res, int val44, int tier, Obj020b07c0* out) {
@@ -52,5 +52,5 @@ extern "C" ARM void func_020b07c0(LocalRes020b07c0* res, int val44, int tier, Ob
 
     out->f0 = res->f0;
     out->f4 = res->f4;
-    _Z28SetIndexedFieldAt0x8020b035cPcii((char*)out, tier, val44);
+    SetIndexedFieldAt0x8020b035c((char*)out, tier, val44);
 }

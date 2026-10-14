@@ -26,7 +26,6 @@ enum { kRegionValue1408_1298 = 0x1408 };
 enum { kRegionValue13FF_128F = 0x13ff };
 #endif
 
-
 struct Struct020dfc40 {
 	char data[0x18];
 };
@@ -34,9 +33,9 @@ struct Struct020a9ea4 {
 	char data[8];
 };
 
-extern "C" void _Z18InitStruct0205a444Pc(char* obj);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(struct Struct020dfc40* p);
-extern "C" void _Z19ClearStruct020a9ea4P14Struct020a9ea4(struct Struct020a9ea4* p);
+void InitStruct0205a444(char* obj);
+void ResetStruct020dfc40(struct Struct020dfc40* p);
+void ClearStruct020a9ea4(struct Struct020a9ea4* p);
 extern "C" void func_ov003_0215c650(void* obj);
 extern "C" void func_ov003_0216ffbc(void* obj);
 extern "C" void func_ov003_02170b74(void* obj);
@@ -98,7 +97,7 @@ extern "C" ARM void func_ov003_0216d63c(struct Scene0216d63c* self) {
 	self->activeSub = self->sub410;
 	self->field1264 = 0;
 	self->field1268 = 0;
-	_Z18InitStruct0205a444Pc(self->sub126c);
+	InitStruct0205a444(self->sub126c);
 	self->field12c0 = 0;
 	self->field12c4 = 0;
 	self->field12c8 = 0;
@@ -108,7 +107,7 @@ extern "C" ARM void func_ov003_0216d63c(struct Scene0216d63c* self) {
 	self->allocs[1].ResetAllocatorPointer();
 	self->allocs[2].ResetAllocatorPointer();
 	self->allocs[3].ResetAllocatorPointer();
-	_Z19ResetStruct020dfc40P14Struct020dfc40(&self->texts);
+	ResetStruct020dfc40(&self->texts);
 	self->object.Initialize();
 	self->field13e8 = 0;
 	self->field13e9 = 0;
@@ -121,5 +120,5 @@ extern "C" ARM void func_ov003_0216d63c(struct Scene0216d63c* self) {
 	memset(self->field13fc, -1, 3);
 	self->field1408 = 0;
 	self->field13ed = 0;
-	_Z19ClearStruct020a9ea4P14Struct020a9ea4(&self->field140c);
+	ClearStruct020a9ea4(&self->field140c);
 }

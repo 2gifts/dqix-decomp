@@ -18,7 +18,7 @@ extern void SetField0x23cTrue(void* obj);
 struct Struct0203cedc;
 extern void SetCombatFlags0x5c(struct Struct0203cedc* obj, int b, int c);
 struct Obj0203f1e4;
-extern "C" extern void _Z24SelectNamedEntry0203f1e4P11Obj0203f1e4PKc(struct Obj0203f1e4* obj, const char* name);
+extern void SelectNamedEntry0203f1e4(struct Obj0203f1e4* obj, const char* name);
 
 enum { STATE_NONE = -1 };
 
@@ -98,5 +98,5 @@ tail:
         }
     }
 
-    _Z24SelectNamedEntry0203f1e4P11Obj0203f1e4PKc((struct Obj0203f1e4*)obj, buf);
+    SelectNamedEntry0203f1e4((struct Obj0203f1e4*)obj, buf);
 }

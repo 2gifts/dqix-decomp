@@ -50,21 +50,21 @@ struct Actor020a78dc {
 struct AngleTable { int v[8]; };
 
 extern "C" char* func_02012fe4();
-extern "C" struct Field4328* _Z21GetField4328_0218d268Pv(void*);
+struct Field4328* GetField4328_0218d268(void*);
 int IsFlag0x40Set(unsigned short*);
 int IsFlag0x20Set(unsigned short*);
 int IsFlag0x10Set(unsigned short*);
 int IsFlag0x80Set(unsigned short*);
 int IsField0Null(void** p);
 void SetByte0xbeShiftPrev(struct Bytes02033b88*, int);
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68*, int);
+void SetByteIfChanged02033b68(struct Obj02033b68*, int);
 void SetByteSavingPrevious(struct Foo02033b58*, unsigned char);
 int GetField0x70(void*);
 int fix32ReduceAngle0To2Pi(int);
-extern "C" struct Box0201e8fc* _Z30FindBoxContainingPoint0201e8fcP17Container0201e8fcP4Vec3(struct Container0201e8fc*, struct Vec3*);
+struct Box0201e8fc* FindBoxContainingPoint0201e8fc(struct Container0201e8fc*, struct Vec3*);
 int fix32SignedAngleDistance(int, int);
 int fix32abs(int);
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834*, int);
+void SetVecYByMode02033834(struct Obj02033834*, int);
 short GetShortAt0x22e(struct ShortField0x22e_020968c4*);
 
 extern struct AngleTable data_020e90a8;
@@ -83,7 +83,7 @@ extern "C" ARM void func_020a78dc(struct Actor020a78dc* self) {
     ov = (char*)func_ov017_0218b5b0();
     list = *(void***)(ov + 0x36fc);
     world = func_02012fe4();
-    f = _Z21GetField4328_0218d268Pv(ov);
+    f = GetField4328_0218d268(ov);
     struct AngleTable table = data_020e90a8;
 
     self->mode = 0;
@@ -148,7 +148,7 @@ extern "C" ARM void func_020a78dc(struct Actor020a78dc* self) {
         self->lockedDir = -1;
     } else if (self->mode == 1) {
         if (self->fc0 == 0 || self->fc0 == 0xa) {
-            _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)self, 1);
+            SetByteIfChanged02033b68((struct Obj02033b68*)self, 1);
         } else {
             SetByteSavingPrevious((struct Foo02033b58*)self, 1);
         }
@@ -158,7 +158,7 @@ extern "C" ARM void func_020a78dc(struct Actor020a78dc* self) {
             angle = self->lockedAngle;
         } else {
             struct Vec3 pos = self->pos;
-            struct Box0201e8fc* box = _Z30FindBoxContainingPoint0201e8fcP17Container0201e8fcP4Vec3((struct Container0201e8fc*)(world + 0x6c), &pos);
+            struct Box0201e8fc* box = FindBoxContainingPoint0201e8fc((struct Container0201e8fc*)(world + 0x6c), &pos);
             if (box) {
                 if (fix32abs(fix32SignedAngleDistance(angle, box->angle)) < 0xc91) {
                     self->lockedDir = self->dir;
@@ -175,16 +175,16 @@ extern "C" ARM void func_020a78dc(struct Actor020a78dc* self) {
                 self->lockedDir = -1;
             }
         }
-        _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, angle);
+        SetVecYByMode02033834((struct Obj02033834*)self, angle);
     } else if (self->mode == 2) {
         if (self->fc0 == 0) {
-            _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)self, 1);
+            SetByteIfChanged02033b68((struct Obj02033b68*)self, 1);
         } else {
             SetByteSavingPrevious((struct Foo02033b58*)self, 1);
         }
-        struct Field4328* g = _Z21GetField4328_0218d268Pv(ov);
+        struct Field4328* g = GetField4328_0218d268(ov);
         if (g->active != 0) {
-            _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, GetShortAt0x22e((struct ShortField0x22e_020968c4*)g));
+            SetVecYByMode02033834((struct Obj02033834*)self, GetShortAt0x22e((struct ShortField0x22e_020968c4*)g));
         }
         self->lockedDir = -1;
     }

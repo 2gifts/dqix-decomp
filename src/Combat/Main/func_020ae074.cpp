@@ -14,7 +14,7 @@ struct HeightShiftedObject : Object3D {
 struct Fields020407b4;
 extern "C" void func_02032fdc(HeightShiftedObject*, int, int);
 void StoreVec3AtField0x50(unsigned char*, int, int, int);
-extern "C" void _Z41SetupObjFieldsAndResetRenderFlags020ae20cPvP14Fields020407b4Pii(void*, Fields020407b4*, int*, int);
+void SetupObjFieldsAndResetRenderFlags020ae20c(void*, Fields020407b4*, int*, int);
 
 // USA: func_020ae074
 extern "C" ARM void func_020ae074(HeightShiftedObject* self) {
@@ -38,10 +38,10 @@ extern "C" ARM void func_020ae074(HeightShiftedObject* self) {
     }
     GameObject* shadow = game->GetGameObjectByIndex(0xcc);
     Vector3fix shadowPosition = self->position_;
-    _Z41SetupObjFieldsAndResetRenderFlags020ae20cPvP14Fields020407b4Pii(self, (Fields020407b4*)shadow, &shadowPosition.x, self->heading_);
+    SetupObjFieldsAndResetRenderFlags020ae20c(self, (Fields020407b4*)shadow, &shadowPosition.x, self->heading_);
     GameObject* secondary = game->GetGameObjectByIndex(0xcd);
-    _Z41SetupObjFieldsAndResetRenderFlags020ae20cPvP14Fields020407b4Pii(self, (Fields020407b4*)secondary, &self->firstPosition_.x, self->firstHeading_);
-    _Z41SetupObjFieldsAndResetRenderFlags020ae20cPvP14Fields020407b4Pii(self, (Fields020407b4*)secondary, &self->secondPosition_.x, self->secondHeading_);
+    SetupObjFieldsAndResetRenderFlags020ae20c(self, (Fields020407b4*)secondary, &self->firstPosition_.x, self->firstHeading_);
+    SetupObjFieldsAndResetRenderFlags020ae20c(self, (Fields020407b4*)secondary, &self->secondPosition_.x, self->secondHeading_);
     position = self->position_;
     position.y -= self->heightOffset_;
     self->position_ = position;

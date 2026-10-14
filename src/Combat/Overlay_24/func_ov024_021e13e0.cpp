@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 int RoundUp(float);
-extern "C" short _Z20ApplyHPDelta0215a16cPviiPs(void*, int, int, short*);
+short ApplyHPDelta0215a16c(void*, int, int, short*);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" void func_ov000_02159eac(void*, void*, int);
 void AddEntryAndIncrementCount0215a88c(void*, void*, int);
@@ -22,7 +22,7 @@ extern "C" ARM void* func_ov024_021e13e0(Obj021e13e0* obj, int unused, int id) {
     effects.lo = 0;
     effects.hi = 0;
     short applied = 0;
-    short hp = _Z20ApplyHPDelta0215a16cPviiPs(obj->context, id, amount, &applied);
+    short hp = ApplyHPDelta0215a16c(obj->context, id, amount, &applied);
     void* entry = func_ov000_0215e958(obj->context);
     if (!entry) return 0;
     int added = 0;

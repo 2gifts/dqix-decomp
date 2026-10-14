@@ -2,27 +2,27 @@
 #include "std_library_functions.h"
 
 struct Actor020db844;
-extern "C" void _Z26RunFlaggedCallback020db844P13Actor020db844iii(struct Actor020db844* a, int b, int c, int d);
+void RunFlaggedCallback020db844(struct Actor020db844* a, int b, int c, int d);
 
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void* GetDataPtr02114e04_020d6c00(void);
 
-extern "C" void _Z16OrBitsIntoField0Pjj(unsigned int* word, unsigned int mask);
+void OrBitsIntoField0(unsigned int* word, unsigned int mask);
 
 extern "C" int func_020937f0(int a);
 
 struct Entity020db3a8;
-extern "C" extern int _Z24CheckActiveState020db3a8P14Entity020db3a8(struct Entity020db3a8* s);
+extern int CheckActiveState020db3a8(struct Entity020db3a8* s);
 
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 void CleanCacheRange(const void* addr, unsigned int size);
 
-extern "C" void _Z34ConfigureAndDispatchHandle020db304ii(int param0, int param1);
+void ConfigureAndDispatchHandle020db304(int param0, int param1);
 
 struct Fields020dde64;
-extern "C" void _Z19ClearFields020dde64P14Fields020dde64(struct Fields020dde64* obj);
+void ClearFields020dde64(struct Fields020dde64* obj);
 
 struct Struct_020de0ec;
-extern "C" void _Z17RollFlags020de0ecP15Struct_020de0ec(struct Struct_020de0ec* obj);
+void RollFlags020de0ec(struct Struct_020de0ec* obj);
 
 typedef void* (*FnPtrVoid)(void);
 extern FnPtrVoid data_020f28e4[];
@@ -63,17 +63,17 @@ extern "C" ARM void func_020db3f4(struct Obj020db3f4* obj) {
         return;
     }
 
-    _Z26RunFlaggedCallback020db844P13Actor020db844iii((struct Actor020db844*)obj, obj->field3c, obj->field6a, 0);
+    RunFlaggedCallback020db844((struct Actor020db844*)obj, obj->field3c, obj->field6a, 0);
     obj->field51 = 1;
 
-    _Z16OrBitsIntoField0Pjj((unsigned int*)_Z27GetDataPtr02114e04_020d6c00v(), 0x8000);
+    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x8000);
 
     int x = func_020937f0(obj->field3c);
     int off_b80 = x - 0xb80;
     int mode = 0x1e0;
     int off_800 = x - 0x800;
 
-    if (_Z24CheckActiveState020db3a8P14Entity020db3a8((struct Entity020db3a8*)obj) != 0) {
+    if (CheckActiveState020db3a8((struct Entity020db3a8*)obj) != 0) {
         mode = 0x1c0;
     }
 
@@ -100,14 +100,14 @@ extern "C" ARM void func_020db3f4(struct Obj020db3f4* obj) {
     data_020f28dc[obj->field3c](obj->field48, mode, obj->field4c);
     CleanCacheRange(obj->field48, obj->field4c);
 
-    _Z34ConfigureAndDispatchHandle020db304ii((int)obj, obj->field3c);
+    ConfigureAndDispatchHandle020db304((int)obj, obj->field3c);
 
     obj->field6e = 0;
     for (int i = 0; i < 3; i++) {
         unsigned char* arr = obj->slots[0];
         unsigned char* p = arr + i * 0x28;
-        _Z19ClearFields020dde64P14Fields020dde64((struct Fields020dde64*)p);
-        _Z17RollFlags020de0ecP15Struct_020de0ec((struct Struct_020de0ec*)p);
+        ClearFields020dde64((struct Fields020dde64*)p);
+        RollFlags020de0ec((struct Struct_020de0ec*)p);
     }
 
     if (obj->field53 != 0) {

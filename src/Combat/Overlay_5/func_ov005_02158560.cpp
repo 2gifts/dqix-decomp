@@ -24,14 +24,14 @@ struct EquipmentMenu {
 
 extern int data_02108760;
 
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 
 // USA: func_ov005_02158560
 extern "C" ARM int func_ov005_02158560(EquipmentMenu* self, unsigned char kind, int silent) {
     if (kind == self->kind_)
         return 0;
     if (silent == 0)
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 1, 0);
     self->lastKind_ = self->kind_;
     self->lastPage_ = self->page_;
     self->pages_[self->kind_] = self->page_;

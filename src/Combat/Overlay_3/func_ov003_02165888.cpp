@@ -14,15 +14,15 @@ int SetEntryFlagById02080b2c(void* obj, int id);
 int SetEntryFlagById02080b40(void* obj, int id);
 void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
 extern "C" int func_020dcc98(int combatantId);
-extern "C" int* _Z15GetFieldAt0x150Ph(unsigned char* p);
+int* GetFieldAt0x150(unsigned char* p);
 extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(struct Container02080f8c*, int, char*);
-extern "C" void _Z30ResolveEntryValueByKey02080fe0Pvii(void*, int, int);
-extern "C" void _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(struct Container02080fa8*, int, int);
-extern "C" void _Z19SetEntryHalfword0xePvii(void*, int, int);
+void ResolveEntryValueByKey02080fe0(void*, int, int);
+void SetEntryFirstField02080fa8(struct Container02080fa8*, int, int);
+void SetEntryHalfword0xe(void*, int, int);
 extern "C" void _Z27GetEntryFieldsAt0x602080828PviPsS0_(void*, short, short*, short*);
 extern "C" void _Z23GetEntryOutputs020808c8PviPsS0_(void*, short, short*, short*);
-extern "C" void _Z27SetEntryFieldsAt0x602080854Pviii(void*, int, int, int);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310*, int);
+void SetEntryFieldsAt0x602080854(void*, int, int, int);
+int GetFieldByKey020e0434(struct Container020e0310*, int);
 void SetEntryNibbleByShortId(struct StatusOwner02081198* owner, int id, int enable);
 void SetEntryFlag0x2ByShortId(struct StatusOwner02081164* obj, int id, int value);
 extern "C" int func_020813ec(void* obj, int id);
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov003_02165888(StatusPanel* self) {
             SetEntryHighNibble0x13(elementObj, idB, color);
 
             v = -1;
-            prof = (struct Profile*)_Z15GetFieldAt0x150Ph((unsigned char*)member);
+            prof = (struct Profile*)GetFieldAt0x150((unsigned char*)member);
             ((unsigned char*)self + i)[0x468] = (unsigned char)(prof->unk49c + 1);
             nm = (char*)member->baseStats_;
             _Z26SetEntryFirstField02080f8cP17Container02080f8cii(
@@ -119,8 +119,8 @@ extern "C" ARM void func_ov003_02165888(StatusPanel* self) {
             if (prof->unk950 != 0) {
                 v = (short)(prof->unk950 + 0x11);
             }
-            _Z30ResolveEntryValueByKey02080fe0Pvii(elementObj, (short)(idA + 4), v);
-            _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(
+            ResolveEntryValueByKey02080fe0(elementObj, (short)(idA + 4), v);
+            SetEntryFirstField02080fa8(
                 (struct Container02080fa8*)elementObj, (short)(idA + 8),
                 *(unsigned short*)((char*)prof + prof->unk950 * 2 + 0x16c));
 
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov003_02165888(StatusPanel* self) {
                 struct Profile* p3 = *(struct Profile**)((char*)member + 0x150);
                 unsigned char* row = (unsigned char*)p3 + p3->unk950;
                 unsigned char kind = row[0x186];
-                _Z19SetEntryHalfword0xePvii(elementObj, idC, (short)(kind + 0x64));
+                SetEntryHalfword0xe(elementObj, idC, (short)(kind + 0x64));
                 if (kind != 0) {
                     color = 5;
                     if (kind == 0xa) {
@@ -139,7 +139,7 @@ extern "C" ARM void func_ov003_02165888(StatusPanel* self) {
                     key = i + 0x59;
                     _Z27GetEntryFieldsAt0x602080828PviPsS0_(elementObj, key, &t16, &t14);
                     _Z23GetEntryOutputs020808c8PviPsS0_(elementObj, key, &t12, &t10);
-                    _Z27SetEntryFieldsAt0x602080854Pviii(elementObj, idC, (short)(t16 + t12 + 1), t14);
+                    SetEntryFieldsAt0x602080854(elementObj, idC, (short)(t16 + t12 + 1), t14);
                     SetEntryHighNibble0x13(elementObj, idC, color);
                     SetEntryFlagById02080b40(elementObj, idC);
                 }
@@ -149,7 +149,7 @@ extern "C" ARM void func_ov003_02165888(StatusPanel* self) {
                 color = 0xa;
             }
             SetEntryFlagById02080b40(elementObj, idA);
-            nm = (char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont2dc, 0x7530);
+            nm = (char*)GetFieldByKey020e0434(&self->cont2dc, 0x7530);
             _Z26SetEntryFirstField02080f8cP17Container02080f8cii(
                 (struct Container02080f8c*)elementObj, idA, nm);
             SetEntryHighNibble0x13(elementObj, idA, color);

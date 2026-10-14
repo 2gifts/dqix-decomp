@@ -12,7 +12,7 @@ struct S88514;
 int CheckFlag0x2AndState2(struct S88514* obj);
 struct FlagInner_021da9b0 { char unk[0x14]; int flags; };
 struct FlagObj_021da9b0 { char unk[0x138]; struct FlagInner_021da9b0* inner; };
-extern "C" int _Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0(struct FlagObj_021da9b0* obj);
+int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
 
 extern unsigned short data_ov024_021fec24;
 
@@ -39,7 +39,7 @@ extern "C" ARM int func_ov024_021f1a0c(int* a0, int a1, int a2, int* a3, short* 
 		if (!c) continue;
 		if (!CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_) &&
 		    !CheckFlag0x2AndState2((struct S88514*)c->currentStats_) &&
-		    !_Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0((struct FlagObj_021da9b0*)c)) continue;
+		    !IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)c)) continue;
 		int idx = *a3;
 		*a3 = idx + 1;
 		a4[idx] = buf[i];

@@ -56,13 +56,13 @@ struct BattleMenu02168b50 {
     unsigned char busy;
 };
 
-extern "C" struct MessageWork02168b50* _Z26GetGlobalField0x1c020421a0v();
+struct MessageWork02168b50* GetGlobalField0x1c020421a0();
 struct DataEntry02108d18* GetData02108d18();
-extern "C" int _Z23AppendFormatted02041fe8Pci(char* buf, int a);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+int AppendFormatted02041fe8(char* buf, int a);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+int AppendString02042058(char* dst, const char* src);
 extern "C" void func_02046380(void* obj);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(struct Obj02046574* obj, int index, char* str);
+void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 void SetByteInRange(unsigned char* base, int index, unsigned char value);
 
@@ -78,25 +78,25 @@ void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
 
 // USA: func_ov003_02168b50
 extern "C" ARM void func_ov003_02168b50(struct BattleMenu02168b50* self) {
-    struct MessageWork02168b50* work = _Z26GetGlobalField0x1c020421a0v();
+    struct MessageWork02168b50* work = GetGlobalField0x1c020421a0();
     struct Container020e0310* messages = (struct Container020e0310*)self->messages;
     if (self->step == 0) {
         memset(self->text, 0, kRegion960);
         struct DataEntry02108d18* data = GetData02108d18();
         if (data->title[0] != 0) {
-            _Z23AppendFormatted02041fe8Pci(self->text, (int)data->title);
+            AppendFormatted02041fe8(self->text, (int)data->title);
         }
-        _Z20AppendString02042058PcPKc(self->text, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(messages, 0x3e8));
+        AppendString02042058(self->text, (const char*)GetFieldByKey020e0434(messages, 0x3e8));
         GameState* game = GameState::GetInstance();
         struct BattleData02168b50* battle = (struct BattleData02168b50*)GetPtrField0x2a04(game);
         func_02046380(work);
-        _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)work, 0, (char*)game->GetProtagonist()->baseStats_);
+        SetIndexedName02046574((struct Obj02046574*)work, 0, (char*)game->GetProtagonist()->baseStats_);
         if (battle->field_0xf68 != 0) {
             StoreInArray0x8b0((struct StoreStruct*)work, 0, battle->field_0xf68);
             SetByteInRange((unsigned char*)work, 0, 0);
-            _Z20AppendString02042058PcPKc(self->text, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(messages, 0x3ea));
+            AppendString02042058(self->text, (const char*)GetFieldByKey020e0434(messages, 0x3ea));
         } else {
-            _Z20AppendString02042058PcPKc(self->text, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(messages, 0x3e9));
+            AppendString02042058(self->text, (const char*)GetFieldByKey020e0434(messages, 0x3e9));
         }
         work->field_0x998 = 1;
 #if defined(jpn)

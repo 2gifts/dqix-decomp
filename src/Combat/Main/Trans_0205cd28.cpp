@@ -9,19 +9,19 @@
 
 struct Field440Obj0202f6a4;
 
-extern "C" void _Z14SetField0x1e20PvS_(void*, void*);
-extern "C" void _Z15InitSelfPointerPh(unsigned char*);
-extern "C" void _Z18SetupField440Type1P19Field440Obj0202f6a4(Field440Obj0202f6a4*);
-extern "C" int _Z21CheckField0x440State2Ph(unsigned char*);
-extern "C" unsigned char* _Z26GetGlobalField0x1c020421a0v();
+void SetField0x1e20(void*, void*);
+void InitSelfPointer(unsigned char*);
+void SetupField440Type1(Field440Obj0202f6a4*);
+int CheckField0x440State2(unsigned char*);
+unsigned char* GetGlobalField0x1c020421a0();
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0205cd28
-extern "C" ARM void _Z37SetupGlobalObjType1AndInitSelfPointerPh(unsigned char* self) {
-    unsigned char* global = _Z26GetGlobalField0x1c020421a0v();
-    _Z14SetField0x1e20PvS_(global, self + 0xb4);
-    if (_Z21CheckField0x440State2Ph(global + CONTROLLER_OFFSET_LO + CONTROLLER_OFFSET_HI) == 0) {
-        _Z18SetupField440Type1P19Field440Obj0202f6a4((Field440Obj0202f6a4*)(global + CONTROLLER_OFFSET_LO + CONTROLLER_OFFSET_HI));
+ARM void SetupGlobalObjType1AndInitSelfPointer(unsigned char* self) {
+    unsigned char* global = GetGlobalField0x1c020421a0();
+    SetField0x1e20(global, self + 0xb4);
+    if (CheckField0x440State2(global + CONTROLLER_OFFSET_LO + CONTROLLER_OFFSET_HI) == 0) {
+        SetupField440Type1((Field440Obj0202f6a4*)(global + CONTROLLER_OFFSET_LO + CONTROLLER_OFFSET_HI));
     }
-    _Z15InitSelfPointerPh(global);
+    InitSelfPointer(global);
 }

@@ -9,8 +9,8 @@ struct ZoneResourceState {
 
 extern "C" ZoneState* func_02012fe4();
 extern "C" int _s32_div_f(int a, int b);
-extern "C" int _Z19IsIdInRange020981e4ii(int a, int id);
-extern "C" int _Z19IsIdInRange02098240ii(int a, int id);
+int IsIdInRange020981e4(int a, int id);
+int IsIdInRange02098240(int a, int id);
 extern "C" int func_0201bd74(Obj0201b600* obj, unsigned int argA, int argB);
 
 // USA: func_02098080
@@ -21,8 +21,8 @@ extern "C" ARM int func_02098080(ZoneResourceState* state) {
     progress = state->progress;
     v = _s32_div_f(zone->zoneId, 100) - 500;
 
-    if (!_Z19IsIdInRange020981e4ii((int)state, zoneId)) return 0;
-    if (_Z19IsIdInRange02098240ii((int)state, zoneId)) return 0;
+    if (!IsIdInRange020981e4((int)state, zoneId)) return 0;
+    if (IsIdInRange02098240((int)state, zoneId)) return 0;
     if (zoneId == 0xc3bb) return 0;
     if ((unsigned int)(zoneId - 0xc3bc) <= 2) return 0;
 

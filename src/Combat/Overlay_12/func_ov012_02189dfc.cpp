@@ -20,10 +20,10 @@ struct ProfileWindowNavigation {
     ProfileNavigation* GetNavigation() { return &navigation; }
 };
 
-extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char*, int, int, int, int, int);
+void AppendFrameTag02041c08(char*, int, int, int, int, int);
 int AppendCursorTag(char*, int);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_(UnkStruct0205c508*, int*, int*);
+void* GetGlobalField0x1c020421a0();
+void ComputeProductSums0205c508(UnkStruct0205c508*, int*, int*);
 int AppendString02042058(char*, const char*);
 const char* FindEntryByKey(TableA68*, int);
 int AppendNameTag(char*, int, const char*);
@@ -44,15 +44,15 @@ extern "C" ARM void func_ov012_02189dfc(char* editor, char* text, int hidden) {
     if (!text) return;
     int selection = *(int*)(editor + 0x143c) % 9;
     if (hidden)
-        _Z22AppendFrameTag02041c08Pciiiii(text, selection, 8, 5, 5, 5);
+        AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
     AppendCursorTag(text, selection);
-    void* messages = _Z26GetGlobalField0x1c020421a0v();
+    void* messages = GetGlobalField0x1c020421a0();
     int i;
     ProfileNavigation* navigation = ((ProfileWindowNavigation*)(editor + 0x90))->GetNavigation();
     int page = navigation->page;
     int pages = navigation->pages;
     int first, last;
-    _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_((UnkStruct0205c508*)navigation, &first, &last);
+    ComputeProductSums0205c508((UnkStruct0205c508*)navigation, &first, &last);
     for (i = first; i < last; ++i) {
         if (i != first)
             AppendString02042058(text, *(const char**)(editor + 0x1348));
@@ -110,11 +110,11 @@ struct ProfileEditor02189dfc
     Window02189dfc* GetWindow() { return &window_; }
 };
 
-extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char* text, int a, int b, int c, int d, int e);
+void AppendFrameTag02041c08(char* text, int a, int b, int c, int d, int e);
 void AppendCursorTag(char* text, int a);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_(UnkStruct0205c508* cursor, int* first, int* last);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+void* GetGlobalField0x1c020421a0();
+void ComputeProductSums0205c508(UnkStruct0205c508* cursor, int* first, int* last);
+void AppendString02042058(char* text, const char* append);
 const char* FindEntryByKey(TableA68* texts, int id);
 void AppendNameTag(char* text, int item, const char* itemText);
 void AppendXYTag(char* text, int x, int y);
@@ -130,27 +130,27 @@ extern "C" ARM void func_ov012_02189dfc(ProfileEditor02189dfc* self, char* text,
 
     int selection = self->selections_[3] % 9;
     if (hidden)
-        _Z22AppendFrameTag02041c08Pciiiii(text, selection, 8, 5, 5, 5);
+        AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
     AppendCursorTag(text, selection);
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     int i;
     Cursor02189dfc* cursor = self->GetWindow()->GetCursor();
     int shadow = cursor->words_[3];
     int color = cursor->unk_4;
     int first;
     int last;
-    _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_((UnkStruct0205c508*)cursor, &first, &last);
+    ComputeProductSums0205c508((UnkStruct0205c508*)cursor, &first, &last);
     for (i = first; i < last; i++)
     {
         if (i != first)
-            _Z20AppendString02042058PcPKc(text, self->unk_1378);
+            AppendString02042058(text, self->unk_1378);
         AppendNameTag(text, i % 9, FindEntryByKey((TableA68*)self->strings_, (short)(self->unk_13c0[i] + 10000)));
     }
     if (self->unk_13c4_0 > 9)
     {
         func_ov012_021842a0(self, 5, shadow, color);
         AppendXYTag(text, 0x2a, 0x94);
-        _Z20AppendString02042058PcPKc(text, data_ov012_0218b310);
+        AppendString02042058(text, data_ov012_0218b310);
     }
 }
 

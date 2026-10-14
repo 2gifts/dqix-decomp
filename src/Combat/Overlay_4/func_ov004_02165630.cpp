@@ -15,11 +15,11 @@ extern "C" void func_ov004_02165a1c(void* obj);
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
 extern "C" int func_0202c540(void* p);
-extern "C" unsigned char _Z32GetAndConsumeNameEntries02011930PvP12Info02011930S_S_(void* obj, struct Info02011930* info, void* name1, void* name2);
-extern "C" int _Z31GetScaledStat_021634dc_021634dcPv(void* a);
+unsigned char GetAndConsumeNameEntries02011930(void* obj, struct Info02011930* info, void* name1, void* name2);
+int GetScaledStat_021634dc_021634dc(void* a);
 unsigned char CopyToRegion0x6482IfDst(char* obj, void* dst);
-extern "C" unsigned int _Z19GetShort28_021f9bb0P11Obj021f9bb0(struct Obj021f9bb0* obj);
-extern "C" unsigned int _Z24GetFieldShort36_021f9ba0Pv(void* obj);
+unsigned int GetShort28_021f9bb0(struct Obj021f9bb0* obj);
+unsigned int GetFieldShort36_021f9ba0(void* obj);
 int IsGlobalU16InRange(GameState* state);
 
 extern char* data_ov004_02171010;
@@ -55,15 +55,15 @@ extern "C" ARM int func_ov004_02165630(void* a) {
     if (!node2) return 0;
     if (func_ov023_021f6f10(node2) != 7) return 0;
 
-    if (_Z32GetAndConsumeNameEntries02011930PvP12Info02011930S_S_(state, NULL, NULL, NULL) != 0) {
-        int idx = _Z31GetScaledStat_021634dc_021634dcPv(a);
+    if (GetAndConsumeNameEntries02011930(state, NULL, NULL, NULL) != 0) {
+        int idx = GetScaledStat_021634dc_021634dc(a);
         if (((TreasureMapMetadata*)(data_ov004_02171010 + idx * 0x1c))->GetInitialByteUnknownBit()) {
             node->active = 0;
             return 0;
         }
         func_ov011_021848a0(a, 0x68);
     } else if (CopyToRegion0x6482IfDst((char*)state, NULL) != 0) {
-        unsigned int k = _Z19GetShort28_021f9bb0P11Obj021f9bb0((struct Obj021f9bb0*)node2);
+        unsigned int k = GetShort28_021f9bb0((struct Obj021f9bb0*)node2);
         if (*(unsigned char*)(data_ov004_02171010 + k * recordStride + 0xad4) != 3) {
             node->active = 0;
         } else {
@@ -78,8 +78,8 @@ extern "C" ARM int func_ov004_02165630(void* a) {
             func_ov011_021848a0(a, 0x76);
         } else {
             short x = node2->x;
-            unsigned int col = _Z19GetShort28_021f9bb0P11Obj021f9bb0((struct Obj021f9bb0*)node2);
-            unsigned short idx = x * _Z24GetFieldShort36_021f9ba0Pv(node2) + col;
+            unsigned int col = GetShort28_021f9bb0((struct Obj021f9bb0*)node2);
+            unsigned short idx = x * GetFieldShort36_021f9ba0(node2) + col;
             if (((TreasureMapMetadata*)(data_ov004_02171010 + idx * 0x1c))->GetInitialByteUnknownBit()) {
                 func_ov011_021848a0(a, 0x74);
             } else {

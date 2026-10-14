@@ -152,22 +152,22 @@ extern "C" void __clear(void* buffer, unsigned long size);
 extern "C" void func_02074af4(void* state);
 extern "C" char* func_02012fe4();
 short GetFieldAt0x7e(S_e830* p);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40* texts);
-extern "C" void _Z20ClearFields_021e20c0Pv(void* layout);
-extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64* bg);
-extern "C" void _Z18InitStruct0205cfd4P18InitTarget0205cfd4(InitTarget0205cfd4* window);
+void ResetStruct020dfc40(Struct020dfc40* texts);
+void ClearFields_021e20c0(void* layout);
+void ResetList0204af64(List0204af64* bg);
+void InitStruct0205cfd4(InitTarget0205cfd4* window);
 extern "C" void func_0204c684(void* canvas);
 extern "C" void func_ov023_021dc134(void* window, int a, int b);
-extern "C" void _Z17ClearObj_021e1318P11Obj021e1318(Obj021e1318* list);
+void ClearObj_021e1318(Obj021e1318* list);
 extern "C" void func_ov023_021dad78(void* table);
 extern "C" void func_ov005_021536e0(void* frame);
 void* GetPtrField0x2a04(GameState* gameState);
-extern "C" unsigned char _Z20GetTableByte0215a948Pvi(void* unused, int index);
-extern "C" unsigned char _Z20GetTableByte0215a918Pvi(void* unused, int index);
+unsigned char GetTableByte0215a948(void* unused, int index);
+unsigned char GetTableByte0215a918(void* unused, int index);
 short GetShortFromArray0xc10(unsigned char* p, unsigned int list);
-extern "C" void _Z12Init0205bef8P15Struct_0205bef8(Struct_0205bef8* cursor);
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
-extern "C" int _Z28CountPositiveEntries0207c638Pvj(void* p, unsigned int list);
+void Init0205bef8(Struct_0205bef8* cursor);
+MemberScreen* GetField1c_021a193c(int* p);
+int CountPositiveEntries0207c638(void* p, unsigned int list);
 short GetHalfwordEntryFromField150(Field150Holder02052df8* member, int part);
 extern "C" int func_0207c7a0(void* p, int item, int a);
 short* GetPointerFromArray0xbd0(unsigned char* p, unsigned int list);
@@ -193,20 +193,20 @@ extern "C" ARM void func_ov005_02153ba4(EquipmentMenu* self) {
     self->modelTableAllocator_.ResetAllocatorPointer();
     self->unk_280.ResetAllocatorPointer();
     self->items_ = NULL;
-    _Z19ResetStruct020dfc40P14Struct020dfc40((Struct020dfc40*)self->texts_);
+    ResetStruct020dfc40((Struct020dfc40*)self->texts_);
     self->text_ = NULL;
-    _Z20ClearFields_021e20c0Pv(self->layout_);
+    ClearFields_021e20c0(self->layout_);
     self->unk_e64 = NULL;
     self->unk_e68 = 0;
-    _Z17ResetList0204af64P12List0204af64((List0204af64*)self->backgrounds_[0]);
-    _Z17ResetList0204af64P12List0204af64((List0204af64*)self->backgrounds_[1]);
-    _Z17ResetList0204af64P12List0204af64((List0204af64*)self->backgrounds_[2]);
-    _Z18InitStruct0205cfd4P18InitTarget0205cfd4((InitTarget0205cfd4*)self->window_);
+    ResetList0204af64((List0204af64*)self->backgrounds_[0]);
+    ResetList0204af64((List0204af64*)self->backgrounds_[1]);
+    ResetList0204af64((List0204af64*)self->backgrounds_[2]);
+    InitStruct0205cfd4((InitTarget0205cfd4*)self->window_);
     for (int i = 0; i < 3; i++)
         func_0204c684(self->canvases_[i]);
     self->pixels_ = NULL;
     func_ov023_021dc134(self->infoWindow_, -1, 0);
-    _Z17ClearObj_021e1318P11Obj021e1318((Obj021e1318*)self->sortList_);
+    ClearObj_021e1318((Obj021e1318*)self->sortList_);
     func_ov023_021dad78(self->modelTable_);
     func_ov005_021536e0(self->frame_);
     for (int i = 0; i < 36; i++)
@@ -236,7 +236,7 @@ extern "C" ARM void func_ov005_02153ba4(EquipmentMenu* self) {
     GameState* gameState = GameState::GetInstance();
     char* party = (char*)GetPtrField0x2a04(gameState);
     for (int i = 0; i < 8; i++)
-        self->itemCounts_[i] = GetShortFromArray0xc10((unsigned char*)(party + 0x1d4), _Z20GetTableByte0215a948Pvi(self, i));
+        self->itemCounts_[i] = GetShortFromArray0xc10((unsigned char*)(party + 0x1d4), GetTableByte0215a948(self, i));
     self->unk_3da8 = 0;
     self->equippedStep_ = 0;
     self->pageStep_ = 0;
@@ -259,7 +259,7 @@ extern "C" ARM void func_ov005_02153ba4(EquipmentMenu* self) {
     self->task_ = 0;
     memset(&self->flags_, 0, sizeof(self->flags_));
     self->unk_3dc0 = -1;
-    _Z12Init0205bef8P15Struct_0205bef8((Struct_0205bef8*)self->cursor_);
+    Init0205bef8((Struct_0205bef8*)self->cursor_);
     self->cursor_[0x3d] = 0;
     self->unk_3dd0 = 0;
     self->unk_3dd1 = 0;
@@ -288,13 +288,13 @@ extern "C" ARM void func_ov005_02153ba4(EquipmentMenu* self) {
     self->blinkTimer_ = 30;
     self->blinkTimer2_ = 30;
     self->fadeStep_ = 0;
-    MemberScreen* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+    MemberScreen* screen = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
     int* members = screen->members_;
     int memberCount = screen->memberCount_;
     for (int kind = 0; kind < 8; kind++) {
-        unsigned char list = _Z20GetTableByte0215a948Pvi(self, kind);
-        int part = _Z20GetTableByte0215a918Pvi(self, kind);
-        int count = _Z28CountPositiveEntries0207c638Pvj(party + 0x1d4, list);
+        unsigned char list = GetTableByte0215a948(self, kind);
+        int part = GetTableByte0215a918(self, kind);
+        int count = CountPositiveEntries0207c638(party + 0x1d4, list);
         short equipped[4];
         __clear(equipped, sizeof(equipped));
         for (int i = 0; i < memberCount; i++) {

@@ -4,22 +4,22 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Resource/GameResources.h"
 
-extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void* obj, int id, int mask);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
+void* GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(struct FlagWord020466f4* word, unsigned int mask);
+void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 extern "C" void func_ov023_021f65d4(void* obj, int a, int b);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" int _Z34DispatchAdjustmentIfType4_02157018Pvi(void* a, int key);
+int GetGlobalField0x1c020421a0(void);
+int DispatchAdjustmentIfType4_02157018(void* a, int key);
 extern "C" int func_020aad1c(void* loader, void* name, int a, int b);
 extern "C" int func_ov004_0215b1d4(void* obj);
 extern "C" void* func_02012fe4(void);
 struct Actor0209c3b4;
-extern "C" void _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(struct Actor0209c3b4* actor, int val);
-extern "C" void _Z22SetModeClamped0209ca70Pvi(void* obj, int val);
-extern "C" void* _Z38GetOffsetPtrromField_021b1fc0_021b1fc0Pv(void* obj);
+void SetStateAndDispatch0209c3b4(struct Actor0209c3b4* actor, int val);
+void SetModeClamped0209ca70(void* obj, int val);
+void* GetOffsetPtrromField_021b1fc0_021b1fc0(void* obj);
 struct Obj_02184534;
-extern "C" void _Z22SetFieldsB0B4_02184534P12Obj_02184534ii(struct Obj_02184534* obj, int b0, int b4);
+void SetFieldsB0B4_02184534(struct Obj_02184534* obj, int b0, int b4);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 extern "C" void func_0204500c(void* field, void* buf, int p2, int p3);
 
@@ -49,9 +49,9 @@ extern "C" ARM int func_ov004_0215c974(void* obj) {
     char* base;
     int i;
 
-    _Z26ClearNodeMaskById_021f6600Pvii(obj, 0x36, 8);
+    ClearNodeMaskById_021f6600(obj, 0x36, 8);
 
-    data = _Z27GetDataPtr02114e04_020d6c00v();
+    data = GetDataPtr02114e04_020d6c00();
     OrBitsIntoField0((unsigned int*)data, 0x80);
 
     BackgroundLoader::AddLockGlobal();
@@ -60,16 +60,16 @@ extern "C" ARM int func_ov004_0215c974(void* obj) {
     BackgroundLoader::RemoveLockGlobal();
     if (!queued) return 1;
 
-    _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)data, 0x80);
+    ClearFlags020466f4((struct FlagWord020466f4*)data, 0x80);
 
     func_ov023_021f65d4(obj, 0x36, 8);
 
-    g = _Z26GetGlobalField0x1c020421a0v();
+    g = GetGlobalField0x1c020421a0();
     cur = *(char**)((char*)g + 0x5c);
     memset(cur, 0, 0x960);
 
     gs = (char*)GameState::GetInstance() + 0x26c;
-    table = (struct TableA68*)_Z34DispatchAdjustmentIfType4_02157018Pvi(obj, 4);
+    table = (struct TableA68*)DispatchAdjustmentIfType4_02157018(obj, 4);
 
     head = (const char*)FindEntryByKey(table, 0x21);
     len = strlen(head);
@@ -80,17 +80,17 @@ extern "C" ARM int func_ov004_0215c974(void* obj) {
         func_ov004_0215b1d4(obj);
         void* q = func_02012fe4();
         Bits7_0215c974* b = (Bits7_0215c974*)((char*)(*(void**)((char*)q + 8)) + 0xd);
-        _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i((struct Actor0209c3b4*)&data_02109bf4, b->low7);
-        _Z22SetModeClamped0209ca70Pvi(&data_02109bf4, data_ov004_021707d8.ptr[0x2d]);
+        SetStateAndDispatch0209c3b4((struct Actor0209c3b4*)&data_02109bf4, b->low7);
+        SetModeClamped0209ca70(&data_02109bf4, data_ov004_021707d8.ptr[0x2d]);
     } else if (data_ov004_021707d8.ptr[0x14] != 0) {
         void* raw = func_ov017_0218b5b0();
         void* five = *(void**)((char*)raw + 0x3000 + 0xb48);
-        rec = (char*)_Z38GetOffsetPtrromField_021b1fc0_021b1fc0Pv(five);
+        rec = (char*)GetOffsetPtrromField_021b1fc0_021b1fc0(five);
         base = *(char**)((char*)five + 0x34);
 
         for (i = 0; i < 4; i++) {
             if (strstr((char*)rec + 0x88, &data_ov004_0217043e)) {
-                _Z22SetFieldsB0B4_02184534P12Obj_02184534ii((struct Obj_02184534*)obj, (int)base, *(int*)((char*)rec + 0xac));
+                SetFieldsB0B4_02184534((struct Obj_02184534*)obj, (int)base, *(int*)((char*)rec + 0xac));
                 break;
             }
             base += *(int*)((char*)rec + 0xac);

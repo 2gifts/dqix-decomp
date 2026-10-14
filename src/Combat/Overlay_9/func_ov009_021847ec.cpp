@@ -15,7 +15,7 @@ struct Entry0218aafc { char str[5]; };
 #if !defined(jpn)
 extern struct Entry0218aafc data_ov009_0218aafc[];
 #endif
-extern "C" int _Z27FindEntryIndexByKey020424e4ii(int key, int tableIdx);
+int FindEntryIndexByKey020424e4(int key, int tableIdx);
 
 struct Obj021847ec {
 #if !defined(jpn)
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov009_021847ec(struct Obj021847ec* obj) {
     unsigned char* out = obj->field2a;
     int i;
     for (i = 0; i < 15; i++) {
-        *out++ = (unsigned char)_Z27FindEntryIndexByKey020424e4ii((int)&data_ov009_0218aafc[i], 1);
+        *out++ = (unsigned char)FindEntryIndexByKey020424e4((int)&data_ov009_0218aafc[i], 1);
     }
 #endif
 }

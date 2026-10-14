@@ -24,12 +24,12 @@ extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 int GetGlobalField0x1c020421a0();
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0202ae18();
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void* GetDataPtr02114e04_020d6c00(void);
 extern "C" void func_ov003_0216d8d4(char* obj, int keyA, int p3, int p4, int p5);
 extern "C" int func_020457e0(char* obj);
-extern "C" void _Z24ReinitController02043204Pc(char* obj);
-extern "C" void* _Z16AllocateAligned4P14AllocatorUnionj(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion*, void*);
+void ReinitController02043204(char* obj);
+void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void TailForward02012da4(AllocatorUnion*, void*);
 extern "C" void _Z18ResetState02170d38v(char* p);
 class Base021714a0;
 extern "C" int func_ov003_021714a0(Base021714a0* obj);
@@ -51,13 +51,13 @@ extern "C" void* _Z15GetFieldAt0x150Ph(void* p);
 extern "C" int _Z25ReadBattleField0x64f4ByteP9GameState(struct BattleStruct* battle);
 extern "C" void _Z13SetByte0x6480Pv(struct BattleStruct* battle);
 extern "C" void func_ov017_021a9ff0(int flag);
-extern "C" void _Z37InitNodeAndInsertAt_021c1798_021c1798P13GameResourcesh(GameResources* p, unsigned char v);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(void* word);
+void InitNodeAndInsertAt_021c1798_021c1798(GameResources* p, unsigned char v);
+int IsBrightnessTransitionActive(void* word);
 extern "C" struct CombatantStruct* _ZN9GameState20GetUnknownGameObjectEv(struct BattleStruct* battle);
 extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(void* obj, int flag);
-extern "C" void _Z16OrBitsIntoField0Pjj(unsigned int* word, unsigned int mask);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* obj, int a, int b);
-extern "C" void _Z16SetSubBrightnessP13GameResourcesii(void* obj, int a, int b);
+void OrBitsIntoField0(unsigned int* word, unsigned int mask);
+void SetMainBrightness(void* obj, int a, int b);
+void SetSubBrightness(void* obj, int a, int b);
 extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(void* p, unsigned int mask);
 extern "C" void _Z19ClearStruct020a9ea4P14Struct020a9ea4(void* p);
 extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv();
@@ -71,18 +71,18 @@ extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(void* obj, int val);
 extern "C" void* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battle, int idx);
 extern "C" void* _Z17GetGlobal02109400v();
 struct Foo0207df50;
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
-extern "C" int _Z23GetByteField28_021b1fa8Pv(void* p);
-extern "C" int _Z23GetByteField29_021b1fb0Pv(void* p);
-extern "C" void* _Z22GetPtrField2a_021b1fb8Pv(void* p);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+void CopyInternalFields0207df50(struct Foo0207df50* p);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
+int GetByteField28_021b1fa8(void* p);
+int GetByteField29_021b1fb0(void* p);
+void* GetPtrField2a_021b1fb8(void* p);
+int LoadBattleBlock020ac4c0(void* dst);
 extern "C" void _Z29AddClamped14BitFieldMidAt0x10P7S_a03f8j(void* p, unsigned int v);
-extern "C" void _Z23CopyInBattleField0x7540Pv(void* p);
-extern "C" void _Z25CopyOutBattleRegion0x64f4Pv(void* p);
-extern "C" void _Z24CopyToBattleRegion0x64f4Pv(void* p);
-extern "C" const char* _Z28CallFunc020e0434With02153694i(int key);
+void CopyInBattleField0x7540(void* p);
+void CopyOutBattleRegion0x64f4(void* p);
+void CopyToBattleRegion0x64f4(void* p);
+const char* CallFunc020e0434With02153694(int key);
 extern "C" void _Z22SetNameEntries02011818PvP11Src02011818(struct BattleStruct* battle, void* src);
 extern "C" void _Z17ClearRegion0x649ePc(struct BattleStruct* battle);
 extern "C" void _Z23CopyStringToField0x649ePcjPKc(struct BattleStruct* battle, unsigned int idx, const char* str);
@@ -130,7 +130,7 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
     char* g = (char*)GetGlobalField0x1c020421a0();
     void* ctx = func_02012fe4();
     void* w = func_0202ae18();
-    void* dataPtr0 = _Z27GetDataPtr02114e04_020d6c00v();
+    void* dataPtr0 = GetDataPtr02114e04_020d6c00();
 
     short subreq = *(short*)(obj + 0xa);
     if (subreq == 1) {
@@ -195,10 +195,10 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
                 rec->v = base - 20000 + ((struct Mem150*)c)->f150->f950;
             }
         } else {
-            _Z24ReinitController02043204Pc(g);
+            ReinitController02043204(g);
             *(short*)(obj + 4) = 7;
             *(short*)(obj + 6) = 0;
-            _Z37InitNodeAndInsertAt_021c1798_021c1798P13GameResourcesh(ov17, 0);
+            InitNodeAndInsertAt_021c1798_021c1798(ov17, 0);
         }
     } else if (state == 3) {
         if (*(int*)(g + 0x9a0) != 0) return;
@@ -251,7 +251,7 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
     } else if (state == 0x65) {
         *(unsigned char*)(g + 0x1000 + 0x9ae) = 0;
         if (*(int*)(g + 0x9a0) != 0) return;
-        _Z24ReinitController02043204Pc(g);
+        ReinitController02043204(g);
         *(short*)(obj + 4) = 7;
         *(short*)(obj + 6) = 0;
         _Z13SetByte0x6480Pv(battle);
@@ -273,7 +273,7 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             if (*(int*)(obj + 0x1000 + 0x408) < 0x12c) return;
         }
         *(int*)(obj + 0x1000 + 0x408) = 0;
-        _Z24ReinitController02043204Pc(g);
+        ReinitController02043204(g);
         func_0209c2e0(&data_02109bf4, 0, 0x12);
         func_ov003_02170d88(obj + 0x7e0);
         struct TreasureMapMetadata localF0;
@@ -292,7 +292,7 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
         } else {
             *(unsigned char*)(obj + 0x9ad) = 0;
         }
-        void* mem = _Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, 0x13800);
+        void* mem = AllocateAligned4(&data_02114e20, 0x13800);
         ((SafeAllocator*)(obj + 0x2d4 + 0x1000))->CreateTypeA(mem, 0x13800);
         func_ov003_02173c40(obj + 0x31c + 0xc00);
         func_ov003_021726f8(obj + 0x31c + 0xc00, (SafeAllocator*)(obj + 0x2d4 + 0x1000));
@@ -300,15 +300,15 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
         if (base7e0 != 0) {
             *(Base021714a0**)(obj + 0xfec) = base7e0;
         }
-        _Z16OrBitsIntoField0Pjj((unsigned int*)_Z27GetDataPtr02114e04_020d6c00v(), 0x10080);
-        _Z17SetMainBrightnessP13GameResourcesii(ov17, -16, 0x24);
-        _Z16SetSubBrightnessP13GameResourcesii(ov17, -16, 0x24);
+        OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x10080);
+        SetMainBrightness(ov17, -16, 0x24);
+        SetSubBrightness(ov17, -16, 0x24);
         *(short*)(obj + 6) = 6;
     } else if (state == 6) {
         int r;
         struct CombatantStruct* c = _ZN9GameState20GetUnknownGameObjectEv(battle);
         _Z27CancelPendingAction020397ccP11Obj020397cci(c, 1);
-        if (_Z28IsBrightnessTransitionActiveP13GameResources(ov17) != 0) {
+        if (IsBrightnessTransitionActive(ov17) != 0) {
             if (IsKind5(obj) == 0) return;
         }
         if (*(int*)(obj + 0x1000 + 0x3f0) > 0) {
@@ -323,7 +323,7 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
         }
         if (func_ov003_021727c8(obj + 0x31c + 0xc00) == 0) {
         *(unsigned char*)(obj + 0x1000 + 0x3eb) = 1;
-        _Z18ClearFlags020466f4P16FlagWord020466f4j(_Z27GetDataPtr02114e04_020d6c00v(), 0x10080);
+        _Z18ClearFlags020466f4P16FlagWord020466f4j(GetDataPtr02114e04_020d6c00(), 0x10080);
         *(unsigned char*)(obj + 0x1000 + 0x3ee) = 0;
         *(unsigned char*)(obj + 0x1000 + 0x3ee) = *(unsigned char*)(obj + 0xff0);
         int flag = *(unsigned char*)(obj + 0xf13);
@@ -333,12 +333,12 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
         void* sig = ((SafeAllocator*)(obj + 0x2d4 + 0x1000))->GetSignedAllocator();
         if (sig != 0) {
             ((SafeAllocator*)(obj + 0x2d4 + 0x1000))->Destroy();
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, sig);
+            TailForward02012da4(&data_02114e20, sig);
         }
         int battleBlock[0x2c];
-        _Z23LoadBattleBlock020ac4c0Pv(battleBlock);
+        LoadBattleBlock020ac4c0(battleBlock);
         _Z29AddClamped14BitFieldMidAt0x10P7S_a03f8j(battleBlock, *(unsigned char*)(obj + 0x1000 + 0x3ee));
-        _Z23CopyInBattleField0x7540Pv(battleBlock);
+        CopyInBattleField0x7540(battleBlock);
         SetB34(GetSave(ctx), *(unsigned char*)(obj + 0x1000 + 0x3ed) + GetB34(GetSave(ctx)));
         if (flag != 0) {
             struct CombatantStruct* cc = _ZN9GameState20GetUnknownGameObjectEv(battle);
@@ -397,7 +397,7 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
         }
         BlankFunction02094b34(actor, 0x1f5, 0x66, 0, 0);
         if (AlwaysTrue02094b4c(actor) == 0) return;
-        if (_Z28IsBrightnessTransitionActiveP13GameResources(ov17) != 0) return;
+        if (IsBrightnessTransitionActive(ov17) != 0) return;
         void* p8 = *(void**)((char*)ctx + 8);
         int val = ((struct B7*)p8)->v;
         SetStateAndDispatch0209c3b4((struct Actor0209c3b4*)&data_02109bf4, val);
@@ -436,7 +436,7 @@ phase2:;
             _Z19ClearStruct020a9ea4P14Struct020a9ea4(obj + 0xc + 0x1400);
             func_ov003_0216d8d4(obj, 0xc8, -1, -1, -1);
             *(short*)(obj + 6) = 0x12e;
-            _Z16OrBitsIntoField0Pjj((unsigned int*)dataPtr0, 0x80);
+            OrBitsIntoField0((unsigned int*)dataPtr0, 0x80);
         }
         return;
     } else if (state == 0x12e) {
@@ -472,7 +472,7 @@ phase2:;
         return;
     } else if (state == 0xe) {
         ((SafeAllocator*)(obj + 0x2e8 + 0x1000))->ResetAllocatorPointer();
-        void* mem = _Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, 0xc800);
+        void* mem = AllocateAligned4(&data_02114e20, 0xc800);
         ((SafeAllocator*)(obj + 0x2e8 + 0x1000))->CreateTypeA(mem, 0xc800);
         ((SafeAllocator*)(obj + 0x2e8 + 0x1000))->Reset();
         unsigned int fileSize;
@@ -482,8 +482,8 @@ phase2:;
             return;
         }
         struct Foo0207df50* fields = (struct Foo0207df50*)((char (*)[0x70])ov17->unknown_2cc)[0x1c];
-        _Z26CopyInternalFields0207df50P11Foo0207df50(fields);
-        _Z25RestorePairTables0207df90Pc((char*)fields);
+        CopyInternalFields0207df50(fields);
+        RestorePairTables0207df90((char*)fields);
         struct ObjectArchiveLoadInfo loadInfo;
         loadInfo.unk_0 = 0;
         loadInfo.unk_14 = 0;
@@ -494,7 +494,7 @@ phase2:;
         loadInfo.fileData = fileData;
         loadInfo.unk_8 = fileSize;
         ((Object3D*)(obj + 0x33c + 0x1000))->LoadFromCHRArchive(&loadInfo);
-        _Z24BackupPairTables0207dfacPc((char*)fields);
+        BackupPairTables0207dfac((char*)fields);
         *(unsigned char*)(obj + 0x1000 + 0x3e8) = 1;
         ((Object3D*)(obj + 0x33c + 0x1000))->MaybeSetRegularAnimation(data_ov003_021801f8, 1);
         struct CombatantStruct* c = _ZN9GameState20GetUnknownGameObjectEv(battle);
@@ -504,19 +504,19 @@ phase2:;
         *(short*)(obj + 6) = 0xf;
         return;
     } else if (state == 0xf) {
-        if (_Z28IsBrightnessTransitionActiveP13GameResources(ov17) != 0) return;
+        if (IsBrightnessTransitionActive(ov17) != 0) return;
         ((Object3D*)(obj + 0x33c + 0x1000))->AdvanceEffects();
         if (((Object3D*)(obj + 0x33c + 0x1000))->HasAnimationStopped() == 0) return;
         void* sig = ((SafeAllocator*)(obj + 0x2e8 + 0x1000))->GetSignedAllocator();
         if (sig != 0) {
             ((SafeAllocator*)(obj + 0x2e8 + 0x1000))->Destroy();
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, sig);
+            TailForward02012da4(&data_02114e20, sig);
         }
         *(unsigned char*)(obj + 0x1000 + 0x3e8) = 0;
         void* combatant2 = *(void**)((char*)ov17 + 0x3b48);
         *(int*)(g + 0x998) = 1;
-        int byte28 = _Z23GetByteField28_021b1fa8Pv(combatant2);
-        int byte29 = _Z23GetByteField29_021b1fb0Pv(combatant2);
+        int byte28 = GetByteField28_021b1fa8(combatant2);
+        int byte29 = GetByteField29_021b1fb0(combatant2);
         func_ov003_0216d8d4(obj, 0x4f, byte28 + 0x64, byte29, -1);
         *(short*)(obj + 6) = 0x10;
         return;
@@ -526,7 +526,7 @@ phase2:;
         *(short*)(obj + 6) = 0x11;
         return;
     } else if (state == 0x11) {
-        if (_Z28IsBrightnessTransitionActiveP13GameResources(ov17) != 0) return;
+        if (IsBrightnessTransitionActive(ov17) != 0) return;
         struct CombatantStruct* c = _ZN9GameState20GetUnknownGameObjectEv(battle);
         int i;
         for (i = 0; i < 4; i++) {
@@ -565,17 +565,17 @@ phase2:;
                 char pad;
                 struct TreasureMapMetadata maps[99];
             } region;
-            _Z25CopyOutBattleRegion0x64f4Pv(&region);
+            CopyOutBattleRegion0x64f4(&region);
             unsigned char idx = region.count;
             struct TreasureMapMetadata* slot = &region.maps[idx];
             VectorizedMemset(slot, 0, sizeof(struct TreasureMapMetadata));
-            int b28 = _Z23GetByteField28_021b1fa8Pv(c3);
-            int b29 = _Z23GetByteField29_021b1fb0Pv(c3);
+            int b28 = GetByteField28_021b1fa8(c3);
+            int b29 = GetByteField29_021b1fb0(c3);
             slot->InitialiseAsLegacyBossMap(b28, b29);
-            void* p2a = _Z22GetPtrField2a_021b1fb8Pv(c3);
+            void* p2a = GetPtrField2a_021b1fb8(c3);
             VectorizedInvertedMemcpy(p2a, (char*)slot + 1, 8);
             region.count += 1;
-            _Z24CopyToBattleRegion0x64f4Pv(&region);
+            CopyToBattleRegion0x64f4(&region);
             *(short*)(obj + 6) = 0xc;
         }
         return;
@@ -597,20 +597,20 @@ phase2:;
         nameBuf[6] = 0;
         *(int*)(nameBuf + 0x20) = -1;
         nameBuf[0] = 2;
-        nameBuf[1] = (char)_Z23GetByteField28_021b1fa8Pv(c4);
-        nameBuf[2] = (char)_Z23GetByteField29_021b1fb0Pv(c4);
+        nameBuf[1] = (char)GetByteField28_021b1fa8(c4);
+        nameBuf[2] = (char)GetByteField29_021b1fb0(c4);
         *(short*)(nameBuf + 4) = 0;
         nameBuf[6] = 1;
-        void* p2a = _Z22GetPtrField2a_021b1fb8Pv(c4);
+        void* p2a = GetPtrField2a_021b1fb8(c4);
         strcpy(nameBuf + 7, (char*)p2a);
         _Z22SetNameEntries02011818PvP11Src02011818(battle, nameBuf);
-        const char* lvPrefix = _Z28CallFunc020e0434With02153694i(1011);
-        int level = _Z23GetByteField29_021b1fb0Pv(c4);
+        const char* lvPrefix = CallFunc020e0434With02153694(1011);
+        int level = GetByteField29_021b1fb0(c4);
         char lvlString[0x20];
         sprintf(lvlString, data_ov003_021801fc, lvPrefix, level);
         _Z17ClearRegion0x649ePc(battle);
-        short itemID = (short)(_Z23GetByteField28_021b1fa8Pv(c4) + 0x45);
-        const char* itemName = _Z28CallFunc020e0434With02153694i(itemID);
+        short itemID = (short)(GetByteField28_021b1fa8(c4) + 0x45);
+        const char* itemName = CallFunc020e0434With02153694(itemID);
         char popup[0x40];
         sprintf(popup, data_ov003_02180201, itemName, lvlString);
         _Z23CopyStringToField0x649ePcjPKc(battle, 0, popup);
@@ -634,7 +634,7 @@ phase2:;
         return;
     } else if (state == 0x62) {
         if (*(int*)(g + 0x9a0) != 0 || *(int*)(g + 0x998) != 0) return;
-        _Z24ReinitController02043204Pc(g);
+        ReinitController02043204(g);
         *(short*)(obj + 4) = 7;
         *(short*)(obj + 6) = 0;
     }

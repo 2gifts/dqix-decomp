@@ -16,10 +16,10 @@ struct Param02048850;
 struct SearchStruct0202c1a4;
 
 extern "C" void* func_0202ae18(void);
-extern "C" GameObject* _Z25GetCombatantWithFlag0x400P9GameStatei(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
 extern "C" void __clear(void* buf, int n);
-extern "C" unsigned char* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(Container02070e60* table, int key);
-extern "C" Param02048850* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(BinarySearchByComparatorStruct* table, int key);
+unsigned char* SearchWithLow15Comparator02070fd0(Container02070e60* table, int key);
+Param02048850* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct* table, int key);
 int IsFlag10088Set(S_10088* obj);
 extern "C" int func_ov000_02161bb8(unsigned char* obj);
 void SetRandomizedShort0x18802048934(void* p, FieldStruct02048934* f, Random* r);
@@ -31,7 +31,7 @@ extern "C" void func_02049c88(void* obj, void* model);
 void SetupFieldsFromParam02048850(Obj02048850* obj, Param02048850* param);
 void BuildName020488ec(char* obj);
 void ClearSubstructByte0x56(unsigned char* obj);
-extern "C" void _Z21RegisterCombatantSlotP9GameStateiP10GameObject(GameState* battleStruct, int id, GameObject* combatant);
+void RegisterCombatantSlot(GameState* battleStruct, int id, GameObject* combatant);
 int CheckField0NonZero(int* obj);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 
@@ -169,7 +169,7 @@ extern "C" ARM int func_ov000_02161380(Scene02161380* scene, int kind, int group
     infos = (BinarySearchByComparatorStruct*)((unsigned char*)scene->roster + 0x678);
     id = -1;
     for (int i = 0; i < 8; i++) {
-        if (_Z25GetCombatantWithFlag0x400P9GameStatei(game, i + 0xc0) == 0) {
+        if (GetCombatantWithFlag0x400(game, i + 0xc0) == 0) {
             id = (short)(i + 0xc0);
             break;
         }
@@ -250,14 +250,14 @@ extern "C" ARM int func_ov000_02161380(Scene02161380* scene, int kind, int group
         }
     }
 
-    entry = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(names, kind);
-    info = _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(infos, (short)kind);
+    entry = SearchWithLow15Comparator02070fd0(names, kind);
+    info = SearchWithComparator0206f4f0(infos, (short)kind);
     if (!entry) return -1;
     if (!info) return -1;
 
     for (pass = 0; pass < 2; pass++) {
         for (int j = 0; j < f->groups[group].count; j++) {
-            c = (Combatant02161380*)_Z25GetCombatantWithFlag0x400P9GameStatei(game, f->groups[group].ids[j] + 0xc0);
+            c = (Combatant02161380*)GetCombatantWithFlag0x400(game, f->groups[group].ids[j] + 0xc0);
             if (!c) continue;
             unsigned char flags[2];
             flags[0] = (c->stats->flags & 0x2000) != 0;
@@ -326,7 +326,7 @@ extern "C" ARM int func_ov000_02161380(Scene02161380* scene, int kind, int group
             ClearSubstructByte0x56((unsigned char*)nc);
             f->pairs[pair].slots |= 1 << nc->slot;
             IncrementByteCounterWrapAt0x12(slots);
-            _Z21RegisterCombatantSlotP9GameStateiP10GameObject(game, id, (GameObject*)nc);
+            RegisterCombatantSlot(game, id, (GameObject*)nc);
             f->groups[group].ids[f->groups[group].count] = index;
             f->groups[group].count++;
             f->groups[group].used++;

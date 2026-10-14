@@ -1,34 +1,34 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-extern "C" void _Z21InitBigStruct0205c790Pc(char* obj);
+void InitBigStruct0205c790(char* obj);
 
 struct State0204166c;
-extern "C" void _Z18ResetState0204166cP13State0204166c(struct State0204166c* s);
+void ResetState0204166c(struct State0204166c* s);
 
 struct Struct_020e2bd8;
-extern "C" void _Z12Init020e2bd8P15Struct_020e2bd8ii(struct Struct_020e2bd8* obj, int arg1, int arg2);
+void Init020e2bd8(struct Struct_020e2bd8* obj, int arg1, int arg2);
 
 struct Foo02042fcc;
-extern "C" void _Z16ResetFoo02042fccP11Foo02042fcc(struct Foo02042fcc* p);
+void ResetFoo02042fcc(struct Foo02042fcc* p);
 
 void InitEightSubStructs(char* obj);
 
 struct Holder02042c24;
-extern "C" void _Z22SetSubstructXY02042c24P14Holder02042c24ii(struct Holder02042c24* holder, int x, int y);
+void SetSubstructXY02042c24(struct Holder02042c24* holder, int x, int y);
 
 struct Holder02042c3c;
-extern "C" void _Z24SetSubstructSize02042c3cP14Holder02042c3cii(struct Holder02042c3c* holder, int width, int height);
+void SetSubstructSize02042c3c(struct Holder02042c3c* holder, int width, int height);
 
 extern "C" void func_02043124(void* self);
 
 struct RingBuffer02045824;
-extern "C" void _Z25SetRingBufferSlot02045824P18RingBuffer02045824ii(struct RingBuffer02045824* rb, int value, int index);
+void SetRingBufferSlot02045824(struct RingBuffer02045824* rb, int value, int index);
 
 struct Rect02042c54;
-extern "C" void _Z15SetRect02042c54P12Rect02042c54iiii(struct Rect02042c54* rect, int left, int top, int right, int bottom);
+void SetRect02042c54(struct Rect02042c54* rect, int left, int top, int right, int bottom);
 
-extern "C" void _Z22ClearField0x0_020bc078Pi(int* field);
+void ClearField0x0_020bc078(int* field);
 
 extern int data_02107820;
 
@@ -49,7 +49,7 @@ extern "C" ARM void func_02042c68(char* self) {
     *(int*)(self + REGION_OFFSET(0x4, 0x38)) = 0;
     *(int*)(self + REGION_OFFSET(0x8, 0x3c)) = 9;
     *(int*)(self + REGION_OFFSET(0x4c, 0x8c)) = 0;
-    _Z21InitBigStruct0205c790Pc(self + REGION_OFFSET(0x50, 0x90));
+    InitBigStruct0205c790(self + REGION_OFFSET(0x50, 0x90));
 
     *(int*)(self + REGION_OFFSET(0x218, 0x2c8)) = 0;
     memset(self + REGION_OFFSET(0x21c, 0x2cc), 0, 4);
@@ -69,24 +69,24 @@ extern "C" ARM void func_02042c68(char* self) {
     *(unsigned char*)(self + REGION_OFFSET(0x17e0, 0x19b0)) = 0;
     *(int*)(self + REGION_OFFSET(0x880, 0x9b0)) = 0;
     for (i = 0; i < 0x80; i++) {
-        _Z18ResetState0204166cP13State0204166c((struct State0204166c*)(self + REGION_OFFSET(0x888, 0x9b8) + i * 0x1c));
+        ResetState0204166c((struct State0204166c*)(self + REGION_OFFSET(0x888, 0x9b8) + i * 0x1c));
         *(unsigned char*)(self + i + REGION_OFFSET(0x1688, 0x17b8)) = 0;
     }
 
     *(int*)(self + REGION_OFFSET(0x824, 0x954)) = 0;
     *(int*)(self + REGION_OFFSET(0x828, 0x958)) = 0;
     *(unsigned char*)(self + REGION_OFFSET(0x1790, 0x1962)) = 0;
-    _Z12Init020e2bd8P15Struct_020e2bd8ii((struct Struct_020e2bd8*)(self + REGION_OFFSET(0x1794, 0x1964)), 0, 0);
+    Init020e2bd8((struct Struct_020e2bd8*)(self + REGION_OFFSET(0x1794, 0x1964)), 0, 0);
 
-    _Z12Init020e2bd8P15Struct_020e2bd8ii((struct Struct_020e2bd8*)(self + REGION_OFFSET(0x17b8, 0x1988)), 0, 1);
+    Init020e2bd8((struct Struct_020e2bd8*)(self + REGION_OFFSET(0x17b8, 0x1988)), 0, 1);
 
-    _Z16ResetFoo02042fccP11Foo02042fcc((struct Foo02042fcc*)(self + REGION_OFFSET(0x7e4, 0x914)));
-    _Z16ResetFoo02042fccP11Foo02042fcc((struct Foo02042fcc*)(self + REGION_OFFSET(0x800, 0x930)));
+    ResetFoo02042fcc((struct Foo02042fcc*)(self + REGION_OFFSET(0x7e4, 0x914)));
+    ResetFoo02042fcc((struct Foo02042fcc*)(self + REGION_OFFSET(0x800, 0x930)));
     InitEightSubStructs(self + REGION_OFFSET(0x1804, 0x19e0));
 
     *(void**)(self + REGION_OFFSET(0x1c44, 0x1e20)) = (void*)(self + REGION_OFFSET(0x7e4, 0x914));
-    _Z22SetSubstructXY02042c24P14Holder02042c24ii((struct Holder02042c24*)(self + REGION_OFFSET(0x1804, 0x19e0)), 0, 0x80);
-    _Z24SetSubstructSize02042c3cP14Holder02042c3cii((struct Holder02042c3c*)(self + REGION_OFFSET(0x1804, 0x19e0)), 0x100, 0x40);
+    SetSubstructXY02042c24((struct Holder02042c24*)(self + REGION_OFFSET(0x1804, 0x19e0)), 0, 0x80);
+    SetSubstructSize02042c3c((struct Holder02042c3c*)(self + REGION_OFFSET(0x1804, 0x19e0)), 0x100, 0x40);
     *(unsigned char*)(self + REGION_OFFSET(0x17e1, 0x19b1)) = 1;
     *(int*)(self + REGION_OFFSET(0x1c4c, 0x1e28)) = 0;
     *(unsigned char*)(self + REGION_OFFSET(0x17fd, 0x19cc)) = 0;
@@ -111,7 +111,7 @@ extern "C" ARM void func_02042c68(char* self) {
         *(int*)(self + 0x1738) = 0;
     }
 #else
-    _Z25SetRingBufferSlot02045824P18RingBuffer02045824ii((struct RingBuffer02045824*)self, 0, -1);
+    SetRingBufferSlot02045824((struct RingBuffer02045824*)self, 0, -1);
 #endif
 
     *(unsigned char*)(self + REGION_OFFSET(0x17e8, 0x19b8)) = 0;
@@ -119,7 +119,7 @@ extern "C" ARM void func_02042c68(char* self) {
     *(int*)(self + REGION_OFFSET(0x171c, 0x184c)) = 0;
     *(int*)(self + REGION_OFFSET(0x1720, 0x1850)) = 0x100;
     *(int*)(self + REGION_OFFSET(0x1724, 0x1854)) = 0xc0;
-    _Z15SetRect02042c54P12Rect02042c54iiii((struct Rect02042c54*)(self + REGION_OFFSET(0x1718, 0x1848)), 0, 0x88, 0x100, 0xc0);
+    SetRect02042c54((struct Rect02042c54*)(self + REGION_OFFSET(0x1718, 0x1848)), 0, 0x88, 0x100, 0xc0);
 
     *(unsigned char*)(self + REGION_OFFSET(0x17e9, 0x19b9)) = 1;
     *(int*)(self + REGION_OFFSET(0x1728, 0x1858)) = 0;
@@ -171,7 +171,7 @@ extern "C" ARM void func_02042c68(char* self) {
 #else
     *(unsigned char*)(self + 0x19ce) = 0;
 #endif
-    _Z22ClearField0x0_020bc078Pi(&data_02107820);
+    ClearField0x0_020bc078(&data_02107820);
 
 #if defined(jpn)
     *(unsigned char*)(self + 0x17ff) &= ~4;

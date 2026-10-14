@@ -2,11 +2,11 @@
 #include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(struct FlagWord02046708* word, unsigned int mask);
+void* GetDataPtr02114e04_020d6c00(void);
+int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 
 struct Vec3copy0202ec84 { int x; int y; int z; };
-extern "C" ARM int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void* obj, struct Vec3copy0202ec84* src, int* out1, int* out2);
+ARM int ComputeTwoFromVec3_0202ec84(void* obj, struct Vec3copy0202ec84* src, int* out1, int* out2);
 
 struct StructAt020473c8;
 ARM void RenderFlaggedIndexedEntry(struct StructAt020473c8* obj, int param1);
@@ -36,7 +36,7 @@ struct Obj0205337c {
 
 // USA: func_0205337c
 extern "C" ARM void func_0205337c(struct Obj0205337c* obj) {
-    if (_Z17TestFlags02046708P16FlagWord02046708j((struct FlagWord02046708*)_Z27GetDataPtr02114e04_020d6c00v(), 2)) return;
+    if (TestFlags02046708((struct FlagWord02046708*)GetDataPtr02114e04_020d6c00(), 2)) return;
     if (obj->node == NULL) return;
 
     void* target = GetField0x3b0Value(GameState::GetInstance());
@@ -46,7 +46,7 @@ extern "C" ARM void func_0205337c(struct Obj0205337c* obj) {
     pose.y += 0x1b33;
 
     int outB, outA;
-    _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(target, &pose, &outB, &outA);
+    ComputeTwoFromVec3_0202ec84(target, &pose, &outB, &outA);
     outB -= 0xc;
     outA -= 0xc;
 

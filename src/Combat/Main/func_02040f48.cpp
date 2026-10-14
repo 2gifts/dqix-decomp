@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include <System/Matrix.h>
 
-extern "C" int _Z8fix32sini(int x);
-extern "C" int _Z8fix32cosi(int x);
+int fix32sin(int x);
+int fix32cos(int x);
 extern "C" int rand(void);
 
 struct Node020409b0 {
@@ -10,7 +10,7 @@ struct Node020409b0 {
     void* f14;
     void* f18;
 };
-extern "C" extern int _Z29DispatchOnActiveChild020409b0P12Node020409b0i(struct Node020409b0* obj, int arg);
+extern int DispatchOnActiveChild020409b0(struct Node020409b0* obj, int arg);
 
 struct Table02040f48 {
     Vector3i v[4];
@@ -41,8 +41,8 @@ extern "C" ARM void func_02040f48(struct Obj02040f48* self, Vector3i* ref) {
     Vector3i cand[4];
 
     if (self->cont->mode == 8) {
-        int sn = _Z8fix32sini(self->cont->angle);
-        int cs = _Z8fix32cosi(self->cont->angle);
+        int sn = fix32sin(self->cont->angle);
+        int cs = fix32cos(self->cont->angle);
         if (sn < 0) sn = -sn;
         if (cs < 0) cs = -cs;
         if (self->cont->angle < 0x191e || (self->cont->angle > 0x323d && self->cont->angle < 0x4b5c)) {
@@ -91,5 +91,5 @@ extern "C" ARM void func_02040f48(struct Obj02040f48* self, Vector3i* ref) {
 
     int idx = rand() % n;
     Vector3fix_Add((const Vector3fix*)&pos, (const Vector3fix*)&cand[idx], (Vector3fix*)&pos);
-    _Z29DispatchOnActiveChild020409b0P12Node020409b0i((struct Node020409b0*)self, (int)&pos);
+    DispatchOnActiveChild020409b0((struct Node020409b0*)self, (int)&pos);
 }

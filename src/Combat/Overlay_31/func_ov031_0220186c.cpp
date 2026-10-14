@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" int _Z30CompareThreeU16sDiffer02200824PtS_(unsigned short*, unsigned short*);
+int CompareThreeU16sDiffer02200824(unsigned short*, unsigned short*);
 extern "C" void func_ov031_02200e38(void* a, unsigned int b, int c);
 extern "C" void func_ov031_022017c4(void* a);
 
@@ -30,7 +30,7 @@ struct Struct0220186c {
 // USA: func_ov031_0220186c
 extern "C" ARM void func_ov031_0220186c(Struct0220186c* a, unsigned int b) {
     if (b < 0x1c) return;
-    if (_Z30CompareThreeU16sDiffer02200824PtS_((unsigned short*)a->pad8, (unsigned short*)data_ov031_0224ce68) == 0 ||
+    if (CompareThreeU16sDiffer02200824((unsigned short*)a->pad8, (unsigned short*)data_ov031_0224ce68) == 0 ||
         data_ov031_0224c980.field50 == 0) return;
 
     if (a->f0 != 0x100 || a->f2 != 8 || a->f4 != 0x406) return;

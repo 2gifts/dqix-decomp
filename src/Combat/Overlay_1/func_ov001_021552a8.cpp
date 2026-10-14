@@ -70,37 +70,37 @@ struct Events021552a8 {
 };
 
 char* GetFieldIfFlag4(char* obj);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
+void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern "C" void func_0209c2e0(void* obj, int a, int b);
 extern "C" void func_ov017_021bb27c(void* obj);
 extern "C" void func_0208b9a0(void* obj, unsigned char flag);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void _Z32InitAllocatorsAndBuffers0208b8c4P11Obj0208b8c4P13SafeAllocator(Obj0208b8c4* obj, SafeAllocator* alloc);
+char* GetGlobalField0x1c020421a0(void);
+void InitAllocatorsAndBuffers0208b8c4(Obj0208b8c4* obj, SafeAllocator* alloc);
 void* GetGlobalPtr021075f4(void);
 void* EmptyStub0203d004(void* p);
-extern "C" void _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(Pool020401fc* pool, unsigned int count, SafeAllocator* alloc);
-extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198* p);
-extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(ClearTarget0205a234* p);
-extern "C" void _Z18InitStruct0205a444Pc(char* p);
+void InitPool020401fc(Pool020401fc* pool, unsigned int count, SafeAllocator* alloc);
+void Init0205a198(Struct0205a198* p);
+void ClearField0And40205a234(ClearTarget0205a234* p);
+void InitStruct0205a444(char* p);
 int CountActiveEntries(ActiveEntry02046900* entry);
 void* FindRecordByIndex(Rec020467f0* rec, int index, void** out, int* out44);
 extern "C" int func_0205a528(void* obj, void* data, int arg2, void* arg3);
 extern "C" void func_ov001_0215a850(SafeAllocator* alloc);
 extern "C" void func_ov001_0215a8dc(void);
-extern "C" void _Z30InitOrClearAllocState_021538d4iPvP13SafeAllocator(int p0, void* unused1, SafeAllocator* alloc);
-extern "C" void _Z32ClearAllocSlotsAndStore_0215aa14P13SafeAllocator(SafeAllocator* alloc);
-extern "C" void _Z17SetArrVal0215aaa8ii(int idx, int val);
-extern "C" void _Z34ForwardArgsAndClearFlag8c_0215acf8ii(int a, int b);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50* p);
-extern "C" int _Z26StoreArgIfMatched_02153948t(unsigned short arg);
+void InitOrClearAllocState_021538d4(int p0, void* unused1, SafeAllocator* alloc);
+void ClearAllocSlotsAndStore_0215aa14(SafeAllocator* alloc);
+void SetArrVal0215aaa8(int idx, int val);
+void ForwardArgsAndClearFlag8c_0215acf8(int a, int b);
+void CopyInternalFields0207df50(Foo0207df50* p);
+int StoreArgIfMatched_02153948(unsigned short arg);
 extern "C" Events021552a8* func_0205ec34(void);
 extern "C" void* func_02012fe4(void);
 void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
 extern "C" void* func_0202ae18(void);
 void* GetPtrField0x2a04(GameState* gs);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" void _Z29ProcessBattlerEffects02019568Pvi(void* area, int arg);
-extern "C" Object3D* _Z21GetField4334_021bdbc0Ph(unsigned char* base);
+void* GetDataPtr02114e04_020d6c00(void);
+void ProcessBattlerEffects02019568(void* area, int arg);
+Object3D* GetField4334_021bdbc0(unsigned char* base);
 void SetField0x238False(void* obj);
 void ClearIntAt0x23c(unsigned char* obj);
 void SetFlag0x9c6(SetFlagStruct* p, int value);
@@ -137,7 +137,7 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
     if (loader->GetDetailedTaskStatus(self->taskA) != 2 || loader->GetDetailedTaskStatus(self->taskB) != 2) {
         SignedAllocatorHeader* header = self->allocator.GetSignedAllocator();
         self->allocator.Destroy();
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, header);
+        TailForward02012da4(&data_02114e20, header);
         loader->RemoveTask(self->taskA);
         loader->RemoveTask(self->taskB);
         loader->RemoveTask(self->taskC);
@@ -157,14 +157,14 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
     if (self->params.flags & 2) {
         self->timer = self->allocator.Allocate(0xe4);
         func_0208b9a0(self->timer, 0);
-        char* msg = _Z26GetGlobalField0x1c020421a0v();
+        char* msg = GetGlobalField0x1c020421a0();
         self->childAllocator.CreateTypeA(self->allocator.Allocate(0xa000), 0xa000);
         self->childAllocator.Reset();
-        _Z32InitAllocatorsAndBuffers0208b8c4P11Obj0208b8c4P13SafeAllocator((Obj0208b8c4*)self->timer, &self->childAllocator);
+        InitAllocatorsAndBuffers0208b8c4((Obj0208b8c4*)self->timer, &self->childAllocator);
         *(void**)(msg + 0x8c) = self->timer;
     }
     if ((self->params.flags & 1) || (self->params.flags & 4)) {
-        _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator((Pool020401fc*)EmptyStub0203d004(GetGlobalPtr021075f4()), 0xc, &self->allocator);
+        InitPool020401fc((Pool020401fc*)EmptyStub0203d004(GetGlobalPtr021075f4()), 0xc, &self->allocator);
     }
     if (self->params.flags & 0x200) {
         self->allocator.GetMaxPossibleAllocation();
@@ -172,10 +172,10 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
         self->list = (List021552a8*)self->allocator.Allocate(0x54);
         self->slots = self->allocator.Allocate(8);
         for (int i = 0; i < 0xe; i++) {
-            _Z12Init0205a198P14Struct0205a198((Struct0205a198*)((char*)self->entries + i * 0x28));
+            Init0205a198((Struct0205a198*)((char*)self->entries + i * 0x28));
         }
-        _Z23ClearField0And40205a234P19ClearTarget0205a234((ClearTarget0205a234*)self->slots);
-        _Z18InitStruct0205a444Pc((char*)self->list);
+        ClearField0And40205a234((ClearTarget0205a234*)self->slots);
+        InitStruct0205a444((char*)self->list);
         self->list->active = 0;
         SetListEntries(self->list, self->entries, 0xe);
         self->list->slots = self->slots;
@@ -196,21 +196,21 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
 
     func_ov001_0215a850(&self->allocator);
     func_ov001_0215a8dc();
-    _Z30InitOrClearAllocState_021538d4iPvP13SafeAllocator((int)dataA, 0, &self->allocator);
-    _Z32ClearAllocSlotsAndStore_0215aa14P13SafeAllocator(&self->allocator);
+    InitOrClearAllocState_021538d4((int)dataA, 0, &self->allocator);
+    ClearAllocSlotsAndStore_0215aa14(&self->allocator);
     if (self->params.flags & 4) {
-        _Z17SetArrVal0215aaa8ii(1, (int)&res->allocator_array_38[7]);
+        SetArrVal0215aaa8(1, (int)&res->allocator_array_38[7]);
     }
-    _Z34ForwardArgsAndClearFlag8c_0215acf8ii((int)dataB, lengthB);
+    ForwardArgsAndClearFlag8c_0215acf8((int)dataB, lengthB);
     GameObject* member = gs->GetPartyMemberByIndex(0);
     if (member != NULL && (**(unsigned int**)((char*)member + 0x130) & 1)) {
         self->field107 = 1;
     }
     loader->RemoveTask(self->taskA);
     loader->RemoveTask(self->taskB);
-    _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)(sub + 0xbd0));
+    CopyInternalFields0207df50((Foo0207df50*)(sub + 0xbd0));
 
-    if (_Z26StoreArgIfMatched_02153948t(self->params.nextId) == 0) {
+    if (StoreArgIfMatched_02153948(self->params.nextId) == 0) {
         SignedAllocatorHeader* buffer = self->childAllocator.GetSignedAllocator();
         if (buffer != NULL) {
             self->childAllocator.Destroy();
@@ -218,7 +218,7 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
         }
         SignedAllocatorHeader* header = self->allocator.GetSignedAllocator();
         self->allocator.Destroy();
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, header);
+        TailForward02012da4(&data_02114e20, header);
         func_ov017_021bb27c(self);
         self->done = 1;
         return self->state;
@@ -247,13 +247,13 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
     void* area = (Zone3D*)func_02012fe4();
     func_0202ae18();
     GetPtrField0x2a04(state);
-    _Z27GetDataPtr02114e04_020d6c00v();
+    GetDataPtr02114e04_020d6c00();
     if (!(params.flags & 0x400)) {
-        _Z29ProcessBattlerEffects02019568Pvi(area, arg);
+        ProcessBattlerEffects02019568(area, arg);
     }
     *((char*)func_0205ec34() + 0x490) = -1;
     if (params.hide != 0) {
-        Object3D* obj = _Z21GetField4334_021bdbc0Ph((unsigned char*)resources);
+        Object3D* obj = GetField4334_021bdbc0((unsigned char*)resources);
         if (obj != NULL) {
             obj->MakeHidden();
         }

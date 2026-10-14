@@ -7,17 +7,17 @@ extern "C" int func_ov017_02195658(GameResources* res);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 void ClearBitAt0x34(unsigned char* obj, int index);
 
-extern "C" void _Z27EnqueueEventTag122_021c8b78t(unsigned short tag);
+void EnqueueEventTag122_021c8b78(unsigned short tag);
 int GetField0x3acValue(GameState* battleStruct);
 extern "C" void func_ov000_0215f03c(struct BattleData021640dc* data);
 extern "C" void func_ov000_021663a0(struct BattleScene021640dc* scene);
 extern "C" void func_ov000_02164d74(struct BattleScene021640dc* scene);
-extern "C" void _Z31ProcessFlagits021674f4_021674f4Phi(unsigned char* scene, int flag);
+void ProcessFlagits021674f4_021674f4(unsigned char* scene, int flag);
 unsigned char* GetData02108f0c(void);
 void SetField0xacMinusOneClearField0xb0(unsigned char* obj);
 void SetFieldsAndSignalData02184220(void* p, int val);
 extern "C" void func_ov000_021750e4(void* obj);
-extern "C" void _Z31UpdateCombatantFlagByte021760d4Pv(void* obj);
+void UpdateCombatantFlagByte021760d4(void* obj);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 
 struct Formation021640dc {
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov000_021640dc(struct BattleScene021640dc* scene) {
     if (TestBitAt0x34((unsigned char*)config, (unsigned char)partyId)) {
         if (config->partyId == partyId) {
             SetCombatWorkFlags0x55f4(scene, 0x2000000);
-            _Z27EnqueueEventTag122_021c8b78t(config->eventTag);
+            EnqueueEventTag122_021c8b78(config->eventTag);
         }
         ClearPartyBit((unsigned char*)config, partyId);
         return;
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov000_021640dc(struct BattleScene021640dc* scene) {
     func_ov000_021663a0(scene);
     func_ov000_02164d74(scene);
     scene->config->field_0x30 = 0;
-    _Z31ProcessFlagits021674f4_021674f4Phi((unsigned char*)scene, scene->config->field_0x2c == 0);
+    ProcessFlagits021674f4_021674f4((unsigned char*)scene, scene->config->field_0x2c == 0);
     SetField0xacMinusOneClearField0xb0(GetData02108f0c());
     SetFieldsAndSignalData02184220(scene, 7);
     SetCombatWorkFlags0x55f4(scene, 0x10000);
@@ -121,6 +121,6 @@ extern "C" ARM void func_ov000_021640dc(struct BattleScene021640dc* scene) {
     scene->turn.field_0x20 = scene->config->field_0xc;
     scene->turn.partyId = scene->config->partyId;
     func_ov000_021750e4(&scene->turn);
-    _Z31UpdateCombatantFlagByte021760d4Pv(&scene->turn);
+    UpdateCombatantFlagByte021760d4(&scene->turn);
     ClearBitsInWord(&res->brightnessFlags_0, 0x10);
 }

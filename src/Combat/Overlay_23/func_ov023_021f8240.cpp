@@ -168,15 +168,15 @@ struct TableA68;
 struct S021fc504;
 
 extern "C" Node021f68b8* func_ov011_021849c8(void* script);
-extern "C" MenuObject_021f8240* _Z19GetNthNode_021f68b8P12Node021f68b8i(Node021f68b8* list, int index);
+MenuObject_021f8240* GetNthNode_021f68b8(Node021f68b8* list, int index);
 extern "C" unsigned short func_ov023_021f6f10(MenuObject_021f8240* object);
 extern "C" MenuObject_021f8240* func_ov023_021f6880(Node021f68b8* list, int id);
 extern "C" TableA68* func_ov023_021fa598(MenuObject_021f8240* texts);
 const char* FindEntryByKey(TableA68* texts, int id);
 int IsValueEqual12(int font);
 extern "C" void __clear(void* buffer, unsigned long size);
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* text, char* output, int font);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void CopyTextAndUppercaseIfFlagged0206819c(const char* text, char* output, int font);
+void* GetGlobalField0x1c020421a0();
 extern "C" void func_02046608(void* messages, int, const char* input, char* output, int, int, int);
 extern "C" int func_020420e8(const char* text, int font);
 extern "C" void func_0204f41c(Canvas_021f8240* canvas, short x, short y, const char* text, unsigned char font,
@@ -186,12 +186,12 @@ extern "C" void _Z28SetShortAt_021f8c58_021f8c58Phs(MenuText_021f8240* text, uns
 extern "C" void func_0204f7e8(Canvas_021f8240* canvas, short x, short y, int value, unsigned char font,
                               unsigned char color, unsigned short* width, unsigned short* height, int, int, int, int);
 extern "C" void func_ov023_021fbcb0(MenuNumber_021f8240* number, unsigned short width);
-extern "C" void _Z26SetField_021fbcb8_021fbcb8Pvt(void* number, unsigned short height);
+void SetField_021fbcb8_021fbcb8(void* number, unsigned short height);
 extern "C" unsigned short func_ov023_021fc4fc(MenuBox_021f8240* box);
-extern "C" unsigned short _Z19GetField2c_021fc504P9S021fc504(S021fc504* box);
+unsigned short GetField2c_021fc504(S021fc504* box);
 extern "C" void func_0204f914(Canvas_021f8240* canvas, unsigned char color, short x, short y, short right,
                               short bottom);
-extern "C" MenuObject_021f8240* _Z19GetField18_021f6f18Pv(void* object);
+MenuObject_021f8240* GetField18_021f6f18(void* object);
 
 #if defined(jpn)
 int StringLength(const char*);
@@ -205,8 +205,8 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
     short canvasWidth = *(short*)((char*)self + 0xc8) * 8;
 #endif
     Node021f68b8* objects = func_ov011_021849c8(script);
-    for (MenuObject_021f8240* object = _Z19GetNthNode_021f68b8P12Node021f68b8i(objects, 0); object != NULL;
-         object = _Z19GetField18_021f6f18Pv(object))
+    for (MenuObject_021f8240* object = GetNthNode_021f68b8(objects, 0); object != NULL;
+         object = GetField18_021f6f18(object))
     {
         int kind = 0;
         if (!(object->flags_ & 8))
@@ -278,8 +278,8 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
             char formattedText[0x100] = {0};
             if (formatted)
             {
-                _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(string, codes, size);
-                func_02046608(_Z26GetGlobalField0x1c020421a0v(), 10, codes, formattedText, 0x400, 0, 0);
+                CopyTextAndUppercaseIfFlagged0206819c(string, codes, size);
+                func_02046608(GetGlobalField0x1c020421a0(), 10, codes, formattedText, 0x400, 0, 0);
                 string = formattedText;
             }
             int width = func_020420e8(string, size);
@@ -327,7 +327,7 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
             unsigned short textHeight;
             func_0204f7e8(&self->canvas_, x, y, value, font, color, &textWidth, &textHeight, unk3b, unk3c, 0, unk3d);
             func_ov023_021fbcb0(number, textWidth);
-            _Z26SetField_021fbcb8_021fbcb8Pvt(number, textHeight);
+            SetField_021fbcb8_021fbcb8(number, textHeight);
         }
         else if (kind == 3)
         {
@@ -339,7 +339,7 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
             unsigned short x = position.x / 4096.0f;
             unsigned short y = position.y / 4096.0f;
             unsigned short right = func_ov023_021fc4fc(box) + x;
-            unsigned short bottom = _Z19GetField2c_021fc504P9S021fc504((S021fc504*)box) + y;
+            unsigned short bottom = GetField2c_021fc504((S021fc504*)box) + y;
             func_0204f914(&self->canvas_, color, x, y, right, bottom);
         }
     }

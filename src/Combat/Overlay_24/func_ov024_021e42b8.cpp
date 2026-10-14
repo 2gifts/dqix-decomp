@@ -9,7 +9,7 @@ void UpdateCombatantAgility(int unused, int id);
 extern "C" int func_ov024_021e96e4(void* ctx, int id, void* params, unsigned char mode, signed char result, unsigned char resultFlag, unsigned char specialFlag);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 struct Obj_021e8ca0;
-extern "C" void* _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i(struct Obj_021e8ca0* obj, int id);
+void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
 struct Obj_021e42b8 { char pad0[0x10]; void* field0x10; };
@@ -37,7 +37,7 @@ extern "C" ARM unsigned long long func_ov024_021e42b8(struct Obj_021e42b8* obj, 
 	if (changed) {
 		int msg = func_ov024_021e96e4(obj, id, params, decrease, newStage, 1, 1);
 		func_ov000_02159eac(obj->field0x10, &local, 0x1f);
-		void* entry = _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i((struct Obj_021e8ca0*)obj, msg);
+		void* entry = AddEntryToListAndIncCount_021e8ca0((struct Obj_021e8ca0*)obj, msg);
 		if (entry) {
 			func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0);
 		}

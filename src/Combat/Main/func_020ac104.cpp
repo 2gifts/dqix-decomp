@@ -26,7 +26,7 @@ struct S_a0434 {
     unsigned int value : 9;
     unsigned char pad1[0xb0 - 0x14];
 };
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void*);
+int LoadBattleBlock020ac4c0(void*);
 void AddClamped9BitFieldTopAt0x10(S_a0434*, unsigned int);
 int CopyInBattleField0x7540(void*);
 // USA: func_020ac104
@@ -59,7 +59,7 @@ extern "C" ARM int func_020ac104(int unused, Entry020ac104* input, int count) {
         memcpy(&state->entries[slot], &stored, 2);
     }
     S_a0434 block;
-    _Z23LoadBattleBlock020ac4c0Pv(&block);
+    LoadBattleBlock020ac4c0(&block);
     AddClamped9BitFieldTopAt0x10(&block, added);
     CopyInBattleField0x7540(&block);
     return 1;

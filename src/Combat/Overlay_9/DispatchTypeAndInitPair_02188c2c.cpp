@@ -2,11 +2,11 @@
 #include "Resource/CharacterCreationUI.h"
 
 struct Struct_0205bef8;
-extern "C" void _Z12Init0205bef8P15Struct_0205bef8(struct Struct_0205bef8* s);
+void Init0205bef8(struct Struct_0205bef8* s);
 struct Struct_0205ba68;
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(struct Struct_0205ba68* s, int columns, int rows, int mode);
+void SetupPointerTable0205ba68(struct Struct_0205ba68* s, int columns, int rows, int mode);
 struct Node0205bacc;
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node0205bacc* s, int val);
+void SetField0AndPropagate0205bacc(struct Node0205bacc* s, int val);
 struct SelfBB04;
 extern "C" void func_0205bb04(struct SelfBB04* self, int value);
 
@@ -93,9 +93,9 @@ extern "C" ARM void func_ov009_02188c2c(CharacterCreationUI* editor) {
     }
 
     CreationNavigation* navigation = &editor->navigation;
-    _Z12Init0205bef8P15Struct_0205bef8((struct Struct_0205bef8*)navigation);
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68*)navigation, columns, rows, 1);
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)navigation, count);
+    Init0205bef8((struct Struct_0205bef8*)navigation);
+    SetupPointerTable0205ba68((struct Struct_0205ba68*)navigation, columns, rows, 1);
+    SetField0AndPropagate0205bacc((struct Node0205bacc*)navigation, count);
     navigation->field4 = pageCount;
     func_0205bb04((struct SelfBB04*)navigation, selected);
     navigation->flags3d = 0;

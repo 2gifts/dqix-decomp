@@ -14,10 +14,10 @@ struct S_b20c {
     unsigned char field8;
 };
 
-extern "C" void _Z27InitWeightedEntries02023064P14Struct02020520jPsS1_S1_S1_(struct Struct02020520* arr, unsigned int count, short* a, short* b, short* c, short* d);
+void InitWeightedEntries02023064(struct Struct02020520* arr, unsigned int count, short* a, short* b, short* c, short* d);
 void ClearTwoWordsAndByte(struct S_b20c* obj);
-extern "C" void _Z18SetField0_0205b220Pvi(void* obj, int value);
-extern "C" void _Z29SetFieldsAt0x4And0x8_0205b228Pvih(void* obj, int value, unsigned char flag);
+void SetField0_0205b220(void* obj, int value);
+void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
 int StringLength(const char* s);
 extern "C" int func_0205b234(void*, short, short, int, unsigned char, unsigned char);
 
@@ -29,11 +29,11 @@ extern short data_020ee8b2[];
 // USA: func_020e0b4c
 extern "C" ARM void func_020e0b4c(void* obj, int b, int c) {
     struct Struct02020520 arr[13];
-    _Z27InitWeightedEntries02023064P14Struct02020520jPsS1_S1_S1_(arr, 13, data_020ee864, data_020ee87e, data_020ee898, data_020ee8b2);
+    InitWeightedEntries02023064(arr, 13, data_020ee864, data_020ee87e, data_020ee898, data_020ee8b2);
     struct S_b20c localObj;
     ClearTwoWordsAndByte(&localObj);
-    _Z18SetField0_0205b220Pvi(&localObj, b + c);
-    _Z29SetFieldsAt0x4And0x8_0205b228Pvih(&localObj, (int)arr, 13);
+    SetField0_0205b220(&localObj, b + c);
+    SetFieldsAt0x4And0x8_0205b228(&localObj, (int)arr, 13);
     for (int i = 0; i < 3; i++) {
         func_0205b234(&localObj, (short)0xa, (short)(i * 13 + 0x10), (int)((char*)obj + 0x1fc + 0x400 + i * 0x48), (unsigned char)0xf, (unsigned char)0);
         char* s = (char*)obj + 0x2d4 + 0x400 + i * 8;

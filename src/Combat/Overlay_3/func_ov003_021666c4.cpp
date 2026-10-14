@@ -39,10 +39,10 @@ struct CombatMenu021666c4 {
 void SetSublistEntriesFlag1(void*, int);
 extern "C" void func_0202ae18();
 void SetEntryHighNibble0x13(Container02080cc0*, int, int);
-extern "C" void _Z24SetEntryFlagById02080b40Pvi(void*, int);
-extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(Container02080f8c*, int, int);
-extern "C" void _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(Container02080fa8*, int, int);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310*, int);
+void SetEntryFlagById02080b40(void*, int);
+void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
+void SetEntryFirstField02080fa8(Container02080fa8*, int, int);
+int GetFieldByKey020e0434(Container020e0310*, int);
 void SetEntryNibbleByShortId(StatusOwner02081198*, int, int);
 void SetEntryFlag0x2ByShortId(StatusOwner02081164*, int, int);
 extern "C" void func_020813ec(void*, int);
@@ -77,21 +77,21 @@ extern "C" ARM void func_ov003_021666c4(CombatMenu021666c4* self) {
             for (int row = 1; row < 3; row = (s16)(row + 1)) {
                 int row_id = id + row * 4;
                 SetEntryHighNibble0x13(menu, (s16)row_id, color);
-                _Z24SetEntryFlagById02080b40Pvi(menu, (s16)(unsigned int)row_id);
+                SetEntryFlagById02080b40(menu, (s16)(unsigned int)row_id);
             }
-            _Z26SetEntryFirstField02080f8cP17Container02080f8cii((Container02080f8c*)menu, id, (int)text);
-            _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((Container02080fa8*)menu, (s16)(id + 4), count);
+            SetEntryFirstField02080f8c((Container02080f8c*)menu, id, (int)text);
+            SetEntryFirstField02080fa8((Container02080fa8*)menu, (s16)(id + 4), count);
         } else {
-            int text = _Z21GetFieldByKey020e0434P17Container020e0310i(&self->messages, 30000);
-            _Z26SetEntryFirstField02080f8cP17Container02080f8cii((Container02080f8c*)menu, (s16)id, text);
+            int text = GetFieldByKey020e0434(&self->messages, 30000);
+            SetEntryFirstField02080f8c((Container02080f8c*)menu, (s16)id, text);
         }
-        _Z24SetEntryFlagById02080b40Pvi(menu, id);
+        SetEntryFlagById02080b40(menu, id);
     }
-    _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((Container02080fa8*)menu, 201, self->page + 1);
-    _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((Container02080fa8*)menu, 202, 2);
-    _Z24SetEntryFlagById02080b40Pvi(menu, 200);
-    _Z24SetEntryFlagById02080b40Pvi(menu, 201);
-    _Z24SetEntryFlagById02080b40Pvi(menu, 202);
+    SetEntryFirstField02080fa8((Container02080fa8*)menu, 201, self->page + 1);
+    SetEntryFirstField02080fa8((Container02080fa8*)menu, 202, 2);
+    SetEntryFlagById02080b40(menu, 200);
+    SetEntryFlagById02080b40(menu, 201);
+    SetEntryFlagById02080b40(menu, 202);
     SetEntryNibbleByShortId((StatusOwner02081198*)menu, 16, 1);
     SetEntryFlag0x2ByShortId((StatusOwner02081164*)menu, 16, 1);
     func_020813ec(menu, 16);

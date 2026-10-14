@@ -8,7 +8,7 @@ extern "C" void func_ov000_02159eac(void*,void*,int);
 extern "C" void func_ov000_0215cd44(void*,void*,GameObject*,int,unsigned long long,int);
 extern "C" void func_ov000_021554f4(void*,int,int,Params021da670*,int,int);
 extern "C" void _Z15InitObj02088f68P11Obj02088f68(void*);
-extern "C" void _Z24ResetTargetFlags02088474Pvii(void*,int,int);
+void ResetTargetFlags02088474(void*,int,int);
 extern "C" int _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998(GameObject*);
 extern "C" void _Z24ResetStateFields0208826cPh(void*);
 extern "C" void _Z20ResetStateFields0x18Ph(void*);
@@ -57,7 +57,7 @@ extern "C" ARM void* func_ov024_021da670(Obj021da670* obj,int sourceID,int id,Pa
         switch(GetState((Stats021da670*)c->currentStats_)){
         case 1:
             message=0x93;
-            _Z24ResetTargetFlags02088474Pvii(c->currentStats_,10,0);
+            ResetTargetFlags02088474(c->currentStats_,10,0);
             break;
         case 2:
             ((unsigned char*)obj->context)[0x8e96]=_Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998(c);

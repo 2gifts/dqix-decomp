@@ -4,15 +4,15 @@
 #include "Graphics/Vector.h"
 
 struct Outer02077a20;
-extern "C" int _Z28GetField0x8OrDefault02077a20P13Outer02077a20(struct Outer02077a20* p);
+int GetField0x8OrDefault02077a20(struct Outer02077a20* p);
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 
 struct BitFlag02033f44;
-extern "C" int* _Z22GetField0xe4IfFlag0x40P15BitFlag02033f44(struct BitFlag02033f44* self);
+int* GetField0xe4IfFlag0x40(struct BitFlag02033f44* self);
 
-extern "C" void _Z18TrySetMode02076cccPvi(void* self, int mode);
+void TrySetMode02076ccc(void* self, int mode);
 extern "C" void func_020794f8(void* self, int a, int b);
 
 int CheckField0NonZero(int* obj);
@@ -23,10 +23,10 @@ extern "C" int func_020322c0(void* p, int* v);
 extern "C" Vector3fix func_02034104(void* combatant);
 
 struct Obj02033834;
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int arg);
+void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
 
 struct Obj02033b68;
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68* obj, int newVal);
+void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 
 // USA: func_02077be0
 extern "C" ARM void func_02077be0(FieldMonsterState* self) {
@@ -46,12 +46,12 @@ extern "C" ARM void func_02077be0(FieldMonsterState* self) {
     Vector3fix_Subtract(&pos158, &pos44, &delta);
     Vector3fix_Normalize(&delta, &delta);
     int angle = fix32_Atan2(delta.x, delta.z);
-    _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, angle);
+    SetVecYByMode02033834((struct Obj02033834*)self, angle);
     self->actor.base.fieldB4 = 0x1c2;
     self->actor.base.fieldB2 = 0x1c2;
-    _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)self, 1);
+    SetByteIfChanged02033b68((struct Obj02033b68*)self, 1);
 
-    int* p = _Z22GetField0xe4IfFlag0x40P15BitFlag02033f44((struct BitFlag02033f44*)self);
+    int* p = GetField0xe4IfFlag0x40((struct BitFlag02033f44*)self);
     if (p != NULL) {
         int v = (short)self->actor.base.fieldAe;
         if (func_020322c0(p, &v) < 0x199) {
@@ -60,7 +60,7 @@ extern "C" ARM void func_02077be0(FieldMonsterState* self) {
     }
 
     if (flag != 0) {
-        _Z18TrySetMode02076cccPvi(self, 1);
+        TrySetMode02076ccc(self, 1);
         self->actor.phaseElapsedTime = 0;
         if (CheckField0NonZero((int*)mgr) == 0) {
             return;
@@ -80,11 +80,11 @@ extern "C" ARM void func_02077be0(FieldMonsterState* self) {
         Vector3fix posCopy = func_02034104(combatant);
         int radius = combatant->obj3D_.GetRadius();
         int scale15 = self->actor.base.object.GetScale().x * 15;
-        int half = _Z28GetField0x8OrDefault02077a20P13Outer02077a20((struct Outer02077a20*)self) >> 1;
+        int half = GetField0x8OrDefault02077a20((struct Outer02077a20*)self) >> 1;
         int threshold = (int)(((long long)half * scale15 + 0x800) >> 12) + (radius >> 1);
         int d = Vector3fix_Distance(&posCopy, &self->actor.base.object.position_);
         if (d != 0 && threshold > d) {
-            _Z18TrySetMode02076cccPvi(self, 1);
+            TrySetMode02076ccc(self, 1);
             self->actor.phaseElapsedTime = 0;
             self->unknown17b = 1;
             if (CheckField0NonZero((int*)mgr) != 0) {
@@ -101,7 +101,7 @@ extern "C" ARM void func_02077be0(FieldMonsterState* self) {
     if (dist >= 0x1800 && self->unknown17b == 0) {
         return;
     }
-    _Z18TrySetMode02076cccPvi(self, 1);
+    TrySetMode02076ccc(self, 1);
     self->actor.phaseElapsedTime = 0;
     if (CheckField0NonZero((int*)mgr) == 0) {
         return;

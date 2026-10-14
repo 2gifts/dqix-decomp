@@ -52,7 +52,7 @@ Member02191508* GetFieldAt0x150(unsigned char* obj);
 extern "C" void func_02083cbc(void* dst, void* src, void* tail);
 extern "C" void func_02083e28(void* a, int arg2);
 void SetBit0x954StoreIndex0x950(unsigned char* obj, int bit);
-extern "C" void _Z23ClearTwoRegions02083c18Pc(char* obj);
+void ClearTwoRegions02083c18(char* obj);
 void SetBitInArray0x910(unsigned char* obj, int index);
 
 extern char data_020ef078[];
@@ -79,7 +79,6 @@ extern "C" ARM void func_ov017_02191508(int id, Template02191508* tmpl) {
         sprintf(member->name, data_020ef078, member->name);
     }
 
-
 #endif
     Packed02191508 packed;
     packed.header = 0;
@@ -105,7 +104,7 @@ extern "C" ARM void func_ov017_02191508(int id, Template02191508* tmpl) {
     }
     combatant->status->mp = combatant->baseStats->primaryStats.maxMP;
     SetBit0x954StoreIndex0x950((unsigned char*)member, 0);
-    _Z23ClearTwoRegions02083c18Pc((char*)member);
+    ClearTwoRegions02083c18((char*)member);
     member->kind = tmpl->kind;
     SetBitInArray0x910((unsigned char*)member, tmpl->slot);
 }

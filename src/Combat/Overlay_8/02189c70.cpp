@@ -243,10 +243,10 @@ extern char data_ov008_0218c196[];
 extern "C" void func_020474a8(Window02189c70*, int, char*, char*);
 extern "C" void func_0204500c(Window02189c70*, char*, int);
 #endif
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 extern "C" int func_0202ae18();
 extern "C" void func_020728ac(void* table, SafeAllocator* alloc, void* data, unsigned int size, int a, int b, int c);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
+void* GetDataPtr02114e04_020d6c00();
 extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(void* p, unsigned int mask);
 extern "C" void _Z15ClearBitsInWordPjj(void* p, unsigned int mask);
 extern "C" void __clear(void* p, unsigned int size);
@@ -260,24 +260,24 @@ extern "C" void func_02046380(void* w);
 extern "C" void* func_0205ec34();
 extern "C" int _Z18TestBitInByteArrayiPhi(void* obj, void* arr, int bit);
 extern "C" void _Z20SetOrClearBitInArrayPvPhii(void* obj, void* arr, int bit, int set);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void* obj, int id);
+void InitObjFromCombatantId020e4bf4(void* obj, int id);
 extern "C" void func_02046608(Window02189c70* w, int a, char* str, char* buf, int b, int c, int d);
 #if !defined(jpn)
 extern "C" void func_0204500c(Window02189c70* w, char* str, int a, int b);
 #endif
 extern "C" int func_0202c508(int v);
 extern "C" int func_020457e0(Window02189c70* w);
-extern "C" void _Z24AllocateFreeSlot0218b1e0Pv(void* obj);
+void AllocateFreeSlot0218b1e0(void* obj);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void* p, int flag);
 extern "C" void func_020a3720();
 extern "C" bool _Z29ExportDetailedTreasureMapDataPK19TreasureMapMetadataP23DetailedTreasureMapDatabPKh(const MapMeta02189c70* from, Detail02189c70* to, int a, int b);
 extern "C" void func_020a395c();
 extern "C" void _Z29CopyStringToIndexedField0x2ecPciS_(Window02189c70* w, int idx, char* str);
 extern "C" void func_020e4b34(void* obj, void* a, void* b, int c, int d, int e, int f, int g, int h, int i, int j, int k);
-extern "C" int _Z19GetField0x397cValueP9GameState(GameState* gs);
+int GetField0x397cValue(GameState* gs);
 unsigned char ReadBattleField0x64f4Byte(GameState* gameState);
-extern "C" void _Z25CopyOutBattleRegion0x64f4Pv(void* dst);
-extern "C" void _Z24CopyToBattleRegion0x64f4Pv(void* src);
+void CopyOutBattleRegion0x64f4(void* dst);
+void CopyToBattleRegion0x64f4(void* src);
 extern "C" void _Z22SetNameEntries02011818PvP11Src02011818(GameState* gs, NameSrc02189c70* src);
 extern "C" void _Z17ClearRegion0x649ePc(GameState* gs);
 extern "C" void _Z23CopyStringToField0x649ePcjPKc(GameState* gs, unsigned int idx, const char* str);
@@ -306,7 +306,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
 
     GameState* gs = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    Window02189c70* win = (Window02189c70*)_Z26GetGlobalField0x1c020421a0v();
+    Window02189c70* win = (Window02189c70*)GetGlobalField0x1c020421a0();
     Res02189c70* res = (Res02189c70*)func_ov017_0218b5b0();
     Sub3b84* sub = res->f3b84;
     int token = func_0202ae18();
@@ -339,7 +339,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             }
             self->ec4 = data;
             self->ec8 = size;
-            _Z18ClearFlags020466f4P16FlagWord020466f4j(_Z27GetDataPtr02114e04_020d6c00v(), 0x2f);
+            _Z18ClearFlags020466f4P16FlagWord020466f4j(GetDataPtr02114e04_020d6c00(), 0x2f);
             _Z15ClearBitsInWordPjj(func_ov017_0218b5b0(), 0x10);
             self->state = self->state + 1;
         }
@@ -355,7 +355,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             loader->GetLoadedFileByID(self->eb0, &data, &size);
             self->ec4 = data;
             self->ec8 = size;
-            _Z18ClearFlags020466f4P16FlagWord020466f4j(_Z27GetDataPtr02114e04_020d6c00v(), 0x2f);
+            _Z18ClearFlags020466f4P16FlagWord020466f4j(GetDataPtr02114e04_020d6c00(), 0x2f);
             _Z15ClearBitsInWordPjj(func_ov017_0218b5b0(), 0x10);
             self->state = self->state + 1;
         }
@@ -480,7 +480,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
                 _Z22SetIndexedName02046574P11Obj02046574iPc(win, 0, name);
                 func_020474a8(win, 0xc, str, buf100);
 #else
-                _Z30InitObjFromCombatantId020e4bf4Pvi(obj144, self->member);
+                InitObjFromCombatantId020e4bf4(obj144, self->member);
                 win->f10 = obj144;
                 func_02046608(win, 0xc, str, buf100, 0xe3, 0, 1);
 #endif
@@ -529,11 +529,11 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
                 func_020474a8(win, 0xc, str, buf80);
 #else
                 char* str = _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0x68);
-                _Z30InitObjFromCombatantId020e4bf4Pvi(obj144, self->member);
+                InitObjFromCombatantId020e4bf4(obj144, self->member);
                 win->f10 = obj144;
                 func_02046608(win, 0xc, str, buf80, 0xe3, 0, 1);
 #endif
-                _Z24AllocateFreeSlot0218b1e0Pv(self);
+                AllocateFreeSlot0218b1e0(self);
             }
             if (!self->e1c_b25) win->f99c = 0; else win->f99c = 2;
             win->f19b2 = 1;
@@ -597,7 +597,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
         __clear(clr3, 0x30);
         func_02042764(self->ebc, clr3, 1);
         func_020e4b34(obj144, clr3, clr3, 0, 0, 0, 0, self->ebc->flag2e, 0, 1, 0, 1);
-        _Z30InitObjFromCombatantId020e4bf4Pvi(obj150, _Z19GetField0x397cValueP9GameState(gs));
+        InitObjFromCombatantId020e4bf4(obj150, GetField0x397cValue(gs));
         win->f10 = obj144;
         win->f0 = obj150;
 #endif
@@ -627,7 +627,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             win->f2c8 = 1;
             func_0204500c(win, text, 0);
 #else
-            _Z30InitObjFromCombatantId020e4bf4Pvi(obj150, _Z19GetField0x397cValueP9GameState(gs));
+            InitObjFromCombatantId020e4bf4(obj150, GetField0x397cValue(gs));
             win->f0 = obj150;
             win->f2c8 = 1;
 #if defined(jpn)
@@ -640,7 +640,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             win->f19b2 = 1;
             self->state = 5;
         } else {
-            _Z25CopyOutBattleRegion0x64f4Pv(&region);
+            CopyOutBattleRegion0x64f4(&region);
             VectorizedMemset(&region.entries[region.count], 0, 0x1c);
             MapMeta02189c70* src = &self->ebc->meta;
             MapMeta02189c70* e = &region.entries[region.count];
@@ -653,7 +653,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             e->level = src->level;
             e->seed = src->seed;
             region.count++;
-            _Z24CopyToBattleRegion0x64f4Pv(&region);
+            CopyToBattleRegion0x64f4(&region);
             self->ebc->active = 0;
             self->state = 2;
         }

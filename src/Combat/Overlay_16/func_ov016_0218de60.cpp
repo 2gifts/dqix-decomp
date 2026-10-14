@@ -22,7 +22,7 @@ struct ListHead_0218e020 {
     SafeAllocator* allocator;
 };
 extern ListHead_0218e020* data_ov016_0219d1bc;
-extern "C" void _Z23AppendListNode_0218e020P17ListHead_0218e020Pv(ListHead_0218e020*, void*);
+void AppendListNode_0218e020(ListHead_0218e020*, void*);
 
 // USA: func_ov016_0218de60
 extern "C" ARM int func_ov016_0218de60(Script::Parameter* params, int count) {
@@ -60,6 +60,6 @@ extern "C" ARM int func_ov016_0218de60(Script::Parameter* params, int count) {
     if (count > 0) node.alternate = params->ToInt() != 0;
     else node.alternate = false;
 #endif
-    _Z23AppendListNode_0218e020P17ListHead_0218e020Pv(data_ov016_0219d1bc, &node);
+    AppendListNode_0218e020(data_ov016_0219d1bc, &node);
     return 1;
 }

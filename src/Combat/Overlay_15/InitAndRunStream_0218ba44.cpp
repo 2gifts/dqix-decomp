@@ -34,7 +34,7 @@ extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
 extern "C" void func_ov015_0218b828();
-extern "C" void* _Z18LoadFileIntoMemoryPKcPvPj(const char* path, void* buf, unsigned int* outLen);
+void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outLen);
 
 extern int data_0211e33c;
 extern int data_ov015_02193fc8;
@@ -49,9 +49,9 @@ extern "C" ARM void func_ov015_0218ba44(void* self, const char* path) {
     unsigned int length;
     void* buffer;
     if (path != 0) {
-        buffer = _Z18LoadFileIntoMemoryPKcPvPj(path, &data_0211e33c, &length);
+        buffer = LoadFileIntoMemory(path, &data_0211e33c, &length);
     } else {
-        buffer = _Z18LoadFileIntoMemoryPKcPvPj((const char*)&data_ov015_02193fc8, &data_0211e33c, &length);
+        buffer = LoadFileIntoMemory((const char*)&data_ov015_02193fc8, &data_0211e33c, &length);
     }
 
     if (buffer != 0) {

@@ -28,7 +28,7 @@ struct AlchemyPot {
     unsigned short windowFlags_;
 };
 
-extern "C" void _Z25ComputeShortPair_021e2bdcPviPsS0_(void*, int, short*, short*);
+void ComputeShortPair_021e2bdc(void*, int, short*, short*);
 extern "C" void func_0205ac40(void*, Sprite*);
 
 struct AlchemyMenu {
@@ -133,7 +133,7 @@ extern "C" ARM void func_ov006_0215868c(AlchemyMenu* self)
         return;
     short x;
     short y;
-    _Z25ComputeShortPair_021e2bdcPviPsS0_(self->layout_, 0x78, &x, &y);
+    ComputeShortPair_021e2bdc(self->layout_, 0x78, &x, &y);
     Sprite* sprite = &self->sprites_[10];
     sprite->x_ = x << 12;
     sprite->y_ = y << 12;
@@ -143,14 +143,14 @@ extern "C" ARM void func_ov006_0215868c(AlchemyMenu* self)
     if (self->chosenCounts_[0] > 1 || self->chosenCounts_[1] >= 1)
         sprite->unk_25 = 8;
     func_0205ac40(self->renderer_, sprite);
-    _Z25ComputeShortPair_021e2bdcPviPsS0_(self->layout_, 0x10, &x, &y);
+    ComputeShortPair_021e2bdc(self->layout_, 0x10, &x, &y);
     sprite = &self->sprites_[9];
     sprite->x_ = x << 12;
     sprite->y_ = y << 12;
     sprite->unk_22 = 0xe;
     sprite->unk_26 = 2;
     func_0205ac40(self->renderer_, sprite);
-    _Z25ComputeShortPair_021e2bdcPviPsS0_(self->layout_, 0x25, &x, &y);
+    ComputeShortPair_021e2bdc(self->layout_, 0x25, &x, &y);
     sprite = &self->sprites_[15];
     if (!(self->pot_->windowFlags_ & 0x800))
         sprite = &self->sprites_[16];

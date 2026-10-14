@@ -111,15 +111,15 @@ struct Scene0216920c {
 };
 
 extern "C" Node0216920c* func_ov023_021f6524(void* ctx, int value);
-extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void*, int, int);
-extern "C" Node0216920c* _Z23GetNodeIfType8_02168a6cPvi(void* a, int id);
-extern "C" Node0216920c* _Z24GetNodeIfType15_02168a38Pvi(void* a, int id);
+void ClearNodeMaskById_021f6600(void*, int, int);
+Node0216920c* GetNodeIfType8_02168a6c(void* a, int id);
+Node0216920c* GetNodeIfType15_02168a38(void* a, int id);
 extern "C" void func_02042764(void*, void*, int);
 extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(struct Grid0216920c* self, unsigned short val, unsigned int x, unsigned int y);
 extern "C" void func_ov023_021f65d4(void*, int, int);
-extern "C" void _Z26SetByteAtOffset60_021f9da0Pvh(void*, unsigned char);
+void SetByteAtOffset60_021f9da0(void*, unsigned char);
 extern "C" void func_ov004_02169b4c(void*);
-extern "C" void _Z21DispatchNode_021f6630iiss(int, int, short, short);
+void DispatchNode_021f6630(int, int, short, short);
 
 extern struct Ctx0216920c* data_ov004_02171030;
 
@@ -135,7 +135,7 @@ struct Dispatch0216920c {
 extern "C" Dispatch0216920c* func_ov004_02168fa4(void*, int);
 extern "C" void func_ov023_021f809c(void*, void*);
 #define func_ov023_021f6524 func_ov004_02168f08
-#define _Z26ClearNodeMaskById_021f6600Pvii func_ov004_02168ed8
+#define ClearNodeMaskById_021f6600 func_ov004_02168ed8
 #define func_ov023_021f65d4 func_ov004_02168eac
 #endif
 
@@ -147,13 +147,13 @@ extern "C" ARM int func_ov004_0216920c(struct Scene0216920c* scene) {
     short page = node->f5c;
     int hidden = 0;
     short col = node->f5e;
-    _Z26ClearNodeMaskById_021f6600Pvii(scene, 2, 8);
+    ClearNodeMaskById_021f6600(scene, 2, 8);
     int i;
     for (i = 0; i < 8; i++) {
-        Node0216920c* a = _Z23GetNodeIfType8_02168a6cPvi(scene, i + 0xc8);
-        Node0216920c* b = _Z23GetNodeIfType8_02168a6cPvi(scene, i + 0xd8);
-        Node0216920c* c = _Z24GetNodeIfType15_02168a38Pvi(scene, i + 0xd0);
-        Node0216920c* d = _Z24GetNodeIfType15_02168a38Pvi(scene, i + 0xe0);
+        Node0216920c* a = GetNodeIfType8_02168a6c(scene, i + 0xc8);
+        Node0216920c* b = GetNodeIfType8_02168a6c(scene, i + 0xd8);
+        Node0216920c* c = GetNodeIfType15_02168a38(scene, i + 0xd0);
+        Node0216920c* d = GetNodeIfType15_02168a38(scene, i + 0xe0);
         struct Entry0216920c* e = &table->entries[page * 8 + i];
         if (e->active) {
 #if defined(jpn)
@@ -184,13 +184,13 @@ extern "C" ARM int func_ov004_0216920c(struct Scene0216920c* scene) {
     }
     if (hidden == 8) {
         func_ov023_021f65d4(scene, 2, 8);
-        _Z26SetByteAtOffset60_021f9da0Pvh(node, 0);
+        SetByteAtOffset60_021f9da0(node, 0);
     }
     func_ov023_021f65d4(scene, 0x14, 4);
     data_ov004_02171030->f198 = 0;
     func_ov004_02169b4c(scene);
     node->Refresh(3);
-    Node0216920c* first = _Z23GetNodeIfType8_02168a6cPvi(scene, 0xc8);
+    Node0216920c* first = GetNodeIfType8_02168a6c(scene, 0xc8);
     first->v44(0xd);
     first->v7c(0xd);
 #if defined(jpn)
@@ -201,7 +201,7 @@ extern "C" ARM int func_ov004_0216920c(struct Scene0216920c* scene) {
         func_ov023_021f809c(dispatch, scene);
     }
 #else
-    _Z21DispatchNode_021f6630iiss((int)scene, 0x14, page, col);
+    DispatchNode_021f6630((int)scene, 0x14, page, col);
 #endif
     if (scene->f1b4 != 0 && scene->f1b8 > 0xf) {
         scene->f1be = 0xf;

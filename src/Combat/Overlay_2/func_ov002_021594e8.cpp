@@ -4,15 +4,15 @@
 
 struct Obj0205eaa0;
 struct Obj02048350;
-extern "C" void *_Z24SearchBothTables02079e2cPci(char *p, int key);
+void *SearchBothTables02079e2c(char *p, int key);
 GameObject *GetCombatantChecked(GameState *gs, int id);
 extern "C" int *func_0202ae18(void);
 extern "C" void *__clear(void *dst, int count);
 int CopyOutRegion0x571d(char *dst, void *src);
-extern "C" void _Z22ConsumeCounter02048350P11Obj02048350i(struct Obj02048350 *p, int a);
+void ConsumeCounter02048350(struct Obj02048350 *p, int a);
 int CheckField0NonZero(int *p);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *p, int a, int b);
-extern "C" void _Z22InitStateArray02157ce0Pc(char *p);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *p, int a, int b);
+void InitStateArray02157ce0(char *p);
 extern "C" void func_ov002_021536e0(void *p);
 extern "C" int func_ov002_021536ec(void *a, void *b, int c);
 extern "C" void func_ov016_0218b5c0(int a, int b);
@@ -62,7 +62,7 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
     p->command                        = cmd;
     GameState *gs                     = GameState::GetInstance();
     ActionDataTables* tbl                         = GetData02108e10();
-    struct TableEntry021594e8 *entryA = (struct TableEntry021594e8 *) _Z24SearchBothTables02079e2cPci((char*)tbl, p->command);
+    struct TableEntry021594e8 *entryA = (struct TableEntry021594e8 *) SearchBothTables02079e2c((char*)tbl, p->command);
     GameObject *comb                  = GetCombatantChecked(gs, actor);
     int *checkPtr                     = func_0202ae18();
     int flagA                         = 0;
@@ -71,9 +71,9 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
         p->msgId2 = 0x232b;
         int res   = 0;
         if (p->command == 0x22) {
-            _Z22InitStateArray02157ce0Pc((char *) &st);
-            _Z22InitStateArray02157ce0Pc((char *) &st);
-            struct TableEntry021594e8 *entry = (struct TableEntry021594e8 *) _Z24SearchBothTables02079e2cPci((char*)tbl, p->command);
+            InitStateArray02157ce0((char *) &st);
+            InitStateArray02157ce0((char *) &st);
+            struct TableEntry021594e8 *entry = (struct TableEntry021594e8 *) SearchBothTables02079e2c((char*)tbl, p->command);
             if (entry != NULL) {
                 __clear(buf, 4);
                 int n = CopyOutRegion0x571d((char *) gs, buf);
@@ -90,11 +90,11 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
                 }
             }
         } else {
-            struct TableEntry021594e8 *entry = (struct TableEntry021594e8 *) _Z24SearchBothTables02079e2cPci((char*)tbl, p->command);
+            struct TableEntry021594e8 *entry = (struct TableEntry021594e8 *) SearchBothTables02079e2c((char*)tbl, p->command);
             if (entry != NULL && (entry->b10 & 1)) {
                 func_ov016_0218b5c0(res, -1);
-                _Z22InitStateArray02157ce0Pc((char *) &st2);
-                _Z22InitStateArray02157ce0Pc((char *) &st2);
+                InitStateArray02157ce0((char *) &st2);
+                InitStateArray02157ce0((char *) &st2);
                 st2.id     = p->command;
                 st2.actor  = actor;
                 st2.count  = 1;
@@ -116,12 +116,12 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
                 flagA     = 1;
             }
         }
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) &data_02108760, 0x64, 0);
+        DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) &data_02108760, 0x64, 0);
         p->state     = 0x26;
         p->nextState = 0x17;
     }
     if (flagA != 0) {
-        _Z22ConsumeCounter02048350P11Obj02048350i((struct Obj02048350 *) comb, entryA->lo8);
+        ConsumeCounter02048350((struct Obj02048350 *) comb, entryA->lo8);
         if (CheckField0NonZero(checkPtr) != 0) {
             func_ov017_021c9e00(actor, 0, 0, 1);
         }

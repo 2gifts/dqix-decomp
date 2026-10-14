@@ -9,7 +9,7 @@ enum { Field734 = 0x734, Field150 = 0x150, Field18c = 0x18c, Field700 = 0x700 };
 
 extern "C" void func_0202ae18(void);
 extern "C" int func_ov017_021925e0(void* p);
-extern "C" void _Z34ClearFlagAndZeroVec3Field_021bd440Pvi(void* obj, int arg);
+void ClearFlagAndZeroVec3Field_021bd440(void* obj, int arg);
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
 int GetFieldAt0x150(unsigned char* obj);
 struct Obj02061bd8;
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov017_0218f5a4(char* self, int combatantId, int flag2, i
         if (c != 0) {
             unsigned short w = *(unsigned short*)c;
             if (w & 0x1000) {
-                _Z34ClearFlagAndZeroVec3Field_021bd440Pvi(base, combatantId & 0xff);
+                ClearFlagAndZeroVec3Field_021bd440(base, combatantId & 0xff);
                 return 0;
             }
         }

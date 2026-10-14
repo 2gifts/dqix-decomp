@@ -5,7 +5,7 @@
 
 extern "C" void* func_0205ec34(void);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
-extern "C" int _Z40FindCombatantWithNegativeField2_021a20c0iii(int unused, int mult, int limit);
+int FindCombatantWithNegativeField2_021a20c0(int unused, int mult, int limit);
 extern "C" void* __clear(void* dst, int count);
 extern "C" void* func_0202ae18(void);
 extern "C" void VectorizedInvertedMemcpy(const void* src, void* dst, unsigned int length);
@@ -15,7 +15,6 @@ struct SearchStruct;
 int TestBitBySignedByteIndex(struct SearchStruct* obj, int value);
 int GetSignedByte0x1ca(void* obj);
 
-// Writes the object's position to *out.
 extern "C" void func_02034104(void* out, GameObject* obj);
 
 struct ListEntry_02028430 { unsigned char id; unsigned char unk[0xF]; };
@@ -33,11 +32,11 @@ struct Bounds02031118 { Vector3i min; Vector3i max; };
 extern "C" int func_02031118(Vector3i* p, struct Bounds02031118* b);
 extern "C" int func_02031468(Vector3i* a, Vector3i* b, Vector3i* p, Vector3i* out);
 
-extern "C" void _Z20SetVec3At0x002073d50P18Vec3Target02073d50iii(struct Vec3Target02073d50* obj, int x, int y, int z);
-extern "C" int _Z29CheckAnySlotMatchesId02073d58iPvi(int a, void* b, int c);
+void SetVec3At0x002073d50(struct Vec3Target02073d50* obj, int x, int y, int z);
+int CheckAnySlotMatchesId02073d58(int a, void* b, int c);
 extern "C" int func_02073dfc(unsigned char* self, Vector3i* pos);
-extern "C" void* _Z31FindMatchingEntryByMask02073ec4iPv(int mask, void* list);
-extern "C" int _Z27SelectWeightedEntry02073fdcPv(void* p);
+void* FindMatchingEntryByMask02073ec4(int mask, void* list);
+int SelectWeightedEntry02073fdc(void* p);
 extern "C" int func_ov017_021a2128(void* a, int b, int c, int d, Vector3i* e, int f, int g, int h);
 
 extern "C" int rand(void);
@@ -45,7 +44,6 @@ extern "C" int rand(void);
 struct Words4020733d8 { int v[4]; };
 extern struct Words4020733d8 data_020e88a8;
 
-// Position triple stored as an array, so it is copied as one block (unlike Vector3i).
 struct Pos020733d8 { int v[3]; };
 
 struct ModeField020733d8 {
@@ -82,7 +80,7 @@ static inline int NodeCount020733d8(unsigned char* self) {
 }
 
 #define SELF_MODE(self) (((struct ModeField020733d8*)((self) + 2))->mode)
-#define SET_VEC3(v, x, y, z) _Z20SetVec3At0x002073d50P18Vec3Target02073d50iii((struct Vec3Target02073d50*)(v), x, y, z)
+#define SET_VEC3(v, x, y, z) SetVec3At0x002073d50((struct Vec3Target02073d50*)(v), x, y, z)
 
 // USA: func_020733d8
 extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
@@ -105,7 +103,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
         return;
     }
 
-    if (_Z40FindCombatantWithNegativeField2_021a20c0iii((int)globalB, SELF_MODE(self), 0xc) < 0) {
+    if (FindCombatantWithNegativeField2_021a20c0((int)globalB, SELF_MODE(self), 0xc) < 0) {
         return;
     }
 
@@ -132,8 +130,6 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
     for (retry = 0; retry < 4; retry++) {
         matchEntry = 0;
 
-        // Pick the spawn slot with the fewest visible objects around it.
-        // (The locals of these blocks are declared newest-first.)
         do {
             struct Pos020733d8 baseTmp;
             int d;
@@ -270,7 +266,6 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
         }
         weights.v[resultCount++] = bestIdx;
 
-        // Pick the next zone node for the slot's combatant and aim at it.
         do {
             struct Pos020733d8 selfTmp;
             Vector3i zoneTmp;
@@ -341,7 +336,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
             pick = -1;
             matchCount = 0;
             for (p = 0; p < zone->count; p++) {
-                if (_Z29CheckAnySlotMatchesId02073d58iPvi(zone->children[p]->id, self, pick) != 0) {
+                if (CheckAnySlotMatchesId02073d58(zone->children[p]->id, self, pick) != 0) {
                     continue;
                 }
                 stored[matchCount++] = zone->children[p];
@@ -360,7 +355,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
                     }
                 }
                 if (notFound) {
-                    if (_Z29CheckAnySlotMatchesId02073d58iPvi(zoneId, self, -1) == 0) {
+                    if (CheckAnySlotMatchesId02073d58(zoneId, self, -1) == 0) {
                         stored[matchCount++] = zone;
                     }
                 }
@@ -439,7 +434,6 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
             continue;
         }
 
-        // Skip the destination if a visible object of this group already stands near it.
         int crowded;
         {
             GameObject* obj;
@@ -477,7 +471,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
         if (dest != 0 && (dest->flags & 2)) {
             continue;
         }
-        matchEntry = _Z31FindMatchingEntryByMask02073ec4iPv(dest->mask, self + 0x60);
+        matchEntry = FindMatchingEntryByMask02073ec4(dest->mask, self + 0x60);
         if (matchEntry == 0) {
             continue;
         }
@@ -493,7 +487,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
     if (matchEntry == 0) {
         return;
     }
-    chosen = _Z27SelectWeightedEntry02073fdcPv(matchEntry);
+    chosen = SelectWeightedEntry02073fdc(matchEntry);
     if (chosen == -1) {
         return;
     }

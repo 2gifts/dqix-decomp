@@ -168,7 +168,7 @@ void SetVec3At0x4(Vec3Target0202e5c0* camera, int x, int y, int z);
 void SetFields0x10To0x18(unsigned char* camera, int a, int b, int c);
 extern "C" void func_0202e0a4(void* camera);
 void SetField0x238False(void* camera);
-extern "C" void _Z18SetField0x3b0ValueP9GameStatei(GameState* gs, int camera);
+void SetField0x3b0Value(GameState* gs, int camera);
 void GetEntryPair02188bf8(unsigned char* base, int idx, short* out0, short* out1);
 extern "C" int func_ov009_02188b14(void* self, int type, int idx);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int n);
@@ -309,7 +309,7 @@ extern "C" ARM void func_ov009_02185634(CharacterCreation* self)
         SetFields0x10To0x18((unsigned char*)scene->camera_, 0xd000, 0xf800, 0);
         func_0202e0a4(scene->camera_);
         SetField0x238False(scene->camera_);
-        _Z18SetField0x3b0ValueP9GameStatei(gs, (int)scene->camera_);
+        SetField0x3b0Value(gs, (int)scene->camera_);
 
         self->sex_ = 0;
         self->unk_da4[0] = 2;

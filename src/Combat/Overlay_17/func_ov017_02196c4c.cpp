@@ -18,7 +18,7 @@ int GetIntField0x264(void* obj);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 int NextRandomBetween(struct Random* rng, int lo, int hi);
 extern "C" void func_ov017_021b6f18(void* node);
-extern "C" void _Z19InitStruct_02196c08Ph(unsigned char* obj);
+void InitStruct_02196c08(unsigned char* obj);
 int GetField0x3acValue(GameState* battleStruct);
 extern "C" unsigned short func_ov017_021a1a20(void);
 void* GetPtrField0x114(void* obj);
@@ -122,7 +122,7 @@ extern "C" ARM int func_ov017_02196c4c(Ctx02196c4c* self) {
 
     func_ov017_021b6f18(self->node);
     Event02196c4c evt;
-    _Z19InitStruct_02196c08Ph((unsigned char*)&evt);
+    InitStruct_02196c08((unsigned char*)&evt);
     evt.kind = 1;
     evt.field_0x1 = GetField0x3acValue(battle);
     evt.id = func_ov017_021a1a20();

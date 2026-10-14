@@ -43,7 +43,7 @@ extern SlotLink data_ov000_021834d4[];
 
 extern "C" Element02161318* func_ov000_02161318(Obj0217a8f4* obj, int id);
 extern "C" void func_ov000_02176210(Struct_0205d81c* elems, int keyA, int keyB);
-extern "C" void _Z23ApplyElemFields0205d904Ph(unsigned char* obj);
+void ApplyElemFields0205d904(unsigned char* obj);
 
 // USA: func_ov000_0217a8f4
 extern "C" ARM void func_ov000_0217a8f4(Obj0217a8f4* obj) {
@@ -85,5 +85,5 @@ extern "C" ARM void func_ov000_0217a8f4(Obj0217a8f4* obj) {
     }
 
 #endif
-    _Z23ApplyElemFields0205d904Ph((unsigned char*)&obj->elems);
+    ApplyElemFields0205d904((unsigned char*)&obj->elems);
 }

@@ -6,12 +6,12 @@
 #define COMBAT_FIELD(x) (x)
 #endif
 
-extern "C" void _Z35InitCombatantExtendedFields02052a4cPv(void*);
+void InitCombatantExtendedFields02052a4c(void*);
 
 // USA: func_02037d10  (semantic: InitCombatantFlagsAndSubBlock02037d10)
 extern "C" ARM void func_02037d10(void* obj) {
     signed char* base = (signed char*)obj;
-    _Z35InitCombatantExtendedFields02052a4cPv(obj);
+    InitCombatantExtendedFields02052a4c(obj);
     *(unsigned short*)(base + 0x0) |= 0x800;
     base[COMBAT_FIELD(0x1cb)] = -1;
     base[COMBAT_FIELD(0x1cc)] = 0;

@@ -18,14 +18,14 @@ struct StreamHeader0208d82c {
     unsigned int w8;
     unsigned short hc, he;
 };
-extern "C" void _Z24InitStreamHeader0208d82cP20StreamHeader0208d82c(struct StreamHeader0208d82c* header);
+void InitStreamHeader0208d82c(struct StreamHeader0208d82c* header);
 int* GetGlobal02109418(void);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 void SetFieldsAt0x4And0x8(int* obj, int a, int b);
 extern "C" void* func_0205ec34(void);
 extern "C" void func_02095b30(int* g, int v);
 extern "C" void* func_ov011_021845f8(void* obj, int key);
-extern "C" void* _Z40CheckTypeAndReturnNode_02165e70_02165e70Pvi(void* obj, int type);
+void* CheckTypeAndReturnNode_02165e70_02165e70(void* obj, int type);
 
 extern void* data_ov004_0217101c[2];
 extern int data_ov004_0217059c;
@@ -70,7 +70,7 @@ extern "C" ARM int func_ov004_02166844(void* a1) {
     state->field0 = 0;
     state->field4 = 0;
     state->field8 = 0;
-    _Z24InitStreamHeader0208d82cP20StreamHeader0208d82c(&state->stream);
+    InitStreamHeader0208d82c(&state->stream);
     state->allocators[0].ResetAllocatorPointer();
     state->taskId = -1;
     state->field48 = 0;
@@ -90,7 +90,7 @@ extern "C" ARM int func_ov004_02166844(void* a1) {
     q = ((SafeAllocator*)(node + 4))->Allocate(n);
     ((State02166844*)data_ov004_0217101c[MainIndex])->allocators[1].CreateTypeA(q, n);
 
-    char* n2 = (char*)_Z40CheckTypeAndReturnNode_02165e70_02165e70Pvi(a1, 7);
+    char* n2 = (char*)CheckTypeAndReturnNode_02165e70_02165e70(a1, 7);
     if (n2 != 0) {
         unsigned short* flags = (unsigned short*)(n2 + 0x34);
         flags[0x6d] |= 0x10;
@@ -109,7 +109,7 @@ extern "C" ARM int func_ov004_02166844(void* a1) {
         ((void**)data_ov004_0217101c[ListIndex])[i] = ((SafeAllocator*)(node + 4))->Allocate(0x80);
     }
 
-    char* f = (char*)_Z26GetGlobalField0x1c020421a0v();
+    char* f = (char*)GetGlobalField0x1c020421a0();
     *(unsigned char*)(f + 0x1000 + FlagOffset) = 1;
     SetFieldsAt0x4And0x8((int*)(f + FirstWindow + WindowPrefix), 9, 1);
     SetFieldsAt0x4And0x8((int*)(f + SecondWindow + WindowPrefix), 0x19, 1);

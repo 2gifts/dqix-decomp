@@ -35,7 +35,7 @@ struct ElementArray02089edc {
     short field8;
 };
 
-extern "C" void _Z27AppendCappedElement02089edcP20ElementArray02089edcP15Element02089edc(struct ElementArray02089edc* arr, struct Element02089edc* src);
+void AppendCappedElement02089edc(struct ElementArray02089edc* arr, struct Element02089edc* src);
 
 struct Container02108efc {
     struct ElementArray02089edc* pool;
@@ -115,6 +115,6 @@ extern "C" ARM int func_02089b90(struct Parameter02089b90* p) {
         e.b3e = (unsigned char)_ZNK6Script9Parameter5ToIntEv(&p[1]);
         e.b3f = (unsigned char)_ZNK6Script9Parameter5ToIntEv(&p[2]);
     }
-    _Z27AppendCappedElement02089edcP20ElementArray02089edcP15Element02089edc(data_02108efc.pool, &e);
+    AppendCappedElement02089edc(data_02108efc.pool, &e);
     return 1;
 }

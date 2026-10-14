@@ -35,26 +35,26 @@ struct MoveName { char* name_; };
 extern "C" Reset_021eefac* _ZZ17GetGlobal021ffefcvE1s;
 extern char data_02109bf4[] __attribute__((aligned(4)));
 extern char data_ov023_021fe258[];
-extern "C" StoreStruct* _Z26GetGlobalField0x1c020421a0v();
+StoreStruct* GetGlobalField0x1c020421a0();
 int CheckField0NonZero(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 void ZeroFieldAndShortTriple0x6e2e(void*);
-extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(Reset_021eefac*);
+void ResetFields_021eefac(Reset_021eefac*);
 BattleActor* GetCombatantWithFlag0x400(GameState*, int);
 const char* FindEntryByKey(TableA68*, int);
 void StoreInArray0x8b0(StoreStruct*, int, int);
-extern "C" int _Z25IsAnimationActive0209ca2cPv(void*);
-extern "C" void _Z21SetThreeInts_021f00f4Piiii(int*, int, int, int);
-extern "C" Vector3fix _Z20GetSubTriple02049b54P11Obj02049b54(Obj02049b54*);
+int IsAnimationActive0209ca2c(void*);
+void SetThreeInts_021f00f4(int*, int, int, int);
+Vector3fix GetSubTriple02049b54(Obj02049b54*);
 void SetSubstructByte0x56(unsigned char*);
-extern "C" void _Z34ComputeAngleHeightDistance0202ea4cP11Obj0202ea4c(Obj0202ea4c*);
-extern "C" void _Z19UpdateEntry0216d50cPv(void*);
+void ComputeAngleHeightDistance0202ea4c(Obj0202ea4c*);
+void UpdateEntry0216d50c(void*);
 int GetField0x3acValue(GameState*);
-extern "C" void _Z36ResetAndDispatchActorContext0209c6d8Pvs(void*, short);
+void ResetAndDispatchActorContext0209c6d8(void*, short);
 void DispatchAndSetTreasureMapUnknownBit(char*, int);
-extern "C" void _Z31ScaleOrResetCombatants_021ed988Pci(char*, int);
-extern "C" MoveName* _Z24SearchBothTables02079e2cPci(char*, int);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574*, int, char*);
+void ScaleOrResetCombatants_021ed988(char*, int);
+MoveName* SearchBothTables02079e2c(char*, int);
+void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" {
 void* func_0202ae18();
 GrottoZone* func_02012fe4();
@@ -72,7 +72,7 @@ void func_02011744(GameState*);
 extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
     GameState* game = GameState::GetInstance();
     Reset_021eefac* state = _ZZ17GetGlobal021ffefcvE1s;
-    StoreStruct* messages = _Z26GetGlobalField0x1c020421a0v();
+    StoreStruct* messages = GetGlobalField0x1c020421a0();
     void* search = func_0202ae18();
     DetailedTreasureMapData* map = func_02012fe4()->grotto_.GetDetailedData();
     char message[0x300];
@@ -82,7 +82,7 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
         if (!CheckField0NonZero((int*)search) || self->info_->leader_ == GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search)) {
             ZeroFieldAndShortTriple0x6e2e(self);
             state->phase_ = 1;
-        } else { _Z20ResetFields_021eefacP14Reset_021eefac(state); return 5; }
+        } else { ResetFields_021eefac(state); return 5; }
     } else if (state->phase_ == 1) {
         int count = 1;
         if (map->legacy_.bossID_ == 9) count = 3;
@@ -107,7 +107,7 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
             state->phase_ = 2;
         } else state->phase_ = 3;
     } else if (state->phase_ == 2) {
-        if (!_Z25IsAnimationActive0209ca2cPv(data_02109bf4) && func_ov023_021f4fc8()) state->phase_ = 3;
+        if (!IsAnimationActive0209ca2c(data_02109bf4) && func_ov023_021f4fc8()) state->phase_ = 3;
     } else if (state->phase_ == 3) {
         func_ov000_0216d370(&self->camera_, 1, 1, 1);
         int scale = 0x3000;
@@ -115,10 +115,10 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
         int radius = 0;
         int height = 0;
         Vector3fix average;
-        _Z21SetThreeInts_021f00f4Piiii(&average.x, 0, 0, 0);
+        SetThreeInts_021f00f4(&average.x, 0, 0, 0);
         for (int i = 0; i < self->actorCount_; ++i) {
             BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[i]);
-            actor->position_ = _Z20GetSubTriple02049b54P11Obj02049b54((Obj02049b54*)actor);
+            actor->position_ = GetSubTriple02049b54((Obj02049b54*)actor);
             actor->rotation_.x = 0;
             actor->rotation_.y = 0;
             actor->rotation_.z = 0;
@@ -136,14 +136,14 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
         func_ov000_02163b90(self, 0);
         int halfHeight = fix32_Divide(height, 0x2000);
         Vector3fix target;
-        _Z21SetThreeInts_021f00f4Piiii(&target.x, average.x, average.y + halfHeight, average.z);
+        SetThreeInts_021f00f4(&target.x, average.x, average.y + halfHeight, average.z);
         int distance = FIX32_MULTIPLY(radius, scale);
         Vector3fix position;
-        _Z21SetThreeInts_021f00f4Piiii(&position.x, target.x, target.y, target.z + distance);
+        SetThreeInts_021f00f4(&position.x, target.x, target.y, target.z + distance);
         self->camera_.target_ = target;
         self->camera_.position_ = position;
-        _Z34ComputeAngleHeightDistance0202ea4cP11Obj0202ea4c(&self->camera_);
-        _Z19UpdateEntry0216d50cPv(&self->camera_);
+        ComputeAngleHeightDistance0202ea4c(&self->camera_);
+        UpdateEntry0216d50c(&self->camera_);
         sprintf(message, FindEntryByKey(&self->text_, 0x1b));
         BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
         if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);
@@ -207,7 +207,7 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
             func_0204500c(messages, message, 1, 0xe3);
             messages->flag19b2_ = 0;
             messages->pending_ = 1;
-            _Z36ResetAndDispatchActorContext0209c6d8Pvs(data_02109bf4, 0x35);
+            ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x35);
             map->UpdateFollowingCompletion(true, 0);
             DispatchAndSetTreasureMapUnknownBit((char*)game, (int)map);
             func_02011744(game);
@@ -215,7 +215,7 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
             else state->phase_ = 11;
         }
     } else if (state->phase_ == 8) {
-        _Z31ScaleOrResetCombatants_021ed988Pci((char*)self, 1500);
+        ScaleOrResetCombatants_021ed988((char*)self, 1500);
         map->UpdateFollowingCompletion(false, self->turns_);
         DispatchAndSetTreasureMapUnknownBit((char*)game, (int)map);
         func_02011744(game);
@@ -224,13 +224,13 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
         if (func_ov023_021f4fc8()) {
             int move = map->legacy_.GetLearnedMove(map->legacy_.level_, 1);
             if (move) {
-                MoveName* name = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)move);
+                MoveName* name = SearchBothTables02079e2c((char*)GetData02108e10(), (short)move);
                 sprintf(message, FindEntryByKey(&self->text_, 0x20));
                 BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
                 if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);
                 func_020e4ce8(actorContext, actor, 1);
                 messages->actorContext_ = actorContext;
-                _Z22SetIndexedName02046574P11Obj02046574iPc((Obj02046574*)messages, 1, name->name_);
+                SetIndexedName02046574((Obj02046574*)messages, 1, name->name_);
                 func_0204500c(messages, message, 1, 0xe3);
                 messages->flag19b2_ = 0;
                 messages->pending_ = 1;
@@ -240,7 +240,7 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
     } else if (state->phase_ == 10) {
         if (!GetCombatantWithFlag0x400(game, self->actors_[0])->GetInheritedAlpha() || !self->actorCount_) state->phase_ = 11;
     } else if (state->phase_ == 11) {
-        if (func_ov023_021f4fc8()) { _Z20ResetFields_021eefacP14Reset_021eefac(state); return 5; }
+        if (func_ov023_021f4fc8()) { ResetFields_021eefac(state); return 5; }
     }
     return self->endState_;
 }

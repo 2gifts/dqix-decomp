@@ -56,8 +56,8 @@ struct StoreStruct;
 
 extern struct TouchState_02114e54 data_02114e54;
 
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+const char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
+int AppendString02042058(char* dst, const char* src);
 #if defined(jpn)
 #define APPLY_MENU(a,b,c,d,e) TryApplyElemFields0205d5d0(a,b,c,d)
 #else
@@ -65,7 +65,7 @@ extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
 #endif
 extern "C" void func_ov003_02169a84(struct Menu0216aa28* menu, char* dst, int flag);
 extern "C" void func_ov003_02169d10(struct Menu0216aa28* menu, char* dst, int flag);
-extern "C" struct StoreStruct* _Z26GetGlobalField0x1c020421a0v();
+struct StoreStruct* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(struct StoreStruct* g);
 void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 void SetByteInRange(unsigned char* base, int index, unsigned char value);
@@ -115,13 +115,13 @@ extern "C" ARM void func_ov003_0216aa28(struct Menu0216aa28* menu) {
         return;
     }
     GameState* gs = GameState::GetInstance();
-    struct StoreStruct* g = _Z26GetGlobalField0x1c020421a0v();
+    struct StoreStruct* g = GetGlobalField0x1c020421a0();
     struct Ptr2a04_0216aa28* p = (struct Ptr2a04_0216aa28*)GetPtrField0x2a04(gs);
     memset(menu->textBuf, 0, TEXT_BYTES);
 #if defined(jpn)
     func_02042428(menu->textBuf, 8);
 #endif
-    _Z20AppendString02042058PcPKc(menu->textBuf, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)menu->names, 0x65));
+    AppendString02042058(menu->textBuf, GetFieldByKey020e0434((struct Container020e0310*)menu->names, 0x65));
     func_02046380(g);
     StoreInArray0x8b0(g, 0, p->value);
     SetByteInRange((unsigned char*)g, 0, 7);

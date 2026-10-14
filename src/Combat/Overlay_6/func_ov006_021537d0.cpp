@@ -26,7 +26,7 @@ struct Recipe {
 
 struct List02071d60;
 
-extern "C" Recipe* _Z22FindEntryByKey02071d60P12List02071d60i(List02071d60* list, int key);
+Recipe* FindEntryByKey02071d60(List02071d60* list, int key);
 
 struct AlchemyIngredients {
     List02071d60* table_;
@@ -44,7 +44,7 @@ struct AlchemyIngredients {
 extern "C" ARM int func_ov006_021537d0(AlchemyIngredients* self, short id) {
     if (self->sizes_ == 0)
         return 0;
-    self->recipe_ = _Z22FindEntryByKey02071d60P12List02071d60i(self->table_, id);
+    self->recipe_ = FindEntryByKey02071d60(self->table_, id);
     if (self->recipe_ == 0)
         return 0;
     if (self->recipe_->ingredients_[0] > 0 && self->recipe_->amount0_ != 0) {

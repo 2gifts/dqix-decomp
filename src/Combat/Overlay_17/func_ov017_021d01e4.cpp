@@ -4,7 +4,7 @@
 int GetField0x3acValue(GameState* battleStruct);
 extern "C" void func_ov017_021a7c94(unsigned char* obj, int id, int arg2);
 struct FieldStruct021a85d4;
-extern "C" void _Z33SetFieldndMaybe_021a85d4_021a85d4P19FieldStruct021a85d4i(struct FieldStruct021a85d4* obj, int val);
+void SetFieldndMaybe_021a85d4_021a85d4(struct FieldStruct021a85d4* obj, int val);
 void CallIfGlobalPtrSet_021a5a28(void* obj, int mode);
 int GetByteAtOffset7289OrFF_021a5a48(void* obj);
 
@@ -65,12 +65,12 @@ extern "C" ARM void func_ov017_021d01e4(int unused0, struct Evt021d01e4* evt, Ga
         break;
     case 2:
         if (foundB) {
-            _Z33SetFieldndMaybe_021a85d4_021a85d4P19FieldStruct021a85d4i(field, 6);
+            SetFieldndMaybe_021a85d4_021a85d4(field, 6);
         }
         break;
     case 3:
         if (foundB) {
-            _Z33SetFieldndMaybe_021a85d4_021a85d4P19FieldStruct021a85d4i(field, 5);
+            SetFieldndMaybe_021a85d4_021a85d4(field, 5);
         }
         break;
     case 4:

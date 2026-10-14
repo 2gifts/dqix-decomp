@@ -3,11 +3,11 @@
 extern "C" void func_020d1f0c(unsigned long chBitMask, unsigned long capBitMask, int alarmBitMask, int flags);
 unsigned long GetInterruptSafeQueueField();
 extern "C" void func_020d24c4(int block);
-extern "C" void _Z39ProcessQueueUntilValueCommitted020d2680j(unsigned int commandTag);
+void ProcessQueueUntilValueCommitted020d2680(unsigned int commandTag);
 extern "C" int func_020c7ea0(void* queue, void** msg, int flags);
-extern "C" void _Z24ClearGlobalFlags020bbe94i(int mask);
-extern "C" void _Z23ReleaseFlagBits020bbe64i(int mask);
-extern "C" void _Z20ClearFlagBit020bbef8i(int alarmNo);
+void ClearGlobalFlags020bbe94(int mask);
+void ReleaseFlagBits020bbe64(int mask);
+void ClearFlagBit020bbef8(int alarmNo);
 void EnqueueEvent0x19(int left, int right, int channel1, int channel3);
 
 struct CaptureParameters020bcf3c {
@@ -50,18 +50,18 @@ extern "C" ARM void func_020bcf3c(void) {
     if (useAlarm) {
         commandTag = GetInterruptSafeQueueField();
         func_020d24c4(1);
-        _Z39ProcessQueueUntilValueCommitted020d2680j(commandTag);
+        ProcessQueueUntilValueCommitted020d2680(commandTag);
 
         while (func_020c7ea0(&data_0210fd7c, NULL, 0)) {
         }
     }
 
     if (cap->capBitMask)
-        _Z24ClearGlobalFlags020bbe94i(cap->capBitMask);
+        ClearGlobalFlags020bbe94(cap->capBitMask);
     if (cap->chBitMask)
-        _Z23ReleaseFlagBits020bbe64i(cap->chBitMask);
+        ReleaseFlagBits020bbe64(cap->chBitMask);
     if (useAlarm)
-        _Z20ClearFlagBit020bbef8i(cap->alarmNo);
+        ClearFlagBit020bbef8(cap->alarmNo);
 
     if (cap->type == 1)
         EnqueueEvent0x19(0, 0, 0, 0);

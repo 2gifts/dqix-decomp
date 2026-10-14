@@ -99,8 +99,8 @@ extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, i
 extern "C" void func_0204c684(void*);
 extern "C" int _Z29BinarySearchByField4_02097224P29BinarySearch020971a8Containeri(void*, int);
 extern "C" void __clear(void*, int);
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char*, char*, int);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void CopyTextAndUppercaseIfFlagged0206819c(const char*, char*, int);
+void* GetGlobalField0x1c020421a0();
 extern "C" void func_02046608(void*, int, char*, char*, int, int, int);
 extern "C" void _Z24SetPackedFields_021e24b0Pviihhhhhh(void*, int, int, short, short, short, short, short, short);
 extern "C" void _Z23SetEntryFields_021e23d0Pviihh(void*, int, void*, short, short);
@@ -157,12 +157,12 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                 __clear(buf110, 0x200);
                 __clear(bufc8, 0x48);
                 __clear(buf80, 0x48);
-                _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(self->text60, buf358, 0);
-                _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(self->text64, buf310, 0);
+                CopyTextAndUppercaseIfFlagged0206819c(self->text60, buf358, 0);
+                CopyTextAndUppercaseIfFlagged0206819c(self->text64, buf310, 0);
                 char* n1 = bufc8;
                 char* n2 = buf80;
                 char* n3 = buf110;
-                void* g = _Z26GetGlobalField0x1c020421a0v();
+                void* g = GetGlobalField0x1c020421a0();
                 func_02046608(g, 0xa, buf358, n1, 0x400, 0, 0);
                 func_02046608(g, 0xa, buf310, n2, 0x400, 0, 0);
                 func_02046608(g, 0xa, (char*)self->p68, n3, 0x8c, 0, 0);

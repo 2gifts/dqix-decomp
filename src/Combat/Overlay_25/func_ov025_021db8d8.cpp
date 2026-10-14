@@ -57,18 +57,18 @@ struct Work021db8d8 {
     struct Flags021db8d8 flags5951;
 };
 
-extern "C" struct Slot021db8d8* _Z18GetSlotPtr02160f20Pv(void*);
-extern "C" void* _Z18GetSlotPtr02160f60Pv(void*);
+struct Slot021db8d8* GetSlotPtr02160f20(void*);
+void* GetSlotPtr02160f60(void*);
 unsigned int GetSubstructByte0x34(unsigned char*);
 int GetSubstructByte0x1e(unsigned char*);
 int GetSubstructByte0x1d(unsigned char*);
 void SetSubstructByte0x1e(unsigned char*, unsigned char);
 void SetSubstructByte0x1c(unsigned char*, unsigned char);
-extern "C" struct Node02169b04* _Z21FindNodeByKey02169b04P12List02169b04i(struct List02169b04*, int);
-extern "C" struct Node02169b04* _Z16FindNode02169b54P12Node02169b54i(struct Node02169b54*, int);
-extern "C" struct Actor021db8d8* _Z22GetNodeAtIndex02160094P12List02160094i(struct List02160094*, int);
-extern "C" void _Z38RunFlagPassAndSetMode02167dd8_02167dd8Ph(unsigned char*);
-extern "C" void _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(struct GatherObj02163a7c*);
+struct Node02169b04* FindNodeByKey02169b04(struct List02169b04*, int);
+struct Node02169b04* FindNode02169b54(struct Node02169b54*, int);
+struct Actor021db8d8* GetNodeAtIndex02160094(struct List02160094*, int);
+void RunFlagPassAndSetMode02167dd8_02167dd8(unsigned char*);
+void ApplyField41ToGatheredCombatants02163a7c(struct GatherObj02163a7c*);
 extern "C" int func_ov025_021dfa9c(void* obj, void* battle);
 extern "C" void func_ov000_021626a0(void* obj, int a, int b);
 extern "C" int func_ov000_02153e40(void* battle, short* ids, int max, int start);
@@ -98,7 +98,7 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
     game = GameState::GetInstance();
     battle = self->battle;
     struct Sub021db8d8* sub = (struct Sub021db8d8*)((char*)self + 0x18);
-    struct Slot021db8d8* slot = _Z18GetSlotPtr02160f20Pv(self);
+    struct Slot021db8d8* slot = GetSlotPtr02160f20(self);
     actorId = -1;
     if (slot->actor) {
         actorId = slot->actor->id;
@@ -115,20 +115,20 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
     int skip = 0;
     keys = self->keys;
     if (keys) {
-        struct Node02169b04* node = _Z21FindNodeByKey02169b04P12List02169b04i(keys, 0xc);
+        struct Node02169b04* node = FindNodeByKey02169b04(keys, 0xc);
         ok = 1;
-        a = _Z21FindNodeByKey02169b04P12List02169b04i(keys, 0x3d);
-        b = _Z21FindNodeByKey02169b04P12List02169b04i(keys, 7);
-        if (node && ((a && node == _Z16FindNode02169b54P12Node02169b54i((struct Node02169b54*)a, 0xc)) ||
-                     (b && node == _Z16FindNode02169b54P12Node02169b54i((struct Node02169b54*)b, 0xc)))) {
+        a = FindNodeByKey02169b04(keys, 0x3d);
+        b = FindNodeByKey02169b04(keys, 7);
+        if (node && ((a && node == FindNode02169b54((struct Node02169b54*)a, 0xc)) ||
+                     (b && node == FindNode02169b54((struct Node02169b54*)b, 0xc)))) {
             ok = 0;
         }
         if (ok) {
             if (node && node->kind != 0xa) {
                 skip = 1;
-            } else if (_Z21FindNodeByKey02169b04P12List02169b04i(keys, 0x20)) {
+            } else if (FindNodeByKey02169b04(keys, 0x20)) {
                 skip = 1;
-            } else if (_Z21FindNodeByKey02169b04P12List02169b04i(keys, 0x22)) {
+            } else if (FindNodeByKey02169b04(keys, 0x22)) {
                 skip = 1;
             }
         }
@@ -143,9 +143,9 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
         near = 0;
         GameObject* target = game->GetCombatantByIndex(targetId);
         if (target && GetSubstructByte0x1e((unsigned char*)target) != 0xff) {
-            void* list = _Z18GetSlotPtr02160f60Pv(self);
+            void* list = GetSlotPtr02160f60(self);
             if (list) {
-                struct Actor021db8d8* first = _Z22GetNodeAtIndex02160094P12List02160094i((struct List02160094*)list, 0);
+                struct Actor021db8d8* first = GetNodeAtIndex02160094((struct List02160094*)list, 0);
                 if (first && first->id == targetId) {
                     near = 1;
                 }
@@ -208,10 +208,10 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
                     SetSubstructByte0x1c((unsigned char*)obj, row);
                 }
             }
-            _Z38RunFlagPassAndSetMode02167dd8_02167dd8Ph((unsigned char*)self);
+            RunFlagPassAndSetMode02167dd8_02167dd8((unsigned char*)self);
             sub->slot = slot;
             func_ov000_0216e678(sub->camera, actorId, targetId, 0, 1);
-            _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c((struct GatherObj02163a7c*)self);
+            ApplyField41ToGatheredCombatants02163a7c((struct GatherObj02163a7c*)self);
             self->flags5951.pending = 0;
             retreat = 0;
             if (skip) {
@@ -222,7 +222,7 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
     quiet:
         sub->slot = slot;
         func_ov000_0216e678(sub->camera, actorId, targetId, 0, 0);
-        _Z38RunFlagPassAndSetMode02167dd8_02167dd8Ph((unsigned char*)self);
+        RunFlagPassAndSetMode02167dd8_02167dd8((unsigned char*)self);
     shown:
         started = 1;
         func_ov000_0216d464(sub->camera);

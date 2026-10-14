@@ -15,9 +15,9 @@ struct Owner021cd608 {
 extern "C" struct Owner021cd608* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
 int GetField0x3acValue(GameState* battleStruct);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+int LoadBattleBlock020ac4c0(void* dst);
 int CopyInBattleField0x7540(void* src);
-extern "C" void _Z26CopyFourAndSetFlag02163378PvPih(void* dst, int* src, unsigned char val);
+void CopyFourAndSetFlag02163378(void* dst, int* src, unsigned char val);
 
 struct S_a0858 {
     char pad[0x48];
@@ -75,11 +75,11 @@ extern "C" ARM void func_ov017_021cd608(int unused0, struct Evt021cd608* evt, in
     }
     if (p->apply) {
         int idx = GetField0x3acValue(GameState::GetInstance());
-        _Z23LoadBattleBlock020ac4c0Pv(&block);
+        LoadBattleBlock020ac4c0(&block);
         AddSaturateField0x48(&block.head, amounts[idx]);
         AddClamped24BitFieldAt0x24(&block.tail, amounts[idx]);
         CopyInBattleField0x7540(&block);
     } else {
-        _Z26CopyFourAndSetFlag02163378PvPih(b, amounts, p->val);
+        CopyFourAndSetFlag02163378(b, amounts, p->val);
     }
 }

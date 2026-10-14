@@ -24,15 +24,15 @@ struct Flags02168 {
     unsigned char bit0 : 1;
 };
 struct Container020e0310;
-extern "C" int _Z35AreFields60And64BothNegOne_02168c00Ph(unsigned char *p);
-extern "C" void _Z19ClearStruct020a13c4P9S020a13c4(struct S020a13c4 *s);
-extern "C" void _Z31SetupGlobalAndRunScript020a13e4PvS_ith(void *p, void *alloc, int a, unsigned short b, unsigned char c);
-extern "C" void *_Z26FindElementByField020a15bcP13Array020a15bci(struct Array020a15bc *arr, int key);
-extern "C" void *_Z26ResetAndReturnSelf020dfc2cPv(void *p);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(struct Struct020dfc40 *s);
-extern "C" void _Z13Reset02168c38P11Foo02168c38(struct Foo02168c38 *f);
-extern "C" void _Z29AppendFormattedValue_02168d10Phi(unsigned char *rec, int v);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310 *c, int key);
+int AreFields60And64BothNegOne_02168c00(unsigned char *p);
+void ClearStruct020a13c4(struct S020a13c4 *s);
+void SetupGlobalAndRunScript020a13e4(void *p, void *alloc, int a, unsigned short b, unsigned char c);
+void *FindElementByField020a15bc(struct Array020a15bc *arr, int key);
+void *ResetAndReturnSelf020dfc2c(void *p);
+void ResetStruct020dfc40(struct Struct020dfc40 *s);
+void Reset02168c38(struct Foo02168c38 *f);
+void AppendFormattedValue_02168d10(unsigned char *rec, int v);
+int GetFieldByKey020e0434(struct Container020e0310 *c, int key);
 extern "C" void *ExtractFileFromGP2(const char *gp2Path, const char *innerFilePath, unsigned int *outSize);
 extern "C" int func_ov023_021ed724(void *p, short *keys, int n);
 extern "C" void func_020e0028(void *c, void *alloc, void *data, unsigned int size, short *keys, unsigned short n);
@@ -62,7 +62,7 @@ extern "C" ARM void func_ov002_021688f8(char *base) {
     int n;
     GameState *gs = GameState::GetInstance();
     BackgroundLoader::GetInstance();
-    if (!_Z35AreFields60And64BothNegOne_02168c00Ph(*(unsigned char **) (base + 0x2000 + REGION_VALUE(0x290, 0x460)))) return;
+    if (!AreFields60And64BothNegOne_02168c00(*(unsigned char **) (base + 0x2000 + REGION_VALUE(0x290, 0x460)))) return;
     n = *(short *) (*(char **) (base + 0x2000 + REGION_VALUE(0x290, 0x460)) + 0x68);
     if (n > 0) {
         keys = (short *) ((SafeAllocator *) (base + REGION_VALUE(0x3c8, 0x64) + REGION_VALUE(0x400, 0x800)))->Allocate(n * 2);
@@ -72,13 +72,13 @@ extern "C" ARM void func_ov002_021688f8(char *base) {
         *(void **) (base + 0x2000 + REGION_VALUE(0x290, 0x460)) = NULL;
         ((SafeAllocator *) (base + REGION_VALUE(0x38c, 0x28) + REGION_VALUE(0x400, 0x800)))->Reset();
         *(void **) (base + 0x2000 + REGION_VALUE(0x294, 0x464)) = ((SafeAllocator *) (base + REGION_VALUE(0x38c, 0x28) + REGION_VALUE(0x400, 0x800)))->Allocate(0x14);
-        _Z19ClearStruct020a13c4P9S020a13c4((struct S020a13c4 *) *(void **) (base + 0x2000 + REGION_VALUE(0x294, 0x464)));
-        _Z31SetupGlobalAndRunScript020a13e4PvS_ith(*(void **) (base + 0x2000 + REGION_VALUE(0x294, 0x464)), base + REGION_VALUE(0x38c, 0x28) + REGION_VALUE(0x400, 0x800), 0, 0, 4);
+        ClearStruct020a13c4((struct S020a13c4 *) *(void **) (base + 0x2000 + REGION_VALUE(0x294, 0x464)));
+        SetupGlobalAndRunScript020a13e4(*(void **) (base + 0x2000 + REGION_VALUE(0x294, 0x464)), base + REGION_VALUE(0x38c, 0x28) + REGION_VALUE(0x400, 0x800), 0, 0, 4);
         *(unsigned char *) (base + 0x2000 + REGION_VALUE(0x2a1, 0x471)) =
             (func_ov023_021ed724(*(void **) (base + 0x2000 + REGION_VALUE(0x294, 0x464)), keys, n) & 1) ? 1 : 0;
         char *hero = (char *) gs->GetProtagonist();
-        _Z26ResetAndReturnSelf020dfc2cPv(ctr);
-        _Z19ResetStruct020dfc40P14Struct020dfc40((struct Struct020dfc40 *) ctr);
+        ResetAndReturnSelf020dfc2c(ctr);
+        ResetStruct020dfc40((struct Struct020dfc40 *) ctr);
 #if defined(jpn)
         func_020e1fc4(ctr, (SafeAllocator*)(base + 0x78c), data_ov002_0216dab4, keys,
             (unsigned short)n, (*(struct Flags02168**)(hero + 0x144))->bit0, true);
@@ -97,22 +97,22 @@ extern "C" ARM void func_ov002_021688f8(char *base) {
 #endif
         tmp = (unsigned char *) ((SafeAllocator *) (base + REGION_VALUE(0x3c8, 0x64) + REGION_VALUE(0x400, 0x800)))->Allocate(50 * sizeof(Foo02168c38));
         for (j = 0; j < n; j++) {
-            _Z13Reset02168c38P11Foo02168c38((struct Foo02168c38 *) (tmp + j * sizeof(Foo02168c38)));
+            Reset02168c38((struct Foo02168c38 *) (tmp + j * sizeof(Foo02168c38)));
             void *elem =
-                _Z26FindElementByField020a15bcP13Array020a15bci(*(struct Array020a15bc **) (base + 0x2000 + REGION_VALUE(0x294, 0x464)), keys[j]);
+                FindElementByField020a15bc(*(struct Array020a15bc **) (base + 0x2000 + REGION_VALUE(0x294, 0x464)), keys[j]);
             if (elem == NULL) continue;
-            int text = _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310 *) ctr, keys[j]);
+            int text = GetFieldByKey020e0434((struct Container020e0310 *) ctr, keys[j]);
             if (text == 0) continue;
             func_ov002_02168ca8(tmp + j * sizeof(Foo02168c38), elem);
-            _Z29AppendFormattedValue_02168d10Phi(tmp + j * sizeof(Foo02168c38), text);
+            AppendFormattedValue_02168d10(tmp + j * sizeof(Foo02168c38), text);
         }
         *(void **) (base + 0x2000 + REGION_VALUE(0x294, 0x464)) = NULL;
         ((SafeAllocator *) (base + REGION_VALUE(0x38c, 0x28) + REGION_VALUE(0x400, 0x800)))->Reset();
         *(void **) (base + 0x2000 + REGION_VALUE(0x29c, 0x46c)) = ((SafeAllocator *) (base + REGION_VALUE(0x38c, 0x28) + REGION_VALUE(0x400, 0x800)))->Allocate(n * sizeof(Foo02168c38));
         for (int i = 0; i < n; i++) {
-            _Z13Reset02168c38P11Foo02168c38((struct Foo02168c38 *) (*(unsigned char **) (base + 0x2000 + REGION_VALUE(0x29c, 0x46c)) + i * sizeof(Foo02168c38)));
+            Reset02168c38((struct Foo02168c38 *) (*(unsigned char **) (base + 0x2000 + REGION_VALUE(0x29c, 0x46c)) + i * sizeof(Foo02168c38)));
             func_ov002_02168ca8(*(unsigned char **) (base + 0x2000 + REGION_VALUE(0x29c, 0x46c)) + i * sizeof(Foo02168c38), tmp + i * sizeof(Foo02168c38));
-            _Z29AppendFormattedValue_02168d10Phi(*(unsigned char **) (base + 0x2000 + REGION_VALUE(0x29c, 0x46c)) + i * sizeof(Foo02168c38),
+            AppendFormattedValue_02168d10(*(unsigned char **) (base + 0x2000 + REGION_VALUE(0x29c, 0x46c)) + i * sizeof(Foo02168c38),
                                                  (int) (tmp + i * sizeof(Foo02168c38) + 0xc));
         }
         *(unsigned char *) (base + 0x2000 + REGION_VALUE(0x2a0, 0x470)) = n;

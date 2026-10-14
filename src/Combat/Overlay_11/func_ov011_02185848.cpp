@@ -10,7 +10,7 @@ struct TaggedNumber02184c30 {
     union { int i; float f; } value;
 };
 
-extern "C" int _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(struct TaggedNumber02184c30* v);
+int GetTaggedValueAsInt_02184c30(struct TaggedNumber02184c30* v);
 extern "C" ARM void* func_ov017_021b2164(void);
 extern "C" ARM void* func_ov011_021849c8(void* ctx);
 extern "C" ARM void* func_ov023_021f6880(void* list, int id);
@@ -21,10 +21,10 @@ extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(struct Grid021f9
 
 // USA: func_ov011_02185848
 extern "C" ARM int func_ov011_02185848(struct TaggedNumber02184c30* params, int count) {
-    int id = _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[0]);
-    int id2 = _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[1]);
-    int unk2 = _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[2]);
-    int unk3 = _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[3]);
+    int id = GetTaggedValueAsInt_02184c30(&params[0]);
+    int id2 = GetTaggedValueAsInt_02184c30(&params[1]);
+    int unk2 = GetTaggedValueAsInt_02184c30(&params[2]);
+    int unk3 = GetTaggedValueAsInt_02184c30(&params[3]);
     void* objects = func_ov011_021849c8(func_ov017_021b2164());
     void* object = func_ov023_021f6880(objects, id);
     void* object2 = func_ov023_021f6880(objects, id2);

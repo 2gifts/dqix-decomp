@@ -80,7 +80,7 @@ extern "C" int func_02028a54(InlineEntry* base, int id);
 extern "C" void func_ov017_0219e180(BattleOverlay0219dc90* self, int id);
 extern "C" InlineEntry* _Z19FindInlineEntryByIdP14Entry_02028bd0i(InlineEntry* base, int id);
 extern "C" unsigned short func_02028460(int* a, int* b);
-extern "C" int _Z17IsInRange0201b588i(int id);
+int IsInRange0201b588(int id);
 extern "C" void _Z19InitStruct_021b46d8P14Struct021b46d8(GrottoSlot* slot);
 extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(TailList020469b4* list, GrottoSlot* node);
 extern "C" void _Z25ClearFieldcIfSet_021b4760P11Obj021b4760(GrottoSlot* slot);
@@ -104,7 +104,7 @@ extern "C" ARM void func_ov017_0219dc90(BattleOverlay0219dc90* self, int combata
     if (entry != NULL) {
         combatant->b8 = entry->f34 != 0 ? func_02028460(entry->vec18, combatant->vec44) : 0;
         signed char* grotto = (signed char*)gs->GetGrottoStruct();
-        if (_Z17IsInRange0201b588i(id) && found) {
+        if (IsInRange0201b588(id) && found) {
             entry->fd = grotto[8];
         }
         entry->f8 = 0;

@@ -3,12 +3,12 @@
 
 struct Struct_0205d81c;
 struct Elem_0205d81c;
-extern "C" struct Elem_0205d81c *_Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c *s, int key);
+struct Elem_0205d81c *FindElementByC40205d81c(struct Struct_0205d81c *s, int key);
 struct Struct0205de24;
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24 *obj, unsigned char keyLow,
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 void SetElementFieldC2(struct Struct_0205d81c *s, int key, int value);
-extern "C" void _Z21InitBattleTag0215ee04Pc(char *base);
+void InitBattleTag0215ee04(char *base);
 
 extern "C" void func_ov002_0215ef60(void *base);
 extern "C" void func_ov002_02157030(void *base, int type, short *a, short *b, short *c, short *d);
@@ -36,16 +36,16 @@ extern "C" ARM void func_ov002_0215eadc(char *base, int refresh) {
     int many = 0;
     if (l->count > 1) many = 1;
     if (refresh == 0) {
-        _Z21InitBattleTag0215ee04Pc(base);
+        InitBattleTag0215ee04(base);
         func_ov002_0215ef60(base);
     }
-    _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (base + 0xec8), 0, 2);
+    FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (base + 0xec8), 0, 2);
     short s16 = 0, s14 = 0, s12 = 1, s10 = 1;
     func_ov002_02157030(base, 0x10, &s16, &s14, &s12, &s10);
     s16    = s16 + s12;
     int id = ((struct FieldOv0215eadc *) (base + 0x1000))->field & 0xff;
     if (refresh != 0) id = 0x11;
-    if (_Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c *) (base + 0xec8), id) == 0) {
+    if (FindElementByC40205d81c((struct Struct_0205d81c *) (base + 0xec8), id) == 0) {
         func_ov002_0215be00(base, id, s16, s14);
         memset(((struct BufOv0215eadc *) (base + 0x1000))->buf, 0, 0x960);
         func_ov002_0215ec4c(base, ((struct BufOv0215eadc *) (base + 0x1000))->buf, 0);

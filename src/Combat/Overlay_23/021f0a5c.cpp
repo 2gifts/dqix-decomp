@@ -51,13 +51,13 @@ struct MessageController {
 extern "C" ResultState* _ZZ17GetGlobal021ffefcvE1s;
 extern char data_02109bf4[];
 
-extern "C" MessageController* _Z26GetGlobalField0x1c020421a0v();
+MessageController* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(MessageController*);
 char* FindEntryByKey(TableA68*, int);
 void* GetPtrField0x2a04(GameState*);
 int ArrayContainsByte(ArrayContainsByteStruct*, int);
 extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(ResultState*);
-extern "C" BattleResultEntry* _Z24FindByByteAt118_021f0360Pvi(void*, int);
+BattleResultEntry* FindByByteAt118_021f0360(void*, int);
 extern "C" int func_02082490(LoadedEntry*, void*, unsigned int, unsigned char, unsigned int);
 GameObject* GetCombatantWithFlag0x100(GameState*, int);
 extern "C" CombatStats* _Z15GetFieldAt0x150Ph(GameObject*);
@@ -68,21 +68,21 @@ extern "C" int _Z25GetTableEntry138_021eea98P11Obj021eea98(GameObject*);
 extern "C" void _Z24InitCombatEntry_021d8b6cPv(BattleEntry*);
 extern "C" void func_ov023_021d8af8(BattleEntry*);
 extern "C" void func_ov023_021d8a40(BattleEntry*);
-extern "C" void _Z24CopyEntryFields_021d8cb4PvS_(void*, void*);
-extern "C" void _Z24CopyAndStoreLen_021d9988P11Obj021d9988Pvj(Obj021d9988*, void*, unsigned int);
+void CopyEntryFields_021d8cb4(void*, void*);
+void CopyAndStoreLen_021d9988(Obj021d9988*, void*, unsigned int);
 extern "C" void func_ov023_021d8e4c(BattleEntry*, int, LevelStats*, LevelStats*);
 extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(MessageController*, int, int);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void*, int);
+void InitObjFromCombatantId020e4bf4(void*, int);
 extern "C" void func_0204500c(MessageController*, char*, int, int);
-extern "C" void _Z36ResetAndDispatchActorContext0209c6d8Pvs(void*, short);
+void ResetAndDispatchActorContext0209c6d8(void*, short);
 extern "C" void func_ov017_021ce704(int);
 extern "C" void func_ov017_021cc730(int, int, int, int);
 extern "C" void func_ov017_021c9e00(int, int, int, int);
 extern "C" int func_ov023_021f4fc8();
-extern "C" int _Z30CheckThresholdOverAny_021f5228i(int);
+int CheckThresholdOverAny_021f5228(int);
 extern "C" void* func_0205ec34();
 int TestBitInByteArray(int, unsigned char*, int);
-extern "C" int _Z25IsAnimationActive0209ca2cPv(void*);
+int IsAnimationActive0209ca2c(void*);
 
 static inline int GetLevel(CombatStats* stats) { return stats->levels[stats->index]; }
 
@@ -95,7 +95,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
     char actorName2[12];
     GameState* game = GameState::GetInstance();
     ResultState* state = _ZZ17GetGlobal021ffefcvE1s;
-    MessageController* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageController* messages = GetGlobalField0x1c020421a0();
     func_02046380(messages);
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     char* suffix = FindEntryByKey(&work->strings, 0x22);
@@ -106,7 +106,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
             _Z20ResetFields_021eefacP14Reset_021eefac(state);
             return 0xb;
         }
-        BattleResultEntry* entry = _Z24FindByByteAt118_021f0360Pvi(_ZZ17GetGlobal021ffefcvE1s, state->id);
+        BattleResultEntry* entry = FindByByteAt118_021f0360(_ZZ17GetGlobal021ffefcvE1s, state->id);
         if (!entry) return work->state;
         sprintf(filename, FindEntryByKey(&work->strings, 0), entry->fileId);
         state->task = loader->QueueLoadFile(filename, 0);
@@ -119,7 +119,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
         loader->GetLoadedFileByID(state->task, &file, &length);
         loader->RemoveTask(state->task);
         int learned = 0;
-        BattleResultEntry* entry = _Z24FindByByteAt118_021f0360Pvi(_ZZ17GetGlobal021ffefcvE1s, id);
+        BattleResultEntry* entry = FindByByteAt118_021f0360(_ZZ17GetGlobal021ffefcvE1s, id);
         if (file && func_02082490(&work->loaded[id], file, length, entry->type, entry->experience)) {
             if (!entry->flag) learned = 1;
         }
@@ -174,13 +174,13 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
         } else {
             work->result = (BattleEntry*)work->allocator.Allocate(0x12c);
             func_ov023_021d8a40(work->result);
-            _Z24CopyEntryFields_021d8cb4PvS_(work->result, work->entry);
+            CopyEntryFields_021d8cb4(work->result, work->entry);
             ResultState* global = _ZZ17GetGlobal021ffefcvE1s;
             unsigned char countEntries = global->count;
             BattleEntry* result = work->result;
             result->entries = global->entries;
             result->count = countEntries;
-            _Z24CopyAndStoreLen_021d9988P11Obj021d9988Pvj((Obj021d9988*)work->result, _ZZ17GetGlobal021ffefcvE1s->copyData, _ZZ17GetGlobal021ffefcvE1s->copyLength);
+            CopyAndStoreLen_021d9988((Obj021d9988*)work->result, _ZZ17GetGlobal021ffefcvE1s->copyData, _ZZ17GetGlobal021ffefcvE1s->copyLength);
             state->state++;
         }
     } else if (state->state == 3) {
@@ -193,7 +193,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
         base = &work->loaded[id].base;
         extra = &work->loaded[id].extra;
         if (work->result) func_ov023_021d8e4c(work->result, id, base, extra);
-        if (_Z24FindByByteAt118_021f0360Pvi(_ZZ17GetGlobal021ffefcvE1s, id)) {
+        if (FindByByteAt118_021f0360(_ZZ17GetGlobal021ffefcvE1s, id)) {
             gained = &work->loaded[(unsigned int)id].gained;
             if (gained->level - base->level > 1) {
                 sprintf(text, FindEntryByKey(&work->strings, 0x16));
@@ -204,14 +204,14 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
                 _Z17StoreInArray0x8b0P11StoreStructii(messages, 0, gained->level);
             }
             strcat(text, suffix);
-            _Z30InitObjFromCombatantId020e4bf4Pvi(actorName, id);
+            InitObjFromCombatantId020e4bf4(actorName, id);
             messages->actor = actorName;
             func_0204500c(messages, text, 1, 0xe3);
             messages->field19b2 = 0;
             messages->field998 = 1;
         }
         if (inParty) {
-            _Z36ResetAndDispatchActorContext0209c6d8Pvs(data_02109bf4, 0x35);
+            ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x35);
             func_ov017_021ce704(id);
             func_ov017_021cc730(id, 0, 0, 1);
             func_ov017_021c9e00(id, 0, 0, 0);
@@ -222,10 +222,10 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
     } else if (state->state == 5) {
         if (func_ov023_021f4fc8()) {
             int id = state->id;
-            if (_Z24FindByByteAt118_021f0360Pvi(_ZZ17GetGlobal021ffefcvE1s, id)) {
+            if (FindByByteAt118_021f0360(_ZZ17GetGlobal021ffefcvE1s, id)) {
                 sprintf(text2, FindEntryByKey(&work->strings, 0x26));
                 strcat(text2, suffix);
-                _Z30InitObjFromCombatantId020e4bf4Pvi(actorName2, id);
+                InitObjFromCombatantId020e4bf4(actorName2, id);
                 messages->actor = actorName2;
                 func_0204500c(messages, text2, 1, 0xe3);
                 messages->field19b2 = 0;
@@ -248,7 +248,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
                 state->outcome = 10;
             } else if (extra->pct) {
                 state->outcome = 12;
-            } else if (points && _Z30CheckThresholdOverAny_021f5228i(id)) {
+            } else if (points && CheckThresholdOverAny_021f5228(id)) {
                 state->outcome = 8;
                 void* base = func_0205ec34();
                 if (TestBitInByteArray((int)base, (unsigned char*)base + 0x8c, 0x119c)) messages->field19ca = 0;
@@ -256,7 +256,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
         }
         state->state++;
     } else if (state->state == 7) {
-        if (_Z25IsAnimationActive0209ca2cPv(data_02109bf4)) return work->state;
+        if (IsAnimationActive0209ca2c(data_02109bf4)) return work->state;
         if (func_ov023_021f4fc8()) {
             signed char outcome = state->outcome;
             _Z20ResetFields_021eefacP14Reset_021eefac(state);

@@ -55,7 +55,7 @@ struct ProfileEditor_021e68cc {
     unsigned char enabledMask_;
 };
 
-extern "C" Element_021e68cc* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* s, int key);
+Element_021e68cc* FindElementByC40205d81c(Struct_0205d81c* s, int key);
 extern "C" void func_0205ac40(void* renderer, void* sprite);
 
 // USA: func_ov023_021e68cc
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov023_021e68cc(ProfileEditor_021e68cc* self) {
     signed char slot = 0;
     unsigned char tile = regionalOffset0;
     for (int row = 0; row < 3; row++) {
-        Element_021e68cc* e = _Z23FindElementByC40205d81cP15Struct_0205d81ci((Struct_0205d81c*)self->list_, (unsigned char)(row + 7));
+        Element_021e68cc* e = FindElementByC40205d81c((Struct_0205d81c*)self->list_, (unsigned char)(row + 7));
         posX = ((short)(e->x * 8) + 10) << 12;
         short top = e->y * 8;
         for (int col = 0; col < 2; col++) {

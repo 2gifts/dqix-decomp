@@ -10,7 +10,7 @@ enum { tableOffset = 0x2cc };
 
 extern "C" int func_ov017_021d60f4(void*);
 int GetWord0x0(int* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* tables);
+void BackupPairTables0207dfac(char* tables);
 
 struct PairTables_0215eb3c {
     int a[10];
@@ -50,7 +50,7 @@ extern "C" ARM int func_ov001_0215eb3c(void* self, int mode) {
     if (addr == 0) {
         return 0;
     }
-    _Z24BackupPairTables0207dfacPc((char*)addr);
+    BackupPairTables0207dfac((char*)addr);
     if (mode >= 2 && func_ov017_021d60f4((char*)self + 0x8) != 0) {
         addr = base + tableOffset;
         tables = (PairTables_0215eb3c*)(addr + 0xbd0);

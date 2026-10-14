@@ -7,8 +7,8 @@
 
 struct FlagWord02046708;
 
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708* flags, unsigned int mask);
+void* GetDataPtr02114e04_020d6c00();
+int TestFlags02046708(FlagWord02046708* flags, unsigned int mask);
 
 struct StateObj0201fa2c {
     unsigned char state;
@@ -55,9 +55,9 @@ struct Member02026f34 {
 extern StateObj0201fa2c data_020fdc60[4];
 extern Entry02026f34 data_020fdcb0[4];
 
-extern "C" void _Z28UpdateStopwatchState0201fbacP17Stopwatch0201fbac(struct Stopwatch0201fbac* t);
-extern "C" void _Z23ResetStateTimer0201fc40P16StateObj0201fc40i(struct StateObj0201fc40* p, int arg);
-extern "C" void _Z24UpdateStateTimer0201fa2cP16StateObj0201fa2cj(StateObj0201fa2c* obj, unsigned int arg);
+void UpdateStopwatchState0201fbac(struct Stopwatch0201fbac* t);
+void ResetStateTimer0201fc40(struct StateObj0201fc40* p, int arg);
+void UpdateStateTimer0201fa2c(StateObj0201fa2c* obj, unsigned int arg);
 extern "C" void func_020200c0(int index, void* obj);
 
 typedef void (*UpdateStateTimer0201fa2cFn)(StateObj0201fa2c* obj, unsigned int arg, unsigned char id);
@@ -71,7 +71,7 @@ enum { kIdsOffset = 0x758, kCountOffset = 0x75c };
 // USA: func_02026f34
 extern "C" ARM void func_02026f34(void* objv) {
     unsigned char* obj = (unsigned char*)objv;
-    if (_Z17TestFlags02046708P16FlagWord02046708j((FlagWord02046708*)_Z27GetDataPtr02114e04_020d6c00v(), 0x41)) return;
+    if (TestFlags02046708((FlagWord02046708*)GetDataPtr02114e04_020d6c00(), 0x41)) return;
 
     GameState* gs = GameState::GetInstance();
     unsigned int dt = gs->GetEffectiveDeltaTime();
@@ -99,19 +99,19 @@ extern "C" ARM void func_02026f34(void* objv) {
         }
 
         if (data_020fdc60[0].flags & 2) {
-            _Z28UpdateStopwatchState0201fbacP17Stopwatch0201fbac((struct Stopwatch0201fbac*)sw);
+            UpdateStopwatchState0201fbac((struct Stopwatch0201fbac*)sw);
         } else {
             if ((sw->flags & 1) && ((Member02026f34*)member)->hp == 0) {
                 sw->flags &= ~1;
                 sw->timer = 0x7d0;
             } else if (((Member02026f34*)member)->hp != 0) {
-                _Z28UpdateStopwatchState0201fbacP17Stopwatch0201fbac((struct Stopwatch0201fbac*)sw);
+                UpdateStopwatchState0201fbac((struct Stopwatch0201fbac*)sw);
                 sw->flags |= 1;
             } else if (timer > 0 && (obj + id)[0x558]) {
-                _Z23ResetStateTimer0201fc40P16StateObj0201fc40i((struct StateObj0201fc40*)sw, timer);
+                ResetStateTimer0201fc40((struct StateObj0201fc40*)sw, timer);
             }
         }
-        ((UpdateStateTimer0201fa2cFn)_Z24UpdateStateTimer0201fa2cP16StateObj0201fa2cj)(sw, dt, id);
+        ((UpdateStateTimer0201fa2cFn)UpdateStateTimer0201fa2c)(sw, dt, id);
 
         if (ent->flag1c) {
             (obj + id)[0x558] = 1;

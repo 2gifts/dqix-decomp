@@ -13,7 +13,7 @@ enum { ArenaSize = 0x2e4c0, ScenePlanes = 0x1c, SceneReady = 0x14bc, SceneSize =
 struct AllocatorUnion;
 struct Obj020397cc;
 
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int flag);
+void CancelPendingAction020397cc(Obj020397cc* obj, int flag);
 void SetBitsInField4(unsigned int* field, unsigned int bits);
 void ClearBitsInField4(unsigned int* field, unsigned int bits);
 int GetFieldIfFlag4(char* obj);
@@ -30,8 +30,8 @@ extern "C" void func_ov012_021843d4(void* scene);
 extern "C" void func_ov012_02184884(void* scene, SafeAllocator* allocator);
 extern "C" int func_ov012_02184acc(void* scene, unsigned int tick);
 extern "C" void func_ov012_02185af0(void* scene);
-extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int mode);
-extern "C" void _Z34CancelActionAndInsertNode_021a5530Pc(char* obj);
+void SetCombatModeFromCase020dc2d0(int mode);
+void CancelActionAndInsertNode_021a5530(char* obj);
 extern "C" void func_ov017_0218d77c(GameResources* res, int flag);
 extern char data_02114e20;
 
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov017_021c17fc(Task021c17fc* task) {
     GameState* gs = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();
     GameObject* unknown = gs->GetUnknownGameObject();
-    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)unknown, 1);
+    CancelPendingAction020397cc((Obj020397cc*)unknown, 1);
     SetBitsInField4((unsigned int*)res, 0xc0);
     unsigned char* flags = (unsigned char*)GetFieldIfFlag4((char*)gs);
     SetFlagsAt0x244(flags, 3);
@@ -104,14 +104,14 @@ extern "C" ARM void func_ov017_021c17fc(Task021c17fc* task) {
     unsigned char ready = task->scene->ready;
     *(volatile unsigned int*)0x4000000 = (task->scene->planes << 8) | (*(volatile unsigned int*)0x4000000 & ~0x1f00);
     func_ov017_021c1a24(task);
-    _Z29SetCombatModeFromCase020dc2d0i(0);
+    SetCombatModeFromCase020dc2d0(0);
     if (task->restore) {
         if (ready) {
             SetByteField0x253(unknown);
             ClearFlagBits(flags, 3);
             ClearBitsInField4((unsigned int*)res, 0xc0);
         } else {
-            _Z34CancelActionAndInsertNode_021a5530Pc((char*)res);
+            CancelActionAndInsertNode_021a5530((char*)res);
         }
     } else {
         func_ov017_0218d77c(res, 1);

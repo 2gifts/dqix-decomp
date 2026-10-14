@@ -135,8 +135,8 @@ extern const char data_ov023_021fe2a0[];
 extern const char data_ov023_021fe2b7[];
 extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 
-extern "C" MessageSystem_021f1868* _Z26GetGlobalField0x1c020421a0v();
-extern "C" ArrayContainsByteStruct* _Z17GetPtrField0x2a04P9GameState(GameState* gameState);
+MessageSystem_021f1868* GetGlobalField0x1c020421a0();
+ArrayContainsByteStruct* GetPtrField0x2a04(GameState* gameState);
 int ArrayContainsByte(ArrayContainsByteStruct* array, int id);
 void* LoadFileIntoMemory(const char* path, void* buffer, unsigned int* outLength);
 void ClearFirstTwoWords0209a338(Pair0209a338* p);
@@ -149,13 +149,13 @@ void InitManagerAndAllocateBuffers0209fee4(Obj0209fee4* titles, SafeAllocator* a
 void SetIntAt0x60(IntField0x60_0209ff64* titles, int value);
 void PollOv017Task0209ff6c(TaskState0209ff6c* titles);
 int AreFields60And64AllOnes_021f21f4(Fields60_021f21f4* titles);
-extern "C" Member_021f1868* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gameState, int id);
+Member_021f1868* GetCombatantWithFlag0x100(GameState* gameState, int id);
 int AppendString02042058(char* dst, const char* src);
 void SetIndexedName02046574(Obj02046574* obj, int index, char* str);
 void InitObjFromCombatantId020e4bf4(void* obj, int id);
 void** CallFunc020e52a0(void* p, int key);
 void StoreInArray0x8b0(StoreStruct* base, int index, int value);
-extern "C" void _Z24ReinitController02043204Pc(char* messages);
+void ReinitController02043204(char* messages);
 void ClearStruct020a13c4(S020a13c4* table);
 void SetupGlobalAndRunScript020a13e4(void* table, void* allocator, int ids, unsigned short count, unsigned char mode);
 void* ResetAndReturnSelf020dfc2c(void* texts);
@@ -196,10 +196,10 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
 {
     GameState* gameState = GameState::GetInstance();
     BattleEnd_021f1868* end = _ZZ17GetGlobal021ffefcvE1s;
-    MessageSystem_021f1868* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem_021f1868* messages = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     int id = end->current_;
-    int inParty = ArrayContainsByte(_Z17GetPtrField0x2a04P9GameState(gameState), id);
+    int inParty = ArrayContainsByte(GetPtrField0x2a04(gameState), id);
     if (end->step_ == 0)
     {
         self->busy_ = 1;
@@ -256,7 +256,7 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
                 name = FindEntryByKey(self->skillTable_, skill->type_);
             if (name != NULL)
             {
-                Member_021f1868* member = _Z25GetCombatantWithFlag0x100P9GameStatei(GameState::GetInstance(), id);
+                Member_021f1868* member = GetCombatantWithFlag0x100(GameState::GetInstance(), id);
                 if (member != NULL)
                 {
                     char text[0x200];
@@ -321,7 +321,7 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
         int count = self->titles_->count_;
         if (count > 0)
         {
-            _Z24ReinitController02043204Pc((char*)messages);
+            ReinitController02043204((char*)messages);
             char* menu = self->menu_; SafeAllocator* idAllocator = (SafeAllocator*)(menu + 0x1af8);
             idAllocator->Reset();
             count = self->titles_->count_;

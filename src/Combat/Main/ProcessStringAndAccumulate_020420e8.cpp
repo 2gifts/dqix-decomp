@@ -4,7 +4,7 @@
 
 extern int data_020e7a94[];
 extern "C" int _Z27FindEntryIndexByKey020424e4ii(const char* text, int fontIndex);
-extern "C" FontCharacter* _Z23GetBoundedEntry020425b4ii(int index, int fontIndex);
+FontCharacter* GetBoundedEntry020425b4(int index, int fontIndex);
 int LookupKeyValue020425e4(int previousCharacter, int characterIndex, int fontIndex);
 
 #if defined(jpn)
@@ -70,7 +70,7 @@ extern "C" ARM int func_020420e8(char* text, int fontIndex) {
             text++;
         } else {
             characterIndex = index & 0xff;
-            FontCharacter* entry = _Z23GetBoundedEntry020425b4ii(index, fontIndex);
+            FontCharacter* entry = GetBoundedEntry020425b4(index, fontIndex);
             int kerning = LookupKeyValue020425e4(previousCharacter, characterIndex, fontIndex);
             previousCharacter = characterIndex;
             advance = (entry->width + 1) + kerning;

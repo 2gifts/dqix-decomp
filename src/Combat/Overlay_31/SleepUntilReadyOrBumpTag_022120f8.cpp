@@ -14,9 +14,9 @@ struct Struct0224e5b4_022120f8 {
 };
 
 extern Struct0224e5b4_022120f8 data_ov031_0224e5b4;
-extern "C" void _Z20BumpTag4To5_02216698v(void);
+void BumpTag4To5_02216698(void);
 extern "C" int func_ov031_02216360(void);
-extern "C" void _Z27ReleaseContextPair_022166b4v(void);
+void ReleaseContextPair_022166b4(void);
 extern "C" int func_ov031_022130ac(void);
 
 // USA: func_ov031_022120f8  (semantic: SleepUntilReadyOrBumpTag_022120f8)
@@ -25,13 +25,13 @@ extern "C" ARM void func_ov031_022120f8(void) {
 	if (q == NULL) return;
 	if (q->field4 == 1) {
 		if (q->field10 == 1) {
-			_Z20BumpTag4To5_02216698v();
+			BumpTag4To5_02216698();
 			int x;
 			do {
 				x = func_ov031_02216360();
 				x -= 2;
 			} while ((unsigned int)x > 2);
-			_Z27ReleaseContextPair_022166b4v();
+			ReleaseContextPair_022166b4();
 		}
 		data_ov031_0224e5b4.field4 = 0;
 		return;

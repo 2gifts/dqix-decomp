@@ -18,9 +18,9 @@ extern "C" void _Z14GetEntry3BytesP9EntryDEE8iPhS1_S1_(void* base, unsigned char
 extern "C" void _Z14SetEntry3BytesP9EntryDEC8ihhh(void* base, unsigned char index, unsigned char a, unsigned char b, unsigned char c);
 #define SetEntry3Bytes _Z14SetEntry3BytesP9EntryDEC8ihhh
 
-extern "C" void _Z20ClearRegions0206e080Pci(char* base, int index);
-extern "C" void _Z31ClearIndexedEntryFields0206e0d0Pci(char* base, int index);
-extern "C" void _Z23ClearTwoRegions0206ebf4Pc(char* obj);
+void ClearRegions0206e080(char* base, int index);
+void ClearIndexedEntryFields0206e0d0(char* base, int index);
+void ClearTwoRegions0206ebf4(char* obj);
 int CheckField0NonZero(int* obj);
 void ApplySlotBytesToBattleStruct(unsigned char* obj);
 
@@ -38,11 +38,11 @@ extern "C" ARM void func_020703c8(int index, int hour, int minute, int second) {
         return;
     }
     if (curHour != hour) {
-        _Z20ClearRegions0206e080Pci((char*)entry, index);
-        _Z23ClearTwoRegions0206ebf4Pc(owner);
+        ClearRegions0206e080((char*)entry, index);
+        ClearTwoRegions0206ebf4(owner);
     } else if (curMinute != minute) {
-        _Z31ClearIndexedEntryFields0206e0d0Pci((char*)entry, index);
-        _Z23ClearTwoRegions0206ebf4Pc(owner);
+        ClearIndexedEntryFields0206e0d0((char*)entry, index);
+        ClearTwoRegions0206ebf4(owner);
     }
     SetEntry3Bytes(entry, index, hour, minute, second);
     if (CheckField0NonZero(state) != 0 && func_0202c508(state) != 0) {

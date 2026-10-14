@@ -26,7 +26,7 @@ extern "C" void func_ov017_021905b8(unsigned char* ov, int combatantId, int mode
 extern "C" void func_ov017_0218f064(unsigned char* ov, int combatantId, int flag, int c, int d);
 
 extern "C" void _Z25EnqueueEventTag8_021cc4b8hhi(unsigned char combatantId, int tag, int value);
-extern "C" ARM void _Z14SetBit020263b0Phj(unsigned char* bits, unsigned int index);
+ARM void SetBit020263b0(unsigned char* bits, unsigned int index);
 
 extern "C" void func_0202c288(struct SearchStruct* search);
 
@@ -59,7 +59,7 @@ extern "C" ARM void func_ov017_021cc388(int tag, Group021cc388* group, GameState
 		}
 		func_ov017_0218f064(ov, id, flag, 0, 0);
 		_Z25EnqueueEventTag8_021cc4b8hhi(idByte, tag, value);
-		_Z14SetBit020263b0Phj(bits, id);
+		SetBit020263b0(bits, id);
 	}
 	func_0202c288(search);
 }

@@ -18,7 +18,7 @@ struct Unk020421a0 {
     void* unk_5c;
 };
 
-extern "C" Unk020421a0* _Z26GetGlobalField0x1c020421a0v();
+Unk020421a0* GetGlobalField0x1c020421a0();
 
 struct BattleRecords {
     SafeAllocator allocator_;
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov008_021842a0(BattleRecords* self, SafeAllocator* allo
         self->renderer_ = allocator->Allocate(0x54);
         self->sprites_ = allocator->Allocate(0x2d0);
         self->animations_ = allocator->Allocate(8);
-        self->text_ = (char*)_Z26GetGlobalField0x1c020421a0v()->unk_5c;
+        self->text_ = (char*)GetGlobalField0x1c020421a0()->unk_5c;
     }
     else
     {

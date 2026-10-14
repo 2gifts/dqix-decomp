@@ -17,10 +17,10 @@ extern const char data_ov010_02184a95[];
 extern const char data_ov010_02184aa6[];
 
 struct Struct021842d8;
-extern "C" void _Z28ResetStateAndCleanup021842d8P14Struct021842d8(struct Struct021842d8* obj);
+void ResetStateAndCleanup021842d8(struct Struct021842d8* obj);
 
 struct Obj020397cc;
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(struct Obj020397cc* obj, int arg1);
+void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 
 struct List020727d8 {
@@ -28,17 +28,17 @@ struct List020727d8 {
     short capacity;
     short count;
 };
-extern "C" void _Z23ResetListHeader020727d8P12List020727d8(struct List020727d8* list);
+void ResetListHeader020727d8(struct List020727d8* list);
 extern "C" void func_020728ac(void* list, void* alloc, void* buffer, int length, int a4, int a5, int a6);
 
 struct TableA68;
 void* FindEntryByKey(struct TableA68* table, int key);
 
 struct Obj0205eaa0;
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
-extern "C" void _Z26SetForwardAndStore0205ebc0Pvii(void* obj, int a, int b);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(void* obj, int a, int b);
-extern "C" void _Z25ForwardField0xc0_0205ebecPv(void* obj);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
+void SetForwardAndStore0205ebc0(void* obj, int a, int b);
+void DispatchIfField0xc4NonNeg_0205ebfc(void* obj, int a, int b);
+void ForwardField0xc0_0205ebec(void* obj);
 
 struct ColorHolder0204bd7c;
 unsigned short ConvertColorToDecimalOffset30000(struct ColorHolder0204bd7c* obj);
@@ -63,26 +63,26 @@ unsigned char GetField0x397cValue(GameState* battleStruct);
 struct Flags020340b4;
 void SetFlag0x80At0xc2(struct Flags020340b4* p);
 
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void* obj, int combatantId);
+void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 extern "C" void func_02046380(void* global);
 extern "C" int func_020457e0(void* global);
 
 struct Foo0207df50;
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void CopyInternalFields0207df50(struct Foo0207df50* p);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 
 struct NodeList02057de0;
 extern "C" void* func_02057924(void);
-extern "C" int _Z29CreateAndRegisterNode02057de0P16NodeList02057de0iP13SafeAllocatorii(struct NodeList02057de0* list, int a1, SafeAllocator* alloc, int a2, int a3);
-extern "C" int _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, int params);
+int CreateAndRegisterNode02057de0(struct NodeList02057de0* list, int a1, SafeAllocator* alloc, int a2, int a3);
+int FindNodeAndProcess02057fb4(void* list, int id, int params);
 
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
-extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
+void* SearchBothTables02079e2c(char* p, int key);
 
 struct Obj02048350;
-extern "C" int _Z22ConsumeCounter02048350P11Obj02048350i(struct Obj02048350* obj, int amount);
+int ConsumeCounter02048350(struct Obj02048350* obj, int amount);
 
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
@@ -110,7 +110,7 @@ struct Actor02184354 {
     unsigned char pad0[0xc];
     unsigned char combatantId;
 };
-extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v(void);
+MessageSystem* GetGlobalField0x1c020421a0(void);
 
 struct TableEntry02184354 {
     unsigned char pad0[8];
@@ -158,7 +158,7 @@ struct Ctx02184354 {
 // USA: func_ov010_02184354
 extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    MessageSystem* presenter = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem* presenter = GetGlobalField0x1c020421a0();
     GameState* bs = GameState::GetInstance();
     GameObject* caster;
     struct MoveRecord02184354* move;
@@ -177,16 +177,16 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
 #endif
 
     if (caster == NULL || active == NULL) {
-        _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);
+        ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
         return 1;
     }
 
     unsigned char state = obj->state;
     if (state == 0) {
-        _Z27CancelPendingAction020397ccP11Obj020397cci((struct Obj020397cc*)active, 1);
+        CancelPendingAction020397cc((struct Obj020397cc*)active, 1);
         void* buffer = AllocateAligned4(&data_02114e20, 0x7800);
         if (buffer == NULL) {
-            _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);
+            ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
             return 1;
         }
         obj->alloc.CreateTypeA(buffer, 0x7800);
@@ -199,24 +199,24 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
     } else if (state == 1) {
         if (loader->GetTaskStatus(obj->taskId) == 0) return 0;
         if (loader->GetDetailedTaskStatus(obj->taskId) != 2) {
-            _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);
+            ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
             return 1;
         }
         void* filePtr;
         unsigned int fileLen;
         loader->GetLoadedFileByID(obj->taskId, &filePtr, &fileLen);
-        _Z23ResetListHeader020727d8P12List020727d8(&obj->list);
+        ResetListHeader020727d8(&obj->list);
         func_020728ac(&obj->list, &obj->alloc, filePtr, fileLen, 0, 0, 0);
         loader->RemoveTask(obj->taskId);
 
         unsigned short* slot = (unsigned short*)GetField0x74deForValidIndex((char*)bs, GetField0x3acValue(bs));
         if (slot == NULL) {
-            _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);
+            ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
             return 1;
         }
         struct MoveInfo02184354* info = move->info;
         if (info == NULL) {
-            _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);
+            ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
             return 1;
         }
 
@@ -250,7 +250,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         } else {
             key = 0;
             obj->state = 4;
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x64, key);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, key);
         }
 
         void* entry = FindEntryByKey((struct TableA68*)&obj->list, (short)key);
@@ -260,7 +260,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         *(int*)((char*)presenter + 0x868) = 1;
 #else
         struct Vec3i02184354 casterObj;
-        _Z30InitObjFromCombatantId020e4bf4Pvi(&casterObj, actorInfo->combatantId);
+        InitObjFromCombatantId020e4bf4(&casterObj, actorInfo->combatantId);
         func_02046380(presenter);
         *(void**)presenter = &casterObj;
         func_0204500c(presenter, (const char*)entry, 0, (void*)0xe3);
@@ -280,18 +280,18 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
             *(int*)((char*)presenter + 0x868) = 1;
 #else
             struct Vec3i02184354 casterObj;
-            _Z30InitObjFromCombatantId020e4bf4Pvi(&casterObj, actorInfo->combatantId);
+            InitObjFromCombatantId020e4bf4(&casterObj, actorInfo->combatantId);
             func_02046380(presenter);
             *(void**)presenter = &casterObj;
             func_0204500c(presenter, (const char*)entry, 0, (void*)0xe3);
             *(int*)((char*)presenter + 0x998) = 1;
 #endif
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
             unsigned short* slot = (unsigned short*)GetField0x74deForValidIndex((char*)bs, GetField0x3acValue(bs));
             if (slot != NULL) *slot = 0;
             obj->state = 4;
         } else {
-            _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);
+            ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
             return 1;
         }
     } else if (state == 4) {
@@ -301,15 +301,15 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
     } else if (state == 5) {
         if (loader->GetTaskStatus(obj->taskId) == 0) return 0;
         if (loader->GetDetailedTaskStatus(obj->taskId) != 2) {
-            _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);
+            ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
             return 1;
         }
         if (obj->waitFrames < 0xf) {
             obj->waitFrames = obj->waitFrames + 1;
             return 0;
         }
-        _Z26SetForwardAndStore0205ebc0Pvii(&data_02108760, 0x74, 0x74);
-        _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, 0, 0);
+        SetForwardAndStore0205ebc0(&data_02108760, 0x74, 0x74);
+        DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 0, 0);
 
         void* filePtr;
         unsigned int fileLen;
@@ -321,12 +321,12 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         char* stage = (char*)ov17 + 0x2cc;
 #endif
         struct Vec3i02184354 pos = *(struct Vec3i02184354*)((char*)caster + 0x44);
-        _Z26CopyInternalFields0207df50P11Foo0207df50((struct Foo0207df50*)(stage + 0xc40));
-        _Z25RestorePairTables0207df90Pc(stage + 0xc40);
+        CopyInternalFields0207df50((struct Foo0207df50*)(stage + 0xc40));
+        RestorePairTables0207df90(stage + 0xc40);
         void* nodes = func_02057924();
-        _Z29CreateAndRegisterNode02057de0P16NodeList02057de0iP13SafeAllocatorii((struct NodeList02057de0*)nodes, 0x11, &obj->alloc,
+        CreateAndRegisterNode02057de0((struct NodeList02057de0*)nodes, 0x11, &obj->alloc,
                                       (int)filePtr, (int)fileLen);
-        _Z24BackupPairTables0207dfacPc(stage + 0xc40);
+        BackupPairTables0207dfac(stage + 0xc40);
 
         struct Vec3i02184354 scale;
         scale.x = 0x10a;
@@ -365,7 +365,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
 
         _ZN8Vector3iaSERKS_(&params.f2c, &pos.x);
         _ZN8Vector3iaSERKS_(&params.f44, &scale.x);
-        obj->nodeId = _Z26FindNodeAndProcess02057fb4Pvii(nodes, 0x11, (int)&params);
+        obj->nodeId = FindNodeAndProcess02057fb4(nodes, 0x11, (int)&params);
 
         struct Vec3s02184354 anchor;
         anchor.x = (short)(pos.x >> 4);
@@ -383,9 +383,9 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         }
 
         struct TableEntry02184354* row =
-            (struct TableEntry02184354*)_Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), 0xd2);
+            (struct TableEntry02184354*)SearchBothTables02079e2c((char*)GetData02108e10(), 0xd2);
         if (row != NULL) {
-            _Z22ConsumeCounter02048350P11Obj02048350i((struct Obj02048350*)caster, row->amount);
+            ConsumeCounter02048350((struct Obj02048350*)caster, row->amount);
         }
         GameObject* target = bs->GetUnknownGameObject();
         if (target != NULL) {
@@ -412,8 +412,8 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
 #endif
         }
         if (finished != 0) {
-            _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);
-            _Z25ForwardField0xc0_0205ebecPv(&data_02108760);
+            ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
+            ForwardField0xc0_0205ebec(&data_02108760);
             return 1;
         }
     }

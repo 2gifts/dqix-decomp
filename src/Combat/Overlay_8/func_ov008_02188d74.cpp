@@ -41,9 +41,9 @@ struct SpriteRenderer
     }
 };
 
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
-extern "C" void _Z18InitStruct0205a444Pc(char* renderer);
-extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198* sprite);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
+void InitStruct0205a444(char* renderer);
+void Init0205a198(Struct0205a198* sprite);
 int CountActiveEntries(ActiveEntry02046900* archive);
 void* FindRecordByIndex(Rec020467f0* archive, int index, void** name, int* size);
 extern "C" void func_0205a528(SpriteRenderer* renderer, void* file, unsigned int size, SafeAllocator* allocator);
@@ -75,13 +75,13 @@ extern "C" ARM int func_ov008_02188d74(BattleRecords* self)
         self->iconAllocator_.Reset();
         self->iconRenderer_ = (SpriteRenderer*)self->iconAllocator_.Allocate(sizeof(SpriteRenderer));
         self->iconSprite_ = (Sprite*)self->iconAllocator_.Allocate(sizeof(Sprite));
-        _Z18InitStruct0205a444Pc((char*)self->iconRenderer_);
+        InitStruct0205a444((char*)self->iconRenderer_);
         self->iconRenderer_->unk_50 = 1;
         SpriteRenderer* renderer = self->iconRenderer_;
         renderer->SetSprites(self->iconSprite_, 1);
         for (int i = 0; i < 1; i++)
-            _Z12Init0205a198P14Struct0205a198((Struct0205a198*)&self->iconSprite_[i]);
-        self->task_ = loader->QueueLoadFile(_Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, LOW_REGION(4, 7)), NULL);
+            Init0205a198((Struct0205a198*)&self->iconSprite_[i]);
+        self->task_ = loader->QueueLoadFile(GetFieldByKey020e0434((Container020e0310*)&self->texts_, LOW_REGION(4, 7)), NULL);
         self->loadStep_++;
     }
     if (step == 1 && loader->GetTaskStatus(self->task_))

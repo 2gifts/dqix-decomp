@@ -16,7 +16,7 @@ struct TaggedNumber02184c30 {
     union { int i; float f; } value;
 };
 
-extern "C" int _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(struct TaggedNumber02184c30* v);
+int GetTaggedValueAsInt_02184c30(struct TaggedNumber02184c30* v);
 extern "C" ARM void* func_ov017_021b2164(void);
 extern "C" ARM void* func_ov011_021845f8(void* ctx, int v);
 extern "C" ARM void* func_ov011_021849c8(void* ctx);
@@ -26,7 +26,7 @@ extern "C" void _Z40InitTenAllocatorsAndClearFields_021e4e8cPv(void* model);
 
 struct ListHead_021f67ac;
 struct ListNode_021f67ac;
-extern "C" void _Z25AppendNodeToList_021f67acP17ListHead_021f67acP17ListNode_021f67ac(struct ListHead_021f67ac* head, struct ListNode_021f67ac* node);
+void AppendNodeToList_021f67ac(struct ListHead_021f67ac* head, struct ListNode_021f67ac* node);
 
 extern char data_ov023_021ff5b4;
 
@@ -62,10 +62,10 @@ extern "C" ARM int func_ov011_02187720(struct TaggedNumber02184c30* params, int 
     int unk2;
     int id;
 
-    id = _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[0]);
-    heapId = _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[1]);
-    unk2 = _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[2]);
-    _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[3]);
+    id = GetTaggedValueAsInt_02184c30(&params[0]);
+    heapId = GetTaggedValueAsInt_02184c30(&params[1]);
+    unk2 = GetTaggedValueAsInt_02184c30(&params[2]);
+    GetTaggedValueAsInt_02184c30(&params[3]);
     script = func_ov017_021b2164();
     heap = (MenuHeap02187720*)func_ov011_021845f8(script, heapId);
     if (heap == 0)
@@ -93,6 +93,6 @@ extern "C" ARM int func_ov011_02187720(struct TaggedNumber02184c30* params, int 
     if (!func_ov023_021fc518(object, script, id, heapId, unk2, unk))
         return 0;
 
-    _Z25AppendNodeToList_021f67acP17ListHead_021f67acP17ListNode_021f67ac((struct ListHead_021f67ac*)func_ov011_021849c8(script), (struct ListNode_021f67ac*)object);
+    AppendNodeToList_021f67ac((struct ListHead_021f67ac*)func_ov011_021849c8(script), (struct ListNode_021f67ac*)object);
     return 1;
 }

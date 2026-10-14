@@ -6,10 +6,10 @@
 struct Ctx_021e9320;
 struct Obj_021e8ca0;
 int CheckField0x14FlagsClear(unsigned char* obj);
-extern "C" int _Z25SelectResultCode_021e9320P12Ctx_021e9320ii(struct Ctx_021e9320* ctx, int id, int mode);
-extern "C" int _Z26IsFlagAllowedMask_021eb4b0iii(int a0, int flags, int mask);
+int SelectResultCode_021e9320(struct Ctx_021e9320* ctx, int id, int mode);
+int IsFlagAllowedMask_021eb4b0(int a0, int flags, int mask);
 void ResetStateFields0x18(unsigned char* obj);
-extern "C" void* _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i(struct Obj_021e8ca0* obj, int id);
+void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
@@ -58,16 +58,16 @@ extern "C" ARM unsigned long long func_ov024_021e386c(struct Obj_021e386c* obj, 
         chance = chance * (StatsOf(c)->resistRate / 100.0f);
     }
     if (roll >= chance) return 0;
-    int sel = _Z25SelectResultCode_021e9320P12Ctx_021e9320ii((struct Ctx_021e9320*)obj, id, 1);
+    int sel = SelectResultCode_021e9320((struct Ctx_021e9320*)obj, id, 1);
     union { struct { int lo; int hi; }; unsigned long long v; } words;
     words.lo = 0;
     words.hi = 0;
-    if (_Z26IsFlagAllowedMask_021eb4b0iii((int)obj, StatsOf(c)->stateFlags, 0x20)) {
+    if (IsFlagAllowedMask_021eb4b0((int)obj, StatsOf(c)->stateFlags, 0x20)) {
         func_ov000_02159eac(obj->ctx, &words, 0x2b);
     }
     ResetStateFields0x18((unsigned char*)StatsOf(c));
     func_ov000_02159eac(obj->ctx, &words, 0x17);
-    void* entry = _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i((struct Obj_021e8ca0*)obj, sel);
+    void* entry = AddEntryToListAndIncCount_021e8ca0((struct Obj_021e8ca0*)obj, sel);
     if (entry) {
         func_ov000_0215cd44(obj->ctx, entry, c, 0, 0, 0);
     }

@@ -13,13 +13,13 @@ struct NodeList02057de0 {
     int count;
 };
 
-extern "C" int _Z29CreateAndRegisterNode02057de0P16NodeList02057de0iP13SafeAllocatorii(NodeList02057de0* list, int a1, SafeAllocator* alloc, int a2, int a3);
-extern "C" int _Z39CollectEntriesMatchingField0xd802058680PciPPvi(char* base, int value, void** out, int limit);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+int CreateAndRegisterNode02057de0(NodeList02057de0* list, int a1, SafeAllocator* alloc, int a2, int a3);
+int CollectEntriesMatchingField0xd802058680(char* base, int value, void** out, int limit);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 
 struct Obj020dbf70;
-extern "C" void _Z21ReleaseHandle020dbf70P11Obj020dbf70(struct Obj020dbf70* o);
+void ReleaseHandle020dbf70(struct Obj020dbf70* o);
 
 extern "C" int func_02057924(void);
 
@@ -43,21 +43,21 @@ extern "C" ARM void func_020dbdc0(Struct020dbd9c* self) {
             loader->GetLoadedFileByID(self->fc, &fileData, &fileLen);
             void* buf = self->f0->Allocate(fileLen);
             if (buf == NULL) {
-                _Z21ReleaseHandle020dbf70P11Obj020dbf70((struct Obj020dbf70*)self);
+                ReleaseHandle020dbf70((struct Obj020dbf70*)self);
                 return;
             }
             memcpy(buf, fileData, fileLen);
-            _Z25RestorePairTables0207df90Pc(self->f4);
-            _Z29CreateAndRegisterNode02057de0P16NodeList02057de0iP13SafeAllocatorii(list, self->f8, self->f0, (int)buf, (int)fileLen);
-            _Z24BackupPairTables0207dfacPc(self->f4);
-            _Z21ReleaseHandle020dbf70P11Obj020dbf70((struct Obj020dbf70*)self);
+            RestorePairTables0207df90(self->f4);
+            CreateAndRegisterNode02057de0(list, self->f8, self->f0, (int)buf, (int)fileLen);
+            BackupPairTables0207dfac(self->f4);
+            ReleaseHandle020dbf70((struct Obj020dbf70*)self);
             self->f10 = 2;
         }
     }
     if (self->f14 != 0) {
         char* base = (char*)func_02057924();
         if (base != NULL) {
-            int count = _Z39CollectEntriesMatchingField0xd802058680PciPPvi(base, self->f8, NULL, 0);
+            int count = CollectEntriesMatchingField0xd802058680(base, self->f8, NULL, 0);
             if (count <= 0) {
                 self->f14 = 0;
             }

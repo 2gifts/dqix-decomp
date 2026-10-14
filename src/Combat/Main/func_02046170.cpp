@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "Resource/MessageGlyphSlot.h"
 
-extern "C" bool _Z20IsHighByteFF02044494PvS_(void* obj, void* src);
-extern "C" int _Z22LookupKeyValue020425e4iii(int a, int b, int fontIndex);
+bool IsHighByteFF02044494(void* obj, void* src);
+int LookupKeyValue020425e4(int a, int b, int fontIndex);
 
 extern int data_020e7a94[];
 
@@ -94,12 +94,12 @@ extern "C" ARM int func_02046170(struct Container02046170* window, unsigned shor
         } else if (command == 0xff19) {
             previousCharacter = 0xff;
             currentExtent += fallbackGlyphWidth + 1;
-        } else if (_Z20IsHighByteFF02044494PvS_(window, &command)) {
+        } else if (IsHighByteFF02044494(window, &command)) {
             previousCharacter = 0xff;
         } else {
             MessageGlyphSlot* slot = &window->glyphs[command];
             int characterIndex = slot->characterIndex;
-            currentExtent += _Z22LookupKeyValue020425e4iii(previousCharacter, characterIndex, fontIndex);
+            currentExtent += LookupKeyValue020425e4(previousCharacter, characterIndex, fontIndex);
             previousCharacter = characterIndex;
             int glyphWidth = fallbackGlyphWidth;
             if (slot->character != 0) glyphWidth = slot->character->width;

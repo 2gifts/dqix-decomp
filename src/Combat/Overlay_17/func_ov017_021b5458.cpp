@@ -4,7 +4,7 @@
 
 extern "C" void* func_0202ae18(void);
 extern "C" void __clear(void* buf, int size);
-extern "C" void _Z20Clear12Bytes020a8e88Pv(void* p);
+void Clear12Bytes020a8e88(void* p);
 extern "C" void func_020a8fd0(void* obj, void* arg, void* file, unsigned int size, short* ids, int count);
 extern "C" void func_ov017_021b5648(void* obj);
 
@@ -99,7 +99,7 @@ extern "C" ARM void func_ov017_021b5458(struct Obj021b5458* obj) {
                 }
             }
             sub = obj->sub;
-            _Z20Clear12Bytes020a8e88Pv(sub->field30c);
+            Clear12Bytes020a8e88(sub->field30c);
             func_020a8fd0(sub->field30c, obj->sub->field10, file, size, ids, count);
         }
     }

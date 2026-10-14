@@ -7,7 +7,7 @@ struct Elem_0205d81c {
 };
 
 struct Struct_0205d81c;
-extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
 
 struct ShortArrays0204c610;
@@ -34,7 +34,7 @@ extern "C" ARM void func_ov003_021703f0(struct Obj_021703f0* obj, short* outX, s
             *outX = 0x2c;
             *outY = obj->index * 17 + 0x3a;
 #else
-            struct Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci(obj->list, 0);
+            struct Elem_0205d81c* elem = FindElementByC40205d81c(obj->list, 0);
             if (elem == 0) return;
             short ex = elem->posX << 3;
             short ey = elem->posY << 3;

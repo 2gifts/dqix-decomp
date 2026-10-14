@@ -19,9 +19,9 @@ struct BattleMeter {
     unsigned char mode;
 };
 void SetSublistEntriesFlag1(void*, int);
-extern "C" void _Z24SetEntryFlagById02080b40Pvi(void*, int);
+void SetEntryFlagById02080b40(void*, int);
 void SetEntryHalfword0xe(void*, int, int);
-extern "C" void _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(Container02080fa8*, int, int);
+void SetEntryFirstField02080fa8(Container02080fa8*, int, int);
 void SetEntryFlag0x2ByShortId(StatusOwner02081164*, int, int);
 extern "C" void func_020806d8(void*, int, int, int, int);
 extern "C" int func_ov006_02154138(int*);
@@ -31,7 +31,7 @@ extern "C" void func_020813ec(void*, int);
 extern "C" ARM void func_ov006_0215fa1c(BattleMeter* self, int showValue) {
     Container02080fa8* entries = self->entries;
     SetSublistEntriesFlag1(entries, 0xd);
-    _Z24SetEntryFlagById02080b40Pvi(entries, 0x56);
+    SetEntryFlagById02080b40(entries, 0x56);
     SetEntryHalfword0xe(self->entries, 0x56, 0x2b);
     if (self->mode != 10 && self->mode != 3) {
         int text = 0x2c;
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov006_0215fa1c(BattleMeter* self, int showValue) {
             }
         }
         SetEntryHalfword0xe(entries, 0x57, text);
-        _Z24SetEntryFlagById02080b40Pvi(entries, 0x57);
+        SetEntryFlagById02080b40(entries, 0x57);
         func_020806d8(entries, 0xd, 0x57, 1, kTextAdjustment);
         if (showValue) {
             unsigned int meter = (unsigned short)func_ov006_02154138(&self->meter);
@@ -52,8 +52,8 @@ extern "C" ARM void func_ov006_0215fa1c(BattleMeter* self, int showValue) {
             int value = (scaled - scaled % 100) / 100;
             if (meter && value <= 0) value = 1;
             if (value > 100) value = 100;
-            _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(entries, 0x58, value);
-            _Z24SetEntryFlagById02080b40Pvi(entries, 0x58);
+            SetEntryFirstField02080fa8(entries, 0x58, value);
+            SetEntryFlagById02080b40(entries, 0x58);
             SetEntryHalfword0xe(self->entries, 0x56, 0x2e);
         }
     }

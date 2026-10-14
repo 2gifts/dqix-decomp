@@ -24,11 +24,11 @@ struct PartEntry {
 };
 
 extern "C" void __clear(void* buffer, unsigned long size);
-extern "C" PartEntry* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* items, int id);
-extern "C" int _Z31GetPreferredPackedField020de234P20StructDE234_020de234i(StructDE234_020de234* item, int a);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
+PartEntry* FindElementByKey020dedd0(Container020dedd0* items, int id);
+int GetPreferredPackedField020de234(StructDE234_020de234* item, int a);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void SetVec3At0x1c(Vec3Target0203a46c* model, int x, int y, int z);
-extern "C" void _Z31RunTwoCallbacksAndReset02155d38P11Obj02155d38(Obj02155d38* slot);
+void RunTwoCallbacksAndReset02155d38(Obj02155d38* slot);
 
 struct EquipmentSlot {
     short item_;
@@ -80,12 +80,12 @@ extern "C" ARM void func_ov005_021556e4(EquipmentMenu* self) {
             memset(self->dragFile_, 0, 0x200);
             EquipmentSlot* slot = &self->slots_[self->dragged_];
             slot->offset_ = -1;
-            PartEntry* item = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items_, slot->item_);
+            PartEntry* item = FindElementByKey020dedd0(self->items_, slot->item_);
             if (item != NULL) {
                 char path[0x80];
                 __clear(path, sizeof(path));
-                int number = _Z31GetPreferredPackedField020de234P20StructDE234_020de234i((StructDE234_020de234*)item, 0);
-                sprintf(path, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 0x7d1), (char)item->letter_, number);
+                int number = GetPreferredPackedField020de234((StructDE234_020de234*)item, 0);
+                sprintf(path, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x7d1), (char)item->letter_, number);
                 if (LoadFileIntoMemory(path, self->dragFile_, NULL))
                     slot->offset_ = 0;
                 int x;
@@ -102,12 +102,12 @@ extern "C" ARM void func_ov005_021556e4(EquipmentMenu* self) {
             memset(self->itemFile_, 0, 0x200);
             EquipmentSlot* slot = &self->slots_[self->unk_3dac];
             slot->offset_ = -1;
-            PartEntry* item = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items_, slot->item_);
+            PartEntry* item = FindElementByKey020dedd0(self->items_, slot->item_);
             if (item != NULL) {
                 char path[0x80];
                 __clear(path, sizeof(path));
-                int number = _Z31GetPreferredPackedField020de234P20StructDE234_020de234i((StructDE234_020de234*)item, 0);
-                sprintf(path, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 0x7d1), (char)item->letter_, number);
+                int number = GetPreferredPackedField020de234((StructDE234_020de234*)item, 0);
+                sprintf(path, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x7d1), (char)item->letter_, number);
                 if (LoadFileIntoMemory(path, self->itemFile_, NULL))
                     slot->offset_ = 0;
                 self->unk_3da8++;
@@ -118,7 +118,7 @@ extern "C" ARM void func_ov005_021556e4(EquipmentMenu* self) {
     } else if (self->flags_ & 0x20) {
         if (self->equippedStep_ == 0) {
             for (int i = 0; i < 8; i++) {
-                _Z31RunTwoCallbacksAndReset02155d38P11Obj02155d38((Obj02155d38*)&self->slots_[i]);
+                RunTwoCallbacksAndReset02155d38((Obj02155d38*)&self->slots_[i]);
                 self->slots_[i].offset_ = -1;
             }
             self->equippedStart_ = 0;
@@ -132,13 +132,13 @@ extern "C" ARM void func_ov005_021556e4(EquipmentMenu* self) {
             for (int i = self->equippedStart_; i < self->equippedEnd_; i++) {
                 EquipmentSlot* slot = &self->slots_[i];
                 slot->offset_ = -1;
-                PartEntry* item = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items_, slot->item_);
+                PartEntry* item = FindElementByKey020dedd0(self->items_, slot->item_);
                 if (item != NULL) {
                     unsigned int size = 0;
                     char path[0x80];
                     __clear(path, sizeof(path));
-                    int number = _Z31GetPreferredPackedField020de234P20StructDE234_020de234i((StructDE234_020de234*)item, 0);
-                    sprintf(path, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 0x7d1), (char)item->letter_, number);
+                    int number = GetPreferredPackedField020de234((StructDE234_020de234*)item, 0);
+                    sprintf(path, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x7d1), (char)item->letter_, number);
                     if (LoadFileIntoMemory(path, self->equippedFiles_ + offset, &size)) {
                         slot->offset_ = offset;
                         size = (size + 3) & ~3;
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov005_021556e4(EquipmentMenu* self) {
             for (int i = 8; i < 24; i++) {
                 EquipmentSlot* slot = &self->slots_[i];
                 if (slot->equipped_ == 0) {
-                    _Z31RunTwoCallbacksAndReset02155d38P11Obj02155d38((Obj02155d38*)slot);
+                    RunTwoCallbacksAndReset02155d38((Obj02155d38*)slot);
                     slot->offset_ = -1;
                 }
             }
@@ -175,13 +175,13 @@ extern "C" ARM void func_ov005_021556e4(EquipmentMenu* self) {
                 slot->offset_ = -1;
                 if (slot->equipped_ != 0)
                     continue;
-                PartEntry* item = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items_, slot->item_);
+                PartEntry* item = FindElementByKey020dedd0(self->items_, slot->item_);
                 if (item != NULL) {
                     unsigned int size = 0;
                     char path[0x80];
                     __clear(path, sizeof(path));
-                    int number = _Z31GetPreferredPackedField020de234P20StructDE234_020de234i((StructDE234_020de234*)item, 0);
-                    sprintf(path, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 0x7d1), (char)item->letter_, number);
+                    int number = GetPreferredPackedField020de234((StructDE234_020de234*)item, 0);
+                    sprintf(path, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x7d1), (char)item->letter_, number);
                     if (LoadFileIntoMemory(path, self->pageFiles_ + offset, &size)) {
                         slot->offset_ = offset;
                         size = (size + 3) & ~3;

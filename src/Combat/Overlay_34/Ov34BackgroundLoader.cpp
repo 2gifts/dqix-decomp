@@ -6,23 +6,18 @@
 
 extern "C"
 {
-    // get crc for string
     unsigned int func_01ff860c(const char*);
 
-    // alternate version of load overlay
     void func_020a1a40(int);
-    // alternate unload overlay
     void func_020a1ccc(int);
 
     void func_020c9b10(void* out);
 }
 
 struct AllocatorUnion;
-extern "C" void* _Z16AllocateAligned4P14AllocatorUnionj(struct AllocatorUnion* a, unsigned int n);
+void* AllocateAligned4(struct AllocatorUnion* a, unsigned int n);
 extern AllocatorUnion data_02114e20;
 
-// Task::operator= is defined in ARM9 main (0x02030310); reference it instead of
-// letting the compiler emit a second copy into this overlay.
 extern "C" void _ZN16BackgroundLoader4TaskaSERKS0_(BackgroundLoader::Task* dst,
                                                    const BackgroundLoader::Task* src);
 #define TASK_ASSIGN(dst, src) _ZN16BackgroundLoader4TaskaSERKS0_(&(dst), &(src))
@@ -33,13 +28,12 @@ extern Ov34BackgroundLoader data_ov034_022a2a6c;
 int Ov34BackgroundLoader::Process()
 {
     GPCFile* pGPC;
-    LockResourceMutex();    
+    LockResourceMutex();
     ZeroInitGPCPointer(&pGPC);
     unsigned int currentArchiveCRC = 0;
     while (true)
     {
         flags_78c_0_ = true;
-        // Begin by doing overlay load/unload operations
         Task* pTask = &queuedTasks_[0];
         for (int i = 0; i < numPendingTasks_; i++, pTask++)
         {
@@ -66,8 +60,6 @@ int Ov34BackgroundLoader::Process()
             default:
                 continue;
             }
-            // If we get here, we actually did something, so remove the task
-            // and shift things up
             Task* qTask = pTask;
             for (int j = i + 1; j < numPendingTasks_; j++, qTask++)
             {
@@ -122,7 +114,7 @@ int Ov34BackgroundLoader::Process()
                 }
             }
         }
-        
+
         if (gpcTask == NULL)
         {
             ResetGPCPair(&pGPC, reader_);
@@ -151,7 +143,7 @@ int Ov34BackgroundLoader::Process()
 
         gpcTask->status_ = TaskStatus_InFlight;
         Task inFlightTask;
-        TASK_ASSIGN(inFlightTask, *gpcTask); // work with a copy, we'll copy changes back at the end
+        TASK_ASSIGN(inFlightTask, *gpcTask);
         flags_78c_3_ = true;
         UnlockResourceMutex();
         char fullName[80];
@@ -203,7 +195,7 @@ int Ov34BackgroundLoader::Process()
                     {
                         reader_.Read(inFlightTask.pFileData, inFlightTask.fileLengthOrOverlayID_);
                     }
-                    else // TaskType_LoadGP1
+                    else
                     {
                         unsigned int compressedSize = reader_.GetFileSize();
                         reader_.DecompressBytes(inFlightTask.pFileData, inFlightTask.fileLengthOrOverlayID_,
@@ -224,10 +216,6 @@ int Ov34BackgroundLoader::Process()
             flagMaybeGP2OperationInFlight_ = true;
             GPCFile::Header header;
             unsigned int outBufferRightMinusLeft = scratchSpaceSize_ - rightmostAllocationByte_ - scratchRightArenaUsage_;
-            // this looks like the start of the buffer but we right-align the output so really
-            // it's the end (we're not allowed to go any further left than this).
-            // This coincides with the right endpoint of file data loaded into allocations
-            // of the scratch space.
             unsigned char* outputBufferLeft = (unsigned char*)scratchSpace_ + rightmostAllocationByte_;
             unsigned int outLength = 0;
             bool outSuccess = false;
@@ -244,11 +232,6 @@ int Ov34BackgroundLoader::Process()
             else
             {
                 currentArchiveCRC = func_01ff860c(inFlightTask.outerFilename_);
-                // note that prior to this instruction, one of these is always zero:
-                // if the previous iteration handled this archive, then we didn't reload
-                // it (short-circuit && in the if-statement above) so outLength = 0,
-                // and if we handled a different archive / null, then it's been reset
-                // since and arena usage set back to zero.
                 scratchRightArenaUsage_ += outLength;
                 unsigned int innerFileLength = GetGPCInnerFileLengthByName(pGPC, reader_, inFlightTask.innerFilename_);
                 unsigned int allocSize = (innerFileLength + 7) & ~3;
@@ -285,7 +268,7 @@ int Ov34BackgroundLoader::Process()
                     }
                 }
             }
-            break; // switch statement
+            break;
         }
         }
         if (inFlightTask.pFileData != NULL)
@@ -300,9 +283,9 @@ int Ov34BackgroundLoader::Process()
             int z = b ^ ((b >> 6) ^ (b >> 4) ^ (b >> 2));
             if ((unsigned char)(z & 3) == 0)
 #endif
-                _Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, 8);
+                AllocateAligned4(&data_02114e20, 8);
         }
-        
+
         LockResourceMutex();
         flags_78c_3_ = false;
         RefreshCounters();

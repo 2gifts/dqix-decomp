@@ -86,17 +86,17 @@ extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
 extern "C" int func_ov023_021f6f10(void*);
 extern "C" TableA68* func_ov023_021fa598(void*);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 void* FindEntryByKey(TableA68*, int);
 extern "C" void func_02046608(void*, int, void*, char*, int, int, int);
 char* FindSubstring(char*, char*);
-extern "C" void _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30*, short, unsigned int, unsigned int);
+void SetCellIfInBounds_021f9b30(Grid021f9b30*, short, unsigned int, unsigned int);
 typedef void (*UnsignedGridCellSetter)(Grid021f9b30*, unsigned short, unsigned int, unsigned int);
 typedef void (*UnsignedOffsetSetter)(char*, unsigned short, unsigned short);
 extern "C" void func_ov023_021f9d14(Grid021f9b30*, void*);
-extern "C" void _Z27SetOffset100Fields_021f8960Pcss(char*, short, short);
+void SetOffset100Fields_021f8960(char*, short, short);
 extern "C" void func_ov023_021f809c(void*, void*);
-extern "C" int _Z25NotifyByBitfield_021560e8Pv(void*);
+int NotifyByBitfield_021560e8(void*);
 
 // USA: func_ov004_021561b0
 extern "C" ARM int func_ov004_021561b0(void* object) {
@@ -124,7 +124,7 @@ extern "C" ARM int func_ov004_021561b0(void* object) {
         node->flags &= ~8;
         int index = i + pageStart;
         if (data_ov004_021707c8.keys[index] > 0) {
-            void* context = _Z26GetGlobalField0x1c020421a0v();
+            void* context = GetGlobalField0x1c020421a0();
             memset(buffers->scratch.bytes, 0, 0x100);
             void* entry = FindEntryByKey(table, data_ov004_021707c8.keys[index]);
             func_02046608(context, 0, entry, buffers->scratch.bytes, 0x60, 0, 0);
@@ -142,24 +142,24 @@ extern "C" ARM int func_ov004_021561b0(void* object) {
             node->setOffset(&offset);
             char* text = data_ov004_021707c8.buffers->pages[i].bytes;
             memcpy(text, buffers->scratch.bytes, 0x100);
-            ((UnsignedGridCellSetter)_Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj)(grid, (unsigned short)id, (unsigned short)(i >> 1), i & 1);
+            ((UnsignedGridCellSetter)SetCellIfInBounds_021f9b30)(grid, (unsigned short)id, (unsigned short)(i >> 1), i & 1);
             node->text = text;
             count++;
         } else {
-            _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(grid, 0, (unsigned short)(i >> 1), i & 1);
+            SetCellIfInBounds_021f9b30(grid, 0, (unsigned short)(i >> 1), i & 1);
             node->flags |= 8;
         }
     }
-    if (count == 0) _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(grid, 0x6e, 0, 0);
+    if (count == 0) SetCellIfInBounds_021f9b30(grid, 0x6e, 0, 0);
     func_ov023_021f9d14(grid, object);
     grid->field_61 = 0;
     MenuNode021561b0* node = (MenuNode021561b0*)func_ov023_021f6880(base, 0x33);
     if (!node) return 0;
     if (func_ov023_021f6f10(node) != 6) return 0;
-    ((UnsignedOffsetSetter)_Z27SetOffset100Fields_021f8960Pcss)((char*)node, 0, 0xffff);
+    ((UnsignedOffsetSetter)SetOffset100Fields_021f8960)((char*)node, 0, 0xffff);
     node->page = page;
     node->column = column;
     func_ov023_021f809c(node, object);
-    _Z25NotifyByBitfield_021560e8Pv(object);
+    NotifyByBitfield_021560e8(object);
     return 0;
 }

@@ -8,7 +8,7 @@
 
 extern "C" void func_ov015_0218f0c4(void* p);
 extern "C" void func_ov015_02192700(void* obj, int flag);
-extern "C" extern void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
+extern void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern AllocatorUnion data_02114e20;
 
 struct ListNode02191af0 { void* payload; ListNode02191af0* next; };
@@ -38,8 +38,8 @@ extern "C" ARM void func_ov015_02191af0(Obj02191af0* obj, int count) {
         i++;
     }
     func_ov015_0218f0c4(cur->payload);
-    _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, cur->payload);
-    _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, cur);
+    TailForward02012da4(&data_02114e20, cur->payload);
+    TailForward02012da4(&data_02114e20, cur);
     if (prev != 0) {
         prev->next = nxt;
     } else {

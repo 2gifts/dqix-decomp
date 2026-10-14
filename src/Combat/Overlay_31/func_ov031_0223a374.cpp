@@ -20,9 +20,9 @@ extern const char data_ov031_0224c520[];
 extern "C" void func_ov031_02239368(int);
 extern "C" int func_ov031_02239a24();
 extern "C" int func_ov031_02239a74();
-extern "C" int _Z27CheckFirstOrRunTen_0223a358v();
-extern "C" int _Z39TryClearSubEffectAndSetField54_02239924v();
-extern "C" int _Z33RegisterTagAndSetField54_02239954v();
+int CheckFirstOrRunTen_0223a358();
+int TryClearSubEffectAndSetField54_02239924();
+int RegisterTagAndSetField54_02239954();
 
 // USA: func_ov031_0223a374
 extern "C" ARM void func_ov031_0223a374(void) {
@@ -44,31 +44,31 @@ extern "C" ARM void func_ov031_0223a374(void) {
     int mode = data_ov031_02290d18.state->mode;
     if (mode != 6 && mode != 5 && mode != 4) {
         func_ov031_02239368(3);
-        _Z27CheckFirstOrRunTen_0223a358v();
+        CheckFirstOrRunTen_0223a358();
         return;
     }
     func_ov031_02239368(3);
     switch (data_ov031_02290d18.state->step) {
     case 3:
         if (func_ov031_02239a24() == 0) {
-            _Z27CheckFirstOrRunTen_0223a358v();
+            CheckFirstOrRunTen_0223a358();
         }
         break;
     case 1:
     case 5:
         if (func_ov031_02239a74() == 0) {
-            _Z27CheckFirstOrRunTen_0223a358v();
+            CheckFirstOrRunTen_0223a358();
         }
         break;
     case 2:
-        if (_Z39TryClearSubEffectAndSetField54_02239924v() == 0) {
-            _Z27CheckFirstOrRunTen_0223a358v();
+        if (TryClearSubEffectAndSetField54_02239924() == 0) {
+            CheckFirstOrRunTen_0223a358();
         }
         break;
     case 0:
     case 4:
-        if (_Z33RegisterTagAndSetField54_02239954v() == 0) {
-            _Z27CheckFirstOrRunTen_0223a358v();
+        if (RegisterTagAndSetField54_02239954() == 0) {
+            CheckFirstOrRunTen_0223a358();
         }
         break;
     }

@@ -4,8 +4,8 @@
 
 struct S_10088;
 int IsFlag10088Set(struct S_10088* obj);
-extern "C" int _Z30HasFlaggedSlotBit20Set020854e8Ph(unsigned char* actor);
-extern "C" short _Z20ApplyMPDelta0215a1d4PviiPs(void* unused, int id, int delta, short* outApplied);
+int HasFlaggedSlotBit20Set020854e8(unsigned char* actor);
+short ApplyMPDelta0215a1d4(void* unused, int id, int delta, short* outApplied);
 extern "C" void func_ov000_0215acb8(void* world, int id, int applied, int result);
 
 struct Cost_021e556c {
@@ -65,8 +65,8 @@ extern "C" ARM void func_ov024_021e556c(struct Act_021e556c* obj, int sourceId, 
     struct Fighter_021e556c* target = (struct Fighter_021e556c*)GetCombatantWithFlag0x100(gs, targetId);
     if (target == 0) return;
     if (IsFlag10088Set((struct S_10088*)target)) return;
-    if (!_Z30HasFlaggedSlotBit20Set020854e8Ph(target->f150)) return;
+    if (!HasFlaggedSlotBit20Set020854e8(target->f150)) return;
     short applied = 0;
-    short result = _Z20ApplyMPDelta0215a1d4PviiPs(obj->world, targetId, rec->f8.cost, &applied);
+    short result = ApplyMPDelta0215a1d4(obj->world, targetId, rec->f8.cost, &applied);
     func_ov000_0215acb8(obj->world, targetId, applied, result);
 }

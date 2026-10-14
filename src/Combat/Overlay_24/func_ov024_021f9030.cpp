@@ -102,9 +102,9 @@ extern "C" void __clear(void* dst, int size);
 void* GetFieldAt0x150(unsigned char* obj);
 GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
-extern "C" int _Z33IsCombatantFlag2Mask8192_021e6798P10GameObject(GameObject* combatant);
+int IsCombatantFlag2Mask8192_021e6798(GameObject* combatant);
 Command_021f9030* GetField0x19cOrNull(S02053dc0* p);
-extern "C" Skill_021f9030* _Z24SearchBothTables02079e2cPci(char* table, int id);
+Skill_021f9030* SearchBothTables02079e2c(char* table, int id);
 extern "C" int func_ov000_02155f9c(Battle_021f9030* battle, int combatantId, int checkSubFlag);
 extern "C" void func_ov024_021f7478(Planner_021f9030* obj);
 extern "C" int func_ov024_021f8874(Planner_021f9030* obj, Skill_021f9030* skill, GameObject* combatant, int* cost);
@@ -161,7 +161,7 @@ extern "C" ARM void func_ov024_021f9030(Planner_021f9030* obj, Battle_021f9030* 
         GameObject* ally = GetCombatantWithFlag0x100(gameState, i);
         if (ally == 0) continue;
         if (!TestBitAt0x34(obj->owner->party, (unsigned char)i)) continue;
-        if (_Z33IsCombatantFlag2Mask8192_021e6798P10GameObject(ally)) continue;
+        if (IsCombatantFlag2Mask8192_021e6798(ally)) continue;
         if (*ally->status & 1) continue;
         if (ally->stats->flags18 & 0x800) {
             disabled = 1;
@@ -179,7 +179,7 @@ extern "C" ARM void func_ov024_021f9030(Planner_021f9030* obj, Battle_021f9030* 
     }
     for (i = 0; i < obj->count; i++) {
         SkillSlot_021f9030* slot = &obj->skills[i];
-        Skill_021f9030* skill = _Z24SearchBothTables02079e2cPci((char*)database, slot->id);
+        Skill_021f9030* skill = SearchBothTables02079e2c((char*)database, slot->id);
         int cost = 0;
         if (skill->type == 2) {
             if (func_ov024_021f8874(obj, skill, combatant, &cost)) {
@@ -215,7 +215,7 @@ extern "C" ARM void func_ov024_021f9030(Planner_021f9030* obj, Battle_021f9030* 
 skipRevive:
     if (found[1] && obj->targetCount <= 1 && (isMode0 || isMode14 || isMode2)) {
         GameObject* target = obj->targets[0];
-        obj->selectedSkill = _Z24SearchBothTables02079e2cPci((char*)database, 0x45);
+        obj->selectedSkill = SearchBothTables02079e2c((char*)database, 0x45);
         obj->selectedCost = obj->selectedSkill->cost;
         float hi;
         float lo;

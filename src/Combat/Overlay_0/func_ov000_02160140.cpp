@@ -143,9 +143,9 @@ extern CombatWorkHolder02160140 data_ov000_02184220;
 extern "C" void func_020134e0(void*);
 extern "C" void func_ov000_0216d2d0(void*);
 extern "C" void func_ov000_021723a8(void*, void*);
-extern "C" void _Z20ResetEntries02168230Pc(char*);
+void ResetEntries02168230(char*);
 extern "C" void func_0204719c(void*);
-extern "C" void _Z22ResetNameState02048614Ph(unsigned char*);
+void ResetNameState02048614(unsigned char*);
 void ZeroFieldAndShortTriple0x6e2e(void*);
 void ZeroShortTriple0x6e44(void*);
 
@@ -165,7 +165,7 @@ extern "C" ARM void func_ov000_02160140(CombatWork02160140* self) {
     memset(self->state54f4, 0, 0x10);
     memset(self->state5728, 0, 0x30);
     for (int i = 0; i < 4; ++i) self->slots[i] = 0;
-    _Z20ResetEntries02168230Pc((char*)self);
+    ResetEntries02168230((char*)self);
     self->field_ea8 = 0;
     self->field_eac = 0;
     data_ov000_02184220.active = 1;
@@ -212,7 +212,7 @@ extern "C" ARM void func_ov000_02160140(CombatWork02160140* self) {
     self->field_58ce = 0;
     for (int i = 0; i < 5; ++i) self->allocators[i].ResetAllocatorPointer();
     for (int i = 0; i < 5; ++i) {
-        _Z22ResetNameState02048614Ph(self->names[i]);
+        ResetNameState02048614(self->names[i]);
         memset(self->nameBuffers[i], 0, 0x70);
     }
     data_ov000_02184220.active = 0;

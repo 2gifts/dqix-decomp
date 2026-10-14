@@ -22,7 +22,7 @@ struct AddressPacket02200ccc {
 };
 extern AddressState02200ccc data_ov031_0224c980;
 extern unsigned char data_ov031_0224ce68[6];
-extern "C" void _Z30CopyHeaderAndDispatch_02200850PvjS_j(void*, unsigned int, void*, unsigned int);
+void CopyHeaderAndDispatch_02200850(void*, unsigned int, void*, unsigned int);
 
 #define Swap16_02200ccc(value) (unsigned short)(((value) >> 8) | ((value) << 8))
 
@@ -49,5 +49,5 @@ extern "C" ARM void func_ov031_02200ccc(unsigned int address) {
     packet.senderLow = Swap16_02200ccc(sourceLow);
     packet.targetHigh = Swap16_02200ccc(targetHigh);
     packet.targetLow = Swap16_02200ccc(targetLow);
-    _Z30CopyHeaderAndDispatch_02200850PvjS_j(&packet, 42, NULL, 0);
+    CopyHeaderAndDispatch_02200850(&packet, 42, NULL, 0);
 }

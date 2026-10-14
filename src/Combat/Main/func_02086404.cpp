@@ -38,8 +38,8 @@ struct CombatSelection {
     Obj020827c4 timers;
     unsigned char history[0xc0];
 };
-extern "C" void _Z26ClearPackedTriples02082cdcP11Obj02082cdc(Obj02082cdc*);
-extern "C" void _Z26InitFlagsAndTimers020827c4P11Obj020827c4(Obj020827c4*);
+void ClearPackedTriples02082cdc(Obj02082cdc*);
+void InitFlagsAndTimers020827c4(Obj020827c4*);
 
 // USA: func_02086404
 extern "C" ARM void func_02086404(CombatSelection* selection) {
@@ -51,7 +51,7 @@ extern "C" ARM void func_02086404(CombatSelection* selection) {
         selection->entries[i] = 0;
         selection->enabled[i] = 1;
         selection->status[i] = 0;
-        _Z26ClearPackedTriples02082cdcP11Obj02082cdc(&selection->triples[i]);
+        ClearPackedTriples02082cdc(&selection->triples[i]);
     }
     selection->current = 0;
     selection->selectionMask = 0;
@@ -75,7 +75,7 @@ extern "C" ARM void func_02086404(CombatSelection* selection) {
     selection->vectors[3].z = 0;
     selection->timer = 0;
     selection->timerLimit = 0;
-    _Z26InitFlagsAndTimers020827c4P11Obj020827c4(&selection->timers);
+    InitFlagsAndTimers020827c4(&selection->timers);
     memset(selection->history, -1, sizeof(selection->history));
     selection->mode = 0;
     selection->cursor = 0;

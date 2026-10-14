@@ -16,8 +16,8 @@ struct Obj2081;
 extern "C" void* func_0202ae18(void);
 int CheckField0NonZero(int* obj);
 int HasElementByByte0xc4(struct Obj2081* obj, int key);
-extern "C" void _Z30UpdateOffsetsFromEntry02080a6cPvisPsS0_S0_S0_(void* param0, int id, short param2, short* param3, short* param4, short* param5, short* param6);
-extern "C" void _Z23SetEntryFields_021604f4Pciish(char* obj, int valA, int valB, short index, unsigned char flag);
+void UpdateOffsetsFromEntry02080a6c(void* param0, int id, short param2, short* param3, short* param4, short* param5, short* param6);
+void SetEntryFields_021604f4(char* obj, int valA, int valB, short index, unsigned char flag);
 
 struct ElementIds {
     short ids[3];
@@ -59,7 +59,7 @@ extern "C" ARM void func_ov003_0216052c(struct Combatant0216052c* obj) {
                 short part = data_ov003_0217f448[i][j];
                 if (part >= 0) {
                     short x, y, w, h;
-                    _Z30UpdateOffsetsFromEntry02080a6cPvisPsS0_S0_S0_(model, id, part, &x, &y, &w, &h);
+                    UpdateOffsetsFromEntry02080a6c(model, id, part, &x, &y, &w, &h);
 #if !defined(jpn)
                     h = (16 - h) >> 1;
 #endif
@@ -69,7 +69,7 @@ extern "C" ARM void func_ov003_0216052c(struct Combatant0216052c* obj) {
 #else
                     short posY = y - h + 1;
 #endif
-                    _Z23SetEntryFields_021604f4Pciish((char*)obj, posX, posY, 0, slot++);
+                    SetEntryFields_021604f4((char*)obj, posX, posY, 0, slot++);
                 }
             }
             return;

@@ -95,7 +95,7 @@ struct SceneSwap021c0850 {
     unsigned char bbc;
 };
 
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int arg1);
+void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
 extern "C" void func_020a0cc4(unsigned int size);
 extern "C" void func_020a0c0c(void);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
@@ -116,7 +116,7 @@ extern "C" void func_02074af4(void* obj);
 void BackupSubBgControlRegisters(SubBgControlBackup02074b64* backup);
 void BackupPairTableToBuffer(int* buffer);
 void RestorePairTableFromBuffer(int* buffer);
-extern "C" void _Z22ReadGlobalPair020bb910Pi(int* pair);
+void ReadGlobalPair020bb910(int* pair);
 unsigned short GetFieldAt0x7e(S_e830* obj);
 int GetWord(unsigned int* obj);
 int GetField4(unsigned int* obj);
@@ -125,8 +125,8 @@ void SetField0x3b0Value(GameState* gs, int v);
 void LockStagedTextureVRAMCopying(void);
 void UnlockStagedTextureVRAMCopying(void);
 void UpdateVRAMStagingVRAMBanks(void);
-extern "C" void _Z25ConfigurePairMode020bb48cji(unsigned int mode, int flag);
-extern "C" void _Z30SetDispcntModeAndFlags020c391ciii(int a, int b, int c);
+void ConfigurePairMode020bb48c(unsigned int mode, int flag);
+void SetDispcntModeAndFlags020c391c(int a, int b, int c);
 void SetSubBgMode(unsigned int mode);
 void SetBitsInWord(unsigned int* obj, unsigned int mask);
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
@@ -137,7 +137,7 @@ void ClearBitsInField8(unsigned int* obj, unsigned int mask);
 void Set3DClearColor(int color, int alpha, int depth, int polygonId, int fog);
 void SetFogState(int enable, unsigned int mode, unsigned int shift, unsigned short offset);
 extern "C" void* func_0203bd08(void);
-extern "C" void _Z25InitBattleContext0203bd24Pc(char* ctx);
+void InitBattleContext0203bd24(char* ctx);
 int* GetGlobalPtr02105244(void);
 extern "C" int func_0203be4c(void* ctx);
 extern "C" void func_0203c35c(int* ptr);
@@ -147,29 +147,29 @@ extern "C" int func_ov008_02184754(void* obj);
 void ClearFlag0x10IfSet(Struct02074bd0* obj);
 void ClearFlag0x11IfSet(Struct02074bf4* obj);
 extern "C" void* func_ov008_021845ac(void* obj);
-extern "C" void _Z35ProcessCombatantsIfFlagged_0218f79cPv(void* res);
+void ProcessCombatantsIfFlagged_0218f79c(void* res);
 extern "C" void func_ov017_0219b624(GameResources* res);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 extern "C" void func_020432c4(void* controller);
 extern "C" void func_ov017_0219bd1c(int a, int b, int c, int d);
 extern "C" void _Z36InitAllocatorAndClearFields_021c0820P11Obj021c0820(void* obj);
 extern "C" void _Z20InitState40_021c0334P11Obj021c0334(void* obj);
 extern "C" void _Z20InitState37_021b14a0P11Obj021b14a0(void* obj);
-extern "C" void _Z23SetByteField49_021b1d3cPvi(void* obj, int v);
+void SetByteField49_021b1d3c(void* obj, int v);
 void PrependNodeToHead(HeadList020469f8* list, HeadNode020469f8* node);
 extern "C" void func_ov017_021c0580(void* self, int kind, const char* name, void* handler);
 extern "C" int func_0209cd50(int id);
 extern "C" void _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(void* actor, int v);
 void SetByteField0x253(void* obj);
 extern "C" void func_ov017_021c07d0(void* self);
-extern "C" int _Z30AllocateAndDispatch20_0215502cP13SafeAllocatori(SafeAllocator* alloc, int arg);
-extern "C" int _Z30AllocateAndDispatch14_021560b0P13SafeAllocatori(SafeAllocator* alloc, int arg);
-extern "C" int _Z29AllocateAndDispatch8_02156dc8P13SafeAllocatori(SafeAllocator* alloc, int arg);
-extern "C" int _Z36AllocateAndCopyHandlerTable_021677b4P13SafeAllocatorPv(SafeAllocator* alloc, void* arg);
-extern "C" int _Z29AllocateAndCopyBuf76_0216aa70P13SafeAllocatorPv(SafeAllocator* alloc, void* arg);
+int AllocateAndDispatch20_0215502c(SafeAllocator* alloc, int arg);
+int AllocateAndDispatch14_021560b0(SafeAllocator* alloc, int arg);
+int AllocateAndDispatch8_02156dc8(SafeAllocator* alloc, int arg);
+int AllocateAndCopyHandlerTable_021677b4(SafeAllocator* alloc, void* arg);
+int AllocateAndCopyBuf76_0216aa70(SafeAllocator* alloc, void* arg);
 
 extern AllocatorUnion data_02114e20;
 extern int data_02109bf4;
@@ -202,7 +202,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
     GameState* gs = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();
     GameObject* leader = gs->GetUnknownGameObject();
-    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)leader, 1);
+    CancelPendingAction020397cc((Obj020397cc*)leader, 1);
 
     if (self->state == 0) {
         func_020a0cc4(kSceneHeapSize);
@@ -268,7 +268,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         self->textureSize = GetTextureImageAssignedVRAMSize();
         self->paletteSize = GetTexturePaletteAssignedVRAMSize();
         BackupPairTableToBuffer(self->pairTable);
-        _Z22ReadGlobalPair020bb910Pi(self->globalPair);
+        ReadGlobalPair020bb910(self->globalPair);
         GXDispCnt dispCnt = GX_GetDispCnt();
         self->bgScrBase = dispCnt.bgScrBase;
         self->bgCharBase = dispCnt.bgCharBase;
@@ -286,14 +286,14 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         DisableTextureImageVRAMBanks();
         GX_SetDispSelect(0);
         MapVRAMBanksToTextureImage(1);
-        _Z25ConfigurePairMode020bb48cji(1, 1);
+        ConfigurePairMode020bb48c(1, 1);
         MapVRAMBanksToSubBG(4);
         MapVRAMBanksToSubObj(0x100);
         DISPCNTSUB = (DISPCNTSUB & 0xffcfffef) | 0x10;
         UpdateVRAMStagingVRAMBanks();
         UnlockStagedTextureVRAMCopying();
         DISPCNT = (DISPCNT & ~0x1f00) | 0x1300;
-        _Z30SetDispcntModeAndFlags020c391ciii(1, 0, 1);
+        SetDispcntModeAndFlags020c391c(1, 0, 1);
         BG1CNT = (BG1CNT & 0x43) | 0x1e00;
         BG0CNT = (BG0CNT & ~3) | 1;
         BG1CNT = (BG1CNT & ~3) | 2;
@@ -313,7 +313,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         Set3DClearColor(0, 0, 0x7fff, 0, 0);
         SetFogState(0, 0, 0, 0);
         char* context = (char*)func_0203bd08();
-        _Z25InitBattleContext0203bd24Pc(context);
+        InitBattleContext0203bd24(context);
         *(int*)context = 0;
         int* global = GetGlobalPtr02105244();
         *global = func_0203be4c(context) + 0x200;
@@ -333,7 +333,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         DisableTextureImageVRAMBanks();
         MapVRAMBanksToSubBG(self->subBgBanks);
         MapVRAMBanksToTextureImage(self->textureBanks);
-        _Z25ConfigurePairMode020bb48cji((unsigned short)(self->textureSize >> 17), 1);
+        ConfigurePairMode020bb48c((unsigned short)(self->textureSize >> 17), 1);
         RestorePairTableFromBuffer(self->pairTable);
         UpdateVRAMStagingVRAMBanks();
         UnlockStagedTextureVRAMCopying();
@@ -353,7 +353,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         SetBitsInWord((unsigned int*)res, self->word);
         SetBitsInField4((unsigned int*)res, self->field4);
         SetBitsInField8((unsigned int*)res, self->field8);
-        _Z35ProcessCombatantsIfFlagged_0218f79cPv(res);
+        ProcessCombatantsIfFlagged_0218f79c(res);
         SetField0x3b0Value(gs, (int)self->fieldB8);
         GameState* state = GameState::GetInstance();
         int index = 0x70;
@@ -366,11 +366,11 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         }
         func_ov017_0219b624(res);
         char* fields = res->unknown_2cc;
-        void* controller = (void*)_Z26GetGlobalField0x1c020421a0v();
+        void* controller = (void*)GetGlobalField0x1c020421a0();
         _Z26CopyInternalFields0207df50P11Foo0207df50(fields + 0x5b0);
-        _Z25RestorePairTables0207df90Pc(fields + 0x5b0);
+        RestorePairTables0207df90(fields + 0x5b0);
         func_020432c4(controller);
-        _Z24BackupPairTables0207dfacPc(fields + 0x5b0);
+        BackupPairTables0207dfac(fields + 0x5b0);
         if (self->scene->kind == 0) {
             func_ov017_0219bd1c(1, 0, 0, 0);
         }
@@ -396,32 +396,32 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
             PrependNodeToHead(list, node);
             return;
         case 2:
-            func_ov017_021c0580(self, 1, data_ov017_021d7f00, (void*)_Z30AllocateAndDispatch20_0215502cP13SafeAllocatori);
+            func_ov017_021c0580(self, 1, data_ov017_021d7f00, (void*)AllocateAndDispatch20_0215502c);
             return;
         case 3:
-            func_ov017_021c0580(self, 2, data_ov017_021d7f07, (void*)_Z30AllocateAndDispatch14_021560b0P13SafeAllocatori);
+            func_ov017_021c0580(self, 2, data_ov017_021d7f07, (void*)AllocateAndDispatch14_021560b0);
             return;
         case 4:
             _Z36InitAllocatorAndClearFields_021c0820P11Obj021c0820(self);
             self->b24 = 3;
             node = (HeadNode020469f8*)res2->unknown_ptr_array_3afc[18];
             _Z20InitState37_021b14a0P11Obj021b14a0(node);
-            _Z23SetByteField49_021b1d3cPvi(node, 1);
+            SetByteField49_021b1d3c(node, 1);
             PrependNodeToHead(list, node);
             return;
         case 5:
-            func_ov017_021c0580(self, 4, data_ov017_021d7f12, (void*)_Z29AllocateAndDispatch8_02156dc8P13SafeAllocatori);
+            func_ov017_021c0580(self, 4, data_ov017_021d7f12, (void*)AllocateAndDispatch8_02156dc8);
             return;
         case 6:
-            func_ov017_021c0580(self, 5, data_ov017_021d7f19, (void*)_Z36AllocateAndCopyHandlerTable_021677b4P13SafeAllocatorPv);
+            func_ov017_021c0580(self, 5, data_ov017_021d7f19, (void*)AllocateAndCopyHandlerTable_021677b4);
             return;
         case 7:
-            func_ov017_021c0580(self, 6, data_ov017_021d7f22, (void*)_Z29AllocateAndCopyBuf76_0216aa70P13SafeAllocatorPv);
+            func_ov017_021c0580(self, 6, data_ov017_021d7f22, (void*)AllocateAndCopyBuf76_0216aa70);
             return;
         case 0: {
             SetMainBrightness(res, 0, 0xf);
             _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(&data_02109bf4, func_0209cd50(*(unsigned short*)func_02012fe4()));
-            char* global = (char*)_Z26GetGlobalField0x1c020421a0v();
+            char* global = (char*)GetGlobalField0x1c020421a0();
             *(int*)(global + kGlobalStateOffset) = 0;
             *(unsigned char*)(global + kGlobalFlagOffset) = 1;
             break;
@@ -435,7 +435,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         if (self->scene->kind == 0) {
             SetByteField0x253(leader);
         } else {
-            _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)leader, 1);
+            CancelPendingAction020397cc((Obj020397cc*)leader, 1);
         }
         func_ov017_021c07d0(self);
         func_020a0c0c();

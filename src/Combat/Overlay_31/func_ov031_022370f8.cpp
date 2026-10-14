@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Header_0223bd28;
-extern "C" void _Z26ExtractPackedHiLo_0223bd28P15Header_0223bd28iPjS1_(Header_0223bd28*, int, unsigned int*, unsigned int*);
+void ExtractPackedHiLo_0223bd28(Header_0223bd28*, int, unsigned int*, unsigned int*);
 extern "C" void func_ov031_0223bbd8(void*, int, int, int);
 extern "C" void func_ov031_0223e2b8(void*, int);
 extern "C" void func_ov031_022371d4(void*);
@@ -16,7 +16,7 @@ extern Entry0224926a data_ov031_0224926a[];
 #pragma optimize_for_size off
 extern "C" ARM void func_ov031_022370f8(void* obj) {
 	unsigned int outHi, outLo;
-	_Z26ExtractPackedHiLo_0223bd28P15Header_0223bd28iPjS1_((Header_0223bd28*)data_ov031_02290d04.p[2], 0, &outHi, &outLo);
+	ExtractPackedHiLo_0223bd28((Header_0223bd28*)data_ov031_02290d04.p[2], 0, &outHi, &outLo);
 	outHi = outHi - 8;
 	if ((int)outHi > 0x50) {
 		int i = 2;

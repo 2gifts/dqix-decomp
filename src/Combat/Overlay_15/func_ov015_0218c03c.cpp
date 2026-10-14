@@ -44,8 +44,8 @@ struct FaceLetters
     char letters_[10];
 };
 
-extern "C" PartEntry* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
-extern "C" unsigned short _Z31GetPreferredPackedField020de234P20StructDE234_020de234i(StructDE234_020de234* p, int preferMid);
+PartEntry* FindElementByKey020dedd0(Container020dedd0* c, int key);
+unsigned short GetPreferredPackedField020de234(StructDE234_020de234* p, int preferMid);
 
 extern const ModelExtension data_ov015_02193cd4;
 extern const FaceLetters data_ov015_02193ce5;
@@ -56,9 +56,9 @@ extern const char data_ov015_02193ffa[];
 // USA: func_ov015_0218c03c
 extern "C" ARM bool func_ov015_0218c03c(ViewObject* self, char* name, unsigned int part, int file)
 {
-    PartEntry* entry = _Z24FindElementByKey020dedd0P17Container020dedd0i((Container020dedd0*)&self->viewer_->parts_, (short)self->parts_[part]);
-    PartEntry* body = _Z24FindElementByKey020dedd0P17Container020dedd0i((Container020dedd0*)&self->viewer_->parts_, (short)self->parts_[7]);
-    int number = _Z31GetPreferredPackedField020de234P20StructDE234_020de234i((StructDE234_020de234*)entry, self->female_);
+    PartEntry* entry = FindElementByKey020dedd0((Container020dedd0*)&self->viewer_->parts_, (short)self->parts_[part]);
+    PartEntry* body = FindElementByKey020dedd0((Container020dedd0*)&self->viewer_->parts_, (short)self->parts_[7]);
+    int number = GetPreferredPackedField020de234((StructDE234_020de234*)entry, self->female_);
     ModelExtension extension = data_ov015_02193cd4;
     char suffix[2] = {0};
     char suffix2[2] = {0};
@@ -80,7 +80,7 @@ extern "C" ARM bool func_ov015_0218c03c(ViewObject* self, char* name, unsigned i
         suffix[1] = 0;
         if (body != NULL && body->unk_18 > -1)
         {
-            int index = (int)_Z31GetPreferredPackedField020de234P20StructDE234_020de234i((StructDE234_020de234*)body, self->female_) / 100;
+            int index = (int)GetPreferredPackedField020de234((StructDE234_020de234*)body, self->female_) / 100;
             if ((unsigned int)index >= 10)
                 return false;
             FaceLetters letters = data_ov015_02193ce5;

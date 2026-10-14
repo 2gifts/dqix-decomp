@@ -19,7 +19,7 @@ struct Obj021e5a6c {
 struct List021600f8;
 struct ListNode021600f8;
 
-extern "C" struct ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(struct List021600f8* list, int index);
+struct ListNode021600f8* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" int _ZNK8Object3D9GetHeightEv(void* self);
 void* GetActiveCombatWork(void);
@@ -35,7 +35,7 @@ extern "C" ARM int func_ov025_021e5a6c(struct Obj021e5a6c* obj, struct List02160
         }
     } else if (mode == 2) {
         int height = 1;
-        struct ListNode021600f8* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, 0);
+        struct ListNode021600f8* node = GetNodeAtIndex021600f8(list, 0);
         if (node != 0) {
             GameObject* c = bs->GetCombatantByIndex(*(short*)((char*)node + 0xe));
             if (c != 0) {

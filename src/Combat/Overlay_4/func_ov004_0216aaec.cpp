@@ -44,7 +44,7 @@ extern "C" void* func_ov011_021849c8(void* obj);
 extern "C" struct Node0216aaec* func_ov023_021f6880(void* list, int id);
 extern "C" int func_ov023_021f6f10(void* obj);
 extern "C" struct TableA68* func_ov023_021fa598(void* obj);
-extern "C" struct StoreStruct* _Z26GetGlobalField0x1c020421a0v(void);
+struct StoreStruct* GetGlobalField0x1c020421a0(void);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* obj);
 extern "C" void func_02046380(struct StoreStruct* g);
@@ -55,7 +55,7 @@ extern "C" void func_02046608(struct StoreStruct* a, int b, void* c, void* d);
 #else
 extern "C" void func_02046608(struct StoreStruct* a, int b, void* c, void* d, int e, int f, int g);
 #endif
-extern "C" void _Z27SetOffset100Fields_021f8960Pcss(char* base, short a, short b);
+void SetOffset100Fields_021f8960(char* base, short a, short b);
 void SetToggleState(struct ToggleState* s, int a, int b);
 void SetFlag0x9c6(struct SetFlagStruct* p, int value);
 
@@ -92,7 +92,7 @@ extern "C" ARM int func_ov004_0216aaec(void* a) {
         return 0;
     }
     struct TableA68* table = func_ov023_021fa598(node);
-    struct StoreStruct* g = _Z26GetGlobalField0x1c020421a0v();
+    struct StoreStruct* g = GetGlobalField0x1c020421a0();
 #if !defined(jpn)
     void* buf = alloc->allocator.Allocate(4);
 #endif
@@ -115,7 +115,7 @@ extern "C" ARM int func_ov004_0216aaec(void* a) {
 
     struct Node0216aaec* panel = func_ov023_021f6880(func_ov011_021849c8(a), 0xc8);
     if (panel != 0 && func_ov023_021f6f10(panel) == 6) {
-        _Z27SetOffset100Fields_021f8960Pcss((char*)panel, 0, kPanelOffset);
+        SetOffset100Fields_021f8960((char*)panel, 0, kPanelOffset);
     }
 
     struct ToggleState* toggle = (struct ToggleState*)func_ov017_0218b5b0()->unknown_ptr_36d0;

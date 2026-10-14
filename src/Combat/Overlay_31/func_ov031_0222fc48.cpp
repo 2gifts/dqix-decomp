@@ -15,13 +15,13 @@ struct Ctx0222fc48 {
 
 extern struct Ctx0222fc48 data_ov031_02290ca0;
 
-extern "C" char* _Z21GetOffset400_02235c70v(void);
+char* GetOffset400_02235c70(void);
 extern "C" int func_ov031_0222fd9c(int idx);
 extern "C" void func_ov031_0222fe30(int a, int b, int c);
 
 // USA: func_ov031_0222fc48
 extern "C" ARM void func_ov031_0222fc48(int idx, int arg) {
-	unsigned char* obj = (unsigned char*)_Z21GetOffset400_02235c70v();
+	unsigned char* obj = (unsigned char*)GetOffset400_02235c70();
 	int mode;
 	int flag;
 

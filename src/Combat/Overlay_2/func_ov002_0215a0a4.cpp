@@ -64,16 +64,16 @@ struct PartyFlags0215a0a4 {
 };
 
 void* GetData02153637();
-extern "C" void _Z16Dispatch020e3428Pvi(void*, int);
-extern "C" Obj02046574* _Z26GetGlobalField0x1c020421a0v();
-extern "C" CommandEntry0215a0a4* _Z24SearchBothTables02079e2cPci(char*, int);
-extern "C" void* _Z20Clear12Bytes020e46c4Pv(void*);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574*, int, char*);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void*, int);
-extern "C" int _Z22ConsumeCounter02048350P11Obj02048350i(Obj02048350*, int);
+void Dispatch020e3428(void*, int);
+Obj02046574* GetGlobalField0x1c020421a0();
+CommandEntry0215a0a4* SearchBothTables02079e2c(char*, int);
+void* Clear12Bytes020e46c4(void*);
+void SetIndexedName02046574(Obj02046574*, int, char*);
+void InitObjFromCombatantId020e4bf4(void*, int);
+int ConsumeCounter02048350(Obj02048350*, int);
 int CheckField0NonZero(int*);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310*, int);
-extern "C" int _Z20AppendString02042058PcPKc(char*, const char*);
+int GetFieldByKey020e0434(Container020e0310*, int);
+int AppendString02042058(char*, const char*);
 void StoreInArray0x8b0(StoreStruct*, int, int);
 extern "C" int* func_0202ae18();
 extern "C" void func_02046380(void*);
@@ -95,25 +95,25 @@ extern "C" ARM void func_ov002_0215a0a4(BattleMessage0215a0a4* self, BattleEvent
     Obj02046574* message;
     CommandEntry0215a0a4* entry;
     int index;
-    _Z16Dispatch020e3428Pvi(GetData02153637(), 1);
+    Dispatch020e3428(GetData02153637(), 1);
     gs = GameState::GetInstance();
-    message = _Z26GetGlobalField0x1c020421a0v();
+    message = GetGlobalField0x1c020421a0();
     state = func_0202ae18();
-    entry = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), self->command);
+    entry = SearchBothTables02079e2c((char*)GetData02108e10(), self->command);
     if (!entry) return;
     memset(self->textState.text, 0, 0x960);
     memset(self->textState.textCopy, 0, 0x960);
     func_02046380(message);
     buffer = self->textState.text;
-    _Z20Clear12Bytes020e46c4Pv(self->actorName);
-    _Z20Clear12Bytes020e46c4Pv(self->targetName);
+    Clear12Bytes020e46c4(self->actorName);
+    Clear12Bytes020e46c4(self->targetName);
     actor = GetCombatantWithFlag0x100(gs, event->actor);
     if (actor) {
-        _Z22SetIndexedName02046574P11Obj02046574iPc(message, 0, actor->baseStats_->unk);
-        _Z30InitObjFromCombatantId020e4bf4Pvi(self->actorName, event->actor);
+        SetIndexedName02046574(message, 0, actor->baseStats_->unk);
+        InitObjFromCombatantId020e4bf4(self->actorName, event->actor);
         message->actor = self->actorName;
     }
-    _Z22SetIndexedName02046574P11Obj02046574iPc(message, 1, entry->name);
+    SetIndexedName02046574(message, 1, entry->name);
     if (self->command == 0x1e || self->command == 0x1f || self->command == 0x20 ||
         self->command == 0x21 || self->command == 0x23 || self->command == 0x26 || self->command == 0x27) {
         self->active = 1;
@@ -153,15 +153,15 @@ extern "C" ARM void func_ov002_0215a0a4(BattleMessage0215a0a4* self, BattleEvent
         self->textState.nextState = 0x11;
         self->textState.timer = 0;
         if (consumed) {
-            _Z22ConsumeCounter02048350P11Obj02048350i((Obj02048350*)actor, entry->counter);
+            ConsumeCounter02048350((Obj02048350*)actor, entry->counter);
             if (CheckField0NonZero(state)) func_ov017_021c9e00(self->actorId, 0, 0, 1);
         }
         return;
     }
     if (self->command != 0x22 && self->command != 0x310) return;
     if (any) {
-        func_02046608(message, 0xc, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, 0x232d), buffer + 0x860, 0xe3, 0, 1);
-        _Z20AppendString02042058PcPKc(self->textState.text, buffer + 0x860);
+        func_02046608(message, 0xc, GetFieldByKey020e0434(&self->texts, 0x232d), buffer + 0x860, 0xe3, 0, 1);
+        AppendString02042058(self->textState.text, buffer + 0x860);
         results = event->results;
         rejectedKey = 0x232c;
         index = 0;
@@ -172,32 +172,32 @@ extern "C" ARM void func_ov002_0215a0a4(BattleMessage0215a0a4* self, BattleEvent
                 target = GetCombatantWithFlag0x100(gs, targetIds[index]);
                 if (target) {
                     func_02046380(message);
-                    _Z22SetIndexedName02046574P11Obj02046574iPc(message, 2, CombatantName0215a0a4(target));
-                    _Z30InitObjFromCombatantId020e4bf4Pvi(self->targetName, targetIds[index]);
+                    SetIndexedName02046574(message, 2, CombatantName0215a0a4(target));
+                    InitObjFromCombatantId020e4bf4(self->targetName, targetIds[index]);
                     message->target = self->targetName;
                     StoreInArray0x8b0((StoreStruct*)message, 9, target->obj3D_.unknown_4_);
-                    func_02046608(message, 0xc, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, key), buffer + 0x860, 0xe3, 0, 1);
-                    _Z20AppendString02042058PcPKc(self->textState.text, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, 8));
-                    _Z20AppendString02042058PcPKc(self->textState.text, buffer + 0x860);
+                    func_02046608(message, 0xc, GetFieldByKey020e0434(&self->texts, key), buffer + 0x860, 0xe3, 0, 1);
+                    AppendString02042058(self->textState.text, (const char*)GetFieldByKey020e0434(&self->texts, 8));
+                    AppendString02042058(self->textState.text, buffer + 0x860);
                 }
             }
             index++;
         }
-        _Z22ConsumeCounter02048350P11Obj02048350i((Obj02048350*)actor, entry->counter);
+        ConsumeCounter02048350((Obj02048350*)actor, entry->counter);
         if (CheckField0NonZero(state)) func_ov017_021c9e00(self->actorId, 0, 0, 1);
     } else {
         target = gs->GetUnknownGameObject();
         if (target) {
-            _Z22SetIndexedName02046574P11Obj02046574iPc(message, 2, CombatantName0215a0a4(target));
-            _Z30InitObjFromCombatantId020e4bf4Pvi(self->targetName, target->obj3D_.unknown_4_);
+            SetIndexedName02046574(message, 2, CombatantName0215a0a4(target));
+            InitObjFromCombatantId020e4bf4(self->targetName, target->obj3D_.unknown_4_);
             message->target = self->targetName;
         }
-        _Z20AppendString02042058PcPKc(buffer + 0x860, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, 0x2333));
-        _Z20AppendString02042058PcPKc(buffer + 0x860, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, 8));
+        AppendString02042058(buffer + 0x860, (const char*)GetFieldByKey020e0434(&self->texts, 0x2333));
+        AppendString02042058(buffer + 0x860, (const char*)GetFieldByKey020e0434(&self->texts, 8));
         if (GetByteField0x5721(gs) == 1)
-            _Z20AppendString02042058PcPKc(buffer + 0x860, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, 0x2334));
+            AppendString02042058(buffer + 0x860, (const char*)GetFieldByKey020e0434(&self->texts, 0x2334));
         else
-            _Z20AppendString02042058PcPKc(buffer + 0x860, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, 0x2335));
+            AppendString02042058(buffer + 0x860, (const char*)GetFieldByKey020e0434(&self->texts, 0x2335));
         func_02046608(message, 0xc, (int)(buffer + 0x860), self->textState.text, 0xe3, 0, 1);
     }
     self->pending = 1;

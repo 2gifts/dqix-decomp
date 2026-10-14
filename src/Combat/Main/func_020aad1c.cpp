@@ -12,8 +12,8 @@ extern int data_02108e00;
 extern "C" int func_02075910(int a0, void* out, int a1, int a2);
 extern "C" void func_02075acc(int id, void* p, int a1, int a2);
 extern "C" int func_020a9eb8(void* s, int a1, int a2, int a3);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(struct FlagWord020466f4* word, unsigned int bits);
+void* GetDataPtr02114e04_020d6c00();
+void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int bits);
 void OrBitsIntoField0(unsigned int* word, unsigned int bits);
 void SetBitsInWord(unsigned int* word, unsigned int bits);
 void ClearBitsInWord(unsigned int* word, unsigned int bits);
@@ -50,15 +50,15 @@ extern "C" ARM int func_020aad1c(struct Struct020aad1c* s, int a1, int a2, int a
         } else {
             BackgroundLoader::FreeAllocationsGlobal();
 #if !defined(jpn)
-            unsigned int* flags = (unsigned int*)_Z27GetDataPtr02114e04_020d6c00v();
+            unsigned int* flags = (unsigned int*)GetDataPtr02114e04_020d6c00();
             OrBitsIntoField0(flags, 0x2000000);
             SetBitsInWord((unsigned int*)flagv, 0x10);
 #endif
             int ptr = (int)&data_0211e33c + 0x1c + 0x29000;
             if (func_02075910(0x8000, (void*)(s->field4 = ptr), 0x6fe4, 1) == 0) {
 #if !defined(jpn)
-                flags = (unsigned int*)_Z27GetDataPtr02114e04_020d6c00v();
-                _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)flags, 0x2000000);
+                flags = (unsigned int*)GetDataPtr02114e04_020d6c00();
+                ClearFlags020466f4((struct FlagWord020466f4*)flags, 0x2000000);
                 ClearBitsInWord((unsigned int*)flagv, 0x10);
 #endif
                 s->state = 4;
@@ -75,7 +75,7 @@ extern "C" ARM int func_020aad1c(struct Struct020aad1c* s, int a1, int a2, int a
         data_02108e00 = s->field4;
         if (func_020a9eb8(s, a1, a2, a3) == 0) {
 #if !defined(jpn)
-            _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v(), 0x2000000);
+            ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x2000000);
             ClearBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
 #endif
             s->state = 4;
@@ -92,7 +92,7 @@ extern "C" ARM int func_020aad1c(struct Struct020aad1c* s, int a1, int a2, int a
         NotifyU16AndSetFlag02075cb8();
         if (a3 != 0) {
 #if !defined(jpn)
-            _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v(), 0x2000000);
+            ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x2000000);
             ClearBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
 #endif
             s->state = 4;
@@ -107,7 +107,7 @@ extern "C" ARM int func_020aad1c(struct Struct020aad1c* s, int a1, int a2, int a
         }
         NotifyU16AndSetFlag02075cb8();
 #if !defined(jpn)
-        _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v(), 0x2000000);
+        ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x2000000);
         ClearBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
 #endif
         s->state = 4;

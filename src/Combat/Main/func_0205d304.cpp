@@ -11,8 +11,8 @@ struct Struct_0205bf3c;
 struct Obj5d594;
 struct ScaledElementList0204aa28;
 
-extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c*, int);
-extern "C" void _Z24CopyOrClearField0204c770PcPv(char*, void*);
+void* FindElementByC40205d81c(struct Struct_0205d81c*, int);
+void CopyOrClearField0204c770(char*, void*);
 void GetNibbles(struct Obj5d594*, unsigned char*, unsigned char*);
 #if defined(jpn)
 extern "C" void func_0204d790(void* self, const char* text, unsigned int destination, int mode, unsigned char border, unsigned char fullWidth);
@@ -20,8 +20,8 @@ extern "C" void func_0204d790(void* self, const char* text, unsigned int destina
 extern "C" void func_0204c980(void* self, const char* text, unsigned int destination, int mode, unsigned char border, unsigned char fullWidth, unsigned char font);
 #endif
 unsigned int GetScaledElementPtr(struct ScaledElementList0204aa28*);
-extern "C" void _Z18ResetState0205bf3cP15Struct_0205bf3c(struct Struct_0205bf3c*);
-extern "C" void _Z23ApplyElemFields0205d904Ph(unsigned char*);
+void ResetState0205bf3c(struct Struct_0205bf3c*);
+void ApplyElemFields0205d904(unsigned char*);
 
 struct Elem0205d304 {
     char pad0[0x4];
@@ -72,7 +72,7 @@ extern "C" ARM void func_0205d304(struct Ctx0205d304* renderer, const char* text
 
     if (text == 0 || renderer->styles == NULL || renderer->windows == NULL) return;
     if (renderer->windowCapacity <= renderer->windowCount) return;
-    if (_Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)renderer, renderer->nextWindowId) != 0) return;
+    if (FindElementByC40205d81c((struct Struct_0205d81c*)renderer, renderer->nextWindowId) != 0) return;
 
     elem = &renderer->windows[renderer->windowCount];
     elem->layout[0].Set(renderer->layout[0].x, renderer->layout[0].y);
@@ -96,7 +96,7 @@ extern "C" ARM void func_0205d304(struct Ctx0205d304* renderer, const char* text
         elem->flags &= ~0x10;
     }
     elem->fontHeight = renderer->fontHeight;
-    _Z24CopyOrClearField0204c770PcPv((char*)elem, extraStyle);
+    CopyOrClearField0204c770((char*)elem, extraStyle);
 
     if (renderer->windowCount != 0) {
         matched = 0;
@@ -140,7 +140,7 @@ extern "C" ARM void func_0205d304(struct Ctx0205d304* renderer, const char* text
     }
 
     renderer->windowCount++;
-    _Z18ResetState0205bf3cP15Struct_0205bf3c((struct Struct_0205bf3c*)renderer->resetState);
+    ResetState0205bf3c((struct Struct_0205bf3c*)renderer->resetState);
     renderer->activeWindowId = renderer->nextWindowId;
-    _Z23ApplyElemFields0205d904Ph((unsigned char*)renderer);
+    ApplyElemFields0205d904((unsigned char*)renderer);
 }

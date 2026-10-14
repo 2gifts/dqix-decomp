@@ -57,11 +57,11 @@ struct StrObj021552b8 {
     char data[0xc];
 };
 
-extern "C" MsgGlobals021552b8 *_Z26GetGlobalField0x1c020421a0v();
+MsgGlobals021552b8 *GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(MsgGlobals021552b8 *);
-extern "C" int _Z29GetArrayEntryByIndex_02156034Pv(void *);
+int GetArrayEntryByIndex_02156034(void *);
 extern "C" void *_Z21GetFieldByKey020e0434P17Container020e0310i(void *, int);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void *, int);
+void InitObjFromCombatantId020e4bf4(void *, int);
 extern "C" void func_020e4b34(void *, void *, int, int, int, int, int, int, int, int, int, int);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(MsgGlobals021552b8 *, int, void *);
 #if defined(jpn)
@@ -70,13 +70,13 @@ extern "C" void func_0204500c(MsgGlobals021552b8*, void*, int);
 #if !defined(jpn)
 extern "C" void func_0204500c(MsgGlobals021552b8 *, void *, int, int);
 #endif
-extern "C" int _Z21IsFieldEq3At_021538e0Pv(void *);
-extern "C" void _Z24ReinitController02043204Pc(char *);
+int IsFieldEq3At_021538e0(void *);
+void ReinitController02043204(char *);
 extern "C" void func_02043124(MsgGlobals021552b8 *);
 
 // USA: func_ov003_021552b8
 extern "C" ARM void func_ov003_021552b8(MsgScene021552b8 *self) {
-    MsgGlobals021552b8 *g = _Z26GetGlobalField0x1c020421a0v();
+    MsgGlobals021552b8 *g = GetGlobalField0x1c020421a0();
     if (self->step == 0) {
 #if !defined(jpn)
         int id = self->curId;
@@ -110,7 +110,7 @@ extern "C" ARM void func_ov003_021552b8(MsgScene021552b8 *self) {
             name = party->name;
         }
         _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, name);
-        short key = _Z29GetArrayEntryByIndex_02156034Pv(self) + 0x23;
+        short key = GetArrayEntryByIndex_02156034(self) + 0x23;
         _Z22SetIndexedName02046574P11Obj02046574iPc(g, 1, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, key));
         _Z22SetIndexedName02046574P11Obj02046574iPc(g, 2, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, (short)(vocation + 0x23)));
         _Z22SetIndexedName02046574P11Obj02046574iPc(g, 3, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, (short)(vocation + 0x34)));
@@ -120,11 +120,11 @@ extern "C" ARM void func_ov003_021552b8(MsgScene021552b8 *self) {
         if (party) {
             vocation = party->data->vocation;
         }
-        short key = _Z29GetArrayEntryByIndex_02156034Pv(self) + 0x23;
+        short key = GetArrayEntryByIndex_02156034(self) + 0x23;
         void *a   = _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, key);
         void *b   = _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, (short) (vocation + 0x23));
         StrObj021552b8 unit;
-        _Z30InitObjFromCombatantId020e4bf4Pvi(&unit, self->slot);
+        InitObjFromCombatantId020e4bf4(&unit, self->slot);
         g->subject  = &unit;
         g->subject2 = &unit;
         StrObj021552b8 obj;
@@ -149,7 +149,7 @@ extern "C" ARM void func_ov003_021552b8(MsgScene021552b8 *self) {
             self->nextId = -1;
             self->mode   = 7;
             self->step   = 0;
-            if (_Z21IsFieldEq3At_021538e0Pv(self->ptr4) == 0) {
+            if (IsFieldEq3At_021538e0(self->ptr4) == 0) {
                 self->mode = 5;
                 self->sub  = 0;
             }
@@ -157,7 +157,7 @@ extern "C" ARM void func_ov003_021552b8(MsgScene021552b8 *self) {
             self->curId  = self->nextId;
             self->nextId = -1;
             if (self->curId < 0 && (self->flags & 2)) {
-                _Z24ReinitController02043204Pc((char *) g);
+                ReinitController02043204((char *) g);
                 func_02043124(g);
                 self->flags &= ~2;
             }

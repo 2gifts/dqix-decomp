@@ -54,19 +54,19 @@ struct Self021a86d0 {
 };
 
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
+char* GetGlobalField0x1c020421a0(void);
 extern "C" char* func_02012fe4(void);
 extern "C" unsigned int _ZNK9GameState12GetTickCountEv(void* gs);
-extern "C" void _Z24SetupAndDispatch0205c904Phi(unsigned char* obj, int value);
-extern "C" void* _Z25GetGlobalResetObj020d7a50v(void);
+void SetupAndDispatch0205c904(unsigned char* obj, int value);
+void* GetGlobalResetObj020d7a50(void);
 extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(void* obj);
 extern "C" void* _ZN9GameState14GetProtagonistEv(void* gs);
 extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(void* obj, int arg);
 extern "C" char* func_ov017_0218b5b0(void);
 extern "C" void _Z15SetBitsInField4Pjj(void* obj, unsigned int mask);
 extern "C" void ColorEffect_ConfigureAlphaBlend(void* reg, int plane1, int plane2, int ev1, int ev2);
-extern "C" void* _Z20GetGlobalPtr021075f4v(void);
-extern "C" void* _Z29FindEntryPointerByKey0203df78Pvi(void* p, int key);
+void* GetGlobalPtr021075f4(void);
+void* FindEntryPointerByKey0203df78(void* p, int key);
 extern "C" char* _ZN9GameState20GetUnknownGameObjectEv(void* gs);
 extern "C" Vec3_021a86d0 _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(void* node);
 extern "C" void Vector3fix_Subtract(const Vec3_021a86d0* a, const Vec3_021a86d0* b, Vec3_021a86d0* out);
@@ -94,23 +94,23 @@ extern "C" void func_0205cc50(void* obj, int a, int b);
 extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(void* obj, int index);
 extern "C" void func_0205bb04(void* obj, int value);
 extern "C" void _Z24ResetBytesAndSetByte0x16P28ResetBytesAndSetByte0x16Datai(void* obj, int value);
-extern "C" void _Z37SetupGlobalObjType1AndInitSelfPointerPh(unsigned char* obj);
+void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
 extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(void* cont, int value);
-extern "C" int _Z28GetScaledSumIfActive0205ceccPv(void* obj);
-extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(unsigned short* flags, int mask);
-extern "C" int _Z27CallFunc0205c570AtField0x1cPv(void* obj);
-extern "C" void _Z24ReinitController02043204Pc(char* obj);
-extern "C" void _Z37SetupGlobalObjType3AndInitSelfPointerPh(unsigned char* obj);
+int GetScaledSumIfActive0205cecc(void* obj);
+int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
+int CallFunc0205c570AtField0x1c(void* obj);
+void ReinitController02043204(char* obj);
+void SetupGlobalObjType3AndInitSelfPointer(unsigned char* obj);
 extern "C" int func_020457e0(char* obj);
 extern "C" unsigned char* func_0205ec34(void);
 extern "C" unsigned char* _Z20GetField0x3f8AddressP9GameState(void* gs);
 extern "C" void VectorizedMemset(void* dst, int value, unsigned int size);
-extern "C" void _Z19InitContext020e1154Pv(void* p);
+void InitContext020e1154(void* p);
 extern "C" void _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(unsigned char a, unsigned short b);
 extern "C" void _Z26EnqueueEventTagB5_021d1dc0ssPisi(unsigned short id, int a, int* buf, int b, int c);
-extern "C" void _Z27InitAndResetHeader_0219e310Phi(unsigned char* obj, int arg);
+void InitAndResetHeader_0219e310(unsigned char* obj, int arg);
 extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(void* list, void* node);
-extern "C" void _Z29InitAndAppendState61_021a65c4Pvhi(void* obj, unsigned char mode, int arg);
+void InitAndAppendState61_021a65c4(void* obj, unsigned char mode, int arg);
 extern "C" void func_ov017_021baedc(unsigned char* node, int arg);
 extern "C" int _Z17GetField5cb0ValuePc(void* gs);
 extern "C" int _Z17GetField5cb4ValuePc(void* gs);
@@ -118,7 +118,7 @@ extern "C" int _Z17GetField5cb8ValuePc(void* gs);
 extern "C" int _Z18TestBitInByteArrayiPhi(unsigned char* obj, unsigned char* array, int bit);
 int ReturnZero_021a01b4(char* res, int value);
 extern "C" void _Z20SetField11c_021bbbf8Pvt(unsigned char* obj, unsigned short value);
-extern "C" void _Z17SetByteField0x253Pv(void* obj);
+void SetByteField0x253(void* obj);
 extern "C" void func_ov017_021a92a0(Self021a86d0* self);
 
 extern char data_ov017_021d77f0[];
@@ -138,24 +138,24 @@ static inline void GX_SetVisiblePlane(unsigned int plane) {
 // USA: func_ov017_021a86d0
 extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
     void* gs = _ZN9GameState11GetInstanceEv();
-    char* g = _Z26GetGlobalField0x1c020421a0v();
+    char* g = GetGlobalField0x1c020421a0();
     char* flags = func_02012fe4();
     Sub021a86d0* sub = (Sub021a86d0*)self->sub;
-    _Z24SetupAndDispatch0205c904Phi(self->sub, _ZNK9GameState12GetTickCountEv(gs));
+    SetupAndDispatch0205c904(self->sub, _ZNK9GameState12GetTickCountEv(gs));
 
     if (self->state == 0) {
-        _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
+        _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(GetGlobalResetObj020d7a50());
         self->planes = GX_GetVisiblePlane();
         GX_SetVisiblePlane(0x11);
         _Z27CancelPendingAction020397ccP11Obj020397cci(_ZN9GameState14GetProtagonistEv(gs), 1);
         _Z15SetBitsInField4Pjj(func_ov017_0218b5b0(), 0x40);
         ColorEffect_ConfigureAlphaBlend((void*)0x4000050, 0x10, 1, 0x1f, 0);
-        void* tbl = _Z20GetGlobalPtr021075f4v();
+        void* tbl = GetGlobalPtr021075f4();
         void* node = NULL;
         if (self->mode == 0) {
-            node = _Z29FindEntryPointerByKey0203df78Pvi(tbl, 2);
+            node = FindEntryPointerByKey0203df78(tbl, 2);
         } else if (self->mode == 1) {
-            node = _Z29FindEntryPointerByKey0203df78Pvi(tbl, 0xcb);
+            node = FindEntryPointerByKey0203df78(tbl, 0xcb);
         }
         if (node != NULL) {
             char* unk = _ZN9GameState20GetUnknownGameObjectEv(gs);
@@ -256,18 +256,18 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             sub->b25f = 1;
             sub->b260 = 1;
             _Z24ResetBytesAndSetByte0x16P28ResetBytesAndSetByte0x16Datai(sub->resetData, 1);
-            _Z37SetupGlobalObjType1AndInitSelfPointerPh(self->sub);
+            SetupGlobalObjType1AndInitSelfPointer(self->sub);
             self->state = 3;
         }
     } else if (self->state == 3) {
         void* cont = *(void**)(g + MessageContainer);
         _Z22IterateEntries0205a330P17Container0205a330i(cont, _ZNK9GameState12GetTickCountEv(gs));
         g[MessageDone] = 0;
-        int sel = _Z28GetScaledSumIfActive0205ceccPv(self->sub);
-        if (_Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 1)) {
+        int sel = GetScaledSumIfActive0205cecc(self->sub);
+        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1)) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 1, 0);
-            sel = _Z27CallFunc0205c570AtField0x1cPv(self->sub);
-        } else if (_Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 2)) {
+            sel = CallFunc0205c570AtField0x1c(self->sub);
+        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
             sel = -2;
         }
         if (self->count > sel && sel >= 0) {
@@ -277,14 +277,14 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             self->state = 4;
         }
     } else if (self->state == 4) {
-        _Z24ReinitController02043204Pc(g);
+        ReinitController02043204(g);
         self->state = 100;
     } else if (self->state == 5) {
         self->result = *(unsigned short*)(flags + GrottoResult);
         if (self->choice == self->result) {
             *(int*)(g + MessageState) = 1;
             func_ov017_021a933c(self, 0x65);
-            _Z37SetupGlobalObjType3AndInitSelfPointerPh(self->sub);
+            SetupGlobalObjType3AndInitSelfPointer(self->sub);
             self->state = 6;
         } else {
             self->state = 99;
@@ -327,7 +327,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         ctx[0xc] = 0;
         *(short*)(ctx + 0x6c) = -1;
         ctx[7] = 1;
-        _Z19InitContext020e1154Pv((void*)0x1f4);
+        InitContext020e1154((void*)0x1f4);
         if (self->result == self->choice) {
             int intro = 1;
             switch (self->choice) {
@@ -377,10 +377,10 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             _Z26EnqueueEventTagB5_021d1dc0ssPisi(self->choice, 0, buf, 0, 0);
             CallFunc0200fbb4AtField0x3f8(gs, ctx);
             unsigned char* header = *(unsigned char**)(res + ResourceNode);
-            _Z27InitAndResetHeader_0219e310Phi(header, 0);
+            InitAndResetHeader_0219e310(header, 0);
             _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(tail, header);
             if (intro) {
-                _Z29InitAndAppendState61_021a65c4Pvhi(res, 1, 0);
+                InitAndAppendState61_021a65c4(res, 1, 0);
             }
         } else {
             unsigned char* node = *(unsigned char**)(res + ResourceAux);
@@ -470,11 +470,11 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             _Z26EnqueueEventTagB5_021d1dc0ssPisi(self->choice, 0, buf, msgA, msgB);
         }
         self->state = 100;
-        _Z24ReinitController02043204Pc(g);
+        ReinitController02043204(g);
     } else if (self->state == 100 && *(int*)(g + MessageResult) == 0) {
-        _Z24ReinitController02043204Pc(g);
-        _Z37SetupGlobalObjType3AndInitSelfPointerPh(self->sub);
-        _Z17SetByteField0x253Pv(_ZN9GameState14GetProtagonistEv(gs));
+        ReinitController02043204(g);
+        SetupGlobalObjType3AndInitSelfPointer(self->sub);
+        SetByteField0x253(_ZN9GameState14GetProtagonistEv(gs));
         func_ov017_021a92a0(self);
         self->done = 1;
     }

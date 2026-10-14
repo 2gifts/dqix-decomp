@@ -44,7 +44,7 @@ extern HandlerTable021f9660 data_ov024_021ffeac;
 extern unsigned int data_ov024_02200150;
 extern SkillHandler021f9660 data_020e6d5c;
 void* GetFieldAt0x150(unsigned char*);
-extern "C" Skill021f9660* _Z24SearchBothTables02079e2cPci(char*, int);
+Skill021f9660* SearchBothTables02079e2c(char*, int);
 extern "C" int func_ov024_021f8874(Planner021f9660*, Skill021f9660*, GameObject*, int*);
 
 // USA: func_ov024_021f9660
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov024_021f9660(Planner021f9660* planner) {
         data_ov024_02200150 |= 1;
     }
     for (int index = 0; index < planner->count; ++index) {
-        Skill021f9660* skill = _Z24SearchBothTables02079e2cPci((char*)database, planner->skills[index].id);
+        Skill021f9660* skill = SearchBothTables02079e2c((char*)database, planner->skills[index].id);
         if (skill->excluded) continue;
         if (skill->restriction) continue;
         int cost;

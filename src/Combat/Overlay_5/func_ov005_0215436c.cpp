@@ -10,11 +10,11 @@ extern "C" void func_ov005_021555c0(void* self);
 extern "C" void func_ov005_021571d0(void* self);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 extern "C" void func_020dfec0(void* dest, void* allocator, void* fileData, unsigned int size);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z15Set3DClearColoriiiii(int color, int alpha, int depth, int polygonId, int fog);
-extern "C" void _Z15SetBitsInField4Pjj(unsigned int* obj, unsigned int bits);
-extern "C" int* _Z15GetData02105254v();
-extern "C" void _Z24SetupBankModeAndTransferPiii(int* obj, int a, int b);
+char* GetGlobalField0x1c020421a0();
+void Set3DClearColor(int color, int alpha, int depth, int polygonId, int fog);
+void SetBitsInField4(unsigned int* obj, unsigned int bits);
+int* GetData02105254();
+void SetupBankModeAndTransfer(int* obj, int a, int b);
 extern "C" void _Z19TailForward0203b66cPc(int* obj);
 extern "C" void _Z25ClearThreeRegions0203b634Pc(int* obj);
 extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void* obj, int value);
@@ -36,9 +36,9 @@ extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(void* obj);
 extern "C" int _Z27FindMatchingRecords0204684cP11Rec020467f0PKcPPviPiS4_(void* table, const char* name, void** outData, int maxCount, int* outField44, void** outRec);
 extern "C" void _Z25RestorePairTables0207df90Pc(void* p);
 extern "C" void _Z24BackupPairTables0207dfacPc(void* p);
-extern "C" void _Z15Forward02047b30Pviii(void* a, int b, int c, int d);
+void Forward02047b30(void* a, int b, int c, int d);
 extern "C" void _Z17ClearObj_021e1318P11Obj021e1318(void* obj);
-extern "C" void _Z25InitScriptAndRun_021e133cPvS_iiis(void* a, void* b, int c, int d, int e, short f);
+void InitScriptAndRun_021e133c(void* a, void* b, int c, int d, int e, short f);
 extern "C" void func_ov005_02154d18(void* obj, int a, int b);
 extern "C" void func_ov005_02154d34(void* obj, int a, int b);
 extern "C" void func_ov005_02154d50(void* obj, int a, int b);
@@ -77,52 +77,52 @@ union Flags0215436c {
 };
 
 struct Scene0215436c {
-    SafeAllocator alloc;                   // 0x0000
+    SafeAllocator alloc;
     char pad0[0x21c - sizeof(SafeAllocator)];
-    SafeAllocator fileAlloc;               // 0x021c
+    SafeAllocator fileAlloc;
     char pad1[0x244 - 0x21c - sizeof(SafeAllocator)];
-    SafeAllocator effectAlloc;             // 0x0244
+    SafeAllocator effectAlloc;
     char pad2[0x258 - 0x244 - sizeof(SafeAllocator)];
-    SafeAllocator scriptAlloc;             // 0x0258
+    SafeAllocator scriptAlloc;
     char pad3[0x294 - 0x258 - sizeof(SafeAllocator)];
-    char pairTables[0xdf4 - 0x294];        // 0x0294
-    int fdf4;                              // 0x0df4
-    char container[0xe10 - 0xdf8];         // 0x0df8
-    int fe10;                              // 0x0e10
+    char pairTables[0xdf4 - 0x294];
+    int fdf4;
+    char container[0xe10 - 0xdf8];
+    int fe10;
     char pad4[0xe84 - 0xe14];
-    List0215436c lists[3];                 // 0x0e84
-    char linkHead[0xf7c - 0xee4];          // 0x0ee4
-    List0215436c* linkList;                // 0x0f7c
+    List0215436c lists[3];
+    char linkHead[0xf7c - 0xee4];
+    List0215436c* linkList;
     char pad5[0xf96 - 0xf80];
-    unsigned char linkFlag;                // 0x0f96
+    unsigned char linkFlag;
     char pad6[0xfa0 - 0xf97];
-    char elems[3][0xe0];                   // 0x0fa0
-    void* buffer;                          // 0x1240
-    char effect[0x128c - 0x1244];          // 0x1244
-    int f128c;                             // 0x128c
+    char elems[3][0xe0];
+    void* buffer;
+    char effect[0x128c - 0x1244];
+    int f128c;
     char pad7[0x19b8 - 0x1290];
-    unsigned short f19b8;                  // 0x19b8
+    unsigned short f19b8;
     char pad8[0x19be - 0x19ba];
-    unsigned char f19be;                   // 0x19be
+    unsigned char f19be;
     char pad9[0x19e0 - 0x19bf];
-    char script[0x1a30 - 0x19e0];          // 0x19e0
-    unsigned char f1a30;                   // 0x1a30
+    char script[0x1a30 - 0x19e0];
+    unsigned char f1a30;
     char pad10[0x1a34 - 0x1a31];
-    void* motionTarget;                    // 0x1a34
-    int motion[0x1a6c - 0x1a38 >> 2];      // 0x1a38
-    int f1a6c;                             // 0x1a6c
-    char records[0x2d90 - 0x1a70];         // 0x1a70
-    short f2d90;                           // 0x2d90
+    void* motionTarget;
+    int motion[0x1a6c - 0x1a38 >> 2];
+    int f1a6c;
+    char records[0x2d90 - 0x1a70];
+    short f2d90;
     char pad11[0x3da9 - 0x2d92];
-    unsigned char f3da9;                   // 0x3da9
-    unsigned char f3daa;                   // 0x3daa
+    unsigned char f3da9;
+    unsigned char f3daa;
     char pad12[0x3db8 - 0x3dab];
-    unsigned char f3db8;                   // 0x3db8
+    unsigned char f3db8;
     char pad13[0x3dc4 - 0x3db9];
-    unsigned char state;                   // 0x3dc4
+    unsigned char state;
     char pad14[3];
-    int handle;                            // 0x3dc8
-    Flags0215436c flags;                   // 0x3dcc
+    int handle;
+    Flags0215436c flags;
 };
 
 // USA: func_ov005_0215436c
@@ -167,11 +167,11 @@ extern "C" ARM int func_ov005_0215436c(Scene0215436c* self) {
         self->fileAlloc.Reset();
         func_020dfec0(self->container, &self->fileAlloc, data, size);
         BackgroundLoader::RemoveLockGlobal();
-        self->fe10 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
-        _Z15Set3DClearColoriiiii(0, 0, 0x7fff, 0, 0);
-        _Z15SetBitsInField4Pjj((unsigned int*)word, 0x800);
-        int* bank = _Z15GetData02105254v();
-        _Z24SetupBankModeAndTransferPiii(bank, 0, 1);
+        self->fe10 = *(int*)(GetGlobalField0x1c020421a0() + 0x5c);
+        Set3DClearColor(0, 0, 0x7fff, 0, 0);
+        SetBitsInField4((unsigned int*)word, 0x800);
+        int* bank = GetData02105254();
+        SetupBankModeAndTransfer(bank, 0, 1);
         _Z19TailForward0203b66cPc(bank);
         _Z25ClearThreeRegions0203b634Pc(bank);
 
@@ -274,7 +274,7 @@ extern "C" ARM int func_ov005_0215436c(Scene0215436c* self) {
                             continue;
                         }
                     }
-                    _Z15Forward02047b30Pviii(self->records + n * 0x88, (int)datas[i], sizes[i], (int)((char*)self + 0x14));
+                    Forward02047b30(self->records + n * 0x88, (int)datas[i], sizes[i], (int)((char*)self + 0x14));
                     n++;
                 }
                 _Z24BackupPairTables0207dfacPc(self->pairTables);
@@ -289,7 +289,7 @@ extern "C" ARM int func_ov005_0215436c(Scene0215436c* self) {
             loader->GetLoadedFileByID(self->handle, &file5, &len5);
             self->scriptAlloc.Reset();
             _Z17ClearObj_021e1318P11Obj021e1318(self->script);
-            _Z25InitScriptAndRun_021e133cPvS_iiis(self->script, &self->scriptAlloc, (int)file5, len5, 0, 0);
+            InitScriptAndRun_021e133c(self->script, &self->scriptAlloc, (int)file5, len5, 0, 0);
             loader->RemoveTask(self->handle);
             self->handle = -1;
             self->state++;

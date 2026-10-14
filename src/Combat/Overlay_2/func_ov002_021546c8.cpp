@@ -4,7 +4,7 @@
 extern "C" void *func_0202ae18(void);
 extern "C" void func_ov002_02153e90(void *entry);
 extern "C" int func_ov002_02154a6c(void *self, int idA, int idB);
-extern "C" int _Z36HasPositiveField256Short178_02154b94Pvi(void *self, int id);
+int HasPositiveField256Short178_02154b94(void *self, int id);
 GameObject *GetCombatantWithFlag0x100(GameState *gameState, int combatantId);
 extern "C" short func_02084a64(void *a, int b);
 extern "C" void func_02083e28(void *a, int arg2);
@@ -51,7 +51,7 @@ extern "C" ARM int func_ov002_021546c8(void *self, struct Req021546c8 *req, void
             e->kind = 1;
             continue;
         }
-        if (_Z36HasPositiveField256Short178_02154b94Pvi(self, id)) {
+        if (HasPositiveField256Short178_02154b94(self, id)) {
             e->kind = 2;
             continue;
         }

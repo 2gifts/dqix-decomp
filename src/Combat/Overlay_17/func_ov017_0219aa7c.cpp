@@ -27,9 +27,9 @@ void* GetField0x3b0Value(GameState*);
 int CheckSubstructByte0x7cPositive(signed char*);
 EntryList_203dce4* GetGlobalPtr021075f4();
 Node020406f8* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
-extern "C" void _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(Vec3_020406f8*, Node020406f8*);
-extern "C" void* _Z19GetField0xc02040538P9S02040538(S02040538*);
-extern "C" void _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
+void SelectVec3FromSources020406f8(Vec3_020406f8*, Node020406f8*);
+void* GetField0xc02040538(S02040538*);
+void ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 void SetVec3At0x1c(Vec3Target0203a46c*, int, int, int);
 int IsField0Null(void**);
 int GetChainedTableByte(ChainRoot*);
@@ -54,10 +54,10 @@ extern "C" ARM void func_ov017_0219aa7c(GameResources* self) {
         Node020406f8* node = GetEntryUnlessFlag0x8000(GetGlobalPtr021075f4(), ((InteractionSelection*)self->interactionSelection)->id);
         if (node != 0) {
             Vec3_020406f8 source;
-            _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(&source, node);
+            SelectVec3FromSources020406f8(&source, node);
             position = *(Vector3fix*)&source;
             position.y += 0x1800;
-            void* height = _Z19GetField0xc02040538P9S02040538((S02040538*)node);
+            void* height = GetField0xc02040538((S02040538*)node);
             if (height != 0) position.y += *reinterpret_cast<int*>(static_cast<char*>(height) + 0x60);
             fallback = 0;
         }
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov017_0219aa7c(GameResources* self) {
         position = object->obj3D_.position_;
         position.y += object->obj3D_.GetHeight();
     }
-    _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(camera, (Vec3copy0202ec84*)&position, &x, &y);
+    ComputeTwoFromVec3_0202ec84(camera, (Vec3copy0202ec84*)&position, &x, &y);
     x -= 12;
     y -= 24;
     SetVec3At0x1c((Vec3Target0203a46c*)sprite, x << 12, y << 12, 0);

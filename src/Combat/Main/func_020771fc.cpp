@@ -77,10 +77,10 @@ int CheckField0NonZero(int* g);
 Entry_02028bd0* GetEntryTableBase(void);
 Entry_02028bd0* FindInlineEntryById(Entry_02028bd0* base, int key);
 TableEntry_020771fc* FindListEntryById(List_020283c0* list, int key);
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(Obj02033b68* obj, int value);
+void SetByteIfChanged02033b68(Obj02033b68* obj, int value);
 void* GetField0xe4IfFlag0x40(BitFlag02033f44* obj);
-extern "C" void _Z18TrySetMode02076cccPvi(void* obj, int mode);
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(Obj02033834* obj, int value);
+void TrySetMode02076ccc(void* obj, int mode);
+void SetVecYByMode02033834(Obj02033834* obj, int value);
 
 // USA: func_020771fc
 extern "C" ARM void func_020771fc(Actor_020771fc* obj) {
@@ -90,7 +90,7 @@ extern "C" ARM void func_020771fc(Actor_020771fc* obj) {
     Vec3_020771fc b = obj->pos158;
     b.y = 0;
     int dist = Vector3fix_Distance(&a, &b);
-    _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)obj, 1);
+    SetByteIfChanged02033b68((Obj02033b68*)obj, 1);
     switch (obj->mode) {
     case 0:
         obj->fb4 = 0;
@@ -119,7 +119,7 @@ extern "C" ARM void func_020771fc(Actor_020771fc* obj) {
         }
     }
     if (found != 0) {
-        _Z18TrySetMode02076cccPvi(obj, 1);
+        TrySetMode02076ccc(obj, 1);
         obj->f154 = 0;
         obj->f17c = 1;
         if (CheckField0NonZero((int*)g) != 0) {
@@ -132,10 +132,10 @@ extern "C" ARM void func_020771fc(Actor_020771fc* obj) {
         Vector3fix_Subtract(&obj->pos158, &a, &c);
         if (Vector3fix_Length(&c) < 0x1000) {
             moved = 1;
-            _Z18TrySetMode02076cccPvi(obj, 1);
+            TrySetMode02076ccc(obj, 1);
         }
         Vector3fix_Normalize(&c, &c);
-        _Z21SetVecYByMode02033834P11Obj02033834i((Obj02033834*)obj, fix32_Atan2(c.x, c.z));
+        SetVecYByMode02033834((Obj02033834*)obj, fix32_Atan2(c.x, c.z));
     }
     if (dist < 0x1000) {
         Vec3_020771fc d = obj->pos44;
@@ -161,7 +161,7 @@ extern "C" ARM void func_020771fc(Actor_020771fc* obj) {
             }
         }
         moved = 1;
-        _Z18TrySetMode02076cccPvi(obj, 1);
+        TrySetMode02076ccc(obj, 1);
     }
     if (moved == 0) {
         return;

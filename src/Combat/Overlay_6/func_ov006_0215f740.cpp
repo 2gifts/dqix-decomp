@@ -103,14 +103,14 @@ struct CategorySprites {
     int sprites_[9];
 };
 
-extern "C" short* _Z29GetArrEntry_0215919c_0215919cPv(void* self);
+short* GetArrEntry_0215919c_0215919c(void* self);
 extern "C" void func_ov006_02155710(AlchemyPot* pot, short item, signed char sprites);
 
 extern "C" const CategorySprites data_ov006_02160030;
 
 // USA: func_ov006_0215f740
 extern "C" ARM void func_ov006_0215f740(AlchemyMenu* self) {
-    short* items = _Z29GetArrEntry_0215919c_0215919cPv(self);
+    short* items = GetArrEntry_0215919c_0215919c(self);
     if (items == 0)
         return;
     unsigned short position = (unsigned short)(self->page_ * 8);

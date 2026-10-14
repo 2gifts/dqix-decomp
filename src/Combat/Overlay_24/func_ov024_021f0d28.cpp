@@ -6,7 +6,7 @@
 extern "C" int func_ov000_0215e9fc(int battle, short* table, int count, int flag);
 extern "C" int func_ov000_0215eb1c(int battle, short* table, int count, int flag);
 struct RngHolder_021ed9dc;
-extern "C" int _Z27CanTargetCombatant_021ed9dcP18RngHolder_021ed9dci(struct RngHolder_021ed9dc* holder, int id);
+int CanTargetCombatant_021ed9dc(struct RngHolder_021ed9dc* holder, int id);
 
 struct Obj_021f0d28 { int battle; };
 struct Buf8_021f0d28 { short v[8]; };
@@ -20,7 +20,7 @@ extern "C" ARM int func_ov024_021f0d28(struct Obj_021f0d28* obj, int unused1, in
 	if (count <= 0) return 0;
 
 	for (int i = 0; i < count; i++) {
-		if (_Z27CanTargetCombatant_021ed9dcP18RngHolder_021ed9dci((struct RngHolder_021ed9dc*)obj, buf.v[i])) {
+		if (CanTargetCombatant_021ed9dc((struct RngHolder_021ed9dc*)obj, buf.v[i])) {
 			found = 1;
 			break;
 		}

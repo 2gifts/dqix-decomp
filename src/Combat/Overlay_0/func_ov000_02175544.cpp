@@ -25,12 +25,12 @@ struct Elem0205a3d0 {
 };
 
 struct Container0205a3d0;
-extern "C" void _Z26SetEntryFlag2ByKey0205a370P17Container0205a3d0i(Container0205a3d0*, int);
-extern "C" Elem0205a3d0* _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i(Container0205a3d0*, int);
-extern "C" void _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(Container0205a3d0*, int, int);
+void SetEntryFlag2ByKey0205a370(Container0205a3d0*, int);
+Elem0205a3d0* FindEntryByHalfword0205a3d0(Container0205a3d0*, int);
+void SetEntryByte14ByKey0205a42c(Container0205a3d0*, int, int);
 
 struct Container0205a330;
-extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(Container0205a330*, int);
+void IterateEntries0205a330(Container0205a330*, int);
 
 extern "C" void func_0205ae8c(void*);
 
@@ -54,18 +54,18 @@ extern "C" ARM void func_ov000_02175544(unsigned char* obj) {
     y += elem->offsetY_;
 
     Container0205a3d0* container = *(Container0205a3d0**)(obj + 0x174);
-    _Z26SetEntryFlag2ByKey0205a370P17Container0205a3d0i(container, 0);
-    Elem0205a3d0* entry = _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i(container, 0);
+    SetEntryFlag2ByKey0205a370(container, 0);
+    Elem0205a3d0* entry = FindEntryByHalfword0205a3d0(container, 0);
     if (entry != NULL) entry->flags_ |= 8;
 
-    _Z22IterateEntries0205a330P17Container0205a330i((Container0205a330*)container, *(int*)(obj + 0x94c));
+    IterateEntries0205a330((Container0205a330*)container, *(int*)(obj + 0x94c));
 
-    entry = _Z27FindEntryByHalfword0205a3d0P17Container0205a3d0i(container, 0);
+    entry = FindEntryByHalfword0205a3d0(container, 0);
     if (entry != NULL) {
         entry->x_ = x - 8;
         entry->y_ = y - 2;
     }
 
-    _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(container, 0, byte14);
+    SetEntryByte14ByKey0205a42c(container, 0, byte14);
     func_0205ae8c(obj + 0x11c);
 }

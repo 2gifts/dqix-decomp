@@ -47,7 +47,7 @@ struct Self021aa1ac {
 
 extern "C" GameState* _ZN9GameState11GetInstanceEv(void);
 Party021aa1ac* GetPtrField0x2a04(GameState* gameState);
-extern "C" Controller021aa1ac* _Z26GetGlobalField0x1c020421a0v(void);
+Controller021aa1ac* GetGlobalField0x1c020421a0(void);
 Combatant021aa1ac* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void __clear(void* dst, unsigned int size);
@@ -65,7 +65,7 @@ extern char data_ov017_021d7868[];
 extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
     GameState* gs = _ZN9GameState11GetInstanceEv();
     Party021aa1ac* party = GetPtrField0x2a04(gs);
-    Controller021aa1ac* controller = _Z26GetGlobalField0x1c020421a0v();
+    Controller021aa1ac* controller = GetGlobalField0x1c020421a0();
     int memberCount = party->memberCount;
     if (self->step == 0) {
         memset(self->ids, -1, sizeof(self->ids));

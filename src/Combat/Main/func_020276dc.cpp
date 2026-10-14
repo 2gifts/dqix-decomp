@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" GameObject* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* battleStruct, int combatantId);
-extern "C" int _Z34ClassifyFlag0x800RatioTier02027bd0i(int id);
+GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+int ClassifyFlag0x800RatioTier02027bd0(int id);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" int LoadToSubObjStandardPalette(int arg0, int arg1, unsigned int arg2);
 
@@ -29,8 +29,8 @@ extern "C" ARM void func_020276dc(unsigned char* self) {
 
         int k;
 
-        if (_Z25GetCombatantWithFlag0x100P9GameStatei(gs, i) == 0) continue;
-        want = data_020e703e[_Z34ClassifyFlag0x800RatioTier02027bd0i(i)];
+        if (GetCombatantWithFlag0x100(gs, i) == 0) continue;
+        want = data_020e703e[ClassifyFlag0x800RatioTier02027bd0(i)];
         cur = self[0];
         sh = i << 1;
         have = (cur >> sh) & 3;

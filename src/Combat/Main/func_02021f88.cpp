@@ -15,27 +15,27 @@ extern "C" void func_02021428(void* obj, int amount);
 struct AxisFloats0203b5a0;
 int IsAxisIntWithin16(struct AxisFloats0203b5a0* s, int axis);
 
-extern "C" void _Z19TailForward0203b66cPc(char* obj);
-extern "C" void _Z21InitSubObject0203bd78Pc(char* obj);
-extern "C" void _Z25InitBattleContext0203bd24Pc(char* obj);
-extern "C" void _Z24SetArraySlotFlag0203b718Pviii(void* objPtr, int mode, int idx, int fillByte);
+void TailForward0203b66c(char* obj);
+void InitSubObject0203bd78(char* obj);
+void InitBattleContext0203bd24(char* obj);
+void SetArraySlotFlag0203b718(void* objPtr, int mode, int idx, int fillByte);
 extern "C" void func_0203ba74(void* obj);
 struct Struct0205a198;
-extern "C" void _Z12Init0205a198P14Struct0205a198(struct Struct0205a198* p);
-extern "C" void _Z18InitStruct0205a444Pc(char* obj);
+void Init0205a198(struct Struct0205a198* p);
+void InitStruct0205a444(char* obj);
 
 void* GetGlobalPtr02105244();
 extern "C" void* func_0203be4c(void);
 struct Rec020467f0;
-extern "C" int _Z22ProcessRecords0205a498PvP11Rec020467f0iS_(void* a, struct Rec020467f0* b, int flag, void* d);
-extern "C" void _Z29SetBitfieldStoreBytes0205af38iPcii(int a, char* obj, int c, int d);
-extern "C" int _Z30ValidateResourceLookup0205a1f0PvS_i(void* a, void* b, int c);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int ProcessRecords0205a498(void* a, struct Rec020467f0* b, int flag, void* d);
+void SetBitfieldStoreBytes0205af38(int a, char* obj, int c, int d);
+int ValidateResourceLookup0205a1f0(void* a, void* b, int c);
+int GetGlobalField0x1c020421a0(void);
 extern "C" void VectorizedInvertedMemcpy(void* dst, void* src, int size);
 void DelayThenSyncBit0(void);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" int LoadToSubObjVRAM(int, int, unsigned int);
-extern "C" void _Z26InitFourEntrySlots02020aa0Pv(void* obj);
+void InitFourEntrySlots02020aa0(void* obj);
 extern "C" void func_02027974(void* obj, int a, void* b);
 #if defined(jpn)
 extern "C" void func_02020fc4(void* obj, int handle, SafeAllocator* alloc);
@@ -44,17 +44,17 @@ extern "C" void func_02020fc4(void* obj, int* handle, SafeAllocator* alloc);
 #endif
 extern "C" void func_020210f8(char* obj, int* handle, SafeAllocator* alloc);
 struct List0204af64;
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64* obj);
+void ResetList0204af64(struct List0204af64* obj);
 extern "C" void func_0204b174(void* obj, void* data, SafeAllocator* alloc, int size);
 extern "C" void func_0202445c(void* obj);
 extern "C" void func_ov017_02191234(void* obj);
 extern "C" void func_0202343c(void* obj);
-extern "C" void _Z32MarkActiveCombatantSlots02026b7cPh(unsigned char* obj);
+void MarkActiveCombatantSlots02026b7c(unsigned char* obj);
 extern "C" void func_02026bdc(void* obj, int flag);
-extern "C" int _Z26FormatAndCopyNames02020b98Pv(void* obj);
-extern "C" int _Z22IsValueInRange0201b5d8i(int x);
-extern "C" int _Z17IsInRange0201b5b0i(int id);
-extern "C" void _Z25UpdateStringField02023b0cPcS_(char* a, char* b);
+int FormatAndCopyNames02020b98(void* obj);
+int IsValueInRange0201b5d8(int x);
+int IsInRange0201b5b0(int id);
+void UpdateStringField02023b0c(char* a, char* b);
 
 extern "C" void __clear(void* dst, unsigned int size);
 extern int data_020ef460;
@@ -148,7 +148,7 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
 #if !defined(jpn)
         __clear(buf4, 0x20);
 #endif
-        if (_Z22IsValueInRange0201b5d8i(*p6)) {
+        if (IsValueInRange0201b5d8(*p6)) {
             strcpy(buf4, data_020ef613);
         } else {
             sprintf(buf4, data_020ef622, v);
@@ -158,14 +158,14 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
 #else
         self->taska14 = loader->QueueLoadFileInGP2(data_020ef632, buf4, (SafeAllocator*)0);
 #endif
-        if (_Z22IsValueInRange0201b5d8i(*p6)) {
-            self->namesTask = _Z26FormatAndCopyNames02020b98Pv(self);
-        } else if (_Z17IsInRange0201b5b0i(*p6)) {
+        if (IsValueInRange0201b5d8(*p6)) {
+            self->namesTask = FormatAndCopyNames02020b98(self);
+        } else if (IsInRange0201b5b0(*p6)) {
 #if !defined(jpn)
             __clear(buf3, 0x10);
 #endif
             sprintf(buf3, data_020ef642, *p6);
-            _Z25UpdateStringField02023b0cPcS_((char*)self, buf3);
+            UpdateStringField02023b0c((char*)self, buf3);
         }
         self->loadStage = self->loadStage + 1;
     } else if (state == 1) {
@@ -176,17 +176,17 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         func_02020720(self);
         self->displayMode = 0;
         func_02020838(self);
-        _Z19TailForward0203b66cPc(table);
+        TailForward0203b66c(table);
         alloc->Reset();
-        _Z21InitSubObject0203bd78Pc(battleCtx);
-        _Z25InitBattleContext0203bd24Pc(battleCtx);
-        _Z24SetArraySlotFlag0203b718Pviii(table, 1, 0, 0);
-        _Z24SetArraySlotFlag0203b718Pviii(table, 1, 1, 0);
+        InitSubObject0203bd78(battleCtx);
+        InitBattleContext0203bd24(battleCtx);
+        SetArraySlotFlag0203b718(table, 1, 0, 0);
+        SetArraySlotFlag0203b718(table, 1, 1, 0);
         func_0203ba74(table);
         for (int i = 0; i < 0x1c; i++) {
-            _Z12Init0205a198P14Struct0205a198(&self->records[i]);
+            Init0205a198(&self->records[i]);
         }
-        _Z18InitStruct0205a444Pc((char*)&self->entryList);
+        InitStruct0205a444((char*)&self->entryList);
         self->entryList.active = 1;
         self->entryList.records = self->records;
         self->entryList.count = 0x1b;
@@ -196,21 +196,21 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         char* p = (char*)func_0203be4c() + 0x2c0;
         g = (char*)GetGlobalPtr02105244();
         *(char**)g = p;
-        if (_Z22IsValueInRange0201b5d8i(*p6)) {
+        if (IsValueInRange0201b5d8(*p6)) {
             if (loader->GetTaskStatus(self->namesTask) == 0) return;
         }
         fileData = 0;
         fileLength = 0;
         loader->GetLoadedFileByID(self->taska10, &fileData, &fileLength);
-        _Z22ProcessRecords0205a498PvP11Rec020467f0iS_((char*)&self->entryList, (struct Rec020467f0*)fileData, fileLength, alloc);
-        _Z29SetBitfieldStoreBytes0205af38iPcii((int)((char*)&self->entryList), (char*)&self->records[9], 1, 1);
-        _Z29SetBitfieldStoreBytes0205af38iPcii((int)((char*)&self->entryList), (char*)&self->records[11], 1, 1);
+        ProcessRecords0205a498((char*)&self->entryList, (struct Rec020467f0*)fileData, fileLength, alloc);
+        SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[9], 1, 1);
+        SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[11], 1, 1);
         BackgroundLoader::GetInstance()->RemoveTask(self->taska10);
         self->taska10 = -1;
         loader->GetLoadedFileByID(self->taska14, &fileData, &fileLength);
         res = 0;
-        if (_Z30ValidateResourceLookup0205a1f0PvS_i(&res, fileData, fileLength) != 0) return;
-        char* vram = (char*)_Z26GetGlobalField0x1c020421a0v();
+        if (ValidateResourceLookup0205a1f0(&res, fileData, fileLength) != 0) return;
+        char* vram = (char*)GetGlobalField0x1c020421a0();
         char* dst = *(char**)(vram + VramDataOffset);
         VectorizedInvertedMemcpy(res->f14, dst, res->f10);
         DelayThenSyncBit0();
@@ -218,10 +218,10 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         LoadToSubObjVRAM((int)dst, 0x2c20, res->f10);
         BackgroundLoader::GetInstance()->RemoveTask(self->taska14);
         self->taska14 = -1;
-        _Z26InitFourEntrySlots02020aa0Pv(self);
+        InitFourEntrySlots02020aa0(self);
         self->nameCount = 0;
         self->forwardingCount = 0;
-        if (_Z17IsInRange0201b5b0i(*p6)) {
+        if (IsInRange0201b5b0(*p6)) {
             strcpy(self->name, data_020ef649);
             self->scale = 0x2000;
             self->mapState = alloc->Allocate(0x800);
@@ -252,7 +252,7 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         sprintf(buf2, data_020ef5b9, self->name);
         self->fileTask928 = loader->QueueLoadFileInGP2(
             *(const char**)((char*)&data_020ef460 + 8 - GlobalHeaderRegionOffset), buf2, (SafeAllocator*)0);
-        if (_Z22IsValueInRange0201b5d8i(*p6)) {
+        if (IsValueInRange0201b5d8(*p6)) {
             for (int i = 0; i < self->nameCount; i++) {
                 sprintf(buf2, data_020ef5b9,
                         self->names[i].name);
@@ -263,7 +263,7 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         self->loadStage = self->loadStage + 1;
     } else if (state == 2) {
         if (loader->GetTaskStatus(self->fileTask928) == 0) return;
-        if (_Z22IsValueInRange0201b5d8i(*p6)) {
+        if (IsValueInRange0201b5d8(*p6)) {
             for (int i = 0; i < self->nameCount; i++) {
                 if (loader->GetTaskStatus(self->nameTasks[i]) == 0) return;
             }
@@ -273,10 +273,10 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
 #else
         func_02020fc4(self, &self->fileTask928, alloc);
 #endif
-        if (_Z17IsInRange0201b5b0i(*p6)) {
+        if (IsInRange0201b5b0(*p6)) {
             self->mapPalette = self->forwardingFill + 1;
             char* zone = Zone02021f88(p6);
-            _Z17ResetList0204af64P12List0204af64(&self->list4c);
+            ResetList0204af64(&self->list4c);
             self->list4c.b1c_lo = 1;
             self->list4c.b1c_hi = 0;
             self->list4c.byteCount = self->mapPalette << 5;
@@ -301,7 +301,7 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         }
         self->loadStage = self->loadStage + 1;
     } else if (state == 3) {
-        if (_Z17IsInRange0201b5b0i(*p6)) {
+        if (IsInRange0201b5b0(*p6)) {
             if (loader->GetTaskStatus(self->taska18) == 0) return;
             if (loader->GetTaskStatus(self->taska1c) == 0) return;
             fileDataA = 0;
@@ -328,7 +328,7 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         self->loadStage = self->loadStage + 1;
         DelayThenSyncBit0();
         func_0202343c(self);
-        _Z32MarkActiveCombatantSlots02026b7cPh((unsigned char*)self);
+        MarkActiveCombatantSlots02026b7c((unsigned char*)self);
         func_02026bdc(self, 0);
     }
 }

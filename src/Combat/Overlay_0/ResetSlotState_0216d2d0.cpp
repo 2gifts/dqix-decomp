@@ -31,12 +31,12 @@ struct Struct0216d2d0 {
 };
 
 extern "C" void _Z18ResetState020a2cf0P14Struct020A2CF0(void*);
-extern "C" void _Z15SetBitsInField0Pjj(unsigned int*, unsigned int);
+void SetBitsInField0(unsigned int*, unsigned int);
 
 // USA: func_ov000_0216d2d0  (semantic: ResetSlotState_0216d2d0)
 extern "C" ARM void func_ov000_0216d2d0(struct Struct0216d2d0* obj) {
     _Z18ResetState020a2cf0P14Struct020A2CF0(obj);
-    _Z15SetBitsInField0Pjj((unsigned int*)obj, 8);
+    SetBitsInField0((unsigned int*)obj, 8);
     obj->field21c = 0;
     obj->field220 = 0;
     obj->field221 = 0;

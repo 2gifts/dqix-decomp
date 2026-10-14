@@ -10,9 +10,9 @@ extern "C" void __clear(void* ptr, int size);
 extern "C" float _ffltu(unsigned int v);
 extern "C" void Vector3fix_Normalize(struct Vec3* a, struct Vec3* b);
 extern "C" int fix32_Atan2(int x, int z);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
-extern "C" short _Z8fix32sini(int x);
-extern "C" short _Z8fix32cosi(int x);
+int fix32ReduceAngle0To2Pi(int angle);
+short fix32sin(int x);
+short fix32cos(int x);
 
 struct Touch02096a20 {
     char pad[0x220];
@@ -49,11 +49,11 @@ extern "C" ARM void func_02096a20(struct Touch02096a20* self) {
     ref.z = g[8];
     Vector3fix_Normalize(&ref, &ref);
 
-    short fwd = (short)_Z22fix32ReduceAngle0To2Pii(fix32_Atan2(delta.x, delta.z));
-    short rev = (short)_Z22fix32ReduceAngle0To2Pii(-fix32_Atan2(ref.x, ref.z));
+    short fwd = (short)fix32ReduceAngle0To2Pi(fix32_Atan2(delta.x, delta.z));
+    short rev = (short)fix32ReduceAngle0To2Pi(-fix32_Atan2(ref.x, ref.z));
 
-    self->angle = (short)_Z22fix32ReduceAngle0To2Pii(fwd + rev);
-    self->dirX = _Z8fix32sini(self->angle);
+    self->angle = (short)fix32ReduceAngle0To2Pi(fwd + rev);
+    self->dirX = fix32sin(self->angle);
     self->dirY = 0;
-    self->dirZ = _Z8fix32cosi(self->angle);
+    self->dirZ = fix32cos(self->angle);
 }

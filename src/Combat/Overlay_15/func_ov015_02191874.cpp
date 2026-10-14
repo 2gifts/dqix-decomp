@@ -21,7 +21,7 @@ struct S02190c2c
 
 int TestFlagMask(unsigned short* pad, int buttons);
 void Vector3fixMultiplyScalar(const Vector3i* in, int scale, Vector3i* out);
-extern "C" void _Z29AccumulateOffsetVec3_0218f44cP11Obj0218f44c4Vec3(Obj0218f44c* object, Vec3 offset);
+void AccumulateOffsetVec3_0218f44c(Obj0218f44c* object, Vec3 offset);
 extern "C" void func_ov015_0218f5f8(ViewObject* object, int angle);
 
 extern unsigned short data_02114e30;
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov015_02191874(S02190c2c* self)
         move.y += 0x199;
     if (TestFlagMask(&data_02114e30, 0x800))
         move.y -= 0x199;
-    _Z29AccumulateOffsetVec3_0218f44cP11Obj0218f44c4Vec3((Obj0218f44c*)self->selected_, *(Vec3*)&move);
+    AccumulateOffsetVec3_0218f44c((Obj0218f44c*)self->selected_, *(Vec3*)&move);
     if (TestFlagMask(&data_02114e30, 0x200))
         func_ov015_0218f5f8(self->selected_, 0x199);
     if (TestFlagMask(&data_02114e30, 0x100))

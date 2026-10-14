@@ -8,8 +8,8 @@ struct Container020e0310;
 struct List020727d8;
 
 extern "C" unsigned char func_ov013_021847c4(void *obj, int a);
-extern "C" char *_Z26GetGlobalField0x1c020421a0v();
-extern "C" int _Z29GetField110ArrayValue021574d4Pvi(void *self, int index);
+char *GetGlobalField0x1c020421a0();
+int GetField110ArrayValue021574d4(void *self, int index);
 extern "C" void func_ov013_02184c8c(void *menu, void *member);
 extern "C" void *memset(void *dst, int value, unsigned int length);
 extern "C" unsigned char func_0209a678(char *table, void *member, unsigned short *skills);
@@ -18,8 +18,8 @@ int CheckField0NonZero(int *p);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void func_ov017_021ccc34(int id);
 extern "C" void func_ov017_021cd0d8(int id, unsigned short *skills, int count);
-extern "C" const char *_Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310 *texts, int id);
-extern "C" void _Z23ResetListHeader020727d8P12List020727d8(List020727d8 *list);
+const char *GetFieldByKey020e0434(Container020e0310 *texts, int id);
+void ResetListHeader020727d8(List020727d8 *list);
 extern "C" void func_020728ac(void *list, void *alloc, void *buffer, unsigned int length, int a4, int a5, int a6);
 void Zero4Bytes(void *reader);
 extern "C" void func_020e5604(void *reader, void *alloc, void *buffer, unsigned int length);
@@ -37,11 +37,11 @@ extern "C" ARM void func_ov002_02168354(char *self) {
         return;
     }
     GameState *gs = GameState::GetInstance();
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     *(unsigned int *) (self + 0x247c) &= ~4;
     if (*(unsigned char *) (self + 0x2455) == 0) {
         char *member =
-            (char *) GetCombatantWithFlag0x100(gs, _Z29GetField110ArrayValue021574d4Pvi(self, *(short *) (self + 0x1c08)));
+            (char *) GetCombatantWithFlag0x100(gs, GetField110ArrayValue021574d4(self, *(short *) (self + 0x1c08)));
         if (member != 0) {
             func_ov013_02184c8c(self + 0xd70 + 0x1000, member);
         }
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov002_02168354(char *self) {
             *(unsigned char *) (self + 0x2455) =
                 func_0209a678(self + 0x3c + 0x2400, member, *(unsigned short **) (self + 0x2450));
             if (CheckField0NonZero((int *) func_0202ae18())) {
-                int id = _Z29GetField110ArrayValue021574d4Pvi(self, *(short *) (self + 0x1c08));
+                int id = GetField110ArrayValue021574d4(self, *(short *) (self + 0x1c08));
                 func_ov017_021c9e00(id, 0, 0, 0);
                 func_ov017_021ccc34(id);
                 func_ov017_021cd0d8(id, *(unsigned short **) (self + 0x2450), *(unsigned char *) (self + 0x2455));
@@ -63,11 +63,11 @@ extern "C" ARM void func_ov002_02168354(char *self) {
             }
             BackgroundLoader::AddLockGlobal();
             BackgroundLoader::FreeAllocationsGlobal();
-            const char *inner = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310 *) (self + 0x20), 0x65);
+            const char *inner = GetFieldByKey020e0434((Container020e0310 *) (self + 0x20), 0x65);
             void *file        = ExtractFileFromGP2(
-                _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310 *) (self + 0x20), 0x64), inner, &size);
+                GetFieldByKey020e0434((Container020e0310 *) (self + 0x20), 0x64), inner, &size);
             *(void **) (self + 0x2448) = ((SafeAllocator *) (self + 0x64 + 0x800))->Allocate(8);
-            _Z23ResetListHeader020727d8P12List020727d8(*(List020727d8 **) (self + 0x2448));
+            ResetListHeader020727d8(*(List020727d8 **) (self + 0x2448));
             if (file != 0) {
                 func_020728ac(*(void **) (self + 0x2448), self + 0x64 + 0x800, file, size, 0, 0, 0);
             }

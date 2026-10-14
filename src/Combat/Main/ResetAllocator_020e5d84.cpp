@@ -3,11 +3,11 @@
 #pragma define_section initcode ".init" RX
 
 struct SafeAllocator;
-extern "C" void _Z23ResetAndReturnAllocatorP13SafeAllocator(struct SafeAllocator* obj);
+void ResetAndReturnAllocator(struct SafeAllocator* obj);
 
 extern struct SafeAllocator data_0210783c;
 
 // USA: func_020e5d84
 extern "C" __declspec(initcode) ARM void __sinit_020e5d84(void) {
-    _Z23ResetAndReturnAllocatorP13SafeAllocator(&data_0210783c);
+    ResetAndReturnAllocator(&data_0210783c);
 }

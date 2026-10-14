@@ -23,12 +23,12 @@ struct BattleGlobals {
 };
 
 extern "C" GameResources* func_ov017_0218b5b0(void);
-extern "C" BattleGlobals* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(GameResources*);
+BattleGlobals* GetGlobalField0x1c020421a0(void);
+int IsBrightnessTransitionActive(GameResources*);
 extern "C" int _Z15GetAxisIntValueP18AxisFloats0203b57ci(GameResources*, int);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(GameResources*, int, int);
-extern "C" int _Z19GetField0x397cValueP9GameState(GameState*);
-extern "C" GameObject* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, int);
+void SetMainBrightness(GameResources*, int, int);
+int GetField0x397cValue(GameState*);
+GameObject* GetCombatantWithFlag0x100(GameState*, int);
 extern "C" void func_02046380(BattleGlobals*);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(BattleGlobals*, int, BaseCombatStats*);
 extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
@@ -37,26 +37,26 @@ extern "C" void func_ov003_02159250(BattleMessageScene*, void*);
 // USA: func_ov003_0215af9c
 extern "C" ARM void func_ov003_0215af9c(BattleMessageScene* self) {
     GameResources* res = func_ov017_0218b5b0();
-    BattleGlobals* g = _Z26GetGlobalField0x1c020421a0v();
+    BattleGlobals* g = GetGlobalField0x1c020421a0();
     unsigned char step = self->step;
 
     if (step == 0) {
-        if (!_Z28IsBrightnessTransitionActiveP13GameResources(res) &&
+        if (!IsBrightnessTransitionActive(res) &&
             _Z15GetAxisIntValueP18AxisFloats0203b57ci(res, 0) &&
             _Z15GetAxisIntValueP18AxisFloats0203b57ci(res, 1)) {
-            _Z17SetMainBrightnessP13GameResourcesii(res, 0, 0xf);
+            SetMainBrightness(res, 0, 0xf);
         }
         self->step++;
     }
 
     if (step == 1) {
         if (self->busy != 0) return;
-        if (_Z28IsBrightnessTransitionActiveP13GameResources(res)) return;
+        if (IsBrightnessTransitionActive(res)) return;
         if (_Z15GetAxisIntValueP18AxisFloats0203b57ci(res, 0)) return;
 
         if (self->actorSlot == 1) {
             GameState* gs = GameState::GetInstance();
-            GameObject* obj = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, _Z19GetField0x397cValueP9GameState(gs));
+            GameObject* obj = GetCombatantWithFlag0x100(gs, GetField0x397cValue(gs));
             func_02046380(g);
             _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, obj->baseStats_);
         }

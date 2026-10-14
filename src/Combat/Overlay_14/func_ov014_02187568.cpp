@@ -122,14 +122,14 @@ void SetFogState(int, unsigned int, unsigned int, unsigned short);
 void Set3DClearColor(int, int, int, int, int);
 int GetField4Low12(Field4Low12_02097420*);
 MonsterListEntry* GetBufferField8(BufferField8_02097418*);
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char*, char*, int);
-extern "C" void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(Obj0207f914*, int, int, int);
-extern "C" void _Z38SetSublistEntryField14LowBits_02080798Pvii(void*, int, int);
+void CopyTextAndUppercaseIfFlagged0206819c(const char*, char*, int);
+void SetFieldsFromFormattedValue0207f914(Obj0207f914*, int, int, int);
+void SetSublistEntryField14LowBits_02080798(void*, int, int);
 int CountActiveEntries(ActiveEntry02046900*);
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40*);
+void ResetStruct020dfc40(Struct020dfc40*);
 void CopyOutBattleRegion0x75f0(void*);
-extern "C" void _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(Manager0207f7f0*, Node0207f7f0*, int);
+void InitNodeChain0207f7f0(Manager0207f7f0*, Node0207f7f0*, int);
 
 extern "C" {
 void func_020972e0(MonsterList* list, SafeAllocator* allocator, void* file, unsigned int size);
@@ -199,7 +199,7 @@ extern "C" ARM void func_ov014_02187568(MonsterListScreen* self)
         for (int i = 0; i < count; i++, entry++)
         {
             char name[0x80] = {};
-            _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(entry->name_, name, 0);
+            CopyTextAndUppercaseIfFlagged0206819c(entry->name_, name, 0);
             sprintf((char*)entry->name_, name);
         }
         BG0CNTSUB = (BG0CNTSUB & (3 | 0x40)) | (0x1d << 8);
@@ -214,7 +214,7 @@ extern "C" ARM void func_ov014_02187568(MonsterListScreen* self)
         {
             SafeAllocator* allocators = self->listAllocators_;
             allocators[2].Reset();
-            _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii((Obj0207f914*)self->menu_, (int)&allocators[2], (int)data_ov014_02189734, (int)data_ov014_0218974d);
+            SetFieldsFromFormattedValue0207f914((Obj0207f914*)self->menu_, (int)&allocators[2], (int)data_ov014_02189734, (int)data_ov014_0218974d);
             self->listStep_++;
         }
     }
@@ -228,7 +228,7 @@ extern "C" ARM void func_ov014_02187568(MonsterListScreen* self)
     }
     else if (self->listStep_ == 7)
     {
-        _Z38SetSublistEntryField14LowBits_02080798Pvii(self->menu_, 6, 1);
+        SetSublistEntryField14LowBits_02080798(self->menu_, 6, 1);
         self->spriteRenderer_.unk_50 = 1;
         self->spriteRenderer_.SetSprites(self->listSprites_, 8);
         self->spriteRenderer_.animations_ = self->animations_;
@@ -262,7 +262,7 @@ extern "C" ARM void func_ov014_02187568(MonsterListScreen* self)
     }
     else if (self->listStep_ == 9)
     {
-        _Z19ResetStruct020dfc40P14Struct020dfc40((Struct020dfc40*)&self->textTable_);
+        ResetStruct020dfc40((Struct020dfc40*)&self->textTable_);
         self->listTaskID_ = loader->QueueLoadFileInGP2(data_ov014_0218976a, data_ov014_02189784, NULL);
         self->listStep_++;
     }
@@ -300,7 +300,7 @@ extern "C" ARM void func_ov014_02187568(MonsterListScreen* self)
         DISPCNTSUB = (DISPCNTSUB & ~0x1f00) | (0x17 << 8);
         ColorEffect_ConfigureAlphaBlend(0x04001050, BLEND_TARGET_BG1, 4, 10, 6);
         self->menu_->SetBackgrounds(self->backgrounds_);
-        _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i((Manager0207f7f0*)self->menu_, (Node0207f7f0*)self->canvases_, 4);
+        InitNodeChain0207f7f0((Manager0207f7f0*)self->menu_, (Node0207f7f0*)self->canvases_, 4);
         self->menu_->unk_3a = 0;
         func_020974b0(&self->list_, -1, -1, false, 0, &self->numMonsters_);
         short count = 0;

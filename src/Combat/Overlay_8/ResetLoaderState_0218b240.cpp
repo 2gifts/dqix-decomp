@@ -15,9 +15,9 @@
 #include "Filesystem/BackgroundLoader.h"
 
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void* p, int flag);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
+void* GetDataPtr02114e04_020d6c00();
 extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(void* p, unsigned int mask);
-extern "C" void _Z15ClearBitsInWordPjj(unsigned int* p, unsigned int mask);
+void ClearBitsInWord(unsigned int* p, unsigned int mask);
 
 struct Manager0218b240 {
     char pad0[R(0xe95,0xe99)];
@@ -54,9 +54,9 @@ extern "C" ARM void func_ov008_0218b240(Manager0218b240* obj) {
     obj->e9b = 2;
     obj->e9c = 0;
 
-    void* ptr = _Z27GetDataPtr02114e04_020d6c00v();
+    void* ptr = GetDataPtr02114e04_020d6c00();
     _Z18ClearFlags020466f4P16FlagWord020466f4j(ptr, 0x2f);
-    _Z15ClearBitsInWordPjj((unsigned int*)func_ov017_0218b5b0(), 0x10);
+    ClearBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
 
     loader->RemoveTask(obj->ea0);
     loader->RemoveTask(obj->eb4);

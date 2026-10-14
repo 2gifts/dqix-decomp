@@ -65,9 +65,9 @@ struct Shuffle0209afd4 {
     int slots[6][3];
 };
 
-extern "C" struct LeaderSub0209afd4* _Z25FindSubByKeyAndId0209b8d4P13Entry0209b8d4iiPi(struct Entry0209b8d4* table, int key, int id, int* out);
+struct LeaderSub0209afd4* FindSubByKeyAndId0209b8d4(struct Entry0209b8d4* table, int key, int id, int* out);
 struct FindRowByIdRow* FindRowById(struct FindRowByIdRow* base, int key);
-extern "C" struct Entry0209bd94* _Z27FindEntryByHalfword0209bd94P18EntryTable0209bd94i(struct EntryTable0209bd94* table, int key);
+struct Entry0209bd94* FindEntryByHalfword0209bd94(struct EntryTable0209bd94* table, int key);
 
 extern struct Shuffle0209afd4 data_020e8e2c;
 
@@ -95,7 +95,7 @@ extern "C" ARM void func_0209afd4(struct FindRowByIdRow* rows, int leaderId, int
     rnd = GetBTRandom();
     out->ids[0] = leaderId;
     index = 0;
-    sub = _Z25FindSubByKeyAndId0209b8d4P13Entry0209b8d4iiPi((struct Entry0209b8d4*)rows, leaderId, leaderRowId, &index);
+    sub = FindSubByKeyAndId0209b8d4((struct Entry0209b8d4*)rows, leaderId, leaderRowId, &index);
     kind = 1;
     if ((unsigned short)(short)(leaderId - 0x26) <= 2) {
         out->counts[0] = 1;
@@ -154,7 +154,7 @@ extern "C" ARM void func_0209afd4(struct FindRowByIdRow* rows, int leaderId, int
         }
     }
 
-    entry = _Z27FindEntryByHalfword0209bd94P18EntryTable0209bd94i(&state->table, rowId);
+    entry = FindEntryByHalfword0209bd94(&state->table, rowId);
     if (entry != NULL) {
         maxCount = entry->maxCount;
     } else {

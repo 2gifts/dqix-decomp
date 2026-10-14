@@ -2,13 +2,13 @@
 
 #include "GameState/GameState.h"
 
-extern "C" int _Z23DispatchByIndex021820bcPviii(void* obj, int unused, int index, int arg);
+int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 struct Obj02046574;
-extern "C" struct Obj02046574* _Z26GetGlobalField0x1c020421a0v(void);
+struct Obj02046574* GetGlobalField0x1c020421a0(void);
 void* GetActiveCombatWork(void);
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
 GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(struct Obj02046574* obj, int index, char* str);
+void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 
 struct Param021e5e84 {
     char pad0[8];
@@ -19,18 +19,18 @@ struct Param021e5e84 {
 // USA: func_ov025_021e5e84
 extern "C" ARM int func_ov025_021e5e84(struct Param021e5e84* p, int b, int unused, void* obj) {
     int ids[8];
-    if (_Z23DispatchByIndex021820bcPviii(obj, b, p->targetIndex, (int)&ids[0]) != 1) {
+    if (DispatchByIndex021820bc(obj, b, p->targetIndex, (int)&ids[0]) != 1) {
         return 1;
     }
 
     GameState* bs = GameState::GetInstance();
-    struct Obj02046574* names = _Z26GetGlobalField0x1c020421a0v();
+    struct Obj02046574* names = GetGlobalField0x1c020421a0();
     int id = ids[0];
     GetActiveCombatWork();
 #if defined(jpn)
     GameObject* c = bs->GetCombatantByIndex(id);
     if (c != NULL) {
-        _Z22SetIndexedName02046574P11Obj02046574iPc(names, p->nameIndex, (char*)c->baseStats_);
+        SetIndexedName02046574(names, p->nameIndex, (char*)c->baseStats_);
     }
 #else
     bs->GetCombatantByIndex(id);
@@ -39,12 +39,12 @@ extern "C" ARM int func_ov025_021e5e84(struct Param021e5e84* p, int b, int unuse
     if (isPartyMember) {
         GameObject* c = GetCombatantWithFlag0x100(bs, id);
         if (c != NULL) {
-            _Z22SetIndexedName02046574P11Obj02046574iPc(names, p->nameIndex, (char*)c->baseStats_);
+            SetIndexedName02046574(names, p->nameIndex, (char*)c->baseStats_);
         }
     } else {
         GameObject* c = GetCombatantWithFlag0x400(bs, id);
         if (c != NULL) {
-            _Z22SetIndexedName02046574P11Obj02046574iPc(names, p->nameIndex, (char*)c + 0x14c);
+            SetIndexedName02046574(names, p->nameIndex, (char*)c + 0x14c);
         }
     }
 #endif

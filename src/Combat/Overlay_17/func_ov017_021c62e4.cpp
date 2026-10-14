@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void* func_ov017_021b8478(void* obj);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
 
 struct Owner021c62e4 {
     unsigned char pad0[8];
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov017_021c62e4(int unused0, Evt021c62e4* src, void* unu
     int i;
     void* table = *(void**)(base + 0x3000 + regionalOffset0);
 
-    char* state = (char*)_Z20GetField6b0_021b8470Pv(table);
+    char* state = (char*)GetField6b0_021b8470(table);
     if (!state) return;
 
     Owner021c62e4* owner = (Owner021c62e4*)func_ov017_021b8478(table);

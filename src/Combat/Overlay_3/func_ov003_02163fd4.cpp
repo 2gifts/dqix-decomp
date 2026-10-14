@@ -30,17 +30,17 @@ struct Scene {
 extern int data_02108760;
 extern "C" void func_020813ec(void *, int);
 extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(void *);
-extern "C" int _Z26FindMappedMemberId02080468Pvi(void *, int);
+int FindMappedMemberId02080468(void *, int);
 extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 extern "C" char *_Z10GetWord0x0Pi(GameState *);
 struct Obj0205eaa0;
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0 *, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
 extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void *);
 int CountValidCombatantsMinusField_02160b84(void *);
 int CheckField0AndBattleState_02160b50(void *);
 extern "C" int func_ov003_02160a68(Scene *);
 extern "C" int func_ov003_02160854(Scene *);
-extern "C" void _Z35SetEntryLowNibbleAndElement02080c68Pvii(void *, int, int);
+void SetEntryLowNibbleAndElement02080c68(void *, int, int);
 extern "C" void _Z25SetOrClearFlag40_02166f80Pvii(Scene *, int, int);
 
 // USA: func_ov003_02163fd4
@@ -64,7 +64,7 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
                 break;
         }
         func_020813ec(entries, idx);
-        self->h48a   = _Z26FindMappedMemberId02080468Pvi(entries, self->h488);
+        self->h48a   = FindMappedMemberId02080468(entries, self->h488);
         self->h474   = self->h48a;
         entries->sel = self->h48a;
         func_020813ec(entries, self->h488);
@@ -74,10 +74,10 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
         *(unsigned char *) (_Z10GetWord0x0Pi(GameState::GetInstance()) + 0x4000 + 0x354) = 0xa;
     } else if (state == 1) {
         self->p470 = &self->h48a;
-        _Z35SetEntryLowNibbleAndElement02080c68Pvii(entries, self->h488, 0);
+        SetEntryLowNibbleAndElement02080c68(entries, self->h488, 0);
         short *p = &self->h484;
         if (func_ov003_02160854(self) != 0) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
             _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
             self->p470 = 0;
             switch (self->h48a) {
@@ -154,7 +154,7 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
                     p[0] = 0x2d;
                     break;
             }
-            _Z35SetEntryLowNibbleAndElement02080c68Pvii(entries, self->h488, 1);
+            SetEntryLowNibbleAndElement02080c68(entries, self->h488, 1);
         } else if (func_ov003_02160a68(self) != 0) {
             _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
             p[0] = 0x2d;

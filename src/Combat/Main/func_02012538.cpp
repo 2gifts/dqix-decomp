@@ -1,29 +1,29 @@
 #include <globaldefs.h>
 
 extern "C" int abs(int x);
-extern "C" int _Z22GetSignedField020c39c8PVt(volatile unsigned short* p);
-extern "C" void _Z25ResetBattlerState0201289cPh(unsigned char* obj);
+int GetSignedField020c39c8(volatile unsigned short* p);
+void ResetBattlerState0201289c(unsigned char* obj);
 struct Obj020128d8;
-extern "C" void _Z34SaveAndDisableBattlerState020128d8P11Obj020128d8(struct Obj020128d8* obj);
+void SaveAndDisableBattlerState020128d8(struct Obj020128d8* obj);
 extern "C" void func_02012938(unsigned char* obj);
 struct StateA020129b4;
 int UpdateTargetTrackingState(struct StateA020129b4* obj);
 void SetCompareFlags0x50To0x53(unsigned char* obj);
-extern "C" int _Z27TickByteFlagCounter02012ad0Ph(unsigned char* obj);
+int TickByteFlagCounter02012ad0(unsigned char* obj);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
 
 // USA: func_02012538
 extern "C" ARM int func_02012538(unsigned char* obj) {
     if (obj[0x61] == 0) {
-        _Z25ResetBattlerState0201289cPh(obj);
+        ResetBattlerState0201289c(obj);
         return 0;
     }
 
-    int dFar = _Z22GetSignedField020c39c8PVt((volatile unsigned short*)0x0400106c);
-    int sum = abs(_Z22GetSignedField020c39c8PVt((volatile unsigned short*)0x0400006c)) + abs(dFar);
+    int dFar = GetSignedField020c39c8((volatile unsigned short*)0x0400106c);
+    int sum = abs(GetSignedField020c39c8((volatile unsigned short*)0x0400006c)) + abs(dFar);
 
     if (sum >= 0x20) {
-        _Z34SaveAndDisableBattlerState020128d8P11Obj020128d8((struct Obj020128d8*)obj);
+        SaveAndDisableBattlerState020128d8((struct Obj020128d8*)obj);
     } else if (obj[0x60] != 0) {
         func_02012938(obj);
     }
@@ -47,7 +47,7 @@ extern "C" ARM int func_02012538(unsigned char* obj) {
             obj[0x5d] = 1;
         }
         SetCompareFlags0x50To0x53(obj);
-        obj[0x5c] = _Z27TickByteFlagCounter02012ad0Ph(obj);
+        obj[0x5c] = TickByteFlagCounter02012ad0(obj);
         return *(unsigned short*)(obj + 0x24) != 0;
     }
 
@@ -82,6 +82,6 @@ extern "C" ARM int func_02012538(unsigned char* obj) {
         *(int*)(obj + 0x68) = -1;
     }
     obj[0x63] = 0;
-    obj[0x5c] = _Z27TickByteFlagCounter02012ad0Ph(obj);
+    obj[0x5c] = TickByteFlagCounter02012ad0(obj);
     return *(unsigned short*)(obj + 0x24) != 0;
 }

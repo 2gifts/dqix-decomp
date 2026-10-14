@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct ByteHeader0204693c;
-extern "C" void _Z15ResetByteHeaderP18ByteHeader0204693c(struct ByteHeader0204693c* p);
+void ResetByteHeader(struct ByteHeader0204693c* p);
 
 struct Node02046a8c {
     char unk0[2];
@@ -37,5 +37,5 @@ extern "C" ARM void func_02046a8c(struct List02046a8c* list, struct Node02046a8c
         list->tail = cur;
         cur = cur->next;
     }
-    _Z15ResetByteHeaderP18ByteHeader0204693c((struct ByteHeader0204693c*)node);
+    ResetByteHeader((struct ByteHeader0204693c*)node);
 }

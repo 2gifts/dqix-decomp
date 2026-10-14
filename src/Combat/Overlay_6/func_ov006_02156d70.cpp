@@ -119,8 +119,8 @@ struct EffectParams {
 };
 
 extern "C" void func_020dbdc0(Struct020dbd9c* effect);
-extern "C" void _Z18InitStruct02078484P24InitStruct02078484Struct(InitStruct02078484Struct* params);
-extern "C" void _Z26ProcessPendingNode020dbfa4P11Obj020dbfa4i(Obj020dbfa4* effect, int params);
+void InitStruct02078484(InitStruct02078484Struct* params);
+void ProcessPendingNode020dbfa4(Obj020dbfa4* effect, int params);
 
 extern char data_ov006_02160089[];
 extern char data_ov006_02160092[];
@@ -130,7 +130,7 @@ extern "C" ARM void func_ov006_02156d70(AlchemyPot* self) {
     func_020dbdc0(&self->subEffect_);
     if (self->subEffect_.unk_14 == 0 && self->effectMode_ != 0) {
         EffectParams params;
-        _Z18InitStruct02078484P24InitStruct02078484Struct((InitStruct02078484Struct*)&params);
+        InitStruct02078484((InitStruct02078484Struct*)&params);
         params.unk_11 &= ~4;
         params.unk_12 = 0;
         if (self->effectMode_ == 1 || self->effectMode_ == 2) {
@@ -146,6 +146,6 @@ extern "C" ARM void func_ov006_02156d70(AlchemyPot* self) {
         params.position_.x = -0x41;
         params.position_.y = -0xaac;
         params.position_.z = 0x4526;
-        _Z26ProcessPendingNode020dbfa4P11Obj020dbfa4i((Obj020dbfa4*)&self->subEffect_, (int)&params);
+        ProcessPendingNode020dbfa4((Obj020dbfa4*)&self->subEffect_, (int)&params);
     }
 }

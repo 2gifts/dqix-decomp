@@ -47,23 +47,23 @@ struct ProfileEditor021894b4
     char titleText_[0x40];
 };
 
-extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char* text, int a, int b, int c, int d, int e);
+void AppendFrameTag02041c08(char* text, int a, int b, int c, int d, int e);
 void AppendCursorTag(char* text, int a);
 const char* FindEntryByKey(TableA68* texts, int id);
 extern "C" int func_020420e8(const char* text, int large);
 void AppendXTag(char* text, int x);
-extern "C" void _Z23AppendFormatted02041facPcii(char* text, int line, int a);
+void AppendFormatted02041fac(char* text, int line, int a);
 void AppendHeightTag(char* text, int a);
 void AppendNameTag(char* text, int item, const char* itemText);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+void AppendString02042058(char* text, const char* append);
 void AppendWidthHeightTag(char* text, int a, int b);
-extern "C" void _Z22AppendLineXTag02041cf4Pciiii(char* text, int a, int b, int c, int d);
-extern "C" void _Z22AppendLineYTag02041d48Pciiii(char* text, int a, int b, int c, int d);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void AppendLineXTag02041cf4(char* text, int a, int b, int c, int d);
+void AppendLineYTag02041d48(char* text, int a, int b, int c, int d);
+void* GetGlobalField0x1c020421a0();
 extern "C" void __clear(void* buffer, unsigned long size);
 void AppendXYTag(char* text, int x, int y);
 int StringLength(const char* text);
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* text, char* output, int a);
+void CopyTextAndUppercaseIfFlagged0206819c(const char* text, char* output, int a);
 void AppendPaletteTag(char* text, int color);
 
 extern "C" const short data_ov012_0218af92[];
@@ -82,11 +82,11 @@ extern "C" ARM void func_ov012_021894b4(ProfileEditor021894b4* self, char* text,
 
     int selection = self->selection_;
     if (hidden)
-        _Z22AppendFrameTag02041c08Pciiiii(text, selection, 8, 5, 5, 5);
+        AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
     AppendCursorTag(text, selection);
     const char* title = FindEntryByKey((TableA68*)self->strings_, 1);
     AppendXTag(text, (0xe0 - func_020420e8(title, 0)) >> 1);
-    _Z23AppendFormatted02041facPcii(text, (int)title, 0x10);
+    AppendFormatted02041fac(text, (int)title, 0x10);
     AppendHeightTag(text, 3);
     AppendNameTag(text, 0, FindEntryByKey((TableA68*)self->strings_, 2));
     int item;
@@ -96,21 +96,21 @@ extern "C" ARM void func_ov012_021894b4(ProfileEditor021894b4* self, char* text,
         short id = *texts;
         if (id < 0)
             break;
-        _Z20AppendString02042058PcPKc(text, self->unk_1378);
+        AppendString02042058(text, self->unk_1378);
         if (item == 5)
             AppendWidthHeightTag(text, 3, 3);
         AppendNameTag(text, item, FindEntryByKey((TableA68*)self->strings_, id));
     }
-    _Z22AppendLineXTag02041cf4Pciiii(text, 0x7fff, 2, 0xdd, 0x66);
-    _Z22AppendLineYTag02041d48Pciiii(text, 0x7fff, 0x58, 0x10, 0x66);
+    AppendLineXTag02041cf4(text, 0x7fff, 2, 0xdd, 0x66);
+    AppendLineYTag02041d48(text, 0x7fff, 0x58, 0x10, 0x66);
 
     GameState* gameState = GameState::GetInstance();
     Profile021894b4* profile = GetProfile021894b4(gameState);
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     char unused[0x20];
     __clear(unused, sizeof(unused));
     AppendXYTag(text, ((0x88 - func_020420e8(self->titleText_, 0)) >> 1) + 0x58, 0x16);
-    _Z20AppendString02042058PcPKc(text, self->titleText_);
+    AppendString02042058(text, self->titleText_);
 
     char birthday[0x100];
     __clear(birthday, sizeof(birthday));
@@ -132,13 +132,13 @@ extern "C" ARM void func_ov012_021894b4(ProfileEditor021894b4* self, char* text,
         sprintf(birthday, hiddenBirthday);
     }
     AppendXYTag(text, ((0x88 - width) >> 1) + 0x58, 0x26);
-    _Z20AppendString02042058PcPKc(text, birthday);
+    AppendString02042058(text, birthday);
 
     char accolade[0x80];
     __clear(accolade, sizeof(accolade));
-    _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(self->accoladeText_, accolade, 0);
+    CopyTextAndUppercaseIfFlagged0206819c(self->accoladeText_, accolade, 0);
     AppendXYTag(text, ((0x88 - func_020420e8(accolade, 0)) >> 1) + 0x58, 0x36);
-    _Z20AppendString02042058PcPKc(text, accolade);
+    AppendString02042058(text, accolade);
 
     short design = 0x6d;
     unsigned int chosen = profile->designChosen_;
@@ -146,7 +146,7 @@ extern "C" ARM void func_ov012_021894b4(ProfileEditor021894b4* self, char* text,
         design = profile->unk_0_21 + 30000;
     const char* designText = FindEntryByKey((TableA68*)self->strings_, design);
     AppendXYTag(text, ((0x88 - func_020420e8(designText, 0)) >> 1) + 0x58, 0x46);
-    _Z20AppendString02042058PcPKc(text, designText);
+    AppendString02042058(text, designText);
 
     char* message = (char*)profile->unk_8;
     int empty = 0;
@@ -165,5 +165,5 @@ extern "C" ARM void func_ov012_021894b4(ProfileEditor021894b4* self, char* text,
     AppendXYTag(text, ((0x88 - func_020420e8(messageText, 0)) >> 1) + 0x58, 0x56);
     if (empty)
         AppendPaletteTag(text, 3);
-    _Z20AppendString02042058PcPKc(text, messageText);
+    AppendString02042058(text, messageText);
 }

@@ -53,14 +53,14 @@ struct ResPtr0215686c {
     unsigned char* p2c;
 };
 
-extern "C" int _Z15GetBitsInField0Pjj(unsigned int* p, unsigned int bits);
-extern "C" int _Z22GetSignedField020c39c8PVt(volatile unsigned short* p);
+int GetBitsInField0(unsigned int* p, unsigned int bits);
+int GetSignedField020c39c8(volatile unsigned short* p);
 extern "C" int _Z15GetAxisIntValueP18AxisFloats0203b57ci(void* obj, int axis);
 extern "C" void* func_0202ae18(void);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" void _Z16OrBitsIntoField0Pjj(unsigned int* p, unsigned int mask);
-extern "C" void _Z16OrGlobalFlag0x40v();
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64* obj);
+void* GetDataPtr02114e04_020d6c00(void);
+void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrGlobalFlag0x40();
+void ResetList0204af64(struct List0204af64* obj);
 
 static inline unsigned int GetEntryMode(Obj0215686c* o) {
     return o->fa;
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov001_0215686c(void) {
     GameResources* res = func_ov017_0218b5b0();
     int axis = _Z15GetAxisIntValueP18AxisFloats0203b57ci(res, 1);
     if (flag == 0) {
-        axis = _Z22GetSignedField020c39c8PVt((volatile unsigned short*)0x0400006c);
+        axis = GetSignedField020c39c8((volatile unsigned short*)0x0400006c);
     }
 
     if (axis != -0x10 && axis != 0x10) {
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov001_0215686c(void) {
     func_0202ae18();
 
     if (!(o->f50 & 0x20)) {
-        if (_Z15GetBitsInField0Pjj((unsigned int*)res, 0x1000) == 0) {
+        if (GetBitsInField0((unsigned int*)res, 0x1000) == 0) {
             goto cont;
         }
     }
@@ -120,8 +120,8 @@ cont:
         }
     }
 
-    _Z16OrBitsIntoField0Pjj((unsigned int*)_Z27GetDataPtr02114e04_020d6c00v(), 1);
-    _Z16OrGlobalFlag0x40v();
+    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
+    OrGlobalFlag0x40();
 
     volatile unsigned int* r32 = (volatile unsigned int*)0x4001000;
     volatile unsigned short* r16 = (volatile unsigned short*)0x4001000;
@@ -137,7 +137,7 @@ cont:
     r32[7] = 0;
     r16[0x28] = 0;
 
-    _Z17ResetList0204af64P12List0204af64(&list);
+    ResetList0204af64(&list);
     list.b1c_lo = 3;
 
     unsigned char* p = ((struct ResPtr0215686c*)res)->p2c;

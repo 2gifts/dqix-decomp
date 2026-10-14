@@ -118,23 +118,23 @@ extern const char data_ov023_021fe316[];
 extern const char data_ov023_021fe2a0[];
 extern const char data_ov023_021fe2b7[];
 
-extern "C" char* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z24ReinitController02043204Pc(char* messages);
-extern "C" void _Z24InitCombatEntry_021d8b6cPv(void* window);
-extern "C" void _Z13Reset0209fe9cPc(char* titles);
-extern "C" void _Z37InitManagerAndAllocateBuffers0209fee4P11Obj0209fee4P13SafeAllocatorii(Obj0209fee4* titles, SafeAllocator* allocator, int file, int size);
+char* GetGlobalField0x1c020421a0();
+void ReinitController02043204(char* messages);
+void InitCombatEntry_021d8b6c(void* window);
+void Reset0209fe9c(char* titles);
+void InitManagerAndAllocateBuffers0209fee4(Obj0209fee4* titles, SafeAllocator* allocator, int file, int size);
 void SetIntAt0x60(IntField0x60_0209ff64* titles, int value);
-extern "C" void _Z21PollOv017Task0209ff6cP17TaskState0209ff6c(TaskState0209ff6c* titles);
-extern "C" int _Z32AreFields60And64AllOnes_021f21f4P17Fields60_021f21f4(Fields60_021f21f4* titles);
-extern "C" void _Z19ClearStruct020a13c4P9S020a13c4(S020a13c4* table);
-extern "C" void _Z31SetupGlobalAndRunScript020a13e4PvS_ith(void* table, void* allocator, int a, unsigned short b, unsigned char c);
-extern "C" void* _Z26ResetAndReturnSelf020dfc2cPv(void* texts);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40* texts);
-extern "C" void* _Z26FindElementByField020a15bcP13Array020a15bci(Array020a15bc* table, int id);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
-extern "C" void _Z16InitObj_021f222cP12Obj_021f222c(Obj_021f222c* page);
-extern "C" void _Z28FormatLabelIntoBufC_021f2304PvPc(void* page, char* title);
-extern "C" void _Z32SetOrClearBit10At400_38_021f2348Pvi(void* guide, int value);
+void PollOv017Task0209ff6c(TaskState0209ff6c* titles);
+int AreFields60And64AllOnes_021f21f4(Fields60_021f21f4* titles);
+void ClearStruct020a13c4(S020a13c4* table);
+void SetupGlobalAndRunScript020a13e4(void* table, void* allocator, int a, unsigned short b, unsigned char c);
+void* ResetAndReturnSelf020dfc2c(void* texts);
+void ResetStruct020dfc40(Struct020dfc40* texts);
+void* FindElementByField020a15bc(Array020a15bc* table, int id);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
+void InitObj_021f222c(Obj_021f222c* page);
+void FormatLabelIntoBufC_021f2304(void* page, char* title);
+void SetOrClearBit10At400_38_021f2348(void* guide, int value);
 
 extern "C" {
 void __clear(void* buffer, unsigned long size);
@@ -158,11 +158,11 @@ extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
     int step = end->step_;
     if (step == 0)
     {
-        _Z24ReinitController02043204Pc(_Z26GetGlobalField0x1c020421a0v());
+        ReinitController02043204(GetGlobalField0x1c020421a0());
         if (self->resultWindow_ != NULL)
         {
             func_ov023_021f1818(self->menu_, 1);
-            _Z24InitCombatEntry_021d8b6cPv(self->resultWindow_);
+            InitCombatEntry_021d8b6c(self->resultWindow_);
             func_ov023_021d8af8(self->resultWindow_);
             self->resultWindow_ = NULL;
         }
@@ -183,8 +183,8 @@ extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
             void* copy = self->allocator_.Allocate(size);
             memcpy(copy, file, size);
             self->titles_ = (TitleScript_021f3aac*)self->allocator_.Allocate(0xd0);
-            _Z13Reset0209fe9cPc((char*)self->titles_);
-            _Z37InitManagerAndAllocateBuffers0209fee4P11Obj0209fee4P13SafeAllocatorii((Obj0209fee4*)self->titles_, &self->allocator_, (int)copy, size);
+            Reset0209fe9c((char*)self->titles_);
+            InitManagerAndAllocateBuffers0209fee4((Obj0209fee4*)self->titles_, &self->allocator_, (int)copy, size);
             loader2->RemoveTask(end->task_);
             end->task_ = -1;
             SetIntAt0x60((IntField0x60_0209ff64*)self->titles_, 100);
@@ -193,8 +193,8 @@ extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
     }
     else if (step == 2)
     {
-        _Z21PollOv017Task0209ff6cP17TaskState0209ff6c((TaskState0209ff6c*)self->titles_);
-        if (_Z32AreFields60And64AllOnes_021f21f4P17Fields60_021f21f4((Fields60_021f21f4*)self->titles_))
+        PollOv017Task0209ff6c((TaskState0209ff6c*)self->titles_);
+        if (AreFields60And64AllOnes_021f21f4((Fields60_021f21f4*)self->titles_))
             end->step_++;
     }
     else if (step == 3)
@@ -216,36 +216,36 @@ extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
             self->allocator_.Reset();
             self->titles_ = NULL;
             self->titleTable_ = self->allocator_.Allocate(0x14);
-            _Z19ClearStruct020a13c4P9S020a13c4((S020a13c4*)self->titleTable_);
-            _Z31SetupGlobalAndRunScript020a13e4PvS_ith(self->titleTable_, &self->allocator_, 0, 0, 2);
+            ClearStruct020a13c4((S020a13c4*)self->titleTable_);
+            SetupGlobalAndRunScript020a13e4(self->titleTable_, &self->allocator_, 0, 0, 2);
             self->firstGuide_ = func_ov023_021ed724(self->titleTable_, ids, count) & 1 ? 1 : 0;
             GameObject_021f3aac* hero = GameState::GetInstance()->GetProtagonist();
             TextTable_021f3aac names;
-            _Z26ResetAndReturnSelf020dfc2cPv(&names);
-            _Z19ResetStruct020dfc40P14Struct020dfc40((Struct020dfc40*)&names);
+            ResetAndReturnSelf020dfc2c(&names);
+            ResetStruct020dfc40((Struct020dfc40*)&names);
 #if defined(jpn)
             func_020e1fc4(&names, &self->allocator_, data_ov023_021fd533, ids, (unsigned short)count, hero->partyData_->appearance_.female_, 1);
             temporary = (GuidePage_021f3aac*)idAllocator->Allocate(count * sizeof(void*));
             for (i = 0; i < count; i++)
             {
-                void* entry = _Z26FindElementByField020a15bcP13Array020a15bci((Array020a15bc*)self->titleTable_, ids[i]);
+                void* entry = FindElementByField020a15bc((Array020a15bc*)self->titleTable_, ids[i]);
                 if (entry == NULL)
                     continue;
-                const char* title = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&names, ids[i]);
+                const char* title = GetFieldByKey020e0434((Container020e0310*)&names, ids[i]);
                 if (title == NULL)
                     continue;
-                _Z16InitObj_021f222cP12Obj_021f222c((Obj_021f222c*)&temporary[i]);
+                InitObj_021f222c((Obj_021f222c*)&temporary[i]);
                 func_ov023_021f229c(&temporary[i], entry);
-                _Z28FormatLabelIntoBufC_021f2304PvPc(&temporary[i], (char*)title);
+                FormatLabelIntoBufC_021f2304(&temporary[i], (char*)title);
             }
             self->allocator_.Reset();
             self->titleTable_ = NULL;
             self->pages_ = (GuidePage_021f3aac*)self->allocator_.Allocate(count * sizeof(GuidePage_021f3aac));
             for (i = 0; i < count; i++)
             {
-                _Z16InitObj_021f222cP12Obj_021f222c((Obj_021f222c*)&self->pages_[i]);
+                InitObj_021f222c((Obj_021f222c*)&self->pages_[i]);
                 func_ov023_021f229c(&self->pages_[i], &temporary[i]);
-                _Z28FormatLabelIntoBufC_021f2304PvPc(&self->pages_[i], (char*)&temporary[i] + 0xc);
+                FormatLabelIntoBufC_021f2304(&self->pages_[i], (char*)&temporary[i] + 0xc);
             }
 
 #else
@@ -264,15 +264,15 @@ extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
             self->pages_ = (GuidePage_021f3aac*)self->allocator_.Allocate(count * sizeof(GuidePage_021f3aac));
             for (i = 0; i < count; i++)
             {
-                void* entry = _Z26FindElementByField020a15bcP13Array020a15bci((Array020a15bc*)self->titleTable_, ids[i]);
+                void* entry = FindElementByField020a15bc((Array020a15bc*)self->titleTable_, ids[i]);
                 if (entry == NULL)
                     continue;
-                const char* title = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&names, ids[i]);
+                const char* title = GetFieldByKey020e0434((Container020e0310*)&names, ids[i]);
                 if (title == NULL)
                     continue;
-                _Z16InitObj_021f222cP12Obj_021f222c((Obj_021f222c*)&self->pages_[i]);
+                InitObj_021f222c((Obj_021f222c*)&self->pages_[i]);
                 func_ov023_021f229c(&self->pages_[i], entry);
-                _Z28FormatLabelIntoBufC_021f2304PvPc(&self->pages_[i], (char*)title);
+                FormatLabelIntoBufC_021f2304(&self->pages_[i], (char*)title);
             }
             self->titleTable_ = NULL;
 
@@ -295,7 +295,7 @@ extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
         func_ov023_021eb138(self->guide_, 2);
         func_ov023_021eb080(self->guide_, &self->allocator_);
         func_ov023_021eb564(self->guide_, self->pages_, self->pageCount_);
-        _Z32SetOrClearBit10At400_38_021f2348Pvi(self->guide_, self->firstGuide_);
+        SetOrClearBit10At400_38_021f2348(self->guide_, self->firstGuide_);
         end->step_++;
     }
     else if (step == 5)

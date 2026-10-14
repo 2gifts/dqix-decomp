@@ -8,7 +8,7 @@ enum { RegionOffset6c = 0x6c };
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
+int fix32ReduceAngle0To2Pi(int angle);
 extern "C" void func_020399b0(GameObject* combatant, unsigned short arg1, int* vec3, int value);
 
 void* GetField0x3f8Address(GameState* battleStruct);
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov017_0219c598(int* srcVec3, short* srcAngle, int force
         angle = GetSignedFieldAt0x7c((S_e820*)((char*)dataBase + RegionOffset6c));
     }
 
-    int value = _Z22fix32ReduceAngle0To2Pii(angle);
+    int value = fix32ReduceAngle0To2Pi(angle);
 
     for (i = 0; i < field2a04[0xf7c]; i++) {
         GameObject* c = battleStruct->GetPartyMemberByIndex((field2a04 + i)[0xf78]);

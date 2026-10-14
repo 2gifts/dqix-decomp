@@ -12,15 +12,15 @@ struct EventList020bdce8 {
     EventEntry020bdce8 entries[1];
 };
 
-extern "C" EventList020bdce8* _Z18GetOffsetEntry0x1ci(int id);
+EventList020bdce8* GetOffsetEntry0x1c(int id);
 extern "C" int func_020bddec(int val, int key, int argB, int flag, int* out);
-extern "C" int _Z25ResolveEntryValue020bde70iiiiPi(int val, int key, int argB, int flag, int* out);
+int ResolveEntryValue020bde70(int val, int key, int argB, int flag, int* out);
 extern "C" int func_020bded0(int val, int key, int argB, int flag, int* out);
 extern "C" int _Z26DispatchEventEntryForIndexijiiPi(int val, int key, int argB, int flag, int* out);
 
 // USA: func_020bdce8  (semantic: DispatchEventListByType_020bdce8)
 extern "C" ARM int func_020bdce8(int id, int argB) {
-    EventList020bdce8* list = _Z18GetOffsetEntry0x1ci(id);
+    EventList020bdce8* list = GetOffsetEntry0x1c(id);
     if (list == 0) {
         return 1;
     }
@@ -42,7 +42,7 @@ extern "C" ARM int func_020bdce8(int id, int argB) {
                 if (ret != 0) return ret;
                 break;
             case 3:
-                ret = _Z25ResolveEntryValue020bde70iiiiPi(entry->val, entry->key, argB, 1, b);
+                ret = ResolveEntryValue020bde70(entry->val, entry->key, argB, 1, b);
                 if (ret != 0) return ret;
                 break;
             case 1:

@@ -78,17 +78,17 @@ extern unsigned char data_ov004_021707e8;
 extern unsigned char data_ov004_0216fdd0[];
 extern char data_0212633c[];
 
-extern "C" void _Z26ClearFirstTwoWords0209a338P12Pair0209a338(struct Pair0209a338*);
-extern "C" void _Z33SetupAndRunBufferedScript0209a348P11Ctx0209a348Pv(struct Ctx0209a348*, void*);
-extern "C" int _Z11GetIntAt0x4P20IntField0x4_0209a670(struct IntField0x4_0209a670*);
-extern "C" struct ListEntry* _Z23GetEntryByIndex0209a654P15GetList0209a654j(struct GetList0209a654*, unsigned int);
-extern "C" void _Z18SetBitInArray0x8ecPhi(unsigned char*, int);
-extern "C" void _Z20ClearBitInArray0x8ecPhi(unsigned char*, int);
-extern "C" int _Z19TestBitInArray0x8ecPhi(unsigned char*, int);
+void ClearFirstTwoWords0209a338(struct Pair0209a338*);
+void SetupAndRunBufferedScript0209a348(struct Ctx0209a348*, void*);
+int GetIntAt0x4(struct IntField0x4_0209a670*);
+struct ListEntry* GetEntryByIndex0209a654(struct GetList0209a654*, unsigned int);
+void SetBitInArray0x8ec(unsigned char*, int);
+void ClearBitInArray0x8ec(unsigned char*, int);
+int TestBitInArray0x8ec(unsigned char*, int);
 extern "C" void _Z17GetPtrField0x2a04P9GameState(GameState*);
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, int);
-extern "C" void* _Z15GetFieldAt0x150Ph(unsigned char*);
-extern "C" struct Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0*, int);
+void* GetFieldAt0x150(unsigned char*);
+struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0*, int);
 extern "C" void* func_ov004_0215e47c(void*, int);
 extern "C" void func_ov004_0215ee90(void*);
 
@@ -112,15 +112,15 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
     func_ov004_0215ee90(data_ov004_02170b90);
     gs = GameState::GetInstance();
     combatant = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, *(int*)((char*)&data_ov004_021707e8 + 0x1c));
-    field150 = (unsigned char*)_Z15GetFieldAt0x150Ph(combatant);
+    field150 = (unsigned char*)GetFieldAt0x150(combatant);
     if (combatant == 0 || field150 == 0) {
         return;
     }
     loader = BackgroundLoader::GetInstance();
     loader->MaybeWaitIdle();
     char* script = data_0212633c;
-    _Z26ClearFirstTwoWords0209a338P12Pair0209a338((struct Pair0209a338*)&ctx);
-    _Z33SetupAndRunBufferedScript0209a348P11Ctx0209a348Pv(&ctx, script);
+    ClearFirstTwoWords0209a338((struct Pair0209a338*)&ctx);
+    SetupAndRunBufferedScript0209a348(&ctx, script);
     _Z17GetPtrField0x2a04P9GameState(gs);
 
     container = 0;
@@ -148,7 +148,7 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
                 break;
             }
         }
-        struct Element020de650* elem = _Z24FindElementByKey020dedd0P17Container020dedd0i(container, (short)k);
+        struct Element020de650* elem = FindElementByKey020dedd0(container, (short)k);
         if (elem == 0) {
             continue;
         }
@@ -156,17 +156,17 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
             continue;
         }
         if (found) {
-            _Z18SetBitInArray0x8ecPhi(field150, elem->v5);
+            SetBitInArray0x8ec(field150, elem->v5);
         } else {
-            _Z20ClearBitInArray0x8ecPhi(field150, elem->v5);
+            ClearBitInArray0x8ec(field150, elem->v5);
         }
     }
 
 afterSlots:
     mark[0] = data_ov004_0216fdd0[0];
     mark[1] = data_ov004_0216fdd0[1];
-    total = _Z11GetIntAt0x4P20IntField0x4_0209a670((struct IntField0x4_0209a670*)&ctx);
-    entry = _Z23GetEntryByIndex0209a654P15GetList0209a654j((struct GetList0209a654*)&ctx, 0);
+    total = GetIntAt0x4((struct IntField0x4_0209a670*)&ctx);
+    entry = GetEntryByIndex0209a654((struct GetList0209a654*)&ctx, 0);
     for (count = 0; count < total; entry++, count++) {
         signed char idx = entry->category;
         int slot = (signed char)(idx - 1);
@@ -174,7 +174,7 @@ afterSlots:
             continue;
         }
         unsigned short save = entry->key;
-        bool ok = _Z19TestBitInArray0x8ecPhi(field150, save);
+        bool ok = TestBitInArray0x8ec(field150, save);
         if (!ok) {
             continue;
         }

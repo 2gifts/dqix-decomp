@@ -20,12 +20,12 @@ struct Global02109030 {
 };
 
 extern "C" GameResources* func_ov017_0218b5b0(void);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void* GetDataPtr02114e04_020d6c00(void);
 Global02109030* GetGlobal02109030(void);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void _Z24ReinitController02043204Pc(char* obj);
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(struct FlagWord02046708* word, unsigned int mask);
-extern "C" void _Z27ResetSelectionState020e25e8P11Obj020e25e8(struct Obj020e25e8* obj);
+int GetGlobalField0x1c020421a0(void);
+void ReinitController02043204(char* obj);
+int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
+void ResetSelectionState020e25e8(struct Obj020e25e8* obj);
 
 struct PartyList2a04 {
     unsigned char pad_0x0[0xf78];
@@ -50,11 +50,11 @@ struct BattleView02165730 {
 // USA: func_ov003_02165730
 extern "C" ARM void func_ov003_02165730(BattleView02165730* view) {
     GameResources* resources = func_ov017_0218b5b0();
-    void* flagData = _Z27GetDataPtr02114e04_020d6c00v();
+    void* flagData = GetDataPtr02114e04_020d6c00();
 
     if (view->step == 0) {
         GetGlobal02109030()->flag3c9 = 1;
-        _Z24ReinitController02043204Pc((char*)_Z26GetGlobalField0x1c020421a0v());
+        ReinitController02043204((char*)GetGlobalField0x1c020421a0());
         view->field_0x484 = view->field_0x486 = -1;
         view->field_0x4a5 = 0;
 
@@ -71,15 +71,15 @@ extern "C" ARM void func_ov003_02165730(BattleView02165730* view) {
         UnlockAndSetBrightness(resources, 0, 0xf);
         view->step = 1;
         if (view->selection == NULL) return;
-        _Z27ResetSelectionState020e25e8P11Obj020e25e8(view->selection);
+        ResetSelectionState020e25e8(view->selection);
     } else if (view->step == 1) {
         if (IsBrightnessTransitionActive(resources) != 0) return;
-        if (_Z17TestFlags02046708P16FlagWord02046708j((struct FlagWord02046708*)flagData, 0x41) != 0) {
+        if (TestFlags02046708((struct FlagWord02046708*)flagData, 0x41) != 0) {
             view->flags |= 0x800;
         }
         view->step = 2;
     } else if (view->step == 2) {
-        _Z24ReinitController02043204Pc((char*)_Z26GetGlobalField0x1c020421a0v());
+        ReinitController02043204((char*)GetGlobalField0x1c020421a0());
         view->field_0x484 = view->field_0x486 = -1;
         view->field_0x4a5 = 0;
         view->state = 0x10;

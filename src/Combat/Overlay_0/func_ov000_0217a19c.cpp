@@ -28,12 +28,12 @@ struct Entry02170cf8 {
     unsigned int unk_4_12 : 20;
 };
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 extern "C" struct Entry02170cf8* func_ov000_02170cf8(char* obj, int val);
 extern "C" void _Z35NotifyLocalizedResourceLoad020dd040iPc(int len, char* buf);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" void func_02046608(int g, int b, char* src, char* dst, int size, int f, int h);
-extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+void* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 #if defined(jpn)
 extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
 #define APPLY_TEXT(s,k,t) TryApplyElemFields0205d5d0(s,k,(int)t,1)
@@ -52,23 +52,23 @@ extern "C" ARM void func_ov000_0217a19c(char* obj, char* table) {
 #if !defined(jpn)
     char text[0x800];
 #endif
-    char* str = *(char**)(_Z26GetGlobalField0x1c020421a0v() + textOffset);
+    char* str = *(char**)(GetGlobalField0x1c020421a0() + textOffset);
     memset(str, 0, textSize);
     signed char cursor = *(signed char*)(obj + cursorOffset);
     struct Entry02170cf8* entry = func_ov000_02170cf8(table, *(unsigned short*)(obj + 0x10 + cursor * 2));
     if (entry != 0) {
         _Z35NotifyLocalizedResourceLoad020dd040iPc(entry->textId, str);
     } else {
-        str = (char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(obj + 0xb8), 0x20);
+        str = (char*)GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), 0x20);
     }
 #if !defined(jpn)
-    func_02046608(_Z26GetGlobalField0x1c020421a0v(), 0xa, str, text, 0x98, 0, 0);
+    func_02046608(GetGlobalField0x1c020421a0(), 0xa, str, text, 0x98, 0, 0);
 #endif
     window = (struct StructA0205d5d0*)(obj + 0x188);
 #if !defined(jpn)
     str = text;
 #endif
-    if (_Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)window, 0x18) != 0) {
+    if (FindElementByC40205d81c((struct Struct_0205d81c*)window, 0x18) != 0) {
         APPLY_TEXT(window, 0x18, str);
         return;
     }

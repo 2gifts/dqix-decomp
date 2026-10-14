@@ -5,17 +5,17 @@ struct Struct_0205c570;
 struct Obj_0205da38;
 struct Obj0205eaa0;
 struct Struct_0205def8;
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24 *obj, unsigned char keyLow,
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
-extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(struct Struct_0205def8 *s, int a, int b);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
+void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int a, int b);
+int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *o, int a, int b);
-extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *base, int a);
-extern "C" void _Z21CopyByteField0215aa5cPc(char *base);
-extern "C" void _Z21CopyByteField0215aa14Pc(char *base);
-extern "C" void _Z30ResetAndRebuildEntries02160734Ph(unsigned char *base);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
+int CheckFlagOrThreshold_02161b48(char *base, int a);
+void CopyByteField0215aa5c(char *base);
+void CopyByteField0215aa14(char *base);
+void ResetAndRebuildEntries02160734(unsigned char *base);
 extern "C" void func_ov002_02161cf0(void *base);
 extern "C" void func_ov002_02156e90(void *base);
 extern "C" void func_ov002_0215f3a0(void *base);
@@ -33,25 +33,25 @@ extern "C" ARM void func_ov002_021696c0(char *base) {
     int state = *(int *) (base + 0x1000 + 0xbc0);
     if (state == 0) {
         *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8 *) (base + 0x2c8 + 0xc00), 0, 1);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8 *) (base + 0x2c8 + 0xc00), 0, 0x29);
+        SetElementFlag0x20ByKey0205def8((struct Struct_0205def8 *) (base + 0x2c8 + 0xc00), 0, 1);
+        SetElementFlag0x20ByKey0205def8((struct Struct_0205def8 *) (base + 0x2c8 + 0xc00), 0, 0x29);
         func_ov002_02156e90(base);
         *(int *) (base + 0x1000 + 0xbb8) = 0x21;
         *(int *) (base + 0x1000 + 0xbc0) = 0x32;
     } else if (state == 0x32) {
-        _Z21CopyByteField0215aa5cPc(base);
+        CopyByteField0215aa5c(base);
         *(short *) (base + 0x1c00 + 0xa) = 0;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 2);
+        FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 2);
         func_ov002_02161cf0(base);
-        _Z30ResetAndRebuildEntries02160734Ph((unsigned char *) base);
+        ResetAndRebuildEntries02160734((unsigned char *) base);
         *(int *) (base + 0x1000 + 0xbc0) = 1;
     } else if (state == 1) {
         *(unsigned int *) (base + 0x2000 + 0x47c) |= 4;
         *(short *) (base + 0x1c00 + 0xa) =
-            _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
+            GetActiveScaledSum0205d794((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
         if (AnyConfirm021696c0(base) && *(short *) (base + 0x1c00 + 0xa) == 7) {
-            _Z21CopyByteField0215aa14Pc(base);
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);
+            CopyByteField0215aa14(base);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
             func_ov002_02156e90(base);
             *(int *) (base + 0x1000 + 0xbb8) = 0x21;
@@ -59,11 +59,11 @@ extern "C" ARM void func_ov002_021696c0(char *base) {
         } else if (AnyConfirm021696c0(base)) {
             *(unsigned char *) (base + 0xf80) = *(int *) (base + 0x1000 + 0xbb8);
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
             *(int *) (base + 0x1000 + 0xbb8) = 0x22;
             *(int *) (base + 0x1000 + 0xbc0) = 0;
-        } else if (_Z29CheckFlagOrThreshold_02161b48Pci(base, 1)) {
-            _Z21CopyByteField0215aa14Pc(base);
+        } else if (CheckFlagOrThreshold_02161b48(base, 1)) {
+            CopyByteField0215aa14(base);
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
             func_ov002_02156e90(base);
             *(int *) (base + 0x1000 + 0xbb8) = 0x21;
@@ -72,7 +72,7 @@ extern "C" ARM void func_ov002_021696c0(char *base) {
     } else if (state == 0x64) {
         *(short *) (base + 0x1c00 + 0xa) = 0;
         *(int *) (base + 0x1000 + 0xbb8) = 0x15;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 2);
+        FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 2);
         func_ov002_02161cf0(base);
         func_ov002_0215f3a0(base);
         *(int *) (base + 0x1000 + 0xbc0) = 1;

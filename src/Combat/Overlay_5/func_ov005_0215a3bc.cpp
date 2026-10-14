@@ -5,7 +5,6 @@
 #define R(j,u) (u)
 #endif
 
-
 #if defined(jpn)
 #define func_ov005_0215a3bc func_ov005_0215b910
 #endif
@@ -21,8 +20,8 @@ struct MenuContext {
 };
 
 extern "C" MenuContext* func_ov017_0218b5b0();
-extern "C" void* _Z19GetField1c_021a193cPi(int* p);
-extern "C" void _Z32SetShiftedFieldsAndCall_021e32ccPvii(void* self, int x, int y);
+void* GetField1c_021a193c(int* p);
+void SetShiftedFieldsAndCall_021e32cc(void* self, int x, int y);
 
 // USA: func_ov005_0215a3bc
 extern "C" ARM void func_ov005_0215a3bc(EquipmentMenu* self) {
@@ -33,5 +32,5 @@ extern "C" ARM void func_ov005_0215a3bc(EquipmentMenu* self) {
         y++;
         self->flags_ &= ~0x80000;
     }
-    _Z32SetShiftedFieldsAndCall_021e32ccPvii(_Z19GetField1c_021a193cPi(func_ov017_0218b5b0()->unknown_ptr_3708), x, y);
+    SetShiftedFieldsAndCall_021e32cc(GetField1c_021a193c(func_ov017_0218b5b0()->unknown_ptr_3708), x, y);
 }

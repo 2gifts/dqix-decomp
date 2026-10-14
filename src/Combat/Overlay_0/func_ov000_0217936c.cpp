@@ -14,19 +14,19 @@ struct ListWindow {
     char scroll[4];
 };
 
-extern "C" void _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_(struct UnkStruct0205c508* s, int* out1, int* out2);
+void ComputeProductSums0205c508(struct UnkStruct0205c508* s, int* out1, int* out2);
 int IsField0x118Equal2(void* obj);
-extern "C" int _Z22AppendFrameTag02041c08Pciiiii(char* dst, int a1, int a2, int a3, int a4, int a5);
+int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
 int AppendCursorTag(char* dst, int cursor);
-extern "C" int* _Z27GetBoundedField420_0217199cPvi(void* obj, int index);
-extern "C" int _Z20IsBitFlagSet0217c4e8Pvi(void* obj, int index);
+int* GetBoundedField420_0217199c(void* obj, int index);
+int IsBitFlagSet0217c4e8(void* obj, int index);
 int AppendPaletteTag(char* dst, int palette);
 extern "C" void __clear(void* buf, int size);
 extern "C" void func_020e4864(int id, char* dst, int a, int b, int c, int d);
-extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* src, char* dst, int flag);
+void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
 int AppendNameTag(char* dst, int n, const char* name);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+int AppendString02042058(char* dst, const char* src);
 
 // USA: func_ov000_0217936c
 extern "C" ARM void func_ov000_0217936c(struct ListWindow* window, struct ListMenu* menu, char* dst) {
@@ -39,21 +39,21 @@ extern "C" ARM void func_ov000_0217936c(struct ListWindow* window, struct ListMe
     if (menu == NULL || dst == NULL) {
         return;
     }
-    _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_((struct UnkStruct0205c508*)window->scroll, &first, &last);
+    ComputeProductSums0205c508((struct UnkStruct0205c508*)window->scroll, &first, &last);
     short top = first;
     short end = last;
     short cursor = menu->cursor;
     if (IsField0x118Equal2(window)) {
-        _Z22AppendFrameTag02041c08Pciiiii(dst, cursor - top, 8, 5, 5, 5);
+        AppendFrameTag02041c08(dst, cursor - top, 8, 5, 5, 5);
     }
     AppendCursorTag(dst, cursor - top);
     for (short i = top; i < end; i++) {
-        int* entry = _Z27GetBoundedField420_0217199cPvi(menu, i);
+        int* entry = GetBoundedField420_0217199c(menu, i);
         if (entry == NULL) {
             continue;
         }
 #if defined(jpn)
-        if (_Z20IsBitFlagSet0217c4e8Pvi(menu, i)) {
+        if (IsBitFlagSet0217c4e8(menu, i)) {
             AppendPaletteTag(dst, 0xf);
         } else {
             AppendPaletteTag(dst, 3);
@@ -61,18 +61,18 @@ extern "C" ARM void func_ov000_0217936c(struct ListWindow* window, struct ListMe
         AppendNameTag(dst, i - top, (const char*)*entry);
 #else
         int palette = 3;
-        if (_Z20IsBitFlagSet0217c4e8Pvi(menu, i)) {
+        if (IsBitFlagSet0217c4e8(menu, i)) {
             palette = 0xf;
         }
         AppendPaletteTag(dst, palette);
         __clear(name, sizeof(name));
         __clear(upper, sizeof(upper));
         func_020e4864(*entry, name, 1, 0, 0, 0);
-        _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(name, upper, 0);
+        CopyTextAndUppercaseIfFlagged0206819c(name, upper, 0);
         AppendNameTag(dst, i - top, name);
 #endif
         if (i != end - 1) {
-            _Z20AppendString02042058PcPKc(dst, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)window->texts, 0));
+            AppendString02042058(dst, (const char*)GetFieldByKey020e0434((struct Container020e0310*)window->texts, 0));
         }
     }
 }

@@ -27,9 +27,9 @@ struct Battle021c3e18 {
 extern "C" unsigned short* func_02012fe4(void);
 extern "C" void* func_0202ae18(void);
 unsigned char GetField0x397cValue(GameState* gs);
-extern "C" void _Z16SetVec3_021c3f68P13Vec3_021c3f68iii(struct Vec3_021c3f68* obj, int x, int y, int z);
+void SetVec3_021c3f68(struct Vec3_021c3f68* obj, int x, int y, int z);
 extern "C" void* func_ov017_021b8468(void* obj);
-extern "C" void* _Z15GetSlot021677d8Pvi(void* work, int idx);
+void* GetSlot021677d8(void* work, int idx);
 extern "C" void _Z26EnqueueEventTag35_021d2ad0hiiih(short id, int x, int y, int z, unsigned char arg);
 extern "C" int func_0202c508(void* p);
 
@@ -53,12 +53,12 @@ extern "C" ARM void func_ov017_021c3e18(unsigned char arg) {
         }
         Vector3i pos = member->obj3D_.position_;
         if (*mapId == 10000) {
-            _Z16SetVec3_021c3f68P13Vec3_021c3f68iii((Vec3_021c3f68*)&pos, 0xff000, 0, 0xff000);
+            SetVec3_021c3f68((Vec3_021c3f68*)&pos, 0xff000, 0, 0xff000);
         }
         if (battle->active != 0) {
             void* work = func_ov017_021b8468(battle);
             if (work != NULL) {
-                pos = *(Vector3i*)_Z15GetSlot021677d8Pvi(work, id);
+                pos = *(Vector3i*)GetSlot021677d8(work, id);
             }
         }
         _Z26EnqueueEventTag35_021d2ad0hiiih(member->obj3D_.unknown_4_, pos.x, pos.y, pos.z, arg);

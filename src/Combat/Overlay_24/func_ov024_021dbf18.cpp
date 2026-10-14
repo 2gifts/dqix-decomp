@@ -20,9 +20,9 @@ int CheckFlag0x14Bit0x10Set(unsigned char* obj);
 void ClearBattleFlag0x14Bit4(void* obj);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" int func_ov000_02159f18(void* a0, unsigned long long mask, int kind);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int idx, int a, int b);
+unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long e, int g);
 
 // USA: func_ov024_021dbf18
@@ -53,11 +53,11 @@ extern "C" ARM void* func_ov024_021dbf18(struct Obj_021dbf18* obj, int a1, int i
 		msg = 0x173;
 	}
 	if (!counted) {
-		msg = _Z31SelectByIndexRange0to3_021da644iii(id, range->f24.b, range->f24.c);
+		msg = SelectByIndexRange0to3_021da644(id, range->f24.b, range->f24.c);
 	}
 	void* entry = func_ov000_0215e958(obj->field0x10);
 	if (!entry) return 0;
-	_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, msg);
+	AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, msg);
 	func_ov000_0215cd44(obj->field0x10, entry, c, 0, mask, obj->ctx->flags.flag != 0);
 	return entry;
 }

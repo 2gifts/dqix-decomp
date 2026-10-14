@@ -26,7 +26,7 @@ struct Entry0207f4a8 {
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0207f4a8
-extern "C" ARM int _Z30FillEntryVariantFields0207f4a8P15Variant02030b0c(struct Variant02030b0c* p) {
+ARM int FillEntryVariantFields0207f4a8(struct Variant02030b0c* p) {
     struct EntryArray0207f594* list = (struct EntryArray0207f594*)data_02108ee0.field4;
     struct Entry0207f4a8* e = (struct Entry0207f4a8*)GetElementStride0x30((unsigned char*)list, (short)(list->count - 1));
     if (e != NULL) {

@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState*);
+void* GetPtrField0x2a04(GameState*);
 extern "C" int _Z17ArrayContainsByteP23ArrayContainsByteStructi(void*,int);
 extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(void*,int);
-extern "C" short _Z20ApplyHPDelta0215a16cPviiPs(void*,int,int,short*);
+short ApplyHPDelta0215a16c(void*,int,int,short*);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" void func_ov000_0215a004(void*,int,int,int,void*,void*,int,int);
 extern "C" void func_ov000_02159eac(void*,void*,int);
@@ -32,7 +32,7 @@ extern "C" ARM void* func_ov024_021dc700(Obj021dc700* obj,int sourceID,int id,Pa
     unsigned short selection;
     if(enabled && amount>0){
         selection=SelectByIndexRange0to3_021da644(id,params->field20.c,params->field24.a);
-        void* list=_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
+        void* list=GetPtrField0x2a04(GameState::GetInstance());
         if(_Z17ArrayContainsByteP23ArrayContainsByteStructi(list,sourceID) && target->currentStats_->primaryStats.currHP==1 && params->code.value==0xb7)
             _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(obj->context,2);
     }else{
@@ -48,7 +48,7 @@ extern "C" ARM void* func_ov024_021dc700(Obj021dc700* obj,int sourceID,int id,Pa
     func_ov000_0215a004(obj->context,sourceID,sourceID,amount,&effects,params,obj->action->flag!=0,0);
     effects.low=0;effects.high=0;
     short applied=0;
-    short hp=_Z20ApplyHPDelta0215a16cPviiPs(obj->context,id,amount,&applied);
+    short hp=ApplyHPDelta0215a16c(obj->context,id,amount,&applied);
     func_ov000_02159eac(obj->context,&effects,0x25);
     unsigned short mp=target->currentStats_->primaryStats.currMP;
     unsigned char flag;

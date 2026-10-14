@@ -9,8 +9,8 @@ extern "C" void CallVTableField14_0223ca40(void*, int);
 extern "C" void func_ov031_0222faac(int, int);
 extern "C" void func_ov031_02234f4c(unsigned short*, int, int, int);
 extern "C" void func_ov031_0222fc48(int, int);
-extern "C" void _Z20SetField604_02234f34v();
-extern "C" void _Z30SetFlagIfMatchesElem0_0223caecPv(void*);
+void SetField604_02234f34();
+void SetFlagIfMatchesElem0_0223caec(void*);
 extern "C" void func_ov031_02230120();
 
 // USA: func_ov031_0222f9ec
@@ -31,7 +31,7 @@ extern "C" ARM void func_ov031_0222f9ec() {
         ++nextRow;
         ++first;
     } while (nextRow < 5);
-    _Z20SetField604_02234f34v();
-    _Z30SetFlagIfMatchesElem0_0223caecPv(data_ov031_02290ca0.list->display);
+    SetField604_02234f34();
+    SetFlagIfMatchesElem0_0223caec(data_ov031_02290ca0.list->display);
     func_ov031_02230120();
 }

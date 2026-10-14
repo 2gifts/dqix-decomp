@@ -53,7 +53,7 @@ extern "C" void func_ov004_0215e574(void* a, unsigned short key, int c, int d, i
 extern "C" void _Z27SetField38IfState8_0215e49cPvis(void* a, int key, int value);
 extern "C" Node02161c18* func_ov023_021f6880(void* list, int key);
 extern "C" int func_ov023_021f6f10(Node02161c18* node);
-extern "C" void _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(void* a, short v1, short v2, int flag);
+void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag);
 
 extern struct MenuState02161c18 data_ov004_021707e8;
 extern struct MenuPage02161c18 data_ov004_02170b90;
@@ -178,6 +178,6 @@ extern "C" ARM int func_ov004_02161c18(void* self) {
         node = func_ov023_021f6880(obj, btn + 0x64);
         if (node != 0 && func_ov023_021f6f10(node) == 0x13) node->SetState(state);
     }
-    _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(self, data_ov004_021707e8.fieldB, data_ov004_021707e8.field6, dim);
+    SetNodeFieldsAndMaybeNotify_0215f6f4(self, data_ov004_021707e8.fieldB, data_ov004_021707e8.field6, dim);
     return 0;
 }

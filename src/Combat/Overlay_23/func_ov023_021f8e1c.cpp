@@ -87,21 +87,21 @@ struct Owner02047a5c;
 struct Owner02047a3c;
 struct Obj0205eaa0;
 
-extern "C" unsigned short _Z25GetShortField1b0_02184a00P12Obj_02184a00(struct Obj_02184a00* obj);
-extern "C" int _Z22GetSignedField020c39c8PVt(volatile unsigned short* p);
+unsigned short GetShortField1b0_02184a00(struct Obj_02184a00* obj);
+int GetSignedField020c39c8(volatile unsigned short* p);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 int TestFlagMask(unsigned short* obj, int mask);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
-extern "C" void* _Z20AddOffset20_021f7318Pv(void* p);
+void* AddOffset20_021f7318(void* p);
 unsigned char GetEntryByteIfFlag0x84(struct Owner02047a5c* owner, int index);
 int GetElementByte1IfEnabled(struct Owner02047a3c* obj, int index);
-extern "C" unsigned short _Z28GetShortAt_021f8c50_021f8c50Ph(unsigned char* obj);
-extern "C" unsigned short _Z28GetShortAt_021f8c60_021f8c60Ph(unsigned char* obj);
-extern "C" unsigned int _Z18GetShort6_021f6f08P11Obj021f6f08(struct Obj021f6f08* obj);
-extern "C" int _Z20GetField1c8_02184bd8P12Obj_02184bd8(struct Obj_02184bd8* obj);
-extern "C" void _Z25SetField1c8False_02184bccP12Obj_02184bcc(struct Obj_02184bcc* obj);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
-extern "C" void* _Z29GetLinkedNodeIfKind6_021f9cb8PvS_S_(void* unused, void* other, void* node);
+unsigned short GetShortAt_021f8c50_021f8c50(unsigned char* obj);
+unsigned short GetShortAt_021f8c60_021f8c60(unsigned char* obj);
+unsigned int GetShort6_021f6f08(struct Obj021f6f08* obj);
+int GetField1c8_02184bd8(struct Obj_02184bd8* obj);
+void SetField1c8False_02184bcc(struct Obj_02184bcc* obj);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
+void* GetLinkedNodeIfKind6_021f9cb8(void* unused, void* other, void* node);
 
 extern "C" void __clear(void* buf, int n);
 extern "C" void* func_ov011_021849c8(void* obj);
@@ -121,12 +121,12 @@ extern struct Obj0205eaa0 data_02108760;
 extern unsigned int data_ov023_021fff24;
 extern const unsigned short data_ov023_021fd922[];
 
-static inline int GetMasterBrightnessMain_021f8e1c() { return _Z22GetSignedField020c39c8PVt((volatile unsigned short*)0x400006c); }
-static inline int GetMasterBrightnessSub_021f8e1c() { return _Z22GetSignedField020c39c8PVt((volatile unsigned short*)0x400106c); }
+static inline int GetMasterBrightnessMain_021f8e1c() { return GetSignedField020c39c8((volatile unsigned short*)0x400006c); }
+static inline int GetMasterBrightnessSub_021f8e1c() { return GetSignedField020c39c8((volatile unsigned short*)0x400106c); }
 
 // USA: func_ov023_021f8e1c
 extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
-    if (self->id != _Z25GetShortField1b0_02184a00P12Obj_02184a00((struct Obj_02184a00*)other)) {
+    if (self->id != GetShortField1b0_02184a00((struct Obj_02184a00*)other)) {
         return;
     }
     if (self->flags & 0x10) {
@@ -317,7 +317,7 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
     if (row != self->row || col != self->col) {
         moved = 1;
         Node021f8e1c* node = func_ov023_021f6880(nodes, self->table[func_ov023_021f9bc8(self)]);
-        void* linked = _Z29GetLinkedNodeIfKind6_021f9cb8PvS_S_(self, other, node);
+        void* linked = GetLinkedNodeIfKind6_021f9cb8(self, other, node);
         if (linked != 0) {
             func_ov023_021f88b8(linked, other, 0x8000);
         }
@@ -347,7 +347,7 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
                 if (func_ov023_021f6f10(node) == 0) {
                     x = (int)(pos.x / 4096.0f);
                     y = (int)(pos.y / 4096.0f);
-                    void* elem = _Z20AddOffset20_021f7318Pv(node);
+                    void* elem = AddOffset20_021f7318(node);
                     w = GetEntryByteIfFlag0x84((struct Owner02047a5c*)elem, 0);
                     h = GetElementByte1IfEnabled((struct Owner02047a3c*)elem, 0);
                 } else if (func_ov023_021f6f10(node) == 8) {
@@ -357,17 +357,17 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
                     pos.z = v->z;
                     x = (int)(pos.x / 4096.0f) + node->offX;
                     y = (int)(pos.y / 4096.0f) + node->offY;
-                    w = _Z28GetShortAt_021f8c50_021f8c50Ph((unsigned char*)node);
-                    h = _Z28GetShortAt_021f8c60_021f8c60Ph((unsigned char*)node);
+                    w = GetShortAt_021f8c50_021f8c50((unsigned char*)node);
+                    h = GetShortAt_021f8c60_021f8c60((unsigned char*)node);
                 }
                 if (x < touchX && touchX <= x + w && y < touchY && touchY <= y + h) {
                     col = cell % self->cols;
                     row = cell / self->cols;
                     node = func_ov023_021f6880(nodes, self->table[row * self->cols + col]);
                     if (node != 0 && func_ov023_021f6f10(node) == 8 && node->IsDisabled() == 0) {
-                        void* linked = _Z29GetLinkedNodeIfKind6_021f9cb8PvS_S_(self, other, node);
+                        void* linked = GetLinkedNodeIfKind6_021f9cb8(self, other, node);
                         if (linked != 0) {
-                            func_ov023_021f88b8(linked, other, (unsigned short)_Z18GetShort6_021f6f08P11Obj021f6f08((struct Obj021f6f08*)node));
+                            func_ov023_021f88b8(linked, other, (unsigned short)GetShort6_021f6f08((struct Obj021f6f08*)node));
                         }
                     } else if (row == self->row && col == self->col) {
                         done = 1;
@@ -383,9 +383,9 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
         self->col = col;
         self->dirty = 1;
     }
-    if (_Z20GetField1c8_02184bd8P12Obj_02184bd8((struct Obj_02184bd8*)other)) {
+    if (GetField1c8_02184bd8((struct Obj_02184bd8*)other)) {
         self->dirty = 1;
-        _Z25SetField1c8False_02184bccP12Obj_02184bcc((struct Obj_02184bcc*)other);
+        SetField1c8False_02184bcc((struct Obj_02184bcc*)other);
     }
     if (self->dirty) {
         func_ov023_021f98e0(self, other);
@@ -435,7 +435,7 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
             func_ov011_02184a40(other, self->snd40);
         }
         if (played && self->confirmSe != 0) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         }
     }
 
@@ -465,7 +465,7 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
                 }
             }
             if (played && self->confirmSe != 0) {
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+                DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
             }
         }
     }

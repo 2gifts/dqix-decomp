@@ -9,13 +9,13 @@ struct Struct_0205bef8 { char pad[0x40]; };
 struct Obj02092aa4 { char pad[0x3c]; };
 struct State0xc0cc { char pad[0x18]; };
 
-extern "C" void _Z16ZeroInit020de848Pv(void* obj);
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64* obj);
-extern "C" void _Z18InitStruct0205cfd4P18InitTarget0205cfd4(struct InitTarget0205cfd4* obj);
-extern "C" void _Z12Init0205bef8P15Struct_0205bef8(struct Struct_0205bef8* obj);
+void ZeroInit020de848(void* obj);
+void ResetList0204af64(struct List0204af64* obj);
+void InitStruct0205cfd4(struct InitTarget0205cfd4* obj);
+void Init0205bef8(struct Struct_0205bef8* obj);
 extern "C" void func_0204c684(void* obj);
-extern "C" void _Z15InitObj02092aa4P11Obj02092aa4h(struct Obj02092aa4* obj, unsigned char mode);
-extern "C" void _Z18InitStruct0205a444Pc(char* obj);
+void InitObj02092aa4(struct Obj02092aa4* obj, unsigned char mode);
+void InitStruct0205a444(char* obj);
 extern "C" void* func_0202ae18(GameState* gs);
 int GetField0x3acValue(GameState* gs);
 void InitFields0x0(struct State0xc0cc* obj);
@@ -143,8 +143,8 @@ extern "C" ARM void func_ov000_021723a8(struct Battle021723a8* self, int arg) {
     self->alloc1ac8.ResetAllocatorPointer();
     self->alloc1adc.ResetAllocatorPointer();
     self->alloc1af8.ResetAllocatorPointer();
-    _Z16ZeroInit020de848Pv(self->listD0);
-    _Z16ZeroInit020de848Pv(self->listE8);
+    ZeroInit020de848(self->listD0);
+    ZeroInit020de848(self->listE8);
     data_ov000_02184288.battle = self;
     self->f68 = 0;
     self->f178 = 0;
@@ -168,17 +168,17 @@ extern "C" ARM void func_ov000_021723a8(struct Battle021723a8* self, int arg) {
             v1;
         }
     }
-    _Z17ResetList0204af64P12List0204af64(&self->lists[0]);
-    _Z17ResetList0204af64P12List0204af64(&self->lists[1]);
-    _Z17ResetList0204af64P12List0204af64(&self->lists[2]);
-    _Z18InitStruct0205cfd4P18InitTarget0205cfd4(&self->obj188);
-    _Z12Init0205bef8P15Struct_0205bef8(&self->obj244);
+    ResetList0204af64(&self->lists[0]);
+    ResetList0204af64(&self->lists[1]);
+    ResetList0204af64(&self->lists[2]);
+    InitStruct0205cfd4(&self->obj188);
+    Init0205bef8(&self->obj244);
     for (int i = 0; i < 7; i++) {
         func_0204c684(self->slots284[i]);
     }
     self->f1af0 = arg;
-    _Z15InitObj02092aa4P11Obj02092aa4h(&self->obj7c, 0);
-    _Z18InitStruct0205a444Pc(self->obj11c);
+    InitObj02092aa4(&self->obj7c, 0);
+    InitStruct0205a444(self->obj11c);
     self->f170 = 0;
     self->f174 = 0;
     self->f910 = 0;

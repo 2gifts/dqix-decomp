@@ -17,13 +17,13 @@ extern "C" void func_ov023_021dc354(void* window);
 void Set3DClearColor(int a, int b, int c, int d, int e);
 unsigned int* GetWord0x0(int* gameState);
 void ClearBitsInField4(unsigned int* p, unsigned int bits);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int a);
+void ResetEntryList0205d6a0(Entry_0205d6a0* window, int a);
 extern "C" void func_0205d048(void* window);
 void ClearFlag0x10IfSet(Struct02074bd0* state);
-extern "C" void _Z19ClearBuffer0204b010P11Obj0204b010Pv(Obj0204b010* bg, void* p);
+void ClearBuffer0204b010(Obj0204b010* bg, void* p);
 extern "C" void func_0204b04c(void* bg, int a);
 extern "C" void func_0204b088(void* bg, int a);
-extern "C" void _Z23ResetRecordList0204afb4P12List0204afb4(List0204afb4* bg);
+void ResetRecordList0204afb4(List0204afb4* bg);
 
 struct EquipmentMenu {
     SafeAllocator allocator_;
@@ -76,13 +76,13 @@ extern "C" ARM void func_ov005_02154198(EquipmentMenu* self) {
     GameState* gameState = GameState::GetInstance();
     ClearBitsInField4(GetWord0x0((int*)gameState), 0x800);
     REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | (self->layers_ << 8);
-    _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)self->window_, 1);
+    ResetEntryList0205d6a0((Entry_0205d6a0*)self->window_, 1);
     func_0205d048(self->window_);
     ClearFlag0x10IfSet((Struct02074bd0*)self->screenState_);
-    _Z19ClearBuffer0204b010P11Obj0204b010Pv((Obj0204b010*)self->backgrounds_, 0);
+    ClearBuffer0204b010((Obj0204b010*)self->backgrounds_, 0);
     func_0204b04c(self->backgrounds_, 0);
     func_0204b088(self->backgrounds_, 0);
-    _Z23ResetRecordList0204afb4P12List0204afb4((List0204afb4*)self->backgrounds_);
+    ResetRecordList0204afb4((List0204afb4*)self->backgrounds_);
     if (self->pageFiles_ != NULL) {
         memset(self->pageFiles_, 0, 0x20);
         CleanInvalidateCacheRange(self->pageFiles_, 0x20);

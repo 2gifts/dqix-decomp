@@ -5,7 +5,7 @@
 #endif
 
 extern "C" void _Z29AccumulateFixedAngle_021d8a74P14Accum_021d8a74f(void* obj, float angle);
-extern "C" void _Z24FillCombatBuffer021d8ad4PvPc(void* obj, char* buf);
+void FillCombatBuffer021d8ad4(void* obj, char* buf);
 
 struct ElemFld4_021d9208 {
     unsigned int nibble0 : 4;
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov028_021d9208(char* self, int arg1) {
     float scale = *(float*)self;
     float angle = 0.5f * ((float)arg1 * scale);
     _Z29AccumulateFixedAngle_021d8a74P14Accum_021d8a74f(self + 0x60, angle);
-    _Z24FillCombatBuffer021d8ad4PvPc(self + 0x60, *(char**)(self + 0x40));
+    FillCombatBuffer021d8ad4(self + 0x60, *(char**)(self + 0x40));
 
     char* buf40 = *(char**)(self + 0x40);
     short prevIndex = -1;

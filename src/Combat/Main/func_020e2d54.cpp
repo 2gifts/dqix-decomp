@@ -17,7 +17,7 @@ extern char data_020ee9b8[];
 extern int data_020ef0e8;
 int SubmitBlock0x40IfNotBusy(int);
 void SetFields0x0_0x4_0x8(int*, int, int, int);
-extern "C" void* _Z32GetSubstructAt0x40OrNull020e2fb0Pv(void*);
+void* GetSubstructAt0x40OrNull020e2fb0(void*);
 extern "C" void func_020ca430(const void*, void*, int);
 static inline int GetBoneScale020e2d54(Bone020e2d54* bone) { SDK_NULL_ASSERT(bone); return bone->scaleZ; }
 static inline int GetVectorZ020e2d54(Vector3fix* vector) { SDK_NULL_ASSERT(vector); return vector->z; }
@@ -43,10 +43,10 @@ extern "C" ARM void func_020e2d54(int mode, RenderCommandHandler* entry, Output0
         if (mode == 1) {
             SetFields0x0_0x4_0x8(&offset.x, 0, 0, 0);
             NSBXXInternalModel* model = entry->modelContext_->internalModel_;
-            NSBXXNameList* list = (NSBXXNameList*)_Z32GetSubstructAt0x40OrNull020e2fb0Pv(model);
+            NSBXXNameList* list = (NSBXXNameList*)GetSubstructAt0x40OrNull020e2fb0(model);
             int index = list ? NSBXXNameList_SearchIndex(list, data_020ee9b8) : -1;
             if (index >= 0) {
-                list = (NSBXXNameList*)_Z32GetSubstructAt0x40OrNull020e2fb0Pv(model);
+                list = (NSBXXNameList*)GetSubstructAt0x40OrNull020e2fb0(model);
                 Bone020e2d54* bone;
                 if (!list) goto missingBone;
                 {

@@ -3,7 +3,7 @@
 extern "C" void func_ov000_0216d370(char* obj, int flagA, int flagB, int flagC);
 extern "C" void* _ZN9GameState11GetInstanceEv();
 extern "C" void* _ZN9GameState20GetGameObjectByIndexEi(void* gs, int id);
-extern "C" void _Z22SetFlagOrState0216d530Pvi(void*, int);
+void SetFlagOrState0216d530(void*, int);
 extern "C" int _ZNK8Object3D9GetRadiusEv(unsigned char* obj);
 extern "C" int _ZNK8Object3D9GetHeightEv(void* obj);
 extern "C" ARM int Vector3fix_Length(int* v);
@@ -31,7 +31,7 @@ extern "C" ARM void func_ov000_0216dbf0(char* self, int* ids, int count, short f
     if (count == 1) {
         void* o = _ZN9GameState20GetGameObjectByIndexEi(gs, *ids);
         if (o != 0) {
-            _Z22SetFlagOrState0216d530Pvi(self, *ids);
+            SetFlagOrState0216d530(self, *ids);
             rad = _ZNK8Object3D9GetRadiusEv((unsigned char*)o) >> 1;
             hgt = _ZNK8Object3D9GetHeightEv(o);
         }

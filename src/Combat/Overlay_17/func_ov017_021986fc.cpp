@@ -43,20 +43,20 @@ struct SearchStruct0202c1a4;
 
 extern "C" Zone3D* func_02012fe4(void);
 extern "C" Obj0208e7d0* func_0208e0a8(void);
-extern "C" int _Z22IsMatchingName0208e824PvPc(void*, char*);
+int IsMatchingName0208e824(void*, char*);
 int CheckSubstructByte0x7cPositive(signed char*);
 Cont0208f3b4* GetData02109020(void);
 void* GetField0x3b0Value(GameState*);
-extern "C" void _Z15InitObj0219a674Ph(unsigned char*);
+void InitObj0219a674(unsigned char*);
 extern "C" void func_ov017_0219b33c(void*, Event021986fc*);
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
-extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
+int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 extern "C" SearchStruct0202c1a4* func_0202ae18(void);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" void* func_0205ec34(void);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
-extern "C" void _Z23RemoveNodeByKey0208f3b4P12Cont0208f3b4i(Cont0208f3b4*, int);
-extern "C" int _Z27GetRandomTableEntry0208e7d0P11Obj0208e7d0(Obj0208e7d0*);
+void RemoveNodeByKey0208f3b4(Cont0208f3b4*, int);
+int GetRandomTableEntry0208e7d0(Obj0208e7d0*);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 
 extern unsigned short data_02114e30[];
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov017_021986fc(GameResources* self) {
     Zone3D* zone = func_02012fe4();
     Zone3D_StructPtr_8* info = zone->pUnknownStruct_8_;
     Obj0208e7d0* list = func_0208e0a8();
-    if (!_Z22IsMatchingName0208e824PvPc(list, info->mapShortName_)) return;
+    if (!IsMatchingName0208e824(list, info->mapShortName_)) return;
     GameState* gs = GameState::GetInstance();
     GameObject* actor = gs->GetUnknownGameObject();
     if (CheckSubstructByte0x7cPositive((signed char*)actor)) return;
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov017_021986fc(GameResources* self) {
                 found = 1;
                 mask = bit;
                 Event021986fc event;
-                _Z15InitObj0219a674Ph((unsigned char*)&event);
+                InitObj0219a674((unsigned char*)&event);
                 event.kind = 3;
                 func_ov017_0219b33c(self, &event);
                 break;
@@ -108,7 +108,7 @@ extern "C" ARM void func_ov017_021986fc(GameResources* self) {
     int cursorY = -1;
     if (data_02114e54.active && data_02114e54.mode < 10) { cursorX = data_02114e54.x; cursorY = data_02114e54.y; }
     int screenX, screenY;
-    _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(camera, (Vec3copy0202ec84*)&actor->obj3D_.position_, &screenX, &screenY);
+    ComputeTwoFromVec3_0202ec84(camera, (Vec3copy0202ec84*)&actor->obj3D_.position_, &screenX, &screenY);
     if (cursorX > 0x70 && cursorX < 0x90 && cursorY > 0x28 && cursorY < 0x60) proceed = 1;
     else if (screenX - 12 < cursorX && cursorX < screenX + 12 && screenY - 12 < cursorY && cursorY < screenY + 12) proceed = 1;
     if (!proceed) return;
@@ -119,8 +119,8 @@ extern "C" ARM void func_ov017_021986fc(GameResources* self) {
     node->entry->fields.timer = node->entry->fields.count * 30;
     void* base = func_0205ec34();
     SetOrClearBitInArray(base, (unsigned char*)base + 0x8c, node->id + 0xc12, 1);
-    _Z23RemoveNodeByKey0208f3b4P12Cont0208f3b4i(GetData02109020(), key);
-    if (node->id >= 0x62) node->unk0 = _Z27GetRandomTableEntry0208e7d0P11Obj0208e7d0(list);
+    RemoveNodeByKey0208f3b4(GetData02109020(), key);
+    if (node->id >= 0x62) node->unk0 = GetRandomTableEntry0208e7d0(list);
     ResetHeaderAndAllocator_021ae800(((Obj021ae800*)self->unknown_ptr_array_3afc[11]));
     ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->itemId = node->unk0;
     ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->position = actor->obj3D_.position_;

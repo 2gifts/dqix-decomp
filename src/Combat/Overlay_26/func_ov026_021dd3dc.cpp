@@ -44,15 +44,15 @@ int ClassifyField0x81fe(char*);
 int CheckField0NonZero(int*);
 extern "C" int _Z13TestBitAt0x34Phj(PartyState*, unsigned char);
 GameObject* GetCombatantWithFlag0x1000(GameState*, int);
-extern "C" SlotWork* _Z21FindSlotById_021dae60P18Container_021dae60i(Container_021dae60*, int);
+SlotWork* FindSlotById_021dae60(Container_021dae60*, int);
 int TestBitBySignedByteIndex(SearchStruct*, int);
 int GetSignedByte0x2d0(void*);
 int IsFlag10088Set(S_10088*);
-extern "C" int _Z22IsFlagBit8Set_021dce1cP16FlagObj_021dce1c(FlagObj_021dce1c*);
+int IsFlagBit8Set_021dce1c(FlagObj_021dce1c*);
 int CheckFlag0x14Bit0x10Set(unsigned char*);
 extern "C" int func_ov000_0215f7a8(BattleState*, short*, unsigned char);
 extern "C" int func_ov000_0215e9fc(BattleState*, short*, int, int);
-extern "C" void _Z23LoadBattleBlock020ac4c0Pv(void*);
+void LoadBattleBlock020ac4c0(void*);
 void AddClamped24BitFieldAt0x34(struct S_a0780*, unsigned int);
 void AddClampedLow16BitFieldAt0xc(struct S_a0068*, unsigned int);
 void AddClamped24BitFieldAt0x38(struct S_a07b0*, unsigned int);
@@ -79,7 +79,7 @@ extern "C" ARM int func_ov026_021dd3dc(BattleState* battle, PartyState* party, C
         for (i = 0; i < 4; i++) {
             if (!_Z13TestBitAt0x34Phj(party, i)) continue;
             if (i != 0 && !GetCombatantWithFlag0x1000(gs, i)) continue;
-            SlotWork* slot = _Z21FindSlotById_021dae60P18Container_021dae60i(list, i);
+            SlotWork* slot = FindSlotById_021dae60(list, i);
             if (!slot) continue;
             if (slot->state == 6) {
                 result = 1;
@@ -107,7 +107,7 @@ extern "C" ARM int func_ov026_021dd3dc(BattleState* battle, PartyState* party, C
             if (GetCombatantWithFlag0x1000(gs, i)) continue;
             GameObject* c = gs->GetCombatantByIndex(i);
             if (!c) continue;
-            SlotWork* slot = _Z21FindSlotById_021dae60P18Container_021dae60i(list, i);
+            SlotWork* slot = FindSlotById_021dae60(list, i);
             if (!slot) continue;
             int r = 0;
             if (slot->state == 6) {
@@ -158,7 +158,7 @@ extern "C" ARM int func_ov026_021dd3dc(BattleState* battle, PartyState* party, C
                 GameObject* c = gs->GetCombatantByIndex(id);
                 if (!c) continue;
                 if (IsFlag10088Set((S_10088*)c)) continue;
-                if (_Z22IsFlagBit8Set_021dce1cP16FlagObj_021dce1c((FlagObj_021dce1c*)c)) continue;
+                if (IsFlagBit8Set_021dce1c((FlagObj_021dce1c*)c)) continue;
                 if (CheckFlag0x14Bit0x10Set((unsigned char*)((CombatantView*)c)->status)) continue;
                 if ((((CombatantView*)c)->status->flags & 0x80000) == 0) {
                     picks.v[picked] = id;
@@ -174,7 +174,7 @@ extern "C" ARM int func_ov026_021dd3dc(BattleState* battle, PartyState* party, C
         }
     }
     if (result != 1) {
-        _Z23LoadBattleBlock020ac4c0Pv(&blk);
+        LoadBattleBlock020ac4c0(&blk);
         BlkSub* sub = &blk.sub;
         AddClamped24BitFieldAt0x34((S_a0780*)&blk, 1);
         AddClampedLow16BitFieldAt0xc((S_a0068*)sub, 1);

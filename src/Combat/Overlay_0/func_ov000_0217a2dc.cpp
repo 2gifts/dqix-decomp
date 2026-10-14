@@ -3,20 +3,20 @@
 
 struct Container020e0310;
 
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+int AppendString02042058(char* dst, const char* src);
 int IsField0x118Equal2(void* obj);
-extern "C" int _Z22AppendFrameTag02041c08Pciiiii(char* dst, int a1, int a2, int a3, int a4, int a5);
+int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
 
 int AppendPaletteTag(char* dst, int palette);
-extern "C" const char** _Z24SearchBothTables02079e2cPci(char* table, int key);
+const char** SearchBothTables02079e2c(char* table, int key);
 int AppendCursorTag(char* dst, int cursor);
 int AppendNameTag(char* dst, int n, const char* name);
 extern "C" int func_020420e8(const char* text, int large);
 int AppendXYTag(char* dst, int x, int y);
-extern "C" int _Z21AppendLineTag02041cc0Pci(char* dst, int a1);
+int AppendLineTag02041cc0(char* dst, int a1);
 #if defined(jpn)
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void*);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, const char*);
 extern "C" void __clear(void*, int);
@@ -41,14 +41,14 @@ struct ItemMenu0217a2dc {
 // USA: func_ov000_0217a2dc
 extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unused, char* dst) {
     struct Container020e0310* strings = (struct Container020e0310*)((char*)menu + 0xb8);
-    const char* emptyName = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(strings, 0x1f);
-    const char* separator = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(strings, 0);
+    const char* emptyName = (const char*)GetFieldByKey020e0434(strings, 0x1f);
+    const char* separator = (const char*)GetFieldByKey020e0434(strings, 0);
     signed char cursor = menu->cursor;
-    _Z20AppendString02042058PcPKc(dst, separator);
+    AppendString02042058(dst, separator);
 
     if (menu->field1D81) {
         if (IsField0x118Equal2(menu)) {
-            _Z22AppendFrameTag02041c08Pciiiii(dst, cursor, 8, 5, 5, 5);
+            AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
         }
         ActionDataTables* table = GetData02108e10();
         if (table == NULL) {
@@ -69,9 +69,9 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
             AppendPaletteTag(dst, palette);
 #endif
             if (menu->itemIds[i] == 0) {
-                _Z20AppendString02042058PcPKc(dst, emptyName);
+                AppendString02042058(dst, emptyName);
             } else {
-                const char** entry = _Z24SearchBothTables02079e2cPci((char*)table, (short)menu->itemIds[i]);
+                const char** entry = SearchBothTables02079e2c((char*)table, (short)menu->itemIds[i]);
                 if (entry == NULL) {
                     continue;
                 }
@@ -79,19 +79,19 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
                 char name[0x40];
                 __clear(name, sizeof(name));
                 func_02041f50(*entry, name);
-                _Z20AppendString02042058PcPKc(dst, name);
+                AppendString02042058(dst, name);
 #else
-                _Z20AppendString02042058PcPKc(dst, *entry);
+                AppendString02042058(dst, *entry);
 #endif
             }
             if (i == menu->itemCount - 1) {
                 continue;
             }
-            _Z20AppendString02042058PcPKc(dst, separator);
+            AppendString02042058(dst, separator);
         }
     } else {
         if (IsField0x118Equal2(menu)) {
-            _Z22AppendFrameTag02041c08Pciiiii(dst, cursor, 8, 5, 5, 5);
+            AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
         }
         AppendCursorTag(dst, cursor);
         ActionDataTables* table = GetData02108e10();
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
             if (menu->itemIds[i] == 0) {
                 AppendNameTag(dst, i, emptyName);
             } else {
-                const char** entry = _Z24SearchBothTables02079e2cPci((char*)table, (short)menu->itemIds[i]);
+                const char** entry = SearchBothTables02079e2c((char*)table, (short)menu->itemIds[i]);
                 if (entry == NULL) {
                     continue;
                 }
@@ -118,21 +118,21 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
             if (i == menu->itemCount - 1) {
                 continue;
             }
-            _Z20AppendString02042058PcPKc(dst, separator);
+            AppendString02042058(dst, separator);
         }
     }
 
     AppendPaletteTag(dst, 0xf);
 #if defined(jpn)
-    void* formatter = _Z26GetGlobalField0x1c020421a0v();
+    void* formatter = GetGlobalField0x1c020421a0();
     func_02046380(formatter);
     _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0,
-        (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(strings, 0x21));
-    _Z20AppendString02042058PcPKc(dst, data_ov000_021851af);
+        (const char*)GetFieldByKey020e0434(strings, 0x21));
+    AppendString02042058(dst, data_ov000_021851af);
 #else
-    const char* title = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(strings, 0x21);
+    const char* title = (const char*)GetFieldByKey020e0434(strings, 0x21);
     AppendXYTag(dst, (0xb0 - func_020420e8(title, 0)) >> 1, 5);
-    _Z20AppendString02042058PcPKc(dst, title);
-    _Z21AppendLineTag02041cc0Pci(dst, 0x11);
+    AppendString02042058(dst, title);
+    AppendLineTag02041cc0(dst, 0x11);
 #endif
 }

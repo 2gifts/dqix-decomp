@@ -3,7 +3,7 @@
 
 struct ArrayContainsByteStruct;
 int ArrayContainsByte(ArrayContainsByteStruct* s, int val);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
+void* GetGlobalField0x1c020421a0(void);
 extern "C" void* func_ov017_021b8478(void* obj);
 struct ListHead02046b60;
 int ListContainsId(ListHead02046b60* list, int id);
@@ -11,12 +11,12 @@ int IsField0Null(void** p);
 int CheckSubstructByte0x7cPositive(signed char* p);
 int GetByteField0x252(void* obj);
 int GetByte0x26c(char* p);
-extern "C" void _Z32EnqueueEventTag57WithAB_021cf4b0ii(int a, int b);
+void EnqueueEventTag57WithAB_021cf4b0(int a, int b);
 void ClearSubstructBytes(void* obj);
 int* GetGlobal02109030(void);
 extern "C" void func_02094030(int*, short, short, int);
 struct Obj021c0124;
-extern "C" void _Z20InitState32_021c0124P11Obj021c0124h(Obj021c0124* p, unsigned char flag);
+void InitState32_021c0124(Obj021c0124* p, unsigned char flag);
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov017_021bff8c(Ctx021bff8c* ctx, unsigned char flag) {
         GameState* gs = GameState::GetInstance();
         GameObject* leader = gs->GetPartyMemberByIndex(0);
         GameObject* hero = gs->GetProtagonist();
-        char* g = (char*)_Z26GetGlobalField0x1c020421a0v();
+        char* g = (char*)GetGlobalField0x1c020421a0();
         Ctx021bff8c* base = (Ctx021bff8c*)func_ov017_0218b5b0();
         void* table = NULL;
         if (base != NULL) {
@@ -83,18 +83,18 @@ extern "C" ARM void func_ov017_021bff8c(Ctx021bff8c* ctx, unsigned char flag) {
         }
         unsigned char heroIndex = hero->obj3D_.unknown_4_;
         if (match) {
-            _Z32EnqueueEventTag57WithAB_021cf4b0ii(heroIndex, 5);
+            EnqueueEventTag57WithAB_021cf4b0(heroIndex, 5);
             ClearSubstructBytes(gs);
             return;
         }
         if (blocked) {
-            _Z32EnqueueEventTag57WithAB_021cf4b0ii(heroIndex, 4);
+            EnqueueEventTag57WithAB_021cf4b0(heroIndex, 4);
             ClearSubstructBytes(gs);
             return;
         }
-        _Z32EnqueueEventTag57WithAB_021cf4b0ii(heroIndex, 1);
+        EnqueueEventTag57WithAB_021cf4b0(heroIndex, 1);
         func_02094030(GetGlobal02109030(), 0x2712, -1, flag);
     }
-    _Z20InitState32_021c0124P11Obj021c0124h(ctx->state, flag);
+    InitState32_021c0124(ctx->state, flag);
     AppendNodeToTail(ctx->list, (TailNode020469b4*)ctx->state);
 }

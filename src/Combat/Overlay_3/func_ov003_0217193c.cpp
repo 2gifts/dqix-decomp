@@ -18,7 +18,7 @@ extern "C" void func_0202b0f4(void* ptr);
 extern "C" int func_ov003_02171d78(void* list, unsigned char* key);
 int GetField0xc(void* obj);
 struct Element0202bad4* GetElementAt0x10Stride0xc0(struct ElementArray0202bad4* base, int index);
-extern "C" int _Z29StartBattleTransition0202b840Pii(int* state, int id);
+int StartBattleTransition0202b840(int* state, int id);
 
 struct Name0217193c { unsigned char data[0x14]; };
 struct Key0217193c { unsigned char data[6]; };
@@ -89,7 +89,7 @@ extern "C" ARM void func_ov003_0217193c(struct Obj0217193c* obj) {
 #if !defined(jpn)
                 if (found > 0 && obj->flags.team != entry->flags.team) break;
 #endif
-                _Z29StartBattleTransition0202b840Pii((int*)search, i);
+                StartBattleTransition0202b840((int*)search, i);
                 obj->selected = 0;
 #if !defined(jpn)
                 obj->name = entry->name;

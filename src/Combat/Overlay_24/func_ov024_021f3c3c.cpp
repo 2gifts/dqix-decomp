@@ -5,7 +5,7 @@
 
 GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
 extern "C" int func_ov000_0215eb1c(int a0, short* buf, int count, int flag);
-extern "C" int _Z41PickRandomTableEntryResetCounter_021ed890PP6RandomPiPs(struct Random** rngPtr, int* maxAndFlag, short* table);
+int PickRandomTableEntryResetCounter_021ed890(struct Random** rngPtr, int* maxAndFlag, short* table);
 
 struct Obj_021f3c3c { int field0; };
 struct Buf8_021f3c3c { short v[8]; };
@@ -31,6 +31,6 @@ extern "C" ARM int func_ov024_021f3c3c(struct Obj_021f3c3c* obj, int id, int unu
 		outArr[(*outCount)++] = buf.v[i];
 	}
 	if (*outCount <= 0) return 0;
-	_Z41PickRandomTableEntryResetCounter_021ed890PP6RandomPiPs((struct Random**)obj, outCount, outArr);
+	PickRandomTableEntryResetCounter_021ed890((struct Random**)obj, outCount, outArr);
 	return 1;
 }

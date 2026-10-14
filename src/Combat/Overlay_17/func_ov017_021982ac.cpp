@@ -14,8 +14,8 @@ void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
 int GetFieldIfFlag4(char* obj);
 int CheckField0x245Bit0x2Set(unsigned char* obj);
 void SetOrClearField0x245Bit0x2(unsigned char* obj, int flag);
-extern "C" void _Z32CopySubstateAndSetFlag4_020a2908PhP14Struct020a2928(unsigned char* obj, struct Struct020a2928* src);
-extern "C" void _Z32CopySubstateAndSetFlag4_020a296cPhP14Struct020a2928(unsigned char* obj, struct Struct020a2928* src);
+void CopySubstateAndSetFlag4_020a2908(unsigned char* obj, struct Struct020a2928* src);
+void CopySubstateAndSetFlag4_020a296c(unsigned char* obj, struct Struct020a2928* src);
 void ClearFlagAt0x240(unsigned char* obj);
 void SetFlagAt0x240(unsigned char* obj);
 void ResetField270Block(struct S_a28e0* p);
@@ -64,10 +64,10 @@ extern "C" ARM void func_ov017_021982ac(void) {
                 if (CheckField0x245Bit0x2Set(state)) {
                     SetOrClearField0x245Bit0x2(state, 0);
                 }
-                _Z32CopySubstateAndSetFlag4_020a2908PhP14Struct020a2928(state, (struct Struct020a2928*)node->substate);
+                CopySubstateAndSetFlag4_020a2908(state, (struct Struct020a2928*)node->substate);
                 applied = 1;
             } else if (kind == 5) {
-                _Z32CopySubstateAndSetFlag4_020a296cPhP14Struct020a2928(state, (struct Struct020a2928*)node->substate);
+                CopySubstateAndSetFlag4_020a296c(state, (struct Struct020a2928*)node->substate);
                 applied = 1;
             } else {
                 BlankFunction020a28dc(state, kind, node->substate, node->extra);

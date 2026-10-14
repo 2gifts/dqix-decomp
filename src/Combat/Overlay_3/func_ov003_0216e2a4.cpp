@@ -70,15 +70,15 @@ void SetWord0x18ClearByte0x1f(unsigned char *background, int a);
 int CountActiveEntries(ActiveEntry02046900 *archive);
 void *FindRecordByIndex(Rec020467f0 *archive, int index, void **name, int *size);
 extern "C" void func_0204b5b4(Background0216e2a4 *background, int a);
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(AllocTarget0204b12c *background,
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c *background,
                                                                                          SafeAllocator *allocator);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8 *background, int a, int b);
+void DispatchViaTable0204b5e8(Obj0204b5e8 *background, int a, int b);
 extern "C" void func_0204b174(Background0216e2a4 *background, void *file, SafeAllocator *allocator, unsigned int size);
 extern "C" void func_0204bc74(Background0216e2a4 *background, int a, int b, int c, int d, int e, int f);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8 *background, void *a);
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(Obj0204c7a8 *canvas, SafeAllocator *allocator,
+void FlushAndDispatchList0204b0e8(List0204b0e8 *background, void *a);
+void AllocateBuffer0204c7a8(Obj0204c7a8 *canvas, SafeAllocator *allocator,
                                                                            int pixels, unsigned int size);
-extern "C" void _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h(Struct_0205cf78 *window,
+void LinkArrayPrevPointers0205cf78(Struct_0205cf78 *window,
                                                                                      Elem_0205cf78 *canvases,
                                                                                      unsigned char count);
 extern "C" void func_0205a528(void *renderer, void *file, unsigned int size, SafeAllocator *allocator);
@@ -104,9 +104,9 @@ extern "C" ARM void func_ov003_0216e2a4(Menu0216e2a4 *self) {
             background->unk_1c_0_ = 0;
             background->unk_1c_4_ = data_ov003_0217f5ba[i];
             func_0204b5b4(background, data_ov003_0217f5b8[i]);
-            _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c *) background,
+            AllocateAndClearBuffer0204b12c((AllocTarget0204b12c *) background,
                                                                                      self->allocatorPtr_);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8 *) background, 0, 0);
+            DispatchViaTable0204b5e8((Obj0204b5e8 *) background, 0, 0);
             background++;
         }
         BG1CNT      = (BG1CNT & 0x43) | 0xd08;
@@ -132,13 +132,13 @@ extern "C" ARM void func_ov003_0216e2a4(Menu0216e2a4 *self) {
             Background0216e2a4 *background = self->backgrounds_;
             for (int i = 0; i < 2; i++) {
                 func_0204bc74(background, 0, 0, 0, 0x20, 0x19, 0);
-                _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8 *) background, 0);
+                FlushAndDispatchList0204b0e8((List0204b0e8 *) background, 0);
                 background++;
             }
             self->pixels_          = self->allocatorPtr_->Allocate(0x2800);
             Canvas0216e2a4 *canvas = self->canvases_;
             for (int i = 0; i < 2; i++) {
-                _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8 *) canvas, self->allocatorPtr_,
+                AllocateBuffer0204c7a8((Obj0204c7a8 *) canvas, self->allocatorPtr_,
                                                                            (int) self->pixels_, 0x500);
                 canvas->background_ = &self->backgrounds_[i];
                 canvas->unk_c4      = 0;
@@ -147,7 +147,7 @@ extern "C" ARM void func_ov003_0216e2a4(Menu0216e2a4 *self) {
             Window0216e2a4 *window = self->window_;
             window->background_    = self->backgrounds_;
             window->unk_b2         = 2;
-            _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78 *) self->window_,
+            LinkArrayPrevPointers0205cf78((Struct_0205cf78 *) self->window_,
                                                                                  (Elem_0205cf78 *) self->canvases_, 2);
             self->unk_b8 = 0;
             self->unk_a8 = self->unk_60;

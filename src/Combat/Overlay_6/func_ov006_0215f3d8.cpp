@@ -11,8 +11,8 @@
 #endif
 
 struct LookupByOffset0x362_021591ecStruct;
-extern "C" unsigned short _Z32LookupByOffset_021591ec_021591ecP34LookupByOffset0x362_021591ecStruct(LookupByOffset0x362_021591ecStruct* s);
-extern "C" short _Z26FindMappedMemberId02080468Pvi(void* obj, int id);
+unsigned short LookupByOffset_021591ec_021591ec(LookupByOffset0x362_021591ecStruct* s);
+short FindMappedMemberId02080468(void* obj, int id);
 extern "C" void func_ov006_0215f4dc(void* obj);
 extern "C" void func_ov006_0215f740(void* obj);
 
@@ -52,14 +52,14 @@ extern "C" ARM void func_ov006_0215f3d8(Struct0215f3d8* obj) {
     if (moved == 0) {
         return;
     }
-    unsigned short total = _Z32LookupByOffset_021591ec_021591ecP34LookupByOffset0x362_021591ecStruct((LookupByOffset0x362_021591ecStruct*)obj);
-    short offset = obj->scroll - _Z26FindMappedMemberId02080468Pvi(*(void**)((char*)obj + LOW_REGION(0xc, 0x14)), 0x11);
+    unsigned short total = LookupByOffset_021591ec_021591ec((LookupByOffset0x362_021591ecStruct*)obj);
+    short offset = obj->scroll - FindMappedMemberId02080468(*(void**)((char*)obj + LOW_REGION(0xc, 0x14)), 0x11);
     short pos = offset + obj->cursor * 8;
     if (pos >= total) {
         pos = total - 1;
     }
     pos = pos % 8;
-    obj->scroll = _Z26FindMappedMemberId02080468Pvi(*(void**)((char*)obj + LOW_REGION(0xc, 0x14)), 0x11) + pos;
+    obj->scroll = FindMappedMemberId02080468(*(void**)((char*)obj + LOW_REGION(0xc, 0x14)), 0x11) + pos;
     func_ov006_0215f4dc(obj);
     func_ov006_0215f740(obj);
 }

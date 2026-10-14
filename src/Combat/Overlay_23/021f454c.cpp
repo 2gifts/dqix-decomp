@@ -26,7 +26,7 @@ struct Element_021f454c {
     unsigned short item6;
 };
 
-extern "C" struct Element_021f454c* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(struct Container02070e60* container, int key);
+struct Element_021f454c* SearchWithLow15Comparator02070fd0(struct Container02070e60* container, int key);
 
 extern int data_ov023_021fd888[];
 
@@ -177,7 +177,7 @@ extern "C" ARM void func_ov023_021f454c(struct Scene_021f454c* self) {
                 }
                 cur->id = detail->treasureItemIDs_[k];
                 cur->key = altId;
-                struct Element_021f454c* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(table, altId);
+                struct Element_021f454c* e = SearchWithLow15Comparator02070fd0(table, altId);
                 if (e != 0) {
                     if (e->item6 == cur->id) {
                         cur->kind = 2;
@@ -201,7 +201,7 @@ extern "C" ARM void func_ov023_021f454c(struct Scene_021f454c* self) {
             r = &rewards[j];
             if (r->count == r->specialCount) continue;
             key = r->key;
-            struct Element_021f454c* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(table, key);
+            struct Element_021f454c* e = SearchWithLow15Comparator02070fd0(table, key);
             if (e == 0) continue;
             if (IsSpecial(self->info) && altId == key) continue;
 

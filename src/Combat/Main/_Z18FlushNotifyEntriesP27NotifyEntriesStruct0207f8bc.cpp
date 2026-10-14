@@ -16,7 +16,7 @@ struct NotifyEntriesStruct0207f8bc {
 
 // KEEP-NAME
 // USA: func_0207f8bc
-extern "C" ARM int _Z18FlushNotifyEntriesP27NotifyEntriesStruct0207f8bc(struct NotifyEntriesStruct0207f8bc *self) {
+ARM int FlushNotifyEntries(struct NotifyEntriesStruct0207f8bc *self) {
 	if (self->field_1c >= 0) {
 		BackgroundLoader *loader = _ZN16BackgroundLoader11GetInstanceEv();
 		_ZN16BackgroundLoader10RemoveTaskEi(loader, self->field_1c);

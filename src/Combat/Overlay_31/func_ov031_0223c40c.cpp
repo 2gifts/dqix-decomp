@@ -10,7 +10,7 @@ extern AllocatorContext0223c40c* data_ov031_02290d38;
 extern AllocatorContext0223c40c* data_ov031_02290d38_dup;
 extern "C" void func_ov031_0223b710(int);
 extern "C" void func_ov031_0223cf70(void*);
-extern "C" void _Z32ForwardFourArgsAsStruct_0223bf2c12Args0223bf2c(Args0223bf2c);
+void ForwardFourArgsAsStruct_0223bf2c(Args0223bf2c);
 typedef void (*FreeHandle0223c40c)(int);
 
 // USA: func_ov031_0223c40c
@@ -20,6 +20,6 @@ extern "C" ARM void func_ov031_0223c40c() {
         func_ov031_0223b710(data_ov031_02290d38->queues[i]);
         i++;
     } while (i < 2);
-    ((FreeHandle0223c40c)_Z32ForwardFourArgsAsStruct_0223bf2c12Args0223bf2c)(data_ov031_02290d38->allocator);
+    ((FreeHandle0223c40c)ForwardFourArgsAsStruct_0223bf2c)(data_ov031_02290d38->allocator);
     func_ov031_0223cf70(&data_ov031_02290d38_dup);
 }

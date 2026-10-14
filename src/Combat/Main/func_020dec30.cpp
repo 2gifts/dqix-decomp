@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" void _Z31SelectMatchFnByWildcard020de3f4iiiiPcS_S_PPv(int a, int b, int c, int d, char* outA, char* outB, char* outC, void** outFunc);
+void SelectMatchFnByWildcard020de3f4(int a, int b, int c, int d, char* outA, char* outB, char* outC, void** outFunc);
 
 typedef int (*MatchFn020dec30)(void*, int, int, int);
 
@@ -25,7 +25,7 @@ extern "C" ARM int func_020dec30(void* obj, int target, int arg2, int arg3, sign
     char outB = -1;
     char outC = -1;
     void* fn = 0;
-    _Z31SelectMatchFnByWildcard020de3f4iiiiPcS_S_PPv(arg2, arg3, arg4, arg5, &outA, &outB, &outC, &fn);
+    SelectMatchFnByWildcard020de3f4(arg2, arg3, arg4, arg5, &outA, &outB, &outC, &fn);
     if (fn == 0) {
         return 0;
     }

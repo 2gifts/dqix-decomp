@@ -28,9 +28,9 @@ struct DualPlaybackState {
 
 extern DualPlaybackState data_ov016_0219d144;
 void SleepCurrentContext(unsigned int ticks);
-extern "C" RangeEntry020e58dc* _Z22FindRangeEntry020e58dcP17RangeList020e58dci(RangeList020e58dc* list, int key);
+RangeEntry020e58dc* FindRangeEntry020e58dc(RangeList020e58dc* list, int key);
 int CallIfNonNullBool_0218e708(void* object, void* destination, int stride, int mode);
-extern "C" int _Z26CallIfNonNullBool_0218e72cPv(void* object);
+int CallIfNonNullBool_0218e72c(void* object);
 extern "C" void func_ov016_0218e240(unsigned short* destination, char* text, unsigned short color, int x, int y, unsigned char centered, int outline, int limit);
 
 // USA: func_ov016_0218d0d4
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov016_0218d0d4(void* first, void* second, int captionsA
     data_ov016_0219d144.pending = 0;
     if (data_ov016_0219d144.consecutive < 2 ||
         data_ov016_0219d144.elapsed - displayed <= 1) {
-        RangeEntry020e58dc* caption = _Z22FindRangeEntry020e58dcP17RangeList020e58dci((RangeList020e58dc*)captionsAddress, displayed);
+        RangeEntry020e58dc* caption = FindRangeEntry020e58dc((RangeList020e58dc*)captionsAddress, displayed);
         unsigned short* destination;
         if (data_ov016_0219d144.bank == 0) {
             destination = (unsigned short*)0x06820000;
@@ -68,8 +68,8 @@ extern "C" ARM void func_ov016_0218d0d4(void* first, void* second, int captionsA
         }
         data_ov016_0219d144.ready = 0;
     } else {
-        _Z26CallIfNonNullBool_0218e72cPv(first);
-        _Z26CallIfNonNullBool_0218e72cPv(second);
+        CallIfNonNullBool_0218e72c(first);
+        CallIfNonNullBool_0218e72c(second);
         data_ov016_0219d144.consecutive = 0;
     }
     data_ov016_0219d144.displayed++;

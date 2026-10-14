@@ -6,9 +6,9 @@ struct StatStageStruct02088018;
 struct StatStageStruct0208806c;
 int CanAdjustStatStageBit24(struct StatStageStruct02088018* p, int decrease);
 int SetStatStageBit24(struct StatStageStruct0208806c* p, int delta);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int idx, int a, int b);
+unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 struct PackedPair_021ded48 {
@@ -46,13 +46,13 @@ extern "C" ARM void* func_ov024_021ded48(struct Obj_021ded48* obj, int unused, i
 	}
 	unsigned short sel;
 	if (applied) {
-		sel = _Z31SelectByIndexRange0to3_021da644iii(id, range->f20.c, range->f24.a);
+		sel = SelectByIndexRange0to3_021da644(id, range->f20.c, range->f24.a);
 	} else {
-		sel = _Z31SelectByIndexRange0to3_021da644iii(id, range->f24.b, range->f24.c);
+		sel = SelectByIndexRange0to3_021da644(id, range->f24.b, range->f24.c);
 	}
 	void* entry = func_ov000_0215e958(obj->field0x10);
 	if (!entry) return 0;
-	_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+	AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
 	struct Flag_021ded48* fl = (struct Flag_021ded48*)((char*)obj->field0xc + 0x1c);
 	func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, fl->flag != 0);
 	return entry;

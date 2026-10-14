@@ -10,8 +10,8 @@ extern "C" void *func_02012fe4(void);
 extern "C" int func_ov003_021725a4(void *self, void *rec);
 
 struct Struct0200fb08;
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08 *p);
-extern "C" int _Z30CheckNoConflictInArray0209890cPvS_(void *zone, void *rec);
+int NormalizeField5_0200fb08(Struct0200fb08 *p);
+int CheckNoConflictInArray0209890c(void *zone, void *rec);
 
 extern const char *data_ov003_021805bc[];
 
@@ -135,7 +135,7 @@ extern "C" ARM void func_ov003_02171fe8(Self0217 *self, int id, void *data, unsi
                 memcpy(&local.h50_, &self->wire_.tm_, 0x1c);
                 memcpy(&local.s14_, &self->wire_.s_, 6);
                 local.w6c_.v[0] |= 0x4000000;
-                int kind = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08 *) gs);
+                int kind = NormalizeField5_0200fb08((Struct0200fb08 *) gs);
                 int idx  = 0;
                 switch (kind) {
                     case 2: idx = 1; break;
@@ -179,7 +179,7 @@ extern "C" ARM void func_ov003_02171fe8(Self0217 *self, int id, void *data, unsi
             }
             char *zone = (char *) func_02012fe4();
             if (self->b718_ < 3) {
-                if (_Z30CheckNoConflictInArray0209890cPvS_(zone + 0x840, &local) != 0) {
+                if (CheckNoConflictInArray0209890c(zone + 0x840, &local) != 0) {
                     if (func_ov003_021725a4(self, &local) != 0) {
                         SlotRaw *d  = (SlotRaw *) &self->slots_[self->b718_];
                         d->name_    = ((SlotRaw *) &local)->name_;

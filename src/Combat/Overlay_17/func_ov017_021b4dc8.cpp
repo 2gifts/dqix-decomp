@@ -10,9 +10,9 @@ struct BoundedArray {
 };
 
 extern "C" char* func_02012fe4(void);
-extern "C" int _Z17GetField5cb0ValuePc(char* battleStruct);
-extern "C" int _Z17GetField5cb4ValuePc(char* battleStruct);
-extern "C" int _Z17IsInRange0201b5b0i(int monsterId);
+int GetField5cb0Value(char* battleStruct);
+int GetField5cb4Value(char* battleStruct);
+int IsInRange0201b5b0(int monsterId);
 extern "C" void func_0209c008(void* obj, struct StreamHeader* buffer, int length, int idFlag, int mulVal, int addVal);
 void ClearHalfword0x18(void* obj);
 void AppendHalfwordCapped(BoundedArray* arr, unsigned short value);
@@ -63,10 +63,10 @@ extern "C" ARM void func_ov017_021b4dc8(struct ScriptRequest_021b4dc8* request) 
         void* data;
         loader->GetLoadedFileByID(request->taskId, &data, &size);
         if (data != 0) {
-            int field5cb0 = _Z17GetField5cb0ValuePc((char*)battle);
-            int field5cb4 = _Z17GetField5cb4ValuePc((char*)battle);
+            int field5cb0 = GetField5cb0Value((char*)battle);
+            int field5cb4 = GetField5cb4Value((char*)battle);
             int scriptId = monsterId;
-            if (_Z17IsInRange0201b5b0i(monsterId)) {
+            if (IsInRange0201b5b0(monsterId)) {
                 int rank = grotto->GetFloorMonsterRank(monsterId % 20);
                 int environ = grotto->GetActiveGrottoEnviron();
                 scriptId = rank + (environ * 100 + 0x9c40);
@@ -78,7 +78,7 @@ extern "C" ARM void func_ov017_021b4dc8(struct ScriptRequest_021b4dc8* request) 
     if (request->extraEntry != 0) {
         AppendHalfwordCapped(&source->entries, request->extraEntry);
     }
-    if (_Z17IsInRange0201b5b0i(monsterId)) {
+    if (IsInRange0201b5b0(monsterId)) {
         AppendHalfwordCapped(&source->entries, 0x26);
         AppendHalfwordCapped(&source->entries, 0x27);
         AppendHalfwordCapped(&source->entries, 0x28);

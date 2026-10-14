@@ -2,7 +2,7 @@
 #include "std_library_functions.h"
 
 struct Struct021933ac { int f0; char f4; };
-extern "C" void _Z21ZeroTwoFields021933acP14Struct021933ac(struct Struct021933ac* s);
+void ZeroTwoFields021933ac(struct Struct021933ac* s);
 
 extern "C" void _Z25InitializeBrightnessStateP13GameResources(void* self);
 extern "C" unsigned int func_02029568(void* self);
@@ -63,8 +63,8 @@ extern "C" ARM void func_ov015_02193294(void* objRaw) {
     *(unsigned char*)(obj + 0x350) = 0;
 
     for (int i = 0; i < 4; i++) {
-        _Z21ZeroTwoFields021933acP14Struct021933ac((struct Struct021933ac*)(obj + 0xc4) + i);
-        _Z21ZeroTwoFields021933acP14Struct021933ac((struct Struct021933ac*)(obj + 0xe4) + i);
-        _Z21ZeroTwoFields021933acP14Struct021933ac((struct Struct021933ac*)(obj + 0x104) + i);
+        ZeroTwoFields021933ac((struct Struct021933ac*)(obj + 0xc4) + i);
+        ZeroTwoFields021933ac((struct Struct021933ac*)(obj + 0xe4) + i);
+        ZeroTwoFields021933ac((struct Struct021933ac*)(obj + 0x104) + i);
     }
 }

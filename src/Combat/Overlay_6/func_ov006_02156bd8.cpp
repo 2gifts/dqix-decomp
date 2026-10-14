@@ -115,13 +115,13 @@ struct BackgroundGraphics {
 
 extern "C" void func_ov023_021dcd90(ItemInfoWindow* window, unsigned char inMenu);
 int CountActiveEntries(ActiveEntry02046900* pac);
-extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64* background);
+void ResetList0204af64(List0204af64* background);
 void SetWord0x18ClearByte0x1f(unsigned char* background, int a);
 extern "C" void func_0204b5b4(void* background, int a);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8* background, int a, int b);
+void DispatchViaTable0204b5e8(Obj0204b5e8* background, int a, int b);
 void* FindRecordByIndex(Rec020467f0* pac, int index, void** name, int* size);
-extern "C" void _Z21DispatchByTag0204b2e0PvPc(void* background, char* file);
-extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(SelfTag0204b3a0* background, char* file);
+void DispatchByTag0204b2e0(void* background, char* file);
+void DispatchByTagLookup0204b3a0(SelfTag0204b3a0* background, char* file);
 
 extern char data_ov006_021601b6[];
 extern char data_ov006_021601cc[];
@@ -146,18 +146,18 @@ extern "C" ARM void func_ov006_02156bd8(AlchemyPot* self) {
             loader->GetLoadedFileByID(self->backgroundTask_, &pac, &pacSize);
             int count = CountActiveEntries((ActiveEntry02046900*)pac);
             BackgroundGraphics background;
-            _Z17ResetList0204af64P12List0204af64((List0204af64*)&background);
+            ResetList0204af64((List0204af64*)&background);
             SetWord0x18ClearByte0x1f((unsigned char*)&background, 0);
             background.unk_1c_0_ = 0;
             background.unk_1c_4_ = 3;
             func_0204b5b4(&background, 3);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)&background, 0, 0);
+            DispatchViaTable0204b5e8((Obj0204b5e8*)&background, 0, 0);
             for (int i = 0; i < count; i++) {
                 int size;
                 void* file = FindRecordByIndex((Rec020467f0*)pac, i, &name, &size);
                 if (file != 0) {
-                    _Z21DispatchByTag0204b2e0PvPc(&background, (char*)file);
-                    _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc((SelfTag0204b3a0*)&background, (char*)file);
+                    DispatchByTag0204b2e0(&background, (char*)file);
+                    DispatchByTagLookup0204b3a0((SelfTag0204b3a0*)&background, (char*)file);
                 }
             }
             loader->RemoveTask(self->backgroundTask_);

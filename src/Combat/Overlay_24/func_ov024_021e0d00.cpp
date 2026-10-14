@@ -7,8 +7,8 @@ void* GetActiveCombatWork(void);
 extern "C" void func_ov000_02161e30(void* work, int id, int msg, int a3);
 extern "C" void* func_ov000_0215e958(void* a0);
 void ZeroWorkBlock0x20(void* obj);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
-extern "C" void _Z15InitObj02088f68P11Obj02088f68(struct Obj02088f68* obj);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
+void InitObj02088f68(struct Obj02088f68* obj);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 struct Obj_021e0d00 { char pad0[0xc]; void* field0xc; void* field0x10; };
@@ -56,11 +56,11 @@ extern "C" ARM void* func_ov024_021e0d00(struct Obj_021e0d00* obj, int userId, i
 		entry->field0x10 = c->field0x18a;
 		entry->field0x12 = c->field0x188;
 		entry->field0x14 = c->field0x18a;
-		_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, (unsigned short)action->resultMsg);
+		AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, (unsigned short)action->resultMsg);
 		return entry;
 	}
 	c->base.currentStats_->primaryStats.currHP = 0;
-	_Z15InitObj02088f68P11Obj02088f68((struct Obj02088f68*)c->base.currentStats_);
+	InitObj02088f68((struct Obj02088f68*)c->base.currentStats_);
 	void* entry = func_ov000_0215e958(obj->field0x10);
 	if (!entry) return 0;
 	func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, 0);

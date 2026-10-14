@@ -54,8 +54,8 @@ extern "C" int func_0202c540(void* search);
 extern "C" int func_02018fbc(Player021c96c0* player, Vector3i* v);
 int* GetField0xe4IfFlag0x40(BitFlag02033f44* obj);
 struct Obj02033834;
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(Obj02033834* obj, int arg);
-extern "C" void _Z18TrySetMode02076cccPvi(void*, int);
+void SetVecYByMode02033834(Obj02033834* obj, int arg);
+void TrySetMode02076ccc(void*, int);
 
 // USA: func_ov017_021c96c0
 extern "C" ARM void func_ov017_021c96c0(int unused0, Evt021c96c0* evt, int unused2, int unused3, void* search) {
@@ -99,7 +99,7 @@ extern "C" ARM void func_ov017_021c96c0(int unused0, Evt021c96c0* evt, int unuse
         }
 
         if (angle != 0) {
-            _Z21SetVecYByMode02033834P11Obj02033834i((Obj02033834*)found.actor, angle);
+            SetVecYByMode02033834((Obj02033834*)found.actor, angle);
         }
         if (f6) {
             found.actor->field_17b = 1;
@@ -112,5 +112,5 @@ extern "C" ARM void func_ov017_021c96c0(int unused0, Evt021c96c0* evt, int unuse
         }
     }
 
-    _Z18TrySetMode02076cccPvi(found.actor, evt->kind);
+    TrySetMode02076ccc(found.actor, evt->kind);
 }

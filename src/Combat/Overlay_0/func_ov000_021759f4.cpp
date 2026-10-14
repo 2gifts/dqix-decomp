@@ -66,11 +66,11 @@ struct EventSource {
 
 extern "C" GameResources* func_ov017_0218b5b0(void);
 extern "C" struct Combatant020A36A8* func_ov017_021b8478(void* obj);
-extern "C" int _Z26MatchesActiveIndex020a36a8P17Combatant020A36A8(struct Combatant020A36A8* obj);
+int MatchesActiveIndex020a36a8(struct Combatant020A36A8* obj);
 extern "C" struct EventSource* func_ov017_021b8468(void* obj);
 extern "C" struct PartyEntry* func_ov000_02161318(void* obj, int id);
-extern "C" int _Z29HasAnyFlags_021719f8_021719f8Pi(int* obj);
-extern "C" void _Z27EnqueueEventTag125_021c9cd8h(unsigned char tag);
+int HasAnyFlags_021719f8_021719f8(int* obj);
+void EnqueueEventTag125_021c9cd8(unsigned char tag);
 extern unsigned short data_ov000_02183444[];
 
 // USA: func_ov000_021759f4
@@ -87,7 +87,7 @@ extern "C" ARM int func_ov000_021759f4(struct TeamWork* work) {
     if (work->flags & 0x400) {
         return 0;
     }
-    if (active != NULL && !_Z26MatchesActiveIndex020a36a8P17Combatant020A36A8(active)) {
+    if (active != NULL && !MatchesActiveIndex020a36a8(active)) {
         struct EventSource* source = func_ov017_021b8468(node);
         if (source != NULL) {
             return source->result;
@@ -102,7 +102,7 @@ extern "C" ARM int func_ov000_021759f4(struct TeamWork* work) {
         if (entry == NULL) {
             break;
         }
-        if (_Z29HasAnyFlags_021719f8_021719f8Pi((int*)entry) != 0 || entry->hpState[entry->stateIndex] != 100 ||
+        if (HasAnyFlags_021719f8_021719f8((int*)entry) != 0 || entry->hpState[entry->stateIndex] != 100 ||
             entry->field_0x1c != 5) {
             break;
         }
@@ -124,7 +124,7 @@ extern "C" ARM int func_ov000_021759f4(struct TeamWork* work) {
         count++;
     }
     if (count == 4 && matched != 4) {
-        _Z27EnqueueEventTag125_021c9cd8h(1);
+        EnqueueEventTag125_021c9cd8(1);
         return 1;
     }
     return 0;

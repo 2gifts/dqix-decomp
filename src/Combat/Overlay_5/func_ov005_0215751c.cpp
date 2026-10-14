@@ -51,11 +51,11 @@ extern int data_02108760;
 
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
+MemberScreen* GetField1c_021a193c(int* p);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 int CheckFlag30Or401_02157190(void* self);
 extern "C" void func_ov005_021579ec(EquipmentMenu* self, unsigned int state, unsigned char slot);
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(Struct_0205bb84* s);
+int ComputeScaledSum0205bb84(Struct_0205bb84* s);
 extern "C" int func_ov005_02158560(EquipmentMenu* self, unsigned char kind, int silent);
 extern "C" void func_ov005_021555c0(EquipmentMenu* self);
 extern "C" int func_ov005_02157ae8(EquipmentMenu* self, int member);
@@ -68,7 +68,7 @@ extern "C" ARM void func_ov005_0215751c(EquipmentMenu* self) {
         up = 1;
     if (up) {
         func_ov005_0215792c(self, 2);
-        func_ov005_021579ec(self, self->state_, _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((Struct_0205bb84*)self->cursor_));
+        func_ov005_021579ec(self, self->state_, ComputeScaledSum0205bb84((Struct_0205bb84*)self->cursor_));
         return;
     }
     int down = 0;
@@ -76,7 +76,7 @@ extern "C" ARM void func_ov005_0215751c(EquipmentMenu* self) {
         down = 1;
     if (!up) {
         GameState::GetInstance();
-        MemberScreen* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+        MemberScreen* screen = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
         if (!func_ov005_02157ae8(self, screen->member_))
             return;
         if (CheckFlag30Or401_02157190(self)) {
@@ -84,7 +84,7 @@ extern "C" ARM void func_ov005_0215751c(EquipmentMenu* self) {
                 down = 1;
             } else {
                 func_ov005_0215792c(self, 5);
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 1, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 1, 0);
                 screen->flags_ &= ~1;
                 screen->flags_ &= ~0x80;
             }
@@ -95,13 +95,13 @@ extern "C" ARM void func_ov005_0215751c(EquipmentMenu* self) {
         self->slot_ = 8;
         func_0205bb04(self->cursor_, self->slot_ - 8);
         if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80))
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 2, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 2, 0);
         else if (CheckFlag30Or401_02157190(self))
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 1, 0);
         func_ov005_021579ec(self, self->state_, self->slot_);
         return;
     }
-    if (!func_ov005_02158560(self, _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((Struct_0205bb84*)self->cursor_), 0))
+    if (!func_ov005_02158560(self, ComputeScaledSum0205bb84((Struct_0205bb84*)self->cursor_), 0))
         return;
     self->slot_ = self->kind_;
     self->flags_ |= 0x100;

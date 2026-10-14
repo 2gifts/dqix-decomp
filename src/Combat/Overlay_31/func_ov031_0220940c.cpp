@@ -17,19 +17,19 @@ struct Session0220940c {
 };
 struct Packet0220940c { unsigned char type; unsigned char field_1[2]; unsigned char lengthHigh; unsigned char lengthLow; unsigned char payload[1]; };
 struct Scratch0220940c { unsigned char padding[0x30]; unsigned char digest[0x14]; };
-extern "C" int _Z27CryptWithOffset1e0_022093f4PvS_i(void*, void*, int);
-extern "C" void _Z19InitMd5Ctx_0220afe0Pv(void*);
-extern "C" void _Z20FinalizeMd5_0220b0e0PvS_(void*, void*);
-extern "C" void _Z22InitSha1State_0220b8a0Pj(unsigned int*);
-extern "C" void _Z27FinalizeSha1Digest_0220b9acPvS_(void*, void*);
-extern "C" void _Z29IncrementByteCounter_022093d0Ph(unsigned char*);
+int CryptWithOffset1e0_022093f4(void*, void*, int);
+void InitMd5Ctx_0220afe0(void*);
+void FinalizeMd5_0220b0e0(void*, void*);
+void InitSha1State_0220b8a0(unsigned int*);
+void FinalizeSha1Digest_0220b9ac(void*, void*);
+void IncrementByteCounter_022093d0(unsigned char*);
 extern "C" void func_ov031_0220b028(void*, const void*, unsigned int);
 extern "C" void func_ov031_0220b8f4(void*, const void*, unsigned int);
 extern "C" int func_02001aec(const void*, const void*, unsigned int);
 
 // USA: func_ov031_0220940c
 extern "C" ARM int func_ov031_0220940c(Session0220940c* session, Packet0220940c* packet) {
-    int size = _Z27CryptWithOffset1e0_022093f4PvS_i(session, packet->payload, (packet->lengthHigh << 8) + packet->lengthLow);
+    int size = CryptWithOffset1e0_022093f4(session, packet->payload, (packet->lengthHigh << 8) + packet->lengthLow);
     Scratch0220940c scratch;
     int digestSize;
     switch (session->algorithm) {
@@ -37,44 +37,44 @@ extern "C" ARM int func_ov031_0220940c(Session0220940c* session, Packet0220940c*
         size -= 0x10;
         packet->lengthHigh = size >> 8;
         packet->lengthLow = size;
-        _Z19InitMd5Ctx_0220afe0Pv(session->md5);
+        InitMd5Ctx_0220afe0(session->md5);
         func_ov031_0220b028(session->md5, session->secret, 0x10);
         VectorizedMemset(scratch.padding, 0x36, 0x30);
         func_ov031_0220b028(session->md5, scratch.padding, 0x30);
         func_ov031_0220b028(session->md5, session->sequence, 8);
         func_ov031_0220b028(session->md5, packet, 1);
         func_ov031_0220b028(session->md5, &packet->lengthHigh, size + 2);
-        _Z20FinalizeMd5_0220b0e0PvS_(session->md5, scratch.digest);
-        _Z19InitMd5Ctx_0220afe0Pv(session->md5);
+        FinalizeMd5_0220b0e0(session->md5, scratch.digest);
+        InitMd5Ctx_0220afe0(session->md5);
         func_ov031_0220b028(session->md5, session->secret, 0x10);
         VectorizedMemset(scratch.padding, 0x5c, 0x30);
         func_ov031_0220b028(session->md5, scratch.padding, 0x30);
         func_ov031_0220b028(session->md5, scratch.digest, 0x10);
-        _Z20FinalizeMd5_0220b0e0PvS_(session->md5, scratch.digest);
+        FinalizeMd5_0220b0e0(session->md5, scratch.digest);
         digestSize = 0x10;
         break;
     case 5:
         size -= 0x14;
         packet->lengthHigh = size >> 8;
         packet->lengthLow = size;
-        _Z22InitSha1State_0220b8a0Pj(session->sha1);
+        InitSha1State_0220b8a0(session->sha1);
         func_ov031_0220b8f4(session->sha1, session->secret, 0x14);
         VectorizedMemset(scratch.padding, 0x36, 0x28);
         func_ov031_0220b8f4(session->sha1, scratch.padding, 0x28);
         func_ov031_0220b8f4(session->sha1, session->sequence, 8);
         func_ov031_0220b8f4(session->sha1, packet, 1);
         func_ov031_0220b8f4(session->sha1, &packet->lengthHigh, size + 2);
-        _Z27FinalizeSha1Digest_0220b9acPvS_(session->sha1, scratch.digest);
-        _Z22InitSha1State_0220b8a0Pj(session->sha1);
+        FinalizeSha1Digest_0220b9ac(session->sha1, scratch.digest);
+        InitSha1State_0220b8a0(session->sha1);
         func_ov031_0220b8f4(session->sha1, session->secret, 0x14);
         VectorizedMemset(scratch.padding, 0x5c, 0x28);
         func_ov031_0220b8f4(session->sha1, scratch.padding, 0x28);
         func_ov031_0220b8f4(session->sha1, scratch.digest, 0x14);
-        _Z27FinalizeSha1Digest_0220b9acPvS_(session->sha1, scratch.digest);
+        FinalizeSha1Digest_0220b9ac(session->sha1, scratch.digest);
         digestSize = 0x14;
         break;
     }
     if (func_02001aec(packet->payload + size, scratch.digest, digestSize)) session->error = 9;
-    _Z29IncrementByteCounter_022093d0Ph(session->counter);
+    IncrementByteCounter_022093d0(session->counter);
     return size + 5;
 }

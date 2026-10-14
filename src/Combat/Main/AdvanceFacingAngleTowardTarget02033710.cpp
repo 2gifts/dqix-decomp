@@ -2,12 +2,12 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
+int fix32ReduceAngle0To2Pi(int angle);
 struct S_377d4;
 extern "C" int _ZNK8Object3D25IsTransitioningAnimationsEv(struct S_377d4* obj);
 struct Bytes02033b88;
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
-extern "C" int _Z24fix32SignedAngleDistanceii(int a, int b);
+int fix32SignedAngleDistance(int a, int b);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 extern char data_020efa3c;
@@ -17,16 +17,16 @@ struct Flags0xc4_33710 { unsigned short low : 15; unsigned short hi : 1; };
 
 struct Obj02033710 {
     char pad0[0x14];
-    char* name;             // 0x14
-    char pad1[0x38];        // 0x18
-    struct Vec3_33710 pos;  // 0x50
-    char pad2[0x52];        // 0x5c
-    short angleAE;          // 0xae
-    short scaleB0;           // 0xb0
-    char pad3[0xc];         // 0xb2
-    unsigned char stateBe;  // 0xbe
-    char pad4[5];           // 0xbf
-    struct Flags0xc4_33710 flagsC4; // 0xc4
+    char* name;
+    char pad1[0x38];
+    struct Vec3_33710 pos;
+    char pad2[0x52];
+    short angleAE;
+    short scaleB0;
+    char pad3[0xc];
+    unsigned char stateBe;
+    char pad4[5];
+    struct Flags0xc4_33710 flagsC4;
 };
 
 // USA: func_02033710
@@ -38,7 +38,7 @@ ARM void AdvanceFacingAngleTowardTarget(struct Obj02033710* obj) {
     unsigned int scaleCount = battleStruct->GetTickCount();
     int scaled = obj->scaleB0 * (int)scaleCount;
     struct Vec3_33710 tmp = obj->pos;
-    int d = _Z24fix32SignedAngleDistanceii(tmp.y, obj->angleAE);
+    int d = fix32SignedAngleDistance(tmp.y, obj->angleAE);
     int atTarget = 1;
     if (d > 0) {
         if (d < scaled) {
@@ -56,7 +56,7 @@ ARM void AdvanceFacingAngleTowardTarget(struct Obj02033710* obj) {
             atTarget = 0;
         }
     }
-    tmp.y = _Z22fix32ReduceAngle0To2Pii(tmp.y);
+    tmp.y = fix32ReduceAngle0To2Pi(tmp.y);
     _ZN8Vector3iaSERKS_((int*)&obj->pos, (int*)&tmp);
     if (atTarget) {
         if (obj->flagsC4.hi) {

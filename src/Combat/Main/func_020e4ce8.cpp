@@ -8,7 +8,7 @@ struct Description020e4ce8 { int field_0x0; int field_0x4; union { unsigned int 
 struct Detail020e4ce8 { char pad[0x14]; void* stats; Packed020e4ce8 bits; };
 struct Source020e4ce8 { char pad[0x144]; Detail020e4ce8* detail; char pad148[4]; char name[1]; };
 struct Struct0200fb08;
-extern "C" unsigned char _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08*);
+unsigned char NormalizeField5_0200fb08(Struct0200fb08*);
 int StringLength(const char*);
 extern "C" void func_020e4b34(void*, const char*, void*, unsigned int, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char);
 // USA: func_020e4ce8
@@ -26,7 +26,7 @@ extern "C" ARM void func_020e4ce8(Description020e4ce8* dest, Source020e4ce8* src
         if (count && name[count - 1] >= 'A' && name[count - 1] <= 'Z') suffix = name[count - 1];
         else suffix = 0;
         if (suffix && flag) {
-            if (_Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)GameState::GetInstance()) == 1) {
+            if (NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance()) == 1) {
                 dest->field_0x8.bits.field_0x0_12 = 0;
                 dest->field_0x8.bits.field_0x0_0 = 0;
             }

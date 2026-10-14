@@ -6,42 +6,42 @@ int CollectCombatantsWithFlag0x1000(GameState* battleStruct, unsigned char* out)
 extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(GameObject* obj, int a, int b);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* search);
-extern "C" void _Z27EnqueueEventTag147_021cdaa0v(void);
-extern "C" int _Z25CheckByteAtIndex_021c5bf8ii(int index, int key);
+void EnqueueEventTag147_021cdaa0(void);
+int CheckByteAtIndex_021c5bf8(int index, int key);
 extern "C" void _Z24MaybeResetEntry_021c5e28is(int id, int val);
 extern "C" void func_ov017_021c5a8c(int a, int key);
-extern "C" int _Z30IsValidCombatantValue_021c5a1ci(int val);
+int IsValidCombatantValue_021c5a1c(int val);
 void* GetData02108ea8(void);
 extern "C" int func_0207d7f4(void* entries, unsigned short id, int charId, int flag,
                              signed char field4, unsigned short field2, unsigned char field5);
 extern "C" int func_ov017_021c5c5c(int index, int id, int arg);
 extern "C" void func_ov017_021c5b44(unsigned char arg0, int combatantId, unsigned int arg2, unsigned char arg3, unsigned char arg4);
 extern "C" void func_0207dcf0(unsigned short id);
-extern "C" GameObject* _Z32FindCombatantByField16a_021a278cPvi(void* base, int val);
-extern "C" void _Z18TrySetMode02076cccPvi(void* obj, int mode);
+GameObject* FindCombatantByField16a_021a278c(void* base, int val);
+void TrySetMode02076ccc(void* obj, int mode);
 struct Event021c530c;
 extern "C" Event021c530c* func_ov017_021b8478(void* node);
 int IsField0Null(void** list);
 struct Src021c5f00 { unsigned short w0; unsigned short w2; unsigned char b4; unsigned char b5; unsigned char b6; };
-extern "C" void _Z26EnqueueEventTag63_021c5f00P11Src021c5f00(Src021c5f00* src);
+void EnqueueEventTag63_021c5f00(Src021c5f00* src);
 struct ListHead02046b38;
 struct ListNode02046b38;
 int ListContainsNode(struct ListHead02046b38* list, struct ListNode02046b38* target);
 extern "C" void func_ov017_021b6f18(void* node);
-extern "C" void _Z19InitStruct_02196c08Ph(unsigned char* obj);
+void InitStruct_02196c08(unsigned char* obj);
 extern "C" bool func_ov017_021b6e70(void* obj, int combatantId);
 extern "C" void func_ov017_021b7104(void* node, void* src);
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 extern "C" void func_ov017_021a7a74(void* unused, void* src);
-extern "C" int _Z28HasMatchingHalfword_0219735cPht(unsigned char* obj, unsigned short key);
-extern "C" void _Z24EnqueueHalfword_021972f8Pvt(void* obj, unsigned short val);
+int HasMatchingHalfword_0219735c(unsigned char* obj, unsigned short key);
+void EnqueueHalfword_021972f8(void* obj, unsigned short val);
 struct ListHead02046b60;
 int ListContainsId(struct ListHead02046b60* list, int id);
-extern "C" unsigned short _Z18GetFieldA_021bb9f4Pv(void* obj);
-extern "C" short _Z20GetField14e_021bb9fcPv(void* obj);
-extern "C" void _Z18SetFieldA_021bb9ecPvt(void* obj, unsigned short v);
+unsigned short GetFieldA_021bb9f4(void* obj);
+short GetField14e_021bb9fc(void* obj);
+void SetFieldA_021bb9ec(void* obj, unsigned short v);
 extern "C" void* func_02012fe4(void);
 
 struct Cmd021c530c {
@@ -177,16 +177,16 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
     }
 
     if (func_0202c508(search)) {
-        _Z27EnqueueEventTag147_021cdaa0v();
+        EnqueueEventTag147_021cdaa0();
         if (!IsSpecialId(cmd->id)) {
             if (cmd->field9 != 0) {
-                if (_Z25CheckByteAtIndex_021c5bf8ii(index, cmd->id) == 0) {
+                if (CheckByteAtIndex_021c5bf8(index, cmd->id) == 0) {
                     _Z24MaybeResetEntry_021c5e28is(index, cmd->id);
                 } else {
                     func_ov017_021c5a8c(index, cmd->id);
                 }
-            } else if (_Z30IsValidCombatantValue_021c5a1ci(cmd->id)) {
-                if (_Z25CheckByteAtIndex_021c5bf8ii(index, cmd->id) == 0) {
+            } else if (IsValidCombatantValue_021c5a1c(cmd->id)) {
+                if (CheckByteAtIndex_021c5bf8(index, cmd->id) == 0) {
                     if (!func_0202c508(func_0202ae18())) {
                         ok = false;
                     } else {
@@ -199,9 +199,9 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
                         func_ov017_021c5b44(cmd->field8, cmd->id, -1, cmd->fieldc, cmd->field10);
                     }
                     func_0207dcf0(cmd->id);
-                    resetTarget = _Z32FindCombatantByField16a_021a278cPvi(work, cmd->id);
+                    resetTarget = FindCombatantByField16a_021a278c(work, cmd->id);
                     if (resetTarget != NULL) {
-                        _Z18TrySetMode02076cccPvi(resetTarget, 9);
+                        TrySetMode02076ccc(resetTarget, 9);
                     }
                 } else {
                     func_ov017_021c5a8c(index, cmd->id);
@@ -257,7 +257,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
             } else {
                 src.b4 = 0;
             }
-            _Z26EnqueueEventTag63_021c5f00P11Src021c5f00(&src);
+            EnqueueEventTag63_021c5f00(&src);
 
             if (state == 1) {
                 field10 = cmd->field10;
@@ -271,7 +271,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
                 if (!ListContainsNode((ListHead02046b38*)list2, (ListNode02046b38*)node2)) {
                     func_ov017_021b6f18(node2);
                     Desc021c530c desc;
-                    _Z19InitStruct_02196c08Ph((unsigned char*)&desc);
+                    InitStruct_02196c08((unsigned char*)&desc);
                     desc.field0 = 0;
                     desc.field1 = field8;
                     desc.field4 = cid;
@@ -290,7 +290,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
                     leader2->fieldB2 = 0;
                 }
             } else if (state == 2 || state == 0) {
-                _Z19InitStruct_02196c08Ph((unsigned char*)&event);
+                InitStruct_02196c08((unsigned char*)&event);
                 event.field0 = 1;
                 event.field1 = cmd->field8;
                 event.field4 = cmd->id;
@@ -303,9 +303,9 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
                     func_ov017_021a7a74(work, &event);
                 }
             }
-        } else if (_Z30IsValidCombatantValue_021c5a1ci(id)) {
-            if (!_Z28HasMatchingHalfword_0219735cPht(work, cmd->id)) {
-                _Z24EnqueueHalfword_021972f8Pvt(work, cmd->id);
+        } else if (IsValidCombatantValue_021c5a1c(id)) {
+            if (!HasMatchingHalfword_0219735c(work, cmd->id)) {
+                EnqueueHalfword_021972f8(work, cmd->id);
                 queued = func_ov017_021c5c5c(index, cmd->id, cmd->field8);
                 Src021c5f00 src;
                 src.w0 = cmd->id;
@@ -313,19 +313,19 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
                 src.b4 = queued;
                 src.b5 = 0;
                 src.b6 = 0;
-                _Z26EnqueueEventTag63_021c5f00P11Src021c5f00(&src);
+                EnqueueEventTag63_021c5f00(&src);
                 if (queued) {
                     func_ov017_021c5b44(cmd->field8, cmd->id, -1, cmd->fieldc, cmd->field10);
                 } else {
-                    modeTarget = _Z32FindCombatantByField16a_021a278cPvi(work, cmd->id);
+                    modeTarget = FindCombatantByField16a_021a278c(work, cmd->id);
                     if (modeTarget != NULL) {
-                        _Z18TrySetMode02076cccPvi(modeTarget, 9);
+                        TrySetMode02076ccc(modeTarget, 9);
                     }
                 }
             }
         } else {
-            if (!_Z28HasMatchingHalfword_0219735cPht(work, cmd->id)) {
-                _Z24EnqueueHalfword_021972f8Pvt(work, cmd->id);
+            if (!HasMatchingHalfword_0219735c(work, cmd->id)) {
+                EnqueueHalfword_021972f8(work, cmd->id);
             }
             plainId = cmd->id;
             if (plainId < 1) {
@@ -341,7 +341,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
                 src.w2 = cmd->field6;
                 src.b4 = 0;
                 src.b5 = 0;
-                _Z26EnqueueEventTag63_021c5f00P11Src021c5f00(&src);
+                EnqueueEventTag63_021c5f00(&src);
             }
         }
         return;
@@ -352,9 +352,9 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
     fieldObj = ctx3->obj734;
     found = 0;
     if (ListContainsId((ListHead02046b60*)list3, 4)) {
-        if (_Z18GetFieldA_021bb9f4Pv(fieldObj) == 5 && cmd->id == _Z20GetField14e_021bb9fcPv(fieldObj) + 0x8005) {
-            _Z18SetFieldA_021bb9ecPvt(fieldObj, 6);
-            func_ov017_021c5b44(cmd->field8, cmd->id, _Z20GetField14e_021bb9fcPv(fieldObj), cmd->fieldc, cmd->field10);
+        if (GetFieldA_021bb9f4(fieldObj) == 5 && cmd->id == GetField14e_021bb9fc(fieldObj) + 0x8005) {
+            SetFieldA_021bb9ec(fieldObj, 6);
+            func_ov017_021c5b44(cmd->field8, cmd->id, GetField14e_021bb9fc(fieldObj), cmd->fieldc, cmd->field10);
             found = 1;
         }
     } else {
@@ -365,7 +365,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
         }
         if (combatant != NULL) {
             if (IsField0Null((void**)list3) && combatant->obj3D_.GetField06() == GetZoneId(zoneInfo)) {
-                func_ov017_021c5b44(cmd->field8, cmd->id, _Z20GetField14e_021bb9fcPv(fieldObj), cmd->fieldc, cmd->field10);
+                func_ov017_021c5b44(cmd->field8, cmd->id, GetField14e_021bb9fc(fieldObj), cmd->fieldc, cmd->field10);
                 found = 1;
             } else if (combatant->obj3D_.GetField06() == GetZoneId(zoneInfo)) {
                 list1 = ctx3->nodeB14;
@@ -385,5 +385,5 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
     src.w2 = cmd->field6;
     src.b4 = found;
     src.b5 = 1;
-    _Z26EnqueueEventTag63_021c5f00P11Src021c5f00(&src);
+    EnqueueEventTag63_021c5f00(&src);
 }

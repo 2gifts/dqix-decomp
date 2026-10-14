@@ -2,13 +2,13 @@
 #include <globaldefs.h>
 
 extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" void* _Z19GetActiveCombatWorkv();
-extern "C" void* _Z18GetSlotPtr02160f20Pv(void* work);
+void* GetActiveCombatWork();
+void* GetSlotPtr02160f20(void* work);
 extern "C" void* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int idx);
 extern "C" void* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx);
 extern "C" void* _ZN9GameState19GetCombatantByIndexEi(void* gs, int idx);
 extern "C" int func_ov025_021ed380(char* obj, unsigned short id, short val2, int type, int val3, short val4, unsigned short val5);
-extern "C" void _Z30SetShortArrayEntry128_021ed350Pcit(char* obj, int idx, unsigned short val);
+void SetShortArrayEntry128_021ed350(char* obj, int idx, unsigned short val);
 extern "C" void* _Z24SearchBothTables02079e2cPci(void* data, int id);
 
 struct Slot021ea474 {
@@ -40,7 +40,7 @@ struct Entry021ea474 {
 extern "C" ARM void func_ov025_021ea474(char* self) {
     if (*(int*)(self + 0x1c4) & 1) return;
     void* gs = _ZN9GameState11GetInstanceEv();
-    Slot021ea474* slot = (Slot021ea474*)_Z18GetSlotPtr02160f20Pv(_Z19GetActiveCombatWorkv());
+    Slot021ea474* slot = (Slot021ea474*)GetSlotPtr02160f20(GetActiveCombatWork());
     if (slot != 0) {
         Node021ea474* first = (Node021ea474*)_Z22GetNodeAtIndex02160094P12List02160094i(slot, 0);
         int who = 0;
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov025_021ea474(char* self) {
         }
         func_ov025_021ed380(self + 0x5e8, slot->msgId, who, 0, 0, -1, 0);
         if (slot->msgId == 0xfa) {
-            _Z30SetShortArrayEntry128_021ed350Pcit(self + 0x5e8, (unsigned short)(*(unsigned char*)(self + 0x738) - 1), 0x1130);
+            SetShortArrayEntry128_021ed350(self + 0x5e8, (unsigned short)(*(unsigned char*)(self + 0x738) - 1), 0x1130);
             func_ov025_021ed380(self + 0x5e8, 0x1e0, who, 0, 0, -1, 100);
         }
         Entry021ea474* e = (Entry021ea474*)_Z24SearchBothTables02079e2cPci(GetData02108e10(), (short)slot->type);

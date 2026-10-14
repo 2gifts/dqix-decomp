@@ -3,7 +3,7 @@
 struct Obj02033874;
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" void func_02048cf0(void* obj, int flag);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(struct Obj02033874* obj, int arg);
+void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
 
 struct Triple02049d6c { unsigned int v[3]; };
 extern "C" const struct Triple02049d6c data_020e7b18;
@@ -33,5 +33,5 @@ extern "C" ARM void func_02049d6c(struct Obj02049d6c* self) {
     t.v[2] = self->sub->fc;
     unsigned int y = self->sub->f8;
     _ZN8Vector3iaSERKS_((int*)self->vec44, (int*)&t);
-    _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)self, y);
+    SetVecYFromValue02033874((struct Obj02033874*)self, y);
 }

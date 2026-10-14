@@ -45,22 +45,22 @@ struct ListMenu0217dd60 {
     char names[4];
 };
 
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24*, unsigned char, unsigned char);
-extern "C" void _Z23SetChannelBFlag0205cf04Pv(void*);
-extern "C" void _Z23SetChannelAFlag0205cef8Pv(void*);
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24*, unsigned char, unsigned char);
+void SetChannelBFlag0205cf04(void*);
+void SetChannelAFlag0205cef8(void*);
+int GetGlobalField0x1c020421a0();
 extern "C" void func_02012fe4();
 extern "C" void __clear(void* buf, int n);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 void AppendNameTag(char* dst, int n, const char* name);
-extern "C" void _Z20AppendString02042058PcPKc(char* dst, const char* src);
+void AppendString02042058(char* dst, const char* src);
 unsigned char* GetElementByB4IfAbsent(struct Struct_0205d81c* s, int key);
 void SetField0xd8State(unsigned char* elem, int state);
 void SetByte0xd9AndFlag0x2(unsigned char* elem, unsigned char value);
 void SetByte0xdaAndFlag0x2(unsigned char* elem, int value);
 extern "C" void func_0205d304(void* window, char* buf, int a, int b, int c, int d, int e, int f);
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(struct Struct_0205ba68* t, int a, int b, int c);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node0205bacc* n, int value);
+void SetupPointerTable0205ba68(struct Struct_0205ba68* t, int a, int b, int c);
+void SetField0AndPropagate0205bacc(struct Node0205bacc* n, int value);
 
 extern const char data_ov003_02180c7f[];
 
@@ -68,8 +68,8 @@ extern const char data_ov003_02180c7f[];
 extern "C" ARM void func_ov003_0217dd60(struct ListMenu0217dd60* menu) {
     char buf[0x400];
     func_02012fe4();
-    _Z26GetGlobalField0x1c020421a0v();
-    _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24*)menu->window, 0, 1);
+    GetGlobalField0x1c020421a0();
+    FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)menu->window, 0, 1);
     int field10Value = menu->field10;
     menu->window->fieldb1 = 0;
     short scaled = (short)(field10Value >> 3);
@@ -99,8 +99,8 @@ extern "C" ARM void func_ov003_0217dd60(struct ListMenu0217dd60* menu) {
         w->a2 = 12;
     }
     menu->window->fieldb5 = 1;
-    _Z23SetChannelBFlag0205cf04Pv(menu->window);
-    _Z23SetChannelAFlag0205cef8Pv(menu->window);
+    SetChannelBFlag0205cf04(menu->window);
+    SetChannelAFlag0205cef8(menu->window);
     int end;
     int i;
     int page = menu->window->page;
@@ -110,10 +110,10 @@ extern "C" ARM void func_ov003_0217dd60(struct ListMenu0217dd60* menu) {
         end = menu->itemCount;
     }
     for (i = page * 6; i < end; i++) {
-        const char* name = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)menu->names, (short)(menu->items[i] + 100));
+        const char* name = (const char*)GetFieldByKey020e0434((struct Container020e0310*)menu->names, (short)(menu->items[i] + 100));
         AppendNameTag(buf, i % 6, name);
         if (i != end - 1) {
-            _Z20AppendString02042058PcPKc(buf, data_ov003_02180c7f);
+            AppendString02042058(buf, data_ov003_02180c7f);
         }
     }
     if (menu->field32 > 1) {
@@ -133,11 +133,11 @@ extern "C" ARM void func_ov003_0217dd60(struct ListMenu0217dd60* menu) {
     struct ListWindow0217dd60* window = menu->window;
     window->field8 = field32;
     window->field58 = field32;
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68*)((char*)window + 4), 1, 6, 0);
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68*)((char*)window + 0x54), 1, 6, 0);
+    SetupPointerTable0205ba68((struct Struct_0205ba68*)((char*)window + 4), 1, 6, 0);
+    SetupPointerTable0205ba68((struct Struct_0205ba68*)((char*)window + 0x54), 1, 6, 0);
     unsigned char itemCount = menu->itemCount;
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)((char*)window + 4), itemCount);
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)((char*)window + 0x54), itemCount);
+    SetField0AndPropagate0205bacc((struct Node0205bacc*)((char*)window + 4), itemCount);
+    SetField0AndPropagate0205bacc((struct Node0205bacc*)((char*)window + 0x54), itemCount);
     window->field94 = 1;
     window->field95 = 1;
 }

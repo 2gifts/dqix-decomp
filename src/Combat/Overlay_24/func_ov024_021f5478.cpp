@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Out0215fb54 { int x0; int x1; };
-extern "C" int _Z23FindRecordByKey0215fb54isP11Out0215fb54(int unused, short key, Out0215fb54* out);
+int FindRecordByKey0215fb54(int unused, short key, Out0215fb54* out);
 void* GetActiveCombatWork(void);
 extern "C" void* _Z26FindNodeByShortKey02162d88Pvs(void* obj, int key);
 
@@ -29,7 +29,7 @@ extern "C" ARM int func_ov024_021f5478(struct Obj_021f5478* obj, int id, struct 
         Out0215fb54 out;
         out.x1 = data_ov024_021fea1c[37].x1;
         out.x0 = data_ov024_021fea1c[37].x0;
-        int count = _Z23FindRecordByKey0215fb54isP11Out0215fb54(obj->field0, action->key, &out);
+        int count = FindRecordByKey0215fb54(obj->field0, action->key, &out);
         for (int i = 0; i < count; i++) {
             if (!_Z26FindNodeByShortKey02162d88Pvs(work, (&out.x0)[i])) return 0;
         }

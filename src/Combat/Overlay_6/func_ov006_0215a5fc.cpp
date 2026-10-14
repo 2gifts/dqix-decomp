@@ -21,7 +21,7 @@ int GetWord0x0(int* obj);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
 extern "C" int _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(void*, int);
 extern "C" void _Z11SetFogStateijjt(int, unsigned int, unsigned int, short);
-extern "C" void _Z15Set3DClearColoriiiii(int, int, int, int, int);
+void Set3DClearColor(int, int, int, int, int);
 extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(void*, const char*, const char*, void*);
 extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(void*, int);
 extern "C" void _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(void*, int, void**, unsigned int*);
@@ -46,31 +46,31 @@ extern "C" void func_0204b174(void*, void*, void*, unsigned int);
 extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(void*, void*);
 extern "C" void func_0204c684(void*);
 extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(void*, void*, void*, unsigned int);
-extern "C" void _Z20ClearFields_021e20c0Pv(void*);
+void ClearFields_021e20c0(void*);
 extern "C" void func_ov023_021e20f0(void*, void*, void*, unsigned int);
 extern "C" void* func_ov006_02157368(void*, int);
 extern "C" void func_0205a528(void*, void*, void*, void*);
 extern "C" void _Z18InitStruct0205a444Pc(const char*);
-extern "C" void _Z10Zero4BytesPv(void*);
+void Zero4Bytes(void*);
 extern "C" void func_020e5604(void*, void*, void*, unsigned int);
 extern "C" void func_0207f84c(void*);
 extern "C" void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(void*, int, int, int);
 extern "C" int func_0207f9f4(void*);
-extern "C" void _Z19DispatchEntryOp0x10Pvi(void*, int);
+void DispatchEntryOp0x10(void*, int);
 extern "C" void _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(void*, void*, int);
-extern "C" void _Z18DispatchEntryOp0x8Pvi(void*, int);
+void DispatchEntryOp0x8(void*, int);
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int*, int, int, int, int);
 extern "C" void func_ov006_02158de0(void*);
 extern "C" void func_ov006_02153744(void*, void*, void*, int);
 extern "C" void _Z28FilterAndSortEntries02071ffcP17Container02071ffciiisPs(void*, int, int, int, short, short*);
-extern "C" void _Z30ComputeField_02158cac_02158cacPv(void*);
+void ComputeField_02158cac_02158cac(void*);
 extern "C" void func_ov006_02153c60(void*, int, unsigned short);
 extern "C" void func_ov006_0215373c(void*, void*);
 extern "C" void _Z24SetEntryFlag0x2ByShortIdP19StatusOwner02081164ii(void*, int, int);
 extern "C" void func_020813ec(void*, int);
 extern "C" void* _Z21FindElementByByte0xc4P7Obj2081i(void*, int);
 extern "C" void __clear(void*, int);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
 extern "C" void func_02046608(void*, int, void*, void*, int, int, int);
 extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(void*, int, void*);
@@ -177,7 +177,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
             _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(&data_02109bf4, 8);
         }
         _Z11SetFogStateijjt(0, 0, 0, 0);
-        _Z15Set3DClearColoriiiii(0, 0, 0x7fff, 0, 0);
+        Set3DClearColor(0, 0, 0x7fff, 0, 0);
         FontBankLoader* g = GetGlobal02109400();
         BlankFunction02094b40(g);
         BlankFunction02094b34(g, 0x6c, 0x1fd, 0, 0);
@@ -302,7 +302,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
             if (f.c9d != 0) {
                 void* alloc = obj->alloc;
                 _ZN13SafeAllocator5ResetEv((char*)alloc + 0x78);
-                _Z20ClearFields_021e20c0Pv((char*)obj + 0x100);
+                ClearFields_021e20c0((char*)obj + 0x100);
                 func_ov023_021e20f0((char*)obj + 0x100, (char*)alloc + 0x78, f.c9d, f.c9s);
                 unsigned char* e = (unsigned char*)func_ov006_02157368((char*)obj + 0x100, 1);
                 if (e != 0) {
@@ -366,7 +366,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
             if (f.cd != 0) {
                 void* alloc = obj->alloc;
                 _ZN13SafeAllocator5ResetEv((char*)alloc + 0x28);
-                _Z10Zero4BytesPv((char*)obj + 0x170);
+                Zero4Bytes((char*)obj + 0x170);
                 func_020e5604((char*)obj + 0x170, (char*)alloc + 0x28, f.cd, f.cs);
             }
             _ZN16BackgroundLoader10RemoveTaskEi(loader, obj->f354);
@@ -392,7 +392,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
         }
     }
     else if (st == 0x10) {
-        _Z19DispatchEntryOp0x10Pvi(obj->f14, 1);
+        DispatchEntryOp0x10(obj->f14, 1);
         {
             Node14* n2 = (Node14*)obj->f14;
             n2->f2c = obj->f1c;
@@ -400,8 +400,8 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
         }
         _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(obj->f14, obj->f20, 7);
         ((Node14*)obj->f14)->f3a = 1;
-        _Z18DispatchEntryOp0x8Pvi(obj->f14, 0x20);
-        _Z18DispatchEntryOp0x8Pvi(obj->f14, 0x3e);
+        DispatchEntryOp0x8(obj->f14, 0x20);
+        DispatchEntryOp0x8(obj->f14, 0x3e);
         volatile unsigned short* bg = (volatile unsigned short*)0x04001008;
         bg[0] = bg[0] & ~3;
         bg[1] = (bg[1] & ~3) | 1;
@@ -421,7 +421,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
         int v = obj->f14c;
         obj->f2c = v;
         obj->f30 = v;
-        _Z30ComputeField_02158cac_02158cacPv(obj);
+        ComputeField_02158cac_02158cac(obj);
         func_ov006_02153c60((char*)obj + 0x74, obj->f38, 0x1d7);
         func_ov006_0215373c((char*)obj + 0x74, (char*)obj + 0x14c);
         if ((obj->f394 & 2) == 0) {
@@ -435,7 +435,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
                 cv->fba = 0x10;
             }
             __clear(f.buf, 0x400);
-            void* g = _Z26GetGlobalField0x1c020421a0v();
+            void* g = GetGlobalField0x1c020421a0();
             void* r = _Z21GetFieldByKey020e0434P17Container020e0310i((char*)obj + 0x158, 0);
             func_02046608(g, 0xc, r, f.buf, 0xe3, 0, 1);
             _Z26SetEntryFirstField02080f8cP17Container02080f8cii(obj->f14, 1, f.buf);

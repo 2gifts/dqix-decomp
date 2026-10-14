@@ -41,7 +41,7 @@ void* GetFieldAt0x150(unsigned char* obj);
 extern "C" void func_02083e28(void* data, int arg);
 extern "C" void func_ov003_02167e28(Menu_02167b34* menu, BaseCombatStats* stats, int flag, unsigned char index, int byteValue, int halfValue, int wordValue);
 extern "C" void func_ov003_02167fa4(Menu_02167b34* menu, int flag, unsigned char* table);
-extern "C" void _Z31SetEntryFieldsForRange_02168088P15Wrapper02168088Pi(struct Wrapper02168088* obj, int* arr);
+void SetEntryFieldsForRange_02168088(struct Wrapper02168088* obj, int* arr);
 extern "C" void func_020813ec(void* list, int arg);
 
 static inline BaseCombatStats* GetBaseStats(GameObject* c) { SDK_NULL_ASSERT(c); return c->baseStats_; }
@@ -67,6 +67,6 @@ extern "C" ARM void func_ov003_02167b34(Menu_02167b34* menu) {
     values[9] = combatant->baseStats_->primaryStats.attack;
     values[10] = combatant->baseStats_->primaryStats.defense;
     values[11] = data->value9;
-    _Z31SetEntryFieldsForRange_02168088P15Wrapper02168088Pi((struct Wrapper02168088*)menu, values);
+    SetEntryFieldsForRange_02168088((struct Wrapper02168088*)menu, values);
     func_020813ec(menu->list, 0);
 }

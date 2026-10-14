@@ -6,7 +6,7 @@ extern BlockedContextList data_027e0060;
 
 // KEEP-NAME
 // USA: func_020c6954
-extern "C" ARM void _Z16WaitForInterruptbj(bool onlySubsequent, unsigned int mask) {
+ARM void WaitForInterrupt(bool onlySubsequent, unsigned int mask) {
     DTCMData *dtcm = &DTCM_DATA;
     int priorState = DisableIRQInterrupts();
 

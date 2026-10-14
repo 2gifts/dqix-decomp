@@ -5,8 +5,8 @@
 struct ArrayContainsByteStruct;
 int ArrayContainsByte(ArrayContainsByteStruct *arr, int value);
 int CheckField0NonZero(int *p);
-extern "C" int _Z36HasPositiveField256Short178_02154b94Pvi(void *self, int id);
-extern "C" int _Z34HasPositiveField304Short4_02154a34Pvi(void *self, int id);
+int HasPositiveField256Short178_02154b94(void *self, int id);
+int HasPositiveField304Short4_02154a34(void *self, int id);
 extern "C" int *func_0202ae18(void);
 extern "C" void func_ov002_02153e90(char *entry);
 extern "C" int func_ov002_02154a6c(char *self, int id, int arg);
@@ -52,11 +52,11 @@ extern "C" ARM int func_ov002_02154230(char *base, struct Act02154230 *act, int 
             rec->state = 1;
             continue;
         }
-        if (_Z36HasPositiveField256Short178_02154b94Pvi(base, id)) {
+        if (HasPositiveField256Short178_02154b94(base, id)) {
             rec->state = 2;
             continue;
         }
-        if (_Z34HasPositiveField304Short4_02154a34Pvi(base, id)) continue;
+        if (HasPositiveField304Short4_02154a34(base, id)) continue;
         int amount       = 0;
         unsigned char ok = 0;
         GameObject *m    = GetCombatantWithFlag0x100(gs, id);

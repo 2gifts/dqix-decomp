@@ -3,7 +3,7 @@
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 struct Vec3_020407c4 { unsigned int v[3]; };
 struct Self020407c4;
-extern "C" void _Z23FillVec3Default020407c4P13Vec3_020407c4P12Self020407c4(Vec3_020407c4* dst, Self020407c4* n);
+void FillVec3Default020407c4(Vec3_020407c4* dst, Self020407c4* n);
 
 struct Entry_021644c8 { int type; char pad[8]; void* field_c; };
 
@@ -27,7 +27,7 @@ extern "C" ARM int func_ov001_021644c8(Entry_021644c8* table, int index, int* ds
             Vec3_020407c4 tmp;
             member = entry->field_c;
             if (member == 0) return 0;
-            _Z23FillVec3Default020407c4P13Vec3_020407c4P12Self020407c4(&tmp, (Self020407c4*)member);
+            FillVec3Default020407c4(&tmp, (Self020407c4*)member);
             _ZN8Vector3iaSERKS_(dst, (int*)&tmp);
             return 1;
         }

@@ -15,7 +15,7 @@ void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
 void SetupAndDispatch0205c904(unsigned char* p, int a1);
 struct Container0205a330;
 void IterateEntries0205a330(struct Container0205a330* c, int arg);
-extern "C" int _Z35CheckGlobalObjState2AndInit0205cde8Ph(unsigned char* p);
+int CheckGlobalObjState2AndInit0205cde8(unsigned char* p);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 int GetScaledSumIfActive0205cecc(void* s);
 int CallFunc0205c570AtField0x1c(void* obj);
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov020_0218c840(struct DispatchState_0218c840* obj) {
         IterateEntries0205a330(container, 1);
     }
 
-    if (_Z35CheckGlobalObjState2AndInit0205cde8Ph((unsigned char*)obj + 0xc) != 0) {
+    if (CheckGlobalObjState2AndInit0205cde8((unsigned char*)obj + 0xc) != 0) {
         if (obj->f4 > 5) {
             volatile unsigned int* ime = (volatile unsigned int*)0x4000000;
             *ime = (*ime & ~0x1f00) | 0x1300;

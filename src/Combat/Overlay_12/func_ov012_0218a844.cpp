@@ -38,13 +38,13 @@ struct ProfileEditor0218a844
     Window0218a844* GetWindow() { return &window_; }
 };
 
-extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char* text, int a, int b, int c, int d, int e);
+void AppendFrameTag02041c08(char* text, int a, int b, int c, int d, int e);
 void AppendCursorTag(char* text, int a);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_(UnkStruct0205c508* cursor, int* first, int* last);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+void* GetGlobalField0x1c020421a0();
+void ComputeProductSums0205c508(UnkStruct0205c508* cursor, int* first, int* last);
+void AppendString02042058(char* text, const char* append);
 void AppendXTag(char* text, int x);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void AppendNameTag(char* text, int item, const char* itemText);
 void AppendXYTag(char* text, int x, int y);
 #if !defined(jpn)
@@ -72,12 +72,12 @@ extern "C" ARM void func_ov012_0218a844(ProfileEditor0218a844* self, char* text,
 
     int selection = self->unk_13f0 & 0xf;
     if (hidden)
-        _Z22AppendFrameTag02041c08Pciiiii(text, selection, 8, 5, 5, 5);
+        AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
     AppendCursorTag(text, selection);
 #if defined(jpn)
-    void* messages = _Z26GetGlobalField0x1c020421a0v();
+    void* messages = GetGlobalField0x1c020421a0();
 #else
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
 #endif
     int i;
     Cursor0218a844* cursor = self->GetWindow()->GetCursor();
@@ -85,19 +85,19 @@ extern "C" ARM void func_ov012_0218a844(ProfileEditor0218a844* self, char* text,
     int color = cursor->unk_4;
     int first;
     int last;
-    _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_((UnkStruct0205c508*)cursor, &first, &last);
+    ComputeProductSums0205c508((UnkStruct0205c508*)cursor, &first, &last);
     for (i = first; i < last; i++)
     {
         if (i % 2 == 0)
         {
             if (i != first)
-                _Z20AppendString02042058PcPKc(text, self->unk_1378);
+                AppendString02042058(text, self->unk_1378);
         }
         else
         {
             AppendXTag(text, LOW_REGION(0x7c, 0x88));
         }
-        AppendNameTag(text, i & 0xf, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, self->unk_13c8[i]));
+        AppendNameTag(text, i & 0xf, GetFieldByKey020e0434((Container020e0310*)self->texts_, self->unk_13c8[i]));
     }
     if (color > 1)
     {
@@ -110,11 +110,11 @@ extern "C" ARM void func_ov012_0218a844(ProfileEditor0218a844* self, char* text,
         SetByteAtIndex((unsigned char*)messages, 0, 1);
         SetByteAtIndex((unsigned char*)messages, 1, 0);
         func_02042428(text, 8);
-        _Z20AppendString02042058PcPKc(text, FindEntryByKey((TableA68*)((char*)self + 0x1314), 0x7a));
+        AppendString02042058(text, FindEntryByKey((TableA68*)((char*)self + 0x1314), 0x7a));
 #else
         func_ov012_021842a0(self, 12, shadow, color);
         AppendXYTag(text, 0x56, 0x94);
-        _Z20AppendString02042058PcPKc(text, data_ov012_0218b310);
+        AppendString02042058(text, data_ov012_0218b310);
 #endif
     }
 }

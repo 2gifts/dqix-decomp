@@ -4,13 +4,13 @@
 #include "GameState/GameState.h"
 
 int GetIndexedEntryField0x178(signed char* obj);
-extern "C" void _Z32ForwardToTargetOrDefault0205eabcPvS_i(void* target, void* param, int arg);
+void ForwardToTargetOrDefault0205eabc(void* target, void* param, int arg);
 int GetByte0x26c(char* obj);
 int GetField0x397cValue(GameState* battleStruct);
 int GetFieldIfFlag4(char* obj);
 int TestFlagMask(unsigned short* word, int mask);
 void SetByte0x2c4To2IfByte0x2c5Set(unsigned char* p);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
+void* GetGlobalField0x1c020421a0(void);
 
 struct Bytes02033b88;
 void SetByte0xbeShiftPrev(struct Bytes02033b88* obj, int value);
@@ -70,7 +70,7 @@ extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
     }
 
     if (GetIndexedEntryField0x178((signed char*)obj) == 0x19) {
-        _Z32ForwardToTargetOrDefault0205eabcPvS_i((void*)&data_02108760, (char*)obj + targetOffset, 0);
+        ForwardToTargetOrDefault0205eabc((void*)&data_02108760, (char*)obj + targetOffset, 0);
     }
 
     memset(obj->animEntries, 0, 4);
@@ -109,7 +109,7 @@ extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
         target = GetFieldIfFlag4((char*)battleStruct);
         if (target != 0) {
             if (TestFlagMask(&data_02114e30, 2) == 0
-                || ((unsigned char*)_Z26GetGlobalField0x1c020421a0v())[globalByteOffset] != 0) {
+                || ((unsigned char*)GetGlobalField0x1c020421a0())[globalByteOffset] != 0) {
                 SetByte0x2c4To2IfByte0x2c5Set((unsigned char*)target);
             }
         }

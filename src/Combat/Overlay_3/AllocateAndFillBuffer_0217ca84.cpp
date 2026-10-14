@@ -5,11 +5,11 @@
 extern "C" void MemoryMapTexturePalette(void);
 extern "C" void LoadToTexturePalette(void* ptr, int a, unsigned int b);
 extern "C" void MemoryUnmapTexturePalette(void);
-extern "C" void _Z28LockStagedTextureVRAMCopyingv(void);
+void LockStagedTextureVRAMCopying(void);
 extern "C" int _ZN7Model3D7GetTEX0Ev(void* obj);
 extern "C" int _ZNK8Object3D23GetTexturePaletteOffsetEv(unsigned char* obj);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
-extern "C" void _Z30UnlockStagedTextureVRAMCopyingv(void);
+void UnlockStagedTextureVRAMCopying(void);
 
 struct S0217ca84 {
     SafeAllocator* allocator;
@@ -27,7 +27,7 @@ struct Inner0217ca84 {
 // USA: func_ov003_0217ca84  (semantic: AllocateAndFillBuffer_0217ca84)
 extern "C" ARM void func_ov003_0217ca84(S0217ca84* obj, unsigned short fillValue) {
     GameState::GetInstance();
-    _Z28LockStagedTextureVRAMCopyingv();
+    LockStagedTextureVRAMCopying();
     MemoryMapTexturePalette();
 
     void* p88 = obj->field88;
@@ -56,5 +56,5 @@ extern "C" ARM void func_ov003_0217ca84(S0217ca84* obj, unsigned short fillValue
     }
 
     MemoryUnmapTexturePalette();
-    _Z30UnlockStagedTextureVRAMCopyingv();
+    UnlockStagedTextureVRAMCopying();
 }

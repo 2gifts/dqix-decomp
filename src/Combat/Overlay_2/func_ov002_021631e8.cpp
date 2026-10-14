@@ -7,19 +7,19 @@ struct Obj_0205da38;
 struct Obj0205eaa0;
 struct Struct_0205d81c;
 struct Container020dedd0;
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24 *obj, unsigned char keyLow,
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
+int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *o, int a, int b);
-extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *base, int a);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
+int CheckFlagOrThreshold_02161b48(char *base, int a);
 void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
 unsigned char *GetFieldAt0x150(unsigned char *p);
-extern "C" void _Z21InitBattleTag0215ccc4Pc(char *base);
-extern "C" int _Z27IsFlagAt130Bit0Set_0216364cPv(void *member);
-extern "C" char *_Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0 *c, int key);
-extern "C" void _Z32SetupTargetAndApplyState021575d4Pc(char *base);
+void InitBattleTag0215ccc4(char *base);
+int IsFlagAt130Bit0Set_0216364c(void *member);
+char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
+void SetupTargetAndApplyState021575d4(char *base);
 int GetInventoryItemFlagField_02157500(char *base, int, int);
 int CheckAndClearEntryStatus_0215b7d0(char* base);
 extern "C" void func_ov002_02161cf0(char *base);
@@ -45,15 +45,15 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
         } else {
             *(short *) (base + 0x1b00 + 0xea) = *(short *) (GetFieldAt0x150((unsigned char *) p) + 0x900 + 0x5c);
         }
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 2);
+        FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 2);
         func_ov002_02161cf0(base);
-        _Z21InitBattleTag0215ccc4Pc(base);
+        InitBattleTag0215ccc4(base);
         *(int *) (base + 0x1000 + 0xbc0) += 1;
     } else if (state == 1) {
         *(unsigned int *) (base + 0x2000 + 0x47c) |= 4;
         short old = *(short *) (base + 0x1b00 + 0xea);
         *(short *) (base + 0x1b00 + 0xea) =
-            _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
+            GetActiveScaledSum0205d794((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
         if (old != *(short *) (base + 0x1b00 + 0xea)) return;
         int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
         int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
@@ -68,11 +68,11 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
             }
             switch (*(short *) (base + 0x1b00 + 0xea)) {
                 case 0:
-                    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);
+                    DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
                     int ok = 0;
                     int id = *(signed char *) (base + 0x1c00 + 0x20);
                     if (id >= 0 && id <= 3) ok = 1;
-                    if (ok && _Z27IsFlagAt130Bit0Set_0216364cPv(
+                    if (ok && IsFlagAt130Bit0Set_0216364c(
                                   GameState::GetInstance()->GetPartyMemberByIndex(*(char *) (base + 0x1c00 + 0x20))))
                     {
                         *(short *) (base + 0x1c00 + 0x28) = 0x7aa8;
@@ -84,7 +84,7 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
                         return;
                     }
                     {
-                        char *e = _Z24FindElementByKey020dedd0P17Container020dedd0i(
+                        char *e = FindElementByKey020dedd0(
                             (struct Container020dedd0 *) (base + 0x3ec + 0x400), *(short *) (base + 0x1c00 + 0x22));
                         if (e != NULL && func_ov002_0215b720(base, *(short *) (e + 0x14))) {
                             *(int *) (base + 0x1000 + 0xbc0) = 2;
@@ -96,16 +96,16 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
                     *(unsigned char *) (base + 0x1000 + 0xc83) = 0;
                     *(unsigned char *) (base + 0x1000 + 0xc85) &= ~1;
                     *(unsigned char *) (base + 0x1000 + 0xc84) = 0;
-                    _Z32SetupTargetAndApplyState021575d4Pc(base);
+                    SetupTargetAndApplyState021575d4(base);
                     func_ov002_02157634(base);
                     return;
                 case 1:
-                    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);
+                    DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
                     *(int *) (base + 0x1000 + 0xbb8) = 9;
                     *(int *) (base + 0x1000 + 0xbc0) = 0;
                     return;
                 case 2: {
-                    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);
+                    DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
                     int r = GetInventoryItemFlagField_02157500(
                         base, *(short *) (base + 0x1b00 + 0xe8), *(signed char *) (base + 0x1c00 + 0x20));
                     if (r != 0) {
@@ -131,7 +131,7 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
                     func_ov002_02156e90(base);
                     return;
             }
-        } else if (_Z29CheckFlagOrThreshold_02161b48Pci(base, 1)) {
+        } else if (CheckFlagOrThreshold_02161b48(base, 1)) {
             *(short *) (base + 0x1b00 + 0xea) = -1;
             func_ov002_02156e90(base);
             SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 1);
@@ -144,7 +144,7 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
             *(unsigned char *) (base + 0x1000 + 0xc83) = 0;
             *(unsigned char *) (base + 0x1000 + 0xc85) &= ~1;
             *(unsigned char *) (base + 0x1000 + 0xc84) = 0;
-            _Z32SetupTargetAndApplyState021575d4Pc(base);
+            SetupTargetAndApplyState021575d4(base);
             func_ov002_02157634(base);
         } else if (r < 0) {
             *(short *) (base + 0x1c00 + 0x28)          = 0x7918;

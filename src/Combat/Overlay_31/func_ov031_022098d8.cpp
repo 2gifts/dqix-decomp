@@ -23,7 +23,7 @@ extern "C" void func_ov031_0220911c(PacketWork022098d8*, unsigned char*);
 extern "C" void func_ov031_02208940(PacketWork022098d8*, unsigned char*);
 extern "C" void func_ov031_0220871c(PacketWork022098d8*, unsigned char*);
 extern "C" void func_ov031_02209310(PacketWork022098d8*, unsigned char*);
-extern "C" void _Z24InitTwoSections_022098acPvii(void*, int, int);
+void InitTwoSections_022098ac(void*, int, int);
 extern void (*data_ov031_0224c9c0)(unsigned char*);
 
 // USA: func_ov031_022098d8
@@ -90,7 +90,7 @@ extern "C" ARM void func_ov031_022098d8(PacketWork022098d8* work, unsigned char*
                 work->state = 9;
                 break;
             }
-            _Z24InitTwoSections_022098acPvii(work, (int)(section - 4), sectionLength + 4);
+            InitTwoSections_022098ac(work, (int)(section - 4), sectionLength + 4);
             section += sectionLength;
             length -= sectionLength + 4;
             if (!length) break;

@@ -53,11 +53,11 @@ struct TextSlot02174738 {
     short e;
 };
 
-extern "C" int _Z18GetField0x3acValueP9GameState(GameState* battleStruct);
+int GetField0x3acValue(GameState* battleStruct);
 void ClearTwoWordsAndByte(struct S_b20c* obj);
-extern "C" void _Z18SetField0_0205b220Pvi(void* obj, int value);
-extern "C" void _Z29SetFieldsAt0x4And0x8_0205b228Pvih(void* obj, int value, unsigned char flag);
-extern "C" void* _Z21GetTableEntry020421b0i(int idx);
+void SetField0_0205b220(void* obj, int value);
+void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
+void* GetTableEntry020421b0(int idx);
 void SetOrClearFlag0x4At0x24(void* obj, int cond);
 
 extern "C" void func_ov000_021710ac(struct Entry02174738* obj, int combatantId, int flag);
@@ -112,7 +112,7 @@ checkvalid:
             if (func_ov017_021bdbcc() != 0) {
                 sel = 0x28;
             }
-            memcpy(vram, _Z21GetTableEntry020421b0i(sel), 0x80);
+            memcpy(vram, GetTableEntry020421b0(sel), 0x80);
 
             unsigned short tm = *(unsigned short*)(info + 4) & 0x3ff;
             unsigned int off = tm << 7;
@@ -136,8 +136,8 @@ checkvalid:
                 text.d = 0x10;
                 text.e = 0x10;
                 ClearTwoWordsAndByte(&local);
-                _Z18SetField0_0205b220Pvi(&local, (int)vram);
-                _Z29SetFieldsAt0x4And0x8_0205b228Pvih(&local, (int)&text, 1);
+                SetField0_0205b220(&local, (int)vram);
+                SetFieldsAt0x4And0x8_0205b228(&local, (int)&text, 1);
                 char* field150 = *(char**)((char*)c + 0x150);
                 int idx = *(int*)(field150 + 0x950);
                 char* p = field150 + idx * 2 + 0x100;
@@ -166,8 +166,8 @@ checkvalid:
         if (e->field4c >= 0) {
             continue;
         }
-        func_ov000_021710ac(e, id, id == _Z18GetField0x3acValueP9GameState(bs));
-        SetOrClearFlag0x4At0x24(e, id == _Z18GetField0x3acValueP9GameState(bs));
+        func_ov000_021710ac(e, id, id == GetField0x3acValue(bs));
+        SetOrClearFlag0x4At0x24(e, id == GetField0x3acValue(bs));
         func_ov000_02171138(e);
         data_ov000_02183ff0 = data_ov000_02183ff0 + 1;
         func_ov000_02174b14(self);

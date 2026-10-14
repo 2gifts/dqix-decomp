@@ -26,7 +26,7 @@ struct Ctx0205ec34 {
 struct GetTableByteOrFFData;
 struct Obj0208bf28;
 
-extern "C" short _Z28GetScaledFieldValue_02166684i(int a);
+short GetScaledFieldValue_02166684(int a);
 extern "C" short func_ov004_021666bc(void* a1, char* outFlag);
 struct GetTableByteOrFFData* GetGlobal02109418(void);
 extern "C" struct Ctx0205ec34* func_0205ec34(void);
@@ -36,8 +36,8 @@ extern "C" void func_ov004_02166198(void);
 extern "C" void func_ov004_02165f2c(void);
 extern "C" void func_ov004_02165ef4(void* a1);
 extern "C" void func_ov004_02166730(void* a1, int a2);
-extern "C" void* _Z40CheckTypeAndReturnNode_02165e70_02165e70Pvi(void* a, int key);
-extern "C" void _Z18SetFieldD20208bf28P11Obj0208bf28ih(struct Obj0208bf28* obj, int value, unsigned char b);
+void* CheckTypeAndReturnNode_02165e70_02165e70(void* a, int key);
+void SetFieldD20208bf28(struct Obj0208bf28* obj, int value, unsigned char b);
 extern "C" void func_ov004_02166bd8(void* a1);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
@@ -54,7 +54,7 @@ static inline unsigned char* GetNibbles(struct Ctx0205ec34* c) { return c->nibbl
 
 // USA: func_ov004_02167434
 extern "C" ARM int func_ov004_02167434(void* a1) {
-    short target = _Z28GetScaledFieldValue_02166684i((int)a1);
+    short target = GetScaledFieldValue_02166684((int)a1);
     short id;
     char flag;
     short key = func_ov004_021666bc(a1, &flag);
@@ -88,17 +88,17 @@ extern "C" ARM int func_ov004_02167434(void* a1) {
         func_ov004_02166730(a1, node->id);
         unsigned char b = flag;
         id = node->id;
-        void* obj = _Z40CheckTypeAndReturnNode_02165e70_02165e70Pvi(a1, 7);
+        void* obj = CheckTypeAndReturnNode_02165e70_02165e70(a1, 7);
         if (obj != 0) {
-            _Z18SetFieldD20208bf28P11Obj0208bf28ih((struct Obj0208bf28*)((char*)obj + 0x34), id, b);
+            SetFieldD20208bf28((struct Obj0208bf28*)((char*)obj + 0x34), id, b);
         }
         func_ov004_02166bd8(a1);
         func_ov011_021848a0(a1, 0x6c);
     } else {
         unsigned char b = flag;
-        void* obj = _Z40CheckTypeAndReturnNode_02165e70_02165e70Pvi(a1, 7);
+        void* obj = CheckTypeAndReturnNode_02165e70_02165e70(a1, 7);
         if (obj != 0) {
-            _Z18SetFieldD20208bf28P11Obj0208bf28ih((struct Obj0208bf28*)((char*)obj + 0x34), 9999, b);
+            SetFieldD20208bf28((struct Obj0208bf28*)((char*)obj + 0x34), 9999, b);
         }
         func_ov004_02166bd8(a1);
         if (list->field_0x48 == 0 && list->field_0x4a == 0) {

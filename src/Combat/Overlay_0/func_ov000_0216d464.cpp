@@ -10,7 +10,7 @@ extern "C" void func_ov000_0216f3d4(void* obj);
 extern "C" void func_ov000_0216ea38(void* obj);
 extern "C" void func_ov000_0216f0d0(void* obj);
 int GetField0x70(void* obj);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int angle);
+int fix32ReduceAngle0To2Pi(int angle);
 void ApplyField0x70Tail(struct GlobalObj0202e6a8* obj, int value);
 int GetField0x78(void* obj);
 void SetField78Clamped0202e71c(struct Obj0202e71c* obj, int p);
@@ -33,7 +33,7 @@ extern "C" ARM void func_ov000_0216d464(struct Struct0216d464* obj) {
     func_ov000_0216f0d0(obj);
     if (obj->f238 != 0) {
         int a = GetField0x70(obj);
-        int angle = _Z22fix32ReduceAngle0To2Pii(a + obj->f238);
+        int angle = fix32ReduceAngle0To2Pi(a + obj->f238);
         ApplyField0x70Tail((struct GlobalObj0202e6a8*)obj, angle);
     }
     if (obj->f23c != 0) {

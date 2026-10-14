@@ -16,7 +16,7 @@
 #define REG_POWER_CONTROL (*(volatile unsigned short*)0x04000304)
 
 void SetVBlankIrqEnable(int);
-extern "C" void _Z30SetDispcntModeAndFlags020c391ciii(int, int, int);
+void SetDispcntModeAndFlags020c391c(int, int, int);
 void EncodeSignFlaggedHalfword(short*, int);
 void SetSubBgMode(unsigned int);
 void RestoreDisplayMode();
@@ -34,7 +34,7 @@ extern "C" ARM void func_ov031_022271f0() {
     SetVBlankIrqEnable(0);
     MapVRAMBanksToMainBG(1);
     MapVRAMBanksToMainObj(2);
-    _Z30SetDispcntModeAndFlags020c391ciii(1, 0, 0);
+    SetDispcntModeAndFlags020c391c(1, 0, 0);
     DISPCNT &= ~0x1f00;
     DISPCNT &= ~0xe000;
     EncodeSignFlaggedHalfword((short*)&REG_MASTER_BRIGHTNESS, 0);

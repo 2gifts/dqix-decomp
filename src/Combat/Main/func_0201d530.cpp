@@ -9,7 +9,7 @@ extern "C" extern float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b
 
 extern "C" extern void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" extern void _ZN12ZoneFeatures13Opcode6aEntry5ResetEv(char* obj);
-extern "C" int _Z22fix32ReduceAngle0To2Pii(int value);
+int fix32ReduceAngle0To2Pi(int value);
 
 struct RecordArray0201e710 { char pad[0x24]; void* items; int count; int capacity; };
 extern "C" void* _ZN12ZoneFeatures19CreateOpcode6aEntryERKNS_13Opcode6aEntryE(struct RecordArray0201e710* arr, void* src);
@@ -50,7 +50,7 @@ extern "C" ARM int _Z20WarpScript_Opcode_73PN6Script9ParameterEi(struct Variant0
     next = _ZN6Script9Parameter9ToVec3fixEP8Vector3i(next, tmp);
     _ZN8Vector3iaSERKS_(rec.vecB, tmp);
 
-    rec.f22 = (short)_Z22fix32ReduceAngle0To2Pii((int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(next)));
+    rec.f22 = (short)fix32ReduceAngle0To2Pi((int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(next)));
     rec.f20 = (short)(int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)next + 8)));
 
     int halfX = rec.vecB[0] / 2;

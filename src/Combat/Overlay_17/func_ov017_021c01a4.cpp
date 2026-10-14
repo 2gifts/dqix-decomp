@@ -4,7 +4,7 @@
 #include "Memory/AllocatorUnion.h"
 
 struct Obj020397cc;
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(struct Obj020397cc* obj, int arg1);
+void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 unsigned char* GetFieldIfFlag4(char* obj);
 void SetFlagsAt0x244(unsigned char* obj, unsigned char mask);
 void ClearFlagBits(unsigned char* obj, int mask);
@@ -36,7 +36,7 @@ extern "C" void func_ov017_021c0160(struct Obj021c01a4* self);
 extern "C" ARM void func_ov017_021c01a4(struct Obj021c01a4* self) {
     GameState* gs = GameState::GetInstance();
     GameObject* obj = gs->GetUnknownGameObject();
-    _Z27CancelPendingAction020397ccP11Obj020397cci((struct Obj020397cc*)obj, 1);
+    CancelPendingAction020397cc((struct Obj020397cc*)obj, 1);
     unsigned char* flags = GetFieldIfFlag4((char*)gs);
     SetFlagsAt0x244(flags, 1);
 

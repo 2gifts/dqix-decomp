@@ -5,23 +5,23 @@
 #include "Resource/Brightness.h"
 
 int GetWord0x0(int* obj);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void* GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int* field, unsigned int bits);
 void OrGlobalFlag0x40(void);
 void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
 extern "C" void func_0204b5b4(void* obj, int value);
 struct Obj0204b5e8;
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(struct Obj0204b5e8* obj, int a, int b);
+void DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
 struct Foo0204af38;
-extern "C" void _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(struct Foo0204af38* obj, int count, SafeAllocator* alloc);
+void AllocateArray0204af38(struct Foo0204af38* obj, int count, SafeAllocator* alloc);
 struct AllocTarget0204b12c;
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(struct AllocTarget0204b12c* obj, SafeAllocator* alloc);
+void AllocateAndClearBuffer0204b12c(struct AllocTarget0204b12c* obj, SafeAllocator* alloc);
 struct Obj0204b010;
-extern "C" void _Z19ClearBuffer0204b010P11Obj0204b010Pv(struct Obj0204b010* obj, void* p);
+void ClearBuffer0204b010(struct Obj0204b010* obj, void* p);
 struct Obj0204b988;
-extern "C" void _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit(struct Obj0204b988* obj, unsigned int a, int b, int c, unsigned short d);
+void DispatchIndexedEntry0204b988(struct Obj0204b988* obj, unsigned int a, int b, int c, unsigned short d);
 struct List0204b0e8;
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(struct List0204b0e8* list, void* p);
+void FlushAndDispatchList0204b0e8(struct List0204b0e8* list, void* p);
 struct ActiveEntry02046900;
 int CountActiveEntries(struct ActiveEntry02046900* entries);
 struct Rec020467f0;
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov003_021541b0(struct SubScreenBackground* self) {
         }
     } else if (self->loadState == 1) {
         if (IsSubBrightnessTransitionActive(resources) == 0) {
-            OrBitsIntoField0((unsigned int*)_Z27GetDataPtr02114e04_020d6c00v(), 1);
+            OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
             OrGlobalFlag0x40();
             self->loadState++;
         }
@@ -81,9 +81,9 @@ extern "C" ARM void func_ov003_021541b0(struct SubScreenBackground* self) {
         self->bits34Hi = 0;
         SetWord0x18ClearByte0x1f((unsigned char*)self->backgrounds, 0);
         func_0204b5b4(self->backgrounds, 0);
-        _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8*)self->backgrounds, 0, 0);
-        _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((struct Foo0204af38*)self->backgrounds, 14, alloc);
-        _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((struct AllocTarget0204b12c*)self->backgrounds, alloc);
+        DispatchViaTable0204b5e8((struct Obj0204b5e8*)self->backgrounds, 0, 0);
+        AllocateArray0204af38((struct Foo0204af38*)self->backgrounds, 14, alloc);
+        AllocateAndClearBuffer0204b12c((struct AllocTarget0204b12c*)self->backgrounds, alloc);
 #if defined(jpn)
         self->taskId = loader->QueueLoadFile(data_ov003_0217fcb5, 0);
 #else
@@ -105,9 +105,9 @@ extern "C" ARM void func_ov003_021541b0(struct SubScreenBackground* self) {
             }
             loader->RemoveTask(self->taskId);
             self->taskId = -1;
-            _Z19ClearBuffer0204b010P11Obj0204b010Pv((struct Obj0204b010*)self->backgrounds, 0);
-            _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit((struct Obj0204b988*)self->backgrounds, 0, 0, 0, 0xffff);
-            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((struct List0204b0e8*)self->backgrounds, 0);
+            ClearBuffer0204b010((struct Obj0204b010*)self->backgrounds, 0);
+            DispatchIndexedEntry0204b988((struct Obj0204b988*)self->backgrounds, 0, 0, 0, 0xffff);
+            FlushAndDispatchList0204b0e8((struct List0204b0e8*)self->backgrounds, 0);
             self->ready = 1;
             self->loadState = 0;
             self->flags |= 2;

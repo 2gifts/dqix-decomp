@@ -85,9 +85,9 @@ struct AlchemyPot {
 };
 
 extern "C" void func_ov023_021dc134(ItemInfoWindow* window, short item, signed char mode);
-extern "C" void _Z18InitStruct0205a444Pc(char* renderer);
+void InitStruct0205a444(char* renderer);
 extern "C" void func_ov006_0215479c(IngredientSprite* sprite);
-extern "C" void _Z18InitStruct020dbd9cP14Struct020dbd9c(Struct020dbd9c* effect);
+void InitStruct020dbd9c(Struct020dbd9c* effect);
 
 // USA: func_ov006_02154614
 extern "C" ARM void func_ov006_02154614(AlchemyPot* self) {
@@ -117,7 +117,7 @@ extern "C" ARM void func_ov006_02154614(AlchemyPot* self) {
     self->windowAllocator_ = 0;
     func_ov023_021dc134(&self->window_, -1, 1);
     self->window_.flags_ |= 0x10 | 0x200;
-    _Z18InitStruct0205a444Pc(self->renderer_);
+    InitStruct0205a444(self->renderer_);
     self->protagonist_.Initialize();
     self->pot_.Initialize();
     self->lid_.Initialize();
@@ -141,6 +141,6 @@ extern "C" ARM void func_ov006_02154614(AlchemyPot* self) {
     self->itemId_ = 0;
     self->itemSprites_ = 0;
     self->effectMode_ = 0;
-    _Z18InitStruct020dbd9cP14Struct020dbd9c(&self->subEffect_);
+    InitStruct020dbd9c(&self->subEffect_);
     self->resetBlend_ = 0;
 }

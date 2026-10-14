@@ -37,9 +37,9 @@ struct Cont0208f3b4;
 
 extern "C" Head0208e7a4* func_0208e0a8(void);
 Entry021d3950* GetNegativeEntry(char* obj, int index);
-extern "C" Node021d3950* _Z26FindNodeByPackedId0208e7a4P12Head0208e7a4j(Head0208e7a4* owner, unsigned int key);
+Node021d3950* FindNodeByPackedId0208e7a4(Head0208e7a4* owner, unsigned int key);
 Cont0208f3b4* GetData02109020(void);
-extern "C" void _Z23RemoveNodeByKey0208f3b4P12Cont0208f3b4i(Cont0208f3b4* c, int key);
+void RemoveNodeByKey0208f3b4(Cont0208f3b4* c, int key);
 
 // USA: func_ov017_021d3950
 extern "C" ARM int func_ov017_021d3950(Request021d3950* req) {
@@ -49,7 +49,7 @@ extern "C" ARM int func_ov017_021d3950(Request021d3950* req) {
     if (entry != NULL && (req->mask & entry->flags) != 0) {
         entry->flags = ~req->mask & entry->flags;
         entry->timer = entry->count * 30;
-        Node021d3950* node = _Z26FindNodeByPackedId0208e7a4P12Head0208e7a4j(list, req->id);
+        Node021d3950* node = FindNodeByPackedId0208e7a4(list, req->id);
         if (node == NULL) {
             return 1;
         }
@@ -71,7 +71,7 @@ extern "C" ARM int func_ov017_021d3950(Request021d3950* req) {
             }
         }
         if (p != NULL && bit < 8) {
-            _Z23RemoveNodeByKey0208f3b4P12Cont0208f3b4i(GetData02109020(), bit + i * 8);
+            RemoveNodeByKey0208f3b4(GetData02109020(), bit + i * 8);
         }
         return 1;
     }

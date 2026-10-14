@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" int _Z34ReplaceBinExtensionWithNat020e55c0PcPKc(char* dst, const char* fmt);
+int ReplaceBinExtensionWithNat020e55c0(char* dst, const char* fmt);
 typedef int (*ReplaceBin3)(char*, const char*, int);
 void* LoadFileIntoMemory(const char*, void*, unsigned int*);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
@@ -14,7 +14,7 @@ extern "C" ARM int func_020e553c(void* a, int* b, int c, int d) {
         return 0;
     }
     *b = 0;
-    ((ReplaceBin3)_Z34ReplaceBinExtensionWithNat020e55c0PcPKc)(buf, (char*)a, c);
+    ((ReplaceBin3)ReplaceBinExtensionWithNat020e55c0)(buf, (char*)a, c);
     if (d == 0) {
         LoadFileIntoMemory(buf, data_0211e33c, (unsigned int*)b);
         if (*b != 0) {

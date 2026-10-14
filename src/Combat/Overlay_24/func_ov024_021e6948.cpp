@@ -19,7 +19,7 @@ struct Ctx_021e6948 {
 
 extern "C" void* _ZN9GameState11GetInstanceEv();
 extern "C" struct Cbt_021e6948* _Z16GetCombatantByIDii(struct Battle_021e6948* battle, int id);
-extern "C" float _Z13LookupTableC0i(int v);
+float LookupTableC0(int v);
 extern "C" int _Z31IsCombatantFlag2Mask32_021e67b0P10GameObject(struct Cbt_021e6948* c);
 extern "C" void* _Z17GetPtrField0x2a04P9GameState(void* gs);
 extern "C" int _Z17ArrayContainsByteP23ArrayContainsByteStructi(void* arr, int id);
@@ -34,10 +34,10 @@ extern "C" ARM int func_ov024_021e6948(struct Ctx_021e6948* ctx, int targetId, i
     struct Cbt_021e6948* target = _Z16GetCombatantByIDii(ctx->battle, targetId);
     if (target) {
         if (target->stats->rank21 <= 3) {
-            dmg = dmg * _Z13LookupTableC0i((signed char)target->stats->rank21);
+            dmg = dmg * LookupTableC0((signed char)target->stats->rank21);
         }
         if (_Z31IsCombatantFlag2Mask32_021e67b0P10GameObject(target)) {
-            dmg = dmg * _Z13LookupTableC0i(1);
+            dmg = dmg * LookupTableC0(1);
         }
         if (_Z17ArrayContainsByteP23ArrayContainsByteStructi(
                 _Z17GetPtrField0x2a04P9GameState(_ZN9GameState11GetInstanceEv()), targetId) &&

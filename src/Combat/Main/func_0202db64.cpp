@@ -18,7 +18,7 @@ extern Command0202db64 data_02101640;
 int GetOwnerDataFortuneValue();
 int IssueBattleCommandSlot7(int, Ctx020d507c*);
 void SetField0x48UnlessState9Or10(int);
-extern "C" void _Z36CheckField2ThenSubmitOrError0202c864Pt(unsigned short*);
+void CheckField2ThenSubmitOrError0202c864(unsigned short*);
 // USA: func_0202db64
 extern "C" ARM int func_0202db64(int mode, int first, int second) {
     data_021015a0.field_0x2c = 0x340;
@@ -37,7 +37,7 @@ extern "C" ARM int func_0202db64(int mode, int first, int second) {
     data_02101640.field_0x14 = mode == 2;
     if (mode == 0 || mode == 2 || mode == 4) {
         data_021015a0.state = 3;
-        int result = IssueBattleCommandSlot7((int)_Z36CheckField2ThenSubmitOrError0202c864Pt, (Ctx020d507c*)&data_02101640);
+        int result = IssueBattleCommandSlot7((int)CheckField2ThenSubmitOrError0202c864, (Ctx020d507c*)&data_02101640);
         if (result == 2) return 1;
         SetField0x48UnlessState9Or10(result);
         data_021015a0.state = 9;

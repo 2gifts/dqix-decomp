@@ -14,11 +14,11 @@ struct Glyph0218e17c {
     short bitOffset;
 };
 
-extern "C" int _Z24GetWordFromTable02042638i(int idx);
+int GetWordFromTable02042638(int idx);
 
 // USA: func_ov016_0218e17c
 extern "C" ARM void func_ov016_0218e17c(unsigned short* dst, int x, int y, struct Glyph0218e17c* glyph, unsigned short color, unsigned char fontId) {
-    struct Font0218e17c* font = (struct Font0218e17c*)_Z24GetWordFromTable02042638i(fontId);
+    struct Font0218e17c* font = (struct Font0218e17c*)GetWordFromTable02042638(fontId);
     short bitOffset = glyph->bitOffset;
     int stride = font->strideBits >> 3;
     signed char startBit = 7 - (bitOffset & 7);

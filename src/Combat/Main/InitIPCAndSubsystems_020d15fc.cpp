@@ -8,8 +8,8 @@ void SetArm9IPCCommandHandler(int command, IPCCommandHandler handler);
 extern "C" void func_020d16b0(void);
 void InitSubsystemContextOnce020d1954(void* obj);
 void SetModeFlagAndUpdatePermission020d15b4(int flag);
-extern "C" void _Z17HandleMsg1SetFlagii(int a, int msg);
-extern "C" void _Z28DispatchType0x11ShutdownOnceii(int context, int code);
+void HandleMsg1SetFlag(int a, int msg);
+void DispatchType0x11ShutdownOnce(int context, int code);
 void ClearField4At02112160(void);
 
 struct Guard020d15fc {
@@ -31,10 +31,10 @@ extern "C" ARM void func_020d15fc(void) {
     InitializeInterProcessorCommunication();
     do {
     } while (!IsIPCCommandHandlerRegistered(0xd, IPCSide_Arm7));
-    SetArm9IPCCommandHandler(0xd, (IPCCommandHandler)_Z17HandleMsg1SetFlagii);
+    SetArm9IPCCommandHandler(0xd, (IPCCommandHandler)HandleMsg1SetFlag);
     func_020d16b0();
     SetArm9IPCCommandHandler(0xd, 0);
-    SetArm9IPCCommandHandler(0xd, (IPCCommandHandler)_Z28DispatchType0x11ShutdownOnceii);
+    SetArm9IPCCommandHandler(0xd, (IPCCommandHandler)DispatchType0x11ShutdownOnce);
     data_02112160.f18 = 0;
     InitSubsystemContextOnce020d1954(&data_02112240);
     SetArm9IPCCommandHandler(0x11, (IPCCommandHandler)ClearField4At02112160);

@@ -8,7 +8,7 @@ int CanAdjustStatStageBit18(struct StatStageStruct02087d24* p, int decrease);
 struct StatStageStruct02087d78;
 int SetStatStageBit18(struct StatStageStruct02087d78* p, int delta);
 struct Obj_021e8ca0;
-extern "C" void* _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i(struct Obj_021e8ca0* obj, int id);
+void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 struct Flag_021e3d88 { unsigned char pad : 7; unsigned char flag : 1; };
@@ -57,7 +57,7 @@ extern "C" ARM unsigned long long func_ov024_021e3d88(struct Obj_021e3d88* obj, 
 			default: msg = 0xad; break;
 			}
 		}
-		void* entry = _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i((struct Obj_021e8ca0*)obj, msg);
+		void* entry = AddEntryToListAndIncCount_021e8ca0((struct Obj_021e8ca0*)obj, msg);
 		if (entry) {
 			func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, 0);
 		}

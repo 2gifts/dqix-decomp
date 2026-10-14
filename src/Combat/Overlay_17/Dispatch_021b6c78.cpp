@@ -2,8 +2,8 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
-extern "C" void _Z23InitRegionArray02087628Pc(char* p);
-#define InitRegionArray02087628 _Z23InitRegionArray02087628Pc
+void InitRegionArray02087628(char* p);
+#define InitRegionArray02087628 InitRegionArray02087628
 
 extern "C" unsigned char _Z19CopyOutRegion0x5718PcPv(void* src, void* dst);
 #define CopyOutRegion0x5718 _Z19CopyOutRegion0x5718PcPv
@@ -12,21 +12,21 @@ int GetField0x3acValue(GameState* b);
 
 extern "C" void __clear(void* buf, int size);
 
-extern "C" void* _Z15GetFieldAt0x150Ph(unsigned char* p);
-#define GetFieldAt0x150 _Z15GetFieldAt0x150Ph
+void* GetFieldAt0x150(unsigned char* p);
+#define GetFieldAt0x150 GetFieldAt0x150
 
-extern "C" signed char _Z27GetSignedField6Bit_021b6c2cii(int a, int b);
-#define GetSignedField6Bit_021b6c2c _Z27GetSignedField6Bit_021b6c2cii
+signed char GetSignedField6Bit_021b6c2c(int a, int b);
+#define GetSignedField6Bit_021b6c2c GetSignedField6Bit_021b6c2c
 
 struct Base02087510;
-extern "C" int _Z28FindFreeSlotAndStore02087510P12Base02087510cPv(Base02087510* base, char id, void* data);
-#define FindFreeSlotAndStore02087510 _Z28FindFreeSlotAndStore02087510P12Base02087510cPv
+int FindFreeSlotAndStore02087510(Base02087510* base, char id, void* data);
+#define FindFreeSlotAndStore02087510 FindFreeSlotAndStore02087510
 
 #define GetCombatantAtField0x3ac _Z24GetCombatantAtField0x3acP9GameState
 
 struct Obj020397cc;
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* p, int flag);
-#define CancelPendingAction020397cc _Z27CancelPendingAction020397ccP11Obj020397cci
+void CancelPendingAction020397cc(Obj020397cc* p, int flag);
+#define CancelPendingAction020397cc CancelPendingAction020397cc
 
 // USA: func_ov017_021b6c78  (semantic: Dispatch_021b6c78)
 extern "C" ARM void func_ov017_021b6c78(void) {

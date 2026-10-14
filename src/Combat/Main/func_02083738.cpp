@@ -23,8 +23,8 @@ struct Obj02083738 {
 };
 
 struct StructDE1D4;
-extern "C" void _Z18InitStruct020de1d4P11StructDE1D4(struct StructDE1D4*);
-extern "C" unsigned char* _Z30GetIndexedBlockPointer0208349cPhi(unsigned char* base, int idx);
+void InitStruct020de1d4(struct StructDE1D4*);
+unsigned char* GetIndexedBlockPointer0208349c(unsigned char* base, int idx);
 
 // USA: func_02083738
 extern "C" ARM void func_02083738(struct Obj02083738* o, int a1) {
@@ -51,12 +51,12 @@ extern "C" ARM void func_02083738(struct Obj02083738* o, int a1) {
 #else
         *(unsigned char*)pr = 0;
 #endif
-        _Z18InitStruct020de1d4P11StructDE1D4((struct StructDE1D4*)e);
+        InitStruct020de1d4((struct StructDE1D4*)e);
         e->pB = &o->arrB[i];
 #if defined(jpn)
         e->pResult = (unsigned char*)o + 0x56f + i * 0x15;
 #else
-        e->pResult = _Z30GetIndexedBlockPointer0208349cPhi((unsigned char*)o, i);
+        e->pResult = GetIndexedBlockPointer0208349c((unsigned char*)o, i);
 #endif
     }
 }

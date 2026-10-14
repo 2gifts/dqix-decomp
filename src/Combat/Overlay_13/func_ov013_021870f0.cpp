@@ -13,9 +13,9 @@ struct GameState {
     static GameState* GetInstance();
 };
 
-extern "C" void _Z18InitStruct0205a444Pc(char* renderer);
+void InitStruct0205a444(char* renderer);
 struct Struct0205a198;
-extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198* sprite);
+void Init0205a198(Struct0205a198* sprite);
 struct ActiveEntry02046900;
 int CountActiveEntries(ActiveEntry02046900* pac);
 struct Rec020467f0;
@@ -23,33 +23,33 @@ void* FindRecordByIndex(Rec020467f0* pac, int index, void** outName, int* outSiz
 extern "C" void func_0205a528(void* renderer, void* file, unsigned int size, SafeAllocator* allocator);
 extern "C" void func_020728ac(void* texts, SafeAllocator* allocator, void* file, unsigned int size, int, int, int);
 struct List0208df10;
-extern "C" void _Z17ClearList0208df10P12List0208df10(List0208df10* table);
+void ClearList0208df10(List0208df10* table);
 void* GetCombatantWithFlag0x100(GameState* gameState, int member);
 void* GetFieldAt0x150(unsigned char* member);
-extern "C" signed char _Z20GetTableByte020dd11cjj(unsigned int vocation, unsigned int index);
+signed char GetTableByte020dd11c(unsigned int vocation, unsigned int index);
 struct Struct0208df20;
-extern "C" void _Z24InitAndRunScript0208df20P14Struct0208df20PviiiS1_(Struct0208df20* table, void* allocator, int file, int size, int skills, void* count);
+void InitAndRunScript0208df20(Struct0208df20* table, void* allocator, int file, int size, int skills, void* count);
 struct List0204af64;
-extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64* graphics);
+void ResetList0204af64(List0204af64* graphics);
 extern "C" void func_0204b5b4(void* graphics, int priority);
 void SetWord0x18ClearByte0x1f(unsigned char* graphics, int value);
 struct Obj0204b5e8;
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8* graphics, int a, int b);
+void DispatchViaTable0204b5e8(Obj0204b5e8* graphics, int a, int b);
 struct AllocTarget0204b12c;
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(AllocTarget0204b12c* graphics, SafeAllocator* allocator);
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* graphics, SafeAllocator* allocator);
 struct Foo0204af38;
-extern "C" void _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(Foo0204af38* graphics, int count, SafeAllocator* allocator);
+void AllocateArray0204af38(Foo0204af38* graphics, int count, SafeAllocator* allocator);
 extern "C" void func_0204c684(void* canvas);
 extern "C" void func_ov013_02187a58(void* self, void* canvas);
 extern "C" void func_0204b174(void* graphics, void* file, SafeAllocator* allocator, unsigned int size);
 struct EntryList0204af14;
 void* GetEntryByIndexStride0x10(EntryList0204af14* graphics, unsigned int index);
 struct Tilemap0204ae44;
-extern "C" void _Z26FillTilemapPalette0204ae44P15Tilemap0204ae44i(Tilemap0204ae44* layer, int member);
+void FillTilemapPalette0204ae44(Tilemap0204ae44* layer, int member);
 struct Obj0204b988;
-extern "C" void _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit(Obj0204b988* graphics, unsigned int a, int b, int c, unsigned short d);
+void DispatchIndexedEntry0204b988(Obj0204b988* graphics, unsigned int a, int b, int c, unsigned short d);
 struct List0204b0e8;
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8* graphics, void* characters);
+void FlushAndDispatchList0204b0e8(List0204b0e8* graphics, void* characters);
 extern "C" void func_020dc7e8(int a, int b);
 
 extern char data_ov013_02187e48[];
@@ -153,14 +153,14 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
         self->markerX_ = (short*)allocators[4].Allocate(13 * sizeof(short));
         self->markerY_ = (short*)allocators[4].Allocate(13 * sizeof(short));
         self->markerPalettes_ = (unsigned char*)allocators[4].Allocate(13);
-        _Z18InitStruct0205a444Pc((char*)self->spriteRenderer_);
+        InitStruct0205a444((char*)self->spriteRenderer_);
         self->spriteRenderer_->unk_50 = self->screen_;
         SpriteRenderer021870f0* renderer = self->spriteRenderer_;
         renderer->sprites_ = self->sprites_;
         renderer->numSprites_ = 13;
         for (int i = 0; i < 13; i++)
         {
-            _Z12Init0205a198P14Struct0205a198((Struct0205a198*)&self->sprites_[i]);
+            Init0205a198((Struct0205a198*)&self->sprites_[i]);
         }
         for (int i = 0; i < 10; i++)
         {
@@ -230,7 +230,7 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
     }
     else if (self->step_ == 4)
     {
-        _Z17ClearList0208df10P12List0208df10((List0208df10*)self->abilities_);
+        ClearList0208df10((List0208df10*)self->abilities_);
         loader->MaybeFreeAllocations();
 #if defined(jpn)
         self->task_ = loader->QueueLoadFile(data_ov013_02188dfa, NULL);
@@ -259,12 +259,12 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
                 {
                     for (unsigned char i = 0; i < 5; i++)
                     {
-                        vocationSkills[i] = _Z20GetTableByte020dd11cjj((unsigned char)data->vocation_, i);
+                        vocationSkills[i] = GetTableByte020dd11c((unsigned char)data->vocation_, i);
                     }
                     skills = vocationSkills;
                 }
             }
-            _Z24InitAndRunScript0208df20P14Struct0208df20PviiiS1_((Struct0208df20*)self->abilities_, &allocators[2], (int)file, size, (int)skills, (void*)5);
+            InitAndRunScript0208df20((Struct0208df20*)self->abilities_, &allocators[2], (int)file, size, (int)skills, (void*)5);
             loader->RemoveTask(self->task_);
             self->task_ = -1;
             self->step_++;
@@ -278,14 +278,14 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
         unsigned char palettes[2];
         palettes[0] = data_ov013_02187db8[0];
         palettes[1] = data_ov013_02187db8[1];
-        _Z17ResetList0204af64P12List0204af64((List0204af64*)&self->background_);
+        ResetList0204af64((List0204af64*)&self->background_);
         self->background_.unk_1c_0_ = self->screen_;
         self->background_.unk_1c_4_ = palettes[self->screen_];
         func_0204b5b4(&self->background_, 0);
         SetWord0x18ClearByte0x1f((unsigned char*)&self->background_, 0);
-        _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)&self->background_, 0, 0);
-        _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)&self->background_, allocator);
-        _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((Foo0204af38*)&self->background_, 1, allocator);
+        DispatchViaTable0204b5e8((Obj0204b5e8*)&self->background_, 0, 0);
+        AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->background_, allocator);
+        AllocateArray0204af38((Foo0204af38*)&self->background_, 1, allocator);
         if (self->screen_ == 0)
         {
             DISPCNT = (DISPCNT & ~0x1f00) | 0x1200;
@@ -342,9 +342,9 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
             self->task_ = -1;
             void* layer = GetEntryByIndexStride0x10((EntryList0204af14*)&self->background_, 0);
             if (layer != NULL)
-                _Z26FillTilemapPalette0204ae44P15Tilemap0204ae44i((Tilemap0204ae44*)layer, self->member_);
-            _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit((Obj0204b988*)&self->background_, 0, 0, 0, 0xffff);
-            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)&self->background_, NULL);
+                FillTilemapPalette0204ae44((Tilemap0204ae44*)layer, self->member_);
+            DispatchIndexedEntry0204b988((Obj0204b988*)&self->background_, 0, 0, 0, 0xffff);
+            FlushAndDispatchList0204b0e8((List0204b0e8*)&self->background_, NULL);
             self->loaded_ = true;
             self->step_ = 0;
             if (self->screen_ == 0)

@@ -9,11 +9,11 @@ struct Struct020865b0;
 struct LocalBuf020dcd40 { unsigned char pad[0x30]; };
 
 extern "C" unsigned short* func_02012fe4(void* p);
-extern "C" int _Z28GetFirstFlaggedValue02086e9cP29FlaggedEntryContainer02086e9c(FlaggedEntryContainer02086e9c* p);
-extern "C" FindEntryContainer02086e50* _Z27FindEntryBySignedId02086e50P26FindEntryContainer02086e50i(FindEntryContainer02086e50* p, int idx);
-extern "C" void* _Z30FindRecordByShortField020108f0Pvi(void* state, int slot);
-extern "C" char* _Z28FindSlotWithNegShort02010954Pc(char* state);
-extern "C" void _Z24ResetShortFields02086380Ph(unsigned char* rec);
+int GetFirstFlaggedValue02086e9c(FlaggedEntryContainer02086e9c* p);
+FindEntryContainer02086e50* FindEntryBySignedId02086e50(FindEntryContainer02086e50* p, int idx);
+void* FindRecordByShortField020108f0(void* state, int slot);
+char* FindSlotWithNegShort02010954(char* state);
+void ResetShortFields02086380(unsigned char* rec);
 extern "C" void func_02082d6c(void* rec, void* entry);
 extern "C" void func_ov017_0218f064(void* v, int slot, int flags, int a, int b);
 GameObject* GetCombatantWithFlag0x1000(GameState* state, int id);
@@ -28,7 +28,7 @@ extern "C" void func_02042764(void* dst, void* src, int n);
 int GetFieldAt0x50(Struct020865b0* entry);
 void SetBit0x954StoreIndex0x950(unsigned char* p, int idx);
 extern "C" void func_ov017_02191108(void* v, int a, int b, int c, int d);
-extern "C" void _Z32RemoveOrShiftMarkedEntry02086a04P26FindEntryContainer02086a04i(FindEntryContainer02086a04* p, int idx);
+void RemoveOrShiftMarkedEntry02086a04(FindEntryContainer02086a04* p, int idx);
 
 // USA: func_020dcd40
 extern "C" ARM int func_020dcd40() {
@@ -38,11 +38,11 @@ extern "C" ARM int func_020dcd40() {
     void* p10 = GetPtrField0x2a04(battle);
     unsigned short* v0c = func_02012fe4(p10);
     while (true) {
-        int idx = _Z28GetFirstFlaggedValue02086e9cP29FlaggedEntryContainer02086e9c((FlaggedEntryContainer02086e9c*)p10);
+        int idx = GetFirstFlaggedValue02086e9c((FlaggedEntryContainer02086e9c*)p10);
         if (idx < 0) {
             break;
         }
-        FindEntryContainer02086e50* entry = _Z27FindEntryBySignedId02086e50P26FindEntryContainer02086e50i((FindEntryContainer02086e50*)p10, idx);
+        FindEntryContainer02086e50* entry = FindEntryBySignedId02086e50((FindEntryContainer02086e50*)p10, idx);
         if (entry == NULL) {
             break;
         }
@@ -56,12 +56,12 @@ extern "C" ARM int func_020dcd40() {
         if (slot < 0) {
             break;
         }
-        void* rec = _Z30FindRecordByShortField020108f0Pvi(battle, slot);
+        void* rec = FindRecordByShortField020108f0(battle, slot);
         if (rec == NULL) {
-            rec = _Z28FindSlotWithNegShort02010954Pc((char*)battle);
+            rec = FindSlotWithNegShort02010954((char*)battle);
         }
         *(short*)((char*)rec + 0x568) = slot;
-        _Z24ResetShortFields02086380Ph((unsigned char*)rec);
+        ResetShortFields02086380((unsigned char*)rec);
         func_02082d6c(rec, entry);
         func_ov017_0218f064(v14, slot, 0x1000, 1, 0);
         GameObject* c = GetCombatantWithFlag0x1000(battle, slot);
@@ -97,7 +97,7 @@ extern "C" ARM int func_020dcd40() {
         *(unsigned short*)(v7 + a * 2 + 0x16c) = p[2];
         SetBit0x954StoreIndex0x950(v7, GetFieldAt0x50((Struct020865b0*)entry));
         func_ov017_02191108(v14, 1, 1, 1, 1);
-        _Z32RemoveOrShiftMarkedEntry02086a04P26FindEntryContainer02086a04i((FindEntryContainer02086a04*)p8, idx);
+        RemoveOrShiftMarkedEntry02086a04((FindEntryContainer02086a04*)p8, idx);
         count++;
     }
     return count;

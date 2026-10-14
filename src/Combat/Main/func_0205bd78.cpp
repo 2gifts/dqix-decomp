@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 
 struct Struct_0205bd04;
-extern "C" int _Z28GetScaledSumIfActive0205bd04P15Struct_0205bd04(struct Struct_0205bd04*);
+int GetScaledSumIfActive0205bd04(struct Struct_0205bd04*);
 
 struct Struct_0205bcdc;
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(struct Struct_0205bcdc*, int);
+void SetIndexIfValid0205bcdc(struct Struct_0205bcdc*, int);
 
 struct Struct_0205bd78 {
     int field0;
@@ -49,9 +49,9 @@ extern "C" ARM int func_0205bd78(struct Struct_0205bd78* s, int x, int y) {
                 if (x >= a && right >= x && y >= b && bottom >= y) {
                     *s->field2c = row;
                     *s->field28 = col;
-                    int result = _Z28GetScaledSumIfActive0205bd04P15Struct_0205bd04((struct Struct_0205bd04*)s);
+                    int result = GetScaledSumIfActive0205bd04((struct Struct_0205bd04*)s);
                     if (s->field0 <= result) result = -1;
-                    _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((struct Struct_0205bcdc*)s, result);
+                    SetIndexIfValid0205bcdc((struct Struct_0205bcdc*)s, result);
                     return result;
                 }
             }

@@ -9,12 +9,12 @@ struct Vec3 {
 };
 
 void* GetActiveCombatWork();
-extern "C" int _Z23DispatchByIndex021820bcPviii(void* obj, int unused, int index, int arg);
+int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 void SetSubstructByte0x56(unsigned char* obj);
 int GetWord0x0(int* obj);
 GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
 extern "C" void _Z20GetSubTriple02049b54P11Obj02049b54(struct Vec3* out, struct Obj02049b54* obj);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(struct Obj02033874* obj, int arg);
+void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
 void SetSubstructField0x8ClearFlag0x2(unsigned char* obj, int* src);
 extern "C" void func_ov000_02161c0c(void* work, int id);
 extern "C" void func_ov000_02167fb0(void* work, GameObject* obj);
@@ -49,7 +49,7 @@ extern "C" ARM int func_ov025_021e604c(void* unused0, int b, int unused2, void* 
     if (work == NULL) {
         return 1;
     }
-    int count = _Z23DispatchByIndex021820bcPviii(c, b, 0x18, (int)ids);
+    int count = DispatchByIndex021820bc(c, b, 0x18, (int)ids);
     for (int i = 0; i < count; i++) {
         GameObject* obj = bs->GetCombatantByIndex(ids[i]);
         if (obj != NULL) {
@@ -78,7 +78,7 @@ extern "C" ARM int func_ov025_021e604c(void* unused0, int b, int unused2, void* 
             dir.y = 0;
             Vector3fix_Normalize(&dir, &dir);
             int angle = fix32_Atan2(dir.x, dir.z);
-            _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)enemy, angle);
+            SetVecYFromValue02033874((struct Obj02033874*)enemy, angle);
             __clear(&rot, 0xc);
             rot.y = angle;
             SetSubstructField0x8ClearFlag0x2((unsigned char*)enemy, (int*)&rot);

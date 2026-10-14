@@ -29,7 +29,7 @@ struct Rodata_021fd75c {
 extern PageTable_021e7d8c data_ov023_021fd7cc;
 extern Rodata_021fd75c data_ov023_021fd75c;
 
-extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem* GetGlobalField0x1c020421a0();
 void SetElementFieldC2(Struct_0205d81c* window, int index, int value);
 
 extern "C" {
@@ -41,7 +41,7 @@ void func_0205d304(void* window, char* text, int a, int b, int c, int d, int e, 
 // USA: func_ov023_021e7d8c
 extern "C" ARM void func_ov023_021e7d8c(ProfileCard_021e7d8c* self)
 {
-    MessageSystem* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     PageFunction functions[3];
     *(PageTable_021e7d8c*)functions = data_ov023_021fd7cc;
     short y[3];

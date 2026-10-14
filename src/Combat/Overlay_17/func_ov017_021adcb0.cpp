@@ -79,7 +79,7 @@ void SetVecYByMode02033834(Obj02033834* obj, int arg);
 extern "C" int* func_0202ae18(void);
 unsigned char* GetElementStride0x24(unsigned char* p, int i);
 Container* GetElement02094d5c(GetElement02094d5cList* list, int id);
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
+void* GetPtrField0x2a04(GameState* gs);
 int CheckField0NonZero(int* p);
 extern "C" int func_0202c540(void* p);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
@@ -167,7 +167,7 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
                 container = mgr->GetContainerByID(elem->containerId, NULL);
             }
         }
-        Obj02086aec* party = (Obj02086aec*)_Z17GetPtrField0x2a04P9GameState(gs2);
+        Obj02086aec* party = (Obj02086aec*)GetPtrField0x2a04(gs2);
         if (CheckField0NonZero(search) && func_0202c540(search) && container && container->containerType == 0) {
             char who[0xc];
             char text[0x50];

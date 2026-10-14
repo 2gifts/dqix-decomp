@@ -89,17 +89,17 @@ extern "C" void* func_ov017_021b8468(void*);
 extern "C" void func_020dd0b0(int, char*);
 extern "C" void func_0204500c(MessageWork*, char*, int, int);
 extern "C" void func_02042b98(MessageWork*, int, int, int, int);
-extern "C" MessageWork* _Z26GetGlobalField0x1c020421a0v();
-extern "C" GameObject* _Z25GetCombatantWithFlag0x400P9GameStatei(GameState*, int);
+MessageWork* GetGlobalField0x1c020421a0();
+GameObject* GetCombatantWithFlag0x400(GameState*, int);
 int IsFlag10088Set(S_10088*);
-extern "C" int _Z25IsFlagBit8192Set_021dd3c4P16FlagObj_021dd3c4(FlagObj_021dd3c4*);
+int IsFlagBit8192Set_021dd3c4(FlagObj_021dd3c4*);
 void StoreInArray0x8b0(StoreStruct*, int, int);
 unsigned char CopyOutRegion0x571d(char*, void*);
 void* GetActiveCombatWork();
-extern "C" void* _Z20GetOffsetPtr02160f08Pv(void*);
-extern "C" void* _Z21FindSlotById_021dae60P18Container_021dae60i(Container_021dae60*, int);
+void* GetOffsetPtr02160f08(void*);
+void* FindSlotById_021dae60(Container_021dae60*, int);
 int TestBitAt0x34(unsigned char*, unsigned int);
-extern "C" char* _Z27InitAndClearBuffer_021d8a78Pv(void*);
+char* InitAndClearBuffer_021d8a78(void*);
 
 extern signed char data_ov026_021de6a6[];
 extern signed char data_ov026_021de6a8[];
@@ -139,7 +139,7 @@ extern "C" ARM void func_ov026_021dd8a8(BattleState* battle, PartyState* party) 
     int msgId;
 
     gs = GameState::GetInstance();
-    win = _Z26GetGlobalField0x1c020421a0v();
+    win = GetGlobalField0x1c020421a0();
     if (battle->busy != 0) {
         return;
     }
@@ -164,8 +164,8 @@ extern "C" ARM void func_ov026_021dd8a8(BattleState* battle, PartyState* party) 
         }
         leaders[n] = e->leader;
         for (j = 0; j < e->count; j++) {
-            GameObject* c = _Z25GetCombatantWithFlag0x400P9GameStatei(gs, e->ids[j] + 0xc0);
-            if (c == NULL || IsFlag10088Set((S_10088*)c) || _Z25IsFlagBit8192Set_021dd3c4P16FlagObj_021dd3c4((FlagObj_021dd3c4*)c)) {
+            GameObject* c = GetCombatantWithFlag0x400(gs, e->ids[j] + 0xc0);
+            if (c == NULL || IsFlag10088Set((S_10088*)c) || IsFlagBit8192Set_021dd3c4((FlagObj_021dd3c4*)c)) {
                 continue;
             }
             if (((CombatantView*)c)->owner == NULL) {
@@ -184,7 +184,7 @@ extern "C" ARM void func_ov026_021dd8a8(BattleState* battle, PartyState* party) 
     res = func_ov017_0218b5b0();
     zone = NULL;
     view = NULL;
-    none = (int)zone; // -1 sentinel below is derived from this null, not materialised
+    none = (int)zone;
     if (res != NULL) {
         zone = res->unknown_ptr_3718;
     }
@@ -206,10 +206,10 @@ extern "C" ARM void func_ov026_021dd8a8(BattleState* battle, PartyState* party) 
     count = CopyOutRegion0x571d((char*)gs, ids);
     idle = 0;
     present = 0;
-    slots = _Z20GetOffsetPtr02160f08Pv(GetActiveCombatWork());
+    slots = GetOffsetPtr02160f08(GetActiveCombatWork());
     for (i = 0; i < count; i++) {
         GameObject* c = gs->GetCombatantByIndex(ids[i]);
-        _Z21FindSlotById_021dae60P18Container_021dae60i((Container_021dae60*)slots, ids[i]);
+        FindSlotById_021dae60((Container_021dae60*)slots, ids[i]);
         if (c == NULL) {
             continue;
         }
@@ -249,12 +249,12 @@ extern "C" ARM void func_ov026_021dd8a8(BattleState* battle, PartyState* party) 
         break;
     }
 
-    text = _Z26GetGlobalField0x1c020421a0v()->text;
+    text = GetGlobalField0x1c020421a0()->text;
     memset(text, 0, 0x960);
     func_020dd0b0(msgId, text);
     strcpy(message, text);
     if (battle->kind == 1) {
-        SideInfo* info = (SideInfo*)_Z20GetOffsetPtr02160f08Pv(func_ov017_021b8468(zone));
+        SideInfo* info = (SideInfo*)GetOffsetPtr02160f08(func_ov017_021b8468(zone));
         unsigned char side = party->netId % 2;
         if (info != NULL) {
             info->side = side;
@@ -264,13 +264,13 @@ extern "C" ARM void func_ov026_021dd8a8(BattleState* battle, PartyState* party) 
             msgId = data_ov026_021de6a8[side];
             win->b19d7 = 1;
         }
-        text = _Z26GetGlobalField0x1c020421a0v()->text;
+        text = GetGlobalField0x1c020421a0()->text;
         memset(text, 0, 0x960);
         func_020dd0b0(msgId, text);
         strcat(message, text);
     } else if (battle->kind == 2) {
         strcat(message, data_ov026_021deebd);
-        strcat(message, _Z27InitAndClearBuffer_021d8a78Pv((void*)data_ov026_021de6a2[party->netId % 2]));
+        strcat(message, InitAndClearBuffer_021d8a78((void*)data_ov026_021de6a2[party->netId % 2]));
         if (extra) {
             win->b19d7 = 1;
         }

@@ -9,9 +9,9 @@ enum {regionalOffset0=0x29c, regionalOffset1=0x2a0, regionalOffset2=0xe90, regio
 extern "C" int func_ov000_0215e9fc(void* party, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(void* party, short* buf, int max, int start);
 void SetSubstructWord0x68(unsigned char* obj, int value);
-extern "C" void _Z23SetOrInitField_02182498Pvi(void* obj, int flag);
-extern "C" void _Z19SetFlag320_02195530Ph(unsigned char* obj);
-extern "C" unsigned char* _Z26GetGlobalField0x1c020421a0v();
+void SetOrInitField_02182498(void* obj, int flag);
+void SetFlag320_02195530(unsigned char* obj);
+unsigned char* GetGlobalField0x1c020421a0();
 
 struct StatusNibbles_021db7f8 {
     unsigned char lo : 4;
@@ -47,9 +47,9 @@ extern "C" ARM void func_ov025_021db7f8(BattleCtrl_021db7f8* obj) {
             SetSubstructWord0x68((unsigned char*)c, 0);
         }
     }
-    _Z23SetOrInitField_02182498Pvi(obj->field6ffc, 1);
-    _Z19SetFlag320_02195530Ph((unsigned char*)func_ov017_0218b5b0());
-    _Z26GetGlobalField0x1c020421a0v()[regionalOffset5] = 0;
+    SetOrInitField_02182498(obj->field6ffc, 1);
+    SetFlag320_02195530((unsigned char*)func_ov017_0218b5b0());
+    GetGlobalField0x1c020421a0()[regionalOffset5] = 0;
     obj->fieldE90 = 0;
     obj->fieldE94 = 0;
 }

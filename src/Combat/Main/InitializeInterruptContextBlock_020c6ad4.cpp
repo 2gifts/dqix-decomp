@@ -5,7 +5,7 @@ extern InterruptContextBlock_027e0060 data_027e0060;
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_020c6ad4
-extern "C" ARM void _Z40InitializeInterruptContextBlock_020c6ad4v(void) {
+ARM void InitializeInterruptContextBlock_020c6ad4(void) {
     data_027e0060.b = 0;
     data_027e0060.a = 0;
 }

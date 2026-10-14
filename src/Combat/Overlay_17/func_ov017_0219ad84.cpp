@@ -23,9 +23,9 @@ struct Combatant0219ad84 {
 
 int GetBitsInField4(unsigned int*, unsigned int);
 extern "C" Zone0219ad84* func_02012fe4();
-extern "C" Controller0219ad84* _Z26GetGlobalField0x1c020421a0v();
+Controller0219ad84* GetGlobalField0x1c020421a0();
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
-extern "C" void _Z27AdvanceStreamRecord0204724cP11Obj0204724C(Obj0204724C*);
+void AdvanceStreamRecord0204724c(Obj0204724C*);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
 unsigned char GetByte0x26c(char*);
 int CheckField0xc4Low15BitsNonZero(BitField0203402c*);
@@ -38,8 +38,8 @@ extern "C" SearchStruct0202c1a4* func_0202ae18();
 int CheckField0NonZero(int*);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 void* GetField0x3f8Address(GameState*);
-extern "C" void _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
-extern "C" int _Z19HasFlagBit_0218d4ecPvi(void*, int);
+void ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
+int HasFlagBit_0218d4ec(void*, int);
 
 static inline Foo02048004* CurrentSprite(GameResources* res) {
     return *(Foo02048004**)&res->unknown_35a8[0x88];
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
     GameState* game = GameState::GetInstance();
     Zone0219ad84* zone = func_02012fe4();
     void* camera = GetField0x3b0Value(game);
-    Controller0219ad84* controller = _Z26GetGlobalField0x1c020421a0v();
+    Controller0219ad84* controller = GetGlobalField0x1c020421a0();
     Window0219ad84* field = (Window0219ad84*)GetField0x3f8Address(game);
     GameObject* actor = game->GetUnknownGameObject();
     if (!actor) return;
@@ -65,7 +65,7 @@ extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
         if (CurrentSprite(self) != &self->substruct_array_2b90[12] &&
             CurrentSprite(self) != &self->substruct_array_2b90[13] &&
             CurrentSprite(self) != &self->substruct_array_2b90[14]) {
-            _Z27AdvanceStreamRecord0204724cP11Obj0204724C((Obj0204724C*)CurrentSprite(self));
+            AdvanceStreamRecord0204724c((Obj0204724C*)CurrentSprite(self));
             RenderFlaggedIndexedEntry((StructAt020473c8*)CurrentSprite(self), 1);
         } else {
             RenderFlaggedIndexedEntry((StructAt020473c8*)CurrentSprite(self), 1);
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
             int selection = self->interactionSelection[1];
             Foo02048004* sprites = self->substruct_array_2b90;
             GXFIFO_MATRIX_PUSH = 0;
-            _Z27AdvanceStreamRecord0204724cP11Obj0204724C((Obj0204724C*)&sprites[selection]);
+            AdvanceStreamRecord0204724c((Obj0204724C*)&sprites[selection]);
             RenderFlaggedIndexedEntry((StructAt020473c8*)&sprites[selection], 1);
             GXFIFO_MATRIX_POP = 1;
         }
@@ -140,14 +140,14 @@ extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
         Vector3fix position = member->obj3D.position_;
         position.y += member->obj3D.GetHeight();
         int x, y;
-        _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(camera, (Vec3copy0202ec84*)&position, &x, &y);
+        ComputeTwoFromVec3_0202ec84(camera, (Vec3copy0202ec84*)&position, &x, &y);
         x -= 12;
         y -= 24;
         if (member->obj3D.GetFlag(0x400)) {
             Foo02048004* marker = (Foo02048004*)self->unknown_3520;
             SetVec3At0x1c((Vec3Target0203a46c*)marker, x << 12, y << 12, -0xa000);
             RecomputeField0x7c((Struct020478bc*)marker, 1);
-            _Z27AdvanceStreamRecord0204724cP11Obj0204724C((Obj0204724C*)marker);
+            AdvanceStreamRecord0204724c((Obj0204724C*)marker);
             GXFIFO_MATRIX_PUSH = 0;
             RenderFlaggedIndexedEntry((StructAt020473c8*)marker, 1);
             drawn++;
@@ -157,16 +157,16 @@ extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
             Foo02048004* marker = (Foo02048004*)self->unknown_35a8;
             SetVec3At0x1c((Vec3Target0203a46c*)marker, x << 12, y << 12, -0xa000);
             GXFIFO_MATRIX_PUSH = 0;
-            _Z27AdvanceStreamRecord0204724cP11Obj0204724C((Obj0204724C*)marker);
+            AdvanceStreamRecord0204724c((Obj0204724C*)marker);
             RenderFlaggedIndexedEntry((StructAt020473c8*)marker, 1);
             drawn++;
             GXFIFO_MATRIX_POP = 1;
             if (drawn >= 3) break;
-        } else if (_Z19HasFlagBit_0218d4ecPvi(self, member->obj3D.unknown_4_)) {
+        } else if (HasFlagBit_0218d4ec(self, member->obj3D.unknown_4_)) {
             Foo02048004* marker = &self->substruct_array_2b90[17];
             SetVec3At0x1c((Vec3Target0203a46c*)marker, x << 12, y << 12, -0xa000);
             GXFIFO_MATRIX_PUSH = 0;
-            _Z27AdvanceStreamRecord0204724cP11Obj0204724C((Obj0204724C*)marker);
+            AdvanceStreamRecord0204724c((Obj0204724C*)marker);
             RenderFlaggedIndexedEntry((StructAt020473c8*)marker, 1);
             GXFIFO_MATRIX_POP = 1;
         }

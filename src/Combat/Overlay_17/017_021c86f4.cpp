@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" int func_ov017_021b8468(void* obj);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
 
 // USA: func_ov017_021c86f4
 extern "C" ARM void func_ov017_021c86f4(int unused0, int* param1, int unused2, unsigned char* base) {
@@ -18,7 +18,7 @@ extern "C" ARM void func_ov017_021c86f4(int unused0, int* param1, int unused2, u
 	if (!func_ov017_021b8468(table)) {
 		return;
 	}
-	out = (char*)_Z20GetField6b0_021b8470Pv(table);
+	out = (char*)GetField6b0_021b8470(table);
 	if (out == NULL) {
 		return;
 	}

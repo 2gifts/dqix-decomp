@@ -76,9 +76,9 @@ extern Struct021707d8_02157db8 data_ov004_021707d8;
 extern char data_02109bf4[];
 
 extern "C" void* func_ov011_021845f8(unsigned char*, unsigned int);
-extern "C" void _Z19ClearStruct020a9ea4P14Struct020a9ea4(struct Struct020a9ea4*);
-extern "C" void _Z10Zero4BytesPv(void*);
-extern "C" void _Z20Clear12Bytes020e46c4Pv(void*);
+void ClearStruct020a9ea4(struct Struct020a9ea4*);
+void Zero4Bytes(void*);
+void Clear12Bytes020e46c4(void*);
 extern "C" void* func_02012fe4(void);
 unsigned short GetFieldAt0x7e(struct S_e830* p);
 unsigned int GetWord(unsigned int* obj);
@@ -89,14 +89,14 @@ void SetBitsInField4(unsigned int* obj, unsigned int mask);
 void Set3DClearColor(int, int, int, int, int);
 void SetFogState(int, unsigned int, unsigned int, unsigned short);
 extern "C" void* func_ov004_02156fd4(void* a, int b);
-extern "C" void _Z19SetDataPtr_021f5598Pv(void*);
-extern "C" void _Z21RegisterSlotA020cf0fci(int);
-extern "C" void _Z21RegisterSlotB020cf1a8i(int);
+void SetDataPtr_021f5598(void*);
+void RegisterSlotA020cf0fc(int);
+void RegisterSlotB020cf1a8(int);
 extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(void*, int);
-extern "C" unsigned char _Z20GetField0xcc0209ca98Pc(char*);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
+unsigned char GetField0xcc0209ca98(char*);
+void* GetDataPtr02114e04_020d6c00();
 extern "C" void _Z16OrBitsIntoField0Pjj(void*, unsigned int);
-extern "C" unsigned char _Z19CopyOutRegion0x5718PcPv(char*, void*);
+unsigned char CopyOutRegion0x5718(char*, void*);
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(struct GameState*, int);
 
 // USA: func_ov004_02157db8
@@ -156,13 +156,13 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
     blk->b70 = neg2;
     blk->word74 = neg2;
     blk->word78 = 0;
-    _Z19ClearStruct020a9ea4P14Struct020a9ea4((struct Struct020a9ea4*)blk->pad84);
-    _Z10Zero4BytesPv(blk->pad8c);
+    ClearStruct020a9ea4((struct Struct020a9ea4*)blk->pad84);
+    Zero4Bytes(blk->pad8c);
     blk->word98 = 0;
     blk->b9c = 0;
     blk->b9d = 0;
-    _Z20Clear12Bytes020e46c4Pv(blk->padA0);
-    _Z20Clear12Bytes020e46c4Pv(blk->padAC);
+    Clear12Bytes020e46c4(blk->padA0);
+    Clear12Bytes020e46c4(blk->padAC);
 
     void* v = func_02012fe4();
     if (!v) return 0;
@@ -183,12 +183,12 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
 
     void* d = func_ov004_02156fd4(a, 5);
     if (d != 0) {
-        _Z19SetDataPtr_021f5598Pv(d);
+        SetDataPtr_021f5598(d);
     }
     int slotA[4];
     int slotB[3];
-    _Z21RegisterSlotA020cf0fci((int)slotA);
-    _Z21RegisterSlotB020cf1a8i((int)slotB);
+    RegisterSlotA020cf0fc((int)slotA);
+    RegisterSlotB020cf1a8((int)slotB);
 
     data_ov004_021707d8.ptr->cfg.lo12 = slotA[0] + 0x7d0;
     data_ov004_021707d8.ptr->cfg.n4 = slotA[1];
@@ -197,10 +197,10 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
     data_ov004_021707d8.ptr->cfg.j6 = slotB[1];
 
     _Z27CancelPendingAction020397ccP11Obj020397cci(bs->GetUnknownGameObject(), 1);
-    data_ov004_021707d8.ptr->b2d = _Z20GetField0xcc0209ca98Pc(data_02109bf4);
+    data_ov004_021707d8.ptr->b2d = GetField0xcc0209ca98(data_02109bf4);
     unsigned int subword = *(unsigned int*)(sub4000 + 0x50);
     data_ov004_021707d8.ptr->b2f = (subword & 1) ? 1 : 0;
-    _Z16OrBitsIntoField0Pjj(_Z27GetDataPtr02114e04_020d6c00v(), 0xf);
+    _Z16OrBitsIntoField0Pjj(GetDataPtr02114e04_020d6c00(), 0xf);
 
     short* pp = (short*)(base5 + 4);
     for (int i = 0; i < 6; ) {
@@ -219,7 +219,7 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
     memset((void*)data_ov004_021707d8.ptr->word98, 0, 0x10800);
 
     unsigned char ids[4];
-    unsigned char count = _Z19CopyOutRegion0x5718PcPv((char*)bs, ids);
+    unsigned char count = CopyOutRegion0x5718((char*)bs, ids);
     for (int i = 0; i < count; i++) {
         data_ov004_021707d8.ptr->arr32[i] = ids[i];
     }

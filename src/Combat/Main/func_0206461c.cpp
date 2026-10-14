@@ -25,7 +25,7 @@ extern Obj02064574 data_02108844;
 extern char data_020f05dc[] __attribute__((aligned(4)));
 int GetField5cb0Value(char*);
 int GetField5cb4Value(char*);
-extern "C" void _Z16SomeInit02064574P11Obj02064574iP12StreamHeaderiiii(Obj02064574*, int, StreamHeader*, int, int, int, int);
+void SomeInit02064574(Obj02064574*, int, StreamHeader*, int, int, int, int);
 void* GetGlobal02109418();
 extern "C" void func_02095578(void*);
 
@@ -53,7 +53,7 @@ extern "C" ARM int func_0206461c(LoaderOwner0206461c* owner, Request0206461c* re
     BackgroundLoader::AddLockGlobal();
     sprintf(path, data_020f05dc, name);
     StreamHeader* file = (StreamHeader*)LoadFileIntoMemory(path, data_0211e33c, &size);
-    if (file) _Z16SomeInit02064574P11Obj02064574iP12StreamHeaderiiii(object, (int)allocator, file, size, request->id, first, second);
+    if (file) SomeInit02064574(object, (int)allocator, file, size, request->id, first, second);
     BackgroundLoader::RemoveLockGlobal();
     func_02095578(GetGlobal02109418());
     return 1;

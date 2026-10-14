@@ -42,10 +42,10 @@ struct BattleMenu0215a5b4 {
 struct Container020e0310;
 struct Struct_0205d81c;
 
-extern "C" struct MessageWork0215a5b4* _Z26GetGlobalField0x1c020421a0v();
+struct MessageWork0215a5b4* GetGlobalField0x1c020421a0();
 void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+int AppendString02042058(char* dst, const char* src);
 extern "C" void __clear(void* buf, int n);
 unsigned char CopyOutRegion0x571d(char* obj, void* dst);
 extern "C" void func_ov003_021592d8(struct BattleMenu0215a5b4* self, struct Combatant0215a5b4* combatant, char* out);
@@ -54,7 +54,7 @@ extern "C" void func_ov003_0215c01c(struct BattleMenu0215a5b4* self, int mode, i
 
 // USA: func_ov003_0215a5b4
 extern "C" ARM void func_ov003_0215a5b4(struct BattleMenu0215a5b4* self) {
-    struct MessageWork0215a5b4* work = _Z26GetGlobalField0x1c020421a0v();
+    struct MessageWork0215a5b4* work = GetGlobalField0x1c020421a0();
     unsigned char step = self->step;
     if (step == 0) {
         GameState* game = GameState::GetInstance();
@@ -62,8 +62,8 @@ extern "C" ARM void func_ov003_0215a5b4(struct BattleMenu0215a5b4* self) {
         SetElementFieldC2((struct Struct_0205d81c*)self->menu, 1, 1);
         SetElementFieldC2((struct Struct_0205d81c*)self->menu, 2, 1);
         memset(self->text, 0, kRegion960);
-        _Z20AppendString02042058PcPKc(self->text,
-                             (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages, 0x3fc));
+        AppendString02042058(self->text,
+                             (const char*)GetFieldByKey020e0434((struct Container020e0310*)self->messages, 0x3fc));
         unsigned char ids[4];
         char* line = self->text + kRegion860;
         __clear(ids, sizeof(ids));
@@ -85,10 +85,10 @@ extern "C" ARM void func_ov003_0215a5b4(struct BattleMenu0215a5b4* self) {
             }
             memset(line, 0, 0x80);
             func_ov003_021592d8(self, combatant, line);
-            _Z20AppendString02042058PcPKc(self->text, line);
+            AppendString02042058(self->text, line);
         }
-        _Z20AppendString02042058PcPKc(self->text,
-                             (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages, 0x42e));
+        AppendString02042058(self->text,
+                             (const char*)GetFieldByKey020e0434((struct Container020e0310*)self->messages, 0x42e));
         func_ov003_02159250(self, self->text);
         self->step++;
     }

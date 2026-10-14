@@ -12,13 +12,12 @@ enum { kRegionValue9A0_870 = 0x9a0 };
 enum { kRegionValue9AE_7DE = 0x9ae };
 #endif
 
-
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
+void* GetGlobalField0x1c020421a0(void);
 extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
 extern "C" void func_ov003_02159250(void*, void*);
 extern "C" void func_02043124(void*);
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void*, unsigned short);
-extern "C" int _Z25IsAnimationActive0209ca2cPv(void*);
+int IsAnimationActive0209ca2c(void*);
 
 extern unsigned char data_02109bf4;
 
@@ -26,7 +25,7 @@ extern unsigned char data_02109bf4;
 ARM void UpdateChatResponseState_0215b0e8(void* self) {
     unsigned char* s = (unsigned char*)self;
     GameState::GetInstance();
-    unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
+    unsigned char* g = (unsigned char*)GetGlobalField0x1c020421a0();
     unsigned char state = *(unsigned char*)(s + 0x580);
 
     if (state == 0) {
@@ -54,7 +53,7 @@ ARM void UpdateChatResponseState_0215b0e8(void* self) {
     if (*(int*)(g + kRegionValue9A0_870) == 3) {
         *(unsigned char*)(g + 0x1000 + kRegionValue9AE_7DE) = 0;
     }
-    if (_Z25IsAnimationActive0209ca2cPv(&data_02109bf4) == 0) {
+    if (IsAnimationActive0209ca2c(&data_02109bf4) == 0) {
         *(unsigned char*)(s + 0x588) = 1;
         *(unsigned char*)(s + 0x580) = 0;
     }

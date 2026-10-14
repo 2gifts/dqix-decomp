@@ -41,7 +41,7 @@ struct Manager0218aee4 {
     signed char state;
 };
 
-extern "C" Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* s, int key);
+Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c* s, int key);
 extern "C" void func_0205ac40(void* renderer, Cell0218aee4* cell);
 
 // USA: func_ov008_0218aee4
@@ -49,7 +49,7 @@ extern "C" ARM void func_ov008_0218aee4(Manager0218aee4* self) {
     if (self->state != 1) {
         return;
     }
-    Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci((Struct_0205d81c*)self->elements, 0);
+    Elem_0205d81c* elem = FindElementByC40205d81c((Struct_0205d81c*)self->elements, 0);
     if (elem == NULL) {
         return;
     }

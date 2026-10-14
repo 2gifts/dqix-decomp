@@ -8,11 +8,11 @@ struct Foo0207df50;
 struct Words021e60c4;
 struct Container020dedd0;
 
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* state);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* state);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* state);
-extern "C" void _Z26SetWords_021e60c4_021e60c4PvP13Words021e60c4(void* object, struct Words021e60c4* rotation);
-extern "C" void _Z27CopyAndClampShorts_021e5fdcPvPsS0_(void* vocation, short* models, short* appearance);
+void CopyInternalFields0207df50(struct Foo0207df50* state);
+void RestorePairTables0207df90(char* state);
+void BackupPairTables0207dfac(char* state);
+void SetWords_021e60c4_021e60c4(void* object, struct Words021e60c4* rotation);
+void CopyAndClampShorts_021e5fdc(void* vocation, short* models, short* appearance);
 extern "C" void __clear(void* buffer, unsigned long size);
 
 struct PartyMemberAppearance_021e5020
@@ -43,7 +43,7 @@ struct PartEntry_021e5020
     unsigned int rank_ : 3;
 };
 
-extern "C" PartEntry_021e5020* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* names, int id);
+PartEntry_021e5020* FindElementByKey020dedd0(struct Container020dedd0* names, int id);
 
 struct VRAMManagerState_021e5020
 {
@@ -105,10 +105,10 @@ extern "C" ARM void func_ov023_021e5020(CharacterModel_021e5020* self)
                     loader->GetLoadedFileByID(self->tasks_[i], &file, &size);
                     if (size != 0)
                     {
-                        _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)&self->vramStates_[i]);
-                        _Z25RestorePairTables0207df90Pc((char*)&self->vramStates_[i]);
+                        CopyInternalFields0207df50((Foo0207df50*)&self->vramStates_[i]);
+                        RestorePairTables0207df90((char*)&self->vramStates_[i]);
                         self->parts_[i].SetModelFromFileCopy(&self->allocators_[i], file, size, Model3D::TextureStagingMode_Normal);
-                        _Z24BackupPairTables0207dfacPc((char*)&self->vramStates_[i]);
+                        BackupPairTables0207dfac((char*)&self->vramStates_[i]);
                         if (i == 4 && self->parts_[3].pModel_ != NULL)
                             self->parts_[3].pModel_->ApplyTexturesFromModel(self->parts_[i].pModel_);
                     }
@@ -191,16 +191,16 @@ extern "C" ARM void func_ov023_021e5020(CharacterModel_021e5020* self)
                 }
                 Rotation_021e5020 rotation = {0};
                 rotation.y = self->angle_;
-                _Z26SetWords_021e60c4_021e60c4PvP13Words021e60c4(&self->parts_[0], (Words021e60c4*)&rotation);
-                _Z26SetWords_021e60c4_021e60c4PvP13Words021e60c4(&self->parts_[6], (Words021e60c4*)&rotation);
-                _Z26SetWords_021e60c4_021e60c4PvP13Words021e60c4(&self->parts_[1], (Words021e60c4*)&rotation);
-                _Z26SetWords_021e60c4_021e60c4PvP13Words021e60c4(&self->parts_[5], (Words021e60c4*)&rotation);
+                SetWords_021e60c4_021e60c4(&self->parts_[0], (Words021e60c4*)&rotation);
+                SetWords_021e60c4_021e60c4(&self->parts_[6], (Words021e60c4*)&rotation);
+                SetWords_021e60c4_021e60c4(&self->parts_[1], (Words021e60c4*)&rotation);
+                SetWords_021e60c4_021e60c4(&self->parts_[5], (Words021e60c4*)&rotation);
                 func_ov023_021e5e68(self, appearance->width_, appearance->height_);
             }
 
             short models[10];
-            _Z27CopyAndClampShorts_021e5fdcPvPsS0_((void*)self->vocation_, models, (short*)appearance);
-            PartEntry_021e5020* entry = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->names_, models[8]);
+            CopyAndClampShorts_021e5fdc((void*)self->vocation_, models, (short*)appearance);
+            PartEntry_021e5020* entry = FindElementByKey020dedd0(self->names_, models[8]);
             if (entry != NULL && entry->type_ == 6)
                 self->holdsWithArms_ = 1;
             else

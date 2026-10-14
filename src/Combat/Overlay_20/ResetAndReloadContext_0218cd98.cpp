@@ -12,7 +12,7 @@ extern "C" void func_0204b5b4(void*, int, void*, int);
 extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(void*, void*);
 extern "C" void _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(void*, int, void*);
 extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*, int, int);
-extern "C" void _Z18LoadFileIntoMemoryPKcPvPj(const char*, void*, unsigned int*);
+void LoadFileIntoMemory(const char*, void*, unsigned int*);
 extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void*);
 extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, int*);
 extern "C" void func_0204b174(void*, void*, void*, int);
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov020_0218cd98(struct ResetContext0218cd98* self) {
     BackgroundLoader::AddLockGlobal();
 
     unsigned int local1c = 0;
-    _Z18LoadFileIntoMemoryPKcPvPj((const char*)&data_ov020_0218dcb3, (void*)&data_0211e33c, &local1c);
+    LoadFileIntoMemory((const char*)&data_ov020_0218dcb3, (void*)&data_0211e33c, &local1c);
     int count = _Z18CountActiveEntriesP19ActiveEntry02046900(&data_0211e33c);
 
     for (int i = 0; i < count; i++) {

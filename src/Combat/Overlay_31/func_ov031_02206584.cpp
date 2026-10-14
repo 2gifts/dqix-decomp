@@ -31,8 +31,8 @@ struct Transfer6584 {
     unsigned short second;
     unsigned int update;
 };
-extern "C" void _Z29UpdateObjFromContext_022031bcitj(int, unsigned short, unsigned int);
-extern "C" void _Z31UpdateAndWaitOnContext_02203424v();
+void UpdateObjFromContext_022031bc(int, unsigned short, unsigned int);
+void UpdateAndWaitOnContext_02203424();
 extern "C" int func_ov031_022066b4(int);
 extern "C" int func_ov031_02206758(char*, int, Transfer6584*);
 extern "C" int func_ov031_02203a84(char*, int);
@@ -54,7 +54,7 @@ extern "C" ARM int func_ov031_02206584(Transfer6584* transfer) {
         if (!(channel->flags & 4)) goto failed;
     }
     if (transfer->update != 0) {
-        _Z29UpdateObjFromContext_022031bcitj(transfer->first, transfer->second, transfer->update);
+        UpdateObjFromContext_022031bc(transfer->first, transfer->second, transfer->update);
     }
     {
         buffer = channel->buffer;
@@ -70,7 +70,7 @@ extern "C" ARM int func_ov031_02206584(Transfer6584* transfer) {
                 if (IsSpecialMode6584(channel)) {
                     channel->flags &= ~0xe;
                     channel->flags |= 0x80;
-                    _Z31UpdateAndWaitOnContext_02203424v();
+                    UpdateAndWaitOnContext_02203424();
                 }
                 result = -76;
                 break;

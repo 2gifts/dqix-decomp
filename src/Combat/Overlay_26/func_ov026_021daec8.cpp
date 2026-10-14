@@ -22,8 +22,8 @@ struct Triple02049b54 {
 
 int GetWord0x0(int* obj);
 GameObject* GetCombatantWithFlag0x400(GameState* gs, int id);
-extern "C" Triple02049b54 _Z20GetSubTriple02049b54P11Obj02049b54(Obj02049b54* obj);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(Obj02033874* obj, int angle);
+Triple02049b54 GetSubTriple02049b54(Obj02049b54* obj);
+void SetVecYFromValue02033874(Obj02033874* obj, int angle);
 void SetSubstructField0x8ClearFlag0x2(unsigned char* obj, int* rot);
 int IsFlag10088Set(S_10088* obj);
 
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov026_021daec8(BattleState* battle, BattleView* view, i
             __clear(&target, sizeof(target));
             target.z = centerZ;
 
-            Vector3fix pos = _Z20GetSubTriple02049b54P11Obj02049b54((Obj02049b54*)member).v;
+            Vector3fix pos = GetSubTriple02049b54((Obj02049b54*)member).v;
             pos.y = 0;
 
             Vector3fix dir;
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov026_021daec8(BattleState* battle, BattleView* view, i
             dir.y = 0;
             Vector3fix_Normalize(&dir, &dir);
             fix32_t angle = fix32_Atan2(dir.x, dir.z);
-            _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)member, angle);
+            SetVecYFromValue02033874((Obj02033874*)member, angle);
 
             Vector3fix rot;
             __clear(&rot, sizeof(rot));

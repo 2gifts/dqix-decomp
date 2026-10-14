@@ -9,9 +9,9 @@ int TestBitBySignedByteIndex(SearchStruct* search, int index);
 int GetField0x3acValue(GameState* battleStruct);
 unsigned char* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
 int GetSignedByte0x2d0(void* obj);
-extern "C" void _Z21StoreByteList02026348PcPhi(char* obj, unsigned char* src, int count);
+void StoreByteList02026348(char* obj, unsigned char* src, int count);
 void CopyInRegion0x571d(char* obj, int len, void* src);
-extern "C" void _Z26WriteBlockWithSize02011468PviS_(void* obj, int size, void* src);
+void WriteBlockWithSize02011468(void* obj, int size, void* src);
 
 // USA: func_ov017_02191234
 extern "C" ARM void func_ov017_02191234(unsigned char* obj) {
@@ -61,7 +61,7 @@ extern "C" ARM void func_ov017_02191234(unsigned char* obj) {
             }
         }
     }
-    _Z21StoreByteList02026348PcPhi(*(char**)(obj + regionalOffset1), list, count);
+    StoreByteList02026348(*(char**)(obj + regionalOffset1), list, count);
     CopyInRegion0x571d((char*)battle, count, list);
-    _Z26WriteBlockWithSize02011468PviS_(battle, subCount, subList);
+    WriteBlockWithSize02011468(battle, subCount, subList);
 }

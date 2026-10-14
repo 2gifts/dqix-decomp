@@ -4,7 +4,7 @@
 extern "C" int _Z14IsFlag10088SetP7S_10088(void*);
 extern "C" void _Z29ResetFields14And18KeepFlag0x4Pht(unsigned char*,int);
 extern "C" void func_ov000_02159eac(void*,void*,int);
-extern "C" GameObject* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*,int);
+GameObject* GetCombatantWithFlag0x100(GameState*,int);
 unsigned short SelectByIndexRange0to3_021da644(int,int,int);
 extern "C" void* func_ov000_0215e958(void*);
 void AddEntryAndIncrementCount0215a88c(void*,void*,int);
@@ -48,7 +48,7 @@ extern "C" ARM void* func_ov024_021dd278(Obj021dd278* obj,int sourceID,int id,Pa
         func_ov000_02159eac(obj->context,&effects,3);
         ((State021dd278*)target->currentStats_)->changed=1;
         if(IsParty(id)){
-            GameObject* member=_Z25GetCombatantWithFlag0x100P9GameStatei(GameState::GetInstance(),id);
+            GameObject* member=GetCombatantWithFlag0x100(GameState::GetInstance(),id);
             if(member)((State021dd278*)member->currentStats_)->field3a=1;
         }
         selection=SelectByIndexRange0to3_021da644(id,params->field20.c,params->field24.a);

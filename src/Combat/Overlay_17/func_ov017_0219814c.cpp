@@ -31,7 +31,7 @@ void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
 extern "C" int func_02094b9c(struct AreaNode_0219814c* node, struct Anchor_0219814c* anchor);
 struct AreaNode_0219814c* GetFieldAt0x188(unsigned char* obj);
 void SetFieldAt0x188(unsigned char* obj, int value);
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(void* a, int mode, void* c);
+int LookupAndForEachNode020649b0(void* a, int mode, void* c);
 extern "C" void func_0206f81c(void* p);
 
 // USA: func_ov017_0219814c
@@ -57,23 +57,23 @@ extern "C" ARM void func_ov017_0219814c(void) {
     if (current != 0) {
         if (node == 0) {
             args.areaId = current->areaId;
-            if (_Z28LookupAndForEachNode020649b0PviS_(events, 5, &args)) {
+            if (LookupAndForEachNode020649b0(events, 5, &args)) {
                 func_0206f81c(&args);
             }
         } else if (node != current) {
             args.areaId = current->areaId;
-            if (_Z28LookupAndForEachNode020649b0PviS_(events, 5, &args)) {
+            if (LookupAndForEachNode020649b0(events, 5, &args)) {
                 func_0206f81c(&args);
             }
             args.field_0x30 = 0;
             args.areaId = node->areaId;
-            if (_Z28LookupAndForEachNode020649b0PviS_(events, 2, &args)) {
+            if (LookupAndForEachNode020649b0(events, 2, &args)) {
                 func_0206f81c(&args);
             }
         }
     } else if (node != 0) {
         args.areaId = node->areaId;
-        if (_Z28LookupAndForEachNode020649b0PviS_(events, 2, &args)) {
+        if (LookupAndForEachNode020649b0(events, 2, &args)) {
             func_0206f81c(&args);
         }
     }

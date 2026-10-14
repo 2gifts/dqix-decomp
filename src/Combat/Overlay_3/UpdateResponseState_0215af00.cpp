@@ -6,8 +6,7 @@ enum { kRegionValue998_868 = 0x868 };
 enum { kRegionValue998_868 = 0x998 };
 #endif
 
-
-extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
+void* GetGlobalField0x1c020421a0(void);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void*, int);
 extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
 extern "C" void func_ov003_02159250(void*, void*);
@@ -18,7 +17,7 @@ extern "C" void func_ov017_02191108(int, int, int, int, int);
 // USA: func_ov003_0215af00
 ARM void UpdateResponseState_0215af00(void* self) {
     unsigned char* s = (unsigned char*)self;
-    unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
+    unsigned char* g = (unsigned char*)GetGlobalField0x1c020421a0();
     unsigned char state = *(unsigned char*)(s + 0x580);
 
     if (state == 0) {

@@ -7,7 +7,7 @@ struct Elem_0205d81c {
 };
 
 struct Struct_0205d81c;
-extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 int CheckField0NonZero(int* obj);
 void GetFourSubstructPointers(unsigned char* elem, unsigned char** a, unsigned char** b, unsigned char** c,
                               unsigned char** d);
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov003_0216d990(char* obj) {
     tag->posX = 0xde000;
     tag->posY = 0x14000;
 #else
-    struct Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci(*(struct Struct_0205d81c**)(obj + 0x1000 + 0x2c0), 0);
+    struct Elem_0205d81c* elem = FindElementByC40205d81c(*(struct Struct_0205d81c**)(obj + 0x1000 + 0x2c0), 0);
     if (elem == 0) return;
 
     short ex = elem->posX << 3;

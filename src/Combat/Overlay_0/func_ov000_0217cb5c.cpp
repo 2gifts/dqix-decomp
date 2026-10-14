@@ -41,11 +41,11 @@ struct Combatant {
     signed char slot;
 };
 
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570*);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+int GetActiveScaledSum0205d794(Struct_0205c570*);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 void* GetPtrField0x2a04(GameState*);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0*, int);
-extern "C" TableEntry0217f8c0* _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0(Struct0217f8c0*);
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
+TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(Struct0217f8c0*);
 extern Obj0205eaa0 data_02108760;
 extern "C" {
 void func_02012fe4();
@@ -64,11 +64,11 @@ extern "C" ARM void func_ov000_0217cb5c(Battle* self, int a, int b)
 {
     func_02012fe4();
     self->flags |= 0x100;
-    int mode = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->entryList);
+    int mode = GetActiveScaledSum0205d794((Struct_0205c570*)self->entryList);
     if (mode < 0) mode = 0;
     self->mode = mode;
     if (func_ov000_0217c594(self, 0)) {
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         int table[4];
         _Z22CopyStaticData02174da4iPv(self, table);
         switch (table[self->mode]) {
@@ -76,7 +76,7 @@ extern "C" ARM void func_ov000_0217cb5c(Battle* self, int a, int b)
             func_ov000_02177038(self, 0, self->kinds[self->kindIndex], a, b);
             self->kindIndex++;
             self->kinds[self->kindIndex] = 13;
-            _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)self->entryList, 1);
+            ResetEntryList0205d6a0((Entry_0205d6a0*)self->entryList, 1);
             self->flags |= 4;
             if (func_ov000_0217f990(self) == 0) {
                 self->flags &= ~4;
@@ -97,7 +97,7 @@ extern "C" ARM void func_ov000_0217cb5c(Battle* self, int a, int b)
             self->step = 0;
             self->kindIndex++;
             self->kinds[self->kindIndex] = 2;
-            func_ov000_02176634(self, _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0((Struct0217f8c0*)self), 2, a, b);
+            func_ov000_02176634(self, FindMatchingTableEntry0217f8c0((Struct0217f8c0*)self), 2, a, b);
             break;
         case 2:
             self->flags &= ~0x100;
@@ -110,7 +110,7 @@ extern "C" ARM void func_ov000_0217cb5c(Battle* self, int a, int b)
             func_ov000_02177038(self, 0, self->kinds[self->kindIndex], a, b);
             self->kindIndex++;
             self->kinds[self->kindIndex] = 11;
-            _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)self->entryList, 1);
+            ResetEntryList0205d6a0((Entry_0205d6a0*)self->entryList, 1);
             func_ov000_02180394(self);
             break;
         }

@@ -13,19 +13,19 @@
 void ClearSublistEntriesFlag1(void* obj, int id);
 void ClearSublistEntriesFlag2(void* obj, int id);
 struct Container02080f8c;
-extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(struct Container02080f8c* obj, int id, int value);
+void SetEntryFirstField02080f8c(struct Container02080f8c* obj, int id, int value);
 struct Container02080fa8;
-extern "C" void _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(struct Container02080fa8* obj, int id, int value);
-extern "C" void _Z29AddSublistEntryFlag2_020806b0Pvi(void* obj, int id);
-extern "C" void _Z24SetEntryFlagById02080b2cPvi(void* obj, int id);
-extern "C" void _Z30SetOrClearEntryFlag0x102081130Pvii(void* obj, int id, int flag);
+void SetEntryFirstField02080fa8(struct Container02080fa8* obj, int id, int value);
+void AddSublistEntryFlag2_020806b0(void* obj, int id);
+void SetEntryFlagById02080b2c(void* obj, int id);
+void SetOrClearEntryFlag0x102081130(void* obj, int id, int flag);
 extern "C" int func_020813ec(void* obj, int id);
 struct Container020e0310;
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 struct ListHeadStruct021874f8;
-extern "C" short _Z29CountLinkedListNodes_021874f8P22ListHeadStruct021874f8(struct ListHeadStruct021874f8* obj);
+short CountLinkedListNodes_021874f8(struct ListHeadStruct021874f8* obj);
 struct S02187520;
-extern "C" short _Z23FindIndexDiv16_02187520P9S02187520(struct S02187520* s);
+short FindIndexDiv16_02187520(struct S02187520* s);
 
 struct SubEntry021885bc {
     struct SubEntry021885bc* next;
@@ -49,24 +49,24 @@ extern "C" ARM void func_ov014_021885bc(void* self) {
     short count = 0;
     for (; count < 0x10; id++, count++) {
         if (node != NULL) {
-            int v = _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)((char*)self + 0xe0), 0x15);
-            _Z26SetEntryFirstField02080f8cP17Container02080f8cii((struct Container02080f8c*)list, id, v);
+            int v = GetFieldByKey020e0434((struct Container020e0310*)((char*)self + 0xe0), 0x15);
+            SetEntryFirstField02080f8c((struct Container02080f8c*)list, id, v);
             if (node->flagBit1) {
-                _Z26SetEntryFirstField02080f8cP17Container02080f8cii((struct Container02080f8c*)*(void**)((char*)self + 0xc0), id, node->field8);
+                SetEntryFirstField02080f8c((struct Container02080f8c*)*(void**)((char*)self + 0xc0), id, node->field8);
             }
             node = node->next;
         } else {
-            _Z29AddSublistEntryFlag2_020806b0Pvi(list, id);
-            _Z24SetEntryFlagById02080b2cPvi(list, id);
+            AddSublistEntryFlag2_020806b0(list, id);
+            SetEntryFlagById02080b2c(list, id);
         }
     }
 
-    short listCount = _Z29CountLinkedListNodes_021874f8P22ListHeadStruct021874f8((struct ListHeadStruct021874f8*)self);
-    short idx = (short)(_Z23FindIndexDiv16_02187520P9S02187520((struct S02187520*)self) + 1);
-    _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((struct Container02080fa8*)list, 0x2b, idx);
+    short listCount = CountLinkedListNodes_021874f8((struct ListHeadStruct021874f8*)self);
+    short idx = (short)(FindIndexDiv16_02187520((struct S02187520*)self) + 1);
+    SetEntryFirstField02080fa8((struct Container02080fa8*)list, 0x2b, idx);
     short page = (short)((listCount + 0xf) / 0x10);
-    _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((struct Container02080fa8*)list, 0x2d, page);
+    SetEntryFirstField02080fa8((struct Container02080fa8*)list, 0x2d, page);
     int overflow = (listCount > 0x10) ? 1 : 0;
-    _Z30SetOrClearEntryFlag0x102081130Pvii(list, 5, overflow);
+    SetOrClearEntryFlag0x102081130(list, 5, overflow);
     func_020813ec(list, 5);
 }

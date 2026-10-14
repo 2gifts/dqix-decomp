@@ -17,8 +17,8 @@ int GetFieldPercentOver944(BattleRecordSnapshot* p);
 int GetFieldPercentOver448(BattleRecordSnapshot* p);
 int GetFieldAt0x7e(struct S_e830* p);
 int GetFieldAt0x0(int* obj);
-extern "C" int _Z24UpdatePlayClocks020ac4f8i(int commit);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+int UpdatePlayClocks020ac4f8(int commit);
+int LoadBattleBlock020ac4c0(void* dst);
 int CopyOutBattleField0x7ac0(void* dst);
 unsigned int GetWord(unsigned int* obj);
 unsigned int GetField4(unsigned int* obj);
@@ -26,10 +26,10 @@ unsigned int GetField8(unsigned int* obj);
 void SetBitsInWord(unsigned int* obj, unsigned int mask);
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
 void Set3DClearColor(int color, int alpha, int depth, int polygonId, int fogEnable);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void _Z24ReinitController02043204Pc(char* obj);
+int GetGlobalField0x1c020421a0(void);
+void ReinitController02043204(char* obj);
 void SetFieldsAt0x4And0x8(int* obj, int a, int b);
-extern "C" void* _Z24GetNodeIfType11_02168ad4Pvi(void* a, int id);
+void* GetNodeIfType11_02168ad4(void* a, int id);
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_ov011_021845f8(void* ctx, int v);
@@ -125,7 +125,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     int depth = *((unsigned char*)obj + 0x100d);
     int commit = 0;
     if ((kind == 5 && depth > 1) || kind == 6) commit = 1;
-    _Z24UpdatePlayClocks020ac4f8i(commit);
+    UpdatePlayClocks020ac4f8(commit);
 
     data_ov004_02171030 = 0;
     void* holder = func_ov011_021845f8(a, 0);
@@ -146,7 +146,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     data_ov004_02171030->f190 = (unsigned char*)bs + tableOffset;
 
     BattleRecordSnapshot blk;
-    int ok = _Z23LoadBattleBlock020ac4c0Pv(&blk);
+    int ok = LoadBattleBlock020ac4c0(&blk);
     unsigned int score = 0;
     CopyOutBattleField0x7ac0(&score);
     if (score > 0x1869f) score = 0x1869f;
@@ -213,15 +213,15 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
         func_ov011_021848a0(a, 0x65);
     } else if (tbl[9] != 0) {
         func_ov011_021848a0(a, 0x67);
-        struct Node02168b44* nd = (struct Node02168b44*)_Z24GetNodeIfType11_02168ad4Pvi(a, 2);
+        struct Node02168b44* nd = (struct Node02168b44*)GetNodeIfType11_02168ad4(a, 2);
         struct Triple02168b44 tmp = data_ov004_021700d4;
         nd->Apply(&tmp);
     } else {
         func_ov011_021848a0(a, 0x64);
     }
 
-    char* g = (char*)_Z26GetGlobalField0x1c020421a0v();
-    _Z24ReinitController02043204Pc(g);
+    char* g = (char*)GetGlobalField0x1c020421a0();
+    ReinitController02043204(g);
     *(unsigned char*)(g + flagOffset) = 1;
     SetFieldsAt0x4And0x8((int*)(g + firstOffset), 9, 1);
     SetFieldsAt0x4And0x8((int*)(g + secondOffset), 0x19, 1);

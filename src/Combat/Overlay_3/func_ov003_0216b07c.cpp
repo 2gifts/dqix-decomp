@@ -96,18 +96,18 @@ extern "C" void func_0204500c(void *p, const char *text, int a, int b);
 extern "C" void func_0205a528(void *renderer, void *file, unsigned int size, SafeAllocator *allocator);
 extern "C" void func_020dfec0(void *texts, SafeAllocator *allocator, void *file, unsigned int size);
 extern "C" void func_0204b5b4(Background0216b07c *background, int a);
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(AllocTarget0204b12c *background,
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c *background,
                                                                                          SafeAllocator *allocator);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Obj0204b5e8 *background, int a, int b);
+void DispatchViaTable0204b5e8(Obj0204b5e8 *background, int a, int b);
 extern "C" void func_0204b174(Background0216b07c *background, void *file, SafeAllocator *allocator, unsigned int size);
 extern "C" void func_0204bc74(Background0216b07c *background, int a, int b, int c, int d, int e, int f);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8 *background, void *a);
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(Obj0204c7a8 *canvas, SafeAllocator *allocator,
+void FlushAndDispatchList0204b0e8(List0204b0e8 *background, void *a);
+void AllocateBuffer0204c7a8(Obj0204c7a8 *canvas, SafeAllocator *allocator,
                                                                            int pixels, unsigned int size);
-extern "C" void _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h(Struct_0205cf78 *window,
+void LinkArrayPrevPointers0205cf78(Struct_0205cf78 *window,
                                                                                      Elem_0205cf78 *canvases,
                                                                                      unsigned char count);
-extern "C" void *_Z26GetGlobalField0x1c020421a0v();
+void *GetGlobalField0x1c020421a0();
 
 struct Names0216b07c {
     const char *names_[3];
@@ -122,7 +122,7 @@ struct BgCnt0216b07c {
 
 // USA: func_ov003_0216b07c
 extern "C" ARM void func_ov003_0216b07c(Menu0216b07c *self) {
-    Global0216b07c *global   = (Global0216b07c *) _Z26GetGlobalField0x1c020421a0v();
+    Global0216b07c *global   = (Global0216b07c *) GetGlobalField0x1c020421a0();
     GameState *state         = GameState::GetInstance();
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
 
@@ -200,18 +200,18 @@ extern "C" ARM void func_ov003_0216b07c(Menu0216b07c *self) {
         background->unk_1c_0_ = 0;
         background->unk_1c_4_ = 1;
         func_0204b5b4(background, 0);
-        _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c *) background,
+        AllocateAndClearBuffer0204b12c((AllocTarget0204b12c *) background,
                                                                                  self->allocator_);
-        _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8 *) background, 0, 0);
+        DispatchViaTable0204b5e8((Obj0204b5e8 *) background, 0, 0);
         BG1CNT                     = (BG1CNT & 0x43) | 0xd08;
         Background0216b07c *second = self->backgrounds_;
         SetWord0x18ClearByte0x1f((unsigned char *) &second[1], 0);
         second[1].unk_1c_0_ = 0;
         second[1].unk_1c_4_ = 2;
         func_0204b5b4(&second[1], 1);
-        _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c *) &second[1],
+        AllocateAndClearBuffer0204b12c((AllocTarget0204b12c *) &second[1],
                                                                                  self->allocator_);
-        _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8 *) &second[1], 0, 0);
+        DispatchViaTable0204b5e8((Obj0204b5e8 *) &second[1], 0, 0);
         BG2CNT = (BG2CNT & 0x43) | 0xe08;
         void *name;
         void *file;
@@ -231,20 +231,20 @@ extern "C" ARM void func_ov003_0216b07c(Menu0216b07c *self) {
         loader->RemoveTask(task);
         self->tasks_[1] = -1;
         func_0204bc74(background, 0, 0, 0, 0x20, 0x19, 0);
-        _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8 *) background, 0);
+        FlushAndDispatchList0204b0e8((List0204b0e8 *) background, 0);
         second = self->backgrounds_;
         func_0204bc74(&second[1], 0, 0, 0, 0x20, 0x19, 0);
-        _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8 *) &second[1], 0);
+        FlushAndDispatchList0204b0e8((List0204b0e8 *) &second[1], 0);
         self->pixels_          = self->allocator_->Allocate(0x2800);
         Canvas0216b07c *canvas = self->canvases_;
-        _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8 *) canvas, self->allocator_,
+        AllocateBuffer0204c7a8((Obj0204c7a8 *) canvas, self->allocator_,
                                                                    (int) self->pixels_, 0x400);
         canvas->background_    = self->backgrounds_;
         canvas->unk_c4         = 0;
         Window0216b07c *window = self->window_;
         window->background_    = self->backgrounds_;
         window->unk_b2         = 2;
-        _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78 *) self->window_,
+        LinkArrayPrevPointers0205cf78((Struct_0205cf78 *) self->window_,
                                                                              (Elem_0205cf78 *) self->canvases_, 1);
         ((BgCnt0216b07c *) 0x4000008)[0].priority_ = 3;
         ((BgCnt0216b07c *) 0x4000008)[1].priority_ = 1;

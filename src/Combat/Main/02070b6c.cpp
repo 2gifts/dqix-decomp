@@ -26,10 +26,10 @@ struct Element02070e60;
 struct Element02070ee0;
 struct Struct020709c8;
 int GetListDataSize(Struct02070af4*);
-extern "C" int _Z22ForEachElement02070b0cP17Container02070b0cPFvS0_P15Element02070b0cE(Container02070b0c*, void (*)(Container02070b0c*, Element02070b0c*));
-extern "C" Element02070e60* _Z20BinarySearch02070e60P17Container02070e60iPFiP15Element02070e60E(Container02070e60*, int, int (*)(Element02070e60*));
-extern "C" Element02070ee0* _Z19CopyElement02070ee0P15Element02070ee0S0_(Element02070ee0*, Element02070ee0*);
-extern "C" int _Z24GetLow15BitField020709c8P14Struct020709c8(Struct020709c8*);
+int ForEachElement02070b0c(Container02070b0c*, void (*)(Container02070b0c*, Element02070b0c*));
+Element02070e60* BinarySearch02070e60(Container02070e60*, int, int (*)(Element02070e60*));
+Element02070ee0* CopyElement02070ee0(Element02070ee0*, Element02070ee0*);
+int GetLow15BitField020709c8(Struct020709c8*);
 
 // USA: func_02070b6c
 extern "C" ARM void func_02070b6c(List02070b6c* self, SafeAllocator* allocator, List02070b6c* source, unsigned int sourceSize, short* ids, short countArg) {
@@ -43,7 +43,7 @@ extern "C" ARM void func_02070b6c(List02070b6c* self, SafeAllocator* allocator, 
         list.elements = (ListEntry02070b6c*)((char*)source + 4);
         list.extra = (char*)source + (GetListDataSize((Struct02070af4*)&list) + 4);
         if (!list.resolved) {
-            _Z22ForEachElement02070b0cP17Container02070b0cPFvS0_P15Element02070b0cE((Container02070b0c*)&list, 0);
+            ForEachElement02070b0c((Container02070b0c*)&list, 0);
             list.resolved = 1;
             source->resolved = 1;
         }
@@ -51,7 +51,7 @@ extern "C" ARM void func_02070b6c(List02070b6c* self, SafeAllocator* allocator, 
     short* id = ids;
     int foundCount = 0;
     for (int idCount = countArg, i = 0; i < idCount; i++, id++) {
-        if (_Z20BinarySearch02070e60P17Container02070e60iPFiP15Element02070e60E((Container02070e60*)&list, *id, (int (*)(Element02070e60*))_Z24GetLow15BitField020709c8P14Struct020709c8)) foundCount++;
+        if (BinarySearch02070e60((Container02070e60*)&list, *id, (int (*)(Element02070e60*))GetLow15BitField020709c8)) foundCount++;
     }
     self->elements = (ListEntry02070b6c*)allocator->Allocate(foundCount * sizeof(ListEntry02070b6c));
     if (self->elements) {
@@ -60,7 +60,7 @@ extern "C" ARM void func_02070b6c(List02070b6c* self, SafeAllocator* allocator, 
         id = ids;
         out = self->elements;
         for (int copyIndex = 0; copyIndex < countArg; copyIndex++, id++) {
-            ListEntry02070b6c* entry = (ListEntry02070b6c*)_Z20BinarySearch02070e60P17Container02070e60iPFiP15Element02070e60E((Container02070e60*)&list, *id, (int (*)(Element02070e60*))_Z24GetLow15BitField020709c8P14Struct020709c8);
+            ListEntry02070b6c* entry = (ListEntry02070b6c*)BinarySearch02070e60((Container02070e60*)&list, *id, (int (*)(Element02070e60*))GetLow15BitField020709c8);
             if (entry) {
                 memcpy(out, entry, sizeof(*out));
                 out++;
@@ -86,8 +86,8 @@ extern "C" ARM void func_02070b6c(List02070b6c* self, SafeAllocator* allocator, 
             if (entry->header.id > entry[1].header.id) {
                 swapped = pos;
                 forwardTemp = *entry;
-                _Z19CopyElement02070ee0P15Element02070ee0S0_((Element02070ee0*)entry, (Element02070ee0*)(entry + 1));
-                _Z19CopyElement02070ee0P15Element02070ee0S0_((Element02070ee0*)(entry + 1), (Element02070ee0*)&forwardTemp);
+                CopyElement02070ee0((Element02070ee0*)entry, (Element02070ee0*)(entry + 1));
+                CopyElement02070ee0((Element02070ee0*)(entry + 1), (Element02070ee0*)&forwardTemp);
             }
         }
         if (swapped == -1) break;
@@ -99,8 +99,8 @@ extern "C" ARM void func_02070b6c(List02070b6c* self, SafeAllocator* allocator, 
             if (prev->header.id > reverseEntry->header.id) {
                 backSwap = swapped;
                 reverseTemp = *reverseEntry;
-                _Z19CopyElement02070ee0P15Element02070ee0S0_((Element02070ee0*)reverseEntry, (Element02070ee0*)prev);
-                _Z19CopyElement02070ee0P15Element02070ee0S0_((Element02070ee0*)prev, (Element02070ee0*)&reverseTemp);
+                CopyElement02070ee0((Element02070ee0*)reverseEntry, (Element02070ee0*)prev);
+                CopyElement02070ee0((Element02070ee0*)prev, (Element02070ee0*)&reverseTemp);
             }
             reverseEntry = prev;
         }

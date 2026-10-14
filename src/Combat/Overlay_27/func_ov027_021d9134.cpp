@@ -44,7 +44,7 @@ extern unsigned int data_ov027_021dd920;
 
 extern "C" Record021d9134* func_ov027_021dd6bc(void* src, Query021d9134* out, unsigned int id);
 extern "C" unsigned short func_ov027_021d9dd8(unsigned short cur, unsigned short arg);
-extern "C" void _Z36SetEntryCallbackAndDispatch_021d8c20iii(int id, int event, int param);
+void SetEntryCallbackAndDispatch_021d8c20(int id, int event, int param);
 
 #define GBASE data_ov027_021e33ec
 #define ROOM(n) ((Room021d9134*)(GBASE + (n) * 0x5d4))
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov027_021d9134(void* obj, unsigned int id) {
             ((unsigned short*)(GBASE + 0x148a))[id - 1] = copy.f1a;
             VectorizedInvertedMemcpy(copy.f4, &SLOTS[id - 1], 0x16);
             SLOTS[id - 1].owner = (unsigned char)id;
-            _Z36SetEntryCallbackAndDispatch_021d8c20iii(id, 0xa, (int)copy.f4);
+            SetEntryCallbackAndDispatch_021d8c20(id, 0xa, (int)copy.f4);
         }
         if (mode == 0xa) {
             unsigned char room = rec->f1c;
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov027_021d9134(void* obj, unsigned int id) {
                 }
                 if (count >= ROOM(room)->info->f18) {
                     STATES[id - 1] = 0;
-                    _Z36SetEntryCallbackAndDispatch_021d8c20iii(id, 0xb, 0);
+                    SetEntryCallbackAndDispatch_021d8c20(id, 0xb, 0);
                     return;
                 }
             }
@@ -132,12 +132,12 @@ extern "C" ARM void func_ov027_021d9134(void* obj, unsigned int id) {
                 ROOMH(room, 0x1d4e) |= 1 << id;
                 ROOMH(room, 0x1d50) |= 1 << id;
                 STATES[id - 1] = 0;
-                _Z36SetEntryCallbackAndDispatch_021d8c20iii(id, 5, 0);
+                SetEntryCallbackAndDispatch_021d8c20(id, 5, 0);
                 break;
 
             case 4:
                 STATES[id - 1] = 0;
-                _Z36SetEntryCallbackAndDispatch_021d8c20iii(id, 4, 0);
+                SetEntryCallbackAndDispatch_021d8c20(id, 4, 0);
                 break;
             }
         }
@@ -145,7 +145,7 @@ extern "C" ARM void func_ov027_021d9134(void* obj, unsigned int id) {
 
     case 8:
         if (mode == 5) {
-            _Z36SetEntryCallbackAndDispatch_021d8c20iii(id, 0xe, 0);
+            SetEntryCallbackAndDispatch_021d8c20(id, 0xe, 0);
             return;
         }
         if (mode == 0xe) {
@@ -154,7 +154,7 @@ extern "C" ARM void func_ov027_021d9134(void* obj, unsigned int id) {
                 ROOMH(room, 0x1d4c) |= 1 << id;
                 ROOM(room)->f48 = 0;
                 STATES[id - 1] = 0;
-                _Z36SetEntryCallbackAndDispatch_021d8c20iii(id, 6, 0);
+                SetEntryCallbackAndDispatch_021d8c20(id, 6, 0);
             }
         }
         break;
@@ -174,14 +174,14 @@ extern "C" ARM void func_ov027_021d9134(void* obj, unsigned int id) {
             unsigned char room = OWNERS[id - 1];
             if (room != 0xff) {
                 ROOMH(room, 0x1d4c) &= ~(1 << id);
-                _Z36SetEntryCallbackAndDispatch_021d8c20iii(id, 7, 0);
+                SetEntryCallbackAndDispatch_021d8c20(id, 7, 0);
             }
             return;
         }
         if (mode == 7) {
             if (STATES[id - 1] == 5) {
                 STATES[id - 1] = 0;
-                _Z36SetEntryCallbackAndDispatch_021d8c20iii(id, 8, 0);
+                SetEntryCallbackAndDispatch_021d8c20(id, 8, 0);
             }
         }
         break;

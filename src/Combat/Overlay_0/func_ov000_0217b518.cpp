@@ -64,14 +64,14 @@ extern BattleWindowContext data_ov000_02184294;
 extern unsigned short data_02114e30;
 extern Obj0205eaa0 data_02108760;
 
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570* s);
-extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(struct Struct_0205def8* s, int set, int key);
+int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
+void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8* s, int set, int key);
 int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 unsigned char* GetFieldAt0x150(unsigned char* member);
-extern "C" int _Z35CheckFlagsOrField_0217ab48_0217ab48Pv(void* menu);
+int CheckFlagsOrField_0217ab48_0217ab48(void* menu);
 extern "C" void func_ov000_02171458(BattleSubMenu* menu);
 extern "C" void func_ov000_0217629c(BattleSubMenu* menu);
 extern "C" void func_ov000_0217ab8c(BattleSubMenu* menu, int a, int b);
@@ -86,19 +86,19 @@ extern "C" ARM int func_ov000_0217b518(BattleSubMenu* menu, int arg1, int arg2)
     Selection current;
     data_ov000_02184294.window->flags |= 0x100;
     const signed char previous = menu->GetSelection();
-    current = (Selection)(signed char)_Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)menu->list);
+    current = (Selection)(signed char)GetActiveScaledSum0205d794((struct Struct_0205c570*)menu->list);
     menu->selection = current;
     {
     window = data_ov000_02184294.GetWindow();
-    _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)window->elements, 1, 0x22);
+    SetElementFlag0x20ByKey0205def8((struct Struct_0205def8*)window->elements, 1, 0x22);
     if (previous != current) {
         return -1;
     }
     int pressed = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
     bool cancel = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)menu->list, 0x14)) ? 1 : 0;
     if (cancel || menu->forceClose) {
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)window->elements, 0, 0x22);
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+        SetElementFlag0x20ByKey0205def8((struct Struct_0205def8*)window->elements, 0, 0x22);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         func_ov000_02171458(menu);
         GameObject* member = GameState::GetInstance()->GetPartyMemberByIndex(menu->partyIndex);
         if (member != NULL) {
@@ -112,7 +112,7 @@ extern "C" ARM int func_ov000_0217b518(BattleSubMenu* menu, int arg1, int arg2)
         }
         return menu->history[menu->depth];
     }
-    if (_Z35CheckFlagsOrField_0217ab48_0217ab48Pv(menu)) {
+    if (CheckFlagsOrField_0217ab48_0217ab48(menu)) {
         func_ov000_0217629c(menu);
         menu->history[menu->depth] = 0;
         menu->depth = menu->depth - 1;
@@ -134,18 +134,18 @@ extern "C" ARM int func_ov000_0217b518(BattleSubMenu* menu, int arg1, int arg2)
     signed char previous;
     data_ov000_02184294.window->flags |= 0x100;
     previous = menu->selection;
-    current = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)menu->list);
+    current = GetActiveScaledSum0205d794((struct Struct_0205c570*)menu->list);
     menu->selection = current;
     window = data_ov000_02184294.window;
-    _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)window->elements, 1, 0x22);
+    SetElementFlag0x20ByKey0205def8((struct Struct_0205def8*)window->elements, 1, 0x22);
     if (previous != current) {
         return -1;
     }
     int pressed = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
     int cancel = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)menu->list, 0x14)) ? 1 : 0;
     if (cancel || menu->forceClose) {
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)window->elements, 0, 0x22);
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+        SetElementFlag0x20ByKey0205def8((struct Struct_0205def8*)window->elements, 0, 0x22);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         func_ov000_02171458(menu);
         GameObject* member = GameState::GetInstance()->GetPartyMemberByIndex(menu->partyIndex);
         if (member != NULL) {
@@ -159,7 +159,7 @@ extern "C" ARM int func_ov000_0217b518(BattleSubMenu* menu, int arg1, int arg2)
         }
         return menu->history[menu->depth];
     }
-    if (_Z35CheckFlagsOrField_0217ab48_0217ab48Pv(menu)) {
+    if (CheckFlagsOrField_0217ab48_0217ab48(menu)) {
         func_ov000_0217629c(menu);
         menu->history[menu->depth] = 0;
         menu->depth = menu->depth - 1;

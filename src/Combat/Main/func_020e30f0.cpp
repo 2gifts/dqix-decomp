@@ -17,8 +17,8 @@ struct Ctx020e30f0 {
 };
 
 Entry020e3054* FindEntryByField1(Entry020e3054* list, int key);
-extern "C" void _Z16Dispatch020e3428Pvi(void* a, int b);
-extern "C" void _Z16Dispatch020e3328Pvi(void* a, int b);
+void Dispatch020e3428(void* a, int b);
+void Dispatch020e3328(void* a, int b);
 
 // USA: func_020e30f0
 extern "C" ARM void func_020e30f0(Entry020e3054* list) {
@@ -34,7 +34,7 @@ extern "C" ARM void func_020e30f0(Entry020e3054* list) {
             } else {
                 unsigned char owner = e->f0;
                 unsigned char key = e->f1;
-                _Z16Dispatch020e3428Pvi(list, key);
+                Dispatch020e3428(list, key);
                 e->f1 = key;
                 e->f0 = owner;
                 e->f2 = 4;
@@ -55,10 +55,10 @@ extern "C" ARM void func_020e30f0(Entry020e3054* list) {
             if (state == 1 || state == 4 || state == 5) {
                 *ids = 0;
             } else if (state != 2) {
-                _Z16Dispatch020e3328Pvi(list, id);
+                Dispatch020e3328(list, id);
             }
         } else {
-            _Z16Dispatch020e3328Pvi(list, id);
+            Dispatch020e3328(list, id);
         }
     }
 }

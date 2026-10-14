@@ -12,8 +12,8 @@ struct StreamGlobals_0223c308 {
 };
 
 extern "C" void* func_ov031_0223cf4c(int size, int align);
-extern "C" int _Z28FillSlotArrayField4_0223beeciii(int count, int array, int stride);
-extern "C" int _Z18GetField0_02227548v(void);
+int FillSlotArrayField4_0223beec(int count, int array, int stride);
+int GetField0_02227548(void);
 extern "C" void* func_ov031_0223b61c(int id, int a, int b);
 void InitHalfwordReader(HalfwordReader020b0e48* reader, void* data);
 
@@ -26,9 +26,9 @@ extern "C" ARM void func_ov031_0223c308(void) {
     StreamGlobals_0223c308* globals = (StreamGlobals_0223c308*)func_ov031_0223cf4c(0x680, 4);
 
     data_ov031_02290d38 = globals;
-    data_ov031_02290d38->f670 = (void*)_Z28FillSlotArrayField4_0223beeciii(0x20, (int)globals->slots, 0x30);
+    data_ov031_02290d38->f670 = (void*)FillSlotArrayField4_0223beec(0x20, (int)globals->slots, 0x30);
 
-    switch (_Z18GetField0_02227548v()) {
+    switch (GetField0_02227548()) {
     case 6: {
         int i = 0;
         int offset = 0;

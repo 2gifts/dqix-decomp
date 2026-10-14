@@ -78,10 +78,10 @@ struct BattleWork {
     Foo0207df50 stateB;
 };
 
-extern "C" MessageWork* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50* p);
-extern "C" void _Z18InitStruct02078484P24InitStruct02078484Struct(InitStruct02078484Struct* req);
-extern "C" int _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, int req);
+MessageWork* GetGlobalField0x1c020421a0();
+void CopyInternalFields0207df50(Foo0207df50* p);
+void InitStruct02078484(InitStruct02078484Struct* req);
+int FindNodeAndProcess02057fb4(void* list, int id, int req);
 
 extern "C" {
 void* func_02057924();
@@ -97,18 +97,18 @@ extern "C" ARM void func_ov026_021db3d8(BattleWork* self) {
         void* list = func_02057924();
 
         if (self->effectTrigger == 0) {
-            if (_Z26GetGlobalField0x1c020421a0v()->phase == 4) {
+            if (GetGlobalField0x1c020421a0()->phase == 4) {
                 self->effectTrigger = 1;
             }
         } else if (self->effectTrigger == 1) {
-            if (_Z26GetGlobalField0x1c020421a0v()->phase == 5) {
+            if (GetGlobalField0x1c020421a0()->phase == 5) {
                 self->effectTrigger = 2;
             }
         }
 
         if (self->effectLoadState == 0) {
             self->cmdAlloc.Reset();
-            _Z26CopyInternalFields0207df50P11Foo0207df50(&self->stateB);
+            CopyInternalFields0207df50(&self->stateB);
             self->effectTaskId = loader->QueueLoadFile(data_ov026_021dedf0, &self->cmdAlloc);
             self->effectLoadState = 1;
         } else if (self->effectLoadState == 1) {
@@ -122,14 +122,14 @@ extern "C" ARM void func_ov026_021db3d8(BattleWork* self) {
             }
         } else if (self->effectLoadState == 2 && self->effectTrigger == 2) {
             InitStruct02078484Struct req;
-            _Z18InitStruct02078484P24InitStruct02078484Struct(&req);
+            InitStruct02078484(&req);
             req.b1 = 1;
             req.f10 = 0;
             req.offset.z = -0x3000;
             req.scale.x = 0x10a;
             req.scale.y = 0x10a;
             req.scale.z = 0x10a;
-            self->effectNodeId = _Z26FindNodeAndProcess02057fb4Pvii(list, 0x13, (int)&req);
+            self->effectNodeId = FindNodeAndProcess02057fb4(list, 0x13, (int)&req);
             self->effectTrigger = -1;
             self->effectLoadState = -1;
         }

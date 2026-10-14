@@ -44,17 +44,17 @@ struct HasDims020e1288;
 extern "C" unsigned int func_020e1438(struct SpriteRect_020e1b2c* out, unsigned int maxCount,
                                       unsigned int x, unsigned int yBase,
                                       unsigned int width, unsigned int height);
-extern "C" unsigned int _Z26GetDisplayModeCode0209378ci(int engine);
+unsigned int GetDisplayModeCode0209378c(int engine);
 extern "C" int func_020937f0(int engine);
 int GetHalfProductField8(struct HasDims020e1288* obj);
 void RunCacheHookForField0x14(struct Struct020e1384* obj);
-extern "C" void _Z39TransferBattleObjPaletteEntries020e16f4P11Obj020e1674(struct Obj020e1674* self);
+void TransferBattleObjPaletteEntries020e16f4(struct Obj020e1674* self);
 
 // USA: func_020e1b2c
 extern "C" ARM int func_020e1b2c(struct Obj020e1b2c* obj, int arg) {
     if (obj->panel == 0) return 0;
 
-    _Z39TransferBattleObjPaletteEntries020e16f4P11Obj020e1674((struct Obj020e1674*)obj);
+    TransferBattleObjPaletteEntries020e16f4((struct Obj020e1674*)obj);
 
     struct SpriteRect_020e1b2c* rects = obj->panel->rects;
     unsigned int h = obj->panel->height;
@@ -94,7 +94,7 @@ extern "C" ARM int func_020e1b2c(struct Obj020e1b2c* obj, int arg) {
         struct SpriteRect_020e1b2c* e = &arr[count];
         e->offset = offset;
         prod = e->width * e->height;
-        unsigned int mask = 1 << _Z26GetDisplayModeCode0209378ci(display);
+        unsigned int mask = 1 << GetDisplayModeCode0209378c(display);
         if (mask != 0) mask--;
         offset += (~mask) & (mask + (prod >> 1));
     }

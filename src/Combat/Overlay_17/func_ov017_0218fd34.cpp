@@ -5,9 +5,9 @@
 #include "Memory/AllocatorUnion.h"
 #include "System/Cache.h"
 
-extern "C" GameObject* _Z21GetField4334_021bdbc0Ph(unsigned char* base);
+GameObject* GetField4334_021bdbc0(unsigned char* base);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
+void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 struct SlotIdTable_0218fd34 {
     int v[14];
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov017_0218fd34(unsigned char* ov, int idx, unsigned sho
     for (i = 0; (id = table.v[i]) > -1; i++) {
         GameObject* obj;
         if (id == 0xff) {
-            obj = _Z21GetField4334_021bdbc0Ph(ov);
+            obj = GetField4334_021bdbc0(ov);
         } else {
             obj = battleStruct->GetGameObjectByIndex(id);
         }
@@ -154,7 +154,7 @@ extern "C" ARM void func_ov017_0218fd34(unsigned char* ov, int idx, unsigned sho
 
     for (unsigned int k = 0; k < 13; k++) {
         if (bufs[k] != NULL) {
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, bufs[k]);
+            TailForward02012da4(&data_02114e20, bufs[k]);
         }
     }
 }

@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 
-
 #include "std_library_functions.h"
 
 struct Elem_0205d81c {
@@ -38,8 +37,8 @@ struct Owner_02179f94 {
     struct Struct_0205d81c elems;
 };
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
-extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+int GetGlobalField0x1c020421a0();
+struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 extern "C" void func_ov000_0217a19c(struct Owner_02179f94* obj, void* entry);
 extern "C" void func_ov000_0217c638(struct Owner_02179f94* obj, int a, int b);
 extern "C" void func_ov000_0217a2dc(struct Owner_02179f94* obj, void* entry, void* buf);
@@ -76,10 +75,10 @@ extern "C" ARM void func_ov000_02179f94(struct Owner_02179f94* obj, void* entry,
     s->fieldAE = 0xe;
     s->fieldB1 = 0x17;
 #if defined(jpn)
-    void* buf = *(void**)(_Z26GetGlobalField0x1c020421a0v() + 0x28);
+    void* buf = *(void**)(GetGlobalField0x1c020421a0() + 0x28);
     memset(buf, 0, 0x800);
 #else
-    void* buf = *(void**)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+    void* buf = *(void**)(GetGlobalField0x1c020421a0() + 0x5c);
     memset(buf, 0, 0x960);
 #endif
     func_ov000_0217a2dc(obj, entry, buf);
@@ -88,12 +87,12 @@ extern "C" ARM void func_ov000_02179f94(struct Owner_02179f94* obj, void* entry,
 #else
     func_0205d304(s, buf, 0, 1, 0, 1, 0, 0);
 #endif
-    struct Elem_0205d81c* e = _Z23FindElementByC40205d81cP15Struct_0205d81ci(s, 0x18);
+    struct Elem_0205d81c* e = FindElementByC40205d81c(s, 0x18);
     if (e == 0) {
         return;
     }
     e->fieldC2 = 0;
-    const struct Elem_0205d81c* ref = _Z23FindElementByC40205d81cP15Struct_0205d81ci(s, 0x17);
+    const struct Elem_0205d81c* ref = FindElementByC40205d81c(s, 0x17);
     if (ref == 0) {
         return;
     }

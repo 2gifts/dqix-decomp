@@ -62,11 +62,11 @@ struct MessageCheckWork {
 extern const char* data_020f285c;
 extern char data_ov012_0218b220[];
 extern "C" void __clear(void*, unsigned int);
-extern "C" void _Z20ToUpperCopy_021855f0PvPcS0_(void*, char*, char*);
-extern "C" int _Z27FindEntryIndexByKey020424e4ii(int, int);
-extern "C" CharacterInfo* _Z23GetBoundedEntry020425b4ii(int, int);
+void ToUpperCopy_021855f0(void*, char*, char*);
+int FindEntryIndexByKey020424e4(int, int);
+CharacterInfo* GetBoundedEntry020425b4(int, int);
 extern "C" int func_020426bc(const char*, unsigned char*, int);
-extern "C" int _Z24AnyMatchInRange_02185634PvS_iii(void*, void*, int, int, int);
+int AnyMatchInRange_02185634(void*, void*, int, int, int);
 extern "C" int func_ov012_02185684(void*, unsigned char*, unsigned char*, int, int);
 
 static inline ForbiddenWordPattern* GetFilePatterns(const ForbiddenWordFile* file) { return file->patterns_; }
@@ -146,19 +146,19 @@ extern "C" ARM int func_ov012_02184d80(MessageSyntax* self, char* name, char* ou
     for (;;) {
         if (!*name) break;
         CharacterInfo* entry;
-        int index = _Z27FindEntryIndexByKey020424e4ii((int)name, 1);
-        entry = _Z23GetBoundedEntry020425b4ii(index, 1);
+        int index = FindEntryIndexByKey020424e4((int)name, 1);
+        entry = GetBoundedEntry020425b4(index, 1);
         if (!entry) goto fallback_character;
         if (((index >= 8 && index <= 69) || index == 77 || index == 83 ||
                       (index >= 120 && index <= 169) || index == dollarId || index == atId ||
                       index == ampersandId || index == 107 || index == apostropheId)) {
             int advance = entry->length_;
-            if (index == 107) entry = _Z23GetBoundedEntry020425b4ii(slashId, 1);
+            if (index == 107) entry = GetBoundedEntry020425b4(slashId, 1);
             __clear(work.character_, 12);
             int length = entry->length_;
             char* text = entry->text_;
             if (entry->uppercase_) {
-                _Z20ToUpperCopy_021855f0PvPcS0_(self, text, work.character_);
+                ToUpperCopy_021855f0(self, text, work.character_);
                 text = work.character_;
             }
             if (index >= 120 && index <= 169) {
@@ -295,19 +295,19 @@ extern "C" ARM int func_ov012_02184d80(MessageSyntax* self, char* name, char* ou
                     switch (type) {
                     case 0:
                         if (length != spanLength) { matched = 0; goto match_done; }
-                        if (!_Z24AnyMatchInRange_02185634PvS_iii(self, (void*)text, (int)(input + matchSpan->begin_), length, 1)) { matched = 0; goto match_done; }
+                        if (!AnyMatchInRange_02185634(self, (void*)text, (int)(input + matchSpan->begin_), length, 1)) { matched = 0; goto match_done; }
                         break;
                     case 3:
                         if (spanLength < length) { matched = 0; goto match_done; }
-                        if (!_Z24AnyMatchInRange_02185634PvS_iii(self, (void*)text, (int)(input + matchSpan->begin_), length, 1)) { matched = 0; goto match_done; }
+                        if (!AnyMatchInRange_02185634(self, (void*)text, (int)(input + matchSpan->begin_), length, 1)) { matched = 0; goto match_done; }
                         break;
                     case 2:
                         if (spanLength < length) { matched = 0; goto match_done; }
-                        if (!_Z24AnyMatchInRange_02185634PvS_iii(self, (void*)text, (int)(input + (matchSpan->begin_ + matchSpan->length_ - length)), length, 1)) { matched = 0; goto match_done; }
+                        if (!AnyMatchInRange_02185634(self, (void*)text, (int)(input + (matchSpan->begin_ + matchSpan->length_ - length)), length, 1)) { matched = 0; goto match_done; }
                         break;
                     case 1:
                         if (spanLength < length) { matched = 0; goto match_done; }
-                        if (!_Z24AnyMatchInRange_02185634PvS_iii(self, (void*)text, (int)(input + matchSpan->begin_), length, positions)) { matched = 0; goto match_done; }
+                        if (!AnyMatchInRange_02185634(self, (void*)text, (int)(input + matchSpan->begin_), length, positions)) { matched = 0; goto match_done; }
                         break;
                     case 4:
                         if (length != spanLength) { matched = 0; goto match_done; }

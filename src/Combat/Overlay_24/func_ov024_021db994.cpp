@@ -8,7 +8,7 @@ extern "C" int func_020879a8(struct StatStageStruct02087954* p, int delta);
 void UpdateCombatantAgility(int a, int id);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
 struct Flag_021db994 { unsigned char pad : 7; unsigned char flag : 1; };
@@ -53,7 +53,7 @@ extern "C" ARM void* func_ov024_021db994(struct Obj_021db994* obj, int unused, i
     if (!entry) return 0;
     unsigned short sel = func_ov024_021e96e4(obj, id, params, (unsigned char)decrease, (signed char)result, changed, flagArg);
     func_ov024_021e8bf0(obj, obj->field0xc, &sel);
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+    AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
     struct Flag_021db994* fl = (struct Flag_021db994*)((char*)obj->field0xc + 0x1c);
     func_ov000_0215cd44(obj->field0x10, entry, c, 0, 0, 0, fl->flag != 0);
     return entry;

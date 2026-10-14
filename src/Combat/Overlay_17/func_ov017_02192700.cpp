@@ -34,7 +34,7 @@ struct Actor02192700 {
     unsigned int flags18c;
 };
 
-extern "C" void _Z15InitObj0219a674Ph(unsigned char* self);
+void InitObj0219a674(unsigned char* self);
 
 struct Msg02192700 {
     unsigned char kind;
@@ -67,8 +67,8 @@ int CheckFlag0x1ceBit2Set(unsigned char* obj);
 void* GetPtrField0x2a04(GameState* state);
 int ArrayContainsByte(ArrayContainsByteStruct* arr, int value);
 extern "C" void func_ov017_0219b33c(Ctx02192700* self, Msg02192700* msg);
-extern "C" void _Z28InitState71WithFlag_021c316cP14Struct021c316ci(Struct021c316c* p, int flag);
-extern "C" int _Z19HasFlagBit_0218d4ecPvi(void* obj, int bit);
+void InitState71WithFlag_021c316c(Struct021c316c* p, int flag);
+int HasFlagBit_0218d4ec(void* obj, int bit);
 int TestBitInByteArray(int base, unsigned char* bits, int index);
 int GetSignedByte0x1c8(void* obj);
 extern "C" void func_ov017_0219344c(Actor02192700* actor, int a, int b, int c, int d, int e);
@@ -76,14 +76,14 @@ extern "C" void func_ov017_0219344c(Actor02192700* actor, int a, int b, int c, i
 static inline Ctx02192700* PostFound() {
     Ctx02192700* res = (Ctx02192700*)func_ov017_0218b5b0();
     Msg02192700 msg;
-    _Z15InitObj0219a674Ph((unsigned char*)&msg);
+    InitObj0219a674((unsigned char*)&msg);
     msg.kind = 1;
     func_ov017_0219b33c(res, &msg);
     return res;
 }
 
 static inline void InitNotice(Msg02192700* msg) {
-    _Z15InitObj0219a674Ph((unsigned char*)msg);
+    InitObj0219a674((unsigned char*)msg);
     msg->kind = 0xd;
     msg->field1 = 0x11;
 }
@@ -150,11 +150,11 @@ extern "C" ARM void func_ov017_02192700(Ctx02192700* ctx) {
                 }
                 Ctx02192700* res = PostFound();
                 if (res->state->busy == 0) {
-                    _Z28InitState71WithFlag_021c316cP14Struct021c316ci(res->state, member->obj3D.unknown_4_ & 0xff);
+                    InitState71WithFlag_021c316c(res->state, member->obj3D.unknown_4_ & 0xff);
                 }
                 continue;
             }
-            if (_Z19HasFlagBit_0218d4ecPvi(ctx, member->obj3D.unknown_4_) &&
+            if (HasFlagBit_0218d4ec(ctx, member->obj3D.unknown_4_) &&
                 TestBitInByteArray((int)save, save->flags, 0x799) &&
                 func_ov017_02194140(leader, member)) {
                 PostNotice((Ctx02192700*)func_ov017_0218b5b0(), member);

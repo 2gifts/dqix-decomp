@@ -41,9 +41,9 @@ extern "C" void _Z23SetEntryNibbleByShortIdP19StatusOwner02081198ii(void *, int,
 extern "C" void _Z24SetEntryFlag0x2ByShortIdP19StatusOwner02081164ii(void *, int, int);
 extern "C" void func_020813ec(void *, int);
 extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(void *);
-extern "C" int _Z26FindMappedMemberId02080468Pvi(void *, int);
+int FindMappedMemberId02080468(void *, int);
 struct Obj0205eaa0;
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0 *, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
 extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void *);
 extern "C" Elem *_Z35GetElementAtIndex_02160bd0_02160bd0Pvi(Scene *, int);
 extern "C" int func_ov003_02160a68(Scene *);
@@ -65,7 +65,7 @@ extern "C" ARM void func_ov003_02163484(Scene *self) {
         self->h488 = 6;
         self->h474 = -1;
         if (self->h494 < 0) {
-            self->h494 = _Z26FindMappedMemberId02080468Pvi(entries, self->h488);
+            self->h494 = FindMappedMemberId02080468(entries, self->h488);
         }
         entries->sel = self->h494;
         _Z23SetEntryNibbleByShortIdP19StatusOwner02081198ii(entries, 0x18, 1);
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov003_02163484(Scene *self) {
             }
         }
         if (func_ov003_02160854(self) != 0) {
-            int idx = self->h494 - _Z26FindMappedMemberId02080468Pvi(entries, self->h488);
+            int idx = self->h494 - FindMappedMemberId02080468(entries, self->h488);
             idx += self->c49f * 4;
             Elem *elem = _Z35GetElementAtIndex_02160bd0_02160bd0Pvi(self, idx);
             if (elem == 0) {
@@ -100,7 +100,7 @@ extern "C" ARM void func_ov003_02163484(Scene *self) {
             if (elem->v < 0) {
                 return;
             }
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
             _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
             self->p470 = 0;
             int m      = elem->m;

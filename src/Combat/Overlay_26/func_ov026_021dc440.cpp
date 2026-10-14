@@ -21,17 +21,17 @@ void ZeroDestroyGPCPointer(GPCFile**);
 struct Struct_203dafc;
 void ClearEightWords(struct Struct_203dafc* obj);
 struct Obj0204a120;
-extern "C" void _Z17InitState0204a120P11Obj0204a120(struct Obj0204a120* obj);
+void InitState0204a120(struct Obj0204a120* obj);
 struct Owner0204a3f0;
 struct Holder0204a3f0;
-extern "C" void _Z28SetHolderAndMarkNode0204a3f0P13Owner0204a3f0P14Holder0204a3f0(struct Owner0204a3f0* owner, struct Holder0204a3f0* h);
-extern "C" void _Z15SetName0204a440PcPKc(char* obj, const char* src);
+void SetHolderAndMarkNode0204a3f0(struct Owner0204a3f0* owner, struct Holder0204a3f0* h);
+void SetName0204a440(char* obj, const char* src);
 void SetStringField0234(char* obj, const char* src);
 void SetField0x3b0Value(GameState*, int);
 void RegisterCombatantSlot(GameState*, int, GameObject*);
 int TestBitAt0x34(unsigned char*, unsigned int);
 int CountSetBitsAt0x34(unsigned char*);
-extern "C" void _Z25FormatEffectStats02072c9ciPc(int, char*);
+void FormatEffectStats02072c9c(int, char*);
 struct Fields020407b4;
 void SetFields0x44(struct Fields020407b4*, int, int, int);
 struct GameResources;
@@ -100,9 +100,9 @@ extern "C" ARM void func_ov026_021dc440(SafeAllocator* allocator, BattleWork* se
                 obj->LoadFromCHRArchive(&info);
                 char* holder = (char*)allocator->Allocate(0x268);
                 if (holder) {
-                    _Z17InitState0204a120P11Obj0204a120((Obj0204a120*)holder);
-                    _Z28SetHolderAndMarkNode0204a3f0P13Owner0204a3f0P14Holder0204a3f0((Owner0204a3f0*)holder, (Holder0204a3f0*)obj);
-                    _Z15SetName0204a440PcPKc(holder, data_ov026_021dee84);
+                    InitState0204a120((Obj0204a120*)holder);
+                    SetHolderAndMarkNode0204a3f0((Owner0204a3f0*)holder, (Holder0204a3f0*)obj);
+                    SetName0204a440(holder, data_ov026_021dee84);
                     SetStringField0234(holder, data_ov026_021dee88);
                     SetField0x3b0Value(game, (int)holder);
                     AnimLabels labels;
@@ -155,7 +155,7 @@ extern "C" ARM void func_ov026_021dc440(SafeAllocator* allocator, BattleWork* se
                 GameObject* member = GetCombatantWithFlag0x100(game, i);
                 if (member) {
                     char tmp[0x14];
-                    _Z25FormatEffectStats02072c9ciPc(i, tmp);
+                    FormatEffectStats02072c9c(i, tmp);
                     if (*(int*)((char*)member + 0x1c4)) {
                         sprintf(name, data_ov026_021dee9c);
                         LoadFileIntoMemory(name, data_0211e33c, &size);

@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 
-extern "C" void* _Z25TailCallAllocate_0218f4f0j(unsigned int len);
-extern "C" int _Z23InitDiffFields_0218f508PvS_(void* obj, void* src);
-extern "C" void* _Z25TailCallAllocate_0218e7a4j(unsigned int len);
-extern "C" void* _Z19ZeroFields_0218e7bcPv(void* obj);
-extern "C" int _Z27CallStubAndForward_0218e528iii(int a, int b, int c);
+void* TailCallAllocate_0218f4f0(unsigned int len);
+int InitDiffFields_0218f508(void* obj, void* src);
+void* TailCallAllocate_0218e7a4(unsigned int len);
+void* ZeroFields_0218e7bc(void* obj);
+int CallStubAndForward_0218e528(int a, int b, int c);
 extern "C" void func_ov016_0218e7ec(void* a);
 extern "C" void func_ov016_0218e7b0(void* data);
 
@@ -20,7 +20,7 @@ struct Node_0218e558 {
 
 // USA: func_ov016_0218e558  (semantic: CreateDiffNode_0218e558)
 extern "C" ARM int func_ov016_0218e558(void* obj, int param) {
-    Node_0218e558* n = (Node_0218e558*)_Z25TailCallAllocate_0218f4f0j(0x14);
+    Node_0218e558* n = (Node_0218e558*)TailCallAllocate_0218f4f0(0x14);
     if (n != 0) {
         *(void**)n = &data_ov016_0219d07c;
         n->f4 = 0;
@@ -32,7 +32,7 @@ extern "C" ARM int func_ov016_0218e558(void* obj, int param) {
         return 0;
     }
 
-    int result = _Z23InitDiffFields_0218f508PvS_(n, obj);
+    int result = InitDiffFields_0218f508(n, obj);
     if (result == 0) {
         if (n != 0) {
             n->Run();
@@ -40,7 +40,7 @@ extern "C" ARM int func_ov016_0218e558(void* obj, int param) {
         return 0;
     }
 
-    void* buf = _Z25TailCallAllocate_0218e7a4j(
+    void* buf = TailCallAllocate_0218e7a4(
 #if defined(jpn)
         0xd4
 #else
@@ -48,9 +48,9 @@ extern "C" ARM int func_ov016_0218e558(void* obj, int param) {
 #endif
     );
     if (buf != 0) {
-        buf = _Z19ZeroFields_0218e7bcPv(buf);
+        buf = ZeroFields_0218e7bc(buf);
     }
-    result = _Z27CallStubAndForward_0218e528iii((int)buf, (int)n, param);
+    result = CallStubAndForward_0218e528((int)buf, (int)n, param);
     switch (result) {
     case 0:
         if (buf != 0) {

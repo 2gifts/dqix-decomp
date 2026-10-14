@@ -5,12 +5,12 @@ struct Struct_0205c570;
 struct Obj0205eaa0;
 struct S_10088;
 
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570* s);
+int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
-extern "C" int _Z35CheckFlagsOrField_0217ab48_0217ab48Pv(void* obj);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
+int CheckFlagsOrField_0217ab48_0217ab48(void* obj);
 int IsFlag10088Set(struct S_10088* obj);
 GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
 
@@ -88,7 +88,7 @@ extern char data_02108760;
 // USA: func_ov000_0217bb2c
 extern "C" ARM int func_ov000_0217bb2c(MenuObj_0217bb2c* obj, int arg1, int arg2) {
     data_ov000_02184294.ctx->flags |= 0x100;
-    obj->cursor = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)obj->window);
+    obj->cursor = GetActiveScaledSum0205d794((struct Struct_0205c570*)obj->window);
     obj->field2e = -1;
     if (obj->field441 != arg1) {
         obj->field441 = arg1;
@@ -136,11 +136,11 @@ extern "C" ARM int func_ov000_0217bb2c(MenuObj_0217bb2c* obj, int arg1, int arg2
         if (ok) {
             obj->field43d = obj->selections[obj->depth];
             obj->field2e = obj->order[obj->cursor];
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 1, 0);
             obj->depth++;
             obj->selections[obj->depth] = 100;
         }
-    } else if (_Z35CheckFlagsOrField_0217ab48_0217ab48Pv(obj)) {
+    } else if (CheckFlagsOrField_0217ab48_0217ab48(obj)) {
         func_ov000_0217629c(obj);
         obj->selections[obj->depth] = 0;
         obj->depth--;

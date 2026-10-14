@@ -87,40 +87,40 @@ struct Obj020d7aa0;
 struct Obj02046574;
 struct Container020e0310;
 
-extern "C" struct Display020e3f1c* _Z26GetGlobalField0x1c020421a0v();
+struct Display020e3f1c* GetGlobalField0x1c020421a0();
 extern "C" struct Zone02012fe4* func_02012fe4();
 int GetFieldIfFlag4(char* obj);
 extern "C" int func_ov017_021959b4();
-extern "C" void _Z32StartBattleTimerSequence020e4524Pc(char* obj);
+void StartBattleTimerSequence020e4524(char* obj);
 extern "C" void func_ov004_0216fa48(void* obj);
-extern "C" void _Z33TickActorAndDispatchPhase02076b58P11Obj02076b58(struct Obj02076b58* actor);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
+void TickActorAndDispatchPhase02076b58(struct Obj02076b58* actor);
+void* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int* word, unsigned int mask);
 void SetByte0xbeShiftPrev(struct Bytes02033b88* obj, int value);
 extern "C" void func_02037d88(GameObject* obj);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(struct Obj020397cc* obj, int arg);
+void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg);
 extern "C" void func_020531f0(GameObject* obj);
 void ClearIntAt0x23c(unsigned char* obj);
 int GetSignedByte0x1c9(void* obj);
-extern "C" void _Z21AimAndSetVecY020338d4P14Struct020338d4P4Vec3(struct Struct020338d4* self, struct Vec3* target);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char* obj);
-extern "C" void _Z26ComputeAndDispatch020338b0Phi(unsigned char* obj, int target);
+void AimAndSetVecY020338d4(struct Struct020338d4* self, struct Vec3* target);
+void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
+void ComputeAndDispatch020338b0(unsigned char* obj, int target);
 void ApplyField0x70Tail(struct GlobalObj0202e6a8* obj, int value);
 int GetField0x78(void* obj);
 void SetVec3At0x4(struct Vec3Target0202e5c0* obj, int x, int y, int z);
-extern "C" void _Z34ComputeAngleHeightDistance0202ea4cP11Obj0202ea4c(struct Obj0202ea4c* obj);
+void ComputeAngleHeightDistance0202ea4c(struct Obj0202ea4c* obj);
 extern "C" void func_0202e0a4(struct Camera020e3f1c* camera);
-extern "C" struct Obj020d7aa0* _Z25GetGlobalResetObj020d7a50v();
-extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(struct Obj020d7aa0* obj);
+struct Obj020d7aa0* GetGlobalResetObj020d7a50();
+void TeardownAndResetState020d7aa0(struct Obj020d7aa0* obj);
 extern "C" void func_ov017_021c3e18(int arg);
 extern "C" int sprintf(char* buf, const char* fmt, ...);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-extern "C" void* _Z26ResetAndReturnSelf020dfc2cPv(void* p);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(struct Struct020dfc40* p);
+void* ResetAndReturnSelf020dfc2c(void* p);
+void ResetStruct020dfc40(struct Struct020dfc40* p);
 extern "C" void func_020dfec0(void* dest, void* allocator, void* fileData, unsigned int size);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* ptr);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(struct Obj02046574* obj, int index, char* name);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+void TailForward02012da4(AllocatorUnion* alloc, void* ptr);
+void SetIndexedName02046574(struct Obj02046574* obj, int index, char* name);
 extern "C" void func_0204500c(void* global, void* entry, int a, int b);
 extern "C" void func_02043124(void* global);
 
@@ -136,7 +136,7 @@ static inline int FxMul(int a, int b) {
 extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     GameState* gs = GameState::GetInstance();
-    struct Display020e3f1c* display = _Z26GetGlobalField0x1c020421a0v();
+    struct Display020e3f1c* display = GetGlobalField0x1c020421a0();
     FontBankLoader* mgr = GetGlobal02109400();
     ActiveGrottoClass* grotto = &func_02012fe4()->activeGrotto;
     struct Camera020e3f1c* camera = (struct Camera020e3f1c*)GetFieldIfFlag4((char*)gs);
@@ -144,7 +144,7 @@ extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
     GameResources* res = func_ov017_0218b5b0();
 
     if (func_ov017_021959b4()) {
-        _Z32StartBattleTimerSequence020e4524Pc((char*)intro);
+        StartBattleTimerSequence020e4524((char*)intro);
         return;
     }
 
@@ -165,8 +165,8 @@ extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
         func_ov004_0216fa48(intro);
         return;
     }
-    _Z33TickActorAndDispatchPhase02076b58P11Obj02076b58((struct Obj02076b58*)monster);
-    OrBitsIntoField0((unsigned int*)_Z27GetDataPtr02114e04_020d6c00v(), 2);
+    TickActorAndDispatchPhase02076b58((struct Obj02076b58*)monster);
+    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 2);
 
     int i;
     for (i = 0; i < 4; i++) {
@@ -186,7 +186,7 @@ extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
 
     if (intro->state == 0) {
         if (leader != NULL) {
-            _Z27CancelPendingAction020397ccP11Obj020397cci((struct Obj020397cc*)leader, 1);
+            CancelPendingAction020397cc((struct Obj020397cc*)leader, 1);
             leader->fb2 = 0;
         }
         for (int j = 0; j < 4; j++) {
@@ -218,11 +218,11 @@ extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
                 member->position.x = pos.x;
                 member->position.y = pos.y;
                 member->position.z = pos.z + 0x3000;
-                _Z21AimAndSetVecY020338d4P14Struct020338d4P4Vec3((struct Struct020338d4*)member, &monster->position);
-                _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)member);
+                AimAndSetVecY020338d4((struct Struct020338d4*)member, &monster->position);
+                ClearBytesAndZeroBlock02039d24((unsigned char*)member);
             }
         }
-        _Z26ComputeAndDispatch020338b0Phi((unsigned char*)monster, (int)&leader->position);
+        ComputeAndDispatch020338b0((unsigned char*)monster, (int)&leader->position);
         ApplyField0x70Tail((struct GlobalObj0202e6a8*)camera, 0);
         int dist = GetField0x78(camera);
         struct Vec3 target = camera->target;
@@ -230,13 +230,13 @@ extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
             int dz = FxMul(dist, 0xddb);
             int dy = FxMul(dist, 0x599);
             SetVec3At0x4((struct Vec3Target0202e5c0*)camera, target.x, target.y + dy, target.z + dz);
-            _Z34ComputeAngleHeightDistance0202ea4cP11Obj0202ea4c((struct Obj0202ea4c*)camera);
+            ComputeAngleHeightDistance0202ea4c((struct Obj0202ea4c*)camera);
         } else if (intro->cameraMode == 2) {
             SetVec3At0x4((struct Vec3Target0202e5c0*)camera, target.x, target.y + 0x2000, target.z + 0xd800);
-            _Z34ComputeAngleHeightDistance0202ea4cP11Obj0202ea4c((struct Obj0202ea4c*)camera);
+            ComputeAngleHeightDistance0202ea4c((struct Obj0202ea4c*)camera);
         }
         func_0202e0a4(camera);
-        _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
+        TeardownAndResetState020d7aa0(GetGlobalResetObj020d7a50());
         BlankFunction02094b34(mgr, 0x74, 0x20e, 0, 0);
         func_ov017_021c3e18(0);
         intro->state = 2;
@@ -278,25 +278,25 @@ extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
         alloc.ResetAllocatorPointer();
         alloc.CreateTypeA(buf, 0x500);
         struct Struct020dfc40 table;
-        _Z26ResetAndReturnSelf020dfc2cPv(&table);
-        _Z19ResetStruct020dfc40P14Struct020dfc40(&table);
+        ResetAndReturnSelf020dfc2c(&table);
+        ResetStruct020dfc40(&table);
         func_020dfec0(&table, &alloc, fileData, size);
         loader->RemoveTask(intro->taskId);
         intro->taskId = -1;
-        void* entry = (void*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)&table, bossId);
+        void* entry = (void*)GetFieldByKey020e0434((struct Container020e0310*)&table, bossId);
         if (entry == NULL) {
             alloc.Destroy();
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, buf);
+            TailForward02012da4(&data_02114e20, buf);
             func_ov004_0216fa48(intro);
             return;
         }
         display->visible = 1;
         display->active = 1;
-        _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)display, 0, leader->name);
+        SetIndexedName02046574((struct Obj02046574*)display, 0, leader->name);
         func_0204500c(display, entry, 0, 0xe3);
         display->busy = 1;
         alloc.Destroy();
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, buf);
+        TailForward02012da4(&data_02114e20, buf);
         intro->state = 5;
     } else if (intro->state == 5) {
         display->active = 1;

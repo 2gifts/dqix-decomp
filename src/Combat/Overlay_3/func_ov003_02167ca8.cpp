@@ -7,13 +7,13 @@ struct Wrapper02168088;
 extern "C" ARM void func_ov003_02167e28(void* self, void* stats, int flag, unsigned char index,
                                         int byteValue, int halfValue, int wordValue);
 extern "C" ARM void func_ov003_02167fa4(void* self, int flag, unsigned char* table);
-extern "C" void _Z31SetEntryFieldsForRange_02168088P15Wrapper02168088Pi(struct Wrapper02168088* obj, int* arr);
+void SetEntryFieldsForRange_02168088(struct Wrapper02168088* obj, int* arr);
 extern "C" int func_020813ec(void* list, int arg);
 extern "C" void func_02042764(unsigned char* src, char* dst, int n);
 extern "C" void memset(void* dst, int value, int n);
 extern "C" void* _Z17GetPtrField0x2a04P9GameState(void* gameState);
 extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" void* _Z27FindEntryBySignedId02086e50P26FindEntryContainer02086e50i(FindEntryContainer02086e50* p, int id);
+void* FindEntryBySignedId02086e50(FindEntryContainer02086e50* p, int id);
 int GetFieldAt0x50(Struct020865b0* p);
 
 struct Entry02167ca8 {
@@ -43,7 +43,7 @@ struct Menu_02167ca8 {
 
 // USA: func_ov003_02167ca8
 extern "C" ARM void func_ov003_02167ca8(Menu_02167ca8* self) {
-    Entry02167ca8* entry = (Entry02167ca8*)_Z27FindEntryBySignedId02086e50P26FindEntryContainer02086e50i(
+    Entry02167ca8* entry = (Entry02167ca8*)FindEntryBySignedId02086e50(
         (FindEntryContainer02086e50*)_Z17GetPtrField0x2a04P9GameState(_ZN9GameState11GetInstanceEv()),
         self->combatantId);
     if (entry == 0) {
@@ -84,6 +84,6 @@ extern "C" ARM void func_ov003_02167ca8(Menu_02167ca8* self) {
     values[10] = a10;
     int a11 = entry->g4.v11;
     values[11] = a11;
-    _Z31SetEntryFieldsForRange_02168088P15Wrapper02168088Pi((Wrapper02168088*)self, values);
+    SetEntryFieldsForRange_02168088((Wrapper02168088*)self, values);
     func_020813ec(self->list, 0);
 }

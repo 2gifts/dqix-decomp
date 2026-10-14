@@ -30,35 +30,35 @@ extern "C" int func_ov003_02169674(void* self, int x, int y, void* rects);
 extern "C" void func_0205bb04(void* obj, int v);
 extern "C" int func_0205bf58(void* obj, int v);
 
-extern "C" void _Z23SetChannelAFlag0205cef8Pv(void* chan);
-extern "C" void _Z23SetChannelBFlag0205cf04Pv(void* chan);
-extern "C" void _Z12Init0205bbccP15Struct_0205bbcc(Struct_0205bbcc* obj);
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(Struct_0205ba68* obj, int a, int b, int c);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(Node0205bacc* obj, int v);
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(Struct_0205bcdc* obj, int v);
-extern "C" void _Z17SetFields0205bd58P15Struct_0205bd58iiiii(Struct_0205bd58* obj, int a, int b, int c, int d, int e);
-extern "C" void _Z20ClearFields_0216a85cP9S0216a85c(S0216a85c* obj);
+void SetChannelAFlag0205cef8(void* chan);
+void SetChannelBFlag0205cf04(void* chan);
+void Init0205bbcc(Struct_0205bbcc* obj);
+void SetupPointerTable0205ba68(Struct_0205ba68* obj, int a, int b, int c);
+void SetField0AndPropagate0205bacc(Node0205bacc* obj, int v);
+void SetIndexIfValid0205bcdc(Struct_0205bcdc* obj, int v);
+void SetFields0205bd58(Struct_0205bd58* obj, int a, int b, int c, int d, int e);
+void ClearFields_0216a85c(S0216a85c* obj);
 unsigned char* FindElementForFieldB0(Struct_0205d81c* chan);
 void GetFourSubstructPointers(unsigned char* elem, unsigned char** a, unsigned char** b, unsigned char** c,
                               unsigned char** d);
 void SelectCoordsByFlag0x24(unsigned char* input, int* x, int* y);
 void SetFieldAt0x30(void* obj, int v);
 extern "C" int _Z25UpdateActiveState0205bc2cP15Struct_0205bc2c(Struct_0205bc2c* obj, int v);
-extern "C" int _Z28GetScaledSumIfActive0205bd04P15Struct_0205bd04(Struct_0205bd04* obj);
-extern "C" int _Z18GetField0_0205bafcPv(void* obj);
-extern "C" void _Z24ClearFlagFields_02169658Pv(void* self);
+int GetScaledSumIfActive0205bd04(Struct_0205bd04* obj);
+int GetField0_0205bafc(void* obj);
+void ClearFlagFields_02169658(void* self);
 void ClearBytes0x4cTo0x4e(Struct_0205bc10* obj);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570* chan);
-extern "C" void _Z31UpdateEntryAndField4ea_021694b8Pvi(void* self, int v);
+int GetActiveScaledSum0205d794(Struct_0205c570* chan);
+void UpdateEntryAndField4ea_021694b8(void* self, int v);
 int TestFlagMask(unsigned short* flags, int mask);
 int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
 int TestFlagInSecondWord(unsigned short* flags, unsigned int mask);
-extern "C" void _Z18ResetState0205bf3cP15Struct_0205bf3c(Struct_0205bf3c* obj);
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(Struct_0205bb84* obj);
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08* gs);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
-extern "C" void _Z25ClearChannelAFlag0205cf10Pv(void* chan);
-extern "C" void _Z21ClearFlagByte0205cf1cP14Struct0205cf1c(Struct0205cf1c* chan);
+void ResetState0205bf3c(Struct_0205bf3c* obj);
+int ComputeScaledSum0205bb84(Struct_0205bb84* obj);
+int NormalizeField5_0200fb08(Struct0200fb08* gs);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
+void ClearChannelAFlag0205cf10(void* chan);
+void ClearFlagByte0205cf1c(Struct0205cf1c* chan);
 
 struct InputState {
     char pad0[0x24];
@@ -151,14 +151,14 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
 
     if (self->state == 0) {
         func_ov003_02169594(self);
-        _Z23SetChannelAFlag0205cef8Pv(self->chan);
-        _Z23SetChannelBFlag0205cf04Pv(self->chan);
+        SetChannelAFlag0205cef8(self->chan);
+        SetChannelBFlag0205cf04(self->chan);
         func_ov003_021696f4(self, self->cursor);
-        _Z12Init0205bbccP15Struct_0205bbcc((Struct_0205bbcc*)self->node);
-        _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((Struct_0205ba68*)self->node, 1, 2, 0);
+        Init0205bbcc((Struct_0205bbcc*)self->node);
+        SetupPointerTable0205ba68((Struct_0205ba68*)self->node, 1, 2, 0);
         self->w540 = 1;
-        _Z29SetField0AndPropagate0205baccP12Node0205bacci((Node0205bacc*)self->node, 2);
-        _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((Struct_0205bcdc*)self->node, 0);
+        SetField0AndPropagate0205bacc((Node0205bacc*)self->node, 2);
+        SetIndexIfValid0205bcdc((Struct_0205bcdc*)self->node, 0);
         self->h58c[0] = 0;
         self->h58c[1] = 0;
         self->h58c[2] = 0;
@@ -167,15 +167,15 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
         self->h58c[5] = kCellWidth;
         self->h58c[6] = 0x10;
         self->h58c[7] = 0x10;
-        _Z17SetFields0205bd58P15Struct_0205bd58iiiii((Struct_0205bd58*)self->node, 2, (int)&self->h58c[0], (int)&self->h58c[2],
+        SetFields0205bd58((Struct_0205bd58*)self->node, 2, (int)&self->h58c[0], (int)&self->h58c[2],
                           (int)&self->h58c[4], (int)&self->h58c[6]);
-        _Z20ClearFields_0216a85cP9S0216a85c((S0216a85c*)&self->rectA);
+        ClearFields_0216a85c((S0216a85c*)&self->rectA);
         self->rectA.count = 2;
         self->rectA.xMinArr = &self->h58c[kRectXIndex];
         self->rectA.yMinArr = &self->h58c[2];
         self->rectA.xWidthArr = &self->h58c[4];
         self->rectA.yWidthArr = &self->h58c[6];
-        _Z20ClearFields_0216a85cP9S0216a85c((S0216a85c*)&self->rectB);
+        ClearFields_0216a85c((S0216a85c*)&self->rectB);
         unsigned char* elem = FindElementForFieldB0((Struct_0205d81c*)self->chan);
         short ex = ElemX(elem);
         short ey = ElemY(elem);
@@ -223,8 +223,8 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                         self->b59d = r7;
                         self->code = 2;
                         self->b59e = 0x14;
-                        int dir = _Z28GetScaledSumIfActive0205bd04P15Struct_0205bd04((Struct_0205bd04*)self->node);
-                        int n = (signed char)_Z18GetField0_0205bafcPv(self->list);
+                        int dir = GetScaledSumIfActive0205bd04((Struct_0205bd04*)self->node);
+                        int n = (signed char)GetField0_0205bafc(self->list);
                         if (dir == 0) {
                             cells[cur]++;
                             signed char cv = cells[cur];
@@ -257,7 +257,7 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                             } else {
                                 self->b59e = 10;
                                 cells[cur] += self->step;
-                                signed char n = _Z18GetField0_0205bafcPv(self->list);
+                                signed char n = GetField0_0205bafc(self->list);
                                 if (cells[cur] > n - 1) {
                                     cells[cur] = n - 1;
                                 }
@@ -273,18 +273,18 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                             } else {
                                 self->code = 3;
                             }
-                            _Z24ClearFlagFields_02169658Pv(self);
+                            ClearFlagFields_02169658(self);
                             ClearBytes0x4cTo0x4e((Struct_0205bc10*)self->node);
                         }
                     }
                 }
             }
             if (r7 == 0) {
-                int before = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->chan);
+                int before = GetActiveScaledSum0205d794((Struct_0205c570*)self->chan);
                 self->b179 = 0;
-                _Z31UpdateEntryAndField4ea_021694b8Pvi(self, sb);
+                UpdateEntryAndField4ea_021694b8(self, sb);
                 self->b179 = 1;
-                int after = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->chan);
+                int after = GetActiveScaledSum0205d794((Struct_0205c570*)self->chan);
                 if (before != after) {
                     func_ov003_021696f4(self, after);
                 }
@@ -299,20 +299,20 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                 TestFlagInSecondWord(&data_02114e30, 0x40) || TestFlagMask(&data_02114e30, 0x80) ||
                 TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80) ||
                 TestFlagInSecondWord(&data_02114e30, 0x80)) {
-                _Z18ResetState0205bf3cP15Struct_0205bf3c((Struct_0205bf3c*)((char*)self + kResetOffset));
+                ResetState0205bf3c((Struct_0205bf3c*)((char*)self + kResetOffset));
                 int old = cells[cur];
-                int n = _Z18GetField0_0205bafcPv(self->list);
+                int n = GetField0_0205bafc(self->list);
                 func_0205bb04(self->list, n - 1 - cells[cur]);
                 if (func_0205bf58(self->list, sb) != 0) {
-                    cells[cur] = n - 1 - _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((Struct_0205bb84*)self->list);
+                    cells[cur] = n - 1 - ComputeScaledSum0205bb84((Struct_0205bb84*)self->list);
                     if (old != cells[cur]) {
                         self->code = 1;
                     }
                 }
             } else {
-                int before = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->chan);
-                _Z31UpdateEntryAndField4ea_021694b8Pvi(self, sb);
-                int after = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->chan);
+                int before = GetActiveScaledSum0205d794((Struct_0205c570*)self->chan);
+                UpdateEntryAndField4ea_021694b8(self, sb);
+                int after = GetActiveScaledSum0205d794((Struct_0205c570*)self->chan);
                 if (before != after) {
                     func_ov003_021696f4(self, after);
                 }
@@ -330,7 +330,7 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
             }
         }
 
-        self->cursor = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->chan);
+        self->cursor = GetActiveScaledSum0205d794((Struct_0205c570*)self->chan);
         unsigned int total = 0;
         unsigned int mul = 1000;
         for (int i = 3; i >= 0; i--) {
@@ -354,7 +354,7 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                 short loy = 0xc8;
                 short hiy = 0xec;
 #else
-                int key = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)GameState::GetInstance());
+                int key = NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance());
                 short lox = 0x8f;
                 short hix = 0xba;
                 short loy = 0xc5;
@@ -373,7 +373,7 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                     hit1 = 1;
                 } else if (px >= loy && px < hiy) {
                     hit2 = 1;
-                    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, hit2, 0);
+                    DispatchWithShortB4_0205eaa0(&data_02108760, hit2, 0);
                 }
             }
         }
@@ -385,20 +385,20 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
             hit2 = 1;
         }
         if (hit1 != 0) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
             unsigned int m = 1000;
             for (int i = 3; i >= 0; i--) {
                 self->w5a0 += m * self->cells[i];
                 m *= 10;
             }
-            _Z25ClearChannelAFlag0205cf10Pv(self->chan);
-            _Z21ClearFlagByte0205cf1cP14Struct0205cf1c((Struct0205cf1c*)self->chan);
+            ClearChannelAFlag0205cf10(self->chan);
+            ClearFlagByte0205cf1c((Struct0205cf1c*)self->chan);
             self->state = 0;
             return self->w5a0 == 0 ? -2 : 0;
         }
         if (hit2 != 0) {
-            _Z25ClearChannelAFlag0205cf10Pv(self->chan);
-            _Z21ClearFlagByte0205cf1cP14Struct0205cf1c((Struct0205cf1c*)self->chan);
+            ClearChannelAFlag0205cf10(self->chan);
+            ClearFlagByte0205cf1c((Struct0205cf1c*)self->chan);
             self->state = 0;
             return -2;
         }

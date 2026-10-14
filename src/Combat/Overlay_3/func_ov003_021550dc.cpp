@@ -8,7 +8,6 @@ enum { kRegionValue36_2A = 0x36 };
 enum { kRegionValue1E6_1E2 = 0x1e6 };
 #endif
 
-
 struct Outer020e28dc;
 
 struct Menu {
@@ -20,10 +19,10 @@ extern unsigned short data_02114e30;
 extern unsigned char data_02114e54;
 
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(struct Outer020e28dc* o);
+int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
 int GetField0x15UnlessInactive(signed char* param);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
-extern "C" int _Z26RunAndCheckFlagBit02080dd4PviiiPhh(void* obj, int p1, int unused2, int unused3, unsigned char* outFlag, unsigned char extra);
+int RunAndCheckFlagBit02080dd4(void* obj, int p1, int unused2, int unused3, unsigned char* outFlag, unsigned char extra);
 extern "C" void func_020813ec(void* obj, int key);
 
 struct Ctx021550dc {
@@ -43,7 +42,7 @@ extern "C" ARM unsigned char func_ov003_021550dc(Ctx021550dc* self) {
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401)) {
         confirmed = 1;
     }
-    if (self->choice_ != NULL && _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(self->choice_)) {
+    if (self->choice_ != NULL && GetInnerFlagBit0020e28dc(self->choice_)) {
         int choice = GetField0x15UnlessInactive((signed char*)self->choice_);
         if (choice >= 0) {
             confirmed = 1;
@@ -54,7 +53,7 @@ extern "C" ARM unsigned char func_ov003_021550dc(Ctx021550dc* self) {
         int x, y;
         SelectCoordsByFlag0x24(&data_02114e54, &x, &y);
         self->previousCursor_ = *self->cursor_;
-        int item = _Z26RunAndCheckFlagBit02080dd4PviiiPhh(menu, self->group_, (short)x, (short)y, &confirmed, 1);
+        int item = RunAndCheckFlagBit02080dd4(menu, self->group_, (short)x, (short)y, &confirmed, 1);
         if (item < 0) {
             return 0;
         }

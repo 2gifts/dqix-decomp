@@ -42,18 +42,18 @@ struct ListHead_021f67ac;
 extern "C" NodeAllocator0215c774* func_ov011_021845f8(void*, int);
 extern "C" void* func_ov004_0215c448(void*);
 extern "C" void* func_ov004_0215c474(void*);
-extern "C" int _Z24InitObjWithMisc_021f6f20Pviiiij(void*, int, int, int, int, unsigned int);
+int InitObjWithMisc_021f6f20(void*, int, int, int, int, unsigned int);
 extern "C" void __clear(void*, unsigned int);
 extern "C" void* ExtractFileFromGP2(const char*, const char*, unsigned int*);
-extern "C" void* _Z20AddOffset20_021f7318Pv(void*);
-extern "C" PairTableNode0215c774* _Z20FindNodeById0218466cPvt(void*, unsigned short);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
+void* AddOffset20_021f7318(void*);
+PairTableNode0215c774* FindNodeById0218466c(void*, unsigned short);
+void RestorePairTables0207df90(char*);
 extern "C" void func_0204719c(void*);
-extern "C" void _Z15Forward02047b30Pviii(void*, int, int, int);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
-extern "C" void _Z22SetField1cTo2_021f7320Pv(void*);
+void Forward02047b30(void*, int, int, int);
+void BackupPairTables0207dfac(char*);
+void SetField1cTo2_021f7320(void*);
 extern "C" ListHead_021f67ac* func_ov011_021849c8(void*);
-extern "C" void _Z25AppendNodeToList_021f67acP17ListHead_021f67acP17ListNode_021f67ac(ListHead_021f67ac*, ListNode_021f67ac*);
+void AppendNodeToList_021f67ac(ListHead_021f67ac*, ListNode_021f67ac*);
 extern ArchiveState0215c774 data_ov004_021707d8;
 extern char data_ov004_02170415[];
 extern char data_ov004_0217042c[];
@@ -68,7 +68,7 @@ extern "C" ARM int func_ov004_0215c774(void* context) {
     MessageNode0215c774 temporary;
     func_ov004_0215c448(&temporary);
     memcpy(node, &temporary, sizeof(temporary));
-    if (_Z24InitObjWithMisc_021f6f20Pviiiij(node, (int)context, 0x640, 10, 0, 0) == 0) {
+    if (InitObjWithMisc_021f6f20(node, (int)context, 0x640, 10, 0, 0) == 0) {
         func_ov004_0215c474(&temporary);
         return 0;
     }
@@ -81,18 +81,18 @@ extern "C" ARM int func_ov004_0215c774(void* context) {
     BackgroundLoader::AddLockGlobal();
     unsigned int size;
     void* file = ExtractFileFromGP2(archivePath, innerPath, &size);
-    void* model = _Z20AddOffset20_021f7318Pv(node);
-    PairTableNode0215c774* pairs = _Z20FindNodeById0218466cPvt(context, 0);
+    void* model = AddOffset20_021f7318(node);
+    PairTableNode0215c774* pairs = FindNodeById0218466c(context, 0);
     char* tables = pairs->tables;
-    _Z25RestorePairTables0207df90Pc(tables);
+    RestorePairTables0207df90(tables);
     func_0204719c(model);
     if (file != 0) {
-        _Z15Forward02047b30Pviii(model, (int)file, size, (int)&owner->allocator);
+        Forward02047b30(model, (int)file, size, (int)&owner->allocator);
     }
-    _Z24BackupPairTables0207dfacPc(tables);
+    BackupPairTables0207dfac(tables);
     BackgroundLoader::RemoveLockGlobal();
-    _Z22SetField1cTo2_021f7320Pv(node);
-    _Z25AppendNodeToList_021f67acP17ListHead_021f67acP17ListNode_021f67ac(func_ov011_021849c8(context), &node->listNode);
+    SetField1cTo2_021f7320(node);
+    AppendNodeToList_021f67ac(func_ov011_021849c8(context), &node->listNode);
     func_ov004_0215c474(&temporary);
     return 0;
 }

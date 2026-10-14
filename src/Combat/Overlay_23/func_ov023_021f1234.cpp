@@ -128,23 +128,23 @@ struct BattleScene_021f1234 {
 extern "C" BattleEnd_021f1234* _ZZ17GetGlobal021ffefcvE1s;
 extern char data_02108760[];
 
-extern "C" MessageSystem_021f1234* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem_021f1234* GetGlobalField0x1c020421a0();
 ArrayContainsByteStruct* GetPtrField0x2a04(GameState* gameState);
 int ArrayContainsByte(ArrayContainsByteStruct* array, int id);
-extern "C" void _Z24InitCombatEntry_021d8b6cPv(void* window);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int value);
+void InitCombatEntry_021d8b6c(void* window);
+void ResetEntryList0205d6a0(Entry_0205d6a0* window, int value);
 int TestBitInByteArray(int a, unsigned char* b, int flag);
 void SetOrClearBitInArray(void* a, unsigned char* b, int flag, int value);
 const char* FindEntryByKey(TableA68* texts, int id);
-extern "C" void _Z24ReinitController02043204Pc(char* messages);
+void ReinitController02043204(char* messages);
 void SetMainBrightness(GameResources* resources, int brightness, int duration);
 int IsMainBrightnessTransitionActive(GameResources* resources);
-extern "C" void _Z16ZeroInit020de868Pv(void* icons);
-extern "C" void _Z26InitAllocatorArray02186e74P17Container02186e74P13SafeAllocator(Container02186e74* abilities, SafeAllocator* allocator);
+void ZeroInit020de868(void* icons);
+void InitAllocatorArray02186e74(Container02186e74* abilities, SafeAllocator* allocator);
 void* GetCombatantWithFlag0x100(GameState* gameState, int member);
-extern "C" void _Z27SetupContextForMode0205ea20Pvi(void* sound, int mode);
+void SetupContextForMode0205ea20(void* sound, int mode);
 unsigned char* GetFieldAt0x150(unsigned char* member);
-extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(Reset_021eefac* end);
+void ResetFields_021eefac(Reset_021eefac* end);
 
 extern "C" {
 GameResources* func_ov017_0218b5b0();
@@ -183,7 +183,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
     GameResources* resources = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     void* unk = func_0205ec34();
-    MessageSystem_021f1234* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem_021f1234* messages = GetGlobalField0x1c020421a0();
     int id = end->current_;
     int inParty = ArrayContainsByte(GetPtrField0x2a04(gameState), id);
     if (self->skillMenu_ == NULL)
@@ -191,11 +191,11 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
         if (self->resultWindow_ != NULL)
         {
             func_ov023_021f1818(self->menu_, 1);
-            _Z24InitCombatEntry_021d8b6cPv(self->resultWindow_);
+            InitCombatEntry_021d8b6c(self->resultWindow_);
             func_ov023_021d8af8(self->resultWindow_);
             self->resultWindow_ = NULL;
         }
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)&self->menu_[0x188], 1);
+        ResetEntryList0205d6a0((Entry_0205d6a0*)&self->menu_[0x188], 1);
         self->allocator_.Reset();
 #if defined(jpn)
         self->skillMenu_ = (SkillPointMenu_021f1234*)self->allocator_.Allocate(0x654);
@@ -231,7 +231,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
             }
             else
             {
-                _Z24ReinitController02043204Pc((char*)messages);
+                ReinitController02043204((char*)messages);
                 SetMainBrightness(resources, -0x10, 0x10);
                 end->step_++;
             }
@@ -242,7 +242,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
                 messages->unk_19af = 0;
             if (func_ov023_021f4fc8())
             {
-                _Z24ReinitController02043204Pc((char*)messages);
+                ReinitController02043204((char*)messages);
                 SetMainBrightness(resources, -0x10, 0x10);
                 end->step_ = 1;
             }
@@ -252,8 +252,8 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
             if (!IsMainBrightnessTransitionActive(resources))
             {
                 end->step_++;
-                _Z24ReinitController02043204Pc((char*)messages);
-                _Z16ZeroInit020de868Pv(&self->menu_[0xd0]);
+                ReinitController02043204((char*)messages);
+                ZeroInit020de868(&self->menu_[0xd0]);
                 SafeAllocator* allocator = &self->menuAllocator_;
                 allocator->Reset();
 #if defined(jpn)
@@ -263,7 +263,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
 #endif
 
                 func_ov013_02186eec(self->abilities_, 0);
-                _Z26InitAllocatorArray02186e74P17Container02186e74P13SafeAllocator((Container02186e74*)self->abilities_, allocator);
+                InitAllocatorArray02186e74((Container02186e74*)self->abilities_, allocator);
                 void* member = GetCombatantWithFlag0x100(gameState, id);
                 if (member != NULL)
                 {
@@ -286,7 +286,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
         {
             if (!IsMainBrightnessTransitionActive(resources))
             {
-                _Z27SetupContextForMode0205ea20Pvi(data_02108760, 100);
+                SetupContextForMode0205ea20(data_02108760, 100);
                 end->step_++;
             }
         }
@@ -329,7 +329,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
         {
             if (!IsMainBrightnessTransitionActive(resources))
             {
-                _Z27SetupContextForMode0205ea20Pvi(data_02108760, 0x65);
+                SetupContextForMode0205ea20(data_02108760, 0x65);
                 GetCombatantWithFlag0x100(gameState, id);
                 void* member = GetCombatantWithFlag0x100(gameState, id);
                 if (member != NULL)
@@ -344,7 +344,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
                 if (end->newSkillCount_ != 0)
                 {
                     self->skillMenu_ = NULL;
-                    _Z20ResetFields_021eefacP14Reset_021eefac((Reset_021eefac*)end);
+                    ResetFields_021eefac((Reset_021eefac*)end);
                     end->newSkill_ = 0;
                     func_ov017_021cd0d8(id, end->newSkills_, end->newSkillCount_);
                     return 9;
@@ -364,7 +364,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
             if (AlwaysTrue02094b4c(GetGlobal02109400()))
             {
                 self->skillMenu_ = NULL;
-                _Z20ResetFields_021eefacP14Reset_021eefac((Reset_021eefac*)end);
+                ResetFields_021eefac((Reset_021eefac*)end);
                 return 7;
             }
         }

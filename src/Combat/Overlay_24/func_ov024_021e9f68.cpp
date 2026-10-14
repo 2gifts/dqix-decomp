@@ -57,7 +57,7 @@ extern "C" struct Cbt_021e9f68* _Z16GetCombatantByIDii(struct Random* battle, in
 int IsFlag10088Set(struct S_10088* obj);
 extern "C" int _Z33IsCombatantFlag2Mask8192_021e6798P10GameObject(struct Cbt_021e9f68* c);
 extern "C" int _Z33IsCombatantFlag2Mask2048_021e7ba8P10GameObject(struct Cbt_021e9f68* c);
-extern "C" void _Z17PushEntry0215ff50Pvsh(void* obj, short val1, unsigned char val2);
+void PushEntry0215ff50(void* obj, short val1, unsigned char val2);
 extern "C" struct Cbt_021e9f68* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
 int AnySlotHasBit18At0x2f4(unsigned char* obj);
 int NextRandomMax(struct Random* random, int maximum);
@@ -101,7 +101,7 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
     }
     if ((action->flags10 & 0x400) && action->kind == 1 && *a != *b) {
         if (self->stats->flags14 & 0x200) {
-            _Z17PushEntry0215ff50Pvsh(queue, *a, 1);
+            PushEntry0215ff50(queue, *a, 1);
             *a = *b;
             *b = saved;
             ctx->f76 = 0;
@@ -112,7 +112,7 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
         if (inRange) {
             struct Cbt_021e9f68* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, *b);
             if (c && AnySlotHasBit18At0x2f4(c->field150) && NextRandomMax(rnd, 4) == 0) {
-                _Z17PushEntry0215ff50Pvsh(queue, *a, 1);
+                PushEntry0215ff50(queue, *a, 1);
                 *a = *b;
                 *b = saved;
                 ctx->f76 = 0;
@@ -122,7 +122,7 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
         }
     }
     if ((action->flags10 & 4) && action->kind == 1 && (self->stats->flags14 & 0x4000000)) {
-        _Z17PushEntry0215ff50Pvsh(queue, *a, 2);
+        PushEntry0215ff50(queue, *a, 2);
         *a = *b;
         *b = saved;
         ctx->f76 = 0;
@@ -146,7 +146,7 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
     int busy = func_ov024_021ea500(ctx, action, *a);
     if ((action->flags10 & 0x80) && busy == 0) {
         if (IsKind_021e9f68(self, 4)) {
-            _Z17PushEntry0215ff50Pvsh(queue, *a, 3);
+            PushEntry0215ff50(queue, *a, 3);
             *a = *b;
             *b = saved;
             ctx->f76 = 0;
@@ -165,7 +165,7 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
             if (*target < 0) {
                 *target = ids.v[NextRandomMax(rnd, count)];
             }
-            _Z17PushEntry0215ff50Pvsh(queue, *target, 4);
+            PushEntry0215ff50(queue, *target, 4);
             *a = *b;
             *b = *target;
             ctx->f76 = 0;
@@ -194,9 +194,9 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
                 *target = ids.v[NextRandomMax(rnd, count)];
             }
             if (*b == *target) {
-                _Z17PushEntry0215ff50Pvsh(queue, *target, 10);
+                PushEntry0215ff50(queue, *target, 10);
             } else {
-                _Z17PushEntry0215ff50Pvsh(queue, *target, 5);
+                PushEntry0215ff50(queue, *target, 5);
                 *a = *b;
                 ctx->f76 = 0;
                 ctx->f77 = 1;
@@ -212,14 +212,14 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
                     *state = 2;
                     return 0;
                 }
-                _Z17PushEntry0215ff50Pvsh(queue, *a, 3);
+                PushEntry0215ff50(queue, *a, 3);
                 *a = *b;
                 *b = saved;
                 *state = 1;
                 ctx->f76 = 0;
                 return 1;
             } else if (*state == 1) {
-                _Z17PushEntry0215ff50Pvsh(queue, *a, 3);
+                PushEntry0215ff50(queue, *a, 3);
                 *a = *b;
                 *b = saved;
                 ctx->f76 = 0;

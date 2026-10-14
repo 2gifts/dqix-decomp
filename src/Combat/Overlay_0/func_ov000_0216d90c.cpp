@@ -5,7 +5,7 @@
 extern "C" void func_ov000_0216d370(void* obj, int a, int b, int c);
 void SetFields0x10To0x18(unsigned char* obj, int x, int y, int z);
 void ApplyVec3Tail(void* obj, int* vec);
-extern "C" void _Z22SetFlagOrState0216d530Pvi(void* obj, int val);
+void SetFlagOrState0216d530(void* obj, int val);
 
 extern int data_ov000_021832a4[8];
 
@@ -47,6 +47,6 @@ extern "C" ARM void func_ov000_0216d90c(unsigned char* obj, int index) {
     vec[1] = 0x3000;
     vec[2] = 0x8000;
     ApplyVec3Tail(obj, vec);
-    _Z22SetFlagOrState0216d530Pvi(obj, index);
+    SetFlagOrState0216d530(obj, index);
     *(int*)(obj + 0x23c) = -20;
 }

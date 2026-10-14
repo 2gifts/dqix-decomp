@@ -145,8 +145,8 @@ extern "C" void func_ov023_021dcae0(ItemInfoWindow* window, int item);
 extern "C" void func_ov023_021dced4(ItemInfoWindow* window, unsigned char multiplier);
 const char** CallFunc020e52a0(void* names, int item);
 extern "C" void func_020e4864(const char* src, char* dst, int a, int b, int c, int d);
-extern "C" GameObject* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gameState, int combatantId);
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState* gameState);
+GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
+void* GetPtrField0x2a04(GameState* gameState);
 void SetFields_021dceac(char* window, int index, int name, unsigned char count, unsigned char maximum, unsigned char unk);
 
 extern unsigned char data_ov006_0215ff5c[8];
@@ -269,9 +269,9 @@ extern "C" ARM void func_ov006_021557c0(AlchemyPot* self) {
         }
         unsigned char counts[3] = {0};
         GameState* gs = GameState::GetInstance();
-        Party021557c0* party = (Party021557c0*)_Z17GetPtrField0x2a04P9GameState(gs);
+        Party021557c0* party = (Party021557c0*)GetPtrField0x2a04(gs);
         for (int i = 0; i < party->count; i++) {
-            char* actor = (char*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, party->ids[i]);
+            char* actor = (char*)GetCombatantWithFlag0x100(gs, party->ids[i]);
             if (actor != 0) {
                 for (int j = 0; j < 8; j++) {
                     BattleEquipmentView* equipment = *(BattleEquipmentView**)(actor

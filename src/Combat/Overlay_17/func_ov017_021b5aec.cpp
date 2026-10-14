@@ -42,11 +42,11 @@ ActorEntry* GetActorEntryByIndex(ActorListManager* manager, int index);
 void SetByteField0x253(void* obj);
 extern "C" void func_ov017_021b5a30(ContainerEvent_021b5aec* obj);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
-extern "C" void* _Z22ZeroInitReturn020de824Pv(void* obj);
-extern "C" void _Z18InitStruct0207cbe8Pc(char* obj);
+void* ZeroInitReturn020de824(void* obj);
+void InitStruct0207cbe8(char* obj);
 extern "C" void func_0207d538(LootBag_021b5aec* bag, int lootType, int itemID, int arg, int flag);
 extern "C" void func_ov017_021b6174(int id, int index, int bit);
-extern "C" void _Z27EnqueueEventTag165_021cfde0ttt(unsigned short a, unsigned short b, unsigned short c);
+void EnqueueEventTag165_021cfde0(unsigned short a, unsigned short b, unsigned short c);
 extern "C" unsigned int* func_ov017_0218b5b0(void);
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
 
@@ -85,9 +85,9 @@ extern "C" ARM int func_ov017_021b5aec(ContainerEvent_021b5aec* obj) {
                 hasLoot = 1;
                 LootBag_021b5aec bag;
                 bag.allocator.ResetAllocatorPointer();
-                _Z22ZeroInitReturn020de824Pv(bag.unk14);
-                _Z18InitStruct0207cbe8Pc((char*)&bag);
-                _Z18InitStruct0207cbe8Pc((char*)&bag);
+                ZeroInitReturn020de824(bag.unk14);
+                InitStruct0207cbe8((char*)&bag);
+                InitStruct0207cbe8((char*)&bag);
                 bag.inventory = (char*)actors + regionalOffset;
                 func_0207d538(&bag, container->lootType, container->itemIDOrRank, obj->unk3c, 1);
                 obj->itemID = container->itemIDOrRank;
@@ -95,7 +95,7 @@ extern "C" ARM int func_ov017_021b5aec(ContainerEvent_021b5aec* obj) {
         }
     }
     func_ov017_021b6174(actors->id, obj->actorIndex, containerID);
-    _Z27EnqueueEventTag165_021cfde0ttt(actors->id, obj->actorIndex, containerID);
+    EnqueueEventTag165_021cfde0(actors->id, obj->actorIndex, containerID);
     if (!alreadyOpened && hasLoot) {
         SetBitsInField4(func_ov017_0218b5b0(), 0x40);
         return 1;

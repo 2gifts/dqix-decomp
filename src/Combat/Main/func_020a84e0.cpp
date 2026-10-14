@@ -5,11 +5,11 @@
 
 struct FlagWord02046708 { unsigned int flags; };
 
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
+void* GetDataPtr02114e04_020d6c00(void);
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0205ec34(void);
 void* GetPtrField0x2a04(GameState* battleStruct);
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(struct FlagWord02046708* word, unsigned int mask);
+int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 int ForwardCombatantField0x44(void* self, int combatantId);
 unsigned char GetField0x397cValue(GameState* battleStruct);
 void SetByteFlagBitAndCombatantField0x6c(unsigned char* obj, int bit);
@@ -25,7 +25,7 @@ struct Obj020a8874 {
     unsigned char flag_0x4;
     unsigned char mask_0x5;
 };
-extern "C" void _Z30NotifyOv017SlotCleared020a8874P11Obj020a8874(struct Obj020a8874* obj);
+void NotifyOv017SlotCleared020a8874(struct Obj020a8874* obj);
 extern "C" void func_020a88e8(void* obj);
 extern "C" void func_020aeb34(void);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
@@ -34,7 +34,7 @@ int TestBitInByteArray(int unused, unsigned char* arr, int index);
 extern "C" ARM void func_020a84e0() {
     GameState* gs = GameState::GetInstance();
     func_ov017_0218b5b0();
-    struct FlagWord02046708* fw = (struct FlagWord02046708*)_Z27GetDataPtr02114e04_020d6c00v();
+    struct FlagWord02046708* fw = (struct FlagWord02046708*)GetDataPtr02114e04_020d6c00();
     Zone3D* zone = (Zone3D*)func_02012fe4();
     int ctx = (int)func_0205ec34();
     unsigned char* list;
@@ -56,7 +56,7 @@ extern "C" ARM void func_020a84e0() {
         while (j < *(unsigned char*)(list + 0xf7c)) {
             po = gs->GetPartyMemberByIndex(*(unsigned char*)(list + 0xf78 + j));
             if (po) {
-                if (!_Z17TestFlags02046708P16FlagWord02046708j(fw, 0x200000) &&
+                if (!TestFlags02046708(fw, 0x200000) &&
                     ForwardCombatantField0x44(entry, *(short*)((char*)po + 4)) != 0) {
                     switch (sub[0]) {
                     case 2:
@@ -78,14 +78,14 @@ extern "C" ARM void func_020a84e0() {
             }
             j++;
         }
-        if (!_Z17TestFlags02046708P16FlagWord02046708j(fw, 0x200000) &&
+        if (!TestFlags02046708(fw, 0x200000) &&
             ForwardCombatantField0x44(entry, GetField0x397cValue(gs)) != 0) {
             if (sub[0] == 1) {
                 func_020a87d0(sub);
             }
         } else {
             if (sub[0] == 1) {
-                _Z30NotifyOv017SlotCleared020a8874P11Obj020a8874((struct Obj020a8874*)sub);
+                NotifyOv017SlotCleared020a8874((struct Obj020a8874*)sub);
             }
         }
         if (sub[0] == 1) {

@@ -116,20 +116,20 @@ struct StatOutputs {
     unsigned char skipMode;
 };
 
-extern "C" int _Z33AccumulateFlaggedSlotBits02085fb4Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits02086020Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits0208608cPh(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits020860f8Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits02086164Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits020861d0Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits0208623cPh(unsigned char*);
-extern "C" int _Z35AccumulateSlotBitsFromTable020862a8Ph(unsigned char*);
-extern "C" int _Z35AccumulateSlotBitsFromTable02086314Ph(unsigned char*);
+int AccumulateFlaggedSlotBits02085fb4(unsigned char*);
+int AccumulateFlaggedSlotBits02086020(unsigned char*);
+int AccumulateFlaggedSlotBits0208608c(unsigned char*);
+int AccumulateFlaggedSlotBits020860f8(unsigned char*);
+int AccumulateFlaggedSlotBits02086164(unsigned char*);
+int AccumulateFlaggedSlotBits020861d0(unsigned char*);
+int AccumulateFlaggedSlotBits0208623c(unsigned char*);
+int AccumulateSlotBitsFromTable020862a8(unsigned char*);
+int AccumulateSlotBitsFromTable02086314(unsigned char*);
 extern "C" int func_02085cd0(unsigned char*, int);
-extern "C" int _Z30AccumulateModeSlotBits02085f1cPhi(unsigned char*, int);
-extern "C" int _Z26AccumulateSlotBits02085b88Ph(unsigned char*);
+int AccumulateModeSlotBits02085f1c(unsigned char*, int);
+int AccumulateSlotBits02085b88(unsigned char*);
 extern "C" void _Z19ClampFieldPairToMaxP20ClampFieldPairStruct(struct BattleUnit*);
-extern "C" void _Z18CopyStruct020836e4P14Record020836e4S0_(struct Record020836e4*, struct Record020836e4*);
+void CopyStruct020836e4(struct Record020836e4*, struct Record020836e4*);
 
 static inline void StoreResistances(unsigned char* dst, struct ResistanceSet set) {
     memcpy(dst, &set, sizeof(set));
@@ -149,15 +149,15 @@ static inline void SetDerivedHigh(struct BattleUnit* unit, unsigned short value)
 
 // USA: func_02083e28
 extern "C" ARM void func_02083e28(struct BattleUnit* unit, struct StatOutputs* out) {
-    int a0 = _Z33AccumulateFlaggedSlotBits02085fb4Ph((unsigned char*)unit) + unit->base[0].f0;
-    int a1 = _Z33AccumulateFlaggedSlotBits02086020Ph((unsigned char*)unit) + unit->base[0].f1;
-    int a2 = _Z33AccumulateFlaggedSlotBits0208608cPh((unsigned char*)unit) + unit->base[0].f2;
-    int b0 = _Z33AccumulateFlaggedSlotBits020860f8Ph((unsigned char*)unit) + unit->base[1].f0;
-    int b1 = _Z33AccumulateFlaggedSlotBits02086164Ph((unsigned char*)unit) + unit->base[1].f1;
-    int b2 = _Z33AccumulateFlaggedSlotBits020861d0Ph((unsigned char*)unit) + unit->base[1].f2;
-    int c0 = _Z33AccumulateFlaggedSlotBits0208623cPh((unsigned char*)unit) + unit->base[2].f0;
-    int c1 = _Z35AccumulateSlotBitsFromTable020862a8Ph((unsigned char*)unit) + unit->base[2].f1;
-    int c2 = _Z35AccumulateSlotBitsFromTable02086314Ph((unsigned char*)unit) + unit->base[2].f2;
+    int a0 = AccumulateFlaggedSlotBits02085fb4((unsigned char*)unit) + unit->base[0].f0;
+    int a1 = AccumulateFlaggedSlotBits02086020((unsigned char*)unit) + unit->base[0].f1;
+    int a2 = AccumulateFlaggedSlotBits0208608c((unsigned char*)unit) + unit->base[0].f2;
+    int b0 = AccumulateFlaggedSlotBits020860f8((unsigned char*)unit) + unit->base[1].f0;
+    int b1 = AccumulateFlaggedSlotBits02086164((unsigned char*)unit) + unit->base[1].f1;
+    int b2 = AccumulateFlaggedSlotBits020861d0((unsigned char*)unit) + unit->base[1].f2;
+    int c0 = AccumulateFlaggedSlotBits0208623c((unsigned char*)unit) + unit->base[2].f0;
+    int c1 = AccumulateSlotBitsFromTable020862a8((unsigned char*)unit) + unit->base[2].f1;
+    int c2 = AccumulateSlotBitsFromTable02086314((unsigned char*)unit) + unit->base[2].f2;
     float rateA;
     float rateB;
     float rateC;
@@ -279,7 +279,7 @@ extern "C" ARM void func_02083e28(struct BattleUnit* unit, struct StatOutputs* o
             }
         }
         attack += func_02085cd0((unsigned char*)unit, -1);
-        int maxMp = _Z30AccumulateModeSlotBits02085f1cPhi((unsigned char*)unit, -1) + maxMpBase;
+        int maxMp = AccumulateModeSlotBits02085f1c((unsigned char*)unit, -1) + maxMpBase;
         if (attack > 999) attack = 999;
         if (defence > 999) defence = 999;
         if (maxMp > 999) maxMp = 999;
@@ -356,14 +356,14 @@ extern "C" ARM void func_02083e28(struct BattleUnit* unit, struct StatOutputs* o
         signed char weapon = mode;
         attack += func_02085cd0((unsigned char*)unit, weapon);
         if (out->skipMode == 0) {
-            c2 += _Z30AccumulateModeSlotBits02085f1cPhi((unsigned char*)unit, weapon);
+            c2 += AccumulateModeSlotBits02085f1c((unsigned char*)unit, weapon);
         }
         struct Record020836e4* shield;
         if (out->skipMode != 0 && (shield = recs[9]) != NULL && shield->count > 0) {
             struct Record020836e4 saved = unit->records[9];
-            _Z18CopyStruct020836e4P14Record020836e4S0_(&unit->records[9], shield);
-            rateB += _Z26AccumulateSlotBits02085b88Ph((unsigned char*)unit);
-            _Z18CopyStruct020836e4P14Record020836e4S0_(&unit->records[9], &saved);
+            CopyStruct020836e4(&unit->records[9], shield);
+            rateB += AccumulateSlotBits02085b88((unsigned char*)unit);
+            CopyStruct020836e4(&unit->records[9], &saved);
         }
         if (attack > 999) attack = 999;
         if (defence > 999) defence = 999;

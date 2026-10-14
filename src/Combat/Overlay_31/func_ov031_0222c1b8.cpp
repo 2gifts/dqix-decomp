@@ -31,8 +31,8 @@ struct Block0222c1b8 {
 extern Context0222c1b8 data_ov031_02290c8c;
 extern unsigned char data_ov031_02290c90;
 extern "C" int func_ov031_0223c054(int);
-extern "C" int _Z28IsField19ZeroOrNull_02222e54v();
-extern "C" void _Z24TailCallForward_0223e2e0iPv(int, void*);
+int IsField19ZeroOrNull_02222e54();
+void TailCallForward_0223e2e0(int, void*);
 extern "C" void func_ov031_0223da58(void*);
 extern "C" void func_ov031_0223c760(void*);
 extern "C" void func_ov031_02235194();
@@ -42,16 +42,16 @@ extern "C" void func_ov031_02234f08();
 extern "C" void func_ov031_0223b710(void*);
 extern "C" void func_ov031_0223cbbc(int, int);
 extern "C" void func_ov031_022357b4();
-extern "C" void* _Z21GetOffset400_02235c70v();
+void* GetOffset400_02235c70();
 extern "C" void func_ov031_02236094(int);
-extern "C" void _Z21SetField1014_022274d0ii(int, int);
-extern "C" void _Z21SetField181c_0222750cii(int, int);
-extern "C" void _Z26SetField_022274c0_022274c0i(int);
-extern "C" void _Z30CopyBlockAndClearFlag_02235cacPv(void*);
+void SetField1014_022274d0(int, int);
+void SetField181c_0222750c(int, int);
+void SetField_022274c0_022274c0(int);
+void CopyBlockAndClearFlag_02235cac(void*);
 extern "C" void func_ov031_02233248();
-extern "C" void _Z21ResetAndInit_02232024v();
+void ResetAndInit_02232024();
 extern "C" void func_ov031_0222cbe0();
-extern "C" void _Z13Setup022340c0v();
+void Setup022340c0();
 extern "C" void func_ov031_0223cf70(void*);
 #define REG_SCROLL (*(volatile unsigned int*)0x04000010)
 #define REG_SCROLL_SUB (*(volatile unsigned int*)0x04000018)
@@ -60,8 +60,8 @@ extern "C" void func_ov031_0223cf70(void*);
 extern "C" ARM void func_ov031_0222c1b8() {
     if (func_ov031_0223c054(1) != 0) return;
     if (func_ov031_0223c054(0) != 0) return;
-    if (_Z28IsField19ZeroOrNull_02222e54v() == 0) return;
-    _Z24TailCallForward_0223e2e0iPv(1, data_ov031_02290c8c.manager->field_0x3c);
+    if (IsField19ZeroOrNull_02222e54() == 0) return;
+    TailCallForward_0223e2e0(1, data_ov031_02290c8c.manager->field_0x3c);
     int i = 0;
     do {
         if (data_ov031_02290c8c.manager->first[i]) func_ov031_0223da58(data_ov031_02290c8c.manager->first[i]);
@@ -80,24 +80,24 @@ extern "C" ARM void func_ov031_0222c1b8() {
     REG_SCROLL_SUB = 0;
     if (data_ov031_02290c8c.manager->field_0x54 == 0) {
         func_ov031_022357b4();
-        func_ov031_02236094(((Block0222c1b8*)_Z21GetOffset400_02235c70v())->field_0xf4);
-        _Z21SetField1014_022274d0ii(2, 0);
-        _Z26SetField_022274c0_022274c0i((int)func_ov031_02233248);
+        func_ov031_02236094(((Block0222c1b8*)GetOffset400_02235c70())->field_0xf4);
+        SetField1014_022274d0(2, 0);
+        SetField_022274c0_022274c0((int)func_ov031_02233248);
     } else if (data_ov031_02290c8c.field_0 == 4) {
         func_ov031_022357b4();
-        _Z21SetField1014_022274d0ii(0, 1);
-        _Z26SetField_022274c0_022274c0i((int)_Z21ResetAndInit_02232024v);
+        SetField1014_022274d0(0, 1);
+        SetField_022274c0_022274c0((int)ResetAndInit_02232024);
     } else {
-        _Z30CopyBlockAndClearFlag_02235cacPv(&data_ov031_02290c8c.manager->entries[data_ov031_02290c8c.manager->selected]);
-        _Z21SetField1014_022274d0ii(0, 0);
+        CopyBlockAndClearFlag_02235cac(&data_ov031_02290c8c.manager->entries[data_ov031_02290c8c.manager->selected]);
+        SetField1014_022274d0(0, 0);
         if (data_ov031_02290c8c.manager->entries[data_ov031_02290c8c.manager->selected].kind != 0) {
-            _Z21SetField1014_022274d0ii(0, 1);
-            _Z21SetField181c_0222750cii(1, 1);
-            _Z26SetField_022274c0_022274c0i((int)func_ov031_0222cbe0);
+            SetField1014_022274d0(0, 1);
+            SetField181c_0222750c(1, 1);
+            SetField_022274c0_022274c0((int)func_ov031_0222cbe0);
         } else {
-            _Z21SetField1014_022274d0ii(0, 1);
-            _Z21SetField181c_0222750cii(0, 1);
-            _Z26SetField_022274c0_022274c0i((int)_Z13Setup022340c0v);
+            SetField1014_022274d0(0, 1);
+            SetField181c_0222750c(0, 1);
+            SetField_022274c0_022274c0((int)Setup022340c0);
         }
     }
     func_ov031_0223cf70(&data_ov031_02290c90);

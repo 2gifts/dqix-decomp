@@ -77,13 +77,13 @@ extern "C" void func_020531f0(GameObject*);
 extern "C" void func_ov017_021bb27c(LoadEvent021bbfc4*);
 extern "C" void* GetMainBG1CharacterBase();
 extern "C" void* GetMainBG1ScreenBase();
-extern "C" int _Z24InitStreamAndRun0208dc00P12StreamHeaderii(StreamHeader*, int, int);
+int InitStreamAndRun0208dc00(StreamHeader*, int, int);
 void SetBrightness(GameResources*, int, int);
 Ticket021bbfc4* GetField0x3f8Address(GameState*);
 void SetFlag0x9c6(SetFlagStruct*, int);
-extern "C" void _Z18InitStruct02070378Pc(char*);
-extern "C" int _Z29RunScriptAndAdjustObj02071488P12StreamHeaderiiP11Obj02071488(StreamHeader*, int, int, Obj02071488*);
-extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
+void InitStruct02070378(char*);
+int RunScriptAndAdjustObj02071488(StreamHeader*, int, int, Obj02071488*);
+unsigned int* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int*, unsigned int);
 extern "C" void* func_0205ec34();
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
@@ -97,13 +97,13 @@ int GetField5cb8Value(char*);
 TimeOfDay ConvertToTimeOfDay(float);
 void SetField5cb0AndRecordByte0(char*, int);
 void SetField5cb4AndRecordByte1(char*, int);
-extern "C" void _Z19SetSlotByte020107dcPci(char*, int);
+void SetSlotByte020107dc(char*, int);
 int CheckField0NonZero(int*);
 extern "C" int func_0202c508(int*);
 extern "C" void func_ov017_021d0924(int, int, int, unsigned short);
 int GetBitsInField0(unsigned int*, unsigned int);
 extern "C" void func_ov017_021bc6e0(LoadEvent021bbfc4*, int, int);
-extern "C" int _Z20GetField0xcd0209c3acPc(char*);
+int GetField0xcd0209c3ac(char*);
 extern "C" void func_0209c2e0(void*, int, int);
 int GetAxisIntValue(AxisFloats0203b57c*, int);
 void SetMainBrightness(GameResources*, int, int);
@@ -142,7 +142,7 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
     unsigned int length;
     loader->GetLoadedFileByID(self->task, &file, &length);
     if (self->useTemplate) {
-        if (!_Z24InitStreamAndRun0208dc00P12StreamHeaderii((StreamHeader*)file, length, (int)&self->source)) {
+        if (!InitStreamAndRun0208dc00((StreamHeader*)file, length, (int)&self->source)) {
             SetBrightness(resources, 0, 0x28);
             loader->RemoveTask(self->task);
             func_ov017_021bb27c(self);
@@ -156,14 +156,14 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
             loader->RemoveTask(self->task);
             Ticket021bbfc4* ticket = GetField0x3f8Address(game);
             SetFlag0x9c6((SetFlagStruct*)resources->unknown_ptr_36d0, 1);
-            _Z18InitStruct02070378Pc((char*)ticket);
+            InitStruct02070378((char*)ticket);
             ticket->zone = self->source.zone;
             ticket->pending = 1;
             func_ov017_021bb27c(self);
             self->inactive = 1;
             return self->next;
         }
-    } else if (!_Z29RunScriptAndAdjustObj02071488P12StreamHeaderiiP11Obj02071488((StreamHeader*)file, length, self->parameter, &self->script)) {
+    } else if (!RunScriptAndAdjustObj02071488((StreamHeader*)file, length, self->parameter, &self->script)) {
         SetBrightness(resources, 0, 0x28);
         loader->RemoveTask(self->task);
         func_ov017_021bb27c(self);
@@ -171,7 +171,7 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
         return self->next;
     }
     loader->RemoveTask(self->task);
-    if (self->flags & 0x100) OrBitsIntoField0(_Z27GetDataPtr02114e04_020d6c00v(), 1);
+    if (self->flags & 0x100) OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 1);
     self->copiedParameter = self->script.parameter;
     int transition;
     int restart;
@@ -199,7 +199,7 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
         if (self->chapter != GetField5cb0Value((char*)game) || self->entry != GetField5cb4Value((char*)game) || self->slot != GetField5cb8Value((char*)game) || ConvertToTimeOfDay(self->dayTimer) != game->GetTimeOfDay()) {
             SetField5cb0AndRecordByte0((char*)game, self->chapter);
             SetField5cb4AndRecordByte1((char*)game, self->entry);
-            _Z19SetSlotByte020107dcPci((char*)game, self->slot);
+            SetSlotByte020107dc((char*)game, self->slot);
             game->SetDayTimer(self->dayTimer);
             LightingManager* lighting = LightingManager::GetInstance();
             lighting->dayNightTimer_ = game->GetDayTimer();
@@ -232,7 +232,7 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
     if (self->restart || ((GameView021bbfc4*)game)->restart) restart = 1;
     if (transition) {
         Ticket021bbfc4* ticket = GetField0x3f8Address(game);
-        _Z18InitStruct02070378Pc((char*)ticket);
+        InitStruct02070378((char*)ticket);
         ticket->zone = self->script.zone;
         ticket->parameter = self->parameter;
         ticket->pending = 1;
@@ -250,7 +250,7 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
         return self->next;
     }
     if (CheckField0NonZero(search) && self->script.request && self->searchIndex < 0 && func_0202c508(search)) func_ov017_021bc6e0(self, -1, self->flags);
-    self->status = _Z20GetField0xcd0209c3acPc(data_02109bf4);
+    self->status = GetField0xcd0209c3ac(data_02109bf4);
     if (self->script.kind == 3) func_0209c2e0(data_02109bf4, 0, 0);
     if (((self->flags & 1) || (self->flags & 4)) && !self->restart) {
         int brightness = GetAxisIntValue((AxisFloats0203b57c*)resources, 0);

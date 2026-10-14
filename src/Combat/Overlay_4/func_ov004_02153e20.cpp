@@ -72,7 +72,7 @@ extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(struct Grid021f9
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 extern "C" void func_ov023_021f9d14(void* grid, void* ctx);
 extern "C" void func_ov023_021f809c(void* obj, void* ctx);
-extern "C" int _Z31CheckType16ThenTestBit_02153d8cPv(void* ctx);
+int CheckType16ThenTestBit_02153d8c(void* ctx);
 
 // USA: func_ov004_02153e20
 extern "C" ARM int func_ov004_02153e20(void* ctx) {
@@ -132,6 +132,6 @@ extern "C" ARM int func_ov004_02153e20(void* ctx) {
     cursor->x = x;
     cursor->y = y;
     func_ov023_021f809c(cursor, ctx);
-    _Z31CheckType16ThenTestBit_02153d8cPv(ctx);
+    CheckType16ThenTestBit_02153d8c(ctx);
     return 0;
 }

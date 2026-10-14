@@ -7,7 +7,7 @@ extern char data_02101f80;
 extern "C" void func_0202cb50();
 void SetField0x48UnlessState9Or10(int arg);
 int IssueBattleCommandSlot13(int a0, unsigned int a1);
-extern "C" int _Z24BuildAndDispatch020d5898iiiitt(int a, int b, int c, int d, unsigned short e, unsigned short f);
+int BuildAndDispatch020d5898(int a, int b, int c, int d, unsigned short e, unsigned short f);
 
 // USA: func_0202c9ac
 extern "C" ARM void func_0202c9ac(unsigned short* p) {
@@ -47,7 +47,7 @@ extern "C" ARM void func_0202c9ac(unsigned short* p) {
         int r;
         if (!(state != 4 && state != 6 && state != 5)) { f = 1; goto done0; }
         *(int*)(&data_021015a0 + 0x10) = 4;
-        r = _Z24BuildAndDispatch020d5898iiiitt((int)func_0202cb50, (int)&data_02101f80,
+        r = BuildAndDispatch020d5898((int)func_0202cb50, (int)&data_02101f80,
                                      (unsigned short)*(int*)((char*)&data_021015a0 + 0x2c),
                                      (int)&data_021017a0,
                                      (unsigned short)*(int*)((char*)&data_021015a0 + 0x38),

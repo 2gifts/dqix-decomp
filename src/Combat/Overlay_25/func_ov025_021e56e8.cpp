@@ -9,8 +9,8 @@ struct Param021e56e8 {
     int scale;
 };
 
-extern "C" int _Z23DispatchByIndex021820bcPviii(void* obj, int unused, int index, int arg);
-extern "C" void _Z22SetThreeWords_021e4448Piiii(int* obj, int a, int b, int c);
+int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
+void SetThreeWords_021e4448(int* obj, int a, int b, int c);
 void* GetActiveCombatWork(void);
 extern "C" void* func_ov000_02160f14(void* work);
 int GetField0x78(void* obj);
@@ -21,10 +21,10 @@ extern Vector3fix data_ov025_021eef24;
 extern "C" ARM int func_ov025_021e56e8(struct Param021e56e8* p, int b, int unused, void* c) {
     GameState* gs = GameState::GetInstance();
     int ids[8];
-    int count = _Z23DispatchByIndex021820bcPviii(c, b, p->index, (int)ids);
+    int count = DispatchByIndex021820bc(c, b, p->index, (int)ids);
     Vector3fix scale = data_ov025_021eef24;
     if (p->mode == 0) {
-        _Z22SetThreeWords_021e4448Piiii((int*)&scale, 0x10a, 0x10a, 0x10a);
+        SetThreeWords_021e4448((int*)&scale, 0x10a, 0x10a, 0x10a);
     } else if (p->mode == 2) {
         void* field = func_ov000_02160f14(GetActiveCombatWork());
         float y0 = 0.065f;
@@ -37,9 +37,9 @@ extern "C" ARM int func_ov025_021e56e8(struct Param021e56e8* p, int b, int unuse
             s = 0.065f;
         }
         int v = 4096.0f * s;
-        _Z22SetThreeWords_021e4448Piiii((int*)&scale, v, v, v);
+        SetThreeWords_021e4448((int*)&scale, v, v, v);
     } else if (p->mode == 3) {
-        _Z22SetThreeWords_021e4448Piiii((int*)&scale, p->scale, p->scale, p->scale);
+        SetThreeWords_021e4448((int*)&scale, p->scale, p->scale, p->scale);
     }
     for (int i = 0; i < count; i++) {
         GameObject* obj = gs->GetGameObjectByIndex(ids[0]);

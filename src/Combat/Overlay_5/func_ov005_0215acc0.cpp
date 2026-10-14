@@ -12,9 +12,9 @@ struct DigitSprite { short data[3]; };
 struct CombatEntry { short key; signed char value; char pad[9]; int x; int y; char tail[8]; };
 struct CombatDisplay { char pad0[0xdf4]; Container020dedd0* container; char pad1[R(0x1f10,0x1f98)]; CombatEntry entries[24]; char pad2[0xddc]; DigitSprite digits[20]; };
 struct CombatObject { char pad[R(0x4f8,0x4fc)]; int index; };
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0*, int);
-extern "C" CombatObject* _Z19GetField1c_021a193cPi(int*);
+void* GetGlobalField0x1c020421a0();
+void* FindElementByKey020dedd0(Container020dedd0*, int);
+CombatObject* GetField1c_021a193c(int*);
 extern "C" int func_020dd4c4(signed char, void*);
 #if defined(jpn)
 extern "C" void func_02045f3c(void*, DigitSprite*, int, int, int, int, int, int);
@@ -25,7 +25,7 @@ extern "C" void func_02045f3c(void*, DigitSprite*, int, int, int, int, int, int,
 
 // USA: func_ov005_0215acc0
 extern "C" ARM void func_ov005_0215acc0(CombatDisplay* display) {
-    void* renderer = _Z26GetGlobalField0x1c020421a0v();
+    void* renderer = GetGlobalField0x1c020421a0();
     int y;
     int x;
     for (int i = 8; i < 24; i++) {
@@ -39,8 +39,8 @@ extern "C" ARM void func_ov005_0215acc0(CombatDisplay* display) {
             int ones = value % 10;
             int color = 0x7fff;
             if (current->key > 0) {
-                void* entry = _Z24FindElementByKey020dedd0P17Container020dedd0i(display->container, (short)key);
-                if (entry && func_020dd4c4((signed char)_Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->index, entry)) color = 0x1ce7;
+                void* entry = FindElementByKey020dedd0(display->container, (short)key);
+                if (entry && func_020dd4c4((signed char)GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->index, entry)) color = 0x1ce7;
             }
             REG_GEOMETRY[0] = 0;
             REG_GEOMETRY[0x2f] = 1;

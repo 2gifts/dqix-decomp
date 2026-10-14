@@ -45,7 +45,7 @@ extern "C" void* memset(void* dst, int c, unsigned int n);
 int ArrayContainsByte(ArrayContainsByteStruct* s, int val);
 
 int GetField0x3acValue(GameState* gs);
-extern "C" void _Z26EnqueueEventTag37_021d2cc0Pv(void* src);
+void EnqueueEventTag37_021d2cc0(void* src);
 
 // USA: func_ov002_0216c42c
 extern "C" ARM void func_ov002_0216c42c(char* base, Src0216c42c* src, Action0216c42c* action) {
@@ -96,5 +96,5 @@ extern "C" ARM void func_ov002_0216c42c(char* base, Src0216c42c* src, Action0216
     }
     ev.count = n;
     ev.fe = GetField0x3acValue(gs);
-    _Z26EnqueueEventTag37_021d2cc0Pv(&ev);
+    EnqueueEventTag37_021d2cc0(&ev);
 }

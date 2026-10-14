@@ -22,7 +22,7 @@ extern "C" ARM int func_ov031_02235620(int);
 extern "C" ARM int func_ov031_02236878(int);
 extern "C" ARM void func_ov031_0223689c(unsigned char);
 extern "C" ARM int func_ov031_0223d69c(void*);
-extern "C" void _Z24SetField1cAnd1d_02235500i(int a);
+void SetField1cAnd1d_02235500(int a);
 
 // USA: func_ov031_02235234
 extern "C" ARM void func_ov031_02235234(void) {
@@ -44,10 +44,10 @@ extern "C" ARM void func_ov031_02235234(void) {
 			}
 			break;
 		case 2:
-			_Z24SetField1cAnd1d_02235500i(2);
+			SetField1cAnd1d_02235500(2);
 			break;
 		case 3:
-			_Z24SetField1cAnd1d_02235500i(3);
+			SetField1cAnd1d_02235500(3);
 			break;
 		case 4:
 			func_ov031_0223552c();
@@ -62,7 +62,7 @@ extern "C" ARM void func_ov031_02235234(void) {
 			data_ov031_02290cf4->field1d = 5;
 			data_ov031_02290cf4->field1c = 0;
 		} else if (func_ov031_02235594() == 2) {
-			_Z24SetField1cAnd1d_02235500i(2);
+			SetField1cAnd1d_02235500(2);
 		}
 		break;
 	case 3:
@@ -70,7 +70,7 @@ extern "C" ARM void func_ov031_02235234(void) {
 			data_ov031_02290cf4->field1d = 7;
 			data_ov031_02290cf4->field1c = 0;
 		} else if (func_ov031_02235594() == 3) {
-			_Z24SetField1cAnd1d_02235500i(3);
+			SetField1cAnd1d_02235500(3);
 		}
 		break;
 	}

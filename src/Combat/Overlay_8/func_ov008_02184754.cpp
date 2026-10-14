@@ -100,7 +100,7 @@ struct Obj021870e4;
 struct TaskState0209ff6c;
 
 void ClearFlagIfDone_021870e4_021870e4(Obj021870e4* obj, unsigned int ticks);
-extern "C" void _Z21PollOv017Task0209ff6cP17TaskState0209ff6c(TaskState0209ff6c* titles);
+void PollOv017Task0209ff6c(TaskState0209ff6c* titles);
 
 extern "C" {
 void func_ov008_02188ef0(BattleRecords* self);
@@ -129,7 +129,7 @@ extern "C" ARM int func_ov008_02184754(BattleRecords* self)
         return 0;
     (self->*table.states[self->state_])(ticks);
     if (self->titles_ != NULL)
-        _Z21PollOv017Task0209ff6cP17TaskState0209ff6c((TaskState0209ff6c*)self->titles_);
+        PollOv017Task0209ff6c((TaskState0209ff6c*)self->titles_);
     if (self->guide_ != NULL)
         func_ov023_021eb43c(self->guide_);
     if (self->state_ == 14)

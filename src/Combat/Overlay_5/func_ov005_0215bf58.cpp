@@ -50,8 +50,8 @@ struct EquipmentMenu
 extern "C" void func_ov005_021562b8(EquipmentMenu* self);
 extern "C" void func_ov005_0215730c(EquipmentMenu* self);
 extern "C" GameResources* func_ov017_0218b5b0(void);
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* obj);
-extern "C" Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
+MemberScreen* GetField1c_021a193c(int* obj);
+Element020de650* FindElementByKey020dedd0(Container020dedd0* c, int key);
 extern "C" int func_020dd4c4(signed char member, Element020de650* entry);
 extern "C" void _Z28DispatchByIdxAndCond021551fcPchi(EquipmentMenu* self, int member, int change);
 
@@ -69,8 +69,8 @@ extern "C" ARM void func_ov005_0215bf58(EquipmentMenu* self)
     }
     if (!touchHandled)
         func_ov005_0215730c(self);
-    int member = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->member_;
-    Element020de650* entry = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items_, self->slots_[self->slot_].item_);
+    int member = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->member_;
+    Element020de650* entry = FindElementByKey020dedd0(self->items_, self->slots_[self->slot_].item_);
     if (entry != NULL)
     {
         if (func_020dd4c4(member, entry))

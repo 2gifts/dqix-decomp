@@ -32,8 +32,8 @@ extern short data_ov003_0217f2a8[3];
 extern Table data_ov003_0217f340;
 extern Dispatch data_020e6d5c;
 extern "C" int func_ov017_021959b4();
-extern "C" char* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z24ReinitController02043204Pc(char*);
+char* GetGlobalField0x1c020421a0();
+void ReinitController02043204(char*);
 extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(void*);
 extern "C" void _Z27ResetSelectionState020e25e8P11Obj020e25e8(void*);
 extern "C" void func_ov003_021537d4(void*,unsigned int);
@@ -59,14 +59,14 @@ extern "C" ARM int func_ov003_02154af4(Scene* self,unsigned int scale) {
  if (self->reset && !self->blocked) {
   if(self->selection) *self->selection=-1;
   self->selection=0;
-  _Z24ReinitController02043204Pc(_Z26GetGlobalField0x1c020421a0v());
+  ReinitController02043204(GetGlobalField0x1c020421a0());
   self->field1ea=-1; self->pending=self->field1ea;
   if(self->inner && _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(self->inner)) _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->inner);
   self->state=6; self->flag=0; self->reset=0;
  }
  if(!self->skip) func_ov003_021537d4(self->controller,scale);
  if(self->pending>=0) { func_ov003_021552b8(self); return 0; }
- if(self->state) _Z26GetGlobalField0x1c020421a0v()[kGlobalFlag]=0;
+ if(self->state) GetGlobalField0x1c020421a0()[kGlobalFlag]=0;
  Model* model=self->model;
  if(model) {
   if(!self->skip) _Z35CallFunc0204c87cOverEntries0207fc6cP11Obj0207fc6ci(model,scale);

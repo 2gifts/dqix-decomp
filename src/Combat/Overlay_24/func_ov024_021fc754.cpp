@@ -10,16 +10,16 @@ struct Combatant_2088660;
 struct S_flag2b;
 struct S_flag4b;
 struct S_flag1024;
-extern "C" int _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998(FlagObj_021da998*);
-extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(FlagObj_021dd260*);
-extern "C" int _Z23IsFlagBit22Set_021e47dcP16FlagObj_021e47dc(FlagObj_021e47dc*);
-extern "C" int _Z29IsFlagBit67108864Set_021edc08P13S_flag4000000(S_flag4000000*);
-extern "C" int _Z22IsFlagBit8Set_021dd010P16FlagObj_021dd010(FlagObj_021dd010*);
+int IsFlagBit8388608Set_021da998(FlagObj_021da998*);
+int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
+int IsFlagBit22Set_021e47dc(FlagObj_021e47dc*);
+int IsFlagBit67108864Set_021edc08(S_flag4000000*);
+int IsFlagBit8Set_021dd010(FlagObj_021dd010*);
 int IsField0x18Flag0x80Set(Combatant_2088660*);
-extern "C" int _Z22IsFlagBit2Set_021fb430P8S_flag2b(S_flag2b*);
-extern "C" int _Z22IsFlagBit4Set_021fb448P8S_flag4b(S_flag4b*);
-extern "C" int _Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(GameObject*);
-extern "C" int _Z25IsFlagBit1024Set_021fcac0P10S_flag1024(S_flag1024*);
+int IsFlagBit2Set_021fb430(S_flag2b*);
+int IsFlagBit4Set_021fb448(S_flag4b*);
+int IsCombatantFlag2Mask512_021eadfc(GameObject*);
+int IsFlagBit1024Set_021fcac0(S_flag1024*);
 
 struct CombatStats021fc754 {
     unsigned char field_0[0x14];
@@ -49,7 +49,7 @@ extern const StatusTable021fc754 data_ov024_021ff026;
 extern const BuffTable021fc754 data_ov024_021fefd6;
 struct Entry021fc754 { float value; unsigned char id, flag5, index, percent, code; };
 struct AddEntryList_021f6a1c { Entry021fc754 entries[16]; int count; float threshold; };
-extern "C" void _Z31AddEntryIfUnderLimit16_021f6a1cP21AddEntryList_021f6a1cPv(AddEntryList_021f6a1c*, void*);
+void AddEntryIfUnderLimit16_021f6a1c(AddEntryList_021f6a1c*, void*);
 struct Battle021fc754 {
     unsigned char field_0[4];
     short id;
@@ -69,27 +69,27 @@ extern "C" ARM void func_ov024_021fc754(Battle021fc754* battle) {
         if (!object) continue;
         int score = 0;
         StatusTable021fc754 statuses = data_ov024_021ff026;
-        statuses.entries[0].active = _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998((FlagObj_021da998*)object);
-        statuses.entries[1].active = _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260((FlagObj_021dd260*)object);
+        statuses.entries[0].active = IsFlagBit8388608Set_021da998((FlagObj_021da998*)object);
+        statuses.entries[1].active = IsFlagBit24Set_021dd260((FlagObj_021dd260*)object);
         statuses.entries[2].active = (GetStats021fc754(object)->statusFlags & 0x200) != 0;
         statuses.entries[3].active = (GetStats021fc754(object)->statusFlags & 0x8000000) != 0;
         statuses.entries[4].active = (GetStats021fc754(object)->statusFlags & 0x10000000) != 0;
         statuses.entries[5].active = (GetStats021fc754(object)->statusFlags & 0x20000000) != 0;
         statuses.entries[6].active = (GetStats021fc754(object)->statusFlags & 0x100000) != 0;
-        statuses.entries[7].active = _Z23IsFlagBit22Set_021e47dcP16FlagObj_021e47dc((FlagObj_021e47dc*)object);
-        statuses.entries[8].active = _Z29IsFlagBit67108864Set_021edc08P13S_flag4000000((S_flag4000000*)object);
+        statuses.entries[7].active = IsFlagBit22Set_021e47dc((FlagObj_021e47dc*)object);
+        statuses.entries[8].active = IsFlagBit67108864Set_021edc08((S_flag4000000*)object);
         statuses.entries[9].active = (GetStats021fc754(object)->statusFlags & 0x40000000) != 0;
-        statuses.entries[10].active = _Z22IsFlagBit8Set_021dd010P16FlagObj_021dd010((FlagObj_021dd010*)object);
-        statuses.entries[11].active = _Z29IsFlagBit67108864Set_021edc08P13S_flag4000000((S_flag4000000*)object);
+        statuses.entries[10].active = IsFlagBit8Set_021dd010((FlagObj_021dd010*)object);
+        statuses.entries[11].active = IsFlagBit67108864Set_021edc08((S_flag4000000*)object);
         statuses.entries[12].active = (GetStats021fc754(object)->statusFlags & 0x200000) != 0;
         statuses.entries[13].active = (GetStats021fc754(object)->statusFlags & 0x80000000) != 0;
         statuses.entries[14].active = IsField0x18Flag0x80Set((Combatant_2088660*)object->currentStats_);
         statuses.entries[15].active = (GetStats021fc754(object)->conditionFlags & 8) != 0;
         statuses.entries[16].active = (GetStats021fc754(object)->conditionFlags & 0x10) != 0;
-        statuses.entries[17].active = _Z22IsFlagBit2Set_021fb430P8S_flag2b((S_flag2b*)object);
-        statuses.entries[18].active = _Z22IsFlagBit4Set_021fb448P8S_flag4b((S_flag4b*)object);
-        statuses.entries[19].active = _Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(object);
-        statuses.entries[20].active = _Z25IsFlagBit1024Set_021fcac0P10S_flag1024((S_flag1024*)object);
+        statuses.entries[17].active = IsFlagBit2Set_021fb430((S_flag2b*)object);
+        statuses.entries[18].active = IsFlagBit4Set_021fb448((S_flag4b*)object);
+        statuses.entries[19].active = IsCombatantFlag2Mask512_021eadfc(object);
+        statuses.entries[20].active = IsFlagBit1024Set_021fcac0((S_flag1024*)object);
         statuses.entries[21].active = (GetStats021fc754(object)->conditionFlags & 0x100) != 0;
         for (int j = 0; j < 22; j++) {
             unsigned char active = (unsigned char)statuses.bytes[j * 2];
@@ -124,7 +124,7 @@ extern "C" ARM void func_ov024_021fc754(Battle021fc754* battle) {
         entry.index = 0;
         entry.percent = 100;
         entry.code = 6;
-        _Z31AddEntryIfUnderLimit16_021f6a1cP21AddEntryList_021f6a1cPv(&list, &entry);
+        AddEntryIfUnderLimit16_021f6a1c(&list, &entry);
         func_ov024_021f9874(battle, &list, 0, (unsigned char)battle->id);
     }
 }

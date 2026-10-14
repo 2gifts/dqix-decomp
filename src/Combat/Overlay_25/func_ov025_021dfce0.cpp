@@ -20,14 +20,14 @@ struct CombatWork {
     int firstSlot;
 };
 struct Obj02048c90;
-extern "C" void _Z23ResetInnerState02048c90P11Obj02048c90(Obj02048c90*);
+void ResetInnerState02048c90(Obj02048c90*);
 int GetSubstructByte0x4c(unsigned char*);
 int GetSubstructByte0x4d(unsigned char*);
 int GetSubstructByte0x56(unsigned char*);
 void SetSubstructByte0x4c(unsigned char*, unsigned char);
 void SetSubstructByte0x4d(unsigned char*, unsigned char);
-extern "C" int _Z28FindSlotIndexByShort02162864Pvi(void*, int);
-extern "C" int _Z39CollectMappedValuesFromNodeList02162908PviPi(void*, int, int*);
+int FindSlotIndexByShort02162864(void*, int);
+int CollectMappedValuesFromNodeList02162908(void*, int, int*);
 extern "C" int func_ov025_021e1048(void*, CombatantEntry_021e1048*);
 
 inline int IsPartyActor(int id) { return id >= 0 && id <= 3; }
@@ -40,7 +40,7 @@ extern "C" ARM void func_ov025_021dfce0(CombatWork* work) {
     int count = func_ov025_021e1048(work->battle, entries);
     for (int i = 0; i < count; i++) {
         GameObject* actor = entries[i].object;
-        _Z23ResetInnerState02048c90P11Obj02048c90((Obj02048c90*)actor);
+        ResetInnerState02048c90((Obj02048c90*)actor);
         if (GetSubstructByte0x4c((unsigned char*)actor) != 0xff) {
             GameObject* target = state->GetCombatantByIndex(GetSubstructByte0x4c((unsigned char*)actor));
             if (!target) SetSubstructByte0x4c((unsigned char*)actor, 0xff);
@@ -57,8 +57,8 @@ extern "C" ARM void func_ov025_021dfce0(CombatWork* work) {
         int targetId = GetSubstructByte0x4c((unsigned char*)actor);
         if (targetId != 0xff) continue;
         int mappedIds[12];
-        if (work->firstSlot <= _Z28FindSlotIndexByShort02162864Pvi(work, entries[i].index)) {
-            if (_Z39CollectMappedValuesFromNodeList02162908PviPi(work, _Z28FindSlotIndexByShort02162864Pvi(work, entries[i].index), mappedIds) > 0) {
+        if (work->firstSlot <= FindSlotIndexByShort02162864(work, entries[i].index)) {
+            if (CollectMappedValuesFromNodeList02162908(work, FindSlotIndexByShort02162864(work, entries[i].index), mappedIds) > 0) {
                 targetId = mappedIds[0];
                 SetSubstructByte0x4c((unsigned char*)actor, targetId);
             }

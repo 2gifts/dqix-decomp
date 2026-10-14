@@ -20,23 +20,23 @@ struct Obj02039df4;
 void ApplyStatusTickEffect(struct Obj02039df4* obj);
 
 struct Obj02052ae8;
-extern "C" void _Z29StepValueTowardTarget02052ae8P11Obj02052ae8(struct Obj02052ae8* obj);
+void StepValueTowardTarget02052ae8(struct Obj02052ae8* obj);
 
 int CheckSubstructByte0x7cPositive(signed char* obj);
-extern "C" int _Z24IsCountAtLeast4_0219a370Ph(unsigned char* base);
+int IsCountAtLeast4_0219a370(unsigned char* base);
 int IsField0Null(void** obj);
 int TestFlagMask(unsigned short* obj, int mask);
 
 struct BitField0203402c;
 int CheckField0xc4Low15BitsNonZero(struct BitField0203402c* p);
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 
 unsigned char GetField0x397cValue(GameState* battleStruct);
 int GetFieldIfFlag4(char* obj);
 
 struct S020a2c70;
-extern "C" int _Z23MarkStateIfFlag020a2c70P9S020a2c70(struct S020a2c70* p);
+int MarkStateIfFlag020a2c70(struct S020a2c70* p);
 
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
 void ClearBitsInField4(unsigned int* obj, unsigned int mask);
@@ -46,9 +46,9 @@ struct Obj02052e44;
 extern "C" int _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii(struct Obj02052e44* obj, signed char arg1);
 
 struct Obj02052f44;
-extern "C" int _Z26FilterBytesAndInit02052f44P11Obj02052f44Pai(struct Obj02052f44* obj, signed char* src, int len);
+int FilterBytesAndInit02052f44(struct Obj02052f44* obj, signed char* src, int len);
 
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+int LoadBattleBlock020ac4c0(void* dst);
 
 struct S_a06b0;
 void AddClamped10BitFieldMidAt0x28(struct S_a06b0* p, unsigned int amount);
@@ -130,7 +130,7 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
         char* sub100 = (char*)obj + 0x100;
         signed char byte1c9 = ((signed char*)sub100)[0xc9 - ActorRegionOffset];
         if (byte1c9 != 0) {
-            _Z29StepValueTowardTarget02052ae8P11Obj02052ae8((struct Obj02052ae8*)obj);
+            StepValueTowardTarget02052ae8((struct Obj02052ae8*)obj);
             func_020391ac(obj);
             return;
         }
@@ -147,13 +147,13 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
             || *(int*)((char*)ctx + ContextFlagOffset) != 0
             || field3b0 == 0
             || obj->flagBit0xc2) {
-            _Z29StepValueTowardTarget02052ae8P11Obj02052ae8((struct Obj02052ae8*)obj);
+            StepValueTowardTarget02052ae8((struct Obj02052ae8*)obj);
             return;
         }
 
         {
             short saved0xb4 = obj->field0xb4;
-            _Z29StepValueTowardTarget02052ae8P11Obj02052ae8((struct Obj02052ae8*)obj);
+            StepValueTowardTarget02052ae8((struct Obj02052ae8*)obj);
             obj->field0xb4 = saved0xb4;
         }
 
@@ -163,11 +163,11 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
         void* val6fc = *(void**)((char*)p3000 + OverlayPointerOffset);
 
         if (val80 != 0
-            && _Z24IsCountAtLeast4_0219a370Ph(r6) != 0
+            && IsCountAtLeast4_0219a370(r6) != 0
             && IsField0Null((void**)val6fc) != 0
             && TestFlagMask(&data_02114e30, 2) != 0
             && CheckField0xc4Low15BitsNonZero((struct BitField0203402c*)obj) == 0
-            && ((struct GlobalOuter020421a0*)_Z26GetGlobalField0x1c020421a0v())->sub.flag == 0) {
+            && ((struct GlobalOuter020421a0*)GetGlobalField0x1c020421a0())->sub.flag == 0) {
 
             unsigned char* ptr2a04 = (unsigned char*)GetPtrField0x2a04((GameState*)bsOrig);
 
@@ -177,8 +177,8 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
             if (field397c_1 == id3) {
                 int p2 = GetFieldIfFlag4((char*)bsOrig2);
                 if (p2 != 0) {
-                    if (_Z24IsCountAtLeast4_0219a370Ph(r6) != 0) {
-                        if (_Z23MarkStateIfFlag020a2c70P9S020a2c70((struct S020a2c70*)p2) != 0) {
+                    if (IsCountAtLeast4_0219a370(r6) != 0) {
+                        if (MarkStateIfFlag020a2c70((struct S020a2c70*)p2) != 0) {
                             SetBitsInField4((unsigned int*)r6, 0x80);
                         }
                     }
@@ -199,13 +199,13 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
                 result = _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii((struct Obj02052e44*)obj, val);
                 obj->field260 = 1;
             } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80)) {
-                result = _Z26FilterBytesAndInit02052f44P11Obj02052f44Pai((struct Obj02052f44*)obj, (signed char*)(ptr2a04 + 0x2c90), 4);
+                result = FilterBytesAndInit02052f44((struct Obj02052f44*)obj, (signed char*)(ptr2a04 + 0x2c90), 4);
                 obj->field260 = 3;
             }
 
             if (result != 0) {
                 char buf[0xb0];
-                _Z23LoadBattleBlock020ac4c0Pv(buf);
+                LoadBattleBlock020ac4c0(buf);
                 AddClamped10BitFieldMidAt0x28((struct S_a06b0*)buf, 1);
                 AddClamped10BitFieldAt0x14((struct S_a0140*)(buf + 0x68), 1);
                 CopyInBattleField0x7540(buf);

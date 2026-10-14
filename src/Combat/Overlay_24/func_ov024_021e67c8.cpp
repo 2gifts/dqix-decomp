@@ -19,11 +19,11 @@ struct Ctx_021e67c8 {
     void* battle;
 };
 
-extern "C" signed char _Z26GetFieldOrFallback02159e60Pvi(void* obj, int mode);
+signed char GetFieldOrFallback02159e60(void* obj, int mode);
 extern "C" struct Cbt_021e67c8* _Z16GetCombatantByIDii(void* battle, int id);
-extern "C" float _Z13LookupTableC0i(int v);
+float LookupTableC0(int v);
 extern "C" int _Z31IsCombatantFlag2Mask32_021e67b0P10GameObject(struct Cbt_021e67c8* c);
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(void* gs);
+void* GetPtrField0x2a04(void* gs);
 extern "C" int _Z17ArrayContainsByteP23ArrayContainsByteStructi(void* arr, int id);
 extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(void* battle, int idx);
 extern "C" int func_ov000_02156068(void* battle, int id, int kind, int mode);
@@ -32,7 +32,7 @@ extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(struct Cbt_021e67c
 // USA: func_ov024_021e67c8
 extern "C" ARM int func_ov024_021e67c8(struct Ctx_021e67c8* ctx, int mode, int targetId) {
     void* battle = ctx->battle;
-    int level = _Z26GetFieldOrFallback02159e60Pvi(battle, mode);
+    int level = GetFieldOrFallback02159e60(battle, mode);
     float rate = (level + 5) * NextRandomFloatBetween((struct Random*)battle, 0.8f, 1.0f);
     if (rate > 100.0f) {
         rate = 100.0f;
@@ -43,13 +43,13 @@ extern "C" ARM int func_ov024_021e67c8(struct Ctx_021e67c8* ctx, int mode, int t
     }
     if (target) {
         if (target->stats->rank21 <= 3) {
-            rate = rate * _Z13LookupTableC0i((signed char)target->stats->rank21);
+            rate = rate * LookupTableC0((signed char)target->stats->rank21);
         }
         if (_Z31IsCombatantFlag2Mask32_021e67b0P10GameObject(target)) {
-            rate = rate * _Z13LookupTableC0i(1);
+            rate = rate * LookupTableC0(1);
         }
         if (_Z17ArrayContainsByteP23ArrayContainsByteStructi(
-                _Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()), targetId) &&
+                GetPtrField0x2a04(GameState::GetInstance()), targetId) &&
             target && target->stats->rank21 == 1) {
             _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(ctx->battle, 0);
         }

@@ -20,10 +20,10 @@ struct Entry_02028bd0* GetEntryTableBase(void);
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
 
 struct Obj_021bd3a4;
-extern "C" int _Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(Obj_021bd3a4* obj);
+int HasFlag3orFlag2And9a_021bd3a4(Obj_021bd3a4* obj);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
-extern "C" int _Z28GetField6acThenCall_021b8b94Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
+int GetField6acThenCall_021b8b94(void* obj);
 
 struct Unit_021c4fa0 {
     char pad0[8];
@@ -108,7 +108,7 @@ extern "C" ARM void func_ov017_021c4fa0(int unitIdx, int id) {
     p->time = -1.0f;
 
     zone = (Zone_021c4fa0*)res->unknown_ptr_3718;
-    f6b0 = (char*)_Z20GetField6b0_021b8470Pv(zone);
+    f6b0 = (char*)GetField6b0_021b8470(zone);
     slot = (Slot_021c4fa0*)func_ov017_021b8478(zone);
 
     if (func_0202c508(search)) {
@@ -118,7 +118,7 @@ extern "C" ARM void func_ov017_021c4fa0(int unitIdx, int id) {
                 ok = 0;
             }
         }
-        if (_Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4((Obj_021bd3a4*)unit) && unit->field12 != 0 && unit->field106 == 0 && ok) {
+        if (HasFlag3orFlag2And9a_021bd3a4((Obj_021bd3a4*)unit) && unit->field12 != 0 && unit->field106 == 0 && ok) {
             p->mode = 1;
             if (unit->field18 == 0) {
                 p->field2 = unit->field8;
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov017_021c4fa0(int unitIdx, int id) {
                 p->field4 = unit->field52;
             }
         } else if (zone->active != 0 && !(f6b0 != NULL && f6b0[0x8e14] != 0) && slot != NULL &&
-                   !TestBitAt0x34((unsigned char*)slot, unitIdx & 0xff) && !_Z28GetField6acThenCall_021b8b94Pv(zone) && slot->index >= 0) {
+                   !TestBitAt0x34((unsigned char*)slot, unitIdx & 0xff) && !GetField6acThenCall_021b8b94(zone) && slot->index >= 0) {
             p->mode = 2;
             p->field2 = slot->index;
             p->field4 = *cur;

@@ -95,13 +95,13 @@ extern Data021707d8 data_ov004_021707d8;
 extern const Vector3i data_ov004_0216fb34;
 extern "C" Grid021f9b30* func_ov004_02156ed0(void*, int);
 extern "C" Container020dedd0* func_ov004_02156fd4(void*, int);
-extern "C" Entry02158fec* _Z20GetEntryFor_021570a4Pvi(void*, int);
+Entry02158fec* GetEntryFor_021570a4(void*, int);
 extern "C" ItemNode02158fec* func_ov004_02156f04(void*, int);
-extern "C" Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0*, int);
+Element020de650* FindElementByKey020dedd0(Container020dedd0*, int);
 extern "C" ItemNode02158fec* func_ov004_02156fa0(void*, int);
 extern "C" void func_ov023_021fb27c(void*, int);
 extern "C" ItemNode02158fec* func_ov004_02156f38(void*, int);
-extern "C" void _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30*, short, unsigned int, unsigned int);
+void SetCellIfInBounds_021f9b30(Grid021f9b30*, short, unsigned int, unsigned int);
 extern "C" int func_ov004_02158bd4(void*);
 
 // USA: func_ov004_02158fec
@@ -120,14 +120,14 @@ extern "C" ARM int func_ov004_02158fec(void* object) {
     if (!container) return 0;
     RoleTable02158fec roles = data_ov004_0216fb28;
     for (unsigned char i = 0; i < 6; i++) {
-        Entry02158fec* entry = _Z20GetEntryFor_021570a4Pvi(object, i);
+        Entry02158fec* entry = GetEntryFor_021570a4(object, i);
         if (entry) {
             int style = 15;
             if (entry->count == 0) style = 3;
             if (entry->id > 0) {
                 ItemNode02158fec* text = func_ov004_02156f04(object, textId);
                 if (text) {
-                    Element020de650* element = _Z24FindElementByKey020dedd0P17Container020dedd0i(container, entry->id);
+                    Element020de650* element = FindElementByKey020dedd0(container, entry->id);
                     if (element) {
                         text->value = element->value;
                         ItemNode02158fec* icon = func_ov004_02156fa0(object, i + 0x14a);
@@ -164,7 +164,7 @@ extern "C" ARM int func_ov004_02158fec(void* object) {
                 if (amount) amount->flags |= 8;
                 ItemNode02158fec* cost = func_ov004_02156f38(object, costId);
                 if (cost) cost->flags |= 8;
-                _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(grid, 0, i, 0);
+                SetCellIfInBounds_021f9b30(grid, 0, i, 0);
                 ItemNode02158fec* icon = func_ov004_02156fa0(object, i + 0x14a);
                 if (icon) icon->flags |= 8;
             }

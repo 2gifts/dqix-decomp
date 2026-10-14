@@ -10,7 +10,7 @@ struct CombatantEntry_021e1048 {
 
 extern "C" int func_ov000_0215e9fc(void* battle, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(void* battle, short* buf, int max, int start);
-extern "C" int _Z20AdjustIndex_021dfbd4i(int idx);
+int AdjustIndex_021dfbd4(int idx);
 
 // USA: func_ov025_021e1048
 extern "C" ARM int func_ov025_021e1048(void* battle, CombatantEntry_021e1048* out) {
@@ -26,7 +26,7 @@ extern "C" ARM int func_ov025_021e1048(void* battle, CombatantEntry_021e1048* ou
             continue;
         }
         out[n].index = ids[i];
-        out[n].adjustedIndex = _Z20AdjustIndex_021dfbd4i(ids[i]);
+        out[n].adjustedIndex = AdjustIndex_021dfbd4(ids[i]);
         out[n].object = obj;
         n++;
     }

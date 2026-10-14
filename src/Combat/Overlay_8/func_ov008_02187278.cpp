@@ -109,11 +109,11 @@ struct GameState {
 
 struct Container020e0310;
 
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 void AppendPaletteTag(char* text, int color);
 void AppendYTag(char* text, int y);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
+void AppendString02042058(char* text, const char* append);
 
 extern "C" {
 void __clear(void* buffer, unsigned long size);
@@ -123,9 +123,9 @@ int sprintf(char* buffer, const char* format, ...);
 #if defined(jpn)
 struct StoreStruct;
 extern "C" void func_02046380(void*);
-extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(StoreStruct*, int, int);
-extern "C" void _Z14SetByteInRangePhih(unsigned char*, int, unsigned char);
-extern "C" void _Z14SetByteAtIndexPhih(unsigned char*, int, unsigned char);
+void StoreInArray0x8b0(StoreStruct*, int, int);
+void SetByteInRange(unsigned char*, int, unsigned char);
+void SetByteAtIndex(unsigned char*, int, unsigned char);
 extern "C" void func_020474a8(void*, int, const char*, char*);
 #endif
 
@@ -171,28 +171,28 @@ extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int ind
         return;
     GameState::GetInstance();
 #if defined(jpn)
-    void* messages = _Z26GetGlobalField0x1c020421a0v();
+    void* messages = GetGlobalField0x1c020421a0();
     char buffer[0x40];
     __clear(buffer, sizeof(buffer));
     func_02046380(messages);
-    _Z17StoreInArray0x8b0P11StoreStructii((StoreStruct*)messages, 0, time->hours);
-    _Z14SetByteInRangePhih((unsigned char*)messages, 0, 4);
-    _Z14SetByteAtIndexPhih((unsigned char*)messages, 0, 1);
-    _Z17StoreInArray0x8b0P11StoreStructii((StoreStruct*)messages, 1, time->minutes);
-    _Z14SetByteInRangePhih((unsigned char*)messages, 1, 2);
-    _Z14SetByteAtIndexPhih((unsigned char*)messages, 1, 1);
-    func_020474a8(messages, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 0x6e), buffer);
+    StoreInArray0x8b0((StoreStruct*)messages, 0, time->hours);
+    SetByteInRange((unsigned char*)messages, 0, 4);
+    SetByteAtIndex((unsigned char*)messages, 0, 1);
+    StoreInArray0x8b0((StoreStruct*)messages, 1, time->minutes);
+    SetByteInRange((unsigned char*)messages, 1, 2);
+    SetByteAtIndex((unsigned char*)messages, 1, 1);
+    func_020474a8(messages, 10, GetFieldByKey020e0434((Container020e0310*)&self->texts_, 0x6e), buffer);
     AppendPaletteTag(text, 0xe);
-    _Z20AppendString02042058PcPKc(text, buffer);
+    AppendString02042058(text, buffer);
 #else
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     AppendPaletteTag(text, 0xe);
     AppendYTag(text, 2);
     char buffer[0x40];
     __clear(buffer, sizeof(buffer));
-    const char* format = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 0x6e);
+    const char* format = GetFieldByKey020e0434((Container020e0310*)&self->texts_, 0x6e);
     if (format != NULL)
         sprintf(buffer, format, time->hours, time->minutes);
-    _Z20AppendString02042058PcPKc(text, buffer);
+    AppendString02042058(text, buffer);
 #endif
 }

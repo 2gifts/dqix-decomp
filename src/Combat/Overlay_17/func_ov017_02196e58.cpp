@@ -10,7 +10,7 @@ extern "C" void func_ov004_0216fa08(void* node);
 extern "C" void func_ov004_0216fa74(void* node, unsigned char value);
 extern "C" int func_ov004_0216f990(int mode, int key, int flag);
 extern "C" void func_ov017_021b6f18(void* node);
-extern "C" void _Z19InitStruct_02196c08Ph(unsigned char* obj);
+void InitStruct_02196c08(unsigned char* obj);
 extern "C" bool func_ov017_021b6e70(void* msg, int id);
 extern "C" void func_ov017_021b7104(void* node, void* msg);
 struct TailList020469b4;
@@ -69,7 +69,7 @@ extern "C" ARM void func_ov017_02196e58(struct Work02196e58* work) {
     func_ov017_021b6f18(work->node);
 
     struct NodeMsg msg;
-    _Z19InitStruct_02196c08Ph((unsigned char*)&msg);
+    InitStruct_02196c08((unsigned char*)&msg);
     msg.kind = 1;
     msg.actor = GetField0x3acValue(bs);
     msg.value = *(unsigned short*)((unsigned char*)monster + 0x16a);

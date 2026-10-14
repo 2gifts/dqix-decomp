@@ -25,7 +25,7 @@ struct Names021eb204 {
     const char* names[4];
 };
 
-extern "C" void _Z12Init021eb3c0P11Obj021eb3c0(struct Obj021eb3c0* obj);
+void Init021eb3c0(struct Obj021eb3c0* obj);
 extern "C" void* func_02057924(void);
 extern "C" int func_02057e6c(void* mgr, int id, SafeAllocator* alloc, void* data, unsigned int length, int param);
 
@@ -61,7 +61,7 @@ extern "C" ARM int func_ov025_021eb204(struct Loader021eb204* self) {
             if (entry->taskId != -1) {
                 entry->state = 2;
             } else {
-                _Z12Init021eb3c0P11Obj021eb3c0(entry);
+                Init021eb3c0(entry);
             }
             break;
         }
@@ -78,11 +78,11 @@ extern "C" ARM int func_ov025_021eb204(struct Loader021eb204* self) {
                 func_02057e6c(mgr, entry->nodeId, alloc, data, length, param);
             }
             loader->RemoveTask(entry->taskId);
-            _Z12Init021eb3c0P11Obj021eb3c0(entry);
+            Init021eb3c0(entry);
             break;
         }
         default:
-            _Z12Init021eb3c0P11Obj021eb3c0(entry);
+            Init021eb3c0(entry);
             break;
         }
     }

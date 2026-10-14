@@ -17,17 +17,17 @@ struct Inner_0222bdac {
 };
 struct Holder_0222bdac { unsigned char field_0[2]; unsigned short position; Inner_0222bdac* inner; };
 extern Holder_0222bdac data_ov031_02290c8c;
-extern "C" unsigned char _Z19GetField1d_022351e4v();
-extern "C" unsigned char _Z19GetField1a_022351d0v();
-extern "C" void _Z19SetField18_02222e98v();
-extern "C" void _Z21ClearField18_02222e80v();
+unsigned char GetField1d_022351e4();
+unsigned char GetField1a_022351d0();
+void SetField18_02222e98();
+void ClearField18_02222e80();
 extern "C" void func_ov031_022238cc();
 extern "C" void func_ov031_0222c3b4();
 extern "C" void func_ov031_0222c8cc();
 extern "C" int func_ov031_02236878(int);
 extern "C" void func_ov031_0222c71c();
 extern "C" void func_ov031_0222c7d8();
-extern "C" void* _Z26CallWithZeroExtra_0223e218PvS_S_i(void*, void*, void*, int);
+void* CallWithZeroExtra_0223e218(void*, void*, void*, int);
 extern "C" int FastIntDivide(int, int);
 extern "C" int FastIntModulus(int, int);
 
@@ -35,22 +35,22 @@ extern "C" int FastIntModulus(int, int);
 extern "C" ARM void func_ov031_0222bdac() {
     if (data_ov031_02290c8c.inner->task) return;
     if (data_ov031_02290c8c.inner->cooldown) data_ov031_02290c8c.inner->cooldown--;
-    switch (_Z19GetField1d_022351e4v()) {
+    switch (GetField1d_022351e4()) {
     case 1:
         data_ov031_02290c8c.inner->active = 1;
-        _Z19SetField18_02222e98v();
+        SetField18_02222e98();
         return;
     case 2:
         if (data_ov031_02290c8c.inner->cooldown) return;
         func_ov031_022238cc();
-        data_ov031_02290c8c.position = FastIntDivide(data_ov031_02290c8c.inner->limit * _Z19GetField1a_022351d0v(), data_ov031_02290c8c.inner->divisor);
+        data_ov031_02290c8c.position = FastIntDivide(data_ov031_02290c8c.inner->limit * GetField1a_022351d0(), data_ov031_02290c8c.inner->divisor);
         func_ov031_0222c3b4();
         data_ov031_02290c8c.inner->cooldown = 4;
         return;
     case 3: {
         data_ov031_02290c8c.inner->active = 0;
-        _Z21ClearField18_02222e80v();
-        data_ov031_02290c8c.position = FastIntDivide(data_ov031_02290c8c.inner->limit * _Z19GetField1a_022351d0v(), data_ov031_02290c8c.inner->divisor);
+        ClearField18_02222e80();
+        data_ov031_02290c8c.position = FastIntDivide(data_ov031_02290c8c.inner->limit * GetField1a_022351d0(), data_ov031_02290c8c.inner->divisor);
         func_ov031_02236878(0x13);
         func_ov031_0222c3b4();
         int remainder = FastIntModulus(data_ov031_02290c8c.position, 0x1c);
@@ -59,10 +59,10 @@ extern "C" ARM void func_ov031_0222bdac() {
             return;
         }
         if (remainder < 0xe) {
-            data_ov031_02290c8c.inner->task = _Z26CallWithZeroExtra_0223e218PvS_S_i(0, (void*)func_ov031_0222c71c, 0, 0x78);
+            data_ov031_02290c8c.inner->task = CallWithZeroExtra_0223e218(0, (void*)func_ov031_0222c71c, 0, 0x78);
             return;
         } else {
-            data_ov031_02290c8c.inner->task = _Z26CallWithZeroExtra_0223e218PvS_S_i(0, (void*)func_ov031_0222c7d8, 0, 0x78);
+            data_ov031_02290c8c.inner->task = CallWithZeroExtra_0223e218(0, (void*)func_ov031_0222c7d8, 0, 0x78);
         }
         return;
     }
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov031_0222bdac() {
             data_ov031_02290c8c.inner->latched = 1;
         } else {
             func_ov031_02236878(0x13);
-            data_ov031_02290c8c.inner->task = _Z26CallWithZeroExtra_0223e218PvS_S_i(0, (void*)func_ov031_0222c71c, 0, 0x78);
+            data_ov031_02290c8c.inner->task = CallWithZeroExtra_0223e218(0, (void*)func_ov031_0222c71c, 0, 0x78);
         }
         return;
     case 6:
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov031_0222bdac() {
             data_ov031_02290c8c.inner->latched = 1;
         } else {
             func_ov031_02236878(0x13);
-            data_ov031_02290c8c.inner->task = _Z26CallWithZeroExtra_0223e218PvS_S_i(0, (void*)func_ov031_0222c7d8, 0, 0x78);
+            data_ov031_02290c8c.inner->task = CallWithZeroExtra_0223e218(0, (void*)func_ov031_0222c7d8, 0, 0x78);
         }
         return;
     case 5:

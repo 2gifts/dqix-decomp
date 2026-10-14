@@ -15,21 +15,21 @@ signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
 void SetBitsInWord(unsigned int* obj, unsigned int mask);
 extern "C" void func_0202b0f4(void* obj);
-extern "C" void _Z29ClearTwoBytesAtField_02195748Ph(unsigned char* base);
+void ClearTwoBytesAtField_02195748(unsigned char* base);
 void SetFlag1ForFlagombatants_02192594_02192594(unsigned char* base);
 void* FillBitArray0x1524WithFF(BitArrayObj0205e854* obj);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 int TestFlagBitAt0xe(SearchStruct* obj, int value);
 int GetGlobalField0x10(void);
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(FlagWord020466f4* word, unsigned int mask);
+void* GetDataPtr02114e04_020d6c00(void);
+void ClearFlags020466f4(FlagWord020466f4* word, unsigned int mask);
 int* GetGlobal02109030(void);
-extern "C" void _Z33ResetAndSetFlag0x3c9Bit0_020939dcPv(void* obj);
+void ResetAndSetFlag0x3c9Bit0_020939dc(void* obj);
 extern "C" void func_02094030(int* obj, short a, short b, signed char c);
 void SetSearchFlagBitAt0xc(SearchStruct* obj, int value);
 void* FillBitArray0x1524WithZero(BitArrayObj0205e870* obj);
 void SetBitInArray0x1524(unsigned char* obj, int index);
-extern "C" void _Z26EnqueueEventTag43_021cc0ccv(void);
+void EnqueueEventTag43_021cc0cc(void);
 
 extern unsigned short data_02114e30;
 
@@ -58,15 +58,15 @@ extern "C" ARM unsigned char func_ov017_021af098(Obj021af098* obj) {
             obj->fieldF = -1;
             SetBitsInWord(flags, 2);
             func_0202b0f4(search);
-            _Z29ClearTwoBytesAtField_02195748Ph((unsigned char*)flags);
+            ClearTwoBytesAtField_02195748((unsigned char*)flags);
             SetFlag1ForFlagombatants_02192594_02192594((unsigned char*)flags);
             FillBitArray0x1524WithFF(bits);
             ClearBitsInWord(flags, 0x40);
             obj->complete = 1;
         } else if (TestFlagBitAt0xe(search, 0) != 0 || GetGlobalField0x10() == 8) {
-            _Z18ClearFlags020466f4P16FlagWord020466f4j((FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v(), 0x8020);
+            ClearFlags020466f4((FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x8020);
             int* g = GetGlobal02109030();
-            _Z33ResetAndSetFlag0x3c9Bit0_020939dcPv(g);
+            ResetAndSetFlag0x3c9Bit0_020939dc(g);
             func_02094030(g, 4, -1, 0);
             return 3;
         } else {
@@ -75,7 +75,7 @@ extern "C" ARM unsigned char func_ov017_021af098(Obj021af098* obj) {
                 obj->fieldF = 0;
                 SetBitsInWord(flags, 2);
                 func_0202b0f4(search);
-                _Z29ClearTwoBytesAtField_02195748Ph((unsigned char*)flags);
+                ClearTwoBytesAtField_02195748((unsigned char*)flags);
                 SetFlag1ForFlagombatants_02192594_02192594((unsigned char*)flags);
                 FillBitArray0x1524WithFF(bits);
                 ClearBitsInWord(flags, 0x40);
@@ -90,7 +90,7 @@ extern "C" ARM unsigned char func_ov017_021af098(Obj021af098* obj) {
         obj->fieldF = 0;
         SetBitsInWord(flags, 2);
         func_0202b0f4(search);
-        _Z29ClearTwoBytesAtField_02195748Ph((unsigned char*)flags);
+        ClearTwoBytesAtField_02195748((unsigned char*)flags);
         SetFlag1ForFlagombatants_02192594_02192594((unsigned char*)flags);
         FillBitArray0x1524WithFF(bits);
         ClearBitsInWord(flags, 0x40);
@@ -107,7 +107,7 @@ extern "C" ARM unsigned char func_ov017_021af098(Obj021af098* obj) {
     SetBitInArray0x1524((unsigned char*)bits, 0x2e);
     SetBitInArray0x1524((unsigned char*)bits, 0x3d);
     SetBitInArray0x1524((unsigned char*)bits, 0x33);
-    _Z26EnqueueEventTag43_021cc0ccv();
+    EnqueueEventTag43_021cc0cc();
     obj->elapsedMilliseconds = 0;
     return 2;
 }

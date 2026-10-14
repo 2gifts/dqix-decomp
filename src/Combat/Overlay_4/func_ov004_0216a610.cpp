@@ -5,7 +5,6 @@ extern "C" void* func_ov004_02168fa4(void*, int);
 extern "C" void func_ov023_021f809c(void*, void*);
 #endif
 
-
 struct Grid021f9b30 {
     char pad[0x20];
     short* cells;
@@ -65,11 +64,11 @@ struct Data0216a610 {
 };
 
 extern "C" struct Grid021f9b30* func_ov023_021f6524(void* ctx, int value);
-extern "C" Widget0216a610* _Z23GetNodeIfType8_02168a6cPvi(void* a, int id);
-extern "C" Widget0216a610* _Z24GetNodeIfType15_02168a38Pvi(void* a, int id);
+Widget0216a610* GetNodeIfType8_02168a6c(void* a, int id);
+Widget0216a610* GetNodeIfType15_02168a38(void* a, int id);
 extern "C" void func_02042764(void* src, void* dst, int flag);
 extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(struct Grid021f9b30* self, unsigned short val, unsigned int x, unsigned int y);
-extern "C" void _Z21DispatchNode_021f6630iiss(int a, int b, short c, short d);
+void DispatchNode_021f6630(int a, int b, short c, short d);
 
 extern struct Data0216a610* data_ov004_02171030;
 
@@ -84,10 +83,10 @@ extern "C" ARM int func_ov004_0216a610(void* a) {
     short field5e = grid->field_0x5e;
     int i;
     for (i = 0; i < 8; i++) {
-        Widget0216a610* label = _Z23GetNodeIfType8_02168a6cPvi(a, i + 0xc8);
-        Widget0216a610* label2 = _Z23GetNodeIfType8_02168a6cPvi(a, i + 0xd8);
-        Widget0216a610* num1 = _Z24GetNodeIfType15_02168a38Pvi(a, i + 0xd0);
-        Widget0216a610* num2 = _Z24GetNodeIfType15_02168a38Pvi(a, i + 0xe0);
+        Widget0216a610* label = GetNodeIfType8_02168a6c(a, i + 0xc8);
+        Widget0216a610* label2 = GetNodeIfType8_02168a6c(a, i + 0xd8);
+        Widget0216a610* num1 = GetNodeIfType15_02168a38(a, i + 0xd0);
+        Widget0216a610* num2 = GetNodeIfType15_02168a38(a, i + 0xe0);
         struct SaveEntry0216a610* e = &table->entries[i + page * 8];
         if (e->used) {
 #if defined(jpn)
@@ -120,7 +119,7 @@ extern "C" ARM int func_ov004_0216a610(void* a) {
         func_ov023_021f809c(selected,a);
     }
 #else
-    _Z21DispatchNode_021f6630iiss((int)a, 0x14, page, field5e);
+    DispatchNode_021f6630((int)a, 0x14, page, field5e);
 #endif
     return 0;
 }

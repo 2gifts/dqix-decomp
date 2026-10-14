@@ -52,10 +52,10 @@ struct AlchemyMenu {
     short chosenItems_[3];
 };
 
-extern "C" void _Z16InitObj_02157c78P11Obj02157c78(Obj02157c78* ingredient);
-extern "C" void _Z18CopyStruct020836e4P14Record020836e4S0_(Record020836e4* destination, Record020836e4* source);
-extern "C" Recipe* _Z22FindEntryByKey02071d60P12List02071d60i(List02071d60* table, int id);
-extern "C" void _Z23InitAndDispatch020deef4iiiPss(int items, int file, int size, short* ids, short count);
+void InitObj_02157c78(Obj02157c78* ingredient);
+void CopyStruct020836e4(Record020836e4* destination, Record020836e4* source);
+Recipe* FindEntryByKey02071d60(List02071d60* table, int id);
+void InitAndDispatch020deef4(int items, int file, int size, short* ids, short count);
 extern "C" void func_ov006_02156f04(AlchemyPot* pot, PotIngredient* ingredients);
 
 extern "C" const ResultItems data_ov006_0215ffda;
@@ -73,13 +73,13 @@ extern "C" ARM unsigned char func_ov006_0215a384(AlchemyMenu* self, int great) {
             Record020836e4 copies[4];
             unsigned char i;
             for (i = 0; i < 4; i++) {
-                _Z16InitObj_02157c78P11Obj02157c78((Obj02157c78*)&self->results_[i]);
-                _Z18CopyStruct020836e4P14Record020836e4S0_(&copies[i], &self->results_[i].entry_);
+                InitObj_02157c78((Obj02157c78*)&self->results_[i]);
+                CopyStruct020836e4(&copies[i], &self->results_[i].entry_);
             }
             Recipe* recipe = self->recipe_;
             if (recipe != 0) {
                 if (great)
-                    recipe = _Z22FindEntryByKey02071d60P12List02071d60i((List02071d60*)self->table_, recipe->greatRecipe_);
+                    recipe = FindEntryByKey02071d60((List02071d60*)self->table_, recipe->greatRecipe_);
                 short item = recipe->item_;
                 self->results_[0].item_ = item;
                 ids.items_[0] = item;
@@ -110,15 +110,15 @@ extern "C" ARM unsigned char func_ov006_0215a384(AlchemyMenu* self, int great) {
                     ids.items_[3] = ingredient;
                 }
             }
-            _Z23InitAndDispatch020deef4iiiPss((int)copies, (int)data, size, ids.items_, 4);
+            InitAndDispatch020deef4((int)copies, (int)data, size, ids.items_, 4);
             if (ids.items_[1] == ids.items_[2] && ids.items_[2] > 0)
-                _Z18CopyStruct020836e4P14Record020836e4S0_(&copies[2], &copies[1]);
+                CopyStruct020836e4(&copies[2], &copies[1]);
             if (ids.items_[1] == ids.items_[3] && ids.items_[3] > 0)
-                _Z18CopyStruct020836e4P14Record020836e4S0_(&copies[3], &copies[1]);
+                CopyStruct020836e4(&copies[3], &copies[1]);
             if (ids.items_[2] == ids.items_[3] && ids.items_[3] > 0)
-                _Z18CopyStruct020836e4P14Record020836e4S0_(&copies[3], &copies[2]);
+                CopyStruct020836e4(&copies[3], &copies[2]);
             for (i = 0; i < 4; i++)
-                _Z18CopyStruct020836e4P14Record020836e4S0_(&self->results_[i].entry_, &copies[i]);
+                CopyStruct020836e4(&self->results_[i].entry_, &copies[i]);
             func_ov006_02156f04(self->pot_, self->results_);
         }
         loader->RemoveTask(self->task_);

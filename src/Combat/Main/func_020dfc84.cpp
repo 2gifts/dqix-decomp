@@ -9,8 +9,8 @@ struct Struct020dfc40 {
     void* field_14;
 };
 
-extern "C" int _Z24ResetHandleState020dfe88P11Obj020dfe88(struct Obj020dfe88* obj);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(struct Struct020dfc40* p);
+int ResetHandleState020dfe88(struct Obj020dfe88* obj);
+void ResetStruct020dfc40(struct Struct020dfc40* p);
 extern "C" int _Z34ReplaceBinExtensionWithNat020e05f8PcPKc(char* dst, const char* fmt, short n);
 extern "C" int func_020dfd40(void* self, char* a, char* b);
 
@@ -20,8 +20,8 @@ extern "C" ARM int func_020dfc84(void* self, void* field_14, char* fmt, char* ex
     struct Struct020dfc40* p;
 
     p = (struct Struct020dfc40*)self;
-    _Z24ResetHandleState020dfe88P11Obj020dfe88((struct Obj020dfe88*)self);
-    _Z19ResetStruct020dfc40P14Struct020dfc40(p);
+    ResetHandleState020dfe88((struct Obj020dfe88*)self);
+    ResetStruct020dfc40(p);
     p->field_14 = field_14;
     p->field_c = field_c;
     p->field_e = 1;

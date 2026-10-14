@@ -16,7 +16,7 @@
 
 struct Struct021847c4 { int a, b, c, d, e, f, g, h; };
 
-extern "C" void _Z19ResetFields021847c4P14Struct021847c4(struct Struct021847c4 *s);
+void ResetFields021847c4(struct Struct021847c4 *s);
 
 extern const short data_ov009_0218ac04[];
 
@@ -25,7 +25,7 @@ extern "C" ARM void func_ov009_02188d9c(void *self) {
 	int *out = (int*)((char*)self + R(0xbf0,0xc2c));
 	int i;
 
-	_Z19ResetFields021847c4P14Struct021847c4((struct Struct021847c4*)out);
+	ResetFields021847c4((struct Struct021847c4*)out);
 
 	i = 0;
 	while (data_ov009_0218ac04[i] >= 0) {

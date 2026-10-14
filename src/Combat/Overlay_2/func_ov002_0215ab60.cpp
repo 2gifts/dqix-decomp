@@ -47,9 +47,9 @@ struct FormationCombatStats {
     u32 icon : 1;
     u32 : 1;
 };
-extern "C" Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c*, int);
+Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
 void GetFourShortsAtIndex(ShortArrays0204c610*, int, short*, short*, short*, short*);
-extern "C" void _Z22SetEntryFields02154bcciiPvihh(int, int, void*, int, u8, u8);
+void SetEntryFields02154bcc(int, int, void*, int, u8, u8);
 
 static inline short GetX(Elem_0205d81c* entry) { SDK_NULL_ASSERT(entry); return entry->xOrigin; }
 static inline short GetY(Elem_0205d81c* entry) { SDK_NULL_ASSERT(entry); return entry->yOrigin; }
@@ -60,16 +60,16 @@ static inline short AddPosition(short offset, short x) { short result = x + (off
 
 // USA: func_ov002_0215ab60
 extern "C" ARM void func_ov002_0215ab60(FormationMenu* self) {
-    Elem_0205d81c* entry = _Z23FindElementByC40205d81cP15Struct_0205d81ci(&self->elements, 0x1a);
+    Elem_0205d81c* entry = FindElementByC40205d81c(&self->elements, 0x1a);
     if (entry && !(entry->flags & 0x20)) {
         short y = GetY(entry) * 8;
         short x = GetX(entry) * 8;
         short positionY = y + 3;
         short positionX = AddPosition(GetOffset(self), x);
-        _Z22SetEntryFields02154bcciiPvihh(positionX, positionY, self->entryList, 0x2a, 0xc, 0xff);
+        SetEntryFields02154bcc(positionX, positionY, self->entryList, 0x2a, 0xc, 0xff);
     }
-    if (!_Z23FindElementByC40205d81cP15Struct_0205d81ci(&self->elements, 0x19)) {
-        Elem_0205d81c* positions = _Z23FindElementByC40205d81cP15Struct_0205d81ci(&self->elements, 0x18);
+    if (!FindElementByC40205d81c(&self->elements, 0x19)) {
+        Elem_0205d81c* positions = FindElementByC40205d81c(&self->elements, 0x18);
         if (positions) {
             GameState* gameState = GameState::GetInstance();
             GetPtrField0x2a04(gameState);
@@ -87,9 +87,9 @@ extern "C" ARM void func_ov002_0215ab60(FormationMenu* self) {
                     int positionY = AddOrigin(&y, originY);
                     u16 icon = ((FormationCombatStats*)member->baseStats_)->icon;
                     icon = icon + 0x12;
-                    _Z22SetEntryFields02154bcciiPvihh(positionX, positionY, self->entryList, icon, (u8)(i + 0x4c), 0xff);
+                    SetEntryFields02154bcc(positionX, positionY, self->entryList, icon, (u8)(i + 0x4c), 0xff);
                     GetFourShortsAtIndex(positions, (short)(index + count + 1), &x, &y, &width, &height);
-                    _Z22SetEntryFields02154bcciiPvihh(x + originX, y + originY, self->entryList, 0x15, (u8)(memberId + 0x50), (u8)(memberId + 9));
+                    SetEntryFields02154bcc(x + originX, y + originY, self->entryList, 0x15, (u8)(memberId + 0x50), (u8)(memberId + 9));
                 }
             }
         }

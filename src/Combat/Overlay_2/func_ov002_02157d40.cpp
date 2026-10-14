@@ -48,46 +48,46 @@ struct Obj021c2b28;
 extern "C" void* __clear(void* dst, int count);
 extern "C" void* func_02012fe4(void);
 void* GetData02153637(void);
-extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
+void* SearchBothTables02079e2c(char* p, int key);
 extern "C" void* func_0202ae18(void);
 int GetTableValue(void* p);
 void SetByteInRange(unsigned char* p, int a, unsigned char b);
-extern "C" void _Z15InitObj021c2b28Pvhh(void* p, unsigned char a, unsigned char b);
-extern "C" void _Z16Dispatch020e3428Pvi(void* p, int flag);
-extern "C" int _Z17IsInRange0201b588i(int v);
-extern "C" int _Z17IsInRange0201b5b0i(int v);
-extern "C" void _Z17NotifySub020541a4P11Obj020541a4h(struct Obj020541a4* p, unsigned char b);
+void InitObj021c2b28(void* p, unsigned char a, unsigned char b);
+void Dispatch020e3428(void* p, int flag);
+int IsInRange0201b588(int v);
+int IsInRange0201b5b0(int v);
+void NotifySub020541a4(struct Obj020541a4* p, unsigned char b);
 void StoreInArray0x8b0(struct StoreStruct* p, int a, int b);
 int CheckField0NonZero(int* p);
 void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outSize);
 void TryClearFlags0x130(unsigned char* p, unsigned short mask);
-extern "C" void _Z19ClearStruct020a8170P14Struct020a8170(struct Struct020a8170* p);
+void ClearStruct020a8170(struct Struct020a8170* p);
 int CopyOutRegion0x571d(char* dst, void* src);
 int GetByteFieldAt0x9ba(unsigned char* p);
 void InsertNodeAfterHead(struct List02046a3c* list, struct Node02046a3c* node);
-extern "C" void _Z20AppendString02042058PcPKc(char* dst, const char* src);
-extern "C" void _Z20ClearRecords02026644Pc(char* p);
-extern "C" void _Z20InitState69_021c2744P11Obj021c2744(struct Obj021c2744* p);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" void _Z22Clear0x54Bytes0208247cPv(void* p);
-extern "C" void _Z22ConsumeCounter02048350P11Obj02048350i(struct Obj02048350* p, int a);
-extern "C" void _Z22InitStateArray02157ce0Pc(char* p);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(struct Obj02046574* p, int a, char* s);
+void AppendString02042058(char* dst, const char* src);
+void ClearRecords02026644(char* p);
+void InitState69_021c2744(struct Obj021c2744* p);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+void Clear0x54Bytes0208247c(void* p);
+void ConsumeCounter02048350(struct Obj02048350* p, int a);
+void InitStateArray02157ce0(char* p);
+void SetIndexedName02046574(struct Obj02046574* p, int a, char* s);
 int CountEntriesByField0x8c(struct List02026a28* p);
 int CountEntriesByField0x8e(struct List02026abc* p);
-extern "C" void _Z23InitByteHeader_021c2688Ph(unsigned char* p);
-extern "C" void _Z24SetFlagsAndReset02026678Pc(char* p);
+void InitByteHeader_021c2688(unsigned char* p);
+void SetFlagsAndReset02026678(char* p);
 extern "C" struct CombatantStruct* _ZN9GameState20GetUnknownGameObjectEv(struct BattleStruct* bs);
 extern "C" struct CombatantStruct* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* bs, int id);
 int IsEntryEligibleAndFlagged(struct Struct0201bc94* p);
 extern "C" void _Z26EnqueueEventTag34_021d27a0hhh(int a, int b, int c);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void _Z26InitAndInsertNode_021acd30Pchhh(char* p, unsigned char a, unsigned char b, unsigned char c);
-extern "C" int _Z28CountMatchingEntries02026a78Pc(char* p);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* p, int a, int b);
+int GetGlobalField0x1c020421a0(void);
+void InitAndInsertNode_021acd30(char* p, unsigned char a, unsigned char b, unsigned char c);
+int CountMatchingEntries02026a78(char* p);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* p, int a, int b);
 extern "C" void _Z28InitObjFromCombatant020e4c74PvP10GameObject(void* p, struct CombatantStruct* c);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void* p, int a);
-extern "C" int _Z32ClampAndCompareThreshold02048448P14Struct02048448i(struct Struct02048448* p, int a);
+void InitObjFromCombatantId020e4bf4(void* p, int a);
+int ClampAndCompareThreshold02048448(struct Struct02048448* p, int a);
 
 extern "C" void _ZN13SafeAllocator5ResetEv(void* self);
 extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int size);
@@ -287,7 +287,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
     unsigned short* obj = (unsigned short*)func_02012fe4();
     ActionDataTables* actionTables = GetData02108e10();
     tbl = (char*)actionTables;
-    struct TableEntry* entryA = (struct TableEntry*)_Z24SearchBothTables02079e2cPci(tbl, p->command);
+    struct TableEntry* entryA = (struct TableEntry*)SearchBothTables02079e2c(tbl, p->command);
     struct Unit* comb = (struct Unit*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, p->actor);
     int* checkPtr = (int*)func_0202ae18();
     int flagA = 0;
@@ -303,7 +303,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
         if (p->command == 0xd7) {
             p->msgId = 0x233b;
         }
-        if (_Z32ClampAndCompareThreshold02048448P14Struct02048448i((struct Struct02048448*)comb, (unsigned short)entryA->lo8) == 0) {
+        if (ClampAndCompareThreshold02048448((struct Struct02048448*)comb, (unsigned short)entryA->lo8) == 0) {
             p->msgId = 0x232f;
             p->msgId2 = -1;
             p->showPrompt = 0;
@@ -327,7 +327,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 flagB = 1;
                 struct PartyList* party = (struct PartyList*)_Z17GetPtrField0x2a04P9GameState(gs);
                 for (int i = 0; i < party->count; i++) {
-                    _Z17NotifySub020541a4P11Obj020541a4h((struct Obj020541a4*)_ZN9GameState21GetPartyMemberByIndexEi(gs, party->ids[i]), 0);
+                    NotifySub020541a4((struct Obj020541a4*)_ZN9GameState21GetPartyMemberByIndexEi(gs, party->ids[i]), 0);
                 }
             } else {
                 p->msgId = 0x754e;
@@ -355,10 +355,10 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             p->state = 7;
             flag1c = 1;
         } else if (p->command == 0x22 || p->command == 0x310) {
-            _Z22InitStateArray02157ce0Pc((char*)&f.st10c);
-            _Z22InitStateArray02157ce0Pc((char*)&f.st10c);
+            InitStateArray02157ce0((char*)&f.st10c);
+            InitStateArray02157ce0((char*)&f.st10c);
             int res = 0;
-            struct TableEntry* entry = (struct TableEntry*)_Z24SearchBothTables02079e2cPci(tbl, p->command);
+            struct TableEntry* entry = (struct TableEntry*)SearchBothTables02079e2c(tbl, p->command);
             if (entry != 0) {
                 __clear(f.ids5c, 4);
                 int n = CopyOutRegion0x571d((char*)gs, f.ids5c);
@@ -390,7 +390,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     func_ov002_0216c42c(p, &f.st10c, entry);
                     p->cc6 = 0;
                     p->cc7 = 1;
-                    _Z22InitStateArray02157ce0Pc((char*)(p->stateArray));
+                    InitStateArray02157ce0((char*)(p->stateArray));
                     memcpy(p->stateArray, &f.st10c, 0x3c);
                     p->msgId = -1;
                     p->msgId2 = -1;
@@ -404,19 +404,19 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     p->timer = 0;
                     return;
                 }
-                unsigned char* msg = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
+                unsigned char* msg = (unsigned char*)GetGlobalField0x1c020421a0();
                 func_02046380(msg);
                 memset(p->text, 0, 0x960);
                 tbl = p->text;
                 if (comb != 0) {
-                    _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)msg, 0, comb->name);
-                    _Z30InitObjFromCombatantId020e4bf4Pvi(p->obj8, UnitId(comb));
+                    SetIndexedName02046574((struct Obj02046574*)msg, 0, comb->name);
+                    InitObjFromCombatantId020e4bf4(p->obj8, UnitId(comb));
                     *(void**)msg = p->obj8;
                 }
-                _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)msg, 1, entry->name);
+                SetIndexedName02046574((struct Obj02046574*)msg, 1, entry->name);
                 if (res != 0) {
-                    func_02046608(msg, 0xc, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), 0x232d), (char*)(tbl + 0x860), 0xe3, 0, 1);
-                    _Z20AppendString02042058PcPKc(p->text, (const char*)(tbl + 0x860));
+                    func_02046608(msg, 0xc, GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 0x232d), (char*)(tbl + 0x860), 0xe3, 0, 1);
+                    AppendString02042058(p->text, (const char*)(tbl + 0x860));
                     struct StateSlot* slots = f.st10c.first;
                     for (int i = 0; i < f.st10c.count; i++) {
                         MsgKey key;
@@ -433,31 +433,31 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                             continue;
                         }
                         func_02046380(msg);
-                        _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)msg, 2, UnitName(target));
-                        _Z30InitObjFromCombatantId020e4bf4Pvi(p->obj14, f.st10c.ids[i]);
+                        SetIndexedName02046574((struct Obj02046574*)msg, 2, UnitName(target));
+                        InitObjFromCombatantId020e4bf4(p->obj14, f.st10c.ids[i]);
                         *(void**)(msg + 0x10) = p->obj14;
                         StoreInArray0x8b0((struct StoreStruct*)msg, 9, target->id);
-                        func_02046608(msg, 0xc, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), key), (char*)(tbl + 0x860), 0xe3, 0, 1);
-                        _Z20AppendString02042058PcPKc(p->text, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), 8));
-                        _Z20AppendString02042058PcPKc(p->text, (const char*)(tbl + 0x860));
+                        func_02046608(msg, 0xc, GetFieldByKey020e0434((struct Container020e0310*)(p->container20), key), (char*)(tbl + 0x860), 0xe3, 0, 1);
+                        AppendString02042058(p->text, (const char*)GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 8));
+                        AppendString02042058(p->text, (const char*)(tbl + 0x860));
                     }
-                    _Z22ConsumeCounter02048350P11Obj02048350i((struct Obj02048350*)comb, entry->lo8);
+                    ConsumeCounter02048350((struct Obj02048350*)comb, entry->lo8);
                     if (CheckField0NonZero(checkPtr) != 0) {
                         func_ov017_021c9e00(p->actor, 0, 0, 1);
                     }
                 } else {
                     struct CombatantStruct* unknown = _ZN9GameState20GetUnknownGameObjectEv(gs);
                     if (unknown != 0) {
-                        _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)msg, 2, ((struct Unit*)unknown)->name);
+                        SetIndexedName02046574((struct Obj02046574*)msg, 2, ((struct Unit*)unknown)->name);
                         _Z28InitObjFromCombatant020e4c74PvP10GameObject(p->obj14, _ZN9GameState20GetUnknownGameObjectEv(gs));
                         *(void**)(msg + 0x10) = p->obj14;
                     }
-                    _Z20AppendString02042058PcPKc((char*)(tbl + 0x860), (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), 0x2333));
-                    _Z20AppendString02042058PcPKc((char*)(tbl + 0x860), (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), 8));
+                    AppendString02042058((char*)(tbl + 0x860), (const char*)GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 0x2333));
+                    AppendString02042058((char*)(tbl + 0x860), (const char*)GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 8));
                     if (n == 1) {
-                        _Z20AppendString02042058PcPKc((char*)(tbl + 0x860), (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), 0x2334));
+                        AppendString02042058((char*)(tbl + 0x860), (const char*)GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 0x2334));
                     } else {
-                        _Z20AppendString02042058PcPKc((char*)(tbl + 0x860), (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), 0x2335));
+                        AppendString02042058((char*)(tbl + 0x860), (const char*)GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 0x2335));
                     }
                     func_02046608(msg, 0xc, (int)(tbl + 0x860), p->text, 0xe3, 0, 1);
                 }
@@ -469,11 +469,11 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
         } else if (p->command == 0xca) {
             if (func_ov017_0219ff58(word, 1, 0, 0) != 0) {
                 flagB = 1;
-                _Z26InitAndInsertNode_021acd30Pchhh((char*)word, 0, 0, 0);
+                InitAndInsertNode_021acd30((char*)word, 0, 0, 0);
             } else {
                 _ZN13SafeAllocator5ResetEv(p->alloc8a0);
                 p->anim = (struct Struct020a8170*)_ZN13SafeAllocator8AllocateEj(p->alloc8a0, 0x10);
-                _Z19ClearStruct020a8170P14Struct020a8170(p->anim);
+                ClearStruct020a8170(p->anim);
                 func_020a818c(p->anim, p->alloc8a0);
                 func_020a8304(p->anim);
                 if (p->anim->count == 0) {
@@ -494,7 +494,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             unsigned char* node = *(unsigned char**)(ov + 0x3bac);
             list = *(unsigned char**)(ov + 0x36fc);
             if (node[2] == 0) {
-                _Z20InitState69_021c2744P11Obj021c2744((struct Obj021c2744*)node);
+                InitState69_021c2744((struct Obj021c2744*)node);
                 *(int*)(node + 0x14) = comb->id;
                 InsertNodeAfterHead((struct List02046a3c*)list, (struct Node02046a3c*)node);
             }
@@ -502,17 +502,17 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             p->nextState = 0x2b;
             return;
         } else if (p->command == 0xd0) {
-            unsigned char* msg = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
+            unsigned char* msg = (unsigned char*)GetGlobalField0x1c020421a0();
             memset(p->text, 0, 0x960);
             tbl = p->text;
             struct Unit* actor = (struct Unit*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, p->actor);
             if (actor != 0) {
                 func_02046380(msg);
-                _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)msg, 0, actor->name);
-                _Z30InitObjFromCombatantId020e4bf4Pvi(p->obj8, p->actor);
+                SetIndexedName02046574((struct Obj02046574*)msg, 0, actor->name);
+                InitObjFromCombatantId020e4bf4(p->obj8, p->actor);
                 *(void**)msg = p->obj8;
-                func_02046608(msg, 0xc, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), 0x7537), (char*)(tbl + 0x860), 0xe3, 0, 1);
-                _Z20AppendString02042058PcPKc(p->text, (const char*)(tbl + 0x860));
+                func_02046608(msg, 0xc, GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 0x7537), (char*)(tbl + 0x860), 0xe3, 0, 1);
+                AppendString02042058(p->text, (const char*)(tbl + 0x860));
             }
             __clear(f.ids54, 4);
             int cnt = CopyOutRegion0x571d((char*)gs, f.ids54);
@@ -534,8 +534,8 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     continue;
                 }
                 func_02046380(msg);
-                _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)msg, 0, member->name);
-                _Z30InitObjFromCombatantId020e4bf4Pvi(p->obj8, f.ids54[k]);
+                SetIndexedName02046574((struct Obj02046574*)msg, 0, member->name);
+                InitObjFromCombatantId020e4bf4(p->obj8, f.ids54[k]);
                 *(void**)msg = p->obj8;
                 int key;
                 if (GetTableValue((void*)member) == 0x63) {
@@ -545,7 +545,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     ext = member->ext;
                     sprintf(f.path, (const char*)&data_ov002_0216cf51, ext->level);
                     void* loaded = LoadFileIntoMemory(f.path, &data_0211e33c, &f.size50);
-                    _Z22Clear0x54Bytes0208247cPv(f.obj148);
+                    Clear0x54Bytes0208247c(f.obj148);
                     if (loaded != 0) {
                         func_02082490(f.obj148, loaded, f.size50, GetTableValue((void*)member) + 1, 0);
                     }
@@ -560,9 +560,9 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     }
                 }
                 memset(tbl + 0x860, 0, 0x100);
-                func_02046608(msg, 0xc, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), key), (char*)(tbl + 0x860), 0xe3, 0, 1);
-                _Z20AppendString02042058PcPKc(p->text, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(p->container20), 8));
-                _Z20AppendString02042058PcPKc(p->text, (const char*)(tbl + 0x860));
+                func_02046608(msg, 0xc, GetFieldByKey020e0434((struct Container020e0310*)(p->container20), key), (char*)(tbl + 0x860), 0xe3, 0, 1);
+                AppendString02042058(p->text, (const char*)GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 8));
+                AppendString02042058(p->text, (const char*)(tbl + 0x860));
             }
             p->dirty = 1;
             memcpy(p->textCopy, p->text, 0x960);
@@ -577,7 +577,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             unsigned char* list;
             unsigned char* node = *(unsigned char**)((unsigned char*)word + 0x3ba8);
             list = *(unsigned char**)((unsigned char*)word + 0x36fc);
-            _Z23InitByteHeader_021c2688Ph(node);
+            InitByteHeader_021c2688(node);
             node[0xc] = p->actor;
             InsertNodeAfterHead((struct List02046a3c*)list, (struct Node02046a3c*)node);
             p->state = 0x2b;
@@ -587,14 +587,14 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             unsigned char* rec = *(unsigned char**)((unsigned char*)func_ov017_0218b5b0() + 0x36d0);
             p->msgId = 0x7543;
             flagA = 1;
-            if (func_0202c540(checkPtr) != 0 && _Z17IsInRange0201b588i(*obj) == 0) {
+            if (func_0202c540(checkPtr) != 0 && IsInRange0201b588(*obj) == 0) {
                 p->showPrompt = 1;
                 p->prompt = 0x7548;
                 flagA = 0;
             } else if (GetByteFieldAt0x9ba(rec) == 0) {
                 func_ov016_0218b5c0(0, -1);
                 p->target = p->actor;
-                _Z24SetFlagsAndReset02026678Pc((char*)rec);
+                SetFlagsAndReset02026678((char*)rec);
             } else {
                 p->showPrompt = 1;
                 p->prompt = 0x232b;
@@ -615,20 +615,20 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 p->prompt = 0x7549;
                 flagA = 0;
             } else {
-                if (_Z17IsInRange0201b5b0i(*obj) != 0) {
+                if (IsInRange0201b5b0(*obj) != 0) {
                     ok = 0;
                 } else if (GetByteFieldAt0x9ba(rec) != 0) {
                     p->countA = CountEntriesByField0x8c((struct List02026a28*)rec);
                     p->countB = CountEntriesByField0x8e((struct List02026abc*)rec);
                 } else {
-                    _Z20ClearRecords02026644Pc((char*)rec);
+                    ClearRecords02026644((char*)rec);
                     _ZN16BackgroundLoader13AddLockGlobalEv();
                     f.size4c = 0;
                     void* data = LoadFileIntoMemory((const char*)&data_ov002_0216cf66, &data_0211e33c, &f.size4c);
                     if (func_02026780(rec, data, f.size4c) == 0) {
                         ok = 0;
                     } else {
-                        _Z28CountMatchingEntries02026a78Pc((char*)rec);
+                        CountMatchingEntries02026a78((char*)rec);
                         p->countA = CountEntriesByField0x8c((struct List02026a28*)rec);
                         p->countB = CountEntriesByField0x8e((struct List02026abc*)rec);
                     }
@@ -657,7 +657,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             unsigned char* node = *(unsigned char**)(ov + 0x3bb0);
             list = *(unsigned char**)(ov + 0x36fc);
             if (node[2] == 0) {
-                _Z15InitObj021c2b28Pvhh(node, 0, comb->id);
+                InitObj021c2b28(node, 0, comb->id);
                 InsertNodeAfterHead((struct List02046a3c*)list, (struct Node02046a3c*)node);
             }
             p->msgId = 0x233c;
@@ -667,11 +667,11 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
         } else if (p->command == 0xa2 || p->command == 0xa4) {
             p->target = p->actor;
             int res = 0;
-            struct TableEntry* entry = (struct TableEntry*)_Z24SearchBothTables02079e2cPci(tbl, p->command);
+            struct TableEntry* entry = (struct TableEntry*)SearchBothTables02079e2c(tbl, p->command);
             if (entry != 0 && (entry->b10 & 1)) {
                 func_ov016_0218b5c0(res, -1);
-                _Z22InitStateArray02157ce0Pc((char*)&f.sta8);
-                _Z22InitStateArray02157ce0Pc((char*)&f.sta8);
+                InitStateArray02157ce0((char*)&f.sta8);
+                InitStateArray02157ce0((char*)&f.sta8);
                 f.sta8.id = p->command;
                 f.sta8.actor = p->actor;
                 f.sta8.count = 1;
@@ -695,7 +695,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     p->prompt = 0x232c;
                     p->f248c = 1;
                 }
-                _Z22ConsumeCounter02048350P11Obj02048350i((struct Obj02048350*)comb, entry->lo8);
+                ConsumeCounter02048350((struct Obj02048350*)comb, entry->lo8);
                 if (CheckField0NonZero(checkPtr) != 0) {
                     func_ov017_021c9e00(p->actor, 0, 0, 1);
                 }
@@ -710,14 +710,14 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
         }
         p->timer = 0;
         if (flagB != 0) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
             p->state = 0x26;
             p->nextState = 0x2b;
             if (p->command == 0xd7) {
                 p->state = 0x2b;
             }
         } else if (flag1c == 0) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
             p->state = 0x26;
             p->nextState = 0x11;
         }
@@ -730,13 +730,13 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
         p->showPrompt = 1;
         p->prompt = -1;
         p->msgId2 = -1;
-        _Z22InitStateArray02157ce0Pc((char*)&f.st6c);
-        _Z22InitStateArray02157ce0Pc((char*)&f.st6c);
+        InitStateArray02157ce0((char*)&f.st6c);
+        InitStateArray02157ce0((char*)&f.st6c);
         f.st6c.id = p->command;
         f.st6c.actor = p->actor;
         f.st6c.count = 1;
         f.st6c.ids[0] = p->target;
-        struct TableEntry* entry = (struct TableEntry*)_Z24SearchBothTables02079e2cPci(tbl, p->command);
+        struct TableEntry* entry = (struct TableEntry*)SearchBothTables02079e2c(tbl, p->command);
         if (entry != 0 && (entry->b10 & 1)) {
             func_ov016_0218b5c0(0, -1);
             func_ov002_021536e0(&f.ctx44);
@@ -759,7 +759,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             func_ov002_0216c42c(p, &f.st6c, entry);
             p->cc6 = 0;
             p->cc7 = 1;
-            _Z22InitStateArray02157ce0Pc((char*)(p->stateArray));
+            InitStateArray02157ce0((char*)(p->stateArray));
             memcpy(p->stateArray, &f.st6c, 0x3c);
             p->msgId = -1;
             p->msgId2 = -1;
@@ -785,7 +785,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 if (ok) {
                     func_ov016_0218b5c0(0, -1);
                     _Z26EnqueueEventTag34_021d27a0hhh(1, p->actor, p->target);
-                    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
+                    DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
                     p->msgId = 0x7536;
                     p->msgId2 = -1;
                     p->state = 0x26;
@@ -799,7 +799,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     return;
                 }
             }
-            _Z16Dispatch020e3428Pvi(GetData02153637(), 1);
+            Dispatch020e3428(GetData02153637(), 1);
             p->msgId = 0x7535;
             p->msgId2 = -1;
             int cured = 0;
@@ -849,7 +849,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 p->showPrompt = 1;
             }
         } else {
-            _Z16Dispatch020e3428Pvi(GetData02153637(), 1);
+            Dispatch020e3428(GetData02153637(), 1);
             struct Unit* member = (struct Unit*)_ZN9GameState21GetPartyMemberByIndexEi(gs, p->target);
             if (res != 0) {
                 if (p->command == 0x1e || p->command == 0x1f || p->command == 0x20 || p->command == 0x21) {
@@ -877,13 +877,13 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 }
             }
         }
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
+        DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
         p->state = 0x26;
         p->nextState = 0x11;
         p->timer = 0;
     }
     if (flagA != 0) {
-        _Z22ConsumeCounter02048350P11Obj02048350i((struct Obj02048350*)comb, entryA->lo8);
+        ConsumeCounter02048350((struct Obj02048350*)comb, entryA->lo8);
         if (CheckField0NonZero(checkPtr) != 0) {
             func_ov017_021c9e00(p->actor, 0, 0, 1);
         }

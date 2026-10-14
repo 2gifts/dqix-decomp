@@ -12,7 +12,7 @@ struct ActionRecord { char pad0[0x18]; unsigned int flags_; };
 struct SixCells { unsigned char cells_[6]; };
 struct TimerState { int fields_[3]; int adjacent_; };
 inline int* GetTimer021ef974() { static TimerState s __attribute__((aligned(4))); return &s.adjacent_; }
-extern "C" void _Z27ClearMatchingBytes_021e169cPhi(unsigned char*, int);
+void ClearMatchingBytes_021e169c(unsigned char*, int);
 unsigned char GetSubstructByte0x1c(unsigned char*);
 unsigned int GetSubstructByte0x1d(unsigned char*);
 unsigned int GetSubstructByte0x1e(unsigned char*);
@@ -28,7 +28,7 @@ extern "C" void func_ov025_021e13e0(unsigned char*, FormationEntry*);
 extern "C" unsigned int func_ov025_021e161c(int, int, unsigned char*, int);
 extern "C" void func_ov025_021e1c20(int, unsigned char*, unsigned char*, int, void*, void*, FormationEntry*);
 extern "C" unsigned char func_ov025_021e1480(int, unsigned char*, int);
-extern "C" ActionRecord* _Z24SearchBothTables02079e2cPci(char*, int);
+ActionRecord* SearchBothTables02079e2c(char*, int);
 
 static inline int ActorID(FormationEntry* entry) { return entry->actor_->obj3D_.unknown_4_; }
 static inline void SetCell(unsigned char* cells, unsigned int index, unsigned char value) {
@@ -45,7 +45,7 @@ extern "C" ARM void func_ov025_021e16c8(FormationEntry* self, FormationEntry* ta
     SixCells range;
     unsigned char nearCandidates[6];
     SixCells temporary;
-    _Z27ClearMatchingBytes_021e169cPhi(cells, self->value_);
+    ClearMatchingBytes_021e169c(cells, self->value_);
     memcpy(distances, cells, 81);
     memset(occupied, 0, 81);
     int participating = 0;
@@ -124,7 +124,7 @@ extern "C" ARM void func_ov025_021e16c8(FormationEntry* self, FormationEntry* ta
     else if (nearCount == 1) selected = nearCandidates[0];
     else if (nearCount > 1) selected = func_ov025_021e1480(GetSubstructByte0x1c((unsigned char*)self->actor_), nearCandidates, nearCount);
     if (participating) {
-        ActionRecord* record = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), lists->id_);
+        ActionRecord* record = SearchBothTables02079e2c((char*)GetData02108e10(), lists->id_);
         if (record && (record->flags_ << 16) >> 28 != 2) {
             memset(nearby, 0, 81);
             func_ov025_021e120c(nearby, position, 1, radius, 0);

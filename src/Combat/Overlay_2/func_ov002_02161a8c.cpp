@@ -10,7 +10,7 @@ extern "C" void *_ZN9GameState11GetInstanceEv();
 extern "C" PartyInfo *_Z17GetPtrField0x2a04P9GameState(void *gs);
 extern "C" void *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
 extern "C" unsigned char *_Z15GetFieldAt0x150Ph(void *member);
-extern "C" void _Z25CleanInvalidateCacheRangePKvj(const void *p, unsigned int size);
+void CleanInvalidateCacheRange(const void *p, unsigned int size);
 extern "C" void LoadToMainObjStandardPalette(const void *src, unsigned int offset, unsigned int size);
 
 // USA: func_ov002_02161a8c
@@ -32,7 +32,7 @@ extern "C" ARM void func_ov002_02161a8c() {
         unsigned char v = f[0x56a];
         if (v == 1 || v == 15) color = &colors[0];
         int pal = (idx + 9) * 16;
-        _Z25CleanInvalidateCacheRangePKvj(color, 2);
+        CleanInvalidateCacheRange(color, 2);
         pal += 13;
         LoadToMainObjStandardPalette(color, pal * 2, 2);
     }

@@ -83,28 +83,28 @@ struct ProfileEditor02188cd0
     unsigned char checker_[0x14bc - 0x1480];
 };
 
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int a);
+void ResetEntryList0205d6a0(Entry_0205d6a0* window, int a);
 extern "C" void func_02042764(const void* codes, char* text, int a);
-extern "C" void _Z20ResetStruct_0215e6d8P20ResetLayout_0215e6d8(ResetLayout_0215e6d8* layout);
+void ResetStruct_0215e6d8(ResetLayout_0215e6d8* layout);
 extern "C" void func_ov003_0215e6f8(void* layout, SafeAllocator* allocator, void* file, unsigned int size);
-extern "C" void _Z18InitStruct0215efb8P14Struct0215efb8(Struct0215efb8* keyboard);
+void InitStruct0215efb8(Struct0215efb8* keyboard);
 extern "C" int func_ov012_0218ae74(ProfileEditor02188cd0* self, Profile02188cd0* profile);
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(Struct0205de24* window, unsigned char a, unsigned char b);
+void FindAndLinkMatchingEntry0205de24(Struct0205de24* window, unsigned char a, unsigned char b);
 extern "C" void func_ov023_021e6e60(ProfileEditor02188cd0* self);
-extern "C" void _Z22SetupBattleTag0218aabcPc(char* self);
+void SetupBattleTag0218aabc(char* self);
 extern "C" void func_ov003_0215f41c(void* keyboard, const char* text);
 extern "C" void func_ov012_0218ab34(ProfileEditor02188cd0* self, char* text, int hidden);
 int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
 extern "C" int func_0205d97c(void* window);
 extern "C" int func_ov003_0215f000(void* keyboard, int input);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* sound, int effect, int a);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int a);
 extern "C" void func_ov023_021e8270(void* card);
 extern "C" void func_ov012_021845f8(void* checker);
 extern "C" int func_ov012_02184d80(void* checker, char* text);
-extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(Struct_0205def8* window, int a, int b);
+void SetElementFlag0x20ByKey0205def8(Struct_0205def8* window, int a, int b);
 extern "C" void func_020426bc(const char* text, char* codes, int a);
 extern "C" void func_ov012_0218943c(ProfileEditor02188cd0* self);
-extern "C" Messages02188cd0* _Z26GetGlobalField0x1c020421a0v();
+Messages02188cd0* GetGlobalField0x1c020421a0();
 const char* FindEntryByKey(TableA68* texts, int id);
 extern "C" void func_0204500c(Messages02188cd0* messages, const char* text, int a, int b);
 
@@ -123,7 +123,7 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
 {
     if (self->step_ == 0)
     {
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)self->window_, 1);
+        ResetEntryList0205d6a0((Entry_0205d6a0*)self->window_, 1);
         Profile02188cd0* profile = GetProfile02188cd0(GameState::GetInstance());
         memset(self->message_, 0, 0x400);
         self->cardMessage_ = self->message_;
@@ -148,9 +148,9 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
             if (file != 0 && size != 0)
             {
                 ((SafeAllocator*)self->allocators_[4])->Reset();
-                _Z20ResetStruct_0215e6d8P20ResetLayout_0215e6d8((ResetLayout_0215e6d8*)self->unk_4);
+                ResetStruct_0215e6d8((ResetLayout_0215e6d8*)self->unk_4);
                 func_ov003_0215e6f8(self->unk_4, (SafeAllocator*)self->allocators_[4], file, size);
-                _Z18InitStruct0215efb8P14Struct0215efb8((Struct0215efb8*)self->unk_0);
+                InitStruct0215efb8((Struct0215efb8*)self->unk_0);
                 ((Keyboard02188cd0*)self->unk_0)->layout_ = self->unk_4;
                 ((Keyboard02188cd0*)self->unk_0)->key_ = 0;
             }
@@ -170,9 +170,9 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
     else if (self->step_ == 3)
     {
         self->unk_13a0 = 0;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((Struct0205de24*)self->window_, 0, 2);
+        FindAndLinkMatchingEntry0205de24((Struct0205de24*)self->window_, 0, 2);
         func_ov023_021e6e60(self);
-        _Z22SetupBattleTag0218aabcPc((char*)self);
+        SetupBattleTag0218aabc((char*)self);
         memcpy(self->unk_13ac, GetProfile02188cd0(GameState::GetInstance())->unk_8, 0x72);
         Keyboard02188cd0* keyboard = (Keyboard02188cd0*)self->unk_0;
         keyboard->text_ = self->message_;
@@ -192,7 +192,7 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
     {
         if ((TestFlag0SetAndFlag1Clear(data_02114e30, 2) || func_0205d97c(self->window_) == 2) && *self->message_ == 0)
         {
-            _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)self->window_, 1);
+            ResetEntryList0205d6a0((Entry_0205d6a0*)self->window_, 1);
             self->step_++;
         }
         Keyboard02188cd0* keyboard = (Keyboard02188cd0*)self->unk_0;
@@ -200,13 +200,13 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
         switch (func_ov003_0215f000(keyboard, self->unk_13a4))
         {
             case 1:
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 2, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 2, 0);
                 return;
 
             case 2:
             case 3:
             case 8:
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
                 if (page != ((Keyboard02188cd0*)self->unk_0)->unk_20)
                     func_ov012_0218ab34(self, 0, 0);
                 func_ov023_021e8270(self->card_);
@@ -217,16 +217,16 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
             case 6:
             case 7:
             case 11:
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
                 func_ov012_0218ab34(self, 0, 0);
                 return;
 
             case 9:
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
                 return;
 
             case 10:
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
                 if (*self->message_ != 0)
                 {
                     GameState::GetInstance();
@@ -237,12 +237,12 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
                     BackgroundLoader::RemoveLockGlobal();
                     if (forbidden)
                     {
-                        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((Struct_0205def8*)self->window_, 0, 14);
+                        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)self->window_, 0, 14);
                         self->step_ = 10;
                         return;
                     }
                 }
-                _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)self->window_, 1);
+                ResetEntryList0205d6a0((Entry_0205d6a0*)self->window_, 1);
                 self->step_++;
                 return;
         }
@@ -271,7 +271,7 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
     }
     else if (self->step_ == 10)
     {
-        Messages02188cd0* messages = _Z26GetGlobalField0x1c020421a0v();
+        Messages02188cd0* messages = GetGlobalField0x1c020421a0();
         func_0204500c(messages, FindEntryByKey((TableA68*)self->strings_, 501), 0, 0xe3);
         messages->busy_ = 1;
         self->step_++;
@@ -279,9 +279,9 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
     }
     else if (self->step_ == 11)
     {
-        if (_Z26GetGlobalField0x1c020421a0v()->busy_ == 0)
+        if (GetGlobalField0x1c020421a0()->busy_ == 0)
         {
-            _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((Struct_0205def8*)self->window_, 1, 14);
+            SetElementFlag0x20ByKey0205def8((Struct_0205def8*)self->window_, 1, 14);
             self->step_ = 4;
             ((Keyboard02188cd0*)self->unk_0)->unk_18 = 0;
             ((Keyboard02188cd0*)self->unk_0)->unk_1c = 0;

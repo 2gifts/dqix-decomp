@@ -19,22 +19,22 @@ struct TargetDefinition {
 };
 struct CombatantGroup { char pad[0x17c]; unsigned char group; };
 
-extern "C" void* _Z24SearchBothTables02079e2cPci(char*, int);
+void* SearchBothTables02079e2c(char*, int);
 extern "C" int func_ov000_0215e9fc(Random*, short*, int, int);
 extern "C" short func_ov000_02154f30(Random*, short, int, short*);
-extern "C" void _Z28PickRandomFromTable_02153d10P6RandomPs(Random*, short*);
+void PickRandomFromTable_02153d10(Random*, short*);
 extern "C" void func_ov000_02153d78(Random*, short, short*);
 GameObject* GetCombatantWithFlag0x400(GameState*, int);
 extern "C" int func_ov000_02153e78(Random*, short*, int, int, int);
 extern "C" int func_ov000_0215eb1c(Random*, short*, int, int);
-extern "C" signed char _Z37PickTableValueWithRandomFill_0215fbe0P6Randomi(Random*, int);
+signed char PickTableValueWithRandomFill_0215fbe0(Random*, int);
 extern short data_ov000_02182af4[8];
 
 // USA: func_ov000_02154a04
 extern "C" ARM int func_ov000_02154a04(Random* random, int combatantId, int actionId, short* targets) {
     int count = 0;
     GameState::GetInstance();
-    TargetDefinition* definition = (TargetDefinition*)_Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)actionId);
+    TargetDefinition* definition = (TargetDefinition*)SearchBothTables02079e2c((char*)GetData02108e10(), (short)actionId);
     if (!definition) return 0;
     unsigned int side = definition->side;
     unsigned int selection = definition->selection;
@@ -53,7 +53,7 @@ extern "C" ARM int func_ov000_02154a04(Random* random, int combatantId, int acti
     } else if (side == 2) {
         if (selection == 2) {
             short chosen = 0;
-            _Z28PickRandomFromTable_02153d10P6RandomPs(random, &chosen);
+            PickRandomFromTable_02153d10(random, &chosen);
             targets[count++] = chosen;
         } else if (selection == 8) {
             short chosen = 0;
@@ -72,7 +72,7 @@ extern "C" ARM int func_ov000_02154a04(Random* random, int combatantId, int acti
     unsigned short* destination = (unsigned short*)selected;
     do { *destination = *source++; destination++; } while (--copyCount);
     short* chosenTargets = selected;
-    int repetitions = _Z37PickTableValueWithRandomFill_0215fbe0P6Randomi(random, (signed char)definition->repetitions);
+    int repetitions = PickTableValueWithRandomFill_0215fbe0(random, (signed char)definition->repetitions);
     if (repetitions > 0) {
         for (int i = 0; i < repetitions; i++) chosenTargets[i] = targets[NextRandomMax(random, count)];
         memset(targets, 0, count * 2);

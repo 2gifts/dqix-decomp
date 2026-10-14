@@ -50,8 +50,8 @@ struct Ctx021eb46c {
 };
 
 void* GetActiveCombatWork(void);
-extern "C" void* _Z18GetSlotPtr02160f20Pv(void* obj);
-extern "C" void _Z25FormatEffectStats02072c9ciPc(int id, char* out);
+void* GetSlotPtr02160f20(void* obj);
+void FormatEffectStats02072c9c(int id, char* out);
 extern "C" BattleNode021eb46c* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int index);
 extern "C" void _Z19PushLogNode021e8bacP11Obj021e8bacP12Node021e8bac(Ctx021eb46c* ctx, LogNode021eb46c* node);
 
@@ -74,7 +74,7 @@ extern "C" ARM int func_ov025_021eb46c(Ctx021eb46c* ctx) {
         SafeAllocator* alloc = ctx->allocators[ctx->allocatorIndex];
 
         if (ctx->state == 0) {
-            Slot021eb46c* slot = (Slot021eb46c*)_Z18GetSlotPtr02160f20Pv(GetActiveCombatWork());
+            Slot021eb46c* slot = (Slot021eb46c*)GetSlotPtr02160f20(GetActiveCombatWork());
             ctx->taskID = -1;
             if (slot->kind == 1 && _Z22GetNodeAtIndex02160094P12List02160094i(slot, 0) != NULL) {
                 int id = _Z22GetNodeAtIndex02160094P12List02160094i(slot, 0)->combatantId;
@@ -91,7 +91,7 @@ extern "C" ARM int func_ov025_021eb46c(Ctx021eb46c* ctx) {
                         sprintf(path, data_ov025_021ef8fc);
                         ctx->taskID = loader->QueueLoadFile(path, alloc);
                     } else {
-                        _Z25FormatEffectStats02072c9ciPc(id, stats);
+                        FormatEffectStats02072c9c(id, stats);
                         sprintf(path, data_ov025_021ef916, stats);
                         ctx->taskID = loader->QueueLoadFileInGP2(data_ov025_021ef91f, path, alloc);
                     }
@@ -105,7 +105,7 @@ extern "C" ARM int func_ov025_021eb46c(Ctx021eb46c* ctx) {
         } else if (loader->GetTaskStatus(ctx->taskID) != 0) {
             loader->GetLoadedFileByID(ctx->taskID, &fileData, &fileLength);
             if (fileData != NULL) {
-                void* slot = _Z18GetSlotPtr02160f20Pv(GetActiveCombatWork());
+                void* slot = GetSlotPtr02160f20(GetActiveCombatWork());
                 if (_Z22GetNodeAtIndex02160094P12List02160094i(slot, 0) != NULL) {
                     loadedId = _Z22GetNodeAtIndex02160094P12List02160094i(slot, 0)->combatantId;
                     GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), loadedId);

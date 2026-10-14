@@ -37,15 +37,15 @@ extern char data_ov004_021705c0[];
 extern char data_ov004_021705d2[];
 #endif
 int* GetGlobal02109418();
-extern "C" int _Z25RunBufferedScript020957f4PvP12StreamHeaderi(void*, StreamHeader*, int);
-extern "C" int _Z28InitObjWithAllocator02095e90P11Obj02095e90P13SafeAllocator(Obj02095e90*, SafeAllocator*);
-extern "C" int _Z23RunOrPollScript02095ee0P11Ctx02095ee0(Ctx02095ee0*);
+int RunBufferedScript020957f4(void*, StreamHeader*, int);
+int InitObjWithAllocator02095e90(Obj02095e90*, SafeAllocator*);
+int RunOrPollScript02095ee0(Ctx02095ee0*);
 extern "C" void func_ov004_02166198();
 extern "C" void func_ov011_021848a0(void*, int);
 extern "C" int func_ov004_02166b40(void*);
 extern "C" short func_ov004_021666bc(void*, char*);
-extern "C" void* _Z40CheckTypeAndReturnNode_02165e70_02165e70Pvi(void*, int);
-extern "C" void _Z27SetFieldD2IfChanged0208beccP11Obj0208beccih(Obj0208becc*, int, unsigned char);
+void* CheckTypeAndReturnNode_02165e70_02165e70(void*, int);
+void SetFieldD2IfChanged0208becc(Obj0208becc*, int, unsigned char);
 
 // USA: func_ov004_02167068
 extern "C" ARM int func_ov004_02167068(void* self) {
@@ -66,7 +66,7 @@ extern "C" ARM int func_ov004_02167068(void* self) {
             unsigned int size;
             loader->GetLoadedFileByID(state->task, &buffer, &size);
             if (buffer) {
-                state->script = _Z25RunBufferedScript020957f4PvP12StreamHeaderi(global, (StreamHeader*)buffer, size);
+                state->script = RunBufferedScript020957f4(global, (StreamHeader*)buffer, size);
                 SetupHeaderAndRunBufferedScript0208d860(&state->stream, &state->allocator, buffer, size, NULL, 0, 1);
             }
             loader->RemoveTask(state->task);
@@ -74,10 +74,10 @@ extern "C" ARM int func_ov004_02167068(void* self) {
             state->step = 2;
         }
     } else if (state->step == 2) {
-        _Z28InitObjWithAllocator02095e90P11Obj02095e90P13SafeAllocator((Obj02095e90*)global, &state->allocator);
+        InitObjWithAllocator02095e90((Obj02095e90*)global, &state->allocator);
         state->step = 3;
     } else if (state->step == 3) {
-        if (_Z23RunOrPollScript02095ee0P11Ctx02095ee0((Ctx02095ee0*)global) != 1) return result;
+        if (RunOrPollScript02095ee0((Ctx02095ee0*)global) != 1) return result;
 #if defined(jpn)
         state->task = loader->QueueLoadFile(data_ov004_02170e7d, 0);
 #else
@@ -110,8 +110,8 @@ extern "C" ARM int func_ov004_02167068(void* self) {
             func_ov011_021848a0(self, 0x12c);
         }
         unsigned char value = flag;
-        Node02167068* node = (Node02167068*)_Z40CheckTypeAndReturnNode_02165e70_02165e70Pvi(self, 7);
-        if (node) _Z27SetFieldD2IfChanged0208beccP11Obj0208beccih(&node->object, 0x270f, value);
+        Node02167068* node = (Node02167068*)CheckTypeAndReturnNode_02165e70_02165e70(self, 7);
+        if (node) SetFieldD2IfChanged0208becc(&node->object, 0x270f, value);
     }
     return result;
 }

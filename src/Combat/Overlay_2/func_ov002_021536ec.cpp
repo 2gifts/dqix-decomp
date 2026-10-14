@@ -25,7 +25,7 @@ struct Slot021536ec {
     int pad[2];
 };
 
-extern "C" void *_Z24SearchBothTables02079e2cPci(char *p, int key);
+void *SearchBothTables02079e2c(char *p, int key);
 
 extern "C" unsigned int data_ov002_0216d3a0[2];
 extern "C" MemFn021536ec data_020e6d5c;
@@ -38,7 +38,7 @@ extern "C" struct Slot021536ec data_ov002_0216ccc4[3];
 extern "C" ARM int func_ov002_021536ec(PMFObj021536ec *obj, short *arg) {
     if (obj->f0 == NULL) return 0;
     if (arg == NULL) return 0;
-    struct Item021536ec *item = (struct Item021536ec *) _Z24SearchBothTables02079e2cPci(obj->f0, *arg);
+    struct Item021536ec *item = (struct Item021536ec *) SearchBothTables02079e2c(obj->f0, *arg);
     if (item == NULL) return 0;
     struct Entry021536ec *tb;
 

@@ -14,7 +14,7 @@ struct ShortList8 {
     short v[8];
 };
 
-extern "C" struct ActionEntry_02153f98* _Z24SearchBothTables02079e2cPci(char* p, int key);
+struct ActionEntry_02153f98* SearchBothTables02079e2c(char* p, int key);
 extern "C" int func_ov000_0215e9fc(struct Random* rand, short* buf, int max, int start);
 
 extern struct ShortList8 data_ov000_02182b24;
@@ -22,7 +22,7 @@ extern struct ShortList8 data_ov000_02182b24;
 // USA: func_ov000_02153f98
 extern "C" ARM int func_ov000_02153f98(struct Random* rand, int id, int action, short* out) {
     GameState* gs = GameState::GetInstance();
-    struct ActionEntry_02153f98* entry = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)action);
+    struct ActionEntry_02153f98* entry = SearchBothTables02079e2c((char*)GetData02108e10(), (short)action);
     if (entry == NULL) {
         return 0;
     }

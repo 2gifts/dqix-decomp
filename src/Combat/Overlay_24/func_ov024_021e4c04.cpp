@@ -82,35 +82,35 @@ int TestBit0At0x2f8(unsigned char*);
 int TestBit1At0x2f8(unsigned char*);
 int TestBit2At0x2f8(unsigned char*);
 int TestBit3At0x2f8(unsigned char*);
-extern "C" short _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998(FlagObj_021da998*);
-extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(FlagObj_021dd260*);
-extern "C" int _Z23IsFlagBit22Set_021e47dcP16FlagObj_021e47dc(FlagObj_021e47dc*);
-extern "C" int _Z22IsFlagBit8Set_021dd010P16FlagObj_021dd010(FlagObj_021dd010*);
+short IsFlagBit8388608Set_021da998(FlagObj_021da998*);
+int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
+int IsFlagBit22Set_021e47dc(FlagObj_021e47dc*);
+int IsFlagBit8Set_021dd010(FlagObj_021dd010*);
 void DecrementCounter0x24UpdateFlag0x14(void*);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void*, void*, int);
-extern "C" int _Z31CheckField0x14Bit0Clear02088840Ph(unsigned char*);
+void AddEntryAndIncrementCount0215a88c(void*, void*, int);
+int CheckField0x14Bit0Clear02088840(unsigned char*);
 int CheckField0x14Flags0x9Clear(unsigned char*);
 int CheckField0x14FlagsClear(unsigned char*);
 int CheckFlag0x1ClearAndFlag0x1000000Clear(unsigned char*);
-extern "C" int _Z32CheckField0x14FlagsClear0208824cPh(unsigned char*);
+int CheckField0x14FlagsClear0208824c(unsigned char*);
 void SetFlag0x40AndBytes(unsigned char*);
-extern "C" void _Z24ResetStateFields02088338Ph(unsigned char*);
+void ResetStateFields02088338(unsigned char*);
 void ClearFlag0x400000AndBytes(unsigned char*);
 void ResetStateFields0x18(unsigned char*);
 void SetFlag0x100AndBytes(unsigned char*);
 int IsValidTargetCombatant(TargetObj02088418*, int, int);
-extern "C" void _Z24ResetTargetFlags02088474Pvii(void*, int, int);
+void ResetTargetFlags02088474(void*, int, int);
 void ResetAndSetFlag0x2AndBits(unsigned char*);
-extern "C" void _Z24ResetStateFields0208826cPh(unsigned char*);
+void ResetStateFields0208826c(unsigned char*);
 int CanAdjustField0x58(void*, int);
 int CanAdjustStatStageBit3(StatStageStruct02087860*, int);
 void UpdateCombatantAttack(int, int);
 void UpdateCombatantDefense(int, int);
-extern "C" int _Z29SelectMessageByFlags_021e929cP12Ctx_021e929cii(Ctx_021e929c*, int, int);
-extern "C" int _Z25SelectResultCode_021e9320P12Ctx_021e9320ii(Ctx_021e9320*, int, int);
-extern "C" int _Z30SelectMessageByFlags2_021e939cP12Ctx_021e939ciii(Ctx_021e939c*, int, int, int);
-extern "C" int _Z25SelectResultCode_021e9464P12Ctx_021e9464ii(Ctx_021e9464*, int, int);
-extern "C" void _Z32AppendToChainAndIncCount0215ffc4PvS_i(void*, void*, int);
+int SelectMessageByFlags_021e929c(Ctx_021e929c*, int, int);
+int SelectResultCode_021e9320(Ctx_021e9320*, int, int);
+int SelectMessageByFlags2_021e939c(Ctx_021e939c*, int, int, int);
+int SelectResultCode_021e9464(Ctx_021e9464*, int, int);
+void AppendToChainAndIncCount0215ffc4(void*, void*, int);
 extern "C" void _Z28SetFirstEmptySlot48_021eb4e4P24SlotArrayStruct_021eb4e4i(Self_021e4c04*, TurnAction_021e4c04*);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" void func_ov000_02159eac(void*, void*, int);
@@ -156,7 +156,7 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
         if (!attacker) return;
 
         if (TestBit7At0x2f4(attacker->traits)
-            && (_Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998((FlagObj_021da998*)target) || _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260((FlagObj_021dd260*)target))) {
+            && (IsFlagBit8388608Set_021da998((FlagObj_021da998*)target) || IsFlagBit24Set_021dd260((FlagObj_021dd260*)target))) {
             DecrementCounter0x24UpdateFlag0x14(target->currentStats_);
             count = StatsOf(target)->count;
             switch (count) {
@@ -167,17 +167,17 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
             }
             func_ov000_02159eac(self->battle, &effects, 0x1d);
             if (count == 3) func_ov000_02159eac(self->battle, &effects, 8);
-            _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+            AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
             any = 1;
         }
 
         if (TestBit26At0x2f4(attacker->traits)
-            && _Z31CheckField0x14Bit0Clear02088840Ph((unsigned char*)target->currentStats_)
+            && CheckField0x14Bit0Clear02088840((unsigned char*)target->currentStats_)
             && (int)StatsOf(target)->rate46 > 0) {
             if ((float)roll < (self->action->forced ? 100.0f : 20.0f)) {
                 int msg = func_ov024_021e9198(self, targetId, 1, 1);
                 if (!msg) msg = 0x25;
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+                AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
                 any = 1;
                 SetFlag0x40AndBytes((unsigned char*)target->currentStats_);
                 StatsOf(target)->code = 1;
@@ -188,11 +188,11 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
             && CheckField0x14Flags0x9Clear((unsigned char*)target->currentStats_)
             && (int)StatsOf(target)->rate47 > 0) {
             if ((float)roll < (self->action->forced ? 100.0f : 20.5f)) {
-                special = _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998((FlagObj_021da998*)target);
-                int msg = _Z29SelectMessageByFlags_021e929cP12Ctx_021e929cii((Ctx_021e929c*)self, targetId, 1);
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+                special = IsFlagBit8388608Set_021da998((FlagObj_021da998*)target);
+                int msg = SelectMessageByFlags_021e929c((Ctx_021e929c*)self, targetId, 1);
+                AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
                 any = 1;
-                _Z24ResetStateFields02088338Ph((unsigned char*)target->currentStats_);
+                ResetStateFields02088338((unsigned char*)target->currentStats_);
             }
         }
 
@@ -201,17 +201,17 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
             if (func_ov000_02156068(self->battle, targetId, 0, 1) == 0 && StatsOf(target)->rate48 == 0) chance = 0.0f;
             if ((float)roll < chance) {
                 GameObject* victim = GetCombatantByID((int)self->battle, targetId);
-                if (_Z23IsFlagBit22Set_021e47dcP16FlagObj_021e47dc((FlagObj_021e47dc*)victim)) {
+                if (IsFlagBit22Set_021e47dc((FlagObj_021e47dc*)victim)) {
                     func_ov000_02159eac(self->battle, &effects, 0x29);
                     ClearFlag0x400000AndBytes((unsigned char*)victim->currentStats_);
                     func_ov000_0215a004(self->battle, attackerId, targetId, GetHP(victim) - 1, &effects, rec, self->action->forced != 0, 0);
-                    _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, 200);
+                    AddEntryAndIncrementCount0215a88c(self->battle, entry, 200);
                 } else {
                     func_ov000_0215a004(self->battle, attackerId, targetId, 0xffff, &effects, rec, self->action->forced != 0, 8);
                     effects.low = 0;
                     effects.high = 0;
                     func_ov000_02159eac(self->battle, &effects, 0xd);
-                    _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, 0x257);
+                    AddEntryAndIncrementCount0215a88c(self->battle, entry, 0x257);
                 }
                 self->action->value0 = 0;
                 self->action->byte18 = 0;
@@ -225,20 +225,20 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
             && CheckField0x14FlagsClear((unsigned char*)target->currentStats_)
             && StatsOf(target)->rate4a != 0) {
             if ((float)roll < (self->action->forced ? 100.0f : 10.5f)) {
-                int msg = _Z25SelectResultCode_021e9320P12Ctx_021e9320ii((Ctx_021e9320*)self, targetId, 1);
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+                int msg = SelectResultCode_021e9320((Ctx_021e9320*)self, targetId, 1);
+                AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
                 any = 1;
                 ResetStateFields0x18((unsigned char*)target->currentStats_);
             }
         }
 
         if (TestBit30At0x2f4(attacker->traits)
-            && _Z22IsFlagBit8Set_021dd010P16FlagObj_021dd010((FlagObj_021dd010*)target)
+            && IsFlagBit8Set_021dd010((FlagObj_021dd010*)target)
             && StatsOf(target)->rate4b != 0) {
             if ((float)roll < (self->action->forced ? 100.0f : 25.0f)) {
                 int msg = 0x18;
-                if (_Z22IsFlagBit8Set_021dd010P16FlagObj_021dd010((FlagObj_021dd010*)target)) msg = 0x1a;
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+                if (IsFlagBit8Set_021dd010((FlagObj_021dd010*)target)) msg = 0x1a;
+                AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
                 any = 1;
                 SetFlag0x100AndBytes((unsigned char*)target->currentStats_);
             }
@@ -248,12 +248,12 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
             && IsValidTargetCombatant((TargetObj02088418*)target->currentStats_, 5, 0)
             && StatsOf(target)->rate4c != 0) {
             if ((float)roll < (self->action->forced ? 100.0f : 12.5f)) {
-                special = _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998((FlagObj_021da998*)target);
+                special = IsFlagBit8388608Set_021da998((FlagObj_021da998*)target);
                 int msg = 0x5e;
                 if (StatsOf(target)->kind == 5) msg = 0x60;
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+                AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
                 any = 1;
-                _Z24ResetTargetFlags02088474Pvii(target->currentStats_, 5, 0);
+                ResetTargetFlags02088474(target->currentStats_, 5, 0);
             }
         }
 
@@ -261,22 +261,22 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
             && CheckFlag0x1ClearAndFlag0x1000000Clear((unsigned char*)target->currentStats_)
             && StatsOf(target)->rate4d != 0) {
             if ((float)roll < (self->action->forced ? 100.0f : 12.5f)) {
-                int msg = _Z30SelectMessageByFlags2_021e939cP12Ctx_021e939ciii((Ctx_021e939c*)self, targetId, 1, 1);
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+                int msg = SelectMessageByFlags2_021e939c((Ctx_021e939c*)self, targetId, 1, 1);
+                AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
                 any = 1;
                 ResetAndSetFlag0x2AndBits((unsigned char*)target->currentStats_);
             }
         }
 
         if (TestBit1At0x2f8(attacker->traits)
-            && _Z32CheckField0x14FlagsClear0208824cPh((unsigned char*)target->currentStats_)
+            && CheckField0x14FlagsClear0208824c((unsigned char*)target->currentStats_)
             && StatsOf(target)->rate4e != 0) {
             if ((float)roll < (self->action->forced ? 100.0f : 10.0f)) {
-                special = _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998((FlagObj_021da998*)target);
-                int msg = _Z25SelectResultCode_021e9464P12Ctx_021e9464ii((Ctx_021e9464*)self, targetId, 1);
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+                special = IsFlagBit8388608Set_021da998((FlagObj_021da998*)target);
+                int msg = SelectResultCode_021e9464((Ctx_021e9464*)self, targetId, 1);
+                AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
                 any = 1;
-                _Z24ResetStateFields0208826cPh((unsigned char*)target->currentStats_);
+                ResetStateFields0208826c((unsigned char*)target->currentStats_);
             }
         }
 
@@ -288,7 +288,7 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
                 int result = func_020877c0(target->currentStats_, -1);
                 UpdateCombatantAttack((int)self->battle, targetId);
                 int msg = func_ov024_021e94c4(self, targetId, rec, 1, (signed char)result, 1, 1);
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+                AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
                 any = 1;
             }
         }
@@ -301,22 +301,22 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
                 int result = func_020878b4(target->currentStats_, -1);
                 UpdateCombatantDefense((int)self->battle, targetId);
                 int msg = func_ov024_021e95d4(self, targetId, rec, 1, (signed char)result, 1, 1);
-                _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, entry, msg);
+                AddEntryAndIncrementCount0215a88c(self->battle, entry, msg);
                 any = 1;
             }
         }
     }
     if (any) {
         func_ov000_0215cd44(self->battle, entry, target, 0, effects.value, 0);
-        _Z32AppendToChainAndIncCount0215ffc4PvS_i(self->action, entry, 2);
+        AppendToChainAndIncCount0215ffc4(self->action, entry, 2);
         self->battle->entryCount++;
         _Z28SetFirstEmptySlot48_021eb4e4P24SlotArrayStruct_021eb4e4i(self, self->action);
     }
     if (special) {
         void* extra = func_ov000_0215e958(self->battle);
         if (!extra) return;
-        _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->battle, extra, 0x25c);
-        _Z32AppendToChainAndIncCount0215ffc4PvS_i(self->action, extra, 2);
+        AddEntryAndIncrementCount0215a88c(self->battle, extra, 0x25c);
+        AppendToChainAndIncCount0215ffc4(self->action, extra, 2);
         self->battle->entryCount++;
         func_ov000_0215cd44(self->battle, extra, target, 0, 0, 0);
     }

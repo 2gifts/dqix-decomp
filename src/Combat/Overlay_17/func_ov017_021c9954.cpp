@@ -62,11 +62,11 @@ extern "C" Leader021c9954* func_ov017_021b8468(Party021c9954* party);
 void NoOp02163778(void* current);
 extern "C" void func_020dc548(signed char id, signed char* out, signed char* count);
 extern "C" void func_ov017_021917f0(int id, int flag);
-extern "C" Combatant021c9954* _Z32FindCombatantByField16a_021a278cPvi(void* unused, int val);
-extern "C" void _Z37SetFieldForMatchingCombatant_021c98f4ii(int id, int value);
-extern "C" void _Z18TrySetMode02076cccPvi(void* obj, int mode);
-extern "C" Slot021c9954* _Z26GetPtrPlusOffsetC_021a7c8cPv(void* obj);
-extern "C" void _Z25SetByteAtOffset1_021a7c1cPh(unsigned char* obj);
+Combatant021c9954* FindCombatantByField16a_021a278c(void* unused, int val);
+void SetFieldForMatchingCombatant_021c98f4(int id, int value);
+void TrySetMode02076ccc(void* obj, int mode);
+Slot021c9954* GetPtrPlusOffsetC_021a7c8c(void* obj);
+void SetByteAtOffset1_021a7c1c(unsigned char* obj);
 
 // USA: func_ov017_021c9954
 extern "C" ARM void func_ov017_021c9954(int id, int checkLeader, int keep, int group) {
@@ -76,12 +76,12 @@ extern "C" ARM void func_ov017_021c9954(int id, int checkLeader, int keep, int g
     Party021c9954* party = battle->party;
     func_ov017_021b86f8(party, id, 1, keep);
 
-    combatant = _Z32FindCombatantByField16a_021a278cPvi(battle, id);
+    combatant = FindCombatantByField16a_021a278c(battle, id);
     if (combatant != 0 && keep == 0) {
         func_02076a8c(combatant);
         combatant->obj3D.MakeHidden();
     }
-    _Z37SetFieldForMatchingCombatant_021c98f4ii(id, 0);
+    SetFieldForMatchingCombatant_021c98f4(id, 0);
 
     if (checkLeader != 0) {
         Leader021c9954* leader = func_ov017_021b8478(party);
@@ -98,15 +98,15 @@ extern "C" ARM void func_ov017_021c9954(int id, int checkLeader, int keep, int g
     }
 
     if (combatant != 0 && keep != 0) {
-        _Z18TrySetMode02076cccPvi(combatant, 1);
+        TrySetMode02076ccc(combatant, 1);
         combatant->active = 0;
     }
 
     Cursor021c9954* cursor = battle->cursor;
     if (cursor->active != 0) {
-        Slot021c9954* slot = _Z26GetPtrPlusOffsetC_021a7c8cPv(cursor);
+        Slot021c9954* slot = GetPtrPlusOffsetC_021a7c8c(cursor);
         if (slot->id == id) {
-            _Z25SetByteAtOffset1_021a7c1cPh((unsigned char*)cursor);
+            SetByteAtOffset1_021a7c1c((unsigned char*)cursor);
         }
     }
 

@@ -16,10 +16,10 @@ struct Node0205bacc;
 extern "C" int func_ov000_0217538c(void* obj);
 extern "C" int func_ov000_021753d8(void* obj, int targetIndex);
 extern "C" void func_ov000_0217c638(void* obj, int a, int b);
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(struct Struct_0205ba68* s, int a, int b, int mode);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node0205bacc* s, int val);
+void SetupPointerTable0205ba68(struct Struct_0205ba68* s, int a, int b, int mode);
+void SetField0AndPropagate0205bacc(struct Node0205bacc* s, int val);
 extern "C" void func_0205bb04(void* s, int n);
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 extern "C" void func_ov000_0217a688(void* obj, void* entry, int b, void* buf);
 #if defined(jpn)
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
@@ -50,12 +50,12 @@ extern "C" ARM void func_ov000_0217a514(char* obj, char* entry, int a, int b) {
     *(short*)(base + 0xae) = 0x10;
     *(unsigned char*)(base + 0xb1) = 0x19;
 
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68*)(obj + 0x244), 1, groups, 0);
+    SetupPointerTable0205ba68((struct Struct_0205ba68*)(obj + 0x244), 1, groups, 0);
     *(int*)(obj + 0x248) = 1;
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)(obj + 0x244), groups);
+    SetField0AndPropagate0205bacc((struct Node0205bacc*)(obj + 0x244), groups);
     func_0205bb04(obj + 0x244, group);
 
-    int g = _Z26GetGlobalField0x1c020421a0v();
+    int g = GetGlobalField0x1c020421a0();
     void* buf = *(void**)((char*)g + REGION_OFFSET_0);
     memset(buf, 0, REGION_OFFSET_1);
     func_ov000_0217a688(obj, entry, b, buf);

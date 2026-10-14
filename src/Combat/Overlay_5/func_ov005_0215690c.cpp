@@ -83,11 +83,11 @@ extern unsigned char data_ov005_0215cd58[8];
 extern unsigned char data_ov005_0215cd50[8];
 extern int data_02108760;
 
-extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
+MemberScreen* GetField1c_021a193c(int* p);
 extern "C" int func_ov005_02157ae8(EquipmentMenu* self, int member);
 extern "C" Body* _Z17RunIfPtr_021e4e20P11Obj021e4e20(MemberScreen* screen);
 extern "C" int func_ov005_02155670(EquipmentMenu* self, int x, int y);
-extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void* obj, Vec3copy0202ec84* src, int* out1, int* out2);
+int ComputeTwoFromVec3_0202ec84(void* obj, Vec3copy0202ec84* src, int* out1, int* out2);
 GameObject* GetCombatantWithFlag0x100(GameState* gs, int id);
 extern "C" double func_0200b454(double x);
 short GetHalfwordEntryFromField150(Field150Holder02052df8* obj, int index);
@@ -98,7 +98,7 @@ extern "C" void func_ov005_021555c0(EquipmentMenu* self);
 void* GetPtrField0x2a04(GameState* gs);
 short* GetPointerFromArray0xbd0(unsigned char* obj, unsigned int index);
 extern "C" void func_0205bb04(void* cursor, int index);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 
 // USA: func_ov005_0215690c
 extern "C" ARM void func_ov005_0215690c(EquipmentMenu* self, int x, int y) {
@@ -106,7 +106,7 @@ extern "C" ARM void func_ov005_0215690c(EquipmentMenu* self, int x, int y) {
     Body* body;
     gameState = GameState::GetInstance();
     unsigned char page;
-    MemberScreen* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+    MemberScreen* screen = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
     unsigned int member = screen->member_;
     if (!func_ov005_02157ae8(self, member))
         return;
@@ -126,7 +126,7 @@ extern "C" ARM void func_ov005_0215690c(EquipmentMenu* self, int x, int y) {
         matrix = RotationMatrixY(body->rotation_.y);
         for (int i = 0; i < 8; i++) {
             Mat4x3_ApplyToVector(&data_ov005_0215cc84[i], &matrix, &positions[i]);
-            _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(camera, (Vec3copy0202ec84*)&positions[i], &screenX[i], &screenY[i]);
+            ComputeTwoFromVec3_0202ec84(camera, (Vec3copy0202ec84*)&positions[i], &screenX[i], &screenY[i]);
         }
         GameObject* partyMember = GetCombatantWithFlag0x100(gameState, member);
         count = 0;
@@ -229,7 +229,7 @@ extern "C" ARM void func_ov005_0215690c(EquipmentMenu* self, int x, int y) {
     func_0205bb04(self->cursor_, self->dragged_);
     self->unk_3dc0 = 1;
     self->flags_ |= 0x80;
-    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 2, 0);
+    DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 2, 0);
     screen->flags_ &= ~1;
     screen->flags_ &= ~0x80;
     self->flags_ &= ~4;

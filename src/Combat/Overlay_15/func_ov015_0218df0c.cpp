@@ -17,14 +17,14 @@
 
 extern "C" void* __clear(void* dst, int count);
 extern "C" void _ZN13SafeAllocator5ResetEv(void* thisPtr);
-extern "C" void* _Z18LoadFileIntoMemoryPKcPvPj(const char* path, void* buf, unsigned int* outLen);
+void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outLen);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
 extern "C" int _ZN8Object3D21MaybeSetBCFGAnimationEii(void* obj, int id, int flags);
 
 struct Foo0207df50;
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50* p);
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void CopyInternalFields0207df50(struct Foo0207df50* p);
+void RestorePairTables0207df90(char* obj);
+void BackupPairTables0207dfac(char* obj);
 extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(unsigned char* dst, int* src);
 
 struct Struct_203dafc;
@@ -60,15 +60,15 @@ extern "C" ARM int func_ov015_0218df0c(void* self, int* desc) {
 
     int ok = 1;
     struct Foo0207df50* mgr = *(struct Foo0207df50**)*(void**)((char*)self + 4);
-    _Z26CopyInternalFields0207df50P11Foo0207df50(mgr);
-    _Z25RestorePairTables0207df90Pc((char*)mgr);
+    CopyInternalFields0207df50(mgr);
+    RestorePairTables0207df90((char*)mgr);
 
     sprintf(buf, &data_ov015_02194129, desc[1]);
 
     BackgroundLoader::AddLockGlobal();
 
     unsigned int length = 0;
-    void* buffer = _Z18LoadFileIntoMemoryPKcPvPj(buf, &data_0211e33c, &length);
+    void* buffer = LoadFileIntoMemory(buf, &data_0211e33c, &length);
 
     if (buffer == 0) {
         ok = 0;
@@ -92,7 +92,7 @@ extern "C" ARM int func_ov015_0218df0c(void* self, int* desc) {
     }
 
     BackgroundLoader::RemoveLockGlobal();
-    _Z24BackupPairTables0207dfacPc((char*)mgr);
+    BackupPairTables0207dfac((char*)mgr);
 
     int result;
     if (ok == 0) {

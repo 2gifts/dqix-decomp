@@ -31,12 +31,12 @@ struct Obj021e9b2c {
 extern unsigned int data_ov025_021ef9a4;
 
 void* GetActiveCombatWork(void);
-extern "C" List021600f8* _Z18GetSlotPtr02160f20Pv(void* work);
-extern "C" void _Z20ResetFields_021df9b0Pv(void* fields);
+List021600f8* GetSlotPtr02160f20(void* work);
+void ResetFields_021df9b0(void* fields);
 extern "C" void _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(void* work);
-extern "C" void* _Z21FindNodeByKey02169b04P12List02169b04i(struct List02169b04* list, int key);
-extern "C" ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8* list, int index);
-extern "C" DepthNode0215fff4* _Z23FindNodeAtDepth0215fff4Pvii(void* node, int index, int depth);
+void* FindNodeByKey02169b04(struct List02169b04* list, int key);
+ListNode021600f8* GetNodeAtIndex021600f8(List021600f8* list, int index);
+DepthNode0215fff4* FindNodeAtDepth0215fff4(void* node, int index, int depth);
 extern "C" short func_ov000_0215ffa0(void* node);
 extern "C" void func_ov025_021eb6fc(Obj021e9b2c* self, int arg);
 extern "C" void func_ov025_021ea474(Obj021e9b2c* self);
@@ -53,30 +53,30 @@ extern "C" ARM void func_ov025_021e9b2c(Obj021e9b2c* self) {
 #endif
     GameState::GetInstance();
     void* work = GetActiveCombatWork();
-    List021600f8* slot = _Z18GetSlotPtr02160f20Pv(work);
+    List021600f8* slot = GetSlotPtr02160f20(work);
     if (data_ov025_021ef9a4 & 8) {
         func_ov025_021eb6fc(self, 0);
         func_ov025_021ea474(self);
         func_ov025_021eb7fc(self);
-        _Z20ResetFields_021df9b0Pv((char*)work + regionalOffset);
+        ResetFields_021df9b0((char*)work + regionalOffset);
         _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(work);
     }
     if (self->flags & 0x10) {
         self->flags &= ~0x10;
         if (!(data_ov025_021ef9a4 & 0x20)) {
             data_ov025_021ef9a4 |= 0x20;
-            if (!((self->keys != NULL && _Z21FindNodeByKey02169b04P12List02169b04i(self->keys, 0x69) != NULL) ||
-                  _Z21FindNodeByKey02169b04P12List02169b04i(self->keys, 0x89) != NULL)) {
+            if (!((self->keys != NULL && FindNodeByKey02169b04(self->keys, 0x69) != NULL) ||
+                  FindNodeByKey02169b04(self->keys, 0x89) != NULL)) {
                 func_ov025_021e9d14(self);
             }
             int allIdle = 1;
             for (int i = 0; i < slot->count; i++) {
-                ListNode021600f8* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(slot, i);
+                ListNode021600f8* node = GetNodeAtIndex021600f8(slot, i);
                 if (node == NULL) {
                     continue;
                 }
                 for (int j = 0; j < node->depthCount; j++) {
-                    DepthNode0215fff4* d = _Z23FindNodeAtDepth0215fff4Pvii(node, j, 0);
+                    DepthNode0215fff4* d = FindNodeAtDepth0215fff4(node, j, 0);
                     if (d != NULL && d->entry != NULL) {
                         allIdle = 0;
                         break;
@@ -85,7 +85,7 @@ extern "C" ARM void func_ov025_021e9b2c(Obj021e9b2c* self) {
             }
             if (allIdle) {
                 bool isParty = true;
-                ListNode021600f8* first = _Z22GetNodeAtIndex021600f8P12List021600f8i(slot, 0);
+                ListNode021600f8* first = GetNodeAtIndex021600f8(slot, 0);
                 if (first != NULL) {
                     int index = func_ov000_0215ffa0(first);
                     isParty = (index >= 0 && index <= 3) ? 1 : 0;

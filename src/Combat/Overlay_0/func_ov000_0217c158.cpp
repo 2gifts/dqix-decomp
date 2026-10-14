@@ -39,9 +39,9 @@ struct Menu0217c158 {
 };
 
 extern "C" int func_0205dd08(Cursor0217c158* cursor);
-extern "C" void _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(struct Struct_0205c4a8* s, int delta);
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(struct Struct_0205bb84* s);
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(struct Struct_0205bcdc* s, int index);
+void AdvanceWrappedAccumulator0205c4a8(struct Struct_0205c4a8* s, int delta);
+int ComputeScaledSum0205bb84(struct Struct_0205bb84* s);
+void SetIndexIfValid0205bcdc(struct Struct_0205bcdc* s, int index);
 extern "C" void func_0205bb04(void* s, int index);
 extern "C" int abs(int);
 
@@ -59,9 +59,9 @@ extern "C" ARM int func_ov000_0217c158(Menu0217c158* menu) {
         return 0;
     }
     cursor = menu->cursor;
-    _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i((struct Struct_0205c4a8*)&cursor->unk_54, delta);
-    index = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((struct Struct_0205bb84*)&cursor->unk_54);
-    _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((struct Struct_0205bcdc*)cursor->selection, index);
+    AdvanceWrappedAccumulator0205c4a8((struct Struct_0205c4a8*)&cursor->unk_54, delta);
+    index = ComputeScaledSum0205bb84((struct Struct_0205bb84*)&cursor->unk_54);
+    SetIndexIfValid0205bcdc((struct Struct_0205bcdc*)cursor->selection, index);
     switch (menu->modes[menu->depth]) {
     case 0xf:
         menu->field_20 = index;
@@ -89,7 +89,7 @@ extern "C" ARM int func_ov000_0217c158(Menu0217c158* menu) {
             index--;
         }
         if (prev != index) {
-            _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((struct Struct_0205bcdc*)cursor->selection, index);
+            SetIndexIfValid0205bcdc((struct Struct_0205bcdc*)cursor->selection, index);
             func_0205bb04(&cursor->unk_54, index);
         }
         menu->field_22 = index;

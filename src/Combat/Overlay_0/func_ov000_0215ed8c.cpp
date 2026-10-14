@@ -36,7 +36,7 @@ struct Battle {
     char pad821C[0x8e18 - 0x821c];
     BattleData* data_;
 };
-extern "C" Element02070e60* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(Container02070e60*, int);
+Element02070e60* SearchWithLow15Comparator02070fd0(Container02070e60*, int);
 int IsField0xcNonNegative(int*);
 extern "C" void func_02089630(Unit*, UnitTemplate*, int);
 
@@ -66,7 +66,7 @@ extern "C" ARM void func_ov000_0215ed8c(Battle* self) {
         for (int j = 0; j < group->memberCount_; ++j) {
             members[j] = unitIndex;
             unit = &self->data_->units_[unitIndex];
-            entry = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(table, key);
+            entry = SearchWithLow15Comparator02070fd0(table, key);
             if (entry) {
                 func_02089630(unit, &entry->unit_, IsField0xcNonNegative((int*)self->data_) != 0);
                 for (;;) {

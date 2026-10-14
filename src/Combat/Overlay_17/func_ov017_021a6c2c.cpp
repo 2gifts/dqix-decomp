@@ -48,20 +48,20 @@ struct Event021a6c2c {
 };
 extern "C" void* func_02057924();
 extern "C" void* func_0202ae18();
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 extern "C" Zone021a6c2c* func_02012fe4();
 extern "C" void func_020a0cc4(unsigned int);
-extern "C" void _Z36CheckAndEnqueueTag_021d1cb8_021d1cb8v();
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+void CheckAndEnqueueTag_021d1cb8_021d1cb8();
+void CancelPendingAction020397cc(Obj020397cc*, int);
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
+void CopyInternalFields0207df50(Foo0207df50*);
 void CleanInvalidateCacheRange(const void*, unsigned int);
 extern "C" void func_02057e6c(void*, int, SafeAllocator*, void*, unsigned int, Foo0207df50*);
-extern "C" void _Z25ForwardField0xc0_0205ebecPv(void*);
-extern "C" void _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_(Base02010834*, int, int*, int*);
-extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void*, int, int);
-extern "C" void _Z26SetForwardAndStore0205ebc0Pvii(void*, int, int);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(void*, int, int);
+void ForwardField0xc0_0205ebec(void*);
+void CopyCountedBytesToIntArray02010834(Base02010834*, int, int*, int*);
+void FindNodeAndProcess02057fb4(void*, int, int);
+void SetForwardAndStore0205ebc0(void*, int, int);
+void DispatchIfField0xc4NonNeg_0205ebfc(void*, int, int);
 int GetByte0x26c(char*);
 void* GetField0x3f8Address(GameState*);
 #if defined(jpn)
@@ -84,7 +84,7 @@ extern "C" ARM void func_ov017_021a6c2c(Event021a6c2c* self) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     void* manager = func_02057924();
     func_0202ae18();
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     Zone021a6c2c* zone = func_02012fe4();
     if (self->stage == 0) {
         if (self->special) {
@@ -102,8 +102,8 @@ extern "C" ARM void func_ov017_021a6c2c(Event021a6c2c* self) {
         if (zone->id != 0x4e27) {
             if (zone->id == 0x4e42) zone->field27b4 = 4;
         } else zone->field27b4 = 2;
-        _Z36CheckAndEnqueueTag_021d1cb8_021d1cb8v();
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)leader, 1);
+        CheckAndEnqueueTag_021d1cb8_021d1cb8();
+        CancelPendingAction020397cc((Obj020397cc*)leader, 1);
         self->stage++;
     } else if (self->stage == 1) {
         self->task = loader->QueueLoadFile(data_ov017_021d777c, 0);
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov017_021a6c2c(Event021a6c2c* self) {
         self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x7000), 0x7000);
         self->allocator.Reset();
         Foo0207df50* fields = &ResourceStateBuffer021a6c2c(resources)->effectFields;
-        _Z26CopyInternalFields0207df50P11Foo0207df50(fields);
+        CopyInternalFields0207df50(fields);
         void* data = self->allocator.Allocate(length);
         memcpy(data, file, length);
         CleanInvalidateCacheRange(data, length);
@@ -125,9 +125,9 @@ extern "C" ARM void func_ov017_021a6c2c(Event021a6c2c* self) {
     } else if (self->stage == 3) {
         self->timer += game->GetTickCount();
         if (self->timer <= 50) return;
-        _Z25ForwardField0xc0_0205ebecPv(&data_02108760);
+        ForwardField0xc0_0205ebec(&data_02108760);
         int ids[4], count;
-        _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_((Base02010834*)game, leader->obj3D_.unknown_4_, ids, &count);
+        CopyCountedBytesToIntArray02010834((Base02010834*)game, leader->obj3D_.unknown_4_, ids, &count);
         Entry021a6c2c entries[4];
         for (int i = 0; i < count; i++) {
             GameObject* actor = game->GetGameObjectByIndex(ids[i]);
@@ -145,16 +145,16 @@ extern "C" ARM void func_ov017_021a6c2c(Event021a6c2c* self) {
             entry->bit4 = 0; entry->bit5 = 0; entry->bit6 = 0; entry->bit7 = 0;
             entry->position = *position;
             entry->scale = actor->obj3D_.GetScale();
-            _Z26FindNodeAndProcess02057fb4Pvii(manager, 13, (int)entry);
+            FindNodeAndProcess02057fb4(manager, 13, (int)entry);
         }
-        _Z26SetForwardAndStore0205ebc0Pvii(&data_02108760, 0xa2, 0xa2);
-        _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, 2, 0);
+        SetForwardAndStore0205ebc0(&data_02108760, 0xa2, 0xa2);
+        DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 2, 0);
         self->timer = 0; self->stage++;
     } else if (self->stage == 4) {
         self->timer += game->GetTickCount();
         if (self->timer < 38) return;
         int ids[4], count;
-        _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_((Base02010834*)game, leader->obj3D_.unknown_4_, ids, &count);
+        CopyCountedBytesToIntArray02010834((Base02010834*)game, leader->obj3D_.unknown_4_, ids, &count);
         for (int i = 0; i < count; i++) {
             GameObject* actor = game->GetGameObjectByIndex(ids[i]);
             if (actor) actor->obj3D_.MakeHidden();
@@ -188,7 +188,7 @@ extern "C" ARM void func_ov017_021a6c2c(Event021a6c2c* self) {
             encounter->y = 0x199; encounter->z = -0x1000;
         }
         int ids[4], count;
-        _Z34CopyCountedBytesToIntArray02010834P12Base02010834iPiS1_((Base02010834*)game, leader->obj3D_.unknown_4_, ids, &count);
+        CopyCountedBytesToIntArray02010834((Base02010834*)game, leader->obj3D_.unknown_4_, ids, &count);
         for (int i = 0; i < count; i++) {
             GameObject* actor = game->GetGameObjectByIndex(ids[i]);
             if (actor) actor->obj3D_.MakeVisible();

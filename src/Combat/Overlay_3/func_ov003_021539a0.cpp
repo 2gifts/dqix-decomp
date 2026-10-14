@@ -81,8 +81,8 @@ extern "C" void* _ZN9GameState11GetInstanceEv();
 extern "C" unsigned char* _ZN9GameState21GetPartyMemberByIndexEi(void*, int);
 extern "C" void __clear(void*, int);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
-extern "C" void* _Z22Clear0x54Bytes0208247cPv(void*);
-extern "C" unsigned char* _Z15GetFieldAt0x150Ph(unsigned char*);
+void* Clear0x54Bytes0208247c(void*);
+unsigned char* GetFieldAt0x150(unsigned char*);
 extern "C" int func_02082490(void*, void*, unsigned int, int, int);
 extern "C" char* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, int*);
 extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
@@ -92,21 +92,21 @@ extern "C" void func_0204c684(void*);
 extern "C" void _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit(void*, unsigned int, int, int, unsigned short);
 extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(void*, void*);
 extern "C" char* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, short);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+void* GetGlobalField0x1c020421a0();
 extern "C" void func_02046608(void*, int, char*, char*, int, int, int);
 extern "C" void _Z23SetEntryFields_021e23d0Pviihh(void*, int, const char*, short, short);
-extern "C" int _Z33AccumulateFlaggedSlotBits02085fb4Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits02086020Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits0208608cPh(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits020860f8Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits02086164Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits020861d0Ph(unsigned char*);
-extern "C" int _Z33AccumulateFlaggedSlotBits0208623cPh(unsigned char*);
-extern "C" int _Z35AccumulateSlotBitsFromTable020862a8Ph(unsigned char*);
-extern "C" int _Z35AccumulateSlotBitsFromTable02086314Ph(unsigned char*);
+int AccumulateFlaggedSlotBits02085fb4(unsigned char*);
+int AccumulateFlaggedSlotBits02086020(unsigned char*);
+int AccumulateFlaggedSlotBits0208608c(unsigned char*);
+int AccumulateFlaggedSlotBits020860f8(unsigned char*);
+int AccumulateFlaggedSlotBits02086164(unsigned char*);
+int AccumulateFlaggedSlotBits020861d0(unsigned char*);
+int AccumulateFlaggedSlotBits0208623c(unsigned char*);
+int AccumulateSlotBitsFromTable020862a8(unsigned char*);
+int AccumulateSlotBitsFromTable02086314(unsigned char*);
 extern "C" void _Z24SetPackedFields_021e24b0Pviihhhhhh(void*, int, int, short, short, short, short, short, short);
 extern "C" void func_ov023_021e257c(void*);
-extern "C" void _Z25CleanInvalidateCacheRangePKvj(const void*, unsigned int);
+void CleanInvalidateCacheRange(const void*, unsigned int);
 extern "C" void LoadToSubBG0CharacterData(int, int, unsigned int);
 extern "C" void* _Z10GetWord0x0Pi(void*);
 extern "C" int _Z17IsAxisIntWithin16P18AxisFloats0203b5a0i(void*, int);
@@ -148,11 +148,11 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
         _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, self->task50, &file, &size);
         void* gs = _ZN9GameState11GetInstanceEv();
         unsigned char* obj = _ZN9GameState21GetPartyMemberByIndexEi(gs, self->member);
-        _Z22Clear0x54Bytes0208247cPv(self->stats);
+        Clear0x54Bytes0208247c(self->stats);
         unsigned char* base = 0;
         unsigned char* gfx;
         if (obj != 0 && file != 0) {
-            base = _Z15GetFieldAt0x150Ph(obj);
+            base = GetFieldAt0x150(obj);
             func_02082490(self->stats, file, size, *(unsigned short*)(base + 0x100 + self->idx * 2 + 0x6c), 0);
         }
         _ZN16BackgroundLoader10RemoveTaskEi(loader, self->task50);
@@ -219,7 +219,7 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
                 char* s1 = _Z21GetFieldByKey020e0434P17Container020e0310i(cont, key + 1);
                 char* s0 = _Z21GetFieldByKey020e0434P17Container020e0310i(cont, key);
                 sprintf(fmt, data_ov003_0217fcd5, s0, s1, s2);
-                func_02046608(_Z26GetGlobalField0x1c020421a0v(), 0xc, fmt, text, 0xdc, 0, 1);
+                func_02046608(GetGlobalField0x1c020421a0(), 0xc, fmt, text, 0xdc, 0, 1);
                 _Z23SetEntryFields_021e23d0Pviihh(ents, 7, text, 0xc, 0xf);
                 _Z23SetEntryFields_021e23d0Pviihh(ents, 8, data_ov003_0217fcde, 0xc, 0xf);
                 _Z23SetEntryFields_021e23d0Pviihh(ents, 9, data_ov003_0217fcde, 0xc, 0xf);
@@ -227,15 +227,15 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
                 int off = (idx & 0xff) * 0xc;
                 unsigned char* statBase = base + 0x850;
                 struct Packed3x10* row = (struct Packed3x10*)(statBase + off);
-                vals[0] = CAP999(_Z33AccumulateFlaggedSlotBits02085fb4Ph(base) + stats->w[0].a + row[0].a);
-                vals[1] = CAP999(_Z33AccumulateFlaggedSlotBits02086020Ph(base) + stats->w[0].b + row[0].b);
-                vals[2] = CAP999(_Z33AccumulateFlaggedSlotBits0208608cPh(base) + stats->w[0].c + row[0].c);
-                vals[3] = CAP999(_Z33AccumulateFlaggedSlotBits020860f8Ph(base) + stats->w[1].a + row[1].a);
-                vals[4] = CAP999(_Z33AccumulateFlaggedSlotBits02086164Ph(base) + stats->w[1].b + row[1].b);
-                vals[5] = CAP999(_Z33AccumulateFlaggedSlotBits020861d0Ph(base) + stats->w[1].c + row[1].c);
-                vals[6] = CAP999(_Z33AccumulateFlaggedSlotBits0208623cPh(base) + stats->w[2].a + row[2].a);
-                vals[7] = CAP999(_Z35AccumulateSlotBitsFromTable020862a8Ph(base) + stats->w[2].b + row[2].b);
-                vals[8] = CAP999(_Z35AccumulateSlotBitsFromTable02086314Ph(base) + stats->w[2].c + row[2].c);
+                vals[0] = CAP999(AccumulateFlaggedSlotBits02085fb4(base) + stats->w[0].a + row[0].a);
+                vals[1] = CAP999(AccumulateFlaggedSlotBits02086020(base) + stats->w[0].b + row[0].b);
+                vals[2] = CAP999(AccumulateFlaggedSlotBits0208608c(base) + stats->w[0].c + row[0].c);
+                vals[3] = CAP999(AccumulateFlaggedSlotBits020860f8(base) + stats->w[1].a + row[1].a);
+                vals[4] = CAP999(AccumulateFlaggedSlotBits02086164(base) + stats->w[1].b + row[1].b);
+                vals[5] = CAP999(AccumulateFlaggedSlotBits020861d0(base) + stats->w[1].c + row[1].c);
+                vals[6] = CAP999(AccumulateFlaggedSlotBits0208623c(base) + stats->w[2].a + row[2].a);
+                vals[7] = CAP999(AccumulateSlotBitsFromTable020862a8(base) + stats->w[2].b + row[2].b);
+                vals[8] = CAP999(AccumulateSlotBitsFromTable02086314(base) + stats->w[2].c + row[2].c);
                 for (unsigned char i = 0; data_ov003_0217f288[i] >= 0; i++) {
                     _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, data_ov003_0217f288[i], vals[i], 8, 0xf, 1, 3, 0, 0);
                 }
@@ -243,7 +243,7 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
                 ents->s12 = 1;
                 func_ov023_021e257c(ents);
             }
-            _Z25CleanInvalidateCacheRangePKvj(gfx, 0x6000);
+            CleanInvalidateCacheRange(gfx, 0x6000);
             LoadToSubBG0CharacterData((int)gfx, 0, 0x6000);
         }
         _ZN16BackgroundLoader10RemoveTaskEi(loader, self->task54);

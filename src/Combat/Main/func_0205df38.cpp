@@ -17,7 +17,7 @@ struct Struct_0205d81c {
 };
 
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
-extern "C" struct Elem_0205df38* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+struct Elem_0205df38* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 
 // USA: func_0205df38
 extern "C" ARM int func_0205df38(struct Struct_0205d81c* s, int key) {
@@ -35,7 +35,7 @@ extern "C" ARM int func_0205df38(struct Struct_0205d81c* s, int key) {
 
     SelectCoordsByFlag0x24(g, &touchY, &touchX);
 
-    e = _Z23FindElementByC40205d81cP15Struct_0205d81ci(s, key);
+    e = FindElementByC40205d81c(s, key);
     if (e == 0) goto zero;
 
     y = e->y;

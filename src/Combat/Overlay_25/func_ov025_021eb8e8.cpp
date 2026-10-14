@@ -23,13 +23,13 @@ struct Owner_021eb8e8 {
 };
 
 void* GetActiveCombatWork(void);
-extern "C" char* _Z20GetOffsetPtr02160f08Pv(void* obj);
+char* GetOffsetPtr02160f08(void* obj);
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(int a, short* buf, int max, int start);
 HitEntry_021eb8e8* GetSubstructField0x68(unsigned char* obj);
 extern "C" void func_ov000_02162dc4(void* work, GameObject* lead, GameObject* actor, unsigned int flags,
                                     int b1d, int b1e, unsigned long long mask, int flag);
-extern "C" HudEntry_021eb8e8* _Z22FindEntryById_021dafd0Pci(char* obj, int id);
+HudEntry_021eb8e8* FindEntryById_021dafd0(char* obj, int id);
 extern "C" void func_ov000_0217616c(HudEntry_021eb8e8* p);
 extern "C" void _Z23SetByteField37_0216ff20Pch(HudEntry_021eb8e8* obj, unsigned char val);
 void SetSubstructWord0x68(unsigned char* obj, int value);
@@ -43,7 +43,7 @@ extern "C" void func_02033920(GameObject* obj, int id, int flag);
 extern "C" ARM void func_ov025_021eb8e8(Owner_021eb8e8* obj) {
     GameState* gs = GameState::GetInstance();
     void* work = GetActiveCombatWork();
-    char* hudList = _Z20GetOffsetPtr02160f08Pv(work);
+    char* hudList = GetOffsetPtr02160f08(work);
     short buf[16];
     int n = 0;
     n = n + func_ov000_0215e9fc(obj->field_c, buf, 0x10, n);
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov025_021eb8e8(Owner_021eb8e8* obj) {
         if (hit != 0) {
             unsigned int flags = hit->flags18 & ~0x80000;
             func_ov000_02162dc4(work, 0, c, flags, hit->b1d, hit->b1e, hit->mask, 1);
-            HudEntry_021eb8e8* hud = _Z22FindEntryById_021dafd0Pci(hudList, *p);
+            HudEntry_021eb8e8* hud = FindEntryById_021dafd0(hudList, *p);
             if (hud != 0) {
                 hud->flags28 = flags;
                 func_ov000_0217616c(hud);

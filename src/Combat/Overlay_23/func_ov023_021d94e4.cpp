@@ -71,30 +71,30 @@ struct BattleResultWindow_021d94e4
 struct Obj02046574;
 struct StoreStruct;
 
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" BattleResultMember_021d94e4* _Z13Find_021d994cPvi(void* self, int id);
-extern "C" int _Z33AccumulateFlaggedSlotBits02085fb4Ph(unsigned char* data);
-extern "C" int _Z33AccumulateFlaggedSlotBits02086020Ph(unsigned char* data);
-extern "C" int _Z33AccumulateFlaggedSlotBits0208608cPh(unsigned char* data);
-extern "C" int _Z33AccumulateFlaggedSlotBits020860f8Ph(unsigned char* data);
-extern "C" int _Z33AccumulateFlaggedSlotBits02086164Ph(unsigned char* data);
-extern "C" int _Z33AccumulateFlaggedSlotBits020861d0Ph(unsigned char* data);
-extern "C" int _Z33AccumulateFlaggedSlotBits0208623cPh(unsigned char* data);
-extern "C" int _Z35AccumulateSlotBitsFromTable020862a8Ph(unsigned char* data);
-extern "C" int _Z35AccumulateSlotBitsFromTable02086314Ph(unsigned char* data);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
+void* GetGlobalField0x1c020421a0();
+BattleResultMember_021d94e4* Find_021d994c(void* self, int id);
+int AccumulateFlaggedSlotBits02085fb4(unsigned char* data);
+int AccumulateFlaggedSlotBits02086020(unsigned char* data);
+int AccumulateFlaggedSlotBits0208608c(unsigned char* data);
+int AccumulateFlaggedSlotBits020860f8(unsigned char* data);
+int AccumulateFlaggedSlotBits02086164(unsigned char* data);
+int AccumulateFlaggedSlotBits020861d0(unsigned char* data);
+int AccumulateFlaggedSlotBits0208623c(unsigned char* data);
+int AccumulateSlotBitsFromTable020862a8(unsigned char* data);
+int AccumulateSlotBitsFromTable02086314(unsigned char* data);
+const char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" int func_020420e8(const char* text, int large);
 void AppendXYTag(char* text, int x, int y);
-extern "C" void _Z23AppendFormatted02041facPcii(char* text, int line, int value);
+void AppendFormatted02041fac(char* text, int line, int value);
 extern "C" void __clear(void* buffer, unsigned long size);
 extern "C" void func_02046380(void* messages);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(struct Obj02046574* obj, int index, char* str);
+void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
 void SetByteInRange(unsigned char* base, int index, unsigned char value);
 extern "C" int sprintf(char* buffer, const char* format, ...);
 extern "C" void func_02046608(void* messages, int, const char* input, char* output, int, int, int);
-extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+void AppendString02042058(char* text, const char* append);
 
 #if defined(jpn)
 extern "C" void func_020474a8(void*,int,const char*,char*);
@@ -105,24 +105,24 @@ extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char*
     if (text == NULL || self->member_ == -1)
         return;
     GameState::GetInstance();
-    void* messages = _Z26GetGlobalField0x1c020421a0v();
+    void* messages = GetGlobalField0x1c020421a0();
     if (self->members_ == NULL)
         return;
-    BattleResultMember_021d94e4* member = _Z13Find_021d994cPvi(self, self->member_);
+    BattleResultMember_021d94e4* member = Find_021d994c(self, self->member_);
     if (member == NULL)
         return;
     BattleResultStatWord_021d94e4* bonuses = member->data_.bonuses_[member->vocation_];
     unsigned char* data = (unsigned char*)&member->data_;
     short stats[9][2];
-    stats[0][0] = _Z33AccumulateFlaggedSlotBits02085fb4Ph(data) + self->before_.stats_[0].first_ + bonuses[0].first_;
-    stats[1][0] = _Z33AccumulateFlaggedSlotBits02086020Ph(data) + self->before_.stats_[0].second_ + bonuses[0].second_;
-    stats[2][0] = _Z33AccumulateFlaggedSlotBits0208608cPh(data) + self->before_.stats_[0].third_ + bonuses[0].third_;
-    stats[3][0] = _Z33AccumulateFlaggedSlotBits020860f8Ph(data) + self->before_.stats_[1].first_ + bonuses[1].first_;
-    stats[4][0] = _Z33AccumulateFlaggedSlotBits02086164Ph(data) + self->before_.stats_[1].second_ + bonuses[1].second_;
-    stats[5][0] = _Z33AccumulateFlaggedSlotBits020861d0Ph(data) + self->before_.stats_[1].third_ + bonuses[1].third_;
-    stats[6][0] = _Z33AccumulateFlaggedSlotBits0208623cPh(data) + self->before_.stats_[2].first_ + bonuses[2].first_;
-    stats[7][0] = _Z35AccumulateSlotBitsFromTable020862a8Ph(data) + self->before_.stats_[2].second_ + bonuses[2].second_;
-    stats[8][0] = _Z35AccumulateSlotBitsFromTable02086314Ph(data) + self->before_.stats_[2].third_ + bonuses[2].third_;
+    stats[0][0] = AccumulateFlaggedSlotBits02085fb4(data) + self->before_.stats_[0].first_ + bonuses[0].first_;
+    stats[1][0] = AccumulateFlaggedSlotBits02086020(data) + self->before_.stats_[0].second_ + bonuses[0].second_;
+    stats[2][0] = AccumulateFlaggedSlotBits0208608c(data) + self->before_.stats_[0].third_ + bonuses[0].third_;
+    stats[3][0] = AccumulateFlaggedSlotBits020860f8(data) + self->before_.stats_[1].first_ + bonuses[1].first_;
+    stats[4][0] = AccumulateFlaggedSlotBits02086164(data) + self->before_.stats_[1].second_ + bonuses[1].second_;
+    stats[5][0] = AccumulateFlaggedSlotBits020861d0(data) + self->before_.stats_[1].third_ + bonuses[1].third_;
+    stats[6][0] = AccumulateFlaggedSlotBits0208623c(data) + self->before_.stats_[2].first_ + bonuses[2].first_;
+    stats[7][0] = AccumulateSlotBitsFromTable020862a8(data) + self->before_.stats_[2].second_ + bonuses[2].second_;
+    stats[8][0] = AccumulateSlotBitsFromTable02086314(data) + self->before_.stats_[2].third_ + bonuses[2].third_;
     stats[0][1] = stats[0][0] + self->after_.stats_[0].first_;
     stats[1][1] = stats[1][0] + self->after_.stats_[0].second_;
     stats[2][1] = stats[2][0] + self->after_.stats_[0].third_;
@@ -154,14 +154,14 @@ extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char*
             stats[i][1] = 999;
     }
 #if defined(jpn)
-    const char* title = _Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_, 0x7602);
-    _Z20AppendString02042058PcPKc(text, title);
+    const char* title = GetFieldByKey020e0434(self->texts_, 0x7602);
+    AppendString02042058(text, title);
     for (int line = 0; line < 9; line++) {
         if (lines != 0) {
             AppendXYTag(text, 10, line * 15 + 0x15);
             char input[0x100] = {0};
     func_02046380(messages);
-    _Z22SetIndexedName02046574P11Obj02046574iPc((Obj02046574*)messages, 0, (char*)_Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_, (short)(line + 0x760c)));
+    SetIndexedName02046574((Obj02046574*)messages, 0, (char*)GetFieldByKey020e0434(self->texts_, (short)(line + 0x760c)));
     short before = stats[line][0];
     StoreInArray0x8b0((StoreStruct*)messages, 0, before);
     SetByteAtIndex((unsigned char*)messages, 0, 1);
@@ -176,18 +176,18 @@ extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char*
             StoreInArray0x8b0((StoreStruct*)messages, 2, color);
             SetByteAtIndex((unsigned char*)messages, 2, 1);
             SetByteInRange((unsigned char*)messages, 2, 0);
-            func_020474a8(messages,12,_Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_,0x7603),input);
-            _Z20AppendString02042058PcPKc(text, input);
+            func_020474a8(messages,12,GetFieldByKey020e0434(self->texts_,0x7603),input);
+            AppendString02042058(text, input);
             lines--;
         }
     }
 
 #else
-    const char* title = _Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_, 0x7602);
+    const char* title = GetFieldByKey020e0434(self->texts_, 0x7602);
     AppendXYTag(text, (0xd0 - func_020420e8(title, 0)) >> 1, 1);
-    _Z23AppendFormatted02041facPcii(text, (int)title, 0x10);
+    AppendFormatted02041fac(text, (int)title, 0x10);
     int line;
-    const char* format = _Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_, 0x7603);
+    const char* format = GetFieldByKey020e0434(self->texts_, 0x7603);
     line = lines - 1;
     if (line < 0)
         return;
@@ -195,7 +195,7 @@ extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char*
     char output[0x100] = {0};
     char input[0x100] = {0};
     func_02046380(messages);
-    _Z22SetIndexedName02046574P11Obj02046574iPc((Obj02046574*)messages, 0, (char*)_Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_, (short)(line + 0x760c)));
+    SetIndexedName02046574((Obj02046574*)messages, 0, (char*)GetFieldByKey020e0434(self->texts_, (short)(line + 0x760c)));
     short before = stats[line][0];
     StoreInArray0x8b0((StoreStruct*)messages, 0, before);
     SetByteAtIndex((unsigned char*)messages, 0, 1);
@@ -209,7 +209,7 @@ extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char*
         color = 5;
     sprintf(input, format, color);
     func_02046608(messages, 12, input, output, 0xe3, 0, 1);
-    _Z20AppendString02042058PcPKc(text, output);
+    AppendString02042058(text, output);
 
 #endif
 }

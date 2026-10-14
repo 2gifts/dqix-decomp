@@ -4,7 +4,6 @@
 #include "Memory/SafeAllocator.h"
 #include "System/Graphics.h"
 
-
 #if defined(jpn)
 enum { kEntryManagerMode = 3, kResourceByte = 0xc9 };
 enum { kScenePrefix = 0x110, kSceneExtraPadding = 8, kGlobalPrefix = 0x868, kManagerPrefix = 0x20, kFirstAllocation = 0x48, kManagerAllocation = 0x34, kResourceSlot = 0x524 };
@@ -44,10 +43,10 @@ extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(void*
 extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void* a);
 extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void* a, int b, void** c, int* d);
 extern "C" void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(void* a, void* b, const char* c, const char* d);
-extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z18DispatchEntryOp0x8Pvi(void* a, int b);
-extern "C" void _Z28SetEntryValueAndFlag02081058Pvii(void* a, int b, int c);
-extern "C" void _Z38SetSublistEntryField14LowBits_02080798Pvii(void* a, int b, int c);
+void* GetGlobalField0x1c020421a0();
+void DispatchEntryOp0x8(void* a, int b);
+void SetEntryValueAndFlag02081058(void* a, int b, int c);
+void SetSublistEntryField14LowBits_02080798(void* a, int b, int c);
 extern "C" void _Z12Init0205a198P14Struct0205a198(void* a);
 extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(void* a);
 extern "C" void _Z24InitEntryManager020e2490P20EntryManager020e2490iiPvP13SafeAllocatorih(void* a, int b, int c, void* d, SafeAllocator* e, int f, int g);
@@ -306,7 +305,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         m->b3c = 0x10;
 #endif
         if (self->flags464 & 0x20000) {
-            Global998* g = (Global998*)_Z26GetGlobalField0x1c020421a0v();
+            Global998* g = (Global998*)GetGlobalField0x1c020421a0();
             if (g->f998 != 0 && g->f9a0 != 3) {
                 return;
             }
@@ -316,22 +315,22 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         Mgr* m = self->p324;
         m->b3b = 0x12;
         m->b3c = 0x10;
-        _Z18DispatchEntryOp0x8Pvi(m, 0);
-        _Z18DispatchEntryOp0x8Pvi(m, 1);
+        DispatchEntryOp0x8(m, 0);
+        DispatchEntryOp0x8(m, 1);
         short* p = data_ov003_0217f46c;
         for (;;) {
             if (*p < 0) {
                 break;
             }
-            _Z28SetEntryValueAndFlag02081058Pvii(m, *p, 0x90);
+            SetEntryValueAndFlag02081058(m, *p, 0x90);
             p++;
         }
-        _Z28SetEntryValueAndFlag02081058Pvii(m, 0xc1, 0x9c);
-        _Z28SetEntryValueAndFlag02081058Pvii(m, 0xc2, 0x9c);
-        _Z28SetEntryValueAndFlag02081058Pvii(m, 0xc3, 0x9c);
+        SetEntryValueAndFlag02081058(m, 0xc1, 0x9c);
+        SetEntryValueAndFlag02081058(m, 0xc2, 0x9c);
+        SetEntryValueAndFlag02081058(m, 0xc3, 0x9c);
         short id = 0x64;
         for (int i = 0; i < 8; i++) {
-            _Z38SetSublistEntryField14LowBits_02080798Pvii(m, id, 1);
+            SetSublistEntryField14LowBits_02080798(m, id, 1);
             id++;
         }
 #endif

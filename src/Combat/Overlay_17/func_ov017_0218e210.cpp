@@ -8,13 +8,13 @@ struct CollisionNode0218e210 { char pad[0x24]; Vector3fix direction; };
 struct Facing0218e210 { char pad[0xae]; short yaw; };
 extern "C" void func_02037d88(GameObject*);
 int GetField0x397cValue(GameState*);
-extern "C" int _Z29NotifyEntriesFlag256_0218df50PvS_(void*, void*);
+int NotifyEntriesFlag256_0218df50(void*, void*);
 extern "C" int func_ov017_0218dfd8(GameObject*);
 extern "C" void func_ov017_0219344c(GameObject*, int, const Vector3fix*, int, int*, int*);
 CollisionNode0218e210* GetField0xe4IfFlag0x40(BitFlag02033f44*);
 int IsFlag0x1ceBit0x8Set(unsigned char*);
 void ClearFlag0x1ceBit0x8(unsigned char*);
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(Obj02033834*, int);
+void SetVecYByMode02033834(Obj02033834*, int);
 
 // USA: func_ov017_0218e210
 extern "C" ARM void func_ov017_0218e210(int index, int enabled) {
@@ -32,7 +32,7 @@ extern "C" ARM void func_ov017_0218e210(int index, int enabled) {
     int notified = 0;
     int combined = 0;
     if (mode == 1 && index == GetField0x397cValue(game)) {
-        notified |= _Z29NotifyEntriesFlag256_0218df50PvS_(object, 0);
+        notified |= NotifyEntriesFlag256_0218df50(object, 0);
         combined |= notified;
         combined |= func_ov017_0218dfd8(object);
     }
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov017_0218e210(int index, int enabled) {
     if (combined && node) {
         if (!IsFlag0x1ceBit0x8Set((unsigned char*)object)) {
             int handled = 0;
-            secondNotification |= _Z29NotifyEntriesFlag256_0218df50PvS_(object, 0);
+            secondNotification |= NotifyEntriesFlag256_0218df50(object, 0);
             handled |= secondNotification;
             handled |= func_ov017_0218dfd8(object);
             object->obj3D_.position_ = object->obj3D_.position_;
@@ -51,9 +51,9 @@ extern "C" ARM void func_ov017_0218e210(int index, int enabled) {
             if (restored) {
                 object->obj3D_.position_ = original;
                 if (restored && notified && secondNotification) {
-                    int changed = _Z29NotifyEntriesFlag256_0218df50PvS_(object, 0);
+                    int changed = NotifyEntriesFlag256_0218df50(object, 0);
                     object->obj3D_.position_ = original;
-                    if (changed) _Z29NotifyEntriesFlag256_0218df50PvS_(object, (void*)1);
+                    if (changed) NotifyEntriesFlag256_0218df50(object, (void*)1);
                 }
             }
         }
@@ -61,7 +61,7 @@ extern "C" ARM void func_ov017_0218e210(int index, int enabled) {
         if (!node) ClearFlag0x1ceBit0x8((unsigned char*)object);
         if (node && !IsFlag0x1ceBit0x8Set((unsigned char*)object)) {
             int handled = 0;
-            secondNotification |= _Z29NotifyEntriesFlag256_0218df50PvS_(object, 0);
+            secondNotification |= NotifyEntriesFlag256_0218df50(object, 0);
             handled |= secondNotification;
             handled |= func_ov017_0218dfd8(object);
             object->obj3D_.position_ = object->obj3D_.position_;
@@ -93,7 +93,7 @@ extern "C" ARM void func_ov017_0218e210(int index, int enabled) {
                         if (difference > 0) yaw = fix32ReduceAngle0To2Pi((int)(6772.632f + (float)collisionAngle));
                         else yaw = fix32ReduceAngle0To2Pi((int)((float)collisionAngle - 6772.632f));
                     }
-                    if ((float)fix32abs(fix32SignedAngleDistance(yaw, movementAngle)) < 643.4f) _Z21SetVecYByMode02033834P11Obj02033834i((Obj02033834*)object, yaw);
+                    if ((float)fix32abs(fix32SignedAngleDistance(yaw, movementAngle)) < 643.4f) SetVecYByMode02033834((Obj02033834*)object, yaw);
                 }
             }
         }

@@ -9,8 +9,8 @@ extern "C" void func_02092d60(void* s, int b);
 extern "C" int func_020457e0(char* g);
 extern "C" unsigned char* func_ov017_021b8478(void* p);
 extern "C" void func_02094030(int* obj, short a, short b, int c);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void _Z24ReinitController02043204Pc(char* obj);
+char* GetGlobalField0x1c020421a0(void);
+void ReinitController02043204(char* obj);
 void* GetPtrField0x2a04(GameState* gs);
 int* GetGlobal02109030(void);
 unsigned int CountMatchingTableEntries02092cd0(BattlePhaseState020930d0* state, int kind);
@@ -70,7 +70,7 @@ extern "C" ARM void func_020930d0(struct BattlePhaseState020930d0* s) {
     unsigned char state;
 
     gs = GameState::GetInstance();
-    gf = (GlobalBlock020930d0*)_Z26GetGlobalField0x1c020421a0v();
+    gf = (GlobalBlock020930d0*)GetGlobalField0x1c020421a0();
     res = func_ov017_0218b5b0();
     list = (struct ListHead02046b60*)res->unknown_ptr_array_36fc[0];
     party = (struct CombatantIndexList020930d0*)GetPtrField0x2a04(gs);
@@ -104,7 +104,7 @@ extern "C" ARM void func_020930d0(struct BattlePhaseState020930d0* s) {
         }
         if (ready) {
             if (s->field32 != 0) return;
-            _Z24ReinitController02043204Pc((char*)gf);
+            ReinitController02043204((char*)gf);
             int next;
             int c0 = CountMatchingTableEntries02092cd0(s, 0);
             int c5 = CountMatchingTableEntries02092cd0(s, 5);

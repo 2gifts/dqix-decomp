@@ -2,7 +2,7 @@
 
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" int func_ov017_021b8468(void* obj);
-extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
+void* GetField6b0_021b8470(void* obj);
 
 struct Ret021c8e70 {
     unsigned char pad0[8];
@@ -56,7 +56,7 @@ extern "C" ARM void func_ov017_021c8e70(int unused0, Src021c8e70* src, int unuse
     Ret021c8e70* r = (Ret021c8e70*)func_ov017_021b8478(h);
     if (!r) return;
     if (!func_ov017_021b8468(h)) return;
-    Owner021c8e70* owner = (Owner021c8e70*)_Z20GetField6b0_021b8470Pv(h);
+    Owner021c8e70* owner = (Owner021c8e70*)GetField6b0_021b8470(h);
     if (!owner) return;
     if (r->field8 != src->body.id) return;
     table = &owner->table;

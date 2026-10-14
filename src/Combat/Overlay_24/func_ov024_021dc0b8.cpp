@@ -5,10 +5,10 @@
 struct ArrayContainsByteStruct;
 int ArrayContainsByte(ArrayContainsByteStruct* s, int val);
 void* GetPtrField0x2a04(GameState* gameState);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int idx, int a, int b);
-extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(unsigned char* battle, int idx);
+unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
+void IncrementByteCounterCapped0x63_0215a8d4(unsigned char* battle, int idx);
 extern "C" void* func_ov000_0215e958(void* a0);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
 struct PackedPair_021dc0b8 {
@@ -47,10 +47,10 @@ extern "C" ARM void* func_ov024_021dc0b8(struct Obj_021dc0b8* obj, int target, i
 	if (flagArg != 0) {
 		ef = func_ov024_021e4b14(obj, target, id, params, 1);
 		if (ef != 0) {
-			sel = _Z31SelectByIndexRange0to3_021da644iii(id, params->f20.c, params->f24.a);
+			sel = SelectByIndexRange0to3_021da644(id, params->f20.c, params->f24.a);
 			void* list = GetPtrField0x2a04(GameState::GetInstance());
 			if (flag && ArrayContainsByte((ArrayContainsByteStruct*)list, target) && params->actionId == 0xa9) {
-				_Z39IncrementByteCounterCapped0x63_0215a8d4Phi((unsigned char*)obj->field0x10, 5);
+				IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)obj->field0x10, 5);
 			}
 			obj->field0x14++;
 			handled = 1;
@@ -59,14 +59,14 @@ extern "C" ARM void* func_ov024_021dc0b8(struct Obj_021dc0b8* obj, int target, i
 	if (!handled) {
 		sel = func_ov024_021e9018(obj, id, params->field0x32, 0);
 		if (sel == 0) {
-			sel = _Z31SelectByIndexRange0to3_021da644iii(id, params->f24.b, params->f24.c);
+			sel = SelectByIndexRange0to3_021da644(id, params->f24.b, params->f24.c);
 		}
 	}
 	if (params->actionId == 0x20f) sel = 0;
 	void* entry = func_ov000_0215e958(obj->field0x10);
 	if (!entry) return 0;
 	func_ov024_021e8bf0(obj, obj->field0xc, &sel);
-	_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+	AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
 	struct Flag_021dc0b8* fl = (struct Flag_021dc0b8*)(obj->field0xc + 0x1c);
 	func_ov000_0215cd44(obj->field0x10, entry, c, 0, ef, fl->flag != 0);
 	return entry;

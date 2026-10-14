@@ -6,7 +6,7 @@ int GetSignedByte0x2d0(void* obj);
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0206867c
-extern "C" ARM int _Z35AnyFlaggedCombatantHasZeroByte0x2d0P9GameState(GameState* battleStruct) {
+ARM int AnyFlaggedCombatantHasZeroByte0x2d0(GameState* battleStruct) {
     signed char count = 0;
     int i;
     for (i = 1; i < 4; i++) {

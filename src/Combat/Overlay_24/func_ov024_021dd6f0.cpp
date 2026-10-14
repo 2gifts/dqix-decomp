@@ -3,12 +3,12 @@
 #include "GameState/GameState.h"
 
 struct FlagObj_021da9b0;
-extern "C" int _Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0(struct FlagObj_021da9b0* obj);
-extern "C" unsigned short _Z31SelectByIndexRange0to3_021da644iii(int idx, int a, int b);
+int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
+unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 void ClearFlag0x14Bit0x8AndBytes(void* obj);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" void* func_ov000_0215e958(void* a0);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
 struct PackedPair_021dd6f0 {
@@ -31,18 +31,18 @@ extern "C" ARM void* func_ov024_021dd6f0(struct Obj_021dd6f0* obj, int unused, i
 	local.lo = 0;
 	local.hi = 0;
 	unsigned short sel;
-	if (_Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0((struct FlagObj_021da9b0*)c) && flagArg != 0) {
-		sel = _Z31SelectByIndexRange0to3_021da644iii(id, range->f20.c, range->f24.a);
+	if (IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)c) && flagArg != 0) {
+		sel = SelectByIndexRange0to3_021da644(id, range->f20.c, range->f24.a);
 		ClearFlag0x14Bit0x8AndBytes((void*)c->currentStats_);
 		func_ov000_02159eac(obj->field0x10, &local, 0x1a);
 		((struct Bit3b_021dd6f0*)((char*)c->currentStats_ + 0x3b))->bit0 = 1;
 		obj->field0x14++;
 	} else {
-		sel = _Z31SelectByIndexRange0to3_021da644iii(id, range->f24.b, range->f24.c);
+		sel = SelectByIndexRange0to3_021da644(id, range->f24.b, range->f24.c);
 	}
 	void* entry = func_ov000_0215e958(obj->field0x10);
 	if (!entry) return 0;
-	_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+	AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
 	struct Flag_021dd6f0* fl = (struct Flag_021dd6f0*)((char*)obj->field0xc + 0x1c);
 	func_ov000_0215cd44(obj->field0x10, entry, c, 0, local.v, fl->flag != 0);
 	return entry;

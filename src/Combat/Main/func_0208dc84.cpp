@@ -9,7 +9,7 @@ extern "C" char* strcpy(char* dst, const char* src);
 
 struct List0208df94;
 struct Copy0208e000;
-extern "C" void _Z31AppendNodeToCountedList0208df94P12List0208df94P13SafeAllocatorP12Copy0208e000(struct List0208df94* list, SafeAllocator* alloc, struct Copy0208e000* src);
+void AppendNodeToCountedList0208df94(struct List0208df94* list, SafeAllocator* alloc, struct Copy0208e000* src);
 
 struct Data02108fd4 {
     unsigned short* field0;
@@ -99,7 +99,7 @@ extern "C" ARM int func_0208dc84(char* p
                     }
                 }
 #endif
-                _Z31AppendNodeToCountedList0208df94P12List0208df94P13SafeAllocatorP12Copy0208e000((struct List0208df94*)data_02108fd4.field8,
+                AppendNodeToCountedList0208df94((struct List0208df94*)data_02108fd4.field8,
                                                 (SafeAllocator*)data_02108fd4.fieldC,
                                                 (struct Copy0208e000*)&c);
                 break;
@@ -135,7 +135,7 @@ extern "C" ARM int func_0208dc84(char* p
             }
         }
 #endif
-        _Z31AppendNodeToCountedList0208df94P12List0208df94P13SafeAllocatorP12Copy0208e000((struct List0208df94*)data_02108fd4.field8,
+        AppendNodeToCountedList0208df94((struct List0208df94*)data_02108fd4.field8,
                                         (SafeAllocator*)data_02108fd4.fieldC,
                                         (struct Copy0208e000*)&c);
     }

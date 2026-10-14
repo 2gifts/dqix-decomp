@@ -7,8 +7,8 @@
 #include "World/Object3D.h"
 
 extern "C" void* _Z17GetModel3DContextP7Model3D(void* mdl);
-extern "C" Matrix4x3 _Z15RotationMatrixYi(int angle);
-extern "C" void _Z18Vector3fixMultiplyPK8Vector3iS1_PS_(const Vector3fix* a, const Vector3fix* b, Vector3fix* out);
+Matrix4x3 RotationMatrixY(int angle);
+void Vector3fixMultiply(const Vector3fix* a, const Vector3fix* b, Vector3fix* out);
 extern "C" void func_02059f54(void* elem, int idx);
 
 struct Other02057ab8 {
@@ -87,10 +87,10 @@ extern "C" ARM void func_02057ab8(struct Container02057ab8* c, int id) {
             Vector3fix ss = ((Object3D*)e)->GetScale();
             Matrix4x3 rot2;
             Vector3fix tv;
-            rot2 = _Z15RotationMatrixYi(dir.y);
+            rot2 = RotationMatrixY(dir.y);
             Mat4x3_ApplyToVector(&sp, &rot2, &tv);
             Vector3fix_Add(&pos, &tv, &pos);
-            _Z18Vector3fixMultiplyPK8Vector3iS1_PS_(&scale, &ss, &scale);
+            Vector3fixMultiply(&scale, &ss, &scale);
             e->pos = pos;
             e->dir = dir;
             ((Object3D*)e)->SetScale(&scale);

@@ -6,7 +6,7 @@
 
 struct InitData020c7de4;
 
-extern "C" void _Z18InitStruct020c7de4P16InitData020c7de4ii(InitData020c7de4* queue, int messages, int count);
+void InitStruct020c7de4(InitData020c7de4* queue, int messages, int count);
 extern "C" int func_020c7e0c(void* queue, void* message, int flags);
 void ClearBit0At027FFF96();
 extern "C" void func_020d42e0(unsigned int command, unsigned int data, unsigned int error);
@@ -87,7 +87,7 @@ extern "C" ARM int func_020d3df8(void* sysBuf, unsigned short dmaNo, unsigned lo
         data_021142e0.wm9buf->portCallbackTable[i] = NULL;
         data_021142e0.wm9buf->portCallbackArgument[i] = NULL;
     }
-    _Z18InitStruct020c7de4P16InitData020c7de4ii(&data_021142e8, (int)data_02114308, 10);
+    InitStruct020c7de4(&data_021142e8, (int)data_02114308, 10);
     for (int i = 0; i < 10; i++)
     {
         data_02114380[i][0] = 0x8000;

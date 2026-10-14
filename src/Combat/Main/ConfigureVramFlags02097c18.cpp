@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" void _Z28LockStagedTextureVRAMCopyingv();
+void LockStagedTextureVRAMCopying();
 extern "C" void MapVRAMBanksToTextureImage(int handle);
 extern "C" void MapVRAMBanksToTexturePalette(int value);
 extern "C" void MapVRAMBanksToMainBG(int v);
@@ -8,8 +8,8 @@ extern "C" void MapVRAMBanksToMainObj(int mode);
 ARM void ConfigurePairMode020bb48c(unsigned int mode, int installHandlers);
 extern "C" void MapVRAMBanksToSubBG(int);
 extern "C" void MapVRAMBanksToSubObj(int value);
-extern "C" void _Z26UpdateVRAMStagingVRAMBanksv(void);
-extern "C" void _Z30UnlockStagedTextureVRAMCopyingv(void);
+void UpdateVRAMStagingVRAMBanks(void);
+void UnlockStagedTextureVRAMCopying(void);
 
 struct Obj02097c18 {
     char pad[0x1e];
@@ -18,7 +18,7 @@ struct Obj02097c18 {
 
 // USA: func_02097c18  (semantic: ConfigureVramFlags02097c18)
 extern "C" ARM void func_02097c18(struct Obj02097c18* obj, unsigned char flags, unsigned int field0Val, int field4Val, int field8Val, int fieldcVal, int field10Val, int field14Val) {
-    _Z28LockStagedTextureVRAMCopyingv();
+    LockStagedTextureVRAMCopying();
     obj->field1e = flags;
     if (flags & 1) {
         unsigned int mask;
@@ -41,6 +41,6 @@ extern "C" ARM void func_02097c18(struct Obj02097c18* obj, unsigned char flags, 
         MapVRAMBanksToSubBG(field10Val);
         MapVRAMBanksToSubObj(field14Val);
     }
-    _Z26UpdateVRAMStagingVRAMBanksv();
-    _Z30UnlockStagedTextureVRAMCopyingv();
+    UpdateVRAMStagingVRAMBanks();
+    UnlockStagedTextureVRAMCopying();
 }

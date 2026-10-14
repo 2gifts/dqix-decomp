@@ -8,23 +8,23 @@ struct DisplayDispatchObj020db5ec;
 struct Obj020db3f4;
 
 void RefreshSlots0x5cFromCallbacks(Obj020db964* obj);
-extern "C" int _Z27IsIndexMappedToSelf020a18f4j(unsigned int idx);
+int IsIndexMappedToSelf020a18f4(unsigned int idx);
 extern "C" void* func_ov017_0218b5b0(void);
 extern "C" void func_020db894(void* obj);
 int GetSwapBitIfFlag54Clear(Struct020db9a8* obj);
 extern "C" void func_020db3f4(Obj020db3f4* obj);
 void PushInterruptDisableState(void);
-extern "C" void _Z26RunFlaggedCallback020db844P13Actor020db844iii(Actor020db844* a, int b, int c, int d);
+void RunFlaggedCallback020db844(Actor020db844* a, int b, int c, int d);
 void InitCombatantVisualState(void* obj, int arg1, int arg2, int arg3, int arg4);
 extern "C" void func_020d8694(void);
-extern "C" void _Z30ProcessDisplayDispatch020db5ecP26DisplayDispatchObj020db5ec(DisplayDispatchObj020db5ec* obj);
+void ProcessDisplayDispatch020db5ec(DisplayDispatchObj020db5ec* obj);
 void InitFlag0x28FromOverlay(void*);
 
 // USA: func_020dbae0
 extern "C" ARM void func_020dbae0(void* obj) {
     char* p = (char*)obj;
     RefreshSlots0x5cFromCallbacks((Obj020db964*)obj);
-    if (!_Z27IsIndexMappedToSelf020a18f4j(OVERLAY_ID(17))) {
+    if (!IsIndexMappedToSelf020a18f4(OVERLAY_ID(17))) {
         return;
     }
     void* resources = func_ov017_0218b5b0();
@@ -50,7 +50,7 @@ extern "C" ARM void func_020dbae0(void* obj) {
     } else {
         if (swapBit != *(unsigned char*)(p + 0x3c)) {
             PushInterruptDisableState();
-            _Z26RunFlaggedCallback020db844P13Actor020db844iii((Actor020db844*)obj, *(unsigned char*)(p + 0x3c), *(short*)(p + 0x66), 0);
+            RunFlaggedCallback020db844((Actor020db844*)obj, *(unsigned char*)(p + 0x3c), *(short*)(p + 0x66), 0);
             short target = *(short*)(p + 0x6a);
             unsigned char a = *(unsigned char*)(p + 0x50);
             unsigned char b = *(unsigned char*)(p + 0x52);
@@ -64,7 +64,7 @@ extern "C" ARM void func_020dbae0(void* obj) {
             func_020d8694();
             return;
         }
-        _Z30ProcessDisplayDispatch020db5ecP26DisplayDispatchObj020db5ec((DisplayDispatchObj020db5ec*)obj);
+        ProcessDisplayDispatch020db5ec((DisplayDispatchObj020db5ec*)obj);
     }
     InitFlag0x28FromOverlay(obj);
 }

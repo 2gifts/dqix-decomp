@@ -10,9 +10,9 @@ struct AlchemyMenu {
 
 struct LookupByOffset0x362_021591ecStruct;
 
-extern "C" short* _Z29GetArrEntry_0215919c_0215919cPv(void* self);
-extern "C" unsigned char* _Z29GetArrEntry_021591c4_021591c4Pv(void* self);
-extern "C" unsigned short _Z32LookupByOffset_021591ec_021591ecP34LookupByOffset0x362_021591ecStruct(LookupByOffset0x362_021591ecStruct* self);
+short* GetArrEntry_0215919c_0215919c(void* self);
+unsigned char* GetArrEntry_021591c4_021591c4(void* self);
+unsigned short LookupByOffset_021591ec_021591ec(LookupByOffset0x362_021591ecStruct* self);
 
 // USA: func_ov006_02159274
 extern "C" ARM void func_ov006_02159274(AlchemyMenu* self, unsigned char* category, short* item, unsigned char* count) {
@@ -22,9 +22,9 @@ extern "C" ARM void func_ov006_02159274(AlchemyMenu* self, unsigned char* catego
     if (self->itemCursor_ < 0)
         return;
     short index = self->categoryCursor_ - 0x5b;
-    short* items = _Z29GetArrEntry_0215919c_0215919cPv(self);
-    unsigned char* counts = _Z29GetArrEntry_021591c4_021591c4Pv(self);
-    unsigned short size = _Z32LookupByOffset_021591ec_021591ecP34LookupByOffset0x362_021591ecStruct((LookupByOffset0x362_021591ecStruct*)self);
+    short* items = GetArrEntry_0215919c_0215919c(self);
+    unsigned char* counts = GetArrEntry_021591c4_021591c4(self);
+    unsigned short size = LookupByOffset_021591ec_021591ec((LookupByOffset0x362_021591ecStruct*)self);
     if (items != 0 && counts != 0 && size != 0) {
         unsigned short position = (unsigned short)(self->page_ * 8);
         position += self->itemCursor_ - 0x64;

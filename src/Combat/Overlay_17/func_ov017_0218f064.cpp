@@ -34,24 +34,24 @@ struct Components0218f064 { Object3D objects[11]; };
 Ticket0218f064* GetField0x3f8Address(GameState*);
 extern "C" Zone3D* func_02012fe4();
 extern "C" void func_0202ae18();
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
-extern "C" void _Z25DestroyAllocators020545b8P9T020545b8(T020545b8*);
+void CopyInternalFields0207df50(Foo0207df50*);
+void DestroyAllocators020545b8(T020545b8*);
 extern "C" void func_020542b4(T020545b8*, SafeAllocator*, InternalBlock0218f064*);
 extern "C" int func_ov017_021925e0();
-extern "C" T020545b8* _Z26FindNegativeEntry_021a11b4P9S021a11b4(S021a11b4*);
+T020545b8* FindNegativeEntry_021a11b4(S021a11b4*);
 extern "C" void func_02054464(T020545b8*, SafeAllocator*, InternalBlock0218f064*);
 extern "C" void func_02037d10(Combatant0218f064*);
-extern "C" void _Z20SetFlag0x20002048104P11Obj02048104(Obj02048104*);
-extern "C" void _Z27ResetSelectionState02054664P11Obj02054664(Obj02054664*);
-extern "C" int _Z34GetMaxFieldPlus1_02192548_02192548v();
-extern "C" void _Z18ResetState020415d8P13State020415d8(State020415d8*);
+void SetFlag0x20002048104(Obj02048104*);
+void ResetSelectionState02054664(Obj02054664*);
+int GetMaxFieldPlus1_02192548_02192548();
+void ResetState020415d8(State020415d8*);
 extern "C" void func_020c9be0();
 void RegisterCombatantSlot(GameState*, int, GameObject*);
 void StoreVec3AtField0x50(unsigned char*, int, int, int);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
-extern "C" void _Z24SetPointerFields02053c4cPcS_(char*, char*);
-extern "C" void _Z35RegisterOrAllocateCombatant02053c74Pci(char*, int);
-extern "C" void _Z24SetLowNibble56b_0218f57cPvi(void*, int);
+void SetPointerFields02053c4c(char*, char*);
+void RegisterOrAllocateCombatant02053c74(char*, int);
+void SetLowNibble56b_0218f57c(void*, int);
 extern "C" int func_ov017_0218f5a4(GameResources*, int, int, int, int);
 extern const char data_ov017_021d73a4[];
 
@@ -76,8 +76,8 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
         InternalBlock0218f064* blocks = InternalBlocks0218f064(resources);
         specialAllocator->Reset();
         InternalBlock0218f064* block = &blocks[21];
-        _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)block);
-        _Z25DestroyAllocators020545b8P9T020545b8(entry);
+        CopyInternalFields0207df50((Foo0207df50*)block);
+        DestroyAllocators020545b8(entry);
         func_020542b4(entry, specialAllocator, block);
     } else {
         if (func_ov017_021925e0()) {
@@ -85,13 +85,13 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
                 if (((T020545b8*)&resources->substruct_array_12c8[i])->id == id) return;
             }
         }
-        entry = _Z26FindNegativeEntry_021a11b4P9S021a11b4((S021a11b4*)resources);
+        entry = FindNegativeEntry_021a11b4((S021a11b4*)resources);
         if (!entry) return;
         allocator = &entry->allocator;
         int index = entry->index + 1;
         SafeAllocator* primary = &resources->allocator_array_38[index];
         InternalBlock0218f064* block = &((InternalOwner0218f064*)resources)->blocks[index];
-        _Z25DestroyAllocators020545b8P9T020545b8(entry);
+        DestroyAllocators020545b8(entry);
         if (kind == 4) func_02054464(entry, primary, block);
         else func_020542b4(entry, primary, block);
     }
@@ -107,18 +107,18 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
         func_02037d10(combatant);
     } else if (kind == 0x200) {
         combatant = (Combatant0218f064*)allocator->Allocate(0x2d0);
-        _Z20SetFlag0x20002048104P11Obj02048104((Obj02048104*)combatant);
+        SetFlag0x20002048104((Obj02048104*)combatant);
     } else if (kind == 0x1000) {
         combatant = (Combatant0218f064*)allocator->Allocate(0x2d4);
-        _Z27ResetSelectionState02054664P11Obj02054664((Obj02054664*)combatant);
-        if (combatant) combatant->sequence = _Z34GetMaxFieldPlus1_02192548_02192548v();
+        ResetSelectionState02054664((Obj02054664*)combatant);
+        if (combatant) combatant->sequence = GetMaxFieldPlus1_02192548_02192548();
     } else if (kind == 0x4000) {
         combatant = (Combatant0218f064*)allocator->Allocate(0x2f8);
-        _Z18ResetState020415d8P13State020415d8((State020415d8*)combatant);
+        ResetState020415d8((State020415d8*)combatant);
     } else if (kind == 4) {
         combatant = (Combatant0218f064*)allocator->Allocate(0x2d4);
-        _Z27ResetSelectionState02054664P11Obj02054664((Obj02054664*)combatant);
-        if (combatant) combatant->sequence = _Z34GetMaxFieldPlus1_02192548_02192548v();
+        ResetSelectionState02054664((Obj02054664*)combatant);
+        if (combatant) combatant->sequence = GetMaxFieldPlus1_02192548_02192548();
         initialize = 0;
     }
     if (!combatant) func_020c9be0();
@@ -167,8 +167,8 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
     SetByte0xbeShiftPrev((Bytes02033b88*)combatant, 0);
     if (kind == 0x4000) {
         char* companion = ZoneSpecials0218f064(zone)->companion;
-        if (companion) _Z24SetPointerFields02053c4cPcS_((char*)combatant, companion);
-    } else _Z35RegisterOrAllocateCombatant02053c74Pci((char*)combatant, id);
-    if (mode > 0) _Z24SetLowNibble56b_0218f57cPvi(combatant, mode);
+        if (companion) SetPointerFields02053c4c((char*)combatant, companion);
+    } else RegisterOrAllocateCombatant02053c74((char*)combatant, id);
+    if (mode > 0) SetLowNibble56b_0218f57c(combatant, mode);
     if (registerEffect) func_ov017_0218f5a4(resources, id, 0, 0, 0);
 }

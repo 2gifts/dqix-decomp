@@ -22,15 +22,15 @@ extern IndexList0215db14 data_ov004_0216fb40;
 struct ItemTransferContext0215db14 { SafeAllocator allocator; char state[0x18]; int container; char pad[8]; };
 struct Combatant0215db14 { char pad[0x130]; unsigned int* flags; };
 struct Slots02083960;
-extern "C" int _Z28DispatchNodeIfType7_02156e2cPvi(void*, int);
+int DispatchNodeIfType7_02156e2c(void*, int);
 extern "C" int func_ov004_0215da0c(void*);
 Slots02083960* GetFieldAt0x150(unsigned char*);
-extern "C" int _Z26CountPositiveSlots02083960P13Slots02083960(Slots02083960*);
-extern "C" short _Z23SumKeyedLookups02086bf4Pci(char*, int);
+int CountPositiveSlots02083960(Slots02083960*);
+short SumKeyedLookups02086bf4(char*, int);
 extern "C" int func_ov004_02156fd4(void*, int);
-extern "C" void* _Z22ZeroInitReturn020de824Pv(void*);
-extern "C" void _Z18InitStruct0207cbe8Pc(char*);
-extern "C" void _Z18InitStruct0207cc0cPc(char*);
+void* ZeroInitReturn020de824(void*);
+void InitStruct0207cbe8(char*);
+void InitStruct0207cc0c(char*);
 extern "C" void func_0207ccf0(void*, int, int, int, int, int, int);
 extern "C" void func_ov011_021848a0(void*, int);
 extern "C" void func_ov023_021f65d4(void*, int, int);
@@ -39,7 +39,7 @@ extern "C" void func_ov023_021f65d4(void*, int, int);
 extern "C" ARM int func_ov004_0215db14(void* obj) {
     GameState* state = GameState::GetInstance();
     if (!data_ov004_021707d8.menu->active) return 0;
-    int index = _Z28DispatchNodeIfType7_02156e2cPvi(obj, 0x5f);
+    int index = DispatchNodeIfType7_02156e2c(obj, 0x5f);
     if (index < 0) return 0;
     GameObject* combatant;
     int freeSlots;
@@ -64,19 +64,19 @@ extern "C" ARM int func_ov004_0215db14(void* obj) {
     freeSlots = 0;
     if (combatant) {
         Slots02083960* slots = GetFieldAt0x150((unsigned char*)combatant);
-        if (slots) freeSlots = 8 - _Z26CountPositiveSlots02083960P13Slots02083960(slots);
+        if (slots) freeSlots = 8 - CountPositiveSlots02083960(slots);
     }
-    int total = _Z23SumKeyedLookups02086bf4Pci((char*)GetPtrField0x2a04(state), data_ov004_021707d8.menu->key);
+    int total = SumKeyedLookups02086bf4((char*)GetPtrField0x2a04(state), data_ov004_021707d8.menu->key);
     int container = func_ov004_02156fd4(obj, 5);
     if (container) {
         ItemTransferContext0215db14 work;
         work.allocator.ResetAllocatorPointer();
-        _Z22ZeroInitReturn020de824Pv(work.state);
-        _Z18InitStruct0207cbe8Pc((char*)&work);
-        _Z18InitStruct0207cbe8Pc((char*)&work);
+        ZeroInitReturn020de824(work.state);
+        InitStruct0207cbe8((char*)&work);
+        InitStruct0207cbe8((char*)&work);
         work.container = container;
         func_0207ccf0(&work, data_ov004_021707d8.menu->key, data_ov004_021707d8.menu->quantity, selected, 1, 1, 0);
-        _Z18InitStruct0207cc0cPc((char*)&work);
+        InitStruct0207cc0c((char*)&work);
         data_ov004_021707d8.menu->active = 0;
     }
     if (data_ov004_021707d8.menu->quantity > freeSlots && total < 99) {

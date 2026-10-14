@@ -8,7 +8,7 @@ extern "C" Vec3i_02196fc8 _ZNK8Object3D8GetScaleEv(unsigned char* src);
 struct Outer02077a20;
 int GetField0x8OrDefault02077a20(struct Outer02077a20* p);
 
-extern "C" int _Z8fix32absi(int x);
+int fix32abs(int x);
 
 struct Vec3s32_020c3030;
 extern "C" int Vector3fix_Distance(struct Vec3s32_020c3030* a, struct Vec3s32_020c3030* b);
@@ -28,8 +28,8 @@ ARM int CheckProximity_02196fc8(unsigned char* self, unsigned char* other, int e
 
 	int dist = extra + (half + (a >> 1));
 
-	if (dist < _Z8fix32absi(*(int*)(self + 0x44) - *(int*)(other + 0x44))) return 0;
-	if (dist < _Z8fix32absi(*(int*)(self + 0x4c) - *(int*)(other + 0x4c))) return 0;
+	if (dist < fix32abs(*(int*)(self + 0x44) - *(int*)(other + 0x44))) return 0;
+	if (dist < fix32abs(*(int*)(self + 0x4c) - *(int*)(other + 0x4c))) return 0;
 
 	int d = Vector3fix_Distance((struct Vec3s32_020c3030*)(self + 0x44), (struct Vec3s32_020c3030*)(other + 0x44));
 	if (dist < d) return 0;

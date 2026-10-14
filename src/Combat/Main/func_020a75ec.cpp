@@ -39,7 +39,7 @@ extern "C" void func_020a78dc(WrappedActor020a75ec*);
 int ListContainsId(ListHead02046b60*, int);
 void* GetPtrField0x2a04(GameState*);
 void* GetField0x3b0Value(GameState*);
-extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
+int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 extern "C" void* func_0205ec34();
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 int IsField0Null(void**);
@@ -108,7 +108,7 @@ extern "C" ARM void func_020a75ec(WrappedActor020a75ec* actor) {
     int screenY;
     void* view = GetField0x3b0Value(state);
     int hit = 0;
-    if (_Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(view, (Vec3copy0202ec84*)&actor->object.position_, &screenX, &screenY) == 0) {
+    if (ComputeTwoFromVec3_0202ec84(view, (Vec3copy0202ec84*)&actor->object.position_, &screenX, &screenY) == 0) {
         int inputX;
         int inputY;
         if (data_02114e54.active && data_02114e54.state < 10) {

@@ -15,7 +15,7 @@ struct Entry02211bd4 {
 struct Glob0224e5b4_02211bd4 { char pad0[4]; Entry02211bd4* field4; };
 extern Glob0224e5b4_02211bd4 data_ov031_0224e5b4;
 
-extern "C" void _Z32SetGlobal022496fcField4_02207ce0i(int);
+void SetGlobal022496fcField4_02207ce0(int);
 
 // USA: func_ov031_02211bd4  (semantic: InitEntryIfSlotFree_02211bd4)
 extern "C" ARM void func_ov031_02211bd4(Entry02211bd4* obj, unsigned short val1, int unused2, int val3) {
@@ -28,5 +28,5 @@ extern "C" ARM void func_ov031_02211bd4(Entry02211bd4* obj, unsigned short val1,
 	obj->field0xc = 0;
 	obj->field0x10 = 0;
 	data_ov031_0224e5b4.field4 = obj;
-	_Z32SetGlobal022496fcField4_02207ce0i(val3);
+	SetGlobal022496fcField4_02207ce0(val3);
 }

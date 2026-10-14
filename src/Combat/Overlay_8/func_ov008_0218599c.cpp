@@ -4,7 +4,7 @@
 extern "C" int* _Z10GetWord0x0Pi(void* battle);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
 extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* word);
-extern "C" void _Z16OrGlobalFlag0x40v();
+void OrGlobalFlag0x40();
 
 #define REG_DISPCNT_SUB (*(volatile unsigned int*)0x04001000)
 #define REG_BG0CNT_SUB (*(volatile unsigned short*)0x04001008)
@@ -25,7 +25,7 @@ extern "C" ARM void func_ov008_0218599c(void* obj) {
     if (flag != 1) {
         return;
     }
-    _Z16OrGlobalFlag0x40v();
+    OrGlobalFlag0x40();
 
     REG_BG0CNT_SUB = (REG_BG0CNT_SUB & 0x43) | 0x600;
     REG_BG1CNT_SUB = (REG_BG1CNT_SUB & 0x43) | 0x304 | 0x400;

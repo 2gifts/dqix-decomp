@@ -4,13 +4,13 @@
 
 int CheckField0x14FlagsClear(unsigned char* obj);
 struct Ctx_021e9320;
-extern "C" int _Z25SelectResultCode_021e9320P12Ctx_021e9320ii(struct Ctx_021e9320* ctx, int id, int mode);
-extern "C" int _Z26IsFlagAllowedMask_021eb4b0iii(int a0, int flags, int mask);
+int SelectResultCode_021e9320(struct Ctx_021e9320* ctx, int id, int mode);
+int IsFlagAllowedMask_021eb4b0(int a0, int flags, int mask);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 void ResetStateFields0x18(unsigned char* obj);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
 struct Flag_021dd828 { unsigned char pad : 7; unsigned char flag : 1; };
@@ -27,12 +27,12 @@ extern "C" ARM void* func_ov024_021dd828(struct Obj_021dd828* obj, int unused, i
 	} else {
 		obj->field0x75 = 0;
 	}
-	unsigned short sel = _Z25SelectResultCode_021e9320P12Ctx_021e9320ii((struct Ctx_021e9320*)obj, id, active);
+	unsigned short sel = SelectResultCode_021e9320((struct Ctx_021e9320*)obj, id, active);
 	union { struct { int lo; int hi; }; unsigned long long v; } local;
 	local.lo = 0;
 	local.hi = 0;
 	if (active) {
-		if (_Z26IsFlagAllowedMask_021eb4b0iii((int)obj, ((struct Stats_021dd828*)c->currentStats_)->flags, 0x20)) {
+		if (IsFlagAllowedMask_021eb4b0((int)obj, ((struct Stats_021dd828*)c->currentStats_)->flags, 0x20)) {
 			func_ov000_02159eac(obj->field0x10, &local, 0x2b);
 		}
 		ResetStateFields0x18((unsigned char*)c->currentStats_);
@@ -42,7 +42,7 @@ extern "C" ARM void* func_ov024_021dd828(struct Obj_021dd828* obj, int unused, i
 	void* entry = func_ov000_0215e958(obj->field0x10);
 	if (!entry) return 0;
 	func_ov024_021e8bf0(obj, obj->field0xc, &sel);
-	_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, sel);
+	AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, sel);
 	struct Flag_021dd828* fl = (struct Flag_021dd828*)((char*)obj->field0xc + 0x1c);
 	func_ov000_0215cd44(obj->field0x10, entry, c, 0, local.v, fl->flag != 0);
 	return entry;

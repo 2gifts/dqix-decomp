@@ -37,27 +37,27 @@ struct Elem {
 };
 
 extern int data_02108760;
-extern "C" unsigned int *_Z27GetDataPtr02114e04_020d6c00v();
+unsigned int *GetDataPtr02114e04_020d6c00();
 extern "C" void _Z23SetEntryNibbleByShortIdP19StatusOwner02081198ii(void *, int, int);
 extern "C" void _Z24SetEntryFlag0x2ByShortIdP19StatusOwner02081164ii(void *, int, int);
 extern "C" void func_020813ec(void *, int);
 extern "C" void func_ov003_02165c9c(Scene *);
 extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(void *);
-extern "C" int _Z26FindMappedMemberId02080468Pvi(void *, int);
-extern "C" void _Z16OrBitsIntoField0Pjj(unsigned int *, unsigned int);
+int FindMappedMemberId02080468(void *, int);
+void OrBitsIntoField0(unsigned int *, unsigned int);
 extern "C" void func_ov003_02165bd8(Scene *);
 extern "C" void _Z26ApplyElementEffect02161438Pv(Scene *);
 extern "C" int func_ov003_02160854(Scene *);
 extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
-extern "C" int _Z25CompareThreshold_021614e8i(int);
+int CompareThreshold_021614e8(int);
 struct Obj0205eaa0;
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0 *, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
 extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void *);
 extern "C" Elem *_Z35GetElementAtIndex_02160bd0_02160bd0Pvi(Scene *, int);
 extern "C" int *func_0202ae18();
-extern "C" int _Z18CheckField0NonZeroPi(int *);
+int CheckField0NonZero(int *);
 extern "C" int func_0202c508(int *);
-extern "C" void _Z21ClearFlag320_02195540Ph(unsigned char *);
+void ClearFlag320_02195540(unsigned char *);
 int CountValidCombatantsMinusField_02160b84(void *);
 extern "C" int func_ov003_02160a68(Scene *);
 extern "C" void func_ov003_021612c0(Scene *);
@@ -68,7 +68,7 @@ extern "C" int func_ov003_021669f0(Scene *);
 // USA: func_ov003_0216253c
 extern "C" ARM void func_ov003_0216253c(Scene *self) {
     Entries *entries    = self->entries;
-    unsigned int *data  = _Z27GetDataPtr02114e04_020d6c00v();
+    unsigned int *data  = GetDataPtr02114e04_020d6c00();
     unsigned char state = self->state;
 
     if (state == 0) {
@@ -97,7 +97,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
         self->h480   = -1;
         self->c49f   = 0;
         self->h488   = 6;
-        self->h48c   = _Z26FindMappedMemberId02080468Pvi(entries, self->h488);
+        self->h48c   = FindMappedMemberId02080468(entries, self->h488);
         self->h474   = self->h48c;
         entries->sel = self->h48c;
         _Z23SetEntryNibbleByShortIdP19StatusOwner02081198ii(entries, 0x15, 1);
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
         _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
         self->p470  = 0;
         self->state = self->state + 1;
-        _Z16OrBitsIntoField0Pjj(data, 0x40);
+        OrBitsIntoField0(data, 0x40);
         self->flags |= 0x400;
     } else if (state == 5) {
         self->p470 = &self->h48c;
@@ -127,10 +127,10 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
         _Z26ApplyElementEffect02161438Pv(self);
         if (func_ov003_02160854(self) != 0) {
             if (idx == *(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0x2000 + 0xc8c)) {
-                if (_Z25CompareThreshold_021614e8i((int) self) != 0) {
+                if (CompareThreshold_021614e8((int) self) != 0) {
                     return;
                 }
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
                 _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
                 self->p470 = 0;
                 _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
@@ -148,7 +148,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
                 return;
             }
             self->h480 = v;
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
             _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
             self->p470 = 0;
             _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
@@ -156,8 +156,8 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
             self->flags |= 8;
             unsigned char *g = (unsigned char *) func_ov017_0218b5b0();
             int *p           = func_0202ae18();
-            if (_Z18CheckField0NonZeroPi(p) != 0 && func_0202c508(p) != 0) {
-                _Z21ClearFlag320_02195540Ph(g);
+            if (CheckField0NonZero(p) != 0 && func_0202c508(p) != 0) {
+                ClearFlag320_02195540(g);
             }
             int a = *(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0xf7c);
             int n = CountValidCombatantsMinusField_02160b84(self);

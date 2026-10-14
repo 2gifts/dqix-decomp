@@ -4,9 +4,9 @@
 struct Struct0205a198 {
     char data[0x28];
 };
-extern "C" void _Z12Init0205a198P14Struct0205a198(struct Struct0205a198*);
+void Init0205a198(struct Struct0205a198*);
 struct ClearTarget0205a234;
-extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(struct ClearTarget0205a234*);
+void ClearField0And40205a234(struct ClearTarget0205a234*);
 
 struct Menu02172128 {
     char pad0[0x170];
@@ -47,10 +47,10 @@ extern "C" ARM void func_ov000_02172128(Menu02172128* self, SafeAllocator* alloc
 #endif
     self->entries = (Struct0205a198*)allocator->Allocate(kEntryCount * sizeof(Struct0205a198));
     for (unsigned char i = 0; i < kEntryCount; i++) {
-        _Z12Init0205a198P14Struct0205a198(&self->entries[i]);
+        Init0205a198(&self->entries[i]);
     }
     self->target = (ClearTarget0205a234*)allocator->Allocate(8);
-    _Z23ClearField0And40205a234P19ClearTarget0205a234(self->target);
+    ClearField0And40205a234(self->target);
     unsigned int size = allocator->GetMaxPossibleAllocation();
     self->restAlloc.CreateTypeA(allocator->Allocate(size), size);
 }

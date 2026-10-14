@@ -61,14 +61,14 @@ struct BattleScene_021f00fc {
 
 extern "C" BattleEnd_021f00fc* _ZZ17GetGlobal021ffefcvE1s;
 
-extern "C" void _Z26GetGlobalField0x1c020421a0v();
+void GetGlobalField0x1c020421a0();
 int CheckField0NonZero(int* unknown);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* unknown);
 int CollectCombatantsWithFlag0x1000(GameState* gameState, unsigned char* members);
 int TestBitAt0x34(unsigned char* info, unsigned int member);
-extern "C" BattleResultMember_021f00fc* _Z24FindByByteAt118_021f0360Pvi(void* end, int member);
+BattleResultMember_021f00fc* FindByByteAt118_021f0360(void* end, int member);
 void* GetCombatantWithFlag0x100(GameState* gameState, int member);
-extern "C" unsigned int _Z25GetTableEntry138_021eea98P11Obj021eea98(Obj021eea98* member);
+unsigned int GetTableEntry138_021eea98(Obj021eea98* member);
 extern "C" void _Z27EnqueueEventTag105_021cd4c8tth(unsigned short a, unsigned short item, signed char mask);
 void SetCombatWorkFlags0x55f4(void* scene, int flag);
 int GetCombatWorkFlags0x55f4(void* scene, int flag);
@@ -86,7 +86,7 @@ int func_ov023_021f5150(BattleScene_021f00fc* self, BattleInfo_021f00fc* info, i
 extern "C" ARM int func_ov023_021f00fc(BattleScene_021f00fc* self)
 {
     GameState* gameState = GameState::GetInstance();
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
     void* unk = func_0202ae18();
     GameResources_021f00fc* resources = func_ov017_0218b5b0();
     if (!CheckField0NonZero((int*)unk) || self->info_->leader_ == GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)unk))
@@ -104,10 +104,10 @@ extern "C" ARM int func_ov023_021f00fc(BattleScene_021f00fc* self)
         {
             if (TestBitAt0x34((unsigned char*)self->info_, (unsigned char)i) && alive[i] != 0)
             {
-                BattleResultMember_021f00fc* member = _Z24FindByByteAt118_021f0360Pvi(_ZZ17GetGlobal021ffefcvE1s, i);
+                BattleResultMember_021f00fc* member = FindByByteAt118_021f0360(_ZZ17GetGlobal021ffefcvE1s, i);
                 void* partyMember = GetCombatantWithFlag0x100(gameState, i);
                 if (member != NULL)
-                    member->experience_ = _Z25GetTableEntry138_021eea98P11Obj021eea98((Obj021eea98*)partyMember);
+                    member->experience_ = GetTableEntry138_021eea98((Obj021eea98*)partyMember);
                 self->experience_[i] = 0;
             }
         }

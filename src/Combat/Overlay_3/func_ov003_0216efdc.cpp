@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" char *_Z26GetGlobalField0x1c020421a0v(void);
+char *GetGlobalField0x1c020421a0(void);
 extern "C" char *func_02012fe4(void);
 extern "C" void *func_0205ec34(void);
 extern "C" void func_ov003_02170960(void *self, int a, int b);
@@ -8,7 +8,7 @@ extern "C" int func_0201248c(void *obj, int mask);
 
 struct Obj_0216f414;
 struct Entry0216efdc;
-extern "C" Entry0216efdc *_Z27FindEntryByShortId_0216f414P12Obj_0216f414i(Obj_0216f414 *list, int id);
+Entry0216efdc *FindEntryByShortId_0216f414(Obj_0216f414 *list, int id);
 int TestBitInByteArray(int a, unsigned char *bits, int index);
 void SetOrClearBitInArray(void *a, unsigned char *bits, int index, int set);
 int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
@@ -61,7 +61,7 @@ struct Menu0216efdc {
 
 // USA: func_ov003_0216efdc
 extern "C" ARM void func_ov003_0216efdc(Menu0216efdc *self) {
-    Global0216efdc *global     = (Global0216efdc *) _Z26GetGlobalField0x1c020421a0v();
+    Global0216efdc *global     = (Global0216efdc *) GetGlobalField0x1c020421a0();
     Progress0216efdc *progress = (Progress0216efdc *) (func_02012fe4() + 0x1840);
     int chapter                = progress->chapter;
     int state                  = self->state_;
@@ -72,11 +72,11 @@ extern "C" ARM void func_ov003_0216efdc(Menu0216efdc *self) {
         bg[2]                       = (bg[2] & ~3) | 2;
         bg[3]                       = (bg[3] & ~3) | 3;
         if (self->unk_d4 != 0) {
-            Entry0216efdc *e = _Z27FindEntryByShortId_0216f414P12Obj_0216f414i((Obj_0216f414 *) self->unk_d4, 0x19);
+            Entry0216efdc *e = FindEntryByShortId_0216f414((Obj_0216f414 *) self->unk_d4, 0x19);
             if (e != 0) {
                 e->flags |= 2;
             }
-            e = _Z27FindEntryByShortId_0216f414P12Obj_0216f414i((Obj_0216f414 *) self->unk_d4, 0x1a);
+            e = FindEntryByShortId_0216f414((Obj_0216f414 *) self->unk_d4, 0x1a);
             if (e != 0) {
                 e->flags &= ~2;
             }

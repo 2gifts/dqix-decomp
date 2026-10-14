@@ -29,12 +29,12 @@ struct Obj_021e05fc {
     void* f10;
 };
 
-extern "C" signed char _Z26GetFieldOrFallback02159e60Pvi(void* obj, int mode);
+signed char GetFieldOrFallback02159e60(void* obj, int mode);
 extern "C" void func_ov000_021554f4(void* world, int id, int other, struct Rec_021e05fc* rec, int a4, int a5);
-extern "C" void _Z15InitObj02088f68P11Obj02088f68(struct Obj02088f68* obj);
+void InitObj02088f68(struct Obj02088f68* obj);
 extern "C" void func_ov000_02159eac(void* world, unsigned long long* bits, int bit);
 extern "C" void* func_ov000_0215e958(void* world);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* world, void* entry, int msg);
+void AddEntryAndIncrementCount0215a88c(void* world, void* entry, int msg);
 extern "C" void func_ov000_0215cd44(void* world, void* entry, GameObject* c, int d, unsigned long long bits, int flag);
 
 // USA: func_ov024_021e05fc
@@ -42,8 +42,8 @@ extern "C" ARM void* func_ov024_021e05fc(struct Obj_021e05fc* obj, int other, in
     GameObject* c = GetCombatantByID((int)obj->f10, id);
     if (!c) return 0;
     GameState::GetInstance();
-    int mine = _Z26GetFieldOrFallback02159e60Pvi(obj->f10, id);
-    int theirs = _Z26GetFieldOrFallback02159e60Pvi(obj->f10, other);
+    int mine = GetFieldOrFallback02159e60(obj->f10, id);
+    int theirs = GetFieldOrFallback02159e60(obj->f10, other);
     int ok = 0;
     if (theirs > mine) {
         if (theirs - mine >= 7) ok = 1;
@@ -61,7 +61,7 @@ extern "C" ARM void* func_ov024_021e05fc(struct Obj_021e05fc* obj, int other, in
             msg = rec->msgs.success;
             func_ov000_021554f4(obj->f10, id, other, rec, 0, 4);
             t->currentStats_->primaryStats.currHP = 0;
-            _Z15InitObj02088f68P11Obj02088f68((struct Obj02088f68*)t->currentStats_);
+            InitObj02088f68((struct Obj02088f68*)t->currentStats_);
             func_ov000_02159eac(obj->f10, &bits, 0x24);
             ((unsigned char*)obj->f10)[0x8e15]++;
         }
@@ -70,7 +70,7 @@ extern "C" ARM void* func_ov024_021e05fc(struct Obj_021e05fc* obj, int other, in
     }
     void* entry = func_ov000_0215e958(obj->f10);
     if (!entry) return 0;
-    _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->f10, entry, msg);
+    AddEntryAndIncrementCount0215a88c(obj->f10, entry, msg);
     struct Flag_021e05fc* fl = (struct Flag_021e05fc*)((char*)obj->fc + 0x1c);
     func_ov000_0215cd44(obj->f10, entry, c, 0, bits, fl->flag != 0);
     return entry;

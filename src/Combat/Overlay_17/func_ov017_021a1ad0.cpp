@@ -35,10 +35,10 @@ struct CollisionFrame021a1ad0 {
 Entry_02028bd0* GetEntryTableBase();
 Entry_02028bd0* GetElementStride0x318(Element0x318_02028bac*, int);
 Entry_02028bd0* FindInlineEntryById(Entry_02028bd0*, int);
-extern "C" void _Z33TickActorAndDispatchPhase02076b58P11Obj02076b58(Obj02076b58*);
-extern "C" int _Z22IsValueInRange0201b5d8i(int);
+void TickActorAndDispatchPhase02076b58(Obj02076b58*);
+int IsValueInRange0201b5d8(int);
 int CheckField0NonZero(int*);
-extern "C" void _Z27EnqueueEventTag134_021c9544iiii(int, int, int, int);
+void EnqueueEventTag134_021c9544(int, int, int, int);
 extern "C" int* func_0202ae18();
 extern "C" unsigned short* func_02012fe4();
 extern "C" int func_0202c508(int*);
@@ -64,9 +64,9 @@ extern "C" ARM void func_ov017_021a1ad0() {
             for (int slot = 0; slot < 12; slot++) {
                 FieldMonster021a1ad0* monster = (FieldMonster021a1ad0*)state->GetMaybeFieldMonsterByIndex(slot + base);
                 if (!monster || !monster->object.IsVisible()) continue;
-                _Z33TickActorAndDispatchPhase02076b58P11Obj02076b58((Obj02076b58*)monster);
+                TickActorAndDispatchPhase02076b58((Obj02076b58*)monster);
                 int removable = 1;
-                if ((monster->flags & 2) || (monster->flags & 4) || _Z22IsValueInRange0201b5d8i(*currentArea)) removable = 0;
+                if ((monster->flags & 2) || (monster->flags & 4) || IsValueInRange0201b5d8(*currentArea)) removable = 0;
                 if (monster->flags & 8) removable = 0;
                 if (!removable) continue;
                 int clear;
@@ -105,7 +105,7 @@ collisionComplete:
                     func_02076a8c(monster);
                     monster->object.MakeHidden();
                     if (CheckField0NonZero(manager) && entry) {
-                        _Z27EnqueueEventTag134_021c9544iiii(entry->id, slot, monster->object.unknown_2_, tag);
+                        EnqueueEventTag134_021c9544(entry->id, slot, monster->object.unknown_2_, tag);
                     }
                 }
             }
@@ -115,7 +115,7 @@ collisionComplete:
         if (!entry) return;
         for (int slot = 0; slot < 12; slot++) {
             FieldMonster021a1ad0* monster = (FieldMonster021a1ad0*)state->GetMaybeFieldMonsterByIndex(entry->slotGroup * 12 + 0x70 + slot);
-            if (monster && monster->object.IsVisible()) _Z33TickActorAndDispatchPhase02076b58P11Obj02076b58((Obj02076b58*)monster);
+            if (monster && monster->object.IsVisible()) TickActorAndDispatchPhase02076b58((Obj02076b58*)monster);
         }
     }
 }

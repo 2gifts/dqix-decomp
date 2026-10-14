@@ -23,7 +23,7 @@ struct Position02079238 { int x, y, z; };
 int GetSignedByte0x1c8(void*);
 extern "C" int func_020342ac(GameObject*);
 CandidateState02079238* GetFieldAt0x150(unsigned char*);
-extern "C" int _Z37HasHighBit14SetForField4Entry02034340Pv(void*);
+int HasHighBit14SetForField4Entry02034340(void*);
 extern "C" Position02079238 func_02034104(GameObject*);
 extern "C" void __clear(void* dst, int size);
 int fix32sin(int x);
@@ -47,7 +47,7 @@ extern "C" ARM short func_02079238(Object3D* reference, int maximumDistance) {
         if (GetFieldAt0x150((unsigned char*)candidate)->inactive != 0) continue;
         if (view->flags->flags & 1) continue;
         if ((int)view->state > 0) continue;
-        if (_Z37HasHighBit14SetForField4Entry02034340Pv(candidate)) continue;
+        if (HasHighBit14SetForField4Entry02034340(candidate)) continue;
         Position02079238 copy = func_02034104(candidate);
         Position02079238 offset;
         Vector3fix_Subtract((const Vector3fix*)&copy,

@@ -55,10 +55,10 @@ struct ListMenu_021e6448 {
 
 int SelectField0x8Or0x58ByFlags(unsigned char* obj);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
-extern "C" Element_021e6448* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* s, int key);
-extern "C" void _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(Struct_0205c4a8* s, int delta);
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(Struct_0205bb84* s);
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(Struct_0205bcdc* s, int index);
+Element_021e6448* FindElementByC40205d81c(Struct_0205d81c* s, int key);
+void AdvanceWrappedAccumulator0205c4a8(Struct_0205c4a8* s, int delta);
+int ComputeScaledSum0205bb84(Struct_0205bb84* s);
+void SetIndexIfValid0205bcdc(Struct_0205bcdc* s, int index);
 extern "C" void func_0205bb04(void* s, int index);
 
 extern "C" TouchState_021e6448 data_02114e54;
@@ -70,7 +70,7 @@ extern "C" ARM int func_ov023_021e6448(ListMenu_021e6448* self) {
     if (data_02114e54.touching_ != 0) {
         int x, y;
         SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &x, &y);
-        Element_021e6448* e = _Z23FindElementByC40205d81cP15Struct_0205d81ci((Struct_0205d81c*)&self->list_, self->selectedKey_);
+        Element_021e6448* e = FindElementByC40205d81c((Struct_0205d81c*)&self->list_, self->selectedKey_);
         if (e != NULL) {
             short right = e->x;
             short bottom = e->y;
@@ -82,16 +82,16 @@ extern "C" ARM int func_ov023_021e6448(ListMenu_021e6448* self) {
                 ListState_021e6448* scroll = GetState(&self->list_, 1);
                 short left = e->x << 3;
                 if (x >= left && x < left + 16) {
-                    _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i((Struct_0205c4a8*)scroll, -1);
+                    AdvanceWrappedAccumulator0205c4a8((Struct_0205c4a8*)scroll, -1);
                     self->scrolled_ = 1;
                 }
                 right <<= 3;
                 if (right - 16 <= x && x < right) {
-                    _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i((Struct_0205c4a8*)scroll, 1);
+                    AdvanceWrappedAccumulator0205c4a8((Struct_0205c4a8*)scroll, 1);
                     self->scrolled_ = 1;
                 }
-                int index = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((Struct_0205bb84*)scroll);
-                _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((Struct_0205bcdc*)&self->list_.states[0], index);
+                int index = ComputeScaledSum0205bb84((Struct_0205bb84*)scroll);
+                SetIndexIfValid0205bcdc((Struct_0205bcdc*)&self->list_.states[0], index);
                 func_0205bb04(&self->list_.states[1], index);
             }
             return 1;

@@ -36,9 +36,9 @@ struct TextItem {
 int IsValueEqual12(int);
 void* FindEntryByKey(TableA68*, int);
 extern "C" int func_020420e8(char*, int);
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(Obj02046574*);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574*, int, char*);
+void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" void func_02046608(Obj02046574*, int, void*, char*, int, int, int);
 extern "C" void func_0204f41c(TextWindow*, short, int, char*, int, int, short*, short*, int);
 
@@ -54,10 +54,10 @@ extern "C" ARM void func_02081870(TextRenderer* renderer, TextWindow* window, Te
             item->x = (short)(width - func_020420e8(text, font)) >> 1;
         }
     }
-    Obj02046574* formatter = (Obj02046574*)_Z26GetGlobalField0x1c020421a0v();
+    Obj02046574* formatter = (Obj02046574*)GetGlobalField0x1c020421a0();
     memset(renderer->buffer, 0, 0x960);
     func_02046380(formatter);
-    _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, item->nameIndex, item->name);
+    SetIndexedName02046574(formatter, item->nameIndex, item->name);
     void* text = FindEntryByKey(renderer->strings, item->stringId);
     func_02046608(formatter, item->font, text, renderer->buffer, 0x100, 0, 0);
     int firstFont = item->font;

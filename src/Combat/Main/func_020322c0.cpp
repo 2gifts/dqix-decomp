@@ -13,8 +13,8 @@ struct Vec4f {
     int w;
 };
 
-extern "C" short _Z8fix32cosi(int x);
-extern "C" short _Z8fix32sini(int x);
+short fix32cos(int x);
+short fix32sin(int x);
 extern "C" void Vector3fix_Normalize(struct Vec3* v, struct Vec3* out);
 extern "C" int Vector3fix_InnerProduct(struct Vec3* a, struct Vec3* b);
 
@@ -28,9 +28,9 @@ extern "C" ARM int func_020322c0(const struct Obj020322c0* self, const struct Ve
     struct Vec3 a = self->f24;
     Vector3fix_Normalize(&a, &a);
 
-    int cz = _Z8fix32cosi(other->x);
+    int cz = fix32cos(other->x);
     struct Vec3 dir;
-    dir.x = _Z8fix32sini(other->x);
+    dir.x = fix32sin(other->x);
     dir.y = 0;
     dir.z = cz;
     Vector3fix_Normalize(&dir, &dir);

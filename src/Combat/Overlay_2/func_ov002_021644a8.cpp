@@ -4,7 +4,7 @@ extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(char *ob
 extern "C" void func_ov002_02161cf0(char *base);
 extern "C" void func_ov002_0215dae0(unsigned char *obj);
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(void *s);
-extern "C" int _Z29GetFieldC54ArrayValue021573f8Pvi(void *self, int v);
+int GetFieldC54ArrayValue021573f8(void *self, int v);
 extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(void *self, int a, int b);
 extern "C" void func_ov002_0215b9a4(char *self, unsigned char key, int flag);
 extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(void *s, int clear, int key);
@@ -13,7 +13,7 @@ extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(void *p, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void *obj, int a, int b);
-extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *self, int flag);
+int CheckFlagOrThreshold_02161b48(char *self, int flag);
 extern "C" void func_ov002_02156e90(char *base);
 extern "C" void _Z27SetFieldB0AndUpdate0205dee8P11Obj0205dee8i(void *obj, int val);
 
@@ -33,7 +33,7 @@ extern "C" ARM void func_ov002_021644a8(char *self) {
         *(int *) (self + 0x247c) |= 4;
         short saved = *(short *) (self + 0x1bf0);
         *(short *) (self + 0x1bf0) = _Z26GetActiveScaledSum0205d794P15Struct_0205c570(self + 0xec8);
-        *(char *) (self + 0x1c20) = _Z29GetFieldC54ArrayValue021573f8Pvi(self, *(short *) (self + 0x1bf0));
+        *(char *) (self + 0x1c20) = GetFieldC54ArrayValue021573f8(self, *(short *) (self + 0x1bf0));
         signed char cur = *(signed char *) (self + 0x1c20);
         *(char *) (self + 0x1c21) = cur;
         _Z17SetElementFieldC2P15Struct_0205d81cii(self + 0xec8, 0xd, 1);
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov002_021644a8(char *self) {
             *(int *) (self + 0x1bc0) = 0;
             *(char *) (self + 0x1c2e) = 1;
         } else {
-            if (_Z29CheckFlagOrThreshold_02161b48Pci(self, 1) == 0) {
+            if (CheckFlagOrThreshold_02161b48(self, 1) == 0) {
                 return;
             }
             func_ov002_02156e90(self);

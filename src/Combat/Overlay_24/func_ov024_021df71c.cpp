@@ -26,7 +26,7 @@ struct ActionRule {
 };
 extern ActionRule data_ov024_021fe9b8[];
 int* GetGlobal02109418();
-extern "C" int _Z30SumCombatantKeyMatches02086aecP11Obj02086aeci(Obj02086aec*, int);
+int SumCombatantKeyMatches02086aec(Obj02086aec*, int);
 int CheckFlag0x14Bit0x10Set(unsigned char*);
 
 // USA: func_ov024_021df71c
@@ -45,7 +45,7 @@ extern "C" ARM int func_ov024_021df71c(Combatant* self, unsigned int actionID, i
             if (rule->entryID_ != entries[i].id_ || key != rule->combatantKey_) continue;
             if (alternate != 0 && rule->alternate_ == 0) continue;
             if (alternate == 0 && rule->alternate_ != 0) continue;
-            if (_Z30SumCombatantKeyMatches02086aecP11Obj02086aeci(battle, (short)rule->resultID_) > 0) continue;
+            if (SumCombatantKeyMatches02086aec(battle, (short)rule->resultID_) > 0) continue;
             if (rule->condition_ != 0) {
                 if (rule->condition_ == 1) {
                     if (!CheckFlag0x14Bit0x10Set((unsigned char*)self->currentStats_)) continue;

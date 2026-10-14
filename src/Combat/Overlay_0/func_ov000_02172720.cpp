@@ -5,8 +5,8 @@
 struct Obj0205d048;
 struct List0204afb4;
 extern "C" void func_0205d048(struct Obj0205d048* obj);
-extern "C" void _Z23ResetRecordList0204afb4P12List0204afb4(struct List0204afb4* obj);
-extern "C" void _Z17ResetSlot02170054Pv(void* obj);
+void ResetRecordList0204afb4(struct List0204afb4* obj);
+void ResetSlot02170054(void* obj);
 
 #if defined(jpn)
 #define SLOT_BYTES 0x488
@@ -59,8 +59,8 @@ extern "C" ARM void func_ov000_02172720(Owner_02172720* self) {
         self->taskId = -1;
     }
     func_0205d048((struct Obj0205d048*)self->field_0x188);
-    _Z23ResetRecordList0204afb4P12List0204afb4((struct List0204afb4*)self->list8c4);
-    _Z23ResetRecordList0204afb4P12List0204afb4((struct List0204afb4*)self->list8a4);
+    ResetRecordList0204afb4((struct List0204afb4*)self->list8c4);
+    ResetRecordList0204afb4((struct List0204afb4*)self->list8a4);
 #if defined(jpn)
     if (self->alloc1aa0.GetSignedAllocator() != 0) {
         self->alloc1aa0.Destroy();
@@ -101,7 +101,7 @@ extern "C" ARM void func_ov000_02172720(Owner_02172720* self) {
     }
 #endif
     for (int i = 0; i < 4; i++) {
-        _Z17ResetSlot02170054Pv(&self->slots[i]);
+        ResetSlot02170054(&self->slots[i]);
     }
     func_ov000_02172850(self);
     self->flags &= 0x40;

@@ -4,13 +4,13 @@
 
 struct Container020e0310;
 
-extern "C" int _Z22AppendFrameTag02041c08Pciiiii(char* dst, int a1, int a2, int a3, int a4, int a5);
+int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
 int AppendCursorTag(char* dst, int cursor);
 int AppendNameTag(char* dst, int n, const char* name);
 int AppendPaletteTag(char* dst, int palette);
 int AppendXTag(char* dst, int x);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
-extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+int AppendString02042058(char* dst, const char* src);
 
 struct CombatStats_02176500 {
     char pad0[0x3b];
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov000_02176500(struct Menu_02176500* menu, char* dst, i
     }
     int cursor = menu->cursor;
     if (framed) {
-        _Z22AppendFrameTag02041c08Pciiiii(dst, cursor, 8, 5, 5, 5);
+        AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
     AppendCursorTag(dst, cursor);
     for (int i = 0; i < 6; i++) {
@@ -59,12 +59,12 @@ extern "C" ARM void func_ov000_02176500(struct Menu_02176500* menu, char* dst, i
         if (flag == 0 && item == 5) {
             AppendPaletteTag(dst, 3);
         }
-        AppendNameTag(dst, item, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(menu->messages, (short)(item + 0x7534)));
+        AppendNameTag(dst, item, (const char*)GetFieldByKey020e0434(menu->messages, (short)(item + 0x7534)));
         if (i == 5) {
             return;
         }
         if (i & 1) {
-            _Z20AppendString02042058PcPKc(dst, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(menu->messages, 0));
+            AppendString02042058(dst, (const char*)GetFieldByKey020e0434(menu->messages, 0));
         } else {
             AppendXTag(dst, 0x45);
         }

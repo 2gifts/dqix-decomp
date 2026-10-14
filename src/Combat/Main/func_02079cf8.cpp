@@ -10,7 +10,7 @@ extern "C" {
 }
 
 struct Obj02079808;
-extern "C" void* _Z24ResetObjectState02079a3cPv(void* obj);
+void* ResetObjectState02079a3c(void* obj);
 
 extern unsigned char data_0211e33c[0x30000];
 extern const char data_020f0e02[];
@@ -26,7 +26,7 @@ extern "C" ARM void func_02079cf8(ActionDataTables* obj, SafeAllocator* a1, Safe
     base = data_0211e33c;
     unsigned int capacity = sizeof(data_0211e33c);
     GPCReadPair pair;
-    _Z24ResetObjectState02079a3cPv(&pair);
+    ResetObjectState02079a3c(&pair);
 
     unsigned int sizeOut;
 

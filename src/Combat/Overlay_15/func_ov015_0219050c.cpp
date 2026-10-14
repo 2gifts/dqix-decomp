@@ -54,7 +54,7 @@ struct CharacterViewer
     char menuList_[0x80];
 };
 
-extern "C" MessageSystem0219050c* _Z26GetGlobalField0x1c020421a0v();
+MessageSystem0219050c* GetGlobalField0x1c020421a0();
 extern "C" void func_02069fec(MessageSystem0219050c* system, const char* text, char* converted);
 #if defined(jpn)
 extern "C" int func_02045d14(MessageSystem0219050c* system, const char* converted, unsigned short* line, int unk);
@@ -69,8 +69,8 @@ extern "C" void func_02045f3c(MessageSystem0219050c* system, unsigned short* lin
 void* GetNodeAtIndex(IndexList_0202a9ac* list, int index);
 void* GetSubstructAt0x4(void* item);
 extern "C" AnimationRecord0219050c* func_ov015_0218f39c(ViewObject* self, void* name);
-extern "C" float _Z16GetRatio0218f3c4P11Obj0218f3c4(Obj0218f3c4* obj);
-extern "C" float _Z16GetRatio0218f408P11Obj0218f408(Obj0218f408* obj);
+float GetRatio0218f3c4(Obj0218f3c4* obj);
+float GetRatio0218f408(Obj0218f408* obj);
 extern "C" void func_ov015_0218f794(ViewObject* self);
 
 extern const char data_ov015_02194256[];
@@ -84,7 +84,7 @@ extern const char data_ov015_02194295[];
 #define PREPARE_TEXT()                                                    \
     {                                                                     \
         memset(line, 0, sizeof(line));                                    \
-        MessageSystem0219050c* system = _Z26GetGlobalField0x1c020421a0v();     \
+        MessageSystem0219050c* system = GetGlobalField0x1c020421a0();     \
         char converted[0x40] = {};                                        \
         func_02069fec(system, text, converted);                           \
         func_02045d14(system, converted, line, PrepareLineMode);          \
@@ -110,7 +110,7 @@ extern "C" ARM void func_ov015_0219050c(CharacterViewer* self)
     char text[0x20];
     unsigned short line[0x20];
 
-    MessageSystem0219050c* messages = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem0219050c* messages = GetGlobalField0x1c020421a0();
     sprintf(text, data_ov015_02194256, (double)(self->fps_));
     PREPARE_TEXT();
     DRAW_LINE(0, 0xa0, 0x7fff);
@@ -151,10 +151,10 @@ extern "C" ARM void func_ov015_0219050c(CharacterViewer* self)
         sprintf(text, data_ov015_0219427b, (double)(record->frameRate / 4096.0f));
         PREPARE_TEXT();
         DRAW_LINE(0xa0, 0xa0, 0x7fff);
-        sprintf(text, data_ov015_02194288, (double)(_Z16GetRatio0218f3c4P11Obj0218f3c4((Obj0218f3c4*)self->current_)));
+        sprintf(text, data_ov015_02194288, (double)(GetRatio0218f3c4((Obj0218f3c4*)self->current_)));
         PREPARE_TEXT();
         DRAW_LINE(0xa0, 0xaa, 0x7fff);
-        sprintf(text, data_ov015_02194295, (double)(_Z16GetRatio0218f408P11Obj0218f408((Obj0218f408*)self->current_)));
+        sprintf(text, data_ov015_02194295, (double)(GetRatio0218f408((Obj0218f408*)self->current_)));
         PREPARE_TEXT();
         DRAW_LINE(0xa0, 0xb4, 0x7fff);
     }

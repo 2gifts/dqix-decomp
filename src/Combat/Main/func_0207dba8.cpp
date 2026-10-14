@@ -19,7 +19,7 @@ struct Init0207d7c0 {
     unsigned short h6;
     signed char arr8[4];
 };
-extern "C" void _Z18InitStruct0207d7c0P12Init0207d7c0(struct Init0207d7c0* o);
+void InitStruct0207d7c0(struct Init0207d7c0* o);
 
 extern int data_020e8a4c;
 
@@ -41,7 +41,7 @@ extern "C" ARM void func_0207dba8(struct Init0207d7c0* list) {
                 int found = (func_02001aec(e->arr8, &data_020e8a4c, 4) == 0);
                 if (found) {
                     func_ov017_021c9c64(h0, 0);
-                    _Z18InitStruct0207d7c0P12Init0207d7c0(e);
+                    InitStruct0207d7c0(e);
                 }
             }
         } else {

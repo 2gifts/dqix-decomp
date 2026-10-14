@@ -22,7 +22,7 @@ struct StructDE234_020de234 {
     char unk_1a[0x20 - 0x1a];
 };
 
-extern "C" unsigned short _Z31GetPreferredPackedField020de234P20StructDE234_020de234i(StructDE234_020de234* p, int preferMid);
+unsigned short GetPreferredPackedField020de234(StructDE234_020de234* p, int preferMid);
 
 extern const char data_ov006_021601e5[];
 
@@ -62,7 +62,7 @@ extern "C" ARM void func_ov006_02156f04(AlchemyPot* self, PotIngredient* ingredi
         ingredient->item_ = item;
         if (item > 0) {
             ingredient->loading_ = 1;
-            int number = _Z31GetPreferredPackedField020de234P20StructDE234_020de234i(&ingredients->entry_, 0);
+            int number = GetPreferredPackedField020de234(&ingredients->entry_, 0);
             char path[0x40] = {0};
             sprintf(path, data_ov006_021601e5, ingredients->entry_.letter_, number);
             ingredient->task_ = loader->QueueLoadFile(path, 0);

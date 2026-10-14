@@ -58,17 +58,17 @@ extern "C" GameResources* func_ov017_0218b5b0();
 extern "C" void func_ov017_0218f5a4(GameResources*, int, int, int, int);
 extern "C" void func_ov011_021848a0(void*, int);
 
-extern "C" Element_02157a28* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0*, int);
-extern "C" void* _Z22ZeroInitReturn020de824Pv(void*);
-extern "C" void _Z18InitStruct0207cbe8Pc(char*);
-extern "C" void _Z18InitStruct0207cc0cPc(char*);
+Element_02157a28* FindElementByKey020dedd0(Container020dedd0*, int);
+void* ZeroInitReturn020de824(void*);
+void InitStruct0207cbe8(char*);
+void InitStruct0207cc0c(char*);
 void* GetPtrField0x2a04(GameState*);
 int GetHalfwordEntryFromField150(Field150Holder02052df8*, int);
-extern "C" void _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(KeyedList0207c484*, int, int, int);
+void DecrementKeyedStackAmount0207c484(KeyedList0207c484*, int, int, int);
 void TrySetFlags0x130(unsigned char*, unsigned short);
 int CheckField0NonZero(int*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
-extern "C" void _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498(Ctx021a3498*);
+void ClearIfMatchAndFinalize_021a3498(Ctx021a3498*);
 
 // USA: func_ov004_02157a28
 extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
@@ -79,17 +79,17 @@ extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
     if (!c) return 0;
     Container020dedd0* cont = (Container020dedd0*)func_ov004_02156fd4(a, 5);
     if (!cont) return 0;
-    Element_02157a28* elem = _Z24FindElementByKey020dedd0P17Container020dedd0i(cont, data_ov004_021707d8.ptr->key);
+    Element_02157a28* elem = FindElementByKey020dedd0(cont, data_ov004_021707d8.ptr->key);
     if (!elem) return 0;
     int category = elem->bits.category;
     TextContext_02157a28 context;
     context.allocator.ResetAllocatorPointer();
-    _Z22ZeroInitReturn020de824Pv(context.list);
-    _Z18InitStruct0207cbe8Pc((char*)&context);
-    _Z18InitStruct0207cbe8Pc((char*)&context);
+    ZeroInitReturn020de824(context.list);
+    InitStruct0207cbe8((char*)&context);
+    InitStruct0207cbe8((char*)&context);
     context.containerData = cont;
     func_0207cc18(&context, elem);
-    _Z18InitStruct0207cc0cPc((char*)&context);
+    InitStruct0207cc0c((char*)&context);
 
     int found = 0;
     int i;
@@ -112,10 +112,10 @@ extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
         func_0207c378(bag + 0x1d4, data_ov004_021707d8.ptr->key, (signed char)(data_ov004_021707d8.ptr->count - 1), category);
         data_ov004_021707d8.ptr->dirty = 0;
     } else {
-        _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii((KeyedList0207c484*)(bag + 0x1d4), data_ov004_021707d8.ptr->key, 1, category);
+        DecrementKeyedStackAmount0207c484((KeyedList0207c484*)(bag + 0x1d4), data_ov004_021707d8.ptr->key, 1, category);
     }
     data_ov004_021707d8.ptr->used++;
-    if (_Z24FindElementByKey020dedd0P17Container020dedd0i(cont, equipped)) {
+    if (FindElementByKey020dedd0(cont, equipped)) {
         func_0207c378(bag + 0x1d4, equipped, 1, category);
     }
     int upgrade = 0;
@@ -126,7 +126,7 @@ extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
     }
     if (!same || flag) {
         int did = 0;
-        Element_02157a28* e2 = _Z24FindElementByKey020dedd0P17Container020dedd0i(cont, data_ov004_021707d8.ptr->key);
+        Element_02157a28* e2 = FindElementByKey020dedd0(cont, data_ov004_021707d8.ptr->key);
         if (e2 && e2->bits.flag) {
             TrySetFlags0x130((unsigned char*)c, 4);
             did = 1;
@@ -143,9 +143,9 @@ extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
         func_ov017_0218f5a4(res, id, 1, 0, 0);
         while (GetHeadNodeIdOrMinusOne(headA) == 0x13) {
             loader->RemoveAllLocks();
-            _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498((Ctx021a3498*)headA);
+            ClearIfMatchAndFinalize_021a3498((Ctx021a3498*)headA);
             if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)ctxB) == 0x14) {
-                _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498(ctxB);
+                ClearIfMatchAndFinalize_021a3498(ctxB);
             }
         }
         if (did) {

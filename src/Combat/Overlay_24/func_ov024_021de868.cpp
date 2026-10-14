@@ -8,9 +8,9 @@ int IsFlag10088Set(struct S_10088* obj);
 void ResetFields14And18KeepFlag0x4(unsigned char* obj, unsigned short val);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" float func_ov024_021db358(GameObject* obj);
-extern "C" short _Z20ApplyHPDelta0215a16cPviiPs(void* unused, int id, int delta, short* outApplied);
+short ApplyHPDelta0215a16c(void* unused, int id, int delta, short* outApplied);
 extern "C" void* func_ov000_0215e958(void* a0);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* objRaw, void* listRaw, int c);
+void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
 struct Flag_021de868 { unsigned char pad : 7; unsigned char flag : 1; };
@@ -44,7 +44,7 @@ extern "C" ARM void* func_ov024_021de868(struct Obj_021de868* obj, int unused, i
 			}
 		}
 	} else if (func_ov024_021db358(c) < 1.0f) {
-		_Z20ApplyHPDelta0215a16cPviiPs(obj->field0x10, id, c->currentStats_->primaryStats.maxHP, &applied);
+		ApplyHPDelta0215a16c(obj->field0x10, id, c->currentStats_->primaryStats.maxHP, &applied);
 		func_ov000_02159eac(obj->field0x10, &local, 0x25);
 		msg = 0x16;
 	} else {
@@ -52,7 +52,7 @@ extern "C" ARM void* func_ov024_021de868(struct Obj_021de868* obj, int unused, i
 	}
 	void* entry = func_ov000_0215e958(obj->field0x10);
 	if (!entry) return 0;
-	_Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->field0x10, entry, msg);
+	AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, msg);
 	struct Flag_021de868* fl = (struct Flag_021de868*)((char*)obj->field0xc + 0x1c);
 	func_ov000_0215cd44(obj->field0x10, entry, c, (short)-applied, local.v, fl->flag != 0);
 	return entry;

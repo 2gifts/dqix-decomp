@@ -13,14 +13,14 @@ struct SkillRecord_021f87dc {
     unsigned int rest18 : 16;
 };
 
-extern "C" int _Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(GameObject* combatant);
+int IsCombatantFlag2Mask512_021eadfc(GameObject* combatant);
 unsigned int AdjustValueByFieldFlag(void* obj, unsigned int val);
 
 // USA: func_ov024_021f87dc
 extern "C" ARM int func_ov024_021f87dc(GameObject* combatant, SkillRecord_021f87dc* skill, int* cost) {
     *cost = skill->cost;
     if (skill->costType == 2) {
-        if (combatant != 0 && _Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(combatant)) {
+        if (combatant != 0 && IsCombatantFlag2Mask512_021eadfc(combatant)) {
             *cost = 0;
         } else if (skill->id == 0x28) {
             *cost = 0x14;

@@ -2,8 +2,8 @@
 
 struct Container020e0310;
 
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310 *c, int key);
-extern "C" int _Z20AppendString02042058PcPKc(char *dst, const char *src);
+int GetFieldByKey020e0434(struct Container020e0310 *c, int key);
+int AppendString02042058(char *dst, const char *src);
 
 struct S {
     char pad[0x6c];
@@ -25,6 +25,6 @@ extern "C" ARM void func_ov002_02160004(char *p, char *dst) {
         return;
     }
 
-    int name = _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310 *) (p + 0x20), (short) (id + 0xfbe));
-    _Z20AppendString02042058PcPKc(dst, (const char *) name);
+    int name = GetFieldByKey020e0434((struct Container020e0310 *) (p + 0x20), (short) (id + 0xfbe));
+    AppendString02042058(dst, (const char *) name);
 }

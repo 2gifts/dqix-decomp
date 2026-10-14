@@ -9,16 +9,16 @@ struct Struct_0205c570;
 struct Struct_0205def8;
 struct Obj0205eaa0;
 
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570* s);
-extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(struct Struct_0205def8* s, int clear, int key);
+int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
+void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8* s, int clear, int key);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void* GetFieldAt0x150(unsigned char* obj);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
-extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
-extern "C" int _Z35CheckFlagsOrField_0217ab48_0217ab48Pv(void* obj);
+void* SearchBothTables02079e2c(char* p, int key);
+int CheckFlagsOrField_0217ab48_0217ab48(void* obj);
 extern "C" void func_ov000_021718a4(void* obj);
 extern "C" void func_ov000_0217629c(void* obj);
 extern "C" void func_ov000_0217ab8c(void* obj, int a, int b);
@@ -90,9 +90,9 @@ extern short data_ov000_02183658[];
 // USA: func_ov000_0217bdf4
 extern "C" ARM int func_ov000_0217bdf4(MenuObj_0217bdf4* obj, int arg1, int arg2) {
     data_ov000_02184294.ctx->flags |= 0x100;
-    obj->field23 = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)obj->field38);
+    obj->field23 = GetActiveScaledSum0205d794((struct Struct_0205c570*)obj->field38);
     MenuCtx_0217bdf4* ctx = data_ov000_02184294.ctx;
-    _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)ctx->list, 1, 0x16);
+    SetElementFlag0x20ByKey0205def8((struct Struct_0205def8*)ctx->list, 1, 0x16);
     int t = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
     int active = (t | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)obj->field38, 0x14)) != 0;
     if (active || obj->field444 != 0) {
@@ -101,22 +101,22 @@ extern "C" ARM int func_ov000_0217bdf4(MenuObj_0217bdf4* obj, int arg1, int arg2
             return -1;
         }
         int kind = ((MemberInfo_0217bdf4*)GetFieldAt0x150((unsigned char*)member))->spellKind;
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 1, 0);
         obj->field1d = 0;
         ActionDataTables* data = GetData02108e10();
         if (data == NULL) {
             return -1;
         }
-        TableEntry_0217bdf4* entry = (TableEntry_0217bdf4*)_Z24SearchBothTables02079e2cPci((char*)data, data_ov000_02183658[kind]);
+        TableEntry_0217bdf4* entry = (TableEntry_0217bdf4*)SearchBothTables02079e2c((char*)data, data_ov000_02183658[kind]);
         if (entry == NULL) {
             return -1;
         }
         obj->field26 = entry->id;
         func_ov000_021718a4(obj);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)ctx->list, 0, 0x16);
+        SetElementFlag0x20ByKey0205def8((struct Struct_0205def8*)ctx->list, 0, 0x16);
         return obj->selections[obj->depth];
     }
-    if (_Z35CheckFlagsOrField_0217ab48_0217ab48Pv(obj)) {
+    if (CheckFlagsOrField_0217ab48_0217ab48(obj)) {
         func_ov000_0217629c(obj);
         obj->selections[obj->depth] = 0;
         obj->depth--;

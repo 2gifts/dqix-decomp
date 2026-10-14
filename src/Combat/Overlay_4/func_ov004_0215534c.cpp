@@ -69,9 +69,9 @@ extern "C" int func_ov023_021f6f10(void* obj);
 extern "C" void* func_0205ec34(void);
 extern "C" void func_ov023_021f9d14(Grid021f9b30* grid, void* ctx);
 extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30* self, unsigned short val, unsigned int x, unsigned int y);
-extern "C" void _Z26SetByteAtOffset60_021f9da0Pvh(void* self, unsigned char val);
-extern "C" void _Z21DispatchNode_021f6630iiss(int ctx, int kind, short x, short y);
-extern "C" int _Z31CheckType16ThenTestBit_021552b8Pv(void* ctx);
+void SetByteAtOffset60_021f9da0(void* self, unsigned char val);
+void DispatchNode_021f6630(int ctx, int kind, short x, short y);
+int CheckType16ThenTestBit_021552b8(void* ctx);
 extern int TestBitInByteArray(int unused, unsigned char* arr, int index);
 
 // USA: func_ov004_0215534c
@@ -137,9 +137,9 @@ extern "C" ARM int func_ov004_0215534c(void* ctx) {
         }
     }
 
-    _Z26SetByteAtOffset60_021f9da0Pvh(grid, 1);
+    SetByteAtOffset60_021f9da0(grid, 1);
     func_ov023_021f9d14(grid, ctx);
-    _Z21DispatchNode_021f6630iiss((int)ctx, 3, x, y);
-    _Z31CheckType16ThenTestBit_021552b8Pv(ctx);
+    DispatchNode_021f6630((int)ctx, 3, x, y);
+    CheckType16ThenTestBit_021552b8(ctx);
     return 0;
 }

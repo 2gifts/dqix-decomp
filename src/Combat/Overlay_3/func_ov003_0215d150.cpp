@@ -54,30 +54,30 @@ struct Zone {
 static inline Sub1840 *GetSub(Zone *z) { return &z->sub; }
 static inline int GetB3c(Sub1840 *s) { return s->wb3c; }
 
-extern "C" Ctl *_Z26GetGlobalField0x1c020421a0v();
+Ctl *GetGlobalField0x1c020421a0();
 extern "C" int *func_0202ae18();
 extern "C" Zone *func_02012fe4();
 extern "C" void func_02046380(void *obj);
 extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(void *g, int index, int value);
-extern "C" void _Z14SetByteInRangePhih(unsigned char *, int, unsigned char);
-extern "C" int _Z18CheckField0NonZeroPi(int *p);
+void SetByteInRange(unsigned char *, int, unsigned char);
+int CheckField0NonZero(int *p);
 extern "C" int func_0202c540(int *p);
 extern "C" int func_0202c508(int *p);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void *, int, void *);
 extern "C" const char *_Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310 *, short);
-extern "C" int _Z20AppendString02042058PcPKc(char *dst, const char *src);
+int AppendString02042058(char *dst, const char *src);
 extern "C" void func_ov003_0215cab0(char *obj, void *flag);
 extern "C" void func_ov003_0215ddc0(char *base);
 extern "C" void func_ov003_0215df1c(void *self);
 extern "C" void func_ov003_0215dd3c(char *obj);
 extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(void *, int, int);
-extern "C" void _Z23SetChannelAFlag0205cef8Pv(void *obj);
-extern "C" void _Z23SetChannelBFlag0205cf04Pv(void *obj);
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570 *);
+void SetChannelAFlag0205cef8(void *obj);
+void SetChannelBFlag0205cf04(void *obj);
+int GetActiveScaledSum0205d794(Struct_0205c570 *);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void *, int);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0 *, int, int);
-extern "C" void _Z25ClearChannelAFlag0205cf10Pv(void *p);
-extern "C" void _Z21ClearFlagByte0205cf1cP14Struct0205cf1c(Struct0205cf1c *);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
+void ClearChannelAFlag0205cf10(void *p);
+void ClearFlagByte0205cf1c(Struct0205cf1c *);
 extern "C" int func_ov003_0215dcb8(char *obj);
 ARM int IsFlagStateOrField98Eq2_0215dd00(char *self);
 
@@ -86,7 +86,7 @@ extern int data_02108760;
 // USA: func_ov003_0215d150
 extern "C" ARM void func_ov003_0215d150(Scene *self) {
     GameState *gs = GameState::GetInstance();
-    Ctl *g       = _Z26GetGlobalField0x1c020421a0v();
+    Ctl *g       = GetGlobalField0x1c020421a0();
     int *a       = func_0202ae18();
     Zone *b      = func_02012fe4();
 
@@ -100,13 +100,13 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
     if (state == 0) {
         func_02046380(g);
         _Z17StoreInArray0x8b0P11StoreStructii(g, 0, self->b3c3);
-        _Z14SetByteInRangePhih((unsigned char *) g, 0, 0);
+        SetByteInRange((unsigned char *) g, 0, 0);
         _Z17StoreInArray0x8b0P11StoreStructii(g, 1, self->w3cc);
-        _Z14SetByteInRangePhih((unsigned char *) g, 1, 0);
+        SetByteInRange((unsigned char *) g, 1, 0);
 
         int sb;
         sb = (self->w3d0 == 0) ? 1 : 0;
-        if (_Z18CheckField0NonZeroPi(a) != 0) {
+        if (CheckField0NonZero(a) != 0) {
             if (func_0202c540(a) != 0) {
                 sb = 2;
             }
@@ -123,7 +123,7 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
             }
 
             if (flag != 0) {
-                _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, 0x64));
+                AppendString02042058(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, 0x64));
             }
 
             if (GetB3c(GetSub(b)) == 6) {
@@ -133,18 +133,18 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
             } else {
                 k1 = 0x68;
             }
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, k1));
+            AppendString02042058(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, k1));
 
             if (flag == 0) {
-                _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, 0x6f));
+                AppendString02042058(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, 0x6f));
             } else {
                 int k2;
                 k2 = (self->w3d0 != 0) ? 0x66 : 0x69;
-                _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, k2));
+                AppendString02042058(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, k2));
             }
         } else {
             int k0 = sb + 0x3e8;
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, k0));
+            AppendString02042058(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, k0));
         }
 
         func_ov003_0215cab0((char *) self, buf);
@@ -173,19 +173,19 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
     if (state == 3) {
         self->b3c1 = 0;
         func_ov003_0215dd3c((char *) self);
-        _Z23SetChannelAFlag0205cef8Pv(self->list98);
-        _Z23SetChannelBFlag0205cf04Pv(self->list98);
+        SetChannelAFlag0205cef8(self->list98);
+        SetChannelBFlag0205cf04(self->list98);
         self->state = self->state + 1;
     }
     if (state == 4) {
         self->b3c2 = 1;
-        self->b3c1 = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570 *) self->list98);
+        self->b3c1 = GetActiveScaledSum0205d794((Struct_0205c570 *) self->list98);
         if (func_ov003_0215dcb8((char *) self) != 0) {
             self->b3c2 = 0;
             _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(self->list98, 0);
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
-            _Z25ClearChannelAFlag0205cf10Pv(self->list98);
-            _Z21ClearFlagByte0205cf1cP14Struct0205cf1c((Struct0205cf1c *) self->list98);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
+            ClearChannelAFlag0205cf10(self->list98);
+            ClearFlagByte0205cf1c((Struct0205cf1c *) self->list98);
             switch (self->tab3bd[self->b3c1]) {
             case 0: self->b3bc = 2; break;
             case 1: self->b3bc = 3; break;
@@ -196,8 +196,8 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
             if (IsFlagStateOrField98Eq2_0215dd00((char *) self) != 0) {
                 self->b3c2 = 0;
                 _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(self->list98, 0);
-                _Z25ClearChannelAFlag0205cf10Pv(self->list98);
-                _Z21ClearFlagByte0205cf1cP14Struct0205cf1c((Struct0205cf1c *) self->list98);
+                ClearChannelAFlag0205cf10(self->list98);
+                ClearFlagByte0205cf1c((Struct0205cf1c *) self->list98);
                 self->b3bc = 4;
                 self->state = 0;
             }

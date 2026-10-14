@@ -16,11 +16,11 @@ struct ListContext0220eea0 {
     ListHeader0220eea0* list;
     unsigned int capacity;
 };
-extern "C" ListContext0220eea0* _Z24GetData0224e53c_0220d60cv();
+ListContext0220eea0* GetData0224e53c_0220d60c();
 
 // USA: func_ov031_0220eea0
 extern "C" ARM void func_ov031_0220eea0(ListNode0220eea0* node) {
-    ListContext0220eea0* context = _Z24GetData0224e53c_0220d60cv();
+    ListContext0220eea0* context = GetData0224e53c_0220d60c();
     ListHeader0220eea0* list = context->list;
     if (!node || !list) return;
     if (context->capacity <= 12) return;

@@ -14,7 +14,7 @@ struct BattleMenu {
     char elements[1];
 };
 
-extern "C" Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* list, int key);
+Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c* list, int key);
 extern "C" void _Z20ApplyElemFieldsSlot1Pv(BattleMenu* menu);
 extern "C" void _Z20ApplyElemFieldsSlot2Pv(BattleMenu* menu);
 extern "C" void _Z20ApplyElemFieldsSlot3Pv(BattleMenu* menu);
@@ -24,7 +24,7 @@ extern "C" void _Z20ApplyElemFieldsSlot6Pv(BattleMenu* menu);
 extern "C" void _Z29ApplyElemFieldsSlot7_0217819cPv(BattleMenu* menu);
 extern "C" void _Z20ApplyElemFieldsSlot8Pv(BattleMenu* menu);
 extern "C" int _Z18IsField0x118Equal2Pv(BattleMenu* menu);
-extern "C" void _Z38RunElemFieldsIfField_02176498_02176498Pvi(void* obj, int flag);
+void RunElemFieldsIfField_02176498_02176498(void* obj, int flag);
 extern "C" void _Z30ApplyElemFieldsSlot14_021788d8Pvii(BattleMenu* menu, int a, int b);
 void ApplyElemFieldsSlot15(void* menu, int a, int b);
 void ApplyElemFieldsSlot16(void* menu, int a, int b);
@@ -36,7 +36,7 @@ extern "C" void _Z30ApplyElemFieldsSlot19_0217a628Pvii(BattleMenu* menu, int a, 
 
 // USA: func_ov000_02176e3c
 extern "C" ARM void func_ov000_02176e3c(BattleMenu* menu, int arg, int slot, int arg2, int arg3, unsigned char highlight) {
-    Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci(
+    Elem_0205d81c* elem = FindElementByC40205d81c(
         (Struct_0205d81c*)menu->elements, (unsigned char)slot);
     if (elem == 0) {
         return;
@@ -79,7 +79,7 @@ extern "C" ARM void func_ov000_02176e3c(BattleMenu* menu, int arg, int slot, int
         break;
     case 13:
         if (arg != 0) {
-            _Z38RunElemFieldsIfField_02176498_02176498Pvi((void*)arg, _Z18IsField0x118Equal2Pv(menu));
+            RunElemFieldsIfField_02176498_02176498((void*)arg, _Z18IsField0x118Equal2Pv(menu));
         }
         break;
     case 14:

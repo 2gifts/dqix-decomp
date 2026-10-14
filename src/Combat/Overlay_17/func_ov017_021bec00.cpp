@@ -57,14 +57,14 @@ extern "C" void func_020dfec0(void*, SafeAllocator*, void*, unsigned int);
 extern "C" void func_0204500c(PopupController021bec00*, char*, int, int);
 extern "C" void func_02042b98(PopupController021bec00*, int, int, int, int);
 extern "C" void func_ov017_021bef84(PopupState021bec00*);
-extern "C" PopupController021bec00* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+PopupController021bec00* GetGlobalField0x1c020421a0();
+void CancelPendingAction020397cc(Obj020397cc*, int);
 void SetBitsInField4(unsigned int*, unsigned int);
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
 GrottoTransitionData* GetField0x3f8Address(GameState*);
-extern "C" void _Z27InitAndResetHeader_0219e310Phi(unsigned char*, int);
+void InitAndResetHeader_0219e310(unsigned char*, int);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
-extern "C" void _Z24ReinitController02043204Pc(char*);
+void ReinitController02043204(char*);
 void SetByteField0x253(void*);
 extern AllocatorUnion data_02114e20;
 extern char data_ov017_021d7e98[], data_ov017_021d7eb2[];
@@ -73,14 +73,14 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
     GameState* game = GameState::GetInstance();
     func_0202ae18();
     GameResources* resources = func_ov017_0218b5b0();
-    PopupController021bec00* controller = _Z26GetGlobalField0x1c020421a0v();
+    PopupController021bec00* controller = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     ActiveGrottoClass* grotto = &func_02012fe4()->grotto;
     game->GetGrottoStruct();
     char text[0x100] = {};
     controller->flag19ae = 0;
     if (self->state == 0) {
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)game->GetUnknownGameObject(), 1);
+        CancelPendingAction020397cc((Obj020397cc*)game->GetUnknownGameObject(), 1);
         SetBitsInField4(&resources->brightnessFlags_0, 0xc0);
         FontBankLoader* music = GetGlobal02109400();
         BlankFunction02094b30(music, 0x203, 0);
@@ -126,7 +126,7 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
                 TailList020469b4* list;
                 unsigned char* node = (unsigned char*)resources->unknown_ptr_array_36fc[4];
                 list = (TailList020469b4*)resources->unknown_ptr_array_36fc[0];
-                _Z27InitAndResetHeader_0219e310Phi(node, 0);
+                InitAndResetHeader_0219e310(node, 0);
                 AppendNodeToTail(list, (TailNode020469b4*)node);
                 grotto->unknown_260_[2] = 0;
                 func_ov017_021bef84(self);
@@ -148,7 +148,7 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
             }
         }
     } else if (self->state == 3 && controller->field9a0 == 0) {
-        _Z24ReinitController02043204Pc((char*)controller);
+        ReinitController02043204((char*)controller);
         SetByteField0x253(game->GetUnknownGameObject());
         FontBankLoader* music = GetGlobal02109400();
         BlankFunction02094b38(music, 0x1f9);

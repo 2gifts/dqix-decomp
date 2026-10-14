@@ -36,7 +36,7 @@ extern int data_020f0c78;
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_02071c00
-extern "C" ARM int _Z25RunBufferedStream02071c00iiP12StreamHeaderi(int arg0, int arg1, struct StreamHeader* header, int length) {
+ARM int RunBufferedStream02071c00(int arg0, int arg1, struct StreamHeader* header, int length) {
     struct ResetStruct local;
 
     data_02108d98.fieldC = arg0;

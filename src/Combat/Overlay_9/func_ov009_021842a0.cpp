@@ -35,8 +35,8 @@ extern "C" ARM void func_ov009_021842a0(void* scene, SafeAllocator* allocator) {
 struct Struct0215efb8;
 struct ResetLayout_0215e6d8;
 
-extern "C" void _Z18InitStruct0215efb8P14Struct0215efb8(Struct0215efb8* keyboard);
-extern "C" void _Z20ResetStruct_0215e6d8P20ResetLayout_0215e6d8(ResetLayout_0215e6d8* layout);
+void InitStruct0215efb8(Struct0215efb8* keyboard);
+void ResetStruct_0215e6d8(ResetLayout_0215e6d8* layout);
 
 struct CharacterCreation {
     SafeAllocator allocators_[9];
@@ -81,8 +81,8 @@ extern "C" ARM void func_ov009_021842a0(CharacterCreation* self, SafeAllocator* 
     }
     self->keyboard_ = (Struct0215efb8*)allocator->Allocate(0x28);
     self->layout_ = (ResetLayout_0215e6d8*)allocator->Allocate(0x10);
-    _Z18InitStruct0215efb8P14Struct0215efb8(self->keyboard_);
-    _Z20ResetStruct_0215e6d8P20ResetLayout_0215e6d8(self->layout_);
+    InitStruct0215efb8(self->keyboard_);
+    ResetStruct_0215e6d8(self->layout_);
     self->renderer_ = allocator->Allocate(0x54);
     self->sprites_ = allocator->Allocate(0xf0);
     self->unk_7e0 = allocator->Allocate(8);

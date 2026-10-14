@@ -21,14 +21,14 @@ extern "C" void* func_ov004_0215e47c(void*, int);
 extern "C" void* func_ov023_021f6880(void*, int);
 extern "C" short func_ov023_021f6f10(void*);
 extern "C" void func_ov023_021f809c(void*, void*);
-extern "C" void* _Z24CheckNodeState6_0215e4c0Pvi(void*, int);
+void* CheckNodeState6_0215e4c0(void*, int);
 extern "C" void _Z27SetOffset100Fields_021f8960Pcss(char*, short, unsigned short);
-extern "C" struct Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0*, int);
+struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0*, int);
 extern "C" void func_02083738(void*, int);
 extern "C" void func_0208358c(void*, void*, int);
 extern "C" int func_02046608(int, int, void*, void*, int, int, int);
 extern "C" void func_02083e28(void*, int);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 int GetFieldAt0x150(unsigned char*);
 char* FindSubstring(char*, char*);
 
@@ -149,7 +149,7 @@ extern "C" ARM void func_ov004_0215e5fc(void* a, int idx) {
                     key = *(short*)(p488 + data_ov004_0216fe3c[i] * 2);
                     if (key == data_ov004_02170888[i][idx] && data_ov004_0216fdfc[i] != 1) continue;
                     found = 1;
-                    el = (struct Element020de650*)_Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0*)c, key);
+                    el = (struct Element020de650*)FindElementByKey020dedd0((struct Container020dedd0*)c, key);
                     if (el == 0) {
                         flag = data_ov004_0216fdfc[i];
                         func_02083738(prot, flag);
@@ -163,7 +163,7 @@ extern "C" ARM void func_ov004_0215e5fc(void* a, int idx) {
                             key2 = 1000;
                             v2 = 0;
                         }
-                        void* el2 = _Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0*)c, key2);
+                        void* el2 = FindElementByKey020dedd0((struct Container020dedd0*)c, key2);
                         if (el2 != 0) {
                             func_0208358c(prot, el2, v2);
                         }
@@ -171,7 +171,7 @@ extern "C" ARM void func_ov004_0215e5fc(void* a, int idx) {
                     } else {
                         char* buf = *(char**)(data_ov004_021707e8 + 0x18) + (i + idx * 8) * 0x80;
                         memset(buf, 0, 0x80);
-                        func_02046608(_Z26GetGlobalField0x1c020421a0v(), 0, ((struct Elem0215e5fc*)el)->f04, buf, 0x60, 0, 0);
+                        func_02046608(GetGlobalField0x1c020421a0(), 0, ((struct Elem0215e5fc*)el)->f04, buf, 0x60, 0, 0);
                         func_0208358c(prot, el, -1);
                         data_ov004_02170888[i][idx] = ((struct Elem0215e5fc*)el)->f18;
                         data_ov004_021704a4[i][idx] = buf;
@@ -224,7 +224,7 @@ extern "C" ARM void func_ov004_0215e5fc(void* a, int idx) {
             }
         }
     }
-    Node0215e5fc* nn = (Node0215e5fc*)_Z24CheckNodeState6_0215e4c0Pvi(a, 4);
+    Node0215e5fc* nn = (Node0215e5fc*)CheckNodeState6_0215e4c0(a, 4);
     _Z27SetOffset100Fields_021f8960Pcss((char*)nn, 0, 0xffff);
     func_ov023_021f809c(nn, a);
 }

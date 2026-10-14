@@ -24,7 +24,7 @@ struct Element0201f214 {
 
 struct List0201f214;
 
-extern "C" void _Z27AppendCappedElement0201f214P12List0201f214P15Element0201f214(struct List0201f214*, struct Element0201f214*);
+void AppendCappedElement0201f214(struct List0201f214*, struct Element0201f214*);
 
 struct Alloc0201edf0;
 struct Container0201edf0 {
@@ -107,6 +107,6 @@ extern "C" ARM int func_0201edf0(struct Arg0201edf0* p, int n) {
     e.h1c = (int)(4096.0f * v8);
     e.h1e = (int)(4096.0f * v9);
     e.h6 = h6;
-    _Z27AppendCappedElement0201f214P12List0201f214P15Element0201f214(data_020fdc40.list, &e);
+    AppendCappedElement0201f214(data_020fdc40.list, &e);
     return 1;
 }

@@ -48,7 +48,7 @@ extern "C" int func_ov001_02164320(struct ModelEntry0215a134* table, int index, 
 extern "C" int func_ov001_02164908(struct ModelEntry0215a134* table, int index, int alpha);
 extern "C" int func_ov001_021649d4(struct ModelEntry0215a134* table, int index, int radius);
 extern "C" void func_ov001_02159d9c(struct Actor0215a134* actor);
-extern "C" struct NodeStruct02159ef0* _Z29GetValueAfterProcess_02159ef0PvP18NodeStruct02159ef0(void* owner, struct NodeStruct02159ef0* node);
+struct NodeStruct02159ef0* GetValueAfterProcess_02159ef0(void* owner, struct NodeStruct02159ef0* node);
 
 // USA: func_ov001_0215a134
 extern "C" ARM void func_ov001_0215a134(struct Actor0215a134* actor) {
@@ -112,7 +112,7 @@ extern "C" ARM void func_ov001_0215a134(struct Actor0215a134* actor) {
                 node = NULL;
                 break;
             }
-            node = _Z29GetValueAfterProcess_02159ef0PvP18NodeStruct02159ef0(actor, node);
+            node = GetValueAfterProcess_02159ef0(actor, node);
         }
         *head = node;
         if (node == NULL) {

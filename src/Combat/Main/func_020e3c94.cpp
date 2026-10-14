@@ -7,7 +7,7 @@
 
 struct GameObject;
 struct CombatState020e3c34;
-extern "C" void _Z12Init020e3c34P19CombatState020e3c34(CombatState020e3c34* p);
+void Init020e3c34(CombatState020e3c34* p);
 GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
 int GetFieldAt0x150(unsigned char* obj);
 int GetField0x3acValue(GameState* gameState);
@@ -44,7 +44,7 @@ extern "C" ARM void func_020e3c94(CombatState020e3c34* obj) {
 
     if (obj->word_1c == 0) {
         if (combatant == 0) {
-            _Z12Init020e3c34P19CombatState020e3c34(obj);
+            Init020e3c34(obj);
             obj->byte1 = 1;
             return;
         }
@@ -102,6 +102,6 @@ extern "C" ARM void func_020e3c94(CombatState020e3c34* obj) {
         loader->RemoveTask(obj->words_14[i]);
     }
 
-    _Z12Init020e3c34P19CombatState020e3c34(obj);
+    Init020e3c34(obj);
     obj->byte1 = 1;
 }

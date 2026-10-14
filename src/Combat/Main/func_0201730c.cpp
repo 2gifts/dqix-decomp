@@ -60,10 +60,10 @@ struct CombatEntryList {
 };
 
 void* GetPtrField0x144(void* obj);
-extern "C" void _Z27ClearGlobalFlagBits02016d8cPv(void* arg);
+void ClearGlobalFlagBits02016d8c(void* arg);
 int GetBoxTestResult(int* out);
-extern "C" void _Z24SubmitGxCommands02047648Phii(unsigned char* obj, int idx, int something);
-extern "C" void _Z27AdvanceStreamRecord0204724cP11Obj0204724C(Obj0204724C* obj);
+void SubmitGxCommands02047648(unsigned char* obj, int idx, int something);
+void AdvanceStreamRecord0204724c(Obj0204724C* obj);
 void RenderTransformedFlaggedIndexedEntry(StructAt020472e4* obj, int param);
 
 extern Vector3i data_020e6e20;
@@ -78,7 +78,7 @@ extern "C" ARM void func_0201730c(CombatEntryList* list) {
     if (camera == NULL) return;
     game->GetTickCount();
     unsigned short lightColor = LightingManager::GetInstance()->maybePotBarrelDiffuseColor_;
-    _Z27ClearGlobalFlagBits02016d8cPv(GetPtrField0x144(camera));
+    ClearGlobalFlagBits02016d8c(GetPtrField0x144(camera));
 
     for (int i = 0; i < list->count; i++) {
         CombatEntry* entry = &list->entries[i];
@@ -128,10 +128,10 @@ extern "C" ARM void func_0201730c(CombatEntryList* list) {
         for (int j = 0; j < 4; j++) entry->segments[j].diffuseColor = lightColor;
 
         if (entry->state != 3) {
-            _Z24SubmitGxCommands02047648Phii((unsigned char*)&entry->commandRecord, 0, 1);
+            SubmitGxCommands02047648((unsigned char*)&entry->commandRecord, 0, 1);
         } else if (entry->state == 3) {
             if (entry->timer < 12) {
-                _Z27AdvanceStreamRecord0204724cP11Obj0204724C((Obj0204724C*)&entry->renderRecord);
+                AdvanceStreamRecord0204724c((Obj0204724C*)&entry->renderRecord);
                 RenderTransformedFlaggedIndexedEntry(&entry->renderRecord, 1);
             }
             for (int j = 0; j < 4; j++) {
@@ -145,9 +145,9 @@ extern "C" ARM void func_0201730c(CombatEntryList* list) {
                 fix32_t sine = fix32sin(angle);
                 Mat3x3_WriteRotationY(&rotation, sine, cosine);
                 Mat3x3_Multiply(viewMatrix, &rotation, &transformed);
-                _Z27ClearGlobalFlagBits02016d8cPv(&transformed);
+                ClearGlobalFlagBits02016d8c(&transformed);
                 RenderConfig::SubmitToFifo();
-                _Z24SubmitGxCommands02047648Phii((unsigned char*)segment, 0, 1);
+                SubmitGxCommands02047648((unsigned char*)segment, 0, 1);
             }
         }
     }

@@ -14,16 +14,16 @@ enum { kRegion370c = 0x370c };
 #endif
 #include "GameState/GameState.h"
 
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
+char* GetGlobalField0x1c020421a0(void);
 extern "C" char* func_02012fe4(void);
 extern "C" int func_020457e0(char* obj);
 extern "C" void func_ov017_021baedc(void* self, int flag);
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
-extern "C" void _Z27InitAndResetHeader_0219e310Phi(unsigned char* obj, int arg);
+void InitAndResetHeader_0219e310(unsigned char* obj, int arg);
 void* GetField0x3f8Address(GameState* state);
-extern "C" void _Z18InitStruct02070378Pc(char* obj);
+void InitStruct02070378(char* obj);
 
 struct Progress02012fe4 {
 #if defined(jpn)
@@ -67,7 +67,7 @@ struct State_0217d53c {
 // USA: func_ov003_0217d53c
 extern "C" ARM void func_ov003_0217d53c(State_0217d53c* self) {
     GameState* gs = GameState::GetInstance();
-    char* global = _Z26GetGlobalField0x1c020421a0v();
+    char* global = GetGlobalField0x1c020421a0();
     char* res = (char*)func_ov017_0218b5b0();
     struct TailList020469b4* list = *(struct TailList020469b4**)(res + kRegion36fc);
 #if defined(jpn)
@@ -105,9 +105,9 @@ extern "C" ARM void func_ov003_0217d53c(State_0217d53c* self) {
         }
         AppendNodeToTail(list, (struct TailNode020469b4*)event);
         unsigned char* header = *(unsigned char**)(res + kRegion370c);
-        _Z27InitAndResetHeader_0219e310Phi(header, 0);
+        InitAndResetHeader_0219e310(header, 0);
         EventRecord_0217d53c* record = (EventRecord_0217d53c*)GetField0x3f8Address(gs);
-        _Z18InitStruct02070378Pc((char*)record);
+        InitStruct02070378((char*)record);
         record->id = 0xc3bc;
         record->field_0x7 = 1;
         record->field_0x14 = 0x266;

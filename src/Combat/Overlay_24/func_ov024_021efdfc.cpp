@@ -5,7 +5,7 @@
 extern "C" int func_ov024_021edf00(int* context, int id, short* ids);
 extern "C" int func_ov000_0215e9fc(int context, short* ids, int max, int start);
 extern "C" void func_ov024_021ed8c0(void* context, int id, int record, int* count, short* ids);
-extern "C" int _Z31IsCombatantFlagMask512_021eda60P10GameObject(GameObject* combatant);
+int IsCombatantFlagMask512_021eda60(GameObject* combatant);
 
 extern unsigned short data_ov024_021feb94[4];
 
@@ -30,7 +30,7 @@ extern "C" ARM int func_ov024_021efdfc(int* context, int id, int record, int* ou
         GameObject* combatant = GetCombatantByID(*context, buf[i]);
         if (combatant && combatant->currentStats_->primaryStats.agility != 0 &&
             combatant->currentStats_->agilityBuff > -2 &&
-            !_Z31IsCombatantFlagMask512_021eda60P10GameObject(combatant) &&
+            !IsCombatantFlagMask512_021eda60(combatant) &&
             (int)((unsigned char*)combatant->currentStats_)[0x51] > 0) {
             int index = *outCount;
             *outCount = index + 1;

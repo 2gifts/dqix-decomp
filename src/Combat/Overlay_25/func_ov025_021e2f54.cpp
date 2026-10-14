@@ -32,8 +32,8 @@ struct List021600f8;
 
 extern struct Holder021e2f54 data_ov025_021ef988;
 
-extern "C" struct Rec021e2f54* _Z24SearchBothTables02079e2cPci(char* p, int key);
-extern "C" void* _Z22GetNodeAtIndex021600f8P12List021600f8i(struct List021600f8* list, int index);
+struct Rec021e2f54* SearchBothTables02079e2c(char* p, int key);
+void* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
 extern "C" short func_ov000_0215ffa0(void* node);
 extern "C" void func_ov025_021ecc54(void* queue, struct Event021e2f54* ev);
 int ClassifyField0x81fe(char* base);
@@ -45,8 +45,8 @@ static inline int IsSpecial021e2f54(void* node) {
 // USA: func_ov025_021e2f54
 extern "C" ARM void func_ov025_021e2f54(struct Event021e2f54* ev, short* list, char* world) {
     struct Ctx021e2f54* ctx = data_ov025_021ef988.ctx;
-    struct Rec021e2f54* rec = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), *list);
-    void* node = _Z22GetNodeAtIndex021600f8P12List021600f8i((struct List021600f8*)list, 0);
+    struct Rec021e2f54* rec = SearchBothTables02079e2c((char*)GetData02108e10(), *list);
+    void* node = GetNodeAtIndex021600f8((struct List021600f8*)list, 0);
     if (rec != 0 && node != 0) {
         if (IsSpecial021e2f54(node) && rec->kind == 4) {
             ev->state |= 8;

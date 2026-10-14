@@ -9,7 +9,7 @@ int TestBitAt0x34(unsigned char* obj, unsigned int index);
 struct S_10088;
 int IsFlag10088Set(struct S_10088* obj);
 struct AddEntryList_021f6a1c;
-extern "C" void _Z31AddEntryIfUnderLimit16_021f6a1cP21AddEntryList_021f6a1cPv(struct AddEntryList_021f6a1c* obj, void* src);
+void AddEntryIfUnderLimit16_021f6a1c(struct AddEntryList_021f6a1c* obj, void* src);
 extern "C" void func_ov024_021f9874(void* obj, void* buf, int unused, int val);
 
 struct Entry_021fc4f4 {
@@ -81,7 +81,7 @@ extern "C" ARM void func_ov024_021fc4f4(struct Obj_021fc4f4* obj) {
         count++;
         e.percent = (int)percent;
         e.code = 5;
-        _Z31AddEntryIfUnderLimit16_021f6a1cP21AddEntryList_021f6a1cPv((struct AddEntryList_021f6a1c*)&list, &e);
+        AddEntryIfUnderLimit16_021f6a1c((struct AddEntryList_021f6a1c*)&list, &e);
     }
     if (count >= 2 && obj->field134 + count >= 3) {
         GetCombatantByID((int)obj->battle, 0);

@@ -15,12 +15,12 @@
 #include <globaldefs.h>
 
 struct Obj0215c300;
-extern "C" int _Z32DecrementFieldClampZero_0215c300P11Obj0215c300i(struct Obj0215c300* obj, int amount);
+int DecrementFieldClampZero_0215c300(struct Obj0215c300* obj, int amount);
 extern "C" void func_ov003_02159464(void* obj);
 extern "C" void func_ov003_0215c510(void* obj);
 
 struct Outer020e28dc;
-extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(struct Outer020e28dc* o);
+int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
 
 struct Struct_0205d81c;
 struct Elem_0205d81c {
@@ -33,15 +33,15 @@ void SetFieldAt0x30(void* obj, int value);
 extern "C" int func_0205d0e0(void* p, int val);
 
 extern "C" void func_ov003_021594c4(void* obj);
-extern "C" void _Z29UpdateHandshakeState_02159b20Pv(void* obj);
+void UpdateHandshakeState_02159b20(void* obj);
 extern "C" void func_ov003_02159c04(void* obj);
 extern "C" void func_ov003_02159d0c(void* obj, int amount);
 extern "C" void func_ov003_0215a5b4(void* obj);
 extern "C" void func_ov003_0215a740(void* obj, int amount, int msgId);
-extern "C" void _Z28UpdateResponseState_0215af00Pv(void* obj);
+void UpdateResponseState_0215af00(void* obj);
 extern "C" void func_ov003_0215b1dc(void* obj, int amount);
 extern "C" void func_ov003_0215af9c(void* obj);
-extern "C" void _Z32UpdateChatResponseState_0215b0e8Pv(void* obj);
+void UpdateChatResponseState_0215b0e8(void* obj);
 extern "C" void func_ov003_0215c0ec(void* obj);
 
 struct Obj02158e94 {
@@ -67,7 +67,7 @@ extern "C" ARM int func_ov003_02158e94(struct Obj02158e94* self, int amount) {
 
     self->lastAmount = amount;
 
-    if (_Z32DecrementFieldClampZero_0215c300P11Obj0215c300i((struct Obj0215c300*)self, amount) != 0) {
+    if (DecrementFieldClampZero_0215c300((struct Obj0215c300*)self, amount) != 0) {
         return 0;
     }
 
@@ -78,7 +78,7 @@ extern "C" ARM int func_ov003_02158e94(struct Obj02158e94* self, int amount) {
         return 0;
     }
 
-    if (self->choice != 0 && !_Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(self->choice) && self->state != 0 && self->field_0x587 == 0) {
+    if (self->choice != 0 && !GetInnerFlagBit0020e28dc(self->choice) && self->state != 0 && self->field_0x587 == 0) {
         struct Elem_0205d81c* elem = FindElementForFieldB0((struct Struct_0205d81c*)self->elements);
         if (elem != 0 && IsField0x9cEqual3((unsigned char*)elem) != 0 && (elem->flagsC5 & 2) == 0) {
             SetFieldAt0x30(self->field_0xf8, -1);
@@ -91,7 +91,7 @@ extern "C" ARM int func_ov003_02158e94(struct Obj02158e94* self, int amount) {
         func_ov003_021594c4(self);
         break;
     case 1:
-        _Z29UpdateHandshakeState_02159b20Pv(self);
+        UpdateHandshakeState_02159b20(self);
         break;
     case 2:
         func_ov003_02159c04(self);
@@ -112,7 +112,7 @@ extern "C" ARM int func_ov003_02158e94(struct Obj02158e94* self, int amount) {
         func_ov003_0215a740(self, amount, 0x41a);
         break;
     case 8:
-        _Z28UpdateResponseState_0215af00Pv(self);
+        UpdateResponseState_0215af00(self);
         break;
     case 9:
         func_ov003_0215b1dc(self, amount);
@@ -121,7 +121,7 @@ extern "C" ARM int func_ov003_02158e94(struct Obj02158e94* self, int amount) {
         func_ov003_0215af9c(self);
         break;
     case 12:
-        _Z32UpdateChatResponseState_0215b0e8Pv(self);
+        UpdateChatResponseState_0215b0e8(self);
         break;
     }
 

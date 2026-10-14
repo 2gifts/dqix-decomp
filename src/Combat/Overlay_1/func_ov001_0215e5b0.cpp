@@ -27,9 +27,9 @@ struct Word0x0_0215e5b0 {
 };
 
 struct Word0x0_0215e5b0* GetWord0x0(int* obj);
-extern "C" void _Z25SetSubBg0Control_0215e758iiiii(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
-extern "C" void _Z25SetSubBg1Control_0215e78ciiiii(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
-extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64* obj);
+void SetSubBg0Control_0215e758(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
+void SetSubBg1Control_0215e78c(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
+void ResetList0204af64(struct List0204af64* obj);
 extern "C" void func_0204b174(void* list, void* rec, void* alloc, int size);
 
 extern char data_0211e33c[] __attribute__((aligned(4)));
@@ -43,8 +43,8 @@ extern "C" ARM int func_ov001_0215e5b0(void) {
     char* buf = data_0211e33c;
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4001000;
     *dispcnt = (*dispcnt & ~0x1f00) | 0x300;
-    _Z25SetSubBg0Control_0215e758iiiii(0, 0, 0xe, 0, 0);
-    _Z25SetSubBg1Control_0215e78ciiiii(0, 0, 0xf, 0, 0);
+    SetSubBg0Control_0215e758(0, 0, 0xe, 0, 0);
+    SetSubBg1Control_0215e78c(0, 0, 0xf, 0, 0);
 
     volatile unsigned short* bgcnt = (volatile unsigned short*)0x4001008;
     bgcnt[0] = (bgcnt[0] & ~3);
@@ -57,7 +57,7 @@ extern "C" ARM int func_ov001_0215e5b0(void) {
     *(volatile unsigned short*)0x4001050 = 0;
 
     struct List0204af64 list;
-    _Z17ResetList0204af64P12List0204af64(&list);
+    ResetList0204af64(&list);
     list.b1c_lo = 1;
     func_0204b174(&list, word->record, 0, 0);
 

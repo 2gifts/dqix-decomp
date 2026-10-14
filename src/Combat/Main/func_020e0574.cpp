@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" int _Z34ReplaceBinExtensionWithNat020e05f8PcPKc(char* dst, const char* fmt);
+int ReplaceBinExtensionWithNat020e05f8(char* dst, const char* fmt);
 typedef int (*ReplaceBin3)(char*, const char*, int);
 
 #if defined(jpn)
@@ -12,7 +12,7 @@ extern "C" ARM void* func_020e21e8(const char* tablePath, unsigned int* outSize,
     if (tablePath == NULL)
         return NULL;
     *outSize = 0;
-    ((ReplaceBin3)_Z34ReplaceBinExtensionWithNat020e05f8PcPKc)(path, tablePath, variant);
+    ((ReplaceBin3)ReplaceBinExtensionWithNat020e05f8)(path, tablePath, variant);
     LoadFileIntoMemory(path, data_0211e33c, outSize);
     if (*outSize != 0)
         return data_0211e33c;
@@ -31,7 +31,7 @@ extern "C" ARM int func_020e0574(void* a, int* b, int c, int d) {
         return 0;
     }
     *b = 0;
-    ((ReplaceBin3)_Z34ReplaceBinExtensionWithNat020e05f8PcPKc)(buf, (char*)a, c);
+    ((ReplaceBin3)ReplaceBinExtensionWithNat020e05f8)(buf, (char*)a, c);
     if (d == 0) {
         LoadFileIntoMemory(buf, data_0211e33c, (unsigned int*)b);
         if (*b != 0) {

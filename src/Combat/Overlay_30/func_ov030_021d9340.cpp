@@ -8,7 +8,7 @@
 
 extern "C" void func_ov015_0218b5a0(void);
 extern "C" void _Z25InitializeBrightnessStateP13GameResources(void* obj);
-extern "C" unsigned int _Z24EnableSpecificInterruptsj(unsigned int mask);
+unsigned int EnableSpecificInterrupts(unsigned int mask);
 extern "C" void _ZN13SafeAllocator21ResetAllocatorPointerEv(void* alloc);
 extern "C" void _Z23ResetAllocators02054280P9T02054280(void* obj);
 extern "C" void func_0204719c(void* obj);
@@ -18,7 +18,7 @@ extern "C" void _ZN8Object3D10InitializeEv(void* obj);
 extern "C" void func_02020554(void* obj);
 extern "C" void VectorizedMemset(void* dst, int value, unsigned int length);
 extern "C" void _Z17ResetList0204af64P12List0204af64(void* list);
-extern "C" void _Z28ResetFieldGroup4444_0218b664Pc(char* base);
+void ResetFieldGroup4444_0218b664(char* base);
 extern "C" void _Z17ClearListHeadTailP12List02046958(void* list);
 extern "C" void func_ov017_021a124c(void* obj);
 extern "C" void _Z27InitAndResetHeader_0219e310Phi(void* obj, int flag);
@@ -65,7 +65,7 @@ extern "C" void _Z20InitState60_021aa16cP11Obj021aa16c(void* obj);
 extern "C" void _Z20InitState66_021c1e40P14Struct021c1e40(void* obj);
 extern "C" void _Z23InitByteHeader_021c2688Ph(void* obj);
 extern "C" void _Z20InitState69_021c2744P11Obj021c2744(void* obj);
-extern "C" void _Z15InitObj021c2b28Pvhh(void* obj, unsigned char a, unsigned char b);
+void InitObj021c2b28(void* obj, unsigned char a, unsigned char b);
 extern "C" void _Z28InitState71WithFlag_021c316cP14Struct021c316ci(void* obj, int flag);
 extern "C" void func_ov017_021a967c(void* obj, int flag);
 extern "C" void _Z12Init020d9decP14Struct020d9deci(void* obj, int flag);
@@ -75,11 +75,11 @@ extern "C" void _Z18InitObject020d8080P11Obj020d8080(void* obj);
 extern "C" void _Z18InitStruct020dbc9cP14Struct020dbc9c(void* obj);
 extern "C" void _Z12Init020e3c34P19CombatState020e3c34(void* obj);
 extern "C" void _Z15InitObj021be40cP11Obj021be40c(void* obj);
-extern "C" void _Z39InitFieldArenaListsAndCounters_021996fcPh(unsigned char* base);
-extern "C" void _Z28InitFieldArenaLists_021a5b48Ph(unsigned char* base);
+void InitFieldArenaListsAndCounters_021996fc(unsigned char* base);
+void InitFieldArenaLists_021a5b48(unsigned char* base);
 extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" void _Z24ClearBytes0And1_021941ecPh(void* obj);
-extern "C" void _Z25ClearFourEntries_02191b70Pv(void* obj);
+void ClearFourEntries_02191b70(void* obj);
 
 // USA: func_ov030_021d9340
 extern "C" ARM void func_ov030_021d9340(unsigned char* self) {
@@ -90,7 +90,7 @@ extern "C" ARM void func_ov030_021d9340(unsigned char* self) {
     unsigned short old = *ime;
     (void)old;
     *ime = 1;
-    _Z24EnableSpecificInterruptsj(8);
+    EnableSpecificInterrupts(8);
     GameState::GetInstance();
 
     *(int*)(self + 0x2c) = 0;
@@ -156,7 +156,7 @@ extern "C" ARM void func_ov030_021d9340(unsigned char* self) {
     *(int*)(self + R(0x34e8, (0x3000 + 0x6f8))) = 0;
     *(int*)(self + R(0x41dc, (0x4000 + 0x48c))) = 0;
     self[R(0x41e0, (0x4000 + 0x490))] = 0;
-    _Z28ResetFieldGroup4444_0218b664Pc((char*)self);
+    ResetFieldGroup4444_0218b664((char*)self);
 
     *(signed char*)(self + R(0x4196, (0x4000 + 0x446))) = -1;
     for (int i = 0; i < 4; i++) {
@@ -273,7 +273,7 @@ extern "C" ARM void func_ov030_021d9340(unsigned char* self) {
     _Z20InitState66_021c1e40P14Struct021c1e40(*(void**)(self + R(0x3980, (0x3000 + 0xba0))));
     _Z23InitByteHeader_021c2688Ph(*(void**)(self + R(0x3988, (0x3000 + 0xba8))));
     _Z20InitState69_021c2744P11Obj021c2744(*(void**)(self + R(0x398c, (0x3000 + 0xbac))));
-    _Z15InitObj021c2b28Pvhh(*(void**)(self + R(0x3990, (0x3000 + 0xbb0))), 0, 0);
+    InitObj021c2b28(*(void**)(self + R(0x3990, (0x3000 + 0xbb0))), 0, 0);
     _Z28InitState71WithFlag_021c316cP14Struct021c316ci(*(void**)(self + R(0x3994, (0x3000 + 0xbb4))), 0);
     func_ov017_021a967c(*(void**)(self + R(0x3964, (0x3000 + 0xb84))), 0);
     _Z12Init020d9decP14Struct020d9deci(*(void**)(self + R(0x399c, (0x3000 + 0xbbc))), 1);
@@ -289,8 +289,8 @@ extern "C" ARM void func_ov030_021d9340(unsigned char* self) {
     }
 
     _Z15InitObj021be40cP11Obj021be40c(*(void**)(self + R(0x3a84, (0x3000 + 0xca4))));
-    _Z39InitFieldArenaListsAndCounters_021996fcPh(self);
-    _Z28InitFieldArenaLists_021a5b48Ph(self);
+    InitFieldArenaListsAndCounters_021996fc(self);
+    InitFieldArenaLists_021a5b48(self);
 
     self[R(0x40c0, (0x4000 + 0x2e0))] = 2;
     self[R(0x40c1, (0x4000 + 0x2e1))] = 0;
@@ -344,6 +344,6 @@ extern "C" ARM void func_ov030_021d9340(unsigned char* self) {
     self[R(0x4182, (0x4000 + 0x432))] = 2;
     self[R(0x40c5, (0x4000 + 0x2e5))] = 0;
     self[R(0x4135, (0x4000 + 0x355))] = 0;
-    _Z25ClearFourEntries_02191b70Pv(self);
+    ClearFourEntries_02191b70(self);
     *(unsigned short*)(self + R(0x41fc, (0x4400 + 0xac))) = 0;
 }

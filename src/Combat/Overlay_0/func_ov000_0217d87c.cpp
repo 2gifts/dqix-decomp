@@ -60,18 +60,18 @@ extern const char* data_020f2a34;
 extern const char* data_020f2a2c;
 
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(void* elements);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void* elements, int flag);
 extern "C" struct TableEntry0217f8c0* _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0(MenuState* menu);
 extern "C" int _Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(MenuState* menu);
 extern "C" void _Z29SetElementStateIfLess0217a9d0iiiP15Struct_0205d81c(int key, int count, int state, void* elements);
 extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(void* elements, int clear, int key);
 extern "C" int _Z29HasAnyFlags_021719f8_021719f8Pi(void* entry);
-extern "C" int _Z20GetNthSetBit0218158cPvi(void* menu, int index);
+int GetNthSetBit0218158c(void* menu, int index);
 extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv(void);
 extern "C" void _ZN16BackgroundLoader16RemoveLockGlobalEv(void);
 extern "C" void _ZN13SafeAllocator5ResetEv(void* alloc);
-extern "C" void _Z16ZeroInit020de848Pv(void* obj);
+void ZeroInit020de848(void* obj);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 extern "C" int func_020de9a4(void* list, void* alloc, void* data, unsigned int size, void* entries, unsigned short count);
 extern "C" int func_0207c984(void* party, int id, int bits, void* a, void* b);
@@ -95,19 +95,19 @@ extern "C" ARM void func_ov000_0217d87c(MenuState* menu, int arg1, int arg2) {
         menu->field956 = 0;
         GameState* gs = GameState::GetInstance();
         unsigned char* party = (unsigned char*)GetPtrField0x2a04(gs);
-        int bits = _Z20GetNthSetBit0218158cPvi(menu, menu->activeSum);
+        int bits = GetNthSetBit0218158c(menu, menu->activeSum);
         if (func_0207c984(party + 0x1d4, id, bits & 0xff, menu->field26, &menu->field66) != 0) {
             return;
         }
         menu->mode = 6;
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         _ZN16BackgroundLoader13AddLockGlobalEv();
 #if defined(jpn)
         _ZN13SafeAllocator5ResetEv((char*)menu + 0x1bf8);
 #else
         _ZN13SafeAllocator5ResetEv((char*)menu + 0x1af8);
 #endif
-        _Z16ZeroInit020de848Pv((char*)menu + 0x100);
+        ZeroInit020de848((char*)menu + 0x100);
         unsigned int size;
 #if defined(jpn)
         void* data = func_020e08f0(0, &size);

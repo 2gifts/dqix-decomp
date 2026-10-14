@@ -11,7 +11,7 @@ void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 
 struct Entry8_0218ba1c { int a; int b; };
 struct List8_0218ba1c { void* f0; Entry8_0218ba1c* arr; void* f8; int count; };
-extern "C" void _Z18AddEntry8_0218ba1cP14List8_0218ba1cP15Entry8_0218ba1c(struct List8_0218ba1c* obj, struct Entry8_0218ba1c* src);
+void AddEntry8_0218ba1c(struct List8_0218ba1c* obj, struct Entry8_0218ba1c* src);
 
 struct NamedNode0218b6e4 {
     char* name;
@@ -74,6 +74,6 @@ extern "C" ARM int func_ov015_0218b6e4(char* obj, int count) {
         i += 3;
     }
 
-    _Z18AddEntry8_0218ba1cP14List8_0218ba1cP15Entry8_0218ba1c(data_ov015_02194560, &entry);
+    AddEntry8_0218ba1c(data_ov015_02194560, &entry);
     return 1;
 }

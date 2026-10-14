@@ -43,7 +43,7 @@ struct EquipmentMenu {
 extern "C" const unsigned char data_ov005_0215cc0c[];
 
 int GetHalfwordEntryFromField150(Field150Holder02052df8* member, int part);
-extern "C" PartEntry* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* items, int id);
+PartEntry* FindElementByKey020dedd0(Container020dedd0* items, int id);
 PartyMemberData* GetFieldAt0x150(unsigned char* member);
 extern "C" void func_02052d7c(Field150Holder02052df8* member, int part, short item);
 extern "C" void func_0208358c(PartyMemberData* data, PartEntry* item, int unk);
@@ -61,7 +61,7 @@ extern "C" ARM int func_ov005_0215840c(EquipmentMenu* self, int member) {
     for (int i = 0; i < 7; i++) {
         unsigned char part = data_ov005_0215cc0c[i];
         int current = GetHalfwordEntryFromField150(partyMember, part);
-        PartEntry* entry = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items_, current);
+        PartEntry* entry = FindElementByKey020dedd0(self->items_, current);
         if (entry == NULL)
             continue;
         unsigned int wearable[2];
@@ -77,7 +77,7 @@ extern "C" ARM int func_ov005_0215840c(EquipmentMenu* self, int member) {
         }
         func_02052d7c(partyMember, part, -1);
         PartyMemberData* data = GetFieldAt0x150((unsigned char*)partyMember);
-        PartEntry* replacementEntry = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items_, replacement);
+        PartEntry* replacementEntry = FindElementByKey020dedd0(self->items_, replacement);
         if (replacementEntry != NULL)
             func_0208358c(data, replacementEntry, unk);
         else

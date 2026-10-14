@@ -76,7 +76,7 @@ extern "C" int _Z20CountNonZero02171698P9S02171698(Menu*);
 extern "C" int _Z20CountNonZero021719c0P9S021719c0(Menu*);
 GameObject* GetCombatantWithFlag0x100(GameState*, int);
 int GetFieldAt0x150(unsigned char*);
-extern "C" int _Z26CountPositiveSlots02083960P13Slots02083960(Slots02083960*);
+int CountPositiveSlots02083960(Slots02083960*);
 extern "C" void _Z25ClearChannelAFlag0205cf10Pv(Window*);
 extern "C" void _Z21ClearFlagByte0205cf1cP14Struct0205cf1c(Window*);
 extern "C" void _Z23SetChannelAFlag0205cef8Pv(Window*);
@@ -149,7 +149,7 @@ extern "C" ARM void func_ov000_0217ab8c(Menu* self, int arg1, int arg2) {
         GameObject* unit = GetCombatantWithFlag0x100(gs, self->member);
         int field = GetFieldAt0x150((unsigned char*)unit);
         if (field != 0) {
-            int n = _Z26CountPositiveSlots02083960P13Slots02083960((Slots02083960*)field);
+            int n = CountPositiveSlots02083960((Slots02083960*)field);
             pages = (self->total - n + 3) / 4 + (n + 3) / 4;
             self->v1b = w->b.value;
             total = pages * 4;

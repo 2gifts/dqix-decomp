@@ -50,12 +50,12 @@ struct BattleMenu {
     struct MessageWindow window;
 };
 
-extern "C" GlobalText* _Z26GetGlobalField0x1c020421a0v();
+GlobalText* GetGlobalField0x1c020421a0();
 void* GetFieldAt0x150(unsigned char* obj);
-extern "C" ActionInfo* _Z33GetPointerField_02171b9c_02171b9cPvi(void* obj, int idx);
+ActionInfo* GetPointerField_02171b9c_02171b9c(void* obj, int idx);
 extern "C" void _Z35NotifyLocalizedResourceLoad020dcfc8iPc(int id, char* buf);
 extern "C" void func_02046608(GlobalText* g, int a, char* src, char* dst, int b, int c, int d);
-extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+void* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 #if defined(jpn)
 extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
 #define APPLY_TEXT(s,k,t) TryApplyElemFields0205d5d0(s,k,(int)t,1)
@@ -76,14 +76,14 @@ extern "C" ARM void func_ov000_0217964c(BattleMenu* menu, BattleActor* actor) {
     if (actor == NULL) {
         return;
     }
-    char* text = _Z26GetGlobalField0x1c020421a0v()->textBuf;
+    char* text = GetGlobalField0x1c020421a0()->textBuf;
     memset(text, 0, textSize);
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), actor->combatantId);
     if (combatant == NULL) {
         return;
     }
     GetFieldAt0x150((unsigned char*)combatant);
-    ActionInfo* action = _Z33GetPointerField_02171b9c_02171b9cPvi(actor, actor->actionSlot);
+    ActionInfo* action = GetPointerField_02171b9c_02171b9c(actor, actor->actionSlot);
     if (action == NULL) {
         return;
     }
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov000_0217964c(BattleMenu* menu, BattleActor* actor) {
     }
     _Z35NotifyLocalizedResourceLoad020dcfc8iPc(action->messageId, text);
 #if !defined(jpn)
-    func_02046608(_Z26GetGlobalField0x1c020421a0v(), 0xa, text, buf, 0x72, 0, 0);
+    func_02046608(GetGlobalField0x1c020421a0(), 0xa, text, buf, 0x72, 0, 0);
 #endif
     window = &menu->window;
 #if defined(jpn)
@@ -100,7 +100,7 @@ extern "C" ARM void func_ov000_0217964c(BattleMenu* menu, BattleActor* actor) {
 #else
     msg = buf;
 #endif
-    if (_Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)window, 0x24) != NULL) {
+    if (FindElementByC40205d81c((struct Struct_0205d81c*)window, 0x24) != NULL) {
         APPLY_TEXT((struct StructA0205d5d0*)window, 0x24, msg);
     } else {
         int x = actor->x;

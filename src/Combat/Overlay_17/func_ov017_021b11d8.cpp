@@ -35,12 +35,12 @@ extern "C" void func_ov017_021d1118(int a, int b, int c, int d);
 extern "C" void func_ov017_021d1014(int a, int b, int c);
 extern "C" void func_ov017_021d0b30(int a, int b, int c);
 extern "C" void _Z27EnqueueEventTag173_021d1810tth(int a, int b, signed char c);
-extern "C" int _Z24SetSearchFlagBit0202c660P12SearchStructi(SearchStruct* obj, int value);
-extern "C" int _Z24TestBitBySignedByteIndexP12SearchStructi(SearchStruct* obj, int index);
-extern "C" int _Z28TestMaskBitBySignedByteIndexP12SearchStructi(SearchStruct* obj, int index);
+int SetSearchFlagBit0202c660(SearchStruct* obj, int value);
+int TestBitBySignedByteIndex(SearchStruct* obj, int index);
+int TestMaskBitBySignedByteIndex(SearchStruct* obj, int index);
 int IsFieldMinusOne(int* obj);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
-extern "C" int _Z18GetField0x3acValueP9GameState(GameState* battleStruct);
+int GetField0x3acValue(GameState* battleStruct);
 extern "C" int func_ov017_02195658(GameResources* res);
 
 // USA: func_ov017_021b11d8
@@ -55,12 +55,12 @@ extern "C" ARM void func_ov017_021b11d8(void* obj, void* node) {
         self->flags = 0;
         for (int i = 0; i < 4; i++) {
             if (i != self->count) {
-                if (_Z24TestBitBySignedByteIndexP12SearchStructi(search, i) != 0) {
+                if (TestBitBySignedByteIndex(search, i) != 0) {
                     self->flags |= (1 << i);
                 }
             }
         }
-        _Z27EnqueueEventTag173_021d1810tth(2, -1, (signed char)_Z18GetField0x3acValueP9GameState(gs));
+        _Z27EnqueueEventTag173_021d1810tth(2, -1, (signed char)GetField0x3acValue(gs));
         func_ov017_021d1118(-1, 1, 1, 2);
         func_ov017_021d1014(-1, 1, 0);
         self->mode++;
@@ -88,7 +88,7 @@ extern "C" ARM void func_ov017_021b11d8(void* obj, void* node) {
     }
     if (mode == 2) {
         func_ov017_021d0b30(9, 0, 0);
-        _Z24SetSearchFlagBit0202c660P12SearchStructi(search, 0);
+        SetSearchFlagBit0202c660(search, 0);
         self->mode++;
         return;
     }
@@ -107,7 +107,7 @@ extern "C" ARM void func_ov017_021b11d8(void* obj, void* node) {
     if (search->busy == 0) {
         for (int i = 1; i < 4; i++) {
             if ((self->flags & (1 << i)) != 0) {
-                if (_Z28TestMaskBitBySignedByteIndexP12SearchStructi(search, i) == 0) {
+                if (TestMaskBitBySignedByteIndex(search, i) == 0) {
                     self->flags &= ~(1 << i);
                 }
             }

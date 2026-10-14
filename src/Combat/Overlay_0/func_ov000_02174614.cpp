@@ -34,7 +34,7 @@ struct CombatantTable {
     signed char cursor;
 };
 
-extern "C" int _Z29HasAnyFlags_021719f8_021719f8Pi(int* obj);
+int HasAnyFlags_021719f8_021719f8(int* obj);
 extern "C" void func_ov000_0217f518(CombatantEntry* entry);
 extern "C" void func_ov000_0217636c(CombatantEntry* entry, int mode);
 
@@ -49,7 +49,7 @@ extern "C" ARM void func_ov000_02174614(CombatantTable* table, int id)
         table->selected[table->cursor] = 1;
         for (i = 0; i < 4; i++) {
             entry = &table->entries[table->order[i]];
-            if (entry->id >= 0 && entry->active != 0 && !_Z29HasAnyFlags_021719f8_021719f8Pi((int*)entry)) {
+            if (entry->id >= 0 && entry->active != 0 && !HasAnyFlags_021719f8_021719f8((int*)entry)) {
                 func_ov000_0217f518(entry);
                 if (entry->field_0x38 != 0) {
                     func_ov000_0217636c(entry, 0);

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" int _Z29HasAnyFlags_021719f8_021719f8Pi(int* obj);
+int HasAnyFlags_021719f8_021719f8(int* obj);
 
 struct Entry02180a64 {
     char pad0[0x10];
@@ -59,7 +59,7 @@ extern "C" ARM void func_ov000_02180a64(Obj02180a64* self) {
     for (i = 0; i < 4; i++) {
         e = &self->entries[self->members[i]];
         if (e->field4c < 0) continue;
-        if (_Z29HasAnyFlags_021719f8_021719f8Pi((int*)e)) continue;
+        if (HasAnyFlags_021719f8_021719f8((int*)e)) continue;
         count++;
         if (e->values[e->valueIndex] < 100) continue;
         if (e->state == 6) ready++;

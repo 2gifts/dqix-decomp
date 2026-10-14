@@ -76,7 +76,7 @@ void UpdateCombatantCharm(int random, int combatantId);
 void UpdateCombatantMagicalMight(int random, int combatantId);
 void UpdateCombatantMagicalMending(int random, int combatantId);
 int IsFlag0x14Bit0x40Set(GameObject* combatant);
-extern "C" void _Z29ClearFlag0x40AndBytes02088874Ph(unsigned char* stats);
+void ClearFlag0x40AndBytes02088874(unsigned char* stats);
 int IsCombatantFlag0x100Set(GameObject* combatant);
 void ClearFlag0x100AndBytes(unsigned char* stats);
 int IsCombatantFlag0x200Set(GameObject* combatant);
@@ -100,15 +100,15 @@ void ClearFlag0x2AndBytes(unsigned char* stats);
 int IsCombatantFlag2_0x4Set(GameObject* combatant);
 void ClearFlag0x4AndBytes(unsigned char* stats);
 int IsCombatantFlag0x400Set(GameObject* combatant);
-extern "C" void _Z35ClearBattleFlags0x14And0x5802087838Pv(void* stats);
+void ClearBattleFlags0x14And0x5802087838(void* stats);
 int IsCombatantFlag0x800Set(GameObject* combatant);
-extern "C" void _Z35ClearBattleFlags0x14And0x580208792cPv(void* stats);
+void ClearBattleFlags0x14And0x580208792c(void* stats);
 int IsCombatantFlag0x1000Set(GameObject* combatant);
-extern "C" void _Z35ClearBattleFlags0x14And0x5802087a20Pv(void* stats);
+void ClearBattleFlags0x14And0x5802087a20(void* stats);
 int IsCombatantFlag0x2000Set(GameObject* combatant);
-extern "C" void _Z35ClearBattleFlags0x14And0x5802087b14Pv(void* stats);
+void ClearBattleFlags0x14And0x5802087b14(void* stats);
 int IsCombatantFlag0x4000Set(GameObject* combatant);
-extern "C" void _Z35ClearBattleFlags0x14And0x5802087c08Pv(void* stats);
+void ClearBattleFlags0x14And0x5802087c08(void* stats);
 int IsCombatantFlag0x8000Set(GameObject* combatant);
 void ClearBattleFlags0x14And0x58(void* stats);
 int IsCombatantModStatsFlag0x10000Set(GameObject* combatant);
@@ -199,7 +199,7 @@ extern "C" ARM void func_ov000_0215858c(struct Random* random, int combatantId, 
         ailments->turns82 = ailments->turns82 - 1;
         if (data_ov000_02182bd4[ailments->turns82] > (float)NextRandomMax(random, 100) / 100.0f) {
             ailments->turns82 = 0;
-            _Z29ClearFlag0x40AndBytes02088874Ph((unsigned char*)combatant->currentStats_);
+            ClearFlag0x40AndBytes02088874((unsigned char*)combatant->currentStats_);
             func_ov000_021584e8(random, entry, combatant, arg2, 0x1c7, 0);
         }
     }
@@ -385,7 +385,7 @@ extern "C" ARM void func_ov000_0215858c(struct Random* random, int combatantId, 
         ailments->turns91 = ailments->turns91 - 1;
         if (data_ov000_02182ad4[ailments->turns91] > (float)NextRandomMax(random, 100) / 100.0f) {
             ailments->turns91 = 0;
-            _Z35ClearBattleFlags0x14And0x5802087838Pv(combatant->currentStats_);
+            ClearBattleFlags0x14And0x5802087838(combatant->currentStats_);
             func_ov000_021584e8(random, entry, combatant, arg2, 0x1ce, 0);
             UpdateCombatantAttack((int)random, combatantId);
         }
@@ -399,7 +399,7 @@ extern "C" ARM void func_ov000_0215858c(struct Random* random, int combatantId, 
         ailments->turns92 = ailments->turns92 - 1;
         if (data_ov000_02182ad4[ailments->turns92] > (float)NextRandomMax(random, 100) / 100.0f) {
             ailments->turns92 = 0;
-            _Z35ClearBattleFlags0x14And0x580208792cPv(combatant->currentStats_);
+            ClearBattleFlags0x14And0x580208792c(combatant->currentStats_);
             func_ov000_021584e8(random, entry, combatant, arg2, 0x1cf, 0);
             UpdateCombatantDefense((int)random, combatantId);
         }
@@ -413,7 +413,7 @@ extern "C" ARM void func_ov000_0215858c(struct Random* random, int combatantId, 
         ailments->turns93 = ailments->turns93 - 1;
         if (data_ov000_02182ad4[ailments->turns93] > (float)NextRandomMax(random, 100) / 100.0f) {
             ailments->turns93 = 0;
-            _Z35ClearBattleFlags0x14And0x5802087a20Pv(combatant->currentStats_);
+            ClearBattleFlags0x14And0x5802087a20(combatant->currentStats_);
             func_ov000_021584e8(random, entry, combatant, arg2, 0x1db, 0);
             UpdateCombatantAgility((int)random, combatantId);
         }
@@ -427,7 +427,7 @@ extern "C" ARM void func_ov000_0215858c(struct Random* random, int combatantId, 
         ailments->turns94 = ailments->turns94 - 1;
         if (data_ov000_02182ad4[ailments->turns94] > (float)NextRandomMax(random, 100) / 100.0f) {
             ailments->turns94 = 0;
-            _Z35ClearBattleFlags0x14And0x5802087b14Pv(combatant->currentStats_);
+            ClearBattleFlags0x14And0x5802087b14(combatant->currentStats_);
             func_ov000_021584e8(random, entry, combatant, arg2, 0x1d0, 0);
             UpdateCombatantCharm((int)random, combatantId);
         }
@@ -441,7 +441,7 @@ extern "C" ARM void func_ov000_0215858c(struct Random* random, int combatantId, 
         ailments->turns95 = ailments->turns95 - 1;
         if (data_ov000_02182ad4[ailments->turns95] > (float)NextRandomMax(random, 100) / 100.0f) {
             ailments->turns95 = 0;
-            _Z35ClearBattleFlags0x14And0x5802087c08Pv(combatant->currentStats_);
+            ClearBattleFlags0x14And0x5802087c08(combatant->currentStats_);
             func_ov000_021584e8(random, entry, combatant, arg2, 0x1d1, 0);
             UpdateCombatantMagicalMight((int)random, combatantId);
         }

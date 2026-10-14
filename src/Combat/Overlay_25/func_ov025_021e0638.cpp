@@ -108,15 +108,15 @@ extern "C" void _ZN8Vector3iaSERKS_(Vec3_021e0638* dst, const Vec3_021e0638* src
 extern "C" int _ZNK8Object3D9GetRadiusEv(void* self);
 extern "C" void __clear(void* p, int n);
 
-extern "C" void _Z20ResetFields_021e20d8Pv(void* obj);
-extern "C" void _Z23ResetInnerState02048c90P11Obj02048c90(Obj02048c90*);
+void ResetFields_021e20d8(void* obj);
+void ResetInnerState02048c90(Obj02048c90*);
 int GetSubstructByte0x1c(unsigned char*);
 int GetSubstructByte0x1d(unsigned char*);
 int GetSubstructByte0x34(unsigned char*);
 int GetSubstructByte0x56(unsigned char*);
-extern "C" void _Z27CopyBytesAndSetLen_021e2114PhPvi(unsigned char*, void*, int);
-extern "C" void _Z24StoreDataWithLen02049410P11Obj02049410Pvi(Obj02049410*, void*, int);
-extern "C" void _Z30ApplyFlag0x4IfEligible02049a74P11Obj02049a74(Obj02049a74*);
+void CopyBytesAndSetLen_021e2114(unsigned char*, void*, int);
+void StoreDataWithLen02049410(Obj02049410*, void*, int);
+void ApplyFlag0x4IfEligible02049a74(Obj02049a74*);
 void ClearSubstructFlag0x4(unsigned char*);
 void ClearSubstructFlag0x40(unsigned char*);
 void SetSubstructFlag0x40(unsigned char*);
@@ -124,9 +124,9 @@ void ClearGlobalBuffer02107850(void);
 Data021e0638* GetData02107850(void);
 int CheckHighNibble0xc1Not2To5(unsigned char*);
 int CheckSubstructFlag0x200(unsigned char*);
-extern "C" void _Z26DispatchTargetByte020494c0P11Obj020494c0(Obj020494c0*);
-extern "C" unsigned char* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094*, int);
-extern "C" unsigned char* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8*, int);
+void DispatchTargetByte020494c0(Obj020494c0*);
+unsigned char* GetNodeAtIndex02160094(List02160094*, int);
+unsigned char* GetNodeAtIndex021600f8(List021600f8*, int);
 
 static inline Node021e0638* NthNode021e0638(Node021e0638* head, int idx) {
     if (idx == 0) {
@@ -177,12 +177,12 @@ extern "C" ARM void func_ov025_021e0638(unsigned char* self) {
         return;
     }
     for (int i = 0; i < n; i++) {
-        _Z23ResetInnerState02048c90P11Obj02048c90((Obj02048c90*)ents[i].obj);
+        ResetInnerState02048c90((Obj02048c90*)ents[i].obj);
         head.data[i] = GetSubstructByte0x1c(ents[i].obj);
         pool[i].len = 0;
         memset(pool[i].mark, 0, 0x10);
     }
-    _Z20ResetFields_021e20d8Pv(&tbl);
+    ResetFields_021e20d8(&tbl);
     func_ov025_021e20ec(&tbl, alloc);
     int i;
     int changed;
@@ -245,7 +245,7 @@ found:
                     tmp[m++] = b;
                 }
             }
-            _Z27CopyBytesAndSetLen_021e2114PhPvi((unsigned char*)&tbl, tmp, m);
+            CopyBytesAndSetLen_021e2114((unsigned char*)&tbl, tmp, m);
             __clear(out, 0x10);
             unsigned char cnt = func_ov025_021e2148(&tbl, prev, target, out, 0x10);
             if (cnt < 2) {
@@ -363,7 +363,7 @@ found:
                 sendbuf[m++] = pool[i].seq[j];
             }
         }
-        _Z24StoreDataWithLen02049410P11Obj02049410Pvi((Obj02049410*)ents[i].obj, sendbuf, m);
+        StoreDataWithLen02049410((Obj02049410*)ents[i].obj, sendbuf, m);
     }
     for (int i = 0; i < n; i++) {
         int flag = 0;
@@ -372,7 +372,7 @@ found:
             flag = 1;
         }
         if (GetSubstructByte0x56(ents[i].obj) != 0 && flag == 0 && self[Fielde78] != 0) {
-            _Z30ApplyFlag0x4IfEligible02049a74P11Obj02049a74((Obj02049a74*)ents[i].obj);
+            ApplyFlag0x4IfEligible02049a74((Obj02049a74*)ents[i].obj);
         } else {
             ClearSubstructFlag0x4(ents[i].obj);
         }
@@ -431,8 +431,8 @@ found:
         }
     }
     ClearGlobalBuffer02107850();
-    unsigned char* na = _Z22GetNodeAtIndex02160094P12List02160094i((List02160094*)cur, 0);
-    unsigned char* nb = _Z22GetNodeAtIndex021600f8P12List021600f8i((List021600f8*)cur, 0);
+    unsigned char* na = GetNodeAtIndex02160094((List02160094*)cur, 0);
+    unsigned char* nb = GetNodeAtIndex021600f8((List021600f8*)cur, 0);
     if (na != 0 && nb != 0) {
         unsigned char* ca = (unsigned char*)gs->GetCombatantByIndex(*(unsigned short*)(na + 0x20));
         unsigned char* cb = (unsigned char*)gs->GetCombatantByIndex(*(short*)(nb + 0xe));
@@ -464,7 +464,7 @@ found:
         if (GetSubstructByte0x56(o) != 0 && GetSubstructByte0x34(o) == 0 && CheckHighNibble0xc1Not2To5(o) != 0
             && (*(unsigned int*)(*(unsigned char**)(o + 0x138) + 0x14) & 1) == 0 && self[Fielde78] != 0
             && CheckSubstructFlag0x200(o) == 0) {
-            _Z26DispatchTargetByte020494c0P11Obj020494c0((Obj020494c0*)o);
+            DispatchTargetByte020494c0((Obj020494c0*)o);
         }
     }
 }

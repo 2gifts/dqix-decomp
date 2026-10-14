@@ -6,13 +6,13 @@ struct Obj0204b5e8;
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* obj);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
+int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" int func_020420e8(char* str, int id);
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
-extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" int _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(struct Obj0204b5e8* obj, int a, int b);
+void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
+char* GetGlobalField0x1c020421a0(void);
+int DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
 extern "C" void memset(void* dst, int val, int size);
-extern "C" void _Z25AppendEntryNames_0215e13cPcS_i(char* base, char* dst, int flag);
+void AppendEntryNames_0215e13c(char* base, char* dst, int flag);
 extern "C" void func_0205d304(void* a, void* b, int p2, int p3, int p4, int p5, int p6, int p7);
 
 struct BattleMenu_0215df1c {
@@ -69,14 +69,14 @@ extern "C" ARM void func_ov003_0215df1c(struct BattleMenu_0215df1c* self) {
     short height = (self->count * 14 + 0x12) / 8;
     int maxWidth = 0;
     for (int i = 0; i < self->count; i++) {
-        short w = func_020420e8((char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages, self->keys[i]), 0);
+        short w = func_020420e8((char*)GetFieldByKey020e0434((struct Container020e0310*)self->messages, self->keys[i]), 0);
         if (maxWidth < w) {
             maxWidth = w;
         }
     }
     short width = (maxWidth + 0x18) >> 3;
 
-    _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24*)self->window, 0, 2);
+    FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)self->window, 0, 2);
     self->width = width;
     self->height = height;
     self->x = 0x1f - width;
@@ -90,18 +90,18 @@ extern "C" ARM void func_ov003_0215df1c(struct BattleMenu_0215df1c* self) {
     self->field14d = 1;
 
     if (self->lowerScreen) {
-        short pos = *(short*)(_Z26GetGlobalField0x1c020421a0v() + 0x916);
+        short pos = *(short*)(GetGlobalField0x1c020421a0() + 0x916);
         short row = pos / 8;
         short offset = pos % 8;
         self->x = 0x20 - width;
         self->y = row - height;
         for (int i = 0; i < 2; i++) {
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8*)self->scrollers[i], 2, -offset);
+            DispatchViaTable0204b5e8((struct Obj0204b5e8*)self->scrollers[i], 2, -offset);
         }
     }
 
     self->cursor = 0;
     memset(self->text, 0, 0x960);
-    _Z25AppendEntryNames_0215e13cPcS_i((char*)self, self->text, 0);
+    AppendEntryNames_0215e13c((char*)self, self->text, 0);
     func_0205d304(self->window, self->text, 0, 1, 0, 1, 0, 0);
 }

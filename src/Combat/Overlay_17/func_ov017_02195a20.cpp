@@ -8,20 +8,20 @@ struct FlagWord02046708;
 struct HeadNode02046b24;
 
 unsigned long long GetCurrentTimestamp(void);
-extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(struct FlagWord02046708* word, unsigned int mask);
+FlagWord02046708* GetDataPtr02114e04_020d6c00();
+int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 extern "C" void* func_0202ae18(void);
-extern "C" void _Z26ResetGxEngineState020c52e8v();
+void ResetGxEngineState020c52e8();
 extern "C" void func_020c5414();
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 extern "C" void func_ov017_02195ecc(unsigned char* obj, int mode);
 void MaybeUpdateOrDispatchEntry_021959ec(void* obj);
-extern "C" void _Z27SetActiveDmaChannel020c3a0ci(int ch);
+void SetActiveDmaChannel020c3a0c(int ch);
 extern "C" void func_ov017_02195bbc(unsigned char* obj);
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 extern "C" int func_0202c508(void* obj);
 extern "C" int func_0202c540(void* obj);
-extern "C" void _Z22DispatchByFlag020d9834i(int flag);
+void DispatchByFlag020d9834(int flag);
 extern "C" void func_ov017_021960b8(unsigned char* obj);
 
 // USA: func_ov017_02195a20
@@ -32,9 +32,9 @@ extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
  enum {regionalFlag=0x448a,regionalList=0x36fc};
 #endif
     GetCurrentTimestamp();
-    FlagWord02046708* flags = _Z27GetDataPtr02114e04_020d6c00v();
+    FlagWord02046708* flags = GetDataPtr02114e04_020d6c00();
     void* search = func_0202ae18();
-    _Z26ResetGxEngineState020c52e8v();
+    ResetGxEngineState020c52e8();
     func_020c5414();
     RenderConfig::Reset();
     DISP3DCNT = (DISP3DCNT & ~0x3000) | 8;
@@ -52,13 +52,13 @@ extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
     SendQueuedDataToGeometryFifo();
     LightingManager::GetInstance()->SubmitToRenderConfig();
 
-    int useDma = _Z17TestFlags02046708P16FlagWord02046708j(flags, 0x800000);
+    int useDma = TestFlags02046708(flags, 0x800000);
     if (useDma) {
-        _Z27SetActiveDmaChannel020c3a0ci(-1);
+        SetActiveDmaChannel020c3a0c(-1);
     }
     func_ov017_02195bbc(obj);
     if (useDma) {
-        _Z27SetActiveDmaChannel020c3a0ci(0);
+        SetActiveDmaChannel020c3a0c(0);
     }
     if (GetHeadNodeIdOrMinusOne(*(HeadNode02046b24***)(obj + regionalList)) == 0x16) {
         func_ov017_02195ecc(obj, 2);
@@ -68,7 +68,7 @@ extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
             int line = VCOUNT;
             if (func_0202c508(search) && line < 0xd2) break;
             if (func_0202c540(search) && (line < 0xbe || line > 0xf0)) break;
-            _Z22DispatchByFlag020d9834i(0);
+            DispatchByFlag020d9834(0);
         }
     }
     func_ov017_021960b8(obj);

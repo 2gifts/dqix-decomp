@@ -20,7 +20,7 @@ struct Node021e5c68 {
 
 void ApplyVec3Tail(void* obj, int* vec);
 extern "C" Node021e5c68* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx);
-extern "C" char* _Z19GetActiveCombatWorkv();
+char* GetActiveCombatWork();
 
 // USA: func_ov025_021e5c68
 extern "C" ARM int func_ov025_021e5c68(CameraStep021e5c68* step, void* list) {
@@ -57,7 +57,7 @@ extern "C" ARM int func_ov025_021e5c68(CameraStep021e5c68* step, void* list) {
             ApplyVec3Tail(cam, (int*)&pos);
         }
     }
-    char* work = _Z19GetActiveCombatWorkv();
+    char* work = GetActiveCombatWork();
     if (work != 0) work[regionalOffset0] = 1;
     return 1;
 }

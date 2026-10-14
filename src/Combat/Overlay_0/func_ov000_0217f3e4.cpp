@@ -10,15 +10,14 @@
 #define REGION_OFFSET_2 0x1d69
 #endif
 
-
 struct Obj_0205dd08;
 extern "C" int func_0205dd08(struct Obj_0205dd08* obj);
 struct Struct_0205c4a8;
-extern "C" void _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i(struct Struct_0205c4a8* s, int delta);
+void AdvanceWrappedAccumulator0205c4a8(struct Struct_0205c4a8* s, int delta);
 struct Struct_0205bb84;
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(struct Struct_0205bb84* s);
+int ComputeScaledSum0205bb84(struct Struct_0205bb84* s);
 struct Struct_0205bcdc;
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(struct Struct_0205bcdc* s, int index);
+void SetIndexIfValid0205bcdc(struct Struct_0205bcdc* s, int index);
 
 struct Channel0217f3e4 {
     char data[0x50];
@@ -55,9 +54,9 @@ extern "C" ARM int func_ov000_0217f3e4(struct Menu0217f3e4* menu) {
     }
     Channel0217f3e4* accumulator = ((MenuChannels0217f3e4*)menu)->GetChannel(2);
     Channel0217f3e4* cursor = ((MenuChannels0217f3e4*)menu)->GetChannel(1);
-    _Z33AdvanceWrappedAccumulator0205c4a8P15Struct_0205c4a8i((struct Struct_0205c4a8*)accumulator, delta);
-    int value = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((struct Struct_0205bb84*)accumulator);
-    _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((struct Struct_0205bcdc*)cursor, value);
+    AdvanceWrappedAccumulator0205c4a8((struct Struct_0205c4a8*)accumulator, delta);
+    int value = ComputeScaledSum0205bb84((struct Struct_0205bb84*)accumulator);
+    SetIndexIfValid0205bcdc((struct Struct_0205bcdc*)cursor, value);
     switch (menu->kinds[menu->kindIndex]) {
     case 6:
         menu->valueKind6 = value;

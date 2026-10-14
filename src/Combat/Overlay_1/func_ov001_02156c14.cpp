@@ -18,7 +18,7 @@ struct Buf02156ba0 {
     Vector3fix initial;
     int mode;
 };
-extern "C" void _Z30ZeroEntryArrayAndTail_02156ba0P11Buf02156ba0(Buf02156ba0*);
+void ZeroEntryArrayAndTail_02156ba0(Buf02156ba0*);
 
 static inline int MultiplyFixed(int value, int factor) {
     return FIX32_MULTIPLY(value, factor);
@@ -26,7 +26,7 @@ static inline int MultiplyFixed(int value, int factor) {
 
 // USA: func_ov001_02156c14
 extern "C" ARM void func_ov001_02156c14(Buf02156ba0* self, const Vector3fix* points, const int* durations, int count, int mode) {
-    _Z30ZeroEntryArrayAndTail_02156ba0P11Buf02156ba0(self);
+    ZeroEntryArrayAndTail_02156ba0(self);
     if (count > 0) {
         int index;
         Vector3fix positions[18];

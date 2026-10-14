@@ -31,7 +31,7 @@ struct AudioResources {
 #endif
     unsigned int capacity;
 };
-extern "C" void _Z26SafeAllocatorFree_0218bca8Pv(void*);
+void SafeAllocatorFree_0218bca8(void*);
 
 // USA: func_ov016_0218edac
 extern "C" ARM void func_ov016_0218edac(AudioResources* resources) {
@@ -39,34 +39,34 @@ extern "C" ARM void func_ov016_0218edac(AudioResources* resources) {
         resources->stream->vtable->close(resources->stream);
         if (resources->stream) resources->stream->vtable->destroy(resources->stream);
     }
-    _Z26SafeAllocatorFree_0218bca8Pv(resources->decoder);
+    SafeAllocatorFree_0218bca8(resources->decoder);
     if (resources->firstBuffers) {
         unsigned int i = 0;
         if (i < resources->capacity) do {
-            _Z26SafeAllocatorFree_0218bca8Pv(resources->firstBuffers[i]);
+            SafeAllocatorFree_0218bca8(resources->firstBuffers[i]);
             i++;
         } while (i < resources->capacity);
-        _Z26SafeAllocatorFree_0218bca8Pv(resources->firstBuffers);
+        SafeAllocatorFree_0218bca8(resources->firstBuffers);
     }
     if (resources->secondBuffers) {
         unsigned int i = 0;
         if (i < resources->capacity) do {
-            _Z26SafeAllocatorFree_0218bca8Pv(resources->secondBuffers[i]);
+            SafeAllocatorFree_0218bca8(resources->secondBuffers[i]);
             i++;
         } while (i < resources->capacity);
-        _Z26SafeAllocatorFree_0218bca8Pv(resources->secondBuffers);
+        SafeAllocatorFree_0218bca8(resources->secondBuffers);
     }
-    if (resources->parameters) _Z26SafeAllocatorFree_0218bca8Pv(resources->parameters);
-    if (resources->firstScratch) _Z26SafeAllocatorFree_0218bca8Pv(resources->firstScratch);
-    if (resources->secondScratch) _Z26SafeAllocatorFree_0218bca8Pv(resources->secondScratch);
+    if (resources->parameters) SafeAllocatorFree_0218bca8(resources->parameters);
+    if (resources->firstScratch) SafeAllocatorFree_0218bca8(resources->firstScratch);
+    if (resources->secondScratch) SafeAllocatorFree_0218bca8(resources->secondScratch);
     int i = 0;
     do {
-        if (resources->workBuffers[i]) _Z26SafeAllocatorFree_0218bca8Pv(resources->workBuffers[i]);
+        if (resources->workBuffers[i]) SafeAllocatorFree_0218bca8(resources->workBuffers[i]);
         resources->workBuffers[i] = 0;
         i++;
     } while (i < 2);
-    if (resources->scratch) _Z26SafeAllocatorFree_0218bca8Pv(resources->scratch);
-    if (resources->buffer) _Z26SafeAllocatorFree_0218bca8Pv(resources->buffer);
+    if (resources->scratch) SafeAllocatorFree_0218bca8(resources->scratch);
+    if (resources->buffer) SafeAllocatorFree_0218bca8(resources->buffer);
     resources->stream = 0;
     resources->firstBuffers = 0;
     resources->secondBuffers = 0;

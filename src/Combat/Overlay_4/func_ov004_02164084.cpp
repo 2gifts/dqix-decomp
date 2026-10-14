@@ -104,12 +104,12 @@ extern "C" void func_ov023_021f65d4(void*, int, int);
 extern "C" void func_ov023_021f9d14(void*, void*);
 extern "C" void func_ov023_021f809c(void*, void*);
 extern "C" MapAllocatorNode* func_ov011_021845f8(void*, int);
-extern "C" void _Z26SetField3aIfFound_021634b8Pvii(void*, int, int);
+void SetField3aIfFound_021634b8(void*, int, int);
 extern "C" void _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30*, unsigned short, unsigned int, unsigned int);
-extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void*, int, int);
+void ClearNodeMaskById_021f6600(void*, int, int);
 int CopyToRegion0x6482IfDst(char*, void*);
 struct Info02011930;
-extern "C" int _Z32GetAndConsumeNameEntries02011930PvP12Info02011930S_S_(void*, Info02011930*, void*, void*);
+int GetAndConsumeNameEntries02011930(void*, Info02011930*, void*, void*);
 
 // USA: func_ov004_02164084
 extern "C" ARM int func_ov004_02164084(void* obj) {
@@ -141,11 +141,11 @@ extern "C" ARM int func_ov004_02164084(void* obj) {
         if (!right) continue;
         if (func_ov023_021f6f10(right) != 8) return 0;
         func_ov023_021f65d4(obj, i + 0x226, 8);
-        _Z26SetField3aIfFound_021634b8Pvii(obj, i + 0x226, 0);
+        SetField3aIfFound_021634b8(obj, i + 0x226, 0);
         func_ov023_021f65d4(obj, i + 0x230, 8);
-        _Z26SetField3aIfFound_021634b8Pvii(obj, i + 0x230, 0);
+        SetField3aIfFound_021634b8(obj, i + 0x230, 0);
         func_ov023_021f65d4(obj, i + 0x23a, 8);
-        _Z26SetField3aIfFound_021634b8Pvii(obj, i + 0x23a, 0);
+        SetField3aIfFound_021634b8(obj, i + 0x23a, 0);
         DetailedTreasureMapData* det = &data_ov004_02171010.buffer->details[i];
         det->BlankFunction();
         left->text = 0;
@@ -169,11 +169,11 @@ extern "C" ARM int func_ov004_02164084(void* obj) {
         left->Notify(0xf);
         right->Notify(0xf);
         if (det->discoveryState_ == 1) {
-            _Z26ClearNodeMaskById_021f6600Pvii(obj, i + 0x230, 8);
+            ClearNodeMaskById_021f6600(obj, i + 0x230, 8);
         } else if (det->discoveryState_ == 2) {
-            _Z26ClearNodeMaskById_021f6600Pvii(obj, i + 0x226, 8);
+            ClearNodeMaskById_021f6600(obj, i + 0x226, 8);
         } else if (det->discoveryState_ == 3) {
-            _Z26ClearNodeMaskById_021f6600Pvii(obj, i + 0x23a, 8);
+            ClearNodeMaskById_021f6600(obj, i + 0x23a, 8);
         }
         if (CopyToRegion0x6482IfDst((char*)gs, 0)) {
             if (det->discoveryState_ == 1) {
@@ -184,7 +184,7 @@ extern "C" ARM int func_ov004_02164084(void* obj) {
                 right->Notify(4);
             }
         } else {
-            if (!_Z32GetAndConsumeNameEntries02011930PvP12Info02011930S_S_(gs, 0, 0, 0)) continue;
+            if (!GetAndConsumeNameEntries02011930(gs, 0, 0, 0)) continue;
             if (!data_ov004_02171010.buffer->maps[index].GetInitialByteUnknownBit()) continue;
             left->Notify(4);
             right->Notify(4);

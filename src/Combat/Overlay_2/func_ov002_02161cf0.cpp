@@ -5,15 +5,15 @@ struct Struct_0205ba68;
 struct Node0205bacc;
 struct Struct_0205bcdc;
 struct Struct0205cf1c;
-extern "C" void _Z23SetChannelAFlag0205cef8Pv(void *p);
-extern "C" void _Z23SetChannelBFlag0205cf04Pv(void *p);
-extern "C" void _Z25ClearChannelAFlag0205cf10Pv(void *p);
-extern "C" void _Z21ClearFlagByte0205cf1cP14Struct0205cf1c(struct Struct0205cf1c *p);
+void SetChannelAFlag0205cef8(void *p);
+void SetChannelBFlag0205cf04(void *p);
+void ClearChannelAFlag0205cf10(void *p);
+void ClearFlagByte0205cf1c(struct Struct0205cf1c *p);
 unsigned char ReadBattleField0x64f4Byte(GameState* gameState);
-extern "C" int _Z22GetCountByType02157108Pvi(void *base, int id);
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(struct Struct_0205ba68 *p, int a, int b, int c);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node0205bacc *p, int v);
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(struct Struct_0205bcdc *p, int v);
+int GetCountByType02157108(void *base, int id);
+void SetupPointerTable0205ba68(struct Struct_0205ba68 *p, int a, int b, int c);
+void SetField0AndPropagate0205bacc(struct Node0205bacc *p, int v);
+void SetIndexIfValid0205bcdc(struct Struct_0205bcdc *p, int v);
 extern "C" void func_0205bb04(void *p, int v);
 extern "C" int func_020dc428();
 extern "C" void func_ov002_02156080(void *self, short *out, short *outCount);
@@ -29,8 +29,8 @@ extern "C" ARM void func_ov002_02161cf0(char *base) {
     int flag;
     GameState::GetInstance();
     flag = 0;
-    _Z23SetChannelAFlag0205cef8Pv(base + 0x2c8 + 0xc00);
-    _Z23SetChannelBFlag0205cf04Pv(base + 0x2c8 + 0xc00);
+    SetChannelAFlag0205cef8(base + 0x2c8 + 0xc00);
+    SetChannelBFlag0205cf04(base + 0x2c8 + 0xc00);
     switch (*(int *) (base + 0x1000 + 0xbb8)) {
         case 1:
             cursor = *(short *) (base + 0x1b00 + 0xe0);
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov002_02161cf0(char *base) {
             }
             cols  = 1;
             rows  = 8;
-            total = _Z22GetCountByType02157108Pvi(base, *(signed char *) (base + 0x1c00 + 0x20));
+            total = GetCountByType02157108(base, *(signed char *) (base + 0x1c00 + 0x20));
             pages = (total + 7) / 8;
             if (total < 8) rows = total;
             if (total <= *(short *) (base + 0x1b00 + 0xe8)) *(short *) (base + 0x1b00 + 0xe8) = total - 1;
@@ -124,7 +124,7 @@ extern "C" ARM void func_ov002_02161cf0(char *base) {
         case 13:
             cols  = 1;
             rows  = 8;
-            total = _Z22GetCountByType02157108Pvi(base, *(signed char *) (base + 0x1c00 + 0x21)) + 1;
+            total = GetCountByType02157108(base, *(signed char *) (base + 0x1c00 + 0x21)) + 1;
             pages = 1;
             if (total > 8) total = 8;
             if (total < 8) rows = total;
@@ -259,17 +259,17 @@ extern "C" ARM void func_ov002_02161cf0(char *base) {
             cursor = *(short *) (base + 0x1c00 + 0x14);
             break;
         default:
-            _Z25ClearChannelAFlag0205cf10Pv(base + 0x2c8 + 0xc00);
-            _Z21ClearFlagByte0205cf1cP14Struct0205cf1c((struct Struct0205cf1c *) (base + 0x2c8 + 0xc00));
+            ClearChannelAFlag0205cf10(base + 0x2c8 + 0xc00);
+            ClearFlagByte0205cf1c((struct Struct0205cf1c *) (base + 0x2c8 + 0xc00));
             return;
     }
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68 *) (list + 4), cols, rows, flag);
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68 *) (list + 0x54), cols, rows, flag);
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc *) (list + 4), total);
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc *) (list + 0x54), total);
+    SetupPointerTable0205ba68((struct Struct_0205ba68 *) (list + 4), cols, rows, flag);
+    SetupPointerTable0205ba68((struct Struct_0205ba68 *) (list + 0x54), cols, rows, flag);
+    SetField0AndPropagate0205bacc((struct Node0205bacc *) (list + 4), total);
+    SetField0AndPropagate0205bacc((struct Node0205bacc *) (list + 0x54), total);
     *(int *) (list + 8)    = pages;
     *(int *) (list + 0x58) = pages;
-    _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci((struct Struct_0205bcdc *) (list + 4), cursor);
+    SetIndexIfValid0205bcdc((struct Struct_0205bcdc *) (list + 4), cursor);
     func_0205bb04(list + 0x54, cursor);
     *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
 }

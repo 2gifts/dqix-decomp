@@ -21,36 +21,36 @@ extern "C" GameResources* func_ov017_0218b5b0();
 char* GetFieldIfFlag4(char* obj);
 void* GetFieldPtrAt0x5ca4(void* obj);
 extern "C" void* func_02012fe4();
-extern "C" char* _Z26GetGlobalField0x1c020421a0v();
+char* GetGlobalField0x1c020421a0();
 void* GetGlobalPtr021075f4(void);
 void* EmptyStub0203d004(void* p);
 extern "C" void* _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(void* list, int id);
-extern "C" int* _Z11GetField0x8Pi(int* p);
+int* GetField0x8(int* p);
 extern "C" int _Z28FindEntryIndexByName02040404P17Container02040404PKc(Container0204039c* c, char* name);
-extern "C" void _Z30ReleaseOrDecrementSlot0204039cP17Container0204039ci(Container0204039c* c, int idx);
-extern "C" void _Z13Reset02040504Pi(int* p);
+void ReleaseOrDecrementSlot0204039c(Container0204039c* c, int idx);
+void Reset02040504(int* p);
 extern "C" void _Z21SetSlotIfIndexBelow32P17SlotArray0203dd10ji(SlotArray0203dd10* s, int idx, int emitter);
-extern "C" void _Z24ReinitController02043204Pc(char* obj);
+void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
-extern "C" void _Z17ClearBitsInField4Pjj(unsigned int* p, unsigned int bits);
-extern "C" int _Z29IsScaledFieldPositive0203adfcPvS_(void* a, void* b);
-extern "C" void _Z22ScaleAndNotify0203ad88PvS_i(void* a, void* b, int c);
+void ClearBitsInField4(unsigned int* p, unsigned int bits);
+int IsScaledFieldPositive0203adfc(void* a, void* b);
+void ScaleAndNotify0203ad88(void* a, void* b, int c);
 extern "C" void _Z33SetField0x7cClearFields0x1ec0x1eePht(unsigned char* obj, short val);
-extern "C" void _Z22SetFields0x1f0And0x1f4Pvii(void* obj, int a, int b);
+void SetFields0x1f0And0x1f4(void* obj, int a, int b);
 extern "C" void* func_020704fc();
 extern "C" void _Z28SetScaledEffectParam020708c8P19EffectParam020708c8j(void* p, unsigned int v);
-extern "C" int _Z15GetBitsInField0Pjj(unsigned int* p, unsigned int bits);
-extern "C" void _Z22ResetAndReinit0209c278Pv(void* obj);
-extern "C" void _Z27Dispatch0203a974With0x57000Pv(void* obj);
-extern "C" void _Z27SetupContextForMode0205ea20Pvi(void* obj, int mode);
+int GetBitsInField0(unsigned int* p, unsigned int bits);
+void ResetAndReinit0209c278(void* obj);
+void Dispatch0203a974With0x57000(void* obj);
+void SetupContextForMode0205ea20(void* obj, int mode);
 extern "C" void _Z15ClearBitsInWordPjj(int p, unsigned int bits);
 extern "C" void func_ov028_021d9714();
-extern "C" void _Z19PopStack1AndTriggeri(int v);
+void PopStack1AndTrigger(int v);
 extern "C" void* func_0205ec34();
-extern "C" int _Z18TestBitInByteArrayiPhi(int p, unsigned char* arr, int bit);
+int TestBitInByteArray(int p, unsigned char* arr, int bit);
 extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(Struct02033b88* obj, int val);
-extern "C" void _Z18ClearCombatantSlotP9GameStatei(GameState* gs, int id);
-extern "C" void _Z18SetField0x3b0ValueP9GameStatei(GameState* gs, int val);
+void ClearCombatantSlot(GameState* gs, int id);
+void SetField0x3b0Value(GameState* gs, int val);
 
 extern char data_ov001_02164c4a[];
 extern char data_02108760[];
@@ -81,7 +81,7 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
     hud = GetFieldIfFlag4((char*)gs);
     res2 = func_ov017_0218b5b0();
     area = (Zone3D*)func_02012fe4();
-    globalA = _Z26GetGlobalField0x1c020421a0v();
+    globalA = GetGlobalField0x1c020421a0();
     loader = BackgroundLoader::GetInstance();
     ptr6 = (int*)GetFieldPtrAt0x5ca4(gs);
 
@@ -101,13 +101,13 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
         obj = gs->GetGameObjectByIndex(j + 0xa0);
         if (obj != 0) {
             obj->obj3D_.Destroy();
-            _Z18ClearCombatantSlotP9GameStatei(gs, j + 0xa0);
+            ClearCombatantSlot(gs, j + 0xa0);
         }
     }
 
     if (ptr6[1] != 0) {
         if (GetFieldIfFlag4((char*)gs) == 0) {
-            _Z18SetField0x3b0ValueP9GameStatei(gs, ptr6[1]);
+            SetField0x3b0Value(gs, ptr6[1]);
             hud = GetFieldIfFlag4((char*)gs);
         }
     }
@@ -123,38 +123,38 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
     for (; k < 0x20; k++) {
         int* entry = (int*)_Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(list, k);
         if (entry != 0) {
-            unsigned char* p = (unsigned char*)_Z11GetField0x8Pi(entry);
+            unsigned char* p = (unsigned char*)GetField0x8(entry);
             if (p[2] == 3) {
                 Container0204039c* cont = (Container0204039c*)EmptyStub0203d004(list);
                 sprintf(nameBuf, fmt, p + 4);
                 int idx = _Z28FindEntryIndexByName02040404P17Container02040404PKc(cont, nameBuf);
-                _Z30ReleaseOrDecrementSlot0204039cP17Container0204039ci(cont, idx);
-                _Z13Reset02040504Pi(entry);
+                ReleaseOrDecrementSlot0204039c(cont, idx);
+                Reset02040504(entry);
                 _Z21SetSlotIfIndexBelow32P17SlotArray0203dd10ji((SlotArray0203dd10*)list, k, 0);
             }
         }
     }
 
-    _Z24ReinitController02043204Pc(globalA);
+    ReinitController02043204(globalA);
     func_02043124(globalA);
-    _Z17ClearBitsInField4Pjj((unsigned int*)res2, 8);
-    if (_Z29IsScaledFieldPositive0203adfcPvS_(data_02108760, 0) != 0) {
-        _Z22ScaleAndNotify0203ad88PvS_i(data_02109bf4, 0, 0);
+    ClearBitsInField4((unsigned int*)res2, 8);
+    if (IsScaledFieldPositive0203adfc(data_02108760, 0) != 0) {
+        ScaleAndNotify0203ad88(data_02109bf4, 0, 0);
     }
-    _Z17ClearBitsInField4Pjj((unsigned int*)res2, 0x2000);
+    ClearBitsInField4((unsigned int*)res2, 0x2000);
     _Z33SetField0x7cClearFields0x1ec0x1eePht((unsigned char*)hud, 0);
-    _Z22SetFields0x1f0And0x1f4Pvii(hud, 0xf000, 0);
+    SetFields0x1f0And0x1f4(hud, 0xf000, 0);
     _Z28SetScaledEffectParam020708c8P19EffectParam020708c8j(func_020704fc(), 0);
     loader->MaybeReset();
 
     REG_DISPSTAT_304 &= ~0x8000;
-    if (_Z15GetBitsInField0Pjj((unsigned int*)res2, 0x1000) != 0) {
-        _Z22ResetAndReinit0209c278Pv(data_02109bf4);
-        _Z27Dispatch0203a974With0x57000Pv(data_02109bf4);
-        _Z27SetupContextForMode0205ea20Pvi(data_02108760, 0x64);
+    if (GetBitsInField0((unsigned int*)res2, 0x1000) != 0) {
+        ResetAndReinit0209c278(data_02109bf4);
+        Dispatch0203a974With0x57000(data_02109bf4);
+        SetupContextForMode0205ea20(data_02108760, 0x64);
         _Z15ClearBitsInWordPjj((int)res2, 0x1000);
         func_ov028_021d9714();
-        _Z19PopStack1AndTriggeri(1);
+        PopStack1AndTrigger(1);
     }
 
     DISPCNT = (DISPCNT & ~0x1f00) | 0x100;
@@ -166,7 +166,7 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
     if (node != 0) {
         for (int n = 0; n < count; n++) {
             e = &node->elements[n];
-            if (_Z18TestBitInByteArrayiPhi((int)events, (unsigned char*)((char*)events + 0x45b), n & 0xff) != 0) {
+            if (TestBitInByteArray((int)events, (unsigned char*)((char*)events + 0x45b), n & 0xff) != 0) {
                 if (e != 0) {
                     e->flags &= ~4;
                 }

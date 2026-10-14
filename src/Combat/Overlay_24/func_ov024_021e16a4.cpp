@@ -4,7 +4,7 @@
 
 struct Container02070e60;
 struct Element_021e16a4 { char pad0[2]; unsigned char kind; };
-extern "C" struct Element_021e16a4* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(struct Container02070e60* container, int key);
+struct Element_021e16a4* SearchWithLow15Comparator02070fd0(struct Container02070e60* container, int key);
 GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
@@ -50,7 +50,7 @@ extern "C" ARM void* func_ov024_021e16a4(struct Obj_021e16a4* obj, int unused, i
         int slot = *((unsigned char*)c + 0x17c);
         if (slot >= 3) return 0;
         struct Record_021e16a4* rec = &obj->ctx->records[slot];
-        struct Element_021e16a4* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(
+        struct Element_021e16a4* e = SearchWithLow15Comparator02070fd0(
             (struct Container02070e60*)((char*)obj->ctx->sub + 0x684), rec->id);
         if (rec->used != 0 || (e != 0 && e->kind == 7)) {
             obj->out->code = range->f24.c;

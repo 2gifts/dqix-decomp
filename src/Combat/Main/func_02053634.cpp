@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
+int GetGlobalField0x1c020421a0(void);
 unsigned char GetField0x397cValue(GameState* battleStruct);
 int GetSignedByte0x1c9(void* obj);
 int GetIndexedEntryField0x178(signed char* obj);
@@ -21,10 +21,10 @@ extern "C" void* func_0205ec34(void);
 extern "C" void func_0206f81c(void* p);
 
 struct Obj0205eaa0;
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
+void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
-extern "C" void _Z32ForwardToTargetOrDefault0205eabcPvS_i(void* obj, void* target, int arg);
-extern "C" int _Z32SetTargetFieldAndForEach02064a9cPvS_(void* param0, void* param1);
+void ForwardToTargetOrDefault0205eabc(void* obj, void* target, int arg);
+int SetTargetFieldAndForEach02064a9c(void* param0, void* param1);
 int GetFieldIfFlag4(char* obj);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern "C" void _Z25EnqueueEventTag6_021cc2f0h(int a0);
@@ -70,7 +70,7 @@ extern "C" ARM void func_02053634(void* obj) {
         short cid0 = *(short*)(ctx + 4);
         int activeCid0 = GetField0x397cValue(bs);
         if (activeCid0 == cid0
-            && ((unsigned char*)_Z26GetGlobalField0x1c020421a0v())[GLOBAL_ACTIVE_OFFSET] != 0) {
+            && ((unsigned char*)GetGlobalField0x1c020421a0())[GLOBAL_ACTIVE_OFFSET] != 0) {
             func_020531f0(ctx);
             return;
         }
@@ -148,7 +148,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 }
                 unsigned short val = *(unsigned short*)func_02012fe4();
                 if (val == _ZNK8Object3D10GetField06Ev(ctx)) {
-                    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, e->kind, (int)arg2);
+                    DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, e->kind, (int)arg2);
                 }
                 break;
             }
@@ -199,7 +199,7 @@ extern "C" ARM void func_02053634(void* obj) {
                         char* q = ctx + i + 0x100;
                         ((signed char*)(req + 0x2a))[i] = q[OBJECT_OFFSET(0x78)];
                     }
-                    if (_Z32SetTargetFieldAndForEach02064a9cPvS_(p, req) != 0) {
+                    if (SetTargetFieldAndForEach02064a9c(p, req) != 0) {
                         func_0206f81c(req);
                     }
                 }
@@ -210,7 +210,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 if (ctx[OBJECT_OFFSET(0x17c)] > 1) {
                     mode = 1;
                     if (GetIndexedEntryField0x178((signed char*)ctx) == 0x19) {
-                        _Z32ForwardToTargetOrDefault0205eabcPvS_i((void*)&data_02108760, ctx + OBJECT_OFFSET(0x198), 0);
+                        ForwardToTargetOrDefault0205eabc((void*)&data_02108760, ctx + OBJECT_OFFSET(0x198), 0);
                     }
                 }
                 if (_ZN8Object3D24MaybeSetRegularAnimationEPKci(ctx, &data_020f0481, mode) != 0) {
@@ -272,7 +272,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 return;
             }
             if (GetIndexedEntryField0x178((signed char*)ctx) == 0x19) {
-                _Z32ForwardToTargetOrDefault0205eabcPvS_i((void*)&data_02108760, ctx + OBJECT_OFFSET(0x198), 0);
+                ForwardToTargetOrDefault0205eabc((void*)&data_02108760, ctx + OBJECT_OFFSET(0x198), 0);
             }
             ctx[OBJECT_OFFSET(0x17d)] = ctx[OBJECT_OFFSET(0x17d)] + 1;
             if (ctx[OBJECT_OFFSET(0x17d)] < ctx[OBJECT_OFFSET(0x17c)]) {
@@ -288,7 +288,7 @@ extern "C" ARM void func_02053634(void* obj) {
                     char* q = ctx + i + 0x100;
                     ((signed char*)(req + 0x2a))[i] = q[OBJECT_OFFSET(0x78)];
                 }
-                if (_Z32SetTargetFieldAndForEach02064a9cPvS_(p, req) != 0) {
+                if (SetTargetFieldAndForEach02064a9c(p, req) != 0) {
                     func_0206f81c(req);
                 }
             }

@@ -30,14 +30,14 @@ struct Self0215e8f4 {
     unsigned char wrap;
 };
 
-extern "C" struct Table0215e9a4* _Z24FindEntryByMask_0215e8f4P12Self0215e8f4(struct Self0215e8f4*);
+struct Table0215e9a4* FindEntryByMask_0215e8f4(struct Self0215e8f4*);
 extern "C" ARM int func_ov003_0215e930(struct LookupTable0215e930* obj, short target, unsigned char* outMod, unsigned char* outDiv);
-extern "C" int _Z21GetTableEntry0215e9a4P13Table0215e9a4ii(struct Table0215e9a4*, int, int);
-extern "C" struct Cell0215e8f4* _Z22FindElemByKey_0215e824P12List0215e824i(struct List0215e824*, int);
+int GetTableEntry0215e9a4(struct Table0215e9a4*, int, int);
+struct Cell0215e8f4* FindElemByKey_0215e824(struct List0215e824*, int);
 
 // USA: func_ov003_0215e9ec
 extern "C" ARM void func_ov003_0215e9ec(struct Self0215e8f4* self, int dx, int dy) {
-    struct Table0215e9a4* table = _Z24FindEntryByMask_0215e8f4P12Self0215e8f4(self);
+    struct Table0215e9a4* table = FindEntryByMask_0215e8f4(self);
     short target;
     signed char x;
     signed char y;
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov003_0215e9ec(struct Self0215e8f4* self, int dx, int d
     wrap = self->wrap;
     x += dx;
     y += dy;
-    v = _Z21GetTableEntry0215e9a4P13Table0215e9a4ii(table, x, y);
+    v = GetTableEntry0215e9a4(table, x, y);
     if (y < 0) {
         y = 0;
         if (wrap) y = table->height - 1;
@@ -66,29 +66,29 @@ extern "C" ARM void func_ov003_0215e9ec(struct Self0215e8f4* self, int dx, int d
         if (v == -2) dx = 1;
     }
 
-    v = _Z21GetTableEntry0215e9a4P13Table0215e9a4ii(table, x, y);
+    v = GetTableEntry0215e9a4(table, x, y);
     if (dy != 0) {
         if (v == -2) {
             while (v < 0) {
                 x++;
                 if (table->width <= x) break;
-                v = _Z21GetTableEntry0215e9a4P13Table0215e9a4ii(table, x, y);
+                v = GetTableEntry0215e9a4(table, x, y);
             }
             while (v < 0) {
                 x--;
                 if (x < 0) break;
-                v = _Z21GetTableEntry0215e9a4P13Table0215e9a4ii(table, x, y);
+                v = GetTableEntry0215e9a4(table, x, y);
             }
         } else {
             while (v < 0) {
                 x--;
                 if (x < 0) break;
-                v = _Z21GetTableEntry0215e9a4P13Table0215e9a4ii(table, x, y);
+                v = GetTableEntry0215e9a4(table, x, y);
             }
             while (v < 0) {
                 x++;
                 if (table->width <= x) break;
-                v = _Z21GetTableEntry0215e9a4P13Table0215e9a4ii(table, x, y);
+                v = GetTableEntry0215e9a4(table, x, y);
             }
         }
     }
@@ -98,13 +98,13 @@ extern "C" ARM void func_ov003_0215e9ec(struct Self0215e8f4* self, int dx, int d
         if (dx < 0) {
             x--;
             if (x < 0) x = table->width - 1;
-            v = _Z21GetTableEntry0215e9a4P13Table0215e9a4ii(table, x, y);
+            v = GetTableEntry0215e9a4(table, x, y);
         } else if (dx > 0) {
             x++;
             if (table->width <= x) x = wrap;
-            v = _Z21GetTableEntry0215e9a4P13Table0215e9a4ii(table, x, y);
+            v = GetTableEntry0215e9a4(table, x, y);
         }
     }
 
-    self->cell = _Z22FindElemByKey_0215e824P12List0215e824i(self->list, v);
+    self->cell = FindElemByKey_0215e824(self->list, v);
 }

@@ -46,12 +46,12 @@ void ClearField0x18Flag0x20(unsigned char* stats);
 int IsCombatantFlag0x40000000Set(GameObject* combatant);
 void ClearFlag0x40000000AndBytes(unsigned char* stats);
 int IsCombatantFlag0x80000000Set(GameObject* combatant);
-extern "C" void _Z35ClearFlag0x80000000AndBytes02088bd4Ph(unsigned char* stats);
+void ClearFlag0x80000000AndBytes02088bd4(unsigned char* stats);
 int IsFlag0x18Bit0x800Set(GameObject* combatant);
 void ClearFlag0x800AndBytes7cAnd9f(unsigned char* stats);
 int IsFlag0x18Bit0x40Set(GameObject* combatant);
 void ClearFlag0x40AndBytes(unsigned char* stats);
-extern "C" int _Z31IsIdOrEffectMatchTarget0215fd24ii(int unused, int id);
+int IsIdOrEffectMatchTarget0215fd24(int unused, int id);
 
 static inline short GetId(short* list, int index) { return list[index]; }
 
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov000_02157e1c(struct Random* random) {
                 timers->turns8c--;
                 if (data_ov000_02182ad4[timers->turns8c] > r) {
                     timers->turns8c = 0;
-                    _Z35ClearFlag0x80000000AndBytes02088bd4Ph((unsigned char*)combatant->currentStats_);
+                    ClearFlag0x80000000AndBytes02088bd4((unsigned char*)combatant->currentStats_);
                     messageOut[messageCount] = 0x24c;
                     messageCount++;
                     countOut[curedCount]++;
@@ -177,7 +177,7 @@ extern "C" ARM void func_ov000_02157e1c(struct Random* random) {
             int remaining = TIMERS(combatant)->countdown;
             if (remaining <= 0) {
                 TIMERS(combatant)->countdownActive = 0;
-                if (_Z31IsIdOrEffectMatchTarget0215fd24ii((int)random, idList[i])) {
+                if (IsIdOrEffectMatchTarget0215fd24((int)random, idList[i])) {
                     messageOut[messageCount] = 0x25b;
                     messageCount++;
                     countOut[curedCount]++;

@@ -6,8 +6,8 @@
 
 extern "C" void* func_ov017_021d612c(void* obj);
 extern "C" int func_ov017_021d60f4(void* obj);
-extern "C" extern int _Z28AbsPlus159IfNegative0215ad2ci(int x);
-extern "C" unsigned int _Z37LoadResourceIntoGlobalBuffer_0215a750PKcPPv(const char* path, void** outPtr);
+extern int AbsPlus159IfNegative0215ad2c(int x);
+unsigned int LoadResourceIntoGlobalBuffer_0215a750(const char* path, void** outPtr);
 
 extern const char data_ov001_02165745[];
 extern SafeAllocator* data_ov001_021658b8[8];
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov001_0215bb3c(char* self, int mode) {
     name = func_ov017_021d612c(self);
     char* idArg = self + 0x8;
     self += 0x10;
-    id = _Z28AbsPlus159IfNegative0215ad2ci(func_ov017_021d60f4(idArg));
+    id = AbsPlus159IfNegative0215ad2c(func_ov017_021d60f4(idArg));
 
     sel = 0;
     if (mode >= 3) {
@@ -54,7 +54,7 @@ extern "C" ARM int func_ov001_0215bb3c(char* self, int mode) {
     if (fileData == NULL) {
         BackgroundLoader::AddLockGlobal();
         locked = 1;
-        if (_Z37LoadResourceIntoGlobalBuffer_0215a750PKcPPv(path, &fileData) == 0) {
+        if (LoadResourceIntoGlobalBuffer_0215a750(path, &fileData) == 0) {
             BackgroundLoader::RemoveLockGlobal();
             return 0;
         }

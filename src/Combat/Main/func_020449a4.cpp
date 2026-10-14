@@ -11,7 +11,7 @@ struct TextWindow020449a4 {
     char reserved_19b9[2];
     unsigned char flag_19bb;
 };
-extern "C" int _Z26StringStartsWithCI020d85dcPKcS0_(const char* string, const char* prefix);
+int StringStartsWithCI020d85dc(const char* string, const char* prefix);
 extern "C" int func_02005a94(const char* string);
 extern "C" void func_02042b98(TextWindow020449a4*, int, int, int, int);
 extern char data_020f00a9[];
@@ -24,7 +24,7 @@ extern char data_020f00c3[];
 extern "C" ARM const char* func_020449a4(TextWindow020449a4* window, const char* text) {
     int active = 1;
     while (active) {
-        if (_Z26StringStartsWithCI020d85dcPKcS0_(text, data_020f00a9)) {
+        if (StringStartsWithCI020d85dc(text, data_020f00a9)) {
             int width;
             int finished;
             int index;
@@ -81,13 +81,13 @@ extern "C" ARM const char* func_020449a4(TextWindow020449a4* window, const char*
             if (height > 192) height = 192 - y;
             func_02042b98(window, x, y, width, height);
             text += end + 1;
-        } else if (_Z26StringStartsWithCI020d85dcPKcS0_(text, data_020f00b0)) {
+        } else if (StringStartsWithCI020d85dc(text, data_020f00b0)) {
             window->flag_19b1 = 0;
             text += 5;
-        } else if (_Z26StringStartsWithCI020d85dcPKcS0_(text, data_020f00b6)) {
+        } else if (StringStartsWithCI020d85dc(text, data_020f00b6)) {
             window->flag_19b8 = 1;
             text += 5;
-        } else if (_Z26StringStartsWithCI020d85dcPKcS0_(text, data_020f00bc)) {
+        } else if (StringStartsWithCI020d85dc(text, data_020f00bc)) {
             int index = 6;
             int end = index;
             while (text[end] != '>') {
@@ -108,7 +108,7 @@ extern "C" ARM const char* func_020449a4(TextWindow020449a4* window, const char*
             window->characterWidth = width;
             window->characterHeight = height;
             text += end + 1;
-        } else if (_Z26StringStartsWithCI020d85dcPKcS0_(text, data_020f00c3)) {
+        } else if (StringStartsWithCI020d85dc(text, data_020f00c3)) {
             window->flag_19bb = 0;
             text += 6;
         } else {

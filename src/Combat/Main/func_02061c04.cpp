@@ -9,7 +9,7 @@ int CheckField0NonZero(int *ctx);
 struct SearchStruct0202c1a4;
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4 *ctx);
 extern "C" void func_ov017_021d0924(int a, int b, int p1, int flag);
-extern "C" void _Z19ClearNibble0206ece8iiPhj(int a, int b, unsigned char *c, unsigned d);
+void ClearNibble0206ece8(int a, int b, unsigned char *c, unsigned d);
 extern "C" int func_0202c508(void *ctx);
 extern "C" void *func_02012fe4(void);
 void *GetPointerFromArray0x3c(unsigned char *arr, unsigned idx);
@@ -21,29 +21,29 @@ struct BattleStruct;
 extern "C" int _ZNK9GameState11GetDayTimerEv(BattleStruct *battle);
 extern "C" int _ZNK9GameState12GetTimeOfDayEv(BattleStruct *battle);
 extern "C" void _ZN9GameState12SetTimeOfDayE9TimeOfDay(char *battle, int p1);
-extern "C" void _Z27EnqueueEventTag147_021cdaa0v();
+void EnqueueEventTag147_021cdaa0();
 void *GetGlobal02109418(void);
 extern "C" int func_020961b0(void *g, int p1);
 int TestBitInByteArray(int obj, unsigned char *arr, int idx);
 struct Struct020d9ae8;
-extern "C" void _Z12Init020d9ae8P14Struct020d9ae8i(Struct020d9ae8 *node, int mode);
+void Init020d9ae8(Struct020d9ae8 *node, int mode);
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(TailList020469b4 *list, TailNode020469b4 *node);
 extern "C" void func_0206e164(void *obj, int p1, int mode);
 struct FindEntryById02096134Table;
-extern "C" void *_Z21FindEntryById02096134P26FindEntryById02096134Tablei(FindEntryById02096134Table *table, int p1);
-extern "C" void _Z24SetBitWithOffset0206eb64Phii(unsigned char *obj, int p2, int flag);
+void *FindEntryById02096134(FindEntryById02096134Table *table, int p1);
+void SetBitWithOffset0206eb64(unsigned char *obj, int p2, int flag);
 extern "C" void func_ov017_021c1a98(void *ctx, int flag);
 extern "C" void *_ZN9GameState20GetGameObjectByIndexEi(void *battle, int idx);
 extern "C" void _Z18SetBitInArray0x8ecPhi(void *arr, int idx);
 extern "C" void _Z18SetBitInArray0x910Phi(void *arr, int idx);
-extern "C" void _Z27ToggleElemKey2FlagInMap2010i(int key);
-extern "C" void _Z35SetElemFlag8IfOverlayActive020ae730i(int key);
-extern "C" void _Z29SetElemFlag0x4PairAndNotify17i(int key);
-extern "C" void _Z29SetElemFlag0x4QuadAndNotify17i(int key);
+void ToggleElemKey2FlagInMap2010(int key);
+void SetElemFlag8IfOverlayActive020ae730(int key);
+void SetElemFlag0x4PairAndNotify17(int key);
+void SetElemFlag0x4QuadAndNotify17(int key);
 extern "C" void _ZN9GameState18SetDayTimerRunningEi(void *battle, int flag);
-extern "C" void _Z31EnqueueEventTag23Field_021d0d58v();
+void EnqueueEventTag23Field_021d0d58();
 extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void *list, int id);
 extern "C" void *func_ov017_021b8478(void *node);
 extern "C" int _Z21IsField0xcNonNegativePi(void *p);
@@ -53,7 +53,7 @@ extern "C" void _Z18Something_021a6b9cih(void *base, int flag);
 extern "C" void *_Z27GetStatFieldPointer02064904Pvij(void *obj, int p1, int p2);
 extern "C" void func_ov017_021a5568(void *node);
 extern "C" void _Z26SetBytesAt20And21_021a55a4Phhh(void *node, int a, int b);
-extern "C" void *_Z11GetBTRandomv();
+void *GetBTRandom();
 extern "C" int _Z17NextRandomBetweenP6Randomii(void *rng, int lo, int hi);
 extern "C" int _Z13NextRandomMaxP6Randomi(void *rng, int max);
 extern short data_020e7de8[14];
@@ -69,11 +69,11 @@ struct Src021cd6d8 {
 extern "C" void _Z33StoreFields0x1e4And0x1e8IfNonZeroPhii(void *rec, int a, int b);
 extern "C" void _Z17SetFlag0x4At0x168Ph(void *rec);
 extern "C" void _Z23ClearTwoWordsAndFlag0x4P21FlagsAndWords0202ea20(void *rec);
-extern "C" void *_Z15GetData02108f0cv();
+void *GetData02108f0c();
 extern "C" void func_0202c288(void);
 extern "C" void _Z29ResetFieldsToDefault_021b994cP12Obj_021b994c(void *rec);
 extern "C" void _Z27EnqueueEventTag153_021d079chht(int a, int b, int c);
-extern "C" void _Z36NotifyElemAndOverlay17OnFlag020ae990i(int key);
+void NotifyElemAndOverlay17OnFlag020ae990(int key);
 extern "C" void func_020aea40(int a, int b);
 extern "C" void func_ov017_02191484(void *base);
 extern "C" void _Z19ResetStruct020d3c08Pc(void *local);
@@ -111,11 +111,11 @@ struct CmdMsg64 { unsigned short cmd, p1, p2, p3, p4, p5; unsigned short rest[8]
 struct FlagsField0x2e { unsigned short pad0x2e_lo : 4; unsigned short flagsHi : 12; };
 
 extern "C" void func_020732cc(int p1);
-extern "C" void _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(unsigned short a, unsigned short b);
+void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a, unsigned short b);
 extern "C" void _Z26EnqueueEventTagB5_021d1dc0ssPisi(unsigned short a, short b, int *c, short d, int e);
 extern AllocatorUnion data_02114e20;
 void *AllocateAligned4(AllocatorUnion *alloc, unsigned int size);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion *alloc, void *data);
+void TailForward02012da4(AllocatorUnion *alloc, void *data);
 extern "C" void *func_02086f24(void *p, unsigned char b, SafeAllocator *alloc);
 extern "C" void func_020aee04(unsigned short a, unsigned char b);
 extern struct Str02109bf4 {
@@ -127,13 +127,13 @@ extern "C" void _Z27InitAndAppendEntity020dac40P12Root020dac40(void);
 extern "C" void *_Z15GetFieldAt0x150Ph(void *p);
 extern "C" void _Z27RemoveSlotShiftDown0208386cP13Slots0208386ci(void *slots, int idx);
 extern "C" void _Z25DecrementKeyValue020a0a08P14KeyMap020a0a08ii(void *map, int key, int amount);
-extern "C" void _Z21SyncEightElementFlagsv(void);
-extern "C" void _Z21RegisterSlotA020cf0fci(int p);
-extern "C" void _Z21RegisterSlotB020cf1a8i(int p);
+void SyncEightElementFlags(void);
+void RegisterSlotA020cf0fc(int p);
+void RegisterSlotB020cf1a8(int p);
 extern "C" void _Z23ApplySlotConfig02095cfcii(void *g, int idx);
 extern "C" int func_0202c540(void *ctx);
 extern "C" void *_ZN9GameState14GetProtagonistEv(void *battle);
-extern "C" void _Z24CopyOutBattleField0x7ac0Pv(void *dst);
+void CopyOutBattleField0x7ac0(void *dst);
 extern "C" void _Z23CopyHalfwordAndTwoBytesP19SmallRecord020643e0S0_(void *dst, void *src);
 int GetFieldPercentOver307(BattleRecordSnapshot* record);
 int GetFieldPercentOver448(BattleRecordSnapshot* record);
@@ -164,10 +164,10 @@ struct SnapshotE7 {
 struct SrcWord44 { unsigned int v24 : 24; unsigned int hi8 : 8; };
 struct SrcWord48 { unsigned int lo : 14; unsigned int v14 : 14; unsigned int hi : 4; };
 struct SrcWord4c { unsigned int v9 : 9; unsigned int v14 : 14; unsigned int hi : 9; };
-extern "C" void *_Z20GetGlobalPtr021075f4v(void);
-extern "C" void *_Z29FindEntryPointerByKey0203df78Pvi(void *g, int key);
+void *GetGlobalPtr021075f4(void);
+void *FindEntryPointerByKey0203df78(void *g, int key);
 extern "C" void *_Z19GetField0xc02040538P9S02040538(void *entry);
-extern "C" void _Z21RegisterSlotA020cf0fci(int p);
+void RegisterSlotA020cf0fc(int p);
 extern "C" int func_020ac2d4(int a, void *p1, void *p2, int flag);
 extern "C" void func_020ac104(void *pooled, void *p1, int flag);
 extern char data_0211e33c;
@@ -176,24 +176,24 @@ extern "C" void *_Z15InitObj021beba4Pc(void *node);
 extern "C" void *_Z23FindEntryByKeys02019508P12Base02019508ii(void *base, int a, int b);
 extern "C" void func_0206ea8c(void *obj, unsigned char a, short b, int flag);
 extern "C" void _Z23SetFlag0x40AndToggle0x4P14Struct02013380ii(void *rec, int a, int b);
-extern "C" void _Z19InitContext020e1154Pv(void *p);
+void InitContext020e1154(void *p);
 extern "C" void func_ov017_021a9bc4(void *node, unsigned char b);
 extern "C" void func_ov017_021a9a9c(void *node, unsigned char a, unsigned char b, unsigned short c, unsigned char d);
 extern "C" void func_ov017_021a8614(void *base, short p1, unsigned short p2, unsigned short p3, unsigned short p4, unsigned short p5);
-extern "C" void _Z27EnqueueEventTag141_021ce110itth(int a, unsigned short b, unsigned short c, unsigned char d);
+void EnqueueEventTag141_021ce110(int a, unsigned short b, unsigned short c, unsigned char d);
 extern "C" void func_0206e748(void *obj, int a, int b, int c, int d);
 extern "C" void _Z20AppendNodeToField494P8Obj64af8P9Node64af8(void *obj, void *node);
 extern "C" int _Z24CheckField0x56bLowNibbleP11Obj02061bd8(void *obj);
 extern "C" void _Z18TryClearFlags0x130Pht(void *obj, unsigned short flag);
 extern "C" void func_ov017_02191108(void *base, int a, int b, int c, int d);
 extern "C" void _Z21SetByteSavingPreviousP11Foo02033b58h(void *obj, unsigned char v);
-extern "C" void *_Z17GetEntryTableBasev(void);
+void *GetEntryTableBase(void);
 extern "C" void *_Z21GetElementStride0x318P21Element0x318_02028baci(void *table, int idx);
 extern "C" void *_ZN9GameState27GetMaybeFieldMonsterByIndexEi(void *battle, int idx);
 extern "C" void func_ov017_021a23b0(void *base, unsigned short v);
-extern "C" void _Z27EnqueueEventTag134_021c9544iiii(int a, int b, int c, int d);
-extern "C" int _Z13GetFieldAt0x0Pi(int *ctx);
-extern "C" void _Z24UpdatePlayClocks020ac4f8i(int flag);
+void EnqueueEventTag134_021c9544(int a, int b, int c, int d);
+int GetFieldAt0x0(int *ctx);
+void UpdatePlayClocks020ac4f8(int flag);
 extern "C" void _Z17SetField5cbcValuePci(void *battle, int v);
 extern "C" int _Z17GetField5cbcValuePc(void *battle);
 
@@ -295,8 +295,8 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0x6a: {
         void *p = func_ov017_0218b5b0();
         unsigned char *r5 = *(unsigned char **)((char *)p + 0x4000 + REGION_VALUE(0x214, 0x4c4));
-        _Z19ClearNibble0206ece8iiPhj((int)r5, msg->p1, r5, 0x80);
-        _Z19ClearNibble0206ece8iiPhj((int)r5, msg->p1, r5 + 0x80, 0x80);
+        ClearNibble0206ece8((int)r5, msg->p1, r5, 0x80);
+        ClearNibble0206ece8((int)r5, msg->p1, r5 + 0x80, 0x80);
         return 1;
     }
     case 0x6b: {
@@ -357,7 +357,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         *(int *)((char *)d + 0x98) = _ZNK9GameState12GetTimeOfDayEv((BattleStruct *)battle);
         void *ctx = func_0202ae18();
         if (func_0202c508(ctx))
-            _Z27EnqueueEventTag147_021cdaa0v();
+            EnqueueEventTag147_021cdaa0();
         return 1;
     }
     case 0x72:
@@ -403,7 +403,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             void *list = *(void **)((char *)p + 0x3000 + REGION_VALUE(0x4ec, 0x6fc));
             SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, 0x119d, 1);
             void *node = *(void **)((char *)p + 0x3000 + REGION_VALUE(0x9a0, 0xbc0));
-            _Z12Init020d9ae8P14Struct020d9ae8i((Struct020d9ae8 *)node, 1);
+            Init020d9ae8((Struct020d9ae8 *)node, 1);
             AppendNodeToTail((TailList020469b4 *)list, (TailNode020469b4 *)node);
         }
         return 1;
@@ -423,8 +423,8 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0x7f: {
-        _Z21RegisterSlotA020cf0fci((int)&sa);
-        _Z21RegisterSlotB020cf1a8i((int)&sb);
+        RegisterSlotA020cf0fc((int)&sa);
+        RegisterSlotB020cf1a8((int)&sb);
         lr.packed.f0 = sa.a0;
         lr.packed.f1 = sa.a1;
         lr.packed.f2 = sa.a2;
@@ -444,34 +444,34 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0x82: {
         void *ctx = func_0202ae18();
         if (CheckField0NonZero((int *)ctx)) {
-            _Z21FindEntryById02096134P26FindEntryById02096134Tablei((FindEntryById02096134Table *)GetGlobal02109418(), msg->p1);
+            FindEntryById02096134((FindEntryById02096134Table *)GetGlobal02109418(), msg->p1);
             if (!GetSearchStructCurrentArrEntry((SearchStruct0202c1a4 *)ctx)) {
                 if (msg->p2 < 0x400)
                     func_ov017_021d0924(0, 0, msg->p2, 1);
-                _Z24SetBitWithOffset0206eb64Phii((unsigned char *)obj, msg->p2, 1);
+                SetBitWithOffset0206eb64((unsigned char *)obj, msg->p2, 1);
             } else {
-                _Z24SetBitWithOffset0206eb64Phii((unsigned char *)obj, msg->p2, 1);
+                SetBitWithOffset0206eb64((unsigned char *)obj, msg->p2, 1);
             }
         } else {
-            _Z24SetBitWithOffset0206eb64Phii((unsigned char *)obj, msg->p2, 1);
+            SetBitWithOffset0206eb64((unsigned char *)obj, msg->p2, 1);
         }
         return 1;
     }
     case 0x83: {
         void *ctx = func_0202ae18();
         if (CheckField0NonZero((int *)ctx)) {
-            void *entry = _Z21FindEntryById02096134P26FindEntryById02096134Tablei((FindEntryById02096134Table *)GetGlobal02109418(), msg->p1);
+            void *entry = FindEntryById02096134((FindEntryById02096134Table *)GetGlobal02109418(), msg->p1);
             if (!GetSearchStructCurrentArrEntry((SearchStruct0202c1a4 *)ctx)) {
                 if (!(entry != 0 && ((struct EntryFlags *)entry)->bit10 == 1) &&
                     msg->p2 < 0x400)
                     func_ov017_021d0924(0, 0, msg->p2, 0);
-                _Z24SetBitWithOffset0206eb64Phii((unsigned char *)obj, msg->p2, 0);
+                SetBitWithOffset0206eb64((unsigned char *)obj, msg->p2, 0);
             } else {
                 if (entry != 0 && ((struct EntryFlags *)entry)->bit10 == 1)
-                    _Z24SetBitWithOffset0206eb64Phii((unsigned char *)obj, msg->p2, 0);
+                    SetBitWithOffset0206eb64((unsigned char *)obj, msg->p2, 0);
             }
         } else {
-            _Z24SetBitWithOffset0206eb64Phii((unsigned char *)obj, msg->p2, 0);
+            SetBitWithOffset0206eb64((unsigned char *)obj, msg->p2, 0);
         }
         return 1;
     }
@@ -493,7 +493,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0x86: {
         void *ctx = func_0202ae18();
         if (CheckField0NonZero((int *)ctx))
-            _Z27EnqueueEventTag141_021ce110itth((unsigned char)msg->p2, 1, msg->p1, 1);
+            EnqueueEventTag141_021ce110((unsigned char)msg->p2, 1, msg->p1, 1);
         switch (msg->p2) {
         case 3:
             SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, msg->p1, 1);
@@ -527,7 +527,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0x87: {
         void *ctx = func_0202ae18();
         if (CheckField0NonZero((int *)ctx))
-            _Z27EnqueueEventTag141_021ce110itth((unsigned char)msg->p2, 0, msg->p1, 1);
+            EnqueueEventTag141_021ce110((unsigned char)msg->p2, 0, msg->p1, 1);
         switch (msg->p2) {
         case 3:
             SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, msg->p1, 0);
@@ -815,19 +815,19 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0xa7: {
         unsigned char b = ((unsigned char *)msg)[2];
         if (b == 0)
-            _Z27ToggleElemKey2FlagInMap2010i(((unsigned char *)msg)[4]);
+            ToggleElemKey2FlagInMap2010(((unsigned char *)msg)[4]);
         else if (b == 6)
-            _Z35SetElemFlag8IfOverlayActive020ae730i(((unsigned char *)msg)[4]);
+            SetElemFlag8IfOverlayActive020ae730(((unsigned char *)msg)[4]);
         return 1;
     }
     case 0xa8:
         return 1;
     case 0xa9:
         if (((unsigned char *)msg)[2] == 0)
-            _Z29SetElemFlag0x4PairAndNotify17i(((unsigned char *)msg)[4]);
+            SetElemFlag0x4PairAndNotify17(((unsigned char *)msg)[4]);
         return 1;
     case 0xaa:
-        _Z29SetElemFlag0x4QuadAndNotify17i((unsigned char)msg->p1);
+        SetElemFlag0x4QuadAndNotify17((unsigned char)msg->p1);
         return 1;
     case 0xab:
         return 1;
@@ -842,7 +842,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     case 0xb0: {
         void *global = GetGlobal02109418();
-        BitFlag17Entry *entry = (BitFlag17Entry *)_Z21FindEntryById02096134P26FindEntryById02096134Tablei((FindEntryById02096134Table *)global, msg->p1);
+        BitFlag17Entry *entry = (BitFlag17Entry *)FindEntryById02096134((FindEntryById02096134Table *)global, msg->p1);
         if (entry)
             entry->flag17 = msg->p2;
         return 1;
@@ -860,7 +860,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         void *base = func_ov017_0218b5b0();
         void *list = *(void **)((char *)base + 0x3000 + REGION_VALUE(0x4ec, 0x6fc));
         void *node = *(void **)((char *)base + 0x3000 + REGION_VALUE(0x948, 0xb68));
-        _Z19InitContext020e1154Pv((void *)0xbb8);
+        InitContext020e1154((void *)0xbb8);
         func_ov017_021a9bc4(node, ((unsigned char *)msg)[2]);
         func_ov017_021a9a9c(node, ((unsigned char *)msg)[4], ((unsigned char *)msg)[5], msg->p3,
                             ((unsigned char *)msg)[8]);
@@ -878,7 +878,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             *(unsigned int *)((char *)p + 0x2c94) = *(unsigned int *)((char *)battle + REGION_VALUE(0x7c34, 0x7e74));
             void *ctx = func_0202ae18();
             if (CheckField0NonZero((int *)ctx) && !GetSearchStructCurrentArrEntry((SearchStruct0202c1a4 *)ctx))
-                _Z31EnqueueEventTag23Field_021d0d58v();
+                EnqueueEventTag23Field_021d0d58();
         }
         return 1;
     }
@@ -961,12 +961,12 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xbe: {
-        if (!_Z21FindEntryById02096134P26FindEntryById02096134Tablei((FindEntryById02096134Table *)GetGlobal02109418(), msg->p1))
+        if (!FindEntryById02096134((FindEntryById02096134Table *)GetGlobal02109418(), msg->p1))
             break;
         void *p = _Z27GetStatFieldPointer02064904Pvij(obj, msg->p1, msg->p2);
         if (!p)
             return 0;
-        *(unsigned short *)p = _Z17NextRandomBetweenP6Randomii(_Z11GetBTRandomv(), msg->p3, msg->p4);
+        *(unsigned short *)p = _Z17NextRandomBetweenP6Randomii(GetBTRandom(), msg->p3, msg->p4);
         return 1;
     }
     case 0xbf: {
@@ -979,11 +979,11 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             ++src;
             ++dst;
         } while (--n);
-        void *entry = _Z21FindEntryById02096134P26FindEntryById02096134Tablei((FindEntryById02096134Table *)GetGlobal02109418(), msg->p1);
+        void *entry = FindEntryById02096134((FindEntryById02096134Table *)GetGlobal02109418(), msg->p1);
         if (!entry)
             break;
         for (int j = 0; j < 5; j++) {
-            int idx = _Z13NextRandomMaxP6Randomi(_Z11GetBTRandomv(), count);
+            int idx = _Z13NextRandomMaxP6Randomi(GetBTRandom(), count);
             *(short *)((char *)entry + j * 2 + 4) = deck[idx];
             if (idx < count - 1)
                 memmove(&deck[idx], &deck[idx + 1], count - (idx + 1));
@@ -1004,7 +1004,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xc2: {
-        void *d = _Z15GetData02108f0cv();
+        void *d = GetData02108f0c();
         *(unsigned char *)((char *)d + 0xa8) = msg->p1 * 10;
         return 1;
     }
@@ -1016,12 +1016,12 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0xc5: {
         GameState *battle = _ZN9GameState11GetInstanceEv();
         void *ctx = func_0202ae18();
-        int v = _Z13GetFieldAt0x0Pi((int *)ctx);
+        int v = GetFieldAt0x0((int *)ctx);
         int byte = *((unsigned char *)ctx + 0x1000 + 0xd);
         int flag = 0;
         if ((v == 5 && byte > 1) || v == 6)
             flag = 1;
-        _Z24UpdatePlayClocks020ac4f8i(flag);
+        UpdatePlayClocks020ac4f8(flag);
         int cur = _Z17GetField5cbcValuePc(battle);
         int newVal = msg->p1;
         int a = cur;
@@ -1089,7 +1089,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xc7:
-        _Z36NotifyElemAndOverlay17OnFlag020ae990i(msg->p1 & 0xff);
+        NotifyElemAndOverlay17OnFlag020ae990(msg->p1 & 0xff);
         return 1;
     case 0xc8:
         return 1;
@@ -1151,7 +1151,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             int rowBase;
             GameState *battle = _ZN9GameState11GetInstanceEv();
             void *base = func_ov017_0218b5b0();
-            void *table = _Z17GetEntryTableBasev();
+            void *table = GetEntryTableBase();
             for (int a = 0; a < 4; a++) {
                 void *elem = _Z21GetElementStride0x318P21Element0x318_02028baci(table, a);
                 if (!((struct Elem2Flags *)((char *)elem + 2))->bit2)
@@ -1168,7 +1168,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
                     func_ov017_021a23b0(base, v);
                     short p2 = *(short *)((char *)c2 + 2);
                     unsigned short valElem = *(unsigned short *)elem;
-                    _Z27EnqueueEventTag134_021c9544iiii(valElem, b, p2, -1);
+                    EnqueueEventTag134_021c9544(valElem, b, p2, -1);
                 }
             }
         }
@@ -1191,7 +1191,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             void *p = _Z17GetPtrField0x2a04P9GameState(battle);
             *(unsigned int *)((char *)p + 0x2c94) = msg->p1;
             *(unsigned int *)((char *)battle + REGION_VALUE(0x7c34, 0x7e74)) = msg->p1;
-            _Z31EnqueueEventTag23Field_021d0d58v();
+            EnqueueEventTag23Field_021d0d58();
         }
         return 1;
     }
@@ -1272,7 +1272,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             void *p0 = func_02012fe4();
             *(short *)((char *)p0 + 0x2700 + REGION_VALUE(0xf4, 0xb4)) = p1;
             if (CheckField0NonZero((int *)ctx)) {
-                _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt((unsigned char)p1, 0);
+                SetHalfFieldsAndEnqueueIfActive_021d1c2c((unsigned char)p1, 0);
                 _Z26EnqueueEventTagB5_021d1dc0ssPisi((unsigned short)p1, 0, (int *)&d8Local, 0, 0);
             }
         }
@@ -1301,7 +1301,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         void *signedAlloc = dbAlloc.GetSignedAllocator();
         if (signedAlloc) {
             dbAlloc.Destroy();
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, signedAlloc);
+            TailForward02012da4(&data_02114e20, signedAlloc);
         }
         return (int)r;
     }
@@ -1376,7 +1376,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             if (comb)
                 level = *(*(unsigned short **)((char *)comb + 0x134) + 0x18);
             lr.fword0 = 0;
-            _Z24CopyOutBattleField0x7ac0Pv((void *)&lr.fword0);
+            CopyOutBattleField0x7ac0((void *)&lr.fword0);
             _Z23CopyHalfwordAndTwoBytesP19SmallRecord020643e0S0_(&snap->playClock, &st->clocks.elapsed);
             _Z23CopyHalfwordAndTwoBytesP19SmallRecord020643e0S0_(&snap->committedPlayClock, &st->clocks.committed);
             snap->unknown08_0 = st->unknown08_0;
@@ -1397,8 +1397,8 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xe8: {
-        void *g = _Z20GetGlobalPtr021075f4v();
-        void *entry = _Z29FindEntryPointerByKey0203df78Pvi(g, msg->p1);
+        void *g = GetGlobalPtr021075f4();
+        void *entry = FindEntryPointerByKey0203df78(g, msg->p1);
         if (!entry)
             return 1;
         void *f = _Z19GetField0xc02040538P9S02040538(entry);
@@ -1410,7 +1410,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xe9:
-        _Z21SyncEightElementFlagsv();
+        SyncEightElementFlags();
         return 1;
     case 0x6f: case 0x70: case 0x71: case 0x98: case 0x9a: case 0xa3:
         break;
