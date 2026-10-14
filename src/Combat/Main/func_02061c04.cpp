@@ -16,7 +16,6 @@ void *GetPointerFromArray0x3c(unsigned char *arr, unsigned idx);
 struct AppendNode;
 struct AppendList;
 void AppendNodeToListField30(int a, AppendNode *msg, AppendList *list);
-extern "C" GameState *_ZN9GameState11GetInstanceEv();
 struct BattleStruct;
 extern "C" int _ZNK9GameState11GetDayTimerEv(BattleStruct *battle);
 extern "C" int _ZNK9GameState12GetTimeOfDayEv(BattleStruct *battle);
@@ -35,14 +34,12 @@ struct FindEntryById02096134Table;
 void *FindEntryById02096134(FindEntryById02096134Table *table, int p1);
 void SetBitWithOffset0206eb64(unsigned char *obj, int p2, int flag);
 extern "C" void func_ov017_021c1a98(void *ctx, int flag);
-extern "C" void *_ZN9GameState20GetGameObjectByIndexEi(void *battle, int idx);
 extern "C" void _Z18SetBitInArray0x8ecPhi(void *arr, int idx);
 extern "C" void _Z18SetBitInArray0x910Phi(void *arr, int idx);
 void ToggleElemKey2FlagInMap2010(int key);
 void SetElemFlag8IfOverlayActive020ae730(int key);
 void SetElemFlag0x4PairAndNotify17(int key);
 void SetElemFlag0x4QuadAndNotify17(int key);
-extern "C" void _ZN9GameState18SetDayTimerRunningEi(void *battle, int flag);
 void EnqueueEventTag23Field_021d0d58();
 extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void *list, int id);
 extern "C" void *func_ov017_021b8478(void *node);
@@ -189,7 +186,6 @@ extern "C" void func_ov017_02191108(void *base, int a, int b, int c, int d);
 extern "C" void _Z21SetByteSavingPreviousP11Foo02033b58h(void *obj, unsigned char v);
 void *GetEntryTableBase(void);
 extern "C" void *_Z21GetElementStride0x318P21Element0x318_02028baci(void *table, int idx);
-extern "C" void *_ZN9GameState27GetMaybeFieldMonsterByIndexEi(void *battle, int idx);
 extern "C" void func_ov017_021a23b0(void *base, unsigned short v);
 void EnqueueEventTag134_021c9544(int a, int b, int c, int d);
 int GetFieldAt0x0(int *ctx);
@@ -350,7 +346,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0x6e: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         _ZN9GameState12SetTimeOfDayE9TimeOfDay((char *)battle, msg->p1);
         void *d = LightingManager::GetInstance();
         *(int *)((char *)d + 0x94) = _ZNK9GameState11GetDayTimerEv((BattleStruct *)battle);
@@ -476,7 +472,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0x84: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         lr.fb.ha = _Z17GetField5cb0ValuePc(battle);
         lr.fb.hc = _Z17GetField5cb4ValuePc(battle);
         lr.fb.he = _Z17GetField5cb8ValuePc(battle);
@@ -573,7 +569,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0x8b: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         void *p = _Z17GetPtrField0x2a04P9GameState(battle);
         unsigned int v = *(unsigned int *)((char *)p + 0xf6c) + *(unsigned int *)((char *)msg + 4);
         *(unsigned int *)((char *)p + 0xf6c) = v;
@@ -582,7 +578,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0x8c: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         void *p = _Z17GetPtrField0x2a04P9GameState(battle);
         unsigned int v = *(unsigned int *)((char *)p + 0xf6c);
         unsigned int d = *(unsigned int *)((char *)msg + 4);
@@ -672,7 +668,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, msg->p1 + 0x776, 0);
         return 1;
     case 0x94: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         lr.fb.h4 = _Z17GetField5cb0ValuePc(battle);
         lr.fb.h6 = _Z17GetField5cb4ValuePc(battle);
         lr.fb.h8 = _Z17GetField5cb8ValuePc(battle);
@@ -775,7 +771,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, 0x113b, 1);
         return 1;
     case 0xc0: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         void *p0 = func_02012fe4();
         func_0202ae18();
         c0Local.f0 = 0;
@@ -801,14 +797,14 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xa5: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
-        void *combatant = _ZN9GameState20GetGameObjectByIndexEi(battle, 0);
+        GameState *battle = GameState::GetInstance();
+        void *combatant = battle->GetGameObjectByIndex(0);
         _Z18SetBitInArray0x8ecPhi(*(void **)((char *)combatant + REGION_VALUE(0x144, 0x150)), msg->p1);
         return 1;
     }
     case 0xa6: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
-        void *combatant = _ZN9GameState20GetGameObjectByIndexEi(battle, 0);
+        GameState *battle = GameState::GetInstance();
+        void *combatant = battle->GetGameObjectByIndex(0);
         _Z18SetBitInArray0x910Phi(*(void **)((char *)combatant + REGION_VALUE(0x144, 0x150)), msg->p1);
         return 1;
     }
@@ -848,12 +844,12 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xb1: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         _ZN9GameState12SetTimeOfDayE9TimeOfDay((char *)battle, msg->p2);
         void *d = LightingManager::GetInstance();
         *(int *)((char *)d + 0x94) = _ZNK9GameState11GetDayTimerEv((BattleStruct *)battle);
         *(int *)((char *)d + 0x98) = _ZNK9GameState12GetTimeOfDayEv((BattleStruct *)battle);
-        _ZN9GameState18SetDayTimerRunningEi(battle, msg->p1 == 0);
+        battle->SetDayTimerRunning(msg->p1 == 0);
         return 1;
     }
     case 0xb2: {
@@ -868,7 +864,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xb3: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         void *p = _Z17GetPtrField0x2a04P9GameState(battle);
         if (msg->p1 != 0) {
             SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, 0x113c, 1);
@@ -993,7 +989,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xc1: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         void *rec = GetField0x3b0Value(battle);
         if (msg->p1 != 0) {
             _Z33StoreFields0x1e4And0x1e8IfNonZeroPhii(rec, 0x333, 1);
@@ -1014,7 +1010,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0xc4:
         return 1;
     case 0xc5: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         void *ctx = func_0202ae18();
         int v = GetFieldAt0x0((int *)ctx);
         int byte = *((unsigned char *)ctx + 0x1000 + 0xd);
@@ -1082,7 +1078,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         void *rec = *(void **)((char *)base + 0x3000 + REGION_VALUE(0x500, 0x710));
         _Z29ResetFieldsToDefault_021b994cP12Obj_021b994c(rec);
         *((unsigned char *)rec + 0x130) = 1;
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         int v = *(int *)((char *)battle + 0x5000 + REGION_VALUE(0x4c4, 0x724));
         _Z27EnqueueEventTag153_021d079chht(4, 0, (unsigned short)v);
         *(int *)((char *)rec + 0x12c) = v;
@@ -1103,7 +1099,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, msg->p1 + 0x1198, 1);
         return 1;
     case 0xcb: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         void *base = func_ov017_0218b5b0();
         for (int i = 0; i < 4; i++) {
             GameObject *combatant = GetCombatantWithFlag0x100(battle, i);
@@ -1149,7 +1145,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         void *ctx = func_0202ae18();
         if (func_0202c508(ctx)) {
             int rowBase;
-            GameState *battle = _ZN9GameState11GetInstanceEv();
+            GameState *battle = GameState::GetInstance();
             void *base = func_ov017_0218b5b0();
             void *table = GetEntryTableBase();
             for (int a = 0; a < 4; a++) {
@@ -1161,7 +1157,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
                     continue;
                 rowBase = a * 0xc + 0x70;
                 for (int b = 0; b < 0xc; b++) {
-                    void *c2 = _ZN9GameState27GetMaybeFieldMonsterByIndexEi(battle, b + rowBase);
+                    void *c2 = battle->GetMaybeFieldMonsterByIndex(b + rowBase);
                     if (!c2)
                         continue;
                     unsigned short v = *(unsigned short *)((char *)c2 + 0x100 + 0x6a);
@@ -1187,7 +1183,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0xd0: {
         void *ctx = func_0202ae18();
         if (func_0202c508(ctx)) {
-            GameState *battle = _ZN9GameState11GetInstanceEv();
+            GameState *battle = GameState::GetInstance();
             void *p = _Z17GetPtrField0x2a04P9GameState(battle);
             *(unsigned int *)((char *)p + 0x2c94) = msg->p1;
             *(unsigned int *)((char *)battle + REGION_VALUE(0x7c34, 0x7e74)) = msg->p1;
@@ -1203,7 +1199,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         if (lvl <= 1)
             return 1;
         _Z28ResetFieldGroup4444_0218b664Pc(base);
-        _ZN9GameState11GetInstanceEv();
+        GameState::GetInstance();
         signed char b = *((signed char *)base + REGION_VALUE(0x4196, 0x4446));
         _Z27EnqueueEventTag154_021d0860hhh(4, 0, b);
         *((unsigned char *)base + REGION_VALUE(0x4198, 0x4448)) = 1;
@@ -1253,7 +1249,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xd6: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         lr.fh4 = _Z17GetField5cb0ValuePc(battle);
         lr.fh6 = _Z17GetField5cb4ValuePc(battle);
         lr.fh8 = _Z17GetField5cb8ValuePc(battle);
@@ -1295,7 +1291,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         void *mem = AllocateAligned4(&data_02114e20, 0x1000);
         dbAlloc.CreateTypeA(mem, 0x1000);
         dbAlloc.Reset();
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         void *p = _Z17GetPtrField0x2a04P9GameState(battle);
         void *r = func_02086f24(p, (unsigned char)msg->p1, &dbAlloc);
         void *signedAlloc = dbAlloc.GetSignedAllocator();
@@ -1340,7 +1336,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xe5: {
-        GameState *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = GameState::GetInstance();
         unsigned short s5 = *(unsigned short *)((char *)battle + REGION_VALUE(0x6f00, 0x7100) + REGION_VALUE(0x9c, 0xdc));
         short s6 = *(short *)((char *)battle + REGION_VALUE(0x6f00, 0x7100) + REGION_VALUE(0x9e, 0xde));
         short s7 = *(short *)((char *)battle + REGION_VALUE(0x6f00, 0x7100) + REGION_VALUE(0xa0, 0xe0));
@@ -1366,7 +1362,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         if (func_0202c540(ctx))
             return 1;
         SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, 0x796, msg->p1);
-        char *battle = (char*)_ZN9GameState11GetInstanceEv();
+        char *battle = (char*)GameState::GetInstance();
         BattleRecordSnapshot* st = (BattleRecordSnapshot*)((char *)&((struct Blk7400 *)SubA(battle))[1] + 0x3c);
         BattleRecordCapture* snap = &st->capture;
         if (!snap->captured) {

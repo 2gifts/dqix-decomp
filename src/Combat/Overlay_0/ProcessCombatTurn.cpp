@@ -99,9 +99,6 @@ struct Candidate { int id; float weight; };
 struct Sim { char buf[0x7c]; };
 struct Big { char buf[0x678]; };
 
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
-extern "C" Combatant* _ZN9GameState19GetCombatantByIndexEi(void* gs, int id);
-
 extern "C" int func_ov000_02153e40(void* obj, short* buf, int max, int start);
 extern "C" void _Z21UpdateCombatantAttackii(void* self, int id);
 extern "C" void _Z22UpdateCombatantDefenseii(void* self, int id);
@@ -116,8 +113,6 @@ extern "C" int _Z19ClassifyField0x81fePc(void* self);
 extern "C" float _Z22NextRandomFloatBetweenP6Randomff(void* rng, float lo, float hi);
 extern "C" void func_020749ac(void* arr, int lo, int hi, int mode);
 extern "C" void* memset(void* dst, int c, unsigned int n);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* alloc, unsigned int size);
-extern "C" void _ZN13SafeAllocator4FreeEPv(void* alloc, void* p);
 extern "C" Combatant* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
 extern "C" Combatant* _Z25GetCombatantWithFlag0x400P9GameStatei(void* gs, int id);
 extern "C" PartyInfo* _Z19GetField0x19cOrNullP9S02053dc0(Combatant* c);
@@ -178,7 +173,7 @@ static inline Combatant* GetFlagged0x400(int id) {
 // USA: func_ov000_0215d63c
 extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
     long j;
-    void* gs = _ZN9GameState11GetInstanceEv();
+    void* gs = GameState::GetInstance();
     ActionDataTables* data = GetData02108e10();
     IdList ids = data_ov000_02182d34;
     long count = func_ov000_02153e40(self, ids.v, 0x10, 1);

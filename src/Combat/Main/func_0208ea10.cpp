@@ -7,8 +7,6 @@ enum { SelectedEntryOffset = 0x5a7a, PackedEntriesOffset = 0x5a7c };
 enum { SelectedEntryOffset = 0x5cda, PackedEntriesOffset = 0x5cdc };
 #endif
 
-extern "C" int _ZN9GameState11GetInstanceEv();
-
 struct Struct0208e9f4;
 void InitDefaults0208e9f4(struct Struct0208e9f4*);
 
@@ -64,7 +62,7 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
     unsigned int size;
     void* ptr;
 
-    unsigned char* gs = (unsigned char*)_ZN9GameState11GetInstanceEv();
+    unsigned char* gs = (unsigned char*)GameState::GetInstance();
 
     if (gs[SelectedEntryOffset] == 8) {
         InitDefaults0208e9f4((struct Struct0208e9f4*)p0);

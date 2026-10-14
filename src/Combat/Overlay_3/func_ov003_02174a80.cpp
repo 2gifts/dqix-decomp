@@ -97,7 +97,6 @@ struct Self02174a80 {
     unsigned short h1046;
 };
 
-extern "C" void _ZN13SafeAllocator5ResetEv(SafeAllocator*);
 void ZeroInit020de848(void*);
 extern "C" void func_020dea64(void*, SafeAllocator*, void*, unsigned int, const char*, int);
 extern "C" void _Z14ZeroListHeaderP14Struct02072488(StreamHeader02072488*);

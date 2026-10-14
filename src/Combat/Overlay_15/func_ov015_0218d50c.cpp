@@ -50,7 +50,6 @@ extern "C" void MemoryMapTexturePalette();
 extern "C" void LoadToTexturePalette(void* dst, const void* src, int size);
 extern "C" void MemoryUnmapTexturePalette();
 void CleanInvalidateCacheRange(const void*, unsigned int);
-extern "C" void _ZN7Model3D22ApplyTexturesFromModelEPS_(void*, void*);
 extern "C" int fix32_Divide(int, int);
 
 struct Pal0218d50c {
@@ -166,7 +165,7 @@ extern "C" ARM int func_ov015_0218d50c(Obj0218d50c* self) {
             room -= size;
             BackupPairTables0207dfac(pairs + off70);
             if (i == 4 && self->GetEnt(3)->pModel_ != 0) {
-                _ZN7Model3D22ApplyTexturesFromModelEPS_(self->GetEnt(3)->pModel_, self->ents[i].pModel_);
+                self->GetEnt(3)->pModel_->ApplyTexturesFromModel(self->ents[i].pModel_);
             }
         }
         pair.Reset();

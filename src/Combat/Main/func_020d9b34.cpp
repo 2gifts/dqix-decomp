@@ -28,8 +28,6 @@ void OrBitsIntoField0(unsigned int* obj, unsigned int mask);
 struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 int GetGlobalField0x1c020421a0(void);
-extern "C" void _ZN13SafeAllocator11CreateTypeAEPvj(SafeAllocator* self, void* bufferStart, unsigned int bufferSize);
-extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(BackgroundLoader* self, const char* gp2, const char* innerFile, SafeAllocator* alloc);
 extern "C" void func_02046380(void* global);
 #if !defined(jpn)
 extern "C" void func_0204500c(void* global, void* entry, int a, int b);
@@ -69,12 +67,12 @@ extern "C" ARM void func_020d9b34(struct Obj020d9b34* self) {
         CancelPendingAction020397cc((struct Obj020397cc*)GameState::GetInstance()->GetUnknownGameObject(), 1);
         OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xe);
         self->allocator.ResetAllocatorPointer();
-        _ZN13SafeAllocator11CreateTypeAEPvj(&self->allocator, AllocateAligned4(&data_02114e20, 0x400), 0x400);
+        self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x400), 0x400);
         self->allocator.Reset();
 #if defined(jpn)
         self->taskId = BackgroundLoader::GetInstance()->QueueLoadFile(data_020f2a18, NULL);
 #else
-        self->taskId = _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(BackgroundLoader::GetInstance(), data_020f2810, data_020f2826, NULL);
+        self->taskId = BackgroundLoader::GetInstance()->QueueLoadFileInGP2(data_020f2810, data_020f2826, NULL);
 #endif
         self->state++;
     } else if (self->state == 1) {

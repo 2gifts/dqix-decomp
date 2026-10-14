@@ -6,9 +6,6 @@ enum { kFieldOffset = 0x1c0 };
 #endif
 #include "GameState/GameState.h"
 
-extern "C" void _ZN7Model3D14RemoveTexturesEv(void*);
-extern "C" void _ZN7Model3D22ApplyTexturesFromModelEPS_(void*, void*);
-
 struct Obj02054028 {
     char pad0[4];
     short f4;
@@ -32,7 +29,7 @@ extern "C" ARM void func_02054028(struct Obj02054028* obj, int n) {
         for (int i = 0; i < 5; i++) {
             GameObject* c = bs->GetGameObjectByIndex(ids[i]);
             if (c != 0 && c->obj3D_.pModel_ != 0) {
-                _ZN7Model3D14RemoveTexturesEv(c->obj3D_.pModel_);
+                c->obj3D_.pModel_->RemoveTextures();
             }
         }
     } else {
@@ -46,9 +43,9 @@ extern "C" ARM void func_02054028(struct Obj02054028* obj, int n) {
                 Model3D* p = c->obj3D_.pModel_;
                 GameObject* s = src[i];
                 if (s != 0 && s->obj3D_.pModel_ != 0) {
-                    _ZN7Model3D22ApplyTexturesFromModelEPS_(p, s->obj3D_.pModel_);
+                    p->ApplyTexturesFromModel(s->obj3D_.pModel_);
                 }
-                _ZN7Model3D22ApplyTexturesFromModelEPS_(p, p);
+                p->ApplyTexturesFromModel(p);
             }
         }
     }

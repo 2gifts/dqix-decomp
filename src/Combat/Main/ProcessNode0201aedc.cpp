@@ -11,10 +11,6 @@ void ClearGlobalFlagBits02016d8c(void* arg0);
 struct Vec3Block020b3850;
 extern "C" void _ZN12RenderConfig17SetObjectPositionEP8Vector3i(Vec3Block020b3850* src);
 
-extern "C" void _ZN12RenderConfig12SubmitToFifoEv(void);
-
-extern "C" void _ZN7Model3D4DrawEb(void* a, int b);
-
 #if defined(jpn)
 enum { NodeBufferOffset = 0x25f4 };
 #else
@@ -40,8 +36,8 @@ ARM void ProcessNode0201aedc(Zone3D* p) {
                 ((LightingManager*)((Obj02052338*)obj))->ApplyAmbientColorToModel((NSBXXInternalModel*)(arg1));
                 ClearGlobalFlagBits02016d8c(buf + 0x48);
                 _ZN12RenderConfig17SetObjectPositionEP8Vector3i((Vec3Block020b3850*)(buf + 0x6c));
-                _ZN12RenderConfig12SubmitToFifoEv();
-                _ZN7Model3D4DrawEb(r6, 1);
+                RenderConfig::SubmitToFifo();
+                r6->Draw(1);
             }
         }
     }
@@ -59,7 +55,7 @@ ARM void ProcessNode0201aedc(Zone3D* p) {
         ((LightingManager*)((Obj02052338*)obj2))->ApplyAmbientColorToModel((NSBXXInternalModel*)(arg1b));
         ClearGlobalFlagBits02016d8c(buf + 0x14);
         _ZN12RenderConfig17SetObjectPositionEP8Vector3i((Vec3Block020b3850*)(buf + 0x38));
-        _ZN12RenderConfig12SubmitToFifoEv();
-        _ZN7Model3D4DrawEb(r5v, 1);
+        RenderConfig::SubmitToFifo();
+        r5v->Draw(1);
     }
 }
