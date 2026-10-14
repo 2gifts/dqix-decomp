@@ -1,25 +1,17 @@
 #include <globaldefs.h>
 
-struct Vec3 { int x; int y; int z; };
-struct Mtx43 { unsigned int v[12]; };
-struct Bounds { int a; int b; int c; int d; int e; int f; };
+#include "World/Bounds3D.h"
+#include "Graphics/Vector.h"
 
 static inline int FxSquare(int a) {
     return (int)(((long long)a * a + 0x800) >> 12);
 }
 
-extern "C" ARM void Vector3fix_Subtract(const struct Vec3* a, const struct Vec3* b, struct Vec3* out);
-extern "C" ARM void Vector3fix_Add(const struct Vec3* a, const struct Vec3* b, struct Vec3* out);
-ARM struct Mtx43 RotationMatrixY(int angle);
-extern "C" ARM void Mat4x3_ApplyToVector(const struct Vec3* v, const struct Mtx43* m, struct Vec3* out);
-extern "C" ARM int _Z22fix32ReduceAngle0To2Pii(int angle);
-extern "C" ARM int func_02031118(struct Vec3* p, struct Bounds* b);
-
 // USA: func_020321e0
-extern "C" ARM int func_020321e0(const struct Vec3* self, struct Bounds* bounds, int angle, const struct Vec3* pivot, int radiusSq) {
-    struct Vec3 out = *self;
-    struct Vec3 diff;
-    struct Mtx43 mtxCopy;
+extern "C" ARM int func_020321e0(const Vector3fix* self, const Bounds3D* bounds, int angle, const Vector3fix* pivot, int radiusSq) {
+    Vector3fix out = *self;
+    Vector3fix diff;
+    Matrix4x3 mtxCopy;
     int len2;
 
     if (angle != 0) {
@@ -32,7 +24,7 @@ extern "C" ARM int func_020321e0(const struct Vec3* self, struct Bounds* bounds,
         if (radiusSq < len2) {
             return 0;
         }
-        mtxCopy = RotationMatrixY(_Z22fix32ReduceAngle0To2Pii(-angle));
+        mtxCopy = RotationMatrixY(fix32ReduceAngle0To2Pi(-angle));
         Mat4x3_ApplyToVector(&diff, &mtxCopy, &diff);
         Vector3fix_Add(&diff, pivot, &out);
     }

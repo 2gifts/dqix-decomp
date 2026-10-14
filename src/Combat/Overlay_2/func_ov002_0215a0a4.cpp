@@ -2,6 +2,7 @@
 #include "GameState/GameState.h"
 #include "Combat/Main/BattleList.h"
 #include "Resource/CharacterCreationUI.h"
+#include "Resource/ActionDataTables.h"
 #include <std_library_functions.h>
 
 struct Obj02048350;
@@ -65,7 +66,6 @@ struct PartyFlags0215a0a4 {
 void* GetData02153637();
 extern "C" void _Z16Dispatch020e3428Pvi(void*, int);
 extern "C" Obj02046574* _Z26GetGlobalField0x1c020421a0v();
-char* GetData02108e10();
 extern "C" CommandEntry0215a0a4* _Z24SearchBothTables02079e2cPci(char*, int);
 extern "C" void* _Z20Clear12Bytes020e46c4Pv(void*);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574*, int, char*);
@@ -99,7 +99,7 @@ extern "C" ARM void func_ov002_0215a0a4(BattleMessage0215a0a4* self, BattleEvent
     gs = GameState::GetInstance();
     message = _Z26GetGlobalField0x1c020421a0v();
     state = func_0202ae18();
-    entry = _Z24SearchBothTables02079e2cPci(GetData02108e10(), self->command);
+    entry = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), self->command);
     if (!entry) return;
     memset(self->textState.text, 0, 0x960);
     memset(self->textState.textCopy, 0, 0x960);
