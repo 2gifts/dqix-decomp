@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -72,7 +73,6 @@ void SetTwoFields_021e8a40(char*, int, int);
 void SetField_021e8a4c(char*, int);
 extern "C" void func_ov025_021e8d20(char*, void*);
 extern "C" void func_ov025_021db8d8(ActionState*);
-char* GetData02108e10();
 ActionMetadata* SearchBothTables02079e2c(char*, int);
 void ProcessPairs_021d8a40(void*, S021d8a40*);
 void IncrementCounterAndReset_021def30(unsigned char*);
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov025_021dbe10(ActionState* state) {
             func_ov025_021e8d20(state->script, script);
             func_ov025_021db8d8(state);
         } else {
-            ActionMetadata* metadata = SearchBothTables02079e2c(GetData02108e10(), (short)kind);
+            ActionMetadata* metadata = SearchBothTables02079e2c((char*)GetData02108e10(), (short)kind);
             if (metadata) {
                 if (metadata->category == 0x22) ProcessPairs_021d8a40(state, (S021d8a40*)list);
                 else {

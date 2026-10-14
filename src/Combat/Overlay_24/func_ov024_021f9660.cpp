@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
 struct Skill021f9660 {
@@ -43,7 +44,6 @@ extern HandlerTable021f9660 data_ov024_021ffeac;
 extern unsigned int data_ov024_02200150;
 extern SkillHandler021f9660 data_020e6d5c;
 void* GetFieldAt0x150(unsigned char*);
-char* GetData02108e10();
 extern "C" Skill021f9660* _Z24SearchBothTables02079e2cPci(char*, int);
 extern "C" int func_ov024_021f8874(Planner021f9660*, Skill021f9660*, GameObject*, int*);
 
@@ -51,7 +51,7 @@ extern "C" int func_ov024_021f8874(Planner021f9660*, Skill021f9660*, GameObject*
 extern "C" ARM void func_ov024_021f9660(Planner021f9660* planner) {
     GameObject* combatant = planner->combatant;
     GetFieldAt0x150((unsigned char*)combatant);
-    char* database = GetData02108e10();
+    ActionDataTables* database = GetData02108e10();
     if (!(data_ov024_02200150 & 1)) {
         SkillHandler021f9660 empty = data_020e6d5c;
         data_ov024_021ffeac.handlers[0] = empty;
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov024_021f9660(Planner021f9660* planner) {
         data_ov024_02200150 |= 1;
     }
     for (int index = 0; index < planner->count; ++index) {
-        Skill021f9660* skill = _Z24SearchBothTables02079e2cPci(database, planner->skills[index].id);
+        Skill021f9660* skill = _Z24SearchBothTables02079e2cPci((char*)database, planner->skills[index].id);
         if (skill->excluded) continue;
         if (skill->restriction) continue;
         int cost;

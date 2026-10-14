@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 
 struct Ctx021e2f54 {
@@ -31,7 +32,6 @@ struct List021600f8;
 
 extern struct Holder021e2f54 data_ov025_021ef988;
 
-void* GetData02108e10(void);
 extern "C" struct Rec021e2f54* _Z24SearchBothTables02079e2cPci(char* p, int key);
 extern "C" void* _Z22GetNodeAtIndex021600f8P12List021600f8i(struct List021600f8* list, int index);
 extern "C" short func_ov000_0215ffa0(void* node);

@@ -1,6 +1,6 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 
-void* GetData02108e10(void);
 void* SearchBothTables02079e2c(char* p, int key);
 void* GetData02153637(void);
 void StoreInFirstEmptySlot(unsigned char* base, unsigned char val);
@@ -20,7 +20,7 @@ extern "C" ARM int func_ov002_0215b720(unsigned char* obj, int key) {
             result = 1;
         }
     } else {
-        void* table = GetData02108e10();
+        ActionDataTables* table = GetData02108e10();
         void* entry = SearchBothTables02079e2c((char*)table, key);
         if (entry != 0) {
             struct Field18_0215b720* f = (struct Field18_0215b720*)((char*)entry + 0x18);

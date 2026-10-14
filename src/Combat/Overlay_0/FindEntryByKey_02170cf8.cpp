@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 
 #if defined(jpn)
 #define REGION_OFFSET_0 0xdc
@@ -9,7 +10,7 @@
 #endif
 
 
-void* GetData02108e10(void);
+
 void* SearchBothTables02079e2c(char* p, int key);
 
 struct Entry02170cf8 {
@@ -23,7 +24,7 @@ extern "C" ARM void* func_ov000_02170cf8(char* obj, int val) {
     if (val == 0) {
         return 0;
     }
-    void* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10();
     if (data == 0) {
         return 0;
     }

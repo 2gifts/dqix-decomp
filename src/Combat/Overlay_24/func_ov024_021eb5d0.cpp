@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 
 #if defined(jpn)
 #define WORK_STRIDE_021eb5d0 0x488
@@ -266,7 +267,6 @@ struct Targets_021eb5d0 {
 };
 extern "C" struct Targets_021eb5d0 data_ov024_021fe8f0;
 
-extern "C" void* _Z15GetData02108e10v();
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* bs, int id);
 extern "C" struct Rec_021eb5d0* _Z24SearchBothTables02079e2cPci(void* table, int id);
 extern "C" void* _Z26LookupElementByKey02079ee0Pvi(void* table, int key);
@@ -393,7 +393,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
     self->f4 = list;
     self->f8 = list->f10;
     struct BattleStruct* bs = _ZN9GameState11GetInstanceEv();
-    void* table = _Z15GetData02108e10v();
+    ActionDataTables* table = GetData02108e10();
     struct Rec_021eb5d0* rec = _Z24SearchBothTables02079e2cPci(table, self->f4->f0);
     if (rec == 0) return;
     self->f6d = 1;

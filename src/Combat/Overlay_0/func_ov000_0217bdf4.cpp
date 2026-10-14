@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
 #if defined(jpn)
@@ -15,7 +16,7 @@ struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void* GetFieldAt0x150(unsigned char* obj);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
-void* GetData02108e10(void);
+
 extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
 extern "C" int _Z35CheckFlagsOrField_0217ab48_0217ab48Pv(void* obj);
 extern "C" void func_ov000_021718a4(void* obj);
@@ -102,7 +103,7 @@ extern "C" ARM int func_ov000_0217bdf4(MenuObj_0217bdf4* obj, int arg1, int arg2
         int kind = ((MemberInfo_0217bdf4*)GetFieldAt0x150((unsigned char*)member))->spellKind;
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 1, 0);
         obj->field1d = 0;
-        void* data = GetData02108e10();
+        ActionDataTables* data = GetData02108e10();
         if (data == NULL) {
             return -1;
         }

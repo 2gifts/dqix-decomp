@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 
 extern "C" void* _ZN9GameState11GetInstanceEv();
@@ -8,7 +9,6 @@ extern "C" void* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx)
 extern "C" void* _ZN9GameState19GetCombatantByIndexEi(void* gs, int idx);
 extern "C" int func_ov025_021ed380(char* obj, unsigned short id, short val2, int type, int val3, short val4, unsigned short val5);
 extern "C" void _Z30SetShortArrayEntry128_021ed350Pcit(char* obj, int idx, unsigned short val);
-extern "C" void* _Z15GetData02108e10v();
 extern "C" void* _Z24SearchBothTables02079e2cPci(void* data, int id);
 
 struct Slot021ea474 {
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov025_021ea474(char* self) {
             _Z30SetShortArrayEntry128_021ed350Pcit(self + 0x5e8, (unsigned short)(*(unsigned char*)(self + 0x738) - 1), 0x1130);
             func_ov025_021ed380(self + 0x5e8, 0x1e0, who, 0, 0, -1, 100);
         }
-        Entry021ea474* e = (Entry021ea474*)_Z24SearchBothTables02079e2cPci(_Z15GetData02108e10v(), (short)slot->type);
+        Entry021ea474* e = (Entry021ea474*)_Z24SearchBothTables02079e2cPci(GetData02108e10(), (short)slot->type);
         if ((e != 0 && ((e->f18 << 16) >> 28) == 2) || slot->type == 0x5c || slot->type == 0x67 ||
             slot->type == 0xa0 || slot->type == 0xbf) {
             func_ov025_021ed380(self + 0x5e8, slot->extraMsgId, who, 0, 0, -1, 0);

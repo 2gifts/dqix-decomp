@@ -1,14 +1,14 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 
 void* GetActiveCombatWork(void);
 void* GetSlotPtr02160f20(void* obj);
-void* GetData02108e10(void);
 void* SearchBothTables02079e2c(char* p, int key);
 
 // USA: func_ov025_021eba60
 ARM void CheckAndSetFlag_021eba60(char* obj) {
     void* slot = GetSlotPtr02160f20(GetActiveCombatWork());
-    void* p = GetData02108e10();
+    ActionDataTables* p = GetData02108e10();
     short key = *(short*)slot;
     void* r = SearchBothTables02079e2c((char*)p, key);
     if (r == 0) {

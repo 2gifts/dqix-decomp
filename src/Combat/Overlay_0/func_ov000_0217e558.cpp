@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
 struct Struct_0205c570 { unsigned char data[0x7cc]; };
@@ -53,7 +54,7 @@ extern "C" int func_ov000_0217c594(BattleE558*, int);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
 extern "C" ActorE558* func_ov000_02161318(BattleE558*, int);
 extern "C" void func_ov000_02170db0(ActorE558*);
-char* GetData02108e10();
+
 extern "C" ActionRecordE558* _Z24SearchBothTables02079e2cPci(char*, int);
 extern "C" void func_ov000_02175b54(BattleE558*);
 int GetField0x3acValue(GameState*);
@@ -90,9 +91,9 @@ extern "C" ARM void func_ov000_0217e558(BattleE558* battle, int arg1, int arg2) 
             }
         }
     } else {
-        char* tables = GetData02108e10();
+        ActionDataTables* tables = GetData02108e10();
         if (!tables) return;
-        ActionRecordE558* entry = _Z24SearchBothTables02079e2cPci(tables, battle->keys[battle->selected]);
+        ActionRecordE558* entry = _Z24SearchBothTables02079e2cPci((char*)tables, battle->keys[battle->selected]);
         if (!entry) return;
         func_ov000_02175b54(battle);
         GameState* game = GameState::GetInstance();

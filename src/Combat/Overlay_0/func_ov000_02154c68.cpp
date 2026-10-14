@@ -1,10 +1,11 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 struct GameObject { char p[0x17c]; unsigned char group; };
 class GameState {public: static GameState* GetInstance();GameObject* GetCombatantByIndex(int);};
 struct S_10088;int IsFlag10088Set(S_10088*);
 int IsFlag0x18Bit0x2000Set(GameObject*);
 GameObject* GetCombatantWithFlag0x400(GameState*,int);
-char* GetData02108e10();
+
 struct Random;int NextRandomMax(Random*,int);
 struct Action { int p[2]; unsigned int p8:8,side:2,q8:22;int q[2];unsigned int p14:28,type:4;int p18;unsigned int p1c:14,target:5,q1c:13; };
 struct Ids { short values[8]; };

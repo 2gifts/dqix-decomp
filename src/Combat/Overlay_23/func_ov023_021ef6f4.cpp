@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 #include "Combat/Main/BattleList.h"
 #include "Grotto/Main/ActiveGrottoClass.h"
@@ -52,7 +53,6 @@ int GetField0x3acValue(GameState*);
 extern "C" void _Z36ResetAndDispatchActorContext0209c6d8Pvs(void*, short);
 void DispatchAndSetTreasureMapUnknownBit(char*, int);
 extern "C" void _Z31ScaleOrResetCombatants_021ed988Pci(char*, int);
-char* GetData02108e10();
 extern "C" MoveName* _Z24SearchBothTables02079e2cPci(char*, int);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574*, int, char*);
 extern "C" {
@@ -224,7 +224,7 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
         if (func_ov023_021f4fc8()) {
             int move = map->legacy_.GetLearnedMove(map->legacy_.level_, 1);
             if (move) {
-                MoveName* name = _Z24SearchBothTables02079e2cPci(GetData02108e10(), (short)move);
+                MoveName* name = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)move);
                 sprintf(message, FindEntryByKey(&self->text_, 0x20));
                 BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
                 if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);

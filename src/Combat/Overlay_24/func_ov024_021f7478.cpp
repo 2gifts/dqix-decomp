@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 
 #include "Combat/BattleSkillEligibility.h"
 #include "std_library_functions.h"
@@ -193,7 +194,6 @@ extern "C" int _Z20IsBitFlagSet0217c4e8Pvi(void* p, int i);
 extern "C" struct MoveData_021f7478* _Z27GetBoundedField420_0217199cPvi(void* p, int i);
 extern "C" int _Z20CountNonZero02171698P9S02171698(struct S02171698* p);
 extern "C" struct MoveData_021f7478* _Z27GetBoundedField156_02171674Pvi(void* p, int i);
-void* GetData02108e10(void);
 extern "C" int func_ov000_02171bc0(void* p);
 extern "C" struct LearnedMove_021f7478* _Z33GetPointerField_02171b9c_02171b9cPvi(void* p, int i);
 extern "C" struct MoveData_021f7478* _Z24SearchBothTables02079e2cPci(char* p, int key);
@@ -402,7 +402,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
         if (obj->numEntries == 0x80) return;
     }
 
-    void* moveTable = GetData02108e10();
+    ActionDataTables* moveTable = GetData02108e10();
     int n3 = func_ov000_02171bc0(work);
     for (int i = 0; i < n3; i++) {
         struct LearnedMove_021f7478* lm = _Z33GetPointerField_02171b9c_02171b9cPvi(work, i);
@@ -442,7 +442,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
         obj->resMax[i] = 0;
     }
 
-    void* moveTable2 = GetData02108e10();
+    ActionDataTables* moveTable2 = GetData02108e10();
     for (int i = 0; i < obj->count; i++) {
         struct Combatant_021f7478* c = obj->list[i];
         int side = c->side;

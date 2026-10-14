@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 
 class GameState {
 public:
@@ -99,7 +100,6 @@ struct SkillIds_021f9030 {
 
 extern "C" void __clear(void* dst, int size);
 void* GetFieldAt0x150(unsigned char* obj);
-char* GetData02108e10();
 GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 extern "C" int _Z33IsCombatantFlag2Mask8192_021e6798P10GameObject(GameObject* combatant);
@@ -120,7 +120,7 @@ extern "C" ARM void func_ov024_021f9030(Planner_021f9030* obj, Battle_021f9030* 
     GameState* gameState = GameState::GetInstance();
     GameObject* combatant = GetCombatantWithFlag0x100(gameState, id);
     Field_021f9030* field = (Field_021f9030*)GetFieldAt0x150((unsigned char*)combatant);
-    char* database = GetData02108e10();
+    ActionDataTables* database = GetData02108e10();
     unsigned char mode = (signed char)field->mode;
     if (mode >= 5) {
         return;
@@ -179,7 +179,7 @@ extern "C" ARM void func_ov024_021f9030(Planner_021f9030* obj, Battle_021f9030* 
     }
     for (i = 0; i < obj->count; i++) {
         SkillSlot_021f9030* slot = &obj->skills[i];
-        Skill_021f9030* skill = _Z24SearchBothTables02079e2cPci(database, slot->id);
+        Skill_021f9030* skill = _Z24SearchBothTables02079e2cPci((char*)database, slot->id);
         int cost = 0;
         if (skill->type == 2) {
             if (func_ov024_021f8874(obj, skill, combatant, &cost)) {
@@ -215,7 +215,7 @@ extern "C" ARM void func_ov024_021f9030(Planner_021f9030* obj, Battle_021f9030* 
 skipRevive:
     if (found[1] && obj->targetCount <= 1 && (isMode0 || isMode14 || isMode2)) {
         GameObject* target = obj->targets[0];
-        obj->selectedSkill = _Z24SearchBothTables02079e2cPci(database, 0x45);
+        obj->selectedSkill = _Z24SearchBothTables02079e2cPci((char*)database, 0x45);
         obj->selectedCost = obj->selectedSkill->cost;
         float hi;
         float lo;

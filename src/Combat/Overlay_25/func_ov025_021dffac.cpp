@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
@@ -17,7 +18,6 @@ union Position021dffac { Vector3fix vector; int coordinates[3]; };
 struct Entry021dffac { unsigned char index; char field_1[3]; int flag; GameObject* actor; };
 struct Cell021dffac { int x, z; };
 extern "C" int _Z20IsMatchingID02163690i(int);
-char* GetData02108e10();
 extern "C" void* _Z24SearchBothTables02079e2cPci(char*, int);
 extern "C" int _Z26CheckSlotEntryKind021627fcPv(void*);
 extern "C" int func_ov025_021e1048(Battle021dffac*, Entry021dffac*);
@@ -60,7 +60,7 @@ extern "C" ARM int func_ov025_021dffac(Context021dffac* context) {
     Action021dffac* selected = SelectAction021dffac(battle, context->actionIndex);
     int id = selected->id;
     if (_Z20IsMatchingID02163690i(id)) id = 1;
-    void* actionData = _Z24SearchBothTables02079e2cPci(GetData02108e10(), (short)id);
+    void* actionData = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)id);
     if (!actionData) return 0;
     if (!_Z26CheckSlotEntryKind021627fcPv(context)) return 0;
     Entry021dffac entries[12];

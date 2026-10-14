@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 
@@ -18,7 +19,6 @@ int IsField0Null(void**);
 GameObject* GetCombatantWithFlag0x100(GameState*, int);
 int TryClearFlags0x130(unsigned char*, unsigned short);
 extern "C" void _Z26EnqueueEventTag34_021d27a0hhh(unsigned char, unsigned char, unsigned char);
-void* GetData02108e10();
 extern "C" void* _Z24SearchBothTables02079e2cPci(char*, int);
 struct Obj02048350;
 extern "C" int _Z22ConsumeCounter02048350P11Obj02048350i(struct Obj02048350*, int);

@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
 GameObject* GetCombatantWithFlag0x400(GameState* gameState, int combatantId);
-void* GetData02108e10(void);
 int GetCombatantField0x148Bits3To4(int unused, int id);
 
 struct MoveData_021f66cc {

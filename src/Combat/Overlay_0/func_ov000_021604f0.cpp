@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 
 #if defined(jpn)
 #define REGION_OFFSET_0 0xe44
@@ -27,7 +28,7 @@
 extern "C" void _Z25ForwardField0xc0_0205eb80Pv(void* obj);
 extern "C" void _Z22ResetBigStruct02013750Pvi(void* obj, int flag);
 extern "C" void func_ov000_02172720(void* obj);
-char* GetData02108e10(void);
+
 extern "C" void _Z23ClearTwoRegions02079f9cPc(char* obj);
 extern "C" void* func_02057924(void);
 extern "C" void func_02057f00(void* obj, int index);
@@ -59,7 +60,7 @@ extern "C" ARM void func_ov000_021604f0(struct CombatWork_021604f0* work) {
     if (!(work->flags & 0x800)) {
         func_ov000_02172720(work->field_3760);
     }
-    _Z23ClearTwoRegions02079f9cPc(GetData02108e10());
+    _Z23ClearTwoRegions02079f9cPc((char*)GetData02108e10());
     void* slots = func_02057924();
     for (int* p = data_ov000_02182fe0; *p >= 0; p++) {
         func_02057f00(slots, *p);

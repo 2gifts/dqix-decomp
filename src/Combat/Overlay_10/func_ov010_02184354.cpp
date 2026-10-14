@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -78,7 +79,6 @@ extern "C" int _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, int params
 
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
-void* GetData02108e10(void);
 extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
 
 struct Obj02048350;

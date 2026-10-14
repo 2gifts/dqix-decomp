@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -116,7 +117,6 @@ extern "C" int _Z13Check021ed2f4Pv(void* obj);
 extern "C" void func_ov025_021ebb24(struct Struct021ecb90* obj);
 extern "C" struct ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(struct List021600f8* list, int index);
 extern "C" struct ListNode02160094* _Z22GetNodeAtIndex02160094P12List02160094i(struct List02160094* list, int index);
-void* GetData02108e10(void);
 extern "C" struct Row02079e2c* _Z24SearchBothTables02079e2cPci(char* table, int key);
 extern "C" void _Z25AppendUniqueShort0216346cPci(char* obj, int val);
 extern "C" void _Z25AppendUniqueShort021634c8Pci(char* obj, int val);
@@ -513,7 +513,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
         }
 
         int waitUnique = 1;
-        if (e->mode == 1) waitUnique = obj->f311 != 0 ? 0 : waitUnique;
+        if (e->mode == 1) waitUnique = obj->f311 == 0;
 
         if (numSlots > 0) {
             for (int cur = obj->entries[i].w; cur < numSlots; cur++) {

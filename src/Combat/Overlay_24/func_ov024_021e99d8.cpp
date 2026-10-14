@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
 struct PackedRange_021e99d8 {
@@ -52,7 +53,6 @@ struct Combatant_021e99d8 {
     unsigned char* field150;
 };
 
-char* GetData02108e10();
 void* SearchBothTables02079e2c(char* p, int key);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 int TestBit2At0x2f4(unsigned char* p);
@@ -73,7 +73,7 @@ extern "C" ARM int func_ov024_021e99d8(struct Ctx_021e99d8* ctx, struct Command_
     }
     if (action->id == 0x1f8) {
         struct TableEntry_021e99d8* entry =
-            (struct TableEntry_021e99d8*)SearchBothTables02079e2c(GetData02108e10(), cmd->command);
+            (struct TableEntry_021e99d8*)SearchBothTables02079e2c((char*)GetData02108e10(), cmd->command);
         if (!entry) {
             return 0;
         }

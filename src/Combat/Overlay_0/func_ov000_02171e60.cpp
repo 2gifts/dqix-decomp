@@ -4,6 +4,7 @@
 #define LOW_REGION(j, u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
 struct Container020e0310;
@@ -16,7 +17,7 @@ struct Obj0203c108 {
 };
 extern "C" void _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(struct Obj0203c108* obj, char* fmt);
 
-char* GetData02108e10();
+
 extern "C" void* _Z24SearchBothTables02079e2cPci(char* table, int key);
 extern "C" int func_ov000_02171210(void* rec, void* self);
 
@@ -70,7 +71,7 @@ extern "C" ARM void func_ov000_02171e60(struct CommandMenu* self) {
         _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&self->message, _Z21GetFieldByKey020e0434P17Container020e0310i(self->texts, 5));
         return;
     }
-    void* rec = _Z24SearchBothTables02079e2cPci(GetData02108e10(), entry->recordId);
+    void* rec = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), entry->recordId);
     if (rec == NULL) {
         self->stackTop++;
         self->stack[self->stackTop] = 0xe;

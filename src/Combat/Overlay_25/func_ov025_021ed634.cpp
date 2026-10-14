@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -111,7 +112,6 @@ extern "C" void _Z21CopyStringToField042cPvPc(void* g, char* s);
 extern "C" int _Z22CheckKeyMatch_0215fb9cis(int obj, unsigned short id);
 extern "C" void _Z17BuildName020488ecPc(char* s);
 void CopyStringToField046c(void* g, char* s);
-char* GetData02108e10(void);
 extern "C" Row02079e2c* _Z24SearchBothTables02079e2cPci(char* table, int key);
 extern "C" void _Z31InitObjFromPackedFields020e4e38PvP11Src020e4e38(void* obj, Src020e4e38* src);
 void CopyStringToField0x3ec(char* g, char* s);
@@ -443,13 +443,13 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
 #else
         CopyStringToField046c(g, name);
 #endif
-        char* data = GetData02108e10();
+        ActionDataTables* data = GetData02108e10();
         List021600f8* l = self->list;
         Row02079e2c* row;
         if (l->id == 0x1f8 || l->id == 0x3a9 || l->id == 0x3a7 || l->id == 0x3ac || l->id == 0x3ad || l->id == 0x392) {
-            row = _Z24SearchBothTables02079e2cPci(data, l->s2);
+            row = _Z24SearchBothTables02079e2cPci((char*)data, l->s2);
         } else {
-            row = _Z24SearchBothTables02079e2cPci(data, (short)l->id);
+            row = _Z24SearchBothTables02079e2cPci((char*)data, (short)l->id);
         }
         if (row != 0) {
 #if defined(jpn)

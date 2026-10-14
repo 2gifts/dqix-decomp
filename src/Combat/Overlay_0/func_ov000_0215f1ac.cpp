@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
@@ -7,7 +8,7 @@ struct BattleRecord0215f1ac { short key; char pad_2[0x10 - 2]; BattleNode0215f1a
 struct BattleEvents0215f1ac { char pad_0[0x8e20]; int actionCount; char pad_8e24[0x8e78 - 0x8e24]; BattleRecord0215f1ac* records; int count; };
 struct BattleRule0215f1ac { char pad_0[0x10]; unsigned int flags; char pad_14[0x2c - 0x14]; unsigned int field_0 : 14; unsigned int category : 6; unsigned int field_20 : 12; };
 struct List02160094;
-char* GetData02108e10();
+
 extern "C" BattleRule0215f1ac* _Z24SearchBothTables02079e2cPci(char*, int);
 int TestBit6At0x2f4(unsigned char*);
 int ClassifyField0x81fe(char*);
@@ -20,11 +21,11 @@ struct CombatantView0215f1ac { char pad_0[0x150]; unsigned char* status; };
 // USA: func_ov000_0215f1ac
 extern "C" ARM void func_ov000_0215f1ac(BattleEvents0215f1ac* events) {
     GameState* state = GameState::GetInstance();
-    char* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10();
     int moved = 0;
     for (int i = events->count - 1; i >= moved; i--) {
         BattleRecord0215f1ac* record = &events->records[i];
-        BattleRule0215f1ac* rule = _Z24SearchBothTables02079e2cPci(data, record->key);
+        BattleRule0215f1ac* rule = _Z24SearchBothTables02079e2cPci((char*)data, record->key);
         if (!rule || !(rule->flags & 0x80000)) continue;
         unsigned short id = record->head->combatant;
         unsigned char partyMember = id <= 3;
@@ -42,7 +43,7 @@ extern "C" ARM void func_ov000_0215f1ac(BattleEvents0215f1ac* events) {
         int moved = 0;
         for (int i = events->count - 1; i >= moved; i--) {
             BattleRecord0215f1ac* records = events->records;
-            BattleRule0215f1ac* rule = _Z24SearchBothTables02079e2cPci(data, records[i].key);
+            BattleRule0215f1ac* rule = _Z24SearchBothTables02079e2cPci((char*)data, records[i].key);
             if (!rule || rule->category != data_ov000_02182aac[categoryIndex]) continue;
             BattleRecord0215f1ac saved;
             memcpy(&saved, &records[i], 0x28);
@@ -60,7 +61,7 @@ extern "C" ARM void func_ov000_0215f1ac(BattleEvents0215f1ac* events) {
         for (; i < remaining; i++) {
             category = trailingCategories[categoryIndex];
             BattleRecord0215f1ac* records = events->records;
-            BattleRule0215f1ac* rule = _Z24SearchBothTables02079e2cPci(data, records[i].key);
+            BattleRule0215f1ac* rule = _Z24SearchBothTables02079e2cPci((char*)data, records[i].key);
             if (!rule || rule->category != category) continue;
             BattleRecord0215f1ac saved;
             memcpy(&saved, &records[i], 0x28);

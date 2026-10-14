@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include <GameState/GameState.h>
 
@@ -30,7 +31,6 @@ extern Global021dc324 data_ov025_021ef404;
 extern "C" Timer021dc324 _ZZ16GetTimer021ef974vE1s;
 extern "C" Slot021dc324* _Z18GetSlotPtr02160f20Pv(void*);
 extern "C" int _Z20GetByte2105_021ea46cPv(void*);
-char* GetData02108e10();
 int GetByteField0x261Or1(void*);
 extern "C" Skill021dc324* _Z24SearchBothTables02079e2cPci(char*, int);
 extern "C" int _Z20IsMatchingID02163690i(int);
@@ -51,14 +51,14 @@ extern "C" ARM void func_ov025_021dc324(BattleEffectWork021dc324* self) {
     Slot021dc324* slot = _Z18GetSlotPtr02160f20Pv(self);
     body = &self->body;
     if (!_Z20GetByte2105_021ea46cPv(&self->display)) return;
-    char* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10();
     ObjectRegion021dc324* objectRegion = &self->objectRegion;
     if (data_ov025_021ef404.active) {
         if (!GetByteField0x261Or1(body->checkTask)) return;
         objectRegion->object.MakeHidden();
         self->object2.MakeHidden();
         int special = 0;
-        Skill021dc324* skill = _Z24SearchBothTables02079e2cPci(data, (short)slot->id);
+        Skill021dc324* skill = _Z24SearchBothTables02079e2cPci((char*)data, (short)slot->id);
         if (_Z20IsMatchingID02163690i(slot->id)) special = 1;
         else if (skill) {
             if (skill->kind == 2) special = 1;

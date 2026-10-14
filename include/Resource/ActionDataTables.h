@@ -51,6 +51,8 @@ struct ActionDataTables {
     Header02079bac alternateDamage;
 };
 
+ActionDataTables* GetData02108e10();
+
 extern "C" void func_02079900(ActionDataTables* tables, SafeAllocator* allocator);
 extern "C" void func_02079cf8(ActionDataTables* tables, SafeAllocator* allocator, SafeAllocator* dataAllocator);
 
