@@ -149,3 +149,7 @@ src/Combat/Overlay_9/func_ov009_02188ee8.cpp:
 src/Combat/Overlay_9/ApplyNameKeyboardChoice_0218aab0.cpp:
     complete
     .text start:0x0218aab0 end:0x0218ad0c
+
+src/Combat/Overlay_9/SelectRandomName_0218b850.cpp:
+    complete
+    .text start:0x0218b850 end:0x0218b908
