@@ -1,6 +1,45 @@
+struct Container020e0310;
+// Established name/header fields of BattleResultMember_021d94e4.
+struct BattleResultMemberName {
+    unsigned char id;
+    unsigned char vocation;
+    unsigned char level;
+    unsigned char dead;
+    int experience;
+#if defined(jpn)
+    char name[0xc];
+#else
+    char name[0x30];
+#endif
+};
+
+// Offsets established by InitBoxLayout_021d921c,
+// InitFieldArrayFromLookup_021d8ddc and AdvanceScaleBoxState_021d8f2c.
+struct BattleResultTagWindow {
+    Container020e0310* texts;
+    char unknown004[0xc0 - 4];
+    short width;
+    short height;
+    char unknown0c4[0xdc - 0xc4];
+    int resultCounts[4];
+    char unknown0ec[0x119 - 0xec];
+    unsigned char rows;
+    char unknown11a[0x120 - 0x11a];
+    BattleResultMemberName* members;
+    unsigned char memberIds[4];
+    unsigned char memberCount;
+};
+
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
+
+// The known owner fields and name header keep their original physical offsets.
+typedef char ResultCountOffsetCheck[offsetof(BattleResultTagWindow, resultCounts) == 0xdc ? 1 : -1];
+typedef char ResultMembersOffsetCheck[offsetof(BattleResultTagWindow, members) == 0x120 ? 1 : -1];
+typedef char ResultIdsOffsetCheck[offsetof(BattleResultTagWindow, memberIds) == 0x124 ? 1 : -1];
+typedef char ResultCountByteOffsetCheck[offsetof(BattleResultTagWindow, memberCount) == 0x128 ? 1 : -1];
+typedef char ResultNameOffsetCheck[offsetof(BattleResultMemberName, name) == 8 ? 1 : -1];
 
 struct Container020e0310;
 int GetFieldByKey020e0434(Container020e0310*, int);
@@ -29,54 +68,54 @@ struct EntryLocal_021d9290 {
 
 // USA: func_ov023_021d9290  (semantic: AppendMatchedEntryTags_021d9290)
 extern "C" ARM void func_ov023_021d9290(char* obj, char* buf, unsigned char count) {
+    BattleResultTagWindow* window = (BattleResultTagWindow*)obj;
     if (!buf) return;
 
     GameState::GetInstance();
     int g = GetGlobalField0x1c020421a0();
 
-    char* fieldStr = (char*)GetFieldByKey020e0434(*(Container020e0310**)(obj + 0x0), 0x75f8);
+    char* fieldStr = (char*)GetFieldByKey020e0434(window->texts, 0x75f8);
     int len = func_020420e8(fieldStr, 0);
     AppendXTag(buf, (0xc0 - len) >> 1);
     AppendHeightTag(buf, 1);
     AppendFormatted02041fac(buf, (int)fieldStr, 0x10);
 
-    unsigned char* idArr = (unsigned char*)(obj + 0x124);
-    int a2 = *(signed short*)(obj + 0xc2);
-    int b = *(unsigned char*)(obj + 0x119);
-    int loopCount = *(unsigned char*)(obj + 0x128);
+    unsigned char* idArr = window->memberIds;
+    int a2 = window->height;
+    int b = window->rows;
+    int loopCount = window->memberCount;
     int found = 0;
     signed char adj = (signed char)(((a2 << 3) - (b * 10 + 0x1d)) / (b - 1));
     int total8 = a2 << 3;
 
-    if (*(int*)(obj + 0x120) == 0) return;
+    if (window->members == NULL) return;
 
-    char* fieldStr2 = (char*)GetFieldByKey020e0434(*(Container020e0310**)(obj + 0x0), 0x75f9);
+    char* fieldStr2 = (char*)GetFieldByKey020e0434(window->texts, 0x75f9);
     int i;
     for (i = 0; i < loopCount; i++) {
-        if (*(int*)(obj + i * 4 + 0xdc) != 0 && count != 0) {
+        if (window->resultCounts[i] != 0 && count != 0) {
             int id = idArr[i];
-            void* entry = Find_021d994c(obj, id);
+            BattleResultMemberName* entry = (BattleResultMemberName*)Find_021d994c(obj, id);
             if (entry != NULL) {
                 char buf1[0x100];
                 char buf2[0x100];
                 __clear(buf1, 0x100);
                 __clear(buf2, 0x100);
                 if (found != 0) {
-                    char* fieldStr0 = (char*)GetFieldByKey020e0434(*(Container020e0310**)(obj + 0x0), 0);
+                    char* fieldStr0 = (char*)GetFieldByKey020e0434(window->texts, 0);
                     AppendString02042058(buf, fieldStr0);
                     AppendHeightTag(buf, adj);
                 }
                 func_02046380(g);
                 struct EntryLocal_021d9290 local;
                 InitObjFromCombatantId020e4bf4(&local, id);
-                void* val = (char*)entry + 8;
+                void* val = entry->name;
                 local.f0 = val;
                 local.f4 = val;
                 *(void**)(g + 0x10) = &local;
-                int addrAsInt = (int)obj + i * 4 + 0xdc;
-                int applyResult = ApplyEqual12Flag020426a4(8, *(int*)addrAsInt);
+                int applyResult = ApplyEqual12Flag020426a4(8, window->resultCounts[i]);
                 sprintf(buf2, fieldStr2, 0x94 - applyResult);
-                StoreInArray0x8b0((struct StoreStruct*)g, 1, *(int*)(obj + 0xdc + i * 4));
+                StoreInArray0x8b0((struct StoreStruct*)g, 1, window->resultCounts[i]);
                 func_02046608(g, 0xa, buf2, buf1, 0x100, 0, 0);
                 AppendString02042058(buf, buf1);
                 found = 1;
@@ -86,7 +125,7 @@ extern "C" ARM void func_ov023_021d9290(char* obj, char* buf, unsigned char coun
     }
 
     if (found == 0) {
-        char* fieldStr3 = (char*)GetFieldByKey020e0434(*(Container020e0310**)(obj + 0x0), 0x75fa);
+        char* fieldStr3 = (char*)GetFieldByKey020e0434(window->texts, 0x75fa);
         int len3 = func_020420e8(fieldStr3, 0);
         len3 = 0xc0 - len3;
         AppendXYTag(buf, len3 >> 1, (total8 - 0x1a) / 2 + 0x10);
