@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 #if defined(jpn)
 enum { kClearSize=0x48 };
 #else
@@ -16,9 +17,6 @@ struct Scene02154720 {
  char pad208[0x330-0x208];int field330,field334;unsigned char blocked,reset,started;
 };
 extern "C" void func_02074af4(void*);
-extern "C" void* _ZN9GameState11GetInstanceEv();
-struct GameState;
-Party02154720* GetPtrField0x2a04_02010828(GameState*);
 void InitStruct0205a444(char*);
 struct Obj02081ee4;
 struct Sub02081ee4;
@@ -39,13 +37,13 @@ extern "C" ARM void func_ov003_02154720(void* memory,unsigned char flagIn) {
  Party02154720* party;
  unsigned char count;
  int k;
- void* gs;
+ GameState* gs;
  int init;
  self->flag170=0;self->flag171=0;func_02074af4(self->controller);
  self->display=(*(volatile unsigned int*)0x04000000&0x1f00)>>8;
  *(volatile unsigned int*)0x04000000=(*(volatile unsigned int*)0x04000000&~0x1f00)|0x100;
- gs=_ZN9GameState11GetInstanceEv();
- party=GetPtrField0x2a04_02010828((GameState*)gs);
+ gs=GameState::GetInstance();
+ party=(Party02154720*)GetPtrField0x2a04_02010828(gs);
  self->p0=0;self->p4=0;self->pc=0;self->p8=0;self->p10=0;self->p14=0;self->p18=0;self->p20=0;self->p24=0;self->p28=0;
  InitStruct0205a444((char*)self->init2c);
  InitWithSub02081ee4((Obj02081ee4*)self->selector, (Sub02081ee4*)self->sub);
@@ -56,12 +54,12 @@ extern "C" ARM void func_ov003_02154720(void* memory,unsigned char flagIn) {
  ZeroInit020de848(self->zero178);
  self->task=-1;self->field1d4=0;self->changed=0;self->scale=0;
  self->field1e0=-1;self->field1e2=-1;self->field1e4=-1;self->element=-1;self->previous=-1;self->field1ea=-1;self->field1ee=-1;self->pending=self->field1ee;self->field1f0=-1;
- self->current=GetField0x3acValue_020100a8((GameState*)gs);
+ self->current=GetField0x3acValue_020100a8(gs);
  self->state=0;self->flag1f9=0;self->flag1fa=0;self->multiplayer=0;self->flags=0;self->field200=0;self->skip=0;
  self->field330=0;self->field334=0;self->blocked=0;self->reset=0;self->started=0;
  for(init=0;init<4;init++) { self->ids[init]=0;memset(&self->cache[init],0,4); }
  self->count=CopyOutRegion0x571d_020114ec((char*)gs, self->ids);
- Party02154720* currentParty=GetPtrField0x2a04_02010828((GameState*)gs);
+ Party02154720* currentParty=(Party02154720*)GetPtrField0x2a04_02010828(gs);
  count=self->count;
  for(int i=0;i<count;i++) {
   int id;

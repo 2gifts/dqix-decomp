@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct Struct020865b0;
 struct FindEntryContainer02086e50;
@@ -10,10 +11,6 @@ extern "C" ARM void func_ov003_02167fa4(void* self, int flag, unsigned char* tab
 void SetEntryFieldsForRange_02168088(struct Wrapper02168088* obj, int* arr);
 extern "C" int func_020813ec(void* list, int arg);
 extern "C" void func_02042764(unsigned char* src, char* dst, int n);
-extern "C" void memset(void* dst, int value, int n);
-struct GameState;
-void* GetPtrField0x2a04_02010828(GameState*);
-extern "C" void* _ZN9GameState11GetInstanceEv();
 void* FindEntryBySignedId02086e50(FindEntryContainer02086e50* p, int id);
 int GetFieldAt0x50(Struct020865b0* p);
 
@@ -45,7 +42,7 @@ struct Menu_02167ca8 {
 // USA: func_ov003_02167ca8
 extern "C" ARM void func_ov003_02167ca8(Menu_02167ca8* self) {
     Entry02167ca8* entry = (Entry02167ca8*)FindEntryBySignedId02086e50(
-        (FindEntryContainer02086e50*)GetPtrField0x2a04_02010828((GameState*)_ZN9GameState11GetInstanceEv()),
+        (FindEntryContainer02086e50*)GetPtrField0x2a04_02010828(GameState::GetInstance()),
         self->combatantId);
     if (entry == 0) {
         return;

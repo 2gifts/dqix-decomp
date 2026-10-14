@@ -1,13 +1,11 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
-class GameState;
 struct UnkStruct0205c508;
 struct StoreStruct;
 struct Container020dedd0;
 struct KeyMap020a0b3c;
 
-extern "C" GameState *_ZN9GameState11GetInstanceEv();
-char *GetPtrField0x2a04_02010828(GameState *gs);
 void *GetGlobalField0x1c020421a0();
 int AppendFrameTag02041c08(char *dst, int a1, int a2, int a3, int a4, int a5);
 int AppendCursorTag_02041ea4(char *dst, int cursor);
@@ -37,7 +35,7 @@ extern "C" ARM void func_ov002_0215d950(char *p, char *dst, int flag2) {
     int cursor = *(short *) (p + 0x1be8) & 7;
     if (flag2) AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     AppendCursorTag_02041ea4(dst, cursor);
-    tbl       = GetPtrField0x2a04_02010828(_ZN9GameState11GetInstanceEv()) + 0xe04;
+    tbl       = (char *) GetPtrField0x2a04_02010828(GameState::GetInstance()) + 0xe04;
     void *msg = GetGlobalField0x1c020421a0();
     char *fld = p + 0x2c8 + 0xc00;
     int sel   = *(int *) (fld + 0x68);

@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
+#include "Graphics/Model3D.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
 
@@ -9,12 +10,6 @@ extern "C" int func_ov017_021d60f4(void* a);
 int AbsPlus159IfNegative0215ad2c(int x);
 
 struct SearchObj0202ff34;
-
-struct Obj0207e378;
-extern "C" void _ZN7Model3D21CopyAndProcessRawFileEP14AllocatorUnionPKvjNS_18TextureStagingModeE(struct Obj0207e378*, void*, void*, unsigned int, int);
-extern "C" ARM void _ZN7Model3D12LoadFromFileEPKcP14AllocatorUnionNS_18TextureStagingModeE(void* a, void* b, void* c, int d);
-
-struct Model3D;
 
 extern const char data_ov001_02165745[];
 extern SafeAllocator* data_ov001_021658b8[8];
@@ -39,9 +34,9 @@ extern "C" ARM int func_ov001_0215ef54(char* obj, int count) {
     int out2;
     ((BackgroundLoader*)((SearchObj0202ff34*)(int)BackgroundLoader::GetInstance()))->GetLoadedFileByName((const char*)(buf), (void**)(&out1), (unsigned int*)(&out2));
     if (out1 != 0) {
-        _ZN7Model3D21CopyAndProcessRawFileEP14AllocatorUnionPKvjNS_18TextureStagingModeE((struct Obj0207e378*)newBuf, (char*)alloc + 4, (void*)out1, out2, 0);
+        ((Model3D*)newBuf)->CopyAndProcessRawFile(&alloc->allocUnion, (void*)out1, out2, Model3D::TextureStagingMode_Normal);
     } else {
-        _ZN7Model3D12LoadFromFileEPKcP14AllocatorUnionNS_18TextureStagingModeE(newBuf, buf, (char*)alloc + 4, 0);
+        ((Model3D*)newBuf)->LoadFromFile(buf, &alloc->allocUnion, Model3D::TextureStagingMode_Normal);
     }
 
     for (int i = 1; i < count; i++) {

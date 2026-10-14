@@ -105,7 +105,6 @@ void ResetGlobalObjAndInitSelfPointer0205ce94(unsigned char* obj);
 extern "C" int func_02057e6c(void* mgr, int id, SafeAllocator* alloc, void* data, unsigned int length, Foo0207df50* fields);
 void CopyCountedBytesToIntArray02010834(Base02010834* base, int index, int* out, int* outCount);
 extern "C" int func_0202c508(void* p);
-extern "C" void _ZN8Vector3iaSERKS_(Vector3i* dst, const Vector3i& src);
 unsigned int GetBitsInField4_0203b4fc(unsigned int* obj, unsigned int mask);
 void FindNodeAndProcess02057fb4(void* list, int id, int params);
 int CheckField0NonZero_0202b7d8(int* p);
@@ -149,7 +148,6 @@ void SetField0x21c_020a2770(void* obj, short v);
 void Forward0205ec20(void* obj, void* a, int b);
 extern "C" void func_ov017_02191108(GameResources* res, int a, int b, int c, int d);
 void ReinitController02043204(char* obj);
-extern "C" int _ZNK8Object3D10GetField06Ev(GameObject* obj);
 extern "C" void func_ov017_021adb1c(Battle021acdf4* self);
 
 extern AllocatorUnion data_02114e20;
@@ -295,8 +293,8 @@ extern "C" ARM void func_ov017_021acdf4(Battle021acdf4* self, HeadList020469f8* 
                     params[k].b5 = 0;
                     params[k].b6 = 0;
                     params[k].b7 = 0;
-                    _ZN8Vector3iaSERKS_(&params[k].position, ((Object3D*)member)->position_);
-                    _ZN8Vector3iaSERKS_(&params[k].scale, ((Object3D*)member)->GetScale());
+                    params[k].position = ((Object3D*)member)->position_;
+                    params[k].scale = ((Object3D*)member)->GetScale();
                     FindNodeAndProcess02057fb4(mgr, 8, (int)&params[k]);
                 }
             }
@@ -305,7 +303,7 @@ extern "C" ARM void func_ov017_021acdf4(Battle021acdf4* self, HeadList020469f8* 
         unsigned char members;
         if (CheckField0NonZero_0202b7d8((int*)func_0202ae18()) && (members = self->members) != 0) {
             id = *(short*)((char*)leader + 4);
-            EnqueueEventTag17_021ce014(id, 3, _ZNK8Object3D10GetField06Ev(leader), members);
+            EnqueueEventTag17_021ce014(id, 3, (int)((Object3D*)leader)->GetField06(), members);
         }
         if (self->special) {
             SetForwardAndStore0205ebc0(&data_02108760, 0xa3, 0xa3);
@@ -377,7 +375,7 @@ extern "C" ARM void func_ov017_021acdf4(Battle021acdf4* self, HeadList020469f8* 
                 ctx[4] = 0;
                 ctx[5] = 1;
                 *(unsigned short*)ctx = *(unsigned short*)((char*)gs2 + GameEvent);
-                _ZN8Vector3iaSERKS_((Vector3i*)(ctx + 0x10), *(Vector3i*)((char*)gs2 + GameEventData));
+                *(Vector3i*)(ctx + 0x10) = *(Vector3i*)((char*)gs2 + GameEventData);
                 ctx[7] = 1;
                 ctx[0x62] = 1;
                 ctx[0x63] = other->mode;
@@ -470,16 +468,16 @@ extern "C" ARM void func_ov017_021acdf4(Battle021acdf4* self, HeadList020469f8* 
             *(int*)(g + MessageActive) = 1;
             unsigned char* obj = (unsigned char*)GetFieldIfFlag4_020100f8((char*)gs);
             StoreFields0x1e4And0x1e8IfNonZero_0202ea10(obj, 0xcc, 0x3e8);
-            _ZN8Vector3iaSERKS_(&self->savedPos, *(Vector3i*)(obj + 0x10));
+            self->savedPos = *(Vector3i*)(obj + 0x10);
             self->savedField = GetField0x21c020a277c(obj);
             SetField0x21c_020a2770(obj, -1);
-            _ZN8Vector3iaSERKS_((Vector3i*)(obj + 0x10), self->savedPos);
+            *(Vector3i*)(obj + 0x10) = self->savedPos;
             Forward0205ec20(&data_02108760, 0, 0);
             DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 1, 0);
             self->state++;
         }
     } else if (self->state == 0xb) {
-        _ZN8Vector3iaSERKS_((Vector3i*)((char*)GetFieldIfFlag4_020100f8((char*)gs) + 0x10), self->savedPos);
+        *(Vector3i*)((char*)GetFieldIfFlag4_020100f8((char*)gs) + 0x10) = self->savedPos;
         int settled = 1;
         for (int i = 0; i < 5; i++) {
             if (self->members & (1 << i)) {

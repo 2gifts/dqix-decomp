@@ -198,7 +198,6 @@ extern "C" int func_ov025_021ed444(char* obj, int id, int val2, int type, int va
 extern "C" int func_ov025_021ed380(char* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
 extern "C" void* func_02057924(void);
 void InitStruct02078484(struct InitStruct02078484Struct* p);
-extern "C" void _ZN8Vector3iaSERKS_(Vector3fix* dst, const Vector3fix& src);
 void FindNodeAndProcess02057fb4(void* list, int id, int a3);
 int TestBit0At0x2f4_02085078(unsigned char* obj);
 int TestBit1At0x2f4_020850a4(unsigned char* obj);
@@ -536,7 +535,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                 off.x = 0;
                 off.y = pos.y + (slotObj->obj3D_.GetHeight() >> 1);
                 off.z = slotObj->obj3D_.GetRadius() >> 1;
-                _ZN8Vector3iaSERKS_(&req.offset, off);
+                req.offset = off;
                 req.objectId = slotObj->obj3D_.unknown_4_;
                 FindNodeAndProcess02057fb4(list, soundId, (int)&req);
                 int text;
@@ -615,7 +614,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                 off.x = 0;
             }
             if (soundId == 0x21 || soundId == 0x23) off.z = 0xb33;
-            _ZN8Vector3iaSERKS_(&req.offset, off);
+            req.offset = off;
             FindNodeAndProcess02057fb4(list, soundId, (int)&req);
         }
         if (sb->pendingA) {
@@ -1063,7 +1062,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             out.z += shake.z;
             Vector3fix zero;
             __clear(&zero, sizeof(zero));
-            _ZN8Vector3iaSERKS_((Vector3fix*)(sl + PendingShake), zero);
+            *(Vector3fix*)(sl + PendingShake) = zero;
             sl[Field6fe8] = 0;
         }
         if (0.8f * leadHeight < out.y && !special) {
@@ -1074,15 +1073,15 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             out.z = animObj->obj3D_.GetRadius() >> 1;
             req.objectId = animObj->obj3D_.unknown_4_;
         } else {
-            _ZN8Vector3iaSERKS_(&req.rotation, animObj->obj3D_.rotation_);
-            _ZN8Vector3iaSERKS_(&req.scale, leadObj->obj3D_.GetScale());
+            req.rotation = animObj->obj3D_.rotation_;
+            req.scale = leadObj->obj3D_.GetScale();
         }
         if (flags & 2) {
             out.z = 0;
             out.y = 0;
             out.x = 0;
         }
-        _ZN8Vector3iaSERKS_(&req.offset, out);
+        req.offset = out;
         FindNodeAndProcess02057fb4(list, soundId, (int)&req);
     }
 

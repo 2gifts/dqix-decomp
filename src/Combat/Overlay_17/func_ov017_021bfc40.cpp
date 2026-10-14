@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
+#include "Graphics/Vector.h"
 #include "Resource/GameResources.h"
 
 int HasNonZeroByteAtOfField498_0218d75c_0218d75c(void* obj);
@@ -16,8 +17,6 @@ int ComputeTwoFromVec3_0202ec84(void* obj, struct Vec3copy0202ec84* src, int* ou
 
 struct StructAt020473c8;
 void RenderFlaggedIndexedEntry(struct StructAt020473c8* obj, int param1);
-
-extern "C" short _Z8fix32sini(int x);
 
 struct Obj021bfc40 {
     char pad0[0x8];
@@ -68,7 +67,7 @@ extern "C" ARM int func_ov017_021bfc40(struct Obj021bfc40* self) {
         self->angle += state->GetTickCount() * 0x199;
     }
 
-    vecBuf.v[1] += _Z8fix32sini(self->angle);
+    vecBuf.v[1] += fix32sin(self->angle);
 
     int screenY;
     int screenX;

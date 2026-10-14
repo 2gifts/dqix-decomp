@@ -32,8 +32,7 @@ struct GameResources;
 void SetBrightness(GameResources*, int, int);
 int IsBrightnessTransitionActive(GameResources*);
 
-extern "C" unsigned char _Z28CopyOutRegion0x5718_02011494PcPv(void* src, void* dst);
-#define CopyOutRegion0x5718_02011494 _Z28CopyOutRegion0x5718_02011494PcPv
+unsigned char CopyOutRegion0x5718_02011494(char* obj, void* dst);
 
 void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 int GetField0x3acValue_020100a8(GameState* battleStruct);
@@ -141,7 +140,7 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
         ((Object3D*)((unsigned char*)combatant))->DisableFlag(0x01000080);
 
         unsigned char buf[4];
-        unsigned char count = CopyOutRegion0x5718_02011494((void*)battle, buf);
+        unsigned char count = CopyOutRegion0x5718_02011494((char*)battle, buf);
         for (int i = 0; i < count; i++) {
             GameObject* c = battle->GetGameObjectByIndex(buf[i]);
             if (c != 0) {

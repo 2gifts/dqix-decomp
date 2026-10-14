@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct Stats_021e6a90 {
     char pad0[0x14];
@@ -119,7 +120,6 @@ struct Tension_021e6a90 {
     int index;
 };
 
-extern "C" void* _ZN9GameState11GetInstanceEv();
 struct Cbt_021e6a90* GetCombatantByID(int, int);
 struct GameObject;
 int IsCombatantFlag2Mask2048_021e7ba8(GameObject*);
@@ -134,8 +134,6 @@ extern "C" int func_ov000_02159dbc(struct Battle_021e6a90* battle, int id);
 float CalculateTensionBonus(int tension, int level);
 struct FieldObj_021ea7fc;
 int CheckFieldMatch_021ea7fc(void*, FieldObj_021ea7fc*, int);
-struct GameState;
-struct Cbt_021e6a90* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 struct Random;
 float ApplyRandomVariance_02074838(int, int, Random*);
 extern "C" float func_ov000_02156b38(struct Battle_021e6a90* battle, int id, int elem);
@@ -170,7 +168,6 @@ float ComputeQuarterDecayFactor020748d0(int v);
 float ComputeQuarterDecayFactor_020748a8(int v);
 float LookupTableC0_02074938(int v);
 int IsCombatantFlag2Mask32_021e67b0(GameObject*);
-void* GetPtrField0x2a04_02010828(GameState*);
 struct ArrayContainsByteStruct;
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
@@ -191,7 +188,7 @@ static inline int IsPartyMember(int id) {
 // USA: func_ov024_021e6a90
 extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId, int targetId,
                                                           struct Action_021e6a90* action, unsigned int base) {
-    void* gs = _ZN9GameState11GetInstanceEv();
+    GameState* gs = GameState::GetInstance();
     struct Cbt_021e6a90* attacker = GetCombatantByID((int)ctx->battle, attackerId);
     struct Cbt_021e6a90* target = GetCombatantByID((int)ctx->battle, targetId);
     int crit;
@@ -266,7 +263,7 @@ extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId,
             mode = 1;
             floor = base;
             if (IsPartyMember(attackerId)) {
-                struct Cbt_021e6a90* p = GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, attackerId);
+                struct Cbt_021e6a90* p = (struct Cbt_021e6a90*)GetCombatantWithFlag0x100_0200ff1c(gs, attackerId);
                 if (p) {
                     struct Bits2f4_021e6a90* w = (struct Bits2f4_021e6a90*)(p->field150 + 0x2f4);
                     if (w && (w->bit1 || w->bit0)) {
@@ -291,7 +288,7 @@ extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId,
 
     int elem = 0;
     signed char* tbl = data_ov024_021fe798;
-    struct Cbt_021e6a90* self = GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, attackerId);
+    struct Cbt_021e6a90* self = (struct Cbt_021e6a90*)GetCombatantWithFlag0x100_0200ff1c(gs, attackerId);
     if (self) {
         for (; *tbl != -1; tbl += 2) {
             if (tbl[1] == GetBits23To25At0x2f4_02085748(self->field150)) {
@@ -303,7 +300,7 @@ extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId,
 
     int useElem = 0;
     float elemDmg = 0;
-    if (IsPartyMember(attackerId) && GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, attackerId) &&
+    if (IsPartyMember(attackerId) && GetCombatantWithFlag0x100_0200ff1c(gs, attackerId) &&
         (action->flags10 & 0x40000) && elem >= 1 && elem <= 7) {
         elemDmg = dmg * func_ov000_02156b38(ctx->battle, targetId, elem);
         useElem = 1;
@@ -355,7 +352,7 @@ extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId,
     }
 
     if (IsPartyMember(attackerId)) {
-        struct Cbt_021e6a90* p = GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, attackerId);
+        struct Cbt_021e6a90* p = (struct Cbt_021e6a90*)GetCombatantWithFlag0x100_0200ff1c(gs, attackerId);
         if (p && (action->flags10 & 0x40000)) {
             if (func_ov000_02156068(ctx->battle, targetId, 1, 0)) {
                 dmg = dmg * GetPackedRateModifierField1_02085968((char*)p->field150);
@@ -424,7 +421,7 @@ extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId,
             if (IsCombatantFlag2Mask32_021e67b0((GameObject*)target)) {
                 dmg = dmg * LookupTableC0_02074938(1);
             }
-            if (ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)(GetPtrField0x2a04_02010828((GameState*)_ZN9GameState11GetInstanceEv())), targetId) &&
+            if (ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)(GetPtrField0x2a04_02010828(GameState::GetInstance())), targetId) &&
                 target && target->stats->rank21 == 1) {
                 IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)ctx->battle, 0);
             }
@@ -437,7 +434,7 @@ extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId,
 
     forced = 0;
     if (IsPartyMember(attackerId)) {
-        struct Cbt_021e6a90* p = GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, attackerId);
+        struct Cbt_021e6a90* p = (struct Cbt_021e6a90*)GetCombatantWithFlag0x100_0200ff1c(gs, attackerId);
         if (p) {
             if (action->flags10 & 0x80000) {
                 if (TestBit5At0x2f4_02085154(p->field150)) {
@@ -506,7 +503,7 @@ extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId,
             dmg = 1.0f + NextRandomMax((Random*)ctx->battle, 2);
         }
         if (IsPartyMember(attackerId)) {
-            struct Cbt_021e6a90* p = GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, attackerId);
+            struct Cbt_021e6a90* p = (struct Cbt_021e6a90*)GetCombatantWithFlag0x100_0200ff1c(gs, attackerId);
             if (p && (action->flags10 & 0x40000) && TestBit4At0x2f4_02085128(p->field150)) {
                 dmg += 1.0f;
             }

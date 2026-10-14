@@ -1,15 +1,12 @@
 #include <globaldefs.h>
-
-struct Vec3_0215e574 { int x, y, z; };
-
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+#include <System/Matrix.h>
 
 class Node0215e574 {
 public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void v4(); virtual void v5(); virtual void v6();
-    virtual void SetVal0x1c(const Vec3_0215e574& v);
-    virtual Vec3_0215e574 GetVal0x20();
+    virtual void SetVal0x1c(const Vector3i& v);
+    virtual Vector3i GetVal0x20();
 };
 
 extern "C" int func_ov004_0215e4e8(void* a, int key);
@@ -20,9 +17,9 @@ extern "C" ARM void func_ov004_0215e574(void* a, int b, int c, int d) {
     int r5 = func_ov004_0215e4e8(a, (short)b);
     Node0215e574* node = func_ov004_0215e47c(a, b);
     if (!node) return;
-    Vec3_0215e574 v2;
-    const Vec3_0215e574& v = node->GetVal0x20();
-    _ZN8Vector3iaSERKS_((int*)&v2, (int*)&v);
+    Vector3i v2;
+    const Vector3i& v = node->GetVal0x20();
+    v2 = v;
     v2.x = (d + ((c - r5) >> 1)) << 12;
     node->SetVal0x1c(v2);
 }

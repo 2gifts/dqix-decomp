@@ -2,9 +2,9 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
+#include "Graphics/VRAMStaging.h"
 
 int GetData02107800Word0_020429d4(void);
-extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
 void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord02046708;
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
@@ -27,12 +27,12 @@ extern "C" ARM int func_ov017_021b2968(struct Obj021b2968* self) {
     if (bit3) {
         void* buf = (void*)GetData02107800Word0_020429d4();
         memset(buf, 0, 0x800);
-        _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(5, (int)buf, 0, 0x800, 1, 0);
-        _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(7, (int)buf, 0, 0x800, 1, 0);
-        _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(9, (int)buf, 0, 0x800, 1, 0);
-        _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(6, (int)buf, 0, 0x20, 1, 0);
-        _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(8, (int)buf, 0, 0x20, 1, 0);
-        _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(0xa, (int)buf, 0, 0x20, 1, 0);
+        StageMemoryToVRAM(VRAMSubregion_MainBG1Screen, buf, 0, 0x800, true, false);
+        StageMemoryToVRAM(VRAMSubregion_MainBG2Screen, buf, 0, 0x800, true, false);
+        StageMemoryToVRAM(VRAMSubregion_MainBG3Screen, buf, 0, 0x800, true, false);
+        StageMemoryToVRAM(VRAMSubregion_MainBG1Character, buf, 0, 0x20, true, false);
+        StageMemoryToVRAM(VRAMSubregion_MainBG2Character, buf, 0, 0x20, true, false);
+        StageMemoryToVRAM(VRAMSubregion_MainBG3Character, buf, 0, 0x20, true, false);
 
         struct FlagWord02046708* flagWord = (struct FlagWord02046708*)GetDataPtr02114e04_020d6c00();
         if (!TestFlags02046708(flagWord, 1) && !TestFlags02046708(flagWord, 0x40)) {

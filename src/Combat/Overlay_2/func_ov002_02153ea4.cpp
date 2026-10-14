@@ -1,10 +1,8 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
-class GameState;
 struct ArrayContainsByteStruct;
 
-extern "C" GameState *_ZN9GameState11GetInstanceEv();
-ArrayContainsByteStruct *GetPtrField0x2a04_02010828(GameState *gs);
 extern "C" int *func_0202ae18(void);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct *arr, int value);
 int CheckField0NonZero_0202b7d8(int *p);
@@ -37,7 +35,7 @@ extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" ARM int func_ov002_02153ea4(void *self, Info02153ea4 *info, int enabled, int alt) {
     if (info == 0) return 0;
     if (enabled == 0) return 0;
-    ArrayContainsByteStruct *party = GetPtrField0x2a04_02010828(_ZN9GameState11GetInstanceEv());
+    ArrayContainsByteStruct *party = (ArrayContainsByteStruct *)GetPtrField0x2a04_02010828(GameState::GetInstance());
     int *g                         = func_0202ae18();
     int changed                    = 0;
     Entry02153ea4 *entries         = info->entries;

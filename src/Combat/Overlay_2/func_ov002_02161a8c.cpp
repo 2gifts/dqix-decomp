@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct PartyInfo {
     unsigned char pad[0xf78];
@@ -6,10 +7,6 @@ struct PartyInfo {
     unsigned char count;
 };
 
-extern "C" void *_ZN9GameState11GetInstanceEv();
-struct GameState;
-PartyInfo * GetPtrField0x2a04_02010828(GameState*);
-extern "C" void *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
 unsigned char * GetFieldAt0x150_02053c6c(unsigned char*);
 void CleanInvalidateCacheRange(const void *p, unsigned int size);
 extern "C" void LoadToMainObjStandardPalette(const void *src, unsigned int offset, unsigned int size);
@@ -20,13 +17,13 @@ extern "C" ARM void func_ov002_02161a8c() {
     unsigned short *color;
     colors[1]           = 0x7fff;
     colors[0]           = 0x2108;
-    void *gs            = _ZN9GameState11GetInstanceEv();
-    PartyInfo *party    = GetPtrField0x2a04_02010828((GameState*)gs);
+    GameState *gs       = GameState::GetInstance();
+    PartyInfo *party    = (PartyInfo *)GetPtrField0x2a04_02010828(gs);
     unsigned char count = party->count;
     for (unsigned char i = 0; i < count; i++) {
         int idx      = party->order[i];
         color        = &colors[1];
-        void *member = _ZN9GameState21GetPartyMemberByIndexEi(gs, idx);
+        GameObject *member = gs->GetPartyMemberByIndex(idx);
         if (member == 0) continue;
         unsigned char *f = GetFieldAt0x150_02053c6c((unsigned char*)member);
         if (f == 0) continue;

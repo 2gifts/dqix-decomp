@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+#include "System/Matrix.h"
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 enum { field7=6,fieldB=8,field6=4,field8=7,extensionOffset=0x144,statsOffset=0x7b8 };
@@ -7,9 +9,6 @@ enum { field7=7,fieldB=0xb,field6=6,field8=8,extensionOffset=0x150,statsOffset=0
 #endif
 
 extern void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag);
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
-struct GameState;
-void* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 extern int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void* func_ov011_021849c8(void* p);
 extern int AccumulateFlaggedSlotBits02085fb4(unsigned char* actor);
@@ -27,10 +26,6 @@ extern int CheckAfterTwoCalls_0215e460(void);
 extern "C" int func_ov004_0215e4e8(void* a, int key);
 extern int GetTableByte020dd11c(unsigned int a, unsigned int b);
 
-struct Vector3i {
-    int x, y, z;
-    Vector3i& operator=(const Vector3i& o);
-};
 typedef Vector3i Vec3_0216033c;
 class Node0215e47c {
 public:
@@ -149,8 +144,8 @@ extern "C" ARM int func_ov004_0216033c(void* a) {
 
     int combatantId = *(int*)((char*)D0 + 0x1c);
     unsigned char sb = *(unsigned char*)((char*)D0 + field8);
-    void* bs = _ZN9GameState11GetInstanceEv();
-    combatant = (unsigned char*)GetCombatantWithFlag0x100_0200ff1c((GameState*)bs, combatantId);
+    GameState* bs = GameState::GetInstance();
+    combatant = (unsigned char*)GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
     if (!combatant) goto stats_done;
     base150 = (unsigned char*)GetFieldAt0x150_02053c6c(combatant);
     if (!base150) goto stats_done;
@@ -354,8 +349,8 @@ stats_done:
 
     int combatantId2 = *(int*)((char*)D0 + 0x1c);
     unsigned char sb2 = *(unsigned char*)((char*)D0 + field8);
-    void* bs2 = _ZN9GameState11GetInstanceEv();
-    unsigned char* combatant2 = (unsigned char*)GetCombatantWithFlag0x100_0200ff1c((GameState*)bs2, combatantId2);
+    GameState* bs2 = GameState::GetInstance();
+    unsigned char* combatant2 = (unsigned char*)GetCombatantWithFlag0x100_0200ff1c(bs2, combatantId2);
     FNode0216033c* iconNode;
     int tv;
     FNode0216033c* nameNode;

@@ -16,8 +16,6 @@ extern "C" void func_ov020_0218c7bc(int a, int b, int c, int d, int e);
 extern "C" void func_ov020_0218cd64(int a, int b, int c, int d, int e);
 extern "C" void func_0204b5b4(void*, int);
 
-struct List0202fdd0;
-
 struct Foo0204af38;
 extern "C" void func_0204b174(struct Foo0204af38* obj, void* data, SafeAllocator* alloc, int field44);
 
@@ -34,10 +32,6 @@ void AllocateArray0204af38(struct Foo0204af38* obj, int count, SafeAllocator* al
 struct Obj0204b5e8;
 int DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
 
-extern "C" int _ZN16BackgroundLoader11GetInstanceEv();
-
-struct List0202fec8;
-
 struct ActiveEntry02046900;
 int CountActiveEntries(struct ActiveEntry02046900* entry);
 
@@ -49,8 +43,6 @@ void DispatchEntry0204b8d0(struct Obj0204b8d0*, unsigned int, int, int, short, s
 
 struct List0204b0e8;
 void FlushAndDispatchList0204b0e8(struct List0204b0e8* obj, void* buf);
-
-struct Obj0202fa00;
 
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, unsigned char c, int d);
 
@@ -103,15 +95,15 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
     DispatchViaTable0204b5e8((struct Obj0204b5e8*)(base + REGION(0x44c, 0x4bc)), 0, 0);
 
     int handle;
-    int data4 = _ZN16BackgroundLoader11GetInstanceEv();
-    ((BackgroundLoader*)((void*)data4))->MaybeReset();
-    handle = ((BackgroundLoader*)data4)->QueueLoadFile((char const*)((int)&data_ov020_0218dc9d), (SafeAllocator*)0);
+    BackgroundLoader* data4 = BackgroundLoader::GetInstance();
+    data4->MaybeReset();
+    handle = data4->QueueLoadFile((char const*)((int)&data_ov020_0218dc9d), (SafeAllocator*)0);
 
     for (;;) {
-        if (((BackgroundLoader*)((struct List0202fdd0*)data4))->GetTaskStatus(handle)) {
+        if (data4->GetTaskStatus(handle)) {
             void* dummyPtr;
             int recListHead, dummy2;
-            ((BackgroundLoader*)((struct List0202fec8*)data4))->GetLoadedFileByID(handle, (void**)&recListHead, (unsigned int*)&dummy2);
+            data4->GetLoadedFileByID(handle, (void**)&recListHead, (unsigned int*)&dummy2);
             int count = CountActiveEntries((struct ActiveEntry02046900*)recListHead);
             void* arrayC[5];
             int arrayB[5];
@@ -134,7 +126,7 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
                 }
             }
 
-            ((BackgroundLoader*)data4)->RemoveTask(handle);
+            data4->RemoveTask(handle);
 
             DispatchEntry0204b8d0((struct Obj0204b8d0*)(base + REGION(0x42c, 0x49c)), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
             DispatchEntry0204b8d0((struct Obj0204b8d0*)(base + REGION(0x44c, 0x4bc)), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
@@ -142,7 +134,7 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
             FlushAndDispatchList0204b0e8((struct List0204b0e8*)(base + REGION(0x44c, 0x4bc)), 0);
             break;
         }
-        ((BackgroundLoader*)((struct Obj0202fa00*)data4))->RemoveAllLocks();
+        data4->RemoveAllLocks();
     }
 
     *(short*)0x4000050 = 0;

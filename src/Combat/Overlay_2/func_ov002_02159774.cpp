@@ -1,9 +1,7 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
+#include "Combat/CombatantRecovery.h"
 
-class GameState;
-
-extern "C" GameState *_ZN9GameState11GetInstanceEv();
-unsigned char *GetCombatantWithFlag0x100_0200ff1c(GameState *gs, int slot);
 extern "C" int func_020dc920(int a, int b, int c, int d);
 int TestFlagBit55dIfActive_0218b628(int bit);
 extern int data_020fdcb0[][8];
@@ -17,25 +15,25 @@ struct Stat02159774 {
 
 // USA: func_ov002_02159774
 extern "C" ARM int func_ov002_02159774(char *self, int id, int check, int a, unsigned char b) {
-    unsigned char *c;
+    GameObject *c;
     float cur, max, ratio;
     int res;
-    c = GetCombatantWithFlag0x100_0200ff1c(_ZN9GameState11GetInstanceEv(), id);
+    c = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
     if (c == 0) return 3;
     if (check) {
         int special = 0;
         if (*(short *) (self + 0x1c26) == 0xd1) special = 1;
         if (func_020dc920(id & 0xff, a, b, special) == 0) return 3;
     }
-    int *e = data_020fdcb0[*(short *) (c + 4)];
+    int *e = data_020fdcb0[c->obj3D_.unknown_4_];
     cur    = (float) e[0];
     max    = (float) e[2];
     if ((*(int *) (self + 0x247c) & 1) || *(int *) (self + 0x1bb8) == 4) {
         if (TestFlagBit55dIfActive_0218b628((signed char) id)) {
-            cur = (float) (int) *(unsigned short *) (*(unsigned char **) (c + 0x130) + 4);
-            max = (float) (int) *(unsigned short *) (*(unsigned char **) (c + 0x134) + 0x30);
+            cur = (float) (int) c->combatFields_.savedState_130_->hp;
+            max = (float) (int) c->baseStats_->primaryStats.maxHP;
         } else {
-            Stat02159774 *s = &((Stat02159774 *) (self + 0x1ab0))[*(short *) (c + 4)];
+            Stat02159774 *s = &((Stat02159774 *) (self + 0x1ab0))[c->obj3D_.unknown_4_];
             cur             = (float) (unsigned int) s->cur;
             max             = (float) (unsigned int) s->max;
         }

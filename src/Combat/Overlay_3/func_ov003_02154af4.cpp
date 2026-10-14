@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
+#include "GameState/GameState.h"
 #if defined(jpn)
 enum { kCache=0x18c, kVocation=0x144, kVocationValue=0x8b8, kModelSelection=0x2a, kGlobalFlag=0x17de };
 #else
@@ -43,10 +44,6 @@ extern "C" void func_ov003_021537d4(void*,unsigned int);
 extern "C" void func_ov003_021552b8(Scene*);
 struct Obj0207fc6c;
 void CallFunc0204c87cOverEntries0207fc6c(Obj0207fc6c*, int);
-extern "C" void* _ZN9GameState11GetInstanceEv();
-struct GameState;
-Party* GetPtrField0x2a04_02010828(GameState*);
-extern "C" Member* _ZN9GameState21GetPartyMemberByIndexEi(void*,int);
 unsigned int GetTableValue_0202053c(void*);
 struct Obj2081;
 int HasElementByByte0xc4_020811d0(Obj2081*, int);
@@ -75,14 +72,14 @@ extern "C" ARM int func_ov003_02154af4(Scene* self,unsigned int scale) {
  Model* model=self->model;
  if(model) {
   if(!self->skip) CallFunc0204c87cOverEntries0207fc6c((Obj0207fc6c*)model, scale);
-  int i; Cache* c; Member* member; bool changed; int id; Party* party; void* gs;
+  int i; Cache* c; Member* member; bool changed; int id; Party* party; GameState* gs;
   changed=false;
-  gs=_ZN9GameState11GetInstanceEv();
-  party=GetPtrField0x2a04_02010828((GameState*)gs);
+  gs=GameState::GetInstance();
+  party=(Party*)GetPtrField0x2a04_02010828(gs);
   int count=party->count;
   for(i=0;i<count;i++) {
    id=party->ids[i];
-   member=_ZN9GameState21GetPartyMemberByIndexEi(gs,id);
+   member=(Member*)gs->GetPartyMemberByIndex(id);
    if(member) {
     c=&self->cache[id];
     unsigned int hp=member->HP();

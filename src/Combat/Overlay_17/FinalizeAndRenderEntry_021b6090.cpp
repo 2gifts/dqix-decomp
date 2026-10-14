@@ -1,14 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
+#include "Graphics/Vector.h"
 
 struct Vec3copy0202ec84 { unsigned int v[3]; };
 int ComputeTwoFromVec3_0202ec84(void* obj, struct Vec3copy0202ec84* src, int* out1, int* out2);
 
 struct StructAt020473c8;
 void RenderFlaggedIndexedEntry(struct StructAt020473c8* obj, int param1);
-
-extern "C" short _Z8fix32sini(int x);
 
 struct Obj021b6090 {
     char pad0[0x16];
@@ -30,7 +29,7 @@ extern "C" ARM void func_ov017_021b6090(struct Obj021b6090* self) {
         self->field38 += battle->GetTickCount() * 0x199;
     }
 
-    vecBuf.v[1] += _Z8fix32sini(self->field38);
+    vecBuf.v[1] += fix32sin(self->field38);
 
     int outA, outB;
     if (ptr3b0 != NULL) {

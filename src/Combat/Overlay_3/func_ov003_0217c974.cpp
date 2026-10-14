@@ -20,24 +20,11 @@ void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
 struct Vector3i;
 
-extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
-
 extern char data_ov003_02180c1d;
 extern char data_ov003_02180c23;
 
 struct Vec3Words0217fb8c { unsigned int v[3]; };
 extern struct Vec3Words0217fb8c data_ov003_0217fb8c;
-
-struct Params02036804 {
-    int flag;
-    void* data;
-    unsigned int size;
-    void* alloc;
-    int one;
-    int pad18;
-    int pad1c;
-    int pad20;
-};
 
 // USA: func_ov003_0217c974
 extern "C" ARM void func_ov003_0217c974(char* self) {
@@ -61,16 +48,16 @@ extern "C" ARM void func_ov003_0217c974(char* self) {
         return;
     }
 
-    struct Params02036804 params;
-    params.flag = 0;
-    params.data = decompressed;
-    params.pad18 = 0;
-    params.pad1c = 0;
-    params.pad20 = 0;
-    params.alloc = self + 4;
-    params.size = decompSize;
-    params.one = 1;
-    _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(self + 0x80, &params, 0);
+    ObjectArchiveLoadInfo params;
+    params.unk_0 = 0;
+    params.fileData = decompressed;
+    params.unk_14 = 0;
+    params.unk_18 = 0;
+    params.packageID = 0;
+    params.allocator = (SafeAllocator*)(self + 4);
+    params.unk_8 = decompSize;
+    params.unk_10 = 1;
+    ((Object3D*)(self + 0x80))->LoadFromCCHROrCMOTArchive(&params, 0);
 
     BackupPairTables0207dfac((char*)mgr + kRegionValue2CC_27C);
 

@@ -1,21 +1,7 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
+#include "Combat/CombatantRecovery.h"
 
-struct BattleStruct;
-struct StatsA {
-    int unk0;
-    unsigned short unk4;
-    unsigned short unk6;
-};
-struct StatsB {
-    char name[0x30];
-    unsigned short unk30;
-    unsigned short unk32;
-};
-struct CombatantStruct {
-    char unk[0x130];
-    struct StatsA *a;
-    struct StatsB *b;
-};
 struct Entry {
     char name[0x30];
     int unk30;
@@ -24,28 +10,25 @@ struct Entry {
     unsigned short unk38;
     unsigned short unk3a;
 };
-extern "C" struct BattleStruct *_ZN9GameState11GetInstanceEv();
-struct GameState;
-struct CombatantStruct * GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 extern "C" void *memset(void *dst, int c, unsigned int n);
 extern "C" int sprintf(char *buf, const char *fmt, ...);
 
 // USA: func_ov002_0215b814
 extern "C" ARM void func_ov002_0215b814(char *self) {
-    struct BattleStruct *gs = _ZN9GameState11GetInstanceEv();
+    GameState *gs = GameState::GetInstance();
     struct Entry *e;
     int i;
     for (i = 0; i < 4; i++) {
         e = (struct Entry *) (self + 0x1ab0) + i;
         memset(e, 0, 4);
-        struct CombatantStruct *c = GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, i);
-        if (c != 0 && c->b->name[0] != 0) {
-            sprintf(e->name, c->b->name);
-            e->unk34 = c->a->unk4;
-            e->unk36 = c->b->unk30;
-            e->unk38 = c->a->unk6;
-            e->unk3a = c->b->unk32;
-            e->unk30 = c->a->unk0;
+        GameObject *c = GetCombatantWithFlag0x100_0200ff1c(gs, i);
+        if (c != 0 && c->baseStats_->unk[0] != 0) {
+            sprintf(e->name, c->baseStats_->unk);
+            e->unk34 = c->combatFields_.savedState_130_->hp;
+            e->unk36 = c->baseStats_->primaryStats.maxHP;
+            e->unk38 = c->combatFields_.savedState_130_->mp;
+            e->unk3a = c->baseStats_->primaryStats.maxMP;
+            e->unk30 = c->combatFields_.savedState_130_->flags;
         }
     }
 }

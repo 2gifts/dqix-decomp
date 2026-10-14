@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "Resource/GameResources.h"
-
-struct GameState;
+#include <GameState/GameState.h>
 
 enum EquipmentItemId
 {
@@ -139,8 +138,6 @@ struct Member0215c530
 struct StructDE1D4;
 struct Obj0205eaa0;
 
-extern "C" GameState* _ZN9GameState11GetInstanceEv();
-unsigned char* GetPtrField0x2a04_02010828(GameState*);
 short* GetPointerFromArray0xbd0_0207c5f8(unsigned char*, unsigned int);
 signed char* GetPointerAt0xbf0_0207c60c(void*, unsigned int);
 void Compact0207c51c(unsigned char*, int);
@@ -171,7 +168,7 @@ extern char data_02108760[];
 // USA: func_ov005_0215c530
 extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
 {
-    unsigned char* bag = GetPtrField0x2a04_02010828(_ZN9GameState11GetInstanceEv());
+    unsigned char* bag = (unsigned char*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     int count = self->counts[self->tab];
     short* ids = GetPointerFromArray0xbd0_0207c5f8(bag + 0x1d4, data_ov005_0215cd08[self->tab]);
     signed char* amounts = GetPointerAt0xbf0_0207c60c(bag + 0x1d4, data_ov005_0215cd08[self->tab]);

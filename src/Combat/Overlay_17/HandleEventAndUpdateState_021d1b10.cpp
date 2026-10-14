@@ -5,12 +5,12 @@ enum { RegionOffset70c = 0x70c, RegionOffset734 = 0x734, RegionOffset2774 = 0x27
 #endif
 
 #include <globaldefs.h>
+#include <System/Matrix.h>
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 extern "C" void* func_02012fe4(void);
 extern "C" void func_020a72ac(void* base, int val);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 union Field6_021d1b10 {
     signed short raw;
@@ -45,7 +45,7 @@ struct PendingEvent021d1b10 {
 
 struct LiveState_021d1b10 {
     unsigned char pad0[RegionOffset2774];
-    int vec[3];
+    Vector3i vec;
     int field2780;
     short field2784;
     short field2786;
@@ -73,8 +73,8 @@ extern "C" ARM void func_ov017_021d1b10(int unused0, Src021d1b10* b, int unused2
         short mainVal = b->field6.bits.main;
         if (mainVal != -1) live->field2784 = mainVal;
         live->field2788 = (unsigned char)b->field6.bits.sub;
-        int vecsrc[3] = { (short)b->field8 << 7, (short)b->fielda << 7, (short)b->fieldc << 7 };
-        _ZN8Vector3iaSERKS_(live->vec, vecsrc);
+        Vector3i vecsrc = { (short)b->field8 << 7, (short)b->fielda << 7, (short)b->fieldc << 7 };
+        live->vec = vecsrc;
         live->field2780 = b->fielde;
         if (obj2[3] == 0) {
             func_020a72ac(live, b->field10);

@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #if defined(jpn)
 #define func_ov023_021f6524 func_ov004_02168f08
-#define _Z26ClearNodeMaskById_021f6600Pvii func_ov004_02168ed8
+#define ClearNodeMaskById_021f6600 func_ov004_02168ed8
 #define DispatchNodeIfState6_021f6680 func_ov004_02168fa4
 #endif
 
@@ -70,7 +70,11 @@ Node02169658* GetNodeIfType8_02168a6c(void* a, int id);
 Node02169658* GetNodeIfType15_02168a38(void* a, int id);
 Node02169658* GetNodeIfType11_02168ad4(void* a, int id);
 extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(struct Grid021f9b30* self, unsigned short val, unsigned int x, unsigned int y);
-extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void* obj, int id, int mask);
+#if defined(jpn)
+extern "C" void func_ov004_02168ed8(void* obj, int id, int mask);
+#else
+void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
+#endif
 extern "C" void func_ov023_021f9ba8(void* obj, int v);
 #if defined(jpn)
 extern "C" void* func_ov004_02168fa4(void*, int);
@@ -107,9 +111,9 @@ extern "C" ARM int func_ov004_02169658(struct Scene02169658* scene) {
         c->flags |= 8;
         d->flags |= 8;
     }
-    _Z26ClearNodeMaskById_021f6600Pvii(scene, 2, 8);
+    ClearNodeMaskById_021f6600(scene, 2, 8);
     func_ov023_021f9ba8(grid, 0);
-    _Z26ClearNodeMaskById_021f6600Pvii(scene, 0x14, 4);
+    ClearNodeMaskById_021f6600(scene, 0x14, 4);
 #if defined(jpn)
     void* selected = func_ov004_02168fa4(scene, 0x14);
     if (selected) func_ov023_021f809c(selected, scene);

@@ -1,18 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
-
-class GameState;
-
-struct BattleStatus021aa1ac {
-    unsigned int flags;
-    short pending;
-};
-
-struct Combatant021aa1ac {
-    char pad0[0x130];
-    BattleStatus021aa1ac* status;
-    char* name;
-};
+#include "GameState/GameState.h"
+#include "Combat/CombatantRecovery.h"
 
 struct Party021aa1ac {
     char pad0[0xf78];
@@ -45,10 +34,7 @@ struct Self021aa1ac {
     unsigned short step;
 };
 
-extern "C" GameState* _ZN9GameState11GetInstanceEv(void);
-Party021aa1ac* GetPtrField0x2a04_02010828(GameState* gameState);
 Controller021aa1ac* GetGlobalField0x1c020421a0(void);
-Combatant021aa1ac* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void __clear(void* dst, unsigned int size);
 #if defined(jpn)
@@ -63,8 +49,8 @@ extern char data_ov017_021d7868[];
 
 // USA: func_ov017_021aa1ac
 extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
-    GameState* gs = _ZN9GameState11GetInstanceEv();
-    Party021aa1ac* party = GetPtrField0x2a04_02010828(gs);
+    GameState* gs = GameState::GetInstance();
+    Party021aa1ac* party = (Party021aa1ac*)GetPtrField0x2a04_02010828(gs);
     Controller021aa1ac* controller = GetGlobalField0x1c020421a0();
     int memberCount = party->memberCount;
     if (self->step == 0) {
@@ -73,22 +59,22 @@ extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
         self->count = 0;
         for (int i = 0; i < memberCount; i++) {
             int id = party->memberIds[i];
-            Combatant021aa1ac* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, id);
+            GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, id);
             if (combatant == NULL) {
                 continue;
             }
-            BattleStatus021aa1ac* status = combatant->status;
+            CombatantStatus* status = combatant->combatFields_.savedState_130_;
             if (status->flags & 1) {
                 continue;
             }
-            status->pending = 1;
+            status->hp = 1;
             func_ov017_021c9e00(id, 1, 0, 1);
             self->ids[self->count++] = id;
         }
         if (self->count != 0) {
             char text[0x100];
             __clear(text, sizeof(text));
-            sprintf(text, data_ov017_021d783c, GetCombatantWithFlag0x100_0200ff1c(gs, self->ids[0])->name);
+            sprintf(text, data_ov017_021d783c, GetCombatantWithFlag0x100_0200ff1c(gs, self->ids[0])->baseStats_);
             if (++self->shown >= self->count) {
                 self->step++;
             } else {
@@ -112,7 +98,7 @@ extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
         }
         char text[0x100];
         __clear(text, sizeof(text));
-        sprintf(text, data_ov017_021d783c, GetCombatantWithFlag0x100_0200ff1c(gs, self->ids[self->shown])->name);
+        sprintf(text, data_ov017_021d783c, GetCombatantWithFlag0x100_0200ff1c(gs, self->ids[self->shown])->baseStats_);
         if (++self->shown >= self->count) {
             self->step++;
         } else {
