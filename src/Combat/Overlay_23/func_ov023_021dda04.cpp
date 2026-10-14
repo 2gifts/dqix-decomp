@@ -11,7 +11,11 @@ extern "C" void func_ov023_021dc354(void* obj);
 void SetCombatModeFromCase020dc2d0(int mode);
 
 struct Obj021dda04 {
+#if defined(jpn)
+    char pad0[0x6f0];
+#else
     char pad0[0x774];
+#endif
     unsigned short field774;
     unsigned char field776;
     unsigned char field777;
