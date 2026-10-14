@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/ActionDataTables.h"
 
 struct S02079ce8 {
     unsigned int f : 12;
@@ -9,17 +10,6 @@ struct S02079ce8 {
 struct Elem02079bac {
     unsigned char pad[8];
 };
-
-struct Header02079bac {
-    unsigned int count : 12;
-    unsigned int hi : 19;
-    unsigned int flag : 1;
-    struct Elem02079bac* arr;
-    unsigned char* extra;
-};
-
-typedef void (*ElemFn02079bac)(struct Header02079bac*, void*);
-typedef void (*ObjFn02079bac)(struct Header02079bac*);
 
 int GetLow12BitsTimes8(struct S02079ce8* p);
 

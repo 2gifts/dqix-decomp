@@ -5,6 +5,7 @@
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "System/OverlayId.h"
+#include "Resource/ActionDataTables.h"
 
 struct GameResources;
 struct AllocatorUnion;
@@ -98,7 +99,6 @@ extern "C" void func_ov017_021a02f0(void* self);
 extern "C" void* _Z15GetData02108e10v();
 extern "C" void _Z24ClearFourRegions02079870Pc(void* p);
 extern "C" void _Z24ClearFourRegions020798b8Pc(void* p);
-extern "C" void func_02079900(void* p, void* q);
 extern "C" void _Z25RunBufferedScript020998c4P11Obj020995c0(void* p);
 extern "C" void* _Z17GetGlobalWordListv();
 extern "C" void _Z21ResetWordList0209cbb8P16WordList0209cbb8(void* p);
@@ -515,7 +515,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     _Z18ClearFlags020466f4P16FlagWord020466f4j(flagWord, 0x100);
     void* regions4 = _Z15GetData02108e10v();
     _Z24ClearFourRegions02079870Pc(regions4);
-    func_02079900(regions4, self->data150);
+    func_02079900((ActionDataTables*)regions4, (SafeAllocator*)self->data150);
     _Z25RunBufferedScript020998c4P11Obj020995c0(buffered);
     void* wordList = _Z17GetGlobalWordListv();
     _Z21ResetWordList0209cbb8P16WordList0209cbb8(wordList);

@@ -1,16 +1,9 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/ActionDataTables.h"
 
 struct Field0Low12_02079b94 {
     unsigned int value : 12;
-};
-
-struct Struct02079a58 {
-    unsigned int count : 12;
-    unsigned int size : 19;
-    unsigned int flag : 1;
-    void* p1;
-    void* p2;
 };
 
 int GetField0Low12Times60(struct Field0Low12_02079b94* obj);
@@ -19,7 +12,7 @@ extern "C" void* memcpy(void* dst, const void* src, unsigned int len);
 
 // USA: func_02079a58
 extern "C" ARM int func_02079a58(Struct02079a58* obj, SafeAllocator* alloc, void* data,
-                                 void (*cb)(Struct02079a58*, void*),
+                                 ActionRecordRelocator cb,
                                  void (*cb2)(Struct02079a58*)
 #if !defined(jpn)
     , SafeAllocator* alloc2
@@ -64,7 +57,7 @@ extern "C" ARM int func_02079a58(Struct02079a58* obj, SafeAllocator* alloc, void
         if (k != 0 && cb != NULL) {
             i = 0;
             while (i < k) {
-                cb(obj, p);
+                cb(obj, (Obj02079808*)p);
                 i++;
                 #if defined(jpn)
                 p = (void*)((unsigned char*)p + 0x34);
