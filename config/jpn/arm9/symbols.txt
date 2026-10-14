@@ -482,7 +482,7 @@ _Z23FindEntryByNodeIdAndKeyP6Zone3DPN12ZoneFeatures13Opcode6aEntryE kind:functio
 _Z32FindMatchingElementIndex02018bc4P6Zone3DPN12ZoneFeatures13Opcode6aEntryE kind:function(arm,size=0x5c) addr:0x02018964
 _Z25FindNthType2Entry02018c20P6Zone3Di kind:function(arm,size=0x54) addr:0x020189c0
 _Z33UpdateFlaggedType2Entries02018c74P6Zone3Dj kind:function(arm,size=0xb4) addr:0x02018a14
-func_02018ac8 kind:function(arm,size=0x208) addr:0x02018ac8
+func_02018d28 kind:function(arm,size=0x208) addr:0x02018ac8
 _Z25NotifyActiveSlots02018f30Ph kind:function(arm,size=0x3c) addr:0x02018cd0
 _Z25StoreAndMaybeCopy02018f6cP11Obj02018f6cs kind:function(arm,size=0x50) addr:0x02018d0c
 func_02018fbc kind:function(arm,size=0x254) addr:0x02018d5c
@@ -1438,7 +1438,7 @@ _Z13InitFields0x0P11State0xc0cc kind:function(arm,size=0x58) addr:0x0203bbe4
 _Z24ReinitFieldState0203c0f0P11State0xc0cc kind:function(arm,size=0x18) addr:0x0203bc3c
 _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc kind:function(arm,size=0xac) addr:0x0203bc54
 _Z26ReleaseGlobalEntry0203c198Pc kind:function(arm,size=0x44) addr:0x0203bd00
-_Z30AdjustAndDispatchEntry0203c1c8P14Struct0203c1c8 kind:function(arm,size=0xb0) addr:0x0203bd44
+_Z30AdjustAndDispatchEntry0203c1c8P14Struct0203c1c8i kind:function(arm,size=0xb0) addr:0x0203bd44
 func_0203bdf4 kind:function(arm,size=0x78) addr:0x0203bdf4
 _Z25GetEntryByteField0203c284PK14Struct0203c1c8 kind:function(arm,size=0x94) addr:0x0203be6c
 func_0203bf00 kind:function(arm,size=0x520) addr:0x0203bf00

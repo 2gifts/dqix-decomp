@@ -22,16 +22,26 @@ struct CachedTextTable {
     unsigned short nextOamEntry;
 };
 struct Struct0203c1c8 {
+#if defined(jpn)
     short textSlots[10];
+#endif
     int x;
     int y;
+#if defined(jpn)
     int lineHeight;
     int characterAdvance;
+#endif
     int paletteOffset;
     int alignment;
     int priority;
-    int affineIndex;
+#if defined(jpn)
+    signed int affineIndex : 16;
+    unsigned int unknown32 : 8;
+    unsigned int unknown33 : 8;
     int affineMode;
+#else
+    short entryIndex;
+#endif
 };
 extern CachedTextTable* data_02105244;
 int StringLength(const char* text);

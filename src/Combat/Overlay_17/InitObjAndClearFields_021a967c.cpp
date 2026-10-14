@@ -9,7 +9,7 @@ void ResetByteHeader(struct ByteHeader0204693c* p);
 struct Bits021a967c { unsigned short low14 : 14; unsigned short bit14 : 1; unsigned short bit15 : 1; };
 
 // USA: func_ov017_021a967c  (semantic: InitObjAndClearFields_021a967c)
-extern "C" ARM void func_ov017_021a967c(unsigned char* self, unsigned char id) {
+extern "C" ARM void func_ov017_021a967c(unsigned char* self, int id) {
     ResetByteHeader((struct ByteHeader0204693c*)self);
     self[0x0] = 0x3a;
     ((SafeAllocator*)(self + 0xc))->ResetAllocatorPointer();

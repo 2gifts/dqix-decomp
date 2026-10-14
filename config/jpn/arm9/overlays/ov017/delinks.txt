@@ -4535,3 +4535,15 @@ src/Combat/Overlay_17/func_ov017_021a2c14.cpp:
 src/Combat/Overlay_17/func_ov017_0219cdc0.cpp:
     complete
     .text start:0x0219d8b4 end:0x0219dd44
+
+src/Combat/Overlay_17/GetIndexedEntry_021a11f4.cpp:
+    complete
+    .text start:0x021a1c8c end:0x021a1ca4
+
+src/Combat/Overlay_17/SetNodeFieldsAndInsert_021a120c.cpp:
+    complete
+    .text start:0x021a1ca4 end:0x021a1ce4
+
+src/Combat/Overlay_17/MaybeAppendNode_021a4dd0.cpp:
+    complete
+    .text start:0x021a5844 end:0x021a5880

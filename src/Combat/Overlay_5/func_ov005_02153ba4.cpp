@@ -3,6 +3,12 @@
 #include <Memory/SafeAllocator.h>
 #include <std_library_functions.h>
 
+#if defined(jpn)
+#define REGION(j,u) (j)
+#else
+#define REGION(j,u) (u)
+#endif
+
 #define REG_DISPCNT (*(volatile unsigned int*)0x04000000)
 
 struct S_e830;
@@ -30,7 +36,7 @@ struct EquipmentSlot {
 };
 
 struct MemberScreen {
-    char unk_0[0x4e8];
+    char unk_0[REGION(0x4e4,0x4e8)];
     int memberCount_;
     int members_[4];
 };
@@ -52,7 +58,7 @@ struct EquipmentMenu {
     char texts_[0x18];
     unsigned short* text_;
     char unk_e14[4];
-    char layout_[0x4c];
+    char layout_[REGION(0x48,0x4c)];
     void* unk_e64;
     int unk_e68;
     char screenState_[0x10];
@@ -64,7 +70,7 @@ struct EquipmentMenu {
     char window_[0xfa0 - 0xee4];
     char canvases_[3][0xe0];
     void* pixels_;
-    char infoWindow_[0x19e0 - 0x1244];
+    char infoWindow_[REGION(0x1958 - 0x1240,0x19e0 - 0x1244)];
     char sortList_[0x19ec - 0x19e0];
     char modelTable_[0x19f4 - 0x19ec];
     char cursor_[0x1a34 - 0x19f4];
@@ -136,8 +142,10 @@ struct EquipmentMenu {
     short touchX_;
     short touchY_;
     unsigned short digits_[20][3];
-    unsigned short names_[8][0x40];
+    unsigned short names_[8][REGION(0xa,0x40)];
+#if !defined(jpn)
     unsigned char longNames_[8];
+#endif
 };
 
 extern "C" void __clear(void* buffer, unsigned long size);
@@ -170,7 +178,7 @@ extern "C" ARM void func_ov005_02153ba4(EquipmentMenu* self) {
     self->unk_e7d = 0;
     func_02074af4(self->screenState_);
     self->layers_ = (REG_DISPCNT & 0x1f00) >> 8;
-    self->unk_3dc2 = GetFieldAt0x7e((S_e830*)(func_02012fe4() + 0x6c));
+    self->unk_3dc2 = GetFieldAt0x7e((S_e830*)(func_02012fe4() + REGION(0x8c,0x6c)));
     self->allocator_.ResetAllocatorPointer();
     self->modelAllocator_.ResetAllocatorPointer();
     for (int i = 0; i < 8; i++)
@@ -264,9 +272,13 @@ extern "C" ARM void func_ov005_02153ba4(EquipmentMenu* self) {
     self->menuChoice_ = 0;
     self->menuState_ = 0;
     for (int i = 0; i < 8; i++) {
+#if defined(jpn)
+        memset(self->names_[i], 0, sizeof(self->names_[i]));
+#else
         for (int j = 0; j < 0x40; j++)
             self->names_[i][j] = 0xffff;
         self->longNames_[i] = 0;
+#endif
     }
     self->animationX_ = 0;
     self->ticks_ = 0;
