@@ -4,6 +4,10 @@
     .data       start:0x021fcd20 end:0x021fec40 kind:data align:32
     .bss        start:0x021fec40 end:0x021ff1a0 kind:bss align:32
 
+src/Combat/Overlay_23/SetField799_021dced4.cpp:
+    complete
+    .text start:0x021dd7d8 end:0x021dd7e0
+
 src/Combat/Overlay_23/SetFields_021dceac.cpp:
     complete
     .text start:0x021dd7b0 end:0x021dd7d8
@@ -3029,3 +3033,7 @@ src/Combat/Overlay_23/BuildFieldTag_021d9e60.cpp:
 src/Combat/Overlay_23/ConfigureEntryPositions_021da770.cpp:
     complete
     .text start:0x021daf74 end:0x021db240
+
+src/Combat/Overlay_23/func_ov023_021dab5c.cpp:
+    complete
+    .text start:0x021db3c8 end:0x021db4b4

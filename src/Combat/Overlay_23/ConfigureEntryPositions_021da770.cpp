@@ -5,7 +5,7 @@
 #include "Graphics/SpriteAffineTransform.h"
 
 extern "C" void func_0205ac40(SpriteContext0205ac40*, B174Outer*);
-extern "C" void func_ov023_021dab5c(void*, int, int, int, int);
+extern "C" void func_ov023_021dab5c(CharacterCreationUI*, int, int, int, int);
 
 extern "C" ARM void func_ov023_021da770(CharacterCreationUI* self) {
     if (!(self->flags & 0x1000000)) {

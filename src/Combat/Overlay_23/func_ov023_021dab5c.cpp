@@ -1,5 +1,54 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#include "Resource/CharacterCreationUI.h"
+#include "Graphics/SpriteAffineTransform.h"
+
+int GetField0_0205bafc(void*);
+extern "C" void func_0205ac40(SpriteContext0205ac40*, B174Outer*);
+
+extern "C" ARM void func_ov023_021dab5c(CharacterCreationUI* self, int x, int y, int width, int height) {
+    int fixedHeight = height << 12;
+    int fx = x << 12;
+    int fy = y << 12;
+    int minX, maxX, minY, maxY;
+    if (self->state == 1) {
+        int sumX = fx + (width << 12);
+        int sumY = fy + fixedHeight;
+        minX = fx - 0x7000;
+        minY = fy - 0x7000;
+        maxX = sumX - 0x1000;
+        maxY = sumY - 0x1000;
+        if (GetField0_0205bafc(&self->navigation) == 8 && self->navigation.rows == 1) {
+            minX = fx - 0x4000;
+            minY = fy - 0x4000;
+            maxX = sumX - 0x4000;
+            maxY = sumY - 0x4000;
+        }
+    } else {
+        int sumX = fx + (width << 12);
+        int sumY = fy + fixedHeight;
+        minX = fx - 0x4000;
+        minY = fy - 0x4000;
+        maxX = sumX - 0x4000;
+        maxY = sumY - 0x4000;
+    }
+    fix32_t* position = self->sprites[21].position;
+    position[0] = minX;
+    position[1] = minY;
+    position = self->sprites[22].position;
+    position[0] = maxX;
+    position[1] = minY;
+    position = self->sprites[23].position;
+    position[0] = minX;
+    position[1] = maxY;
+    position = self->sprites[24].position;
+    position[0] = maxX;
+    position[1] = maxY;
+    for (int i = 0; i < 4; ++i)
+        func_0205ac40(self->spriteContext, &self->sprites[i + 21]);
+}
+#else
 int GetField0_0205bafc(void* obj);
 extern "C" void func_0205ac40(void* dst, void* entry);
 
@@ -48,3 +97,4 @@ extern "C" ARM void func_ov023_021dab5c(void* obj, int a1, int a2, int a3, int a
         func_0205ac40(*(void**)(o + 0x7e4), dst + (j + 0x15) * 0x28);
     }
 }
+#endif

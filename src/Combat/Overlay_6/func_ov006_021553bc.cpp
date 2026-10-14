@@ -5,7 +5,6 @@ struct CallIfFlag0x800_021571ccStruct;
 struct Container020e0310;
 
 #if defined(jpn)
-#define func_ov023_021dced4 func_ov023_021dd7d8
 int GetFieldByKey020e0434(Container020e0310*, int);
 #else
 const char** CallFunc020e52a0(void* names, int item);
