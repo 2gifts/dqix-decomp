@@ -2,7 +2,9 @@
 #include "std_library_functions.h"
 
 extern "C" void __clear(void* buf, int n);
+#if !defined(jpn)
 extern "C" void func_0203c5a8(void* ptr, void* buf, short* fieldAddr);
+#endif
 extern void* data_02105244;
 
 void ReleaseGlobalEntry0203c198(char* obj);
@@ -17,7 +19,7 @@ void DecrementEntryCount0x24(struct RefArray0xc6fc* obj, short index);
 extern "C" void func_0203cb58(void*, void*);
 extern "C" void func_0203cbe4(void*, void*);
 extern "C" void func_0203bf00(void*, char*, void*, int);
-extern "C" void func_0203c7f4(void*, void*, void*, int);
+extern "C" void func_0203c5a8(void*, void*, void*, int);
 #endif
 struct Obj0203c108 {
     char pad[0x14];
@@ -36,7 +38,7 @@ ARM void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* fmt) {
         __clear(buf, 0x80);
         func_0203bf00(obj, fmt, buf, 10);
         *(int*)((char*)obj + 0x20) = 10;
-        func_0203c7f4(data_02105244, buf, obj, 10);
+        func_0203c5a8(data_02105244, buf, obj, 10);
         func_0203cbe4(data_02105244, saved);
 #else
         char buf[0x100];

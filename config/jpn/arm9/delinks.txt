@@ -18433,3 +18433,7 @@ src/Filesystem/LoadIndexedResourceIntoScratch.cpp:
     complete
     .text start:0x020e08f0 end:0x020e0968
 
+
+src/Combat/Main/FindOrAllocateSlot0203c5a8.cpp:
+    complete
+    .text start:0x0203c7f4 end:0x0203cb58
