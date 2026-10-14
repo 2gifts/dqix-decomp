@@ -119,7 +119,6 @@ struct AlchemyMenu {
     unsigned char closeRequested_;
 };
 
-
 struct Obj0215951c;
 struct Obj02159094;
 struct Struct021596f0;

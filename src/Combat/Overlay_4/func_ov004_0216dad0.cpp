@@ -55,8 +55,6 @@ extern "C" ARM int func_ov004_0216dad0(void) {
         data_ov004_02171034.status = 2;
     }
     if (data_ov004_02171034.status == 1) {
-        // the callee writes 4 bytes (u16 id, u8, u8); the 3-byte declaration is what
-        // makes the info[3] read alias the global stores, as in the ROM
         unsigned char info[3];
         if (func_020ab5d4(data_ov004_02171034.buf, 0, 0, info) == 0) {
             unsigned char v = *((unsigned char*)gs + 0x5cc8);

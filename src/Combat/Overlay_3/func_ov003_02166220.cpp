@@ -20,7 +20,6 @@ int GetFieldAt0x50(Struct020865b0*);
 int ClassifyRatio_0215f56c(S0215f56c*);
 int SetEntryFlagById02080b40(void* obj, int id);
 void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
-// short-id views of the same two entry points, used by the per-cell loop
 extern "C" int _Z24SetEntryFlagById02080b40Pvi(void* obj, short id);
 extern "C" void _Z22SetEntryHighNibble0x13P17Container02080cc0ii(struct Container02080cc0* obj, short id, int value);
 extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(struct Container02080f8c*, int, char*);
@@ -38,7 +37,6 @@ void SetEntryFlag0x2ByShortId(struct StatusOwner02081164* obj, int id, int value
 extern "C" int func_020813ec(void* obj, int id);
 extern "C" void func_ov003_02160678(void* self);
 extern "C" void func_ov003_02160794(void* self);
-
 
 struct MemberEntry02166220 {
     char pad0[2];
