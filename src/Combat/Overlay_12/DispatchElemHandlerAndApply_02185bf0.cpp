@@ -1,8 +1,8 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 
 #if defined(jpn)
 #define func_ov012_02185bf0 func_ov012_02186248
-#define TryApplyElemFields0205d5d0 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih
 enum { kElemOffset = 0x90, kDestOffset = 0x344, kDestSize = 0x800 };
 #else
 enum { kElemOffset = 0xac, kDestOffset = 0x374, kDestSize = 0x960 };
@@ -14,12 +14,6 @@ struct Elem_0205d81c;
 extern struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 
 struct StructA0205d5d0;
-#if defined(jpn)
-extern "C" int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d);
-#else
-extern int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
-
 struct Obj02185bf0;
 typedef void (Obj02185bf0::*Handler02185bf0)(void* dest, int alt);
 extern Handler02185bf0 data_020e6d5c;

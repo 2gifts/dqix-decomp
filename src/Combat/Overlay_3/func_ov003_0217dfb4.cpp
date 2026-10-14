@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #if defined(jpn)
 enum { kMenuPrefix=0x10 };
@@ -46,12 +47,6 @@ extern "C" unsigned char* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct 
 void SetField0xd8State(unsigned char* elem, int state);
 void SetByte0xd9AndFlag0x2(unsigned char* elem, unsigned char value);
 void SetByte0xdaAndFlag0x2(unsigned char* elem, int value);
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0*,int,int,int);
-#else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
-
 extern const char data_ov003_02180c7f[];
 
 // USA: func_ov003_0217dfb4
@@ -102,8 +97,8 @@ extern "C" ARM void func_ov003_0217dfb4(struct ListMenu0217dfb4* menu) {
 #endif
     }
 #if defined(jpn)
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)menu->window, 0, (int)buf, 1);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)menu->window, 0, (int)buf, 1);
 #else
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)menu->window, 0, (int)buf, 1, 0);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)menu->window, 0, (int)buf, 1, 0);
 #endif
 }

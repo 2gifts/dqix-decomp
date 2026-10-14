@@ -123,7 +123,8 @@ struct CharacterCreationUI {
     unsigned char hairStyle[2];
     unsigned char hairColor[2];
 #if defined(jpn)
-    unsigned char unknownBeforeKeyboardChoice[0x18];
+    char names[2][11];
+    unsigned char nameFlags[2];
     unsigned char keyboardChoice;
 #endif
 };

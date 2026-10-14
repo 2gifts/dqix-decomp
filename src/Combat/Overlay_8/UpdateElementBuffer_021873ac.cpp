@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #if defined(jpn)
 #define R(j,u) (j)
 #define _Z22SetupBattleTag02189d68Pc func_ov012_0218a804
@@ -17,19 +18,7 @@
 
 struct StructA0205d5d0;
 #if defined(jpn)
-#if defined(jpn)
-#define TryApplyElemFields0205d5d0 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih
-extern "C" int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d);
 #else
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d);
-#endif
-#else
-#if defined(jpn)
-#define TryApplyElemFields0205d5d0 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih
-extern "C" int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#else
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
 #endif
 extern "C" void func_ov008_02187278(void* obj, char* dst, int mode, void* extra);
 

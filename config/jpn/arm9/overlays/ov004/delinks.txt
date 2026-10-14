@@ -1755,3 +1755,7 @@ src/Combat/Overlay_4/SetIndexedNameFromElem_02169a28.cpp:
 src/Combat/Overlay_4/SetNodeCountFromBattleBlock_02156760.cpp:
     complete
     .text start:0x021579ec end:0x02157a6c
+
+src/Combat/Overlay_4/func_ov004_02167068.cpp:
+    complete
+    .text start:0x0216767c end:0x0216791c

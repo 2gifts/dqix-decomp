@@ -1,6 +1,6 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #if defined(jpn)
-#define TryApplyElemFields0205d5d0 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih
 #define LOW_REGION(j, u) (j)
 #else
 #define LOW_REGION(j, u) (u)
@@ -9,11 +9,6 @@
 #include "std_library_functions.h"
 
 struct StructA0205d5d0;
-#if defined(jpn)
-extern "C" int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d);
-#else
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
 extern "C" void func_ov008_02187278(void* obj, char* dst, int mode, void* extra);
 extern "C" void func_0204b088(void* p, int flag);
 void CallDispatchIfFlagSet_021eb4f4(char* obj);

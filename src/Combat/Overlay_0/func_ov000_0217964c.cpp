@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
@@ -56,14 +57,12 @@ extern "C" void _Z35NotifyLocalizedResourceLoad020dcfc8iPc(int id, char* buf);
 extern "C" void func_02046608(GlobalText* g, int a, char* src, char* dst, int b, int c, int d);
 extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
 #if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0*, int, int, int);
 extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
-#define APPLY_TEXT(s,k,t) _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(s,k,(int)t,1)
+#define APPLY_TEXT(s,k,t) TryApplyElemFields0205d5d0(s,k,(int)t,1)
 #define DRAW_TEXT(s,t) func_0205d304(s,t,0,0,0,1,0)
 #else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* s, int key, int buf, int a, unsigned char b);
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
-#define APPLY_TEXT(s,k,t) _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(s,k,(int)t,1,0)
+#define APPLY_TEXT(s,k,t) TryApplyElemFields0205d5d0(s,k,(int)t,1,0)
 #define DRAW_TEXT(s,t) func_0205d304(s,t,0,0,0,1,0,0)
 #endif
 

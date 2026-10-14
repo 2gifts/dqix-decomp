@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
@@ -63,12 +64,6 @@ void StoreInArray0x8b0(StoreStruct*, int, int);
 const char* CallFunc020e0434With02153694(int);
 int AppendString02042058(char*, const char*);
 void* FindElementByC40205d81c(Struct_0205d81c*, int);
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0*, int, int, int);
-#define TryApplyElemFields0205d5d0 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih
-#else
-int TryApplyElemFields0205d5d0(StructA0205d5d0*, int, int, int, unsigned char);
-#endif
 #if defined(jpn)
 extern "C" void func_0205d304(SkillTextWindow*, char*, int, int, int, int, int);
 extern "C" void _Z14SetByteInRangePhih(unsigned char*, int, unsigned char);

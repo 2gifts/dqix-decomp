@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -77,11 +78,6 @@ extern "C" void _Z27ResetSelectionState020e25e8P11Obj020e25e8(void* w);
 int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
 extern "C" int _Z23GetFlagFromField0x8BitsP14Struct020dd768(Struct020dd768* s);
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d);
-#else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
 extern "C" void func_ov005_02157b74(void* self, int key, int keep);
 extern "C" char* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 extern "C" void _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(char* list, int key, int a, int b);
@@ -129,7 +125,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                         self->message_ = 0xc;
                         memset(self->text_, 0, kTextBytes);
                         func_ov005_02158b3c(self, self->text_);
-                        _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
+                        TryApplyElemFields0205d5d0(
                             (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
 #if !defined(jpn)
                             , 0
@@ -160,7 +156,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                         self->f3daa_ = 0;
                     }
                 }
-                _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
+                TryApplyElemFields0205d5d0(
                     (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
 #if !defined(jpn)
                             , 0
@@ -170,7 +166,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                 self->message_ = 9;
                 memset(self->text_, 0, kTextBytes);
                 func_ov005_02158b3c(self, self->text_);
-                _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
+                TryApplyElemFields0205d5d0(
                     (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
 #if !defined(jpn)
                             , 0
@@ -182,7 +178,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                 self->message_ = 0xb;
                 memset(self->text_, 0, kTextBytes);
                 func_ov005_02158b3c(self, self->text_);
-                _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
+                TryApplyElemFields0205d5d0(
                     (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
 #if !defined(jpn)
                             , 0
@@ -228,7 +224,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                     self->message_ = 0xc;
                     memset(self->text_, 0, kTextBytes);
                     func_ov005_02158b3c(self, self->text_);
-                    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
+                    TryApplyElemFields0205d5d0(
                         (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
 #if !defined(jpn)
                             , 0
@@ -263,7 +259,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                     self->f3daa_ = 0;
                 }
             }
-            _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
+            TryApplyElemFields0205d5d0(
                 (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
 #if !defined(jpn)
                             , 0

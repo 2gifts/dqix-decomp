@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -86,11 +87,6 @@ extern "C" const char* _Z28CallFunc020e0434With02153694i(int key);
 extern "C" void _Z20AppendString02042058PcPKc(char* dst, const char* src);
 extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(ElemList* list, int key);
 #if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(ElemList* list, int key, char* text, int a);
-#else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(ElemList* list, int key, char* text, int a, unsigned char b);
-#endif
-#if defined(jpn)
 extern "C" void func_0205d304(ElemList* list, char* text, int a, int b, int c, int d, int e);
 extern "C" void _Z14SetByteInRangePhih(unsigned char*, int, unsigned char);
 extern "C" void _Z14SetByteAtIndexPhih(unsigned char*, int, unsigned char);
@@ -160,9 +156,9 @@ extern "C" ARM void func_ov000_02179cdc(BattleMenu* menu, MenuEntry* entry) {
     ElemList* list = &menu->elements;
     if (_Z23FindElementByC40205d81cP15Struct_0205d81ci(list, 0x16) != 0) {
 #if defined(jpn)
-        _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(list, 0x16, msg, 1);
+        TryApplyElemFields0205d5d0((StructA0205d5d0*)list, 0x16, (int)msg, 1);
 #else
-        _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(list, 0x16, msg, 1, 0);
+        TryApplyElemFields0205d5d0((StructA0205d5d0*)list, 0x16, (int)msg, 1, 0);
 #endif
         return;
     }

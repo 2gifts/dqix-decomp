@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -7,12 +8,6 @@
 
 extern "C" void func_ov023_021ed254(void* obj, void* buf);
 struct StructA0205d5d0;
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d);
-#else
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
-
 struct Obj021ed44c {
     char pad0[0x1c];
     void* buf1c;
@@ -31,7 +26,7 @@ extern "C" ARM void func_ov023_021ed44c(Obj021ed44c* obj) {
 #endif
     func_ov023_021ed254(obj, obj->buf1c);
 #if defined(jpn)
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)((char*)obj + 0xc4), 0, (int)obj->buf1c, 0);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)((char*)obj + 0xc4), 0, (int)obj->buf1c, 0);
 #else
     TryApplyElemFields0205d5d0((struct StructA0205d5d0*)((char*)obj + 0xc4), 0, (int)obj->buf1c, 0, 1);
 #endif

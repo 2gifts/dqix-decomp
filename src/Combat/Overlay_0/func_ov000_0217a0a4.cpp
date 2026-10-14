@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -42,11 +43,6 @@ struct BattleField0217a0a4 {
 };
 
 extern "C" int _Z26GetGlobalField0x1c020421a0v();
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0*, int, int, int);
-#else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0*, int, int, int, unsigned char);
-#endif
 extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(struct Struct_0205def8*, int, int);
 extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c*, int);
 extern "C" void func_ov000_0217a2dc(struct BattleField0217a0a4*, int, void*);
@@ -58,9 +54,9 @@ extern "C" ARM void func_ov000_0217a0a4(struct BattleField0217a0a4* field) {
     memset(buf, 0, REGION_OFFSET_1);
     func_ov000_0217a2dc(field, 0, buf);
 #if defined(jpn)
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)field->elements, 0x17, (int)buf, 1);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)field->elements, 0x17, (int)buf, 1);
 #else
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)field->elements, 0x17, (int)buf, 1, 0);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)field->elements, 0x17, (int)buf, 1, 0);
 #endif
     if (field->field1D81) {
         _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)field->elements, 0, 0x18);

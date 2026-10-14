@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #if defined(jpn)
 enum { kRegion12c0 = 0x1150 };
@@ -22,10 +23,7 @@ int AppendString02042058(char* dst, const char* src);
 
 struct StructA0205d5d0;
 #if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0*, int, int, int);
 #endif
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-
 // USA: func_ov003_0216dc58  (semantic: BuildAndApplyScaleMessage_0216dc58)
 extern "C" ARM void func_ov003_0216dc58(char* obj) {
 	char buf1[0x100];
@@ -40,7 +38,7 @@ extern "C" ARM void func_ov003_0216dc58(char* obj) {
 	field = GetFieldByKey020e0434((struct Container020e0310*)(obj + kRegion1324), 0x5c);
 	AppendString02042058(buf1, (const char*)field);
 #if defined(jpn)
-	_Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)(*(void**)(obj + kRegion12c0)), 0, (int)buf1, 1);
+	TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(*(void**)(obj + kRegion12c0)), 0, (int)buf1, 1);
 #else
 	TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(*(void**)(obj + kRegion12c0)), 0, (int)buf1, 1, 0);
 #endif

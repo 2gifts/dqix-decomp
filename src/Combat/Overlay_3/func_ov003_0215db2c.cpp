@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #if defined(jpn)
 enum { kRegion960 = 0x800 };
@@ -19,10 +20,8 @@ enum { kRegion98 = 0x98 };
 
 struct StructA0205d5d0;
 #if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0*, int, int, int);
 #endif
 #if !defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
 #endif
 extern "C" void _Z25AppendEntryNames_0215e13cPcS_i(char* base, char* dst, int flag);
 extern "C" void _Z28SetupFieldAndFormat_0215de6cPcPv(char* base, void* buf);
@@ -65,9 +64,9 @@ extern "C" ARM void func_ov003_0215db2c(char* self) {
         }
         if (page != 0) {
 #if defined(jpn)
-            _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)(self + kRegion98), page, *(int*)(self + kRegion7c), 1);
+            TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(self + kRegion98), page, *(int*)(self + kRegion7c), 1);
 #else
-            _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)(self + kRegion98), page, *(int*)(self + kRegion7c), 1, 0);
+            TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(self + kRegion98), page, *(int*)(self + kRegion7c), 1, 0);
 #endif
         }
     }
@@ -75,9 +74,9 @@ extern "C" ARM void func_ov003_0215db2c(char* self) {
         memset(*(void**)(self + kRegion7c), 0, kRegion960);
         _Z28SetupFieldAndFormat_0215de6cPcPv(self, *(void**)(self + kRegion7c));
 #if defined(jpn)
-        _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)(self + kRegion98), 0, *(int*)(self + kRegion7c), 1);
+        TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(self + kRegion98), 0, *(int*)(self + kRegion7c), 1);
 #else
-        _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)(self + kRegion98), 0, *(int*)(self + kRegion7c), 1, 0);
+        TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(self + kRegion98), 0, *(int*)(self + kRegion7c), 1, 0);
 #endif
         *(unsigned char*)(self + kRegion3bb) = 0;
     }

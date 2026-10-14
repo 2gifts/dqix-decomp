@@ -5,30 +5,9 @@
 #include "Resource/Script.h"
 #include "Resource/QuestScript.h"
 
-struct DataStruct02109404_956b8 {
-    unsigned char f0;
-    unsigned char skip;
-    unsigned char selected;
-    unsigned char f3;
-    unsigned char f4;
-    unsigned char pad5;
-    unsigned short index;
-    unsigned short f8;
-    unsigned char padA[2];
-    SafeAllocator* allocator;
-    unsigned char* table;
-};
-extern struct DataStruct02109404_956b8 data_02109404;
-
 extern short data_020f13d8;
 extern const char data_020f1474[] __attribute__((aligned(4)));
 extern Script::OpcodeLookupEntry data_020f141c[];
-
-struct Node020958fc;
-struct Header020956b8 {
-    char pad[0xa0];
-    Node020958fc* listHead;
-};
 
 // USA: func_020956b8
 extern "C" ARM void func_020956b8(struct Header020956b8* header, SafeAllocator* allocator) {
