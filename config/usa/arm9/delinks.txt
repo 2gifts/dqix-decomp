@@ -1591,6 +1591,10 @@ src/Combat/Main/InitList0201d01c.cpp:
     complete
     .text start:0x0201d01c end:0x0201d044
 
+src/World/WarpScriptOpcode6b.cpp:
+    complete
+    .text start:0x0201d044 end:0x0201d424
+
 src/Combat/Main/ResetStruct0201d424.cpp:
     complete
     .text start:0x0201d424 end:0x0201d474
@@ -19954,3 +19958,4 @@ src/Combat/Main/func_02029988.cpp:
 src/World/WarpScriptOpcode7c.cpp:
     complete
     .text start:0x0201e018 end:0x0201e1d0
+
