@@ -14035,6 +14035,10 @@ src/Combat/Main/ScaleMatrixAndCopyTranslation020c1948.cpp:
     complete
     .text start:0x020c1948 end:0x020c197c
 
+src/Combat/Main/Mat4x3_WriteRotationZ_020c19b8.s:
+    complete
+    .text start:0x020c19b8 end:0x020c19d4
+
 src/Combat/Main/MulVec3MtxTranslate020c2034.cpp:
     complete
     .text start:0x020c2034 end:0x020c20d4
@@ -14587,6 +14591,22 @@ src/Combat/Main/RunAndClearCallback.cpp:
     complete
     .text start:0x020ca364 end:0x020ca390
 
+src/Combat/Main/func_020ca390.cpp:
+    complete
+    .text start:0x020ca390 end:0x020ca3b8
+
+src/Combat/Main/func_020ca3b8.cpp:
+    complete
+    .text start:0x020ca3b8 end:0x020ca3ec
+
+src/Combat/Main/func_020ca408.cpp:
+    complete
+    .text start:0x020ca408 end:0x020ca430
+
+src/Combat/Main/func_020ca430.cpp:
+    complete
+    .text start:0x020ca430 end:0x020ca458
+
 src/Combat/Main/func_020ca50c.cpp:
     complete
     .text start:0x020ca50c end:0x020ca528
@@ -14602,6 +14622,10 @@ src/Combat/Main/func_020ca544.cpp:
 src/Combat/Main/func_020ca568.cpp:
     complete
     .text start:0x020ca568 end:0x020ca594
+
+src/Combat/Main/VectorizedMemset_020ca594.cpp:
+    complete
+    .text start:0x020ca594 end:0x020ca650
 
 src/Combat/Main/AtomicSwap.cpp:
     complete
@@ -14652,6 +14676,14 @@ src/Filesystem/OverlayLoad.cpp:
 src/Combat/Main/CallAndReturnTrue020cd584.cpp:
     complete
     .text start:0x020cd584 end:0x020cd594
+
+src/Combat/Main/SaveDivSqrtState_020cd594.s:
+    complete
+    .text start:0x020cd594 end:0x020cd5d4
+
+src/Combat/Main/func_020cd5d4_020cd5d4.s:
+    complete
+    .text start:0x020cd5d4 end:0x020cd610
 
 src/Combat/Main/InitIPCCommandDispatch020cd890.cpp:
     complete

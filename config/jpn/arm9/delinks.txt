@@ -7675,6 +7675,10 @@ src/Combat/Main/MarkStateIfFlag020a2c70.cpp:
     complete
     .text start:0x020a49e8 end:0x020a4a04
 
+src/Combat/Main/Mat4x3_WriteRotationZ_020c19b8.s:
+    complete
+    .text start:0x020c3484 end:0x020c34a0
+
 src/Combat/Main/Mat4x4_WriteProjectionUnknown.cpp:
     complete
     .text start:0x020c44b8 end:0x020c46c0
@@ -9302,6 +9306,10 @@ src/Combat/Main/SaveAndDisableBattlerState020128d8.cpp:
 src/Combat/Main/SaveContext_020c7d34.s:
     complete
     .text start:0x020c9800 end:0x020c984c
+
+src/Combat/Main/SaveDivSqrtState_020cd594.s:
+    complete
+    .text start:0x020cf060 end:0x020cf0a0
 
 src/Combat/Main/SaveStateAndAllocateChild020bdac0.cpp:
     complete
@@ -12067,6 +12075,10 @@ src/Combat/Main/Vector3fix_CrossProduct.cpp:
     complete
     .text start:0x020c4900 end:0x020c4984
 
+src/Combat/Main/VectorizedMemset_020ca594.cpp:
+    complete
+    .text start:0x020cc060 end:0x020cc11c
+
 src/Combat/Main/VsnprintfCore02003c80.cpp:
     complete
     .text start:0x02003b9c end:0x02003c04
@@ -13207,6 +13219,18 @@ src/Combat/Main/func_020ca0a8.cpp:
     complete
     .text start:0x020cbb74 end:0x020cbc6c
 
+src/Combat/Main/func_020ca390.cpp:
+    complete
+    .text start:0x020cbe5c end:0x020cbe84
+
+src/Combat/Main/func_020ca3b8.cpp:
+    complete
+    .text start:0x020cbe84 end:0x020cbeb8
+
+src/Combat/Main/func_020ca408.cpp:
+    complete
+    .text start:0x020cbed4 end:0x020cbefc
+
 src/Combat/Main/func_020ca50c.cpp:
     complete
     .text start:0x020cbfd8 end:0x020cbff4
@@ -13226,6 +13250,10 @@ src/Combat/Main/func_020ca568.cpp:
 src/Combat/Main/func_020ca7e8_020ca7e8.s:
     complete
     .text start:0x020cc2b4 end:0x020cc3b4
+
+src/Combat/Main/func_020cd5d4_020cd5d4.s:
+    complete
+    .text start:0x020cf0a0 end:0x020cf0dc
 
 src/Combat/Main/func_020cdae4.cpp:
     complete
@@ -16422,6 +16450,10 @@ src/Combat/Main/BlankFunction02094b38.cpp:
 src/Combat/Main/BlankFunction02094b2c.cpp:
     complete
     .text start:0x020957c4 end:0x0209588c
+
+src/Combat/Main/func_020ca430.cpp:
+    complete
+    .text start:0x020cbefc end:0x020cbf24
 
 src/Combat/Main/CompareBytes.cpp:
     complete
