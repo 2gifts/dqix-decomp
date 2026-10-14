@@ -44,9 +44,11 @@ unsigned char* GetGlobalField0x1c020421a0(void);
 void InitCombatEntry_021d8b6c(void* p);
 extern "C" void func_ov023_021d8af8(void* p);
 void CopyShortTriple0x8e4a(void* obj, short* a, short* b, short* c);
-extern "C" void* _Z21FindEntryById02096134P26FindEntryById02096134Tablei(Table021f2e6c* t, int id);
+struct FindEntryById02096134Table;
+void* FindEntryById02096134(FindEntryById02096134Table*, int);
 extern "C" void func_02046380(unsigned char* st);
-extern "C" char* _Z14FindEntryByKeyP8TableA68i(void* table, int key);
+struct TableA68;
+char* FindEntryByKey(TableA68*, int);
 void Clear12Bytes020e46c4(void* p);
 unsigned char* GetCombatantWithFlag0x400(GameState* gs, int id);
 extern "C" Triple021f2e6c func_ov023_021ed804(Triple021f2e6c t, void* p);
@@ -61,48 +63,55 @@ void SetShortFields0x8e4aTo0x8e4e(void* obj, int a, int b, int c);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
 int AreAllListedCombatantsFlagged_021ed92c(void);
-extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(int* g);
-extern "C" void _Z18InitStruct020d784cP14Buffer020d784c(IdList021f2e6c* list);
+struct Reset_021eefac;
+void ResetFields_021eefac(Reset_021eefac*);
+struct Buffer020d784c;
+void InitStruct020d784c(Buffer020d784c*);
 extern "C" int func_ov023_021f4fc8(void);
-extern "C" void _Z34RegisterCallbackObjectAndRunScriptPvS_P12StreamHeaderih(void* obj, void* alloc, void* data, int len, unsigned char flag);
-extern "C" short _Z22GetMaxOfHalfwords0And4P12Pair020deb08(void* p);
+struct StreamHeader;
+void RegisterCallbackObjectAndRunScript(void*, void*, StreamHeader*, int, unsigned char);
+struct Pair020deb08;
+short GetMaxOfHalfwords0And4(Pair020deb08*);
 void ZeroInit020de868(void* p);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 extern "C" int func_020dea64(void* a, void* b, void* c, int d, void* e, int flag);
 extern "C" int sprintf(char* buf, const char* fmt, ...);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int n);
-extern "C" void _Z24InitStateManager0209e3dcPci(Mgr021f2e6c* mgr, void* p);
+void InitStateManager0209e3dc(char*, int);
 extern "C" void func_0209fd64(Mgr021f2e6c* mgr, SafeAllocator* alloc, void* data, unsigned int len);
-extern "C" void _Z19ResetFields0209e46cPc(Mgr021f2e6c* mgr);
-extern "C" void _Z21SetIntAt0x64_0209fe10P21IntField0x64_0209fe10i(Mgr021f2e6c* mgr, int v);
-extern "C" void _Z21PollOv017Task0209fe18P17TaskState0209fe18(Mgr021f2e6c* mgr);
-extern "C" char* _Z22FindValueByHalfwordKeyP8List794ci(IdList021f2e6c* list, int key);
-extern "C" int _Z32AreFields64And68AllOnes_021f3a8cP17Fields64_021f3a8c(Mgr021f2e6c* mgr);
-extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(unsigned char* st, int index, int value);
+void ResetFields0209e46c(char*);
+struct IntField0x64_0209fe10;
+void SetIntAt0x64_0209fe10(IntField0x64_0209fe10*, int);
+struct TaskState0209fe18;
+void PollOv017Task0209fe18(TaskState0209fe18*);
+struct List794c;
+char* FindValueByHalfwordKey(List794c*, int);
+struct Fields64_021f3a8c;
+int AreFields64And68AllOnes_021f3a8c(Fields64_021f3a8c*);
+struct StoreStruct;
+void StoreInArray0x8b0(StoreStruct*, int, int);
 extern "C" unsigned char* _Z26FindNodeByShortKey02162d88Pvs(void* self, unsigned short key);
 void ResetNameState02048614(unsigned char* obj);
 extern "C" void func_02049c88(unsigned char* obj, int v);
-extern "C" void _Z28SetupFieldsFromParam02048850P11Obj02048850P13Param02048850(unsigned char* obj, int v);
+struct Obj02048850;
+struct Param02048850;
+void SetupFieldsFromParam02048850(Obj02048850*, Param02048850*);
 void CopyObjectFields02048588(unsigned char* src, unsigned char* dst);
-extern "C" void _ZN8Object3D10SetField06Et(unsigned char* obj, unsigned short v);
-extern "C" int _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(unsigned char* obj, int v);
-extern "C" void _ZN8Object3D17SetInheritedAlphaEi(unsigned char* obj, int v);
-extern "C" void _ZN8Object3D11MakeVisibleEv(unsigned char* obj);
+struct Bytes02033b88;
+int SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void SetSubstructByte0x56(unsigned char* obj);
 extern "C" void* func_ov000_02160f14(void* self);
 extern "C" void func_ov000_0216d370(void* cam, int a, int b, int c);
 void SetFlagOrState0216d530(void* cam, int v);
-extern "C" int _ZNK8Object3D9GetHeightEv(unsigned char* obj);
-extern "C" void _Z19SetFields0x10To0x18Phiii(void* cam, int a, int b, int c);
+void SetFields0x10To0x18(unsigned char*, int, int, int);
 extern "C" void func_0202e5d8(void* cam, int a, int b, int c);
 extern "C" void func_ov000_02163b90(void* self, int v);
-extern "C" int _ZNK8Object3D17GetInheritedAlphaEv(unsigned char* obj);
-extern "C" void _ZN8Object3D24TransitionInheritedAlphaEii(unsigned char* obj, int a, int b);
-extern "C" void _ZN8Object3D10MakeHiddenEv(unsigned char* obj);
 void ClearSubstructByte0x56(unsigned char* obj);
 Blk021f2e6c* GetPtrField0x4(void* cam);
 extern "C" void func_ov000_0216d2d0(void* cam);
-extern "C" void _Z25CopyGroupedBlocks0202ed0cP11Dst0202ed0cP11Src0202ed0c(void* cam, Blk021f2e6c* src);
+struct Dst0202ed0c;
+struct Src0202ed0c;
+void CopyGroupedBlocks0202ed0c(Dst0202ed0c*, Src0202ed0c*);
 
 extern "C" int* _ZZ17GetGlobal021ffefcvE1s;
 extern char data_02109bf4;
@@ -117,8 +126,10 @@ extern char data_ov023_021fe2f7;
 extern char data_ov023_021fd54e[];
 extern char data_ov023_021fd578[];
 extern char data_ov023_021fd5a2[];
-extern "C" void* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(void*,int);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*,int,char*);
+struct BinarySearchByComparatorStruct;
+void* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" void func_020de968(int,char*);
 extern "C" void func_0204500c(void*,char*,int);
 extern "C" int func_020e052c(void*,void*,const char*,void*,short,unsigned char);
@@ -153,24 +164,24 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             short count = 0;
             short target = 0;
             CopyShortTriple0x8e4a(*(void**)(self + regionalOffset5), &kind, &target, &count);
-            void* entry = _Z21FindEntryById02096134P26FindEntryById02096134Tablei(tbl, *(short*)(*(char**)(self + regionalOffset5) + 0x8e4a));
+            void* entry = FindEntryById02096134((FindEntryById02096134Table*)tbl, *(short*)(*(char**)(self + regionalOffset5) + 0x8e4a));
             if (count != 0 && entry != 0) {
                 func_02046380(st);
 #if defined(jpn)
                 char* msg = data_ov023_021fd54e;
                 if (kind == 0x12) msg = data_ov023_021fd578;
-                void* name = _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(*(char**)(self + 0x21c) + 0x678, target);
-                if (name != 0) _Z22SetIndexedName02046574P11Obj02046574iPc(st,0,*(char**)name);
+                void* name = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)(*(char**)(self + 0x21c) + 0x678), target);
+                if (name != 0) SetIndexedName02046574((Obj02046574*)st, 0, *(char**)name);
                 char rawName[0x40];
                 __clear(rawName,0x40);
                 func_020de968(count,rawName);
-                _Z22SetIndexedName02046574P11Obj02046574iPc(st,1,rawName);
+                SetIndexedName02046574((Obj02046574*)st, 1, rawName);
 #else
                 int key = 0x29;
                 if (kind == 0x12) {
                     key = 0x2a;
                 }
-                char* msg = _Z14FindEntryByKeyP8TableA68i(self + 0x5904, key);
+                char* msg = FindEntryByKey((TableA68*)(self + 0x5904), key);
                 Triple021f2e6c words;
                 Clear12Bytes020e46c4(&words);
                 GameState* gs = GameState::GetInstance();
@@ -227,12 +238,12 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             }
         }
         if (found == 0) {
-            _Z20ResetFields_021eefacP14Reset_021eefac(g);
+            ResetFields_021eefac((Reset_021eefac*)g);
             return 0xf;
         }
         *(IdList021f2e6c**)(self + regionalOffset2) = (IdList021f2e6c*)((SafeAllocator*)(self + 0x30))->Allocate(0x18);
         *(Mgr021f2e6c**)(self + regionalOffset1) = (Mgr021f2e6c*)((SafeAllocator*)(self + 0x30))->Allocate(0x8a0);
-        _Z18InitStruct020d784cP14Buffer020d784c(*(IdList021f2e6c**)(self + regionalOffset2));
+        InitStruct020d784c((Buffer020d784c*)(*(IdList021f2e6c**)(self + regionalOffset2)));
         *(SafeAllocator**)(self + regionalOffset9) = (SafeAllocator*)((SafeAllocator*)(self + 0x30))->Allocate(0x14);
         (*(SafeAllocator**)(self + regionalOffset9))->CreateTypeA(((SafeAllocator*)(self + 0x30))->Allocate(0xf000), 0xf000);
         FontBankLoader* h = GetGlobal02109400();
@@ -257,7 +268,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             unsigned int length;
             void* data;
             loader->GetLoadedFileByID(g[2], &data, &length);
-            _Z18InitStruct020d784cP14Buffer020d784c(*(IdList021f2e6c**)(self + regionalOffset2));
+            InitStruct020d784c((Buffer020d784c*)(*(IdList021f2e6c**)(self + regionalOffset2)));
             int count;
             Entry021f2e6c* entries = tbl->entries;
             count = tbl->count;
@@ -268,7 +279,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                     list->ids[list->count++] = id;
                 }
             }
-            _Z34RegisterCallbackObjectAndRunScriptPvS_P12StreamHeaderih(*(void**)(self + regionalOffset2), self + 0x30, data, length, 0);
+            RegisterCallbackObjectAndRunScript(*(void**)(self + regionalOffset2), self + 0x30, (StreamHeader*)data, length, 0);
             loader->RemoveTask(g[2]);
             g[2] = -1;
             g[0] = 4;
@@ -284,9 +295,9 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
 #endif
 
 #if defined(jpn)
-            if (_Z22GetMaxOfHalfwords0And4P12Pair020deb08(sub + 0x3400) <= 0) {
+            if (GetMaxOfHalfwords0And4((Pair020deb08*)(sub + 0x3400)) <= 0) {
 #else
-            if (_Z22GetMaxOfHalfwords0And4P12Pair020deb08(sub + 0x3000) <= 0) {
+            if (GetMaxOfHalfwords0And4((Pair020deb08*)(sub + 0x3000)) <= 0) {
 #endif
 
 #if defined(jpn)
@@ -330,7 +341,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             }
         }
         if (found == 0) {
-            _Z20ResetFields_021eefacP14Reset_021eefac(g);
+            ResetFields_021eefac((Reset_021eefac*)g);
             return 0xf;
         }
         char name[0x40];
@@ -343,7 +354,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             void* data = 0;
             loader->GetLoadedFileByID(g[1], &data, &length);
             if (data == 0) {
-                _Z20ResetFields_021eefacP14Reset_021eefac(g);
+                ResetFields_021eefac((Reset_021eefac*)g);
                 return 0xf;
             }
             void* copy;
@@ -353,31 +364,31 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             memcpy(copy, data, length);
             loader->RemoveTask(g[1]);
             g[1] = -1;
-            _Z24InitStateManager0209e3dcPci(*(Mgr021f2e6c**)(self + regionalOffset1), *(void**)(self + regionalOffset5));
+            InitStateManager0209e3dc((char*)(*(Mgr021f2e6c**)(self + regionalOffset1)), (int)(*(void**)(self + regionalOffset5)));
             func_0209fd64(*(Mgr021f2e6c**)(self + regionalOffset1), *(SafeAllocator**)(self + regionalOffset9), copy, length);
-            _Z19ResetFields0209e46cPc(*(Mgr021f2e6c**)(self + regionalOffset1));
-            _Z21SetIntAt0x64_0209fe10P21IntField0x64_0209fe10i(*(Mgr021f2e6c**)(self + regionalOffset1), found_entries[*(short*)(self + regionalOffset4)].bits.id);
+            ResetFields0209e46c((char*)(*(Mgr021f2e6c**)(self + regionalOffset1)));
+            SetIntAt0x64_0209fe10((IntField0x64_0209fe10*)(*(Mgr021f2e6c**)(self + regionalOffset1)), found_entries[*(short*)(self + regionalOffset4)].bits.id);
             g[0] = 4;
         }
     } else if (state == 4) {
         if (*(short*)(self + regionalOffset3) == 1) {
             *(short*)(self + regionalOffset3) = 2;
         } else {
-            _Z21PollOv017Task0209fe18P17TaskState0209fe18(*(Mgr021f2e6c**)(self + regionalOffset1));
+            PollOv017Task0209fe18((TaskState0209fe18*)(*(Mgr021f2e6c**)(self + regionalOffset1)));
         }
         char* msg = 0;
         int key = (*(Mgr021f2e6c**)(self + regionalOffset1))->key6c;
         if (key > 0) {
             if (*(short*)(self + regionalOffset3) == 2) {
-                msg = _Z22FindValueByHalfwordKeyP8List794ci(*(IdList021f2e6c**)(self + regionalOffset2), (short)key);
+                msg = FindValueByHalfwordKey((List794c*)(*(IdList021f2e6c**)(self + regionalOffset2)), (short)key);
             } else {
                 g[0] = 11;
                 return *(int*)(self + regionalOffset8);
             }
         }
-        if (_Z32AreFields64And68AllOnes_021f3a8cP17Fields64_021f3a8c(*(Mgr021f2e6c**)(self + regionalOffset1)) != 0 || msg != 0) {
+        if (AreFields64And68AllOnes_021f3a8c((Fields64_021f3a8c*)(*(Mgr021f2e6c**)(self + regionalOffset1))) != 0 || msg != 0) {
             Entry021f2e6c* entries = tbl->entries;
-            if (_Z32AreFields64And68AllOnes_021f3a8cP17Fields64_021f3a8c(*(Mgr021f2e6c**)(self + regionalOffset1)) != 0) {
+            if (AreFields64And68AllOnes_021f3a8c((Fields64_021f3a8c*)(*(Mgr021f2e6c**)(self + regionalOffset1))) != 0) {
                 if (entries[*(short*)(self + regionalOffset4)].bits.b14) {
                     entries[*(short*)(self + regionalOffset4)].bits.b15 = 1;
                 }
@@ -385,12 +396,12 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             if (msg != 0) {
                 func_02046380(st);
                 for (int i = 0; i < 4; i++) {
-                    _Z17StoreInArray0x8b0P11StoreStructii(st, i, (*(Mgr021f2e6c**)(self + regionalOffset1))->arr70[i]);
+                    StoreInArray0x8b0((StoreStruct*)st, i, (*(Mgr021f2e6c**)(self + regionalOffset1))->arr70[i]);
                 }
 #if defined(jpn)
-                func_0204500c(st, _Z22FindValueByHalfwordKeyP8List794ci(*(IdList021f2e6c**)(self + regionalOffset2), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1);
+                func_0204500c(st, FindValueByHalfwordKey((List794c*)(*(IdList021f2e6c**)(self + regionalOffset2)), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1);
 #else
-                func_0204500c(st, _Z22FindValueByHalfwordKeyP8List794ci(*(IdList021f2e6c**)(self + regionalOffset2), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1, 0xe3);
+                func_0204500c(st, FindValueByHalfwordKey((List794c*)(*(IdList021f2e6c**)(self + regionalOffset2)), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1, 0xe3);
 #endif
 
                 st[regionalOffset6] = 0;
@@ -416,24 +427,24 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                             ResetNameState02048614(obj);
                             *(short*)(obj + 4) = idx;
                             func_02049c88(obj, p13c);
-                            _Z28SetupFieldsFromParam02048850P11Obj02048850P13Param02048850(obj, p144);
+                            SetupFieldsFromParam02048850((Obj02048850*)obj, (Param02048850*)p144);
                             CopyObjectFields02048588(node, obj);
                             *(int*)(obj + 0x138) = saved;
-                            _ZN8Object3D10SetField06Et(obj, *(unsigned short*)(self + regionalOffset11));
-                            _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(obj, 0);
+                            ((Object3D*)obj)->SetField06(*(unsigned short*)(self + regionalOffset11));
+                            SetByte0xbeShiftPrev((Bytes02033b88*)obj, 0);
                             obj[0xc2] |= 0x20;
-                            _ZN8Object3D17SetInheritedAlphaEi(obj, 0x1f);
-                            _ZN8Object3D11MakeVisibleEv(obj);
+                            ((Object3D*)obj)->SetInheritedAlpha(0x1f);
+                            ((Object3D*)obj)->MakeVisible();
                             SetSubstructByte0x56(obj);
                             void* cam = func_ov000_02160f14(self);
                             func_ov000_0216d370(cam, 1, 1, 1);
                             SetFlagOrState0216d530(cam, idx);
-                            int height = _ZNK8Object3D9GetHeightEv(obj);
+                            int height = ((Object3D*)obj)->GetHeight();
                             int y = (int)(((long long)height * 0x4cc + 0x800) >> 12);
                             if (y < 0) {
                                 y = 0;
                             }
-                            _Z19SetFields0x10To0x18Phiii(cam, 0, y, 0);
+                            SetFields0x10To0x18((unsigned char*)cam, 0, y, 0);
                             int z = (int)(((long long)height * 0x2333 + 0x800) >> 12);
                             int y2 = y + 0x800;
                             if (y2 < 0) {
@@ -459,19 +470,19 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                     GameState* gs = GameState::GetInstance();
                     unsigned char* obj = (unsigned char*)gs->GetGameObjectByIndex(*(short*)(self + regionalOffset12));
                     if (obj != 0) {
-                        int alpha = _ZNK8Object3D17GetInheritedAlphaEv(obj);
+                        int alpha = ((Object3D*)obj)->GetInheritedAlpha();
                         if (*(unsigned char*)(self + regionalOffset13) == 0 && alpha == 0x1f) {
-                            _ZN8Object3D24TransitionInheritedAlphaEii(obj, 0, 500);
+                            ((Object3D*)obj)->TransitionInheritedAlpha(0, 500);
                             *(unsigned char*)(self + regionalOffset13) = 1;
                         }
                         if (alpha <= 0) {
-                            _ZN8Object3D10MakeHiddenEv(obj);
+                            ((Object3D*)obj)->MakeHidden();
                             ClearSubstructByte0x56(obj);
                             *(unsigned char*)(self + regionalOffset13) = 0;
                             void* cam = func_ov000_02160f14(self);
                             Blk021f2e6c blk = *GetPtrField0x4(cam);
                             func_ov000_0216d2d0(cam);
-                            _Z25CopyGroupedBlocks0202ed0cP11Dst0202ed0cP11Src0202ed0c(cam, &blk);
+                            CopyGroupedBlocks0202ed0c((Dst0202ed0c*)cam, (Src0202ed0c*)&blk);
                             ResetNameState02048614(obj);
                             *(short*)(self + regionalOffset12) = 0;
                             done = 1;
@@ -483,7 +494,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             }
         }
         if (done != 0) {
-            if (_Z32AreFields64And68AllOnes_021f3a8cP17Fields64_021f3a8c(*(Mgr021f2e6c**)(self + regionalOffset1)) != 0) {
+            if (AreFields64And68AllOnes_021f3a8c((Fields64_021f3a8c*)(*(Mgr021f2e6c**)(self + regionalOffset1))) != 0) {
                 g[0]++;
             } else {
                 (*(Mgr021f2e6c**)(self + regionalOffset1))->key6c = -1;

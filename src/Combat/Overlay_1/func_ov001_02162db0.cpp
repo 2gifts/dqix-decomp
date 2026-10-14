@@ -44,8 +44,10 @@ struct SlotIds02162db0 {
 
 extern "C" int func_ov017_021d60f4(void* args);
 extern "C" Combatant02162db0* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gameState, int combatantId);
-extern "C" short* _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(Combatant02162db0* combatant);
-extern "C" int _Z28GetHalfwordEntryFromField150P22Field150Holder02052df8i(Combatant02162db0* combatant, int index);
+struct Field150Holder02052e2c;
+short* GetField150Ptr0x488_02052e2c(Field150Holder02052e2c*);
+struct Field150Holder02052df8;
+int GetHalfwordEntryFromField150(Field150Holder02052df8*, int);
 extern "C" void func_02052d7c(Combatant02162db0* combatant, int index, short value);
 void* GetPtrField0x2a04(GameState* gameState);
 void ClearBitsInWord(unsigned int* word, unsigned int mask);
@@ -96,7 +98,7 @@ extern "C" ARM int func_ov001_02162db0(void* args, int argc) {
     if (&combatant->record->slots[(unsigned char)data_ov001_02164a30[slot]] == NULL) {
         return 0;
     }
-    values = _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(combatant);
+    values = GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)combatant);
     if (values == NULL) {
         return 0;
     }
@@ -116,7 +118,7 @@ extern "C" ARM int func_ov001_02162db0(void* args, int argc) {
         signed char type = saved->type;
         saved->value = -1;
         saved->type = -1;
-        if (_Z28GetHalfwordEntryFromField150P22Field150Holder02052df8i(combatant, slot) < 0 && type != 6) {
+        if (GetHalfwordEntryFromField150((Field150Holder02052df8*)combatant, slot) < 0 && type != 6) {
             func_02052d7c(combatant, slot, value);
         }
     }

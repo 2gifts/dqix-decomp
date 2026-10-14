@@ -51,7 +51,8 @@ struct Header0218dfd8 {
 extern "C" ActorListManager* func_02012fe4(void);
 ActorEntry* GetActorEntryByIndex(ActorListManager* manager, int index);
 unsigned int IsFlag0x1ceBit0x8Set(unsigned char* obj);
-extern "C" short _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_(Vector3fix* from, int baseAngle, Vector3fix* to);
+struct Vec3;
+short GetAbsAngleDeltaBetween_021a4754(Vec3*, int, Vec3*);
 int IsField0Null(void** obj);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 void InitObj0219a674(unsigned char* self);
@@ -100,7 +101,7 @@ extern "C" ARM int func_ov017_0218dfd8(Actor0218dfd8* self) {
             moved = 1;
         }
         if (dist < pushRadius + 0x400) {
-            int angle = _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_(&pos, (short)self->obj3D.rotation_.y, &b);
+            int angle = GetAbsAngleDeltaBetween_021a4754((Vec3*)&pos, (short)self->obj3D.rotation_.y, (Vec3*)&b);
             if (angle < bestAngle) {
                 bestAngle = angle;
                 bestIndex = i;

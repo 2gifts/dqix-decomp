@@ -4,7 +4,6 @@
 
 int fix32ReduceAngle0To2Pi(int angle);
 struct S_377d4;
-extern "C" int _ZNK8Object3D25IsTransitioningAnimationsEv(struct S_377d4* obj);
 struct Bytes02033b88;
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
 int fix32SignedAngleDistance(int a, int b);
@@ -60,7 +59,7 @@ ARM void AdvanceFacingAngleTowardTarget(struct Obj02033710* obj) {
     _ZN8Vector3iaSERKS_((int*)&obj->pos, (int*)&tmp);
     if (atTarget) {
         if (obj->flagsC4.hi) {
-            if (!_ZNK8Object3D25IsTransitioningAnimationsEv((struct S_377d4*)obj)) {
+            if (!((Object3D*)((struct S_377d4*)obj))->IsTransitioningAnimations()) {
                 obj->flagsC4.hi = 0;
                 if (obj->stateBe == 0) {
                     if (obj->name != NULL) {

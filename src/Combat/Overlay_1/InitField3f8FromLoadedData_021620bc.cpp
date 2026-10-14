@@ -2,10 +2,10 @@
 #include "Combat/Main/CopyRecord0200fbb4.h"
 #include "GameState/GameState.h"
 
-extern "C" void* _Z20GetField0x3f8AddressP9GameState(void* battle);
+void* GetField0x3f8Address(GameState*);
 extern "C" void* func_02012fe4(void);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" void _Z18InitStruct02070378Pc(void* obj);
+void InitStruct02070378(char*);
 
 #if defined(jpn)
 enum { kMapIndex = 0x23db, kPosition = 0x23e0, kAngle = 0x23ec };
@@ -29,11 +29,11 @@ struct S3f8 {
 extern "C" ARM int func_ov001_021620bc(void) {
     int tmpVec[3];
     void* battle = GameState::GetInstance();
-    struct S3f8* obj = (struct S3f8*)_Z20GetField0x3f8AddressP9GameState(battle);
+    struct S3f8* obj = (struct S3f8*)GetField0x3f8Address((GameState*)battle);
     char* data = (char*)func_02012fe4();
     _ZN8Vector3iaSERKS_(tmpVec, (int*)(data + kPosition));
     short shortCc = *(short*)(data + kAngle);
-    _Z18InitStruct02070378Pc(obj);
+    InitStruct02070378((char*)obj);
     obj->field2 = 1;
     obj->field7 = 1;
     obj->field0 = (short)(*(signed char*)(data + kMapIndex) + 0x1c40 + 0x8000);

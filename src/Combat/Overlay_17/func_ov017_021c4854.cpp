@@ -3,7 +3,6 @@
 
 void* GetData02100044(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 void DispatchWithZeroExtras_02193428(void* a, void* b);
 
 struct Obj021c4854 {
@@ -46,6 +45,6 @@ extern "C" ARM void func_ov017_021c4854(struct Obj021c4854* obj, unsigned char b
 
 	GameState* battle = GameState::GetInstance();
 	GameObject* c = battle->GetUnknownGameObject();
-	_ZN8Object3D10EnableFlagEi((unsigned char*)c, 0x4000000);
+	((Object3D*)((unsigned char*)c))->EnableFlag(0x4000000);
 	DispatchWithZeroExtras_02193428(c, 0);
 }

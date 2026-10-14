@@ -1,11 +1,10 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" int func_ov017_021d60f4(void*);
 extern "C" int func_ov017_0218b5b0(void);
 int GetField4334_021bdbc0(unsigned char* base);
 extern "C" int func_ov017_021bdbcc(void*);
-extern "C" void _ZN8Object3D11MakeVisibleEv(void*);
-extern "C" void _ZN8Object3D10MakeHiddenEv(void*);
 
 // USA: func_ov001_02162174  (semantic: SetOrClearFlag6cForFields_02162174)
 extern "C" ARM int func_ov001_02162174(void* self, int mode) {
@@ -18,15 +17,15 @@ extern "C" ARM int func_ov001_02162174(void* self, int mode) {
 	if (extra == 0 || (extra & 1)) {
 		int f1 = GetField4334_021bdbc0(base);
 		if (f1 != 0) {
-			if (flagWord != 0) _ZN8Object3D11MakeVisibleEv((void*)f1);
-			else _ZN8Object3D10MakeHiddenEv((void*)f1);
+			if (flagWord != 0) ((Object3D*)((void*)f1))->MakeVisible();
+			else ((Object3D*)((void*)f1))->MakeHidden();
 		}
 	}
 	if (extra & 2) {
 		int f2 = func_ov017_021bdbcc(base);
 		if (f2 != 0) {
-			if (flagWord != 0) _ZN8Object3D11MakeVisibleEv((void*)f2);
-			else _ZN8Object3D10MakeHiddenEv((void*)f2);
+			if (flagWord != 0) ((Object3D*)((void*)f2))->MakeVisible();
+			else ((Object3D*)((void*)f2))->MakeHidden();
 		}
 	}
 	return 1;

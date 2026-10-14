@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Obj02048cf0;
 
@@ -19,17 +20,17 @@ struct Obj02048cf0 {
     Inner02048cf0* ptr;
 };
 
-extern "C" int _Z20GetSubstructByte0x1ePh(struct Obj02048cf0* obj);
-extern "C" int _Z20GetSubstructByte0x1dPh(struct Obj02048cf0* obj);
-extern "C" int _Z20GetSubstructByte0x1cPh(struct Obj02048cf0* obj);
-extern "C" void _Z20SetSubstructByte0x1cPhh(struct Obj02048cf0* obj, unsigned char v);
-extern "C" void _Z20SetSubstructByte0x1dPhh(struct Obj02048cf0* obj, unsigned char v);
-extern "C" void _Z20SetSubstructByte0x1ePhh(struct Obj02048cf0* obj, unsigned char v);
-extern "C" void _Z41SetSubstructFields0x10And0x18ClearFlag0x1PhPi(struct Obj02048cf0* obj, int* src);
-extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(struct Obj02048cf0* obj, int v);
-extern "C" int _ZNK8Object3D25IsTransitioningAnimationsEv(struct Obj02048cf0* obj);
-extern "C" void _ZN8Object3D25SetAnimationPlaybackSpeedEsi(struct Obj02048cf0* obj, short a, short b);
-extern "C" void _Z23ResetInnerState02048c90P11Obj02048c90(struct Obj02048cf0* obj);
+int GetSubstructByte0x1e(unsigned char*);
+int GetSubstructByte0x1d(unsigned char*);
+int GetSubstructByte0x1c(unsigned char*);
+void SetSubstructByte0x1c(unsigned char*, unsigned char);
+void SetSubstructByte0x1d(unsigned char*, unsigned char);
+void SetSubstructByte0x1e(unsigned char*, unsigned char);
+void SetSubstructFields0x10And0x18ClearFlag0x1(unsigned char*, int*);
+struct Bytes02033b88;
+void SetByte0xbeShiftPrev(Bytes02033b88*, int);
+struct Obj02048c90;
+void ResetInnerState02048c90(Obj02048c90*);
 extern "C" struct Vec2_0216f74c func_ov000_0216f74c(int* in);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
@@ -37,15 +38,15 @@ extern Vec3_02048cf0 data_020e7b48;
 
 // USA: func_02048cf0
 extern "C" ARM void func_02048cf0(struct Obj02048cf0* obj, int flag) {
-    int cell = _Z20GetSubstructByte0x1ePh(obj);
+    int cell = GetSubstructByte0x1e((unsigned char*)obj);
     if (cell == 0xff) {
-        cell = _Z20GetSubstructByte0x1dPh(obj);
+        cell = GetSubstructByte0x1d((unsigned char*)obj);
     }
     if (cell == 0xff) {
-        cell = _Z20GetSubstructByte0x1cPh(obj);
+        cell = GetSubstructByte0x1c((unsigned char*)obj);
     }
     if (flag != 0) {
-        cell = _Z20GetSubstructByte0x1cPh(obj);
+        cell = GetSubstructByte0x1c((unsigned char*)obj);
     }
     if (cell != 0xff) {
         struct Vec2_0216f74c pos = func_ov000_0216f74c(&cell);
@@ -53,21 +54,21 @@ extern "C" ARM void func_02048cf0(struct Obj02048cf0* obj, int flag) {
         fields.v[0] = pos.x;
         fields.v[2] = pos.y;
         unsigned int flags20 = obj->ptr->flags20;
-        _Z41SetSubstructFields0x10And0x18ClearFlag0x1PhPi(obj, fields.v);
+        SetSubstructFields0x10And0x18ClearFlag0x1((unsigned char*)obj, fields.v);
         obj->ptr->flags20 = flags20;
         if (flags20 & 0x21) {
             _ZN8Vector3iaSERKS_(obj->vec44, fields.v);
         }
     }
-    _Z20SetSubstructByte0x1cPhh(obj, cell & 0xff);
-    _Z20SetSubstructByte0x1dPhh(obj, 0xff);
+    SetSubstructByte0x1c((unsigned char*)obj, cell & 0xff);
+    SetSubstructByte0x1d((unsigned char*)obj, 0xff);
     if (flag == 0) {
-        _Z20SetSubstructByte0x1ePhh(obj, 0xff);
+        SetSubstructByte0x1e((unsigned char*)obj, 0xff);
     }
     if (obj->b_be == 0) {
-        _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(obj, 0);
-        _ZNK8Object3D25IsTransitioningAnimationsEv(obj);
+        SetByte0xbeShiftPrev((Bytes02033b88*)obj, 0);
+        ((Object3D*)obj)->IsTransitioningAnimations();
     }
-    _ZN8Object3D25SetAnimationPlaybackSpeedEsi(obj, 0x1000, 0);
-    _Z23ResetInnerState02048c90P11Obj02048c90(obj);
+    ((Object3D*)obj)->SetAnimationPlaybackSpeed(0x1000, 0);
+    ResetInnerState02048c90((Obj02048c90*)obj);
 }

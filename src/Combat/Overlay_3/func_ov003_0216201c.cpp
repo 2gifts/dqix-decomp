@@ -32,12 +32,14 @@ struct Scene {
 
 extern int data_02108760;
 extern "C" void func_020813ec(void *, int);
-extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(void *);
+struct Obj0208203c;
+void ResetWithSub0208203c(Obj0208203c*);
 int FindMappedMemberId02080468(void *, int);
 extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
-extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void *);
+struct Cont0207fe44;
+void CallFunc0204c804OverAllElems(Cont0207fe44*);
 int CountValidCombatantsMinusField_02160b84(void *);
 extern "C" int func_ov003_02160a68(Scene *);
 extern "C" int func_ov003_02160854(Scene *);
@@ -45,7 +47,7 @@ extern "C" void func_ov003_02160c58(Scene *, short *, short *);
 void SetEntryLowNibbleAndElement02080c68(void *, int, int);
 extern "C" void *func_0205ec34();
 unsigned char *GetFieldAt0x150(unsigned char *);
-extern "C" int _Z19CopyOutRegion0x5718PcPv(GameState *, void *);
+int CopyOutRegion0x5718(char*, void*);
 void SetOrClearBitInArray(void *, unsigned char *, int, int);
 int TestBitInByteArray(int, unsigned char *, int);
 int TestBitInArray0x8ec(unsigned char *, int);
@@ -63,7 +65,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
     Entries *entries     = self->entries;
 
     if (state == 0) {
-        _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+        CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
         self->h488 = 0x1e;
         if (*(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0xf7c) == 1) {
             self->h488 = 0x1d;
@@ -72,7 +74,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
         self->h474   = self->h48a;
         entries->sel = self->h48a;
         func_020813ec(entries, self->h488);
-        _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
+        ResetWithSub0208203c((Obj0208203c*)self->sub308);
         self->p470  = 0;
         self->state = self->state + 1;
         self->flags &= ~0x300;
@@ -81,7 +83,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
         SetEntryLowNibbleAndElement02080c68(entries, self->h488, 0);
         if (func_ov003_02160854(self) != 0) {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
-            _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
+            ResetWithSub0208203c((Obj0208203c*)self->sub308);
             self->p470 = 0;
             switch (self->h48a) {
                 case 0xb4:
@@ -92,18 +94,18 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
                         self->h484 = 6;
                         self->h486 = 2;
                     } else if (*(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0x2000 + 0xc8c) == 0) {
-                        _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+                        CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                         self->c4a3  = 2;
                         self->state = 0;
                     } else {
-                        _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+                        CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                         self->h484  = 0x4c;
                         self->c4a3  = 2;
                         self->state = 4;
                     }
                     break;
                 case 0xb8: {
-                    int n           = _Z19CopyOutRegion0x5718PcPv(GameState::GetInstance(), &self->list);
+                    int n           = CopyOutRegion0x5718((char*)GameState::GetInstance(), &self->list);
                     self->cnt       = n;
                     unsigned char m = self->cnt;
                     unsigned char i;
@@ -126,7 +128,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
                         self->h484 = 0x45;
                         self->h486 = 2;
                     } else {
-                        _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+                        CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                         self->h484  = 0xa;
                         self->c4a3  = 3;
                         self->state = 0;
@@ -140,7 +142,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
                     func_ov003_02160c58(self, &a, &b);
                     b = b - (gp[0xf7c] - 1);
                     if (b > 0) {
-                        _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+                        CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                         self->c4a3 = 4;
                         self->h484 = 0x13;
                         self->flags |= 2;
@@ -154,7 +156,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
                 case 0xb5:
                 case 0xb9:
                     if (*(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0x2000 + 0xc8c) != 0) {
-                        _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+                        CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                         self->c4a3 = 5;
                         self->c49f = 0;
                         SetOrClearBitInArray(bits, bits + 0x8c, 0x785, 1);
@@ -167,7 +169,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
                     break;
                 case 0xb6:
                 case 0xba:
-                    _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+                    CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                     if (TestBitInByteArray((int) bits, bits + 0x8c, 0x784) != 0 && field != 0 &&
                         TestBitInArray0x8ec(field, 0x11e) == 0)
                     {
@@ -184,7 +186,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
             }
             SetEntryLowNibbleAndElement02080c68(entries, self->h488, 1);
         } else if (func_ov003_02160a68(self) != 0) {
-            _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+            CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
             if (TestBitInByteArray((int) bits, bits + 0x8c, 0x784) != 0 && field != 0 &&
                 TestBitInArray0x8ec(field, 0x11e) == 0)
             {

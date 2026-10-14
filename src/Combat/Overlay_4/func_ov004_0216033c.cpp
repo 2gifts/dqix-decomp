@@ -8,7 +8,8 @@ enum { field7=7,fieldB=0xb,field6=6,field8=8,extensionOffset=0x150,statsOffset=0
 
 extern void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag);
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
-extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* battleStruct, int id);
+struct GameState;
+void* GetCombatantWithFlag0x100(GameState*, int);
 extern int GetFieldAt0x150(unsigned char* obj);
 extern "C" void* func_ov011_021849c8(void* p);
 extern int AccumulateFlaggedSlotBits02085fb4(unsigned char* actor);
@@ -149,7 +150,7 @@ extern "C" ARM int func_ov004_0216033c(void* a) {
     int combatantId = *(int*)((char*)D0 + 0x1c);
     unsigned char sb = *(unsigned char*)((char*)D0 + field8);
     void* bs = _ZN9GameState11GetInstanceEv();
-    combatant = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs, combatantId);
+    combatant = (unsigned char*)GetCombatantWithFlag0x100((GameState*)bs, combatantId);
     if (!combatant) goto stats_done;
     base150 = (unsigned char*)GetFieldAt0x150(combatant);
     if (!base150) goto stats_done;
@@ -354,7 +355,7 @@ stats_done:
     int combatantId2 = *(int*)((char*)D0 + 0x1c);
     unsigned char sb2 = *(unsigned char*)((char*)D0 + field8);
     void* bs2 = _ZN9GameState11GetInstanceEv();
-    unsigned char* combatant2 = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs2, combatantId2);
+    unsigned char* combatant2 = (unsigned char*)GetCombatantWithFlag0x100((GameState*)bs2, combatantId2);
     FNode0216033c* iconNode;
     int tv;
     FNode0216033c* nameNode;

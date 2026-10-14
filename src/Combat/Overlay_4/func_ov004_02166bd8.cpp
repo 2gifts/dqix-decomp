@@ -60,9 +60,10 @@ extern "C" void func_ov023_021f65d4(void*, int, int);
 Found0208d994* FindElementByKey0208d994(List0208d994*, int);
 extern "C" void _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30*, unsigned short, unsigned int, unsigned int);
 Node02165ea4* SetFieldIfType1_02165ea4_02165ea4(void*, int, int);
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(GameState*);
+struct Struct0200fb08;
+int NormalizeField5_0200fb08(Struct0200fb08*);
 unsigned int GetTableByteOrFF(GetTableByteOrFFData*, unsigned int);
-extern "C" int _Z26TestBitInByteArray02096100iPhi(GetTableByteOrFFData*, unsigned char*, int);
+int TestBitInByteArray02096100(int, unsigned char*, int);
 const char* Lookup4Entry_021f63ac(void*, int, int);
 extern "C" void* memset(void*, int, unsigned int);
 void AppendXTag(char*, int);
@@ -118,7 +119,7 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
                     node->field46 = 0;
                     node->hidden = (i != 0);
                     if (i >= 1 && i <= 3) {
-                        int lang = _Z24NormalizeField5_0200fb08P14Struct0200fb08(GameState::GetInstance());
+                        int lang = NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance());
                         int mode = 2;
                         switch (lang) {
                         case 4:
@@ -136,7 +137,7 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
                     extra = 1;
                 }
                 unsigned int id = GetTableByteOrFF(table, (unsigned char)entry->key);
-                int seen = _Z26TestBitInByteArray02096100iPhi(table, bits + 0x400, id);
+                int seen = TestBitInByteArray02096100((int)table, bits + 0x400, id);
                 int type = 10;
                 const char* text = found->text;
                 switch (entry->state) {

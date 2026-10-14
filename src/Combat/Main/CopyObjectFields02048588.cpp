@@ -1,8 +1,7 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" void _ZN8Object3D14ShallowCloneToEPS_(void* self);
-extern "C" int _ZNK8Object3D8GetFlagsEv(unsigned char* obj);
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 
 struct TargetObj02048588 {
     unsigned char pad[0x10];
@@ -21,8 +20,8 @@ ARM void CopyObjectFields02048588(unsigned char* self, unsigned char* dst) {
         *target = *(int*)(self + 0xb4);
     }
     *(int*)(dst + 0x134) = *(int*)(self + 0xb0) + 0x2c;
-    if (_ZNK8Object3D8GetFlagsEv(self) & 0x20000000) {
-        _ZN8Object3D10EnableFlagEi(dst, 0x20000000);
+    if (((Object3D*)self)->GetFlags() & 0x20000000) {
+        ((Object3D*)dst)->EnableFlag(0x20000000);
     }
     TargetObj02048588* p = *(TargetObj02048588**)(self + 0xb0);
     unsigned int bit = p->flag27;

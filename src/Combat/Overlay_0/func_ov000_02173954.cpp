@@ -1,6 +1,5 @@
 #include <globaldefs.h>
-
-
+#include "GameState/GameState.h"
 
 struct Obj0204b010;
 struct Obj0204b8d0;
@@ -20,11 +19,9 @@ void* GetEntryByIndexStride0x10(struct EntryList0204af14*, unsigned int);
 void CallFunc0204b620IfField0x14_0204b878(struct Obj0204b878*, int, int, int, short, short, short, short, unsigned short);
 void SetFieldRange0217f5e4(struct Struct0217f5e4*, int);
 
-
 extern "C" void func_0204b04c(void*, int);
 extern "C" void* func_0202ae18(void*);
 extern "C" void func_0203bd08(void*);
-extern "C" void* _ZN9GameState11GetInstanceEv();
 extern "C" void func_ov000_0217a8f4(void*);
 extern "C" void func_ov000_021750e4(void*);
 extern "C" void func_ov000_02175544(void*);
@@ -114,7 +111,7 @@ extern "C" ARM void func_ov000_02173954(char* obj) {
         func_ov000_02180bac(obj);
         return;
     }
-    func_0203bd08(func_0202ae18(_ZN9GameState11GetInstanceEv()));
+    func_0203bd08(func_0202ae18(GameState::GetInstance()));
     signed char* ids;
 #if defined(jpn)
     int x, y;

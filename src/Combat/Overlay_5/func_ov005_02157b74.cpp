@@ -85,17 +85,21 @@ struct Menu02157b74 {
 
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
 extern "C" char* func_ov017_0218b5b0();
-extern "C" Context02157b74* _Z19GetField1c_021a193cPi(int p);
+Context02157b74* GetField1c_021a193c(int*);
 Combatant02157b74* GetCombatantWithFlag0x100(GameState* gs, int idx);
 char* GetPtrField0x2a04(GameState* gs);
-extern "C" short _Z28GetHalfwordEntryFromField150P22Field150Holder02052df8i(Combatant02157b74* c, int slot);
-extern "C" Item02157b74* _Z24FindElementByKey020dedd0P17Container020dedd0i(void* container, short key);
+struct Field150Holder02052df8;
+short GetHalfwordEntryFromField150(Field150Holder02052df8*, int);
+struct Container020dedd0;
+Item02157b74* FindElementByKey020dedd0(Container020dedd0*, int);
 extern "C" void func_02052d7c(Combatant02157b74* c, int slot, short id);
-extern "C" void* _Z15GetFieldAt0x150Ph(Combatant02157b74* c);
+void* GetFieldAt0x150(unsigned char*);
 extern "C" void func_0208358c(void* model, Item02157b74* item, int arg);
 extern "C" void func_02083738(void* model, int type);
-extern "C" void _Z23SetPtrFieldByte021583fcP14Holder021583fcc(Combatant02157b74* c, char val);
-extern "C" Equip02157b74* _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(Combatant02157b74* c);
+struct Holder021583fc;
+void SetPtrFieldByte021583fc(Holder021583fc*, char);
+struct Field150Holder02052e2c;
+Equip02157b74* GetField150Ptr0x488_02052e2c(Field150Holder02052e2c*);
 extern "C" int func_ov005_0215840c(Menu02157b74* self, int id);
 extern "C" void func_02083e28(void* model, int arg);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
@@ -103,14 +107,17 @@ extern "C" void func_0207c378(char* list, short key, int amount, int category);
 extern "C" void _Z28DispatchByIdxAndCond021551fcPchi(Menu02157b74* self, int byteVal, int cond);
 extern "C" void func_ov005_02155544(Menu02157b74* self);
 extern "C" void func_ov005_021555c0(Menu02157b74* self);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void* obj, int a, int b);
+struct Obj0205eaa0;
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" int func_020dd4c4(signed char id, Item02157b74* item);
-extern "C" Linked02157b74* _Z26Forward10BitFields020deda4iiP14Fields020deda4(void* container, int kind, Item02157b74* item);
-extern "C" void _Z16TrySetFlags0x130Pht(Combatant02157b74* c, unsigned short flags);
+struct Fields020deda4;
+Linked02157b74* Forward10BitFields020deda4(int, int, Fields020deda4*);
+void TrySetFlags0x130(unsigned char*, unsigned short);
 extern "C" int func_0207c7a0(char* list, short key, int category);
 extern "C" int _Z33FindEntryIndexInKeyedList0207caa4P17KeyedList0207caa4ii(char* list, short key, int category);
 extern "C" void _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(char* list, short key, int amount, int category);
-extern "C" void _Z27SetEntryInKeyedList0207cb38P17KeyedList0207cb38iiic(char* list, int index, int category, short key, char amount);
+struct KeyedList0207cb38;
+void SetEntryInKeyedList0207cb38(KeyedList0207cb38*, int, int, int, char);
 void NoOp_021e4e1c(void* ctx, int actor, short key, int category);
 extern "C" void func_ov005_02154d18(void* obj, int a, int b);
 extern "C" void func_ov005_02154d50(void* obj, int a, int b);
@@ -124,7 +131,7 @@ extern unsigned char data_ov005_0215cd30[];
 extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepStock) {
     char* bag;
     GameState* gs = _ZN9GameState11GetInstanceEv();
-    Context02157b74* ctx = _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708)));
+    Context02157b74* ctx = GetField1c_021a193c((int*)(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708))));
     int bareArg;
     int actor = ctx->actor;
     Combatant02157b74* who = GetCombatantWithFlag0x100(gs, actor);
@@ -134,8 +141,8 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
 
     if (key == 0xffff) {
         int slot = data_ov005_0215cd40[self->tab];
-        short cur = _Z28GetHalfwordEntryFromField150P22Field150Holder02052df8i(who, slot);
-        Item02157b74* item = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items, cur);
+        short cur = GetHalfwordEntryFromField150((Field150Holder02052df8*)who, slot);
+        Item02157b74* item = FindElementByKey020dedd0((Container020dedd0*)self->items, (short)cur);
         if (item == 0) return;
 
         if (item->cursed == 1) {
@@ -151,18 +158,18 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
             bareKey = 0x3e8;
         }
         func_02052d7c(who, slot, -1);
-        void* model = _Z15GetFieldAt0x150Ph(who);
-        Item02157b74* bare = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items, bareKey);
+        void* model = GetFieldAt0x150((unsigned char*)who);
+        Item02157b74* bare = FindElementByKey020dedd0((Container020dedd0*)self->items, (short)bareKey);
         if (bare != 0) {
             func_0208358c(model, bare, bareArg);
         } else {
             func_02083738(model, item->equipType);
             if (item->equipType == 7) {
-                _Z23SetPtrFieldByte021583fcP14Holder021583fcc(who, 1);
+                SetPtrFieldByte021583fc((Holder021583fc*)who, 1);
             }
         }
         if (slot == 0) {
-            _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(who)->linkedId = -1;
+            GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)who)->linkedId = -1;
         }
         if (cur == 0x4680) {
             if (func_ov005_0215840c(self, who->id) != 0) {
@@ -180,7 +187,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
             func_0207c378(bag + 0x1d4, cur, 1, data_ov005_0215cd38[self->tab]);
         }
         self->entries[self->selected].id = -1;
-        _Z28DispatchByIdxAndCond021551fcPchi(self, _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708)))->actor, 1);
+        _Z28DispatchByIdxAndCond021551fcPchi(self, GetField1c_021a193c((int*)(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708))))->actor, 1);
         func_ov005_02155544(self);
         self->dirty |= 0x10;
         self->f3da8 = 0;
@@ -195,13 +202,13 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
                 }
             }
         }
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 0x5c, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 0x5c, 0);
         self->dirty |= 0x200;
         self->dirty |= 1;
         return;
     }
 
-    Item02157b74* item = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items, key);
+    Item02157b74* item = FindElementByKey020dedd0((Container020dedd0*)self->items, (short)key);
     if (item == 0) return;
 
     unsigned int kind = item->kind;
@@ -226,7 +233,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
         }
         if (refusal & 0x80) {
             self->message = 2;
-            if (_Z28GetHalfwordEntryFromField150P22Field150Holder02052df8i(who, 9) == 0x4680) {
+            if (GetHalfwordEntryFromField150((Field150Holder02052df8*)who, 9) == 0x4680) {
                 self->message = 7;
             }
             return;
@@ -249,10 +256,10 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
         return;
     }
 
-    short old = _Z28GetHalfwordEntryFromField150P22Field150Holder02052df8i(who, slot);
+    short old = GetHalfwordEntryFromField150((Field150Holder02052df8*)who, slot);
     if (old == (short)key) return;
 
-    Item02157b74* oldItem = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items, old);
+    Item02157b74* oldItem = FindElementByKey020dedd0((Container020dedd0*)self->items, (short)old);
     if (oldItem != 0 && oldItem->cursed == 1) {
         self->message = 0xc;
         self->dirty |= 0x8000;
@@ -266,20 +273,20 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
             }
         }
         func_02052d7c(who, slot, (unsigned short)key);
-        void* model = _Z15GetFieldAt0x150Ph(who);
+        void* model = GetFieldAt0x150((unsigned char*)who);
         func_0208358c(model, item, -1);
         func_02083e28(model, 0);
         func_ov017_021c9e00(who->id, 0, 0, 1);
         if (item->equipType == 7) {
-            _Z23SetPtrFieldByte021583fcP14Holder021583fcc(who, 1);
+            SetPtrFieldByte021583fc((Holder021583fc*)who, 1);
         }
-        _Z28DispatchByIdxAndCond021551fcPchi(self, _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708)))->actor, 1);
+        _Z28DispatchByIdxAndCond021551fcPchi(self, GetField1c_021a193c((int*)(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708))))->actor, 1);
     }
 
     if (kind == 0x62) {
-        Linked02157b74* linked = _Z26Forward10BitFields020deda4iiP14Fields020deda4(self->items, 0x61, item);
+        Linked02157b74* linked = Forward10BitFields020deda4((int)self->items, 0x61, (Fields020deda4*)item);
         if (linked != 0) {
-            _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(who)->linkedId = linked->id;
+            GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)who)->linkedId = linked->id;
         }
     }
 
@@ -289,14 +296,14 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
         }
         self->message = 0xd;
         self->dirty |= 0x8000;
-        _Z16TrySetFlags0x130Pht(who, 4);
+        TrySetFlags0x130((unsigned char*)who, 4);
         func_ov017_021c9e00(actor, 0, 0, 1);
     }
 
     if (item->def->sound == 1) {
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 3, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 3, 0);
     } else if (item->def->sound == 2) {
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 4, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 4, 0);
     }
 
     ctx->flags |= 4;
@@ -308,7 +315,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
         int index = _Z33FindEntryIndexInKeyedList0207caa4P17KeyedList0207caa4ii(bag + 0x1d4, key, category);
         _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(bag + 0x1d4, key, 1, category);
         if (index >= 0) {
-            _Z27SetEntryInKeyedList0207cb38P17KeyedList0207cb38iiic(bag + 0x1d4, index, category, old, 1);
+            SetEntryInKeyedList0207cb38((KeyedList0207cb38*)(bag + 0x1d4), index, category, old, 1);
         } else {
             func_0207c378(bag + 0x1d4, old, 1, category);
         }

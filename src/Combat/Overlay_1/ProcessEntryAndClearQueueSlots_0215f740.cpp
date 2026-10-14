@@ -4,6 +4,7 @@
 extern "C" int func_ov017_021d60f4(void*);
 
 #include "Combat/EntryGetterTypes.h"
+#include "World/Object3D.h"
 struct EntryList_203dce4 { char pad[0xc]; struct Entry_203dce4* entries[0x20]; };
 extern void* GetGlobalPtr021075f4(void);
 extern struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4* list, int id);
@@ -16,7 +17,6 @@ int FindEntryIndexByName02040404(struct Container02040404* container, const char
 struct Container0204039c;
 void ReleaseOrDecrementSlot0204039c(struct Container0204039c* obj, int index);
 
-extern "C" void _ZN8Object3D7DestroyEv(unsigned char* obj);
 struct State02041244;
 void ResetState0204128c(struct State02041244* obj);
 void Reset02040504(int* obj);
@@ -54,7 +54,7 @@ extern "C" ARM int func_ov001_0215f740(void* self) {
         ReleaseOrDecrementSlot0204039c((struct Container0204039c*)c, idx);
     } else {
         if (*(void**)((char*)entry + 0x18) != 0) {
-            _ZN8Object3D7DestroyEv((unsigned char*)*(void**)((char*)entry + 0x18));
+            ((Object3D*)((unsigned char*)*(void**)((char*)entry + 0x18)))->Destroy();
             ResetState0204128c((struct State02041244*)*(void**)((char*)entry + 0x18));
         }
     }

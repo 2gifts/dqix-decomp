@@ -5,15 +5,21 @@
 #define IS_JPN 0
 #endif
 
-extern "C" int _Z21FindElementByByte0xc4P7Obj2081i(void *obj, int id);
-extern "C" int _Z26FindEntryByShortId0207f0acP12List0207f0aci(void *list, int id);
-extern "C" unsigned int _Z38FindMatchingElemSumOrScaledPtr02081e18P11Obj02081e18i(void *obj, int x);
-extern "C" int _Z29FindElementWithByte0xc4Is0xffP11Obj02081de0(void *obj);
+struct Obj2081;
+int FindElementByByte0xc4(Obj2081*, int);
+struct List0207f0ac;
+int FindEntryByShortId0207f0ac(List0207f0ac*, int);
+struct Obj02081e18;
+unsigned int FindMatchingElemSumOrScaledPtr02081e18(Obj02081e18*, int);
+struct Obj02081de0;
+int FindElementWithByte0xc4Is0xff(Obj02081de0*);
 int ClearSublistEntriesFlag4(void *obj, int id);
 extern "C" int _Z37SetField0xa0AndByte0xc4IfFlag0x1ClearPhih(void *a, int c, int id);
-extern "C" int _Z36DispatchMessageAndInvokeList02081498PvS_P14Params02081498(void *obj, void *a, void *b);
+struct Params02081498;
+int DispatchMessageAndInvokeList02081498(void*, void*, Params02081498*);
 int ProcessEntryList02081574(void *obj, void *a, void *b);
-extern "C" int _Z36InvokeHandlerAfterCacheFlush0204fbf8P11Obj0204fbf8(void *a);
+struct Obj0204fbf8;
+int InvokeHandlerAfterCacheFlush0204fbf8(Obj0204fbf8*);
 
 // USA: func_020813ec  (semantic: ProcessSublistEntryAndDispatch_020813ec)
 extern "C" ARM int func_020813ec(void *obj, int id) {
@@ -21,25 +27,25 @@ extern "C" ARM int func_020813ec(void *obj, int id) {
         return 1;
     }
 
-    int a = _Z21FindElementByByte0xc4P7Obj2081i(obj, id);
-    int b = _Z26FindEntryByShortId0207f0acP12List0207f0aci((char *)obj + 0xc, id);
+    int a = FindElementByByte0xc4((Obj2081*)obj, id);
+    int b = FindEntryByShortId0207f0ac((List0207f0ac*)((char *)obj + 0xc), id);
     if (b == 0) {
         return 1;
     }
 
     unsigned char byteVal = *((unsigned char *)obj + (IS_JPN ? 0x2e : 0x3a));
-    unsigned int c = _Z38FindMatchingElemSumOrScaledPtr02081e18P11Obj02081e18i(obj, byteVal);
+    unsigned int c = FindMatchingElemSumOrScaledPtr02081e18((Obj02081e18*)obj, byteVal);
 
     if (a == 0) {
-        a = _Z29FindElementWithByte0xc4Is0xffP11Obj02081de0(obj);
+        a = FindElementWithByte0xc4Is0xff((Obj02081de0*)obj);
         ClearSublistEntriesFlag4(obj, id);
     }
 
     if (a != 0) {
         _Z37SetField0xa0AndByte0xc4IfFlag0x1ClearPhih((void *)a, c, id);
-        _Z36DispatchMessageAndInvokeList02081498PvS_P14Params02081498(obj, (void *)a, (void *)b);
+        DispatchMessageAndInvokeList02081498(obj, (void *)a, (Params02081498*)b);
         ProcessEntryList02081574(obj, (void *)a, (void *)b);
-        _Z36InvokeHandlerAfterCacheFlush0204fbf8P11Obj0204fbf8((void *)a);
+        InvokeHandlerAfterCacheFlush0204fbf8((Obj0204fbf8*)a);
     }
 
     return 0;

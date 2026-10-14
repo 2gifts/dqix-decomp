@@ -7,8 +7,9 @@ enum {regionalOffset0=0x128, regionalOffset1=0x130, regionalOffset2=0x4e4};
 #include "GameState/GameState.h"
 
 int GetWord0x0(int* obj);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
+int IsBrightnessTransitionActive(GameResources*);
 
 extern "C" void func_ov023_021e5020(void* p);
 extern "C" void func_ov023_021e4c18(void* obj);
@@ -42,10 +43,10 @@ extern "C" ARM void func_ov023_021e3db0(struct Obj021e3db0* obj) {
         if (obj->field128 != 0 && *((unsigned char*)obj->field128 + 0xc12) != 0) {
             return;
         }
-        _Z13SetBrightnessP13GameResourcesii((void*)val, 0, 15);
+        SetBrightness((GameResources*)val, 0, 15);
         obj->field4e4++;
     } else if (obj->field4e4 == 1) {
-        if (!_Z28IsBrightnessTransitionActiveP13GameResources((int*)val)) {
+        if (!IsBrightnessTransitionActive((GameResources*)val)) {
             obj->field4e4++;
         }
     } else if (obj->field4e4 == 2) {

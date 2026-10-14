@@ -6,7 +6,8 @@ extern float data_020f1708[8];
 extern float data_02109bcc[8];
 
 void BlankFunction0209cdf8(void*);
-extern "C" void _Z31ResetWordListReturnSelf0209ce00P16WordList0209cbb8(void* list);
+struct WordList0209cbb8;
+void ResetWordListReturnSelf0209ce00(WordList0209cbb8*);
 ARM void BlankFunction0209cdfc(void);
 extern "C" void __register_global_object(void* obj, void* func, void* node);
 
@@ -29,5 +30,5 @@ extern "C" __declspec(initcode) ARM void __sinit_020e6368(void) {
     data_02109bcc[2] = t;
     BlankFunction0209cdf8(&data_02109bf4);
     __register_global_object(&data_02109bf4, (void*)BlankFunction0209cdfc, &data_02109be8);
-    _Z31ResetWordListReturnSelf0209ce00P16WordList0209cbb8(&data_02109be0);
+    ResetWordListReturnSelf0209ce00((WordList0209cbb8*)&data_02109be0);
 }

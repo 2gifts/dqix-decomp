@@ -20,8 +20,6 @@ struct BattleManagerCtx020da244 {
 
 void RunCombatFlagStateAction(void* ctx);
 void ResetFields020da2e4(unsigned char* entry);
-extern "C" void _ZN13SafeAllocator7DestroyEv(void* self);
-extern "C" void _ZN13SafeAllocator21ResetAllocatorPointerEv(void* self);
 
 // USA: func_020da244  (semantic: ResetBattleManagerState_020da244)
 extern "C" ARM void func_020da244(BattleManagerCtx020da244* sb) {
@@ -37,8 +35,8 @@ extern "C" ARM void func_020da244(BattleManagerCtx020da244* sb) {
         }
     }
     if (sb->f0 != 0) {
-        _ZN13SafeAllocator7DestroyEv(sb->f0);
-        _ZN13SafeAllocator21ResetAllocatorPointerEv(sb->f0);
+        ((SafeAllocator*)sb->f0)->Destroy();
+        ((SafeAllocator*)sb->f0)->ResetAllocatorPointer();
     }
     sb->f0 = 0;
     sb->f4 = 0;

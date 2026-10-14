@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Obj0RowEvent {
     char pad0[4];
@@ -16,7 +17,6 @@ struct Obj0RowEvent {
 };
 
 extern "C" void func_ov023_021f6ed8(void*);
-extern "C" void _ZN8Object3D10InitializeEv(void*);
 extern "C" void func_ov023_021fd03c(void*, int);
 
 // USA: func_ov023_021fcdd4
@@ -27,7 +27,7 @@ ARM int InitEvent14_021fcdd4(struct Obj0RowEvent* obj, int p1, int p2, int p3, i
     obj->field8 = p3;
     obj->fielda = p4;
     obj->field10 = p5;
-    _ZN8Object3D10InitializeEv((char*)obj + 0x20);
+    ((Object3D*)((char*)obj + 0x20))->Initialize();
     func_ov023_021fd03c(obj, p1);
     return 1;
 }

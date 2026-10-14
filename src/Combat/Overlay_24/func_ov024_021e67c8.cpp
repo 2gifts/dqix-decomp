@@ -20,14 +20,17 @@ struct Ctx_021e67c8 {
 };
 
 signed char GetFieldOrFallback02159e60(void* obj, int mode);
-extern "C" struct Cbt_021e67c8* _Z16GetCombatantByIDii(void* battle, int id);
+struct Cbt_021e67c8* GetCombatantByID(int, int);
 float LookupTableC0(int v);
-extern "C" int _Z31IsCombatantFlag2Mask32_021e67b0P10GameObject(struct Cbt_021e67c8* c);
+struct GameObject;
+int IsCombatantFlag2Mask32_021e67b0(GameObject*);
 void* GetPtrField0x2a04(void* gs);
-extern "C" int _Z17ArrayContainsByteP23ArrayContainsByteStructi(void* arr, int id);
-extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(void* battle, int idx);
+struct ArrayContainsByteStruct;
+int ArrayContainsByte(ArrayContainsByteStruct*, int);
+void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
 extern "C" int func_ov000_02156068(void* battle, int id, int kind, int mode);
-extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(struct Cbt_021e67c8* c);
+struct FlagObj_021dd260;
+int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
 
 // USA: func_ov024_021e67c8
 extern "C" ARM int func_ov024_021e67c8(struct Ctx_021e67c8* ctx, int mode, int targetId) {
@@ -37,7 +40,7 @@ extern "C" ARM int func_ov024_021e67c8(struct Ctx_021e67c8* ctx, int mode, int t
     if (rate > 100.0f) {
         rate = 100.0f;
     }
-    struct Cbt_021e67c8* target = _Z16GetCombatantByIDii(ctx->battle, targetId);
+    struct Cbt_021e67c8* target = GetCombatantByID((int)ctx->battle, targetId);
     if (target) {
         rate = rate * (target->stats->rate40 / 100.0f);
     }
@@ -45,19 +48,18 @@ extern "C" ARM int func_ov024_021e67c8(struct Ctx_021e67c8* ctx, int mode, int t
         if (target->stats->rank21 <= 3) {
             rate = rate * LookupTableC0((signed char)target->stats->rank21);
         }
-        if (_Z31IsCombatantFlag2Mask32_021e67b0P10GameObject(target)) {
+        if (IsCombatantFlag2Mask32_021e67b0((GameObject*)target)) {
             rate = rate * LookupTableC0(1);
         }
-        if (_Z17ArrayContainsByteP23ArrayContainsByteStructi(
-                GetPtrField0x2a04(GameState::GetInstance()), targetId) &&
+        if (ArrayContainsByte((ArrayContainsByteStruct*)(GetPtrField0x2a04(GameState::GetInstance())), targetId) &&
             target && target->stats->rank21 == 1) {
-            _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(ctx->battle, 0);
+            IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)ctx->battle, 0);
         }
     }
     if (func_ov000_02156068(ctx->battle, targetId, 0, 1)) {
         rate = NextRandomMax((struct Random*)ctx->battle, 2);
     }
-    if (_Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(target)) {
+    if (IsFlagBit24Set_021dd260((FlagObj_021dd260*)target)) {
         rate = 0.5f * rate;
     }
     return rate;

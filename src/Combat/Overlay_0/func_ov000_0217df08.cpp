@@ -59,7 +59,8 @@ Messages0217df08* GetGlobalField0x1c020421a0();
 extern "C" Node0217df08* func_ov000_02161318(void* obj, int id);
 int IsFlag0x28Bit0Set(void*);
 void Clear12Bytes020e46c4(void*);
-extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
+struct Container020e0310;
+const char* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" int sprintf(char* buffer, const char* format, ...);
 Combatant0217df08* GetCombatantWithFlag0x400(GameState*, int);
@@ -74,9 +75,9 @@ extern "C" void __clear(void*, int);
 void TrimTrailingLetterCode_0217aa08(char*, char*);
 extern "C" void func_020e4f18(NameParts0217df08*, NameParts0217df08*, int);
 extern "C" void func_0204500c(Messages0217df08*, char*, int, int);
-extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(void* p, int mask);
+int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 extern "C" void func_02043124(Messages0217df08*);
-extern "C" void _Z24ReinitController02043204Pc(Messages0217df08*);
+void ReinitController02043204(char*);
 extern "C" void func_ov000_0217c638(Battle0217df08* obj, int arg1, int arg2);
 extern "C" void func_ov000_02176e3c(Battle0217df08* obj, int zero, int val, int arg1, int arg2, int one);
 
@@ -121,7 +122,7 @@ extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2
                 NameParts0217df08 original;
                 Clear12Bytes020e46c4(&names);
                 Clear12Bytes020e46c4(&parts);
-                const char* separator = _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, 6);
+                const char* separator = GetFieldByKey020e0434((Container020e0310*)self->messages, 6);
                 char* work = g->work;
                 char* text = g->text;
                 memset(work, 0, 0x960);
@@ -212,9 +213,9 @@ extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2
             self->state++;
         }
     } else if (self->state == 2) {
-        if (g->active == 0 || _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0x800) != 0) {
+        if (g->active == 0 || TestFlag0SetAndFlag1Clear((unsigned short*)&data_02114e30, 0x800) != 0) {
             func_02043124(g);
-            _Z24ReinitController02043204Pc(g);
+            ReinitController02043204((char*)g);
             self->state = 0;
             self->commands[self->index] = 0;
             self->index = self->index - 1;

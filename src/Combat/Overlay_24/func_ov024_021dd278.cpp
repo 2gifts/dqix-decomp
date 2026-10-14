@@ -1,7 +1,8 @@
 #include <globaldefs.h>
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
-extern "C" int _Z14IsFlag10088SetP7S_10088(void*);
+struct S_10088;
+int IsFlag10088Set(S_10088*);
 extern "C" void _Z29ResetFields14And18KeepFlag0x4Pht(unsigned char*,int);
 extern "C" void func_ov000_02159eac(void*,void*,int);
 GameObject* GetCombatantWithFlag0x100(GameState*,int);
@@ -24,7 +25,7 @@ extern "C" ARM void* func_ov024_021dd278(Obj021dd278* obj,int sourceID,int id,Pa
     GameObject* target=GetCombatantByID((int)obj->context,id);
     if(!target)return 0;
     int active=0;
-    if(_Z14IsFlag10088SetP7S_10088(target))active=1;
+    if(IsFlag10088Set((S_10088*)target))active=1;
     unsigned short code=params->field4.code;
     union {struct{int low;int high;};unsigned long long value;} effects;
     effects.low=0;effects.high=0;

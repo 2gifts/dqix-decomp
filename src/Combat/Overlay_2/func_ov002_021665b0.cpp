@@ -96,18 +96,19 @@ struct Slot_021665b0 {
     unsigned short id;
 };
 
-extern "C" void _Z22InitStateArray02157ce0Pc(Cmd_021665b0* cmd);
+void InitStateArray02157ce0(char*);
 extern "C" void func_ov002_0215b814(Menu_021665b0* self);
 Unit_021665b0* GetCombatantChecked(GameState* gs, int id);
 extern "C" Unit_021665b0* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
-extern "C" Field_021665b0* _Z15GetFieldAt0x150Ph(Unit_021665b0* unit);
-extern "C" int _Z18GetBitInArray0x910Phi(Field_021665b0* field, int index);
+Field_021665b0* GetFieldAt0x150(unsigned char*);
+int GetBitInArray0x910(unsigned char*, int);
 extern "C" int func_0209ac28(char* obj, Unit_021665b0* unit, int index);
-extern "C" Elem_021665b0* _Z24SearchBothTables02079e2cPci(char* data, short key);
-extern "C" int _Z32ClampAndCompareThreshold02048448P14Struct02048448i(Unit_021665b0* unit, int value);
+Elem_021665b0* SearchBothTables02079e2c(char*, int);
+struct Struct02048448;
+int ClampAndCompareThreshold02048448(Struct02048448*, int);
 extern "C" void __clear(void* dst, int size);
 extern "C" void func_ov002_021536e0(char** obj);
-extern "C" void* _Z26LookupElementByKey02079ee0Pvi(char* data, int key);
+void* LookupElementByKey02079ee0(void*, int);
 extern "C" short func_ov002_021538e4(char** obj, Elem_021665b0* elem, void* sub, int target);
 extern "C" void func_ov002_021594e8(Menu_021665b0* self, int key, int target, int actor);
 char* GetGlobalField0x1c020421a0(void);
@@ -115,9 +116,10 @@ int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" int func_0205d97c(char* obj);
-extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(Menu_021665b0* self, int flag);
+int CheckFlagOrThreshold_02161b48(char*, int);
 void ReinitController02043204(char* ctl);
-extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(char* obj, int clear, int key);
+struct Struct_0205def8;
+void SetElementFlag0x20ByKey0205def8(Struct_0205def8*, int, int);
 extern "C" void func_ov016_0218b5c0(int a, int b);
 extern "C" void func_ov017_0218b5f8(int a);
 
@@ -129,7 +131,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
     Cmd_021665b0 cmd;
     Field_021665b0* field;
     Unit_021665b0* unit;
-    _Z22InitStateArray02157ce0Pc(&cmd);
+    InitStateArray02157ce0((char*)&cmd);
     ActionDataTables* data = GetData02108e10();
     signed char n = self->count - 1;
     short* maxHp = self->maxHp;
@@ -168,7 +170,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             if (member == NULL) {
                 continue;
             }
-            field = _Z15GetFieldAt0x150Ph(member);
+            field = GetFieldAt0x150((unsigned char*)member);
             if (field == NULL) {
                 continue;
             }
@@ -182,7 +184,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                 continue;
             }
             for (int k = 0x1a; k < 0x1f; k++) {
-                if (_Z18GetBitInArray0x910Phi(field, k) && func_0209ac28((char*)self + 0x2444, member, k)) {
+                if (GetBitInArray0x910((unsigned char*)field, k) && func_0209ac28((char*)self + 0x2444, member, k)) {
                     if (member->status->level >= 2) {
                         revives[id]++;
                     }
@@ -218,18 +220,18 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                     if (member == NULL) {
                         continue;
                     }
-                    Field_021665b0* field = _Z15GetFieldAt0x150Ph(member);
+                    Field_021665b0* field = GetFieldAt0x150((unsigned char*)member);
                     if (field == NULL) {
                         continue;
                     }
                     if (hp[other] <= 0) {
                         continue;
                     }
-                    if (!_Z18GetBitInArray0x910Phi(field, 0x20)) {
+                    if (!GetBitInArray0x910((unsigned char*)field, 0x20)) {
                         continue;
                     }
                     Unit_021665b0* caster = GetCombatantChecked(gs, other);
-                    if (_Z32ClampAndCompareThreshold02048448P14Struct02048448i(caster, (unsigned short)_Z24SearchBothTables02079e2cPci((char*)data, 0x23)->power)) {
+                    if (ClampAndCompareThreshold02048448((Struct02048448*)caster, (unsigned short)SearchBothTables02079e2c((char*)data, (short)0x23)->power)) {
                         found = 1;
                         break;
                     }
@@ -265,7 +267,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             if (member == NULL) {
                 continue;
             }
-            field = _Z15GetFieldAt0x150Ph(member);
+            field = GetFieldAt0x150((unsigned char*)member);
             if (field == NULL) {
                 continue;
             }
@@ -301,11 +303,11 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                 slot->score += 5;
             }
             slot->score = slot->score + revives[id] * 4;
-            if (_Z18GetBitInArray0x910Phi(field, 0x1f)) {
+            if (GetBitInArray0x910((unsigned char*)field, 0x1f)) {
                 if (func_0209ac28((char*)self + 0x2444, member, 0x1f)) {
                     slot->score += 200;
                 }
-            } else if (_Z18GetBitInArray0x910Phi(field, 0x1e)) {
+            } else if (GetBitInArray0x910((unsigned char*)field, 0x1e)) {
                 if (func_0209ac28((char*)self + 0x2444, member, 0x1e)) {
                     slot->score += 100;
                 }
@@ -338,7 +340,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             self->pairs[i].value = -1;
             self->pairs[i].key = -1;
         }
-        _Z22InitStateArray02157ce0Pc(&cmd);
+        InitStateArray02157ce0((char*)&cmd);
         cmd.actor = self->ids[self->actorIdx];
         cmd.target = self->order[self->turn].id;
         self->target = self->order[self->turn].id;
@@ -375,7 +377,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         for (i = 0, k = 0x1a; i < 5; i++, k++) {
             self->pairs[i].value = 0;
             self->pairs[i].key = 0;
-            if (!_Z18GetBitInArray0x910Phi(_Z15GetFieldAt0x150Ph(member), k)) {
+            if (!GetBitInArray0x910((unsigned char*)(GetFieldAt0x150((unsigned char*)member)), k)) {
                 continue;
             }
             if (!func_0209ac28((char*)self + 0x2444, member, k)) {
@@ -385,8 +387,8 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                 continue;
             }
             cmd.key = i + 0x1e;
-            Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci((char*)data, cmd.key);
-            void* sub = _Z26LookupElementByKey02079ee0Pvi((char*)data, elem->key);
+            Elem_021665b0* elem = SearchBothTables02079e2c((char*)data, (short)cmd.key);
+            void* sub = LookupElementByKey02079ee0((char*)data, elem->key);
             self->pairs[i].value = func_ov002_021538e4(&table, elem, sub, cmd.target);
             self->pairs[i].key = cmd.key;
         }
@@ -419,7 +421,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                     t++;
                     continue;
                 }
-                Field_021665b0* field = _Z15GetFieldAt0x150Ph(member);
+                Field_021665b0* field = GetFieldAt0x150((unsigned char*)member);
                 if (field == NULL) {
                     t++;
                     continue;
@@ -428,15 +430,15 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                     t++;
                     continue;
                 }
-                if (_Z18GetBitInArray0x910Phi(field, 0x20)) {
+                if (GetBitInArray0x910((unsigned char*)field, 0x20)) {
                     if (!func_0209ac28((char*)self + 0x2444, member, 0x20)) {
                         t++;
                         continue;
                     }
                     cmd.key = 0x23;
-                    Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci((char*)data, cmd.key);
+                    Elem_021665b0* elem = SearchBothTables02079e2c((char*)data, (short)cmd.key);
                     Unit_021665b0* caster = GetCombatantChecked(gs, self->order[t].id);
-                    if (!_Z32ClampAndCompareThreshold02048448P14Struct02048448i(caster, (unsigned short)elem->power)) {
+                    if (!ClampAndCompareThreshold02048448((Struct02048448*)caster, (unsigned short)elem->power)) {
                         t++;
                         continue;
                     }
@@ -505,9 +507,9 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             return;
         }
         Unit_021665b0* healer = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, target);
-        if (_Z18GetBitInArray0x910Phi(_Z15GetFieldAt0x150Ph(healer), 0x1e) && self->pairs[4].key > 0) {
+        if (GetBitInArray0x910((unsigned char*)(GetFieldAt0x150((unsigned char*)healer)), 0x1e) && self->pairs[4].key > 0) {
             cmd.key = 0x22;
-            if (_Z32ClampAndCompareThreshold02048448P14Struct02048448i(healer, (unsigned short)_Z24SearchBothTables02079e2cPci((char*)data, 0x22)->power)) {
+            if (ClampAndCompareThreshold02048448((Struct02048448*)healer, (unsigned short)SearchBothTables02079e2c((char*)data, (short)0x22)->power)) {
                 small = self->pairs[0].value;
                 short mid = self->pairs[1].value;
                 large = self->pairs[2].value;
@@ -622,12 +624,12 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         }
         done = 0;
         while (!done) {
-            Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci((char*)data, self->key);
+            Elem_021665b0* elem = SearchBothTables02079e2c((char*)data, (short)self->key);
             Unit_021665b0* caster = GetCombatantChecked(gs, target);
             if (caster == NULL || elem == NULL) {
                 continue;
             }
-            if (_Z32ClampAndCompareThreshold02048448P14Struct02048448i(caster, (unsigned short)elem->power) == 0) {
+            if (ClampAndCompareThreshold02048448((Struct02048448*)caster, (unsigned short)elem->power) == 0) {
                 self->key--;
                 if (self->key < 0x1e) {
                     self->turn++;
@@ -672,13 +674,13 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             int pressed = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
             int cancel = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)((char*)self + 0xec8), 0x14)) ? 1 : 0;
             int single = func_0205d97c((char*)self + 0xec8) == 1 ? 1 : 0;
-            int flagged = _Z29CheckFlagOrThreshold_02161b48Pci(self, 1);
+            int flagged = CheckFlagOrThreshold_02161b48((char*)self, 1);
             int left = TestFlag0SetAndFlag1Clear(&data_02114e30, 0xf0);
             if (single | (flagged | (cancel | (left | TestFlag0SetAndFlag1Clear(&data_02114e30, 0x100))))) {
                 ReinitController02043204(ctl);
                 self->nextA = 0x15;
                 self->nextB = 0x2b;
-                _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((char*)self + 0xec8, 1, 0x29);
+                SetElementFlag0x20ByKey0205def8((Struct_0205def8*)((char*)self + 0xec8), 1, 0x29);
                 self->result = 0;
                 self->sel28 = -1;
                 self->sel2a = -1;

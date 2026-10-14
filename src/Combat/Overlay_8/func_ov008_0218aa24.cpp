@@ -89,23 +89,25 @@ extern char data_ov008_0218b590[];
 void* GetGlobalField0x1c020421a0();
 extern "C" void __clear(void* p, unsigned int size);
 extern "C" void func_02046380(void* w);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void* w, int idx, char* str);
-extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(void* w, int idx, int value);
-extern "C" char* _Z14FindEntryByKeyP8TableA68i(void* table, int key);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
+struct StoreStruct;
+void StoreInArray0x8b0(StoreStruct*, int, int);
+char* FindEntryByKey(TableA68*, int);
 extern "C" void func_02046608(void* w, int a, char* str, char* buf, int b, int c, int d);
 extern "C" int func_020420e8(const char* text, int large);
-extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(void* obj, unsigned char keyLow, unsigned char keyHigh);
+void FindAndLinkMatchingEntry0205de24(Struct0205de24*, unsigned char, unsigned char);
 extern "C" void* memset(void* p, int v, unsigned int n);
-extern "C" Ent0218aa24* _Z15GetFieldAt0x150Ph(Member0218aa24* m);
+Ent0218aa24* GetFieldAt0x150(unsigned char*);
 extern "C" void func_ov008_0218b240(Self0218aa24* self);
 extern "C" void func_02042764(const void* codes, char* text, int value);
-extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(void* s, int key);
+void* FindElementByC40205d81c(Struct_0205d81c*, int);
 int AppendXYTag(char* dst, int x, int y);
 void AppendString02042058(char* text, const char* append);
 void AppendLineXTag02041cf4(char* dst, int color, int a, int b, int c);
 int AppendPaletteTag(char* dst, int palette);
-extern "C" void _Z14SetByteAtIndexPhih(void* base, int index, unsigned char value);
-extern "C" void _Z14SetByteInRangePhih(void* base, int index, unsigned char value);
+void SetByteAtIndex(unsigned char*, int, unsigned char);
+void SetByteInRange(unsigned char*, int, unsigned char);
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
 
 // USA: func_ov008_0218aa24
@@ -118,12 +120,12 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
     GameState* gs = GameState::GetInstance();
     __clear(buf40, 0x40);
     func_02046380(win);
-    _Z22SetIndexedName02046574P11Obj02046574iPc(win, 0, data_ov008_0218b590);
-    _Z17StoreInArray0x8b0P11StoreStructii(win, 2, 0x21);
-    func_02046608(win, 10, _Z14FindEntryByKeyP8TableA68i(self->texts, 0x1f8), buf40, 0x100, 0, 0);
+    SetIndexedName02046574((Obj02046574*)win, 0, data_ov008_0218b590);
+    StoreInArray0x8b0((StoreStruct*)win, 2, 0x21);
+    func_02046608(win, 10, FindEntryByKey((TableA68*)self->texts, 0x1f8), buf40, 0x100, 0, 0);
     int width = (func_020420e8(buf40, 0) + 0x17) & ~7;
     if (width < 0x58) width = 0x58;
-    _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(self->list, 0, 2);
+    FindAndLinkMatchingEntry0205de24((Struct0205de24*)self->list, 0, 2);
     self->c9 = 0;
     self->bc = 0x20 - (width >> 3);
     self->be = 0;
@@ -150,7 +152,7 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
         if (m == 0) {
             fail = 1;
         } else {
-            ent = _Z15GetFieldAt0x150Ph(m);
+            ent = GetFieldAt0x150((unsigned char*)m);
             if (ent == 0) fail = 1;
         }
         if (fail) {
@@ -174,16 +176,16 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
         codes = quest;
     }
     func_02042764(codes, name, 1);
-    _Z23FindElementByC40205d81cP15Struct_0205d81ci(self->list, 0);
+    FindElementByC40205d81c((Struct_0205d81c*)self->list, 0);
     AppendXYTag(self->text, (width - func_020420e8(name, 0)) / 2, 3);
     AppendString02042058(self->text, name);
     AppendLineXTag02041cf4(self->text, 0x7fff, 2, width - 2, 0xf);
 
     char* str;
     if (female) {
-        str = _Z14FindEntryByKeyP8TableA68i(self->texts, (short)(vocation + 0x46));
+        str = FindEntryByKey((TableA68*)self->texts, (short)(vocation + 0x46));
     } else {
-        str = _Z14FindEntryByKeyP8TableA68i(self->texts, (short)vocation);
+        str = FindEntryByKey((TableA68*)self->texts, (short)vocation);
     }
     int x = (width - func_020420e8(str, 0)) / 2;
     if (rank != 0) x -= 5;
@@ -197,24 +199,24 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
             AppendPaletteTag(self->text, 5);
         }
         int x2 = x + func_020420e8(str, 0);
-        str = _Z14FindEntryByKeyP8TableA68i(self->texts, (short)(rank + 0x12c));
+        str = FindEntryByKey((TableA68*)self->texts, (short)(rank + 0x12c));
         AppendXYTag(self->text, x2 + 2, 0x12);
         AppendString02042058(self->text, str);
         AppendPaletteTag(self->text, 0xf);
     }
 
     func_02046380(win);
-    _Z17StoreInArray0x8b0P11StoreStructii(win, 0, scroll);
-    _Z14SetByteAtIndexPhih(win, 0, 0);
-    _Z14SetByteInRangePhih(win, 0, 3);
-    func_02046608(win, 10, _Z14FindEntryByKeyP8TableA68i(self->texts, 0x1f6), buf80, 0x100, 0, 0);
+    StoreInArray0x8b0((StoreStruct*)win, 0, scroll);
+    SetByteAtIndex((unsigned char*)win, 0, 0);
+    SetByteInRange((unsigned char*)win, 0, 3);
+    func_02046608(win, 10, FindEntryByKey((TableA68*)self->texts, 0x1f6), buf80, 0x100, 0, 0);
     AppendXYTag(self->text, (width >> 1) - 13, 0x1e);
     AppendString02042058(self->text, buf80);
     AppendLineXTag02041cf4(self->text, 0x7fff, 2, width - 2, 0x28);
     memset(buf80, 0, 0x80);
-    _Z22SetIndexedName02046574P11Obj02046574iPc(win, 0, _Z14FindEntryByKeyP8TableA68i(self->texts, (short)(self->e1c_title + 0x1f9)));
-    _Z17StoreInArray0x8b0P11StoreStructii(win, 2, self->e1c_scroll);
-    func_02046608(win, 10, _Z14FindEntryByKeyP8TableA68i(self->texts, 0x1f8), buf80, 0x100, 0, 0);
+    SetIndexedName02046574((Obj02046574*)win, 0, FindEntryByKey((TableA68*)self->texts, (short)(self->e1c_title + 0x1f9)));
+    StoreInArray0x8b0((StoreStruct*)win, 2, self->e1c_scroll);
+    func_02046608(win, 10, FindEntryByKey((TableA68*)self->texts, 0x1f8), buf80, 0x100, 0, 0);
     AppendXYTag(self->text, 12, 0x2a);
     AppendString02042058(self->text, buf80);
     func_0205d304(self->list, self->text, 0, 0, 0, 1, 0, 0);

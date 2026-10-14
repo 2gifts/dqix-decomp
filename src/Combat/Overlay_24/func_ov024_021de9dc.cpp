@@ -3,7 +3,9 @@
 #include "GameState/GameState.h"
 struct Obj021de9dc;
 struct Params021de9dc;
-extern "C" int _Z30CheckCombatantInTable_021ea78cP16Wrapper_021ea78ciP13Obj3_021ea78c(Obj021de9dc*,int,Params021de9dc*);
+struct Obj3_021ea78c;
+struct Wrapper_021ea78c;
+int CheckCombatantInTable_021ea78c(Wrapper_021ea78c*, int, Obj3_021ea78c*);
 extern "C" short func_ov000_0215a004(void*,int,int,int,void*,Params021de9dc*,int,int);
 extern "C" void func_ov000_02159eac(void*,void*,int);
 extern "C" int func_ov000_02159f18(void*,unsigned long long,int);
@@ -29,7 +31,7 @@ extern "C" ARM void* func_ov024_021de9dc(Obj021de9dc* obj,int sourceID,int id,Pa
     effects.low=0;effects.high=0;
     hp=c->currentStats_->primaryStats.currHP;
     if(enabled && amount>0){
-        if(((unsigned char*)obj->context)[0x8e94] && _Z30CheckCombatantInTable_021ea78cP16Wrapper_021ea78ciP13Obj3_021ea78c(obj,id,params)){
+        if(((unsigned char*)obj->context)[0x8e94] && CheckCombatantInTable_021ea78c((Wrapper_021ea78c*)obj, id, (Obj3_021ea78c*)params)){
             amount=0;
             hp=func_ov000_0215a004(obj->context,sourceID,id,GetHP(c)-1,&effects,params,obj->action->flag!=0,0x20);
             func_ov000_02159eac(obj->context,&effects,0x29);

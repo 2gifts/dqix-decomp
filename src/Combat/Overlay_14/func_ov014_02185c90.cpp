@@ -94,30 +94,38 @@ extern "C" struct Loader* _ZN16BackgroundLoader11GetInstanceEv();
 extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(struct Loader*, int);
 extern "C" void _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(struct Loader*, int, void**, unsigned int*);
 extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(struct Loader*, int);
-extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void*);
-extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, int*);
+struct ActiveEntry02046900;
+int CountActiveEntries(ActiveEntry02046900*);
+struct Rec020467f0;
+void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 extern "C" void func_0204c684(void*);
-extern "C" int _Z29BinarySearchByField4_02097224P29BinarySearch020971a8Containeri(void*, int);
+struct BinarySearch020971a8Container;
+int BinarySearchByField4_02097224(BinarySearch020971a8Container*, int);
 extern "C" void __clear(void*, int);
 void CopyTextAndUppercaseIfFlagged0206819c(const char*, char*, int);
 void* GetGlobalField0x1c020421a0();
 extern "C" void func_02046608(void*, int, char*, char*, int, int, int);
-extern "C" void _Z24SetPackedFields_021e24b0Pviihhhhhh(void*, int, int, short, short, short, short, short, short);
-extern "C" void _Z23SetEntryFields_021e23d0Pviihh(void*, int, void*, short, short);
-extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
+void SetPackedFields_021e24b0(void*, int, int, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char);
+void SetEntryFields_021e23d0(void*, int, int, unsigned char, unsigned char);
+struct Container020e0310;
+void* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" struct Ent* func_ov014_021842a0(void*, short);
-extern "C" void* _Z32FindOrGetDefaultElement_021893c4P26IndexedArrayStruct021893c4i(void*, int);
+struct IndexedArrayStruct021893c4;
+void* FindOrGetDefaultElement_021893c4(IndexedArrayStruct021893c4*, int);
 extern "C" struct Slot* func_ov014_0218940c(void*, int, void*);
 extern "C" int* func_ov014_02189430(void*, int, void*);
 extern "C" void func_ov023_021e257c(void*);
-extern "C" void _Z17ResetList0204af64P12List0204af64(void*);
-extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
+struct List0204af64;
+void ResetList0204af64(List0204af64*);
+void SetWord0x18ClearByte0x1f(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*, int, int);
+struct Obj0204b5e8;
+void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 extern "C" void func_0204b4c0(void*, void*);
 extern "C" void memcpy(void*, void*, int);
-extern "C" void _Z21DispatchByTag0204b2e0PvPc(void*, void*);
-extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(void*, void*);
+void DispatchByTag0204b2e0(void*, char*);
+struct SelfTag0204b3a0;
+void DispatchByTagLookup0204b3a0(SelfTag0204b3a0*, char*);
 
 #define FLAGOP(e, id, stmt) do { struct Ent* p = func_ov014_021842a0(e, id); if (p) { stmt; } } while (0)
 #define SetBit4(e, id) FLAGOP(e, id, p->f16 |= 0x10)
@@ -141,9 +149,9 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
         struct ListObj list;
         int count;
         _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, self->s8c, &file, &size);
-        count = _Z18CountActiveEntriesP19ActiveEntry02046900(file);
+        count = CountActiveEntries((ActiveEntry02046900*)file);
         if (count != 0) {
-            char* rec = (char*)_Z17FindRecordByIndexP11Rec020467f0iPPvPi(file, 0, &rp, &rs);
+            char* rec = (char*)FindRecordByIndex((Rec020467f0*)file, 0, &rp, &rs);
             if (rec != 0) {
                 func_0204c684(&draw);
                 draw.s28 = 0x20;
@@ -151,7 +159,7 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                 draw.s34 = 0xa;
                 draw.s36 = 0xb;
                 draw.p8 = rec + 0x10;
-                _Z29BinarySearchByField4_02097224P29BinarySearch020971a8Containeri((char*)self + 0xc, self->rec->fc);
+                BinarySearchByField4_02097224((BinarySearch020971a8Container*)((char*)self + 0xc), self->rec->fc);
                 __clear(buf358, 0x48);
                 __clear(buf310, 0x48);
                 __clear(buf110, 0x200);
@@ -176,15 +184,15 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                 cont = self->cont;
                 r = self->rec;
                 if (ents && r && cont && pk && pk->lo) {
-                    _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, 2, r->f1a, 8, 0xf, 1, 3, 0, 1);
-                    _Z23SetEntryFields_021e23d0Pviihh(ents, 3, (void*)r->f8, 0xa, 0xf);
-                    _Z23SetEntryFields_021e23d0Pviihh(ents, 4, _Z21GetFieldByKey020e0434P17Container020e0310i(cont, r->f12), 0xa, 0xf);
+                    SetPackedFields_021e24b0(ents, 2, r->f1a, 8, 0xf, 1, 3, 0, 1);
+                    SetEntryFields_021e23d0(ents, 3, (int)r->f8, 0xa, 0xf);
+                    SetEntryFields_021e23d0(ents, 4, (int)(GetFieldByKey020e0434((Container020e0310*)cont, r->f12)), 0xa, 0xf);
                     SetBit4(ents, 4);
                     if (&self->blk && self->blk.cnt > 0) {
-                        _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, 5, self->blk.a, 8, 0xf, 1, 6, 0, 0);
-                        _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, 6, self->blk.b, 8, 0xf, 1, 6, 0, 0);
+                        SetPackedFields_021e24b0(ents, 5, self->blk.a, 8, 0xf, 1, 6, 0, 0);
+                        SetPackedFields_021e24b0(ents, 6, self->blk.b, 8, 0xf, 1, 6, 0, 0);
                     }
-                    _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, 7, pk->lo, 8, 0xf, 1, 6, 0, 0);
+                    SetPackedFields_021e24b0(ents, 7, pk->lo, 8, 0xf, 1, 6, 0, 0);
                     ClrBit0(ents, 8);
                     ClrBit0(ents, 0xa);
                     ClrBit0(ents, 0xc);
@@ -213,9 +221,9 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                             SetBit0(ents, 8);
                             SetBit0(ents, 0xa);
                             SetBit0(ents, 0xc);
-                            _Z23SetEntryFields_021e23d0Pviihh(ents, 8, n1, 0xa, 0xf);
-                            _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, 0xa, pk->c, 8, 0xf, 1, 3, 0, 0);
-                            _Z23SetEntryFields_021e23d0Pviihh(ents, 0xc, _Z21GetFieldByKey020e0434P17Container020e0310i(cont, 0xf), 0xa, 0xf);
+                            SetEntryFields_021e23d0(ents, 8, (int)n1, 0xa, 0xf);
+                            SetPackedFields_021e24b0(ents, 0xa, pk->c, 8, 0xf, 1, 3, 0, 0);
+                            SetEntryFields_021e23d0(ents, 0xc, (int)(GetFieldByKey020e0434((Container020e0310*)cont, 0xf)), 0xa, 0xf);
                             a = 9;
                             b = 0xb;
                             c = 0xd;
@@ -227,31 +235,31 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                             SetBit0(ents, a);
                             SetBit0(ents, b);
                             SetBit0(ents, c);
-                            _Z23SetEntryFields_021e23d0Pviihh(ents, a, n2, 0xa, 0xf);
-                            _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, b, pk->d, 8, 0xf, 1, 3, 0, 0);
-                            _Z23SetEntryFields_021e23d0Pviihh(ents, c, _Z21GetFieldByKey020e0434P17Container020e0310i(cont, 0xf), 0xa, 0xf);
+                            SetEntryFields_021e23d0(ents, a, (int)n2, 0xa, 0xf);
+                            SetPackedFields_021e24b0(ents, b, pk->d, 8, 0xf, 1, 3, 0, 0);
+                            SetEntryFields_021e23d0(ents, c, (int)(GetFieldByKey020e0434((Container020e0310*)cont, 0xf)), 0xa, 0xf);
                         }
                     }
                     if (ok == 0) {
                         SetBit0(ents, 0x16);
-                        _Z23SetEntryFields_021e23d0Pviihh(ents, 0x16, _Z21GetFieldByKey020e0434P17Container020e0310i(cont, 0xe), 0xa, 0xf);
+                        SetEntryFields_021e23d0(ents, 0x16, (int)(GetFieldByKey020e0434((Container020e0310*)cont, 0xe)), 0xa, 0xf);
                     }
-                    _Z23SetEntryFields_021e23d0Pviihh(ents, 0x13, n3, 0xa, 0xf);
+                    SetEntryFields_021e23d0(ents, 0x13, (int)n3, 0xa, 0xf);
                     if (pk->b10) {
                         ClrBit0(ents, 0x14);
                         SetBit0(ents, 0x17);
-                        _Z23SetEntryFields_021e23d0Pviihh(ents, 0x17, _Z21GetFieldByKey020e0434P17Container020e0310i(cont, 0x1c), 8, 0xf);
+                        SetEntryFields_021e23d0(ents, 0x17, (int)(GetFieldByKey020e0434((Container020e0310*)cont, 0x1c)), 8, 0xf);
                         SetBit0(ents, 0x18);
-                        _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, 0x18, b80 + 1, 8, 0xf, 0, 1, 0, 0);
+                        SetPackedFields_021e24b0(ents, 0x18, b80 + 1, 8, 0xf, 0, 1, 0, 0);
                         SetBit0(ents, 0x19);
-                        _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, 0x19, 2, 8, 0xf, 0, 1, 0, 0);
+                        SetPackedFields_021e24b0(ents, 0x19, 2, 8, 0xf, 0, 1, 0, 0);
                     }
                     ClrBit0(ents, 0xe);
                     ClrBit0(ents, 0xf);
                     ClrBit0(ents, 0x10);
                     int i;
                     short id;
-                    struct ArrHdr* arr = (struct ArrHdr*)_Z32FindOrGetDefaultElement_021893c4P26IndexedArrayStruct021893c4i(self->arr, -1);
+                    struct ArrHdr* arr = (struct ArrHdr*)FindOrGetDefaultElement_021893c4((IndexedArrayStruct021893c4*)self->arr, -1);
                     if (arr) {
                         id = 0xe;
                         for (i = 0; i < 2; i++) {
@@ -260,9 +268,9 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                                 struct Slot* s = func_ov014_0218940c(self->arr, i, arr);
                                 int* v = func_ov014_02189430(self->arr, i, arr);
                                 if (s->bit0) {
-                                    _Z23SetEntryFields_021e23d0Pviihh(ents, id, (void*)*v, 0xa, 0xf);
+                                    SetEntryFields_021e23d0(ents, id, (int)((void*)*v), 0xa, 0xf);
                                 } else {
-                                    _Z23SetEntryFields_021e23d0Pviihh(ents, id, _Z21GetFieldByKey020e0434P17Container020e0310i(cont, 0x15), 0xa, 0xf);
+                                    SetEntryFields_021e23d0(ents, id, (int)(GetFieldByKey020e0434((Container020e0310*)cont, 0x15)), 0xa, 0xf);
                                 }
                                 id++;
                             }
@@ -270,7 +278,7 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                         if (arr->n >= 3) {
                             if (func_ov014_0218940c(self->arr, 2, arr)->bit0) {
                                 SetBit0(ents, 0x10);
-                                _Z23SetEntryFields_021e23d0Pviihh(ents, 0x10, _Z21GetFieldByKey020e0434P17Container020e0310i(cont, 0x10), 0xa, 0xf);
+                                SetEntryFields_021e23d0(ents, 0x10, (int)(GetFieldByKey020e0434((Container020e0310*)cont, 0x10)), 0xa, 0xf);
                             }
                         }
                     }
@@ -279,14 +287,14 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                 e->p4 = &draw;
                 e->s12 = 1;
                 func_ov023_021e257c(self->ents);
-                _Z17ResetList0204af64P12List0204af64(&list);
-                _Z24SetWord0x18ClearByte0x1fPhi(&list, 0);
+                ResetList0204af64((List0204af64*)&list);
+                SetWord0x18ClearByte0x1f((unsigned char*)&list, 0);
                 list.lo = 0;
                 list.hi = 1;
                 func_0204b5b4(&list, 1);
-                _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(&list, 0, 0);
+                DispatchViaTable0204b5e8((Obj0204b5e8*)&list, 0, 0);
                 for (int i = 0; i < count; i++) {
-                    void* r2 = _Z17FindRecordByIndexP11Rec020467f0iPPvPi(file, i, &rp, &rs);
+                    void* r2 = FindRecordByIndex((Rec020467f0*)file, i, &rp, &rs);
                     if (r2) {
                         memcpy(self->bufs[i], r2, rs);
                         func_0204b4c0(&list, self->bufs[i]);
@@ -306,18 +314,18 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
         int rs;
         struct ListObj list;
         _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, self->id70, &file, &size);
-        int count = _Z18CountActiveEntriesP19ActiveEntry02046900(file);
-        _Z17ResetList0204af64P12List0204af64(&list);
-        _Z24SetWord0x18ClearByte0x1fPhi(&list, 0);
+        int count = CountActiveEntries((ActiveEntry02046900*)file);
+        ResetList0204af64((List0204af64*)&list);
+        SetWord0x18ClearByte0x1f((unsigned char*)&list, 0);
         list.lo = 0;
         list.hi = 1;
         func_0204b5b4(&list, 1);
-        _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(&list, 0, 0);
+        DispatchViaTable0204b5e8((Obj0204b5e8*)&list, 0, 0);
         for (int i = 0; i < count; i++) {
-            void* rec = _Z17FindRecordByIndexP11Rec020467f0iPPvPi(file, i, &rp, &rs);
+            void* rec = FindRecordByIndex((Rec020467f0*)file, i, &rp, &rs);
             if (rec) {
-                _Z21DispatchByTag0204b2e0PvPc(&list, rec);
-                _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(&list, rec);
+                DispatchByTag0204b2e0(&list, (char*)rec);
+                DispatchByTagLookup0204b3a0((SelfTag0204b3a0*)&list, (char*)rec);
             }
         }
         _ZN16BackgroundLoader10RemoveTaskEi(loader, self->id70);

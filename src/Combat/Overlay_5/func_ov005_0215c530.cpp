@@ -155,7 +155,7 @@ Entry0215c530* FindEntryById_021db08c(void*, int);
 extern "C" int func_020dd4c4(int, Item0215c530*);
 extern "C" void func_ov005_021579ec(Menu0215c530*, unsigned int, unsigned char);
 extern "C" void func_0205bb04(void*, int);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void*, int, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_ov005_021555c0(Menu0215c530*);
 extern "C" void func_ov023_021dcae0(Obj021dcae0*, int);
 extern "C" void func_ov005_0215792c(Menu0215c530*, unsigned char);
@@ -307,7 +307,7 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
                 }
             }
         }
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
     }
 
     if (self->modes[self->tab] == 0 || self->modes[self->tab] == 1)

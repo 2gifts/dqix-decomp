@@ -99,29 +99,41 @@ struct Self02174a80 {
 
 void ZeroInit020de848(void*);
 extern "C" void func_020dea64(void*, SafeAllocator*, void*, unsigned int, const char*, int);
-extern "C" void _Z14ZeroListHeaderP14Struct02072488(StreamHeader02072488*);
-extern "C" void _Z24InitCommandStreamSessioniiP12StreamHeaderi(StreamHeader02072488*, SafeAllocator*, int, int);
+struct Struct02072488;
+void ZeroListHeader(Struct02072488*);
+struct StreamHeader;
+void InitCommandStreamSession(int, int, StreamHeader*, int);
 void* GetData02108d18(void);
-extern "C" short _Z18GetHalfwordCheckedP12List0206f7f4i(void*, int);
-extern "C" Rec02174a80* _Z21FindEntryById020725d8P12List020725d8i(StreamHeader02072488*, int);
-extern "C" void _Z15InitObj02174408P18InitStruct02174408(void*);
+struct List0206f7f4;
+short GetHalfwordChecked(List0206f7f4*, int);
+struct List020725d8;
+Rec02174a80* FindEntryById020725d8(List020725d8*, int);
+struct InitStruct02174408;
+void InitObj02174408(InitStruct02174408*);
 #if !defined(jpn)
 extern "C" void func_020dfc84(void*, SafeAllocator*, char*, char*, int, int);
 #endif
 extern "C" int func_020dfd40(void*, int, int);
-extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
+void SetWord0x18ClearByte0x1f(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(void*, SafeAllocator*);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*, int, int);
+struct AllocTarget0204b12c;
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
+struct Obj0204b5e8;
+void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 extern "C" void MapVRAMBanksToMainBG(int);
 extern "C" void MapVRAMBanksToMainObj(int);
-extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void*);
-extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, int*, int*);
+struct ActiveEntry02046900;
+int CountActiveEntries(ActiveEntry02046900*);
+struct Rec020467f0;
+void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 extern "C" void func_0204b174(void*, void*, SafeAllocator*, int);
 extern "C" void func_0204bc74(void*, int, int, int, int, int, int);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(void*, void*);
-extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(void*, SafeAllocator*, void*, unsigned int);
-extern "C" void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(void*, SafeAllocator*, const char*, const char*);
+struct List0204b0e8;
+void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
+struct Obj0204c7a8;
+void AllocateBuffer0204c7a8(Obj0204c7a8*, SafeAllocator*, int, unsigned int);
+struct Obj0207f914;
+void SetFieldsFromFormattedValue0207f914(Obj0207f914*, int, int, int);
 extern "C" int func_0207f9f4(void*);
 void DispatchEntryOp0x8(void*, int);
 extern "C" void func_0205a528(void*, void*, int, SafeAllocator*);
@@ -187,11 +199,11 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             loader->GetLoadedFileByID(self->taskId, &file, &size);
             al = self->alloc;
             al->a[1].Reset();
-            _Z14ZeroListHeaderP14Struct02072488(&hdr);
-            _Z24InitCommandStreamSessioniiP12StreamHeaderi(&hdr, &al->a[1], (int)file, size);
-            self->h1034 = _Z18GetHalfwordCheckedP12List0206f7f4i(GetData02108d18(), 0);
-            Rec02174a80* rec = _Z21FindEntryById020725d8P12List020725d8i(&hdr, self->h1034);
-            _Z15InitObj02174408P18InitStruct02174408(&self->b834);
+            ZeroListHeader((Struct02072488*)&hdr);
+            InitCommandStreamSession((int)&hdr, (int)&al->a[1], (StreamHeader*)((int)file), size);
+            self->h1034 = GetHalfwordChecked((List0206f7f4*)GetData02108d18(), 0);
+            Rec02174a80* rec = FindEntryById020725d8((List020725d8*)&hdr, self->h1034);
+            InitObj02174408((InitStruct02174408*)&self->b834);
             self->b834 = 0x63;
             self->b835 = 5;
             self->shorts[0] = 0x3386;
@@ -241,12 +253,12 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
         allocs->a[4].Reset();
         for (i = 0; i < 2; i++) {
             e = &self->ents[i];
-            _Z24SetWord0x18ClearByte0x1fPhi(e, 0);
+            SetWord0x18ClearByte0x1f((unsigned char*)e, 0);
             e->lo = 0;
             e->hi = data_ov003_0217fa94[i];
             func_0204b5b4(e, data_ov003_0217fa90[i]);
-            _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(e, &allocs->a[4]);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(e, 0, 0);
+            AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)e, &allocs->a[4]);
+            DispatchViaTable0204b5e8((Obj0204b5e8*)e, 0, 0);
         }
         MapVRAMBanksToMainBG(0x10);
         BG1CNT = (BG1CNT & 0x43) | 0x1d00;
@@ -263,9 +275,9 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             void* recs[12];
             int outs[12];
             loader->GetLoadedFileByID(self->taskId, &file, &size);
-            int n = _Z18CountActiveEntriesP19ActiveEntry02046900(file);
+            int n = CountActiveEntries((ActiveEntry02046900*)file);
             for (i = 0; i < n; i++) {
-                recs[i] = _Z17FindRecordByIndexP11Rec020467f0iPPvPi(file, i, &tmp, &outs[i]);
+                recs[i] = FindRecordByIndex((Rec020467f0*)file, i, (void**)&tmp, &outs[i]);
             }
             allocs = self->alloc;
             for (i = 0; i < n; i++) {
@@ -280,12 +292,12 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             for (i = 0; i < 2; i++) {
                 e = &self->ents[i];
                 func_0204bc74(e, 0, 0, 0, 0x20, 0x19, 0);
-                _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(e, 0);
+                FlushAndDispatchList0204b0e8((List0204b0e8*)e, 0);
             }
             self->buf = allocs->a[4].Allocate(0x5000);
             for (i = 0; i < 8; i++) {
                 Obj02174a80* o = &self->objs[i];
-                _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(o, &allocs->a[4], self->buf, 0x4cc);
+                AllocateBuffer0204c7a8((Obj0204c7a8*)o, &allocs->a[4], (int)self->buf, 0x4cc);
                 o->f4 = &self->ents[1];
             }
             self->state++;
@@ -298,7 +310,7 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
 #if defined(jpn)
         func_02080654(self->p89c, &al->a[5], data_ov003_0217eda8);
 #else
-        _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(self->p89c, &al->a[5], data_ov003_02180b55, data_ov003_02180b6f);
+        SetFieldsFromFormattedValue0207f914((Obj0207f914*)self->p89c, (int)&al->a[5], (int)data_ov003_02180b55, (int)data_ov003_02180b6f);
 #endif
         self->state++;
     } else if (self->state == 8) {
@@ -348,11 +360,11 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             unsigned int size;
             int out;
             loader->GetLoadedFileByID(self->taskId, &file, &size);
-            int n = _Z18CountActiveEntriesP19ActiveEntry02046900(file);
+            int n = CountActiveEntries((ActiveEntry02046900*)file);
             allocs = self->alloc;
             allocs->a[3].Reset();
             for (i = 0; i < n; i++) {
-                void* rec = _Z17FindRecordByIndexP11Rec020467f0iPPvPi(file, i, &tmp, &out);
+                void* rec = FindRecordByIndex((Rec020467f0*)file, i, (void**)&tmp, &out);
                 func_0205a528((char*)self + kSelfField7D8, rec, out, &allocs->a[3]);
             }
             loader->RemoveTask(self->taskId);

@@ -9,7 +9,8 @@ void* GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
 extern "C" int func_020aad1c(int a, int b, int c, int d);
 extern "C" void func_ov017_021d6134(void* obj, int flag);
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(void* p, unsigned int mask);
+struct FlagWord020466f4;
+void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
 
 struct S02163070 { char pad[0x4b4]; int field4B4; int field4B8; };
 extern struct S02163070 data_ov001_021658b8;
@@ -25,7 +26,7 @@ extern "C" ARM int func_ov001_02163070(void* obj) {
     int cond = (r != 0);
     func_ov017_021d6134(obj, cond == 0);
     if (cond != 0) {
-        _Z18ClearFlags020466f4P16FlagWord020466f4j(p, 0x80);
+        ClearFlags020466f4((FlagWord020466f4*)p, 0x80);
     }
     return 1;
 }

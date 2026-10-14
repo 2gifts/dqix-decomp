@@ -64,10 +64,11 @@ int CheckFields6d0And6d4Equal(unsigned char* data);
 int Check021ed2f4(void* obj);
 int IsByteFieldZero_021ed0fc(void* obj);
 int IsAnimationActive0209ca2c(void* obj);
-extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(GameObject* obj, int value);
+struct Bytes02033b88;
+void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 extern "C" void __clear(void* dst, int size);
 Slot_021dc940* GetSlotPtr02160f20(void* obj);
-extern "C" void _Z19SetFlag0x2_021754e0ii(void* list, int id);
+void SetFlag0x2_021754e0(int, int);
 extern "C" void func_ov000_0218142c(void* list, int id);
 void SetPosAndFields0216f1e4(void* obj, int* pos, int a, int b);
 void* GetGlobalField0x1c020421a0(void);
@@ -144,7 +145,7 @@ extern "C" ARM int func_ov025_021dc940(Obj_021dc940* obj) {
         if (obj->started == 0) {
             unsigned char motion = GetMotion_021dc940(c);
             if (motion != 4 && motion != 6) {
-                _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(c, 0);
+                SetByte0xbeShiftPrev((Bytes02033b88*)c, 0);
             }
         }
         if (c->obj3D_.IsVisible() && c->obj3D_.IsTransitioningAnimations()) {
@@ -172,7 +173,7 @@ extern "C" ARM int func_ov025_021dc940(Obj_021dc940* obj) {
     if (slot != NULL && (entry = slot->entry) != NULL && !slot->disabled) {
         int id = entry->id;
         if (IsPartyIndex_021dc940(id)) {
-            _Z19SetFlag0x2_021754e0ii(obj->entryList, id);
+            SetFlag0x2_021754e0((int)obj->entryList, id);
             func_ov000_0218142c(obj->entryList, id);
         }
     }

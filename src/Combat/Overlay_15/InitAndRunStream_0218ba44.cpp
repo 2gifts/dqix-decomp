@@ -7,6 +7,7 @@
 #endif
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
+#include "Resource/Script.h"
 
 struct ResetStruct {
     int w0;
@@ -23,14 +24,11 @@ struct ResetStruct {
     char pad[0x400];
     unsigned char b42c;
 };
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 
 struct StreamHeader;
 struct StreamState;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
 extern "C" void func_ov015_0218b828();
@@ -58,10 +56,10 @@ extern "C" ARM void func_ov015_0218ba44(void* self, const char* path) {
         data_ov015_02194560 = self;
 
         struct ResetStruct local;
-        _ZN6Script10InitializeEv(&local);
+        ((Script*)&local)->Initialize();
         _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_ov015_02193fa0);
-        _ZN6Script4LoadEPKvj((struct StreamState*)&local, (struct StreamHeader*)buffer, length);
-        _ZN6Script7ExecuteEv((struct Struct02030774*)&local);
+        ((Script*)((struct StreamState*)&local))->Load((struct StreamHeader*)buffer, length);
+        ((Script*)((struct Struct02030774*)&local))->Execute();
     }
 
     BackgroundLoader::RemoveLockGlobal();

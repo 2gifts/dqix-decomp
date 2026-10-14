@@ -92,10 +92,11 @@ extern "C" void* func_ov004_02156fd4(void* a, int b);
 void SetDataPtr_021f5598(void*);
 void RegisterSlotA020cf0fc(int);
 void RegisterSlotB020cf1a8(int);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(void*, int);
+struct Obj020397cc;
+void CancelPendingAction020397cc(Obj020397cc*, int);
 unsigned char GetField0xcc0209ca98(char*);
 void* GetDataPtr02114e04_020d6c00();
-extern "C" void _Z16OrBitsIntoField0Pjj(void*, unsigned int);
+void OrBitsIntoField0(unsigned int*, unsigned int);
 unsigned char CopyOutRegion0x5718(char*, void*);
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(struct GameState*, int);
 
@@ -196,11 +197,11 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
     data_ov004_021707d8.ptr->cfg.k5 = slotB[0];
     data_ov004_021707d8.ptr->cfg.j6 = slotB[1];
 
-    _Z27CancelPendingAction020397ccP11Obj020397cci(bs->GetUnknownGameObject(), 1);
+    CancelPendingAction020397cc((Obj020397cc*)bs->GetUnknownGameObject(), 1);
     data_ov004_021707d8.ptr->b2d = GetField0xcc0209ca98(data_02109bf4);
     unsigned int subword = *(unsigned int*)(sub4000 + 0x50);
     data_ov004_021707d8.ptr->b2f = (subword & 1) ? 1 : 0;
-    _Z16OrBitsIntoField0Pjj(GetDataPtr02114e04_020d6c00(), 0xf);
+    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xf);
 
     short* pp = (short*)(base5 + 4);
     for (int i = 0; i < 6; ) {

@@ -17,31 +17,35 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
-extern "C" void* _Z10GetWord0x0Pi(void* battle);
+void* GetWord0x0(int*);
 void OrGlobalFlag0x40();
 extern "C" void func_02074af4(void*);
 unsigned int GetWord(unsigned int*);
 unsigned int GetField4(unsigned int*);
 unsigned int GetField8(unsigned int*);
 void SetBitsInField4(unsigned int*, unsigned int);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void*, int, int);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
 
 struct FieldSet02097bc4;
 void SetFieldGroupFromFlags02097bc4(struct FieldSet02097bc4*, int);
 extern "C" void func_02097c18(void*, int, int, int, int, int, int, int);
 
-extern "C" void _Z17ResetList0204af64P12List0204af64(void*);
-extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*, int, int);
+struct List0204af64;
+void ResetList0204af64(List0204af64*);
+void SetWord0x18ClearByte0x1f(unsigned char*, int);
+struct Obj0204b5e8;
+void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 void DispatchByTag0204b2e0(void*, char*);
-extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(void*, char*);
+struct SelfTag0204b3a0;
+void DispatchByTagLookup0204b3a0(SelfTag0204b3a0*, char*);
 
 extern "C" void LoadToSubBGStandardPalette(int, int, unsigned int);
 extern "C" void LoadToSubBG1ScreenData(int, int, unsigned int);
 extern "C" void LoadToSubBG1CharacterData(int, int, unsigned int);
 
 extern "C" void func_ov028_021d98e0(void*, void*, int, int);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(void*);
+int IsBrightnessTransitionActive(GameResources*);
 
 extern int data_ov028_021d9aa0;
 
@@ -50,7 +54,7 @@ extern "C" ARM void func_ov028_021d8dd0(unsigned char* self) {
     FontBankLoader* g = GetGlobal02109400();
     void* data = BackgroundLoader::GetInstance();
     void* battle = GameState::GetInstance();
-    void* word = _Z10GetWord0x0Pi(battle);
+    void* word = GetWord0x0((int*)battle);
     unsigned char state = self[0x81];
 
     if (state == 0) {
@@ -76,17 +80,17 @@ extern "C" ARM void func_ov028_021d8dd0(unsigned char* self) {
         *reg400100a = (*reg400100a & 0x43) | 0x1000;
 
         unsigned char list[0x20];
-        _Z17ResetList0204af64P12List0204af64(list);
+        ResetList0204af64((List0204af64*)list);
         unsigned char v = list[0x1c];
         v = (v & ~0xf) | 1;
         v = v & 0xff;
         v = (v & ~0xf0) | 0x10;
         list[0x1c] = v;
-        _Z24SetWord0x18ClearByte0x1fPhi(list, 0);
-        _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(list, 0, 0);
+        SetWord0x18ClearByte0x1f((unsigned char*)list, 0);
+        DispatchViaTable0204b5e8((Obj0204b5e8*)list, 0, 0);
         int tag = *(int*)((char*)word + 0x2c);
         DispatchByTag0204b2e0(list, (char*)tag);
-        _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(list, (char*)tag);
+        DispatchByTagLookup0204b3a0((SelfTag0204b3a0*)list, (char*)tag);
 
         unsigned short tmpVal = 0x67f5;
         memcpy(buf40, &tmpVal, 2);
@@ -137,9 +141,9 @@ extern "C" ARM void func_ov028_021d8dd0(unsigned char* self) {
         }
     } else if (state == 5) {
         self[0x81] = state + 1;
-        _Z13SetBrightnessP13GameResourcesii(word, 0, 0x1e);
+        SetBrightness((GameResources*)word, 0, 0x1e);
     } else if (state == 6) {
-        if (_Z28IsBrightnessTransitionActiveP13GameResources(word) == 0) {
+        if (IsBrightnessTransitionActive((GameResources*)word) == 0) {
             self[0x80] = 1;
             self[0x81] = 0;
         }

@@ -15,24 +15,24 @@ struct BattleMenu {
 };
 
 Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c* list, int key);
-extern "C" void _Z20ApplyElemFieldsSlot1Pv(BattleMenu* menu);
-extern "C" void _Z20ApplyElemFieldsSlot2Pv(BattleMenu* menu);
-extern "C" void _Z20ApplyElemFieldsSlot3Pv(BattleMenu* menu);
-extern "C" void _Z20ApplyElemFieldsSlot4Pv(BattleMenu* menu);
-extern "C" void _Z20ApplyElemFieldsSlot5Pv(BattleMenu* menu);
-extern "C" void _Z20ApplyElemFieldsSlot6Pv(BattleMenu* menu);
-extern "C" void _Z29ApplyElemFieldsSlot7_0217819cPv(BattleMenu* menu);
-extern "C" void _Z20ApplyElemFieldsSlot8Pv(BattleMenu* menu);
-extern "C" int _Z18IsField0x118Equal2Pv(BattleMenu* menu);
+void ApplyElemFieldsSlot1(void*);
+void ApplyElemFieldsSlot2(void*);
+void ApplyElemFieldsSlot3(void*);
+void ApplyElemFieldsSlot4(void*);
+void ApplyElemFieldsSlot5(void*);
+void ApplyElemFieldsSlot6(void*);
+void ApplyElemFieldsSlot7_0217819c(void*);
+void ApplyElemFieldsSlot8(void*);
+int IsField0x118Equal2(void*);
 void RunElemFieldsIfField_02176498_02176498(void* obj, int flag);
-extern "C" void _Z30ApplyElemFieldsSlot14_021788d8Pvii(BattleMenu* menu, int a, int b);
+void ApplyElemFieldsSlot14_021788d8(void*, int, int);
 void ApplyElemFieldsSlot15(void* menu, int a, int b);
 void ApplyElemFieldsSlot16(void* menu, int a, int b);
 void ApplyElemFieldsSlot17(void* menu, int a, int b);
-extern "C" void _Z30ApplyElemFieldsSlot18_02179a14Pvii(BattleMenu* menu, int a, int b);
-extern "C" void _Z30ApplyElemFieldsSlot21_02179c6cPvi(BattleMenu* menu, int a);
+void ApplyElemFieldsSlot18_02179a14(void*, int, int);
+void ApplyElemFieldsSlot21_02179c6c(void*, int);
 extern "C" void func_ov000_0217a0a4(BattleMenu* menu, int a);
-extern "C" void _Z30ApplyElemFieldsSlot19_0217a628Pvii(BattleMenu* menu, int a, int b);
+void ApplyElemFieldsSlot19_0217a628(void*, int, int);
 
 // USA: func_ov000_02176e3c
 extern "C" ARM void func_ov000_02176e3c(BattleMenu* menu, int arg, int slot, int arg2, int arg3, unsigned char highlight) {
@@ -54,36 +54,36 @@ extern "C" ARM void func_ov000_02176e3c(BattleMenu* menu, int arg, int slot, int
     }
     switch (slot) {
     case 1:
-        _Z20ApplyElemFieldsSlot1Pv(menu);
+        ApplyElemFieldsSlot1(menu);
         break;
     case 2:
-        _Z20ApplyElemFieldsSlot2Pv(menu);
+        ApplyElemFieldsSlot2(menu);
         break;
     case 3:
-        _Z20ApplyElemFieldsSlot3Pv(menu);
+        ApplyElemFieldsSlot3(menu);
         break;
     case 4:
-        _Z20ApplyElemFieldsSlot4Pv(menu);
+        ApplyElemFieldsSlot4(menu);
         break;
     case 5:
-        _Z20ApplyElemFieldsSlot5Pv(menu);
+        ApplyElemFieldsSlot5(menu);
         break;
     case 6:
-        _Z20ApplyElemFieldsSlot6Pv(menu);
+        ApplyElemFieldsSlot6(menu);
         break;
     case 7:
-        _Z29ApplyElemFieldsSlot7_0217819cPv(menu);
+        ApplyElemFieldsSlot7_0217819c(menu);
         break;
     case 8:
-        _Z20ApplyElemFieldsSlot8Pv(menu);
+        ApplyElemFieldsSlot8(menu);
         break;
     case 13:
         if (arg != 0) {
-            RunElemFieldsIfField_02176498_02176498((void*)arg, _Z18IsField0x118Equal2Pv(menu));
+            RunElemFieldsIfField_02176498_02176498((void*)arg, IsField0x118Equal2(menu));
         }
         break;
     case 14:
-        _Z30ApplyElemFieldsSlot14_021788d8Pvii(menu, arg, arg3);
+        ApplyElemFieldsSlot14_021788d8(menu, arg, arg3);
         break;
     case 15:
         ApplyElemFieldsSlot15(menu, arg2, arg3);
@@ -97,16 +97,16 @@ extern "C" ARM void func_ov000_02176e3c(BattleMenu* menu, int arg, int slot, int
     case 18:
     case 19:
     case 20:
-        _Z30ApplyElemFieldsSlot18_02179a14Pvii(menu, arg, arg2);
+        ApplyElemFieldsSlot18_02179a14(menu, arg, arg2);
         break;
     case 21:
-        _Z30ApplyElemFieldsSlot21_02179c6cPvi(menu, arg);
+        ApplyElemFieldsSlot21_02179c6c(menu, arg);
         break;
     case 23:
         func_ov000_0217a0a4(menu, arg);
         break;
     case 25:
-        _Z30ApplyElemFieldsSlot19_0217a628Pvii(menu, arg, arg3);
+        ApplyElemFieldsSlot19_0217a628(menu, arg, arg3);
         break;
     }
     menu->mode = savedMode;

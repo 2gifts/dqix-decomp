@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 
-extern "C" void _Z9LockMutexP5Mutex(void*);
+struct Mutex;
+void LockMutex(Mutex*);
 struct RefNode020c80f8;
 extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8*);
 
@@ -9,7 +10,7 @@ extern int data_ov031_02290f88;
 
 // USA: func_ov031_0223fa60
 ARM int AcquireOnceFlag_0223fa60(void) {
-	_Z9LockMutexP5Mutex(&data_ov031_02290f8c);
+	LockMutex((Mutex*)&data_ov031_02290f8c);
 	int wasZero = (data_ov031_02290f88 == 0);
 	if (wasZero) {
 		data_ov031_02290f88 = 1;

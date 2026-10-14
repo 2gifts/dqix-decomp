@@ -4,7 +4,6 @@
 
 unsigned char GetByte0x26c(char* obj);
 int GetField0x3acValue(GameState* battleStruct);
-extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 int GetFieldIfFlag4(char* obj);
 int GetField0x21c020a277c(void* obj);
 void SetField0x21c(void* obj, short value);
@@ -37,7 +36,7 @@ extern "C" ARM void func_ov017_02191108(void* unused, int c, int d, int e, int f
 
     GameObject* combatant = battle->GetGameObjectByIndex(idx);
     if (combatant != 0) {
-        _ZN8Object3D11DisableFlagEi((unsigned char*)combatant, 0x80);
+        ((Object3D*)((unsigned char*)combatant))->DisableFlag(0x80);
     }
 
     void* p2 = (void*)GetFieldIfFlag4((char*)battle);

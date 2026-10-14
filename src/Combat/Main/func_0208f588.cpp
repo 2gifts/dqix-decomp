@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 #if defined(jpn)
 #define data_020e8d54 data_020e8e70
 #endif
@@ -43,12 +44,9 @@ struct ArchivePath0208f588 {
 
 extern const struct ArchivePath0208f588 data_020e8d54;
 
-extern "C" void _ZN8Object3D7DestroyEv(struct Object3DState0208f588* obj);
-extern "C" void _ZN8Object3D10InitializeEv(struct Object3DState0208f588* obj);
 extern "C" struct Context02012fe4* func_02012fe4(void);
 extern "C" void* _Z25LoadFileIntoNewAllocationPKcR13SafeAllocatorPj(const char* path, void* allocator, unsigned int* outSize);
-extern "C" void _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo(struct Object3DState0208f588* obj, struct ObjectArchiveLoadInfo0208f588* info);
-extern "C" void _ZN8Object3D10MakeHiddenEv(struct Object3DState0208f588* obj);
+struct ObjectArchiveLoadInfo;
 
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
@@ -61,8 +59,8 @@ extern "C" ARM int func_0208f588(struct ArchiveHolder0208f588* self, void* alloc
     void* data;
 
     self->loaded = 0;
-    _ZN8Object3D7DestroyEv(&self->object);
-    _ZN8Object3D10InitializeEv(&self->object);
+    ((Object3D*)&self->object)->Destroy();
+    ((Object3D*)&self->object)->Initialize();
     if (func_02012fe4()->flags->mode != 0) {
         return 0;
     }
@@ -90,9 +88,9 @@ extern "C" ARM int func_0208f588(struct ArchiveHolder0208f588* self, void* alloc
     info.size = self->size;
 
     RestorePairTables0207df90(pairObj);
-    _ZN8Object3D10InitializeEv(&self->object);
-    _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo(&self->object, &info);
-    _ZN8Object3D10MakeHiddenEv(&self->object);
+    ((Object3D*)&self->object)->Initialize();
+    ((Object3D*)&self->object)->LoadFromCHRArchive((ObjectArchiveLoadInfo*)&info);
+    ((Object3D*)&self->object)->MakeHidden();
     BackupPairTables0207dfac(pairObj);
     return 1;
 }

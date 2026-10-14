@@ -17,8 +17,8 @@ struct Ov027State {
 void TailCallDispatch_021dcc80(void);
 extern Ov027State data_ov027_021e33e0;
 unsigned int DisableIRQInterrupts();
-extern "C" unsigned int _Z20SetIRQInterruptStatei(unsigned int);
-extern "C" unsigned int _Z24UpdateEntryFlag_021dd55ci(unsigned int);
+unsigned int SetIRQInterruptState(int);
+unsigned int UpdateEntryFlag_021dd55c(int);
 extern "C" void func_ov027_021db4e0(int a);
 extern "C" int func_ov027_021dcc48(void);
 extern "C" int func_ov027_021dd3b0(void);
@@ -34,12 +34,12 @@ extern "C" ARM int func_ov027_021dcc8c(void) {
         work->f5e4 = 0;
         data_ov027_021e33e0.work->f526 = 1;
         if (func_ov027_021dd3b0()) {
-            _Z24UpdateEntryFlag_021dd55ci((unsigned int)TailCallDispatch_021dcc80);
+            UpdateEntryFlag_021dd55c((unsigned int)TailCallDispatch_021dcc80);
             result = 0;
         } else {
             result = func_ov027_021dcc48();
         }
     }
-    _Z20SetIRQInterruptStatei(irq);
+    SetIRQInterruptState(irq);
     return result;
 }

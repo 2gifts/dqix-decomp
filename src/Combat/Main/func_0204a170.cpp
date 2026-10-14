@@ -4,9 +4,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" Vector3fix _ZNK8Object3D8GetScaleEv(void* src);
 extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(void* dst, const Vector3fix& src);
-extern "C" void _ZN8Object3D24MaybeUpdateBonePositionsEv(void* obj);
 extern "C" void func_020a2d14(void* actor);
 extern "C" void func_0204a4ac(void* self);
 extern "C" void func_0202eab8(void* obj);
@@ -55,7 +53,7 @@ extern "C" ARM void func_0204a170(struct Obj0204a170* self) {
         if (target != NULL) {
             _ZN8Vector3iaSERKS_((int*)&self->f21c->pos, (int*)((char*)target + 0x44));
             _ZN8Vector3iaSERKS_((int*)&self->f21c->rot, (int*)((char*)target + 0x50));
-            _ZN8Object3D8SetScaleEPK8Vector3i(self->f21c, _ZNK8Object3D8GetScaleEv(target));
+            _ZN8Object3D8SetScaleEPK8Vector3i(self->f21c, ((Object3D*)target)->GetScale());
         }
     }
 
@@ -63,8 +61,8 @@ extern "C" ARM void func_0204a170(struct Obj0204a170* self) {
     if (GetField0x218((struct S020a3570*)self) != 0) return;
     func_0204a4ac(self);
 
-    const Vector3fix& scale = _ZNK8Object3D8GetScaleEv(self->f21c);
-    _ZN8Object3D24MaybeUpdateBonePositionsEv(self->f21c);
+    const Vector3fix& scale = ((Object3D*)self->f21c)->GetScale();
+    ((Object3D*)self->f21c)->MaybeUpdateBonePositions();
 
     m1 = data_02107874;
     m2 = data_021078ac;

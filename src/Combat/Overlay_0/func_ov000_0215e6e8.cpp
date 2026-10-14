@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct CombatStats {
     char pad0[0x21];
@@ -28,14 +29,14 @@ struct TargetList { short v[8]; };
 extern IdList data_ov000_02182cf4;
 extern TargetList data_ov000_02182bc4;
 
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" Combatant* _ZN9GameState19GetCombatantByIndexEi(void* gs, int id);
-extern "C" Combatant* _Z25GetCombatantWithFlag0x400P9GameStatei(void* gs, int id);
+struct GameState;
+Combatant* GetCombatantWithFlag0x400(GameState*, int);
 extern "C" Combatant* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
-extern "C" void _Z22SetBool0x17fClear0x180Phi(Combatant* c, int value);
-extern "C" void _Z22SetBool0x180Clear0x17fPhi(Combatant* c, int value);
-extern "C" void _Z18ClearBits0x1And0x4Ph(CombatStats* stats);
-extern "C" int _Z19ClassifyField0x81fePc(Battle* battle);
+void SetBool0x17fClear0x180(unsigned char*, int);
+void SetBool0x180Clear0x17f(unsigned char*, int);
+void ClearBits0x1And0x4(unsigned char*);
+int ClassifyField0x81fe(char*);
 extern "C" int func_ov000_02153e40(Battle* battle, short* buf, int max, int start);
 extern "C" int func_ov000_0215e9fc(Battle* battle, short* buf, int max, int start);
 extern "C" void func_ov000_0215a23c(Battle* battle);
@@ -50,7 +51,7 @@ extern "C" ARM void func_ov000_0215e6e8(Battle* battle) {
         count = func_ov000_02153e40(battle, ids.v, 0x10, 1);
         for (int i = 0; i < count; i++) {
             int id = ids.v[i];
-            void* gs = _ZN9GameState11GetInstanceEv();
+            void* gs = GameState::GetInstance();
             Combatant* c = _ZN9GameState19GetCombatantByIndexEi(gs, id);
             if (c != NULL) {
                 int isPlayerSlot = 0;
@@ -61,14 +62,14 @@ extern "C" ARM void func_ov000_0215e6e8(Battle* battle) {
                     }
                 }
                 if (isPlayerSlot == 0) {
-                    Combatant* other = _Z25GetCombatantWithFlag0x400P9GameStatei(_ZN9GameState11GetInstanceEv(), id2);
+                    Combatant* other = GetCombatantWithFlag0x400((GameState*)GameState::GetInstance(), id2);
                     if (other != NULL) {
                         other->busy = 0;
-                        _Z22SetBool0x17fClear0x180Phi(other, 0);
-                        _Z22SetBool0x180Clear0x17fPhi(other, 0);
+                        SetBool0x17fClear0x180((unsigned char*)other, 0);
+                        SetBool0x180Clear0x17f((unsigned char*)other, 0);
                     }
                 }
-                _Z18ClearBits0x1And0x4Ph(c->stats);
+                ClearBits0x1And0x4((unsigned char*)c->stats);
                 c->stats->field_0x21 = 0;
             }
         }
@@ -84,13 +85,13 @@ extern "C" ARM void func_ov000_0215e6e8(Battle* battle) {
             battle->result = 1;
         }
     }
-    if (_Z19ClassifyField0x81fePc(battle) != 0) {
+    if (ClassifyField0x81fe((char*)battle) != 0) {
         battle->result = 0;
     }
     battle->turnCount++;
     if (battle->result != 0) {
         count = func_ov000_0215e9fc(battle, ids.v, 0x10, 0);
-        void* gs = _ZN9GameState11GetInstanceEv();
+        void* gs = GameState::GetInstance();
         for (int i = 0; i < count; i++) {
             _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids.v[i]);
         }

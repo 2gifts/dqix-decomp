@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 #if defined(jpn)
 enum { kListOffset = 0x4ec };
@@ -6,18 +7,15 @@ enum { kListOffset = 0x4ec };
 enum { kListOffset = 0x6fc };
 #endif
 
-
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0208e0a8(void);
-extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
 
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24** obj);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 int IsMatchingName0208e824(void* unused, char* str);
 struct S1a0;
-extern "C" void _ZN8Object3D23SetCurrentAnimationTimeEi(S1a0* obj, unsigned int v);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 struct ListNode0208f410 {
@@ -51,9 +49,9 @@ extern "C" ARM void func_0208f410(Obj0208f410* obj) {
     ListNode0208f410* node = obj->head;
     int flag = 1;
     while (node) {
-        _ZN8Object3D23SetCurrentAnimationTimeEi((S1a0*)obj->target, node->f10);
+        ((Object3D*)((S1a0*)obj->target))->SetCurrentAnimationTime(node->f10);
         _ZN8Vector3iaSERKS_((int*)((char*)obj->target + 0x44), (int*)&node->vec);
-        _ZN8Object3D4DrawEb(obj->target, flag);
+        ((Object3D*)obj->target)->Draw(flag);
         node = node->next;
     }
 }

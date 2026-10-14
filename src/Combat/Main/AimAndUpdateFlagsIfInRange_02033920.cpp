@@ -7,7 +7,6 @@ struct Obj02033834;
 void SetVecYByMode02033834(struct Obj02033834*, int);
 int fix32SignedAngleDistance(int a, int b);
 int fix32abs(int x);
-extern "C" int _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, char* data, int mode);
 extern char data_020efa3c;
 
 struct Entity02033920 {
@@ -40,7 +39,7 @@ extern "C" ARM void func_02033920(struct Entity02033920* obj, int id, int flag) 
     int ad = fix32abs(d);
     if (ad <= 0x1000) return;
     if (obj->fb0 > 0x10c) return;
-    int r = _ZN8Object3D24MaybeSetRegularAnimationEPKci(obj, &data_020efa3c, 0x11);
+    int r = ((Object3D*)obj)->MaybeSetRegularAnimation(&data_020efa3c, 0x11);
     if (r != 0) {
         obj->fc4 |= 0x8000;
     }

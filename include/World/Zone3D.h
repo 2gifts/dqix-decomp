@@ -195,6 +195,7 @@ public:
     bool ProcessNSBTXFile(const void* source, unsigned int sourceLength, const char* name);
 
     void LoadMapAMDJ();
+    void LoadMapAMBL();
 };
 
 #if defined(jpn)

@@ -7,7 +7,6 @@ struct Element0x318_02028bac* GetElementStride0x318(struct Element0x318_02028bac
 struct Entry_02028bd0;
 struct Entry_02028bd0* GetEntryTableBase(void);
 extern "C" void func_02076a8c(void* obj);
-extern "C" void _ZN8Object3D10MakeHiddenEv(unsigned char* obj);
 
 // USA: func_ov017_0219e0ec
 ARM void SetFlagsForFlaggedCombatants_0219e0ec(void*) {
@@ -26,7 +25,7 @@ ARM void SetFlagsForFlaggedCombatants_0219e0ec(void*) {
 			GameObject* combatant = battleStruct->GetMaybeFieldMonsterByIndex(inner + base);
 			if (combatant) {
 				func_02076a8c(combatant);
-				_ZN8Object3D10MakeHiddenEv((unsigned char*)combatant);
+				((Object3D*)((unsigned char*)combatant))->MakeHidden();
 			}
 		}
 	}

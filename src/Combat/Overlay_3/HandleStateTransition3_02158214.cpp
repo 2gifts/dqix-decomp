@@ -21,7 +21,6 @@ enum { kRegionValue200_1FC = 0x200 };
 enum { kRegionValue1F8_1F4 = 0x1f8 };
 #endif
 
-
 int GetWord0x0(int* obj);
 int GetGlobalField0x1c020421a0();
 void ReinitController02043204(char* obj);
@@ -31,8 +30,9 @@ int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
 struct Obj020e25e8;
 void ResetSelectionState020e25e8(struct Obj020e25e8* obj);
 
-extern "C" void _Z16SetSubBrightnessP13GameResourcesii(int obj, int value, int frames);
-extern "C" int _Z31IsSubBrightnessTransitionActiveP13GameResources(int* obj);
+struct GameResources;
+void SetSubBrightness(GameResources*, int, int);
+int IsSubBrightnessTransitionActive(GameResources*);
 void InitFlags_021eb414(char* obj);
 extern "C" void func_ov023_021eb43c(void* obj);
 extern "C" void func_ov023_021eb26c(void* obj);
@@ -59,13 +59,13 @@ extern "C" ARM void func_ov003_02158214(void* p) {
         unsigned char newState = 3;
         *(unsigned char*)(self + kRegionValue1F9_1F5) = newState;
         if (*(void**)(self + kRegionValue204_200) == 0) return;
-        _Z16SetSubBrightnessP13GameResourcesii(word0, newState - 0x13, 0);
+        SetSubBrightness((GameResources*)word0, newState - 0x13, 0);
         *(unsigned char*)(self + kRegionValue1F9_1F5) = 1;
         return;
     }
 
     if (state == 1) {
-        if (_Z31IsSubBrightnessTransitionActiveP13GameResources((int*)word0) != 0) return;
+        if (IsSubBrightnessTransitionActive((GameResources*)word0) != 0) return;
         InitFlags_021eb414(*(char**)(self + kRegionValue204_200));
         *(unsigned char*)(self + kRegionValue1F9_1F5) = 2;
         return;

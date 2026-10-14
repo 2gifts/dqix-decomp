@@ -25,7 +25,7 @@ struct OvCtx0218e8c8 {
 };
 
 extern "C" char* func_02012fe4(void);
-extern "C" int _Z19IsIdInRange020981e4ii(void* obj, int id);
+int IsIdInRange020981e4(int, int);
 unsigned short GetField6b4_021b8480(void* obj);
 extern "C" unsigned char* func_ov017_021b8478(void* obj);
 extern "C" int _Z27GetByteAtPtrOrZero_02191b58v(OvCtx0218e8c8* ov, int idx);
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov017_0218e8c8(OvCtx0218e8c8* ov, int id, int mode) {
     GameState* gs = GameState::GetInstance();
     char* base = func_02012fe4();
     int inRange = 0;
-    if (_Z19IsIdInRange020981e4ii(base + regionalOffset0, id)) {
+    if (IsIdInRange020981e4((int)(base + regionalOffset0), id)) {
         inRange = 1;
     }
 

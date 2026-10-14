@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 struct Vec3 {
     int x;
     int y;
@@ -16,8 +15,6 @@ void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
 
 struct Obj02033b68;
 void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
-
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 
 struct Entity02078688 {
     char pad0[0x44];
@@ -45,7 +42,7 @@ extern "C" ARM int func_02078688(struct Entity02078688* self) {
 
     self->fb2 = 0;
     SetByteIfChanged02033b68((struct Obj02033b68*)self, 2);
-    _ZN8Object3D10EnableFlagEi((unsigned char*)self, 0x80);
+    ((Object3D*)((unsigned char*)self))->EnableFlag(0x80);
     self->f17a = 0;
     return 1;
 }

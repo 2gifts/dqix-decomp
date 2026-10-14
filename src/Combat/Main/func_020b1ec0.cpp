@@ -9,7 +9,8 @@ static inline int Clz(int x) {
 extern const unsigned char data_020e91e0[32];
 extern int data_020e91d4;
 
-extern "C" void _Z18InitFields020b1d48P14Fields020b1d48iiiiii(void*, int, int, int, int, int, int);
+struct Fields020b1d48;
+void InitFields020b1d48(Fields020b1d48*, int, int, int, int, int, int);
 
 // USA: func_020b1ec0
 extern "C" ARM void func_020b1ec0(void* s, int a, int b, int c, int d) {
@@ -23,5 +24,5 @@ extern "C" ARM void func_020b1ec0(void* s, int a, int b, int c, int d) {
     int x = (w & ~0xff00) | ((unsigned)(*(t + col * 2 + 1)) << 24 >> 16);
     v = x;
 
-    _Z18InitFields020b1d48P14Fields020b1d48iiiiii(s, a, b, c, d, (int)&data_020e91d4, x);
+    InitFields020b1d48((Fields020b1d48*)s, a, b, c, d, (int)&data_020e91d4, x);
 }

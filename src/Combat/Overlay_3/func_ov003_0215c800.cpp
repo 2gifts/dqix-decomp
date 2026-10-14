@@ -24,14 +24,16 @@ enum { kRegionValue3B4_3CC = 0x3b4 };
 enum { kRegionValue354_36C = 0x354 };
 #endif
 
-
 int GetGlobal02109400(void);
 extern "C" void func_02094ab0(void);
 struct Struct02074bd0;
 void ClearFlag0x10IfSet(struct Struct02074bd0* obj);
-extern "C" void _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(void* obj);
-extern "C" void _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(void* obj);
-extern "C" void _Z19InitEntries0205d2bcP11Obj0205d2bc(void* obj);
+struct Cont0205d1e0;
+void ClearBuffers0204b010OverList0x98(Cont0205d1e0*);
+struct Cont0205d274;
+void CallFunc0204b04cOverList0x98(Cont0205d274*);
+struct Obj0205d2bc;
+void InitEntries0205d2bc(Obj0205d2bc*);
 extern "C" void func_0205d048(void* obj);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" int LoadToMainBG1CharacterData(int arg0, int arg1, unsigned int arg2);
@@ -50,9 +52,9 @@ extern "C" ARM void func_ov003_0215c800(char* obj) {
     *(short*)((char*)reg + 0x50) = 0;
     ClearFlag0x10IfSet((struct Struct02074bd0*)(obj + kRegionValue80_98));
 
-    _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(obj + kRegionValue98_B0);
-    _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(obj + kRegionValue98_B0);
-    _Z19InitEntries0205d2bcP11Obj0205d2bc(obj + kRegionValue98_B0);
+    ClearBuffers0204b010OverList0x98((Cont0205d1e0*)(obj + kRegionValue98_B0));
+    CallFunc0204b04cOverList0x98((Cont0205d274*)(obj + kRegionValue98_B0));
+    InitEntries0205d2bc((Obj0205d2bc*)(obj + kRegionValue98_B0));
     func_0205d048(obj + kRegionValue98_B0);
 
     memset(*(void**)(obj + kRegionValue7C_94), 0, 0x20);

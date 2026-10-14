@@ -2,11 +2,10 @@
 #include "Resource/GameResources.h"
 #include "GameState/GameState.h"
 
-
 int GetField5cb0Value(char* obj);
 int GetField5cb4Value(char* obj);
 int GetField5cb8Value(char* obj);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
+void SetBrightness(GameResources*, int, int);
 void InitFieldsFromCombatant_0219bcac(unsigned char flag);
 void SetField5cb0AndRecordByte0(char* obj, int v);
 void SetField5cb4AndRecordByte1(char* obj, int v);
@@ -32,7 +31,7 @@ extern "C" ARM void func_ov017_021aa41c(Obj021aa41c* p) {
         InitFieldsFromCombatant_0219bcac(0);
     } else {
         GameResources* ov = func_ov017_0218b5b0();
-        _Z13SetBrightnessP13GameResourcesii(ov, 0, 30);
+        SetBrightness((GameResources*)ov, 0, 30);
     }
     SetField5cb0AndRecordByte0(obj, p->f8);
     SetField5cb4AndRecordByte1(obj, p->fa);

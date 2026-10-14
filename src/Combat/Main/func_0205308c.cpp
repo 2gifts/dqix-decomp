@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
+#include "World/Object3D.h"
 
 #if defined(jpn)
 #define data_020e7bf8 data_020e85d0
@@ -22,7 +23,6 @@ struct Obj0205308c {
 
 short* GetField150Ptr0x488_02052e2c(struct Field150Holder02052e2c*);
 extern "C" void* func_02012fe4(void);
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(void* obj);
 extern "C" void VectorizedMemset(void* dst, int value, unsigned int size);
 
 extern signed char data_020e7bf8[];
@@ -55,7 +55,7 @@ extern "C" ARM void func_0205308c(void* obj, int val) {
 
     {
         unsigned short gid = *(unsigned short*)func_02012fe4();
-        if (gid != _ZNK8Object3D10GetField06Ev(obj)) {
+        if (gid != ((Object3D*)obj)->GetField06()) {
             return;
         }
     }

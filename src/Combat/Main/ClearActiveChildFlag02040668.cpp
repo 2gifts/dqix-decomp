@@ -1,6 +1,5 @@
 #include <globaldefs.h>
-
-extern "C" void _ZN8Object3D11MakeVisibleEv(unsigned char* obj);
+#include "World/Object3D.h"
 
 struct Node02040668 {
     char pad[0x14];
@@ -16,10 +15,10 @@ ARM void ClearActiveChildFlag02040668(struct Node02040668* obj) {
         return;
     }
     if (obj->f18 != NULL) {
-        _ZN8Object3D11MakeVisibleEv((unsigned char*)obj->f18);
+        ((Object3D*)((unsigned char*)obj->f18))->MakeVisible();
         return;
     }
     if (obj->f1c != NULL) {
-        _ZN8Object3D11MakeVisibleEv((unsigned char*)obj->f1c);
+        ((Object3D*)((unsigned char*)obj->f1c))->MakeVisible();
     }
 }

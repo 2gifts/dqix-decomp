@@ -53,10 +53,11 @@ struct IdList_021e9f68 {
 extern const struct IdList_021e9f68 data_ov024_021fe768;
 extern const struct IdList_021e9f68 data_ov024_021fe708;
 
-extern "C" struct Cbt_021e9f68* _Z16GetCombatantByIDii(struct Random* battle, int id);
+struct Cbt_021e9f68* GetCombatantByID(int, int);
 int IsFlag10088Set(struct S_10088* obj);
-extern "C" int _Z33IsCombatantFlag2Mask8192_021e6798P10GameObject(struct Cbt_021e9f68* c);
-extern "C" int _Z33IsCombatantFlag2Mask2048_021e7ba8P10GameObject(struct Cbt_021e9f68* c);
+int IsCombatantFlag2Mask8192_021e6798(GameObject*);
+struct GameObject;
+int IsCombatantFlag2Mask2048_021e7ba8(GameObject*);
 void PushEntry0215ff50(void* obj, short val1, unsigned char val2);
 extern "C" struct Cbt_021e9f68* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
 int AnySlotHasBit18At0x2f4(unsigned char* obj);
@@ -84,11 +85,11 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
     if (ctx->queue == 0) {
         return 0;
     }
-    self = _Z16GetCombatantByIDii(ctx->battle, *b);
+    self = GetCombatantByID((int)ctx->battle, *b);
     if (!self) {
         return 0;
     }
-    if (IsFlag10088Set((struct S_10088*)self) || _Z33IsCombatantFlag2Mask8192_021e6798P10GameObject(self)) {
+    if (IsFlag10088Set((struct S_10088*)self) || IsCombatantFlag2Mask8192_021e6798((GameObject*)self)) {
         return 0;
     }
     gs = GameState::GetInstance();
@@ -96,7 +97,7 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
     saved = *a;
     queue = ctx->queue;
     *out = 0;
-    if (_Z33IsCombatantFlag2Mask2048_021e7ba8P10GameObject(self)) {
+    if (IsCombatantFlag2Mask2048_021e7ba8((GameObject*)self)) {
         return 0;
     }
     if ((action->flags10 & 0x400) && action->kind == 1 && *a != *b) {

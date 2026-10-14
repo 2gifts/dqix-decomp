@@ -7,7 +7,6 @@ extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct BattleStruct021b9d00;
 
 struct S_020103b4;
-extern "C" int _ZNK9GameState21IsMorningDayOrEveningEv(struct S_020103b4* obj);
 
 struct Struct02030b7c { int field0; void* field4; };
 extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
@@ -47,7 +46,7 @@ extern "C" ARM int func_ov017_021b9d00(struct Variant02030b0c* v, int idx) {
         int c = _ZNK6Script9Parameter5ToIntEv(v);
         v = (struct Variant02030b0c*)((char*)v + 8);
         if (c != 0) {
-            if (_ZNK9GameState21IsMorningDayOrEveningEv((struct S_020103b4*)GameState::GetInstance())) return 1;
+            if (((GameState*)((struct S_020103b4*)GameState::GetInstance()))->IsMorningDayOrEvening()) return 1;
             data_ov017_021d8438.byte2 = 1;
         }
     } else {

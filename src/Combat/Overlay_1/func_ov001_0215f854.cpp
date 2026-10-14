@@ -20,8 +20,6 @@ void SetHolderAndMarkNode0204a3f0(struct Owner0204a3f0* owner, struct Holder0204
 void SetName0204a440(char* obj, const char* src);
 void SetStringField0234(char* obj, const char* src);
 
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
-
 // USA: func_ov001_0215f854  (semantic: AllocateAndInitStateNode_0215f854)
 extern "C" ARM int func_ov001_0215f854(char* self) {
 	GameState* bs = GameState::GetInstance();
@@ -46,8 +44,8 @@ extern "C" ARM int func_ov001_0215f854(char* self) {
 	SetName0204a440((char*)newObj, (const char*)name);
 	SetStringField0234((char*)newObj, (const char*)str1);
 
-	_ZN8Object3D10EnableFlagEi((unsigned char*)combatant, 1);
-	_ZN8Object3D10EnableFlagEi((unsigned char*)combatant, 0x20);
+	((Object3D*)((unsigned char*)combatant))->EnableFlag(1);
+	((Object3D*)((unsigned char*)combatant))->EnableFlag(0x20);
 
 	SetField0x3b0Value(bs, (int)newObj);
 	return 1;

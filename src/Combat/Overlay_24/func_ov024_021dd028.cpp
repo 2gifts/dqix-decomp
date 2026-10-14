@@ -3,8 +3,11 @@
 #include "GameState/GameState.h"
 struct Obj021dd028;
 struct Params021dd028;
-extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(GameObject*);
-extern "C" int _Z30CheckCombatantInTable_021ea78cP16Wrapper_021ea78ciP13Obj3_021ea78c(Obj021dd028*,int,Params021dd028*);
+struct FlagObj_021dd260;
+int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
+struct Obj3_021ea78c;
+struct Wrapper_021ea78c;
+int CheckCombatantInTable_021ea78c(Wrapper_021ea78c*, int, Obj3_021ea78c*);
 extern "C" void func_ov000_02159eac(void*,void*,int);
 extern "C" void func_ov000_0215a004(void*,int,int,int,void*,Params021dd028*,int,int);
 void ClearFlag0x400000AndBytes(unsigned char*);
@@ -24,7 +27,7 @@ extern "C" ARM void* func_ov024_021dd028(Obj021dd028* obj,int sourceID,int id,Pa
     GameObject* c=GetCombatantByID((int)obj->context,id);
     if(!c)return 0;
     int allowed=1;
-    if(_Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(c)){
+    if(IsFlagBit24Set_021dd260((FlagObj_021dd260*)c)){
         if(params->field1c.value==7)allowed=0;
     }
     union {struct {int low;int high;};unsigned long long value;} effects;
@@ -32,7 +35,7 @@ extern "C" ARM void* func_ov024_021dd028(Obj021dd028* obj,int sourceID,int id,Pa
     effects.high=0;
     unsigned short selection=0;
     if(enabled && allowed){
-        if(_Z30CheckCombatantInTable_021ea78cP16Wrapper_021ea78ciP13Obj3_021ea78c(obj,id,params)){
+        if(CheckCombatantInTable_021ea78c((Wrapper_021ea78c*)obj, id, (Obj3_021ea78c*)params)){
             func_ov000_02159eac(obj->context,&effects,0x29);
             func_ov000_0215a004(obj->context,sourceID,id,GetHP(c)-1,&effects,params,obj->action->flag!=0,0);
             func_ov000_02159eac(obj->context,&effects,0xfe);

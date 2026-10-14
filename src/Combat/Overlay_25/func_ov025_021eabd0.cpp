@@ -2,7 +2,8 @@
 
 void* GetActiveCombatWork();
 void* GetSlotPtr02160f20(void* work);
-extern "C" void* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx);
+struct List021600f8;
+void* GetNodeAtIndex021600f8(List021600f8*, int);
 extern "C" short func_ov000_0215ffa0(void* node);
 extern "C" int func_ov025_021ed380(char* obj, unsigned short id, short val2, int type, int val3, short val4, unsigned short val5);
 
@@ -31,7 +32,7 @@ extern "C" ARM void func_ov025_021eabd0(char* self, int party) {
     Slot021eabd0* slot = (Slot021eabd0*)GetSlotPtr02160f20(GetActiveCombatWork());
     int found = -1;
     for (int i = 0; i < slot->count; i++) {
-        void* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(slot, i);
+        void* node = GetNodeAtIndex021600f8((List021600f8*)slot, i);
         if (node == 0) continue;
         short idx = func_ov000_0215ffa0(node);
         if (party != 0) {

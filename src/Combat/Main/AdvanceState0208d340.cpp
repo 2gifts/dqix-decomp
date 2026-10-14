@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 int GetWord0x0(int* obj);
-extern "C" int _Z31IsSubBrightnessTransitionActiveP13GameResources(int* obj);
+int IsSubBrightnessTransitionActive(GameResources*);
 
 struct Struct02074bf4;
 void ClearFlag0x11IfSet(struct Struct02074bf4*);
@@ -12,7 +12,8 @@ void DestroyStructAllocGroup0208ba54(struct StructAllocGroup0208ba54*);
 
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 
-extern "C" void _Z16SetSubBrightnessP13GameResourcesii(int, int, int);
+struct GameResources;
+void SetSubBrightness(GameResources*, int, int);
 void SetCombatModeFromCase020dc2d0(int);
 
 struct Obj0208d340 {
@@ -30,13 +31,13 @@ ARM void AdvanceState0208d340(struct Obj0208d340* obj) {
 
     if (obj->fd5 == 0) {
         if (!(obj->fda & 0x10)) {
-            _Z16SetSubBrightnessP13GameResourcesii(val, -16, 8);
+            SetSubBrightness((GameResources*)val, -16, 8);
         }
         obj->fd5 = obj->fd5 + 1;
         return;
     }
     if (obj->fd5 == 1) {
-        if (_Z31IsSubBrightnessTransitionActiveP13GameResources((int*)val) == 0) {
+        if (IsSubBrightnessTransitionActive((GameResources*)val) == 0) {
             obj->fd5 = obj->fd5 + 1;
         }
         return;

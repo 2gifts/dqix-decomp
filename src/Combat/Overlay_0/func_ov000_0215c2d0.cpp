@@ -44,7 +44,8 @@ struct Battle {
     int workCount;
 };
 
-extern "C" ActionEntry* _Z22GetNodeAtIndex02160094P12List02160094i(ActionNode* list, int index);
+struct List02160094;
+ActionEntry* GetNodeAtIndex02160094(List02160094*, int);
 ActionNode* GetWorkArrayEntry0215e9d8(void* self);
 ActionEntry* GetTableEntry0x8e00Bound0x48(void* self);
 TargetNode* GetTableEntry0x8e01Bound0x88(void* self);
@@ -52,12 +53,15 @@ void InitStruct02160030(void* obj);
 void ResetStruct02157cdc(void* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int n);
-extern "C" void _Z18AppendNode02160068P11Obj02160068P12Node02160068(ActionNode* obj, ActionEntry* node);
-extern "C" void _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(ActionNode* obj, TargetNode* node);
+struct Node02160068;
+struct Obj02160068;
+void AppendNode02160068(Obj02160068*, Node02160068*);
+struct Node021600cc;
+struct Obj021600cc;
+void AppendNode021600cc(Obj021600cc*, Node021600cc*);
 extern "C" ResultEntry* func_ov000_0215e958(void* self);
-extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(
-    void* self, ResultEntry* out, GameObject* combatant, short valC, short valA, short valB,
-    int wordC, int wordD, unsigned char byteE);
+struct OutStruct0215ccbc;
+void PopulateEntry_0215ccbc(int, OutStruct0215ccbc*, GameObject*, short, short, short, int, int, unsigned char);
 void AppendToChainAndIncCount0215ffc4(void* node, void* entry, int v);
 
 static inline GameObject* GetCombatant(int id) {
@@ -71,7 +75,7 @@ static inline short CurrMP(GameObject* c) { SDK_NULL_ASSERT(c); return c->curren
 // USA: func_ov000_0215c2d0
 extern "C" ARM void func_ov000_0215c2d0(Battle* self, ActionNode* src) {
     for (int i = 0; i < src->entryCount; i++) {
-        ActionEntry* e = _Z22GetNodeAtIndex02160094P12List02160094i(src, i);
+        ActionEntry* e = GetNodeAtIndex02160094((List02160094*)src, i);
         if (e == 0) {
             continue;
         }
@@ -112,14 +116,13 @@ extern "C" ARM void func_ov000_0215c2d0(Battle* self, ActionNode* src) {
         e->hits = 0;
         e->f1c = -1;
         e->f1e = 0;
-        _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(
-            self, out, c, 0, CurrHP(c), CurrMP(c), 0, 0, 0);
+        PopulateEntry_0215ccbc((int)self, (OutStruct0215ccbc*)out, c, 0, CurrHP(c), CurrMP(c), 0, 0, 0);
         tn->id = e->id;
         tn->active = 1;
         AppendToChainAndIncCount0215ffc4(tn, out, 0);
         work->flags |= 4;
-        _Z18AppendNode02160068P11Obj02160068P12Node02160068(work, entry);
-        _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(work, tn);
+        AppendNode02160068((Obj02160068*)work, (Node02160068*)entry);
+        AppendNode021600cc((Obj021600cc*)work, (Node021600cc*)tn);
         self->workCount++;
         self->tableCount++;
         self->targetCount++;

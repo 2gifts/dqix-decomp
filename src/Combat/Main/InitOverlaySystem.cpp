@@ -2,7 +2,8 @@
 #include "Filesystem/OverlayFSManagement.h"
 
 struct FourWords;
-extern "C" void _Z19ZeroInitializeMutexP5Mutex(struct FourWords* p);
+struct Mutex;
+void ZeroInitializeMutex(Mutex*);
 void Fill6BytesWithFF(char* p);
 
 extern struct FourWords data_01ffd34c;
@@ -17,7 +18,7 @@ ARM void InitOverlaySystem(void) {
     unsigned int i;
     unsigned int j;
 
-    _Z19ZeroInitializeMutexP5Mutex(&data_01ffd34c);
+    ZeroInitializeMutex((Mutex*)&data_01ffd34c);
     data_01ffd344 = 1;
     data_01ffd340 = 0;
 

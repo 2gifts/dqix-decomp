@@ -4,6 +4,7 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
 
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void* func_ov017_021b2164(void);
@@ -28,7 +29,6 @@ extern "C" void func_ov017_021a316c(int obj);
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
 
 extern "C" void func_ov017_0219b938(int obj);
-extern "C" void _ZN13SafeAllocator5ResetEv(void* thisPtr);
 
 // USA: func_ov011_02184cc0  (semantic: DispatchTaggedKeyCase_02184cc0)
 extern "C" ARM int func_ov011_02184cc0(struct TaggedNumber02184c30* tagged) {
@@ -57,7 +57,7 @@ extern "C" ARM int func_ov011_02184cc0(struct TaggedNumber02184c30* tagged) {
     case 2:
         if (GetField114Masked_021849bc(obj2, 4)) return 1;
         func_ov017_0219b938(p1);
-        _ZN13SafeAllocator5ResetEv((void*)(p1 + 0x9c));
+        ((SafeAllocator*)((void*)(p1 + 0x9c)))->Reset();
         SetFlags114_021849ac(obj2, 4);
         break;
     }

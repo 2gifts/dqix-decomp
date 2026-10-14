@@ -14,9 +14,11 @@
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void* p, int flag);
+struct Entry_0205d6a0;
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 void* GetDataPtr02114e04_020d6c00();
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(void* p, unsigned int mask);
+struct FlagWord020466f4;
+void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
 void ClearBitsInWord(unsigned int* p, unsigned int mask);
 
 struct Manager0218b240 {
@@ -47,7 +49,7 @@ extern "C" ARM void func_ov008_0218b240(Manager0218b240* obj) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
 
     obj->bit0 = 0;
-    _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((char*)obj + 0x18, 1);
+    ResetEntryList0205d6a0((Entry_0205d6a0*)((char*)obj + 0x18), 1);
 
     obj->e99 = 2;
     obj->e9a = 0;
@@ -55,7 +57,7 @@ extern "C" ARM void func_ov008_0218b240(Manager0218b240* obj) {
     obj->e9c = 0;
 
     void* ptr = GetDataPtr02114e04_020d6c00();
-    _Z18ClearFlags020466f4P16FlagWord020466f4j(ptr, 0x2f);
+    ClearFlags020466f4((FlagWord020466f4*)ptr, 0x2f);
     ClearBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
 
     loader->RemoveTask(obj->ea0);

@@ -32,7 +32,8 @@ struct Reset021e3158;
 
 CombatWork_021e58f0* GetActiveCombatWork(void);
 extern "C" ZoneInfo_021e58f0* func_ov017_021b8478(void* obj);
-extern "C" void _Z25StoreAndMaybeCopy02018f6cP11Obj02018f6cs(Zone3D* zone, short angle);
+struct Obj02018f6c;
+void StoreAndMaybeCopy02018f6c(Obj02018f6c*, short);
 void ResetStruct_021e3158(Reset021e3158* p);
 
 extern State_021ef988 data_ov025_021ef988;
@@ -56,7 +57,7 @@ extern "C" ARM int func_ov025_021e58f0(Args_021e58f0* args) {
         zone->SwitchZone(id, 0);
         data_ov025_021ef988.phase = 1;
     } else if (data_ov025_021ef988.phase == 1 && zone->unknown_424_ == 0) {
-        _Z25StoreAndMaybeCopy02018f6cP11Obj02018f6cs(zone, work->zoneAngle);
+        StoreAndMaybeCopy02018f6c((Obj02018f6c*)zone, work->zoneAngle);
         ResetStruct_021e3158(&data_ov025_021ef9a8);
         return 1;
     }

@@ -31,7 +31,8 @@ struct ProcHolder_02216b90 {
     void* proc;
 };
 
-extern "C" int _Z18GetContextPriorityP16ProcessorContext(void* proc);
+struct ProcessorContext;
+int GetContextPriority(ProcessorContext*);
 extern "C" int func_ov031_02217c00(void* ctx, Config_02216b90* config);
 extern "C" void func_ov031_0221ae00(void* arg);
 extern "C" int func_ov031_022173f4(void* ctx, void* a, void* b);
@@ -72,6 +73,6 @@ extern "C" ARM int func_ov031_02216b90(int mode) {
         return 4;
     }
     func_ov031_02217db4(data_ov031_0224e5e8.sys->ctx,
-                        _Z18GetContextPriorityP16ProcessorContext(data_02111304.proc) - 1);
+                        GetContextPriority((ProcessorContext*)data_02111304.proc) - 1);
     return 0;
 }

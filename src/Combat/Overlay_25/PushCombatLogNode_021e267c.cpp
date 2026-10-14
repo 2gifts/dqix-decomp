@@ -10,14 +10,11 @@ enum { RegionOffsetc = 0xc };
 
 void* GetArrayEntry_021e8a54_021e8a54(char* obj);
 unsigned char GetByte48_021e8ba4(void* obj);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* thisPtr, unsigned int size);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
-extern "C" void _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, void* member, int arg3);
 
 struct PtrField0x1c_020371b0;
 extern "C" void* _ZNK8Object3D23GetCurrentAnimationTimeEv(struct PtrField0x1c_020371b0* obj);
 struct S1a0;
-extern "C" void _ZN8Object3D23SetCurrentAnimationTimeEi(struct S1a0* obj, unsigned int v);
 
 struct Struct_203dafc {
     int field0;
@@ -50,7 +47,7 @@ extern "C" ARM void func_ov025_021e267c(int combatantId, int arg1, int arg2, int
     void* entry = GetArrayEntry_021e8a54_021e8a54((char*)entryObj);
     GameObject* combatant = battle->GetGameObjectByIndex(combatantId);
     if (!combatant) return;
-    struct Node021e8bac* node = (struct Node021e8bac*)_ZN13SafeAllocator8AllocateEj(entry, 0xc);
+    struct Node021e8bac* node = (struct Node021e8bac*)((SafeAllocator*)entry)->Allocate(0xc);
     if (!node) return;
     char* name = *(char**)((char*)combatant + 0x14);
     char buf[0x20];
@@ -69,8 +66,8 @@ extern "C" ARM void func_ov025_021e267c(int combatantId, int arg1, int arg2, int
     s.field1c = b + 4;
     _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(combatant, &s, flag);
     if (name) {
-        _ZN8Object3D24MaybeSetRegularAnimationEPKci(combatant, buf, 0);
-        _ZN8Object3D23SetCurrentAnimationTimeEi((struct S1a0*)combatant, (unsigned int)ptr);
+        ((Object3D*)combatant)->MaybeSetRegularAnimation((char const*)buf, 0);
+        ((Object3D*)((struct S1a0*)combatant))->SetCurrentAnimationTime((unsigned int)ptr);
     }
     node->byte0 = 0;
     node->half2 = combatantId;

@@ -12,7 +12,8 @@ struct Vec3s02030fc8 {
     signed short y;
     signed short z;
 };
-extern "C" void _Z16Vector3fix16CopyP8Vector3sPKS_(struct Vec3s02030fc8* dst, struct Vec3s02030fc8* src);
+struct Vector3s;
+void Vector3fix16Copy(Vector3s*, Vector3s const*);
 
 struct Vec3Int_020341e0 {
     int v[3];
@@ -37,7 +38,7 @@ extern "C" ARM void func_020341e0(Vec3Int_020341e0* dst, void* obj) {
                     field4 = *(short*)((char*)obj + 4);
                     void* entry = GetEntryBySignedByteIndex((struct SearchStruct*)thing, field4);
                     Vec3s02030fc8 tmp;
-                    _Z16Vector3fix16CopyP8Vector3sPKS_(&tmp, (struct Vec3s02030fc8*)((char*)entry + 8));
+                    Vector3fix16Copy((Vector3s*)&tmp, (Vector3s const*)((char*)entry + 8));
                     Vec3Int_020341e0 scaled;
                     scaled.v[0] = tmp.x << 7;
                     scaled.v[1] = tmp.y << 7;

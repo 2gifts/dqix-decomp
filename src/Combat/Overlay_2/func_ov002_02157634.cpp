@@ -100,8 +100,6 @@ void* GetPtrField0x2a04(GameState* gs);
 unsigned char CopyOutRegion0x571d(char* obj, void* dst);
 void InitStateArray02157ce0(char* p);
 void ClearStruct020a8170(struct Struct020a8170* p);
-extern "C" void _ZN13SafeAllocator5ResetEv(void* self);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int size);
 extern "C" void* __clear(void* dst, int count);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int n);
 extern "C" void* func_0202ae18(void);
@@ -177,8 +175,8 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             }
             return;
         case 0x5603:
-            _ZN13SafeAllocator5ResetEv(p->alloc8a0);
-            p->anim = (struct Struct020a8170*)_ZN13SafeAllocator8AllocateEj(p->alloc8a0, 0x10);
+            ((SafeAllocator*)p->alloc8a0)->Reset();
+            p->anim = (struct Struct020a8170*)((SafeAllocator*)p->alloc8a0)->Allocate(0x10);
             ClearStruct020a8170(p->anim);
             func_020a818c(p->anim, p->alloc8a0);
             func_020a8304(p->anim);
@@ -189,7 +187,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
                 p->showPrompt = 1;
                 p->state = 0x26;
                 p->nextState = 5;
-                _ZN13SafeAllocator5ResetEv(p->alloc8a0);
+                ((SafeAllocator*)p->alloc8a0)->Reset();
                 p->anim = 0;
             } else {
                 p->state = 0x14;

@@ -3,11 +3,10 @@
 
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
 void* GetDataPtr02114e04_020d6c00(void);
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 
 // USA: func_020a8ac8
 ARM void SetByteFlagBitAndCombatantField0x6c(unsigned char* obj, int bit) {
     *(unsigned char*)(obj + 4) |= (1 << bit);
     OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x402);
-    _ZN8Object3D10EnableFlagEi((unsigned char*)GameState::GetInstance()->GetPartyMemberByIndex(bit), 0x8000100);
+    ((Object3D*)((unsigned char*)GameState::GetInstance()->GetPartyMemberByIndex(bit)))->EnableFlag(0x8000100);
 }

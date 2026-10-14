@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Entry021649d4 { int type; char pad[8]; void* ptr; };
 struct IntField0x64_020377c4;
-extern "C" void _ZN8Object3D9SetRadiusEi(IntField0x64_020377c4* obj, int value);
 
 // USA: func_ov001_021649d4  (semantic: SetEntryValueByIndex_021649d4)
 extern "C" ARM int func_ov001_021649d4(Entry021649d4* arr, int idx, int value) {
@@ -19,7 +19,7 @@ extern "C" ARM int func_ov001_021649d4(Entry021649d4* arr, int idx, int value) {
         if (ptr == NULL) {
             return 0;
         }
-        _ZN8Object3D9SetRadiusEi((IntField0x64_020377c4*)ptr, value);
+        ((Object3D*)((IntField0x64_020377c4*)ptr))->SetRadius(value);
         return 1;
     }
 fail:

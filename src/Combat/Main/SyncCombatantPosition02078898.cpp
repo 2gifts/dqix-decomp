@@ -1,11 +1,9 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 struct Vec3 { int x; int y; int z; };
 
 struct U16Field0x6_020375f8 { char unk[0x6]; unsigned short field; };
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
@@ -16,10 +14,7 @@ void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
 struct Obj02033b68;
 void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 
-extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
-
 struct S02037418;
-extern "C" void _ZN8Object3D17SetInheritedAlphaEi(struct S02037418* obj, int val);
 
 extern "C" struct Vec3 func_02034104(void* combatant);
 extern "C" int fix32_Atan2(int x, int z);
@@ -28,17 +23,16 @@ extern char data_02108760;
 
 struct Entity02078898 {
     char pad0[0x6];
-    unsigned short field6;              // 0x6
+    unsigned short field6;
     char pad1[0x44 - 0x8];
-    struct Vec3 vecField44;             // 0x44
+    struct Vec3 vecField44;
     char pad2[0xb2 - 0x50];
-    unsigned short fieldB2;             // 0xb2
+    unsigned short fieldB2;
     char pad3[0x166 - 0xb4];
-    unsigned short combatantIdField;    // 0x166
+    unsigned short combatantIdField;
     char pad4[0x17c - 0x168];
-    unsigned char field17c;             // 0x17c
+    unsigned char field17c;
 };
-
 
 #if defined(jpn)
 enum { PositionContextOffset = 0x524 };
@@ -58,8 +52,8 @@ ARM int SyncCombatantPosition02078898(struct Entity02078898* p) {
     void* g734 = *(void**)(g + PositionContextOffset);
 
     GameObject* other = bs->GetProtagonist();
-    unsigned short a = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)other);
-    unsigned short b = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)p);
+    unsigned short a = ((Object3D*)((struct U16Field0x6_020375f8*)other))->GetField06();
+    unsigned short b = ((Object3D*)((struct U16Field0x6_020375f8*)p))->GetField06();
     if (a == b && *((unsigned char*)g734 + 3) == 0) {
         DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 6, 0);
     }
@@ -73,8 +67,8 @@ ARM int SyncCombatantPosition02078898(struct Entity02078898* p) {
 
     p->fieldB2 = 0;
     SetByteIfChanged02033b68((struct Obj02033b68*)p, 0);
-    _ZN8Object3D11DisableFlagEi((unsigned char*)p, 0x80);
-    _ZN8Object3D17SetInheritedAlphaEi((struct S02037418*)p, 0x1f);
+    ((Object3D*)((unsigned char*)p))->DisableFlag(0x80);
+    ((Object3D*)((struct S02037418*)p))->SetInheritedAlpha(0x1f);
     p->field17c = 0;
     return 1;
 }

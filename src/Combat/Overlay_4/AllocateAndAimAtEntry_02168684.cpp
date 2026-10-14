@@ -15,7 +15,8 @@ struct Node020406f8;
 void SelectVec3FromSources020406f8(struct Vec3_020406f8* dst, struct Node020406f8* n);
 
 struct Vec3 { int x; int y; int z; };
-extern "C" int _Z22Vector3fixAngleToPointPK8Vector3iS1_(struct Vec3* self, struct Vec3* target);
+struct Vector3i;
+int Vector3fixAngleToPoint(Vector3i const*, Vector3i const*);
 struct Vec3w0216 { unsigned int w[3]; };
 
 struct Obj02033834;
@@ -40,6 +41,6 @@ extern "C" ARM void func_ov004_02168684(SafeAllocator* a, void* target) {
     struct Vec3w0216 targetPos;
     targetPos = *(struct Vec3w0216*)&tempVec;
     selfPos = *(struct Vec3w0216*)((char*)combatant + 0x44);
-    int angle = _Z22Vector3fixAngleToPointPK8Vector3iS1_((struct Vec3*)&selfPos, (struct Vec3*)&targetPos);
+    int angle = Vector3fixAngleToPoint((Vector3i const*)&selfPos, (Vector3i const*)&targetPos);
     SetVecYByMode02033834((struct Obj02033834*)combatant, angle);
 }

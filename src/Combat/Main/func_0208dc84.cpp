@@ -4,7 +4,7 @@
 struct Variant02030b0c;
 extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Variant02030b0c* p);
-extern "C" int _Z12StringLengthPKc(char* s);
+int StringLength(char const*);
 extern "C" char* strcpy(char* dst, const char* src);
 
 struct List0208df94;
@@ -84,7 +84,7 @@ extern "C" ARM int func_0208dc84(char* p
         for (i = 0; i < *data_02108fd4.field0; i++) {
             if (data_02108fd4.field4[i] == c.field2.b9) {
                 if (s != 0) {
-                    dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(_Z12StringLengthPKc(s) + 1));
+                    dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength(s) + 1));
                     c.field4 = (int)dst;
                     if (dst != 0) {
                         strcpy((char*)dst, s);
@@ -92,7 +92,7 @@ extern "C" ARM int func_0208dc84(char* p
                 }
 #if defined(jpn)
                 if (extra != 0) {
-                    dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(_Z12StringLengthPKc(extra) + 1));
+                    dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength(extra) + 1));
                     c.field8 = (int)dst;
                     if (dst != 0) {
                         strcpy((char*)dst, extra);
@@ -109,7 +109,7 @@ extern "C" ARM int func_0208dc84(char* p
         c.field0 = (short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)p);
         s = (char*)_ZNK6Script9Parameter8ToStringEv((struct Variant02030b0c*)(p + 8));
         if (s != 0) {
-            dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(_Z12StringLengthPKc(s) + 1));
+            dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength(s) + 1));
             c.field4 = (int)dst;
             if (dst != 0) {
                 strcpy((char*)dst, s);
@@ -128,7 +128,7 @@ extern "C" ARM int func_0208dc84(char* p
 #endif
 #if defined(jpn)
         if (extra != 0) {
-            dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(_Z12StringLengthPKc(extra) + 1));
+            dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength(extra) + 1));
             c.field8 = (int)dst;
             if (dst != 0) {
                 strcpy((char*)dst, extra);

@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Combat/Main/BattleList.h"
 #include "Memory/SafeAllocator.h"
+#include "GameState/GameState.h"
 #if defined(jpn)
 enum { kRegionSelfShift = 0x84, kRegionElementCursor = 0x2a };
 #else
@@ -18,7 +19,8 @@ struct CombatantStruct {
     struct BaseCombatStats* baseStats;
     struct ModifiableCombatStats* currentStats;
 };
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(struct BattleStruct* battleStruct);
+struct GameState;
+void* GetPtrField0x2a04(GameState*);
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 struct Obj2081;
@@ -31,9 +33,8 @@ struct Obj021dcae0;
 struct KeyMap020a0b3c { short* keys; signed char* values; short count; };
 
 extern "C" struct CombatantStruct* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battleStruct, int combatantId);
-extern "C" int _ZNK9GameState12GetTickCountEv(struct BattleStruct* battleStruct);
 unsigned char* GetFieldAt0x150(unsigned char* combatant);
-extern "C" int _Z18GetField0x3acValueP9GameState(struct BattleStruct* battle);
+int GetField0x3acValue(GameState*);
 
 short FindMappedMemberId02080468(void* obj, int id);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
@@ -100,7 +101,7 @@ static inline int IsLowKind(struct Element020de650* e) { return e->nibble <= 7; 
 // USA: func_ov003_02178910
 extern "C" ARM void func_ov003_02178910(unsigned char* self) {
     struct BattleStruct* battle = _ZN9GameState11GetInstanceEv();
-    void* battleSum = _Z17GetPtrField0x2a04P9GameState(battle);
+    void* battleSum = GetPtrField0x2a04((GameState*)battle);
     struct Obj2081* elemObj = *(struct Obj2081**)(self + (0x89c - kRegionSelfShift));
     int state = *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift));
 
@@ -170,7 +171,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
                 int field30 = *(int*)(self + (0x1000 + 0x30 - kRegionSelfShift));
                 int val = EvalOrDispatch020de194(elem2a);
                 int product = mult * val;
-                void* battleSum2 = _Z17GetPtrField0x2a04P9GameState(_ZN9GameState11GetInstanceEv());
+                void* battleSum2 = GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv());
                 int kind2 = elem2a->nibble;
                 int ok2 = func_ov003_021784bc(battleSum2, *(short*)((char*)elem2a + 0x18), kind2, field30);
                 int result;
@@ -260,7 +261,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         }
 
         struct BattleStruct* b2 = _ZN9GameState11GetInstanceEv();
-        int scaleCount = _ZNK9GameState12GetTickCountEv(b2);
+        int scaleCount = ((GameState*)b2)->GetTickCount();
         int ratio = func_02081f20(self + (0x8c + 0x800 - kRegionSelfShift), scaleCount);
         if ((unsigned short)(ratio + 0xffff) <= 1) {
             void* p88c = *(void**)(self + (0x88c - kRegionSelfShift));
@@ -334,7 +335,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
                 (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
                 if (*(int*)(self + (0x1000 + 0x30 - kRegionSelfShift)) != 1) return;
 
-                int val = _Z18GetField0x3acValueP9GameState(battle);
+                int val = GetField0x3acValue((GameState*)battle);
                 *(unsigned char*)(self + (0x1000 + 0x43 - kRegionSelfShift)) = val;
                 int check = func_020dd4c4(*(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)), *(void**)(self + 8));
                 if (check == 0) return;
@@ -378,7 +379,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
             if (res != 1) return;
 
             if (*(int*)(self + (0x1000 + 0x30 - kRegionSelfShift)) == 1) {
-                int val = _Z18GetField0x3acValueP9GameState(battle);
+                int val = GetField0x3acValue((GameState*)battle);
                 *(unsigned char*)(self + (0x1000 + 0x43 - kRegionSelfShift)) = val;
                 void* elem2 = func_ov003_02179cfc((char*)self, *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)), *(void**)(self + 8));
                 int bit18 = (*(unsigned int*)((char*)elem2 + 8) << 0xd) >> 0x1f;
@@ -590,7 +591,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
                     *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x21;
                     *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
                     *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
-                    void* ptr2a04 = _Z17GetPtrField0x2a04P9GameState(battle2);
+                    void* ptr2a04 = GetPtrField0x2a04((GameState*)battle2);
                     int lookupVal = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)ptr2a04, *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)));
                     if (lookupVal == 0x63) {
                         *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x22;
@@ -625,7 +626,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
             *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x18;
             *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
             *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
-            void* ptr2a04b = _Z17GetPtrField0x2a04P9GameState(battle2);
+            void* ptr2a04b = GetPtrField0x2a04((GameState*)battle2);
             int lookupVal2 = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)ptr2a04b, *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)));
             if (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) > (0x63 - lookupVal2)) {
                 *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x37;
@@ -642,7 +643,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x18;
         *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
         *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
-        void* ptr2a04c = _Z17GetPtrField0x2a04P9GameState(battle);
+        void* ptr2a04c = GetPtrField0x2a04((GameState*)battle);
         int lookupVal3 = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)ptr2a04c, *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)));
         if (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) > (0x63 - lookupVal3)) {
             *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x37;

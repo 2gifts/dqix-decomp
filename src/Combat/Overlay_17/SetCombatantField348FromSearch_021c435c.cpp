@@ -7,7 +7,6 @@ int TestBitAt0x34(unsigned char*, unsigned int);
 extern "C" void* func_ov017_021b8478(void* obj);
 
 struct U16Field0x6_020375f0;
-extern "C" void _ZN8Object3D10SetField06Et(struct U16Field0x6_020375f0*, unsigned short);
 
 struct Src021c435c {
     unsigned char pad0[4];
@@ -42,5 +41,5 @@ extern "C" ARM void func_ov017_021c435c(int unused0, struct Src021c435c* src, Ga
             return;
         }
     }
-    _ZN8Object3D10SetField06Et((struct U16Field0x6_020375f0*)c, val);
+    ((Object3D*)((struct U16Field0x6_020375f0*)c))->SetField06(val);
 }

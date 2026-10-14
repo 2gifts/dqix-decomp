@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
 
 struct Task021b2fac {
     char pad0[1];
@@ -45,11 +46,10 @@ struct LoadInfo021b2fac {
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv(void);
 extern "C" void* func_ov017_0218b5b0(void);
-extern "C" Combatant021b2fac* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
+struct GameState;
+Combatant021b2fac* GetCombatantWithFlag0x100(GameState*, int);
 void ResetEntriesAndNotify_021b33d8(void* p);
 extern "C" void _ZN8Object3D7DestroyEv(void* o);
-extern "C" void _ZN13SafeAllocator5ResetEv(void* a);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* a, unsigned int n);
 extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(void* l, const char* a, const char* b, void* alloc);
 extern "C" int _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(void* l, const char* a, void* alloc);
 extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(void* l, int id);
@@ -66,21 +66,26 @@ extern "C" int func_ov017_021b3560(struct Task021b2fac* t);
 extern "C" void func_ov017_021b3678(struct Task021b2fac* t);
 extern "C" int func_ov017_021b3780(struct Task021b2fac* t);
 extern "C" int func_ov017_021b3e14(struct Task021b2fac* t);
-extern "C" void _Z32CallHelperIfCheckPasses_0218fcf8iii(void* a, int b, int c);
+void CallHelperIfCheckPasses_0218fcf8(int, int, int);
 void ResetStruct020d3c08(char* p);
-extern "C" void _Z36InitHandlerArrayAndRunScript020d3c84P24HandlerSlotArray020d3c84P12StreamHeaderi(char* p, void* hdr, unsigned int n);
-extern "C" void* _Z15FindEntryByKindP32FindEntryByKindContainer020d3d90i(char* c, int kind);
+struct HandlerSlotArray020d3c84;
+struct StreamHeader;
+void InitHandlerArrayAndRunScript020d3c84(HandlerSlotArray020d3c84*, StreamHeader*, int);
+struct FindEntryByKindContainer020d3d90;
+void* FindEntryByKind(FindEntryByKindContainer020d3d90*, int);
 extern "C" void memcpy(void* d, const void* s, unsigned int n);
 extern "C" void func_ov017_02191508(int id, void* e);
 extern "C" void sprintf(char* buf, const char* fmt, ...);
-extern "C" void _Z15ClearEightWordsP14Struct_203dafc(void* p);
+struct Struct_203dafc;
+void ClearEightWords(Struct_203dafc*);
 void RestorePairTables0207df90(char* p);
 void BackupPairTables0207dfac(char* p);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* o, void* info, void* cb);
 extern "C" void _ZN8Object3D8SetScaleEiii(void* o, int x, int y, int z);
-extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(void* o, int v);
+struct Bytes02033b88;
+void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 extern "C" void _ZN8Object3D17SetInheritedAlphaEi(void* o, int a);
-extern "C" void _Z18SetFlag0x1ceBit0x4Ph(void* o);
+void SetFlag0x1ceBit0x4(unsigned char*);
 extern "C" void func_ov017_02191fec(void* p, int v);
 
 extern char data_ov017_021d7a78[];
@@ -113,7 +118,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
     gs = _ZN9GameState11GetInstanceEv();
     loader = _ZN16BackgroundLoader11GetInstanceEv();
     mgr = func_ov017_0218b5b0();
-    c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, task->combatantId);
+    c = GetCombatantWithFlag0x100((GameState*)gs, task->combatantId);
     if (c == 0) {
         ResetEntriesAndNotify_021b33d8(task);
         task->done = 1;
@@ -129,8 +134,8 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
         if (has != 0) {
             _ZN8Object3D7DestroyEv(c);
             a0 = c->alloc;
-            _ZN13SafeAllocator5ResetEv((char*)a0 + 4);
-            _ZN13SafeAllocator5ResetEv((char*)a0 + 0x18);
+            ((SafeAllocator*)((char*)a0 + 4))->Reset();
+            ((SafeAllocator*)((char*)a0 + 0x18))->Reset();
             task->taskId = _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(loader, data_ov017_021d7a78, data_ov017_021d7a8c, 0);
             task->state = 4;
         } else if (func_ov017_021b3444(task) != 0) {
@@ -161,10 +166,10 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
     }
     if (task->state == 3) {
         if (func_ov017_021b3e14(task) != 0) {
-            c2 = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, task->combatantId);
+            c2 = GetCombatantWithFlag0x100((GameState*)gs, task->combatantId);
             if (c2->field9c != 0) {
                 m = func_ov017_0218b5b0();
-                _Z32CallHelperIfCheckPasses_0218fcf8iii(m, task->combatantId, c2->field9c);
+                CallHelperIfCheckPasses_0218fcf8((int)m, task->combatantId, c2->field9c);
             }
             _ZN8Object3D11DisableFlagEi(c2, 0x200);
             if (task->flagsB & 8) {
@@ -182,10 +187,10 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
                 _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, task->taskId, &file4, &size4);
                 if (file4 != 0) {
                     ResetStruct020d3c08(handlers);
-                    _Z36InitHandlerArrayAndRunScript020d3c84P24HandlerSlotArray020d3c84P12StreamHeaderi(handlers, file4, size4);
+                    InitHandlerArrayAndRunScript020d3c84((HandlerSlotArray020d3c84*)handlers, (StreamHeader*)file4, size4);
                     kind = c->stats != 0 ? c->stats->kind : 0;
-                    src = _Z15FindEntryByKindP32FindEntryByKindContainer020d3d90i(handlers, kind);
-                    e = _ZN13SafeAllocator8AllocateEj((char*)c->alloc + 0x18, 0x24);
+                    src = FindEntryByKind((FindEntryByKindContainer020d3d90*)handlers, kind);
+                    e = ((SafeAllocator*)((char*)c->alloc + 0x18))->Allocate(0x24);
                     if (e != 0) {
                         memcpy(e, src, 0x24);
                         c->entry = (unsigned char*)e;
@@ -212,7 +217,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
             if (_ZN16BackgroundLoader21GetDetailedTaskStatusEi(loader, task->taskId) == 2) {
                 _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, task->taskId, &file5, &size5);
                 if (file5 != 0) {
-                    _Z15ClearEightWordsP14Struct_203dafc(&info);
+                    ClearEightWords((Struct_203dafc*)&info);
                     info.data = file5;
                     info.size = size5;
                     info.alloc = alloc4;
@@ -222,10 +227,10 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
                 }
             }
             _ZN8Object3D8SetScaleEiii(c, 0x10a, 0x10a, 0x10a);
-            _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(c, 0);
+            SetByte0xbeShiftPrev((Bytes02033b88*)c, 0);
             _ZN8Object3D11DisableFlagEi(c, 0x200);
             _ZN8Object3D17SetInheritedAlphaEi(c, 0);
-            _Z18SetFlag0x1ceBit0x4Ph(c);
+            SetFlag0x1ceBit0x4((unsigned char*)c);
             func_ov017_02191fec(mgr, c->field4);
             _ZN16BackgroundLoader10RemoveTaskEi(loader, task->taskId);
             task->taskId = -1;

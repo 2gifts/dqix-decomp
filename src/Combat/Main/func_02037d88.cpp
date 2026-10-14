@@ -11,10 +11,8 @@ extern "C" void func_02038598(void* obj);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 struct S02037418;
-extern "C" void _ZN8Object3D17SetInheritedAlphaEi(struct S02037418* obj, int val);
 
 struct Struct020372b8;
-extern "C" void _ZN8Object3D24TransitionInheritedAlphaEii(struct Struct020372b8* obj, int a, int b);
 
 struct Obj02039df4;
 void ApplyStatusTickEffect(struct Obj02039df4* obj);
@@ -59,8 +57,6 @@ void AddClamped10BitFieldAt0x14(struct S_a0140* p, unsigned int amount);
 int CopyInBattleField0x7540(void* src);
 
 void SetByte0x2c4To2IfByte0x2c5Set(unsigned char* obj);
-
-extern "C" int _ZNK8Object3D7GetFlagEi(void* obj, int mask);
 
 extern unsigned short data_02114e30;
 
@@ -115,8 +111,8 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
     if (flagBit) {
         if (obj->field0xb2 > 0) {
             obj->flags1ce &= ~4;
-            _ZN8Object3D17SetInheritedAlphaEi((struct S02037418*)obj, 0);
-            _ZN8Object3D24TransitionInheritedAlphaEii((struct Struct020372b8*)obj, 0x1f, 0x64);
+            ((Object3D*)((struct S02037418*)obj))->SetInheritedAlpha(0);
+            ((Object3D*)((struct Struct020372b8*)obj))->TransitionInheritedAlpha(0x1f, 0x64);
         }
     }
     ApplyStatusTickEffect((struct Obj02039df4*)obj);
@@ -235,7 +231,7 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
         }
 
         obj->field260 = -1;
-        if (_ZNK8Object3D7GetFlagEi(obj, 0x1000000) == 0) {
+        if (((Object3D*)obj)->GetFlag(0x1000000) == 0) {
             func_02038138(obj);
         }
         func_02038598(obj);

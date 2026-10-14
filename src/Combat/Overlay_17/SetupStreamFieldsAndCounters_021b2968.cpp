@@ -8,8 +8,8 @@ extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, 
 void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord02046708;
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* obj, int value, int frames);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
+void SetMainBrightness(GameResources*, int, int);
+void SetBrightness(GameResources*, int, int);
 void SetByteField0x253(void* obj);
 
 struct Obj021b2968 {
@@ -36,9 +36,9 @@ extern "C" ARM int func_ov017_021b2968(struct Obj021b2968* self) {
 
         struct FlagWord02046708* flagWord = (struct FlagWord02046708*)GetDataPtr02114e04_020d6c00();
         if (!TestFlags02046708(flagWord, 1) && !TestFlags02046708(flagWord, 0x40)) {
-            _Z17SetMainBrightnessP13GameResourcesii(oddStruct, 0, 0x28);
+            SetMainBrightness((GameResources*)oddStruct, 0, 0x28);
         } else {
-            _Z13SetBrightnessP13GameResourcesii(oddStruct, 0, 0x28);
+            SetBrightness((GameResources*)oddStruct, 0, 0x28);
         }
     }
 

@@ -7,9 +7,6 @@ extern "C" void func_020dc548(int a, signed char* arr, signed char* count);
 struct Obj_021bd3a4;
 int HasFlag3orFlag2And9a_021bd3a4(struct Obj_021bd3a4* obj);
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
-extern "C" void _ZN8Object3D11MakeVisibleEv(unsigned char* obj);
-extern "C" void _ZN8Object3D10MakeHiddenEv(unsigned char* obj);
 
 struct TagObj_021bd4d0 {
     unsigned char pad0[0x16];
@@ -40,7 +37,7 @@ extern "C" ARM void func_ov017_021bd4d0(struct TagObj_021bd4d0* obj, int id, int
     if (combatant != 0) {
         keep = 1;
         g = *(unsigned short*)func_02012fe4();
-        u = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant);
+        u = ((Object3D*)((struct U16Field0x6_020375f8*)combatant))->GetField06();
         if (u != g) {
             if (clearFlag == 0) {
                 keep = 0;
@@ -58,9 +55,9 @@ extern "C" ARM void func_ov017_021bd4d0(struct TagObj_021bd4d0* obj, int id, int
                     combatant2 = battleStruct->GetPartyMemberByIndex(arr[i]);
                     if (combatant2 != 0) {
                         if (clearFlag) {
-                            _ZN8Object3D11MakeVisibleEv((unsigned char*)combatant2);
+                            ((Object3D*)((unsigned char*)combatant2))->MakeVisible();
                         } else {
-                            _ZN8Object3D10MakeHiddenEv((unsigned char*)combatant2);
+                            ((Object3D*)((unsigned char*)combatant2))->MakeHidden();
                         }
                     }
                 }

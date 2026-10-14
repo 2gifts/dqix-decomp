@@ -11,11 +11,9 @@ enum { kMetadataOffset = 0x6c };
 
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
-extern "C" void _ZN8Object3D10MakeHiddenEv(unsigned char* obj);
 
 extern "C" void* func_02012fe4(void);
 extern "C" void func_0208f68c(void* obj);
-extern "C" void _ZN8Object3D14AdvanceEffectsEv(void* obj);
 
 // USA: func_0208f4e4
 ARM void ProcessGrottoTurnEvent0208f4e4(unsigned char* obj) {
@@ -34,7 +32,7 @@ ARM void ProcessGrottoTurnEvent0208f4e4(unsigned char* obj) {
     unsigned short zoneId = *(unsigned short*)miscPtr;
     unsigned char state = meta->GetDiscoveryState();
     if (zoneId == *(int*)((char*)battle->GetGrottoStruct() + 0xc)) {
-        _ZN8Object3D14AdvanceEffectsEv(obj + 8);
+        ((Object3D*)(obj + 8))->AdvanceEffects();
     }
     if (grotto->unknown_0[0] != 0) {
         switch (state) {
@@ -43,5 +41,5 @@ ARM void ProcessGrottoTurnEvent0208f4e4(unsigned char* obj) {
                 return;
         }
     }
-    _ZN8Object3D10MakeHiddenEv(obj + 8);
+    ((Object3D*)(obj + 8))->MakeHidden();
 }

@@ -60,10 +60,10 @@ struct StrObj021552b8 {
 MsgGlobals021552b8 *GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(MsgGlobals021552b8 *);
 int GetArrayEntryByIndex_02156034(void *);
-extern "C" void *_Z21GetFieldByKey020e0434P17Container020e0310i(void *, int);
+void * GetFieldByKey020e0434(Container020e0310*, int);
 void InitObjFromCombatantId020e4bf4(void *, int);
 extern "C" void func_020e4b34(void *, void *, int, int, int, int, int, int, int, int, int, int);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(MsgGlobals021552b8 *, int, void *);
+void SetIndexedName02046574(Obj02046574*, int, char*);
 #if defined(jpn)
 extern "C" void func_0204500c(MsgGlobals021552b8*, void*, int);
 #endif
@@ -109,20 +109,20 @@ extern "C" ARM void func_ov003_021552b8(MsgScene021552b8 *self) {
             vocation = party->data->vocation;
             name = party->name;
         }
-        _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, name);
+        SetIndexedName02046574((Obj02046574*)g, 0, (char*)name);
         short key = GetArrayEntryByIndex_02156034(self) + 0x23;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(g, 1, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, key));
-        _Z22SetIndexedName02046574P11Obj02046574iPc(g, 2, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, (short)(vocation + 0x23)));
-        _Z22SetIndexedName02046574P11Obj02046574iPc(g, 3, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, (short)(vocation + 0x34)));
-        func_0204500c(g, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, self->curId), 0);
+        SetIndexedName02046574((Obj02046574*)g, 1, (char*)(GetFieldByKey020e0434((Container020e0310*)self->messages, key)));
+        SetIndexedName02046574((Obj02046574*)g, 2, (char*)(GetFieldByKey020e0434((Container020e0310*)self->messages, (short)(vocation + 0x23))));
+        SetIndexedName02046574((Obj02046574*)g, 3, (char*)(GetFieldByKey020e0434((Container020e0310*)self->messages, (short)(vocation + 0x34))));
+        func_0204500c(g, GetFieldByKey020e0434((Container020e0310*)self->messages, self->curId), 0);
 #else
         int vocation            = 0;
         if (party) {
             vocation = party->data->vocation;
         }
         short key = GetArrayEntryByIndex_02156034(self) + 0x23;
-        void *a   = _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, key);
-        void *b   = _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, (short) (vocation + 0x23));
+        void *a   = GetFieldByKey020e0434((Container020e0310*)self->messages, key);
+        void *b   = GetFieldByKey020e0434((Container020e0310*)self->messages, (short) (vocation + 0x23));
         StrObj021552b8 unit;
         InitObjFromCombatantId020e4bf4(&unit, self->slot);
         g->subject  = &unit;
@@ -134,11 +134,10 @@ extern "C" ARM void func_ov003_021552b8(MsgScene021552b8 *self) {
         }
         func_020e4b34(&obj, pick, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         g->extra = &obj;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(g, 1, a);
-        _Z22SetIndexedName02046574P11Obj02046574iPc(g, 2, b);
-        _Z22SetIndexedName02046574P11Obj02046574iPc(
-            g, 3, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, (short) (vocation + 0x34)));
-        func_0204500c(g, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, id), 0, 0xe3);
+        SetIndexedName02046574((Obj02046574*)g, 1, (char*)a);
+        SetIndexedName02046574((Obj02046574*)g, 2, (char*)b);
+        SetIndexedName02046574((Obj02046574*)g, 3, (char*)(GetFieldByKey020e0434((Container020e0310*)self->messages, (short) (vocation + 0x34))));
+        func_0204500c(g, GetFieldByKey020e0434((Container020e0310*)self->messages, id), 0, 0xe3);
 #endif
         g->active  = 1;
         g->active2 = 1;

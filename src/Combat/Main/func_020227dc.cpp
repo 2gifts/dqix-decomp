@@ -4,6 +4,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 extern "C" unsigned short* func_02012fe4(void);
 extern "C" char* func_0203bd08(void);
@@ -51,16 +52,13 @@ struct ResetStruct {
     char pad[0x400];
     unsigned char b42c;
 };
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
 
 struct StreamHeader;
 struct StreamState;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 extern "C" void func_0202445c(void* obj);
 extern "C" void func_ov017_02191234(void* obj);
@@ -171,10 +169,10 @@ extern "C" ARM void func_020227dc(MapDisplay* ctx) {
     struct ResetStruct local;
     data_020fdc4c.ctxPtr = ctx;
     data_020fdc4c.allocatorPtr = sb;
-    _ZN6Script10InitializeEv(&local);
+    ((Script*)&local)->Initialize();
     _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020ef498);
-    _ZN6Script4LoadEPKvj((struct StreamState*)&local, (struct StreamHeader*)fileData, (int)fileSize);
-    _ZN6Script7ExecuteEv((struct Struct02030774*)&local);
+    ((Script*)((struct StreamState*)&local))->Load((struct StreamHeader*)fileData, (int)fileSize);
+    ((Script*)((struct Struct02030774*)&local))->Execute();
 
     if (*p6 == 10000 || *p6 == 10100) {
         ctx->field12 = 1;

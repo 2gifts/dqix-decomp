@@ -201,8 +201,6 @@ int ListContainsId(struct ListHead02046b60* list, int id);
 void* GetSubstructAt0x7c0(void* base);
 int GetField0x158(void* obj);
 int CheckField0xc4Low15BitsNonZero(struct BitField0203402c* p);
-extern "C" int _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
-extern "C" int _ZNK8Object3D9GetHeightEv(void* obj);
 extern "C" int fix32_Divide(int a, int b);
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 unsigned short GetEntryField0x4OrFieldA0202bc8c(struct SearchStruct* obj);
@@ -451,12 +449,12 @@ dispatched:
     if (GetBitsInField0((unsigned int*)ov, 0x40) == 0) {
         int kind = 0;
         unsigned char placed = 0;
-        if (_ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)actor) == 10000 ||
+        if (((Object3D*)((struct U16Field0x6_020375f8*)actor))->GetField06() == 10000 ||
             *(int*)((char*)actor + kRegionOffset15c) == 10000) {
             _ZN8Vector3iaSERKS_(posA, &data_ov017_021d63f0);
             _ZN8Vector3iaSERKS_(posB, &data_ov017_021d63d8);
             kind = 0;
-        } else if (_ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)actor) == 10100 ||
+        } else if (((Object3D*)((struct U16Field0x6_020375f8*)actor))->GetField06() == 10100 ||
                    *(int*)((char*)actor + kRegionOffset15c) == 10100) {
             _ZN8Vector3iaSERKS_(posA, &data_ov017_021d63e4);
             _ZN8Vector3iaSERKS_(posB, &data_ov017_021d63fc);
@@ -465,7 +463,7 @@ dispatched:
             _ZN8Vector3iaSERKS_(posA, (int*)((char*)actor + 0x44));
             _ZN8Vector3iaSERKS_(posB, (int*)((char*)actor + 0x50));
             if (CheckField0xc4Low15BitsNonZero((struct BitField0203402c*)actor) != 0) {
-                posA[1] = posA[1] - fix32_Divide(_ZNK8Object3D9GetHeightEv(actor), 0x1800);
+                posA[1] = posA[1] - fix32_Divide(((Object3D*)actor)->GetHeight(), 0x1800);
             }
             kind = *(unsigned char*)((char*)actor + 0xbe);
             if (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)list) == 0x26) kind = 0;

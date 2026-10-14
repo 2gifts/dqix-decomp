@@ -16,9 +16,11 @@ void IssueCommand0x19(int cmd);
 
 extern "C" void* _ZN9GameState11GetInstanceEv();
 extern "C" char* func_ov017_0218b5b0();
-extern "C" char* _Z19GetField1c_021a193cPi(void* p);
-extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
-extern "C" short* _Z19GetField150Ptr0x488P22Field150Holder02052e14(void* holder);
+char* GetField1c_021a193c(int*);
+struct GameState;
+void* GetCombatantWithFlag0x100(GameState*, int);
+struct Field150Holder02052e14;
+short* GetField150Ptr0x488(Field150Holder02052e14*);
 extern "C" void func_02047554(void* obj, int val, int param1);
 
 extern const unsigned char data_ov005_0215cc1c[];
@@ -48,9 +50,8 @@ struct Scene0215a418 {
 extern "C" ARM void func_ov005_0215a418(Scene0215a418* self) {
     void* gs = _ZN9GameState11GetInstanceEv();
     char* res = func_ov017_0218b5b0();
-    char* holder = _Z19GetField1c_021a193cPi(*(void**)(res + LOW_REGION(0x34f8, 0x3708)));
-    short* tbl = _Z19GetField150Ptr0x488P22Field150Holder02052e14(
-        _Z25GetCombatantWithFlag0x100P9GameStatei(gs, *(int*)(holder + LOW_REGION(0x4f8, 0x4fc))));
+    char* holder = GetField1c_021a193c((int*)(*(void**)(res + LOW_REGION(0x34f8, 0x3708))));
+    short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)(GetCombatantWithFlag0x100((GameState*)gs, *(int*)(holder + LOW_REGION(0x4f8, 0x4fc)))));
     if (self->mode != 0) return;
 
     for (int i = 0; i < 8; i++) {

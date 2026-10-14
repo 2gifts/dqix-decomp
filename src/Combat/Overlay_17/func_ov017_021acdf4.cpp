@@ -21,7 +21,8 @@ struct HeadNode020469f8;
 struct Struct021b11b0;
 
 #if defined(jpn)
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void* obj, int index, char* text);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" void func_0204500c(void* obj, const char* text, int value);
 extern "C" char data_ov017_021d7f3b;
 enum { ResourceClearA = 0x41fe, ResourceClearB = 0x4200, MessageDone = 0x17e2, MessageActive = 0x868, GameEvent = 0x7cb4, GameEventData = 0x7ca8 };
@@ -457,7 +458,7 @@ extern "C" ARM void func_ov017_021acdf4(Battle021acdf4* self, HeadList020469f8* 
             }
             char* g = (char*)GetGlobalField0x1c020421a0();
 #if defined(jpn)
-            _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, *(char**)((char*)gs->GetUnknownGameObject() + 0x134));
+            SetIndexedName02046574((Obj02046574*)g, 0, *(char**)((char*)gs->GetUnknownGameObject() + 0x134));
             func_0204500c(g, &data_ov017_021d7f3b, 0);
 #else
             char combatant[0xc];

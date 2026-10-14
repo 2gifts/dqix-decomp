@@ -7,7 +7,7 @@ extern float data_020f33b4[6];
 extern char data_020f33d8[];
 extern char data_020f33cc[];
 
-extern "C" void _Z22ClearSubMemberAndResetPc(void* obj);
+void ClearSubMemberAndReset(char*);
 extern "C" void _Z25ResetAndFinalizeSubMemberPc(void* obj);
 extern "C" void __register_global_object(void* obj, void* func, void* node);
 
@@ -28,6 +28,6 @@ extern "C" __declspec(initcode) ARM void __sinit_020e5920(void) {
     data_020f33b4[3] = t;
     t = t + a;
     data_020f33b4[2] = t;
-    _Z22ClearSubMemberAndResetPc((void*)&data_020f33d8);
+    ClearSubMemberAndReset((char*)&data_020f33d8);
     __register_global_object((void*)&data_020f33d8, (void*)_Z25ResetAndFinalizeSubMemberPc, (void*)&data_020f33cc);
 }

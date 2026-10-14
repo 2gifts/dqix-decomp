@@ -9,8 +9,10 @@ enum { flagOffset = 0x42e2, listOffset = 0x6fc, contextOffset = 0x718, resetOffs
 extern "C" void* func_ov017_0218b5b0(void);
 extern "C" void func_02046a8c(int a, int b);
 extern "C" void* func_020704fc(void);
-extern "C" void _Z28SetScaledEffectParam020708c8P19EffectParam020708c8j(void* p, unsigned int v);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* ov17, int a, int b);
+struct EffectParam020708c8;
+void SetScaledEffectParam020708c8(EffectParam020708c8*, unsigned int);
+struct GameResources;
+void SetMainBrightness(GameResources*, int, int);
 void* GetGlobalField0x1c020421a0(void);
 extern "C" void func_02043124(void* v);
 void ClearMultipleFieldBits_02156b20(void* obj);
@@ -24,8 +26,8 @@ extern "C" ARM unsigned short func_ov001_021564b0(struct S021564b0* obj) {
     if (*(unsigned char*)((char*)ov17 + flagOffset) != 0) {
         char* p3000 = (char*)ov17 + 0x3000;
         func_02046a8c(*(int*)(p3000 + listOffset), *(int*)(p3000 + contextOffset));
-        _Z28SetScaledEffectParam020708c8P19EffectParam020708c8j(func_020704fc(), 0xf);
-        _Z17SetMainBrightnessP13GameResourcesii(ov17, 0, 0xf);
+        SetScaledEffectParam020708c8((EffectParam020708c8*)func_020704fc(), 0xf);
+        SetMainBrightness((GameResources*)ov17, 0, 0xf);
         void* field = GetGlobalField0x1c020421a0();
         func_02043124(field);
         char* p1000 = (char*)field + 0x1000;

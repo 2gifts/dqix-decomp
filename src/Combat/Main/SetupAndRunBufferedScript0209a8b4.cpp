@@ -2,6 +2,7 @@
 
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Ctx0209a8b4 {
     void* field0;
@@ -10,14 +11,11 @@ extern struct Ctx0209a8b4* data_02109ba8;
 extern char data_020f1640[];
 
 struct ResetStruct;
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 
 struct StreamState;
 struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, char*);
 
@@ -29,10 +27,10 @@ ARM void SetupAndRunBufferedScript0209a8b4(struct Ctx0209a8b4* ctx, SafeAllocato
         memset(mem, 0, 0x550);
         char local[0x430];
         data_02109ba8 = ctx;
-        _ZN6Script10InitializeEv((struct ResetStruct*)local);
+        ((Script*)((struct ResetStruct*)local))->Initialize();
         _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, data_020f1640);
-        _ZN6Script4LoadEPKvj((struct StreamState*)local, buffer, length);
-        _ZN6Script7ExecuteEv((struct Struct02030774*)local);
+        ((Script*)((struct StreamState*)local))->Load(buffer, length);
+        ((Script*)((struct Struct02030774*)local))->Execute();
         data_02109ba8 = NULL;
     }
 }

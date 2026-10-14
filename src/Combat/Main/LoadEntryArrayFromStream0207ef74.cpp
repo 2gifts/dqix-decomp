@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct EntryArray0207efdc;
 struct StreamHeader;
@@ -20,13 +21,9 @@ struct ResetStruct {
     unsigned char b42c;
 };
 
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
-
 struct StreamState;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
 
@@ -40,9 +37,9 @@ ARM void LoadEntryArrayFromStream0207ef74(struct EntryArray0207efdc* param0, Saf
         struct ResetStruct local;
         data_02108ed8[1] = param0;
         data_02108ed8[0] = param1;
-        _ZN6Script10InitializeEv(&local);
+        ((Script*)&local)->Initialize();
         _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f0f88);
-        _ZN6Script4LoadEPKvj((struct StreamState*)&local, param2, param3);
-        _ZN6Script7ExecuteEv((struct Struct02030774*)&local);
+        ((Script*)((struct StreamState*)&local))->Load(param2, param3);
+        ((Script*)((struct Struct02030774*)&local))->Execute();
     }
 }

@@ -43,8 +43,8 @@ bool TestFlagMask(unsigned short* pad, int buttons);
 char* GetFieldIfFlag4(char* gameState);
 void SetFlagsAt0x244(unsigned char* camera, unsigned char flags);
 void ClearFlagBits(unsigned char* camera, int flags);
-extern "C" void _Z28CallFunc020a0db8AtField0x16cPcii(char* camera, const Vector3i* position, int);
-extern "C" void _Z41CallFunc020a0db8AtField0x194AndClearFlag2Pcii(char* camera, const Vector3i* target, int);
+void CallFunc020a0db8AtField0x16c(char*, int, int);
+void CallFunc020a0db8AtField0x194AndClearFlag2(char*, int, int);
 void SetFourWordBlocks_021e6088(void* model, Words021e60c4* rotation);
 
 extern unsigned short data_02114e30[];
@@ -87,8 +87,8 @@ extern "C" ARM void func_ov023_021fc7c8(MenuCharacter_021fc7c8* self, void* scri
         const Vector3i target = data_ov023_021fd9fc;
         char* camera = GetFieldIfFlag4((char*)gameState);
         SetFlagsAt0x244((unsigned char*)camera, 2);
-        _Z28CallFunc020a0db8AtField0x16cPcii(camera, &position, 0xa000);
-        _Z41CallFunc020a0db8AtField0x194AndClearFlag2Pcii(camera, &target, 0xa000);
+        CallFunc020a0db8AtField0x16c(camera, (int)&position, 0xa000);
+        CallFunc020a0db8AtField0x194AndClearFlag2(camera, (int)&target, 0xa000);
     }
     else if (TestFlagMask(data_02114e30, 0x80))
     {
@@ -96,8 +96,8 @@ extern "C" ARM void func_ov023_021fc7c8(MenuCharacter_021fc7c8* self, void* scri
         const Vector3i target = data_ov023_021fd9e4;
         char* camera = GetFieldIfFlag4((char*)gameState);
         ClearFlagBits((unsigned char*)camera, 2);
-        _Z28CallFunc020a0db8AtField0x16cPcii(camera, &position, 0xa000);
-        _Z41CallFunc020a0db8AtField0x194AndClearFlag2Pcii(camera, &target, 0xa000);
+        CallFunc020a0db8AtField0x16c(camera, (int)&position, 0xa000);
+        CallFunc020a0db8AtField0x194AndClearFlag2(camera, (int)&target, 0xa000);
     }
     if (self->turnBack_)
     {

@@ -33,14 +33,19 @@ struct TableEntry0217f8c0;
 
 extern struct Obj0205eaa0 data_02108760;
 
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(void* elements);
+struct Struct_0205c570;
+int GetActiveScaledSum0205d794(Struct_0205c570*);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void* elements, int flag);
-extern "C" struct TableEntry0217f8c0* _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0(MenuState* menu);
-extern "C" int _Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(MenuState* menu);
-extern "C" int _Z22CountSetBitsLow12_0x68Pv(MenuState* menu);
-extern "C" void _Z29SetElementStateIfLess0217a9d0iiiP15Struct_0205d81c(int key, int count, int state, void* elements);
-extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(void* elements, int clear, int key);
+struct Entry_0205d6a0;
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
+struct Struct0217f8c0;
+struct TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(Struct0217f8c0*);
+int CheckFlagsOrField_0217c5f4_0217c5f4(void*);
+int CountSetBitsLow12_0x68(void*);
+struct Struct_0205d81c;
+void SetElementStateIfLess0217a9d0(int, int, int, Struct_0205d81c*);
+struct Struct_0205def8;
+void SetElementFlag0x20ByKey0205def8(Struct_0205def8*, int, int);
 extern "C" int func_020dd3cc(int combatantId);
 extern "C" int func_ov000_0217c594(MenuState* menu, int limit);
 extern "C" int func_ov000_0217c514(int id, int value);
@@ -52,7 +57,7 @@ extern "C" void func_ov000_0217c638(MenuState* menu, int arg1, int arg2);
 // USA: func_ov000_0217d674
 extern "C" ARM void func_ov000_0217d674(MenuState* menu, int arg1, int arg2) {
     menu->flags |= 0x100;
-    menu->activeSum = _Z26GetActiveScaledSum0205d794P15Struct_0205c570(menu->elements);
+    menu->activeSum = GetActiveScaledSum0205d794((Struct_0205c570*)menu->elements);
     if (func_ov000_0217c594(menu, 0) != 0) {
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         int id = menu->slotIds[menu->activeSum];
@@ -74,13 +79,13 @@ extern "C" ARM void func_ov000_0217d674(MenuState* menu, int arg1, int arg2) {
         func_ov000_02175258(menu);
         menu->depth = menu->depth + 1;
         menu->modeStack[menu->depth] = 6;
-        func_ov000_02176634(menu, _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0(menu), 6, arg1, arg2);
-        _Z29SetElementStateIfLess0217a9d0iiiP15Struct_0205d81c(6, _Z22CountSetBitsLow12_0x68Pv(menu), 4, menu->elements);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(menu->elements, 0, 1);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(menu->elements, 0, 2);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(menu->elements, 0, 5);
-    } else if (_Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(menu) != 0) {
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(menu->elements, 0);
+        func_ov000_02176634(menu, FindMatchingTableEntry0217f8c0((Struct0217f8c0*)menu), 6, arg1, arg2);
+        SetElementStateIfLess0217a9d0(6, CountSetBitsLow12_0x68(menu), 4, (Struct_0205d81c*)menu->elements);
+        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)menu->elements, 0, 1);
+        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)menu->elements, 0, 2);
+        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)menu->elements, 0, 5);
+    } else if (CheckFlagsOrField_0217c5f4_0217c5f4(menu) != 0) {
+        ResetEntryList0205d6a0((Entry_0205d6a0*)menu->elements, 0);
         menu->modeStack[menu->depth] = 0;
         menu->depth = menu->depth - 1;
         func_ov000_0217c638(menu, arg1, arg2);

@@ -13,7 +13,8 @@ int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 int PollUntilFieldMatchesOrLimit0202b284(int unused, int threshold);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
 extern "C" void func_ov017_021c37a4(void);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
 struct StateBits5ccc_11544;
 void SetFlag0x5cccBit0(struct StateBits5ccc_11544* state);
 
@@ -31,7 +32,7 @@ extern "C" ARM int func_0202b1f4(int* outPtr) {
     }
     OrBitsIntoField0((unsigned int*)flagWord, 0x1000000);
     func_ov017_021c37a4();
-    _Z13SetBrightnessP13GameResourcesii((void*)ctx, -16, 10);
+    SetBrightness((GameResources*)ctx, -16, 10);
     *(unsigned char*)((char*)battleStruct + kRegionalFieldOffset) = 4;
     SetFlag0x5cccBit0((struct StateBits5ccc_11544*)battleStruct);
     *outPtr = 3;

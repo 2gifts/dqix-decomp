@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 
-extern "C" void* _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j(void*, unsigned int);
+struct Obj02173bb0;
+void* GetElementIfInRange_02173bb0(Obj02173bb0*, unsigned int);
 extern "C" void func_0205ac40(void*, void*);
 extern signed char data_ov003_0217fa14[];
 
@@ -24,10 +25,10 @@ extern "C" ARM void func_ov003_02173bd8(void* obj) {
     }
 #if defined(jpn)
     switch (o[choiceOffset]) {
-        case 0: elem = _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j((char*)obj + entriesOffset, 5); break;
-        case 1: elem = _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j((char*)obj + entriesOffset, 4); break;
-        case 2: elem = _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j((char*)obj + entriesOffset, 3); break;
-        case 3: elem = _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j((char*)obj + entriesOffset, 2); break;
+        case 0: elem = GetElementIfInRange_02173bb0((Obj02173bb0*)((char*)obj + entriesOffset), 5); break;
+        case 1: elem = GetElementIfInRange_02173bb0((Obj02173bb0*)((char*)obj + entriesOffset), 4); break;
+        case 2: elem = GetElementIfInRange_02173bb0((Obj02173bb0*)((char*)obj + entriesOffset), 3); break;
+        case 3: elem = GetElementIfInRange_02173bb0((Obj02173bb0*)((char*)obj + entriesOffset), 2); break;
         default: elem = NULL;
     }
     if (elem == NULL) return;
@@ -36,7 +37,7 @@ extern "C" ARM void func_ov003_02173bd8(void* obj) {
         return;
     }
     index = data_ov003_0217fa14[o[choiceOffset]];
-    elem = _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j((char*)obj + entriesOffset, index);
+    elem = GetElementIfInRange_02173bb0((Obj02173bb0*)((char*)obj + entriesOffset), index);
 #endif
     *(int*)((char*)elem + 0x14) = x;
     *(int*)((char*)elem + 0x18) = 0x2f000;

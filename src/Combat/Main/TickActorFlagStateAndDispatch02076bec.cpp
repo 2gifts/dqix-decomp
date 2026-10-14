@@ -2,7 +2,6 @@
 #include "GameState/GameState.h"
 #include "GameState/Field3b0.h"
 
-extern "C" int _ZNK8Object3D9IsVisibleEv(unsigned char* obj);
 extern "C" int func_02032fdc(void* obj, void* param1, int flag);
 void* GetPtrField0x144(void* obj);
 extern "C" void func_020ca528(void* ptr, void* addr);
@@ -24,7 +23,7 @@ extern int data_020e8920;
 
 // USA: func_02076bec
 ARM int TickActorFlagStateAndDispatch02076bec(unsigned char* obj, void* param1) {
-    if (!_ZNK8Object3D9IsVisibleEv(obj)) {
+    if (!((Object3D*)obj)->IsVisible()) {
         return 0;
     }
 

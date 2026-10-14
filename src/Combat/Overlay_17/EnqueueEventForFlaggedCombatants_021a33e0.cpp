@@ -8,7 +8,6 @@ struct Entry_02028bd0* FindEntryInGlobalTable02027ccc(int key);
 int CheckField0NonZero(int* obj);
 extern "C" int func_0202c508(void* obj);
 extern "C" void func_02076a8c(void* obj);
-extern "C" void _ZN8Object3D10MakeHiddenEv(unsigned char* obj);
 void EnqueueEventTag134_021c9544(int a0, int a1, int a2, int a3);
 
 struct EntryField8_021a33e0 { unsigned char pad0[2]; unsigned short field2 : 2; unsigned short pad3 : 14; };
@@ -30,7 +29,7 @@ ARM void EnqueueEventForFlaggedCombatants_021a33e0(void* unused, int key) {
         GameObject* combatant = battleStruct->GetMaybeFieldMonsterByIndex(i + base);
         if (combatant) {
             func_02076a8c(combatant);
-            _ZN8Object3D10MakeHiddenEv((unsigned char*)combatant);
+            ((Object3D*)((unsigned char*)combatant))->MakeHidden();
             if (CheckField0NonZero((int*)search) && func_0202c508(search)) {
                 EnqueueEventTag134_021c9544(key, i, *(short*)((char*)combatant + 0x2), -1);
             }

@@ -12,8 +12,6 @@ int AbsPlus159IfNegative0215ad2c(int x);
 struct SearchObj0202ff34;
 
 struct Obj020363b4;
-extern "C" void _ZN8Object3D39LoadType0AnimationPackageFromBCFGScriptEP13SafeAllocatorPKvj(struct Obj020363b4* obj, SafeAllocator* alloc, void* header, int size);
-extern "C" void _ZN8Object3D39LoadType0AnimationPackageFromBCFGScriptEPKcP13SafeAllocator(struct Obj020363b4* obj, int key, SafeAllocator* alloc);
 
 extern const char data_ov001_02165745[];
 struct Global021658b8 { int field0; char pad[0x8c - 0x4]; unsigned char field8c; };
@@ -35,9 +33,9 @@ extern "C" ARM int func_ov001_0215f344(void* obj) {
     SafeAllocator* alloc = (SafeAllocator*)data_ov001_021658b8.field0;
     ((BackgroundLoader*)((SearchObj0202ff34*)(int)BackgroundLoader::GetInstance()))->GetLoadedFileByName((const char*)(buf), (void**)(&out1), (unsigned int*)(&out2));
     if (out1 != 0) {
-        _ZN8Object3D39LoadType0AnimationPackageFromBCFGScriptEP13SafeAllocatorPKvj((struct Obj020363b4*)combatant, alloc, (void*)out1, out2);
+        ((Object3D*)((struct Obj020363b4*)combatant))->LoadType0AnimationPackageFromBCFGScript(alloc, (void*)out1, out2);
     } else {
-        _ZN8Object3D39LoadType0AnimationPackageFromBCFGScriptEPKcP13SafeAllocator((struct Obj020363b4*)combatant, (int)buf, alloc);
+        ((Object3D*)((struct Obj020363b4*)combatant))->LoadType0AnimationPackageFromBCFGScript((char const*)((int)buf), alloc);
     }
     return 1;
 }

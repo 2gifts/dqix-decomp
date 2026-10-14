@@ -3,7 +3,7 @@
 #include "Resource/GameResources.h"
 
 unsigned char GetByte0x4(char* obj);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
+void SetBrightness(GameResources*, int, int);
 struct Actor0209c678;
 void DispatchContextByState0209c678(struct Actor0209c678* actor, int arg);
 extern int data_02109bf4;
@@ -15,9 +15,9 @@ extern "C" ARM int func_ov004_0216da58() {
     GameResources* obj = func_ov017_0218b5b0();
     int frames = _s32_div_f(1000, 0x22);
     if (GetByte0x4((char*)bs) == 8) {
-        _Z13SetBrightnessP13GameResourcesii(obj, 0x10, frames);
+        SetBrightness((GameResources*)obj, 0x10, frames);
     } else {
-        _Z13SetBrightnessP13GameResourcesii(obj, -16, frames);
+        SetBrightness((GameResources*)obj, -16, frames);
     }
     if (GetByte0x4((char*)bs) != 2) {
         DispatchContextByState0209c678((struct Actor0209c678*)&data_02109bf4, 0x10);

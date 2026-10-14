@@ -15,16 +15,13 @@
 #include "std_library_functions.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
+#include "World/Object3D.h"
 
 struct Container02037364;
-extern "C" void _ZN8Object3D26RemoveAnimationPackageByIDEi(struct Container02037364* obj, int key);
-
-extern "C" void _ZN8Object3D20StopCurrentAnimationEv(unsigned char* obj);
 
 extern "C" void* __clear(void* dst, int count);
 void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outLen);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
-extern "C" int _ZN8Object3D21MaybeSetBCFGAnimationEii(void* obj, int id, int flags);
 
 struct Struct_203dafc;
 void ClearEightWords(struct Struct_203dafc* obj);
@@ -46,7 +43,7 @@ extern int data_0211e33c;
 // USA: func_ov015_0218cb2c  (semantic: ResetAndReloadStream_0218cb2c)
 extern "C" ARM void func_ov015_0218cb2c(void* self, int val) {
     unsigned char* base = (unsigned char*)self;
-    _ZN8Object3D26RemoveAnimationPackageByIDEi((struct Container02037364*)*(void**)(base + 0x24), 3);
+    ((Object3D*)((struct Container02037364*)*(void**)(base + 0x24)))->RemoveAnimationPackageByID(3);
     if (val != 0) {
         SafeAllocator allocator;
         allocator.ResetAllocatorPointer();
@@ -76,6 +73,6 @@ extern "C" ARM void func_ov015_0218cb2c(void* self, int val) {
         BackgroundLoader::RemoveLockGlobal();
         allocator.Destroy();
     }
-    _ZN8Object3D20StopCurrentAnimationEv(*(unsigned char**)(base + 0x24));
-    _ZN8Object3D21MaybeSetBCFGAnimationEii(*(void**)(base + 0x24), 0, *(int*)(base + 0x44));
+    ((Object3D*)(*(unsigned char**)(base + 0x24)))->StopCurrentAnimation();
+    ((Object3D*)(*(void**)(base + 0x24)))->MaybeSetBCFGAnimation(0, *(int*)(base + 0x44));
 }

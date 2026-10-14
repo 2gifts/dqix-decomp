@@ -1,11 +1,11 @@
 #include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
 #if defined(jpn)
 
 #define func_ov023_021f6524 func_ov004_02168f08
 #define func_ov004_02169658 func_ov004_02169b80
 extern "C" void* func_ov004_02168fa4(void*, int);
 #endif
-
 
 #if defined(jpn)
 extern "C" void* func_ov004_02168fd8(void*, int);
@@ -21,7 +21,6 @@ int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
 extern "C" void func_ov023_021f8120(void* obj);
 extern "C" void* func_ov011_021845f8(void* ctx, int v);
 extern "C" void func_ov023_021f6844(void* extra, int v);
-extern "C" void _ZN13SafeAllocator5ResetEv(void* thisPtr);
 struct Fields021849e0;
 void SetFieldConditional_021849e0(struct Fields021849e0* obj, unsigned short val);
 extern "C" void* func_ov023_021f6524(void* ctx, int value);
@@ -63,7 +62,7 @@ extern "C" ARM int func_ov004_021698f4(void* a) {
             void* av = func_ov011_021845f8(a, 2);
             if (av) {
                 func_ov023_021f6844(func_ov011_021849c8(a), 2);
-                _ZN13SafeAllocator5ResetEv((char*)av + 4);
+                ((SafeAllocator*)((char*)av + 4))->Reset();
             }
             SetFieldConditional_021849e0((struct Fields021849e0*)a, 0);
             void* r = func_ov023_021f6524(a, 0x64);

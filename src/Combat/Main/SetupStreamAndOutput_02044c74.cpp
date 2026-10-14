@@ -2,7 +2,7 @@
 #include "std_library_functions.h"
 
 extern "C" void func_0204c684(void* obj);
-extern "C" int _Z25AllocateVRAMStagingMemoryj(int value);
+int AllocateVRAMStagingMemory(unsigned int);
 
 #if defined(jpn)
 enum { kFlagOffset = 0x7fe, kOutputValue = 12 };
@@ -15,7 +15,7 @@ extern "C" ARM void func_02044c74(void* obj, void* out) {
     char* o = (char*)obj;
     char* dst = (char*)out;
     func_0204c684(out);
-    void* buf = (void*)_Z25AllocateVRAMStagingMemoryj(0x4800);
+    void* buf = (void*)AllocateVRAMStagingMemory(0x4800);
     if (buf) {
         unsigned char* p = (unsigned char*)(o + 0x1000);
         if (p[kFlagOffset]) {

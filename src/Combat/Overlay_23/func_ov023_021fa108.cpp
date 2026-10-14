@@ -7,7 +7,8 @@ extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" void Vector3fix_Normalize(struct Vec3* a, struct Vec3* b);
 
 struct Vec3Fixed02030e2c { int x; int y; int z; };
-extern "C" ARM void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3Fixed02030e2c* in, int scale, struct Vec3Fixed02030e2c* out);
+struct Vector3i;
+ARM void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 
 struct Vec3s32_020c3030 { int x; int y; int z; };
 extern "C" int Vector3fix_Distance(struct Vec3s32_020c3030* a, struct Vec3s32_020c3030* b);
@@ -50,7 +51,7 @@ extern "C" ARM void func_ov023_021fa108(void* unused, void* ctx, struct Slot021f
             slot->field4 = slot->fieldc;
         }
         struct Vec3Fixed02030e2c scaled;
-        _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&diff, slot->field4, &scaled);
+        Vector3fixMultiplyScalar((Vector3i const*)&diff, slot->field4, (Vector3i*)&scaled);
         Vector3fix_Add((struct Vec3*)slot->field10, (struct Vec3*)&scaled, (struct Vec3*)slot->field10);
         int dist = Vector3fix_Distance((struct Vec3s32_020c3030*)slot->field1c, (struct Vec3s32_020c3030*)slot->field10);
         float a = (float)slot->field4 / 4096.0f;
@@ -66,7 +67,7 @@ extern "C" ARM void func_ov023_021fa108(void* unused, void* ctx, struct Slot021f
         if (slot->field8 < slot->field4 && (diff2 = slot->field4 - slot->field8) < dist2) {
             slot->field4 = diff2;
             struct Vec3Fixed02030e2c scaled2;
-            _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&diff, diff2, &scaled2);
+            Vector3fixMultiplyScalar((Vector3i const*)&diff, diff2, (Vector3i*)&scaled2);
             Vector3fix_Add((struct Vec3*)slot->field10, (struct Vec3*)&scaled2, (struct Vec3*)slot->field10);
         } else {
             _ZN8Vector3iaSERKS_(slot->field10, slot->field1c);

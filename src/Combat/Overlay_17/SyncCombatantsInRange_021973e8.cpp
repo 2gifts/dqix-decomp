@@ -4,13 +4,8 @@
 extern "C" void* func_02012fe4(void);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 struct ListNode0x2037a50;
-extern "C" int _ZNK8Object3D7IsChildEv(struct ListNode0x2037a50* node);
-extern "C" int _ZNK8Object3D7GetFlagEi(void* obj, int mask);
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 extern "C" int _ZN8Object3D4DrawEb(void* obj, int flag);
 struct Bits40_37464;
-extern "C" int _ZNK8Object3D17GetInheritedAlphaEv(struct Bits40_37464* obj);
-extern "C" int _ZNK8Object3D9GetRadiusEv(unsigned char* obj);
 
 struct Vec3_37774 { int a[3]; };
 struct Src_37774;
@@ -46,18 +41,18 @@ extern "C" ARM void func_ov017_021973e8(unsigned int* flagsObj) {
     for (id = 0xa0; id < 0xc0; id++) {
         GameObject* c = bs->GetGameObjectByIndex(id);
         if (!c) continue;
-        if (_ZNK8Object3D7IsChildEv((struct ListNode0x2037a50*)c)) continue;
-        if (_ZNK8Object3D7GetFlagEi(c, 0x40000000) != 0) continue;
-        _ZN8Object3D10EnableFlagEi((unsigned char*)c, 4);
+        if (((Object3D*)((struct ListNode0x2037a50*)c))->IsChild()) continue;
+        if (((Object3D*)c)->GetFlag(0x40000000) != 0) continue;
+        ((Object3D*)((unsigned char*)c))->EnableFlag(4);
         if (!_ZN8Object3D4DrawEb(c, flag9)) continue;
-        if (_ZNK8Object3D7GetFlagEi(c, 0x10) != 0) continue;
+        if (((Object3D*)c)->GetFlag(0x10) != 0) continue;
 
-        int bits = _ZNK8Object3D17GetInheritedAlphaEv((struct Bits40_37464*)c);
+        int bits = ((Object3D*)((struct Bits40_37464*)c))->GetInheritedAlpha();
         int computed = (int)((float)field3c / 31.0f * (float)bits);
 
         struct SyncLocal_021973e8 local;
         _ZNK8Object3D20MaybeGetShadowSourceEv(&local.vec, (struct Src_37774*)c);
-        int intAt64 = _ZNK8Object3D9GetRadiusEv((unsigned char*)c);
+        int intAt64 = ((Object3D*)((unsigned char*)c))->GetRadius();
         local.tag = 8;
         SyncBattleState0208f87c(&local.vec, field38, intAt64, computed);
     }

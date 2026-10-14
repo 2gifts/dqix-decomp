@@ -2,7 +2,6 @@
 #include "GameState/GameState.h"
 
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-extern "C" void _ZN8Object3D10SetField9eEh(unsigned char* obj, unsigned char value);
 struct Obj02061bd8;
 int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
 
@@ -21,7 +20,7 @@ ARM void SetupAndDispatchCombatant_02191e5c(int a, int b, short c, unsigned char
 	if (!combatant) return;
 	SetGroupShortValues_021919c8(a, b, c);
 	*(unsigned short*)((char*)combatant + 0x9c) = e;
-	_ZN8Object3D10SetField9eEh((unsigned char*)combatant, d);
+	((Object3D*)((unsigned char*)combatant))->SetField9e(d);
 	int inRange2 = (b >= 0 && b <= 3);
 	if (inRange2) {
 		GameObject* c2 = GetCombatantWithFlag0x100(battleStruct, b);

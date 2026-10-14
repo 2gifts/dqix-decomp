@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct Container020e0310;
 
 extern "C" void *func_0202ae18(void);
-extern "C" void *_ZN9GameState11GetInstanceEv();
 extern "C" unsigned char *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
 extern "C" int func_ov002_02159774(void *self, int idx, int a, int b, int c);
 void AppendFrameTag02041c08(char *buf, int x, int a, int b, int c, int d);
@@ -18,7 +18,7 @@ void AppendString02042058(char *buf, const char *str);
 extern "C" ARM void func_ov002_0215c72c(char *self, char *buf, int frame) {
     if (buf == 0) return;
     func_0202ae18();
-    void *gs = _ZN9GameState11GetInstanceEv();
+    void *gs = GameState::GetInstance();
     short x  = *(short *) (self + 0x1be6);
     int n    = 0;
     if (frame) AppendFrameTag02041c08(buf, x, 8, 5, 5, 5);

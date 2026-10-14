@@ -3,7 +3,7 @@
 
 extern "C" char *func_0205ec34(void);
 extern "C" int func_ov002_02161920(void *self);
-extern "C" int _Z18TestBitInByteArrayiPhi(char *unused, char *arr, int index);
+int TestBitInByteArray(int, unsigned char*, int);
 
 struct List02156080 {
     short v[9];
@@ -19,7 +19,7 @@ extern "C" ARM void func_ov002_02156080(void *self, short *out, short *outCount)
     for (short i = 0; i < 9; i++) {
         int ok = 1;
         switch (i) {
-            case 2: ok = _Z18TestBitInByteArrayiPhi(save, save + 0x8c, 0x119c) != 0 ? 1 : 0; break;
+            case 2: ok = TestBitInByteArray((int)save, (unsigned char*)(save + 0x8c), 0x119c) != 0 ? 1 : 0; break;
             case 6: ok = 0; break;
             case 8:
                 if (mode != 2) ok = 0;

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 class GameState;
 struct Struct0205de24;
@@ -22,7 +23,6 @@ struct Flags3c {
     unsigned int top : 1;
 };
 
-extern "C" GameState *_ZN9GameState11GetInstanceEv();
 extern "C" unsigned char *_ZN9GameState21GetPartyMemberByIndexEi(GameState *gs, int idx);
 int GetField0x3acValue(GameState *gs);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int clear, int key);
@@ -30,7 +30,7 @@ void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char 
                                                                         unsigned char keyHigh);
 struct Elem_0205d81c *FindElementByC40205d81c(struct Struct_0205d81c *s, int key);
 void GetFourShortsAtIndex(struct ShortArrays0204c610 *base, int index, short *out0, short *out1, short *out2, short *out3);
-extern "C" void _Z20SetFourShortsAtIndexP19ShortArrays0204c654issss(struct ShortArrays0204c654 *base, short index, short a, short b, short c, short d);
+void SetFourShortsAtIndex(ShortArrays0204c654*, int, short, short, short, short);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 extern "C" void func_0205d7a0(unsigned char *obj, int val);
 int TestFlag0SetAndFlag1Clear(unsigned short *flags, int mask);
@@ -57,7 +57,7 @@ extern "C" ARM void func_ov002_02167998(char *base) {
     short v;
     int last;
     int shown;
-    GameState *gs = _ZN9GameState11GetInstanceEv();
+    GameState *gs = GameState::GetInstance();
     int phase     = *(int *) (base + 0x1bc0);
     if (phase == 0) {
         base[0x1c34] = 0;
@@ -82,9 +82,9 @@ extern "C" ARM void func_ov002_02167998(char *base) {
         short a, b, c, d;
         GetFourShortsAtIndex((struct ShortArrays0204c610 *) e, idx, &a, &b, &c, &d);
         idx += *(signed char *) (base + 0x1c73) + 1;
-        _Z20SetFourShortsAtIndexP19ShortArrays0204c654issss((struct ShortArrays0204c654 *) e, idx, a, b, c, d);
+        SetFourShortsAtIndex((struct ShortArrays0204c654 *) e, idx, a, b, c, d);
         idx += *(signed char *) (base + 0x1c73) + 1;
-        _Z20SetFourShortsAtIndexP19ShortArrays0204c654issss((struct ShortArrays0204c654 *) e, idx, a, b, c, d);
+        SetFourShortsAtIndex((struct ShortArrays0204c654 *) e, idx, a, b, c, d);
     }
     int mode;
     int sel;

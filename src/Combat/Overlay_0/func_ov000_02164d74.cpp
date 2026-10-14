@@ -59,14 +59,14 @@ struct Battle02164d74 {
 
 struct Bytes02033b88;
 
-extern "C" void _Z16GetField02163524Pv(struct Battle02164d74* battle);
+void GetField02163524(void*);
 extern "C" struct PtrBlock02164d74* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 extern "C" void func_ov000_0217feb0(void* obj, unsigned char value, int id);
-extern "C" int _Z13TestBitAt0x34Phj(struct Info02164d74* info, unsigned int index);
+int TestBitAt0x34(unsigned char*, unsigned int);
 extern "C" void func_ov000_02174a50(void* obj, int combatantId);
 extern "C" struct Combatant02164d74* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
 struct Combatant02164d74* GetCombatantWithFlag0x400(GameState* gs, int id);
-extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(struct Combatant02164d74* obj, int val);
+void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void InitPackedFields02089560(char* dst, char* buf, char* src);
 void CopyCombatantStats0208936c(char* dst, char* src1, char* src2);
 void ApplyCombatantBuffs(int unused, int combatantId);
@@ -88,7 +88,7 @@ void SetCombatWorkFlags0x55f4(void* work, int mask);
 extern "C" ARM void func_ov000_02164d74(struct Battle02164d74* battle) {
     GameState* gs = GameState::GetInstance();
     GameResources* ov = func_ov017_0218b5b0();
-    _Z16GetField02163524Pv(battle);
+    GetField02163524(battle);
     struct PtrBlock02164d74* pb = _Z17GetPtrField0x2a04P9GameState(gs);
     int i;
     for (i = 0; i < pb->count; i++) {
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov000_02164d74(struct Battle02164d74* battle) {
     }
     REG_POWCNT1 |= 0x8000;
     for (i = 0; i < 4; i++) {
-        if (!_Z13TestBitAt0x34Phj(battle->info, (unsigned char)i)) {
+        if (!TestBitAt0x34((unsigned char*)battle->info, (unsigned char)i)) {
             func_ov000_02174a50(battle->sub3760, i);
             continue;
         }
@@ -106,7 +106,7 @@ extern "C" ARM void func_ov000_02164d74(struct Battle02164d74* battle) {
         }
         c->obj3D.MakeVisible();
         c->visFlags |= 3;
-        _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(c, 0);
+        SetByte0xbeShiftPrev((Bytes02033b88*)c, 0);
         c->obj3D.SetField06(battle->fieldEc8);
         if (battle->info->field30 != 0) {
             InitPackedFields02089560((char*)c->stats, c->field130, c->field134);
@@ -117,7 +117,7 @@ extern "C" ARM void func_ov000_02164d74(struct Battle02164d74* battle) {
         if (!(c->stats->flags14 & 1)) {
             c->flags18c &= ~1;
         } else {
-            _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(c, 4);
+            SetByte0xbeShiftPrev((Bytes02033b88*)c, 4);
         }
         func_ov000_02174738(battle->sub3760, i);
         func_ov017_021917f0(i, 1);

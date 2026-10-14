@@ -18,16 +18,19 @@ void SetSublistEntriesFlag1(void*, int);
 void SetSublistEntriesFlag2(void*, int);
 void SetEntryFlagById02080b40(void*, int);
 void DispatchEntryOp0x8(void*, int);
-extern "C" int _Z28CountNonZeroEntries_0215570cP11Obj0215570c(PartyStatusPanel*);
+struct Obj0215570c;
+int CountNonZeroEntries_0215570c(Obj0215570c*);
 unsigned char* GetFieldAt0x150(unsigned char*);
 void ClearSublistEntryFlag2_020806c4(void*, int);
 void SetEntryHalfword0xe(void*, int, int);
-extern "C" void _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(void*, int, int);
+struct Container02080fa8;
+void SetEntryFirstField02080fa8(Container02080fa8*, int, int);
 void GetEntryFieldsAt0x602080828(void*, int, short*, short*);
 void GetEntryOutputs020808c8(void*, int, short*, short*);
 void SetEntryFieldsAt0x602080854(void*, int, int, int);
 void ResolveEntryValueByKey02080fe0(void*, int, int);
-extern "C" void _Z22SetEntryHighNibble0x13P17Container02080cc0ii(void*, int, int);
+struct Container02080cc0;
+void SetEntryHighNibble0x13(Container02080cc0*, int, int);
 void GetSublistEntryScaledXY_020807c4(void*, int, short*, short*);
 void GetEntryFieldsAt0xE02080878(void*, int, short*, short*);
 void SetEntryScaledXY020807fc(void*, int, int, int);
@@ -47,7 +50,7 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
     SetEntryFlagById02080b40(entries, 0x43);
     DispatchEntryOp0x8(entries, 0x43);
 
-    int count = _Z28CountNonZeroEntries_0215570cP11Obj0215570c(self);
+    int count = CountNonZeroEntries_0215570c((Obj0215570c*)self);
     int r8 = -1;
     if (count <= 6) {
         r8 = 7;
@@ -69,8 +72,7 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
                 SetEntryFlagById02080b40(entries, col);
                 SetEntryFlagById02080b40(entries, sub);
                 SetEntryHalfword0xe(entries, row, (short)(slot - 1));
-                _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(entries, sub,
-                    *(unsigned short*)(base + 0x16c + slot * 2));
+                SetEntryFirstField02080fa8((Container02080fa8*)entries, sub, *(unsigned short*)(base + 0x16c + slot * 2));
 
                 unsigned char* entry = base + slot;
                 unsigned char kind = entry[0x186];
@@ -87,7 +89,7 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
                     SetEntryFieldsAt0x602080854(entries, cell, (short)(a + c + 1), b);
                     SetEntryFlagById02080b40(entries, cell);
                     ResolveEntryValueByKey02080fe0(entries, cell, hi);
-                    _Z22SetEntryHighNibble0x13P17Container02080cc0ii(entries, cell, shade);
+                    SetEntryHighNibble0x13((Container02080cc0*)entries, cell, shade);
                 }
             }
             row = (short)(row + 1);

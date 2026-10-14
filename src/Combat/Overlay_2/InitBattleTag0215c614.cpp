@@ -8,7 +8,8 @@ extern "C" void func_0205d304(void* a, void* b, int p2, int p3, int p4, int p5, 
 struct Struct0205de24;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
 extern "C" void func_ov002_0215c8a4(void* obj);
-extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(void* self, int a, int b);
+struct Struct_0205d81c;
+void SetElementFieldC2(Struct_0205d81c*, int, int);
 struct Obj0205dee8;
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8* obj, int val);
 
@@ -29,6 +30,6 @@ extern "C" ARM void func_ov002_0215c614(char* base) {
 
     FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)(base + 0xec8), 0, 2);
     func_ov002_0215c8a4(base);
-    _Z17SetElementFieldC2P15Struct_0205d81cii((void*)(base + 0xec8), ((struct FieldOv0215c614*)(base + 0x1000))->field & 0xff, 0);
+    SetElementFieldC2((Struct_0205d81c*)(base + 0xec8), ((struct FieldOv0215c614*)(base + 0x1000))->field & 0xff, 0);
     SetFieldB0AndUpdate0205dee8((struct Obj0205dee8*)(base + 0xec8), ((struct FieldOv0215c614*)(base + 0x1000))->field & 0xff);
 }

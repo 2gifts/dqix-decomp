@@ -13,9 +13,6 @@ struct Obj02033b68;
 void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
-
-extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 
 struct Entity020776a0 {
     char pad0[0x44];
@@ -58,10 +55,10 @@ extern "C" ARM int func_020776a0(struct Entity020776a0* self) {
     SetByteIfChanged02033b68((struct Obj02033b68*)self, 1);
 
     GameObject* protagonist = battleStruct->GetProtagonist();
-    unsigned short a = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)protagonist);
-    unsigned short b = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)self);
+    unsigned short a = ((Object3D*)((struct U16Field0x6_020375f8*)protagonist))->GetField06();
+    unsigned short b = ((Object3D*)((struct U16Field0x6_020375f8*)self))->GetField06();
     if (a == b) {
-        _ZN8Object3D11DisableFlagEi((unsigned char*)self, 0x80);
+        ((Object3D*)((unsigned char*)self))->DisableFlag(0x80);
     }
     self->f17a = 0;
     return 1;

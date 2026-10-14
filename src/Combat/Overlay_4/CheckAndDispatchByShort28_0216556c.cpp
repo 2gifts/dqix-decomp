@@ -8,7 +8,8 @@ enum { countOffset = 0x8f4, flagOffset = 0x8fd, flagBase = 0x1800, recordStride 
 #endif
 
 int GetWord0x0(int* obj);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
+struct GameResources;
+int IsBrightnessTransitionActive(GameResources*);
 extern char* data_ov004_02171010;
 extern "C" void* func_ov011_021849c8(void* obj);
 extern "C" void* func_ov023_021f6880(void*, int);
@@ -26,7 +27,7 @@ extern "C" void func_ov004_021636b0(void* a1, void* a2);
 // USA: func_ov004_0216556c
 ARM int CheckAndDispatchByShort28_0216556c(void* a1) {
     if (*(unsigned char*)(data_ov004_02171010 + 0x1000 + countOffset) == 0) return 0;
-    if (_Z28IsBrightnessTransitionActiveP13GameResources((int*)GetWord0x0((int*)GameState::GetInstance())) != 0) return 0;
+    if (IsBrightnessTransitionActive((GameResources*)((int*)GetWord0x0((int*)GameState::GetInstance()))) != 0) return 0;
 
     {
         char* base = data_ov004_02171010;

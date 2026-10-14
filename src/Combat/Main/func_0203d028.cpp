@@ -10,6 +10,7 @@ extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 #include "Filesystem/LowNitroHandle.h"
 #include "Filesystem/NitroVM.h"
 #include "std_library_functions.h"
+#include "World/Object3D.h"
 struct BattleSub7e78 {
     char pad0[6];
     unsigned char field6;
@@ -120,7 +121,7 @@ void* GetGlobalContext020daf90(void);
 int GetField0x50(void* obj);
 void DispatchWithGlobalContext020daf9c(int a, int b, int c, int d);
 
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* mgr, int a, int b);
+void SetMainBrightness(GameResources*, int, int);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
 int IsPowcntBit0Set(void);
 int DispatchIfEquals1(int a);
@@ -155,7 +156,8 @@ extern "C" void func_0203e8f8(void* a, void* b, void* c);
 struct Foo0207df50;
 void CopyInternalFields0207df50(struct Foo0207df50* p);
 
-extern "C" void _Z18ClearCombatantSlotP9GameStatei(struct BattleStruct* battleStruct, int id);
+struct GameState;
+void ClearCombatantSlot(GameState*, int);
 
 struct FlagWord020466f4 { unsigned int flags; };
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
@@ -192,14 +194,9 @@ struct Obj02040540 {
 };
 void ApplyFlagsToTarget02040540(struct Obj02040540* obj);
 
-extern "C" int _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo(int a, int b);
-extern "C" void _ZN8Object3D10InitializeEv(void* obj);
+struct ObjectArchiveLoadInfo;
 
 struct Shorts5c_374e0 { char unk0[0x5c]; short a; short b; short c; };
-extern "C" void _ZN8Object3D8SetScaleEiii(struct Shorts5c_374e0* obj, short a, short b, short c);
-extern "C" void _ZN8Object3D9SetFlag16Ev(unsigned char* obj);
-
-extern "C" void _ZN8Object3D14ShallowCloneToEPS_(void* a, void* b);
 
 struct FieldsA020408c8 { char pad1c[0x1c]; int a; int b; int c; };
 struct Node020408c8 {
@@ -218,7 +215,6 @@ struct Obj02041598 {
 };
 int SetByteC4AndDispatch02041598(struct Obj02041598* obj, int value, int z);
 
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
 
 struct Obj020415b0 {
@@ -388,7 +384,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                 {
                     if (GetField0x50(GetGlobalContext020daf90()) == 0) {
                         DispatchWithGlobalContext020daf9c(1, 0, 1, 0);
-                        _Z17SetMainBrightnessP13GameResourcesii(mgr, ~0xf, 0);
+                        SetMainBrightness((GameResources*)mgr, ~0xf, 0);
                     }
                     OrBitsIntoField0(dataFlags, 0x400000);
                     if (!IsPowcntBit0Set()) {
@@ -447,7 +443,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     entry->type = 0;
                     alloc3->Reset();
                     CopyInternalFields0207df50((struct Foo0207df50*)buf930);
-                    _Z18ClearCombatantSlotP9GameStatei(battleStruct, 5);
+                    ClearCombatantSlot((GameState*)battleStruct, 5);
                     ClearFlags020466f4((struct FlagWord020466f4*)dataFlags, 0x400000);
                 }
             }
@@ -567,7 +563,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     lockParams.field1c = 1;
 
                     if (bit == 0) {
-                        _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo((int)node->state, (int)&lockParams);
+                        ((Object3D*)((int)node->state))->LoadFromCHRArchive((ObjectArchiveLoadInfo*)((int)&lockParams));
                     } else if (bit == 1) {
                         _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(node->state, &lockParams, 0);
                     }
@@ -578,7 +574,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                 if (childModelPtr == 0) {
                     childModelPtr = sb->Allocate(0xac);
                     if (childModelPtr == 0) goto abort_unlock;
-                    _ZN8Object3D10InitializeEv(childModelPtr);
+                    ((Object3D*)childModelPtr)->Initialize();
                     mdlPtr = LoadFileIntoNewAllocation(&data_020efe38, *sb, &mdlOutLen);
                     if (mdlPtr != 0) {
                         struct Struct_203dafc mdlParams;
@@ -587,11 +583,11 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                         mdlParams.field4 = (int)mdlPtr;
                         mdlParams.field8 = (int)mdlOutLen;
                         mdlParams.fieldc = (int)sb;
-                        _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo((int)childModelPtr, (int)&mdlParams);
+                        ((Object3D*)((int)childModelPtr))->LoadFromCHRArchive((ObjectArchiveLoadInfo*)((int)&mdlParams));
                         BackupPairTables0207dfac(fp);
                     }
-                    _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)childModelPtr, 0x10a, 0x10a, 0x10a);
-                    _ZN8Object3D9SetFlag16Ev((unsigned char*)childModelPtr);
+                    ((Object3D*)((struct Shorts5c_374e0*)childModelPtr))->SetScale(0x10a, 0x10a, 0x10a);
+                    ((Object3D*)((unsigned char*)childModelPtr))->SetFlag16();
                 }
                 if (assignedFlag == 0) {
                     node->field0x10 = childModelPtr;
@@ -599,9 +595,9 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                 } else {
                     childModelPtr2 = sb->Allocate(0xac);
                     if (childModelPtr2 == 0) goto abort_unlock;
-                    _ZN8Object3D10InitializeEv(childModelPtr2);
-                    _ZN8Object3D14ShallowCloneToEPS_(childModelPtr, childModelPtr2);
-                    _ZN8Object3D9SetFlag16Ev((unsigned char*)childModelPtr2);
+                    ((Object3D*)childModelPtr2)->Initialize();
+                    ((Object3D*)childModelPtr)->ShallowCloneTo((Object3D*)childModelPtr2);
+                    ((Object3D*)((unsigned char*)childModelPtr2))->SetFlag16();
                     node->field0x10 = childModelPtr2;
                 }
             }
@@ -610,11 +606,11 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                 SetActiveChildShorts020408c8((struct Node020408c8*)node, 0x8f, 0x8f, 0x8f);
             }
             else if (node->state != 0) {
-                _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)node->state, 0x10a, 0x10a, 0x10a);
+                ((Object3D*)((struct Shorts5c_374e0*)node->state))->SetScale(0x10a, 0x10a, 0x10a);
                 SetByteC4AndDispatch02041598((struct Obj02041598*)node->state, info->field1e, 0);
                 if (node->flags & 0x800) {
-                    _ZN8Object3D9SetFlag16Ev((unsigned char*)node->state);
-                    _ZN8Object3D10EnableFlagEi((unsigned char*)node->state, 0x2000000);
+                    ((Object3D*)((unsigned char*)node->state))->SetFlag16();
+                    ((Object3D*)((unsigned char*)node->state))->EnableFlag(0x2000000);
                     StoreVec3AtField0x50((unsigned char*)node->state, 0x4b5c, info->field1c, 0);
                 }
                 if (info->field58 != 0) {
@@ -625,10 +621,10 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                 }
             }
             else if (node->combatant != 0) {
-                _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)node->combatant, 0x10a, 0x10a, 0x10a);
+                ((Object3D*)((struct Shorts5c_374e0*)node->combatant))->SetScale(0x10a, 0x10a, 0x10a);
                 SetByte0x2e8AndDispatch02041628(node->combatant, info->field1e, 0);
                 if (node->flags & 0x800) {
-                    _ZN8Object3D9SetFlag16Ev((unsigned char*)node->combatant);
+                    ((Object3D*)((unsigned char*)node->combatant))->SetFlag16();
                     StoreVec3AtField0x50((unsigned char*)node->combatant, 0x4b5c, info->field1c, 0);
                 }
                 if (info->field58 != 0) {

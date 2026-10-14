@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
 
 struct Variant02030b0c;
 extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
@@ -10,8 +11,6 @@ void InsertShortIntoTable021098f4(unsigned short);
 struct ListEeec;
 struct NodeEeec;
 void PushNodeToList(struct ListEeec* list, struct NodeEeec* node);
-
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* thisPtr, unsigned int size);
 
 struct CallbackCache02108d04 {
     short field0;
@@ -48,7 +47,7 @@ extern "C" ARM int func_0206ed44(void* param0) {
             return 1;
         }
     }
-    node = (struct Entry0206ed44*)_ZN13SafeAllocator8AllocateEj(data_02108d04.field4, 0x14);
+    node = (struct Entry0206ed44*)((SafeAllocator*)data_02108d04.field4)->Allocate(0x14);
     if (node == 0) {
         InsertShortIntoTable021098f4(2);
         return 0;

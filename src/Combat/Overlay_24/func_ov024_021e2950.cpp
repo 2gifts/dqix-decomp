@@ -33,9 +33,10 @@ struct Bit3b_021e2950 { unsigned char bit0 : 1; unsigned char rest : 7; };
 
 static inline unsigned short GetMaxHP(GameObject* c) { return c->currentStats_->primaryStats.maxHP; }
 
-extern "C" int _Z23CheckFlag0x14Bit0x10SetPh(void*);
+int CheckFlag0x14Bit0x10Set(unsigned char*);
 void ClearBattleFlag0x14Bit4(void*);
-extern "C" int _Z22IsFlagBit5Set_021de25cP16FlagObj_021de25c(void*);
+struct FlagObj_021de25c;
+int IsFlagBit5Set_021de25c(FlagObj_021de25c*);
 void ClearFlag0x20AndBytes(void*);
 // USA: func_ov024_021e2950
 extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e2950(struct Obj_021e2950* obj, int unused, int id, int unused2, int amount) {
@@ -55,7 +56,7 @@ extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e2950(struct Obj_021e2950
         AddEntryAndIncrementCount0215a88c(obj->ctx, entry, 0x16);
         obj->count++;
     }
-    if (_Z23CheckFlag0x14Bit0x10SetPh(c->currentStats_)) {
+    if (CheckFlag0x14Bit0x10Set((unsigned char*)c->currentStats_)) {
         ClearBattleFlag0x14Bit4(c->currentStats_);
         ((struct Bit3b_021e2950*)((char*)c->currentStats_ + 0x3b))->bit0 = 1;
         func_ov000_02159eac(obj->ctx, &words, 0x10);
@@ -69,7 +70,7 @@ extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e2950(struct Obj_021e2950
         AddEntryAndIncrementCount0215a88c(obj->ctx, entry, 0x1f9);
         obj->count++;
     }
-    if (_Z22IsFlagBit5Set_021de25cP16FlagObj_021de25c(c)) {
+    if (IsFlagBit5Set_021de25c((FlagObj_021de25c*)c)) {
         ClearFlag0x20AndBytes(c->currentStats_);
         ((struct Bit3b_021e2950*)((char*)c->currentStats_ + 0x3b))->bit0 = 1;
         func_ov000_02159eac(obj->ctx, &words, 0x19);

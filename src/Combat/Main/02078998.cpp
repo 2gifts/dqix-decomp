@@ -10,7 +10,7 @@ extern "C" void* func_0202ae18();
 int CheckField0NonZero(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 int GetFieldAt0x150(unsigned char*);
-extern "C" bool _Z18TrySetMode02076cccPvi(Actor02076ccc*, int);
+bool TrySetMode02076ccc(void*, int);
 struct Vec3i021c95ec { int x, y, z; };
 extern "C" void func_ov017_021c95ec(int, int, int, int, int, Vec3i021c95ec, int, unsigned char, unsigned char);
 
@@ -77,23 +77,23 @@ extern "C" ARM void func_02078998(Actor02078998* self) {
     if ((attack + defense > (extraAttack + extraDefense) * 3 || self->priority == -99) && self->priority != 99) {
         switch (self->selectorA) {
         case 0:
-            _Z18TrySetMode02076cccPvi((Actor02076ccc*)self, 12);
+            TrySetMode02076ccc((Actor02076ccc*)self, 12);
             mode = 12;
             break;
         case 1:
-            _Z18TrySetMode02076cccPvi((Actor02076ccc*)self, 6);
+            TrySetMode02076ccc((Actor02076ccc*)self, 6);
             mode = 6;
             break;
         case 2:
-            _Z18TrySetMode02076cccPvi((Actor02076ccc*)self, 7);
+            TrySetMode02076ccc((Actor02076ccc*)self, 7);
             mode = 7;
             break;
         case 3:
             if (rand() % 2) {
-                _Z18TrySetMode02076cccPvi((Actor02076ccc*)self, 7);
+                TrySetMode02076ccc((Actor02076ccc*)self, 7);
                 mode = 7;
             } else {
-                _Z18TrySetMode02076cccPvi((Actor02076ccc*)self, 6);
+                TrySetMode02076ccc((Actor02076ccc*)self, 6);
                 mode = 6;
             }
             break;
@@ -101,19 +101,19 @@ extern "C" ARM void func_02078998(Actor02078998* self) {
     } else {
         switch (self->selectorB) {
         case 0:
-            _Z18TrySetMode02076cccPvi((Actor02076ccc*)self, 5);
+            TrySetMode02076ccc((Actor02076ccc*)self, 5);
             mode = 5;
             break;
         case 1:
-            _Z18TrySetMode02076cccPvi((Actor02076ccc*)self, 4);
+            TrySetMode02076ccc((Actor02076ccc*)self, 4);
             mode = 4;
             break;
         case 2:
             if (rand() % 2) {
-                _Z18TrySetMode02076cccPvi((Actor02076ccc*)self, 7);
+                TrySetMode02076ccc((Actor02076ccc*)self, 7);
                 mode = 7;
             } else {
-                _Z18TrySetMode02076cccPvi((Actor02076ccc*)self, 6);
+                TrySetMode02076ccc((Actor02076ccc*)self, 6);
                 mode = 6;
             }
             break;

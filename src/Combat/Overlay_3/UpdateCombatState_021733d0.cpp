@@ -18,27 +18,27 @@ enum { kRegionValue460_35C = 0x460 };
 enum { kRegionValueEC_E8 = 0xec };
 #endif
 
-
 extern "C" void* func_ov017_0218b5b0(unsigned char* self);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* p, int a, int b);
+struct GameResources;
+void SetMainBrightness(GameResources*, int, int);
 extern "C" int func_02012fe4(void);
 extern "C" void func_02098630(void* obj, void* addr, int a, int b);
 
-extern "C" int _Z32IsMainBrightnessTransitionActiveP13GameResources(int* p);
+int IsMainBrightnessTransitionActive(GameResources*);
 void ResetFieldsB68AndB74_0216fb6c(char* obj);
 
 // USA: func_ov003_021733d0  (semantic: UpdateCombatState_021733d0)
 extern "C" ARM void func_ov003_021733d0(unsigned char* self) {
     int* p = (int*)func_ov017_0218b5b0(self);
     if (self[kRegionValueEE_EA] == 0) {
-        _Z17SetMainBrightnessP13GameResourcesii(p, -16, 24);
+        SetMainBrightness((GameResources*)p, -16, 24);
         self[kRegionValueEE_EA] = 1;
         return;
     }
     if (self[kRegionValueEE_EA] != 1) {
         return;
     }
-    if (_Z32IsMainBrightnessTransitionActiveP13GameResources(p) != 0) {
+    if (IsMainBrightnessTransitionActive((GameResources*)p) != 0) {
         return;
     }
     int r4 = func_02012fe4();

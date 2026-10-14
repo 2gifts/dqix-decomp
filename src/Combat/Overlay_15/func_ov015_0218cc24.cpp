@@ -38,20 +38,18 @@ struct Obj0218cc24 {
 extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
 void DelayThenSyncBit0();
 void ResetObjectState02079a3c(void*);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char*);
+struct Foo0207df50;
+void CopyInternalFields0207df50(Foo0207df50*);
 void RestorePairTables0207df90(char*);
 void BackupPairTables0207dfac(char*);
-extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(void*, int);
+struct Container020dedd0;
+void* FindElementByKey020dedd0(Container020dedd0*, int);
 extern "C" int func_ov015_0218c03c(void* self, char* buf, int i, int one);
 extern "C" void func_ov015_0218c538(void* self, int zero);
 extern "C" void func_ov015_0218c3a4(void* self, int v);
 extern "C" void func_02099e18(void* a, int b, int c, int d);
-extern "C" void _Z13SetFields0x44P14Fields020407b4iii(Object3D*, int, int, int);
-extern "C" int _ZN7Model3D12GetBoneIndexEPKc(void*, const char*);
-extern "C" void _ZN7Model3D14RemoveTexturesEv(void*);
-extern "C" void _ZN7Model3D22ApplyTexturesFromModelEPS_(void*, void*);
-extern "C" void _ZN7Model3D33CreateBoneMatrixAndMaterialArraysEP13SafeAllocatori(void*, SafeAllocator*, int);
-extern "C" void _ZN7Model3D39StoreBoneMatrixAndMaterialArrayPointersEv(void*);
+struct Fields020407b4;
+void SetFields0x44(Fields020407b4*, int, int, int);
 extern "C" int fix32_Divide(int, int);
 
 extern int data_0211e33c __attribute__((aligned(4)));
@@ -111,15 +109,14 @@ extern "C" ARM int func_ov015_0218cc24(Obj0218cc24* self) {
             alloc = self->allocs;
             off14 = i * 0x14;
             ((SafeAllocator*)((char*)alloc + off14))->Reset();
-            _Z26CopyInternalFields0207df50P11Foo0207df50(pairs + off70);
+            CopyInternalFields0207df50((Foo0207df50*)(pairs + off70));
             self->ents[i].Initialize();
             _ZN8Vector3iaSERKS_(&self->ents[i].position_, &savedPos);
             self->ents[i].unknown_2_ = self->ids[i];
             if (self->ids[i] < 0) {
                 continue;
             }
-            Elem0218cc24* elem = (Elem0218cc24*)_Z24FindElementByKey020dedd0P17Container020dedd0i(
-                (char*)self->container + 0x4c, (short)self->ids[i]);
+            Elem0218cc24* elem = (Elem0218cc24*)FindElementByKey020dedd0((Container020dedd0*)((char*)self->container + 0x4c), (short)self->ids[i]);
             if (elem == 0) {
                 continue;
             }
@@ -147,14 +144,14 @@ extern "C" ARM int func_ov015_0218cc24(Obj0218cc24* self) {
                     void* m = self->GetEnt(0)->pModel_;
                     self->f54 = 0;
                     if (elem->kind == 4) {
-                        _Z13SetFields0x44P14Fields020407b4iii(&self->ents[i], 0, 0, 0);
+                        SetFields0x44((Fields020407b4*)&self->ents[i], 0, 0, 0);
                         if (m) {
-                            self->boneIdx = _ZN7Model3D12GetBoneIndexEPKc(m, &data_ov015_021940db);
+                            self->boneIdx = ((Model3D*)m)->GetBoneIndex(&data_ov015_021940db);
                         }
                     } else if (elem->kind == 6) {
-                        _Z13SetFields0x44P14Fields020407b4iii(&self->ents[i], 0, 0, 0);
+                        SetFields0x44((Fields020407b4*)&self->ents[i], 0, 0, 0);
                         if (m) {
-                            self->boneIdx = _ZN7Model3D12GetBoneIndexEPKc(m, &data_ov015_021940e1);
+                            self->boneIdx = ((Model3D*)m)->GetBoneIndex(&data_ov015_021940e1);
                         }
                         self->f54 = 1;
                     } else {
@@ -162,24 +159,24 @@ extern "C" ARM int func_ov015_0218cc24(Obj0218cc24* self) {
                             short v = self->s40;
                             int x = (int)(((long long)v * 9830LL + 0x800) >> 12);
                             int y = (int)(((long long)v * -1638LL + 0x800) >> 12);
-                            _Z13SetFields0x44P14Fields020407b4iii(&self->ents[i], x, y, 0);
+                            SetFields0x44((Fields020407b4*)&self->ents[i], x, y, 0);
                             if (m) {
-                                self->boneIdx = _ZN7Model3D12GetBoneIndexEPKc(m, &data_ov015_021940e7);
+                                self->boneIdx = ((Model3D*)m)->GetBoneIndex(&data_ov015_021940e7);
                             }
                         } else {
                             short v = self->s40;
                             int x = (int)(((long long)v * -9830LL + 0x800) >> 12);
                             int y = (int)(((long long)v * -1638LL + 0x800) >> 12);
-                            _Z13SetFields0x44P14Fields020407b4iii(&self->ents[i], x, y, 0);
+                            SetFields0x44((Fields020407b4*)&self->ents[i], x, y, 0);
                             if (m) {
-                                self->boneIdx = _ZN7Model3D12GetBoneIndexEPKc(m, &data_ov015_021940e1);
+                                self->boneIdx = ((Model3D*)m)->GetBoneIndex(&data_ov015_021940e1);
                             }
                         }
                     }
                 }
                 if (i == 9) {
                     short v = self->s40;
-                    _Z13SetFields0x44P14Fields020407b4iii(&self->ents[i], (int)(((long long)v * 0x2000LL + 0x800) >> 12), 0, 0);
+                    SetFields0x44((Fields020407b4*)&self->ents[i], (int)(((long long)v * 0x2000LL + 0x800) >> 12), 0, 0);
                 }
             }
             RestorePairTables0207df90(pairs + off70);
@@ -189,18 +186,18 @@ extern "C" ARM int func_ov015_0218cc24(Obj0218cc24* self) {
             room -= size;
             BackupPairTables0207dfac(pairs + off70);
             if (i == 4 && self->GetEnt(3)->pModel_ != 0) {
-                _ZN7Model3D22ApplyTexturesFromModelEPS_(self->GetEnt(3)->pModel_, self->ents[i].pModel_);
+                ((Model3D*)self->GetEnt(3)->pModel_)->ApplyTexturesFromModel((Model3D*)self->ents[i].pModel_);
             }
             void* model = self->ents[i].pModel_;
             if (model == 0) {
                 continue;
             }
             if (i == 0) {
-                _ZN7Model3D33CreateBoneMatrixAndMaterialArraysEP13SafeAllocatori(model, (SafeAllocator*)((char*)alloc + off14), 7);
-                _ZN7Model3D39StoreBoneMatrixAndMaterialArrayPointersEv(model);
+                ((Model3D*)model)->CreateBoneMatrixAndMaterialArrays((SafeAllocator*)((char*)alloc + off14), 7);
+                ((Model3D*)model)->StoreBoneMatrixAndMaterialArrayPointers();
             } else if (!(i == 1 || i == 6 || i == 5 || i == 4)) {
-                _ZN7Model3D33CreateBoneMatrixAndMaterialArraysEP13SafeAllocatori(model, (SafeAllocator*)((char*)alloc + off14), 5);
-                _ZN7Model3D39StoreBoneMatrixAndMaterialArrayPointersEv(model);
+                ((Model3D*)model)->CreateBoneMatrixAndMaterialArrays((SafeAllocator*)((char*)alloc + off14), 5);
+                ((Model3D*)model)->StoreBoneMatrixAndMaterialArrayPointers();
             }
         }
         pair.Reset();
@@ -210,19 +207,19 @@ extern "C" ARM int func_ov015_0218cc24(Obj0218cc24* self) {
     }
     void* m0 = self->GetEnt(0)->pModel_;
     if (m0) {
-        _ZN7Model3D14RemoveTexturesEv(m0);
+        ((Model3D*)m0)->RemoveTextures();
         if (self->GetEnt(5)->unknown_2_ >= 0 && self->GetEnt(5)->pModel_) {
-            _ZN7Model3D22ApplyTexturesFromModelEPS_(m0, self->GetEnt(5)->pModel_);
+            ((Model3D*)m0)->ApplyTexturesFromModel((Model3D*)self->GetEnt(5)->pModel_);
         }
-        _ZN7Model3D22ApplyTexturesFromModelEPS_(m0, m0);
+        ((Model3D*)m0)->ApplyTexturesFromModel((Model3D*)m0);
     }
     void* m1 = self->GetEnt(1)->pModel_;
     if (m1) {
-        _ZN7Model3D14RemoveTexturesEv(m1);
+        ((Model3D*)m1)->RemoveTextures();
         if (self->GetEnt(6)->unknown_2_ >= 0 && self->GetEnt(6)->pModel_) {
-            _ZN7Model3D22ApplyTexturesFromModelEPS_(m1, self->GetEnt(6)->pModel_);
+            ((Model3D*)m1)->ApplyTexturesFromModel((Model3D*)self->GetEnt(6)->pModel_);
         }
-        _ZN7Model3D22ApplyTexturesFromModelEPS_(m1, m1);
+        ((Model3D*)m1)->ApplyTexturesFromModel((Model3D*)m1);
     }
     func_02099e18(self->GetEnt(2)->pModel_, self->c3e, self->c3c, self->c3d);
     for (int k = 0; data_ov015_02193d48[k] >= 0; k++) {

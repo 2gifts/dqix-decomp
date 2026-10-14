@@ -8,7 +8,8 @@ struct Target02059f38;
 struct Vec3_02059f38;
 
 void CopyVec3ToField0x44(struct Target02059f38* dst, struct Vec3_02059f38* src);
-extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3Fixed02030e2c* in, int scale, struct Vec3Fixed02030e2c* out);
+struct Vector3i;
+void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 
 struct MoveRequest_021eeb8c {
     char pad0[8];
@@ -36,7 +37,7 @@ extern "C" ARM int func_ov025_021eeb8c(struct MoveRequest_021eeb8c* req) {
     struct Vec3 diff;
     Vector3fix_Subtract((const Vector3fix*)&req->target, (const Vector3fix*)&curPos, (Vector3fix*)&diff);
     int scale2 = fix32_Divide((fix32_t)step, (fix32_t)dist);
-    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&diff, scale2, (struct Vec3Fixed02030e2c*)&diff);
+    Vector3fixMultiplyScalar((Vector3i const*)&diff, scale2, (Vector3i*)&diff);
     Vector3fix_Add((const Vector3fix*)&curPos, (const Vector3fix*)&diff, (Vector3fix*)&curPos);
     CopyVec3ToField0x44((struct Target02059f38*)combatant, (struct Vec3_02059f38*)&curPos);
     req->remaining -= elapsed;

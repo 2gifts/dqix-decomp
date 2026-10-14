@@ -5,6 +5,7 @@ enum { RegionalOffset = 0x18 };
 #endif
 
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Entry_02028bd0;
 struct List_020283c0;
@@ -39,9 +40,6 @@ struct Actor_02077500 {
 
 extern Entry_02028bd0* GetEntryTableBase();
 extern Entry_02028bd0* FindInlineEntryById(Entry_02028bd0* table, int id);
-extern "C" extern int _ZNK8Object3D10GetField06Ev(U16Field0x6_020375f8* obj);
-extern "C" extern void _ZN8Object3D24TransitionInheritedAlphaEii(Struct020372b8* obj, int channel, int scale);
-extern "C" extern void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int bits);
 extern TableEntry_02077500* FindListEntryById(List_020283c0* list, int id);
 extern "C" void func_0202ae18();
 extern "C" int func_0202c508();
@@ -53,7 +51,7 @@ extern "C" ARM int func_02077500(Actor_02077500* obj) {
     if (table == 0) {
         return 0;
     }
-    Entry_02028bd0* entry = FindInlineEntryById(table, _ZNK8Object3D10GetField06Ev((U16Field0x6_020375f8*)obj));
+    Entry_02028bd0* entry = FindInlineEntryById(table, ((Object3D*)((U16Field0x6_020375f8*)obj))->GetField06());
     if (entry == 0) {
         return 0;
     }
@@ -62,8 +60,8 @@ extern "C" ARM int func_02077500(Actor_02077500* obj) {
         return 0;
     }
     obj->fb2 = 0;
-    _ZN8Object3D24TransitionInheritedAlphaEii((Struct020372b8*)obj, 0, 0xfa);
-    _ZN8Object3D10EnableFlagEi((unsigned char*)obj, 0x80);
+    ((Object3D*)((Struct020372b8*)obj))->TransitionInheritedAlpha(0, 0xfa);
+    ((Object3D*)((unsigned char*)obj))->EnableFlag(0x80);
     func_0202ae18();
     if (func_0202c508() != 0) {
         TableEntry_02077500* row = FindListEntryById(list, obj->entryId);
@@ -73,7 +71,7 @@ extern "C" ARM int func_02077500(Actor_02077500* obj) {
         obj->pos.x = row->x << 0xc;
         obj->pos.y = row->y << 0xc;
         obj->pos.z = row->z << 0xc;
-        int id = _ZNK8Object3D10GetField06Ev((U16Field0x6_020375f8*)obj);
+        int id = ((Object3D*)((U16Field0x6_020375f8*)obj))->GetField06();
         int wanted = obj->f4 - 0x70;
         int heading = obj->f2;
         Vec3_02077500* pos = &obj->pos;

@@ -8,10 +8,7 @@ void* GetField0x21c(struct S0204a438* p);
 int GetFlags(int obj);
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 struct BitFlags02037170;
-extern "C" int _ZNK8Object3D19HasAnimationStoppedEv(struct BitFlags02037170* obj);
 struct BitFlags02037180;
-extern "C" int _ZNK8Object3D22HasAnimationReachedEndEv(struct BitFlags02037180* obj);
-extern "C" int _ZNK8Object3D7GetFlagEi(void* obj, int mask);
 extern int data_ov025_021ef988;
 
 struct NameArr021e4868 { const char* v[8]; };
@@ -60,10 +57,10 @@ extern "C" ARM int func_ov025_021e4868(struct Param021e4868* p, int b, int unuse
     if (p->fieldA < 0x1000) {
         return *(int*)((char*)obj + 0x24) >= p->fieldA;
     }
-    if (_ZNK8Object3D19HasAnimationStoppedEv((struct BitFlags02037170*)obj) || _ZNK8Object3D22HasAnimationReachedEndEv((struct BitFlags02037180*)obj)) {
+    if (((Object3D*)((struct BitFlags02037170*)obj))->HasAnimationStopped() || ((Object3D*)((struct BitFlags02037180*)obj))->HasAnimationReachedEnd()) {
         return 1;
     }
-    if (_ZNK8Object3D7GetFlagEi(obj, 0x40000)) {
+    if (((Object3D*)obj)->GetFlag(0x40000)) {
         return 1;
     }
     if (*(unsigned char*)((char*)obj + 0x19) & 1) {

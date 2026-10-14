@@ -13,7 +13,8 @@ extern "C" void Vector3fix_Normalize(struct Vec3_020a0e4c* a, struct Vec3_020a0e
 extern "C" int Vector3fix_Distance(struct Vec3_020a0e4c* a, struct Vec3_020a0e4c* b);
 extern "C" void Vector3fix_Add(struct Vec3_020a0e4c* a, struct Vec3_020a0e4c* b, struct Vec3_020a0e4c* out);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3_020a0e4c* in, int scale, struct Vec3_020a0e4c* out);
+struct Vector3i;
+void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 
 struct MoveState020a0e4c {
     int flag_0x0;
@@ -54,7 +55,7 @@ extern "C" ARM void func_020a0e4c(struct MoveState020a0e4c* obj) {
             step = (int)(maxSpeed * dt);
         }
         struct Vec3_020a0e4c tmp;
-        _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&dir, step, &tmp);
+        Vector3fixMultiplyScalar((Vector3i const*)&dir, step, (Vector3i*)&tmp);
         Vector3fix_Add(&obj->pos_0x4, &tmp, &obj->pos_0x4);
     } else {
         int step = speedStep - accelStep;
@@ -68,7 +69,7 @@ extern "C" ARM void func_020a0e4c(struct MoveState020a0e4c* obj) {
             obj->flag_0x0 = 0;
         } else {
             struct Vec3_020a0e4c tmp;
-            _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&dir, step, &tmp);
+            Vector3fixMultiplyScalar((Vector3i const*)&dir, step, (Vector3i*)&tmp);
             Vector3fix_Add(&obj->pos_0x4, &tmp, &obj->pos_0x4);
         }
     }

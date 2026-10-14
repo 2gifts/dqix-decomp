@@ -1,7 +1,8 @@
 #include <globaldefs.h>
 
 extern "C" void* func_ov017_0218b5b0(void);
-extern "C" void _Z4StubP13GameResources(void*);
+struct GameResources;
+void Stub(GameResources*);
 extern "C" void _Z27UpdateBrightnessTransitionsP13GameResources(void*);
 extern "C" void _Z15ApplyBrightnessP13GameResources(void*);
 
@@ -17,7 +18,7 @@ ARM void InitFlag0x28FromOverlay(void*) {
         return;
     }
     obj->field0x28 = 1;
-    _Z4StubP13GameResources(obj);
+    Stub((GameResources*)obj);
     _Z27UpdateBrightnessTransitionsP13GameResources(obj);
     _Z15ApplyBrightnessP13GameResources(obj);
 }

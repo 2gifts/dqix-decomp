@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 struct Vec3 { int x; int y; int z; };
 
 extern "C" struct Vec3 func_02034104(GameObject* combatant);
@@ -12,8 +11,6 @@ void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
 
 struct Foo02033b58;
 void SetByteSavingPrevious(struct Foo02033b58* p, unsigned char v);
-
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 
 struct ShortPair0xba0xbc;
 void SetFields0xbaAnd0xbc(struct ShortPair0xba0xbc* obj, short a, short b);
@@ -46,7 +43,7 @@ extern "C" ARM int func_02078cc0(struct Entity02078cc0* self) {
     Vector3fix_Normalize((const Vector3fix*)&delta, (Vector3fix*)&delta);
     int angle = fix32_Atan2(delta.x, delta.z);
     SetVecYByMode02033834((struct Obj02033834*)self, angle);
-    _ZN8Object3D10EnableFlagEi((unsigned char*)self, 0x80);
+    ((Object3D*)((unsigned char*)self))->EnableFlag(0x80);
     SetFields0xbaAnd0xbc((struct ShortPair0xba0xbc*)self, 0xcc, 0xaf0);
     self->f17a = 0;
     return 1;

@@ -19,7 +19,8 @@ struct Node021e5c68 {
 };
 
 void ApplyVec3Tail(void* obj, int* vec);
-extern "C" Node021e5c68* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx);
+struct List021600f8;
+Node021e5c68* GetNodeAtIndex021600f8(List021600f8*, int);
 char* GetActiveCombatWork();
 
 // USA: func_ov025_021e5c68
@@ -35,7 +36,7 @@ extern "C" ARM int func_ov025_021e5c68(CameraStep021e5c68* step, void* list) {
         if (cam != 0) ApplyVec3Tail(cam, (int*)&step->offset);
     } else if (step->mode == 2) {
         fix32_t height = 1;
-        Node021e5c68* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, 0);
+        Node021e5c68* node = GetNodeAtIndex021600f8((List021600f8*)list, 0);
         if (node != 0) {
             GameObject* c = gs->GetCombatantByIndex(node->combatant);
             if (c != 0) height = c->obj3D_.GetHeight();

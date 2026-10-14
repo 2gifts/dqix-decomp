@@ -1,30 +1,32 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Filesystem/BackgroundLoader.h"
 
 void EncodeSignFlaggedHalfword(short* out, int value);
 
 extern "C" void MapVRAMBanksToMainBG(int);
 extern "C" void func_ov020_0218c7bc(int, int, int, int, int);
-extern "C" void _Z17ResetList0204af64P12List0204af64(void*);
-extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
+struct List0204af64;
+void ResetList0204af64(List0204af64*);
+void SetWord0x18ClearByte0x1f(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(void*, void*);
-extern "C" void _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(void*, int, void*);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*, int, int);
+struct AllocTarget0204b12c;
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
+struct Foo0204af38;
+void AllocateArray0204af38(Foo0204af38*, int, SafeAllocator*);
+struct Obj0204b5e8;
+void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 extern "C" void MapVRAMBanksToSubBG(int);
 extern "C" void func_ov020_0218cd64(int, int, int, int, int);
-extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
-extern "C" void _ZN16BackgroundLoader10MaybeResetEv(void*);
-extern "C" int _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(void*, const char*, void*);
-extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(void*, int);
-extern "C" void _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(void*, int, void**, unsigned int*);
-extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void*);
-extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, int*);
+struct ActiveEntry02046900;
+int CountActiveEntries(ActiveEntry02046900*);
+struct Rec020467f0;
+void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 extern "C" void func_0204b174(void*, void*, void*, int);
-extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(void*, int);
-extern "C" void _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(void*, unsigned int, int, int, short, short, short, short, unsigned short);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(void*, void*);
-extern "C" void _ZN16BackgroundLoader14RemoveAllLocksEv(void*);
+struct Obj0204b8d0;
+void DispatchEntry0204b8d0(Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
+struct List0204b0e8;
+void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
 
 extern char data_ov020_0218dcca;
 
@@ -55,45 +57,45 @@ extern "C" ARM void func_ov020_0218cf8c(struct SetupContext0218cf8c* self) {
     MapVRAMBanksToMainBG(8);
     func_ov020_0218c7bc(0, 0, 0x1f, 2, 0);
 
-    _Z17ResetList0204af64P12List0204af64(base + regionalOffset0 + 0x400);
-    _Z24SetWord0x18ClearByte0x1fPhi(base + regionalOffset0 + 0x400, 0);
+    ResetList0204af64((List0204af64*)(base + regionalOffset0 + 0x400));
+    SetWord0x18ClearByte0x1f((unsigned char*)(base + regionalOffset0 + 0x400), 0);
     base[regionalOffset1] = base[regionalOffset1] & ~0xf;
     base[regionalOffset1] = (base[regionalOffset1] & ~0xf0) | 0x10;
     func_0204b5b4(base + regionalOffset0 + 0x400, 0);
-    _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(base + regionalOffset0 + 0x400, &self->allocator);
-    _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(base + regionalOffset0 + 0x400, 1, &self->allocator);
-    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(base + regionalOffset0 + 0x400, 0, 0);
+    AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)(base + regionalOffset0 + 0x400), (SafeAllocator*)&self->allocator);
+    AllocateArray0204af38((Foo0204af38*)(base + regionalOffset0 + 0x400), 1, (SafeAllocator*)&self->allocator);
+    DispatchViaTable0204b5e8((Obj0204b5e8*)(base + regionalOffset0 + 0x400), 0, 0);
 
     MapVRAMBanksToSubBG(4);
     func_ov020_0218cd64(0, 0, 1, 1, 0);
 
-    _Z17ResetList0204af64P12List0204af64(base + regionalOffset3 + 0x400);
-    _Z24SetWord0x18ClearByte0x1fPhi(base + regionalOffset3 + 0x400, 0);
+    ResetList0204af64((List0204af64*)(base + regionalOffset3 + 0x400));
+    SetWord0x18ClearByte0x1f((unsigned char*)(base + regionalOffset3 + 0x400), 0);
     base[regionalOffset2] = (base[regionalOffset2] & ~0xf) | 1;
     base[regionalOffset2] = base[regionalOffset2] & ~0xf0;
     func_0204b5b4(base + regionalOffset3 + 0x400, 0);
-    _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(base + regionalOffset3 + 0x400, &self->allocator);
-    _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(base + regionalOffset3 + 0x400, 1, &self->allocator);
-    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(base + regionalOffset3 + 0x400, 0, 0);
+    AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)(base + regionalOffset3 + 0x400), (SafeAllocator*)&self->allocator);
+    AllocateArray0204af38((Foo0204af38*)(base + regionalOffset3 + 0x400), 1, (SafeAllocator*)&self->allocator);
+    DispatchViaTable0204b5e8((Obj0204b5e8*)(base + regionalOffset3 + 0x400), 0, 0);
 
     int taskId;
-    void* loader = _ZN16BackgroundLoader11GetInstanceEv();
-    _ZN16BackgroundLoader10MaybeResetEv(loader);
-    taskId = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(loader, &data_ov020_0218dcca, (void*)0);
+    void* loader = BackgroundLoader::GetInstance();
+    ((BackgroundLoader*)loader)->MaybeReset();
+    taskId = ((BackgroundLoader*)loader)->QueueLoadFile(&data_ov020_0218dcca, (SafeAllocator*)0);
 
   retryLoop:
-    if (_ZN16BackgroundLoader13GetTaskStatusEi(loader, taskId) == 0) goto waitForLoad;
+    if (((BackgroundLoader*)loader)->GetTaskStatus(taskId) == 0) goto waitForLoad;
 
     void* recFieldScratch;
     void* fileData;
     unsigned int fileLen;
-    _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, taskId, &fileData, &fileLen);
-    int count = _Z18CountActiveEntriesP19ActiveEntry02046900(fileData);
+    ((BackgroundLoader*)loader)->GetLoadedFileByID(taskId, &fileData, &fileLen);
+    int count = CountActiveEntries((ActiveEntry02046900*)fileData);
 
     void* resultsArray[6];
     int recSizeArray[6];
     for (int idx = 0; idx < count; idx++) {
-        resultsArray[idx] = _Z17FindRecordByIndexP11Rec020467f0iPPvPi(fileData, idx, &recFieldScratch, &recSizeArray[idx]);
+        resultsArray[idx] = FindRecordByIndex((Rec020467f0*)fileData, idx, &recFieldScratch, &recSizeArray[idx]);
     }
 
     Triple3 table1 = data_ov020_0218d950;
@@ -113,15 +115,15 @@ extern "C" ARM void func_ov020_0218cf8c(struct SetupContext0218cf8c* self) {
         }
     }
 
-    _ZN16BackgroundLoader10RemoveTaskEi(loader, taskId);
+    ((BackgroundLoader*)loader)->RemoveTask(taskId);
 
-    _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(base + regionalOffset0 + 0x400, 0, 0, 0, 0, 0, 0x20, 0x19, 0);
-    _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(base + regionalOffset3 + 0x400, 0, 0, 0, 0, 0, 0x20, 0x19, 0);
-    _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(base + regionalOffset0 + 0x400, (void*)0);
-    _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(base + regionalOffset3 + 0x400, (void*)0);
+    DispatchEntry0204b8d0((Obj0204b8d0*)(base + regionalOffset0 + 0x400), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
+    DispatchEntry0204b8d0((Obj0204b8d0*)(base + regionalOffset3 + 0x400), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
+    FlushAndDispatchList0204b0e8((List0204b0e8*)(base + regionalOffset0 + 0x400), (void*)0);
+    FlushAndDispatchList0204b0e8((List0204b0e8*)(base + regionalOffset3 + 0x400), (void*)0);
     goto afterLoop;
   waitForLoad:
-    _ZN16BackgroundLoader14RemoveAllLocksEv(loader);
+    ((BackgroundLoader*)loader)->RemoveAllLocks();
     goto retryLoop;
   afterLoop:
 

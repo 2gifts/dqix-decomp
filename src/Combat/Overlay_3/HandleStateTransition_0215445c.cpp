@@ -2,8 +2,9 @@
 #include "GameState/GameState.h"
 
 int GetWord0x0(int* obj);
-extern "C" int _Z31IsSubBrightnessTransitionActiveP13GameResources(int* obj);
-extern "C" void _Z16SetSubBrightnessP13GameResourcesii(int, int, int);
+int IsSubBrightnessTransitionActive(GameResources*);
+struct GameResources;
+void SetSubBrightness(GameResources*, int, int);
 struct Struct02074bf4;
 extern "C" void func_02074e54(struct Struct02074bf4*);
 void* GetDataPtr02114e04_020d6c00(void);
@@ -29,12 +30,12 @@ ARM void HandleStateTransition_0215445c(struct SelfState0215445c* self) {
         return;
     }
     if (self->f5b == 0) {
-        _Z16SetSubBrightnessP13GameResourcesii(w, -16, 1);
+        SetSubBrightness((GameResources*)w, -16, 1);
         self->f5b = self->f5b + 1;
         return;
     }
     if (self->f5b != 1) return;
-    if (_Z31IsSubBrightnessTransitionActiveP13GameResources((int*)w) != 0) return;
+    if (IsSubBrightnessTransitionActive((GameResources*)w) != 0) return;
 
     func_02074e54((struct Struct02074bf4*)((char*)self + 0x38));
     ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 1);

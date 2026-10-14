@@ -12,7 +12,7 @@ void UpdateEntryAndReset_021db45c(void* obj, struct StructAcAe021db45c* p1, int 
 extern "C" void* func_ov023_021db4e4(void* obj, int key);
 extern "C" void __clear(void* buf, int len);
 void DecodePacked021dbb34(void* handle, struct Unpacked021dbb34* out);
-extern "C" void _Z33ConvertModelDataToFloats_021dbc58PvP22FloatModelOut_021dbc58i(int id, void* out, void* p);
+void ConvertModelDataToFloats_021dbc58(void*, FloatModelOut_021dbc58*, int);
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 void SetEntryFields_021e23d0(void* obj, int val, int f0xc, unsigned char lowNib, unsigned char highNib);
 void ComputeShortPair_021e2bdc(void* a, int unused, short* out1, short* out2);
@@ -262,7 +262,7 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
         __clear(model, 0x30);
         __clear(un, 0x30);
         __clear(idx, 6);
-        _Z33ConvertModelDataToFloats_021dbc58PvP22FloatModelOut_021dbc58i(id, model, 0);
+        ConvertModelDataToFloats_021dbc58((void*)id, (FloatModelOut_021dbc58*)model, (int)0);
         DecodePacked021dbb34(node, (struct Unpacked021dbb34*)un);
         n = 0;
         __clear(vals, 0x18);
@@ -375,9 +375,9 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
         float next[12];
         float cur[12];
         __clear(cur, 0x30);
-        _Z33ConvertModelDataToFloats_021dbc58PvP22FloatModelOut_021dbc58i(id, cur, 0);
+        ConvertModelDataToFloats_021dbc58((void*)id, (FloatModelOut_021dbc58*)cur, (int)0);
         __clear(next, 0x30);
-        _Z33ConvertModelDataToFloats_021dbc58PvP22FloatModelOut_021dbc58i(id, next, node);
+        ConvertModelDataToFloats_021dbc58((void*)id, (FloatModelOut_021dbc58*)next, (int)node);
         struct Packed021ddf5c* pk = 0;
         __clear(changed, 0xc);
         if (node && node->field18 > 0) pk = node->packed;

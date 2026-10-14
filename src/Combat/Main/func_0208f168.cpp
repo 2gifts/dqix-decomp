@@ -5,14 +5,10 @@
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0208e0a8(void);
 extern "C" void* func_02057924(void);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int size);
 extern "C" int rand(void);
 extern "C" int _s32_div_f(int a, int b);
 extern "C" int func_02018fbc(int seed, void* v);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" int _ZN8Object3D21MaybeSetBCFGAnimationEii(void* obj, int a, int b);
-extern "C" void* _ZN8Object3D25GetCurrentAnimationConfigEv(void* obj);
-extern "C" BCFG::AnimationRecord* _ZN4BCFG18GetAnimationRecordEi(void* list, int index);
 int IsMatchingName0208e824(void* unused, char* str);
 
 struct Entry0208f168 {
@@ -75,12 +71,12 @@ extern "C" ARM void func_0208f168(struct Self0208f168* self, void* alloc) {
     }
 
     if (self->obj != 0) {
-        _ZN8Object3D21MaybeSetBCFGAnimationEii(self->obj, 0, 0);
-        void* cfg = _ZN8Object3D25GetCurrentAnimationConfigEv(self->obj);
+        ((Object3D*)self->obj)->MaybeSetBCFGAnimation(0, 0);
+        void* cfg = ((Object3D*)self->obj)->GetCurrentAnimationConfig();
         if (cfg == 0) {
             return;
         }
-        BCFG::AnimationRecord* rec = _ZN4BCFG18GetAnimationRecordEi(cfg, 0);
+        BCFG::AnimationRecord* rec = ((BCFG*)cfg)->GetAnimationRecord(0);
         if (rec == 0) {
             return;
         }
@@ -110,7 +106,7 @@ extern "C" ARM void func_0208f168(struct Self0208f168* self, void* alloc) {
                 for (; j < count; j++) {
                     Vector3i* v = node->vec;
                     if (((*(unsigned int*)e << 7) >> 24) & (1 << j)) {
-                        struct Item0208f168* item = (struct Item0208f168*)_ZN13SafeAllocator8AllocateEj(alloc, 0x18);
+                        struct Item0208f168* item = (struct Item0208f168*)((SafeAllocator*)alloc)->Allocate(0x18);
                         if (item == 0) {
                             return;
                         }

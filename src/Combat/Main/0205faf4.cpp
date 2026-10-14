@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "Combat/Main/BattleList.h"
+#include "Filesystem/BackgroundLoader.h"
 #if defined(jpn)
 #define REGION_VALUE(jpnValue, usaValue) jpnValue
 extern "C" int func_020e0484(void* list, void* alloc, const char* path, void* entries, unsigned short count, bool lock);
@@ -37,12 +38,13 @@ struct CondNode0205faf4 {
 
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
-extern "C" void _Z30CollectValidCombatants02010890P9GameStatePiS1_(struct BattleStruct* bs, int* outList, int* outCount);
+void CollectValidCombatants02010890(GameState*, int*, int*);
 int GetGlobalField0x1c020421a0(void);
 extern "C" int func_020457e0(int);
 struct S_020103b4;
 extern "C" int _ZNK9GameState21IsMorningDayOrEveningEv(struct S_020103b4* obj);
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(struct BattleStruct* battleStruct);
+struct GameState;
+void* GetPtrField0x2a04(GameState*);
 struct Obj02086aec;
 short SumCombatantKeyMatches02086aec(struct Obj02086aec* obj, int key);
 struct PackedNibbleArray0206e120;
@@ -65,7 +67,7 @@ void* GetField0xc02040538(struct S02040538* p);
 extern "C" struct CombatantStruct* _ZN9GameState20GetUnknownGameObjectEv(struct BattleStruct* battleStruct);
 extern "C" struct CombatantStruct* _ZN9GameState20GetGameObjectByIndexEi(struct BattleStruct* battleStruct, int combatantId);
 int GetField5cb8Value(char* p);
-extern "C" int _Z18GetField0x3acValueP9GameState(struct BattleStruct* battleStruct);
+int GetField0x3acValue(GameState*);
 struct Base02010834;
 void CopyCountedBytesToIntArray02010834(struct Base02010834* base, int index, int* out, int* outCount);
 
@@ -79,7 +81,7 @@ struct CombatantSub0150_0205faf4 {
 };
 extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
 void* GetFieldAt0x150(unsigned char* obj);
-extern "C" unsigned char _Z19GetField0x397cValueP9GameState(struct BattleStruct* battleStruct);
+unsigned char GetField0x397cValue(GameState*);
 struct Entry0x194_0205faf4 { char pad[8]; unsigned int _pad18:18, flag:1; };
 struct FindEntryById02096134Table;
 struct FindEntryById02096134Elem { unsigned int _pad0:9, b9:1, _pad10:5, b15:1, _pad16:2, b18:1; };
@@ -99,8 +101,6 @@ struct Entry020deb24 { int f0; int f4; unsigned int _pad9:9, level:3; };
 void* ZeroInitReturn020de824(void* obj);
 void ZeroInit020de848(void* obj);
 struct Entry020deb24* GetEntryByIndex020deb24(struct EntryList020deb24* list, int index);
-extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv(void);
-extern "C" void _ZN16BackgroundLoader16RemoveLockGlobalEv(void);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 extern "C" int func_020de9a4(void* list, void* alloc, void* data, unsigned int size, void* entries, unsigned short count);
 struct Obj02061bd8;
@@ -113,7 +113,7 @@ unsigned char ReadAndClearByte0x1b61(struct ReadClearByte02098ee8* s);
 int CheckBitsInField0x63dc(void* obj, int mask);
 struct PackedNibbleArray0206e2dc;
 int GetPackedNibbleFlag0x8(struct PackedNibbleArray0206e2dc* obj, int index);
-extern "C" void* _Z20GetField0x3f8AddressP9GameState(struct BattleStruct* battleStruct);
+void* GetField0x3f8Address(GameState*);
 
 extern AllocatorUnion data_02114e20;
 extern const char* data_020f2a38;
@@ -196,17 +196,17 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return CU16(2) == EW(0x18);
     case 13: {
         int outList[4]; int outCount;
-        _Z30CollectValidCombatants02010890P9GameStatePiS1_((struct BattleStruct*)_ZN9GameState11GetInstanceEv(), outList, &outCount);
+        CollectValidCombatants02010890((GameState*)_ZN9GameState11GetInstanceEv(), outList, &outCount);
         return CU16(2) <= outCount;
     }
     case 14: {
         int outList[4]; int outCount;
-        _Z30CollectValidCombatants02010890P9GameStatePiS1_((struct BattleStruct*)_ZN9GameState11GetInstanceEv(), outList, &outCount);
+        CollectValidCombatants02010890((GameState*)_ZN9GameState11GetInstanceEv(), outList, &outCount);
         return CU16(2) >= outCount;
     }
     case 15: {
         int outList[4]; int outCount;
-        _Z30CollectValidCombatants02010890P9GameStatePiS1_((struct BattleStruct*)_ZN9GameState11GetInstanceEv(), outList, &outCount);
+        CollectValidCombatants02010890((GameState*)_ZN9GameState11GetInstanceEv(), outList, &outCount);
         return CU16(2) == outCount;
     }
     case 16:
@@ -219,9 +219,9 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return _ZNK9GameState21IsMorningDayOrEveningEv((struct S_020103b4*)bs);
     }
     case 18:
-        return SumCombatantKeyMatches02086aec((struct Obj02086aec*)_Z17GetPtrField0x2a04P9GameState((struct BattleStruct*)_ZN9GameState11GetInstanceEv()), CS16(2)) > 0;
+        return SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv()), CS16(2)) > 0;
     case 19:
-        return SumCombatantKeyMatches02086aec((struct Obj02086aec*)_Z17GetPtrField0x2a04P9GameState((struct BattleStruct*)_ZN9GameState11GetInstanceEv()), CS16(2)) <= 0;
+        return SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv()), CS16(2)) <= 0;
     case 20: {
         int result = 0;
         int match = GetPackedNibbleField((struct PackedNibbleArray0206e120*)obj, CU16(2)) == 2;
@@ -326,7 +326,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return 1;
     }
     case 34: {
-        void* p = _Z17GetPtrField0x2a04P9GameState((struct BattleStruct*)_ZN9GameState11GetInstanceEv());
+        void* p = GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv());
         unsigned short v = CU16(2);
         if (v != 0 && *((unsigned char*)p + 0xf7c) > 1) return 1;
         if (v == 0 && *((unsigned char*)p + 0xf7c) <= 1) return 1;
@@ -383,7 +383,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         struct BattleStruct* bs = (struct BattleStruct*)_ZN9GameState11GetInstanceEv();
         int outList[4];
         int outCount;
-        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, _Z18GetField0x3acValueP9GameState(bs), outList, &outCount);
+        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, GetField0x3acValue((GameState*)bs), outList, &outCount);
         int i;
         for (i = 0; i < outCount; i++) {
             struct CombatantStruct* c = _ZN9GameState20GetGameObjectByIndexEi(bs, outList[i]);
@@ -437,7 +437,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
     }
     case 47: {
         struct BattleStruct* bs = (struct BattleStruct*)_ZN9GameState11GetInstanceEv();
-        struct CombatantStruct* c = _Z25GetCombatantWithFlag0x100P9GameStatei(bs, _Z19GetField0x397cValueP9GameState(bs));
+        struct CombatantStruct* c = _Z25GetCombatantWithFlag0x100P9GameStatei(bs, GetField0x397cValue((GameState*)bs));
         if (!c) return 0;
         int count = 0;
         int i;
@@ -454,7 +454,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return 0;
     }
     case 48: {
-        void* p = _Z17GetPtrField0x2a04P9GameState((struct BattleStruct*)_ZN9GameState11GetInstanceEv());
+        void* p = GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv());
         if (!p) return 0;
         return SumCombatantKeyMatches02086aec((struct Obj02086aec*)p, CS16(2)) >= CU16(4) ? 1 : 0;
     }
@@ -462,7 +462,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         struct BattleStruct* bs = (struct BattleStruct*)_ZN9GameState11GetInstanceEv();
         int outList[4];
         int outCount;
-        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, _Z18GetField0x3acValueP9GameState(bs), outList, &outCount);
+        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, GetField0x3acValue((GameState*)bs), outList, &outCount);
         int i;
         for (i = 0; i < outCount; i++) {
             struct CombatantStruct* c = _Z25GetCombatantWithFlag0x100P9GameStatei(bs, outList[i]);
@@ -480,7 +480,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
     case 50:
     case 82: {
         struct BattleStruct* bs = (struct BattleStruct*)_ZN9GameState11GetInstanceEv();
-        unsigned char* party = (unsigned char*)_Z17GetPtrField0x2a04P9GameState(bs);
+        unsigned char* party = (unsigned char*)GetPtrField0x2a04((GameState*)bs);
         int count = party[0xf7c];
         int i = 0;
         if (CU16(0) == 0x52) count = 1;
@@ -638,7 +638,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return 1;
     }
     case 66: {
-        int r = SumCombatantKeyMatches02086aec((struct Obj02086aec*)_Z17GetPtrField0x2a04P9GameState((struct BattleStruct*)_ZN9GameState11GetInstanceEv()), CS16(4)) > CU16(6);
+        int r = SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv()), CS16(4)) > CU16(6);
         if (CU16(2) != 0) return r;
         return r == 0;
     }
@@ -709,7 +709,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         struct BattleStruct* bs = (struct BattleStruct*)_ZN9GameState11GetInstanceEv();
         int outList[4];
         int outCount;
-        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, _Z18GetField0x3acValueP9GameState(bs), outList, &outCount);
+        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, GetField0x3acValue((GameState*)bs), outList, &outCount);
         int i;
         for (i = 0; i < outCount; i++) {
             struct CombatantStruct* c = _ZN9GameState21GetPartyMemberByIndexEi(bs, outList[i]);
@@ -736,7 +736,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         alloc.ResetAllocatorPointer();
         alloc.ResetAllocatorPointer();
         alloc.CreateTypeA(buf, 0xc000);
-        unsigned char* party = (unsigned char*)_Z17GetPtrField0x2a04P9GameState((struct BattleStruct*)_ZN9GameState11GetInstanceEv());
+        unsigned char* party = (unsigned char*)GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv());
         void* entries = GetPointerFromArray0xbd0(party + 0x1d4, CU16(2));
         short n = CountPositiveEntries0207c638(party + 0x1d4, CU16(2));
         ZeroInitReturn020de824(&list);
@@ -744,13 +744,13 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
 #if defined(jpn)
         func_020e0484(&list, &alloc, data_020f2a38, entries, n, true);
 #else
-        _ZN16BackgroundLoader13AddLockGlobalEv();
+        BackgroundLoader::AddLockGlobal();
         size = 0;
         void* data = ExtractFileFromGP2(data_020f2a38, data_020f2a30, &size);
         if (data != NULL) {
             func_020de9a4(&list, &alloc, data, size, entries, n);
         }
-        _ZN16BackgroundLoader16RemoveLockGlobalEv();
+        BackgroundLoader::RemoveLockGlobal();
 #endif
         int found = 0;
         signed char i;
@@ -775,7 +775,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return v == CU16(2);
     }
     case 85: {
-        char* p = (char*)_Z17GetPtrField0x2a04P9GameState((struct BattleStruct*)_ZN9GameState11GetInstanceEv());
+        char* p = (char*)GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv());
         if (CU16(2) != 0) return *(unsigned int*)(p + 0xf6c) >= *(unsigned int*)((char*)cmd + 4);
         return *(unsigned int*)(p + 0xf6c) < *(unsigned int*)((char*)cmd + 4);
     }
@@ -851,7 +851,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         struct BattleStruct* bs = (struct BattleStruct*)_ZN9GameState11GetInstanceEv();
         int outList[4];
         int outCount;
-        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, _Z18GetField0x3acValueP9GameState(bs), outList, &outCount);
+        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, GetField0x3acValue((GameState*)bs), outList, &outCount);
         int i;
         for (i = 0; i < outCount; i++) {
             struct CombatantStruct* c = _Z25GetCombatantWithFlag0x100P9GameStatei(bs, outList[i]);
@@ -882,7 +882,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
     case 506:
         return GetPackedNibbleFlag0x8((struct PackedNibbleArray0206e2dc*)obj, CU16(2));
     case 507:
-        return CU16(2) == *(unsigned short*)_Z20GetField0x3f8AddressP9GameState((struct BattleStruct*)_ZN9GameState11GetInstanceEv());
+        return CU16(2) == *(unsigned short*)GetField0x3f8Address((GameState*)_ZN9GameState11GetInstanceEv());
     }
     return 0;
 }

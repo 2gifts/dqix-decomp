@@ -4,17 +4,16 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Filesystem/BackgroundLoader.h"
 
-extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
-extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(void* loader, int id);
 extern "C" void func_ov023_021dd4cc(void* p, int flag);
 
 // USA: func_ov006_02155710  (semantic: SetParamsAndDispatch_02155710)
 extern "C" ARM void func_ov006_02155710(void* obj, unsigned short paramB, unsigned char paramC) {
-    void* loader = _ZN16BackgroundLoader11GetInstanceEv();
+    void* loader = BackgroundLoader::GetInstance();
     int id1 = *(int*)((char*)obj + R(0x954, 0xad4));
     if (id1 >= 0) {
-        _ZN16BackgroundLoader10RemoveTaskEi(loader, id1);
+        ((BackgroundLoader*)loader)->RemoveTask(id1);
         *(int*)((char*)obj + R(0x954, 0xad4)) = -1;
     }
     *(int*)((char*)obj + R(0x954, 0xad4)) = -1;
@@ -32,7 +31,7 @@ extern "C" ARM void func_ov006_02155710(void* obj, unsigned short paramB, unsign
 
     int id2 = *(int*)((char*)obj + R(0x958, 0xad8));
     if (id2 >= 0) {
-        _ZN16BackgroundLoader10RemoveTaskEi(loader, id2);
+        ((BackgroundLoader*)loader)->RemoveTask(id2);
         *(int*)((char*)obj + R(0x958, 0xad8)) = -1;
     }
     *(int*)((char*)obj + R(0x958, 0xad8)) = -1;

@@ -3,7 +3,8 @@
 
 extern "C" int func_ov017_021d60f4(void*);
 void* GetWord0x0(int*);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* obj, int value, int frames);
+struct GameResources;
+void SetMainBrightness(GameResources*, int, int);
 
 // USA: func_ov001_0215b50c  (semantic: UpdateCounterAndNotify_0215b50c)
 extern "C" ARM int func_ov001_0215b50c(void* self, int mode) {
@@ -16,7 +17,7 @@ extern "C" ARM int func_ov001_0215b50c(void* self, int mode) {
     void* battle = GameState::GetInstance();
     void* obj = GetWord0x0((int*)battle);
     if (obj != NULL) {
-        _Z17SetMainBrightnessP13GameResourcesii(obj, value, frames);
+        SetMainBrightness((GameResources*)obj, value, frames);
         func_ov017_0218b5b0();
     }
     return 1;

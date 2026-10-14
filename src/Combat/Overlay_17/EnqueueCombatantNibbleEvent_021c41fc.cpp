@@ -9,7 +9,6 @@ enum { kRegionalFieldOffset = 0x15c };
 
 void* GetData02100044(void);
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Payload021c41fc {
@@ -40,7 +39,7 @@ extern "C" ARM void func_ov017_021c41fc(int combatantId, int mode) {
     struct Payload021c41fc* p = &evt.payload;
     evt.tag = 0;
     p->lowNibble = combatantId;
-    p->field6 = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant);
+    p->field6 = ((Object3D*)((struct U16Field0x6_020375f8*)combatant))->GetField06();
     p->flags = 0;
     if (mode >= 0) {
         p->highNibble = mode;

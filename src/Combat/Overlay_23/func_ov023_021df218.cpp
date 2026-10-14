@@ -18,7 +18,7 @@ void* CreateAndSetFields8A_021db544(void* a, void* b, int c, int d);
 extern "C" void* func_ov023_021db4e4(void* obj, int key);
 extern "C" int func_ov023_021ddc98(void* buf, int val, unsigned short len, int flag);
 extern "C" unsigned short* func_ov023_021db2b8(signed char screen, int bg1);
-extern "C" void _Z25CleanInvalidateCacheRangePKvj(void* p, unsigned size);
+void CleanInvalidateCacheRange(void const*, unsigned int);
 void ComputeShortPair_021e2bdc(void* a, int unused, short* out1, short* out2);
 
 struct Data021df218 {
@@ -186,7 +186,7 @@ extern "C" ARM void func_ov023_021df218(Obj021df218* self)
                             off = a << 1;
                             t = (short)(*(unsigned short*)((char*)row + off) & 0xfff);
                             t |= 0x1000;
-                            _Z25CleanInvalidateCacheRangePKvj(&t, 2);
+                            CleanInvalidateCacheRange(&t, 2);
                             *(unsigned short*)((char*)row + off) = t;
                             a = a + 1;
                         }

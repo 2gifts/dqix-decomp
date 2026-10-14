@@ -1,9 +1,7 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Bits41_37474;
-extern "C" int _ZNK8Object3D11GetOwnAlphaEv(struct Bits41_37474* obj);
-extern "C" void _ZN10AlphaTween15SetCurrentValueEf(unsigned short* out, float val);
-extern "C" void _ZN10AlphaTween14ConfigureTweenEii(void* p, int val, int count);
 
 struct Obj02049f50 {
     unsigned char pad1[0x41];
@@ -19,8 +17,8 @@ ARM void SetField41AndScaleSub02049f50(struct Obj02049f50* obj, int val, int cou
         obj->field41 = (obj->field41 & ~0x1f) | ((unsigned char)val & 0x1f);
     }
     if (obj->sub == NULL) return;
-    int x = _ZNK8Object3D11GetOwnAlphaEv((struct Bits41_37474*)obj);
+    int x = ((Object3D*)((struct Bits41_37474*)obj))->GetOwnAlpha();
     float f = (float)x;
-    _ZN10AlphaTween15SetCurrentValueEf((unsigned short*)(obj->sub + 0x60), f);
-    _ZN10AlphaTween14ConfigureTweenEii(obj->sub + 0x60, val, count);
+    ((AlphaTween*)((unsigned short*)(obj->sub + 0x60)))->SetCurrentValue(f);
+    ((AlphaTween*)(obj->sub + 0x60))->ConfigureTween(val, count);
 }

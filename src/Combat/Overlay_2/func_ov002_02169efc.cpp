@@ -19,8 +19,10 @@ extern "C" void *func_0202ae18();
 int CheckField0NonZero(int *p);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int clear, int key);
 void OrBitsIntoField0(unsigned int *p, unsigned int mask);
-extern "C" void _Z12Init0205a198P14Struct0205a198(void *);
-extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(void *);
+struct Struct0205a198;
+void Init0205a198(Struct0205a198*);
+struct ClearTarget0205a234;
+void ClearField0And40205a234(ClearTarget0205a234*);
 void InitStruct0205a444(char *renderer);
 void *FindRecordByIndex(Rec020467f0 *archive, int index, void **name, int *size);
 extern "C" void func_0205a528(void *renderer, void *file, unsigned int size, SafeAllocator *allocator);
@@ -80,9 +82,9 @@ extern "C" ARM void func_ov002_02169efc(char *self) {
             return;
         }
         for (unsigned char i = 0; i < 0x2c; i++) {
-            _Z12Init0205a198P14Struct0205a198(*(char **) (self + 0x1a64) + i * 0x28);
+            Init0205a198((Struct0205a198*)(*(char **) (self + 0x1a64) + i * 0x28));
         }
-        _Z23ClearField0And40205a234P19ClearTarget0205a234(*(void **) (self + 0x1a6c));
+        ClearField0And40205a234((ClearTarget0205a234*)(*(void **) (self + 0x1a6c)));
         InitStruct0205a444(*(char **) (self + 0x1a68));
         char *r                                      = *(char **) (self + 0x1a68);
         r[0x50]                                      = 0;

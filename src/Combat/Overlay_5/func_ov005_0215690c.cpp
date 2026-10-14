@@ -85,7 +85,8 @@ extern int data_02108760;
 
 MemberScreen* GetField1c_021a193c(int* p);
 extern "C" int func_ov005_02157ae8(EquipmentMenu* self, int member);
-extern "C" Body* _Z17RunIfPtr_021e4e20P11Obj021e4e20(MemberScreen* screen);
+struct Obj021e4e20;
+Body* RunIfPtr_021e4e20(Obj021e4e20*);
 extern "C" int func_ov005_02155670(EquipmentMenu* self, int x, int y);
 int ComputeTwoFromVec3_0202ec84(void* obj, Vec3copy0202ec84* src, int* out1, int* out2);
 GameObject* GetCombatantWithFlag0x100(GameState* gs, int id);
@@ -110,7 +111,7 @@ extern "C" ARM void func_ov005_0215690c(EquipmentMenu* self, int x, int y) {
     unsigned int member = screen->member_;
     if (!func_ov005_02157ae8(self, member))
         return;
-    body = _Z17RunIfPtr_021e4e20P11Obj021e4e20(screen);
+    body = RunIfPtr_021e4e20((Obj021e4e20*)screen);
     func_ov005_02155670(self, x, y);
     short item = -1;
     unsigned char kind = 0xff;

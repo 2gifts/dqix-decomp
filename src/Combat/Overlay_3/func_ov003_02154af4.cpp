@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Filesystem/BackgroundLoader.h"
 #if defined(jpn)
 enum { kCache=0x18c, kVocation=0x144, kVocationValue=0x8b8, kModelSelection=0x2a, kGlobalFlag=0x17de };
 #else
@@ -34,24 +35,28 @@ extern Dispatch data_020e6d5c;
 extern "C" int func_ov017_021959b4();
 char* GetGlobalField0x1c020421a0();
 void ReinitController02043204(char*);
-extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(void*);
-extern "C" void _Z27ResetSelectionState020e25e8P11Obj020e25e8(void*);
+struct Outer020e28dc;
+int GetInnerFlagBit0020e28dc(Outer020e28dc*);
+struct Obj020e25e8;
+void ResetSelectionState020e25e8(Obj020e25e8*);
 extern "C" void func_ov003_021537d4(void*,unsigned int);
 extern "C" void func_ov003_021552b8(Scene*);
-extern "C" void _Z35CallFunc0204c87cOverEntries0207fc6cP11Obj0207fc6ci(Model*,unsigned int);
+struct Obj0207fc6c;
+void CallFunc0204c87cOverEntries0207fc6c(Obj0207fc6c*, int);
 extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" Party* _Z17GetPtrField0x2a04P9GameState(void*);
+struct GameState;
+Party* GetPtrField0x2a04(GameState*);
 extern "C" Member* _ZN9GameState21GetPartyMemberByIndexEi(void*,int);
-extern "C" unsigned int _Z13GetTableValuePv(Member*);
-extern "C" int _Z20HasElementByByte0xc4P7Obj2081i(Model*,int);
+unsigned int GetTableValue(void*);
+struct Obj2081;
+int HasElementByByte0xc4(Obj2081*, int);
 extern "C" void func_ov003_02158334(Scene*);
 extern "C" void func_02081f20(void*,unsigned int);
 extern "C" int func_020800fc(Model*,short*,int,unsigned short,unsigned char,int);
-extern "C" void _Z24ClearSublistEntriesFlag4Pvi(Model*,int);
+void ClearSublistEntriesFlag4(void*, int);
 extern "C" void func_020813ec(Model*,int);
-extern "C" void _Z27UpdateEntryStateAndPositionP11Ctx020e263ci(void*,unsigned int);
-extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
-extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(void*,int);
+struct Ctx020e263c;
+void UpdateEntryStateAndPosition(Ctx020e263c*, int);
 // USA: func_ov003_02154af4
 extern "C" ARM int func_ov003_02154af4(Scene* self,unsigned int scale) {
  self->scale=scale;
@@ -61,7 +66,7 @@ extern "C" ARM int func_ov003_02154af4(Scene* self,unsigned int scale) {
   self->selection=0;
   ReinitController02043204(GetGlobalField0x1c020421a0());
   self->field1ea=-1; self->pending=self->field1ea;
-  if(self->inner && _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(self->inner)) _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->inner);
+  if(self->inner && GetInnerFlagBit0020e28dc((Outer020e28dc*)self->inner)) ResetSelectionState020e25e8((Obj020e25e8*)self->inner);
   self->state=6; self->flag=0; self->reset=0;
  }
  if(!self->skip) func_ov003_021537d4(self->controller,scale);
@@ -69,11 +74,11 @@ extern "C" ARM int func_ov003_02154af4(Scene* self,unsigned int scale) {
  if(self->state) GetGlobalField0x1c020421a0()[kGlobalFlag]=0;
  Model* model=self->model;
  if(model) {
-  if(!self->skip) _Z35CallFunc0204c87cOverEntries0207fc6cP11Obj0207fc6ci(model,scale);
+  if(!self->skip) CallFunc0204c87cOverEntries0207fc6c((Obj0207fc6c*)model, scale);
   int i; Cache* c; Member* member; bool changed; int id; Party* party; void* gs;
   changed=false;
   gs=_ZN9GameState11GetInstanceEv();
-  party=_Z17GetPtrField0x2a04P9GameState(gs);
+  party=GetPtrField0x2a04((GameState*)gs);
   int count=party->count;
   for(i=0;i<count;i++) {
    id=party->ids[i];
@@ -82,29 +87,29 @@ extern "C" ARM int func_ov003_02154af4(Scene* self,unsigned int scale) {
     c=&self->cache[id];
     unsigned int hp=member->HP();
     unsigned int maxhp,mp,maxmp,voc,flags;
-    if(!(c->hp==hp && ((maxhp=member->MaxHP()), c->maxHP==maxhp) && ((mp=member->MP()), c->mp==mp) && ((maxmp=member->MaxMP()), c->maxMP==maxmp) && ((voc=member->Voc()), c->vocation==voc) && c->table==_Z13GetTableValuePv(member) && ((flags=member->Flags()), c->flags==flags))) {
+    if(!(c->hp==hp && ((maxhp=member->MaxHP()), c->maxHP==maxhp) && ((mp=member->MP()), c->mp==mp) && ((maxmp=member->MaxMP()), c->maxMP==maxmp) && ((voc=member->Voc()), c->vocation==voc) && c->table==GetTableValue(member) && ((flags=member->Flags()), c->flags==flags))) {
      c->hp=member->status->hp; c->maxHP=member->profile->hp; c->mp=member->status->mp; c->maxMP=member->profile->mp;
-     c->vocation=member->vocation->value; c->table=_Z13GetTableValuePv(member); changed=true; c->flags=member->status->flags;
+     c->vocation=member->vocation->value; c->table=GetTableValue(member); changed=true; c->flags=member->status->flags;
     }
    }
   }
-  if(changed) for(int i=0;i<3;i++) if(_Z20HasElementByByte0xc4P7Obj2081i(model,data_ov003_0217f2a8[i])) { func_ov003_02158334(self);break; }
+  if(changed) for(int i=0;i<3;i++) if(HasElementByByte0xc4((Obj2081*)model, data_ov003_0217f2a8[i])) { func_ov003_02158334(self);break; }
  }
  if(self->selection) {
   func_02081f20(self->selector,scale);
   self->previous=*self->selection;
   self->changed=func_020800fc(model,self->selection,self->previous,self->field8c,self->field8e,(self->flags&4)!=0);
   model->selected=*self->selection;
-  if(self->changed) _Z24ClearSublistEntriesFlag4Pvi(model,self->element);
+  if(self->changed) ClearSublistEntriesFlag4(model, self->element);
   if(self->previous!=*self->selection) func_020813ec(model,self->element);
  }
- if(self->inner && _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(self->inner)) _Z27UpdateEntryStateAndPositionP11Ctx020e263ci(self->inner,self->scale);
+ if(self->inner && GetInnerFlagBit0020e28dc((Outer020e28dc*)self->inner)) UpdateEntryStateAndPosition((Ctx020e263c*)self->inner, self->scale);
  Table buf; buf=data_ov003_0217f340;
  unsigned int locator=data_020e6d5c.locator;
  unsigned int fn=data_020e6d5c.fn;
  buf.entries[7].locator=locator; buf.entries[7].fn=fn;
  if(!buf.entries[self->state].fn) {
-  _ZN16BackgroundLoader10RemoveTaskEi(_ZN16BackgroundLoader11GetInstanceEv(),self->task);self->task=-1;return 1;
+  BackgroundLoader::GetInstance()->RemoveTask(self->task);self->task=-1;return 1;
  }
  Dispatch* d=&buf.entries[self->state];
  void* base=(char*)self+((int)d->locator>>1);

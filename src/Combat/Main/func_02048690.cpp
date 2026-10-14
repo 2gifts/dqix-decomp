@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 
 extern "C" void func_020489e8(void* obj);
-extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(void* obj, int val);
+struct Bytes02033b88;
+void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 extern "C" void* func_02057924(void);
-extern "C" void _ZN8Object3D24TransitionInheritedAlphaEii(void* obj, int a, int b);
-extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, void* a3);
+void FindNodeAndProcess02057fb4(void*, int, int);
 
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
@@ -19,6 +19,7 @@ struct Vec3i02048690 {
 class Object3D {
 public:
     Vec3i02048690 MaybeGetShadowSource() const;
+    void TransitionInheritedAlpha(int, int);
 };
 
 struct InitStruct02048690 {
@@ -63,14 +64,14 @@ extern "C" ARM void func_02048690(void* selfp) {
     if (self->countdown != 0) {
         self->countdown--;
         if (self->countdown == 0) {
-            _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(self, 5);
+            SetByte0xbeShiftPrev((Bytes02033b88*)self, 5);
         }
     }
 
     if (self->flagE0 == 0) return;
 
     void* list = func_02057924();
-    _ZN8Object3D24TransitionInheritedAlphaEii(self, 0, 0x1f4);
+    ((Object3D*)self)->TransitionInheritedAlpha(0, 0x1f4);
 
     int d = *(short*)((char*)self + 0x100 + 0x8e) - 0x1000;
     int f = (int)(((long long)d * 0x800 + 0x800) >> 12);
@@ -115,7 +116,7 @@ extern "C" ARM void func_02048690(void* selfp) {
     s.f48 = f;
     s.f4c = f;
 
-    _Z26FindNodeAndProcess02057fb4Pvii(list, 2, &s);
+    FindNodeAndProcess02057fb4(list, 2, (int)&s);
     DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x32, 0);
 
     self->flagE0 = 0;

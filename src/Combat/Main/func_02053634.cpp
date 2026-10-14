@@ -8,13 +8,8 @@ unsigned char GetField0x397cValue(GameState* battleStruct);
 int GetSignedByte0x1c9(void* obj);
 int GetIndexedEntryField0x178(signed char* obj);
 
-extern "C" void _ZN8Object3D26RemoveAnimationPackageByIDEi(void* obj, int packageId);
-extern "C" int _ZNK8Object3D19HasAnimationStoppedEv(void* obj);
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(void* obj);
-
 extern "C" void func_020531f0(void* obj);
 extern "C" int _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* loadInfo, void* animCallback);
-extern "C" int _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, const char* name, int flags);
 extern "C" void* func_02012fe4(void);
 extern "C" void func_0205308c(void* obj, int val);
 extern "C" void* func_0205ec34(void);
@@ -102,7 +97,7 @@ extern "C" ARM void func_02053634(void* obj) {
             goto detailFail;
         }
         {
-        _ZN8Object3D26RemoveAnimationPackageByIDEi(ctx, 2);
+        ((Object3D*)ctx)->RemoveAnimationPackageByID(2);
         void* filePtr;
         unsigned int fileLen;
         loader->GetLoadedFileByID(*(int*)(ctx + OBJECT_OFFSET(0x180)), &filePtr, &fileLen);
@@ -123,8 +118,8 @@ extern "C" ARM void func_02053634(void* obj) {
             if (_ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(ctx, &params, 0) == 0) {
                 goto loadFail;
             }
-            if (_ZN8Object3D24MaybeSetRegularAnimationEPKci(ctx, &data_020f0477, 1) == 0) {
-                if (_ZN8Object3D24MaybeSetRegularAnimationEPKci(ctx, &data_020f047e, 1) == 0) {
+            if (((Object3D*)ctx)->MaybeSetRegularAnimation(&data_020f0477, 1) == 0) {
+                if (((Object3D*)ctx)->MaybeSetRegularAnimation(&data_020f047e, 1) == 0) {
                     func_020531f0(ctx);
                     return;
                 }
@@ -147,7 +142,7 @@ extern "C" ARM void func_02053634(void* obj) {
                     arg2 = ctx + OBJECT_OFFSET(0x198);
                 }
                 unsigned short val = *(unsigned short*)func_02012fe4();
-                if (val == _ZNK8Object3D10GetField06Ev(ctx)) {
+                if (val == ((Object3D*)ctx)->GetField06()) {
                     DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, e->kind, (int)arg2);
                 }
                 break;
@@ -181,7 +176,7 @@ extern "C" ARM void func_02053634(void* obj) {
         }
     } else {
         if (state == 1) {
-            if (_ZNK8Object3D19HasAnimationStoppedEv(ctx) == 0) {
+            if (((Object3D*)ctx)->HasAnimationStopped() == 0) {
                 return;
             }
             if (ctx[OBJECT_OFFSET(0x17f)] == 0) {
@@ -213,7 +208,7 @@ extern "C" ARM void func_02053634(void* obj) {
                         ForwardToTargetOrDefault0205eabc((void*)&data_02108760, ctx + OBJECT_OFFSET(0x198), 0);
                     }
                 }
-                if (_ZN8Object3D24MaybeSetRegularAnimationEPKci(ctx, &data_020f0481, mode) != 0) {
+                if (((Object3D*)ctx)->MaybeSetRegularAnimation(&data_020f0481, mode) != 0) {
                     ctx[OBJECT_OFFSET(0x17e)] = 2;
                     return;
                 }
@@ -228,7 +223,7 @@ extern "C" ARM void func_02053634(void* obj) {
             int target = GetFieldIfFlag4((char*)bs);
             int flag = 0;
             if (ctx[OBJECT_OFFSET(0x17c)] > 1) {
-                if (_ZNK8Object3D19HasAnimationStoppedEv(ctx) != 0) {
+                if (((Object3D*)ctx)->HasAnimationStopped() != 0) {
                     flag = 1;
                 }
             } else {
@@ -252,7 +247,7 @@ extern "C" ARM void func_02053634(void* obj) {
             if (flag == 0) {
                 return;
             }
-            if (_ZN8Object3D24MaybeSetRegularAnimationEPKci(ctx, &data_020f0486, 1) == 0) {
+            if (((Object3D*)ctx)->MaybeSetRegularAnimation(&data_020f0486, 1) == 0) {
                 func_020531f0(ctx);
                 return;
             }
@@ -268,7 +263,7 @@ extern "C" ARM void func_02053634(void* obj) {
             ctx[OBJECT_OFFSET(0x17e)] = 3;
             return;
         } else if (state == 3) {
-            if (_ZNK8Object3D19HasAnimationStoppedEv(ctx) == 0) {
+            if (((Object3D*)ctx)->HasAnimationStopped() == 0) {
                 return;
             }
             if (GetIndexedEntryField0x178((signed char*)ctx) == 0x19) {

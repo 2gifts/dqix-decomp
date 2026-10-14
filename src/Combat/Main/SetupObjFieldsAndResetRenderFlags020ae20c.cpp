@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Graphics/NSBXX/RenderConfig.h"
 
 struct Fields020407b4 {
     char unk0[0x44];
@@ -11,7 +12,6 @@ void SetFields0x44(struct Fields020407b4* dst, int a, int b, int c);
 void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
 void* GetPtrField0x114(void* obj);
 int CheckBits5To9NonZero0204bedc(unsigned short* obj);
-extern "C" void _ZN12RenderConfig20SetPolygonAttributesEjjjjjj(unsigned int a, unsigned int b, unsigned int c, unsigned int d, unsigned int e, unsigned int f);
 extern "C" void NSBXX_Model_AdjustPolygonAttrMask(unsigned char* obj, int set, int mask);
 extern "C" void _ZN8Object3D4DrawEb(struct Fields020407b4*, int);
 
@@ -29,7 +29,7 @@ ARM void SetupObjFieldsAndResetRenderFlags020ae20c(void* obj, struct Fields02040
             flag = 0x14;
     }
 
-    _ZN12RenderConfig20SetPolygonAttributesEjjjjjj(1, 3, 1, 0, flag, 0x8000);
+    RenderConfig::SetPolygonAttributes(1, 3, 1, 0, flag, 0x8000);
     {
         void* inner = *(void**)((char*)b + 8);
         unsigned char* target = *(unsigned char**)((char*)inner + 0x54);
@@ -41,7 +41,7 @@ ARM void SetupObjFieldsAndResetRenderFlags020ae20c(void* obj, struct Fields02040
     }
     _ZN8Object3D4DrawEb(b, 1);
 
-    _ZN12RenderConfig20SetPolygonAttributesEjjjjjj(1, 3, 3, 0x3c, flag, 0x8000);
+    RenderConfig::SetPolygonAttributes(1, 3, 3, 0x3c, flag, 0x8000);
     {
         void* inner = *(void**)((char*)b + 8);
         unsigned char* target = *(unsigned char**)((char*)inner + 0x54);

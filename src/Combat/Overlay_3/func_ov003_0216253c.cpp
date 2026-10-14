@@ -38,22 +38,26 @@ struct Elem {
 
 extern int data_02108760;
 unsigned int *GetDataPtr02114e04_020d6c00();
-extern "C" void _Z23SetEntryNibbleByShortIdP19StatusOwner02081198ii(void *, int, int);
-extern "C" void _Z24SetEntryFlag0x2ByShortIdP19StatusOwner02081164ii(void *, int, int);
+struct StatusOwner02081198;
+void SetEntryNibbleByShortId(StatusOwner02081198*, int, int);
+struct StatusOwner02081164;
+void SetEntryFlag0x2ByShortId(StatusOwner02081164*, int, int);
 extern "C" void func_020813ec(void *, int);
 extern "C" void func_ov003_02165c9c(Scene *);
-extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(void *);
+struct Obj0208203c;
+void ResetWithSub0208203c(Obj0208203c*);
 int FindMappedMemberId02080468(void *, int);
 void OrBitsIntoField0(unsigned int *, unsigned int);
 extern "C" void func_ov003_02165bd8(Scene *);
-extern "C" void _Z26ApplyElementEffect02161438Pv(Scene *);
+void ApplyElementEffect02161438(void*);
 extern "C" int func_ov003_02160854(Scene *);
 extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 int CompareThreshold_021614e8(int);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
-extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void *);
-extern "C" Elem *_Z35GetElementAtIndex_02160bd0_02160bd0Pvi(Scene *, int);
+struct Cont0207fe44;
+void CallFunc0204c804OverAllElems(Cont0207fe44*);
+Elem * GetElementAtIndex_02160bd0_02160bd0(void*, int);
 extern "C" int *func_0202ae18();
 int CheckField0NonZero(int *);
 extern "C" int func_0202c508(int *);
@@ -78,11 +82,11 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
         self->h48c   = -1;
         self->h474   = self->h48c;
         entries->sel = self->h48c;
-        _Z23SetEntryNibbleByShortIdP19StatusOwner02081198ii(entries, 0x15, 1);
-        _Z24SetEntryFlag0x2ByShortIdP19StatusOwner02081164ii(entries, 0x15, 1);
+        SetEntryNibbleByShortId((StatusOwner02081198*)entries, 0x15, 1);
+        SetEntryFlag0x2ByShortId((StatusOwner02081164*)entries, 0x15, 1);
         func_020813ec(entries, 0x15);
         func_ov003_02165c9c(self);
-        _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
+        ResetWithSub0208203c((Obj0208203c*)self->sub308);
         self->p470 = 0;
         self->flags |= 0x780000;
         if (self->flags & 1) {
@@ -100,15 +104,15 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
         self->h48c   = FindMappedMemberId02080468(entries, self->h488);
         self->h474   = self->h48c;
         entries->sel = self->h48c;
-        _Z23SetEntryNibbleByShortIdP19StatusOwner02081198ii(entries, 0x15, 1);
-        _Z24SetEntryFlag0x2ByShortIdP19StatusOwner02081164ii(entries, 0x15, 1);
+        SetEntryNibbleByShortId((StatusOwner02081198*)entries, 0x15, 1);
+        SetEntryFlag0x2ByShortId((StatusOwner02081164*)entries, 0x15, 1);
         func_020813ec(entries, 0x15);
         func_ov003_02165c9c(self);
         self->flags |= 0x780000;
         if (self->flags & 1) {
             self->flags |= 0x800000;
         }
-        _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
+        ResetWithSub0208203c((Obj0208203c*)self->sub308);
         self->p470  = 0;
         self->state = self->state + 1;
         OrBitsIntoField0(data, 0x40);
@@ -124,22 +128,22 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
             }
         }
         int idx = self->h48c - 0x15 + self->c49f * 4;
-        _Z26ApplyElementEffect02161438Pv(self);
+        ApplyElementEffect02161438(self);
         if (func_ov003_02160854(self) != 0) {
             if (idx == *(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0x2000 + 0xc8c)) {
                 if (CompareThreshold_021614e8((int) self) != 0) {
                     return;
                 }
                 DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
-                _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
+                ResetWithSub0208203c((Obj0208203c*)self->sub308);
                 self->p470 = 0;
-                _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+                CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                 self->flags |= 0x80000;
                 self->h484  = 0x4d;
                 self->state = 100;
                 self->flags |= 0x800;
             }
-            Elem *elem = _Z35GetElementAtIndex_02160bd0_02160bd0Pvi(self, idx);
+            Elem *elem = GetElementAtIndex_02160bd0_02160bd0(self, idx);
             if (elem == NULL) {
                 return;
             }
@@ -149,9 +153,9 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
             }
             self->h480 = v;
             DispatchWithShortB4_0205eaa0((Obj0205eaa0 *) &data_02108760, 1, 0);
-            _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
+            ResetWithSub0208203c((Obj0208203c*)self->sub308);
             self->p470 = 0;
-            _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+            CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
             self->flags |= 0x80000;
             self->flags |= 8;
             unsigned char *g = (unsigned char *) func_ov017_0218b5b0();
@@ -162,7 +166,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
             int a = *(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0xf7c);
             int n = CountValidCombatantsMinusField_02160b84(self);
             if (a + n == 4) {
-                _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+                CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                 self->flags |= 0x80000;
                 self->h484  = 6;
                 self->h486  = 2;
@@ -192,7 +196,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
             if (func_ov003_02160a68(self) == 0) {
                 return;
             }
-            _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+            CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
             self->flags |= 0x80000;
             self->h484  = 2;
             self->c4a3  = 1;

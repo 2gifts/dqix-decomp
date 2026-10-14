@@ -3,8 +3,6 @@
 
 extern "C" int func_ov017_021d60f4(void*);
 int AbsPlus159IfNegative0215ad2c(int x);
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
-extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 
 // USA: func_ov001_0215eeb0
 ARM int SetOrClearCombatantFlag6c_0215eeb0(void* self) {
@@ -15,9 +13,9 @@ ARM int SetOrClearCombatantFlag6c_0215eeb0(void* self) {
     GameObject* combatant = battle->GetGameObjectByIndex(id);
     if (combatant == NULL) return 0;
     if (mask != 0) {
-        _ZN8Object3D10EnableFlagEi((unsigned char*)combatant, flag);
+        ((Object3D*)((unsigned char*)combatant))->EnableFlag(flag);
     } else {
-        _ZN8Object3D11DisableFlagEi((unsigned char*)combatant, flag);
+        ((Object3D*)((unsigned char*)combatant))->DisableFlag(flag);
     }
     return 1;
 }

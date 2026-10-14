@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Struct_203cec4;
 void SetField0x5cFlag0x4(unsigned char* obj);
@@ -8,7 +9,6 @@ struct ClampTarget_0203fc84;
 void ClampValueAndStoreAt0x2c(struct ClampTarget_0203fc84* obj, int value);
 
 struct S02037418;
-extern "C" void _ZN8Object3D17SetInheritedAlphaEi(struct S02037418* obj, int val);
 
 struct BFieldAt50_02040540 {
     char pad[0x50];
@@ -49,7 +49,7 @@ ARM void ApplyFlagsToTarget02040540(struct Obj02040540* obj) {
         if (obj->flags & 0x800) ((struct BFieldAt50_02040540*)obj->b)->val50 |= 8;
     } else if (obj->c != NULL) {
         if (obj->flags & 0x4) ((struct CFieldAt0xac_02040540*)obj->c)->valac |= 4;
-        if (obj->flags & 0x20) _ZN8Object3D17SetInheritedAlphaEi(obj->c, 0x10);
+        if (obj->flags & 0x20) ((Object3D*)obj->c)->SetInheritedAlpha(0x10);
     }
 
     if (obj->flags & 0x8) obj->unk4 = 0;

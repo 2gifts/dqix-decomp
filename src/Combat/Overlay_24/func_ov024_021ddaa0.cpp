@@ -5,7 +5,7 @@
 struct StatStageStruct02087e18;
 struct Obj02087e6c;
 
-extern "C" int _Z23CanAdjustStatStageBit21P23StatStageStruct02087e18i(struct StatStageStruct02087e18* p, unsigned char decrease);
+int CanAdjustStatStageBit21(StatStageStruct02087e18*, int);
 int ClampAndUpdateField0x58(struct Obj02087e6c* obj, int delta);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
@@ -51,7 +51,7 @@ extern "C" ARM void* func_ov024_021ddaa0(struct Obj_021ddaa0* obj, int unused, i
         if (delta > 2) delta = 2;
         int decrease = 0;
         if (delta < 0) decrease = 1;
-        if (_Z23CanAdjustStatStageBit21P23StatStageStruct02087e18i((struct StatStageStruct02087e18*)c->currentStats_, decrease)) {
+        if (CanAdjustStatStageBit21((struct StatStageStruct02087e18*)c->currentStats_, (unsigned char)decrease)) {
             result = ClampAndUpdateField0x58((struct Obj02087e6c*)c->currentStats_, (signed char)delta);
             applied = 1;
         }

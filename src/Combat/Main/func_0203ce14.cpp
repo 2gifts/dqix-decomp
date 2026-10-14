@@ -9,7 +9,8 @@ extern "C" int Vector3fix_Distance(struct Vec3s32_020c3030* a, struct Vec3s32_02
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" void Vector3fix_Subtract(struct Vec3* a, struct Vec3* b, struct Vec3* out);
 extern "C" ARM int fix32_Divide(unsigned int numerHi, unsigned int denomLo);
-extern "C" ARM void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3Fixed02030e2c* in, int scale, struct Vec3Fixed02030e2c* out);
+struct Vector3i;
+ARM void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 extern "C" int fix32_Atan2(int x, int z);
 void SetField0x64RoundedTo256(struct Struct_203cdd8* obj, int value);
 
@@ -30,7 +31,7 @@ extern "C" ARM void func_0203ce14(void* obj, struct Vec3s32_020c3030* target) {
     struct Vec3 diff;
     Vector3fix_Subtract((struct Vec3*)(base + 0x78), (struct Vec3*)(base + 0x4), &diff);
     int scale = fix32_Divide(0x1000, dist);
-    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&diff, scale, (struct Vec3Fixed02030e2c*)&diff);
+    Vector3fixMultiplyScalar((Vector3i const*)&diff, scale, (Vector3i*)&diff);
     int angle = fix32_Atan2(diff.x, diff.z);
     SetField0x64RoundedTo256((struct Struct_203cdd8*)obj, angle);
 }

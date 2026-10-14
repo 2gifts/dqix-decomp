@@ -7,7 +7,6 @@ extern "C" void func_020531f0(void* obj);
 struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 extern "C" void func_ov017_021c2b6c(void* self);
 void ForwardResetAndCaptureTimestamp_021c2e50(char* self);
 void InitAndDispatchCombatant_021c2ea4(unsigned char* self);
@@ -34,8 +33,8 @@ extern "C" ARM void func_ov017_021c2f3c(unsigned char* self) {
             CancelPendingAction020397cc((struct Obj020397cc*)combatant, 1);
         }
 
-        if (_ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant) == 0x2710 ||
-            _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant) == 0x2774) {
+        if (((Object3D*)((struct U16Field0x6_020375f8*)combatant))->GetField06() == 0x2710 ||
+            ((Object3D*)((struct U16Field0x6_020375f8*)combatant))->GetField06() == 0x2774) {
             self[0x8c] = 2;
             return;
         }

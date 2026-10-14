@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "World/Object3D.h"
 
 struct BinarySearch020971a8Node;
 struct BinarySearch020971a8Container;
 struct BinarySearch020971a8Node* BinarySearchByField4_02097224(struct BinarySearch020971a8Container* c, int key);
-
-extern "C" void _ZN8Object3D24MaybeSetRegularAnimationEPKci(void*, void*, int);
 
 extern const char data_ov014_021895c8[];
 extern const char data_ov014_021895ce[];
@@ -40,5 +39,5 @@ ARM void ProcessEntry02184e3c(unsigned char* obj) {
     if (e == NULL || *(signed char*)e == 0) return;
 
     a = *(unsigned char**)(obj + 0x40);
-    _ZN8Object3D24MaybeSetRegularAnimationEPKci(a, e, 0);
+    ((Object3D*)a)->MaybeSetRegularAnimation((char const*)e, 0);
 }

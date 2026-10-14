@@ -12,9 +12,9 @@ enum { kRegion435c = 0x435c };
 #endif
 
 #include "std_library_functions.h"
+#include "Memory/SafeAllocator.h"
 
 extern "C" void* func_ov017_0218b5b0(void);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* thisPtr, unsigned int size);
 
 struct FmtTable021602bc { char rows[4][kRegion30]; };
 
@@ -24,7 +24,7 @@ extern "C" ARM void func_ov003_021602bc(char* obj) {
 
     for (int i = 0; i < 4; i++) {
         (*(void***)(obj + kRegion394))[i] = 0;
-        void* buf = _ZN13SafeAllocator8AllocateEj(obj + kRegion228, kRegion30);
+        void* buf = ((SafeAllocator*)(obj + kRegion228))->Allocate(kRegion30);
         (*(void***)(obj + kRegion394))[i] = buf;
         void* p = (*(void***)(obj + kRegion394))[i];
         memset(p, 0, kRegion30);

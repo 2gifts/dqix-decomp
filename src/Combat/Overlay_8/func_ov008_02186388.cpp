@@ -195,7 +195,8 @@ PartyMember* GetCombatantWithFlag0x100(GameState* gameState, int index);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void AppendString02042058(char* text, const char* append);
 Canvas* FindElementByC40205d81c(Struct_0205d81c* window, int canvas);
-extern "C" void _Z18InitConfig02187664P15Manager02187664i(BattleRecords* self, ClearRecords* records);
+struct Manager02187664;
+void InitConfig02187664(Manager02187664*, int);
 int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
 void SelectCoordsByFlag0x24(unsigned char* touch, int* x, int* y);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int value);
@@ -242,7 +243,7 @@ extern "C" ARM void func_ov008_02186388(BattleRecords* self)
     if (step == 1 && func_ov008_02188a54(self, 1))
     {
         func_ov008_0218712c(self, clear);
-        _Z18InitConfig02187664P15Manager02187664i(self, clear);
+        InitConfig02187664((Manager02187664*)self, (int)clear);
         func_ov008_02187a70(self, clear);
         func_ov008_02187f6c(self, clear);
         for (int i = 0; i < 5; i++)
@@ -340,7 +341,7 @@ extern "C" ARM void func_ov008_02186388(BattleRecords* self)
     if (step == 6 && func_ov008_02188a54(self, 0))
     {
         func_ov008_0218712c(self, NULL);
-        _Z18InitConfig02187664P15Manager02187664i(self, NULL);
+        InitConfig02187664((Manager02187664*)self, (int)NULL);
         func_ov008_02187a70(self, NULL);
         func_ov008_02187f6c(self, NULL);
         for (int i = 0; i < 6; i++)

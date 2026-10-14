@@ -16,11 +16,8 @@ struct Owner0204a3f0;
 struct Holder0204a3f0;
 void SetHolderAndMarkNode0204a3f0(struct Owner0204a3f0* owner, struct Holder0204a3f0* h);
 
-extern "C" void _ZN8Object3D15UntrackAllBonesEv(void* obj);
 void SetName0204a440(char* obj, const char* src);
 void SetStringField0234(char* obj, const char* src);
-extern "C" void _ZN8Object3D20StopCurrentAnimationEv(unsigned char* obj);
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 
 struct Entry_02161650 { int type; int val; int pad2; void* child; };
 struct DataTable_02161650 { char pad0[4]; Entry_02161650* table; };
@@ -48,12 +45,12 @@ extern "C" ARM int func_ov001_02161650(char* self) {
 
     InitState0204a120((struct Obj0204a120*)newObj);
     SetHolderAndMarkNode0204a3f0((struct Owner0204a3f0*)newObj, (struct Holder0204a3f0*)child);
-    _ZN8Object3D15UntrackAllBonesEv(child);
+    ((Object3D*)child)->UntrackAllBones();
     SetName0204a440((char*)newObj, (const char*)name);
     SetStringField0234((char*)newObj, (const char*)str1);
-    _ZN8Object3D20StopCurrentAnimationEv((unsigned char*)child);
-    _ZN8Object3D10EnableFlagEi((unsigned char*)child, 1);
-    _ZN8Object3D10EnableFlagEi((unsigned char*)child, 0x20);
+    ((Object3D*)((unsigned char*)child))->StopCurrentAnimation();
+    ((Object3D*)((unsigned char*)child))->EnableFlag(1);
+    ((Object3D*)((unsigned char*)child))->EnableFlag(0x20);
 
     SetField0x3b0Value(bs, (int)newObj);
     return 1;

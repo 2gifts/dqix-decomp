@@ -36,10 +36,12 @@ struct Obj0218d50c {
 extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
 void DelayThenSyncBit0();
 void ResetObjectState02079a3c(void*);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char*);
+struct Foo0207df50;
+void CopyInternalFields0207df50(Foo0207df50*);
 void RestorePairTables0207df90(char*);
 void BackupPairTables0207dfac(char*);
-extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(void*, int);
+struct Container020dedd0;
+void* FindElementByKey020dedd0(Container020dedd0*, int);
 extern "C" int func_ov015_0218c03c(void* self, char* buf, int i, int one);
 extern "C" void func_ov015_0218c3a4(void* self, int v);
 extern "C" void func_ov015_0218c920(void* self, int zero);
@@ -109,7 +111,7 @@ extern "C" ARM int func_ov015_0218d50c(Obj0218d50c* self) {
             alloc = self->allocs;
             off14 = i * 0x14;
             ((SafeAllocator*)((char*)alloc + off14))->Reset();
-            _Z26CopyInternalFields0207df50P11Foo0207df50(pairs + off70);
+            CopyInternalFields0207df50((Foo0207df50*)(pairs + off70));
             Vector3fix savedPos = self->GetEnt(i)->position_;
             self->ents[i].Initialize();
             _ZN8Vector3iaSERKS_(&self->ents[i].position_, &savedPos);
@@ -117,8 +119,7 @@ extern "C" ARM int func_ov015_0218d50c(Obj0218d50c* self) {
             if (self->ids[i] < 0) {
                 continue;
             }
-            Elem0218d50c* elem = (Elem0218d50c*)_Z24FindElementByKey020dedd0P17Container020dedd0i(
-                (char*)self->container + 0x4c, (short)self->ids[i]);
+            Elem0218d50c* elem = (Elem0218d50c*)FindElementByKey020dedd0((Container020dedd0*)((char*)self->container + 0x4c), (short)self->ids[i]);
             if (elem == 0) {
                 continue;
             }

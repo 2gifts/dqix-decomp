@@ -6,12 +6,8 @@
 extern "C" int func_ov017_021d60f4(void*);
 extern int AbsPlus159IfNegative0215ad2c(int x);
 extern SafeAllocator* data_ov001_021658b8[8];
-extern "C" void _ZN8Object3D10InitializeEv(void* obj);
-extern "C" void _ZN8Object3D14ShallowCloneToEPS_(void* node, void* buf);
 void RegisterCombatantSlot(GameState* battleStruct, int id, GameObject* combatant);
 struct Shorts5c_374e0;
-extern "C" void _ZN8Object3D8SetScaleEiii(struct Shorts5c_374e0* obj, short a, short b, short c);
-extern "C" void _ZN8Object3D21MaybeSetBCFGAnimationEii(void* self, int a, int b);
 
 // USA: func_ov001_0215ba64
 ARM int AllocateAndRegisterCombatant_0215ba64(char* self, int type) {
@@ -34,10 +30,10 @@ ARM int AllocateAndRegisterCombatant_0215ba64(char* self, int type) {
 	void* newObj = allocator->Allocate(0xac);
 	if (newObj == NULL) return 0;
 
-	_ZN8Object3D10InitializeEv(newObj);
-	_ZN8Object3D14ShallowCloneToEPS_(combatant, newObj);
+	((Object3D*)newObj)->Initialize();
+	((Object3D*)combatant)->ShallowCloneTo((Object3D*)newObj);
 	RegisterCombatantSlot(bs, id2, (GameObject*)newObj);
-	_ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)newObj, 0x10a, 0x10a, 0x10a);
-	_ZN8Object3D21MaybeSetBCFGAnimationEii(newObj, 0, 0);
+	((Object3D*)((struct Shorts5c_374e0*)newObj))->SetScale(0x10a, 0x10a, 0x10a);
+	((Object3D*)newObj)->MaybeSetBCFGAnimation(0, 0);
 	return 1;
 }

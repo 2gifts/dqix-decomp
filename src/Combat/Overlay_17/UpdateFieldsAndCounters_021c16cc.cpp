@@ -2,8 +2,8 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Resource/GameResources.h"
 
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
+int IsBrightnessTransitionActive(GameResources*);
+void SetBrightness(GameResources*, int, int);
 extern "C" void func_ov017_021a2fa0(void* ov);
 
 struct Obj021c16cc {
@@ -25,14 +25,14 @@ extern "C" ARM void func_ov017_021c16cc(Obj021c16cc* self) {
     int data = (int)BackgroundLoader::GetInstance();
     signed char state = self->field8;
     if (state == 0) {
-        _Z13SetBrightnessP13GameResourcesii(ov, -0x10, 0xf);
+        SetBrightness((GameResources*)ov, -0x10, 0xf);
         self->field8 = self->field8 + 1;
         return;
     }
     if (state != 1) {
         return;
     }
-    if (_Z28IsBrightnessTransitionActiveP13GameResources((int*)ov) != 0) {
+    if (IsBrightnessTransitionActive((GameResources*)ov) != 0) {
         return;
     }
     if (((BackgroundLoader*)((void*)data))->GetNumQueuedTasks() > 0) {
@@ -41,10 +41,10 @@ extern "C" ARM void func_ov017_021c16cc(Obj021c16cc* self) {
     func_ov017_021a2fa0(ov);
     void* p = *(void**)((char*)ov + 0x3000 + regionalOffset);
     if (((unsigned char*)p)[2] == 0) {
-        _Z13SetBrightnessP13GameResourcesii(ov, 0, 0xf);
+        SetBrightness((GameResources*)ov, 0, 0xf);
     }
     if (self->field9 != 0) {
-        _Z13SetBrightnessP13GameResourcesii(ov, -0x10, 0);
+        SetBrightness((GameResources*)ov, -0x10, 0);
     }
     self->field1 = 1;
 }

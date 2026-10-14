@@ -1,10 +1,10 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Foo02033b58;
 void SetByteSavingPrevious(struct Foo02033b58* p, unsigned char v);
 struct Bytes02033b88;
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
-extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 
 struct State02076da0 {
     unsigned char pad_b0[0xb0];
@@ -24,7 +24,7 @@ ARM int ResetState02076da0(struct State02076da0* p) {
     p->f0xb0 = 0x328;
     p->f0xb2 = 0;
     p->f0xb4 = 0;
-    _ZN8Object3D11DisableFlagEi((unsigned char*)p, 0x80);
+    ((Object3D*)((unsigned char*)p))->DisableFlag(0x80);
     p->f0x17a = 0;
     return 1;
 }

@@ -8,7 +8,10 @@ extern "C" void _ZN8Object3D23SetCurrentAnimationTimeEi(struct S1a0* obj, unsign
 extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
 struct Struct0207ea38;
 extern "C" int _ZN7Model3D12GetBoneIndexEPKc(struct Struct0207ea38* obj, char* str);
-extern "C" int _Z40GetModelBonePositionAndDirectionMatricesP18ModelRenderContextP9Matrix4x3P9Matrix3x3j(void* a0, void* a1, void* a2, unsigned int a3);
+struct Matrix3x3;
+struct Matrix4x3;
+struct ModelRenderContext;
+int GetModelBonePositionAndDirectionMatrices(ModelRenderContext*, Matrix4x3*, Matrix3x3*, unsigned int);
 struct S02035d44;
 extern "C" int _ZN8Object3D11DrawSimple2Eb(struct S02035d44* obj, int arg);
 extern "C" void _ZN8Object3D19SendTransformToFifoEv(void* obj);
@@ -82,7 +85,7 @@ extern "C" ARM void func_ov023_021e5628(TagObj021e5628* obj, CtxObj021e5628* ctx
 
         int r = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdcef);
         if (r > -1) {
-            _Z40GetModelBonePositionAndDirectionMatricesP18ModelRenderContextP9Matrix4x3P9Matrix3x3j(p, 0, 0, r);
+            GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r);
             if (ctx != 0 && ctx->field4 != 0) {
                 _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)ctx->field4, 0);
             }
@@ -94,33 +97,33 @@ extern "C" ARM void func_ov023_021e5628(TagObj021e5628* obj, CtxObj021e5628* ctx
             if (obj->field_c10 != 0) {
                 int r2 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdcf4);
                 if (r2 > -1 && *(short*)((char*)obj + 0x562) > -1) {
-                    _Z40GetModelBonePositionAndDirectionMatricesP18ModelRenderContextP9Matrix4x3P9Matrix3x3j(p, 0, 0, r2);
+                    GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r2);
                     _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x560), 0);
                 }
                 int r3 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdcfa);
                 if (r3 > -1 && *(short*)((char*)obj + 0x562) > -1) {
-                    _Z40GetModelBonePositionAndDirectionMatricesP18ModelRenderContextP9Matrix4x3P9Matrix3x3j(p, 0, 0, r3);
+                    GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r3);
                     func_02031234(0x3244);
                     _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x560), 0);
                 }
             } else {
                 int r4 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdd00);
                 if (r4 > -1 && *(short*)((char*)obj + 0x562) > -1) {
-                    _Z40GetModelBonePositionAndDirectionMatricesP18ModelRenderContextP9Matrix4x3P9Matrix3x3j(p, 0, 0, r4);
+                    GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r4);
                     _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x560), 0);
                 }
             }
 
             int r5 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdd08);
             if (r5 > -1 && *(short*)((char*)obj + 0x60e) > -1) {
-                _Z40GetModelBonePositionAndDirectionMatricesP18ModelRenderContextP9Matrix4x3P9Matrix3x3j(p, 0, 0, r5);
+                GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r5);
                 _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x60c), 0);
             }
 
             if (ctx != 0 && ctx->field0 != 0) {
                 int r6 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdd10);
                 if (r6 > -1) {
-                    _Z40GetModelBonePositionAndDirectionMatricesP18ModelRenderContextP9Matrix4x3P9Matrix3x3j(p, 0, 0, r6);
+                    GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r6);
                     _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)ctx->field0, 0);
                 }
             }

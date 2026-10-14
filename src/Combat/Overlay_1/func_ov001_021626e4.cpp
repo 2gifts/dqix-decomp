@@ -13,20 +13,27 @@ struct Background021626e4 {
 extern "C" int func_ov017_021d612c(void* args);
 extern "C" int func_ov017_021d60f4(void* args);
 unsigned int LoadResourceIntoGlobalBuffer_0215a750(const char* path, void** outPtr);
-extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void* archive);
-extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void* archive, int index, void** name, int* size);
+struct ActiveEntry02046900;
+int CountActiveEntries(ActiveEntry02046900*);
+struct Rec020467f0;
+void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 void SetBg3ControlFields_02162678(int a, int b, int c, int d);
 void SetSubBgMode(unsigned int mode);
 void SetSubBg3ControlFields_021628d4(int a, int b, int c, int d);
-extern "C" void _Z17ResetList0204af64P12List0204af64(Background021626e4* background);
+struct List0204af64;
+void ResetList0204af64(List0204af64*);
 extern "C" void func_0204b5b4(Background021626e4* background, int a);
-extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(Background021626e4* background, int a);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(Background021626e4* background, int a, int b);
+void SetWord0x18ClearByte0x1f(unsigned char*, int);
+struct Obj0204b5e8;
+void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 void DelayThenSyncBit0();
-extern "C" void _Z21DispatchByTag0204b2e0PvPc(Background021626e4* background, void* record);
-extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(Background021626e4* background, void* record);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(Background021626e4* background, void* a);
-extern "C" void _Z23ResetRecordList0204afb4P12List0204afb4(Background021626e4* background);
+void DispatchByTag0204b2e0(void*, char*);
+struct SelfTag0204b3a0;
+void DispatchByTagLookup0204b3a0(SelfTag0204b3a0*, char*);
+struct List0204b0e8;
+void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
+struct List0204afb4;
+void ResetRecordList0204afb4(List0204afb4*);
 
 extern char data_ov001_02165745[];
 
@@ -63,9 +70,9 @@ extern "C" ARM int func_ov001_021626e4(void* args) {
         }
     }
 
-    count = _Z18CountActiveEntriesP19ActiveEntry02046900(file);
+    count = CountActiveEntries((ActiveEntry02046900*)file);
     for (int i = 0; i < count; i++) {
-        records[i] = _Z17FindRecordByIndexP11Rec020467f0iPPvPi(file, i, &name, &recordSizes[i]);
+        records[i] = FindRecordByIndex((Rec020467f0*)file, i, &name, &recordSizes[i]);
     }
 
     DISPCNT = (DISPCNT & ~0x1f00) | 0x800;
@@ -78,19 +85,19 @@ extern "C" ARM int func_ov001_021626e4(void* args) {
         SetSubBg3ControlFields_021628d4(0, 0, 0xe, 0);
     }
 
-    _Z17ResetList0204af64P12List0204af64(&background);
+    ResetList0204af64((List0204af64*)&background);
     background.screen = subScreen;
     background.layer = 3;
     func_0204b5b4(&background, 0);
-    _Z24SetWord0x18ClearByte0x1fPhi(&background, 0);
-    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(&background, 0, 0);
+    SetWord0x18ClearByte0x1f((unsigned char*)&background, 0);
+    DispatchViaTable0204b5e8((Obj0204b5e8*)&background, 0, 0);
     DelayThenSyncBit0();
     for (int i = 0; i < count; i++) {
-        _Z21DispatchByTag0204b2e0PvPc(&background, records[i]);
-        _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(&background, records[i]);
+        DispatchByTag0204b2e0(&background, (char*)records[i]);
+        DispatchByTagLookup0204b3a0((SelfTag0204b3a0*)&background, (char*)records[i]);
     }
-    _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(&background, NULL);
-    _Z23ResetRecordList0204afb4P12List0204afb4(&background);
+    FlushAndDispatchList0204b0e8((List0204b0e8*)&background, NULL);
+    ResetRecordList0204afb4((List0204afb4*)&background);
 
     if (locked) {
         BackgroundLoader::RemoveLockGlobal();

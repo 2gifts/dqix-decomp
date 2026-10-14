@@ -5,7 +5,7 @@
 struct S02046b1c;
 int GetField0x3acValue(GameState* battleStruct);
 int GetField0x0List02046b1c(struct S02046b1c* p);
-extern "C" void _Z18InitStruct02070378Pc(void* obj);
+void InitStruct02070378(char*);
 struct FieldFlagBlock;
 void ResetAndEnableFieldFlag(struct FieldFlagBlock* block);
 
@@ -38,7 +38,7 @@ extern "C" ARM void func_ov017_021cf5d4(void* unused0, struct Evt021cf5d4* evt, 
         return;
     }
     struct S3f8_cf5d4 buf;
-    _Z18InitStruct02070378Pc(&buf);
+    InitStruct02070378((char*)&buf);
     buf.field0 = evt->field4;
     buf.field2 = 1;
     if (evt->field7 != 0) {

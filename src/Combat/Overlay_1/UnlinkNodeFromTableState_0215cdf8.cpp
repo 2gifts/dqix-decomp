@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" int func_ov017_021d60f4(void*);
 struct ListNode020378dc;
-extern "C" void _ZN8Object3D6DetachEv(struct ListNode020378dc*);
 
 struct TableStruct0215cdf8 { void* unused0; char* base; };
 extern TableStruct0215cdf8 data_ov001_02165880;
@@ -18,6 +18,6 @@ ARM int UnlinkNodeFromTableState_0215cdf8(void* self) {
         fieldC = table[idx].fieldC;
     }
     if (fieldC == NULL) return 0;
-    _ZN8Object3D6DetachEv((struct ListNode020378dc*)fieldC);
+    ((Object3D*)((struct ListNode020378dc*)fieldC))->Detach();
     return 1;
 }

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Holder02037558;
-extern "C" ARM void* _ZN8Object3D24GetLoadedAnimationRecordEPKc(struct Holder02037558* holder, const char* name);
 
 struct Obj0218f39c {
 	char pad1c[0x1c];
@@ -16,8 +16,8 @@ extern "C" ARM void* func_ov015_0218f39c(struct Obj0218f39c* obj, const char* na
 	switch (state) {
 	case 0:
 	case 1:
-		return _ZN8Object3D24GetLoadedAnimationRecordEPKc(obj->holder, name);
+		return ((Object3D*)obj->holder)->GetLoadedAnimationRecord(name);
 	default:
-		return _ZN8Object3D24GetLoadedAnimationRecordEPKc(obj->holder, name);
+		return ((Object3D*)obj->holder)->GetLoadedAnimationRecord(name);
 	}
 }

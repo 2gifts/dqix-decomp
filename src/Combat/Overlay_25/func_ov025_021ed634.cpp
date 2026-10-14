@@ -121,7 +121,7 @@ void* FindEntryById_021dafd0(char* obj, int id);
 Sub18* GetActiveSub_02054000(Outer_02054000* o);
 void Clear12Bytes020e46c4(void* p);
 void DispatchIfCountPositive020dcf7c(int count, void* buf);
-extern "C" unsigned char _Z19CopyOutRegion0x571dPcPv(void* gs, void* dst);
+unsigned char CopyOutRegion0x571d(char*, void*);
 extern "C" void* func_ov017_021b8478(void* obj);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 char* GetFieldByKeyFromWork0x88(void* work, int key);
@@ -138,7 +138,8 @@ extern "C" void func_02047410(void*, int);
 extern "C" int func_ov025_021ed5a4(int, char*);
 void* GetBoundedField156_02171674(void*, int);
 void* GetBoundedField420_0217199c(void*, int);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, char*);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" void func_020474a8(void*, int, char*, char*);
 extern "C" void func_0204500c(void*, char*, int);
 extern "C" void func_02043270(void*, int, int, int, int);
@@ -486,7 +487,7 @@ found_entry:
                 if (*(signed char*)self->pad16c != 0) {
                     CopyStringToField0x3ac(g, self->pad16c);
                     if (*(short*)((char*)self->list + 4) != 0)
-                        _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, self->pad16c);
+                        SetIndexedName02046574((Obj02046574*)g, 0, self->pad16c);
                 } else if (a != 0) CopyStringToField0x3ac(g, *(char**)a);
                 else if (b != 0) CopyStringToField0x3ac(g, *(char**)b);
             }
@@ -535,7 +536,7 @@ found_entry:
             || (row != 0 && row->kind == 1 && id == 0x26d && sb >= count30)) {
             *(g + 0x1000 + 0x9d7) = 1;
         }
-        int n5 = _Z19CopyOutRegion0x571dPcPv(gs, out);
+        int n5 = CopyOutRegion0x571d((char*)gs, out);
         unsigned char positiveFlaggedEntries = 0;
         unsigned char flaggedEntries = 0;
         unsigned char* tb = (unsigned char*)func_ov017_021b8478(func_ov017_0218b5b0()->unknown_ptr_3718);

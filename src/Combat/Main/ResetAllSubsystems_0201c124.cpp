@@ -6,6 +6,7 @@ enum { threeWordsOffset = 0x2764, stateOffset = 0x26a4, grottoOffset = 0x240c, f
 enum { threeWordsOffset = 0x2724, stateOffset = 0x2664, grottoOffset = 0x23ec, floorMapOffset = 0x25b4, blankTargetOffset = 0x840, nameTablesOffset = 0x600, modelsOffset = 0x498, lightingOffset = 0x10c, featuresOffset = 0x6c };
 #endif
 #include "Graphics/LightingInfo.h"
+#include "World/ZoneFeatures.h"
 
 struct ClearThreeWords02094d00Struct;
 struct InitState0208f7ecStruct;
@@ -24,7 +25,6 @@ void InitState0208f7ec(InitState0208f7ecStruct* p);
 void BlankFunction020984ac(void* p);
 void NotifyThenResetNameTable(void* p);
 extern "C" void _ZN7Model3DD1Ev(void* p);
-extern "C" void _ZN12ZoneFeatures5ResetEv(void* p);
 
 extern "C" void func_0200ef44(void* p, int count, int size, void* fn);
 
@@ -39,6 +39,6 @@ extern "C" ARM void* func_0201c124(void* self) {
     func_0200ef44((char*)self + nameTablesOffset, 4, 0x88, (void*)NotifyThenResetNameTable);
     func_0200ef44((char*)self + modelsOffset, 2, 0xac, (void*)_ZN7Model3DD1Ev);
     ((LightingInfo*)((char*)self + lightingOffset))->Initialize();
-    _ZN12ZoneFeatures5ResetEv((char*)self + featuresOffset);
+    ((ZoneFeatures*)((char*)self + featuresOffset))->Reset();
     return self;
 }

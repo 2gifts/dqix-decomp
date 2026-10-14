@@ -6,6 +6,7 @@ enum { flagsOffset = 0x57e4, workOffset = 0xe44, combatantOffset = 0x71c6, state
 enum { flagsOffset = 0x55f4, workOffset = 0xec8, combatantOffset = 0x6fd6, stateOffset = 0xea8, dispatchOffset = 0x5ab0 };
 #endif
 #include "GameState/GameState.h"
+#include "Graphics/NSBXX/RenderConfig.h"
 
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 extern "C" void func_02016874(void* big);
@@ -13,9 +14,7 @@ extern "C" void func_ov000_02161020(void* obj);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 struct Vec3i_020374f0 { int x; int y; int z; };
 extern "C" struct Vec3i_020374f0 _ZNK8Object3D8GetScaleEv(unsigned char* src);
-extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(unsigned char* dst, int* src);
-extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
-extern "C" void _ZN12RenderConfig12SubmitToFifoEv(void);
+struct Vector3i;
 int PeekInputLogB(void);
 extern "C" void func_ov025_021df864(void* arg);
 
@@ -39,12 +38,12 @@ extern "C" ARM void func_ov000_02160b54(unsigned char* obj) {
                 _ZN8Vector3iaSERKS_((int*)((char*)c2 + 0x44), (int*)((char*)c1 + 0x44));
                 _ZN8Vector3iaSERKS_((int*)((char*)c2 + 0x50), (int*)((char*)c1 + 0x50));
                 const struct Vec3i_020374f0& tmp = _ZNK8Object3D8GetScaleEv((unsigned char*)c1);
-                _ZN8Object3D8SetScaleEPK8Vector3i((unsigned char*)c2, (int*)&tmp);
+                ((Object3D*)((unsigned char*)c2))->SetScale((Vector3i const*)&tmp);
             }
-            _ZN8Object3D4DrawEb(c2, 0);
+            ((Object3D*)c2)->Draw(0);
         }
     }
-    _ZN12RenderConfig12SubmitToFifoEv();
+    RenderConfig::SubmitToFifo();
     if (*(int*)(obj + stateOffset) != 8) {
         return;
     }

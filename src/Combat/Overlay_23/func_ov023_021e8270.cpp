@@ -10,8 +10,8 @@ extern "C" int func_020426bc(void* src, void* dst, int flag);
 int StringLength(const char* s);
 extern "C" void func_ov023_021e709c(void* ctx, void* arr, int index);
 void* GetTableEntry0204a5e4(int a, int b);
-extern "C" void _Z25CleanInvalidateCacheRangePKvj(void* p, unsigned size);
-extern "C" void _Z15CleanCacheRangePKvj(void* p, unsigned size);
+void CleanInvalidateCacheRange(void const*, unsigned int);
+void CleanCacheRange(void const*, unsigned int);
 
 struct Data021ffa44 {
     int flags;
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov023_021e8270(char* obj) {
         data_ov023_021ffa44.fn = (void(*)(void*, void*, unsigned))GetTableEntry0204a5e4(nib->lo, nib->hi);
         data_ov023_021ffa44.flags |= 1;
     }
-    _Z25CleanInvalidateCacheRangePKvj(dst, size);
+    CleanInvalidateCacheRange(dst, size);
     data_ov023_021ffa44.fn(dst, (void*)off, size);
-    _Z15CleanCacheRangePKvj(dst, size);
+    CleanCacheRange(dst, size);
 }

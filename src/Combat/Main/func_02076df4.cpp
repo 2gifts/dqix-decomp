@@ -2,7 +2,6 @@
 #include "GameState/GameState.h"
 
 struct U16Field0x6_020375f8 { char unk[0x6]; unsigned short field; };
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 struct Entry_02028bd0;
 struct Entry_02028bd0* GetEntryTableBase(void);
@@ -41,7 +40,7 @@ extern "C" ARM void func_02076df4(struct Actor02076df4* obj) {
     void* g = func_0202ae18();
     struct Entry_02028bd0* table = GetEntryTableBase();
     GameObject* combatant = battleStruct->GetPartyMemberByIndex(obj->field166);
-    int key = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)obj);
+    int key = ((Object3D*)((struct U16Field0x6_020375f8*)obj))->GetField06();
     struct Entry_02028bd0* entry = FindInlineEntryById(table, key);
     if (entry == 0) {
         return;
@@ -55,8 +54,8 @@ extern "C" ARM void func_02076df4(struct Actor02076df4* obj) {
     int modeOk = 1;
     if (combatant != 0 && obj->field17b != 0) {
         if (*((unsigned char*)combatant + 0xbe) == 0) {
-            int cid = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant);
-            int oid = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)obj);
+            int cid = ((Object3D*)((struct U16Field0x6_020375f8*)combatant))->GetField06();
+            int oid = ((Object3D*)((struct U16Field0x6_020375f8*)obj))->GetField06();
             if (cid == oid) {
                 modeOk = 0;
             }

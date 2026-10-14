@@ -71,7 +71,7 @@ extern "C" void __clear(void* buf, int n);
 extern "C" int func_ov025_021e771c(short* ids, int count, int a, int b);
 extern "C" void func_ov000_02161c0c(void* work, int id);
 extern "C" void func_ov000_021677fc(void* work);
-extern "C" void _Z38RunFlaglearAndSetMode02167e6c_02167e6cPh(void* work);
+void RunFlaglearAndSetMode02167e6c_02167e6c(unsigned char*);
 extern "C" void _ZN8Vector3iaSERKS_(float* dst, float* src);
 
 extern const unsigned short data_ov025_021eef18[5];
@@ -140,7 +140,7 @@ extern "C" ARM int func_ov025_021e7890(int self, Action021e7890* action) {
         if (node->id != id) ClearCombatantSlot(state, id);
     }
     func_ov000_021677fc(work);
-    _Z38RunFlaglearAndSetMode02167e6c_02167e6cPh(work);
+    RunFlaglearAndSetMode02167e6c_02167e6c((unsigned char*)work);
     GameObj021e7890* unit2 = (GameObj021e7890*)state->GetCombatantByIndex(node->id);
     if (unit2 != 0) {
         Sub021e7890* obj2 = unit2->sub;

@@ -18,10 +18,10 @@ extern "C" void func_ov000_021554f4(void* self, int id, void* arg, int a3, unsig
 extern "C" void func_ov000_02155184(void* self, int id, int a2);
 extern "C" void _Z15InitObj02088e80P11Obj02088e80(struct ModifiableCombatStats* stats, int id);
 int GetField0x3acValue(GameState* gs);
-extern "C" void _Z23LoadBattleBlock020ac4c0Pv(struct BattleBlk_0215a004* b);
-extern "C" void _Z24AddClamped16BitLowAt0x24P7S_a0608j(struct BattleBlk_0215a004* b, unsigned int v);
-extern "C" void _Z29AddClamped16BitFieldMidAt0x1cP7S_a0294j(struct BattleBlkSub_0215a004* b, unsigned int v);
-extern "C" void _Z23CopyInBattleField0x7540Pv(struct BattleBlk_0215a004* b);
+void LoadBattleBlock020ac4c0(void*);
+void AddClamped16BitLowAt0x24(S_a0608*, unsigned int);
+void AddClamped16BitFieldMidAt0x1c(S_a0294*, unsigned int);
+void CopyInBattleField0x7540(void*);
 
 // USA: func_ov000_0215a004
 extern "C" ARM short func_ov000_0215a004(void* self, void* arg, int id, int damage, unsigned long long* result,
@@ -41,10 +41,10 @@ extern "C" ARM short func_ov000_0215a004(void* self, void* arg, int id, int dama
         func_ov000_02155184(self, id, a7);
         if (id == GetField0x3acValue(GameState::GetInstance())) {
             struct BattleBlk_0215a004 blk;
-            _Z23LoadBattleBlock020ac4c0Pv(&blk);
-            _Z24AddClamped16BitLowAt0x24P7S_a0608j(&blk, 1);
-            _Z29AddClamped16BitFieldMidAt0x1cP7S_a0294j(&blk.sub, 1);
-            _Z23CopyInBattleField0x7540Pv(&blk);
+            LoadBattleBlock020ac4c0(&blk);
+            AddClamped16BitLowAt0x24((S_a0608*)&blk, 1);
+            AddClamped16BitFieldMidAt0x1c((S_a0294*)&blk.sub, 1);
+            CopyInBattleField0x7540(&blk);
         }
     }
     if (damage > 0) {

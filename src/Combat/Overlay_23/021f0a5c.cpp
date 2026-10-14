@@ -56,22 +56,25 @@ extern "C" void func_02046380(MessageController*);
 char* FindEntryByKey(TableA68*, int);
 void* GetPtrField0x2a04(GameState*);
 int ArrayContainsByte(ArrayContainsByteStruct*, int);
-extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(ResultState*);
+struct Reset_021eefac;
+void ResetFields_021eefac(Reset_021eefac*);
 BattleResultEntry* FindByByteAt118_021f0360(void*, int);
 extern "C" int func_02082490(LoadedEntry*, void*, unsigned int, unsigned char, unsigned int);
 GameObject* GetCombatantWithFlag0x100(GameState*, int);
-extern "C" CombatStats* _Z15GetFieldAt0x150Ph(GameObject*);
+CombatStats* GetFieldAt0x150(unsigned char*);
 extern "C" void func_02083cbc(CombatStats*, LevelStats*, LevelStats*);
 extern "C" void func_02083e28(CombatStats*, int);
 extern "C" unsigned char func_0209aa54(void*, GameObject*, unsigned char*, int);
-extern "C" int _Z25GetTableEntry138_021eea98P11Obj021eea98(GameObject*);
-extern "C" void _Z24InitCombatEntry_021d8b6cPv(BattleEntry*);
+struct Obj021eea98;
+int GetTableEntry138_021eea98(Obj021eea98*);
+void InitCombatEntry_021d8b6c(void*);
 extern "C" void func_ov023_021d8af8(BattleEntry*);
 extern "C" void func_ov023_021d8a40(BattleEntry*);
 void CopyEntryFields_021d8cb4(void*, void*);
 void CopyAndStoreLen_021d9988(Obj021d9988*, void*, unsigned int);
 extern "C" void func_ov023_021d8e4c(BattleEntry*, int, LevelStats*, LevelStats*);
-extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(MessageController*, int, int);
+struct StoreStruct;
+void StoreInArray0x8b0(StoreStruct*, int, int);
 void InitObjFromCombatantId020e4bf4(void*, int);
 extern "C" void func_0204500c(MessageController*, char*, int, int);
 void ResetAndDispatchActorContext0209c6d8(void*, short);
@@ -103,7 +106,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
     if (state->state == 0) {
         state->id++;
         if (state->id >= 4) {
-            _Z20ResetFields_021eefacP14Reset_021eefac(state);
+            ResetFields_021eefac((Reset_021eefac*)state);
             return 0xb;
         }
         BattleResultEntry* entry = FindByByteAt118_021f0360(_ZZ17GetGlobal021ffefcvE1s, state->id);
@@ -131,7 +134,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
             if (inParty) {
                 GameObject* actor = GetCombatantWithFlag0x100(game, id);
                 if (actor) {
-                    CombatStats* stats = _Z15GetFieldAt0x150Ph(actor);
+                    CombatStats* stats = GetFieldAt0x150((unsigned char*)actor);
                     stats->levels[stats->index] = level;
                     unsigned short room = 0xa28 - stats->skillPoints;
                     if (room < extra->pct) extra->pct = room;
@@ -148,11 +151,11 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
         if (inParty) {
             GameObject* actor = GetCombatantWithFlag0x100(game, id);
             if (actor) {
-                CombatStats* stats = _Z15GetFieldAt0x150Ph(actor);
+                CombatStats* stats = GetFieldAt0x150((unsigned char*)actor);
                 if (GetLevel(stats) >= 99) {
                     unsigned int exp = work->loaded[id].base.exp;
                     if (learned) exp = work->loaded[id].gained.exp;
-                    if (exp != 0 && exp <= _Z25GetTableEntry138_021eea98P11Obj021eea98(actor)) {
+                    if (exp != 0 && exp <= GetTableEntry138_021eea98((Obj021eea98*)actor)) {
                         if (stats) stats->exps[stats->index] = exp;
                         entry->experience = exp;
                     }
@@ -163,7 +166,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
         state->state++;
     } else if (state->state == 2) {
         if (work->result) {
-            _Z24InitCombatEntry_021d8b6cPv(work->result);
+            InitCombatEntry_021d8b6c(work->result);
             func_ov023_021d8af8(work->result);
             work->result = 0;
             return work->state;
@@ -197,11 +200,11 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
             gained = &work->loaded[(unsigned int)id].gained;
             if (gained->level - base->level > 1) {
                 sprintf(text, FindEntryByKey(&work->strings, 0x16));
-                _Z17StoreInArray0x8b0P11StoreStructii(messages, 0, base->level);
-                _Z17StoreInArray0x8b0P11StoreStructii(messages, 1, gained->level);
+                StoreInArray0x8b0((StoreStruct*)messages, 0, base->level);
+                StoreInArray0x8b0((StoreStruct*)messages, 1, gained->level);
             } else {
                 sprintf(text, FindEntryByKey(&work->strings, 0xa));
-                _Z17StoreInArray0x8b0P11StoreStructii(messages, 0, gained->level);
+                StoreInArray0x8b0((StoreStruct*)messages, 0, gained->level);
             }
             strcat(text, suffix);
             InitObjFromCombatantId020e4bf4(actorName, id);
@@ -240,7 +243,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
             unsigned short points = 0;
             GameObject* actor = GetCombatantWithFlag0x100(game, id);
             if (actor) {
-                CombatStats* stats = _Z15GetFieldAt0x150Ph(actor);
+                CombatStats* stats = GetFieldAt0x150((unsigned char*)actor);
                 if (stats) points = stats->skillPoints;
             }
             GetPtrField0x2a04(game);
@@ -259,7 +262,7 @@ extern "C" ARM int func_ov023_021f0a5c(BattleWork* work) {
         if (IsAnimationActive0209ca2c(data_02109bf4)) return work->state;
         if (func_ov023_021f4fc8()) {
             signed char outcome = state->outcome;
-            _Z20ResetFields_021eefacP14Reset_021eefac(state);
+            ResetFields_021eefac((Reset_021eefac*)state);
             if (outcome >= 0) return outcome;
         }
         return work->state;

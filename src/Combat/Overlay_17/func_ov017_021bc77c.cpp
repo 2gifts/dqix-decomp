@@ -16,69 +16,74 @@ enum { kInvalidId = -1 };
 struct AllocatorUnion;
 
 extern "C" void* func_0202ae18();
-extern "C" void* _Z15GetFieldIfFlag4Pc(GameState* gs);
+void* GetFieldIfFlag4(char*);
 extern "C" unsigned short* func_02012fe4();
 extern "C" unsigned char* func_0205ec34();
 unsigned int* GetDataPtr02114e04_020d6c00();
 extern "C" void func_02019678(unsigned short* p, int v);
 void ClearCombatantSlot(GameState* gs, int idx);
-extern "C" Object3D* _Z21GetField4334_021bdbc0Ph(void* res);
-extern "C" int _Z19TestFlagBitAt0x2744Phi(unsigned short* p, int bit);
-extern "C" void _Z19InitContext020e1154Pv(int v);
+Object3D* GetField4334_021bdbc0(unsigned char*);
+int TestFlagBitAt0x2744(unsigned char*, int);
+void InitContext020e1154(void*);
 void SetField0x238True(void* p);
-extern "C" void _Z22ApplyVecFromField0x21ePc(void* p);
-extern "C" void _Z20SetOrClearBitInArrayPvPhii(unsigned char* bits, unsigned char* arr, int idx, int set);
+void ApplyVecFromField0x21e(char*);
+void SetOrClearBitInArray(void*, unsigned char*, int, int);
 extern "C" void func_ov017_0219b624(void* res);
 void TailForward02012da4(AllocatorUnion* a, void* p);
-extern "C" int _Z15GetBitsInField0Pjj(void* res, unsigned int bits);
+int GetBitsInField0(unsigned int*, unsigned int);
 void* AllocateAligned4(AllocatorUnion* a, unsigned int size);
 extern "C" void func_ov017_021a2fa0(void* res);
-extern "C" int _Z18CheckField0NonZeroPi(void* p);
-extern "C" int _Z15IsByte0x63d6SetP20FieldBlock63d6_11590(GameState* gs);
-extern "C" void _Z17SetHalfword0x63d8Pvt(GameState* gs, unsigned short v);
+int CheckField0NonZero(int*);
+struct FieldBlock63d6_11590;
+int IsByte0x63d6Set(FieldBlock63d6_11590*);
+void SetHalfword0x63d8(void*, unsigned short);
 extern "C" void func_ov017_021bb27c(void* self);
-extern "C" void _Z20ClearFields_021bb0c4Ph(void* self);
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(unsigned char* bits, int kind, void* node);
+void ClearFields_021bb0c4(unsigned char*);
+int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(void* node);
 extern "C" int func_0202c540(void* p);
-extern "C" int _Z18TestBitInByteArrayiPhi(unsigned char* bits, unsigned char* arr, int idx);
+int TestBitInByteArray(int, unsigned char*, int);
 extern "C" unsigned char* func_ov017_021b8478(unsigned char* p);
 extern "C" void func_02046a8c(void* a, unsigned char* b);
-extern "C" int _Z16GetState0209ca68Pc(void* p);
+int GetState0209ca68(char*);
 extern "C" void func_0209c530(void* p);
-extern "C" void _Z17ClearBitsInField4Pjj(void* res, unsigned int bits);
-extern "C" void _Z15ClearBitsInWordPjj(void* res, unsigned int bits);
+void ClearBitsInField4(unsigned int*, unsigned int);
+void ClearBitsInWord(unsigned int*, unsigned int);
 unsigned char* GetField0x3f8Address(GameState* gs);
 void* GetData02153660();
 int GetField0x3acValue(GameState* gs);
-extern "C" void _Z35SetOrClearEntryBitAndNotify020e3a50P21TagValueEntry020e385ciii(void* e, int a, int b, int c);
-extern "C" void _Z40ResetTaggedEntryAndNotifyOverlay020e3994P21TagValueEntry020e385cii(void* e, int a, int b);
-extern "C" void _Z13SetFields0x44P14Fields020407b4iii(GameObject* o, int a, int b, int c);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(GameObject* o, int v);
-extern "C" void _Z18SetFlag0x1ceBit0x4Ph(GameObject* o);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* res, int level, int b);
+struct TagValueEntry020e385c;
+void SetOrClearEntryBitAndNotify020e3a50(TagValueEntry020e385c*, int, int, int);
+void ResetTaggedEntryAndNotifyOverlay020e3994(TagValueEntry020e385c*, int, int);
+struct Fields020407b4;
+void SetFields0x44(Fields020407b4*, int, int, int);
+struct Obj02033874;
+void SetVecYFromValue02033874(Obj02033874*, int);
+void SetFlag0x1ceBit0x4(unsigned char*);
+void SetBrightness(GameResources*, int, int);
 extern "C" int func_0209cd50(unsigned short id);
-extern "C" void _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(void* a, int state);
+struct Actor0209c3b4;
+void SetStateAndDispatch0209c3b4(Actor0209c3b4*, int);
 extern "C" void func_ov017_021bd704(void* p);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* res, int level, int b);
+void SetMainBrightness(GameResources*, int, int);
 void EnqueueEventTag107_021cdd70(unsigned short a, unsigned short b, unsigned short c, unsigned short d, unsigned short e, unsigned short f, unsigned char g);
 extern "C" void func_ov017_021b6728(void* res, int a, int b);
-extern "C" void _Z17SetByteField0x253Pv(GameObject* o);
-extern "C" void _Z25CopyByteField0x253To0x252Pv(GameObject* o);
+void SetByteField0x253(void*);
+void CopyByteField0x253To0x252(void*);
 extern "C" int func_ov017_0219bddc(unsigned char* p);
 extern "C" void func_ov017_0219bf04(int a, int b);
 void SetByte1True_021c178c(unsigned char* p);
 extern "C" void func_ov017_021b8bb0(unsigned short id);
-extern "C" void _Z18InitStruct02070378Pc(unsigned char* p);
+void InitStruct02070378(char*);
 extern "C" void _ZN8Vector3iaSERKS_(void* dst, const Vector3i& src);
 void SetFlagBytes02017d68(void* p);
 int PeekInputLogA();
 #if defined(jpn)
 void ClearMultipleFieldBits_02156b20(void*);
 #else
-extern "C" void _Z20IsFlag0x14Bit0x40SetP10GameObject(void* p);
+void IsFlag0x14Bit0x40Set(GameObject*);
 #endif
-extern "C" void _Z35SetByteIfDataAndCheckClear_021a01bcPh(void* res);
+void SetByteIfDataAndCheckClear_021a01bc(unsigned char*);
 extern "C" void func_0209c2e0(void* p, int a, int b);
 void InitFieldsFromCombatant_0219bcac(unsigned char v);
 
@@ -208,7 +213,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
     void* x34 = func_0202ae18();
     GameObject* unk = gs->GetUnknownGameObject();
     GameObject* party0 = gs->GetPartyMemberByIndex(0);
-    void* f28 = _Z15GetFieldIfFlag4Pc(gs);
+    void* f28 = GetFieldIfFlag4((char*)gs);
     unsigned short* p2;
     GameState* gs2;
     GameResources* res3;
@@ -239,21 +244,21 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
             }
         }
         ((ResView_021bc77c*)res2)->sub.i630 = 0;
-        Object3D* obj = _Z21GetField4334_021bdbc0Ph(res2);
+        Object3D* obj = GetField4334_021bdbc0((unsigned char*)res2);
         if (obj != 0) {
             obj->MakeVisible();
         }
-        if (_Z19TestFlagBitAt0x2744Phi(p2, 1) || _Z19TestFlagBitAt0x2744Phi(p2, 0)) {
-            _Z19InitContext020e1154Pv(0x1388);
+        if (TestFlagBitAt0x2744((unsigned char*)p2, 1) || TestFlagBitAt0x2744((unsigned char*)p2, 0)) {
+            InitContext020e1154((void*)0x1388);
         }
     }
     SetField0x238True(f28);
-    _Z22ApplyVecFromField0x21ePc(f28);
+    ApplyVecFromField0x21e((char*)f28);
     if (self->blk.s46 > kInvalidId) {
-        _Z20SetOrClearBitInArrayPvPhii(bits, bits + 0x8c, self->blk.s46 + 0x38e, 1);
+        SetOrClearBitInArray(bits, bits + 0x8c, self->blk.s46 + 0x38e, 1);
     }
     if (self->sa0 > kInvalidId && self->b9c) {
-        _Z20SetOrClearBitInArrayPvPhii(bits, bits + 0x8c, self->sa0 + 0xbea, 1);
+        SetOrClearBitInArray(bits, bits + 0x8c, self->sa0 + 0xbea, 1);
     }
     if (self->b9a) {
         func_ov017_0219b624(res);
@@ -266,7 +271,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
         }
         self->alloc138 = 0;
     }
-    if (!_Z15GetBitsInField0Pjj(res, 0x1000) || self->u11a == 0) {
+    if (!GetBitsInField0((unsigned int*)res, 0x1000) || self->u11a == 0) {
         int size = self->i90;
         if (size) {
             SafeAllocator* sa = GetAllocator_021bc77c(res, 7);
@@ -277,9 +282,9 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
             func_ov017_021a2fa0(res);
         }
     }
-    if (!_Z18CheckField0NonZeroPi(x34) && _Z15IsByte0x63d6SetP20FieldBlock63d6_11590(gs)) {
+    if (!CheckField0NonZero((int*)x34) && IsByte0x63d6Set((FieldBlock63d6_11590*)gs)) {
         if (self->u11a) {
-            _Z17SetHalfword0x63d8Pvt(gs, self->u11a);
+            SetHalfword0x63d8(gs, self->u11a);
         }
         func_ov017_021bb27c(self);
         self->done = 1;
@@ -288,13 +293,13 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
     if (self->u11a) {
         self->f8 = self->u11a;
         self->bfd = 1;
-        _Z20ClearFields_021bb0c4Ph(self);
+        ClearFields_021bb0c4((unsigned char*)self);
         return 0;
     }
     if (*((unsigned char*)res + kResourceFlagOffset) == 0) {
         Node_021bc77c node;
         node.id = self->f8;
-        if (_Z28LookupAndForEachNode020649b0PviS_(bits, 0xb, &node)) {
+        if (LookupAndForEachNode020649b0(bits, 0xb, &node)) {
             func_0206f81c(&node);
         }
         if (func_0202c540(x34)) {
@@ -302,7 +307,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
             if (self->b13c == 2) {
                 if (r8[2]) flag = 1;
             } else if (self->b13c == 1) {
-                if (r8[2] && !_Z18TestBitInByteArrayiPhi(bits, bits + 0x8c, self->u148 + 0x38e)) {
+                if (r8[2] && !TestBitInByteArray((int)bits, bits + 0x8c, self->u148 + 0x38e)) {
                     if (self->u148 == 0xffff) {
                         if (self->u14c != *(unsigned short*)((unsigned char*)self + 0x18)) flag = 1;
                     } else {
@@ -317,14 +322,14 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
             }
             if (flag) {
                 func_02046a8c(arg, r8);
-                if (_Z16GetState0209ca68Pc(data_02109bf4) == 2) {
+                if (GetState0209ca68((char*)data_02109bf4) == 2) {
                     func_0209c530(data_02109bf4);
                 }
-                _Z17ClearBitsInField4Pjj(res, 4);
-                _Z17ClearBitsInField4Pjj(res, 0x10);
-                _Z17ClearBitsInField4Pjj(res, 2);
-                _Z15ClearBitsInWordPjj(res, 4);
-                _Z15ClearBitsInWordPjj(res, 0x800);
+                ClearBitsInField4((unsigned int*)res, 4);
+                ClearBitsInField4((unsigned int*)res, 0x10);
+                ClearBitsInField4((unsigned int*)res, 2);
+                ClearBitsInWord((unsigned int*)res, 4);
+                ClearBitsInWord((unsigned int*)res, 0x800);
             }
         }
     } else {
@@ -333,30 +338,30 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
     unsigned char* f = GetField0x3f8Address(gs);
     void* tags = GetData02153660();
     if (r8[2]) {
-        _Z35SetOrClearEntryBitAndNotify020e3a50P21TagValueEntry020e385ciii(tags, GetField0x3acValue(gs), 1, *(unsigned short*)((unsigned char*)self + 0x18));
+        SetOrClearEntryBitAndNotify020e3a50((TagValueEntry020e385c*)tags, GetField0x3acValue(gs), 1, *(unsigned short*)((unsigned char*)self + 0x18));
     } else if (*(int*)(f + 0x20) <= 0 || f[2] == 0) {
-        _Z40ResetTaggedEntryAndNotifyOverlay020e3994P21TagValueEntry020e385cii(tags, 1, *(unsigned short*)((unsigned char*)self + 0x18));
+        ResetTaggedEntryAndNotifyOverlay020e3994((TagValueEntry020e385c*)tags, 1, *(unsigned short*)((unsigned char*)self + 0x18));
     }
     if (self->bcc && self->bcf == 3) {
-        _Z13SetFields0x44P14Fields020407b4iii(unk, 0x48cc, 0x199, -0x733);
-        _Z24SetVecYFromValue02033874P11Obj02033874i(unk, 0);
+        SetFields0x44((Fields020407b4*)unk, 0x48cc, 0x199, -0x733);
+        SetVecYFromValue02033874((Obj02033874*)unk, 0);
         for (int i = 1; i < 4; i++) {
             GameObject* m = gs->GetPartyMemberByIndex(i);
             if (m) {
-                _Z13SetFields0x44P14Fields020407b4iii(m, 0x48cc, 0x199, -0x733);
-                _Z24SetVecYFromValue02033874P11Obj02033874i(m, 0x3244);
-                _Z18SetFlag0x1ceBit0x4Ph(m);
+                SetFields0x44((Fields020407b4*)m, 0x48cc, 0x199, -0x733);
+                SetVecYFromValue02033874((Obj02033874*)m, 0x3244);
+                SetFlag0x1ceBit0x4((unsigned char*)m);
             }
         }
     }
     if (f[2]) {
-        _Z13SetBrightnessP13GameResourcesii(res, -16, 0);
+        SetBrightness((GameResources*)res, -16, 0);
     } else if (p14[2]) {
-        _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(data_02109bf4, func_0209cd50(*p));
+        SetStateAndDispatch0209c3b4((Actor0209c3b4*)data_02109bf4, func_0209cd50(*p));
         func_ov017_021bd704(&self->blk);
-        _Z17SetMainBrightnessP13GameResourcesii(res, 0, 0x28);
+        SetMainBrightness((GameResources*)res, 0, 0x28);
     } else if (r8[2]) {
-        _Z13SetBrightnessP13GameResourcesii(res, -16, 0);
+        SetBrightness((GameResources*)res, -16, 0);
         *(unsigned short*)(r8 + 0x6c4) = self->u184;
         if (func_0202c540(x34)) {
             self->u14e = *(int*)(func_ov017_021b8478(*(unsigned char**)((unsigned char*)res + kResourceNodeOffset)) + 0xc);
@@ -372,10 +377,10 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
             func_ov017_021b6728(res, self->bcf, -1);
         }
         if (self->bcf == 2) {
-            _Z17SetByteField0x253Pv(unk);
-            _Z25CopyByteField0x253To0x252Pv(unk);
+            SetByteField0x253(unk);
+            CopyByteField0x253To0x252(unk);
         }
-        _Z17SetMainBrightnessP13GameResourcesii(res, 0, 0x28);
+        SetMainBrightness((GameResources*)res, 0, 0x28);
         func_ov017_021bb27c(self);
         self->done = 1;
         return self->fa;
@@ -396,7 +401,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
             if (self->b13c != 1) { ok = 0; goto checked; }
             if (self->u140 != cur && self->u142 != cur) { ok = 0; goto checked; }
             if (!self->b144) { ok = 0; goto checked; }
-            if (_Z18TestBitInByteArrayiPhi(bits3, bits3 + 0x8c, self->u148 + 0x38e)) { ok = 0; goto checked; }
+            if (TestBitInByteArray((int)bits3, bits3 + 0x8c, self->u148 + 0x38e)) { ok = 0; goto checked; }
             unsigned short v = self->u146;
             if (v == id) { ok = 0; goto checked; }
             if (id == 0x733c || id == 0x733f || id == 0x7342 || id == 0x7345 || id == 0x7348) {
@@ -427,7 +432,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
                 goto checked;
             }
             if (!r) {
-                _Z15ClearBitsInWordPjj(res3, 0x10);
+                ClearBitsInWord((unsigned int*)res3, 0x10);
             }
             ok = r == 0;
         }
@@ -438,47 +443,47 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
         } else {
             self->f8 = self->u146;
         }
-        _Z20ClearFields_021bb0c4Ph(self);
+        ClearFields_021bb0c4((unsigned char*)self);
         return 0;
-    } else if (_Z18CheckField0NonZeroPi(x34) && func_0202c540(x34) && party0 && (mapId = *p, mapId == party0->obj3D_.GetField06()) &&
+    } else if (CheckField0NonZero((int*)x34) && func_0202c540(x34) && party0 && (mapId = *p, mapId == party0->obj3D_.GetField06()) &&
                self->b13c == 0 && (short)self->u146 >= 0) {
         func_ov017_021b8bb0((short)self->u146);
     } else if (self->b9c && self->ua2 != *p) {
-        _Z18InitStruct02070378Pc(f);
+        InitStruct02070378((char*)f);
         f[2] = 1;
         *(unsigned short*)f = self->ua2;
         f[7] = 1;
         _ZN8Vector3iaSERKS_(f + 0x10, self->vbc);
         *(short*)(f + 0x1c) = self->sc8;
-        _Z13SetBrightnessP13GameResourcesii(res, -16, 0);
+        SetBrightness((GameResources*)res, -16, 0);
     } else if (*(int*)((unsigned char*)gs + kGamePositionState) > 0) {
-        _Z18InitStruct02070378Pc(f);
+        InitStruct02070378((char*)f);
         f[2] = 1;
         *(unsigned short*)f = *(int*)((unsigned char*)gs + kGamePositionState);
         f[7] = 1;
         _ZN8Vector3iaSERKS_(f + 0x10, GetPos_021bc77c(gs));
         *(short*)(f + 0x1c) = *(int*)((unsigned char*)gs + kGamePositionY);
         *(int*)((unsigned char*)gs + kGamePositionState) = 0;
-        _Z13SetBrightnessP13GameResourcesii(res, -16, 0);
+        SetBrightness((GameResources*)res, -16, 0);
         SetFlagBytes02017d68(func_02012fe4());
     } else {
         if (PeekInputLogA() == 1) {
 #if defined(jpn)
             ClearMultipleFieldBits_02156b20(self);
 #else
-            _Z20IsFlag0x14Bit0x40SetP10GameObject(self);
+            IsFlag0x14Bit0x40Set((GameObject*)self);
 #endif
         }
-        _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(data_02109bf4, func_0209cd50(*p));
+        SetStateAndDispatch0209c3b4((Actor0209c3b4*)data_02109bf4, func_0209cd50(*p));
         func_ov017_021bd704(&self->blk);
-        _Z35SetByteIfDataAndCheckClear_021a01bcPh(res);
+        SetByteIfDataAndCheckClear_021a01bc((unsigned char*)res);
         if (p10[2]) {
-            _Z13SetBrightnessP13GameResourcesii(res, -16, 0);
+            SetBrightness((GameResources*)res, -16, 0);
         } else if (!self->b10b) {
-            _Z17SetMainBrightnessP13GameResourcesii(res, 0, 0x28);
+            SetMainBrightness((GameResources*)res, 0, 0x28);
         }
-        _Z17SetByteField0x253Pv(unk);
-        _Z25CopyByteField0x253To0x252Pv(unk);
+        SetByteField0x253(unk);
+        CopyByteField0x253To0x252(unk);
         func_0209c2e0(data_02109bf4, 0x7f, 0);
         if (self->u114) {
             *(unsigned short*)((unsigned char*)res + kResourceHalfwordOffset) = self->u114;
@@ -491,7 +496,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
                 if (p10[2]) {
                     p10[9] = 1;
                 }
-                _Z13SetBrightnessP13GameResourcesii(res, -16, 0);
+                SetBrightness((GameResources*)res, -16, 0);
                 InitFieldsFromCombatant_0219bcac(0);
             }
         }

@@ -72,15 +72,17 @@ void UpdateEntryStateAndPosition(Ctx020e263c* w, int value);
 extern "C" void func_ov005_021589f4(void* self);
 extern "C" void func_ov005_02159b74(void* self);
 extern "C" int func_ov005_02158b3c(void* object, void* buffer);
-extern "C" int _Z26GetField0x15UnlessInactivePa(void* w);
+int GetField0x15UnlessInactive(signed char*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
-extern "C" void _Z27ResetSelectionState020e25e8P11Obj020e25e8(void* w);
+struct Obj020e25e8;
+void ResetSelectionState020e25e8(Obj020e25e8*);
 int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 void* FindElementByKey020dedd0(Container020dedd0* c, int key);
 int GetFlagFromField0x8Bits(Struct020dd768* s);
 extern "C" void func_ov005_02157b74(void* self, int key, int keep);
 extern "C" char* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
-extern "C" void _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(char* list, int key, int a, int b);
+struct KeyedList0207c484;
+void DecrementKeyedStackAmount0207c484(KeyedList0207c484*, int, int, int);
 extern "C" void func_ov005_021555c0(void* self);
 
 // USA: func_ov005_02159274
@@ -100,12 +102,12 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
         return;
     }
     if (self->step_ == 1) {
-        sel = _Z26GetField0x15UnlessInactivePa(self->yesNo_);
+        sel = GetField0x15UnlessInactive((signed char*)self->yesNo_);
         if (sel >= 0) {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
-            _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
+            ResetSelectionState020e25e8((Obj020e25e8*)self->yesNo_);
         } else if (IsFlag0x2Active020e2984((struct Outer020e28dc*)self->yesNo_)) {
-            _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
+            ResetSelectionState020e25e8((Obj020e25e8*)self->yesNo_);
             sel = -2;
         }
         if (sel == 0) {
@@ -141,8 +143,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                     char* list = _Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
                     int amount = ((ItemBits02159274*)((char*)item + 8))->amount;
                     sel = *(short*)((char*)item + 0x18);
-                    _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(
-                        list + 0x1d4, sel, 1, amount);
+                    DecrementKeyedStackAmount0207c484((KeyedList0207c484*)(list + 0x1d4), sel, 1, amount);
                     notfound = 1;
                     func_ov005_021555c0(self);
                     for (int i = 8; i < 0x18; i++) {
@@ -202,12 +203,12 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
         return;
     }
     if (self->step_ == 3) {
-        sel = _Z26GetField0x15UnlessInactivePa(self->yesNo_);
+        sel = GetField0x15UnlessInactive((signed char*)self->yesNo_);
         if (sel >= 0) {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
-            _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
+            ResetSelectionState020e25e8((Obj020e25e8*)self->yesNo_);
         } else if (IsFlag0x2Active020e2984((struct Outer020e28dc*)self->yesNo_)) {
-            _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
+            ResetSelectionState020e25e8((Obj020e25e8*)self->yesNo_);
             sel = -2;
         }
         if (sel == 0) {
@@ -241,11 +242,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                     self->items_,
                     self->slots[self->selectedSlot].id);
                 sel = *(short*)((char*)item + 0x18);
-                _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(
-                    list + 0x1d4,
-                    sel,
-                    1,
-                    ((ItemBits02159274*)((char*)item + 8))->amount);
+                DecrementKeyedStackAmount0207c484((KeyedList0207c484*)(list + 0x1d4), sel, 1, ((ItemBits02159274*)((char*)item + 8))->amount);
                 notfound = 1;
                 func_ov005_021555c0(self);
                 for (int i = 8; i < 0x18; i++) {

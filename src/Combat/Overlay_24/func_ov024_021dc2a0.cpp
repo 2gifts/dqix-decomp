@@ -2,16 +2,20 @@
 #include "GameState/GameState.h"
 GameObject* GetCombatantWithFlag0x400ByID(int,int);
 void* GetActiveCombatWork();
-extern "C" int _Z23FindRecordByKey0215fb54isP11Out0215fb54(int,short,void*);
+struct Out0215fb54;
+int FindRecordByKey0215fb54(int, short, Out0215fb54*);
 extern "C" void* _Z26FindNodeByShortKey02162d88Pvs(void*,int);
 extern "C" int func_ov000_02161380(void*,int,int,int);
 struct Entry021dc2a0 {char pad[0xe];short fieldE;short field10;short field12;short field14;char pad16;unsigned char field17;char pad18[8];int field20;};
 Entry021dc2a0* GetTableEntry0x8e01Bound0x88(void*);
-extern "C" void _Z19ResetStruct0215fef0P14Struct0215fef0(Entry021dc2a0*);
+struct Struct0215fef0;
+void ResetStruct0215fef0(Struct0215fef0*);
 extern "C" Entry021dc2a0* func_ov000_0215e958(void*);
 void ZeroWorkBlock0x20(void*);
 void AppendToChainAndIncCount0215ffc4(void*,void*,int);
-extern "C" void _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(void*,void*);
+struct Node021600cc;
+struct Obj021600cc;
+void AppendNode021600cc(Obj021600cc*, Node021600cc*);
 void AddEntryAndIncrementCount0215a88c(void*,void*,int);
 extern "C" void func_ov000_0215cd44(void*,void*,GameObject*,int,int,int,int);
 struct Pair021dc2a0 {int values[2];};
@@ -32,7 +36,7 @@ extern "C" ARM void* func_ov024_021dc2a0(Obj021dc2a0* obj,short id,int unused,Pa
     Pair021dc2a0 ids=data_ov024_021fe6d0;
     ids.values[0]=*(short*)((char*)c+2);
     if(params->field18.mode==12){
-        total=_Z23FindRecordByKey0215fb54isP11Out0215fb54((int)obj->context,params->code.value,&ids);
+        total=FindRecordByKey0215fb54((int)obj->context, params->code.value, (Out0215fb54*)&ids);
         for(int i=0;i<total;i++){
             if(!_Z26FindNodeByShortKey02162d88Pvs(work,ids.values[i])){total=0;break;}
         }
@@ -47,7 +51,7 @@ extern "C" ARM void* func_ov024_021dc2a0(Obj021dc2a0* obj,short id,int unused,Pa
                 if(nextID>=0xc0){
                     Entry021dc2a0* node=GetTableEntry0x8e01Bound0x88(obj->context);
                     if(node){
-                        _Z19ResetStruct0215fef0P14Struct0215fef0(node);
+                        ResetStruct0215fef0((Struct0215fef0*)node);
                         node->field20=0;
                         node->fieldE=nextID;
                         node->field17=1;
@@ -63,7 +67,7 @@ extern "C" ARM void* func_ov024_021dc2a0(Obj021dc2a0* obj,short id,int unused,Pa
                                 entry->field14=((ActorStats021dc2a0*)actor)->mp;
                                 AppendToChainAndIncCount0215ffc4(node,entry,0);
                                 ((unsigned char*)obj->context)[0x8e02]++;
-                                _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(obj->message,node);
+                                AppendNode021600cc((Obj021600cc*)obj->message, (Node021600cc*)node);
                                 successes++;
                                 ((unsigned char*)obj->context)[0x8e01]++;
                                 obj->count++;

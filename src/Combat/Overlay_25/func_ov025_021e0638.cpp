@@ -105,7 +105,6 @@ extern "C" void func_020c9be0(void);
 extern "C" void func_ov000_0216f82c(B6_021e0638* out, const int* cell);
 extern "C" void func_ov000_0216f74c(Pos2_021e0638* out, const int* cell);
 extern "C" void _ZN8Vector3iaSERKS_(Vec3_021e0638* dst, const Vec3_021e0638* src);
-extern "C" int _ZNK8Object3D9GetRadiusEv(void* self);
 extern "C" void __clear(void* p, int n);
 
 void ResetFields_021e20d8(void* obj);
@@ -454,7 +453,7 @@ found:
                 Data021e0638* d = GetData02107850();
                 _ZN8Vector3iaSERKS_(&d->a, &va);
                 _ZN8Vector3iaSERKS_(&d->b, &vb);
-                d->radius = _ZNK8Object3D9GetRadiusEv(ca) >> 1;
+                d->radius = ((Object3D*)ca)->GetRadius() >> 1;
                 d->flag = 1;
             }
         }

@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 
-extern "C" int _Z9LockMutexP5Mutex(void* p);
+struct Mutex;
+int LockMutex(Mutex*);
 extern "C" void func_020bf1a0(void* entry);
 
 struct BattleTarget9a8;
@@ -28,9 +29,9 @@ ARM void DetachAndReleaseRefs020bf484(int expected, void* unused1, struct Ctx020
         return;
     }
 
-    _Z9LockMutexP5Mutex(&data_02110a28);
+    LockMutex((Mutex*)&data_02110a28);
     if (data_021103b0.f4 != 0) {
-        _Z9LockMutexP5Mutex(data_021103b0.f4 + 0x4c8);
+        LockMutex((Mutex*)(data_021103b0.f4 + 0x4c8));
     }
 
     func_020bf1a0(obj);

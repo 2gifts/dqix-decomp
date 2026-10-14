@@ -5,7 +5,8 @@
 
 struct FontBankLoader;
 void* GetGlobalField0x1c020421a0();
-extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void*, int);
+struct ListHead02046b60;
+int ListContainsId(ListHead02046b60*, int);
 extern "C" void func_ov016_0218b5c0(int, int);
 extern "C" void func_ov017_0218b5f8(int);
 extern "C" void func_02046380(void*);
@@ -71,8 +72,8 @@ extern "C" ARM void func_020d7b04(TextMessageQueue* queue) {
     if (queue->fontRequested && !AlwaysTrue02094b4c(fonts)) return;
 
     void* requests = func_ov017_0218b5b0()->unknown_ptr_array_36fc[0];
-    if (_Z14ListContainsIdP16ListHead02046b60i(requests, 0x25)) return;
-    if (_Z14ListContainsIdP16ListHead02046b60i(requests, 0x26)) return;
+    if (ListContainsId((ListHead02046b60*)requests, 0x25)) return;
+    if (ListContainsId((ListHead02046b60*)requests, 0x26)) return;
 
     unsigned short elapsed = game->GetEffectiveDeltaTime();
     if (queue->remainingMilliseconds != 0) {
@@ -98,7 +99,7 @@ extern "C" ARM void func_020d7b04(TextMessageQueue* queue) {
         if (queue->entries[0].style != 0) {
             int canLoadFont = 1;
             if (queue->entries[0].waitForRequestC) {
-                canLoadFont = !_Z14ListContainsIdP16ListHead02046b60i(requests, 0xc);
+                canLoadFont = !ListContainsId((ListHead02046b60*)requests, 0xc);
             }
             if (canLoadFont) {
                 BlankFunction02094b3c(fonts, 10);

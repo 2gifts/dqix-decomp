@@ -13,8 +13,9 @@ int GetWord0x0(int* obj);
 extern "C" void func_ov014_02188330(void* self);
 short FindMappedMemberId02080468(void* obj, int id);
 extern "C" void func_020813ec(void* obj, int key);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
+int IsBrightnessTransitionActive(GameResources*);
 
 // USA: func_ov014_02187b38  (semantic: AdvanceMappedMemberIdState_02187b38)
 extern "C" ARM void func_ov014_02187b38(void* self) {
@@ -33,12 +34,12 @@ extern "C" ARM void func_ov014_02187b38(void* self) {
         return;
     }
     if (state == 1) {
-        _Z13SetBrightnessP13GameResourcesii((void*)w, 0, 8);
+        SetBrightness((GameResources*)w, 0, 8);
         (*((unsigned char*)self + 0x17b))++;
         return;
     }
     if (state != 2) return;
-    if (!_Z28IsBrightnessTransitionActiveP13GameResources((int*)w)) {
+    if (!IsBrightnessTransitionActive((GameResources*)w)) {
         *((unsigned char*)self + 0x17a) = 2;
         *((unsigned char*)self + 0x17b) = 0;
     }

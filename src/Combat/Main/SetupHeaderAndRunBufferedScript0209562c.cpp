@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct HeaderStruct0209562c {
     char pad[0xa0];
@@ -33,14 +34,11 @@ struct ResetStruct {
     char pad[0x400];
     unsigned char b42c;
 };
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 
 struct StreamState;
 struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
 
@@ -54,9 +52,9 @@ ARM void SetupHeaderAndRunBufferedScript0209562c(struct HeaderStruct0209562c* he
         header->f0xa0 = 0;
         data_02109404.f0 = 0;
         struct ResetStruct local;
-        _ZN6Script10InitializeEv(&local);
+        ((Script*)&local)->Initialize();
         _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f1444);
-        _ZN6Script4LoadEPKvj((struct StreamState*)&local, buffer, length);
-        _ZN6Script7ExecuteEv((struct Struct02030774*)&local);
+        ((Script*)((struct StreamState*)&local))->Load(buffer, length);
+        ((Script*)((struct Struct02030774*)&local))->Execute();
     }
 }

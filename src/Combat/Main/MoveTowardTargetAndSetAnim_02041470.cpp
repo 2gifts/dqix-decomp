@@ -8,7 +8,8 @@ extern "C" void Vector3fix_Subtract(struct Vec3* a, struct Vec3* b, struct Vec3*
 extern "C" ARM int fix32_Divide(unsigned int numerHi, unsigned int denomLo);
 
 struct Vec3Fixed02030e2c { int x; int y; int z; };
-extern "C" ARM void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3Fixed02030e2c* in, int scale, struct Vec3Fixed02030e2c* out);
+struct Vector3i;
+ARM void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 
 extern "C" int _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, char* data, int mode);
 extern "C" int fix32_Atan2(int x, int z);
@@ -49,7 +50,7 @@ extern "C" ARM void func_02041470(struct Obj02041470* obj, struct Vec3* target) 
         struct Vec3 diff;
         Vector3fix_Subtract(&obj->posCurrent, &obj->posTarget, &diff);
         int scale = fix32_Divide(0x1000, dist);
-        _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&diff, scale, (struct Vec3Fixed02030e2c*)&diff);
+        Vector3fixMultiplyScalar((Vector3i const*)&diff, scale, (Vector3i*)&diff);
         int angle = fix32_Atan2(diff.x, diff.z);
         obj->fb0 = fix32ReduceAngle0To2Pi(angle);
     }

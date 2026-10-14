@@ -18,7 +18,8 @@ extern "C" void func_0205d304(void *a, void *b, int c, int d, int e, int f, int 
 #else
 extern "C" void func_0205d304(void *a, void *b, int c, int d, int e, int f, int g, int h);
 #endif
-extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(void *self, int a, int b);
+struct Struct_0205d81c;
+void SetElementFieldC2(Struct_0205d81c*, int, int);
 
 // USA: func_ov012_0218a054  (semantic: BuildAndEnqueueMessages_0218a054)
 extern "C" ARM void func_ov012_0218a054(char *self) {
@@ -81,5 +82,5 @@ extern "C" ARM void func_ov012_0218a054(char *self) {
 #endif
 #endif
 
-    _Z17SetElementFieldC2P15Struct_0205d81cii(self + R(0x90,0xac), 0x10, 0);
+    SetElementFieldC2((Struct_0205d81c*)(self + R(0x90,0xac)), 0x10, 0);
 }

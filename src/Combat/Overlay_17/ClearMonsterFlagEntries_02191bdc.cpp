@@ -8,7 +8,6 @@ enum { RegionOffset370c = 0x370c, RegionOffset9c = 0x9c, RegionOffset4400 = 0x44
 #include "Combat/CombatantRecovery.h"
 #include "GameState/GameState.h"
 
-extern "C" int _ZNK8Object3D7GetFlagEi(void* obj, int mask);
 void* GetField0x3f8Address(GameState* battleStruct);
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
 
@@ -20,7 +19,7 @@ ARM void ClearMonsterFlagEntries_02191bdc(unsigned char* a, int b) {
 	GameObject* combatant = battleStruct->GetUnknownGameObject();
 	if (!combatant) return;
 	if (*(short*)((char*)combatant + 0xac) != 0) return;
-	if (_ZNK8Object3D7GetFlagEi(combatant, 0x8000000) != 0) return;
+	if (((Object3D*)combatant)->GetFlag(0x8000000) != 0) return;
 	if (b == 0) {
 		unsigned char* fieldAddr = (unsigned char*)GetField0x3f8Address(battleStruct);
 		unsigned char* q = *(unsigned char**)(a + RegionOffset370c);

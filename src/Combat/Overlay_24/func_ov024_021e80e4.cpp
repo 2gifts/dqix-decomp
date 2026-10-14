@@ -105,21 +105,24 @@ struct Ids16_021e80e4 {
 
 extern "C" struct Ids16_021e80e4 data_ov024_021fe800;
 
-extern "C" int _Z19ClassifyField0x81fePc(void* world);
-extern "C" struct Chain_021e80e4* _Z22GetNodeAtIndex02160094P12List02160094i(struct List_021e80e4* list, int index);
-extern "C" struct Node_021e80e4* _Z22GetNodeAtIndex021600f8P12List021600f8i(struct List_021e80e4* list, int index);
+int ClassifyField0x81fe(char*);
+struct List02160094;
+struct Chain_021e80e4* GetNodeAtIndex02160094(List02160094*, int);
+struct List021600f8;
+struct Node_021e80e4* GetNodeAtIndex021600f8(List021600f8*, int);
 extern "C" short func_ov000_0215ffa0(struct Node_021e80e4* node);
-extern "C" int _Z26CheckAnyBitOrFlag_02159f7cPvP15Bits64_02159f7c(void* world, struct Entry_021e80e4* entry);
+struct Bits64_02159f7c;
+int CheckAnyBitOrFlag_02159f7c(void*, Bits64_02159f7c*);
 extern "C" int func_ov000_0215fd90(struct Entry_021e80e4* entry, int kind);
-extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* world, struct Entry_021e80e4* entry, unsigned short v);
+void AddEntryAndIncrementCount0215a88c(void*, void*, int);
 extern "C" unsigned short func_ov024_021e9b24(struct Act_021e80e4* self, int id, struct Rec_021e80e4* rec, int flag);
 
 // USA: func_ov024_021e80e4
 extern "C" ARM void func_ov024_021e80e4(struct Act_021e80e4* self, struct List_021e80e4* list, struct Rec_021e80e4* rec, int fillExtra, unsigned char forced, struct Rec_021e80e4* altRec) {
     struct Ids16_021e80e4 ids;
 
-    if (_Z19ClassifyField0x81fePc(self->f10) != 0) {
-        struct Chain_021e80e4* chain = _Z22GetNodeAtIndex02160094P12List02160094i(list, 0);
+    if (ClassifyField0x81fe((char*)self->f10) != 0) {
+        struct Chain_021e80e4* chain = GetNodeAtIndex02160094((List02160094*)list, 0);
         if (chain != 0) {
             if (chain->f20 == 0) {
                 list->f1a = 0x260;
@@ -146,7 +149,7 @@ extern "C" ARM void func_ov024_021e80e4(struct Act_021e80e4* self, struct List_0
     ids = data_ov024_021fe800;
 
     for (int i = 0; i < list->count; i++) {
-        struct Node_021e80e4* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, i);
+        struct Node_021e80e4* node = GetNodeAtIndex021600f8((List021600f8*)list, i);
         if (node == 0) continue;
         int id = func_ov000_0215ffa0(node);
         struct Entry_021e80e4* e;
@@ -154,7 +157,7 @@ extern "C" ARM void func_ov024_021e80e4(struct Act_021e80e4* self, struct List_0
         if (rec->f18.kind == 1) {
             active = 0;
             for (e = node->f0; e != 0; e = e->next) {
-                if (_Z26CheckAnyBitOrFlag_02159f7cPvP15Bits64_02159f7c(self->f10, e) != 0) {
+                if (CheckAnyBitOrFlag_02159f7c(self->f10, (Bits64_02159f7c*)e) != 0) {
                     if (IN_RANGE_021e80e4(id)) {
                         allyOk = 0;
                         allyMarked++;
@@ -261,9 +264,9 @@ extern "C" ARM void func_ov024_021e80e4(struct Act_021e80e4* self, struct List_0
                 foeAll = 1;
                 allyAll = 1;
             } else {
-                struct Node_021e80e4* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, 0);
+                struct Node_021e80e4* node = GetNodeAtIndex021600f8((List021600f8*)list, 0);
                 if (node != 0 && node->f0 != 0) {
-                    if (_Z26CheckAnyBitOrFlag_02159f7cPvP15Bits64_02159f7c(self->f10, node->f0) != 0) {
+                    if (CheckAnyBitOrFlag_02159f7c(self->f10, (Bits64_02159f7c*)node->f0) != 0) {
                         foeOk = 0;
                         allyOk = 0;
                     }
@@ -286,7 +289,7 @@ extern "C" ARM void func_ov024_021e80e4(struct Act_021e80e4* self, struct List_0
         struct Node_021e80e4* first = 0;
         all = self->f4;
         for (int k = 0; k < all->count; k++) {
-            struct Node_021e80e4* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(all, k);
+            struct Node_021e80e4* node = GetNodeAtIndex021600f8((List021600f8*)all, k);
             if (node == 0) continue;
             if (IN_RANGE_021e80e4(func_ov000_0215ffa0(node))) continue;
             if (first == 0) first = node;
@@ -294,14 +297,14 @@ extern "C" ARM void func_ov024_021e80e4(struct Act_021e80e4* self, struct List_0
         }
         int msg = count > 1 ? 0x24a : 0x5b;
         if (first != 0 && first->f0 != 0) {
-            _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->f10, first->f0, msg);
+            AddEntryAndIncrementCount0215a88c(self->f10, first->f0, (unsigned short)msg);
         }
         return;
     }
 
     if (allyAll != 0 || foeAll != 0) {
         for (int i = 0; i < list->count; i++) {
-            struct Node_021e80e4* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, i);
+            struct Node_021e80e4* node = GetNodeAtIndex021600f8((List021600f8*)list, i);
             if (node == 0) continue;
             int id = func_ov000_0215ffa0(node);
             if (IN_RANGE_021e80e4(id) && allyAll == 0) continue;
@@ -319,7 +322,7 @@ extern "C" ARM void func_ov024_021e80e4(struct Act_021e80e4* self, struct List_0
     struct Rec_021e80e4* allyRec = rec;
     struct Rec_021e80e4* foeRec = rec;
     if (rec->f18.kind == 1 && forced != 0) {
-        struct Chain_021e80e4* chain = _Z22GetNodeAtIndex02160094P12List02160094i(list, 0);
+        struct Chain_021e80e4* chain = GetNodeAtIndex02160094((List02160094*)list, 0);
         if (chain != 0) {
             if (IN_RANGE_021e80e4(chain->f20)) {
                 foeRec = altRec;

@@ -28,7 +28,7 @@ public:
 };
 
 extern "C" int func_02001aec(const void* lhs, const void* rhs, unsigned int length);
-extern "C" int _Z27FindEntryIndexByKey020424e4ii(const char* tag, int fontType);
+int FindEntryIndexByKey020424e4(int, int);
 
 char* FindUnescapedAngleBracket(char*);
 FontIndexFile::Glyph* GetBoundedEntry020425b4(int glyph, int fontType);
@@ -174,7 +174,7 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
             }
         }
 
-        int nextGlyphIndex = _Z27FindEntryIndexByKey020424e4ii(input, fontType);
+        int nextGlyphIndex = FindEntryIndexByKey020424e4((int)input, fontType);
         if (control == ControlWord_Unknown_ff19)
             nextGlyphIndex = -1;
         if (nextChar == '<' && nextGlyphIndex < 0)

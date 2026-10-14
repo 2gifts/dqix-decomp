@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Struct0218e498 {
     unsigned char pad0[0x24];
@@ -11,7 +12,6 @@ struct Struct0218e498 {
 
 extern "C" void func_ov015_0218cc24(struct Struct0218e498* obj);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-extern "C" void _ZN8Object3D14AdvanceEffectsEv(unsigned char* self);
 
 extern unsigned short data_02114e30;
 
@@ -32,6 +32,6 @@ extern "C" ARM void func_ov015_0218e498(struct Struct0218e498* obj) {
         flag = 1;
     }
     if (flag) {
-        _ZN8Object3D14AdvanceEffectsEv(p);
+        ((Object3D*)p)->AdvanceEffects();
     }
 }

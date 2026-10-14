@@ -1,10 +1,9 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "World/Object3D.h"
 
 struct List0204af64;
 void ResetList0204af64(List0204af64* obj);
-
-extern "C" void _ZN8Object3D10InitializeEv(void* obj);
 
 struct Obj0217bcb8 {
     int field0;
@@ -36,7 +35,7 @@ ARM void InitObj0217bcb8(Obj0217bcb8* self) {
     self->alloc2c.ResetAllocatorPointer();
     ResetList0204af64((List0204af64*)self->list40);
     ResetList0204af64((List0204af64*)self->list60);
-    _ZN8Object3D10InitializeEv(self->sub80);
+    ((Object3D*)self->sub80)->Initialize();
     self->b12c = 0;
     int negOne = self->b12c - 1;
     self->b12d = negOne;

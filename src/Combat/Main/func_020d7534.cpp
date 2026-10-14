@@ -1,9 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 struct IntField0x68_020377bc;
-extern "C" int _ZNK8Object3D9GetHeightEv(struct IntField0x68_020377bc* obj);
 
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
@@ -35,7 +33,7 @@ extern "C" ARM void func_020d7534(struct Actor020d7534* obj) {
             GameObject* combatant = battle->GetGameObjectByIndex(id);
             if (combatant != 0) {
                 struct Vec3_020d7534 v = *(struct Vec3_020d7534*)((char*)combatant + 0x84);
-                v.y = _ZNK8Object3D9GetHeightEv((struct IntField0x68_020377bc*)combatant);
+                v.y = ((Object3D*)((struct IntField0x68_020377bc*)combatant))->GetHeight();
                 func_020d74a4(obj, i, v);
 
                 if (obj[i].fieldD0 == 4) {

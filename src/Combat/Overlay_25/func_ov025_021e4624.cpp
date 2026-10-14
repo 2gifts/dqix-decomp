@@ -52,8 +52,8 @@ Node02160094* GetNodeAtIndex02160094(List02160094* list, int index);
 Node021600f8* GetNodeAtIndex021600f8(List021600f8* list, int index);
 void ResetStruct_021e3158(struct Reset021e3158* p);
 void InitStruct02078484(struct InitStruct02078484Struct* p);
-extern "C" int _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, struct InitStruct02078484Struct* req);
-extern "C" void _Z35ClearCombatantSlotIfValidId02057db8ii(void* list, int id);
+int FindNodeAndProcess02057fb4(void*, int, int);
+void ClearCombatantSlotIfValidId02057db8(int, int);
 extern "C" void* func_02057924(void);
 
 extern struct Reset021e3158 data_ov025_021ef9a8;
@@ -91,7 +91,7 @@ extern "C" ARM int func_ov025_021e4624(struct Param021e4624* p, void* slot) {
         if (p->name != NULL) {
             strcpy(req.name, p->name);
         }
-        data_ov025_021ef988.objectId = _Z26FindNodeAndProcess02057fb4Pvii(list, p->effectId, &req);
+        data_ov025_021ef988.objectId = FindNodeAndProcess02057fb4(list, p->effectId, (int)&req);
         data_ov025_021ef988.state++;
         return 0;
     }
@@ -112,7 +112,7 @@ extern "C" ARM int func_ov025_021e4624(struct Param021e4624* p, void* slot) {
         if (dist >= range) {
             return 0;
         }
-        _Z35ClearCombatantSlotIfValidId02057db8ii(list, data_ov025_021ef988.objectId);
+        ClearCombatantSlotIfValidId02057db8((int)list, data_ov025_021ef988.objectId);
         ResetStruct_021e3158(&data_ov025_021ef9a8);
         return 1;
     }

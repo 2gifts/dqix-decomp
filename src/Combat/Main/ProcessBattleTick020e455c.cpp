@@ -10,9 +10,6 @@ void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 
-extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
-
-
 int GetFieldIfFlag4(char* obj);
 void SetField0x23cTrue(void* obj);
 void InitContext020e1154(void* obj);
@@ -45,7 +42,7 @@ ARM void ProcessBattleTick020e455c(struct MainStruct020e455c* obj) {
     for (i = 0; i < 4; i++) {
         GameObject* cc = battleStruct->GetPartyMemberByIndex(i);
         if (cc != 0) {
-            _ZN8Object3D11DisableFlagEi((unsigned char*)cc, mask);
+            ((Object3D*)((unsigned char*)cc))->DisableFlag(mask);
             ((struct Flags0xc1_020e455c*)((char*)cc + 0xc1))->a &= ~2;
         }
     }

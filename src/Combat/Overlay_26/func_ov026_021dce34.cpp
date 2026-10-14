@@ -89,8 +89,8 @@ struct ActorView {
 int MatchesActiveIndex020a36a8(Combatant020A36A8*);
 int GetCombatWorkFlags0x55f4(void*, int);
 void ClearCombatWorkFlags0x55f4(void*, int);
-extern "C" void _Z17SetBitInField0x34Phi(PartyState*, unsigned char);
-extern "C" int _Z13TestBitAt0x34Phj(PartyState*, unsigned char);
+void SetBitInField0x34(unsigned char*, int);
+int TestBitAt0x34(unsigned char*, unsigned int);
 SlotWork* FindSlotById_021dae60(Container_021dae60*, int);
 void SetAndClearField0x19c(char*, Field0x19cData*);
 void CopyCombatantStats0208936c(char*, char*, char*);
@@ -152,7 +152,7 @@ extern "C" ARM void func_ov026_021dce34(int mode, BattleWork* self, BattleState*
     int id = func_ov000_0215fad4(battle);
     func_ov000_0215e9fc(battle, ids, 4, 0);
     while (id >= 0) {
-        _Z17SetBitInField0x34Phi(party, id);
+        SetBitInField0x34((unsigned char*)party, (unsigned char)id);
         func_ov000_02174738(list, id);
         SlotWork* slot = FindSlotById_021dae60((Container_021dae60*)list, id);
         if (slot) {
@@ -245,7 +245,7 @@ extern "C" ARM void func_ov026_021dce34(int mode, BattleWork* self, BattleState*
             ev.kind = party->mode;
             ev.field0c = party->field0c;
             for (int j = 0; j < 4; j++) {
-                if (_Z13TestBitAt0x34Phj(party, j)) {
+                if (TestBitAt0x34((unsigned char*)party, (unsigned char)j)) {
                     ev.party |= 1 << j;
                 } else {
                     ev.party &= ~(1 << j);

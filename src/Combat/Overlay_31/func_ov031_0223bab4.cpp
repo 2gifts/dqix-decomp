@@ -2,13 +2,14 @@
 
 struct Header_0223bd28;
 void ExtractPackedHiLo_0223bd28(Header_0223bd28*, int, unsigned int*, unsigned int*);
-extern "C" unsigned char _Z18GetFieldC_0223baacP21StructFieldC_0223baac(void*);
+struct StructFieldC_0223baac;
+unsigned char GetFieldC_0223baac(StructFieldC_0223baac*);
 extern "C" ARM void func_ov031_0223bab4(void* obj, int index, int val, int zero);
 
 #pragma optimize_for_size off
 // USA: func_ov031_02238370
 extern "C" ARM void func_ov031_02238370(Header_0223bd28* obj, int threshold) {
-    int count = _Z18GetFieldC_0223baacP21StructFieldC_0223baac(obj);
+    int count = GetFieldC_0223baac((StructFieldC_0223baac*)obj);
     int i = 0;
     if (count <= 0)
         return;

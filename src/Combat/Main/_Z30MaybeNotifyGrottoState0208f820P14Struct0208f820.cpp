@@ -2,8 +2,6 @@
 #include "GameState/GameState.h"
 #include "Grotto/Main/GrottoStruct.h"
 
-extern "C" int _ZNK8Object3D9IsVisibleEv(unsigned char* obj);
-extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
 extern "C" void* func_02012fe4(void* unused);
 
 struct Struct0208f820 {
@@ -18,7 +16,7 @@ struct Struct0208f820 {
 // USA: func_0208f820
 ARM void MaybeNotifyGrottoState0208f820(struct Struct0208f820* p) {
     if (p->flagB4 != 0 && p->flagB6 != 0) {
-        if (_ZNK8Object3D9IsVisibleEv((unsigned char*)p + 8) == 0) {
+        if (((Object3D*)((unsigned char*)p + 8))->IsVisible() == 0) {
             return;
         }
         GameState* battle = GameState::GetInstance();
@@ -27,6 +25,6 @@ ARM void MaybeNotifyGrottoState0208f820(struct Struct0208f820* p) {
         if (val != *(int*)((char*)grotto + 0xc)) {
             return;
         }
-        _ZN8Object3D4DrawEb((unsigned char*)p + 8, 1);
+        ((Object3D*)((unsigned char*)p + 8))->Draw(1);
     }
 }

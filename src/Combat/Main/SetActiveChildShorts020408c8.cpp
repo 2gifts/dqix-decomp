@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Shorts5c_374e0;
-extern "C" void _ZN8Object3D8SetScaleEiii(struct Shorts5c_374e0* obj, short a, short b, short c);
 
 struct FieldsA020408c8 {
     char pad1c[0x1c];
@@ -26,10 +26,10 @@ ARM void SetActiveChildShorts020408c8(struct Node020408c8* obj, short a, short b
         return;
     }
     if (obj->f18 != NULL) {
-        _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)obj->f18, a, b, c);
+        ((Object3D*)((struct Shorts5c_374e0*)obj->f18))->SetScale(a, b, c);
         return;
     }
     if (obj->f1c != NULL) {
-        _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)obj->f1c, a, b, c);
+        ((Object3D*)((struct Shorts5c_374e0*)obj->f1c))->SetScale(a, b, c);
     }
 }

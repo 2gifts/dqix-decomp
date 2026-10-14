@@ -7,7 +7,7 @@ void DispatchContextByState0209c678(struct Actor0209c678* actor, int arg);
 int IsMissingFromTable0209c0f4(int value, int type);
 void SetStateAndDispatch0209c3b4(struct Actor0209c3b4* actor, int val);
 void Forward0203aa80(void* obj, int arg2);
-extern "C" int _Z26SetContextAndQuery0203ab6cPvS_(void* obj, short arg1);
+int SetContextAndQuery0203ab6c(void*, void*);
 int IsBattleActiveAndCombatantsBit0Set();
 void* CallFunc020bc594OnField0(void* obj, int unused);
 int IsHandleB8Active0209c6bc(void* obj);
@@ -45,7 +45,7 @@ extern "C" ARM void func_0209c530(struct Actor0209c530* a) {
         if (a->field_b4 > 0) {
             Forward0203aa80(a, a->field_b4);
         }
-        _Z26SetContextAndQuery0203ab6cPvS_(a, a->field_b8);
+        SetContextAndQuery0203ab6c(a, (void*)a->field_b8);
         if (IsBattleActiveAndCombatantsBit0Set() != 0) {
             DispatchContextByState0209c678((struct Actor0209c678*)a, 0);
         } else {

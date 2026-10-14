@@ -2,13 +2,13 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"
 #include "Memory/SafeAllocator.h"
+#include "World/Object3D.h"
 
 #if defined(jpn)
 enum { kRegionValue2CC_27C = 0x27c };
 #else
 enum { kRegionValue2CC_27C = 0x2cc };
 #endif
-
 
 struct List0202fec8;
 
@@ -18,10 +18,9 @@ struct Foo0207df50;
 void CopyInternalFields0207df50(struct Foo0207df50* p);
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
-extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(unsigned char* dst, int* src);
+struct Vector3i;
 
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
-extern "C" int _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, void* data, int mode);
 
 extern char data_ov003_02180c1d;
 extern char data_ov003_02180c23;
@@ -79,7 +78,7 @@ extern "C" ARM void func_ov003_0217c974(char* self) {
     *(int*)(self + 0xc4) = 0;
     *(int*)(self + 0xc8) = 0xfae;
     *(int*)(self + 0xcc) = 0;
-    _ZN8Object3D8SetScaleEPK8Vector3i((unsigned char*)(self + 0x80), (int*)&v);
+    ((Object3D*)((unsigned char*)(self + 0x80)))->SetScale((Vector3i const*)&v);
 
-    _ZN8Object3D24MaybeSetRegularAnimationEPKci(self + 0x80, &data_ov003_02180c23, 0);
+    ((Object3D*)(self + 0x80))->MaybeSetRegularAnimation((char const*)&data_ov003_02180c23, 0);
 }

@@ -12,7 +12,7 @@ struct Ov027State {
 
 extern Ov027State data_ov027_021e33e0;
 unsigned int DisableIRQInterrupts();
-extern "C" unsigned int _Z20SetIRQInterruptStatei(unsigned int);
+unsigned int SetIRQInterruptState(int);
 extern "C" void func_020c9be0(void);
 extern "C" void func_ov027_021dcc8c(void);
 
@@ -23,5 +23,5 @@ extern "C" ARM void func_ov027_021dcd20(void) {
         func_020c9be0();
     }
     func_ov027_021dcc8c();
-    _Z20SetIRQInterruptStatei(irq);
+    SetIRQInterruptState(irq);
 }

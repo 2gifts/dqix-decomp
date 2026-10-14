@@ -1,14 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct ResetStruct;
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 
 struct StreamState;
 struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* state, void* dataPtr);
 
@@ -36,10 +34,10 @@ ARM int RunBufferedScript02095870(void* unused, struct StreamHeader* buffer, int
         return 1;
     }
 
-    _ZN6Script10InitializeEv((struct ResetStruct*)local);
+    ((Script*)((struct ResetStruct*)local))->Initialize();
     _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(local, data_020f13fc);
-    _ZN6Script4LoadEPKvj((struct StreamState*)local, buffer, length);
-    _ZN6Script7ExecuteEv((struct Struct02030774*)local);
+    ((Script*)((struct StreamState*)local))->Load(buffer, length);
+    ((Script*)((struct Struct02030774*)local))->Execute();
 
     *outByte = data_02109404.f2;
     return 0;

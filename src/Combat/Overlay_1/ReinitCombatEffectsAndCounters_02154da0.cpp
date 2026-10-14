@@ -8,7 +8,8 @@ extern "C" void func_02043124(char* obj);
 extern "C" void* func_020704fc(void);
 void SetScaledEffectParam020708c8(struct EffectParam020708c8* obj, unsigned int value);
 extern "C" void* func_ov017_0218b5b0(void);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
 
 #if defined(jpn)
 enum { effectCounterOffset = 0x17ee };
@@ -23,5 +24,5 @@ extern "C" ARM void func_ov001_02154da0() {
     func_02043124(obj);
     *(unsigned char*)(obj + effectCounterOffset) = 0;
     SetScaledEffectParam020708c8((struct EffectParam020708c8*)func_020704fc(), 0);
-    _Z13SetBrightnessP13GameResourcesii(func_ov017_0218b5b0(), -16, 0);
+    SetBrightness((GameResources*)func_ov017_0218b5b0(), -16, 0);
 }

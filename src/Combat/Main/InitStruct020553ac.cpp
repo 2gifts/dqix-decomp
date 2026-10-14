@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Obj020553ac {
     int field0;
@@ -12,7 +13,6 @@ struct Obj020553ac {
     int field1ec;
 };
 
-extern "C" void _ZN8Object3D10InitializeEv(void* obj);
 extern "C" void func_02054f80(void* obj);
 
 // USA: func_020553ac
@@ -24,6 +24,6 @@ ARM void InitStruct020553ac(struct Obj020553ac* obj) {
     obj->fieldc = 0;
     obj->field10 = 0;
     obj->field1e8 = 0;
-    _ZN8Object3D10InitializeEv(&obj->sub14);
+    ((Object3D*)&obj->sub14)->Initialize();
     func_02054f80(&obj->subc0);
 }

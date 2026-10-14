@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 class GameState;
 struct Struct0205de24;
@@ -15,7 +16,6 @@ void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int TestFlag0SetAndFlag1Clear(unsigned short *flags, int mask);
 int CheckFlagOrThreshold_02161b48(char *self, int flag);
 void SetElementFieldC2(struct Struct_0205d81c *s, int key, int value);
-extern "C" GameState *_ZN9GameState11GetInstanceEv();
 extern "C" unsigned char *_ZN9GameState21GetPartyMemberByIndexEi(GameState *gs, int idx);
 void *GetPtrField0x2a04(GameState *gs);
 unsigned char *GetFieldAt0x150(unsigned char *c);
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov002_02167eb0(char *base) {
     if (confirm) {
         func_ov002_0215b9a4(base, *(int *) (base + 0x1bb8) & 0xff, 1);
         DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
-        GameState *gs = _ZN9GameState11GetInstanceEv();
+        GameState *gs = GameState::GetInstance();
         GetPtrField0x2a04(gs);
         unsigned char *m = _ZN9GameState21GetPartyMemberByIndexEi(gs, *(signed char *) (base + 0x1c20));
         if (m == 0) return;

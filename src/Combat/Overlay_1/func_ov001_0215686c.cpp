@@ -55,7 +55,8 @@ struct ResPtr0215686c {
 
 int GetBitsInField0(unsigned int* p, unsigned int bits);
 int GetSignedField020c39c8(volatile unsigned short* p);
-extern "C" int _Z15GetAxisIntValueP18AxisFloats0203b57ci(void* obj, int axis);
+struct AxisFloats0203b57c;
+int GetAxisIntValue(AxisFloats0203b57c*, int);
 extern "C" void* func_0202ae18(void);
 void* GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
@@ -78,7 +79,7 @@ extern "C" ARM void func_ov001_0215686c(void) {
     }
 
     GameResources* res = func_ov017_0218b5b0();
-    int axis = _Z15GetAxisIntValueP18AxisFloats0203b57ci(res, 1);
+    int axis = GetAxisIntValue((AxisFloats0203b57c*)res, 1);
     if (flag == 0) {
         axis = GetSignedField020c39c8((volatile unsigned short*)0x0400006c);
     }

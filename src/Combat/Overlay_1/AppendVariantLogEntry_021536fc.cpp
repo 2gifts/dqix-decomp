@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Memory/SafeAllocator.h"
 
 extern "C" int _ZNK6Script9Parameter5ToIntEv(void* variant);
 extern "C" void* _ZNK6Script9Parameter8ToStringEv(void* s);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int size);
 
 struct LogEntry021536fc { int val; char* str; };
 struct LogHeader021536fc { int count; void* allocator; LogEntry021536fc** entries; };
@@ -21,7 +21,7 @@ extern "C" ARM int func_ov001_021536fc(void* variant) {
     }
 
     unsigned int len = strlen(s);
-    void* buf = _ZN13SafeAllocator8AllocateEj(data_ov001_02165800.allocator, len + 1);
+    void* buf = ((SafeAllocator*)data_ov001_02165800.allocator)->Allocate(len + 1);
     (*data_ov001_02165800.entries)[data_ov001_02165800.count].str = (char*)buf;
     if ((*data_ov001_02165800.entries)[data_ov001_02165800.count].str == 0) {
         return 0;

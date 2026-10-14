@@ -81,8 +81,9 @@ extern "C" void func_ov005_02154d34(CursorFrame0215c058* obj, int a, int b);
 extern "C" void func_ov005_02154d50(CursorFrame0215c058* obj, int a, int b);
 extern "C" void func_ov005_02154d7c(CursorFrame0215c058* obj, int a, int b);
 extern "C" void func_ov005_021537bc(CursorFrame0215c058* frame, int mode, unsigned short value);
-extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(void* s);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void*, int, int);
+struct Struct_0205bb84;
+int ComputeScaledSum0205bb84(Struct_0205bb84*);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 int CheckFlag30Or401_02157190(void* self);
 unsigned char* GetPtrField0x2a04(GameState*);
 short* GetPointerFromArray0xbd0(unsigned char*, unsigned int);
@@ -184,11 +185,11 @@ extern "C" ARM void func_ov005_0215c058(Menu0215c058* self)
             func_ov005_021537bc(&frame, 0, 0x7fff);
         }
 
-        int sel = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(self->scroll) + 8;
+        int sel = ComputeScaledSum0205bb84((Struct_0205bb84*)self->scroll) + 8;
         if (sel != self->selected)
         {
             self->selected = sel;
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 2, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 2, 0);
             func_ov005_021579ec(self, self->cursorMode, self->selected);
         }
         else if (sel == self->selected)
@@ -210,7 +211,7 @@ extern "C" ARM void func_ov005_0215c058(Menu0215c058* self)
             self->f3daa = 0;
             self->held = -1;
             func_ov005_0215792c(self, 4);
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             screen->flags |= 0x81;
             self->cursorTarget = (char*)self + 0x1a70;
             self->dirty.f2 = 1;

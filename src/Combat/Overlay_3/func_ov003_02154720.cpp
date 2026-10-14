@@ -17,16 +17,20 @@ struct Scene02154720 {
 };
 extern "C" void func_02074af4(void*);
 extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" Party02154720* _Z17GetPtrField0x2a04P9GameState(void*);
-extern "C" void _Z18InitStruct0205a444Pc(void*);
-extern "C" void _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4(void*,void*);
+struct GameState;
+Party02154720* GetPtrField0x2a04(GameState*);
+void InitStruct0205a444(char*);
+struct Obj02081ee4;
+struct Sub02081ee4;
+void InitWithSub02081ee4(Obj02081ee4*, Sub02081ee4*);
 void Clear0x54Bytes0208247c(void*);
-extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(void*);
+struct Struct020dfc40;
+void ResetStruct020dfc40(Struct020dfc40*);
 void ClearFields_021e20c0(void*);
 void ZeroInit020de848(void*);
-extern "C" unsigned int _Z18GetField0x3acValueP9GameState(void*);
+unsigned int GetField0x3acValue(GameState*);
 extern "C" void* memset(void*,int,unsigned int);
-extern "C" unsigned int _Z19CopyOutRegion0x571dPcPv(void*,void*);
+unsigned int CopyOutRegion0x571d(char*, void*);
 void ResetFields_0215873c(void*);
 // USA: func_ov003_02154720
 extern "C" ARM void func_ov003_02154720(void* memory,unsigned char flagIn) {
@@ -41,23 +45,23 @@ extern "C" ARM void func_ov003_02154720(void* memory,unsigned char flagIn) {
  self->display=(*(volatile unsigned int*)0x04000000&0x1f00)>>8;
  *(volatile unsigned int*)0x04000000=(*(volatile unsigned int*)0x04000000&~0x1f00)|0x100;
  gs=_ZN9GameState11GetInstanceEv();
- party=_Z17GetPtrField0x2a04P9GameState(gs);
+ party=GetPtrField0x2a04((GameState*)gs);
  self->p0=0;self->p4=0;self->pc=0;self->p8=0;self->p10=0;self->p14=0;self->p18=0;self->p20=0;self->p24=0;self->p28=0;
- _Z18InitStruct0205a444Pc(self->init2c);
- _Z19InitWithSub02081ee4P11Obj02081ee4P11Sub02081ee4(self->selector,self->sub);
+ InitStruct0205a444((char*)self->init2c);
+ InitWithSub02081ee4((Obj02081ee4*)self->selector, (Sub02081ee4*)self->sub);
  Clear0x54Bytes0208247c(self->clear90);
- _Z19ResetStruct020dfc40P14Struct020dfc40(self->resetE4);
- _Z19ResetStruct020dfc40P14Struct020dfc40(self->resetFc);
+ ResetStruct020dfc40((Struct020dfc40*)self->resetE4);
+ ResetStruct020dfc40((Struct020dfc40*)self->resetFc);
  ClearFields_021e20c0(self->clear114);
  ZeroInit020de848(self->zero178);
  self->task=-1;self->field1d4=0;self->changed=0;self->scale=0;
  self->field1e0=-1;self->field1e2=-1;self->field1e4=-1;self->element=-1;self->previous=-1;self->field1ea=-1;self->field1ee=-1;self->pending=self->field1ee;self->field1f0=-1;
- self->current=_Z18GetField0x3acValueP9GameState(gs);
+ self->current=GetField0x3acValue((GameState*)gs);
  self->state=0;self->flag1f9=0;self->flag1fa=0;self->multiplayer=0;self->flags=0;self->field200=0;self->skip=0;
  self->field330=0;self->field334=0;self->blocked=0;self->reset=0;self->started=0;
  for(init=0;init<4;init++) { self->ids[init]=0;memset(&self->cache[init],0,4); }
- self->count=_Z19CopyOutRegion0x571dPcPv(gs,self->ids);
- Party02154720* currentParty=_Z17GetPtrField0x2a04P9GameState(gs);
+ self->count=CopyOutRegion0x571d((char*)gs, self->ids);
+ Party02154720* currentParty=GetPtrField0x2a04((GameState*)gs);
  count=self->count;
  for(int i=0;i<count;i++) {
   int id;

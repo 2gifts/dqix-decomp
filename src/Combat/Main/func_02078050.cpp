@@ -16,7 +16,7 @@ int* GetField0xe4IfFlag0x40(struct BitFlag02033f44* self);
 
 void TrySetMode02076ccc(void* self, int mode);
 
-extern "C" int _Z18CheckField0NonZeroPi(void* obj);
+int CheckField0NonZero(int*);
 
 extern "C" void func_020794f8(void* self, int a, int b);
 
@@ -31,7 +31,6 @@ extern "C" int func_0202c540(void* obj);
 extern "C" void* func_02012fe4(void);
 
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 extern "C" int func_02018fbc(int seed, void* v);
 
@@ -64,7 +63,7 @@ extern "C" ARM void func_02078050(struct Entity02078050* self) {
     if (GetField0xe4IfFlag0x40((struct BitFlag02033f44*)self) != 0) {
         TrySetMode02076ccc(self, 1);
         self->f154 = 0;
-        if (_Z18CheckField0NonZeroPi(mgr) == 0) {
+        if (CheckField0NonZero((int*)mgr) == 0) {
             return;
         }
         func_020794f8(self, 0, 0);
@@ -99,14 +98,14 @@ extern "C" ARM void func_02078050(struct Entity02078050* self) {
     struct Vec3 v = self->f44;
     unsigned short curId = flags->f00;
 
-    if (curId == _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)self) && flags->f424 == 0) {
+    if (curId == ((Object3D*)((struct U16Field0x6_020375f8*)self))->GetField06() && flags->f424 == 0) {
         v.y = func_02018fbc((int)flags, &v);
         _ZN8Vector3iaSERKS_((int*)&self->f44, (int*)&v);
     }
 
     TrySetMode02076ccc(self, 1);
     self->f154 = 0;
-    if (_Z18CheckField0NonZeroPi(mgr) == 0) {
+    if (CheckField0NonZero((int*)mgr) == 0) {
         return;
     }
     if (GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)mgr) != 0) {

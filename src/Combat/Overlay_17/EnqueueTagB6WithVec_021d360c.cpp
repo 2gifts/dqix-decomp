@@ -5,7 +5,8 @@ void* GetData02100044(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Vec3s02030fc8;
-extern "C" void _Z16Vector3fix16CopyP8Vector3sPKS_(struct Vec3s02030fc8* dst, struct Vec3s02030fc8* src);
+struct Vector3s;
+void Vector3fix16Copy(Vector3s*, Vector3s const*);
 
 struct Inner021d360c {
     unsigned char a;
@@ -44,7 +45,7 @@ sendEvent:
     p->a = (unsigned char)a;
     p->b = (unsigned char)b;
     p->c = (unsigned short)c;
-    _Z16Vector3fix16CopyP8Vector3sPKS_((struct Vec3s02030fc8*)p->vec, (struct Vec3s02030fc8*)&d);
+    Vector3fix16Copy((Vector3s*)p->vec, (Vector3s const*)&d);
 
     func_0205e330(data, &buf, 0);
 }

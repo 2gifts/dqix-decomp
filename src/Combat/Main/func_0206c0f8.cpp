@@ -3,6 +3,7 @@
 #include "Combat/WorkRecord.h"
 #include "Combat/NodeLookup.h"
 #include "Memory/SafeAllocator.h"
+#include "GameState/GameState.h"
 
 struct Variant02030b0c;
 extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
@@ -13,9 +14,6 @@ extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct S_020103b4;
 extern "C" struct S_020103b4* _ZN9GameState11GetInstanceEv();
-extern "C" int _ZNK9GameState21IsMorningDayOrEveningEv(struct S_020103b4* obj);
-
-
 
 struct Data02108cec0206c0f8 {
     unsigned char byte0;
@@ -57,9 +55,9 @@ extern "C" ARM int func_0206c0f8(void* param0, int param1) {
     {
         struct S_020103b4* gs = _ZN9GameState11GetInstanceEv();
         if (v3 == 1) {
-            if (_ZNK9GameState21IsMorningDayOrEveningEv(gs)) return 1;
+            if (((GameState*)gs)->IsMorningDayOrEvening()) return 1;
         } else if (v3 == 0) {
-            if (!_ZNK9GameState21IsMorningDayOrEveningEv(gs)) return 1;
+            if (!((GameState*)gs)->IsMorningDayOrEvening()) return 1;
         }
     }
 

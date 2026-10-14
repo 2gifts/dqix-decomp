@@ -4,9 +4,7 @@
 
 extern "C" void* func_02012fe4(void* unused);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(unsigned char* dst, int* src);
-extern "C" void _ZN8Object3D11MakeVisibleEv(unsigned char* obj);
-extern "C" int _ZN8Object3D21MaybeSetBCFGAnimationEii(void* obj, int id, int flags);
+struct Vector3i;
 extern "C" void* func_0202ae18(void);
 extern int data_020e8d48;
 
@@ -27,9 +25,9 @@ extern "C" ARM int func_0208f748(unsigned char* obj) {
     _ZN8Vector3iaSERKS_((int*)&tmp1, (int*)((char*)grotto + 0x10));
     Vec3Local_0208f748 tmp0 = *(Vec3Local_0208f748*)&data_020e8d48;
     _ZN8Vector3iaSERKS_((int*)(obj + 0x4c), (int*)&tmp1);
-    _ZN8Object3D8SetScaleEPK8Vector3i(obj + 8, (int*)&tmp0);
-    _ZN8Object3D21MaybeSetBCFGAnimationEii(obj + 8, 0, 0);
-    _ZN8Object3D11MakeVisibleEv(obj + 8);
+    ((Object3D*)(obj + 8))->SetScale((Vector3i const*)&tmp0);
+    ((Object3D*)(obj + 8))->MaybeSetBCFGAnimation(0, 0);
+    ((Object3D*)(obj + 8))->MakeVisible();
     obj[0xb6] = 1;
     return 1;
 }

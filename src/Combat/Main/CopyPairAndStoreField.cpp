@@ -1,10 +1,11 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct PairStruct;
-extern "C" void _ZN8Object3D32ShallowCloneModelAndAnimationsToEPS_(struct PairStruct* src, struct PairStruct* dst);
+struct Object3D;
 
 // USA: func_02072adc
 ARM void CopyPairAndStoreField(struct PairStruct* src, struct PairStruct* dst) {
-    _ZN8Object3D32ShallowCloneModelAndAnimationsToEPS_(src, dst);
+    ((Object3D*)src)->ShallowCloneModelAndAnimationsTo((Object3D*)dst);
     *(short*)((char*)dst + 0x178) = *(int*)((char*)src + 0xac);
 }

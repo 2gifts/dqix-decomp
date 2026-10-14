@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Struct02058c88 {
     char pad_00[0x4];
@@ -48,8 +49,6 @@ struct Struct02058c88 {
     int field_144;
 };
 
-extern "C" void _ZN8Object3D10InitializeEv(void* obj);
-
 // USA: func_02058c88
 ARM void InitStruct02058c88(struct Struct02058c88* obj) {
     obj->field_28 = 0;
@@ -92,5 +91,5 @@ ARM void InitStruct02058c88(struct Struct02058c88* obj) {
     obj->field_78 = 0;
     obj->field_30 = 1.0f;
     obj->field_128 = 0;
-    _ZN8Object3D10InitializeEv(obj->sub_7c);
+    ((Object3D*)obj->sub_7c)->Initialize();
 }

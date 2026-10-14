@@ -24,8 +24,6 @@ void SetStringField0244(char* obj, const char* src);
 struct S0204a5dc;
 void SetField0x220(struct S0204a5dc* p, int v);
 
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
-
 // USA: func_ov001_02160768  (semantic: AllocateAndInitStateNode_02160768)
 extern "C" ARM int func_ov001_02160768(char* self) {
 	GameState* bs = GameState::GetInstance();
@@ -58,8 +56,8 @@ extern "C" ARM int func_ov001_02160768(char* self) {
 	SetStringField0244((char*)newObj, (const char*)str2);
 	SetField0x220((struct S0204a5dc*)newObj, (int)combatant2);
 
-	_ZN8Object3D10EnableFlagEi((unsigned char*)combatant1, 1);
-	_ZN8Object3D10EnableFlagEi((unsigned char*)combatant1, 0x20);
+	((Object3D*)((unsigned char*)combatant1))->EnableFlag(1);
+	((Object3D*)((unsigned char*)combatant1))->EnableFlag(0x20);
 
 	SetField0x3b0Value(bs, (int)newObj);
 	return 1;

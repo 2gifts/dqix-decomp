@@ -4,14 +4,15 @@
 struct Struct021933ac { int f0; char f4; };
 void ZeroTwoFields021933ac(struct Struct021933ac* s);
 
-extern "C" void _Z25InitializeBrightnessStateP13GameResources(void* self);
+struct GameResources;
+void InitializeBrightnessState(GameResources*);
 extern "C" unsigned int func_02029568(void* self);
 
 // USA: func_ov015_02193294  (semantic: InitCombatBlock02193294)
 extern "C" ARM void func_ov015_02193294(void* objRaw) {
     char* obj = (char*)objRaw;
 
-    _Z25InitializeBrightnessStateP13GameResources(objRaw);
+    InitializeBrightnessState((GameResources*)objRaw);
 
     *(int*)(obj + 0x2c) = 0;
     *(int*)(obj + 0x30) = 0;

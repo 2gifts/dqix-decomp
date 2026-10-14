@@ -1,13 +1,16 @@
 #include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
+#include "GameState/GameState.h"
 
 unsigned int GetSharedWordDa0(int i);
 unsigned int GetSharedWordDc4(int i);
 unsigned int GetConst25980_0218fc78(void);
 unsigned int GetConst9600_0218fc84(void);
-extern "C" void _Z16SetData_0218fc8cPvj(unsigned int a, unsigned int n);
-extern "C" void _Z20SetupHandle_0218fcacPvi(unsigned int a, unsigned int n);
-extern "C" void _Z18NitroVM_InitializeP7NitroVM(void* vm);
-extern "C" int _Z29NitroVM_PrepareReadFileByPathP7NitroVMPKc(void* vm, const char* path);
+void SetData_0218fc8c(void*, unsigned int);
+void SetupHandle_0218fcac(void*, int);
+struct NitroVM;
+void NitroVM_Initialize(NitroVM*);
+int NitroVM_PrepareReadFileByPath(NitroVM*, char const*);
 extern "C" void _Z18NitroVM_FinishReadP7NitroVM(void* vm);
 extern "C" void* func_ov016_0218e558(void* vm, int n);
 unsigned int CallIfNonNull_0218e690(void* p);
@@ -30,25 +33,25 @@ extern "C" void func_020bbd9c(void);
 extern "C" int func_020ce89c(int a, int b, int c);
 unsigned short XorMaskKeyInput_0218ca70(void);
 int SetData020f2284(void);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int n);
-extern "C" void _ZN13SafeAllocator4FreeEPv(void* self, void* p);
 extern "C" void* memset(void* p, int c, unsigned int n);
 void CleanDataCache(void);
 void CleanCacheRange(const void* p, unsigned int n);
-extern "C" void _Z19ZeroInitializeAlarmP5Alarm(void* a);
+struct Alarm;
+void ZeroInitializeAlarm(Alarm*);
 unsigned long long GetCurrentTimestamp(void);
 extern "C" void _Z11SetIntervalP5AlarmyyPFvPP16ProcessorContextES3_(void* a, unsigned long long residue,
     unsigned long long interval, void* fn, void* arg);
 extern "C" void _Z11CancelAlarmP5Alarm(void* a);
 extern "C" void _Z28SetKeyAndApplyRecord0203ad14PvtS_i(void* a, int id, void* b, int c);
-extern "C" void _Z29TryDispatchOrFallback0203aba8P11Obj0203aba8PvS1_(void* a, int id, void* b);
+struct Obj0203aba8;
+void TryDispatchOrFallback0203aba8(Obj0203aba8*, void*, void*);
 void UpdateScaleOrApplyRecord0203ae4c(void* a, int b, void* c);
 void ScaleAndNotify0203ad88(void* a, void* b, int c);
 void SetContextAndDispatch0203ac10(void* a, void* b, int c);
 extern "C" void func_02012538(void* p);
 void SelectCoordsByFlag0x24(unsigned char* p, int* x, int* y);
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(void* gs);
+struct Struct0200fb08;
+int NormalizeField5_0200fb08(Struct0200fb08*);
 void SetFlagAndMaybeIncrement_0218c024(void);
 
 struct Info_0218c04c {
@@ -128,11 +131,11 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 	if (sz4 >= GetConst9600_0218fc84()) {
 		sz4 = GetConst9600_0218fc84();
 	}
-	_Z16SetData_0218fc8cPvj(GetSharedWordDa0(3), sz3);
-	_Z20SetupHandle_0218fcacPvi(GetSharedWordDa0(4), sz4);
-	_Z18NitroVM_InitializeP7NitroVM(vm);
+	SetData_0218fc8c((void*)GetSharedWordDa0(3), sz3);
+	SetupHandle_0218fcac((void*)GetSharedWordDa0(4), sz4);
+	NitroVM_Initialize((NitroVM*)vm);
 
-	if (_Z29NitroVM_PrepareReadFileByPathP7NitroVMPKc(vm, path)) {
+	if (NitroVM_PrepareReadFileByPath((NitroVM*)vm, path)) {
 	node = func_ov016_0218e558(vm, 6);
 	if (node != 0) {
 		unsigned int frame = 0;
@@ -143,10 +146,8 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 		q = (int)(((unsigned long long)(unsigned int)func_ov016_0218e660(node) << 24) /
 			((unsigned long long)unit * CallIfNonNull_0218e678(node)));
 		data_ov016_0219d0c0.frames = (q + 1) * 7;
-		data_ov016_0219d0c0.bufL = (short*)_ZN13SafeAllocator8AllocateEj(data_ov016_0219d0c0.alloc,
-			data_ov016_0219d0c0.frames * unit * 2);
-		data_ov016_0219d0c0.bufR = (short*)_ZN13SafeAllocator8AllocateEj(data_ov016_0219d0c0.alloc,
-			data_ov016_0219d0c0.frames * unit * 2);
+		data_ov016_0219d0c0.bufL = (short*)((SafeAllocator*)data_ov016_0219d0c0.alloc)->Allocate(data_ov016_0219d0c0.frames * unit * 2);
+		data_ov016_0219d0c0.bufR = (short*)((SafeAllocator*)data_ov016_0219d0c0.alloc)->Allocate(data_ov016_0219d0c0.frames * unit * 2);
 		memset(data_ov016_0219d0c0.bufL, 0, data_ov016_0219d0c0.frames * unit * 2);
 		memset(data_ov016_0219d0c0.bufR, 0, data_ov016_0219d0c0.frames * unit * 2);
 		CleanDataCache();
@@ -159,7 +160,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 		data_ov016_0219d0c0.f1c = paused;
 		data_ov016_0219d0c0.counter3c = paused;
 		data_ov016_0219d0c0.f20 = paused;
-		_Z19ZeroInitializeAlarmP5Alarm(&data_ov016_0219d118);
+		ZeroInitializeAlarm((Alarm*)&data_ov016_0219d118);
 		{
 			unsigned long long now = GetCurrentTimestamp();
 			unsigned long long per = (0xf4240ULL << 24) / CallIfNonNull_0218e678(node);
@@ -179,7 +180,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 					if (p->isSet != 0) {
 						_Z28SetKeyAndApplyRecord0203ad14PvtS_i(&data_02109bf4, p->id, 0, 0);
 					} else {
-						_Z29TryDispatchOrFallback0203aba8P11Obj0203aba8PvS1_(&data_02109bf4, p->id, &data_ov016_0219d0cc);
+						TryDispatchOrFallback0203aba8((Obj0203aba8*)&data_02109bf4, (void*)p->id, &data_ov016_0219d0cc);
 					}
 					func_020bbd9c();
 					data_ov016_0219d0c0.started = 1;
@@ -290,7 +291,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 				func_02012538(&data_02114e54);
 				SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &sx, &sy);
 				touched = (data_02114e54.b5f != 0 && data_02114e54.h24 != 0) ? 1 : 0;
-				switch (_Z24NormalizeField5_0200fb08P14Struct0200fb08(_ZN9GameState11GetInstanceEv())) {
+				switch (NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance())) {
 				case 1:
 					lo0 = 0x4c; hi0 = 0xbd; lo1 = 0x67; hi1 = 0x98;
 					break;
@@ -343,8 +344,8 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 			}
 		}
 		_Z11CancelAlarmP5Alarm(&data_ov016_0219d118);
-		_ZN13SafeAllocator4FreeEPv(data_ov016_0219d0c0.alloc, data_ov016_0219d0c0.bufL);
-		_ZN13SafeAllocator4FreeEPv(data_ov016_0219d0c0.alloc, data_ov016_0219d0c0.bufR);
+		((SafeAllocator*)data_ov016_0219d0c0.alloc)->Free(data_ov016_0219d0c0.bufL);
+		((SafeAllocator*)data_ov016_0219d0c0.alloc)->Free(data_ov016_0219d0c0.bufR);
 		ClearAndReset_0218e640(node);
 		_Z18NitroVM_FinishReadP7NitroVM(vm);
 		if (data_ov016_0219d0c0.info->id > -1) {

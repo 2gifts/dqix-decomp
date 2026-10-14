@@ -6,7 +6,8 @@
 #include "Graphics/NSBXX/RenderConfig.h"
 #include "World/Object3D.h"
 
-extern "C" void* _Z17GetModel3DContextP7Model3D(void* mdl);
+struct Model3D;
+void* GetModel3DContext(Model3D*);
 Matrix4x3 RotationMatrixY(int angle);
 void Vector3fixMultiply(const Vector3fix* a, const Vector3fix* b, Vector3fix* out);
 extern "C" void func_02059f54(void* elem, int idx);
@@ -61,7 +62,7 @@ extern "C" ARM void func_02057ab8(struct Container02057ab8* c, int id) {
             e->f_b2 = -1;
             continue;
         }
-        ModelRenderContext* ctx = (ModelRenderContext*)_Z17GetModel3DContextP7Model3D(mdl);
+        ModelRenderContext* ctx = (ModelRenderContext*)GetModel3DContext((Model3D*)mdl);
         if (ctx == 0) {
             e->f_b2 = -1;
             continue;

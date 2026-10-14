@@ -13,7 +13,8 @@ void* GetFieldPtrAt0x11c(void* obj);
 int CheckBits5To9NonZero(unsigned short* obj);
 short fix32cos(int x);
 short fix32sin(int x);
-extern "C" void* _Z22GetField0xe4IfFlag0x40P15BitFlag02033f44(void* p);
+struct BitFlag02033f44;
+void* GetField0xe4IfFlag0x40(BitFlag02033f44*);
 extern "C" void Vector3fix_Normalize(struct Vec3* in, struct Vec3* out);
 extern "C" int Vector3fix_InnerProduct(struct Vec3* a, struct Vec3* b);
 int PackColorChannelsToDecimal(unsigned short* obj);
@@ -64,7 +65,7 @@ extern "C" ARM int func_020a7d74(struct Obj020a7d74* self, int* out1, int* out2)
     dir.z = cz;
     Vector3fix_Normalize(&dir, &dir);
 
-    struct F02033f44* f = (struct F02033f44*)_Z22GetField0xe4IfFlag0x40P15BitFlag02033f44(self);
+    struct F02033f44* f = (struct F02033f44*)GetField0xe4IfFlag0x40((BitFlag02033f44*)self);
     int tz = f->f24.z;
     int tx = f->f24.x;
     t.y = 0;

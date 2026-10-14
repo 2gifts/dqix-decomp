@@ -13,7 +13,8 @@ struct Flags0215505c {
 };
 
 void *Clear12Bytes020e46c4(void *p);
-extern "C" void _Z17ClearObj_021e1318P11Obj021e1318(void *obj);
+struct Obj021e1318;
+void ClearObj_021e1318(Obj021e1318*);
 void ResetStruct020dfc40(struct Struct020dfc40 *s);
 extern "C" void func_02074af4(void *state);
 void InitStruct0205cfd4(struct InitTarget0205cfd4 *t);
@@ -49,7 +50,7 @@ extern "C" ARM void func_ov002_0215505c(char *self) {
     RESET(0x83c);
     RESET(0x828);
     RESET(0x810);
-    _Z17ClearObj_021e1318P11Obj021e1318(self + 0x804);
+    ClearObj_021e1318((Obj021e1318*)(self + 0x804));
     RESET(0x8a0);
     ResetStruct020dfc40((struct Struct020dfc40 *) (self + 0x20));
     U8(0x48) = 0;

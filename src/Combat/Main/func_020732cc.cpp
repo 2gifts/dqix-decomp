@@ -7,7 +7,7 @@ GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
 
 struct Field150Holder02052e2c;
 short* GetField150Ptr0x488_02052e2c(struct Field150Holder02052e2c* obj);
-extern "C" void _Z18TryClearFlags0x130Pht(void* obj, unsigned short flag);
+void TryClearFlags0x130(unsigned char*, unsigned short);
 
 struct KeyedList0207c378;
 extern "C" int func_0207c378(struct KeyedList0207c378* obj, int value, int amount, int key);
@@ -46,7 +46,7 @@ extern "C" ARM void func_020732cc(int arg0) {
                 (struct Field150Holder02052e2c*)combatant);
             if (list != NULL && slot != NULL) {
                 if (list[idx] > 0) {
-                    _Z18TryClearFlags0x130Pht(combatant, 4);
+                    TryClearFlags0x130((unsigned char*)combatant, 4);
                     func_0207c378((struct KeyedList0207c378*)((char*)p2a04 + 0x1d4),
                                   list[idx], 1, slot->keyBits);
                 }

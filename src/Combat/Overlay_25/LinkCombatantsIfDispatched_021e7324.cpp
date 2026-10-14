@@ -3,9 +3,8 @@
 
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 struct ListNode020378dc;
-extern "C" void _ZN8Object3D6DetachEv(struct ListNode020378dc* node);
 struct Node02037890;
-extern "C" void _ZN8Object3D6AttachEPS_PKc(struct Node02037890* node, struct Node02037890* src, char* str);
+struct Object3D;
 
 struct In021e7324 {
     char pad[8];
@@ -35,7 +34,7 @@ ARM int LinkCombatantsIfDispatched_021e7324(struct In021e7324* a, int b, int unu
     if (!c1 || !c2) {
         return 1;
     }
-    _ZN8Object3D6DetachEv((struct ListNode020378dc*)c1);
-    _ZN8Object3D6AttachEPS_PKc((struct Node02037890*)c1, (struct Node02037890*)c2, a->label);
+    ((Object3D*)((struct ListNode020378dc*)c1))->Detach();
+    ((Object3D*)((struct Node02037890*)c1))->Attach((Object3D*)c2, a->label);
     return 1;
 }

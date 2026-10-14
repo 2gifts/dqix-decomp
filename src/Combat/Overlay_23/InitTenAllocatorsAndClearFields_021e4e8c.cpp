@@ -1,15 +1,14 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
-
-extern "C" void _ZN8Object3D10InitializeEv(void* p);
+#include "World/Object3D.h"
 
 // USA: func_ov023_021e4e8c
 ARM void InitTenAllocatorsAndClearFields_021e4e8c(void* obj) {
 	char *base = (char*)obj;
 	base[0xc11] = 0;
 	for (int i = 0; i < 10; i++) {
-		_ZN8Object3D10InitializeEv(base + i * 0xac);
+		((Object3D*)(base + i * 0xac))->Initialize();
 		((SafeAllocator*)(base + 0x6b8 + i * 0x14))->ResetAllocatorPointer();
 	}
 	((SafeAllocator*)(base + 0x780))->ResetAllocatorPointer();

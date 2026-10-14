@@ -20,14 +20,16 @@ struct Overlay3EntryOrdering {
     Overlay3OrderedEntry* entries[31];
     Overlay3EntryProvider* provider;
 };
-extern "C" int _Z21CountNibble0xcEquals9P18NibbleElem02098e70(Overlay3EntryProvider*);
-extern "C" int _Z21CountNibble0xcEqualsAP18NibbleElem02098eac(Overlay3EntryProvider*);
+struct NibbleElem02098e70;
+int CountNibble0xcEquals9(NibbleElem02098e70*);
+struct NibbleElem02098eac;
+int CountNibble0xcEqualsA(NibbleElem02098eac*);
 
 extern "C" ARM void func_ov003_02170688(Overlay3EntryOrdering* state) {
     Overlay3EntryProvider* provider = state->provider;
     int count = provider->count;
-    int first = _Z21CountNibble0xcEquals9P18NibbleElem02098e70(provider);
-    int split = first + _Z21CountNibble0xcEqualsAP18NibbleElem02098eac(provider);
+    int first = CountNibble0xcEquals9((NibbleElem02098e70*)provider);
+    int split = first + CountNibble0xcEqualsA((NibbleElem02098eac*)provider);
     int moved = 0;
     for (int i = 0; i < count; ++i) {
         Overlay3OrderedEntry* entry = state->entries[i];

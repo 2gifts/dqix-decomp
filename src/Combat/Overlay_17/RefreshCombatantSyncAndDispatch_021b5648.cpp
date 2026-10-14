@@ -11,7 +11,6 @@ enum { Field18 = 0x18, Field23ec = 0x23ec };
 extern "C" void* func_0202ae18(void);
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 extern "C" unsigned short func_02028460(void* a, void* b);
 extern "C" int func_0202c508(void* obj);
 extern "C" void* func_02012fe4(void);
@@ -30,7 +29,7 @@ extern "C" ARM void func_ov017_021b5648(char* self) {
         GameObject* c = GetCombatantWithFlag0x100(bs, i);
         if (c == 0) continue;
         void* p8 = *(void**)(self + 0x8);
-        if (*(unsigned short*)p8 != _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)c)) continue;
+        if (*(unsigned short*)p8 != ((Object3D*)((struct U16Field0x6_020375f8*)c))->GetField06()) continue;
 
         unsigned short v = func_02028460((char*)p8 + Field18, (char*)c + 0x44);
         *(unsigned short*)((char*)c + 0xb8) = v;

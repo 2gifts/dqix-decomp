@@ -69,7 +69,8 @@ int BuildAndForwardVec_0218da48(void* obj, int angle, int c, int d, unsigned cha
 int CheckAndComputeDistance020968d0(Obj020968d0* obj, int* outDist);
 int TestFlagMask(unsigned short* flags, int mask);
 extern "C" void __clear(void* buf, int count);
-extern "C" short _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_(Vector3fix* from, int baseAngle, Vector3fix* to);
+struct Vec3;
+short GetAbsAngleDeltaBetween_021a4754(Vec3*, int, Vec3*);
 extern "C" void func_ov017_0219b33c(Self02197a64* self, GroupEvent02197a64* event);
 extern "C" void func_ov017_02198f84(Self02197a64* self);
 
@@ -164,7 +165,7 @@ extern "C" ARM void func_ov017_02197a64(Self02197a64* self) {
             Vector3fix_Add(&center, &event.nodes[i]->position, &center);
         }
         Vector3fixDivideScalar(&center, event.count << 12, &center);
-        event.angle = _Z32GetAbsAngleDeltaBetween_021a4754P4Vec3iS0_(&leader->position, (short)leader->rotationY, &center);
+        event.angle = GetAbsAngleDeltaBetween_021a4754((Vec3*)&leader->position, (short)leader->rotationY, (Vec3*)&center);
         event.tag = 4;
         func_ov017_0219b33c(self, &event);
     }

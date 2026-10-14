@@ -28,7 +28,8 @@ extern Global02114e54 data_02114e54;
 
 extern "C" void *memset(void *dst, int value, unsigned int length);
 extern "C" unsigned char *_Z23FindElementByC40205d81cP15Struct_0205d81ci(char *s, unsigned char key);
-extern "C" void _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(char *obj, int a, void *b, int c, unsigned char d);
+struct StructA0205d5d0;
+void TryApplyElemFields0205d5d0(StructA0205d5d0*, int, int, int, unsigned char);
 
 struct W0215bba8 {
     char pad[0x34];
@@ -71,8 +72,7 @@ extern "C" ARM void func_ov002_0215bba8(Battle0215bba8 *self) {
     }
     if (_Z23FindElementByC40205d81cP15Struct_0205d81ci(base + 0x2c8 + 0xc00, (unsigned char) key) != 0) {
         (self->*data_ov002_0216d10c[*(int *) (base + 0x1000 + 0xbb8)])(*(void **) (base + 0x1000 + 0xbd0), hl);
-        _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
-            base + 0x2c8 + 0xc00, (unsigned char) *(int *) (base + 0x1000 + 0xbb8), *(void **) (base + 0x1000 + 0xbd0), 0, 0);
+        TryApplyElemFields0205d5d0((StructA0205d5d0*)(base + 0x2c8 + 0xc00), (unsigned char) *(int *) (base + 0x1000 + 0xbb8), (int)(*(void **) (base + 0x1000 + 0xbd0)), 0, 0);
     }
     if (*(int *) (base + 0x1000 + 0xbcc) == 0) {
         return;
@@ -88,8 +88,7 @@ extern "C" ARM void func_ov002_0215bba8(Battle0215bba8 *self) {
                 continue;
             }
             (self->*data_ov002_0216d10c[page])(*(void **) (base + 0x1000 + 0xbd0), hl);
-            _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(base + 0x2c8 + 0xc00, (unsigned char) page,
-                                                                 *(void **) (base + 0x1000 + 0xbd0), 0, 0);
+            TryApplyElemFields0205d5d0((StructA0205d5d0*)(base + 0x2c8 + 0xc00), (unsigned char) page, (int)(*(void **) (base + 0x1000 + 0xbd0)), 0, 0);
         }
     }
     *(int *) (base + 0x1000 + 0xbcc) = 0;

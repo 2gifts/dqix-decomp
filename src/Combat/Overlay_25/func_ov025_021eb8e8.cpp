@@ -31,7 +31,7 @@ extern "C" void func_ov000_02162dc4(void* work, GameObject* lead, GameObject* ac
                                     int b1d, int b1e, unsigned long long mask, int flag);
 HudEntry_021eb8e8* FindEntryById_021dafd0(char* obj, int id);
 extern "C" void func_ov000_0217616c(HudEntry_021eb8e8* p);
-extern "C" void _Z23SetByteField37_0216ff20Pch(HudEntry_021eb8e8* obj, unsigned char val);
+void SetByteField37_0216ff20(char*, unsigned char);
 void SetSubstructWord0x68(unsigned char* obj, int value);
 int CheckSubstructFlag0x400(unsigned char* obj);
 void ClearSubstructFlag0x400(unsigned char* obj);
@@ -62,7 +62,7 @@ extern "C" ARM void func_ov025_021eb8e8(Owner_021eb8e8* obj) {
             if (hud != 0) {
                 hud->flags28 = flags;
                 func_ov000_0217616c(hud);
-                _Z23SetByteField37_0216ff20Pch(hud, hit->b1d);
+                SetByteField37_0216ff20((char*)hud, hit->b1d);
                 hud->b2f = hit->b1e;
             }
             SetSubstructWord0x68((unsigned char*)c, 0);

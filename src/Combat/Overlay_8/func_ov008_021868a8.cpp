@@ -1,12 +1,14 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" int* _Z10GetWord0x0Pi(void* battle);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
-extern "C" void _Z16SetSubBrightnessP13GameResourcesii(void* obj, int a, int b);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* word);
+int* GetWord0x0(int*);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
+void SetSubBrightness(GameResources*, int, int);
+int IsBrightnessTransitionActive(GameResources*);
 int IsAnimationActive0209ca2c(void* obj);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void* p, int flag);
+struct Entry_0205d6a0;
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 
 struct ShortField0xb8_0209cae8;
 short GetShortAt0xb8(struct ShortField0xb8_0209cae8* obj);
@@ -28,26 +30,26 @@ struct Obj021868a8 {
 
 // USA: func_ov008_021868a8
 extern "C" ARM void func_ov008_021868a8(struct Obj021868a8* obj) {
-    int* word = _Z10GetWord0x0Pi(GameState::GetInstance());
+    int* word = GetWord0x0((int*)GameState::GetInstance());
     unsigned char flag = obj->b11;
     if (flag == 0) {
         if (obj->b24 == 0) {
-            _Z13SetBrightnessP13GameResourcesii(word, -16, 15);
+            SetBrightness((GameResources*)word, -16, 15);
             if (obj->b13 == 0) {
                 if (GetShortAt0xb8((struct ShortField0xb8_0209cae8*)&data_02109bf4) != 0x29) {
                     DispatchContextByState0209c678((struct Actor0209c678*)&data_02109bf4, 15);
                 }
             }
         } else {
-            _Z16SetSubBrightnessP13GameResourcesii(word, -16, 15);
+            SetSubBrightness((GameResources*)word, -16, 15);
         }
         obj->b11 = obj->b11 + 1;
         return;
     }
     if (flag != 1) return;
-    if (_Z28IsBrightnessTransitionActiveP13GameResources(word) != 0) return;
+    if (IsBrightnessTransitionActive((GameResources*)word) != 0) return;
     if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) return;
-    _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((char*)obj + 0x130, 1);
+    ResetEntryList0205d6a0((Entry_0205d6a0*)((char*)obj + 0x130), 1);
     obj->b10 = 0xe;
     obj->b11 = 0;
 }

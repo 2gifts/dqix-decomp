@@ -89,37 +89,48 @@ struct Obj0205eaa0;
 extern "C" void* __clear(void* dst, int count);
 extern "C" void func_ov000_0216d370(void* obj, int a, int b, int c);
 extern "C" void func_ov000_0216df00(void* obj, int id, int b, int c, float scale);
-extern "C" void _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(void* obj);
+struct GatherObj02163a7c;
+void ApplyField41ToGatheredCombatants02163a7c(GatherObj02163a7c*);
 void* GetSlotPtr02160f20(void* obj);
-extern "C" void _Z13ApplyVec3TailPvPi(void* obj, Vector3fix* vec);
+void ApplyVec3Tail(void*, int*);
 extern "C" void func_ov000_021626a0(void* obj, int a, int b);
 extern "C" void _ZN8Vector3iaSERKS_(Vector3fix* dst, const Vector3fix* src);
 extern "C" void func_ov000_02167f10(void* obj);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(GameObject* obj, int value);
+struct Obj02033874;
+void SetVecYFromValue02033874(Obj02033874*, int);
 void ResetFields_021de110(void* obj);
-extern "C" void _Z29PushNodeFromFreeList_021eee48P11Obj021eee48P11Rec021eee48(void* obj, struct Rec021dcf14* rec);
-extern "C" void _Z16SetFlag0x4At0xe0P13Flags02033fcc(GameObject* obj);
-extern "C" void _Z18ClearFlag0x4At0xe0P13Flags02033fdc(GameObject* obj);
-extern "C" int _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(GameObject* obj, int value);
-extern "C" struct TableEntry021dcf14* _Z24SearchBothTables02079e2cPci(void* table, int key);
-extern "C" struct Node021dcf14* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int index);
-extern "C" struct First021dcf14* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int index);
-extern "C" void _Z28ForwardPackedFields_021d8bfcPvP21PackedFields_021d8bfc(void* obj, void* entry);
+struct Obj021eee48;
+struct Rec021eee48;
+void PushNodeFromFreeList_021eee48(Obj021eee48*, Rec021eee48*);
+struct Flags02033fcc;
+void SetFlag0x4At0xe0(Flags02033fcc*);
+struct Flags02033fdc;
+void ClearFlag0x4At0xe0(Flags02033fdc*);
+struct Bytes02033b88;
+int SetByte0xbeShiftPrev(Bytes02033b88*, int);
+struct TableEntry021dcf14* SearchBothTables02079e2c(char*, int);
+struct List021600f8;
+struct Node021dcf14* GetNodeAtIndex021600f8(List021600f8*, int);
+struct List02160094;
+struct First021dcf14* GetNodeAtIndex02160094(List02160094*, int);
+struct PackedFields_021d8bfc;
+void ForwardPackedFields_021d8bfc(void*, PackedFields_021d8bfc*);
 extern "C" int func_ov025_021ed444(void* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
-extern "C" void _Z33StoreFields0x1e4And0x1e8IfNonZeroPhii(void* obj, int a, int b);
+void StoreFields0x1e4And0x1e8IfNonZero(unsigned char*, int, int);
 void SetShortTriple0x6e44(void* obj, unsigned short a, unsigned short b, unsigned short c);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
-extern "C" void* _Z23FindNodeAtDepth0215fff4Pvii(void* node, int index, unsigned char depth);
+void* FindNodeAtDepth0215fff4(void*, int, int);
 extern "C" int func_ov000_0215fd90(void* entry, int effect);
-extern "C" int _Z23CheckSubstructFlag0x100Ph(GameObject* obj);
-extern "C" int _Z20GetSubstructByte0x56Ph(GameObject* obj);
-extern "C" void _Z21SetSubstructFlag0x400Ph(GameObject* obj);
+int CheckSubstructFlag0x100(unsigned char*);
+int GetSubstructByte0x56(unsigned char*);
+void SetSubstructFlag0x400(unsigned char*);
 extern "C" int func_ov000_0215ffa0(void* node);
-extern "C" int _Z20TryDispatch_021dce7cPhP10In021dce7ci(void* obj, void* slot, int id);
+struct In021dce7c;
+int TryDispatch_021dce7c(unsigned char*, In021dce7c*, int);
 extern "C" void* func_02057924(void);
 void InitStruct02078484(struct InitStruct02078484Struct* p);
-extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, struct InitStruct02078484Struct* req);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(struct Obj0205eaa0* obj, int a, int b);
+void FindNodeAndProcess02057fb4(void*, int, int);
+void DispatchIfField0xc4NonNeg_0205ebfc(void*, int, int);
 extern "C" void func_ov025_021eabd0(void* obj, bool party);
 extern "C" void func_ov025_021ead5c(void* obj, bool party);
 
@@ -186,12 +197,12 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
     if (sl[Field6e4b] == 1) {
         func_ov000_0216d370(sl + CameraBase, 1, 1, 1);
         func_ov000_0216df00(sl + CameraBase, cur->targetId, 0, 0, 1.8f);
-        _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(sl);
+        ApplyField41ToGatheredCombatants02163a7c((GatherObj02163a7c*)sl);
         void* slot = GetSlotPtr02160f20(sl);
         if (*(unsigned short*)slot == 0x11b || *(unsigned short*)slot == 0x116) {
             Vector3fix cam = *(Vector3fix*)(sl + CameraPosition);
             cam.z = 0x847a;
-            _Z13ApplyVec3TailPvPi(sl + CameraBase, &cam);
+            ApplyVec3Tail(sl + CameraBase, (int*)&cam);
         }
         func_ov000_021626a0(sl, 4, 0);
         for (int i = 0; i < *(short*)(sl + Field6efa); i++) {
@@ -265,16 +276,16 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                 Vector3fix_Normalize(&dir, &dir);
                 int angle = fix32_Atan2(dir.x, dir.z);
                 _ZN8Vector3iaSERKS_(&objs[i]->obj3D_.position_, &look);
-                _Z24SetVecYFromValue02033874P11Obj02033874i(objs[i], angle);
+                SetVecYFromValue02033874((Obj02033874*)objs[i], angle);
                 struct Rec021dcf14 rec;
                 ResetFields_021de110(&rec);
                 rec.f0 = 0;
                 rec.id = ((short*)(sl + Field6ef0))[i];
                 rec.val = 0x96;
                 _ZN8Vector3iaSERKS_(&rec.pos, &dst);
-                _Z29PushNodeFromFreeList_021eee48P11Obj021eee48P11Rec021eee48(sl + PendingList, &rec);
+                PushNodeFromFreeList_021eee48((Obj021eee48*)(sl + PendingList), (Rec021eee48*)&rec);
                 objs[i]->obj3D_.MaybeSetRegularAnimation(data_ov025_021ef460, 0);
-                _Z16SetFlag0x4At0xe0P13Flags02033fcc(objs[i]);
+                SetFlag0x4At0xe0((Flags02033fcc*)objs[i]);
             }
         }
 
@@ -292,7 +303,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
             }
             Vector3fix cam = *(Vector3fix*)(sl + CameraPosition);
             cam.z = (int)(4096.0f * (cam.z / 4096.0f * scale));
-            _Z13ApplyVec3TailPvPi(sl + CameraBase, &cam);
+            ApplyVec3Tail(sl + CameraBase, (int*)&cam);
         }
         SetPhase(sl, 2, 0x9b);
     } else if (sl[Field6e4b] == 2) {
@@ -318,8 +329,8 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                     turn = -0x1922;
                 }
                 int rot = objs[j]->obj3D_.rotation_.y;
-                _Z24SetVecYFromValue02033874P11Obj02033874i(objs[j], fix32ReduceAngle0To2Pi(rot + turn));
-                _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(objs[j], 0);
+                SetVecYFromValue02033874((Obj02033874*)objs[j], fix32ReduceAngle0To2Pi(rot + turn));
+                SetByte0xbeShiftPrev((Bytes02033b88*)objs[j], 0);
             }
             float scale = 1.0f;
             if (maxHeight >= 0x1800) {
@@ -340,9 +351,9 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
         if (sl[Field6e4b] == 6) {
             void* slot = GetSlotPtr02160f20(sl);
             struct TableEntry021dcf14* entry =
-                _Z24SearchBothTables02079e2cPci(GetData02108e10(), *(short*)slot);
+                SearchBothTables02079e2c((char*)GetData02108e10(), *(short*)slot);
             if (entry && entry->kind18 == 2) {
-                struct Node021dcf14* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(slot, cur->nodeIndex);
+                struct Node021dcf14* node = GetNodeAtIndex021600f8((List021600f8*)slot, cur->nodeIndex);
                 if (node == NULL) {
                     return 0;
                 }
@@ -368,17 +379,17 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
         } else {
             GameObject* actor = battle->GetCombatantByIndex(cur->actorId);
             if (actor) {
-                _Z18ClearFlag0x4At0xe0P13Flags02033fdc(actor);
+                ClearFlag0x4At0xe0((Flags02033fdc*)actor);
             }
             void* slot = GetSlotPtr02160f20(sl);
-            struct First021dcf14* first = _Z22GetNodeAtIndex02160094P12List02160094i(slot, 0);
+            struct First021dcf14* first = GetNodeAtIndex02160094((List02160094*)slot, 0);
             if (first == NULL) {
                 return 0;
             }
             if (first == NULL) {
                 return 0;
             }
-            struct Node021dcf14* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(slot, cur->nodeIndex);
+            struct Node021dcf14* node = GetNodeAtIndex021600f8((List021600f8*)slot, cur->nodeIndex);
             if (node == NULL) {
                 return 0;
             }
@@ -398,7 +409,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
             if (!miss && first->flags[4] != 0) {
                 sl[Field6e4e] = 6;
             }
-            _Z28ForwardPackedFields_021d8bfcPvP21PackedFields_021d8bfc(sl, cur);
+            ForwardPackedFields_021d8bfc(sl, (PackedFields_021d8bfc*)cur);
             if (sl[Field7745] != node->ids[1] || sl[Field7746] != node->ids[0]) {
                 int msgId = 0x7f;
                 int party = 0;
@@ -413,7 +424,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                 sl[Field7746] = node->ids[0];
             }
             if (miss || crit) {
-                _Z33StoreFields0x1e4And0x1e8IfNonZeroPhii(sl + CameraBase, 0xcc, 0x1f4);
+                StoreFields0x1e4And0x1e8IfNonZero((unsigned char*)(sl + CameraBase), 0xcc, 0x1f4);
                 SetShortTriple0x6e44(sl, 0x199, 0x1f4, 0x64);
                 if (crit) {
                     DispatchWithShortB4_0205eaa0(&data_02108760, 0x43, 0);
@@ -434,7 +445,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                         int found = 0;
                         int d;
                         for (d = 0; d < node->counts[k]; d++) {
-                            void* hit = _Z23FindNodeAtDepth0215fff4Pvii(node, d, k);
+                            void* hit = FindNodeAtDepth0215fff4(node, d, (unsigned char)k);
                             if (hit && func_ov000_0215fd90(hit, 0x2a)) {
                                 found = 1;
                                 TIMER = 0;
@@ -465,14 +476,14 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
             TIMER -= dt;
         } else {
             void* slot = GetSlotPtr02160f20(sl);
-            struct First021dcf14* first = _Z22GetNodeAtIndex02160094P12List02160094i(slot, 0);
+            struct First021dcf14* first = GetNodeAtIndex02160094((List02160094*)slot, 0);
             if (first == NULL) {
                 return 0;
             }
             if (first == NULL) {
                 return 0;
             }
-            struct Node021dcf14* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(slot, cur->nodeIndex);
+            struct Node021dcf14* node = GetNodeAtIndex021600f8((List021600f8*)slot, cur->nodeIndex);
             if (node == NULL) {
                 return 0;
             }
@@ -505,7 +516,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
             if (!miss && !found && !crit) {
                 for (int i = 0; i < *(short*)(sl + Field6efa); i++) {
                     GameObject* c = battle->GetCombatantByIndex(((short*)(sl + Field6ef0))[i]);
-                    if (c && !_Z23CheckSubstructFlag0x100Ph(c)) {
+                    if (c && !CheckSubstructFlag0x100((unsigned char*)c)) {
                         objs[i] = c;
                         if (!any && objs[i]) {
                             objs[i]->obj3D_.MakeVisible();
@@ -518,14 +529,14 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                     if (c == NULL) {
                         continue;
                     }
-                    if (_Z20GetSubstructByte0x56Ph(c) == 0 || _Z23CheckSubstructFlag0x100Ph(c) != 0) {
+                    if (GetSubstructByte0x56((unsigned char*)c) == 0 || CheckSubstructFlag0x100((unsigned char*)c) != 0) {
                         c->obj3D_.TransitionInheritedAlpha(0, 0x12c);
                         int party = 0;
                         if (c->obj3D_.unknown_4_ >= 0 && c->obj3D_.unknown_4_ <= 3) {
                             party = 1;
                         }
-                        if (party || _Z23CheckSubstructFlag0x100Ph(c)) {
-                            _Z21SetSubstructFlag0x400Ph(c);
+                        if (party || CheckSubstructFlag0x100((unsigned char*)c)) {
+                            SetSubstructFlag0x400((unsigned char*)c);
                         }
                     } else {
                         Vector3fix off = data_ov025_021eeee0;
@@ -542,15 +553,15 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                         rec.id = cur->actorId;
                         rec.val = 0x64;
                         rec.angle = fix32ReduceAngle0To2Pi(rotY + data_ov025_021eeef8[i]);
-                        _Z29PushNodeFromFreeList_021eee48P11Obj021eee48P11Rec021eee48(sl + PendingList, &rec);
+                        PushNodeFromFreeList_021eee48((Obj021eee48*)(sl + PendingList), (Rec021eee48*)&rec);
                         ResetFields_021de110(&rec);
                         rec.f0 = 0;
                         rec.id = ((short*)(sl + Field6ef0))[i];
                         rec.val = 0x12c;
                         _ZN8Vector3iaSERKS_(&rec.pos, &dst);
-                        _Z29PushNodeFromFreeList_021eee48P11Obj021eee48P11Rec021eee48(sl + PendingList, &rec);
+                        PushNodeFromFreeList_021eee48((Obj021eee48*)(sl + PendingList), (Rec021eee48*)&rec);
                         objs[i]->obj3D_.MaybeSetRegularAnimation(data_ov025_021ef460, 0);
-                        _Z16SetFlag0x4At0xe0P13Flags02033fcc(objs[i]);
+                        SetFlag0x4At0xe0((Flags02033fcc*)objs[i]);
                     }
                 }
                 sl[Field6e4e] = 0;
@@ -560,7 +571,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                 GameObject* target = NULL;
                 int id = func_ov000_0215ffa0(node);
                 if (miss || crit) {
-                    if (!_Z20TryDispatch_021dce7cPhP10In021dce7ci(sl, slot, id)) {
+                    if (!TryDispatch_021dce7c((unsigned char*)sl, (In021dce7c*)slot, id)) {
                         func_ov000_0216df00(sl + CameraBase, id, 0, 0, 1.8f);
                     }
                     target = battle->GetCombatantByIndex(id);
@@ -580,14 +591,14 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                     if (pending.flags & 1) {
                         req.offset.y += target->obj3D_.GetHeight() / 2;
                     }
-                    _Z26FindNodeAndProcess02057fb4Pvii(list, pending.id, &req);
-                    _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, *(short*)(sl + Field6f9a), 0);
+                    FindNodeAndProcess02057fb4(list, pending.id, (int)&req);
+                    DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, *(short*)(sl + Field6f9a), 0);
                 }
                 if (!crit) {
                     if (miss) {
                         cur->mode = 3;
                     }
-                    _Z28ForwardPackedFields_021d8bfcPvP21PackedFields_021d8bfc(sl, cur);
+                    ForwardPackedFields_021d8bfc(sl, (PackedFields_021d8bfc*)cur);
                     cur->mode = 1;
                     if (sl[Field6e4d] <= ++sl[Field6e4c]) {
                         sl[Field6e4e] = 0;
@@ -607,7 +618,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
             TIMER -= dt;
         } else {
             struct Node021dcf14* node =
-                _Z22GetNodeAtIndex021600f8P12List021600f8i(GetSlotPtr02160f20(sl), cur->nodeIndex);
+                GetNodeAtIndex021600f8((List021600f8*)GetSlotPtr02160f20(sl), cur->nodeIndex);
             if (node == NULL) {
                 return 0;
             }
@@ -616,7 +627,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
             }
             int id = func_ov000_0215ffa0(node);
             func_ov025_021eabd0(sl + Auxiliary, IsPartyMember(id));
-            _Z28ForwardPackedFields_021d8bfcPvP21PackedFields_021d8bfc(sl, cur);
+            ForwardPackedFields_021d8bfc(sl, (PackedFields_021d8bfc*)cur);
             func_ov025_021ead5c(sl + Auxiliary, IsPartyMember(id));
             SetPhase(sl, 5, 1000);
         }
@@ -629,7 +640,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
             for (int i = 0; i < sl[Field6e4d]; i++) {
                 GameObject* c = battle->GetCombatantByIndex(((struct Entry021dcf14*)(sl + Field6e50))[i].actorId);
                 if (c) {
-                    _Z18ClearFlag0x4At0xe0P13Flags02033fdc(c);
+                    ClearFlag0x4At0xe0((Flags02033fdc*)c);
                 }
                 ((struct Entry021dcf14*)(sl + Field6e50))[i].actorId = -1;
                 ((struct Entry021dcf14*)(sl + Field6e50))[i].targetId = -1;
@@ -676,17 +687,15 @@ struct Pending021de124 {
 extern "C" void func_ov000_0216d370(void* obj, int a, int b, int c);
 extern "C" void func_ov000_0216df00(void* obj, int id, int b, int c, float scale);
 extern "C" void func_ov000_0216dbf0(void* obj, int* id, int a, int b);
-extern "C" void _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(void* obj);
 void* GetSlotPtr02160f20(void* obj);
 extern "C" void func_ov000_021626a0(void* obj, int a, int b);
 extern "C" void _ZN8Vector3iaSERKS_(Vector3fix* dst, const Vector3fix* src);
 extern "C" void func_ov000_02167f10(void* obj);
-extern "C" void _Z18ClearFlag0x4At0xe0P13Flags02033fdc(GameObject* obj);
 extern "C" int func_ov025_021ed444(void* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
 extern "C" int func_ov025_021ed564(void* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
 void SetShortTriple0x6e44(void* obj, unsigned short a, unsigned short b, unsigned short c);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
-extern "C" int _Z24GetShortAtField0xEBound3Pci(void* node, int idx);
+int GetShortAtField0xEBound3(char*, int);
 void* GetActiveCombatWork(void);
 extern "C" int func_ov000_0215ffa0(void* node);
 extern "C" void func_ov025_021eabd0(void* obj, bool party);
@@ -695,11 +704,8 @@ extern "C" void func_ov025_021ed344(void* obj, int val);
 int Check021ed2f4(void* obj);
 int GetGlobalField0x1c020421a0(void);
 extern "C" void func_02043124(int obj);
-extern "C" int _Z20TryDispatch_021dce7cPhP10In021dce7ci(void* obj, void* slot, int id);
 extern "C" void* func_02057924(void);
 void InitStruct02078484(struct InitStruct02078484Struct* p);
-extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, struct InitStruct02078484Struct* req);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(struct Obj0205eaa0* obj, int a, int b);
 short ClampScaledStat_0216352c(int id, float a, float b);
 extern "C" int func_ov000_021635e4(int id, int mode);
 
@@ -710,7 +716,7 @@ extern struct Obj0205eaa0 data_02108760;
 #define TIMER (GetTimer021ef974().timer2)
 
 static inline int IsFirstShortParty(void* node) {
-    return _Z24GetShortAtField0xEBound3Pci(node, 0) >= 0 && _Z24GetShortAtField0xEBound3Pci(node, 0) <= 3;
+    return GetShortAtField0xEBound3((char*)node, 0) >= 0 && GetShortAtField0xEBound3((char*)node, 0) <= 3;
 }
 
 static inline int IsInRange(int id) {
@@ -743,7 +749,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
 
     if (sl[Field6efe] == 1) {
         list = cur->list;
-        struct Node021dcf14* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, cur->nodeIndex);
+        struct Node021dcf14* node = GetNodeAtIndex021600f8((List021600f8*)list, cur->nodeIndex);
         int n = list->count - 1;
         if (n <= 0) {
             n = 1;
@@ -763,7 +769,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
             && !(list->id == 0x30f || list->id == 0x243)) {
             func_ov000_0216d370(sl + CameraBase, 0, 1, 1);
             func_ov000_0216df00(sl + CameraBase, node->ids[0], 0, 0, 1.8f);
-            _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(sl);
+            ApplyField41ToGatheredCombatants02163a7c((GatherObj02163a7c*)sl);
             func_ov000_021626a0(sl, 4, 0);
             GameObject* obj = battle->GetCombatantByIndex(node->ids[0]);
             if (obj) {
@@ -776,7 +782,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
         int index = cur->nodeIndex;
         int found = 0;
         TIMER = 0;
-        struct Node021dcf14* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, index);
+        struct Node021dcf14* node = GetNodeAtIndex021600f8((List021600f8*)list, index);
         for (int i = 1; i < node->count; i++) {
             if (node->codes[i] == 1 || node->codes[i] == 2) {
                 found = 1;
@@ -797,8 +803,8 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
             if (*(unsigned int*)(sl + Field6fa0) & 1) {
                 req.offset.y += obj->obj3D_.GetHeight() / 2;
             }
-            _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, *(short*)(sl + Field6f9a), 0);
-            _Z26FindNodeAndProcess02057fb4Pvii(fx, *(short*)(sl + Field6f98), &req);
+            DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, *(short*)(sl + Field6f9a), 0);
+            FindNodeAndProcess02057fb4(fx, *(short*)(sl + Field6f98), (int)&req);
             TIMER = *(unsigned int*)(sl + Field6fc8);
         }
         sl[Field6efe] = 3;
@@ -813,7 +819,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
             int flag8;
             int index = cur->nodeIndex;
             TIMER = 0;
-            node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, index);
+            node = GetNodeAtIndex021600f8((List021600f8*)list, index);
             int i = 1;
             flag8 = 0;
             for (; i < node->count; i++) {
@@ -826,7 +832,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
                     break;
                 }
             }
-            _Z28ForwardPackedFields_021d8bfcPvP21PackedFields_021d8bfc(sl, cur);
+            ForwardPackedFields_021d8bfc(sl, (PackedFields_021d8bfc*)cur);
             if (flag8) {
                 int msgId = 0x7f;
                 int party = 0;
@@ -857,7 +863,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
                 struct List021de124* slot = (struct List021de124*)GetSlotPtr02160f20(GetActiveCombatWork());
                 int found = -1;
                 for (int i = 0; i < slot->count; i++) {
-                    struct Node021dcf14* n = _Z22GetNodeAtIndex021600f8P12List021600f8i(slot, i);
+                    struct Node021dcf14* n = GetNodeAtIndex021600f8((List021600f8*)slot, i);
                     if (n == 0) {
                         continue;
                     }
@@ -913,7 +919,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
         }
         list = cur->list;
         struct TableEntry021dcf14* row =
-            _Z24SearchBothTables02079e2cPci(GetData02108e10(), *(short*)list);
+            SearchBothTables02079e2c((char*)GetData02108e10(), *(short*)list);
         int kind2 = 0;
         int forceCameraDispatch = 0;
         int suppressKindCameraDispatch = 0;
@@ -933,7 +939,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
         InitStruct02078484(&req);
         if (forceCameraDispatch || (sl[ModeByte] != 3 && kind2 != 0 && suppressKindCameraDispatch == 0)) {
             func_ov000_0216d370(sl + CameraBase, 1, 1, 1);
-            if (!_Z20TryDispatch_021dce7cPhP10In021dce7ci(sl, list, *(short*)(sl + Field6efc))) {
+            if (!TryDispatch_021dce7c((unsigned char*)sl, (In021dce7c*)list, *(short*)(sl + Field6efc))) {
                 func_ov000_0216df00(sl + CameraBase, *(short*)(sl + Field6efc), 0, 0, 1.8f);
             }
             req.objectId = *(short*)(sl + Field6efc);
@@ -968,11 +974,11 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
                     _ZN8Vector3iaSERKS_(&req.scale, &sc);
                 }
             }
-            _Z26FindNodeAndProcess02057fb4Pvii(fx, *(short*)(sl + Field6f98), &req);
+            FindNodeAndProcess02057fb4(fx, *(short*)(sl + Field6f98), (int)&req);
             if (*(short*)(sl + Field6f9a) != -1) {
-                _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, *(short*)(sl + Field6f9a), 0);
+                DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, *(short*)(sl + Field6f9a), 0);
             } else if (*(unsigned short*)(sl + Field6f04) != -1) {
-                _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, *(unsigned short*)(sl + Field6f04), 0);
+                DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, *(unsigned short*)(sl + Field6f04), 0);
             }
             TIMER = *(unsigned int*)(sl + Field6fc8);
         } else if (sl[ModeByte] == 3 || kind2 == 0 || suppressKindCameraDispatch != 0) {
@@ -992,9 +998,9 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
                 _ZN8Vector3iaSERKS_(&obj->obj3D_.position_, &v);
                 obj->obj3D_.MakeVisible();
             }
-            _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, *(unsigned short*)(sl + Field6f04), 0);
+            DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, *(unsigned short*)(sl + Field6f04), 0);
             req.objectId = savedId;
-            _Z26FindNodeAndProcess02057fb4Pvii(fx, *(unsigned short*)(sl + Field6f02), &req);
+            FindNodeAndProcess02057fb4(fx, *(unsigned short*)(sl + Field6f02), (int)&req);
             TIMER = *(unsigned int*)(sl + Field6fd0);
             if (TIMER == 0) {
                 TIMER = 0x1f4;
@@ -1016,7 +1022,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
             first = 1;
             for (; i < list->count; i++) {
                 int off = i * 0x1c;
-                node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, *(int*)(sl + off + Field6f14));
+                node = GetNodeAtIndex021600f8((List021600f8*)list, *(int*)(sl + off + Field6f14));
                 for (int j = 1; j < node->count; j++) {
                     if (node->codes[j] == 1 || node->codes[j] == 2) {
                         *(int*)(sl + RecordsHigh + off + RecordFlag) = 1;
@@ -1028,7 +1034,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
                             func_ov025_021eabd0(sl + Auxiliary, party);
                             first = 0;
                         }
-                        _Z28ForwardPackedFields_021d8bfcPvP21PackedFields_021d8bfc(sl, (struct Entry021de124*)(sl + Field6f08 + off));
+                        ForwardPackedFields_021d8bfc(sl, (PackedFields_021d8bfc*)(sl + Field6f08 + off));
                     }
                 }
             }
@@ -1046,13 +1052,13 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
             for (int i = 0; i < 4; i++) {
                 GameObject* obj = battle->GetCombatantByIndex(((short*)(sl + Field6fba))[i]);
                 if (obj) {
-                    _Z18ClearFlag0x4At0xe0P13Flags02033fdc(obj);
+                    ClearFlag0x4At0xe0((Flags02033fdc*)obj);
                 }
                 ((short*)(sl + Field6fba))[i] = -1;
             }
             GameObject* obj = battle->GetCombatantByIndex(*(short*)(sl + Field6efc));
             if (obj) {
-                _Z18ClearFlag0x4At0xe0P13Flags02033fdc(obj);
+                ClearFlag0x4At0xe0((Flags02033fdc*)obj);
             }
             sl[Field6f01] = 0;
             sl[Field6eff] = 0;

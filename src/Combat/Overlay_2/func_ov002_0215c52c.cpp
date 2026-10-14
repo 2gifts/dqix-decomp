@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct Container020e0310;
 
 struct GameState;
-extern "C" GameState* _ZN9GameState11GetInstanceEv();
 unsigned char ReadBattleField0x64f4Byte(GameState* gameState);
 void AppendFrameTag02041c08(char *buf, int x, int a, int b, int c, int d);
 void AppendCursorTag(char *buf, int x);
@@ -18,7 +18,7 @@ extern "C" ARM void func_ov002_0215c52c(unsigned char *self, char *buf, int fram
     short key = 0x3ea;
     int n     = 3;
     short x   = *(short *) (self + 0x1be4);
-    if (ReadBattleField0x64f4Byte(_ZN9GameState11GetInstanceEv()) == 0) n = 2;
+    if (ReadBattleField0x64f4Byte(GameState::GetInstance()) == 0) n = 2;
     if (frame) AppendFrameTag02041c08(buf, x, 8, 5, 5, 5);
     AppendCursorTag(buf, x);
     AppendFormatted02041fac(

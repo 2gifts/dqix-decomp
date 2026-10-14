@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 enum { PackedEntriesLow = 0x27c, PackedEntriesHigh = 0x5800 };
@@ -9,7 +10,6 @@ enum { PackedEntriesLow = 0xdc, PackedEntriesHigh = 0x5c00 };
 struct Variant02030b0c;
 extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c*);
 extern "C" int _s32_div_f(int a, int b);
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" void* func_0208e0a8(void);
 
 extern int data_02108fe4;
@@ -40,7 +40,7 @@ extern "C" ARM int func_0208e894(char* v) {
     int p28 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x28));
     int p30 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x30));
     int p38 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x38));
-    w = (struct Bits0208e894*)((char*)_ZN9GameState11GetInstanceEv() + PackedEntriesLow + PackedEntriesHigh);
+    w = (struct Bits0208e894*)((char*)GameState::GetInstance() + PackedEntriesLow + PackedEntriesHigh);
     if (k == 8) {
         w[idx].f0 = 0;
         w[idx].f1 = p38;

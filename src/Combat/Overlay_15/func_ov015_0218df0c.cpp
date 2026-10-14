@@ -14,18 +14,17 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Filesystem/BackgroundLoader.h"
+#include "World/Object3D.h"
 
 extern "C" void* __clear(void* dst, int count);
-extern "C" void _ZN13SafeAllocator5ResetEv(void* thisPtr);
 void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outLen);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
-extern "C" int _ZN8Object3D21MaybeSetBCFGAnimationEii(void* obj, int id, int flags);
 
 struct Foo0207df50;
 void CopyInternalFields0207df50(struct Foo0207df50* p);
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
-extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(unsigned char* dst, int* src);
+struct Vector3i;
 
 struct Struct_203dafc;
 void ClearEightWords(struct Struct_203dafc* obj);
@@ -56,7 +55,7 @@ extern "C" ARM int func_ov015_0218df0c(void* self, int* desc) {
     char buf[0x20];
     __clear(buf, 0x20);
 
-    _ZN13SafeAllocator5ResetEv(*(void**)((char*)self + 8));
+    ((SafeAllocator*)(*(void**)((char*)self + 8)))->Reset();
 
     int ok = 1;
     struct Foo0207df50* mgr = *(struct Foo0207df50**)*(void**)((char*)self + 4);
@@ -86,9 +85,9 @@ extern "C" ARM int func_ov015_0218df0c(void* self, int* desc) {
         _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(*(void**)((char*)self + 0x24), &params, 0);
 
         struct Vec3Words02193cfc v = data_ov015_02193cfc;
-        _ZN8Object3D8SetScaleEPK8Vector3i((unsigned char*)*(void**)((char*)self + 0x24), (int*)&v);
+        ((Object3D*)((unsigned char*)*(void**)((char*)self + 0x24)))->SetScale((Vector3i const*)&v);
 
-        _ZN8Object3D21MaybeSetBCFGAnimationEii(*(void**)((char*)self + 0x24), 0, *(int*)((char*)self + 0x44));
+        ((Object3D*)(*(void**)((char*)self + 0x24)))->MaybeSetBCFGAnimation(0, *(int*)((char*)self + 0x44));
     }
 
     BackgroundLoader::RemoveLockGlobal();

@@ -20,7 +20,7 @@ struct FlagWord02046708;
 int TestFlags02046708(FlagWord02046708* w, unsigned int mask);
 int GetByte0x26c(char* p);
 int GetSignedField020c39c8(volatile unsigned short* p);
-extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(int* flags, int mask);
+int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 struct Obj0205eaa0;
 int DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 void ReinitController02043204(char* p);
@@ -30,7 +30,9 @@ void TeardownAndResetState020d7aa0(Obj020d7aa0* obj);
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_02017c58(void* a);
 void InitObjWithFlag_021c0760(unsigned char* obj, unsigned char flag);
-extern "C" void _Z19InsertNodeAfterHeadP12List02046a3cP12Node02046a3c(void* list, void* node);
+struct List02046a3c;
+struct Node02046a3c;
+void InsertNodeAfterHead(List02046a3c*, Node02046a3c*);
 
 extern int data_02114e30;
 extern Obj0205eaa0 data_02108760;
@@ -53,7 +55,7 @@ extern "C" ARM void func_ov017_021c05f4(void* p9, unsigned char p8, unsigned cha
         if (TestFlags02046708((FlagWord02046708*)d, 0x800) != 0) return;
         if (GetByte0x26c((char*)combatant) != 0) return;
         if (GetSignedField020c39c8((volatile unsigned short*)0x400006c) != 0) return;
-        if (_Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 4) == 0) return;
+        if (TestFlag0SetAndFlag1Clear((unsigned short*)&data_02114e30, 4) == 0) return;
         *(unsigned short*)((char*)combatant + 0xb2) = 0;
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     } else {
@@ -67,5 +69,5 @@ extern "C" ARM void func_ov017_021c05f4(void* p9, unsigned char p8, unsigned cha
     InitObjWithFlag_021c0760((unsigned char*)*(void**)((char*)p9 + 0x3000 + RegionOffsetb3c), p8);
     char* base = (char*)p9 + 0x3000;
     *((unsigned char*)*(void**)(base + RegionOffsetb3c) + 0x24) = p7;
-    _Z19InsertNodeAfterHeadP12List02046a3cP12Node02046a3c(*(void**)(base + RegionOffset6fc), *(void**)(base + RegionOffsetb3c));
+    InsertNodeAfterHead((List02046a3c*)(*(void**)(base + RegionOffset6fc)), (Node02046a3c*)(*(void**)(base + RegionOffsetb3c)));
 }

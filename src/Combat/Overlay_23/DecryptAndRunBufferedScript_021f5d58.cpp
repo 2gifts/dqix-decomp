@@ -6,6 +6,7 @@ extern const char data_ov023_021fd6a5[];
 #endif
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
+#include "Resource/Script.h"
 
 unsigned long long ComputeModHash_021f6324(int count, unsigned char* ptr);
 extern "C" void func_ov031_022118a8(void* ctx, unsigned char* key, int keylen);
@@ -13,12 +14,9 @@ extern "C" void Rc4Crypt_02211938(unsigned char* ctx, const unsigned char* in, i
 extern unsigned char data_ov023_021fe3c8[];
 
 struct ResetStruct;
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 struct StreamState;
 struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
 extern int data_ov023_021fe34c;
 
@@ -49,15 +47,15 @@ extern "C" ARM int func_ov023_021f5d58(unsigned char* buf, int len, unsigned cha
     unsigned int size;
     if (!GetFileInNarc(out, data_ov023_021fd69d, &file, &size, 0)) return 0;
 #endif
-    _ZN6Script10InitializeEv((struct ResetStruct*)local);
+    ((Script*)((struct ResetStruct*)local))->Initialize();
     _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_ov023_021fe34c);
 #if defined(jpn)
-    _ZN6Script4LoadEPKvj((struct StreamState*)local, (struct StreamHeader*)file, size);
+    ((Script*)((struct StreamState*)local))->Load((struct StreamHeader*)file, size);
 #else
-    _ZN6Script4LoadEPKvj((struct StreamState*)local, (struct StreamHeader*)out, len - 4);
+    ((Script*)((struct StreamState*)local))->Load((struct StreamHeader*)out, len - 4);
 #endif
 
-    _ZN6Script7ExecuteEv((struct Struct02030774*)local);
+    ((Script*)((struct Struct02030774*)local))->Execute();
 #if defined(jpn)
     char* str = (char*)data_ov023_021fff08.field10;
     if (str == 0) return 0;

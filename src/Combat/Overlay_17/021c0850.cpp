@@ -103,12 +103,15 @@ extern "C" void func_020a1940(unsigned int id);
 void PushInputLogB(int id);
 extern "C" void func_ov008_021843f8(void* scene);
 extern "C" void func_ov008_021842a0(void* scene, SafeAllocator* alloc);
-extern "C" int _Z14GetShortAt0xb8P23ShortField0xb8_0209cae8(void* obj);
-extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(void* actor, int arg);
+struct ShortField0xb8_0209cae8;
+int GetShortAt0xb8(ShortField0xb8_0209cae8*);
+struct Actor0209c678;
+void DispatchContextByState0209c678(Actor0209c678*, int);
 extern "C" void* func_02012fe4(void);
 extern void* GetGlobalPtr021075f4(void);
 extern "C" void func_0203e0a0(void* g, unsigned short val);
-extern "C" int _Z15GetAxisIntValueP18AxisFloats0203b57ci(void* obj, int axis);
+struct AxisFloats0203b57c;
+int GetAxisIntValue(AxisFloats0203b57c*, int);
 void SetBrightness(GameResources* resources, int brightness, int duration);
 void SetMainBrightness(GameResources* resources, int brightness, int duration);
 int IsBrightnessTransitionActive(GameResources* resources);
@@ -142,7 +145,7 @@ int* GetGlobalPtr02105244(void);
 extern "C" int func_0203be4c(void* ctx);
 extern "C" void func_0203c35c(int* ptr);
 extern "C" int func_ov017_021959b4(void);
-extern "C" void _Z28SetFlagBit_02184a2c_02184a2cPc(void* obj);
+void SetFlagBit_02184a2c_02184a2c(char*);
 extern "C" int func_ov008_02184754(void* obj);
 void ClearFlag0x10IfSet(Struct02074bd0* obj);
 void ClearFlag0x11IfSet(Struct02074bf4* obj);
@@ -150,19 +153,23 @@ extern "C" void* func_ov008_021845ac(void* obj);
 void ProcessCombatantsIfFlagged_0218f79c(void* res);
 extern "C" void func_ov017_0219b624(GameResources* res);
 int GetGlobalField0x1c020421a0(void);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char* p);
+struct Foo0207df50;
+void CopyInternalFields0207df50(Foo0207df50*);
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
 extern "C" void func_020432c4(void* controller);
 extern "C" void func_ov017_0219bd1c(int a, int b, int c, int d);
-extern "C" void _Z36InitAllocatorAndClearFields_021c0820P11Obj021c0820(void* obj);
-extern "C" void _Z20InitState40_021c0334P11Obj021c0334(void* obj);
-extern "C" void _Z20InitState37_021b14a0P11Obj021b14a0(void* obj);
+void InitAllocatorAndClearFields_021c0820(Obj021c0820*);
+struct Obj021c0334;
+void InitState40_021c0334(Obj021c0334*);
+struct Obj021b14a0;
+void InitState37_021b14a0(Obj021b14a0*);
 void SetByteField49_021b1d3c(void* obj, int v);
 void PrependNodeToHead(HeadList020469f8* list, HeadNode020469f8* node);
 extern "C" void func_ov017_021c0580(void* self, int kind, const char* name, void* handler);
 extern "C" int func_0209cd50(int id);
-extern "C" void _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(void* actor, int v);
+struct Actor0209c3b4;
+void SetStateAndDispatch0209c3b4(Actor0209c3b4*, int);
 void SetByteField0x253(void* obj);
 extern "C" void func_ov017_021c07d0(void* self);
 int AllocateAndDispatch20_0215502c(SafeAllocator* alloc, int arg);
@@ -236,14 +243,14 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         }
         if (self->bbc) {
             self->scene->flags |= 1;
-            if (_Z14GetShortAt0xb8P23ShortField0xb8_0209cae8(&data_02109bf4) != 0x29) {
-                _Z30DispatchContextByState0209c678P13Actor0209c678i(&data_02109bf4, 0xf);
+            if (GetShortAt0xb8((ShortField0xb8_0209cae8*)&data_02109bf4) != 0x29) {
+                DispatchContextByState0209c678((Actor0209c678*)&data_02109bf4, 0xf);
             }
         }
         unsigned short* id = (unsigned short*)func_02012fe4();
         func_0203e0a0(GetGlobalPtr021075f4(), *id);
-        if (_Z15GetAxisIntValueP18AxisFloats0203b57ci(res, 0) != -0x10
-            || _Z15GetAxisIntValueP18AxisFloats0203b57ci(res, 1) != -0x10) {
+        if (GetAxisIntValue((AxisFloats0203b57c*)res, 0) != -0x10
+            || GetAxisIntValue((AxisFloats0203b57c*)res, 1) != -0x10) {
             SetBrightness(res, -0x10, 0xf);
         }
         self->state++;
@@ -322,7 +329,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         self->state++;
     } else if (self->state == 3) {
         if (func_ov017_021959b4()) {
-            _Z28SetFlagBit_02184a2c_02184a2cPc(self->scene);
+            SetFlagBit_02184a2c_02184a2c((char*)self->scene);
         }
         if (func_ov008_02184754(self->scene)) {
             self->state++;
@@ -367,7 +374,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         func_ov017_0219b624(res);
         char* fields = res->unknown_2cc;
         void* controller = (void*)GetGlobalField0x1c020421a0();
-        _Z26CopyInternalFields0207df50P11Foo0207df50(fields + 0x5b0);
+        CopyInternalFields0207df50((Foo0207df50*)(fields + 0x5b0));
         RestorePairTables0207df90(fields + 0x5b0);
         func_020432c4(controller);
         BackupPairTables0207dfac(fields + 0x5b0);
@@ -389,10 +396,10 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         HeadNode020469f8* node;
         switch (self->scene->kind) {
         case 1:
-            _Z36InitAllocatorAndClearFields_021c0820P11Obj021c0820(self);
+            InitAllocatorAndClearFields_021c0820((Obj021c0820*)self);
             self->b24 = 0;
             node = (HeadNode020469f8*)res2->unknown_ptr_array_3afc[15];
-            _Z20InitState40_021c0334P11Obj021c0334(node);
+            InitState40_021c0334((Obj021c0334*)node);
             PrependNodeToHead(list, node);
             return;
         case 2:
@@ -402,10 +409,10 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
             func_ov017_021c0580(self, 2, data_ov017_021d7f07, (void*)AllocateAndDispatch14_021560b0);
             return;
         case 4:
-            _Z36InitAllocatorAndClearFields_021c0820P11Obj021c0820(self);
+            InitAllocatorAndClearFields_021c0820((Obj021c0820*)self);
             self->b24 = 3;
             node = (HeadNode020469f8*)res2->unknown_ptr_array_3afc[18];
-            _Z20InitState37_021b14a0P11Obj021b14a0(node);
+            InitState37_021b14a0((Obj021b14a0*)node);
             SetByteField49_021b1d3c(node, 1);
             PrependNodeToHead(list, node);
             return;
@@ -420,7 +427,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
             return;
         case 0: {
             SetMainBrightness(res, 0, 0xf);
-            _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(&data_02109bf4, func_0209cd50(*(unsigned short*)func_02012fe4()));
+            SetStateAndDispatch0209c3b4((Actor0209c3b4*)&data_02109bf4, func_0209cd50(*(unsigned short*)func_02012fe4()));
             char* global = (char*)GetGlobalField0x1c020421a0();
             *(int*)(global + kGlobalStateOffset) = 0;
             *(unsigned char*)(global + kGlobalFlagOffset) = 1;

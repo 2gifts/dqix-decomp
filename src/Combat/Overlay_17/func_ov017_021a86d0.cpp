@@ -3,7 +3,6 @@
 #include "Combat/Main/CopyRecord0200fbb4.h"
 
 #if defined(jpn)
-extern "C" int _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(void* loader, const char* file, void* alloc);
 extern "C" char data_ov017_021d7c0c[];
 extern "C" void func_0205dfa8(void* obj);
 enum { WorkBuffer = 0x1000, MessageContainer = 0x230, ResourceTail = 0x34ec, ResourceNode = 0x34fc, ResourceAux = 0x3524, SubEnd = 0x1f4, SubByte = 0x1ef, MessageState = 0x868, MessageResult = 0x870, MessageLeft = 0x7e4, MessageWidth = 0x7e8, MessageTop = 0x7e6, MessageDone = 0x17de, GrottoResult = 0x27f4, GrottoFlag = 0x285f };
@@ -59,11 +58,13 @@ extern "C" char* func_02012fe4(void);
 extern "C" unsigned int _ZNK9GameState12GetTickCountEv(void* gs);
 void SetupAndDispatch0205c904(unsigned char* obj, int value);
 void* GetGlobalResetObj020d7a50(void);
-extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(void* obj);
+struct Obj020d7aa0;
+void TeardownAndResetState020d7aa0(Obj020d7aa0*);
 extern "C" void* _ZN9GameState14GetProtagonistEv(void* gs);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(void* obj, int arg);
+struct Obj020397cc;
+void CancelPendingAction020397cc(Obj020397cc*, int);
 extern "C" char* func_ov017_0218b5b0(void);
-extern "C" void _Z15SetBitsInField4Pjj(void* obj, unsigned int mask);
+void SetBitsInField4(unsigned int*, unsigned int);
 extern "C" void ColorEffect_ConfigureAlphaBlend(void* reg, int plane1, int plane2, int ev1, int ev2);
 void* GetGlobalPtr021075f4(void);
 void* FindEntryPointerByKey0203df78(void* p, int key);
@@ -73,29 +74,32 @@ extern "C" void Vector3fix_Subtract(const Vec3_021a86d0* a, const Vec3_021a86d0*
 extern "C" void Vector3fix_Normalize(const Vec3_021a86d0* a, Vec3_021a86d0* out);
 extern "C" int fix32_Atan2(int y, int x);
 #include "Combat/EntryGetterTypes.h"
-extern "C" void* _ZN16BackgroundLoader11GetInstanceEv(void);
-extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(void* loader, const char* gp2, const char* inner, void* alloc);
-extern "C" void* _Z16AllocateAligned4P14AllocatorUnionj(void* alloc, unsigned int size);
-extern "C" void _ZN13SafeAllocator11CreateTypeAEPvj(void* alloc, void* buf, unsigned int size);
-extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(void* loader, int task);
-extern "C" void _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(void* loader, int task, void** data, unsigned int* length);
-extern "C" void _ZN13SafeAllocator5ResetEv(void* alloc);
+#include "Filesystem/BackgroundLoader.h"
+struct AllocatorUnion;
+void* AllocateAligned4(AllocatorUnion*, unsigned int);
 extern "C" void func_020dfec0(void* cont, void* alloc, void* data, unsigned int length);
-extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(void* loader, int task);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void* obj, int index, char* name);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void* obj, int a, int b);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
+struct Obj0205eaa0;
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_ov017_021a933c(void* obj, int key);
-extern "C" void _Z21InitBigStruct0205c790Pc(unsigned char* obj);
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(void* obj, int a, int b, int c);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(void* obj, int value);
-extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void* cont, int key);
-extern "C" void _Z26ProcessCombatEntry0205cb74Pci(unsigned char* obj, void* entry);
+void InitBigStruct0205c790(char*);
+struct Struct_0205ba68;
+void SetupPointerTable0205ba68(Struct_0205ba68*, int, int, int);
+struct Node0205bacc;
+void SetField0AndPropagate0205bacc(Node0205bacc*, int);
+struct Container020e0310;
+void* GetFieldByKey020e0434(Container020e0310*, int);
+void ProcessCombatEntry0205cb74(char*, int);
 extern "C" void func_0205cc50(void* obj, int a, int b);
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(void* obj, int index);
+struct Struct_0205bcdc;
+void SetIndexIfValid0205bcdc(Struct_0205bcdc*, int);
 extern "C" void func_0205bb04(void* obj, int value);
-extern "C" void _Z24ResetBytesAndSetByte0x16P28ResetBytesAndSetByte0x16Datai(void* obj, int value);
+struct ResetBytesAndSetByte0x16Data;
+void ResetBytesAndSetByte0x16(ResetBytesAndSetByte0x16Data*, int);
 void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
-extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(void* cont, int value);
+struct Container0205a330;
+void IterateEntries0205a330(Container0205a330*, int);
 int GetScaledSumIfActive0205cecc(void* obj);
 int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
 int CallFunc0205c570AtField0x1c(void* obj);
@@ -103,21 +107,24 @@ void ReinitController02043204(char* obj);
 void SetupGlobalObjType3AndInitSelfPointer(unsigned char* obj);
 extern "C" int func_020457e0(char* obj);
 extern "C" unsigned char* func_0205ec34(void);
-extern "C" unsigned char* _Z20GetField0x3f8AddressP9GameState(void* gs);
+struct GameState;
+unsigned char* GetField0x3f8Address(GameState*);
 extern "C" void VectorizedMemset(void* dst, int value, unsigned int size);
 void InitContext020e1154(void* p);
-extern "C" void _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(unsigned char a, unsigned short b);
+void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short, unsigned short);
 extern "C" void _Z26EnqueueEventTagB5_021d1dc0ssPisi(unsigned short id, int a, int* buf, int b, int c);
 void InitAndResetHeader_0219e310(unsigned char* obj, int arg);
-extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(void* list, void* node);
+struct TailList020469b4;
+struct TailNode020469b4;
+void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 void InitAndAppendState61_021a65c4(void* obj, unsigned char mode, int arg);
 extern "C" void func_ov017_021baedc(unsigned char* node, int arg);
-extern "C" int _Z17GetField5cb0ValuePc(void* gs);
-extern "C" int _Z17GetField5cb4ValuePc(void* gs);
-extern "C" int _Z17GetField5cb8ValuePc(void* gs);
-extern "C" int _Z18TestBitInByteArrayiPhi(unsigned char* obj, unsigned char* array, int bit);
+int GetField5cb0Value(char*);
+int GetField5cb4Value(char*);
+int GetField5cb8Value(char*);
+int TestBitInByteArray(int, unsigned char*, int);
 int ReturnZero_021a01b4(char* res, int value);
-extern "C" void _Z20SetField11c_021bbbf8Pvt(unsigned char* obj, unsigned short value);
+void SetField11c_021bbbf8(void*, unsigned short);
 void SetByteField0x253(void* obj);
 extern "C" void func_ov017_021a92a0(Self021a86d0* self);
 
@@ -144,11 +151,11 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
     SetupAndDispatch0205c904(self->sub, _ZNK9GameState12GetTickCountEv(gs));
 
     if (self->state == 0) {
-        _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(GetGlobalResetObj020d7a50());
+        TeardownAndResetState020d7aa0((Obj020d7aa0*)GetGlobalResetObj020d7a50());
         self->planes = GX_GetVisiblePlane();
         GX_SetVisiblePlane(0x11);
-        _Z27CancelPendingAction020397ccP11Obj020397cci(_ZN9GameState14GetProtagonistEv(gs), 1);
-        _Z15SetBitsInField4Pjj(func_ov017_0218b5b0(), 0x40);
+        CancelPendingAction020397cc((Obj020397cc*)_ZN9GameState14GetProtagonistEv(gs), 1);
+        SetBitsInField4((unsigned int*)func_ov017_0218b5b0(), 0x40);
         ColorEffect_ConfigureAlphaBlend((void*)0x4000050, 0x10, 1, 0x1f, 0);
         void* tbl = GetGlobalPtr021075f4();
         void* node = NULL;
@@ -173,27 +180,25 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         BlankFunction02094b30(snd, 0x205, 0);
         if (AlwaysTrue02094b4c(snd)) {
 #if defined(jpn)
-            self->task = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(
-                _ZN16BackgroundLoader11GetInstanceEv(), data_ov017_021d7c0c, NULL);
+            self->task = ((BackgroundLoader*)BackgroundLoader::GetInstance())->QueueLoadFile(data_ov017_021d7c0c, (SafeAllocator*)NULL);
 #else
-            self->task = _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(
-                _ZN16BackgroundLoader11GetInstanceEv(), data_ov017_021d77f0, data_ov017_021d780a, NULL);
+            self->task = BackgroundLoader::GetInstance()->QueueLoadFileInGP2(data_ov017_021d77f0, data_ov017_021d780a, NULL);
 #endif
-            _ZN13SafeAllocator11CreateTypeAEPvj(self->allocator, _Z16AllocateAligned4P14AllocatorUnionj(data_02114e20, WorkBuffer), WorkBuffer);
+            ((SafeAllocator*)self->allocator)->CreateTypeA(AllocateAligned4((AllocatorUnion*)data_02114e20, WorkBuffer), WorkBuffer);
             self->state = 1;
         }
     } else if (self->state == 1) {
-        void* loader = _ZN16BackgroundLoader11GetInstanceEv();
-        if (_ZN16BackgroundLoader13GetTaskStatusEi(loader, self->task)) {
+        void* loader = BackgroundLoader::GetInstance();
+        if (((BackgroundLoader*)loader)->GetTaskStatus(self->task)) {
             void* data;
             unsigned int length;
-            _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, self->task, &data, &length);
-            _ZN13SafeAllocator5ResetEv(self->allocator);
+            ((BackgroundLoader*)loader)->GetLoadedFileByID(self->task, &data, &length);
+            ((SafeAllocator*)self->allocator)->Reset();
             func_020dfec0(self->container, self->allocator, data, length);
-            _ZN16BackgroundLoader10RemoveTaskEi(loader, self->task);
+            ((BackgroundLoader*)loader)->RemoveTask(self->task);
             self->task = -1;
-            _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, *(char**)((char*)_ZN9GameState14GetProtagonistEv(gs) + 0x134));
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 1, 0);
+            SetIndexedName02046574((Obj02046574*)g, 0, *(char**)((char*)_ZN9GameState14GetProtagonistEv(gs) + 0x134));
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             func_ov017_021a933c(self, 0x64);
             *(int*)(g + MessageState) = 1;
             self->state = 2;
@@ -206,22 +211,22 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
                     self->count++;
                 }
             }
-            _Z21InitBigStruct0205c790Pc(self->sub);
+            InitBigStruct0205c790((char*)self->sub);
             sub->dd = 1;
             sub->dc = 1;
             int count = self->count;
-            _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(sub->table4c, 1, count + 1, 0);
-            _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(sub->table9c, 1, count + 1, 0);
-            _Z29SetField0AndPropagate0205baccP12Node0205bacci(sub->table4c, count + 1);
-            _Z29SetField0AndPropagate0205baccP12Node0205bacci(sub->table9c, count + 1);
+            SetupPointerTable0205ba68((Struct_0205ba68*)sub->table4c, 1, count + 1, 0);
+            SetupPointerTable0205ba68((Struct_0205ba68*)sub->table9c, 1, count + 1, 0);
+            SetField0AndPropagate0205bacc((Node0205bacc*)sub->table4c, count + 1);
+            SetField0AndPropagate0205bacc((Node0205bacc*)sub->table9c, count + 1);
             int offset = 0;
             for (int j = 0; j < self->count; j++) {
                 if (self->members[j] == 4) {
                     offset = 0xc;
                 }
-                _Z26ProcessCombatEntry0205cb74Pci(self->sub, _Z21GetFieldByKey020e0434P17Container020e0310i(self->container, self->members[j]));
+                ProcessCombatEntry0205cb74((char*)self->sub, (int)(GetFieldByKey020e0434((Container020e0310*)self->container, self->members[j])));
             }
-            _Z26ProcessCombatEntry0205cb74Pci(self->sub, _Z21GetFieldByKey020e0434P17Container020e0310i(self->container, 6));
+            ProcessCombatEntry0205cb74((char*)self->sub, (int)(GetFieldByKey020e0434((Container020e0310*)self->container, 6)));
             int n = self->count;
             int y = 0x60 - (n + 1) * 0xe;
             if (n == 2) {
@@ -249,23 +254,23 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
 #else
             func_0205cc50(self->sub, 0, -4);
 #endif
-            _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(sub->table4c, 0);
+            SetIndexIfValid0205bcdc((Struct_0205bcdc*)sub->table4c, 0);
             func_0205bb04(sub->table9c, 0);
             sub->b260 = 1;
-            _Z24ResetBytesAndSetByte0x16P28ResetBytesAndSetByte0x16Datai(sub->resetData, 1);
+            ResetBytesAndSetByte0x16((ResetBytesAndSetByte0x16Data*)sub->resetData, 1);
             sub->b25f = 1;
             sub->b260 = 1;
-            _Z24ResetBytesAndSetByte0x16P28ResetBytesAndSetByte0x16Datai(sub->resetData, 1);
+            ResetBytesAndSetByte0x16((ResetBytesAndSetByte0x16Data*)sub->resetData, 1);
             SetupGlobalObjType1AndInitSelfPointer(self->sub);
             self->state = 3;
         }
     } else if (self->state == 3) {
         void* cont = *(void**)(g + MessageContainer);
-        _Z22IterateEntries0205a330P17Container0205a330i(cont, _ZNK9GameState12GetTickCountEv(gs));
+        IterateEntries0205a330((Container0205a330*)cont, _ZNK9GameState12GetTickCountEv(gs));
         g[MessageDone] = 0;
         int sel = GetScaledSumIfActive0205cecc(self->sub);
         if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1)) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 1, 0);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             sel = CallFunc0205c570AtField0x1c(self->sub);
         } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
             sel = -2;
@@ -313,7 +318,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         unsigned char* bits = func_0205ec34();
         char* res = func_ov017_0218b5b0();
         void* tail = *(void**)(res + ResourceTail);
-        unsigned char* ctx = _Z20GetField0x3f8AddressP9GameState(gs);
+        unsigned char* ctx = GetField0x3f8Address((GameState*)gs);
         VectorizedMemset(ctx, 0, 0x70);
         ctx[4] = 1;
         ctx[8] = 1;
@@ -373,12 +378,12 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
                 break;
             }
             int buf[3];
-            _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(self->choice, 0);
+            SetHalfFieldsAndEnqueueIfActive_021d1c2c((unsigned char)self->choice, 0);
             _Z26EnqueueEventTagB5_021d1dc0ssPisi(self->choice, 0, buf, 0, 0);
             CallFunc0200fbb4AtField0x3f8(gs, ctx);
             unsigned char* header = *(unsigned char**)(res + ResourceNode);
             InitAndResetHeader_0219e310(header, 0);
-            _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(tail, header);
+            AppendNodeToTail((TailList020469b4*)tail, (TailNode020469b4*)header);
             if (intro) {
                 InitAndAppendState61_021a65c4(res, 1, 0);
             }
@@ -436,22 +441,22 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
                 msgB = 0x7349;
                 break;
             }
-            chapter = _Z17GetField5cb0ValuePc(gs);
-            part = _Z17GetField5cb4ValuePc(gs);
-            int step = _Z17GetField5cb8ValuePc(gs);
+            chapter = GetField5cb0Value((char*)gs);
+            part = GetField5cb4Value((char*)gs);
+            int step = GetField5cb8Value((char*)gs);
             if (chapter == 10 && part == 8 && step == 1) {
                 if (self->mode == 0 && self->choice == 1 &&
-                    _Z18TestBitInByteArrayiPhi(bits, bits + 0x8c, 4) &&
-                    _Z18TestBitInByteArrayiPhi(bits, bits + 0x8c, 5) &&
-                    _Z18TestBitInByteArrayiPhi(bits, bits + 0x8c, 6) &&
-                    _Z18TestBitInByteArrayiPhi(bits, bits + 0x8c, 7) &&
-                    _Z18TestBitInByteArrayiPhi(bits, bits + 0x8c, 8) &&
-                    _Z18TestBitInByteArrayiPhi(bits, bits + 0x8c, 9) &&
-                    _Z18TestBitInByteArrayiPhi(bits, bits + 0x8c, 10)) {
+                    TestBitInByteArray((int)bits, bits + 0x8c, 4) &&
+                    TestBitInByteArray((int)bits, bits + 0x8c, 5) &&
+                    TestBitInByteArray((int)bits, bits + 0x8c, 6) &&
+                    TestBitInByteArray((int)bits, bits + 0x8c, 7) &&
+                    TestBitInByteArray((int)bits, bits + 0x8c, 8) &&
+                    TestBitInByteArray((int)bits, bits + 0x8c, 9) &&
+                    TestBitInByteArray((int)bits, bits + 0x8c, 10)) {
                     msgB = 0x7080;
                 }
             } else if (chapter == 0x11 && part == 1 && step == 1 && self->mode == 1 && self->choice == 3) {
-                if (_Z18TestBitInByteArrayiPhi(bits, bits + 0x8c, 0x15)) {
+                if (TestBitInByteArray((int)bits, bits + 0x8c, 0x15)) {
                     msgB = 0x721a;
                 }
             }
@@ -463,10 +468,10 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
                 flags[GrottoFlag] = 1;
             }
             *(unsigned short*)(node + 8) = msgA;
-            _Z20SetField11c_021bbbf8Pvt(node, msgB);
-            _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(tail, node);
+            SetField11c_021bbbf8(node, msgB);
+            AppendNodeToTail((TailList020469b4*)tail, (TailNode020469b4*)node);
             int buf[3];
-            _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(self->choice, 0);
+            SetHalfFieldsAndEnqueueIfActive_021d1c2c((unsigned char)self->choice, 0);
             _Z26EnqueueEventTagB5_021d1dc0ssPisi(self->choice, 0, buf, msgA, msgB);
         }
         self->state = 100;

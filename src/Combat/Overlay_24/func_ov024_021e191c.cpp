@@ -1,8 +1,9 @@
 #include <globaldefs.h>
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
-extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(void*);
-extern "C" int _Z36CheckField0x14FiveFlagsClear020881c4Ph(void*);
+struct FlagObj_021dd260;
+int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
+int CheckField0x14FiveFlagsClear020881c4(unsigned char*);
 void SetFlag0x800000AndByte0x24(void*,unsigned char);
 void ResetAndSetFlag0x1000000(void*);
 extern "C" void* func_ov000_0215e958(void*);
@@ -21,7 +22,7 @@ extern "C" ARM void* func_ov024_021e191c(Obj021e191c* obj,int unused,int id,Para
  GameObject* target=GetCombatantByID((int)obj->context,id);
  if(!target)return 0;
  unsigned long long effects=0;
- if(_Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(target) || !_Z36CheckField0x14FiveFlagsClear020881c4Ph(target->currentStats_)){
+ if(IsFlagBit24Set_021dd260((FlagObj_021dd260*)target) || !CheckField0x14FiveFlagsClear020881c4((unsigned char*)target->currentStats_)){
   void* entry=func_ov000_0215e958(obj->context);
   if(!entry)return 0;
   AddEntryAndIncrementCount0215a88c(obj->context,entry,0x1f);

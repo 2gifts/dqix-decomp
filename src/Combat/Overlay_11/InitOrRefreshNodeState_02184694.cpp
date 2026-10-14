@@ -16,13 +16,14 @@
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_ov017_021959b4(void);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
 extern "C" void func_ov011_021848a8(void* obj);
 struct Node02184a84;
 void DispatchByFlagAOrB_02184a84(struct Node02184a84* obj);
 extern "C" void func_ov011_02184ae4(void* obj);
 extern "C" void func_ov023_021f68dc(void* list, void* obj);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
+int IsBrightnessTransitionActive(GameResources*);
 extern "C" void func_ov011_02184770(void* obj);
 
 struct Obj02184694 {
@@ -40,14 +41,14 @@ extern "C" ARM int func_ov011_02184694(Obj02184694* obj) {
         if (flag) {
             obj->flag_1cd = 1;
             if (ctx) {
-                _Z13SetBrightnessP13GameResourcesii((void*)ctx, -16, 10);
+                SetBrightness((GameResources*)ctx, -16, 10);
             }
         }
         func_ov011_021848a8(obj);
         DispatchByFlagAOrB_02184a84((struct Node02184a84*)obj);
         func_ov011_02184ae4(obj);
         func_ov023_021f68dc((char*)obj + 0x118, obj);
-    } else if (ctx != 0 && !_Z28IsBrightnessTransitionActiveP13GameResources((int*)ctx)) {
+    } else if (ctx != 0 && !IsBrightnessTransitionActive((GameResources*)ctx)) {
         func_ov011_02184770(obj);
         obj->flag_1cc = 1;
     }

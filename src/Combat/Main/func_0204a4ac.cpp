@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+#include "Graphics/Model3D.h"
+#include "World/Object3D.h"
 
 struct Struct0207ea38;
 
@@ -12,8 +14,6 @@ struct Item02037af8 {
     char pad2[0x36];
 };
 
-extern "C" int _ZN7Model3D12GetBoneIndexEPKc(struct Struct0207ea38* obj, char* str);
-extern "C" void _ZN8Object3D18UntrackBoneByIndexEi(struct KeyNodeOwner* owner, int key);
 extern "C" void _ZN8Object3D9TrackBoneEPNS_17TrackedBoneMatrixE(void* owner, struct Item02037af8* item);
 
 struct Holder0204a4ac {
@@ -38,13 +38,13 @@ extern "C" ARM void func_0204a4ac(struct Holder0204a4ac* self) {
 
     if (self->owner == NULL || (text = self->owner->text) == NULL) return;
 
-    if (self->keyB >= 0) _ZN8Object3D18UntrackBoneByIndexEi(self->owner, self->keyA);
-    if (self->keyB >= 0) _ZN8Object3D18UntrackBoneByIndexEi(self->owner, self->keyB);
-    if (self->keyC >= 0) _ZN8Object3D18UntrackBoneByIndexEi(self->owner, self->keyC);
+    if (self->keyB >= 0) ((Object3D*)self->owner)->UntrackBoneByIndex(self->keyA);
+    if (self->keyB >= 0) ((Object3D*)self->owner)->UntrackBoneByIndex(self->keyB);
+    if (self->keyC >= 0) ((Object3D*)self->owner)->UntrackBoneByIndex(self->keyC);
 
-    if (self->keyA == -1) self->keyA = _ZN7Model3D12GetBoneIndexEPKc(text, self->nameA);
-    if (self->keyB == -1) self->keyB = _ZN7Model3D12GetBoneIndexEPKc(text, self->nameB);
-    if (self->keyC == -1) self->keyC = _ZN7Model3D12GetBoneIndexEPKc(text, self->nameC);
+    if (self->keyA == -1) self->keyA = ((Model3D*)text)->GetBoneIndex(self->nameA);
+    if (self->keyB == -1) self->keyB = ((Model3D*)text)->GetBoneIndex(self->nameB);
+    if (self->keyC == -1) self->keyC = ((Model3D*)text)->GetBoneIndex(self->nameC);
 
     if (self->keyB >= 0) {
         data_02107870[0].key = self->keyA;

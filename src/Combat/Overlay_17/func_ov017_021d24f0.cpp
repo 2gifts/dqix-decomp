@@ -1,13 +1,10 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 struct ListHead02046b60;
 int ListContainsId(struct ListHead02046b60* list, int id);
 
-
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 struct TailNode020469b4;
 struct TailList020469b4;
@@ -33,7 +30,7 @@ extern "C" ARM void func_ov017_021d24f0(void* unused0, Node021d24f0* node, GameS
     struct TailList020469b4* list = *(struct TailList020469b4**)((char*)base + 0x3000 + regionalOffset0);
     if (ListContainsId((struct ListHead02046b60*)list, 0xa)) return;
     GameObject* c = battleStruct->GetUnknownGameObject();
-    unsigned short u = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)c);
+    unsigned short u = ((Object3D*)((struct U16Field0x6_020375f8*)c))->GetField06();
     if (node->field8 != u) return;
     if (ListContainsId((struct ListHead02046b60*)list, 0x1a)) return;
     struct TailNode020469b4* n2 = *(struct TailNode020469b4**)((char*)base + 0x3000 + regionalOffset1);

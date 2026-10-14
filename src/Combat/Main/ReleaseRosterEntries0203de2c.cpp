@@ -3,7 +3,6 @@
 
 extern "C" void func_0203f430(void* p);
 struct Obj02037640;
-extern "C" void _ZN8Object3D16StageTextureDataEv(struct Obj02037640* obj);
 
 struct Node0203de2c {
     char pad0[0x14];
@@ -25,7 +24,7 @@ ARM void ReleaseRosterEntries0203de2c(struct Roster0203de2c* roster) {
         if (n->field_14 != NULL) {
             func_0203f430(n->field_14);
         } else if (n->field_18 != NULL) {
-            _ZN8Object3D16StageTextureDataEv((struct Obj02037640*)n->field_18);
+            ((Object3D*)((struct Obj02037640*)n->field_18))->StageTextureData();
         }
     }
 }

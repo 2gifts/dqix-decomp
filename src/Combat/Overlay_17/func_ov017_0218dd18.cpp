@@ -19,8 +19,10 @@ struct Node0218dd18 {
 };
 
 extern "C" Vector3fix _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(Node0218dd18* node);
-extern "C" Info0218dd18* _Z19GetField0xc02040538P9S02040538(Node0218dd18* node);
-extern "C" void _Z28SetActiveChildFields02040774P12Node02040774iii(Node0218dd18* node, int x, int y, int z);
+struct S02040538;
+Info0218dd18* GetField0xc02040538(S02040538*);
+struct Node02040774;
+void SetActiveChildFields02040774(Node02040774*, int, int, int);
 unsigned int IsFlag0x1ceBit0x8Set(unsigned char* obj);
 
 // USA: func_ov017_0218dd18
@@ -35,7 +37,7 @@ extern "C" ARM int func_ov017_0218dd18(Object3D* self, Node0218dd18* node, int p
     if (node->model != NULL) {
         nodeRadius = node->model->GetRadius() / 2;
     }
-    Bounds0218dd18* bounds = _Z19GetField0xc02040538P9S02040538(node)->bounds;
+    Bounds0218dd18* bounds = GetField0xc02040538((S02040538*)node)->bounds;
     if (bounds != NULL) {
         nodeRadius = bounds->radius;
         Vector3fix_Add(&target, &bounds->center, &target);
@@ -68,7 +70,7 @@ extern "C" ARM int func_ov017_0218dd18(Object3D* self, Node0218dd18* node, int p
             Vector3fix_Subtract(&target, &pos, &delta);
             Vector3fixMultiplyScalar(&delta, fix32_Divide(reach, dist), &delta);
             Vector3fix_Add(&pos, &delta, &target);
-            _Z28SetActiveChildFields02040774P12Node02040774iii(node, target.x, target.y, target.z);
+            SetActiveChildFields02040774((Node02040774*)node, target.x, target.y, target.z);
         } else {
             Vector3fix delta;
             Vector3fix_Subtract(&pos, &target, &delta);

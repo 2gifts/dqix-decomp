@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" int func_ov017_021d60f4(void*);
 extern "C" void func_ov017_021d6134(void*, unsigned int);
 struct BitFlags02037170;
-extern "C" int _ZNK8Object3D19HasAnimationStoppedEv(struct BitFlags02037170*);
 
 struct TableStruct0215ccdc { void* unused0; char* base; };
 extern TableStruct0215ccdc data_ov001_02165880;
@@ -17,7 +17,7 @@ ARM int UpdateFlagFromNodeState_0215ccdc(void* self) {
     if (word0 == 0 || word0 == 4 || word0 == 5 || word0 == 1 || word0 == 6) {
         void* fieldC = table[idx].fieldC;
         if (fieldC != NULL) {
-            int b = _ZNK8Object3D19HasAnimationStoppedEv((struct BitFlags02037170*)fieldC);
+            int b = ((Object3D*)((struct BitFlags02037170*)fieldC))->HasAnimationStopped();
             unsigned int val = (b == 0) ? 1 : 0;
             func_ov017_021d6134((char*)self + 0x8, val);
         }

@@ -4,6 +4,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "World/Object3D.h"
 struct BattleStruct {
     int unk0;
     int unk4;
@@ -15,42 +16,52 @@ struct CombatantStruct {
     struct BaseCombatStats* baseStats;
     struct ModifiableCombatStats* currentStats;
 };
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(struct BattleStruct* battleStruct);
+struct GameState;
+void* GetPtrField0x2a04(GameState*);
 extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 int FindMappedMemberId02080468(void* obj, int id);
-extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(void* obj);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void* obj, int a, int b);
-extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void* obj);
+struct Obj0208203c;
+void ResetWithSub0208203c(Obj0208203c*);
+struct Obj0205eaa0;
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
+struct Cont0207fe44;
+void CallFunc0204c804OverAllElems(Cont0207fe44*);
 int IsTableValueNot99_02155ffc(void* obj, int id);
 int IsCombatantFlagit2Set_02155f88_02155f88(void* obj, int id);
 void ResetFields_0215873c(void* obj);
-extern "C" void _Z25SetFlag_02158a50_02158a50Ph(void* obj);
-extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void* obj, unsigned short val);
+void SetFlag_02158a50_02158a50(unsigned char*);
+struct Struct0209c830;
+void SetValueAndActivate0209c830(Struct0209c830*, unsigned short);
 int IsAnimationActive0209ca2c(void* obj);
-extern "C" int _ZNK8Object3D19HasAnimationStoppedEv(void* obj);
 void SetOrClearBitInArray(void* a, unsigned char* b, int c, int d);
 void* ZeroInitReturn020de824(void* obj);
 void InitStruct0207cbe8(char* obj);
 void InitStruct0207cc0c(char* obj);
 int TestBattleBlockBit_021ed6cc(int tag);
-extern "C" void _Z19ClearStruct020a13c4P9S020a13c4(void* obj);
+struct S020a13c4;
+void ClearStruct020a13c4(S020a13c4*);
 void SetupGlobalAndRunScript020a13e4(void* p0, void* p1, int p2, unsigned short p3, unsigned char p4);
-extern "C" void _Z19ResetBitfieldRecordP22BitfieldRecord020a1380(void* obj);
-extern "C" void _Z20InitBuffers_021580a0P14Struct021580a0(void* obj);
-extern "C" void* _Z26FindElementByField020a15bcP13Array020a15bci(void* arr, int id);
-extern "C" void _Z30AppendFormattedNumber_02158140P11Obj02158140i(void* obj, int val);
+struct BitfieldRecord020a1380;
+void ResetBitfieldRecord(BitfieldRecord020a1380*);
+struct Struct021580a0;
+void InitBuffers_021580a0(Struct021580a0*);
+struct Array020a15bc;
+void* FindElementByField020a15bc(Array020a15bc*, int);
+struct Obj02158140;
+void AppendFormattedNumber_02158140(Obj02158140*, int);
 
 extern "C" struct CombatantStruct* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battleStruct, int combatantId);
-extern "C" int _Z18GetField0x3acValueP9GameState(struct BattleStruct* battleStruct);
+int GetField0x3acValue(GameState*);
 int TestBitInByteArray(int, unsigned char*, int);
 void ZeroInit020de848(void* obj);
 ARM int BuildDescriptorFlag1_020de980(void* a, void* b, void* c, int d, int e);
 int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
 void SetCombatModeFromCase020dc2d0(int);
-extern "C" ARM int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
+struct GameResources;
+ARM int IsBrightnessTransitionActive(GameResources*);
 ARM void* Clear0x54Bytes0208247c(void* obj);
 
 extern "C" void __clear(void* buf, int len);
@@ -93,7 +104,7 @@ struct Bit0x49c { unsigned char bit0 : 1; };
 extern "C" ARM void func_ov003_021575dc(void* self) {
     char* s = (char*)self;
     struct BattleStruct* bs = _ZN9GameState11GetInstanceEv();
-    void* p2a04 = _Z17GetPtrField0x2a04P9GameState(bs);
+    void* p2a04 = GetPtrField0x2a04((GameState*)bs);
     unsigned char state = *(unsigned char*)(s + 0x1f9);
     void* root;
     short* evt = (short*)(s + 0x1ec);
@@ -113,26 +124,26 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         }
         *(short*)((char*)obj18 + 0x36) = *(short*)(s + 0x1e2);
         func_ov003_02158334(self);
-        _Z20ResetWithSub0208203cP11Obj0208203c(s + 0x80);
+        ResetWithSub0208203c((Obj0208203c*)(s + 0x80));
         *(int*)(s + 8) = 0;
         *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
     } else if (state == 1) {
         *(void**)(s + 8) = (void*)(s + 0x1e2);
         if (func_ov003_021550dc(self) != 0) {
-            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
-            _Z20ResetWithSub0208203cP11Obj0208203c(s + 0x80);
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 1, 0);
+            ResetWithSub0208203c((Obj0208203c*)(s + 0x80));
             *(void**)(s + 8) = 0;
             int mm = FindMappedMemberId02080468(obj18, *(short*)(s + 0x1e6));
             short diff = *(short*)(s + 0x1e2) - mm;
             unsigned char v = *(unsigned char*)(s + 0x1f2 + diff);
             *(unsigned char*)(s + 0x1f7) = v;
             *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
-            _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(obj18);
+            CallFunc0204c804OverAllElems((Cont0207fe44*)obj18);
         } else if (func_ov003_02155208(self) != 0) {
             *(void**)(s + 8) = 0;
             evt[0] = 7;
             *(unsigned char*)(s + 0x1f8) = 7;
-            _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(obj18);
+            CallFunc0204c804OverAllElems((Cont0207fe44*)obj18);
         }
     } else if (state == 2) {
         signed char idx = *(signed char*)(s + 0x1f7);
@@ -146,14 +157,14 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         if (func_ov003_02155fc0(self, idx) != 0) {
             evt[1] = 0x41;
             *(unsigned char*)(s + 0x1f8) = 7;
-            _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(obj18);
+            CallFunc0204c804OverAllElems((Cont0207fe44*)obj18);
             return;
         }
         idx = *(signed char*)(s + 0x1f7);
         if (IsCombatantFlagit2Set_02155f88_02155f88(self, idx) != 0) {
             evt[1] = 0x12;
             *(unsigned char*)(s + 0x1f8) = 7;
-            _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(obj18);
+            CallFunc0204c804OverAllElems((Cont0207fe44*)obj18);
             return;
         }
         evt[1] = 0x13;
@@ -231,14 +242,14 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         }
     } else if (state == 9) {
         ReinitController02043204((char*)GetGlobalField0x1c020421a0());
-        _Z25SetFlag_02158a50_02158a50Ph(self);
-        _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x34);
+        SetFlag_02158a50_02158a50((unsigned char*)self);
+        SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x34);
         *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
     } else if (state == 0xa) {
         if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) {
             goto tail;
         }
-        if (_ZNK8Object3D19HasAnimationStoppedEv(s + 0x280) == 0) {
+        if (((Object3D*)(s + 0x280))->HasAnimationStopped() == 0) {
             goto tail;
         }
         *(int*)(s + 0x32c) = 0;
@@ -278,7 +289,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         short tagBuffer[12];
         __clear(tagBuffer, 0x18);
         unsigned short sbCount = 0;
-        int fieldVal = _Z18GetField0x3acValueP9GameState(bs);
+        int fieldVal = GetField0x3acValue((GameState*)bs);
         struct CombatantStruct* combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(bs, fieldVal);
         for (int i = 1; i < 13; i++) {
             void* p150 = *(void**)((char*)combatant + 0x150);
@@ -295,14 +306,14 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             root = *(void**)s;
             ((SafeAllocator*)((char*)root + 0x64))->Reset();
             char scratch[0x14];
-            _Z19ClearStruct020a13c4P9S020a13c4(scratch);
+            ClearStruct020a13c4((S020a13c4*)scratch);
             SetupGlobalAndRunScript020a13e4(scratch, (char*)root + 0x64, (int)tagBuffer, sbCount, 8);
 
             char arr[12 * 0x244];
             char* p = arr;
             do {
-                _Z19ResetBitfieldRecordP22BitfieldRecord020a1380(p);
-                _Z20InitBuffers_021580a0P14Struct021580a0(p);
+                ResetBitfieldRecord((BitfieldRecord020a1380*)p);
+                InitBuffers_021580a0((Struct021580a0*)p);
                 p += 0x244;
             } while (p < arr + sizeof(arr));
 
@@ -311,9 +322,9 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             int outCount = 0;
             for (int j = 0; j < sbCount; j++) {
                 short tag = tagBuffer[j];
-                void* found = _Z26FindElementByField020a15bcP13Array020a15bci(scratch, tag);
+                void* found = FindElementByField020a15bc((Array020a15bc*)scratch, tag);
                 if (found != 0) {
-                    _Z20InitBuffers_021580a0P14Struct021580a0(arr + outCount * 0x244);
+                    InitBuffers_021580a0((Struct021580a0*)(arr + outCount * 0x244));
                     func_ov003_021580d8(arr + outCount * 0x244, found);
                     char buf80[0x38];
                     __clear(buf80, 0x38);
@@ -332,7 +343,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
                         func_020e046c(buf80, extractResult, outLen, tagBuffer[j]);
                     }
                     BackgroundLoader::RemoveLockGlobal();
-                    _Z30AppendFormattedNumber_02158140P11Obj02158140i(arr + outCount * 0x244, (int)buf80);
+                    AppendFormattedNumber_02158140((Obj02158140*)(arr + outCount * 0x244), (int)buf80);
                     outBuf[outCount] = tagBuffer[j];
                     outCount++;
                 }
@@ -345,9 +356,9 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
                 for (int k = 0; k < outCount; k++) {
                     char* src = arr + k * 0x244;
                     char* elem = (char*)*(void**)(s + 0x200) + k * 0x244;
-                    _Z20InitBuffers_021580a0P14Struct021580a0(elem);
+                    InitBuffers_021580a0((Struct021580a0*)elem);
                     func_ov003_021580d8(elem, src);
-                    _Z30AppendFormattedNumber_02158140P11Obj02158140i(elem, (int)(src + 0xc));
+                    AppendFormattedNumber_02158140((Obj02158140*)elem, (int)(src + 0xc));
                 }
                 void* buf204 = ((SafeAllocator*)((char*)root + 0x64))->Allocate(1100);
                 *(void**)(s + 0x204) = buf204;
@@ -399,7 +410,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         }
     } else if (state == 0x68) {
         int r = func_ov017_0218b5b0();
-        if (_Z28IsBrightnessTransitionActiveP13GameResources((int*)r) != 0) {
+        if (IsBrightnessTransitionActive((GameResources*)r) != 0) {
             return;
         }
         *(unsigned char*)(s + 0x338) = 0;

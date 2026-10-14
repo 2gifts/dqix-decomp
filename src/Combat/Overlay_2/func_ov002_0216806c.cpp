@@ -22,7 +22,8 @@ extern "C" int *func_0202ae18();
 int CheckField0NonZero(int *p);
 void ForEachEntry_021d0dbc();
 extern "C" void func_ov002_02156e90(char *self);
-extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(char *obj, int a, int b);
+struct Struct_0205d81c;
+void SetElementFieldC2(Struct_0205d81c*, int, int);
 
 extern unsigned short data_02114e30;
 extern Obj0205eaa0 data_02108760;
@@ -68,15 +69,15 @@ extern "C" ARM void func_ov002_0216806c(char *self) {
             }
             func_ov002_02156e90(self);
             func_ov002_02156e90(self);
-            _Z17SetElementFieldC2P15Struct_0205d81cii(self + 0xec8, 0x18, 0);
-            _Z17SetElementFieldC2P15Struct_0205d81cii(self + 0xec8, 0x1a, 0);
-            _Z17SetElementFieldC2P15Struct_0205d81cii(self + 0xec8, 0x1b, 0);
+            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x18, 0);
+            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x1a, 0);
+            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x1b, 0);
         } else if (CheckFlagOrThreshold_02161b48(self, 1)) {
             func_ov002_02156e90(self);
             func_ov002_02156e90(self);
-            _Z17SetElementFieldC2P15Struct_0205d81cii(self + 0xec8, 0x18, 0);
-            _Z17SetElementFieldC2P15Struct_0205d81cii(self + 0xec8, 0x1a, 0);
-            _Z17SetElementFieldC2P15Struct_0205d81cii(self + 0xec8, 0x1b, 0);
+            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x18, 0);
+            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x1a, 0);
+            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x1b, 0);
         }
     }
 }

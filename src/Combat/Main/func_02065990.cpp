@@ -49,48 +49,63 @@ union Packed0209c830 {
     } b;
 };
 
-extern "C" void _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(void* c, int key, int val);
-extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(void* c, int step);
+struct Container0205a3d0;
+void SetEntryByte14ByKey0205a42c(Container0205a3d0*, int, int);
+struct Container0205a330;
+void IterateEntries0205a330(Container0205a330*, int);
 extern "C" void func_0206b104(void* obj);
-extern "C" void _Z24ReinitController02043204Pc(void* obj);
-extern "C" int _Z28UpdateCounterAndFlag02065758P14Struct02065758i(void* obj, int step);
+void ReinitController02043204(char*);
+struct Struct02065758;
+int UpdateCounterAndFlag02065758(Struct02065758*, int);
 void UpdateTimedState0202f380(void* obj, int step);
-extern "C" int _Z15IsField440EmptyP7CE28Obj(void* obj);
-extern "C" void _Z18SetupField440Type1P19Field440Obj0202f6a4(void* obj);
-extern "C" void _Z25ProcessTextTokens0206b61cP11Ctx0206b61c(void* obj);
+struct CE28Obj;
+int IsField440Empty(CE28Obj*);
+struct Field440Obj0202f6a4;
+void SetupField440Type1(Field440Obj0202f6a4*);
+struct Ctx0206b61c;
+void ProcessTextTokens0206b61c(Ctx0206b61c*);
 extern "C" int func_020657c8(void* obj, int step);
-extern "C" void _Z17UpdateStatusTimerPhj(void* obj, unsigned int step);
+void UpdateStatusTimer(unsigned char*, unsigned int);
 int IsAnimationActive0209ca2c(void* p);
-extern "C" void _Z19StepCounter020456d0P14Battle020456d0(void* obj);
-extern "C" void _Z29ResetOrConsumeCounter02065920Phj(void* obj, unsigned int step);
-extern "C" void _Z25HandleRepeatInput02045740P14Repeat02045740(void* obj);
+struct Battle020456d0;
+void StepCounter020456d0(Battle020456d0*);
+void ResetOrConsumeCounter02065920(unsigned char*, unsigned int);
+struct Repeat02045740;
+void HandleRepeatInput02045740(Repeat02045740*);
 extern "C" void func_020676e0(void* obj, int step);
-extern "C" void _Z25HandleStateChange020455f8P13State020455f8(void* obj);
+struct State020455f8;
+void HandleStateChange020455f8(State020455f8*);
 extern "C" void func_02043124(void* obj);
 void SetName56AndFlag_0218d7b0(unsigned char* owner, char* name);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void* obj, int a, int b);
+struct Obj0205eaa0;
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_ov016_0218b5c0(int a, signed char b);
 extern "C" void func_ov017_0218b5f8(signed char a);
-extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void* list, int id);
+struct ListHead02046b60;
+int ListContainsId(ListHead02046b60*, int);
 void CallHelperIfFlag_021a5ab0(void* p);
-extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(void* p, int mask);
+int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 void* GetGlobalPtr021075f4();
-extern "C" void* _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(void* list, int id);
-extern "C" void _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(struct Vec3_020406f8* out, void* node);
+struct EntryList_203dce4;
+void* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
+struct Node020406f8;
+void SelectVec3FromSources020406f8(Vec3_020406f8*, Node020406f8*);
 extern "C" int fix32_Atan2(int x, int z);
 int fix32ReduceAngle0To2Pi(int angle);
 extern "C" void func_02065418(int a);
 int CallFunc020e0434With02153694(int a);
 void InitCombatPairState020652d0(char* obj, int a, int b, int c);
-extern "C" unsigned char* _Z10GetWord0x0Pi(void* bs);
-extern "C" void _Z18SetFieldD20208bf28P11Obj0208bf28ih(void* obj, int a, unsigned char b);
+unsigned char* GetWord0x0(int*);
+struct Obj0208bf28;
+void SetFieldD20208bf28(Obj0208bf28*, int, unsigned char);
 unsigned char* GetGlobal02109418();
-extern "C" int _Z16GetTableByteOrFFP20GetTableByteOrFFDataj(unsigned char* p, unsigned int i);
-extern "C" void _Z21RegisterSlotA020cf0fci(struct SlotA020cf0fc* out);
-extern "C" void _Z21RegisterSlotB020cf1a8i(struct SlotB020cf1a8* out);
+struct GetTableByteOrFFData;
+int GetTableByteOrFF(GetTableByteOrFFData*, unsigned int);
+void RegisterSlotA020cf0fc(int);
+void RegisterSlotB020cf1a8(int);
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void* p, int v);
-extern "C" void _Z41ClearField0xd0AndSetFlag0x1IfByte0xd4Not2Ph(void* p);
-extern "C" void _Z24SetFlag0x2IfByte0xd4Not3Ph(void* p);
+void ClearField0xd0AndSetFlag0x1IfByte0xd4Not2(unsigned char*);
+void SetFlag0x2IfByte0xd4Not3(unsigned char*);
 extern "C" void func_0205e944(void* p, int v);
 
 extern unsigned char data_02109bf4;
@@ -114,9 +129,9 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
 
     if (*(void**)(self + REGION_VALUE(0x230, 0x2e0)) != 0 && self[REGION_VALUE(0x236, 0x2e6)] != 0 && *(int*)(self + REGION_VALUE(0x870, 0x9a0)) == 6) {
         if ((*(unsigned short*)0x4000304 & 0x8000) >> 15 == 1) {
-            _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(*(void**)(self + REGION_VALUE(0x230, 0x2e0)), 0, 0x1e);
+            SetEntryByte14ByKey0205a42c((Container0205a3d0*)(*(void**)(self + REGION_VALUE(0x230, 0x2e0))), 0, 0x1e);
         }
-        _Z22IterateEntries0205a330P17Container0205a330i(*(void**)(self + REGION_VALUE(0x230, 0x2e0)), step);
+        IterateEntries0205a330((Container0205a330*)(*(void**)(self + REGION_VALUE(0x230, 0x2e0))), step);
     }
 
     if (*(int*)(self + REGION_VALUE(0x868, 0x998)) == 0) return;
@@ -125,17 +140,17 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
         (self + 0x1000)[REGION_VALUE(0x786, 0x958)] = *(signed char*)(self + REGION_VALUE(0x1786, 0x1958)) - step;
         if (*(signed char*)(self + REGION_VALUE(0x1786, 0x1958)) >= 0) return;
         func_0206b104(self);
-        _Z24ReinitController02043204Pc(self);
+        ReinitController02043204((char*)self);
         return;
     }
 
     CheckAndClearFlag020656e4(message, step);
-    if (_Z28UpdateCounterAndFlag02065758P14Struct02065758i(self, step) != 0) return;
+    if (UpdateCounterAndFlag02065758((Struct02065758*)self, step) != 0) return;
 
     if ((self + 0x1000)[REGION_VALUE(0x7e1, 0x9b1)] != 0) {
         UpdateTimedState0202f380(self + REGION_VALUE(0x1804, 0x19e0), step);
-        if (_Z15IsField440EmptyP7CE28Obj(self + REGION_VALUE(0x1804, 0x19e0)) != 0) {
-            _Z18SetupField440Type1P19Field440Obj0202f6a4(self + REGION_VALUE(0x1804, 0x19e0));
+        if (IsField440Empty((CE28Obj*)(self + REGION_VALUE(0x1804, 0x19e0))) != 0) {
+            SetupField440Type1((Field440Obj0202f6a4*)(self + REGION_VALUE(0x1804, 0x19e0)));
         }
         unsigned char* w = *(unsigned char**)(self + REGION_VALUE(0x1c44, 0x1e20));
         int ready;
@@ -153,7 +168,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
         *(int*)(self + REGION_VALUE(0x1738, 0x1868)) = *(int*)(self + REGION_VALUE(0x1738, 0x1868)) + step;
         if (*(int*)(self + REGION_VALUE(0x1738, 0x1868)) < *(int*)(self + REGION_VALUE(0x1734, 0x1864))) return;
         *(int*)(self + REGION_VALUE(0x1738, 0x1868)) = 0;
-        _Z25ProcessTextTokens0206b61cP11Ctx0206b61c(self);
+        ProcessTextTokens0206b61c((Ctx0206b61c*)self);
         (self + 0x1000)[REGION_VALUE(0x7e4, 0x9b4)] = 0;
         *(int*)(self + REGION_VALUE(0x870, 0x9a0)) = 5;
         (self + 0x1000)[REGION_VALUE(0x7e5, 0x9b5)] = 0;
@@ -161,7 +176,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
     }
 
     if (func_020657c8(self, step) != 0) return;
-    _Z17UpdateStatusTimerPhj(self, step);
+    UpdateStatusTimer((unsigned char*)self, step);
 
     if (((self + 0x1000)[REGION_VALUE(0x789, 0x95b)] & 1) != 0) {
         if (IsAnimationActive0209ca2c(&data_02109bf4) == 0) {
@@ -177,7 +192,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
             return;
         }
 
-        _Z19StepCounter020456d0P14Battle020456d0(self);
+        StepCounter020456d0((Battle020456d0*)self);
         if (func_020440cc(message) != 0) {
             REGION_FLAG(flag3, b19d1) = 1;
             (self + 0x1000)[REGION_VALUE(0x786, 0x958)] = 5;
@@ -185,9 +200,9 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
         }
 
         if (*(int*)(self + REGION_VALUE(0x870, 0x9a0)) != 5) {
-            _Z29ResetOrConsumeCounter02065920Phj(self, step);
+            ResetOrConsumeCounter02065920((unsigned char*)self, step);
             if ((self + 0x1000)[REGION_VALUE(0x7ec, 0x9bc)] != 0) {
-                _Z25HandleRepeatInput02045740P14Repeat02045740(self);
+                HandleRepeatInput02045740((Repeat02045740*)self);
             }
             func_020676e0(self, step);
             ProcessPendingFlag02045688(message);
@@ -207,7 +222,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
         if (*(signed char*)(self + REGION_VALUE(0x7e2, 0x912)) >= 4) {
             *(signed char*)(self + REGION_VALUE(0x7e2, 0x912)) = *(signed char*)(self + REGION_VALUE(0x7e2, 0x912)) - 4;
             ProcessPendingFlag02045688(message);
-            _Z25HandleStateChange020455f8P13State020455f8(self);
+            HandleStateChange020455f8((State020455f8*)self);
         }
         *(signed char*)(self + REGION_VALUE(0x7e2, 0x912)) =
             *(signed char*)(self + REGION_VALUE(0x7e2, 0x912)) + GameState::GetInstance()->GetTickCount();
@@ -255,7 +270,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
             } else if (tok == 0xff03) {
                 *(int*)(self + REGION_VALUE(0x870, 0x9a0)) = 0;
                 ProcessPendingFlag02045688(message);
-                _Z24ReinitController02043204Pc(self);
+                ReinitController02043204((char*)self);
                 func_02043124(self);
                 return;
             } else if (tok == 0xff0b) {
@@ -301,7 +316,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                     int kind = *(signed char*)(self + REGION_VALUE(0x1780, 0x1952) + slot);
                     val = *(signed char*)(self + REGION_VALUE(0x177c, 0x194e) + slot);
                     if (kind > 0) {
-                        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 0x65, 0);
+                        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 0x65, 0);
                         if (kind == 2) {
                             val = -1;
                             func_ov016_0218b5c0(1, val);
@@ -322,7 +337,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                         func_ov016_0218b5c0(1, val);
                         func_ov017_0218b5f8(val);
                         unsigned char* who = ((unsigned char*)func_ov017_0218b5b0());
-                        if (_Z14ListContainsIdP16ListHead02046b60i(*(void**)(who + REGION_VALUE(0x34ec, 0x36fc)), 0xc) != 0) {
+                        if (ListContainsId((ListHead02046b60*)(*(void**)(who + REGION_VALUE(0x34ec, 0x36fc))), 0xc) != 0) {
                             CallHelperIfFlag_021a5ab0(*(void**)(who + REGION_VALUE(0x350c, 0x371c)));
                         }
                     }
@@ -351,7 +366,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 ((int*)(self + REGION_VALUE(0x173c, 0x186c)))[*(signed char*)(self + REGION_VALUE(0x17dc, 0x19ac))] =
                     ((int*)(self + REGION_VALUE(0x173c, 0x186c)))[*(signed char*)(self + REGION_VALUE(0x17dc, 0x19ac))] - 1;
                 if (((int*)(self + REGION_VALUE(0x173c, 0x186c)))[*(signed char*)(self + REGION_VALUE(0x17dc, 0x19ac))] > 0) {
-                    if (_Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0xfe3) == 0 &&
+                    if (TestFlag0SetAndFlag1Clear((unsigned short*)&data_02114e30, 0xfe3) == 0 &&
                         (&data_02114e54)[0x55] == 0) {
                         return;
                     }
@@ -391,11 +406,10 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 return;
             } else if (tok == REGION_VALUE(0xff2f, 0xff2d)) {
                 unsigned char* who = (unsigned char*)GameState::GetInstance()->GetUnknownGameObject();
-                void* node = _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(
-                    GetGlobalPtr021075f4(), *(int*)(self + REGION_VALUE(0x1708, 0x1838)));
+                void* node = GetEntryUnlessFlag0x8000((EntryList_203dce4*)GetGlobalPtr021075f4(), *(int*)(self + REGION_VALUE(0x1708, 0x1838)));
                 if (who != 0 && node != 0) {
                     here = *(struct Vec3_020406f8*)(who + 0x44);
-                    _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(&src, node);
+                    SelectVec3FromSources020406f8(&src, (Node020406f8*)node);
                     dst = src;
                     *(int*)(self + REGION_VALUE(0x1714, 0x1844)) = fix32ReduceAngle0To2Pi(fix32_Atan2(here.v[0] - dst.v[0], here.v[2] - dst.v[2]));
                     (self + 0x1000)[REGION_VALUE(0x7e6, 0x9b6)] = 1;
@@ -410,7 +424,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 (self + 0x1000)[REGION_VALUE(0x78a, 0x95c)] = 0;
                 *(int*)(self + REGION_VALUE(0x44, 0x78)) = *(int*)(self + REGION_VALUE(0x44, 0x78)) + 1;
                 *(signed char*)(self + REGION_VALUE(0x7e2, 0x912)) = 0;
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 6, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 6, 0);
                 return;
             } else if (tok == REGION_VALUE(0xff31, 0xff2f)) {
                 ProcessPendingFlag02045688(message);
@@ -419,7 +433,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 (self + 0x1000)[REGION_VALUE(0x78a, 0x95c)] = 1;
                 *(int*)(self + REGION_VALUE(0x44, 0x78)) = *(int*)(self + REGION_VALUE(0x44, 0x78)) + 1;
                 *(signed char*)(self + REGION_VALUE(0x7e2, 0x912)) = 0;
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 0x1c, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 0x1c, 0);
                 return;
             } else if (tok == 0xff04 || tok == 0xff05 || tok == 0xff06 || tok == 0xff07) {
                 func_02065418((self + 0x1000)[REGION_VALUE(0x7fd, 0x9cc)]);
@@ -438,10 +452,10 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 *(int*)(self + REGION_VALUE(0x85c, 0x98c)) = 0;
                 *(int*)(self + REGION_VALUE(0x870, 0x9a0)) = 6;
                 ProcessPendingFlag02045688(message);
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 5, 0);
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 5, 0);
                 int alive = 1;
                 unsigned char* bs = (unsigned char*)GameState::GetInstance();
-                unsigned char* w = _Z10GetWord0x0Pi(bs);
+                unsigned char* w = GetWord0x0((int*)bs);
                 if ((bs + 0x5000)[REGION_VALUE(0xa68, 0xcc8)] == 2) alive = 0;
                 if (w != 0 && alive != 0) (w + 0x4000)[REGION_VALUE(0x134, 0x354)] = 0xa;
                 return;
@@ -463,8 +477,8 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 *(int*)(self + REGION_VALUE(0x85c, 0x98c)) = 1;
                 *(int*)(self + REGION_VALUE(0x870, 0x9a0)) = 6;
                 ProcessPendingFlag02045688(message);
-                _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 5, 0);
-                unsigned char* w = _Z10GetWord0x0Pi(GameState::GetInstance());
+                DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 5, 0);
+                unsigned char* w = GetWord0x0((int*)GameState::GetInstance());
                 if (w != 0) (w + 0x4000)[REGION_VALUE(0x134, 0x354)] = 0xa;
                 return;
             } else if (tok == 0xff0f) {
@@ -475,12 +489,12 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 if (ent != 0) {
 #endif
                     *(unsigned short*)(ent + 0xda) = *(unsigned short*)(ent + 0xda) | 0x40;
-                    _Z18SetFieldD20208bf28P11Obj0208bf28ih(*(void**)(self + REGION_VALUE(0x4c, 0x8c)), *(short*)(self + REGION_VALUE(0x1776, 0x1948)), 0);
+                    SetFieldD20208bf28((Obj0208bf28*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))), *(short*)(self + REGION_VALUE(0x1776, 0x1948)), 0);
                     *(self + REGION_VALUE(0x1789, 0x195b)) |= 1;
                     unsigned char* g = GetGlobal02109418();
-                    int idx = _Z16GetTableByteOrFFP20GetTableByteOrFFDataj(g, (unsigned char)*(short*)(self + REGION_VALUE(0x1776, 0x1948)));
-                    _Z21RegisterSlotA020cf0fci(&sa);
-                    _Z21RegisterSlotB020cf1a8i(&sb);
+                    int idx = GetTableByteOrFF((GetTableByteOrFFData*)g, (unsigned char)*(short*)(self + REGION_VALUE(0x1776, 0x1948)));
+                    RegisterSlotA020cf0fc((int)&sa);
+                    RegisterSlotB020cf1a8((int)&sb);
                     packed.b.a = sa.f0;
                     packed.b.b = sa.f4;
                     packed.b.c = sa.f8;
@@ -498,7 +512,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 int arg = -1;
                 if (tok == REGION_VALUE(0xff50, 0xff4b)) arg = 0xe;
                 if (arg >= 0) {
-                    _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 0xe, 0);
+                    DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 0xe, 0);
                 }
             } else if (tok == 0xff10) {
                 unsigned char* ent = *(unsigned char**)(self + REGION_VALUE(0x4c, 0x8c));
@@ -507,7 +521,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 unsigned char* ent = *(unsigned char**)(self + REGION_VALUE(0x4c, 0x8c));
                 if (ent != 0) {
                     *(unsigned short*)(ent + 0xda) = *(unsigned short*)(ent + 0xda) | 0x200;
-                    _Z41ClearField0xd0AndSetFlag0x1IfByte0xd4Not2Ph(*(void**)(self + REGION_VALUE(0x4c, 0x8c)));
+                    ClearField0xd0AndSetFlag0x1IfByte0xd4Not2((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
                     *(self + REGION_VALUE(0x1789, 0x195b)) |= 1;
                     _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x33);
                 }
@@ -515,13 +529,13 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 unsigned char* ent = *(unsigned char**)(self + REGION_VALUE(0x4c, 0x8c));
                 if (ent != 0) {
                     *(unsigned short*)(ent + 0xda) = *(unsigned short*)(ent + 0xda) | 0x300;
-                    _Z41ClearField0xd0AndSetFlag0x1IfByte0xd4Not2Ph(*(void**)(self + REGION_VALUE(0x4c, 0x8c)));
+                    ClearField0xd0AndSetFlag0x1IfByte0xd4Not2((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
                     *(self + REGION_VALUE(0x1789, 0x195b)) |= 1;
                     _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x44);
                 }
             } else if (tok == 0xff12) {
                 if (*(void**)(self + REGION_VALUE(0x4c, 0x8c)) != 0) {
-                    _Z24SetFlag0x2IfByte0xd4Not3Ph(*(void**)(self + REGION_VALUE(0x4c, 0x8c)));
+                    SetFlag0x2IfByte0xd4Not3((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
                 }
 #if defined(jpn)
             } else if (tok == 0xff37) {

@@ -4,16 +4,14 @@
 struct Vec3 { int x; int y; int z; };
 
 struct Vec3Fixed02030e2c { int x; int y; int z; };
-extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3Fixed02030e2c* in, int scale, struct Vec3Fixed02030e2c* out);
+struct Vector3i;
+void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 
 struct Target02059f38;
 struct Vec3_02059f38;
 void CopyVec3ToField0x44(struct Target02059f38* dst, struct Vec3_02059f38* src);
 
-extern "C" void _ZN8Object3D14AdvanceEffectsEv(void* obj);
-
 struct BitFlags02037170;
-extern "C" int _ZNK8Object3D19HasAnimationStoppedEv(struct BitFlags02037170* obj);
 
 void InitStruct02059cc8(unsigned char* obj);
 
@@ -53,14 +51,14 @@ ARM void AdvanceActorCooldownsAndPosition0205a020(unsigned char* p, int dt) {
         struct Vec3 pos = ((struct PosHolder0205a020*)p)->pos;
 
         struct Vec3 vel;
-        _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)(p + 0xc0), dt << 12, (struct Vec3Fixed02030e2c*)&vel);
+        Vector3fixMultiplyScalar((Vector3i const*)(p + 0xc0), dt << 12, (Vector3i*)&vel);
         Vector3fix_Add((const Vector3fix*)&pos, (const Vector3fix*)&vel, (Vector3fix*)&pos);
         CopyVec3ToField0x44((struct Target02059f38*)p, (struct Vec3_02059f38*)&pos);
 
-        _ZN8Object3D14AdvanceEffectsEv(p);
+        ((Object3D*)p)->AdvanceEffects();
 
         if (p[0x19] & 1) {
-            if (_ZNK8Object3D19HasAnimationStoppedEv((struct BitFlags02037170*)p)) {
+            if (((Object3D*)((struct BitFlags02037170*)p))->HasAnimationStopped()) {
                 InitStruct02059cc8(p);
             }
         }

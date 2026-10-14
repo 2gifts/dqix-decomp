@@ -11,7 +11,9 @@ struct DispatchArgs020b78bc {
     struct DispatchTarget020b78bc* field8;
 };
 
-extern "C" void _Z36CalculateBoneMatrixRenderDataFromJACP17NSBXXAnimationJACiiP20BoneMatrixRenderData(struct DispatchTarget020b78bc* target, int a1, int a2, int a3);
+struct BoneMatrixRenderData;
+struct NSBXXAnimationJAC;
+void CalculateBoneMatrixRenderDataFromJAC(NSBXXAnimationJAC*, int, int, BoneMatrixRenderData*);
 
 // USA: func_020b78bc
 extern "C" ARM void _Z30JACAnimationProcessingCallbackPvP13AnimationDatai(int a0, struct DispatchArgs020b78bc* args, int a2) {
@@ -23,5 +25,5 @@ extern "C" ARM void _Z30JACAnimationProcessingCallbackPvP13AnimationDatai(int a0
     } else if (value < 0) {
         value = 0;
     }
-    _Z36CalculateBoneMatrixRenderDataFromJACP17NSBXXAnimationJACiiP20BoneMatrixRenderData(target, a2, value, a0);
+    CalculateBoneMatrixRenderDataFromJAC((NSBXXAnimationJAC*)target, a2, value, (BoneMatrixRenderData*)a0);
 }

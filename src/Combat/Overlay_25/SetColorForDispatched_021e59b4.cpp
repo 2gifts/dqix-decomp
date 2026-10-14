@@ -3,7 +3,6 @@
 
 extern int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 struct Struct020372b8;
-extern "C" void _ZN8Object3D24TransitionInheritedAlphaEii(struct Struct020372b8* obj, int a, int b);
 
 struct P021e59b4 {
     char pad[8];
@@ -20,7 +19,7 @@ ARM int SetColorForDispatched_021e59b4(struct P021e59b4* obj, int unused, int un
     for (int j = 0; j < count; j++) {
         GameObject* combatant = bs->GetGameObjectByIndex(buf[j]);
         if (combatant) {
-            _ZN8Object3D24TransitionInheritedAlphaEii((struct Struct020372b8*)combatant, obj->f9, obj->fa);
+            ((Object3D*)((struct Struct020372b8*)combatant))->TransitionInheritedAlpha(obj->f9, obj->fa);
         }
     }
     return 1;

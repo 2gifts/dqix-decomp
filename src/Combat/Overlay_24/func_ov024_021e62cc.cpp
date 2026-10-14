@@ -35,7 +35,7 @@ struct Obj_021e62cc {
 struct Entry_021e62cc { int id; int total; };
 
 int IsFlag10088Set(struct S_10088* obj);
-extern "C" int _Z19ClassifyField0x81fePc(void* world);
+int ClassifyField0x81fe(char*);
 extern "C" int func_ov000_0215ffa0(struct Node_021e62cc* node);
 struct Node_021e62cc* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
 struct Depth_021e62cc* FindNodeAtDepth0215fff4(void* obj, int limit, int idx);
@@ -59,7 +59,7 @@ static inline short GetCurrentMP(ModifiableCombatStats* s) {
 // USA: func_ov024_021e62cc
 extern "C" ARM void func_ov024_021e62cc(struct Obj_021e62cc* self, int id, struct Skill_021e62cc* skill) {
     GameState* gs = GameState::GetInstance();
-    if (_Z19ClassifyField0x81fePc(self->ctx) != 0) return;
+    if (ClassifyField0x81fe((char*)self->ctx) != 0) return;
     if (!(skill->flags & 0x80)) return;
     GameObject* attacker = GetCombatantByID((int)self->ctx, id);
     if (!attacker) return;

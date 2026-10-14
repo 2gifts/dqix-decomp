@@ -1,16 +1,13 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
-
+#include "Resource/Script.h"
 
 struct ResetStruct;
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 
 struct StreamState;
 struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 void* LoadFileIntoMemory(const char*, void*, unsigned int*);
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* state, void* dataPtr);
@@ -45,10 +42,10 @@ ARM void SubmitScriptFromFile020727f8(void* param0, const char* path, int param2
         data_02108db0.field4 = param3;
         data_02108db0.field0 = stackArg;
 
-        _ZN6Script10InitializeEv((struct ResetStruct*)buf);
+        ((Script*)((struct ResetStruct*)buf))->Initialize();
         _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(buf, &data_020f0cc8);
-        _ZN6Script4LoadEPKvj((struct StreamState*)buf, header, count);
-        _ZN6Script7ExecuteEv((struct Struct02030774*)buf);
+        ((Script*)((struct StreamState*)buf))->Load(header, count);
+        ((Script*)((struct Struct02030774*)buf))->Execute();
     }
     BackgroundLoader::RemoveLockGlobal();
 }

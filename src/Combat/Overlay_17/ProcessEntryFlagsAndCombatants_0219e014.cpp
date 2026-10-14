@@ -8,9 +8,6 @@ int CheckField0NonZero(int* obj);
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 extern "C" void func_02076a8c(void* obj);
-extern "C" void _ZN8Object3D10MakeHiddenEv(unsigned char* obj);
-extern "C" void _ZN8Object3D7DestroyEv(unsigned char* obj);
-extern "C" void _ZN8Object3D10InitializeEv(void* obj);
 
 struct EntryArg_0219e014 { unsigned char pad0[2]; unsigned short field2 : 2; unsigned short pad3 : 14; };
 
@@ -29,9 +26,9 @@ ARM void ProcessEntryFlagsAndCombatants_0219e014(unsigned char* obj, EntryArg_02
 			if (combatant) {
 				if (CheckField0NonZero((int*)search) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)search) != 0) {
 					func_02076a8c(combatant);
-					_ZN8Object3D10MakeHiddenEv((unsigned char*)combatant);
+					((Object3D*)((unsigned char*)combatant))->MakeHidden();
 				} else {
-					_ZN8Object3D7DestroyEv((unsigned char*)combatant);
+					((Object3D*)((unsigned char*)combatant))->Destroy();
 				}
 			}
 		}
@@ -40,8 +37,8 @@ ARM void ProcessEntryFlagsAndCombatants_0219e014(unsigned char* obj, EntryArg_02
 	for (int i = 7; i <= 0x12; i++) {
 		GameObject* combatant = battleStruct->GetGameObjectByIndex(i);
 		if (combatant) {
-			_ZN8Object3D10InitializeEv(combatant);
-			_ZN8Object3D10MakeHiddenEv((unsigned char*)combatant);
+			((Object3D*)combatant)->Initialize();
+			((Object3D*)((unsigned char*)combatant))->MakeHidden();
 		}
 	}
 }

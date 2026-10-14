@@ -73,32 +73,38 @@ extern "C" int func_ov006_0215fecc(Obj0215e69c* self);
 extern "C" void func_ov006_02159db0(Obj0215e69c* self);
 extern "C" int func_ov006_02159e50(Obj0215e69c* self);
 void* GetBTRandom(void);
-extern "C" unsigned int _Z13NextRandomMaxP6Randomi(void* rng, int max);
-extern "C" void _Z18SetElementFlag0x20P7Obj2081i(void* elements, int key);
-extern "C" void _Z20ClearElementFlag0x20P7Obj2081i(void* elements, int key);
+struct Random;
+unsigned int NextRandomMax(Random*, int);
+struct Obj2081;
+void SetElementFlag0x20(Obj2081*, int);
+void ClearElementFlag0x20(Obj2081*, int);
 extern "C" int _Z26CheckFlagOrByte55_02158c70v(Obj0215e69c* self);
 extern "C" void func_ov006_02153cbc(void* table, int a, int b, void* out);
 extern "C" void func_ov006_0215759c(void* list, Entry0215e69c* entry, int count);
 extern "C" void func_ov006_02158de0(Obj0215e69c* self);
 unsigned int* GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int* p, unsigned int bits);
-extern "C" void _Z19ClearStruct020a9ea4P14Struct020a9ea4(void* p);
+struct Struct020a9ea4;
+void ClearStruct020a9ea4(Struct020a9ea4*);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
 extern "C" int func_020aad1c(void* loader, void* name, int a, int b);
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(unsigned int* p, unsigned int bits);
+struct FlagWord020466f4;
+void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
 void** CallFunc020e52a0(void* lookup, int id);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" void func_020e4864(void* src, void* dst, int a, int b, int c, int d);
-extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(void* elements, int key, void* value);
+struct Container02080f8c;
+void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
 void Forward0207f7acObjPlus4Size0x40(void* elements, int key);
 extern "C" void func_020813ec(void* elements, int key);
-extern "C" void _Z30InitHandleAndDispatch_021571fcPc(Ctx0215e69c* ctx);
+void InitHandleAndDispatch_021571fc(char*);
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void* p, int value);
-extern "C" void _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(void* elements, int key);
-extern "C" void _Z25SetByte_0215728c_0215728cPv(Ctx0215e69c* ctx);
+void CallFunc0204c804OnMatchingKey(Obj2081*, int);
+void SetByte_0215728c_0215728c(void*);
 void SetEntryLowNibbleAndElement02080c68(void* elements, int key, int value);
-extern "C" void _Z34ToggleElementFlagsAndByte_0215e5f8P20Flags394Obj_0215e5f8P7Obj2081iPh(Obj0215e69c* self, void* elements, int flag, unsigned char* out);
+struct Flags394Obj_0215e5f8;
+void ToggleElementFlagsAndByte_0215e5f8(Flags394Obj_0215e5f8*, Obj2081*, int, unsigned char*);
 
 static inline short* ChancePtr(Obj0215e69c* self) { return (short*)((char*)self + 0x382); }
 static inline short* ChanceWords(Obj0215e69c* self) { return (short*)self; }
@@ -116,8 +122,8 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
     if (self->state == 0) {
         self->busy = 0;
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 0);
-            _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 1);
+            CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 0);
+            CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 1);
             SetEntryLowNibbleAndElement02080c68(self->elements, 9, 0);
             self->flags &= ~0x40;
             if (self->entry->count >= 0) {
@@ -126,7 +132,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
                 self->messageTimer = 0;
                 self->flags |= 0x20;
                 self->state++;
-                if (_Z13NextRandomMaxP6Randomi(GetBTRandom(), 10000) / 100 < self->chance) {
+                if (NextRandomMax((Random*)GetBTRandom(), 10000) / 100 < self->chance) {
                     self->flags |= 0x40;
                 }
                 _Z13Func_0215a33cP11Obj0215a33c(self, self->IsCritical());
@@ -135,7 +141,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
                 self->waitCount = 0;
                 self->nextState = 100;
                 self->state = 0x96;
-                _Z34ToggleElementFlagsAndByte_0215e5f8P20Flags394Obj_0215e5f8P7Obj2081iPh(self, self->elements, 0, &self->shown);
+                ToggleElementFlagsAndByte_0215e5f8((Flags394Obj_0215e5f8*)self, (Obj2081*)self->elements, 0, &self->shown);
             }
         }
     } else if (self->state == 1) {
@@ -217,7 +223,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         }
     } else if (self->state == 0x5a) {
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            _Z20ClearElementFlag0x20P7Obj2081i(self->elements, 0);
+            ClearElementFlag0x20((Obj2081*)self->elements, 0);
             self->message = 1;
             self->messageTimer = 0;
             self->flags |= 0x20;
@@ -230,13 +236,13 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
     } else if (self->state == 9) {
         self->message = 0x36;
         self->messageTimer = 0;
-        _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0);
+        SetElementFlag0x20((Obj2081*)self->elements, 0);
         self->state++;
     } else if (self->state == 0xa) {
         self->flags |= 0x200;
         if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() <= 0) {
             OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0x80);
-            _Z19ClearStruct020a9ea4P14Struct020a9ea4(self->loader);
+            ClearStruct020a9ea4((Struct020a9ea4*)self->loader);
             self->state++;
         }
     } else if (self->state == 0xb) {
@@ -248,7 +254,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
             size = 0x14;
         }
         if (func_020aad1c(self->loader, &data_0211e33c, size, 0) == 1) {
-            _Z18ClearFlags020466f4P16FlagWord020466f4j(GetDataPtr02114e04_020d6c00(), 0x80);
+            ClearFlags020466f4((FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x80);
             self->state++;
             self->flags &= ~0x200;
         }
@@ -267,7 +273,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
     } else if (self->state == 0xe) {
         self->field42c = 0;
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            _Z34ToggleElementFlagsAndByte_0215e5f8P20Flags394Obj_0215e5f8P7Obj2081iPh(self, self->elements, 0, &self->shown);
+            ToggleElementFlagsAndByte_0215e5f8((Flags394Obj_0215e5f8*)self, (Obj2081*)self->elements, 0, &self->shown);
             ctx->flags &= ~0x40;
             self->waitCount = 0;
             self->nextState = 0xf;
@@ -287,7 +293,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         if (res != 0) {
             memset(*self->buffer, 0, 0x80);
             func_020e4864(*res, *self->buffer, 1, 0, 0, 0);
-            _Z26SetEntryFirstField02080f8cP17Container02080f8cii(self->elements, 0x7f, *self->buffer);
+            SetEntryFirstField02080f8c((Container02080f8c*)self->elements, 0x7f, (int)(*self->buffer));
         }
         Forward0207f7acObjPlus4Size0x40(self->elements, 0x7f);
         func_020813ec(self->elements, 0x12);
@@ -296,17 +302,17 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         sound = 0x3e;
         if (self->IsCritical()) {
             sound = 0x3f;
-            _Z30InitHandleAndDispatch_021571fcPc(self->ctx);
+            InitHandleAndDispatch_021571fc((char*)self->ctx);
         }
         _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, sound);
-        _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0);
+        SetElementFlag0x20((Obj2081*)self->elements, 0);
         self->message = 0xc;
         self->messageTimer = 0;
         self->state++;
     } else if (self->state == 0x12) {
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
             if (self->IsCritical()) {
-                _Z25SetByte_0215728c_0215728cPv(ctx);
+                SetByte_0215728c_0215728c(ctx);
             }
             self->message = 0x38;
             self->messageTimer = 0;
@@ -315,7 +321,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
     } else if (self->state == 0x13) {
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
             short id;
-            _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 0x12);
+            CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 0x12);
             self->busy = 0;
             ctx->flags &= ~0x800;
             id = 0x1f;
@@ -359,7 +365,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         if (res != 0) {
             memset(*self->buffer, 0, 0x80);
             func_020e4864(*res, *self->buffer, 1, 0, 0, 0);
-            _Z26SetEntryFirstField02080f8cP17Container02080f8cii(self->elements, 0x7f, *self->buffer);
+            SetEntryFirstField02080f8c((Container02080f8c*)self->elements, 0x7f, (int)(*self->buffer));
         }
         Forward0207f7acObjPlus4Size0x40(self->elements, 0x7f);
         func_020813ec(self->elements, 0x12);
@@ -381,7 +387,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         } else {
             Task0215e69c* task = ctx->GetTask();
             if (!(task != 0 && task->active != 0) && _Z26CheckFlagOrByte55_02158c70v(self)) {
-                _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 0x12);
+                CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 0x12);
                 self->busy = 0;
                 ctx->flags &= ~0x800;
                 self->message = 1;
@@ -392,9 +398,9 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         }
     } else if (self->state == 0x79) {
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            _Z34ToggleElementFlagsAndByte_0215e5f8P20Flags394Obj_0215e5f8P7Obj2081iPh(self, self->elements, 1, &self->shown);
-            _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 0);
-            _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 1);
+            ToggleElementFlagsAndByte_0215e5f8((Flags394Obj_0215e5f8*)self, (Obj2081*)self->elements, 1, &self->shown);
+            CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 0);
+            CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 1);
             self->mode = 0xa;
             self->state = 0;
         }

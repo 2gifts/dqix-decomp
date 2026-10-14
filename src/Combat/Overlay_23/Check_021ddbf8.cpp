@@ -2,8 +2,9 @@
 #include "GameState/GameState.h"
 
 int GetWord0x0(int* obj);
-extern "C" int _Z31IsSubBrightnessTransitionActiveP13GameResources(int* obj);
-extern "C" int _Z32IsMainBrightnessTransitionActiveP13GameResources(int* obj);
+struct GameResources;
+int IsSubBrightnessTransitionActive(GameResources*);
+int IsMainBrightnessTransitionActive(GameResources*);
 
 struct Obj021ddbf8 { char pad[
 #if defined(jpn)
@@ -18,9 +19,9 @@ ARM int Check_021ddbf8(Obj021ddbf8* arg) {
     int* p = (int*)GetWord0x0((int*)GameState::GetInstance());
     int r;
     if (arg->f77c == 1) {
-        r = _Z31IsSubBrightnessTransitionActiveP13GameResources(p);
+        r = IsSubBrightnessTransitionActive((GameResources*)p);
     } else {
-        r = _Z32IsMainBrightnessTransitionActiveP13GameResources(p);
+        r = IsMainBrightnessTransitionActive((GameResources*)p);
     }
     return r != 0;
 }

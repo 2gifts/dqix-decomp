@@ -34,9 +34,7 @@ void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 struct Obj020d7aa0;
 void TeardownAndResetState020d7aa0(struct Obj020d7aa0* obj);
 struct BitFlags02037170;
-extern "C" int _ZNK8Object3D19HasAnimationStoppedEv(struct BitFlags02037170* obj);
 struct BitFlags02037180;
-extern "C" int _ZNK8Object3D22HasAnimationReachedEndEv(struct BitFlags02037180* obj);
 void ForwardField0xc0_0205ebec(void* obj);
 void SetByteField0x253(void* obj);
 int GetBitflagForCombatantColor_021a26e8(int unused0, int combatantId);
@@ -160,8 +158,8 @@ extern "C" ARM void func_ov017_021c2784(Obj_021c2784* obj) {
         }
         GameObject* combatant = battleStruct->GetMaybeFieldMonsterByIndex(obj->fieldc);
         if (obj->fieldc > 0 && combatant != NULL) {
-            if (_ZNK8Object3D19HasAnimationStoppedEv((struct BitFlags02037170*)combatant) == 0) {
-                if (_ZNK8Object3D22HasAnimationReachedEndEv((struct BitFlags02037180*)combatant) == 0) {
+            if (((Object3D*)((struct BitFlags02037170*)combatant))->HasAnimationStopped() == 0) {
+                if (((Object3D*)((struct BitFlags02037180*)combatant))->HasAnimationReachedEnd() == 0) {
                     return;
                 }
             }

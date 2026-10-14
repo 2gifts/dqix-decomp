@@ -81,11 +81,12 @@ extern "C" void _Z35NotifyLocalizedResourceLoad020dd040iPc(int id, char* buf);
 extern "C" void func_02046608(StoreStruct* store, int kind, char* src, char* dst, int a, int b, int c);
 extern "C" void func_02046380(StoreStruct* store);
 int IsFlag0x18Bit0x200Set(GameObject* obj);
-extern "C" int _Z22AdjustValueByFieldFlagPvj(GameObject* obj, unsigned int flag);
+int AdjustValueByFieldFlag(void*, unsigned int);
 void StoreInArray0x8b0(StoreStruct* store, int index, int value);
 const char* CallFunc020e0434With02153694(int key);
 void AppendString02042058(char* dst, const char* src);
-extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(ElemList* list, int key);
+struct Struct_0205d81c;
+void* FindElementByC40205d81c(Struct_0205d81c*, int);
 #if defined(jpn)
 extern "C" void func_0205d304(ElemList* list, char* text, int a, int b, int c, int d, int e);
 void SetByteInRange(unsigned char*, int, unsigned char);
@@ -140,7 +141,7 @@ extern "C" ARM void func_ov000_02179cdc(BattleMenu* menu, MenuEntry* entry) {
     } else if (skill->adjustFlag >= 0xff) {
         value = entry->value;
     } else {
-        value = _Z22AdjustValueByFieldFlagPvj(flagged, skill->adjustFlag);
+        value = AdjustValueByFieldFlag(flagged, skill->adjustFlag);
     }
     StoreInArray0x8b0(store, 0, value);
     StoreInArray0x8b0(store, 1, entry->value);
@@ -154,7 +155,7 @@ extern "C" ARM void func_ov000_02179cdc(BattleMenu* menu, MenuEntry* entry) {
     AppendString02042058(msg, CallFunc020e0434With02153694(0x3ec));
 #endif
     ElemList* list = &menu->elements;
-    if (_Z23FindElementByC40205d81cP15Struct_0205d81ci(list, 0x16) != 0) {
+    if (FindElementByC40205d81c((Struct_0205d81c*)list, 0x16) != 0) {
 #if defined(jpn)
         TryApplyElemFields0205d5d0((StructA0205d5d0*)list, 0x16, (int)msg, 1);
 #else

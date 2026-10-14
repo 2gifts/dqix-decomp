@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" void func_02037d10(void *obj);
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char *obj, unsigned int mask);
 
 struct Obj02054664 {
     unsigned short field0;
@@ -22,5 +22,5 @@ ARM void ResetSelectionState02054664(struct Obj02054664 *obj) {
     obj->b2d0 = -1;
     obj->b2d1 = -1;
     obj->b2d2 = 0;
-    _ZN8Object3D10EnableFlagEi((unsigned char *)obj, 0x80);
+    ((Object3D*)((unsigned char *)obj))->EnableFlag(0x80);
 }

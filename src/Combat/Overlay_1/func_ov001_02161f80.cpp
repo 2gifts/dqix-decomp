@@ -2,13 +2,12 @@
 #include "Combat/Main/CopyRecord0200fbb4.h"
 #include "GameState/GameState.h"
 
-
-extern "C" void* _Z20GetField0x3f8AddressP9GameState(void* battle);
+void* GetField0x3f8Address(GameState*);
 extern "C" void func_02012fe4(void);
 extern "C" int func_ov017_021d60f4(void* obj);
 extern "C" float func_ov017_021d6110(void* obj);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" void _Z18InitStruct02070378Pc(void* obj);
+void InitStruct02070378(char*);
 
 struct S3f8_02161f80 {
     short field0;
@@ -29,7 +28,7 @@ struct S3f8_02161f80 {
 extern "C" ARM int func_ov001_02161f80(void* target, int count) {
     int tmpArr[3];
     void* battle = GameState::GetInstance();
-    struct S3f8_02161f80* obj = (struct S3f8_02161f80*)_Z20GetField0x3f8AddressP9GameState(battle);
+    struct S3f8_02161f80* obj = (struct S3f8_02161f80*)GetField0x3f8Address((GameState*)battle);
     func_02012fe4();
     int flag2 = -1;
     int fixedD;
@@ -42,7 +41,7 @@ extern "C" ARM int func_ov001_02161f80(void* target, int count) {
     if (cnt > 5) {
         flag2 = func_ov017_021d60f4((char*)target + 0x28);
     }
-    _Z18InitStruct02070378Pc(obj);
+    InitStruct02070378((char*)obj);
     obj->field2 = 1;
     obj->field7 = 1;
     obj->field0 = (short)flag;

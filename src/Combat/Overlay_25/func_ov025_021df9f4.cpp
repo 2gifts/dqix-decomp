@@ -12,9 +12,9 @@ struct Combatant021df9f4 {
     unsigned int flags;
 };
 
-extern "C" int _Z26CheckHighNibble0xc1Not2To5Ph(GameObject* obj);
-extern "C" int _Z23CheckSubstructFlag0x200Ph(GameObject* obj);
-extern "C" int _Z23CheckSubstructFlag0x100Ph(GameObject* obj);
+int CheckHighNibble0xc1Not2To5(unsigned char*);
+int CheckSubstructFlag0x200(unsigned char*);
+int CheckSubstructFlag0x100(unsigned char*);
 
 // USA: func_ov025_021df9f4
 extern "C" ARM int func_ov025_021df9f4(GameObject* obj) {
@@ -22,9 +22,9 @@ extern "C" ARM int func_ov025_021df9f4(GameObject* obj) {
         return 0;
     }
     int result = 0;
-    if (obj->obj3D_.IsVisible() && _Z26CheckHighNibble0xc1Not2To5Ph(obj) &&
-        !_Z23CheckSubstructFlag0x200Ph(obj)) {
-        if (!_Z23CheckSubstructFlag0x100Ph(obj)) {
+    if (obj->obj3D_.IsVisible() && CheckHighNibble0xc1Not2To5((unsigned char*)obj) &&
+        !CheckSubstructFlag0x200((unsigned char*)obj)) {
+        if (!CheckSubstructFlag0x100((unsigned char*)obj)) {
             result = 1;
         }
     }

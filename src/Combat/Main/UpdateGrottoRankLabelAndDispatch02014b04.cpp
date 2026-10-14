@@ -2,8 +2,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Grotto/Main/ActiveGrottoClass.h"
 #include "std_library_functions.h"
-
-extern "C" void _ZN6Zone3D11LoadMapAMDJEv(void* obj);
+#include "World/Zone3D.h"
 
 extern char data_020ef19f;
 extern char data_020ef1a9;
@@ -34,7 +33,7 @@ extern "C" ARM void _ZN6Zone3D17QueueLoadATS_AMBLEv(void* obj) {
     }
 
     if (strlen(o + 0xc) == 0) {
-        _ZN6Zone3D11LoadMapAMDJEv(obj);
+        ((Zone3D*)obj)->LoadMapAMDJ();
         return;
     }
 

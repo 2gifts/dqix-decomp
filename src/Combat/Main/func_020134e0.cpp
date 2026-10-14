@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Graphics/LightingInfo.h"
+#include "World/ZoneFeatures.h"
+#include "Graphics/AtmosphericEffect.h"
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 enum { MiddleFieldDelta = 0x20, TailFieldDelta = 0x40 };
@@ -7,22 +11,18 @@ enum { MiddleFieldDelta = 0x20, TailFieldDelta = 0x40 };
 enum { MiddleFieldDelta = 0, TailFieldDelta = 0 };
 #endif
 
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
-extern "C" void _ZN12ZoneFeatures5ResetEv(void* obj);
-extern "C" void _ZN20AtmosphericEffectSet5ResetEv(void* obj);
-extern "C" void _ZN12LightingInfo10InitializeEv(void* obj);
-extern "C" void _ZN13SafeAllocator21ResetAllocatorPointerEv(void* obj);
-extern "C" void _ZN7Model3D5ClearEv(void* obj);
-extern "C" void _Z23ClearThreeWords02094d00P29ClearThreeWords02094d00Struct(void* obj);
+struct ClearThreeWords02094d00Struct;
+void ClearThreeWords02094d00(ClearThreeWords02094d00Struct*);
 void ResetFourSubStructs(char* obj);
 extern "C" void func_020982b4(void* obj);
 unsigned char GetByte0x4(char* gs);
 int GetWord0x7f6c(void* gs);
-extern "C" unsigned char _Z18GetByteField0x63d6P20FieldBlock63d6_115a8(void* gs);
+struct FieldBlock63d6_115a8;
+unsigned char GetByteField0x63d6(FieldBlock63d6_115a8*);
 
 // USA: func_020134e0
 extern "C" ARM void func_020134e0(char* obj) {
-    void* gs = _ZN9GameState11GetInstanceEv();
+    void* gs = GameState::GetInstance();
 
     *(short*)(obj + 0x0) = 0;
     *(short*)(obj + 0x2) = 0;
@@ -59,14 +59,14 @@ extern "C" ARM void func_020134e0(char* obj) {
     *(short*)(obj + 0x27d6 + TailFieldDelta) = 0;
     *(char*)(obj + 0x23bb + MiddleFieldDelta) = -1;
 
-    _ZN12ZoneFeatures5ResetEv(obj + 0x6c + MiddleFieldDelta);
-    _ZN20AtmosphericEffectSet5ResetEv(obj + 0xf4 + MiddleFieldDelta);
-    _ZN12LightingInfo10InitializeEv(obj + 0x10c + MiddleFieldDelta);
-    _ZN13SafeAllocator21ResetAllocatorPointerEv(obj + 0x54 + MiddleFieldDelta);
-    _ZN13SafeAllocator21ResetAllocatorPointerEv(obj + 0x2730 + TailFieldDelta);
-    _ZN7Model3D5ClearEv(obj + 0x498 + MiddleFieldDelta);
-    _ZN7Model3D5ClearEv(obj + 0x544 + MiddleFieldDelta);
-    _Z23ClearThreeWords02094d00P29ClearThreeWords02094d00Struct(obj + 0x2724 + TailFieldDelta);
+    ((ZoneFeatures*)(obj + 0x6c + MiddleFieldDelta))->Reset();
+    ((AtmosphericEffectSet*)(obj + 0xf4 + MiddleFieldDelta))->Reset();
+    ((LightingInfo*)(obj + 0x10c + MiddleFieldDelta))->Initialize();
+    ((SafeAllocator*)(obj + 0x54 + MiddleFieldDelta))->ResetAllocatorPointer();
+    ((SafeAllocator*)(obj + 0x2730 + TailFieldDelta))->ResetAllocatorPointer();
+    ((Model3D*)(obj + 0x498 + MiddleFieldDelta))->Clear();
+    ((Model3D*)(obj + 0x544 + MiddleFieldDelta))->Clear();
+    ClearThreeWords02094d00((ClearThreeWords02094d00Struct*)(obj + 0x2724 + TailFieldDelta));
 
     *(int*)(obj + 0x27c4 + TailFieldDelta) = 0;
     *(int*)(obj + 0x27b8 + TailFieldDelta) = 0;
@@ -90,7 +90,7 @@ extern "C" ARM void func_020134e0(char* obj) {
     }
     *(char*)(obj + 0x281d + TailFieldDelta) = 0;
     *(char*)(obj + 0x281e + TailFieldDelta) = 0;
-    if (_Z18GetByteField0x63d6P20FieldBlock63d6_115a8(gs) != 0) {
+    if (GetByteField0x63d6((FieldBlock63d6_115a8*)gs) != 0) {
         return;
     }
 

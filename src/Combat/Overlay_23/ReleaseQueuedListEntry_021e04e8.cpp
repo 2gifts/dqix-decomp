@@ -1,10 +1,8 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
-
 struct List0202fec8;
 
-extern "C" void _ZN13SafeAllocator5ResetEv(void* thisPtr);
 extern "C" void func_ov023_021e20f0(void* p, void* obj, int a, int b);
 
 extern "C" void func_ov023_021dbd10(void* obj, void* p);
@@ -40,7 +38,7 @@ extern "C" ARM int func_ov023_021e04e8(void* obj) {
         if (out1 != 0 && out2 != 0) {
 #endif
 
-            _ZN13SafeAllocator5ResetEv(obj);
+            ((SafeAllocator*)obj)->Reset();
             func_ov023_021e20f0((char*)obj + 0xcc, obj, out1, out2);
         }
 

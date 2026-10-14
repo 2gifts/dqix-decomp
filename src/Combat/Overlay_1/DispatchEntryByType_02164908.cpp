@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct S02037418;
-extern "C" void _ZN8Object3D17SetInheritedAlphaEi(struct S02037418* obj, int val);
 struct ClampTarget_0203fc84;
 void ClampValueAndStoreAt0x2c(struct ClampTarget_0203fc84* obj, int value);
 
@@ -31,14 +31,14 @@ extern "C" ARM int func_ov001_02164908(struct Entry_02164908* arr, int idx, int 
     case 5:
         p = e->field0xc;
         if (p == 0) return 0;
-        _ZN8Object3D17SetInheritedAlphaEi((struct S02037418*)p, val);
+        ((Object3D*)((struct S02037418*)p))->SetInheritedAlpha(val);
         return 1;
     case 6:
         p = e->field0xc;
         if (p == 0) return 0;
         q = ((struct Sub_02164908*)p)->field0x18;
         if (q == 0) return 0;
-        _ZN8Object3D17SetInheritedAlphaEi((struct S02037418*)q, val);
+        ((Object3D*)((struct S02037418*)q))->SetInheritedAlpha(val);
         return 1;
     case 2:
         p = e->field0xc;

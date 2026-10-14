@@ -1,8 +1,9 @@
 #include <globaldefs.h>
 #pragma optimize_for_size off
 
-extern "C" int _Z12TryLockMutexP5Mutex(void* mutex);
-extern "C" void _Z9LockMutexP5Mutex(void* mutex);
+struct Mutex;
+int TryLockMutex(Mutex*);
+void LockMutex(Mutex*);
 extern "C" void _Z11UnlockMutexP5Mutex(void* mutex);
 extern "C" void func_02001878(int status);
 extern "C" void func_0200f368();
@@ -34,7 +35,7 @@ extern HandlerList020015e8 data_020f2e60;
 // USA: func_020015e8  (semantic: RunAtExitHandlers_020015e8)
 extern "C" ARM void func_020015e8() {
     do {
-        if (_Z12TryLockMutexP5Mutex(&data_020f2fb8) == 0) {
+        if (TryLockMutex((Mutex*)&data_020f2fb8) == 0) {
             data_020f2f70 = data_02111304.current->id;
             data_020f2f94 = 1;
             break;
@@ -43,7 +44,7 @@ extern "C" ARM void func_020015e8() {
             data_020f2f94 = data_020f2f94 + 1;
             break;
         }
-        _Z9LockMutexP5Mutex(&data_020f2fb8);
+        LockMutex((Mutex*)&data_020f2fb8);
         data_020f2f70 = data_02111304.current->id;
         data_020f2f94 = 1;
     } while (0);

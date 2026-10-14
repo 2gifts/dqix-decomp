@@ -6,8 +6,6 @@ extern "C" void MemoryMapTexturePalette(void);
 extern "C" void LoadToTexturePalette(void* ptr, int a, unsigned int b);
 extern "C" void MemoryUnmapTexturePalette(void);
 void LockStagedTextureVRAMCopying(void);
-extern "C" int _ZN7Model3D7GetTEX0Ev(void* obj);
-extern "C" int _ZNK8Object3D23GetTexturePaletteOffsetEv(unsigned char* obj);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 void UnlockStagedTextureVRAMCopying(void);
 
@@ -32,11 +30,11 @@ extern "C" ARM void func_ov003_0217ca84(S0217ca84* obj, unsigned short fillValue
 
     void* p88 = obj->field88;
     if (p88 != NULL) {
-        Inner0217ca84* inner = (Inner0217ca84*)_ZN7Model3D7GetTEX0Ev(p88);
+        Inner0217ca84* inner = (Inner0217ca84*)((Model3D*)p88)->GetTEX0();
         if (inner != NULL) {
             int size = inner->field2c;
-            if (_ZNK8Object3D23GetTexturePaletteOffsetEv((unsigned char*)obj + 0x80)) {
-                size = _ZNK8Object3D23GetTexturePaletteOffsetEv((unsigned char*)obj + 0x80);
+            if (((Object3D*)((unsigned char*)obj + 0x80))->GetTexturePaletteOffset()) {
+                size = ((Object3D*)((unsigned char*)obj + 0x80))->GetTexturePaletteOffset();
             }
 
             void* buf;

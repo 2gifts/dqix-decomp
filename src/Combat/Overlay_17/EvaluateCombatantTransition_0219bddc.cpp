@@ -15,7 +15,6 @@ struct Obj020ad4c4;
 extern int CheckAndInvoke020ad4c4(struct Obj020ad4c4* obj);
 extern "C" int func_02098080(void* p);
 struct U16Field0x6_020375f8;
-extern "C" extern unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 extern "C" int func_0206e558(void* obj);
 extern "C" int func_ov017_0219c774(int a, int b, int c);
 
@@ -50,8 +49,8 @@ extern "C" ARM int func_ov017_0219bddc(unsigned char* p0) {
         goto end;
     }
 
-    unsigned short v1 = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)c7);
-    unsigned short v2 = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)c6);
+    unsigned short v1 = ((Object3D*)((struct U16Field0x6_020375f8*)c7))->GetField06();
+    unsigned short v2 = ((Object3D*)((struct U16Field0x6_020375f8*)c6))->GetField06();
     if (v1 != v2) {
         return result;
     }

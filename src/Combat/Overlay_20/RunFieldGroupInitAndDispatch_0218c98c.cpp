@@ -8,16 +8,15 @@
 #endif
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Filesystem/BackgroundLoader.h"
 
 extern "C" void MapVRAMBanksToMainBG(int v);
 extern "C" void MapVRAMBanksToSubBG(int v);
 extern "C" void func_ov020_0218c7bc(int a, int b, int c, int d, int e);
 extern "C" void func_ov020_0218cd64(int a, int b, int c, int d, int e);
 extern "C" void func_0204b5b4(void*, int);
-extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(int a, int b);
 
 struct List0202fdd0;
-extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(struct List0202fdd0* obj, int key);
 
 struct Foo0204af38;
 extern "C" void func_0204b174(struct Foo0204af38* obj, void* data, SafeAllocator* alloc, int field44);
@@ -36,12 +35,8 @@ struct Obj0204b5e8;
 int DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
 
 extern "C" int _ZN16BackgroundLoader11GetInstanceEv();
-extern "C" void _ZN16BackgroundLoader10MaybeResetEv(void* objRaw);
-
-extern "C" int _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(int a, int b, int c);
 
 struct List0202fec8;
-extern "C" void _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(struct List0202fec8* obj, int id, int* out1, int* out2);
 
 struct ActiveEntry02046900;
 int CountActiveEntries(struct ActiveEntry02046900* entry);
@@ -56,7 +51,6 @@ struct List0204b0e8;
 void FlushAndDispatchList0204b0e8(struct List0204b0e8* obj, void* buf);
 
 struct Obj0202fa00;
-extern "C" void _ZN16BackgroundLoader14RemoveAllLocksEv(struct Obj0202fa00* obj);
 
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, unsigned char c, int d);
 
@@ -110,14 +104,14 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
 
     int handle;
     int data4 = _ZN16BackgroundLoader11GetInstanceEv();
-    _ZN16BackgroundLoader10MaybeResetEv((void*)data4);
-    handle = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(data4, (int)&data_ov020_0218dc9d, 0);
+    ((BackgroundLoader*)((void*)data4))->MaybeReset();
+    handle = ((BackgroundLoader*)data4)->QueueLoadFile((char const*)((int)&data_ov020_0218dc9d), (SafeAllocator*)0);
 
     for (;;) {
-        if (_ZN16BackgroundLoader13GetTaskStatusEi((struct List0202fdd0*)data4, handle)) {
+        if (((BackgroundLoader*)((struct List0202fdd0*)data4))->GetTaskStatus(handle)) {
             void* dummyPtr;
             int recListHead, dummy2;
-            _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj((struct List0202fec8*)data4, handle, &recListHead, &dummy2);
+            ((BackgroundLoader*)((struct List0202fec8*)data4))->GetLoadedFileByID(handle, (void**)&recListHead, (unsigned int*)&dummy2);
             int count = CountActiveEntries((struct ActiveEntry02046900*)recListHead);
             void* arrayC[5];
             int arrayB[5];
@@ -140,7 +134,7 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
                 }
             }
 
-            _ZN16BackgroundLoader10RemoveTaskEi(data4, handle);
+            ((BackgroundLoader*)data4)->RemoveTask(handle);
 
             DispatchEntry0204b8d0((struct Obj0204b8d0*)(base + REGION(0x42c, 0x49c)), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
             DispatchEntry0204b8d0((struct Obj0204b8d0*)(base + REGION(0x44c, 0x4bc)), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
@@ -148,7 +142,7 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
             FlushAndDispatchList0204b0e8((struct List0204b0e8*)(base + REGION(0x44c, 0x4bc)), 0);
             break;
         }
-        _ZN16BackgroundLoader14RemoveAllLocksEv((struct Obj0202fa00*)data4);
+        ((BackgroundLoader*)((struct Obj0202fa00*)data4))->RemoveAllLocks();
     }
 
     *(short*)0x4000050 = 0;

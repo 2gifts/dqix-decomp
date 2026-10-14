@@ -1,7 +1,8 @@
 #include <globaldefs.h>
 
 struct RefNode020c80f8;
-extern "C" void _Z9LockMutexP5Mutex(struct RefNode020c80f8* node);
+struct Mutex;
+void LockMutex(Mutex*);
 extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8* node);
 
 struct Foo020bcbc4;
@@ -17,9 +18,9 @@ extern struct Ctx020bf1a0 data_021103b0;
 
 // USA: func_020bf1a0  (semantic: AcquireFlushAndReleaseContext020bf1a0)
 extern "C" ARM void func_020bf1a0(void* obj) {
-    _Z9LockMutexP5Mutex((struct RefNode020c80f8*)&data_02110a28);
+    LockMutex((Mutex*)&data_02110a28);
     if (data_021103b0.f4 != 0) {
-        _Z9LockMutexP5Mutex((struct RefNode020c80f8*)(data_021103b0.f4 + 0x4c8));
+        LockMutex((Mutex*)(data_021103b0.f4 + 0x4c8));
     }
 
     if ((*(int*)((char*)obj + 0x110) << 30) >> 31) {

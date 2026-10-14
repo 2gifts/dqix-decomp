@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 enum { kRegionSelfShift = 0x84, kRegionElementCursor = 0x2a };
@@ -20,8 +21,8 @@ struct ElemKind0217a764 {
     unsigned int kind_ : 2;
 };
 
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(void* battleStruct);
-extern "C" void* _ZN9GameState11GetInstanceEv();
+struct GameState;
+void* GetPtrField0x2a04(GameState*);
 void ComputeMappedOffset_0217a220(unsigned char* obj);
 
 short FindMappedMemberId02080468(void* obj, int id);
@@ -47,8 +48,8 @@ extern struct Obj0205eaa0 data_02108760;
 
 // USA: func_ov003_0217a764
 extern "C" ARM void func_ov003_0217a764(unsigned char* self) {
-    void* battle = _ZN9GameState11GetInstanceEv();
-    _Z17GetPtrField0x2a04P9GameState(battle);
+    void* battle = GameState::GetInstance();
+    GetPtrField0x2a04((GameState*)battle);
     struct Obj2081* elemObj = *(struct Obj2081**)(self + (0x89c - kRegionSelfShift));
     int state = *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift));
 

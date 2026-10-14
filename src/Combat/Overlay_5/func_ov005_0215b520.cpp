@@ -36,8 +36,10 @@ extern "C" void func_ov005_02154d34(void* obj, int a, int b);
 extern "C" void func_ov005_02154d7c(void* obj, int a, int b);
 extern "C" void* _ZN9GameState11GetInstanceEv();
 MemberScreen* GetField1c_021a193c(int* p);
-extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
-extern "C" short* _Z19GetField150Ptr0x488P22Field150Holder02052e14(void* holder);
+struct GameState;
+void* GetCombatantWithFlag0x100(GameState*, int);
+struct Field150Holder02052e14;
+short* GetField150Ptr0x488(Field150Holder02052e14*);
 
 extern const unsigned char data_ov005_0215cbec[];
 extern const unsigned char data_ov005_0215cbdc[];
@@ -112,8 +114,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
         void* gs = _ZN9GameState11GetInstanceEv();
         GameResources* res = func_ov017_0218b5b0();
         MemberScreen* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
-        short* tbl = _Z19GetField150Ptr0x488P22Field150Holder02052e14(
-            _Z25GetCombatantWithFlag0x100P9GameStatei(gs, holder->member));
+        short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)GetCombatantWithFlag0x100((GameState*)gs, holder->member));
         self->accum += self->step;
         if (self->accum >= 3) {
             self->accum -= 3;
@@ -228,8 +229,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
         void* gs = _ZN9GameState11GetInstanceEv();
         GameResources* res = func_ov017_0218b5b0();
         MemberScreen* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
-        short* tbl = _Z19GetField150Ptr0x488P22Field150Holder02052e14(
-            _Z25GetCombatantWithFlag0x100P9GameStatei(gs, holder->member));
+        short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)GetCombatantWithFlag0x100((GameState*)gs, holder->member));
         self->accum += self->step;
         if (self->accum >= 3) {
             self->accum -= 3;

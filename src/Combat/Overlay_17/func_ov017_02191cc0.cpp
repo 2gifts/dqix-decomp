@@ -5,8 +5,8 @@ struct FlagWord02046708;
 FlagWord02046708* GetDataPtr02114e04_020d6c00();
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 extern "C" int _Z27GetByteAtPtrOrZero_02191b58v(unsigned char* obj, int idx);
-extern "C" void _Z34SetupAndDispatchCombatant_02191e5ciisht(unsigned char* obj, int idx, short c, unsigned char d, unsigned short e);
-extern "C" void _Z33DispatchOrSetupCombatant_02191f4cii(unsigned char* obj, int idx);
+void SetupAndDispatchCombatant_02191e5c(int, int, short, unsigned char, unsigned short);
+void DispatchOrSetupCombatant_02191f4c(int, int);
 extern "C" int _ZNK8Object3D10GetField06Ev(GameObject* obj);
 extern "C" void func_ov017_0219230c(unsigned char* obj, int idx, int c);
 extern "C" void func_ov017_02192400(unsigned char* obj, int idx);
@@ -34,19 +34,19 @@ extern "C" ARM void func_ov017_02191cc0(unsigned char* obj) {
         int flag4 = flags & 4;
         int flag2 = flags & 2;
         if (flag4 && flag2) {
-            _Z34SetupAndDispatchCombatant_02191e5ciisht(obj, i, 0x999, 1, 0x65ff);
+            SetupAndDispatchCombatant_02191e5c((int)obj, i, 0x999, 1, 0x65ff);
             func_ov017_0219230c(obj, i, 8);
         } else if (flag4) {
-            _Z34SetupAndDispatchCombatant_02191e5ciisht(obj, i, 0x1000, 0, 0x282f);
+            SetupAndDispatchCombatant_02191e5c((int)obj, i, 0x1000, 0, 0x282f);
             func_ov017_02192400(obj, i);
         } else if (flag2) {
             unsigned char* state = *(unsigned char**)(obj + regionalOffset0);
             short c = 0x999;
             if (state[3] != 0 && state[1] == 0) c = 0x1000;
-            _Z34SetupAndDispatchCombatant_02191e5ciisht(obj, i, c, 1, 0x79e8);
+            SetupAndDispatchCombatant_02191e5c((int)obj, i, c, 1, 0x79e8);
             func_ov017_0219230c(obj, i, 8);
         } else {
-            _Z33DispatchOrSetupCombatant_02191f4cii(obj, i);
+            DispatchOrSetupCombatant_02191f4c((int)obj, i);
             func_ov017_02192400(obj, i);
         }
         unsigned char* entry = func_ov017_0219219c(obj, i);

@@ -1,7 +1,5 @@
 #include <globaldefs.h>
 
-// mangled C++ callees -- parameter types must match the existing definitions exactly
-// so the symbol mangles identically (see e.g. IsField440Empty.cpp, GetField440XY.cpp).
 struct CE28Obj;
 void LoadStateBytePair0206b804(char* obj, int* out1, int* out2);
 int IsField440Empty(struct CE28Obj* obj);
@@ -26,13 +24,11 @@ struct SetIntIntShortAt0xcStruct;
 void SetIntIntShortAt0xc(struct SetIntIntShortAt0xcStruct* s, int a, int b, short c);
 void CallFunc0205c96cIfMode6AndFlag(char* obj, int flag);
 
-// the 0-arg forwarder is handed the two line tables anyway; it passes them on untouched
 extern "C" void _Z15Forward02044830v(void* obj, int* lineX, int* lineY);
-extern "C" int _Z25AllocateVRAMStagingMemoryj(int value);
+int AllocateVRAMStagingMemory(unsigned int);
 extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
-extern "C" int _Z21FreeVRAMStagingMemoryPKv(int value);
+int FreeVRAMStagingMemory(void const*);
 
-// plain (unmangled) callees
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, int c, int d);
 extern "C" void* __clear(void* dst, int count);
 extern "C" void func_02066a6c(void* obj, int flag);
@@ -61,57 +57,57 @@ struct Glyph02066cf0 {
 
 struct TextBox02066cf0 {
     char pad0[0x34];
-    int context;                    // 0x34
-    void* target;                   // 0x38
+    int context;
+    void* target;
     char pad3c[4];
-    unsigned int drawn;             // 0x40
-    int field44;                    // 0x44
+    unsigned int drawn;
+    int field44;
     char pad48[4];
-    unsigned short* text;           // 0x4c
+    unsigned short* text;
     char pad50[4];
-    int field54;                    // 0x54
-    int field58;                    // 0x58
+    int field54;
+    int field58;
     char pad5c[0x10];
-    int field6c;                    // 0x6c
+    int field6c;
     char pad70[4];
-    unsigned int start;             // 0x74
-    unsigned int end;               // 0x78
+    unsigned int start;
+    unsigned int end;
     char pad7c[0xc];
-    unsigned int minStart;          // 0x88
+    unsigned int minStart;
     char pad8c[0x998 - 0x8c];
-    int active;                     // 0x998
+    int active;
     char pad99c[0x9b0 - 0x99c];
-    int fade;                       // 0x9b0
+    int fade;
     char pad9b4[4];
-    Glyph02066cf0 glyphs[80];       // 0x9b8
+    Glyph02066cf0 glyphs[80];
     char pad1278[0x1848 - 0x1278];
-    char palette[0x10];             // 0x1848
-    int lineX;                      // 0x1858
-    int lineY;                      // 0x185c
+    char palette[0x10];
+    int lineX;
+    int lineY;
     char pad1860[4];
-    int lineHeight;                 // 0x1864
-    int yOffset;                    // 0x1868
+    int lineHeight;
+    int yOffset;
     char pad186c[0x187c - 0x186c];
-    unsigned short font;            // 0x187c
+    unsigned short font;
     char pad187e[0x195b - 0x187e];
-    unsigned char effects;          // 0x195b
+    unsigned char effects;
     char pad195c[0x19b1 - 0x195c];
-    unsigned char showName;         // 0x19b1
+    unsigned char showName;
     char pad19b2[0x19b8 - 0x19b2];
-    unsigned char customLayout;     // 0x19b8
-    unsigned char usePalette;       // 0x19b9
+    unsigned char customLayout;
+    unsigned char usePalette;
     char pad19ba[0x19c5 - 0x19ba];
-    unsigned char checkFirst;       // 0x19c5
+    unsigned char checkFirst;
     char pad19c6[0x19cb - 0x19c6];
-    unsigned char refreshHolder;    // 0x19cb
-    unsigned char hidden;           // 0x19cc
+    unsigned char refreshHolder;
+    unsigned char hidden;
     char pad19cd;
-    unsigned char toVram;           // 0x19ce
+    unsigned char toVram;
     char pad19cf[0x19dc - 0x19cf];
-    unsigned char table;            // 0x19dc
+    unsigned char table;
     char pad19dd[3];
-    char holder[0x1e28 - 0x19e0];   // 0x19e0
-    void* texture;                  // 0x1e28
+    char holder[0x1e28 - 0x19e0];
+    void* texture;
 };
 
 struct GlobalFlags02066cf0 {
@@ -255,7 +251,7 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
             }
         } else if (obj->toVram) {
             if (obj->field44 != obj->end) {
-                int staging = _Z25AllocateVRAMStagingMemoryj(0x3000);
+                int staging = AllocateVRAMStagingMemory(0x3000);
                 if (staging != 0) {
                     unsigned char j;
                     int vramOffset = (int)(((unsigned int)*(int*)((char*)obj->texture + 0x50) << 16) >> 13);
@@ -281,7 +277,7 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
                     }
 
                     _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(1, staging, vramOffset, 0x3000, 1, 0);
-                    _Z21FreeVRAMStagingMemoryPKv(staging);
+                    FreeVRAMStagingMemory((void const*)staging);
                 }
             }
         } else if (obj->target) {

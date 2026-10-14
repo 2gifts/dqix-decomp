@@ -33,7 +33,8 @@ extern unsigned int data_ov025_021ef9a4;
 void* GetActiveCombatWork(void);
 List021600f8* GetSlotPtr02160f20(void* work);
 void ResetFields_021df9b0(void* fields);
-extern "C" void _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(void* work);
+struct GatherObj02163a7c;
+void ApplyField41ToGatheredCombatants02163a7c(GatherObj02163a7c*);
 void* FindNodeByKey02169b04(struct List02169b04* list, int key);
 ListNode021600f8* GetNodeAtIndex021600f8(List021600f8* list, int index);
 DepthNode0215fff4* FindNodeAtDepth0215fff4(void* node, int index, int depth);
@@ -59,7 +60,7 @@ extern "C" ARM void func_ov025_021e9b2c(Obj021e9b2c* self) {
         func_ov025_021ea474(self);
         func_ov025_021eb7fc(self);
         ResetFields_021df9b0((char*)work + regionalOffset);
-        _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(work);
+        ApplyField41ToGatheredCombatants02163a7c((GatherObj02163a7c*)work);
     }
     if (self->flags & 0x10) {
         self->flags &= ~0x10;

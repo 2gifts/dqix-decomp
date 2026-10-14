@@ -70,17 +70,19 @@ struct Act_021da9e0 {
 };
 
 extern "C" float func_ov024_021db358(GameObject* c);
-extern "C" int _Z19ClassifyField0x81fePc(void* world);
+int ClassifyField0x81fe(char*);
 extern "C" int func_ov000_0215ffa0(void* node);
 void* FindNodeAtDepth0215fff4(void* node, int index, int slot);
 extern "C" struct Entry_021da9e0* func_ov000_0215e958(void* world);
 extern "C" void func_ov000_0215cd44(void* world, void* entry, GameObject* c, int d, unsigned long long e, int g);
 void AppendToChainAndIncCount0215ffc4(void* node, void* entry, int v);
-extern "C" void _Z28SetFirstEmptySlot48_021eb4e4P24SlotArrayStruct_021eb4e4i(struct Act_021da9e0* self, struct Node_021da9e0* n);
+struct SlotArrayStruct_021eb4e4;
+void SetFirstEmptySlot48_021eb4e4(SlotArrayStruct_021eb4e4*, int);
 extern "C" unsigned long long func_ov024_021e4b14(struct Act_021da9e0* self, int a, int id, struct Rec_021da9e0* rec, int dmg);
 extern "C" int func_ov000_02159f18(void* world, unsigned long long bits, int bit);
-extern "C" struct Node_021da9e0* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int index);
-extern "C" struct Rec_021da9e0* _Z24SearchBothTables02079e2cPci(void* table, int id);
+struct List02160094;
+struct Node_021da9e0* GetNodeAtIndex02160094(List02160094*, int);
+struct Rec_021da9e0* SearchBothTables02079e2c(char*, int);
 extern "C" short func_ov000_0215a004(void* world, int a, int id, int dmg, void* effects, struct Rec_021da9e0* rec, int flag, int mode);
 extern "C" void func_ov000_02159eac(void* world, void* effects, int bit);
 void AddEntryAndIncrementCount0215a88c(void* world, void* entry, int v);
@@ -107,15 +109,15 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
     float ratio = func_ov024_021db358(c);
     unsigned short code = rec->f4.id;
     if (code == 0x150) dmg = 0;
-    if (_Z19ClassifyField0x81fePc(obj->world) != 0 && code == 1 && id == 0) {
+    if (ClassifyField0x81fe((char*)obj->world) != 0 && code == 1 && id == 0) {
         GameObject* g = GetCombatantWithFlag0x100(GameState::GetInstance(), 0);
         if (g) {
-            if (_Z19ClassifyField0x81fePc(obj->world) == 1) {
+            if (ClassifyField0x81fe((char*)obj->world) == 1) {
                 unsigned short hp = c->currentStats_->primaryStats.currHP;
                 dmg = (int)(0.9f * (float)hp);
                 if (hp <= dmg) dmg = hp - 1;
                 if (dmg <= 0) dmg = 1;
-            } else if (_Z19ClassifyField0x81fePc(obj->world) == 2) {
+            } else if (ClassifyField0x81fe((char*)obj->world) == 2) {
                 dmg = g->currentStats_->primaryStats.currHP;
             }
         }
@@ -166,7 +168,7 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
                 found = 1;
             }
         }
-        if (found) _Z28SetFirstEmptySlot48_021eb4e4P24SlotArrayStruct_021eb4e4i(obj, obj->fc);
+        if (found) SetFirstEmptySlot48_021eb4e4((SlotArrayStruct_021eb4e4*)obj, (int)obj->fc);
     }
     union { struct { int lo; int hi; }; unsigned long long value; } effects;
     effects.lo = 0;
@@ -182,12 +184,12 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
     if (!func_ov000_02159f18(obj->world, effects.value, 0xd) && !func_ov000_02159f18(obj->world, effects.value, 0x29)) {
         struct Rec_021da9e0* r = rec;
         if (obj->list) {
-            struct Node_021da9e0* first = _Z22GetNodeAtIndex02160094P12List02160094i(obj->list, 0);
+            struct Node_021da9e0* first = GetNodeAtIndex02160094((List02160094*)obj->list, 0);
             if (first) {
                 if (first->f20 != a) r = 0;
                 unsigned int k = rec->f4.id;
                 if (k == 1 || k == 2 || k == 0xdb || k == 0xdf || k == 0xe0 || obj->fc->f1d.b0)
-                    r = _Z24SearchBothTables02079e2cPci(GetData02108e10(), 1);
+                    r = SearchBothTables02079e2c((char*)GetData02108e10(), 1);
             }
         }
         hp = func_ov000_0215a004(obj->world, a, id, dmg, &effects, r, obj->fc->f1c.b7 != 0, 0);

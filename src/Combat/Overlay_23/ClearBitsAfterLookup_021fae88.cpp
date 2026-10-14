@@ -2,7 +2,7 @@
 
 extern "C" void* func_ov023_021f6880(void* obj, int key);
 extern "C" void* func_ov023_021fad18(void* node);
-extern "C" void _Z22ClearBitRange_021f6c3cPvjjj(void* obj, int idx, int count, int startBit);
+void ClearBitRange_021f6c3c(void*, unsigned int, unsigned int, unsigned int);
 void* GetEntryPtr_021fa854(char* obj, unsigned int idx);
 
 // USA: func_ov023_021fae88
@@ -15,5 +15,5 @@ ARM void ClearBitsAfterLookup_021fae88(void* a, void* b) {
     void* entry = GetEntryPtr_021fa854(sub, *(unsigned short*)((char*)a + 0x22));
     unsigned short startBit = *(unsigned short*)entry;
     unsigned short count = *(unsigned short*)((char*)a + 0x24);
-    _Z22ClearBitRange_021f6c3cPvjjj(b, idx, count, startBit);
+    ClearBitRange_021f6c3c(b, idx, count, startBit);
 }

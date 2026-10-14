@@ -13,7 +13,8 @@
 void* GetGlobalField0x1c020421a0();
 void Forward0204359c(void*, int);
 extern "C" void func_020439b0(void*, int);
-extern "C" void _Z19InitEntries0205d2bcP11Obj0205d2bc(void*);
+struct Obj0205d2bc;
+void InitEntries0205d2bc(Obj0205d2bc*);
 void EmptyDestructor0205cb60(void*);
 
 // USA: func_ov013_02184aec  (semantic: SetupBattleScaleData02184aec)
@@ -29,6 +30,6 @@ extern "C" ARM void func_ov013_02184aec(void* obj) {
     int count = ((GameState*)battle)->GetTickCount();
     Forward0204359c(field, count);
     func_020439b0(field, 0);
-    _Z19InitEntries0205d2bcP11Obj0205d2bc(o + R(0x34,0x38));
+    InitEntries0205d2bc((Obj0205d2bc*)(o + R(0x34,0x38)));
     EmptyDestructor0205cb60(o + R(0x3d0,0x3d4));
 }

@@ -33,8 +33,10 @@ struct PartyStatusPanel {
 };
 
 extern "C" Combatant* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, int);
-extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(EntryList*, int, const char*);
-extern "C" void _Z22SetEntryHighNibble0x13P17Container02080cc0ii(EntryList*, int, int);
+struct Container02080f8c;
+void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
+struct Container02080cc0;
+void SetEntryHighNibble0x13(Container02080cc0*, int, int);
 extern "C" void func_020813ec(EntryList*, int);
 
 // USA: func_ov003_02158334
@@ -59,7 +61,7 @@ extern "C" ARM void func_ov003_02158334(PartyStatusPanel* self) {
         Combatant* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, self->memberIds[i]);
         if (member != NULL) {
             int color = 0xf;
-            _Z26SetEntryFirstField02080f8cP17Container02080f8cii(entries, id, member->profile->name);
+            SetEntryFirstField02080f8c((Container02080f8c*)entries, id, (int)member->profile->name);
 
             int maxHP = member->profile->maxHP;
             float ratio;
@@ -73,7 +75,7 @@ extern "C" ARM void func_ov003_02158334(PartyStatusPanel* self) {
             if (ratio <= 0.08f) color = 0xb;
             if (member->status->flags & 1) color = 9;
 
-            _Z22SetEntryHighNibble0x13P17Container02080cc0ii(entries, id, color);
+            SetEntryHighNibble0x13((Container02080cc0*)entries, id, color);
         }
         id = (short)(id + 1);
     }

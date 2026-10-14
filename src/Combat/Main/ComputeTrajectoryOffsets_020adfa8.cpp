@@ -12,7 +12,8 @@ struct Vec3Target020ad1f0;
 void SetVec3At0x0020ad1f0(struct Vec3Target020ad1f0* obj, int x, int y, int z);
 
 struct Vec3Fixed02030e2c;
-extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3Fixed02030e2c* in, int scale, struct Vec3Fixed02030e2c* out);
+struct Vector3i;
+void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 
 struct Vec3;
 extern "C" void Vector3fix_Add(struct Vec3* a, struct Vec3* b, struct Vec3* out);
@@ -44,7 +45,7 @@ extern "C" ARM void func_020adfa8(ObjFields020adfa8* obj) {
     Vec3_020adfa8 neg;
     SetVec3At0x0020ad1f0((struct Vec3Target020ad1f0*)&neg, -dir.x, -dir.y, -dir.z);
     Vec3_020adfa8 scaled;
-    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&neg, 0x1ccc, (struct Vec3Fixed02030e2c*)&scaled);
+    Vector3fixMultiplyScalar((Vector3i const*)&neg, 0x1ccc, (Vector3i*)&scaled);
     Vec3_020adfa8 sum1;
     Vector3fix_Add((struct Vec3*)&v, (struct Vec3*)&scaled, (struct Vec3*)&sum1);
     _ZN8Vector3iaSERKS_((int*)&obj->f164, (int*)&sum1);

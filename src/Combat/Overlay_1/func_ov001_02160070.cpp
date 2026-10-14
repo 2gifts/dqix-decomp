@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" int func_ov017_021d60f4(void*);
 extern "C" float func_ov017_021d6110(void*);
-extern "C" void _ZN8Object3D24MaybeSetRegularAnimationEPKci(void*, void*, int);
 
 struct Struct_203cec4;
 struct Struct_0203fc5c;
@@ -32,7 +32,7 @@ extern "C" ARM int func_ov001_02160070(char* obj) {
         void* member2 = 0;
         if (table) member2 = table[idx].fieldC;
         if (member2 == NULL) return 0;
-        _ZN8Object3D24MaybeSetRegularAnimationEPKci(member2, &data_ov001_021657db, 0);
+        ((Object3D*)member2)->MaybeSetRegularAnimation((char const*)&data_ov001_021657db, 0);
     }
     return 1;
 }

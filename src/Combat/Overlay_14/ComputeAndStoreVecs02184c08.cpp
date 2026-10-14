@@ -1,11 +1,12 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct BinarySearch020971a8Node;
 struct BinarySearch020971a8Container;
 struct BinarySearch020971a8Node* BinarySearchByField4_02097224(struct BinarySearch020971a8Container* c, int key);
 
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(unsigned char* dst, int* src);
+struct Vector3i;
 
 // USA: func_ov014_02184c08
 ARM void ComputeAndStoreVecs02184c08(unsigned char* obj) {
@@ -30,5 +31,5 @@ ARM void ComputeAndStoreVecs02184c08(unsigned char* obj) {
 
     _ZN8Vector3iaSERKS_((int*)(*(char**)(obj + 0x40) + 0x44), vecA);
     _ZN8Vector3iaSERKS_((int*)(*(char**)(obj + 0x40) + 0x50), vecB);
-    _ZN8Object3D8SetScaleEPK8Vector3i(*(unsigned char**)(obj + 0x40), vecC);
+    ((Object3D*)(*(unsigned char**)(obj + 0x40)))->SetScale((Vector3i const*)vecC);
 }

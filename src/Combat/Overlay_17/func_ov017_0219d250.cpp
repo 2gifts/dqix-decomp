@@ -114,64 +114,72 @@ extern "C" char* func_02012fe4(void);
 char* GetGlobalField0x1c020421a0(void);
 void* GetEntryTableBase(void);
 extern "C" void* func_02057924(void);
-extern "C" void* _Z16GetPtrField0x468Pv(GameState* gs);
+void* GetPtrField0x468(void*);
 Request0219d250* GetField0x3f8Address(GameState* gs);
 extern "C" void* func_0202ae18(void);
 void* GetGlobalPtr021075f4(void);
 extern "C" GrottoIds0219d250* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 extern "C" void* func_0205ec34(void);
-extern "C" void _Z32ClearMonsterFlagEntries_02191bdcPhi(Battle0219d250* self, int v);
-extern "C" Entry0219d250* _Z22FindEntryByHalfwordKeyP11SearchTablei(void* table, int key);
+void ClearMonsterFlagEntries_02191bdc(unsigned char*, int);
+struct SearchTable;
+Entry0219d250* FindEntryByHalfwordKey(SearchTable*, int);
 extern "C" int func_0202c540(void* search);
-extern "C" void _Z26SetField5cb0AndRecordByte0Pci(GameState* gs, int v);
-extern "C" void _Z26SetField5cb4AndRecordByte1Pci(GameState* gs, int v);
-extern "C" void _Z19SetSlotByte020107dcPci(GameState* gs, int v);
-extern "C" int _Z24TestBitBySignedByteIndexP12SearchStructi(void* search, int i);
-extern "C" int _Z30GetSearchStructCurrentArrEntryP20SearchStruct0202c1a4(void* search);
+void SetField5cb0AndRecordByte0(char*, int);
+void SetField5cb4AndRecordByte1(char*, int);
+void SetSlotByte020107dc(char*, int);
+struct SearchStruct;
+int TestBitBySignedByteIndex(SearchStruct*, int);
+struct SearchStruct0202c1a4;
+int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" Combatant0219d250* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int i);
 extern "C" int func_0206e558(void* flags);
 extern "C" int func_ov017_0219c774(Entry0219d250* entry, int a, int b);
 void* GetGlobal02109030(void);
 extern "C" void func_02094030(void* p, int a, int b, int c);
-extern "C" void _Z18InitStruct0203e074Pc(void* p);
+void InitStruct0203e074(char*);
 extern "C" int func_0209cd50(int id);
-extern "C" int _Z14GetShortAt0xb8P23ShortField0xb8_0209cae8(void* obj);
-extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(void* actor, int v);
-extern "C" Entry0219d250* _Z20GetElementStride0x10Phj(void* table, unsigned int i);
+struct ShortField0xb8_0209cae8;
+int GetShortAt0xb8(ShortField0xb8_0209cae8*);
+struct Actor0209c678;
+void DispatchContextByState0209c678(Actor0209c678*, int);
+Entry0219d250* GetElementStride0x10(unsigned char*, unsigned int);
 extern "C" void func_ov017_0219cdc0(unsigned short value, int a1, signed char id);
 extern "C" void _ZN8Object3D10SetField06Et(Object3D* obj, int value);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(Member0219d250* m);
+void ClearBytesAndZeroBlock02039d24(unsigned char*);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 extern "C" void func_020531f0(void* obj);
 void ClearField0xc4KeepBit0x8000(unsigned char* obj);
 void ReinitController02043204(char* c);
 extern "C" void func_02043124(char* c);
-extern "C" void _Z29SetBitIfValueInTable_0219e290Pvt(Battle0219d250* self, unsigned short v);
+void SetBitIfValueInTable_0219e290(void*, unsigned short);
 void Clear0x80Bytes0206ebc8(void* p);
-extern "C" void _Z28Clear0x80BytesAt0x800206ebdcPh(void* p);
+void Clear0x80BytesAt0x800206ebdc(unsigned char*);
 extern "C" void func_ov017_021a316c(Battle0219d250* self);
 extern "C" void func_ov017_0219de70(Battle0219d250* self, Entry0219d250* other, Entry0219d250* entry);
-extern "C" void _Z13SetByte0x63d5Pv(GameState* gs);
+void SetByte0x63d5(void*);
 unsigned char GetField0x3acValue(GameState* gs);
 extern "C" void func_ov017_0218f5a4(Battle0219d250* self, int id, int b, int c, int d);
 extern "C" void func_0208fa8c(void* p);
-extern "C" void* _Z19FindInlineEntryByIdP14Entry_02028bd0i(void* table, int id);
-extern "C" void _Z39ProcessEntryFlagsAndCombatants_0219e014PhP17EntryArg_0219e014(Battle0219d250* self, void* entry);
+struct Entry_02028bd0;
+void* FindInlineEntryById(Entry_02028bd0*, int);
+struct EntryArg_0219e014;
+void ProcessEntryFlagsAndCombatants_0219e014(unsigned char*, EntryArg_0219e014*);
 extern "C" void func_020288e0(void* table);
 void SetFlagsForFlaggedCombatants_0219e0ec(void* self);
-extern "C" void _Z12Init0203cfb4P15Struct_0203cfb4(void* p);
-extern "C" void _Z33ResetBattleEncounterState0205859cP17MainBlock0205859c(void* p);
-extern "C" void _Z31UpdateFlagsFromField12_0219e234iiiPv(Battle0219d250* self, Request0219d250* request, Entry0219d250* other, Entry0219d250* entry);
-extern "C" void _Z15SetBitsInField4Pjj(Battle0219d250* self, unsigned int mask);
+struct Struct_0203cfb4;
+void Init0203cfb4(Struct_0203cfb4*);
+struct MainBlock0205859c;
+void ResetBattleEncounterState0205859c(MainBlock0205859c*);
+void UpdateFlagsFromField12_0219e234(int, int, int, void*);
+void SetBitsInField4(unsigned int*, unsigned int);
 extern "C" void func_ov017_0219fda0(Battle0219d250* self);
 void InitEntriesAndAllocators_0219fec0(void* self);
-extern "C" void _ZN6Zone3D10SwitchZoneEti(char* zone, int id, int flag);
-extern "C" int _Z19IsIdInRange020981e4ii(void* obj, int id);
+int IsIdInRange020981e4(int, int);
 int CheckField0NonZero(int* obj);
 extern "C" void func_ov017_02191108(Battle0219d250* self, int a, int b, int c, int d);
 extern "C" int func_0202c508(void* search);
-extern "C" void _Z26CallHelperWithBuf_021907dciiiii(Battle0219d250* self, int a, int b, int c, int d);
+void CallHelperWithBuf_021907dc(int, int, int, int, int);
 
 extern char data_02109bf4;
 
@@ -218,7 +226,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     combatants = func_02057924();
     hero = gs->GetProtagonist();
     unknown = gs->GetUnknownGameObject();
-    searchTable = _Z16GetPtrField0x468Pv(gs);
+    searchTable = GetPtrField0x468(gs);
     request = GetField0x3f8Address(gs);
     search = func_0202ae18();
     extRegion = GetGlobalPtr021075f4();
@@ -230,17 +238,17 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
         return;
     }
 
-    _Z32ClearMonsterFlagEntries_02191bdcPhi(self, 1);
+    ClearMonsterFlagEntries_02191bdc((unsigned char*)self, 1);
     id = request->id;
     heroZone = hero->obj3D_.GetField06();
-    entry = _Z22FindEntryByHalfwordKeyP11SearchTablei(searchTable, id);
-    other = _Z22FindEntryByHalfwordKeyP11SearchTablei(searchTable, heroZone);
+    entry = FindEntryByHalfwordKey((SearchTable*)searchTable, id);
+    other = FindEntryByHalfwordKey((SearchTable*)searchTable, heroZone);
     node = self->node;
 
     if (node->active != 0 && node->set && func_0202c540(search)) {
-        _Z26SetField5cb0AndRecordByte0Pci(gs, node->a);
-        _Z26SetField5cb4AndRecordByte1Pci(gs, node->b);
-        _Z19SetSlotByte020107dcPci(gs, node->c);
+        SetField5cb0AndRecordByte0((char*)gs, node->a);
+        SetField5cb4AndRecordByte1((char*)gs, node->b);
+        SetSlotByte020107dc((char*)gs, node->c);
     } else {
         before = gs->GetTimeOfDay();
         if (func_0202c540(search) && request->f60 == 0 && self->node->active == 0) {
@@ -258,8 +266,8 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
                 key = entry->id;
                 changed = 0;
                 for (i = 1; i < 4; i++) {
-                    if (_Z24TestBitBySignedByteIndexP12SearchStructi(search2, i) &&
-                        i != _Z30GetSearchStructCurrentArrEntryP20SearchStruct0202c1a4(search2)) {
+                    if (TestBitBySignedByteIndex((SearchStruct*)search2, i) &&
+                        i != GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search2)) {
                         Combatant0219d250* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs2, i);
                         if (c != NULL && (key == c->obj3D.GetField06() || key == c->field15c)) {
                             present = 0;
@@ -284,11 +292,11 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
                         func_02094030(GetGlobal02109030(), 0x4e23, -1, 0);
                     }
                     request->flags6e &= ~2;
-                    _Z18InitStruct0203e074Pc(extRegion);
+                    InitStruct0203e074((char*)extRegion);
                 }
-                if (func_0209cd50(id) != _Z14GetShortAt0xb8P23ShortField0xb8_0209cae8(&data_02109bf4) &&
+                if (func_0209cd50(id) != GetShortAt0xb8((ShortField0xb8_0209cae8*)&data_02109bf4) &&
                     request->f20 <= 0) {
-                    _Z30DispatchContextByState0209c678P13Actor0209c678i(&data_02109bf4, 0);
+                    DispatchContextByState0209c678((Actor0209c678*)&data_02109bf4, 0);
                     header[0xa] = 1;
                 }
             }
@@ -297,7 +305,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
         TimeOfDay after = gs->GetTimeOfDay();
         if ((before == 0 && after != 0) || (before != 0 && after == 0)) {
             request->flags6e &= ~2;
-            _Z18InitStruct0203e074Pc(extRegion);
+            InitStruct0203e074((char*)extRegion);
         }
     }
 
@@ -309,10 +317,10 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     node->f17c = -1.0f;
     if (request->f67 != 0) {
         request->flags6e &= ~2;
-        _Z18InitStruct0203e074Pc(extRegion);
+        InitStruct0203e074((char*)extRegion);
     }
     if (entry == NULL) {
-        entry = _Z20GetElementStride0x10Phj(searchTable, 0);
+        entry = GetElementStride0x10((unsigned char*)searchTable, 0);
         id = entry->id;
         request->id = id;
     }
@@ -324,7 +332,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
             _ZN8Object3D10SetField06Et(&member->obj3D, id);
             member->obj3D.SetInheritedAlpha(0x1f);
             member->b8 = 0;
-            _Z30ClearBytesAndZeroBlock02039d24Ph(member);
+            ClearBytesAndZeroBlock02039d24((unsigned char*)member);
             if (id != heroZone) {
                 member->p130[8] = 0;
                 func_ov017_021c9e00(party->ids[n], 1, 0, 1);
@@ -347,13 +355,13 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     } else {
         moved = other->x != entry->x || other->y != entry->y || other->z != entry->z;
     }
-    _Z29SetBitIfValueInTable_0219e290Pvt(self, request->id);
+    SetBitIfValueInTable_0219e290(self, request->id);
     if (request->active == 0) {
         if (moved) {
             Clear0x80Bytes0206ebc8(self->regions);
         }
         if (id != heroZone) {
-            _Z28Clear0x80BytesAt0x800206ebdcPh(self->regions);
+            Clear0x80BytesAt0x800206ebdc((unsigned char*)self->regions);
         }
     }
     if (id != heroZone) {
@@ -368,25 +376,25 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
         func_ov017_0219de70(self, other, entry);
     }
     if (entry->kind == 2 && entry->id != 0x170c) {
-        _Z13SetByte0x63d5Pv(gs);
+        SetByte0x63d5(gs);
     }
     if (request->pending != 0) {
         func_ov017_0218f5a4(self, GetField0x3acValue(gs), 1, 0, 0);
         request->pending = 0;
     }
     func_0208fa8c(status);
-    _Z39ProcessEntryFlagsAndCombatants_0219e014PhP17EntryArg_0219e014(self, _Z19FindInlineEntryByIdP14Entry_02028bd0i(entryTable, heroZone));
+    ProcessEntryFlagsAndCombatants_0219e014((unsigned char*)self, (EntryArg_0219e014*)(FindInlineEntryById((Entry_02028bd0*)entryTable, heroZone)));
     func_020288e0(entryTable);
     SetFlagsForFlaggedCombatants_0219e0ec(self);
-    _Z12Init0203cfb4P15Struct_0203cfb4(extRegion);
-    _Z33ResetBattleEncounterState0205859cP17MainBlock0205859c(combatants);
-    _Z31UpdateFlagsFromField12_0219e234iiiPv(self, request, other, entry);
+    Init0203cfb4((Struct_0203cfb4*)extRegion);
+    ResetBattleEncounterState0205859c((MainBlock0205859c*)combatants);
+    UpdateFlagsFromField12_0219e234((int)self, (int)request, (int)other, entry);
     self->f36f0 = 0;
     self->f36f4 = 0;
     self->b42ea = gs->GetTimeOfDay();
     self->h42ec = 0;
     if (!(request->flags6e & 1)) {
-        _Z15SetBitsInField4Pjj(self, 1);
+        SetBitsInField4((unsigned int*)self, 1);
     }
     if ((other == NULL || other->id != 3) && entry->id == 3) {
         func_ov017_0219fda0(self);
@@ -394,8 +402,8 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
         InitEntriesAndAllocators_0219fec0(self);
     }
     self->b3658 = 0;
-    _ZN6Zone3D10SwitchZoneEti(field, request->id, request->mode);
-    if (_Z19IsIdInRange020981e4ii(((Zone3D*)field)->unk_840, id) || _Z19IsIdInRange020981e4ii(((Zone3D*)field)->unk_840, heroZone)) {
+    ((Zone3D*)field)->SwitchZone(request->id, request->mode);
+    if (IsIdInRange020981e4((int)(((Zone3D*)field)->unk_840), id) || IsIdInRange020981e4((int)(((Zone3D*)field)->unk_840), heroZone)) {
         if (CheckField0NonZero((int*)search) == 0) {
             func_ov017_02191108(self, 1, 1, 1, 1);
         } else {
@@ -403,7 +411,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
                 if (func_0202c508(search)) {
                     func_ov017_02191108(self, 1, 1, 1, 1);
                 } else {
-                    _Z26CallHelperWithBuf_021907dciiiii(self, 0, 1, 1, 1);
+                    CallHelperWithBuf_021907dc((int)self, 0, 1, 1, 1);
                 }
             }
         }

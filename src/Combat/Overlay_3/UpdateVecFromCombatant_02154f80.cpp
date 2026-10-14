@@ -14,8 +14,6 @@ enum { kRegion280 = 0x280 };
 struct Target02059f38;
 struct Vec3_02059f38;
 void CopyVec3ToField0x44(struct Target02059f38* dst, struct Vec3_02059f38* src);
-extern "C" void _ZN8Object3D14AdvanceEffectsEv(void* obj);
-extern "C" void _ZN8Object3D4DrawEb(void* p, int flag);
 
 // USA: func_ov003_02154f80  (semantic: UpdateVecFromCombatant_02154f80)
 extern "C" ARM void func_ov003_02154f80(char* obj) {
@@ -25,6 +23,6 @@ extern "C" ARM void func_ov003_02154f80(char* obj) {
     if (combatant != 0) {
         CopyVec3ToField0x44((struct Target02059f38*)(obj + kRegion280), (struct Vec3_02059f38*)((char*)combatant + 0x44));
     }
-    _ZN8Object3D14AdvanceEffectsEv(obj + kRegion280);
-    _ZN8Object3D4DrawEb(obj + kRegion280, 1);
+    ((Object3D*)(obj + kRegion280))->AdvanceEffects();
+    ((Object3D*)(obj + kRegion280))->Draw(1);
 }

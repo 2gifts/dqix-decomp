@@ -9,7 +9,8 @@
 #include "std_library_functions.h"
 
 char* GetGlobalField0x1c020421a0(void);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char* obj);
+struct Foo0207df50;
+void CopyInternalFields0207df50(Foo0207df50*);
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
 void CallFunc0202f310AtField0x19e0(char* base, void* alloc, void* data);
@@ -34,7 +35,7 @@ extern "C" ARM void func_ov017_0219ba0c(GameResources* res, int skipModels) {
     char* tables = res->unknown_2cc + 0x2a0;
     loader->AddLockGlobal();
     alloc->Reset();
-    _Z26CopyInternalFields0207df50P11Foo0207df50(tables);
+    CopyInternalFields0207df50((Foo0207df50*)tables);
     RestorePairTables0207df90(tables);
 
     char path[0x50];

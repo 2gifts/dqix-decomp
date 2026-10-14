@@ -7,6 +7,7 @@ enum { RegionOffset36fc = 0x36fc, RegionOffset38 = 0x38, RegionOffset3c = 0x3c }
 #include <globaldefs.h>
 #include "Combat/ActorAction.h"
 #include "GameState/GameState.h"
+#include "Graphics/NSBXX/RenderConfig.h"
 
 extern "C" void* func_02012fe4(void);
 
@@ -18,18 +19,13 @@ void* GetField0x3f8Address(GameState* battleStruct);
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 
-extern "C" int _ZNK8Object3D7GetFlagEi(void* obj, int mask);
-extern "C" int _ZNK8Object3D9GetRadiusEv(unsigned char* obj);
-
 struct Vec3_37774;
 struct Src_37774;
 extern "C" void _ZNK8Object3D20MaybeGetShadowSourceEv(struct Vec3_37774* dst, struct Src_37774* src);
 
 struct S02037484;
-extern "C" int _ZNK8Object3D16GetCombinedAlphaEv(struct S02037484* obj);
 
 void SyncBattleState0208f87c(void* self, int b, int c, int d);
-extern "C" void _ZN12RenderConfig12SubmitToFifoEv(void);
 
 struct Vec3Local_0218dba0 { unsigned int v[3]; };
 
@@ -59,7 +55,7 @@ extern "C" ARM void func_ov017_0218dba0(int combatantId) {
     _ZNK8Object3D20MaybeGetShadowSourceEv((struct Vec3_37774*)&tmp, (struct Src_37774*)combatant);
     selfVec = tmp;
 
-    int mulResult = _ZNK8Object3D16GetCombinedAlphaEv((struct S02037484*)combatant);
+    int mulResult = ((Object3D*)((struct S02037484*)combatant))->GetCombinedAlpha();
     float t = (float)f8c / 31.0f;
     int d = (int)(t * (float)mulResult);
 
@@ -84,11 +80,11 @@ extern "C" ARM void func_ov017_0218dba0(int combatantId) {
         }
     }
 
-    if (_ZNK8Object3D7GetFlagEi(combatant, 0x10) == 0) {
-        int c = (int)(0.9f * (float)_ZNK8Object3D9GetRadiusEv((unsigned char*)combatant));
+    if (((Object3D*)combatant)->GetFlag(0x10) == 0) {
+        int c = (int)(0.9f * (float)((Object3D*)((unsigned char*)combatant))->GetRadius());
         volatile int pad8 = 8;
         SyncBattleState0208f87c(&selfVec, tag, c, d);
     } else {
-        _ZN12RenderConfig12SubmitToFifoEv();
+        RenderConfig::SubmitToFifo();
     }
 }

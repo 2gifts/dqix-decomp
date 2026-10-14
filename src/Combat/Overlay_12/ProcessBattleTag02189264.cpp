@@ -7,8 +7,9 @@ enum { kStepOffset = 0x1370, kFirstResetOffset = 0x131c, kSecondResetOffset = 0x
 #include <globaldefs.h>
 
 extern "C" void* func_ov017_0218b5b0(void* self);
-extern "C" void _Z16SetSubBrightnessP13GameResourcesii(void* handle, int a, int b);
-extern "C" int _Z31IsSubBrightnessTransitionActiveP13GameResources(int* obj);
+struct GameResources;
+void SetSubBrightness(GameResources*, int, int);
+int IsSubBrightnessTransitionActive(GameResources*);
 extern "C" void func_ov023_021e7340(void* arg);
 extern "C" void func_ov023_021e6594(void* self);
 void* GetDataPtr02114e04_020d6c00(void);
@@ -21,12 +22,12 @@ extern "C" ARM void func_ov012_02189264(char* self) {
     void* handle = func_ov017_0218b5b0(self);
     unsigned char state = *(unsigned char*)(self + kStepOffset);
     if (state == 0) {
-        _Z16SetSubBrightnessP13GameResourcesii(handle, ~0xf, 0xf);
+        SetSubBrightness((GameResources*)handle, ~0xf, 0xf);
         (*(unsigned char*)(self + kStepOffset))++;
         return;
     }
     if (state != 1) return;
-    if (_Z31IsSubBrightnessTransitionActiveP13GameResources((int*)handle) != 0) return;
+    if (IsSubBrightnessTransitionActive((GameResources*)handle) != 0) return;
 
     *(int*)(self + kFirstResetOffset) = 0;
     *(int*)(self + kSecondResetOffset) = 0;

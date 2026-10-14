@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct StreamHeader;
 
@@ -18,10 +19,7 @@ struct ResetStruct {
     unsigned char b42c;
 };
 
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct* p, void* q);
-extern "C" int _ZN6Script4LoadEPKvj(struct ResetStruct* s, struct StreamHeader* buffer, int length);
-extern "C" int _ZN6Script7ExecuteEv(struct ResetStruct* p);
 
 struct Global02108d98 {
     unsigned short h0;
@@ -44,8 +42,8 @@ ARM int RunBufferedStream02071c00(int arg0, int arg1, struct StreamHeader* heade
     data_02108d98.field4 = 0;
     data_02108d98.h0 = 0;
 
-    _ZN6Script10InitializeEv(&local);
+    ((Script*)&local)->Initialize();
     _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f0c78);
-    _ZN6Script4LoadEPKvj(&local, header, length);
-    _ZN6Script7ExecuteEv(&local);
+    ((Script*)&local)->Load(header, length);
+    ((Script*)&local)->Execute();
 }

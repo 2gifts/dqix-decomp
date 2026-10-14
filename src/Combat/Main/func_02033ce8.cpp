@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Obj02033b68 {
     char pad0[4];
@@ -19,10 +20,6 @@ struct Obj02033b68 {
 extern "C" void func_02057924(void);
 void ApplyStateTableValue02033dd4(unsigned char* obj);
 void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
-extern "C" int _ZNK8Object3D17GetInheritedAlphaEv(struct Obj02033b68* obj);
-extern "C" void _ZN8Object3D10MakeHiddenEv(struct Obj02033b68* obj);
-extern "C" void _ZN8Object3D17SetInheritedAlphaEi(struct Obj02033b68* obj, int val);
-extern "C" void _ZN8Object3D24TransitionInheritedAlphaEii(struct Obj02033b68* obj, int a, int b);
 
 // USA: func_02033ce8
 extern "C" ARM void func_02033ce8(struct Obj02033b68* p) {
@@ -48,13 +45,13 @@ extern "C" ARM void func_02033ce8(struct Obj02033b68* p) {
                 }
             }
         }
-        if (_ZNK8Object3D17GetInheritedAlphaEv(p) > 0) return;
-        _ZN8Object3D10MakeHiddenEv(p);
+        if (((Object3D*)p)->GetInheritedAlpha() > 0) return;
+        ((Object3D*)p)->MakeHidden();
         return;
     }
 
     if (p->fbe == 5) {
-        _ZN8Object3D17SetInheritedAlphaEi(p, 1);
-        _ZN8Object3D24TransitionInheritedAlphaEii(p, 0x1f, 0xfa);
+        ((Object3D*)p)->SetInheritedAlpha(1);
+        ((Object3D*)p)->TransitionInheritedAlpha(0x1f, 0xfa);
     }
 }

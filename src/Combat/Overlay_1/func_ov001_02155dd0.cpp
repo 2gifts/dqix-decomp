@@ -24,31 +24,34 @@ extern "C" void* func_02012fe4();
 char* GetGlobalField0x1c020421a0();
 void* GetGlobalPtr021075f4(void);
 void* EmptyStub0203d004(void* p);
-extern "C" void* _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(void* list, int id);
+void* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
 int* GetField0x8(int* p);
-extern "C" int _Z28FindEntryIndexByName02040404P17Container02040404PKc(Container0204039c* c, char* name);
+struct Container02040404;
+int FindEntryIndexByName02040404(Container02040404*, char const*);
 void ReleaseOrDecrementSlot0204039c(Container0204039c* c, int idx);
 void Reset02040504(int* p);
-extern "C" void _Z21SetSlotIfIndexBelow32P17SlotArray0203dd10ji(SlotArray0203dd10* s, int idx, int emitter);
+void SetSlotIfIndexBelow32(SlotArray0203dd10*, unsigned int, int);
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
 void ClearBitsInField4(unsigned int* p, unsigned int bits);
 int IsScaledFieldPositive0203adfc(void* a, void* b);
 void ScaleAndNotify0203ad88(void* a, void* b, int c);
-extern "C" void _Z33SetField0x7cClearFields0x1ec0x1eePht(unsigned char* obj, short val);
+void SetField0x7cClearFields0x1ec0x1ee(unsigned char*, unsigned short);
 void SetFields0x1f0And0x1f4(void* obj, int a, int b);
 extern "C" void* func_020704fc();
-extern "C" void _Z28SetScaledEffectParam020708c8P19EffectParam020708c8j(void* p, unsigned int v);
+struct EffectParam020708c8;
+void SetScaledEffectParam020708c8(EffectParam020708c8*, unsigned int);
 int GetBitsInField0(unsigned int* p, unsigned int bits);
 void ResetAndReinit0209c278(void* obj);
 void Dispatch0203a974With0x57000(void* obj);
 void SetupContextForMode0205ea20(void* obj, int mode);
-extern "C" void _Z15ClearBitsInWordPjj(int p, unsigned int bits);
+void ClearBitsInWord(unsigned int*, unsigned int);
 extern "C" void func_ov028_021d9714();
 void PopStack1AndTrigger(int v);
 extern "C" void* func_0205ec34();
 int TestBitInByteArray(int p, unsigned char* arr, int bit);
-extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(Struct02033b88* obj, int val);
+struct Bytes02033b88;
+void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void ClearCombatantSlot(GameState* gs, int id);
 void SetField0x3b0Value(GameState* gs, int val);
 
@@ -93,7 +96,7 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
             if (af == obj->obj3D_.GetField06()) {
                 obj->obj3D_.MakeVisible();
             }
-            _Z20SetByte0xbeShiftPrevP13Bytes02033b88i((Struct02033b88*)obj, 0);
+            SetByte0xbeShiftPrev((Bytes02033b88*)obj, 0);
         }
     }
 
@@ -121,16 +124,16 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
     nameBuf = buf;
     fmt = data_ov001_02164c4a;
     for (; k < 0x20; k++) {
-        int* entry = (int*)_Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(list, k);
+        int* entry = (int*)GetEntryUnlessFlag0x8000((EntryList_203dce4*)list, k);
         if (entry != 0) {
             unsigned char* p = (unsigned char*)GetField0x8(entry);
             if (p[2] == 3) {
                 Container0204039c* cont = (Container0204039c*)EmptyStub0203d004(list);
                 sprintf(nameBuf, fmt, p + 4);
-                int idx = _Z28FindEntryIndexByName02040404P17Container02040404PKc(cont, nameBuf);
+                int idx = FindEntryIndexByName02040404((Container02040404*)cont, nameBuf);
                 ReleaseOrDecrementSlot0204039c(cont, idx);
                 Reset02040504(entry);
-                _Z21SetSlotIfIndexBelow32P17SlotArray0203dd10ji((SlotArray0203dd10*)list, k, 0);
+                SetSlotIfIndexBelow32((SlotArray0203dd10*)list, k, 0);
             }
         }
     }
@@ -142,9 +145,9 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
         ScaleAndNotify0203ad88(data_02109bf4, 0, 0);
     }
     ClearBitsInField4((unsigned int*)res2, 0x2000);
-    _Z33SetField0x7cClearFields0x1ec0x1eePht((unsigned char*)hud, 0);
+    SetField0x7cClearFields0x1ec0x1ee((unsigned char*)hud, 0);
     SetFields0x1f0And0x1f4(hud, 0xf000, 0);
-    _Z28SetScaledEffectParam020708c8P19EffectParam020708c8j(func_020704fc(), 0);
+    SetScaledEffectParam020708c8((EffectParam020708c8*)func_020704fc(), 0);
     loader->MaybeReset();
 
     REG_DISPSTAT_304 &= ~0x8000;
@@ -152,7 +155,7 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
         ResetAndReinit0209c278(data_02109bf4);
         Dispatch0203a974With0x57000(data_02109bf4);
         SetupContextForMode0205ea20(data_02108760, 0x64);
-        _Z15ClearBitsInWordPjj((int)res2, 0x1000);
+        ClearBitsInWord((unsigned int*)((int)res2), 0x1000);
         func_ov028_021d9714();
         PopStack1AndTrigger(1);
     }

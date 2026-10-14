@@ -40,11 +40,12 @@ struct CharacterCreation {
     unsigned char bodyTypes[2];
 };
 
-extern "C" void _Z22InitWordsQuad_021e60e0Pvj(CharacterModel* character, unsigned int angle);
+void InitWordsQuad_021e60e0(void*, unsigned int);
 extern "C" Vector3i func_ov023_021e613c(CharacterModel* character);
-extern "C" void _Z26SetFourWordBlocks_021e6088PvP13Words021e60c4(CharacterModel* character, const Vector3i* rotation);
+struct Words021e60c4;
+void SetFourWordBlocks_021e6088(void*, Words021e60c4*);
 extern "C" Object3D* func_ov023_021e6194(CharacterModel* character);
-extern "C" void _Z20GetEntryPair02188bf8PhiPsS0_(CharacterCreation* editor, int bodyType, short* width, short* height);
+void GetEntryPair02188bf8(unsigned char*, int, short*, short*);
 extern "C" void func_ov023_021e5e68(CharacterModel* character, int width, int height);
 int StringLength(const char* s);
 
@@ -56,11 +57,11 @@ extern "C" ARM void func_ov009_02188454(CharacterCreation* editor) {
             return;
 
         if (editor->flags & 0x40000) {
-            _Z22InitWordsQuad_021e60e0Pvj(editor->character, 0x1eb);
+            InitWordsQuad_021e60e0(editor->character, 0x1eb);
             editor->flags &= ~0x40000;
         }
         const Vector3i& rotation = func_ov023_021e613c(editor->character);
-        _Z26SetFourWordBlocks_021e6088PvP13Words021e60c4(editor->nextCharacter, &rotation);
+        SetFourWordBlocks_021e6088(editor->nextCharacter, (Words021e60c4*)&rotation);
 
         Object3D* currentObject = func_ov023_021e6194(editor->character);
         Object3D* nextObject = func_ov023_021e6194(editor->nextCharacter);
@@ -85,7 +86,7 @@ extern "C" ARM void func_ov009_02188454(CharacterCreation* editor) {
             unsigned char sex = editor->sex;
             PartyMemberAppearance* appearance = &editor->member->appearance;
             unsigned char bodyType = editor->bodyTypes[sex];
-            _Z20GetEntryPair02188bf8PhiPsS0_(editor, bodyType, &appearance->width, &appearance->height);
+            GetEntryPair02188bf8((unsigned char*)editor, bodyType, &appearance->width, &appearance->height);
             func_ov023_021e5e68(editor->character, appearance->width, appearance->height);
             func_ov023_021e5e68(editor->nextCharacter, appearance->width, appearance->height);
             editor->flags &= ~0x20000;

@@ -6,7 +6,7 @@
 struct Container02057a6c;
 
 extern "C" void __clear(void* ptr, int size);
-extern "C" void _Z29CopyVec3sAndDispatch_02196048PiS_S_(Vector3fix* eye, Vector3fix* up, Vector3fix* target);
+void CopyVec3sAndDispatch_02196048(int*, int*, int*);
 extern "C" Container02057a6c* func_02057924(void);
 extern "C" int func_020ca4b4(const void* src, void* dst, int size);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov017_02195ecc(Battle02195ecc* self, unsigned int mode)
     Mat4x4_WriteProjectionUnknown(0xe000, -0x22000, -0x20000, 0x20000, 0x1000, 0x190000, 0x1000,
                                   &data_0210a010.projectionMatrix);
     data_0210a010.flags &= ~((1 << RENDER_CONFIG_FLAG_4) | (1 << RENDER_CONFIG_FLAG_6));
-    _Z29CopyVec3sAndDispatch_02196048PiS_S_(&eye, &up, &target);
+    CopyVec3sAndDispatch_02196048((int*)&eye, (int*)&up, (int*)&target);
     RenderConfig::SubmitToFifo();
     SendQueuedDataToGeometryFifo();
 
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov017_02195ecc(Battle02195ecc* self, unsigned int mode)
         ForwardObjAndField0_021a3af0(self->nodeList);
     }
 
-    _Z29CopyVec3sAndDispatch_02196048PiS_S_(&savedEye, &savedUp, &savedTarget);
+    CopyVec3sAndDispatch_02196048((int*)&savedEye, (int*)&savedUp, (int*)&savedTarget);
     func_020ca4b4(&savedProjection, &data_0210a010.projectionMatrix, sizeof(Matrix4x4));
     data_0210a010.flags &= ~((1 << RENDER_CONFIG_FLAG_4) | (1 << RENDER_CONFIG_FLAG_6));
     RenderConfig::SubmitToFifo();

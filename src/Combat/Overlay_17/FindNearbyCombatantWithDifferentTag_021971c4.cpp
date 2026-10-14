@@ -10,7 +10,6 @@ enum { RegionOffset1b2 = 0x1b2, RegionOffset4400 = 0x4400, RegionOffsetc2 = 0xc2
 extern "C" void* __clear(void* dst, int count);
 
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 int CheckProximity_02196fc8(unsigned char* self, unsigned char* other, int extra);
 
@@ -47,7 +46,7 @@ extern "C" ARM unsigned short func_ov017_021971c4(unsigned char* ov) {
         if (other == NULL) {
             continue;
         }
-        if (_ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)other) != _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant)) {
+        if (((Object3D*)((struct U16Field0x6_020375f8*)other))->GetField06() != ((Object3D*)((struct U16Field0x6_020375f8*)combatant))->GetField06()) {
             continue;
         }
         if (*((unsigned char*)other + 0xbe) != 2) {

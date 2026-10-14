@@ -1,11 +1,9 @@
 #include <globaldefs.h>
 #include "Graphics/LightingManager.h"
 
-
 extern "C" void* func_02012fe4(void);
 extern "C" int func_ov017_021d60f4(void* a);
 extern "C" void func_ov001_021601f8(void* a, void* b);
-extern "C" void _ZN15LightingManager25RecomputeAdvancedLightingEv(void* d);
 extern "C" void func_02016874(void* big);
 
 struct Node_021603d8 { char pad0[0x44]; int field44; char pad1[0x54 - 0x48]; struct Node_021603d8* next; };
@@ -90,7 +88,7 @@ extern "C" ARM int func_ov001_021603d8(void* obj) {
         local[3] = data_ov001_02165880.field2c;
         d->field94 = local[idx];
         d->field90 = 0;
-        _ZN15LightingManager25RecomputeAdvancedLightingEv(d);
+        ((LightingManager*)d)->RecomputeAdvancedLighting();
     }
 
     big->field832 = 1;

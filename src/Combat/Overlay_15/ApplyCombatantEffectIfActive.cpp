@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" void func_ov015_0218d50c(void* obj);
-extern "C" void _ZN8Object3D14AdvanceEffectsEv(void* obj);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 
 extern unsigned short data_02114e30;
@@ -33,8 +33,8 @@ extern "C" ARM void func_ov015_0218e4f8(struct Obj0218e4f8* obj) {
         result = 1;
     }
     if (!result) return;
-    _ZN8Object3D14AdvanceEffectsEv(base);
-    _ZN8Object3D14AdvanceEffectsEv(sub + 0x400);
-    _ZN8Object3D14AdvanceEffectsEv(base + 0x35c);
-    _ZN8Object3D14AdvanceEffectsEv(base + 0xac);
+    ((Object3D*)base)->AdvanceEffects();
+    ((Object3D*)(sub + 0x400))->AdvanceEffects();
+    ((Object3D*)(base + 0x35c))->AdvanceEffects();
+    ((Object3D*)(base + 0xac))->AdvanceEffects();
 }

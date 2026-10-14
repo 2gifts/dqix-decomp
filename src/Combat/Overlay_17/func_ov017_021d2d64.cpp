@@ -76,7 +76,7 @@ int IsField0Null(void** obj);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 int GetGlobalField0x1c020421a0(void);
 int GetByte0x150Bit6(BitFlags020d805c* obj);
-extern "C" int _Z31TestFlagBit55dIfActive_0218b628i(signed char bit);
+int TestFlagBit55dIfActive_0218b628(int);
 extern "C" void func_ov017_0218b5c0(int set, signed char bit);
 extern "C" void _Z32SetIndexedFieldsIfValid_02191ba0Pcit(char* res, int id, int value);
 void InitContext020e1154(void* obj);
@@ -168,7 +168,7 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                 Msgs021d2d64 msgs = data_ov017_021d6ce8.msgs;
                 GameObject* unit = GetCombatantWithFlag0x100(gs, id);
                 if (unit == 0) continue;
-                saved = _Z31TestFlagBit55dIfActive_0218b628i(id);
+                saved = TestFlagBit55dIfActive_0218b628((signed char)id);
                 if (ok) func_ov017_0218b5c0(0, id);
                 Val021d2d64* v = &local.vals[i];
                 int shown = 0;

@@ -21,13 +21,9 @@ void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
 struct Obj02033b68;
 void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int bits);
-
 struct S02037418;
-extern "C" void _ZN8Object3D17SetInheritedAlphaEi(struct S02037418* obj, int val);
 
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 extern "C" int _s32_div_f(int a, int b);
 
@@ -65,13 +61,13 @@ extern "C" ARM int func_02078754(struct Entity02078754* self) {
 
     self->fb2 = 0;
     SetByteIfChanged02033b68((struct Obj02033b68*)self, 0);
-    _ZN8Object3D10EnableFlagEi((unsigned char*)self, 0x80);
-    _ZN8Object3D17SetInheritedAlphaEi((struct S02037418*)self, 0x1f);
+    ((Object3D*)((unsigned char*)self))->EnableFlag(0x80);
+    ((Object3D*)((struct S02037418*)self))->SetInheritedAlpha(0x1f);
     self->f17a = 0;
 
     void* g = func_0202ae18();
     if (CheckField0NonZero((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
-        int c1 = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)self);
+        int c1 = ((Object3D*)((struct U16Field0x6_020375f8*)self))->GetField06();
         int f2val = self->f2;
         struct Vec3* p44 = &self->f44;
         struct Vec3* p50 = &self->f50;

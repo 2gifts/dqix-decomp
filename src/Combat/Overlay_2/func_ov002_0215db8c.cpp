@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct Container020e0310;
 
-extern "C" void *_ZN9GameState11GetInstanceEv();
 extern "C" unsigned char *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
 extern "C" void func_ov002_02157424(void *self, int *slots);
 extern "C" int func_ov002_02159774(void *self, int idx, int a, int b, int c);
@@ -18,7 +18,7 @@ void AppendString02042058(char *buf, const char *str);
 extern "C" ARM void func_ov002_0215db8c(char *self, char *buf, int frame) {
     int slots[7];
     if (buf == 0) return;
-    void *gs  = _ZN9GameState11GetInstanceEv();
+    void *gs  = GameState::GetInstance();
     short x   = *(short *) (self + 0x1bf0);
     short key = 0x76d;
     func_ov002_02157424(self, slots);

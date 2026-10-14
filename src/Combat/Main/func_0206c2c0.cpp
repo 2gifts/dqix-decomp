@@ -5,17 +5,15 @@
 
 #include "Memory/SafeAllocator.h"
 #include "Resource/Script.h"
+#include "GameState/GameState.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct TaggedValue02030b44;
 extern "C" struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44* obj, int* outVec);
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct S_020103b4;
 extern "C" struct S_020103b4* _ZN9GameState11GetInstanceEv();
-extern "C" int _ZNK9GameState21IsMorningDayOrEveningEv(struct S_020103b4* obj);
 
 struct Data02108cec0206c2c0 {
     unsigned char byte0;
@@ -52,12 +50,12 @@ extern "C" ARM int func_0206c2c0(void* param0, int param1) {
 
     data_02108cec.halfa = data_02108cec.halfa + 1;
 
-    v0 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
-    v1 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 8));
-    v2 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x10));
-    v3 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x18));
-    v4 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x20));
-    v5 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x28));
+    v0 = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
+    v1 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 8)))->ToInt();
+    v2 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x10)))->ToInt();
+    v3 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x18)))->ToInt();
+    v4 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x20)))->ToInt();
+    v5 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x28)))->ToInt();
 
     hi = v3 * 1000 + v4 * 10 + v5;
     key = data_02108cec.byte0 + (data_02108cec.byte2 * 1000 + data_02108cec.byte1 * 10);
@@ -66,19 +64,19 @@ extern "C" ARM int func_0206c2c0(void* param0, int param1) {
         return 1;
     }
 
-    v6 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x30));
+    v6 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x30)))->ToInt();
 
     {
         struct S_020103b4* gs = _ZN9GameState11GetInstanceEv();
         if (v6 == 1) {
-            if (_ZNK9GameState21IsMorningDayOrEveningEv(gs)) return 1;
+            if (((GameState*)gs)->IsMorningDayOrEvening()) return 1;
         } else if (v6 == 0) {
-            if (!_ZNK9GameState21IsMorningDayOrEveningEv(gs)) return 1;
+            if (!((GameState*)gs)->IsMorningDayOrEvening()) return 1;
         }
     }
 
-    v7 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x38));
-    v8 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x40));
+    v7 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x38)))->ToInt();
+    v8 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x40)))->ToInt();
 
     if (v7 != data_02108cec.halfc) {
         UnlinkNodeByByteId0206dd68(data_02108cec.field10, v8);
@@ -106,10 +104,10 @@ extern "C" ARM int func_0206c2c0(void* param0, int param1) {
     }
 
     q = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct TaggedValue02030b44*)((char*)param0 + 0x48), rec->vec);
-    rec->field1c = (unsigned short)(int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(q));
+    rec->field1c = (unsigned short)(int)(4096.0f * ((Script::Parameter*)q)->ToFloat());
 
     if (param1 > 13) {
-        rec->field1e = (unsigned char)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)q + 8));
+        rec->field1e = (unsigned char)((Script::Parameter*)((struct Variant02030b0c*)((char*)q + 8)))->ToInt();
     }
 
     rec->field44 = data_02108cec.halfa;

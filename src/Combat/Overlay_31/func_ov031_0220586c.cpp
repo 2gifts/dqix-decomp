@@ -2,7 +2,8 @@
 
 #pragma optimize_for_size off
 
-extern "C" void* _Z9LockMutexP5Mutex(void* a);
+struct Mutex;
+void* LockMutex(Mutex*);
 void UpdateObjFromContext_022031bc(int a, unsigned short b, unsigned int c);
 extern "C" int func_ov031_02203358(void);
 struct RefNode020c80f8;
@@ -31,7 +32,7 @@ extern "C" ARM int func_ov031_0220586c(Obj_0220586c* self) {
 	Ctx_0220586c* ctx = self->ctx;
 	char* inner = (char*)ctx->inner;
 	int flag = 0;
-	_Z9LockMutexP5Mutex(inner + 0xe0);
+	LockMutex((Mutex*)(inner + 0xe0));
 	UpdateObjFromContext_022031bc(self->field10, self->field12, self->field14);
 	*(int*)(inner + 0xf8) = 0;
 	signed char b = self->fieldC;

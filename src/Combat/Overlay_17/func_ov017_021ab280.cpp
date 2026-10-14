@@ -14,8 +14,6 @@ extern "C" void* func_02012fe4(void);
 
 struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
-extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 
 int fix32ReduceAngle0To2Pi(int angle);
 int fix32sin(int angle);
@@ -30,8 +28,9 @@ struct Obj02033b68;
 void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 struct Foo02033b58;
 void SetByteSavingPrevious(struct Foo02033b58* p, unsigned char v);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
+int IsBrightnessTransitionActive(GameResources*);
 
 extern "C" unsigned char _Z19CopyOutRegion0x5718PcPv(void* src, void* dst);
 #define CopyOutRegion0x5718 _Z19CopyOutRegion0x5718PcPv
@@ -79,7 +78,7 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
     int state = obj->state;
     if (state == 0) {
         CancelPendingAction020397cc((struct Obj020397cc*)combatant, 1);
-        _ZN8Object3D10EnableFlagEi((unsigned char*)combatant, 0x01000080);
+        ((Object3D*)((unsigned char*)combatant))->EnableFlag(0x01000080);
 
         struct Vec3 dir;
         struct Vec3 saved = *(struct Vec3*)((char*)combatant + 0x44);
@@ -95,7 +94,7 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
 
         SetVecYByMode02033834((struct Obj02033834*)combatant, angle2);
         SetByteIfChanged02033b68((struct Obj02033b68*)combatant, 1);
-        _Z13SetBrightnessP13GameResourcesii(mgr, -16, 15);
+        SetBrightness((GameResources*)mgr, -16, 15);
 
         obj->state = obj->state + 1;
         obj->counter = 0;
@@ -119,7 +118,7 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
         SetByteSavingPrevious((struct Foo02033b58*)combatant, 1);
         *(unsigned short*)((char*)combatant + 0xb2) = 0xa3;
 
-        if (_Z28IsBrightnessTransitionActiveP13GameResources((int*)mgr) == 0) {
+        if (IsBrightnessTransitionActive((GameResources*)mgr) == 0) {
             obj->state = 4;
             obj->counter = 0;
         }
@@ -134,19 +133,19 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
         SetByteSavingPrevious((struct Foo02033b58*)combatant, 1);
         *(unsigned short*)((char*)combatant + 0xb2) = 0xa3;
 
-        if (_Z28IsBrightnessTransitionActiveP13GameResources((int*)mgr) == 0) {
+        if (IsBrightnessTransitionActive((GameResources*)mgr) == 0) {
             obj->state = obj->state + 1;
             obj->counter = 0;
         }
     } else if (state == 4) {
-        _ZN8Object3D11DisableFlagEi((unsigned char*)combatant, 0x01000080);
+        ((Object3D*)((unsigned char*)combatant))->DisableFlag(0x01000080);
 
         unsigned char buf[4];
         unsigned char count = CopyOutRegion0x5718((void*)battle, buf);
         for (int i = 0; i < count; i++) {
             GameObject* c = battle->GetGameObjectByIndex(buf[i]);
             if (c != 0) {
-                _ZN8Object3D11DisableFlagEi((unsigned char*)c, 0x1000000);
+                ((Object3D*)((unsigned char*)c))->DisableFlag(0x1000000);
             }
         }
 

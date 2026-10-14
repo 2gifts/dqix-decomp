@@ -85,7 +85,8 @@ extern "C" void func_ov016_0218b5c4(void* scene);
 extern "C" void func_ov016_0218b5c0(void* scene);
 extern "C" void func_ov021_0218b5a0(void* scene);
 extern "C" void func_ov021_0218b5fc(void* scene);
-extern "C" void _Z38ResetAllocatorAndClearField40_0218b5c4P11Obj0218b5c4(void* scene);
+struct Obj0218b5c4;
+void ResetAllocatorAndClearField40_0218b5c4(Obj0218b5c4*);
 extern "C" void func_ov015_02193294(void* scene);
 extern "C" void func_ov015_021934f8(void* scene);
 extern "C" void func_ov015_021933bc(void* scene);
@@ -170,7 +171,7 @@ extern "C" void func_020d8670();
         func_ov021_0218b5a0(scene); \
         EmptyStub02012de4(&data_02114e20); \
         func_ov021_0218b5fc(scene); \
-        _Z38ResetAllocatorAndClearField40_0218b5c4P11Obj0218b5c4(scene); \
+        ResetAllocatorAndClearField40_0218b5c4((Obj0218b5c4*)scene); \
         FreeIfFlag(&data_02114e20, scene, 0xbc); \
         func_020a1bb4(&OVERLAY_21_ID); \
     } while (0)

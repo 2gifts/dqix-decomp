@@ -10,8 +10,7 @@ enum { kOffset54 = 0x54, kOffset6c = 0x6c, kOffsetf4 = 0xf4, kOffset10c = 0x10c,
 #include "Memory/SafeAllocator.h"
 #include "Grotto/Main/FloorMap.h"
 #include "Grotto/Main/ActiveGrottoClass.h"
-
-extern "C" void _ZN12ZoneFeatures5ResetEv(void* obj);
+#include "World/ZoneFeatures.h"
 
 extern "C" void func_0200ee94(void* obj, int a, int b, void* cb1, void* cb2);
 extern "C" void* _ZN7Model3DC1Ev(void* obj);
@@ -34,7 +33,7 @@ extern "C" void func_020134e0(void* obj);
 // USA: func_0201c014
 ARM void* InitBigStruct0201c014(void* obj) {
     ((SafeAllocator*)((char*)obj + kOffset54))->ResetAllocatorPointer();
-    _ZN12ZoneFeatures5ResetEv((char*)obj + kOffset6c);
+    ((ZoneFeatures*)((char*)obj + kOffset6c))->Reset();
     *(int*)((char*)obj + kOffsetf4) = 0;
     ((LightingInfo*)((char*)obj + kOffset10c))->Initialize();
     func_0200ee94((char*)obj + kOffset498, 2, 0xac, (void*)_ZN7Model3DC1Ev, (void*)_ZN7Model3DD1Ev);

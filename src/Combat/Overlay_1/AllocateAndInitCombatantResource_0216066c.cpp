@@ -10,12 +10,9 @@ int GetFieldPtrA0_021bbbe4(void* p);
 unsigned int LoadResourceIntoGlobalBuffer_0215a750(const char* path, void** outPtr);
 extern SafeAllocator* data_ov001_021658b8[8];
 extern char data_ov001_021657df[];
-extern "C" void _ZN8Object3D10InitializeEv(void* obj);
-extern "C" int _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo(int a, int b);
+struct ObjectArchiveLoadInfo;
 void RegisterCombatantSlot(GameState* battleStruct, int id, GameObject* combatant);
 struct Shorts5c_374e0;
-extern "C" void _ZN8Object3D8SetScaleEiii(struct Shorts5c_374e0* obj, short a, short b, short c);
-extern "C" void _ZN8Object3D21MaybeSetBCFGAnimationEii(void* self, int a, int b);
 
 struct LockCtx0216066c {
     int unused0;
@@ -57,15 +54,15 @@ extern "C" ARM int func_ov001_0216066c(void* self) {
         return 0;
     }
     newObj = allocator->Allocate(0xac);
-    _ZN8Object3D10InitializeEv(newObj);
+    ((Object3D*)newObj)->Initialize();
     ctx.dataPtr = outPtr;
     ctx.allocator = allocator;
     ctx.size = size;
     ctx.flag = 1;
-    _ZN8Object3D18LoadFromCHRArchiveEP21ObjectArchiveLoadInfo((int)newObj, (int)&ctx);
+    ((Object3D*)((int)newObj))->LoadFromCHRArchive((ObjectArchiveLoadInfo*)((int)&ctx));
     BackgroundLoader::RemoveLockGlobal();
     RegisterCombatantSlot(bs, id, (GameObject*)newObj);
-    _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)newObj, 0x10a, 0x10a, 0x10a);
-    _ZN8Object3D21MaybeSetBCFGAnimationEii(newObj, 0, 0);
+    ((Object3D*)((struct Shorts5c_374e0*)newObj))->SetScale(0x10a, 0x10a, 0x10a);
+    ((Object3D*)newObj)->MaybeSetBCFGAnimation(0, 0);
     return 1;
 }

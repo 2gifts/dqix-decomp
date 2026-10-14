@@ -7,14 +7,18 @@ extern "C" void* func_ov000_0215e958(void*);
 extern "C" void func_ov000_02159eac(void*,void*,int);
 extern "C" void func_ov000_0215cd44(void*,void*,GameObject*,int,unsigned long long,int);
 extern "C" void func_ov000_021554f4(void*,int,int,Params021da670*,int,int);
-extern "C" void _Z15InitObj02088f68P11Obj02088f68(void*);
+struct Obj02088f68;
+void InitObj02088f68(Obj02088f68*);
 void ResetTargetFlags02088474(void*,int,int);
-extern "C" int _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998(GameObject*);
-extern "C" void _Z24ResetStateFields0208826cPh(void*);
-extern "C" void _Z20ResetStateFields0x18Ph(void*);
-extern "C" int _Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0(GameObject*);
-extern "C" int _Z23CheckFlag0x14Bit0x10SetPh(void*);
-extern "C" int _Z23IsFlagBit19Set_021da9c8P16FlagObj_021da9c8(GameObject*);
+struct FlagObj_021da998;
+int IsFlagBit8388608Set_021da998(FlagObj_021da998*);
+void ResetStateFields0208826c(unsigned char*);
+void ResetStateFields0x18(unsigned char*);
+struct FlagObj_021da9b0;
+int IsFlagBit8Set_021da9b0(FlagObj_021da9b0*);
+int CheckFlag0x14Bit0x10Set(unsigned char*);
+struct FlagObj_021da9c8;
+int IsFlagBit19Set_021da9c8(FlagObj_021da9c8*);
 extern "C" unsigned short func_ov024_021e9018(Obj021da670*,int,int,int);
 extern "C" void func_ov024_021e8cfc(Obj021da670*,GameObject*,int,int);
 void AddEntryAndIncrementCount0215a88c(void*,void*,int);
@@ -44,7 +48,7 @@ extern "C" ARM void* func_ov024_021da670(Obj021da670* obj,int sourceID,int id,Pa
         if(source){
             func_ov000_021554f4(obj->context,sourceID,sourceID,params,0,2);
             source->currentStats_->primaryStats.currHP=0;
-            _Z15InitObj02088f68P11Obj02088f68(source->currentStats_);
+            InitObj02088f68((Obj02088f68*)source->currentStats_);
         }
     }else if(code==0x384){
         func_ov000_02159eac(obj->context,&effects,0x1a);
@@ -60,23 +64,23 @@ extern "C" ARM void* func_ov024_021da670(Obj021da670* obj,int sourceID,int id,Pa
             ResetTargetFlags02088474(c->currentStats_,10,0);
             break;
         case 2:
-            ((unsigned char*)obj->context)[0x8e96]=_Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998(c);
+            ((unsigned char*)obj->context)[0x8e96]=IsFlagBit8388608Set_021da998((FlagObj_021da998*)c);
             message=0x94;
-            _Z24ResetStateFields0208826cPh(c->currentStats_);
+            ResetStateFields0208826c((unsigned char*)c->currentStats_);
             func_ov000_02159eac(obj->context,&effects,0x18);
             break;
         case 3:
             message=0x95;
-            _Z20ResetStateFields0x18Ph(c->currentStats_);
+            ResetStateFields0x18((unsigned char*)c->currentStats_);
             func_ov000_02159eac(obj->context,&effects,0x17);
             break;
         }
         ((Stats021da670*)c->currentStats_)->flags.state=0;
-    }else if(_Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0(c)){
+    }else if(IsFlagBit8Set_021da9b0((FlagObj_021da9b0*)c)){
         message=0x70;
-    }else if(_Z23CheckFlag0x14Bit0x10SetPh(c->currentStats_)){
+    }else if(CheckFlag0x14Bit0x10Set((unsigned char*)c->currentStats_)){
         message=0x44;
-    }else if(_Z23IsFlagBit19Set_021da9c8P16FlagObj_021da9c8(c)){
+    }else if(IsFlagBit19Set_021da9c8((FlagObj_021da9c8*)c)){
         message=func_ov024_021e9018(obj,id,((Stats021da670*)c->currentStats_)->flags.kind,1);
         func_ov000_02159eac(obj->context,&effects,0x27);
     }

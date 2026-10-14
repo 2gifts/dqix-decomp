@@ -1,6 +1,5 @@
 #include <globaldefs.h>
-
-extern "C" void _ZN8Object3D10InitializeEv(void*);
+#include "World/Object3D.h"
 
 struct State02041244 {
     char pad_00[0xac];
@@ -19,7 +18,7 @@ struct State02041244 {
 
 // USA: func_02041244
 ARM void ResetState02041244(struct State02041244* obj) {
-    _ZN8Object3D10InitializeEv(obj);
+    ((Object3D*)obj)->Initialize();
     obj->field_ac = 0;
     obj->field_b0 = 0;
     obj->field_c0 = 0;

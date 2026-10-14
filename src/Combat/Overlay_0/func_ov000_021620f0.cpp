@@ -101,7 +101,8 @@ struct Scene021620f0 {
 
 extern "C" void* func_0202ae18(void);
 GameObject* GetCombatantWithFlag0x400(GameState* gameState, int combatantId);
-extern "C" void _Z18ZeroStruct021620d8P22ZeroableStruct021620d8(Pair021620f0* pair);
+struct ZeroableStruct021620d8;
+void ZeroStruct021620d8(ZeroableStruct021620d8*);
 FieldStruct02048934* SearchWithLow15Comparator02070fd0(Container02070e60* table, int key);
 Param02048850* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct* table, int key);
 void FindOrAssignSlot02167c28(unsigned char* obj, int id);
@@ -140,7 +141,7 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
         memset(&f->groups[i], 0, sizeof(Group021620f0));
     }
     for (int i = 0; i < 4; i++) {
-        _Z18ZeroStruct021620d8P22ZeroableStruct021620d8(&f->pairs[i]);
+        ZeroStruct021620d8((ZeroableStruct021620d8*)&f->pairs[i]);
     }
     const short* kinds = data_ov000_02182ff8[formation];
     const signed char* counts = data_ov000_02182fd4[formation];

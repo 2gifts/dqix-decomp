@@ -2,7 +2,6 @@
 #include "GameState/GameState.h"
 
 int GetField0x17dBits4To5IfFlag8(unsigned char* obj);
-extern "C" int _ZNK8Object3D9GetRadiusEv(unsigned char* obj);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 int fix32ReduceAngle0To2Pi(int arg);
 struct Obj02033874;
@@ -25,7 +24,7 @@ extern "C" ARM void func_0207964c(unsigned char* self) {
         unsigned char* combatant = (unsigned char*)battleStruct->GetPartyMemberByIndex(field);
         if (combatant != NULL) {
             if (!(((struct CombatantFlagObj0207964c*)combatant)->flags2 & 1)) {
-                int scale = _ZNK8Object3D9GetRadiusEv(combatant) / 4 + _ZNK8Object3D9GetRadiusEv(self) / 2;
+                int scale = ((Object3D*)combatant)->GetRadius() / 4 + ((Object3D*)self)->GetRadius() / 2;
                 struct Vec3Fixed02037c80 vec = _ZNK8Object3D15GetPointInFrontEi((struct Obj02037c80*)combatant, scale);
                 int angleArg = *(int*)(combatant + 0x54) + 0x3244;
                 int aim = fix32ReduceAngle0To2Pi(angleArg);

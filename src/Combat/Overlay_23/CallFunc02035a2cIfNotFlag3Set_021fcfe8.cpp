@@ -1,11 +1,10 @@
 #include <globaldefs.h>
-
-extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
+#include "World/Object3D.h"
 
 struct Obj20_021fcfe8 { char pad[0xc]; unsigned char flags; };
 
 // USA: func_ov023_021fcfe8
 ARM void CallFunc02035a2cIfNotFlag3Set_021fcfe8(struct Obj20_021fcfe8* obj) {
 	if (obj->flags & 8) return;
-	_ZN8Object3D4DrawEb((char*)obj + 0x20, 1);
+	((Object3D*)((char*)obj + 0x20))->Draw(1);
 }

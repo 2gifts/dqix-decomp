@@ -7,7 +7,6 @@ struct ListNode020378dc;
 
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 struct ListNode02160094* GetNodeAtIndex02160094(struct List02160094* list, int index);
-extern "C" void _ZN8Object3D6DetachEv(struct ListNode020378dc* node);
 extern "C" int func_ov017_021917f0(int a, int b);
 
 struct Obj021e73c8 {
@@ -29,7 +28,7 @@ ARM int DispatchAndForward_021e73c8(struct Obj021e73c8* obj, int v1, int unusedA
     if (c == NULL) {
         return 1;
     }
-    _ZN8Object3D6DetachEv((struct ListNode020378dc*)c);
+    ((Object3D*)((struct ListNode020378dc*)c))->Detach();
     if (obj->field8 >= 0x22 && obj->field8 <= 0x25) {
         struct ListNode02160094* node = GetNodeAtIndex02160094((struct List02160094*)v1, obj->field8 - 0x22);
         if (node != NULL) {

@@ -95,8 +95,10 @@ struct Source021ecc54 {
     unsigned char f38;
 };
 
-extern "C" struct ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(struct List021ecc54* list, int index);
-extern "C" struct ListNode02160094* _Z22GetNodeAtIndex02160094P12List02160094i(struct List021ecc54* list, int index);
+struct List021600f8;
+struct ListNode021600f8* GetNodeAtIndex021600f8(List021600f8*, int);
+struct List02160094;
+struct ListNode02160094* GetNodeAtIndex02160094(List02160094*, int);
 extern "C" void func_ov025_021ebb24(struct Struct021ecb90* obj);
 extern "C" int func_ov000_0215fd90(struct Member021ecc54* member, int flag);
 extern "C" void func_ov025_021ed0b8(struct Container021ecc54* obj, struct Struct021ecb90* src);
@@ -119,14 +121,14 @@ extern "C" ARM void func_ov025_021ecc54(struct Container021ecc54* obj, struct So
             struct List021ecc54* list = src->list;
             int total = -1;
             if (data_ov025_021ef008[k] == 1) {
-                struct ListNode021600f8* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list, i);
+                struct ListNode021600f8* node = GetNodeAtIndex021600f8((List021600f8*)list, i);
                 if (node != 0) {
                     total = node->counts[0];
                     total += node->counts[1];
                     total += node->counts[2];
                 }
             } else if (data_ov025_021ef008[k] == 0) {
-                struct ListNode02160094* node = _Z22GetNodeAtIndex02160094P12List02160094i(list, i);
+                struct ListNode02160094* node = GetNodeAtIndex02160094((List02160094*)list, i);
                 if (node != 0) {
                     total = node->counts[0];
                     total += node->counts[2];
@@ -145,7 +147,7 @@ extern "C" ARM void func_ov025_021ecc54(struct Container021ecc54* obj, struct So
             if (data_ov025_021ef008[k] == 1) {
                 found = 1;
             } else if (data_ov025_021ef008[k] == 0) {
-                struct ListNode02160094* node = _Z22GetNodeAtIndex02160094P12List02160094i(src->list, i);
+                struct ListNode02160094* node = GetNodeAtIndex02160094((List02160094*)src->list, i);
                 if (node != 0) {
                     members = node->members;
                     cnts = node->counts;
@@ -200,7 +202,7 @@ extern "C" ARM void func_ov025_021ecc54(struct Container021ecc54* obj, struct So
                 int hasStatus;
                 struct List021ecc54* list2 = src->list;
                 if (data_ov025_021ef008[k] == 1) {
-                    struct ListNode021600f8* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(list2, i);
+                    struct ListNode021600f8* node = GetNodeAtIndex021600f8((List021600f8*)list2, i);
                     if (node != 0) {
                         for (struct Member021ecc54* m = node->members; m != 0; m = m->next) {
                             if (func_ov000_0215fd90(m, 3)) {
@@ -210,7 +212,7 @@ extern "C" ARM void func_ov025_021ecc54(struct Container021ecc54* obj, struct So
                         }
                     }
                 } else if (data_ov025_021ef008[k] == 0) {
-                    struct ListNode02160094* node = _Z22GetNodeAtIndex02160094P12List02160094i(list2, i);
+                    struct ListNode02160094* node = GetNodeAtIndex02160094((List02160094*)list2, i);
                     if (node != 0) {
                         for (struct Member021ecc54* m = node->members[0]; m != 0; m = m->next) {
                             if (func_ov000_0215fd90(m, 3)) {

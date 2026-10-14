@@ -65,15 +65,19 @@ void Set3DClearColor(int color, int alpha, int depth, int polygonId, int fogEnab
 void ComputeAndLoadMatrix020c5770(int a0, int a1, int a2, int a3, int b0, int b1, int b2, int gate, void* outBuf);
 int SetPowCnt1Bit15_0218bc70(int enable);
 extern "C" void func_ov016_0218e00c(NodeList0218b5c4* list);
-extern "C" void _Z34RegisterObjectAndRunScript0218e098P11Obj0218e098i(NodeList0218b5c4* list, int owner);
+struct Obj0218e098;
+void RegisterObjectAndRunScript0218e098(Obj0218e098*, int);
 extern "C" void func_02029568(Menu0218b5c4* menu);
 extern "C" void func_020294cc(void* self, const char* src);
-extern "C" int _Z18GetField4_0218e174Pi(NodeList0218b5c4* list);
-extern "C" void _Z12Init0202949cPc(MenuItem0218b5c4* item);
-extern "C" ScriptNode0218b5c4* _Z19GetNthNode_0218e14cPP12Node0218e14ci(NodeList0218b5c4* list, int n);
-extern "C" void _Z24AppendNodeToList0202a944P16ListHead0202a944P16ListNode0202a944(Menu0218b5c4* menu, MenuItem0218b5c4* item);
+int GetField4_0218e174(int*);
+void Init0202949c(char*);
+struct Node0218e14c;
+ScriptNode0218b5c4* GetNthNode_0218e14c(Node0218e14c**, int);
+struct ListHead0202a944;
+struct ListNode0202a944;
+void AppendNodeToList0202a944(ListHead0202a944*, ListNode0202a944*);
 extern "C" void func_0202a6c4(Menu0218b5c4* menu);
-extern "C" void _Z18Deactivate0202a8ccPci(Menu0218b5c4* menu, int flag);
+void Deactivate0202a8cc(char*, int);
 void DelayThenSyncBit0();
 void RestoreDisplayMode();
 int GetByteField0x63d6(FieldBlock63d6_115a8* gs);
@@ -156,23 +160,23 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
     SetPowCnt1Bit15_0218bc70(0);
 
     func_ov016_0218e00c(&nodes);
-    _Z34RegisterObjectAndRunScript0218e098P11Obj0218e098i(&nodes, (int)self);
+    RegisterObjectAndRunScript0218e098((Obj0218e098*)&nodes, (int)self);
     func_02029568(&self->menu);
     func_020294cc(&self->menu, data_ov016_0219cfc0);
-    MenuItem0218b5c4* items = (MenuItem0218b5c4*)self->allocator.Allocate(_Z18GetField4_0218e174Pi(&nodes) * sizeof(MenuItem0218b5c4));
+    MenuItem0218b5c4* items = (MenuItem0218b5c4*)self->allocator.Allocate(GetField4_0218e174((int*)&nodes) * sizeof(MenuItem0218b5c4));
     if (items != 0) {
-        for (unsigned int i = 0; i < _Z18GetField4_0218e174Pi(&nodes); i++) {
-            _Z12Init0202949cPc(&items[i]);
-            ScriptNode0218b5c4* node = _Z19GetNthNode_0218e14cPP12Node0218e14ci(&nodes, i);
+        for (unsigned int i = 0; i < GetField4_0218e174((int*)&nodes); i++) {
+            Init0202949c((char*)&items[i]);
+            ScriptNode0218b5c4* node = GetNthNode_0218e14c((Node0218e14c**)&nodes, i);
             if (node != 0) {
                 sprintf(label, data_ov016_0219cfc6, node->id, node->value);
                 func_020294cc(&items[i], label);
-                _Z24AppendNodeToList0202a944P16ListHead0202a944P16ListNode0202a944(&self->menu, &items[i]);
+                AppendNodeToList0202a944((ListHead0202a944*)&self->menu, (ListNode0202a944*)&items[i]);
             }
         }
     }
     func_0202a6c4(&self->menu);
-    int count = _Z18GetField4_0218e174Pi(&nodes);
+    int count = GetField4_0218e174((int*)&nodes);
     self->menu.top = 0;
     self->menu.cursor = 0;
     self->menu.last = count - 1;
@@ -180,7 +184,7 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
     self->menu.f72 = 1;
     self->menu.f70 = 1;
     self->menu.mode = 8;
-    _Z18Deactivate0202a8ccPci(&self->menu, 1);
+    Deactivate0202a8cc((char*)&self->menu, 1);
     DelayThenSyncBit0();
     RestoreDisplayMode();
     DISPCNTSUB |= 0x10000;
@@ -200,7 +204,7 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
         func_020c5414();
         DISP3DCNT &= (unsigned short)~0x3020;
         if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1)) {
-            ScriptNode0218b5c4* node = _Z19GetNthNode_0218e14cPP12Node0218e14ci(&nodes, self->menu.cursor);
+            ScriptNode0218b5c4* node = GetNthNode_0218e14c((Node0218e14c**)&nodes, self->menu.cursor);
             if (node != 0) {
                 id = node->id;
             }

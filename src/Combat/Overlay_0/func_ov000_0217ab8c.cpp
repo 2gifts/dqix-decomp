@@ -72,18 +72,23 @@ struct Struct_0205ba68;
 
 extern Global data_ov000_02184294;
 
-extern "C" int _Z20CountNonZero02171698P9S02171698(Menu*);
-extern "C" int _Z20CountNonZero021719c0P9S021719c0(Menu*);
+struct S02171698;
+int CountNonZero02171698(S02171698*);
+struct S021719c0;
+int CountNonZero021719c0(S021719c0*);
 GameObject* GetCombatantWithFlag0x100(GameState*, int);
 int GetFieldAt0x150(unsigned char*);
 int CountPositiveSlots02083960(Slots02083960*);
-extern "C" void _Z25ClearChannelAFlag0205cf10Pv(Window*);
-extern "C" void _Z21ClearFlagByte0205cf1cP14Struct0205cf1c(Window*);
-extern "C" void _Z23SetChannelAFlag0205cef8Pv(Window*);
-extern "C" void _Z23SetChannelBFlag0205cf04Pv(Window*);
-extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(Sub*, int, int, int);
-extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(Sub*, int);
-extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(Sub*, int);
+void ClearChannelAFlag0205cf10(void*);
+struct Struct0205cf1c;
+void ClearFlagByte0205cf1c(Struct0205cf1c*);
+void SetChannelAFlag0205cef8(void*);
+void SetChannelBFlag0205cf04(void*);
+void SetupPointerTable0205ba68(Struct_0205ba68*, int, int, int);
+struct Node0205bacc;
+void SetField0AndPropagate0205bacc(Node0205bacc*, int);
+struct Struct_0205bcdc;
+void SetIndexIfValid0205bcdc(Struct_0205bcdc*, int);
 extern "C" void func_0205bb04(Sub*, int);
 
 // USA: func_ov000_0217ab8c
@@ -109,17 +114,17 @@ extern "C" ARM void func_ov000_0217ab8c(Menu* self, int arg1, int arg2) {
         selected = self->v1d;
         break;
     case 15:
-        if (_Z20CountNonZero02171698P9S02171698(self) >= 4) {
+        if (CountNonZero02171698((S02171698*)self) >= 4) {
             step = 1;
             visible = 4;
-            pages = (_Z20CountNonZero02171698P9S02171698(self) + 3) / 4;
+            pages = (CountNonZero02171698((S02171698*)self) + 3) / 4;
         } else {
             step = 1;
-            visible = _Z20CountNonZero02171698P9S02171698(self);
+            visible = CountNonZero02171698((S02171698*)self);
             pages = step;
         }
         self->v19 = w->b.value;
-        total = _Z20CountNonZero02171698P9S02171698(self);
+        total = CountNonZero02171698((S02171698*)self);
         selected = self->v20;
         if (selected < 0 || total <= selected) {
             selected = 0;
@@ -127,17 +132,17 @@ extern "C" ARM void func_ov000_0217ab8c(Menu* self, int arg1, int arg2) {
         }
         break;
     case 16:
-        if (_Z20CountNonZero021719c0P9S021719c0(self) >= 4) {
+        if (CountNonZero021719c0((S021719c0*)self) >= 4) {
             step = 1;
             visible = 4;
-            pages = (_Z20CountNonZero021719c0P9S021719c0(self) + 3) / 4;
+            pages = (CountNonZero021719c0((S021719c0*)self) + 3) / 4;
         } else {
             step = 1;
-            visible = _Z20CountNonZero021719c0P9S021719c0(self);
+            visible = CountNonZero021719c0((S021719c0*)self);
             pages = step;
         }
         self->v1a = w->b.value;
-        total = _Z20CountNonZero021719c0P9S021719c0(self);
+        total = CountNonZero021719c0((S021719c0*)self);
         selected = self->v1e;
         if (selected < 0 || total <= selected) {
             selected = 0;
@@ -186,19 +191,19 @@ extern "C" ARM void func_ov000_0217ab8c(Menu* self, int arg1, int arg2) {
         selected = self->v23;
         break;
     default:
-        _Z25ClearChannelAFlag0205cf10Pv(w);
-        _Z21ClearFlagByte0205cf1cP14Struct0205cf1c(self->window);
+        ClearChannelAFlag0205cf10(w);
+        ClearFlagByte0205cf1c((Struct0205cf1c*)self->window);
         return;
     }
-    _Z23SetChannelAFlag0205cef8Pv(self->window);
-    _Z23SetChannelBFlag0205cf04Pv(self->window);
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(&w->a, step, visible, 0);
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(&w->b, step, visible, 0);
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci(&w->a, total);
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci(&w->b, total);
+    SetChannelAFlag0205cef8(self->window);
+    SetChannelBFlag0205cf04(self->window);
+    SetupPointerTable0205ba68((Struct_0205ba68*)&w->a, step, visible, 0);
+    SetupPointerTable0205ba68((Struct_0205ba68*)&w->b, step, visible, 0);
+    SetField0AndPropagate0205bacc((Node0205bacc*)&w->a, total);
+    SetField0AndPropagate0205bacc((Node0205bacc*)&w->b, total);
     w->a.field4 = pages;
     w->b.field4 = pages;
-    _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(&w->a, selected);
+    SetIndexIfValid0205bcdc((Struct_0205bcdc*)&w->a, selected);
     func_0205bb04(&w->b, selected);
     data_ov000_02184294.root->flags &= ~0x100;
 }

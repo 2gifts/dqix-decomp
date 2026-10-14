@@ -31,16 +31,18 @@ struct BattleGlobals {
 };
 
 BattleGlobals* GetGlobalField0x1c020421a0(void);
-extern "C" GameResources* _Z10GetWord0x0Pi(GameState*);
-extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(void*, int);
+GameResources* GetWord0x0(int*);
+struct Actor0209c678;
+void DispatchContextByState0209c678(Actor0209c678*, int);
 void SetBrightness(GameResources*, int, int);
 int IsBrightnessTransitionActive(GameResources*);
 int IsMainBrightnessTransitionActive(GameResources*);
 void SetMainBrightness(GameResources*, int, int);
 extern "C" void func_02043124(BattleGlobals*);
-extern "C" void _Z24ReinitController02043204Pc(BattleGlobals*);
+void ReinitController02043204(char*);
 extern "C" void func_ov003_0215c270(BattleMessageScene*, unsigned int, unsigned int);
-extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
+struct Container020e0310;
+void* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov003_02159250(BattleMessageScene*, void*);
 extern "C" int* func_0202ae18(void);
 int CheckField0NonZero(int*);
@@ -51,7 +53,7 @@ extern unsigned char data_02109bf4;
 // USA: func_ov003_0215b1dc
 extern "C" ARM void func_ov003_0215b1dc(BattleMessageScene* self) {
     BattleGlobals* g = GetGlobalField0x1c020421a0();
-    GameResources* res = _Z10GetWord0x0Pi(GameState::GetInstance());
+    GameResources* res = GetWord0x0((int*)GameState::GetInstance());
 
     if (g->linkState == 3) {
         g->linkPending = 0;
@@ -61,7 +63,7 @@ extern "C" ARM void func_ov003_0215b1dc(BattleMessageScene* self) {
 
     if (step == 0) {
         if (g->linkState != 3) return;
-        _Z30DispatchContextByState0209c678P13Actor0209c678i(&data_02109bf4, 0xb4);
+        DispatchContextByState0209c678((Actor0209c678*)&data_02109bf4, 0xb4);
         SetBrightness(res, -16, 0xb4);
         self->step++;
     }
@@ -69,7 +71,7 @@ extern "C" ARM void func_ov003_0215b1dc(BattleMessageScene* self) {
     if (step == 1) {
         if (IsBrightnessTransitionActive(res)) return;
         func_02043124(g);
-        _Z24ReinitController02043204Pc(g);
+        ReinitController02043204((char*)g);
         SetMainBrightness(res, 0, 0x3c);
         self->step++;
     }
@@ -79,7 +81,7 @@ extern "C" ARM void func_ov003_0215b1dc(BattleMessageScene* self) {
         if (IsMainBrightnessTransitionActive(res)) return;
         if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() > 0) return;
         g->messageActive = 1;
-        func_ov003_02159250(self, _Z21GetFieldByKey020e0434P17Container020e0310i(self->messages, 0x6e));
+        func_ov003_02159250(self, GetFieldByKey020e0434((Container020e0310*)self->messages, 0x6e));
         if (CheckField0NonZero(func_0202ae18())) {
             func_ov017_021c37a4();
         }

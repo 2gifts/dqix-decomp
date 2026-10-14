@@ -2,7 +2,8 @@
 
 void WaitForSharedFlagBit7020d2820(void);
 void InitGridRowsAndFlushCache(void*);
-extern "C" void _Z15EnqueueTailNodeP15MsgNode020d248c(void*);
+struct MsgNode020d248c;
+void EnqueueTailNode(MsgNode020d248c*);
 extern "C" int func_020d2404(int);
 extern "C" void func_020d24c4(int);
 
@@ -69,6 +70,6 @@ extern "C" ARM void func_020d2220(void) {
     if (node == 0) return;
     node->kind = 0x1d;
     node->arg = data_021142c0;
-    _Z15EnqueueTailNodeP15MsgNode020d248c(node);
+    EnqueueTailNode((MsgNode020d248c*)node);
     func_020d24c4(1);
 }

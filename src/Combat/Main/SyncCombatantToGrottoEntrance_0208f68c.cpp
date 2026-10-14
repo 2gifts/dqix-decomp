@@ -4,9 +4,7 @@
 
 extern "C" void* func_02012fe4(void* unused);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(unsigned char* dst, int* src);
-extern "C" void _ZN8Object3D11MakeVisibleEv(unsigned char* obj);
-extern "C" int _ZN8Object3D21MaybeSetBCFGAnimationEii(void* obj, int id, int flags);
+struct Vector3i;
 
 extern int data_020e8d3c;
 
@@ -25,9 +23,9 @@ extern "C" ARM void func_0208f68c(unsigned char* obj) {
         if (zoneId != 0 && grotto->unknown_0[0] != 0) {
             if (zoneId == val) {
                 _ZN8Vector3iaSERKS_((int*)(obj + 0x4c), (int*)&grottoVec);
-                _ZN8Object3D8SetScaleEPK8Vector3i(obj + 8, (int*)&constVec);
-                _ZN8Object3D21MaybeSetBCFGAnimationEii(obj + 8, 0, 0);
-                _ZN8Object3D11MakeVisibleEv(obj + 8);
+                ((Object3D*)(obj + 8))->SetScale((Vector3i const*)&constVec);
+                ((Object3D*)(obj + 8))->MaybeSetBCFGAnimation(0, 0);
+                ((Object3D*)(obj + 8))->MakeVisible();
                 obj[0xb6] = 1;
             }
             obj[0xb5] = 0;

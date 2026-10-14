@@ -2,15 +2,14 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
-
 struct Vec3 { int x; int y; int z; };
 
 struct Vec3_02030ef0;
-extern "C" void _Z22Vector3fixDivideScalarPK8Vector3iiPS_(Vec3_02030ef0* src, unsigned int a, Vec3_02030ef0* dst);
+struct Vector3i;
+void Vector3fixDivideScalar(Vector3i const*, int, Vector3i*);
 
 struct Vec3Fixed02030e2c { int x; int y; int z; };
-extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(Vec3Fixed02030e2c* in, int scale, Vec3Fixed02030e2c* out);
-
+void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 
 extern "C" int func_ov001_02164578(void* table, int index, void* arg2, int arg3, float arg4);
 extern "C" int func_02012fe4(void);
@@ -42,10 +41,10 @@ extern "C" ARM int func_ov001_021592bc(char* req, char* state) {
     if (*(int*)(state + 0x48) <= 0) {
         Vec3 delta;
         Vector3fix_Subtract((const Vector3fix*)((Vec3*)(req + 0x4)), (const Vector3fix*)((Vec3*)(state + 0x74)), (Vector3fix*)&delta);
-        _Z22Vector3fixDivideScalarPK8Vector3iiPS_((Vec3_02030ef0*)&delta, (*(unsigned int*)(req + 0x10)) << 13, (Vec3_02030ef0*)(state + 0x94));
+        Vector3fixDivideScalar((Vector3i const*)&delta, (*(unsigned int*)(req + 0x10)) << 13, (Vector3i*)(state + 0x94));
     } else {
         Vec3Fixed02030e2c tmp = *(Vec3Fixed02030e2c*)(state + 0x94);
-        _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&tmp, fixedScale, &tmp);
+        Vector3fixMultiplyScalar((Vector3i const*)&tmp, fixedScale, (Vector3i*)&tmp);
         int mode = *(int*)(req + 0x14);
         if (mode == 0) {
             Vector3fix_Add((const Vector3fix*)((Vec3*)(state + 0x74)), (const Vector3fix*)((Vec3*)&tmp), (Vector3fix*)((Vec3*)(state + 0x74)));

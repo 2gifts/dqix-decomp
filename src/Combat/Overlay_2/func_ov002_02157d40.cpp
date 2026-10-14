@@ -3,6 +3,7 @@
 
 #include "Combat/ResourceScriptEntry.h"
 #include "Combat/Main/BattleList.h"
+#include "Filesystem/BackgroundLoader.h"
 struct BattleStruct {
     int unk0;
     int unk4;
@@ -22,7 +23,8 @@ struct CombatantStruct {
     struct BaseCombatStats* baseStats;
     struct ModifiableCombatStats* currentStats;
 };
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(struct BattleStruct* battleStruct);
+struct GameState;
+void* GetPtrField0x2a04(GameState*);
 extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
@@ -85,15 +87,10 @@ int GetGlobalField0x1c020421a0(void);
 void InitAndInsertNode_021acd30(char* p, unsigned char a, unsigned char b, unsigned char c);
 int CountMatchingEntries02026a78(char* p);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* p, int a, int b);
-extern "C" void _Z28InitObjFromCombatant020e4c74PvP10GameObject(void* p, struct CombatantStruct* c);
+struct GameObject;
+void InitObjFromCombatant020e4c74(void*, GameObject*);
 void InitObjFromCombatantId020e4bf4(void* p, int a);
 int ClampAndCompareThreshold02048448(struct Struct02048448* p, int a);
-
-extern "C" void _ZN13SafeAllocator5ResetEv(void* self);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int size);
-extern "C" void* _ZN16BackgroundLoader11GetInstanceEv(void);
-extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv(void);
-extern "C" void _ZN16BackgroundLoader16RemoveLockGlobalEv(void);
 
 extern "C" void* memcpy(void* dst, const void* src, unsigned int n);
 extern "C" void* memset(void* dst, int v, unsigned int n);
@@ -325,7 +322,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 p->target = p->actor;
                 p->msgId = 0x754a;
                 flagB = 1;
-                struct PartyList* party = (struct PartyList*)_Z17GetPtrField0x2a04P9GameState(gs);
+                struct PartyList* party = (struct PartyList*)GetPtrField0x2a04((GameState*)gs);
                 for (int i = 0; i < party->count; i++) {
                     NotifySub020541a4((struct Obj020541a4*)_ZN9GameState21GetPartyMemberByIndexEi(gs, party->ids[i]), 0);
                 }
@@ -449,7 +446,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     struct CombatantStruct* unknown = _ZN9GameState20GetUnknownGameObjectEv(gs);
                     if (unknown != 0) {
                         SetIndexedName02046574((struct Obj02046574*)msg, 2, ((struct Unit*)unknown)->name);
-                        _Z28InitObjFromCombatant020e4c74PvP10GameObject(p->obj14, _ZN9GameState20GetUnknownGameObjectEv(gs));
+                        InitObjFromCombatant020e4c74(p->obj14, (GameObject*)_ZN9GameState20GetUnknownGameObjectEv(gs));
                         *(void**)(msg + 0x10) = p->obj14;
                     }
                     AppendString02042058((char*)(tbl + 0x860), (const char*)GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 0x2333));
@@ -471,8 +468,8 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 flagB = 1;
                 InitAndInsertNode_021acd30((char*)word, 0, 0, 0);
             } else {
-                _ZN13SafeAllocator5ResetEv(p->alloc8a0);
-                p->anim = (struct Struct020a8170*)_ZN13SafeAllocator8AllocateEj(p->alloc8a0, 0x10);
+                ((SafeAllocator*)p->alloc8a0)->Reset();
+                p->anim = (struct Struct020a8170*)((SafeAllocator*)p->alloc8a0)->Allocate(0x10);
                 ClearStruct020a8170(p->anim);
                 func_020a818c(p->anim, p->alloc8a0);
                 func_020a8304(p->anim);
@@ -480,7 +477,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     p->msgId2 = -1;
                     p->showPrompt = 1;
                     p->prompt = 0x2338;
-                    _ZN13SafeAllocator5ResetEv(p->alloc8a0);
+                    ((SafeAllocator*)p->alloc8a0)->Reset();
                     p->anim = 0;
                 } else {
                     p->state = 0x14;
@@ -541,7 +538,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 if (GetTableValue((void*)member) == 0x63) {
                     key = 0x7539;
                 } else {
-                    _ZN16BackgroundLoader13AddLockGlobalEv();
+                    BackgroundLoader::AddLockGlobal();
                     ext = member->ext;
                     sprintf(f.path, (const char*)&data_ov002_0216cf51, ext->level);
                     void* loaded = LoadFileIntoMemory(f.path, &data_0211e33c, &f.size50);
@@ -549,7 +546,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     if (loaded != 0) {
                         func_02082490(f.obj148, loaded, f.size50, GetTableValue((void*)member) + 1, 0);
                     }
-                    _ZN16BackgroundLoader16RemoveLockGlobalEv();
+                    BackgroundLoader::RemoveLockGlobal();
                     int diff = *total - CurLimit(member->ext);
                     if (diff <= 0) {
                         key = 0x753a;
@@ -622,7 +619,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                     p->countB = CountEntriesByField0x8e((struct List02026abc*)rec);
                 } else {
                     ClearRecords02026644((char*)rec);
-                    _ZN16BackgroundLoader13AddLockGlobalEv();
+                    BackgroundLoader::AddLockGlobal();
                     f.size4c = 0;
                     void* data = LoadFileIntoMemory((const char*)&data_ov002_0216cf66, &data_0211e33c, &f.size4c);
                     if (func_02026780(rec, data, f.size4c) == 0) {
@@ -632,7 +629,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                         p->countA = CountEntriesByField0x8c((struct List02026a28*)rec);
                         p->countB = CountEntriesByField0x8e((struct List02026abc*)rec);
                     }
-                    _ZN16BackgroundLoader16RemoveLockGlobalEv();
+                    BackgroundLoader::RemoveLockGlobal();
                 }
                 if (ok) {
                     if (p->countA > 0 && p->countB == 0) {
@@ -813,7 +810,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 if (CheckField0NonZero(cp) != 0) {
                     func_ov017_021c9e00(p->target, 0, 0, 1);
                 }
-                unsigned char* party = (unsigned char*)_Z17GetPtrField0x2a04P9GameState(gs);
+                unsigned char* party = (unsigned char*)GetPtrField0x2a04((GameState*)gs);
                 f.tab = *(struct Table11*)&data_ov002_0216c992;
                 int any = 0;
                 int q;
@@ -838,7 +835,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                         func_ov017_021c4418(p->target, -1);
                     }
                     void* ov = func_ov017_0218b5b0();
-                    _ZN16BackgroundLoader11GetInstanceEv();
+                    BackgroundLoader::GetInstance();
                     func_ov017_0218f5a4(ov, p->target, 1, 0, 0);
                 }
                 p->prompt = -1;

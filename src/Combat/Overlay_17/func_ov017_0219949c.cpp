@@ -11,7 +11,6 @@ extern "C" void* func_0202ae18(void);
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 void EnqueueEventTag154_021d0860(unsigned char a, unsigned char b, unsigned char c);
 
 // USA: func_ov017_0219949c
@@ -26,8 +25,8 @@ extern "C" ARM void func_ov017_0219949c(void* ctx, int combatantId, int matchTyp
     GameState* battle = GameState::GetInstance();
     GameObject* combatant = battle->GetGameObjectByIndex(combatantId);
     GameObject* target = battle->GetUnknownGameObject();
-    unsigned short v1 = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant);
-    unsigned short v2 = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)target);
+    unsigned short v1 = ((Object3D*)((struct U16Field0x6_020375f8*)combatant))->GetField06();
+    unsigned short v2 = ((Object3D*)((struct U16Field0x6_020375f8*)target))->GetField06();
 
     if (v1 != v2) {
         EnqueueEventTag154_021d0860(slotId, 1, 1);

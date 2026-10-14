@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+#include "Filesystem/BackgroundLoader.h"
+#include "GameState/GameState.h"
 
 struct Loader;
 struct AxisFloats0203b5a0;
@@ -72,29 +74,29 @@ struct Self_021539a0 {
 };
 
 extern "C" struct Loader* _ZN16BackgroundLoader11GetInstanceEv();
-extern "C" int _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(struct Loader*, const char*, void*);
-extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(struct Loader*, const char*, const char*, void*);
-extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(struct Loader*, int);
-extern "C" void _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(struct Loader*, int, void**, unsigned int*);
-extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(struct Loader*, int);
-extern "C" void* _ZN9GameState11GetInstanceEv();
+struct SafeAllocator;
 extern "C" unsigned char* _ZN9GameState21GetPartyMemberByIndexEi(void*, int);
 extern "C" void __clear(void*, int);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 void* Clear0x54Bytes0208247c(void*);
 unsigned char* GetFieldAt0x150(unsigned char*);
 extern "C" int func_02082490(void*, void*, unsigned int, int, int);
-extern "C" char* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, int*);
-extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
+struct Rec020467f0;
+char* FindRecordByIndex(Rec020467f0*, int, void**, int*);
+void SetWord0x18ClearByte0x1f(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
-extern "C" void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*, int, int);
+struct Obj0204b5e8;
+void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 extern "C" void func_0204c684(void*);
-extern "C" void _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit(void*, unsigned int, int, int, unsigned short);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(void*, void*);
-extern "C" char* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, short);
+struct Obj0204b988;
+void DispatchIndexedEntry0204b988(Obj0204b988*, unsigned int, int, int, unsigned short);
+struct List0204b0e8;
+void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
+struct Container020e0310;
+char* GetFieldByKey020e0434(Container020e0310*, int);
 void* GetGlobalField0x1c020421a0();
 extern "C" void func_02046608(void*, int, char*, char*, int, int, int);
-extern "C" void _Z23SetEntryFields_021e23d0Pviihh(void*, int, const char*, short, short);
+void SetEntryFields_021e23d0(void*, int, int, unsigned char, unsigned char);
 int AccumulateFlaggedSlotBits02085fb4(unsigned char*);
 int AccumulateFlaggedSlotBits02086020(unsigned char*);
 int AccumulateFlaggedSlotBits0208608c(unsigned char*);
@@ -104,13 +106,14 @@ int AccumulateFlaggedSlotBits020861d0(unsigned char*);
 int AccumulateFlaggedSlotBits0208623c(unsigned char*);
 int AccumulateSlotBitsFromTable020862a8(unsigned char*);
 int AccumulateSlotBitsFromTable02086314(unsigned char*);
-extern "C" void _Z24SetPackedFields_021e24b0Pviihhhhhh(void*, int, int, short, short, short, short, short, short);
+void SetPackedFields_021e24b0(void*, int, int, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char);
 extern "C" void func_ov023_021e257c(void*);
 void CleanInvalidateCacheRange(const void*, unsigned int);
 extern "C" void LoadToSubBG0CharacterData(int, int, unsigned int);
-extern "C" void* _Z10GetWord0x0Pi(void*);
-extern "C" int _Z17IsAxisIntWithin16P18AxisFloats0203b5a0i(void*, int);
-extern "C" void _Z16SetSubBrightnessP13GameResourcesii(void*, int, int);
+void* GetWord0x0(int*);
+int IsAxisIntWithin16(AxisFloats0203b5a0*, int);
+struct GameResources;
+void SetSubBrightness(GameResources*, int, int);
 
 extern char data_ov003_0217fca0[];
 extern char data_ov003_0217fcb5[];
@@ -130,12 +133,12 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
         char path[0x18];
         __clear(path, 0x18);
         sprintf(path, data_ov003_0217fca0, self->idx);
-        self->task50 = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(loader, path, 0);
-        self->task54 = _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(loader, data_ov003_0217fcb5, data_ov003_0217fcc7, 0);
+        self->task50 = ((BackgroundLoader*)loader)->QueueLoadFile(path, (SafeAllocator*)0);
+        self->task54 = ((BackgroundLoader*)loader)->QueueLoadFileInGP2(data_ov003_0217fcb5, data_ov003_0217fcc7, (SafeAllocator*)0);
         self->state++;
     } else if (self->state == 1) {
-        if (_ZN16BackgroundLoader13GetTaskStatusEi(loader, self->task50) == 0) return;
-        if (_ZN16BackgroundLoader13GetTaskStatusEi(loader, self->task54) == 0) return;
+        if (((BackgroundLoader*)loader)->GetTaskStatus(self->task50) == 0) return;
+        if (((BackgroundLoader*)loader)->GetTaskStatus(self->task54) == 0) return;
         struct Draw_021539a0 draw;
         char text[0x400];
         char fmt[0x400];
@@ -145,8 +148,8 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
         unsigned int size;
         void* rp;
         int rs;
-        _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, self->task50, &file, &size);
-        void* gs = _ZN9GameState11GetInstanceEv();
+        ((BackgroundLoader*)loader)->GetLoadedFileByID(self->task50, &file, &size);
+        void* gs = GameState::GetInstance();
         unsigned char* obj = _ZN9GameState21GetPartyMemberByIndexEi(gs, self->member);
         Clear0x54Bytes0208247c(self->stats);
         unsigned char* base = 0;
@@ -155,16 +158,16 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
             base = GetFieldAt0x150(obj);
             func_02082490(self->stats, file, size, *(unsigned short*)(base + 0x100 + self->idx * 2 + 0x6c), 0);
         }
-        _ZN16BackgroundLoader10RemoveTaskEi(loader, self->task50);
+        ((BackgroundLoader*)loader)->RemoveTask(self->task50);
         self->task50 = -1;
-        _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, self->task54, &file, &size);
-        obj = (unsigned char*)_Z17FindRecordByIndexP11Rec020467f0iPPvPi(file, 0, &rp, &rs);
+        ((BackgroundLoader*)loader)->GetLoadedFileByID(self->task54, &file, &size);
+        obj = (unsigned char*)FindRecordByIndex((Rec020467f0*)file, 0, &rp, &rs);
         if (obj != 0) {
             list.lo = 1;
             list.hi = 0;
-            _Z24SetWord0x18ClearByte0x1fPhi(&list, 0);
+            SetWord0x18ClearByte0x1f((unsigned char*)&list, 0);
             func_0204b5b4(&list, 0);
-            _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(&list, 0, 0);
+            DispatchViaTable0204b5e8((Obj0204b5e8*)&list, 0, 0);
             gfx = obj + 0x10;
             func_0204c684(&draw);
             draw.s28 = 0x20;
@@ -207,23 +210,23 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
                 if (e) {
                     e->f16 &= ~1;
                 }
-                _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit(self->list, (unsigned char)(idx + 1) & 0xff, 3, 2, 0xffff);
-                _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(self->list, 0);
+                DispatchIndexedEntry0204b988((Obj0204b988*)self->list, (unsigned char)(idx + 1) & 0xff, 3, 2, 0xffff);
+                FlushAndDispatchList0204b0e8((List0204b0e8*)self->list, 0);
                 unsigned char cls = idx - 1;
                 draw.s38 = 0xa;
                 draw.s3a = 0x10;
                 ents->s4a = 0x10;
                 __clear(text, 0x400);
                 unsigned char key = cls + cls * 2;
-                char* s2 = _Z21GetFieldByKey020e0434P17Container020e0310i(cont, key + 2);
-                char* s1 = _Z21GetFieldByKey020e0434P17Container020e0310i(cont, key + 1);
-                char* s0 = _Z21GetFieldByKey020e0434P17Container020e0310i(cont, key);
+                char* s2 = GetFieldByKey020e0434((Container020e0310*)cont, (short)(key + 2));
+                char* s1 = GetFieldByKey020e0434((Container020e0310*)cont, (short)(key + 1));
+                char* s0 = GetFieldByKey020e0434((Container020e0310*)cont, (short)key);
                 sprintf(fmt, data_ov003_0217fcd5, s0, s1, s2);
                 func_02046608(GetGlobalField0x1c020421a0(), 0xc, fmt, text, 0xdc, 0, 1);
-                _Z23SetEntryFields_021e23d0Pviihh(ents, 7, text, 0xc, 0xf);
-                _Z23SetEntryFields_021e23d0Pviihh(ents, 8, data_ov003_0217fcde, 0xc, 0xf);
-                _Z23SetEntryFields_021e23d0Pviihh(ents, 9, data_ov003_0217fcde, 0xc, 0xf);
-                _Z23SetEntryFields_021e23d0Pviihh(ents, 0x14, data_ov003_0217fcde, 0xc, 0xf);
+                SetEntryFields_021e23d0(ents, 7, (int)text, 0xc, 0xf);
+                SetEntryFields_021e23d0(ents, 8, (int)data_ov003_0217fcde, 0xc, 0xf);
+                SetEntryFields_021e23d0(ents, 9, (int)data_ov003_0217fcde, 0xc, 0xf);
+                SetEntryFields_021e23d0(ents, 0x14, (int)data_ov003_0217fcde, 0xc, 0xf);
                 int off = (idx & 0xff) * 0xc;
                 unsigned char* statBase = base + 0x850;
                 struct Packed3x10* row = (struct Packed3x10*)(statBase + off);
@@ -237,7 +240,7 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
                 vals[7] = CAP999(AccumulateSlotBitsFromTable020862a8(base) + stats->w[2].b + row[2].b);
                 vals[8] = CAP999(AccumulateSlotBitsFromTable02086314(base) + stats->w[2].c + row[2].c);
                 for (unsigned char i = 0; data_ov003_0217f288[i] >= 0; i++) {
-                    _Z24SetPackedFields_021e24b0Pviihhhhhh(ents, data_ov003_0217f288[i], vals[i], 8, 0xf, 1, 3, 0, 0);
+                    SetPackedFields_021e24b0(ents, data_ov003_0217f288[i], vals[i], 8, 0xf, 1, 3, 0, 0);
                 }
                 ents->p4 = &draw;
                 ents->s12 = 1;
@@ -246,11 +249,11 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
             CleanInvalidateCacheRange(gfx, 0x6000);
             LoadToSubBG0CharacterData((int)gfx, 0, 0x6000);
         }
-        _ZN16BackgroundLoader10RemoveTaskEi(loader, self->task54);
+        ((BackgroundLoader*)loader)->RemoveTask(self->task54);
         self->task54 = -1;
         self->f10 = self->idx;
-        void* axis = _Z10GetWord0x0Pi(gs);
-        if ((self->flags & 2) || !_Z17IsAxisIntWithin16P18AxisFloats0203b5a0i(axis, 1)) {
+        void* axis = GetWord0x0((int*)gs);
+        if ((self->flags & 2) || !IsAxisIntWithin16((AxisFloats0203b5a0*)axis, 1)) {
             self->flags &= ~2;
             self->state++;
         } else {
@@ -258,7 +261,7 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
             self->state = 0;
         }
     } else if (self->state == 2) {
-        _Z16SetSubBrightnessP13GameResourcesii(_Z10GetWord0x0Pi(_ZN9GameState11GetInstanceEv()), 0, 1);
+        SetSubBrightness((GameResources*)(GetWord0x0((int*)GameState::GetInstance())), 0, 1);
         self->state = 0;
         self->flags &= ~1;
     }

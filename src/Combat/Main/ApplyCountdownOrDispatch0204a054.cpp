@@ -9,9 +9,6 @@ struct List_020347b4;
 struct Entry_020347b4;
 extern "C" Entry_020347b4* _ZN4BCFG18GetAnimationRecordEi(List_020347b4* list, int index);
 
-
-extern "C" void _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, void* member, int arg3);
-
 struct Sub0204a054 {
     char pad[0x58];
     unsigned char field_58;
@@ -46,7 +43,7 @@ ARM void ApplyCountdownOrDispatch0204a054(struct Obj0204a054* obj) {
         if (node != NULL) {
             Entry_020347b4* member = _ZN4BCFG18GetAnimationRecordEi((List_020347b4*)((char*)node + 4), entry->field_59);
             if (member != NULL) {
-                _ZN8Object3D24MaybeSetRegularAnimationEPKci(obj, member, entry->field_5a);
+                ((Object3D*)obj)->MaybeSetRegularAnimation((char const*)member, entry->field_5a);
             }
         }
     }

@@ -1,16 +1,15 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 #if defined(jpn)
 enum { kListOffset = 0x14 };
 #else
 enum { kListOffset = 0x18 };
 #endif
 
-
 struct Entry_02028bd0;
 struct Entry_02028bd0* GetEntryTableBase(void);
 
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
 
@@ -34,7 +33,7 @@ ARM unsigned short FindAndCacheListIndex(struct Obj02079040* obj, unsigned char*
     int idx;
     *outFlag = 0;
     base = GetEntryTableBase();
-    key = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)obj);
+    key = ((Object3D*)((struct U16Field0x6_020375f8*)obj))->GetField06();
     entry = FindInlineEntryById(base, key);
     if (entry == NULL) {
         return 0;

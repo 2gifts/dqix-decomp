@@ -1,8 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" void _ZN8Object3D19SetAlphaScaleFactorEi(unsigned char* obj, short value);
-
 extern int data_ov017_021d6298[14];
 
 // USA: func_ov017_021919c8
@@ -27,7 +25,7 @@ ARM void SetGroupShortValues_021919c8(int unusedA, int b, short c) {
 	for (int i = 0; table[i] > -1; i++) {
 		GameObject* combatant = battleStruct->GetGameObjectByIndex(table[i]);
 		if (combatant) {
-			_ZN8Object3D19SetAlphaScaleFactorEi((unsigned char*)combatant, c);
+			((Object3D*)((unsigned char*)combatant))->SetAlphaScaleFactor(c);
 		}
 	}
 }

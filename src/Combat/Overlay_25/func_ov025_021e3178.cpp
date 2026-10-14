@@ -88,14 +88,15 @@ extern "C" void func_ov025_021eb044(void* obj, ...);
 extern "C" int func_ov000_0215fd90(void* entry, unsigned char effect);
 extern "C" void func_ov000_02162c14(void* work, int id, struct Buf021e3178* out);
 void* GetActiveCombatWork(void);
-extern "C" struct Rec021e3178* _Z24SearchBothTables02079e2cPci(void* table, int key);
-extern "C" struct Node021e3178* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int index);
-extern "C" struct Node021e3178* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int index);
-extern "C" struct Node021e3178* _Z22GetNodeAtIndex0215feb4Pcii(void* base, int index, int slot);
+struct Rec021e3178* SearchBothTables02079e2c(char*, int);
+struct List02160094;
+struct Node021e3178* GetNodeAtIndex02160094(List02160094*, int);
+struct List021600f8;
+struct Node021e3178* GetNodeAtIndex021600f8(List021600f8*, int);
+struct Node021e3178* GetNodeAtIndex0215feb4(char*, int, int);
 void* FindNodeAtDepth0215fff4(void* node, int index, int depth);
 extern "C" struct Combatant021e3178* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
 int TestBit2At0x2f4(unsigned char* flags);
-extern "C" int _ZNK8Object3D9GetRadiusEv(void* obj);
 extern "C" void __clear(void* p, int n);
 
 #define NOTIFY() func_ov025_021eb044(*(void**)((char*)&data_ov025_021ef988 + NotificationField), a->slot)
@@ -122,7 +123,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
             if (o) {
                 Pos021e3178 tmp = *(Pos021e3178*)((char*)o + 0x44);
                 Vector3fix_Add(&sum, (Vector3fix*)&tmp, &sum);
-                rad += _ZNK8Object3D9GetRadiusEv(o) / 2;
+                rad += ((Object3D*)o)->GetRadius() / 2;
                 n++;
             }
         }
@@ -140,7 +141,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
             if (o) {
                 Pos021e3178 tmp2 = *(Pos021e3178*)((char*)o + 0x44);
                 Vector3fix_Add(&sum2, (Vector3fix*)&tmp2, &sum2);
-                rad2 += _ZNK8Object3D9GetRadiusEv(o) / 2;
+                rad2 += ((Object3D*)o)->GetRadius() / 2;
                 n2++;
             }
         }
@@ -168,8 +169,8 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
     }
     case 5: {
         if (b->n8 == 1 && b->n9 == 1) {
-            struct Node021e3178* n6 = _Z22GetNodeAtIndex02160094P12List02160094i(b, 0);
-            struct Node021e3178* n0 = _Z22GetNodeAtIndex021600f8P12List021600f8i(b, 0);
+            struct Node021e3178* n6 = GetNodeAtIndex02160094((List02160094*)b, 0);
+            struct Node021e3178* n0 = GetNodeAtIndex021600f8((List021600f8*)b, 0);
             if (n6 && n0) {
                 if (n6->id20 == *(short*)((char*)n0 + 0xe)) NOTIFY();
             }
@@ -177,7 +178,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         break;
     }
     case 6: {
-        struct Rec021e3178* rec = _Z24SearchBothTables02079e2cPci(GetData02108e10(), b->id);
+        struct Rec021e3178* rec = SearchBothTables02079e2c((char*)GetData02108e10(), b->id);
         if (!rec) return 0;
         unsigned short id = b->id;
         if (id == 0x74) {
@@ -206,7 +207,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
     }
     case 11: {
         if (b->n9 == 0) break;
-        struct Node021e3178* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(b, 0);
+        struct Node021e3178* node = GetNodeAtIndex021600f8((List021600f8*)b, 0);
         if (!node) break;
         for (int j = 0; j < node->count; j++) {
             int v = ((unsigned char*)((int)node + 0x14))[j];
@@ -220,7 +221,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
     case 10: {
         if (b->n9 == 0) break;
         for (int i = 0; i < b->n9; i++) {
-            struct Node021e3178* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(b, i);
+            struct Node021e3178* node = GetNodeAtIndex021600f8((List021600f8*)b, i);
             if (node) {
                 unsigned char* codes = node->codes;
                 for (int j = 1; j < node->count; j++) {
@@ -238,7 +239,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
     case 7: {
         if (b->n9 == 0) break;
         for (int i = 0; i < b->n9; i++) {
-            struct Node021e3178* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(b, i);
+            struct Node021e3178* node = GetNodeAtIndex021600f8((List021600f8*)b, i);
             if (node) {
                 unsigned char* codes = node->codes;
                 for (int j = 1; j < node->count; j++) {
@@ -255,7 +256,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
     case 13: {
         if (b->n9 == 0) break;
         for (int i = 0; i < b->n9; i++) {
-            struct Node021e3178* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(b, i);
+            struct Node021e3178* node = GetNodeAtIndex021600f8((List021600f8*)b, i);
             if (node) {
                 for (int j = 1; j < node->count; j++) {
                     if (node->codes[j] == 1) {
@@ -269,7 +270,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
     }
     case 8: {
         for (int i = 0; i < b->n8; i++) {
-            struct Node021e3178* node = _Z22GetNodeAtIndex02160094P12List02160094i(b, i);
+            struct Node021e3178* node = GetNodeAtIndex02160094((List02160094*)b, i);
             if (node) {
                 for (int j = 0; j < 6; j++) {
                     if (node->b26[j]) {
@@ -285,12 +286,12 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
     case 14:
     case 17: {
         for (int i = 0; i < b->n8; i++) {
-            struct Node021e3178* node = _Z22GetNodeAtIndex02160094P12List02160094i(b, i);
+            struct Node021e3178* node = GetNodeAtIndex02160094((List02160094*)b, i);
             if (node) {
                 for (int k = 0; k < 6; k++) {
                     int found = 0;
                     for (int m = 0; m < node->b26[k]; m++) {
-                        void* x = _Z22GetNodeAtIndex0215feb4Pcii(node, m, k & 0xff);
+                        void* x = GetNodeAtIndex0215feb4((char*)node, m, k & 0xff);
                         if (x) {
                             if (func_ov000_0215fd90(x, 0x22) && a->kind == 0xc) {
                                 NOTIFY();
@@ -371,7 +372,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         int fa = 0;
         int fb = 0;
         for (int i = 0; i < b->n9; i++) {
-            struct Node021e3178* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(b, i);
+            struct Node021e3178* node = GetNodeAtIndex021600f8((List021600f8*)b, i);
             if (node) {
                 for (int j = 1; j < node->count; j++) {
                     if (node->codes[j] == 0xa) {
@@ -396,9 +397,9 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         break;
     }
     case 9: {
-        struct Rec021e3178* rec = _Z24SearchBothTables02079e2cPci(GetData02108e10(), b->id);
+        struct Rec021e3178* rec = SearchBothTables02079e2c((char*)GetData02108e10(), b->id);
         if (!rec) return 0;
-        struct Node021e3178* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(b, 0);
+        struct Node021e3178* node = GetNodeAtIndex021600f8((List021600f8*)b, 0);
         if (!node) return 0;
         if (!node) return 0;
         void* p = FindNodeAtDepth0215fff4(node, 0, 0);

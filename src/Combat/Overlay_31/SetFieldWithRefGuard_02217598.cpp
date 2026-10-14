@@ -6,7 +6,8 @@ struct Struct0224e5e8_02217598 {
 };
 extern struct Struct0224e5e8_02217598 data_ov031_0224e5e8;
 
-extern "C" void* _Z9LockMutexP5Mutex(void *node);
+struct Mutex;
+void* LockMutex(Mutex*);
 
 struct RefNode020c80f8;
 extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8 *node);
@@ -15,7 +16,7 @@ extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8 *node);
 ARM void SetFieldWithRefGuard_02217598(int val) {
 	void *base = data_ov031_0224e5e8.field8;
 	void *node = (char*)base + 0x1000 + 0x3d8;
-	_Z9LockMutexP5Mutex(node);
+	LockMutex((Mutex*)node);
 	base = data_ov031_0224e5e8.field8;
 	*(int*)((char*)base + 0x1000 + 0x4) = val;
 	base = data_ov031_0224e5e8.field8;

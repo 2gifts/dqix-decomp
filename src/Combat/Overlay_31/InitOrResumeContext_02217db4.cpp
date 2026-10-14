@@ -8,7 +8,8 @@ struct FourWords {
 	int fieldc;
 };
 
-extern "C" void _Z19ZeroInitializeMutexP5Mutex(FourWords* p);
+struct Mutex;
+void ZeroInitializeMutex(Mutex*);
 bool IsContextInactive(ProcessorContext* context);
 extern "C" void func_ov031_02218098(void);
 
@@ -18,8 +19,8 @@ extern int data_ov031_0224e608;
 #pragma optimize_for_size off
 extern "C" ARM void func_ov031_02217db4(void* s, unsigned int stackSize) {
 	*(int*)((char*)s + 0x1c10) = 0;
-	_Z19ZeroInitializeMutexP5Mutex((FourWords*)((char*)s + 0x1bf8));
-	_Z19ZeroInitializeMutexP5Mutex((FourWords*)((char*)s + 0x1a18));
+	ZeroInitializeMutex((Mutex*)((char*)s + 0x1bf8));
+	ZeroInitializeMutex((Mutex*)((char*)s + 0x1a18));
 	if (*(int*)((char*)s + 0x1018) == 1) {
 		data_ov031_0224e608 = 1;
 	} else {

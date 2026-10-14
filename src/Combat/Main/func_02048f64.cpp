@@ -28,17 +28,24 @@ struct FormationPathActor {
     FormationPathState* path;
 };
 
-extern "C" int _Z20GetSubstructByte0x56Ph(FormationPathActor* actor);
-extern "C" void _Z26DispatchTargetByte020494c0P11Obj020494c0(FormationPathActor* actor);
-extern "C" void _Z21SetByteSavingPreviousP11Foo02033b58h(FormationPathActor* actor, unsigned char v);
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(FormationPathActor* actor, int v);
-extern "C" void _ZN8Object3D25SetAnimationPlaybackSpeedEsi(FormationPathActor* actor, short speed, int frames);
-extern "C" void _Z29ClearSubFieldsAndFlag02049520P11Obj02049520(FormationPathActor* actor);
-extern "C" void _Z30ApplyFlag0x4IfEligible02049a74P11Obj02049a74(FormationPathActor* actor);
-extern "C" void _Z23ResetInnerState02048c90P11Obj02048c90(FormationPathActor* actor);
-extern "C" void _Z20SetSubstructByte0x1cPhh(FormationPathActor* actor, unsigned char v);
-extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(FormationPathActor* actor, int v);
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(FormationPathActor* actor, int angle);
+int GetSubstructByte0x56(unsigned char*);
+struct Obj020494c0;
+void DispatchTargetByte020494c0(Obj020494c0*);
+struct Foo02033b58;
+void SetByteSavingPrevious(Foo02033b58*, unsigned char);
+struct Obj02033b68;
+void SetByteIfChanged02033b68(Obj02033b68*, int);
+struct Obj02049520;
+void ClearSubFieldsAndFlag02049520(Obj02049520*);
+struct Obj02049a74;
+void ApplyFlag0x4IfEligible02049a74(Obj02049a74*);
+struct Obj02048c90;
+void ResetInnerState02048c90(Obj02048c90*);
+void SetSubstructByte0x1c(unsigned char*, unsigned char);
+struct Bytes02033b88;
+void SetByte0xbeShiftPrev(Bytes02033b88*, int);
+struct Obj02033834;
+void SetVecYByMode02033834(Obj02033834*, int);
 extern "C" Vector3i func_ov025_021ee488(Vector3i* points, int count, int progress);
 
 static inline Vec2_0216f74c GetFormationPosition(const int& cell) {
@@ -110,15 +117,15 @@ extern "C" ARM void func_02048f64(FormationPathActor* actor) {
     fix32_t remaining = FIX32_MULTIPLY((lastIndex << 12) - progress, 0x333);
     if (remaining < advance) {
         advance = remaining;
-        if (_Z20GetSubstructByte0x56Ph(actor)) {
+        if (GetSubstructByte0x56((unsigned char*)actor)) {
             if (actor->unknownBe != 0) {
-                _Z26DispatchTargetByte020494c0P11Obj020494c0(actor);
+                DispatchTargetByte020494c0((Obj020494c0*)actor);
             }
-            _Z21SetByteSavingPreviousP11Foo02033b58h(actor, 0);
+            SetByteSavingPrevious((Foo02033b58*)actor, 0);
             keepFacing = 0;
         }
-    } else if (_Z20GetSubstructByte0x56Ph(actor)) {
-        _Z24SetByteIfChanged02033b68P11Obj02033b68i(actor, 1);
+    } else if (GetSubstructByte0x56((unsigned char*)actor)) {
+        SetByteIfChanged02033b68((Obj02033b68*)actor, 1);
     }
 
     short animSpeed = advance * 12;
@@ -127,7 +134,7 @@ extern "C" ARM void func_02048f64(FormationPathActor* actor) {
     } else if (animSpeed > 0x1400) {
         animSpeed = 0x1400;
     }
-    _ZN8Object3D25SetAnimationPlaybackSpeedEsi(actor, animSpeed, 0);
+    ((Object3D*)actor)->SetAnimationPlaybackSpeed(animSpeed, 0);
     path->progress = progress + advance;
 
     Vector3i target;
@@ -135,17 +142,17 @@ extern "C" ARM void func_02048f64(FormationPathActor* actor) {
         target = func_ov025_021ee488(points, n, progress + advance);
     } else {
         target = points[lastIndex];
-        if (_Z20GetSubstructByte0x56Ph(actor) && (actor->path->flags & 0x40)) {
-            _Z29ClearSubFieldsAndFlag02049520P11Obj02049520(actor);
-            _Z30ApplyFlag0x4IfEligible02049a74P11Obj02049a74(actor);
+        if (GetSubstructByte0x56((unsigned char*)actor) && (actor->path->flags & 0x40)) {
+            ClearSubFieldsAndFlag02049520((Obj02049520*)actor);
+            ApplyFlag0x4IfEligible02049a74((Obj02049a74*)actor);
         }
-        _Z23ResetInnerState02048c90P11Obj02048c90(actor);
-        _ZN8Object3D25SetAnimationPlaybackSpeedEsi(actor, 0x1000, 500);
-        _Z20SetSubstructByte0x1cPhh(actor, path->cell1d);
-        if (_Z20GetSubstructByte0x56Ph(actor) && actor->unknownBe == 1) {
-            _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(actor, 0);
+        ResetInnerState02048c90((Obj02048c90*)actor);
+        ((Object3D*)actor)->SetAnimationPlaybackSpeed(0x1000, 500);
+        SetSubstructByte0x1c((unsigned char*)actor, path->cell1d);
+        if (GetSubstructByte0x56((unsigned char*)actor) && actor->unknownBe == 1) {
+            SetByte0xbeShiftPrev((Bytes02033b88*)actor, 0);
         }
-        _Z26DispatchTargetByte020494c0P11Obj020494c0(actor);
+        DispatchTargetByte020494c0((Obj020494c0*)actor);
         keepFacing = 0;
     }
 
@@ -156,6 +163,6 @@ extern "C" ARM void func_02048f64(FormationPathActor* actor) {
     fix32_t angle   = fix32ReduceAngle0To2Pi(fix32_Atan2(delta.x, delta.z));
     actor->position = target;
     if (keepFacing) {
-        _Z21SetVecYByMode02033834P11Obj02033834i(actor, angle);
+        SetVecYByMode02033834((Obj02033834*)actor, angle);
     }
 }

@@ -33,7 +33,7 @@ struct SetFlagStruct;
 void SetFlag0x9c6(struct SetFlagStruct* p, int value);
 void InitContext020e1154(void* obj);
 
-extern "C" void* _Z20GetField0x3f8AddressP9GameState(struct BattleStruct* battleStruct);
+void* GetField0x3f8Address(GameState*);
 void InitStruct02070378(char* obj);
 
 void* GetGlobalPtr021075f4(void);
@@ -53,7 +53,8 @@ extern "C" void func_ov017_021b6e70(void* evt, unsigned short tag);
 extern "C" int func_0202c540(void* p);
 extern "C" void func_ov017_021b7104(void* node, void* out);
 
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(struct BattleStruct* battleStruct);
+struct GameState;
+void* GetPtrField0x2a04(GameState*);
 void* ZeroInitReturn020de824(void* obj);
 void ZeroInit020de848(void* obj);
 extern char* data_020f2a38;
@@ -83,7 +84,7 @@ int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 
 extern "C" void* func_02012fe4(void);
 extern "C" void func_0206461c(void* a, int b);
-extern "C" int _Z18GetField0x3acValueP9GameState(struct BattleStruct* battleStruct);
+int GetField0x3acValue(GameState*);
 
 void InitByteHeader_021c16a8(unsigned char* self);
 
@@ -219,7 +220,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
             }
 
             case 0x85: case 0x8a: case 0xe2: {
-                unsigned char* f3f8 = (unsigned char*)_Z20GetField0x3f8AddressP9GameState(battle);
+                unsigned char* f3f8 = (unsigned char*)GetField0x3f8Address((GameState*)battle);
                 InitStruct02070378((char*)f3f8);
                 f3f8[2] = 1;
                 *(unsigned short*)(f3f8 + 0) = *(unsigned short*)(node + 2);
@@ -261,7 +262,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
             }
 
             case 0x79: case 0x89: case 0xe1: {
-                unsigned char* f3f8 = (unsigned char*)_Z20GetField0x3f8AddressP9GameState(battle);
+                unsigned char* f3f8 = (unsigned char*)GetField0x3f8Address((GameState*)battle);
                 InitStruct02070378((char*)f3f8);
                 f3f8[2] = 1;
                 *(unsigned short*)(f3f8 + 0) = *(unsigned short*)(node + 2);
@@ -305,7 +306,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                 desc.f12 = 2;
                 desc.f8 = -1;
 
-                desc.f1 = _Z18GetField0x3acValueP9GameState(battle);
+                desc.f1 = GetField0x3acValue((GameState*)battle);
                 desc.f4 = *(unsigned short*)(node + 2) + 5 + 0x8000;
                 desc.f2 = 0xffff;
                 desc.f8 = *(unsigned short*)(node + 2);
@@ -331,7 +332,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
             }
 
             case 0x72: case 0x74: {
-                if (_Z17GetPtrField0x2a04P9GameState(battle) != NULL) {
+                if (GetPtrField0x2a04((GameState*)battle) != NULL) {
                     unsigned char eventBuf[0x18];
 #if defined(jpn)
                     SafeAllocator* r7base = ((AllocHolder0206f81c*)g)->GetAllocator(1);
@@ -363,7 +364,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
             }
 
             case 0x73: case 0x75: {
-                void* p2a04 = _Z17GetPtrField0x2a04P9GameState(battle);
+                void* p2a04 = GetPtrField0x2a04((GameState*)battle);
                 if (p2a04 != NULL) {
                     int matchCount = 0;
                     for (int total = 0; total < *(unsigned short*)(node + 4); total++) {
@@ -418,7 +419,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
 
             case 0x9c: case 0x9d: {
                 if (type == 0x9c) {
-                    void* p2a04 = _Z17GetPtrField0x2a04P9GameState(battle);
+                    void* p2a04 = GetPtrField0x2a04((GameState*)battle);
                     if (p2a04 == NULL) break;
                     int found = 0;
                     if (DecrementKeyEverywhere02086d88((unsigned char*)p2a04, *(short*)(node + 4)) != 0) found = 1;
@@ -457,7 +458,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                         }
                     }
                 }
-                if (_Z17GetPtrField0x2a04P9GameState(battle) != NULL) {
+                if (GetPtrField0x2a04((GameState*)battle) != NULL) {
                     unsigned char eventBuf2[0x18];
 #if defined(jpn)
                     SafeAllocator* r7base2 = ((AllocHolder0206f81c*)g)->GetAllocator(1);
@@ -541,12 +542,12 @@ extern "C" ARM void func_0206f81c(void* a0) {
         }
 
         if (flag18 != 0 && slFlag != 0) {
-            unsigned char* f3f8 = (unsigned char*)_Z20GetField0x3f8AddressP9GameState(battle);
+            unsigned char* f3f8 = (unsigned char*)GetField0x3f8Address((GameState*)battle);
             f3f8[7] = 1;
             _ZN8Vector3iaSERKS_(f3f8 + 0x10, vec);
         }
         if (flag14 != 0 && slFlag != 0) {
-            unsigned char* f3f8 = (unsigned char*)_Z20GetField0x3f8AddressP9GameState(battle);
+            unsigned char* f3f8 = (unsigned char*)GetField0x3f8Address((GameState*)battle);
             f3f8[7] = 1;
             *(short*)(f3f8 + 0x1c) = val10;
         }

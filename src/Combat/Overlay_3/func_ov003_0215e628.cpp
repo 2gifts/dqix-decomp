@@ -1,11 +1,11 @@
 #include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
 
 struct Variant02030b0c {
     int tag;
     union { int i; float f; } u;
 };
 extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* thisPtr, unsigned int size);
 
 struct Obj0215e4c8 {
     unsigned char kind;
@@ -36,7 +36,7 @@ extern "C" ARM int func_ov003_0215e628(struct Variant02030b0c* params) {
     local.height = _ZNK6Script9Parameter5ToIntEv(heightParam);
     local.count = local.width * local.height;
     signed char count = local.count;
-    short* dst = (short*)_ZN13SafeAllocator8AllocateEj(data_ov003_02180cb8.allocator, count * 2);
+    short* dst = (short*)((SafeAllocator*)data_ov003_02180cb8.allocator)->Allocate(count * 2);
     local.values = dst;
     if (dst != NULL) {
         for (int i = 0; i < count; i++) {

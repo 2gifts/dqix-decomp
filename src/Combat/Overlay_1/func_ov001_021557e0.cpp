@@ -14,13 +14,10 @@ void* GetData02153637(void);
 struct Flags02033fcc;
 void SetFlag0x4At0xe0(struct Flags02033fcc* obj);
 unsigned char GetByte0x26c(char* obj);
-extern "C" void _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, const char* name, int idx);
 void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
-extern "C" void _ZN8Object3D10EnableFlagEi(void* obj, unsigned int mask);
 int GetField0x3acValue(GameState* battleStruct);
 struct Base02010834;
 void CopyCountedBytesToIntArray02010834(struct Base02010834* base, int index, int* out, int* outCount);
-extern "C" void _ZN8Object3D17SetInheritedAlphaEi(void* obj, int v);
 void ClearFlag0x1ceBit0x4(unsigned char* obj);
 void* GetDataPtr02114e04_020d6c00(void);
 void* GetPtrField0x2a04(GameState* battleStruct);
@@ -96,10 +93,10 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
             }
             SetFlag0x4At0xe0((struct Flags02033fcc*)m);
             if (GetByte0x26c((char*)m) == 0 || GetFieldPtrAt0x26c(m)->command != 2) {
-                _ZN8Object3D24MaybeSetRegularAnimationEPKci(m, data_ov001_02164bd1, 0x10);
+                ((Object3D*)m)->MaybeSetRegularAnimation(data_ov001_02164bd1, 0x10);
             }
             ClearBytesAndZeroBlock02039d24((unsigned char*)m);
-            _ZN8Object3D10EnableFlagEi(m, 0x800000);
+            ((Object3D*)m)->EnableFlag(0x800000);
         }
 
         int list[4];
@@ -110,7 +107,7 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
             if (m == 0) {
                 continue;
             }
-            _ZN8Object3D17SetInheritedAlphaEi(m, 0x1f);
+            ((Object3D*)m)->SetInheritedAlpha(0x1f);
             ClearFlag0x1ceBit0x4((unsigned char*)m);
         }
 

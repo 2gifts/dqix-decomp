@@ -12,10 +12,10 @@ enum { kRegion1000 = 0x1000 };
 
 void* GetPtrField0x2a04(GameState* gameState);
 struct Obj2081;
-extern "C" void _Z20ClearElementFlag0x20P7Obj2081i(struct Obj2081* obj, short key);
+void ClearElementFlag0x20(Obj2081*, int);
 extern "C" void _Z18SetElementFlag0x20P7Obj2081i(struct Obj2081* obj, short key);
-extern "C" void _Z35SetEntryLowNibbleAndElement02080c68Pvii(void* obj, short id, int value);
-extern "C" void _Z22SetSublistEntriesFlag1Pvi(void* obj, short id);
+void SetEntryLowNibbleAndElement02080c68(void*, int, int);
+void SetSublistEntriesFlag1(void*, int);
 struct Container020dedd0 {
     char pad;
 };
@@ -123,9 +123,9 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
         break;
     }
 
-    _Z20ClearElementFlag0x20P7Obj2081i(elemObj, group);
-    _Z35SetEntryLowNibbleAndElement02080c68Pvii(elemObj, group, 0);
-    _Z22SetSublistEntriesFlag1Pvi(elemObj, group);
+    ClearElementFlag0x20(elemObj, group);
+    SetEntryLowNibbleAndElement02080c68(elemObj, group, 0);
+    SetSublistEntriesFlag1(elemObj, group);
 
     Node021769ec* node = FindElementByKey020dedd0(&self->list, self->party.key);
     bool valid = false;

@@ -1,9 +1,10 @@
 #include <globaldefs.h>
 
 extern "C" int func_ov017_0218b5b0(void);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void*, int, int);
+struct GameResources;
+void SetMainBrightness(GameResources*, int, int);
 extern "C" void _Z16SetSubBrightnessP13GameResourcesii(void*, int, int);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
+int IsBrightnessTransitionActive(GameResources*);
 int IsAnimationActive0209ca2c(void* obj);
 extern "C" void ColorEffect_ConfigureBrightnessAdjust(unsigned short*, int, int);
 struct Entry_0205d6a0;
@@ -36,13 +37,13 @@ extern "C" ARM void func_ov023_021ecaa4(Obj021ecaa4* obj) {
     unsigned char state = obj->f432;
     if (state == 0) {
         if (obj->f60 == 0)
-            _Z17SetMainBrightnessP13GameResourcesii(result, -16, 15);
+            SetMainBrightness((GameResources*)result, -16, 15);
         else
             _Z16SetSubBrightnessP13GameResourcesii(result, -16, 15);
         obj->f432++;
     }
     if (state != 1) return;
-    if (_Z28IsBrightnessTransitionActiveP13GameResources((int*)result)) return;
+    if (IsBrightnessTransitionActive((GameResources*)result)) return;
     if (obj->f44a != 0) {
         if (!(obj->f430 == 0 || obj->f430 == 1)) {
             if (IsAnimationActive0209ca2c((void*)&data_02109bf4)) return;

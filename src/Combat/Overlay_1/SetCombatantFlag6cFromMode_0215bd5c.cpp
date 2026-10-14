@@ -2,8 +2,6 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_ov017_021d60f4(void*);
-extern "C" void _ZN8Object3D11MakeVisibleEv(void*);
-extern "C" void _ZN8Object3D10MakeHiddenEv(void*);
 
 // USA: func_ov001_0215bd5c
 ARM int SetCombatantFlag6cFromMode_0215bd5c(void* self, int mode) {
@@ -17,9 +15,9 @@ ARM int SetCombatantFlag6cFromMode_0215bd5c(void* self, int mode) {
     void* combatant = ((GameState*)battle)->GetGameObjectByIndex(id);
     if (combatant == NULL) return 0;
     if (flag != 0) {
-        _ZN8Object3D11MakeVisibleEv(combatant);
+        ((Object3D*)combatant)->MakeVisible();
     } else {
-        _ZN8Object3D10MakeHiddenEv(combatant);
+        ((Object3D*)combatant)->MakeHidden();
     }
     return 1;
 }

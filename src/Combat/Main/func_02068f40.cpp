@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "GameState/GameState.h"
 
 extern "C" void __clear(void*, int);
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
 char* FindUnescapedAngleBracket(char* str);
 int StringStartsWithCI020d85dc(const char* str, const char* prefix);
 char* JoinDelimitedParts02068e1c(char* dst, char* first, char* second, char* third);
@@ -25,7 +25,7 @@ extern "C" ARM int func_02068f40(void* obj, char* p, char* out, int flag) {
     char b1[0x30];
     char b2[0x30];
     char b3[0x30];
-    void* gs = _ZN9GameState11GetInstanceEv();
+    void* gs = GameState::GetInstance();
     for (;;) {
         char c = *p;
         if (c == 0) {

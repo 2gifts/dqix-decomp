@@ -4,8 +4,9 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
-extern "C" void* _Z10GetWord0x0Pi(void* battle);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
+void* GetWord0x0(int*);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
 
 struct Obj02097b34;
 extern "C" void func_02097b34(struct Obj02097b34* obj);
@@ -28,8 +29,8 @@ void SetBitsInField8(unsigned int* obj, unsigned int mask);
 // USA: func_ov028_021d8c20  (semantic: ResetStateAndCounters_021d8c20)  (semantic: ResetStateAndCounters_021d8c20)
 extern "C" ARM void func_ov028_021d8c20(char* self) {
     void* battle = GameState::GetInstance();
-    void* word = _Z10GetWord0x0Pi(battle);
-    _Z13SetBrightnessP13GameResourcesii(word, -16, 0);
+    void* word = GetWord0x0((int*)battle);
+    SetBrightness((GameResources*)word, -16, 0);
 
     *(int*)0x4000014 = 0;
     *(int*)0x4001014 = 0;

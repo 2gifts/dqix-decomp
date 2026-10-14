@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Filesystem/BackgroundLoader.h"
 
 #if defined(jpn)
 extern "C" void* func_020e08f0(int index, unsigned int* size);
@@ -59,18 +60,15 @@ extern struct Obj0205eaa0 data_02108760;
 extern const char* data_020f2a34;
 extern const char* data_020f2a2c;
 
-extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(void* elements);
+int GetActiveScaledSum0205d794(Struct_0205c570*);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void* elements, int flag);
-extern "C" struct TableEntry0217f8c0* _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0(MenuState* menu);
-extern "C" int _Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(MenuState* menu);
-extern "C" void _Z29SetElementStateIfLess0217a9d0iiiP15Struct_0205d81c(int key, int count, int state, void* elements);
-extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(void* elements, int clear, int key);
-extern "C" int _Z29HasAnyFlags_021719f8_021719f8Pi(void* entry);
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
+struct TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(Struct0217f8c0*);
+int CheckFlagsOrField_0217c5f4_0217c5f4(void*);
+void SetElementStateIfLess0217a9d0(int, int, int, Struct_0205d81c*);
+void SetElementFlag0x20ByKey0205def8(Struct_0205def8*, int, int);
+int HasAnyFlags_021719f8_021719f8(int*);
 int GetNthSetBit0218158c(void* menu, int index);
-extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv(void);
-extern "C" void _ZN16BackgroundLoader16RemoveLockGlobalEv(void);
-extern "C" void _ZN13SafeAllocator5ResetEv(void* alloc);
 void ZeroInit020de848(void* obj);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 extern "C" int func_020de9a4(void* list, void* alloc, void* data, unsigned int size, void* entries, unsigned short count);
@@ -85,7 +83,7 @@ extern "C" void func_ov000_0217c638(MenuState* menu, int arg1, int arg2);
 extern "C" ARM void func_ov000_0217d87c(MenuState* menu, int arg1, int arg2) {
     menu->flags |= 0x100;
     signed char prev = menu->activeSum;
-    int sum = _Z26GetActiveScaledSum0205d794P15Struct_0205c570(menu->elements);
+    int sum = GetActiveScaledSum0205d794((Struct_0205c570*)menu->elements);
     menu->activeSum = sum;
     int id = menu->members[menu->selection];
     if (prev != sum) {
@@ -101,11 +99,11 @@ extern "C" ARM void func_ov000_0217d87c(MenuState* menu, int arg1, int arg2) {
         }
         menu->mode = 6;
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
-        _ZN16BackgroundLoader13AddLockGlobalEv();
+        BackgroundLoader::AddLockGlobal();
 #if defined(jpn)
-        _ZN13SafeAllocator5ResetEv((char*)menu + 0x1bf8);
+        ((SafeAllocator*)((char*)menu + 0x1bf8))->Reset();
 #else
-        _ZN13SafeAllocator5ResetEv((char*)menu + 0x1af8);
+        ((SafeAllocator*)((char*)menu + 0x1af8))->Reset();
 #endif
         ZeroInit020de848((char*)menu + 0x100);
         unsigned int size;
@@ -121,19 +119,19 @@ extern "C" ARM void func_ov000_0217d87c(MenuState* menu, int arg1, int arg2) {
             func_020de9a4((char*)menu + 0x100, menu->field26 + 0x1ad2, data, size, menu->field26, menu->field66);
 #endif
         }
-        _ZN16BackgroundLoader16RemoveLockGlobalEv();
+        BackgroundLoader::RemoveLockGlobal();
         menu->field1d6f = 0;
         menu->depth = menu->depth + 1;
         menu->modeStack[menu->depth] = 7;
-        func_ov000_02176634(menu, _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0(menu), 7, arg1, arg2);
-        _Z29SetElementStateIfLess0217a9d0iiiP15Struct_0205d81c(7, menu->field66, 4, menu->elements);
-    } else if (_Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(menu) != 0) {
+        func_ov000_02176634(menu, FindMatchingTableEntry0217f8c0((Struct0217f8c0*)menu), 7, arg1, arg2);
+        SetElementStateIfLess0217a9d0(7, menu->field66, 4, (Struct_0205d81c*)menu->elements);
+    } else if (CheckFlagsOrField_0217c5f4_0217c5f4(menu) != 0) {
         menu->field956 = 0;
         ElemNode* node = func_ov000_02161318(menu, id);
         if (node == NULL) {
             return;
         }
-        if (_Z29HasAnyFlags_021719f8_021719f8Pi(node) != 0) {
+        if (HasAnyFlags_021719f8_021719f8((int*)node) != 0) {
             node->marks[node->markIndex] = 100;
             node->flags &= ~4;
         }
@@ -145,7 +143,7 @@ extern "C" ARM void func_ov000_0217d87c(MenuState* menu, int arg1, int arg2) {
             if (other == NULL) {
                 continue;
             }
-            if (_Z29HasAnyFlags_021719f8_021719f8Pi(other) != 0) {
+            if (HasAnyFlags_021719f8_021719f8((int*)other) != 0) {
                 continue;
             }
             if (other->field87 != 0) {
@@ -154,12 +152,12 @@ extern "C" ARM void func_ov000_0217d87c(MenuState* menu, int arg1, int arg2) {
             }
         }
         func_ov000_02175258(menu);
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(menu->elements, 0);
+        ResetEntryList0205d6a0((Entry_0205d6a0*)menu->elements, 0);
         menu->modeStack[menu->depth] = 0;
         menu->depth = menu->depth - 1;
         func_ov000_0217c638(menu, arg1, arg2);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(menu->elements, 1, 1);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(menu->elements, 1, 2);
-        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(menu->elements, 1, 5);
+        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)menu->elements, 1, 1);
+        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)menu->elements, 1, 2);
+        SetElementFlag0x20ByKey0205def8((Struct_0205def8*)menu->elements, 1, 5);
     }
 }

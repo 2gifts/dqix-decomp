@@ -23,7 +23,7 @@ struct PoseEntry02109a54 {
 GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
 CombatantInfo150* GetFieldAt0x150(unsigned char* obj);
 PoseEntry02109a54* GetGlobal02109a54(void);
-extern "C" int _Z19GetByteFieldAt0x1a0Pvi(GameObject* obj, int index);
+int GetByteFieldAt0x1a0(void*, int);
 extern "C" void _Z19SetByteFieldAt0x1a7Phh(GameObject* obj, int value);
 void SetFields0x44(Fields020407b4* dst, int a, int b, int c);
 void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov017_021917f0(int idx, int mode) {
     if (info == NULL) return;
     PoseEntry02109a54* entry = &GetGlobal02109a54()[info->poseIndex];
     if (mode == 1) {
-        int bone = _Z19GetByteFieldAt0x1a0Pvi(combatant, entry->boneA);
+        int bone = GetByteFieldAt0x1a0(combatant, entry->boneA);
         _Z19SetByteFieldAt0x1a7Phh(combatant, bone);
         SetFields0x44((Fields020407b4*)obj, entry->posA[0], entry->posA[1], entry->posA[2]);
         StoreVec3AtField0x50((unsigned char*)obj, entry->rotA[0], entry->rotA[1], entry->rotA[2]);
@@ -56,7 +56,7 @@ extern "C" ARM void func_ov017_021917f0(int idx, int mode) {
             obj->obj3D_.ClearFlag16();
         }
     } else if (mode == 0) {
-        int bone = _Z19GetByteFieldAt0x1a0Pvi(combatant, entry->boneB);
+        int bone = GetByteFieldAt0x1a0(combatant, entry->boneB);
         _Z19SetByteFieldAt0x1a7Phh(combatant, bone);
         SetFields0x44((Fields020407b4*)obj, entry->posB[0], entry->posB[1], entry->posB[2]);
         StoreVec3AtField0x50((unsigned char*)obj, entry->rotB[0], entry->rotB[1], entry->rotB[2]);

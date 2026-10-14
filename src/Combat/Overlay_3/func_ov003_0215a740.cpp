@@ -11,13 +11,17 @@ enum { kRegion960 = 0x960 };
 #endif
 
 #include "GameState/GameState.h"
+#include "Filesystem/BackgroundLoader.h"
 
 void* GetGlobalField0x1c020421a0(void);
-extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(void*, int, int);
-extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
+struct Struct_0205d81c;
+void SetElementFieldC2(Struct_0205d81c*, int, int);
+struct Container020e0310;
+void* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov003_02159250(void*, void*);
-extern "C" void _Z25AppendFieldTwice_02159290Pvii(void*, unsigned short, int);
-extern "C" void _Z27SetFieldB0AndUpdate0205dee8P11Obj0205dee8i(void*, int);
+void AppendFieldTwice_02159290(void*, int, int);
+struct Obj0205dee8;
+void SetFieldB0AndUpdate0205dee8(Obj0205dee8*, int);
 void ResetAndApply0215be20(void*);
 int StepStateMachine0215bd34(void*);
 extern "C" void func_ov003_0215c01c(void*, int, int);
@@ -25,28 +29,31 @@ extern "C" void* memset(void*, int, unsigned int);
 extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, int);
 unsigned char* GetFieldAt0x150(unsigned char*);
 extern "C" int _s32_div_f(int, int);
-extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(void*, int, int);
+struct StoreStruct;
+void StoreInArray0x8b0(StoreStruct*, int, int);
 void SetByteInRange(unsigned char*, int, unsigned char);
 void InitObjFromCombatantId020e4bf4(void*, int);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, char*);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" int func_ov003_0215bf18(void*, int);
-extern "C" int _Z26AddCappedFieldF6c_0215b580ii(void*, int);
-extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void*, int);
+int AddCappedFieldF6c_0215b580(int, int);
+struct Struct0209c830;
+void SetValueAndActivate0209c830(Struct0209c830*, unsigned short);
 int IsAnimationActive0209ca2c(void*);
 extern "C" void func_02048150(void*, int, int);
-extern "C" void _Z18TryClearFlags0x130Pht(void*, unsigned short);
+void TryClearFlags0x130(unsigned char*, unsigned short);
 void* GetPtrField0x2a04(GameState*);
 extern "C" void func_0207c378(void*, short, int, int);
 extern "C" void func_02052d7c(void*, signed char, int);
 extern "C" void* func_0202ae18(void);
-extern "C" int _Z18CheckField0NonZeroPi(void*);
+int CheckField0NonZero(int*);
 extern "C" void func_ov017_021c3fb4(int, int);
 extern "C" void func_ov017_021c4418(int, int);
-extern "C" void* _ZN16BackgroundLoader11GetInstanceEv(void);
 extern "C" void func_ov017_0218f5a4(void*, int, int, int, int);
-extern "C" void _ZN16BackgroundLoader14RemoveAllLocksEv(void*);
-extern "C" void _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498(void*);
-extern "C" int _Z23GetHeadNodeIdOrMinusOnePP16HeadNode02046b24(void*);
+struct Ctx021a3498;
+void ClearIfMatchAndFinalize_021a3498(Ctx021a3498*);
+struct HeadNode02046b24;
+int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 extern "C" void func_ov017_0218b5f8(int);
 extern "C" void func_ov017_021c9e00(int, int, int, int);
 
@@ -82,17 +89,17 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
     unsigned char state = *(unsigned char*)(s + 0x580);
 
     if (state == 0) {
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 0, 0);
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 1, 1);
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 2, 0);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 0);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 0);
         func_ov003_02159250(self,
-            _Z21GetFieldByKey020e0434P17Container020e0310i(s + 0x64, (short)p2));
+            GetFieldByKey020e0434((Container020e0310*)(s + 0x64), (short)p2));
         *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
     }
 
     if (state == 1) {
         if (*(int*)(g + kRegion9a0) != 3) return;
-        _Z27SetFieldB0AndUpdate0205dee8P11Obj0205dee8i(s + 0xf4, 2);
+        SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(s + 0xf4), 2);
         *(unsigned char*)(s + 0x585) = 0;
         ResetAndApply0215be20(self);
         *(unsigned char*)(s + 0x59f) = *(unsigned char*)(s + 0x59f) | 4;
@@ -105,7 +112,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
         if (r == -2) {
             func_ov003_0215c01c(self, 1, 0);
             memset(*(void**)(s + 0x7c), 0, kRegion960);
-            _Z25AppendFieldTwice_02159290Pvii(self, 0x424, 0x42e);
+            AppendFieldTwice_02159290(self, (unsigned short)0x424, 0x42e);
             func_ov003_02159250(self, *(void**)(s + 0x7c));
             *(unsigned char*)(s + 0x580) = 6;
         } else if (r >= 0) {
@@ -142,10 +149,10 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                 }
             }
             if (flag != 0) {
-                _Z17StoreInArray0x8b0P11StoreStructii(g, 0, *(int*)(s + 0x5ac));
+                StoreInArray0x8b0((StoreStruct*)g, 0, *(int*)(s + 0x5ac));
                 SetByteInRange(g, 0, 0);
                 memset(*(void**)(s + 0x7c), 0, kRegion960);
-                _Z25AppendFieldTwice_02159290Pvii(self, 0x425, 0x42e);
+                AppendFieldTwice_02159290(self, (unsigned short)0x425, 0x42e);
                 func_ov003_02159250(self, *(void**)(s + 0x7c));
                 *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
             } else {
@@ -153,9 +160,9 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                 InitObjFromCombatantId020e4bf4(&nb,
                     *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591));
                 *(void**)(g + 0x10) = &nb;
-                _Z22SetIndexedName02046574P11Obj02046574iPc((void*)g, 0, *(char**)(s + 0x5a4));
+                SetIndexedName02046574((Obj02046574*)g, 0, *(char**)(s + 0x5a4));
                 memset(*(void**)(s + 0x7c), 0, kRegion960);
-                _Z25AppendFieldTwice_02159290Pvii(self, p2 + 2, 0x42e);
+                AppendFieldTwice_02159290(self, (unsigned short)(p2 + 2), 0x42e);
                 func_ov003_02159250(self, *(void**)(s + 0x7c));
                 *(unsigned char*)(s + 0x580) = 6;
             }
@@ -165,19 +172,19 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
     if (state == 3) {
         if (*(int*)(g + kRegion9a0) != 3) return;
         int r = func_ov003_0215bf18(self, 0);
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 0, 0);
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 1, 1);
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 2, 1);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 0);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 1);
         if (r == -1) return;
         if (r == -2 || r == 1) {
             memset(*(void**)(s + 0x7c), 0, kRegion960);
-            _Z25AppendFieldTwice_02159290Pvii(self, 0x426, 0x42e);
+            AppendFieldTwice_02159290(self, (unsigned short)0x426, 0x42e);
             func_ov003_02159250(self, *(void**)(s + 0x7c));
             *(unsigned char*)(s + 0x580) = 6;
         } else if (r == 0) {
-            if (_Z26AddCappedFieldF6c_0215b580ii(self, -*(int*)(s + 0x5ac)) == 0) {
+            if (AddCappedFieldF6c_0215b580((int)self, -*(int*)(s + 0x5ac)) == 0) {
                 memset(*(void**)(s + 0x7c), 0, kRegion960);
-                _Z25AppendFieldTwice_02159290Pvii(self, 0x427, 0x42e);
+                AppendFieldTwice_02159290(self, (unsigned short)0x427, 0x42e);
                 func_ov003_02159250(self, *(void**)(s + 0x7c));
                 *(unsigned char*)(s + 0x580) = 6;
             } else {
@@ -187,18 +194,18 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                     *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591));
                 *(void**)(g + 0x10) = &nb;
                 func_ov003_02159250(self,
-                    _Z21GetFieldByKey020e0434P17Container020e0310i(s + 0x64, (short)(p2 + 1)));
+                    GetFieldByKey020e0434((Container020e0310*)(s + 0x64), (short)(p2 + 1)));
                 *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
             }
         }
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 0, 0);
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 1, 1);
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 2, 0);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 0);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 0);
     }
 
     if (state == 4) {
         if (*(int*)(g + kRegion9a0) != 3) return;
-        _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x3b);
+        SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x3b);
         *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
     }
 
@@ -219,10 +226,10 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
             break;
         }
         case 0x410:
-            _Z18TryClearFlags0x130Pht(combatant, 2);
+            TryClearFlags0x130((unsigned char*)combatant, 2);
             break;
         case 0x406 + 20: {
-            _Z18TryClearFlags0x130Pht(combatant, 4);
+            TryClearFlags0x130((unsigned char*)combatant, 4);
             unsigned char* c4 = (unsigned char*)GetPtrField0x2a04(game);
             int flag = 0;
             for (int i = 0; i < 0xb; i++) {
@@ -239,20 +246,20 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                 flag = 1;
             }
             if (flag != 0) {
-                if (_Z18CheckField0NonZeroPi(func_0202ae18()) != 0) {
+                if (CheckField0NonZero((int*)func_0202ae18()) != 0) {
                     func_ov017_021c3fb4(cid, 1);
                     func_ov017_021c4418(cid, -1);
                 }
                 void* bg = (void*)func_ov017_0218b5b0();
                 void* ctxA = *(void**)((char*)bg + 0x3700);
                 void* ctxB = *(void**)((char*)bg + 0x3704);
-                void* loader = _ZN16BackgroundLoader11GetInstanceEv();
+                void* loader = BackgroundLoader::GetInstance();
                 func_ov017_0218f5a4(bg, cid, 1, 0, 0);
-                while (_Z23GetHeadNodeIdOrMinusOnePP16HeadNode02046b24(ctxA) == 0x13) {
-                    _ZN16BackgroundLoader14RemoveAllLocksEv(loader);
-                    _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498(ctxA);
-                    if (_Z23GetHeadNodeIdOrMinusOnePP16HeadNode02046b24(ctxB) == 0x14) {
-                        _Z32ClearIfMatchAndFinalize_021a3498P11Ctx021a3498(ctxB);
+                while (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)ctxA) == 0x13) {
+                    ((BackgroundLoader*)loader)->RemoveAllLocks();
+                    ClearIfMatchAndFinalize_021a3498((Ctx021a3498*)ctxA);
+                    if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)ctxB) == 0x14) {
+                        ClearIfMatchAndFinalize_021a3498((Ctx021a3498*)ctxB);
                     }
                 }
             }
@@ -263,7 +270,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
         func_ov017_0218b5f8(-1);
         func_ov017_021c9e00(cid, 1, 0, 1);
         func_ov003_02159250(self,
-            _Z21GetFieldByKey020e0434P17Container020e0310i(s + 0x64, 0x42e));
+            GetFieldByKey020e0434((Container020e0310*)(s + 0x64), 0x42e));
         *(signed char*)(s + 0x585) = -1;
         func_ov003_0215c01c(self, 1, 0);
         func_ov003_0215c01c(self, 2, 0);

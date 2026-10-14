@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 
 #include "Memory/SafeAllocator.h"
+#include "GameState/GameState.h"
 
 struct Variant02030b0c;
 extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
@@ -9,8 +10,6 @@ extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 extern "C" struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44* obj, int* outVec);
 
 struct GameState;
-extern "C" struct GameState* _ZN9GameState11GetInstanceEv(void);
-extern "C" bool _ZNK9GameState21IsMorningDayOrEveningEv(struct GameState* self);
 
 extern "C" char* func_0205ec34();
 int TestBitInByteArray(int, unsigned char*, int);
@@ -79,13 +78,13 @@ extern "C" ARM int func_0206d4e0(void* param0, int param1) {
     }
 
     int kind = _ZNK6Script9Parameter5ToIntEv(arg);
-    struct GameState* gs = _ZN9GameState11GetInstanceEv();
+    struct GameState* gs = GameState::GetInstance();
     if (kind == 1) {
-        if (_ZNK9GameState21IsMorningDayOrEveningEv(gs)) {
+        if (gs->IsMorningDayOrEvening()) {
             return 1;
         }
     } else if (kind == 0) {
-        if (!_ZNK9GameState21IsMorningDayOrEveningEv(gs)) {
+        if (!gs->IsMorningDayOrEvening()) {
             return 1;
         }
     }

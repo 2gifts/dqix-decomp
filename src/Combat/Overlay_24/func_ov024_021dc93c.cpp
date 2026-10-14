@@ -2,14 +2,15 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
 void* GetPtrField0x2a04(GameState*);
-extern "C" int _Z17ArrayContainsByteP23ArrayContainsByteStructi(void*,int);
-extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(void*,int);
-extern "C" int _Z36CheckField0x14FiveFlagsClear020881c4Ph(void*);
-extern "C" int _Z36CheckField0x14FiveFlagsClear0208810cPh(void*);
+struct ArrayContainsByteStruct;
+int ArrayContainsByte(ArrayContainsByteStruct*, int);
+void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
+int CheckField0x14FiveFlagsClear020881c4(unsigned char*);
+int CheckField0x14FiveFlagsClear0208810c(unsigned char*);
 extern "C" void _Z26SetFlag0x800000AndByte0x24Pvh(void*,int);
-extern "C" int _Z30SetFlag0x800000AndCall02088208Pvi(void*,void*);
+int SetFlag0x800000AndCall02088208(void*, int);
 void ResetAndSetFlag0x1000000(void*);
-extern "C" int _Z27GetCodeForCategory_021e8c48Pvi(void*,signed char);
+int GetCodeForCategory_021e8c48(void*, int);
 unsigned short SelectByIndexRange0to3_021da644(int,int,int);
 extern "C" void* func_ov000_0215e958(void*);
 void AddEntryAndIncrementCount0215a88c(void*,void*,int);
@@ -37,9 +38,9 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
  if(enabled){
   if(code==0x151 || code==0x152){
    if(code==0x151){
-    if(_Z36CheckField0x14FiveFlagsClear020881c4Ph(target->currentStats_))ok=1;
+    if(CheckField0x14FiveFlagsClear020881c4((unsigned char*)target->currentStats_))ok=1;
    }else if(code==0x152){
-    if(_Z36CheckField0x14FiveFlagsClear0208810cPh(target->currentStats_))ok=1;
+    if(CheckField0x14FiveFlagsClear0208810c((unsigned char*)target->currentStats_))ok=1;
    }
    int stage;
    int count=params->count;
@@ -84,14 +85,14 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
      }
     }
    }
-  }else if(_Z36CheckField0x14FiveFlagsClear020881c4Ph(target->currentStats_)){
+  }else if(CheckField0x14FiveFlagsClear020881c4((unsigned char*)target->currentStats_)){
    int count=params->count;
    int total=((Stats021dc93c*)target->currentStats_)->stage+count;
    if(total>4)count-=total-4;
    for(;count>0;count--){
-    int result=_Z30SetFlag0x800000AndCall02088208Pvi(target->currentStats_,GetCtx(obj));
+    int result=SetFlag0x800000AndCall02088208(target->currentStats_, (int)GetCtx(obj));
     effects=0;
-    message=_Z27GetCodeForCategory_021e8c48Pvi(obj,result);
+    message=GetCodeForCategory_021e8c48(obj, (signed char)result);
     void* entry=func_ov000_0215e958(obj->context);
     if(!entry)return 0;
     if(result>0){
@@ -100,8 +101,8 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
       func_ov000_02159eac(obj->context,&effects,7);
       func_ov000_0215af54(obj->context,id,0);
       void* list=GetPtrField0x2a04(GameState::GetInstance());
-      if(_Z17ArrayContainsByteP23ArrayContainsByteStructi(list,sourceID) && code==0xa8)
-       _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(obj->context,3);
+      if(ArrayContainsByte((ArrayContainsByteStruct*)list, sourceID) && code==0xa8)
+       IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)obj->context, 3);
      }
     }else{
      effects=0;

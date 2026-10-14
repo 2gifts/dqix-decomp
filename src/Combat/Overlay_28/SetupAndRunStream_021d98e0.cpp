@@ -1,15 +1,13 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct ResetStruct;
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 
 struct StreamHeader;
 struct StreamState;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 struct Elem0203066c { unsigned int key; int val; };
 struct Obj0203066c { int count; struct Elem0203066c* list; };
@@ -35,8 +33,8 @@ extern "C" ARM void func_ov028_021d98e0(SelfObj98e0* self, SafeAllocator* alloc,
     self->field8 = 0;
     data_ov028_021d9bc4.field4 = alloc;
     data_ov028_021d9bc4.field0 = self;
-    _ZN6Script10InitializeEv((struct ResetStruct*)local);
+    ((Script*)((struct ResetStruct*)local))->Initialize();
     _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct Obj0203066c*)local, &data_ov028_021d9ac0);
-    _ZN6Script4LoadEPKvj((struct StreamState*)local, header, length);
-    _ZN6Script7ExecuteEv((struct Struct02030774*)local);
+    ((Script*)((struct StreamState*)local))->Load(header, length);
+    ((Script*)((struct Struct02030774*)local))->Execute();
 }

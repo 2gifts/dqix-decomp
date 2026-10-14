@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct Res020a654c {
 #if defined(jpn)
@@ -19,33 +20,35 @@ struct Out020a654c {
     int f4;
 };
 
-extern "C" void* _ZN9GameState11GetInstanceEv();
 extern "C" void* func_02012fe4();
 extern "C" void func_0202ae18();
-extern "C" void* _Z17GetPointerAt0x32cP20PointerField32c_ffc0(void* p);
-extern "C" void* _ZN9GameState20GetUnknownGameObjectEv(void* p);
-extern "C" int _Z23GetHeadNodeIdOrMinusOnePP16HeadNode02046b24(void* p);
-extern "C" void* _Z23GetField0x0List02046b1cP9S02046b1c(void* p);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(void* res);
+struct PointerField32c_ffc0;
+void* GetPointerAt0x32c(PointerField32c_ffc0*);
+struct HeadNode02046b24;
+int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
+struct S02046b1c;
+void* GetField0x0List02046b1c(S02046b1c*);
+struct GameResources;
+int IsBrightnessTransitionActive(GameResources*);
 extern "C" void func_020a75ec(void* p);
-extern "C" int _Z15GetBitsInField0Pjj(void* p, unsigned int bits);
-extern "C" void _Z31DispatchWithZeroExtras_02193428PvS_(void* p, short v);
+int GetBitsInField0(unsigned int*, unsigned int);
+void DispatchWithZeroExtras_02193428(void*, void*);
 extern "C" void func_020a7ce0(void* p);
 extern "C" int func_020a7d74(void* p, int* out1, int* out2);
-extern "C" int _Z12IsField0NullPPv(void* p);
+int IsField0Null(void**);
 extern "C" int func_ov017_021a93f0(void* res, int a, int b);
 
 // USA: func_020a654c
 extern "C" ARM void func_020a654c(struct Res020a654c* self) {
-    void* gs = _ZN9GameState11GetInstanceEv();
+    void* gs = GameState::GetInstance();
     unsigned short* p;
     void* nodeList = self->nodeList;
     p = (unsigned short*)func_02012fe4();
     func_0202ae18();
-    void* obj = _Z17GetPointerAt0x32cP20PointerField32c_ffc0(gs);
-    _ZN9GameState20GetUnknownGameObjectEv(gs);
-    int id = _Z23GetHeadNodeIdOrMinusOnePP16HeadNode02046b24(nodeList);
-    void* lst = _Z23GetField0x0List02046b1cP9S02046b1c(nodeList);
+    void* obj = GetPointerAt0x32c((PointerField32c_ffc0*)gs);
+    ((GameState*)gs)->GetUnknownGameObject();
+    int id = GetHeadNodeIdOrMinusOne((HeadNode02046b24**)nodeList);
+    void* lst = GetField0x0List02046b1c((S02046b1c*)nodeList);
     if (obj == 0) {
         return;
     }
@@ -53,18 +56,18 @@ extern "C" ARM void func_020a654c(struct Res020a654c* self) {
         return;
     }
     if (id == 3) {
-        if (_Z28IsBrightnessTransitionActiveP13GameResources(self) == 0) {
+        if (IsBrightnessTransitionActive((GameResources*)self) == 0) {
             return;
         }
     }
     func_020a75ec(obj);
-    if (_Z15GetBitsInField0Pjj(self, 0x2020) == 0) {
-        _Z31DispatchWithZeroExtras_02193428PvS_(obj, 1);
+    if (GetBitsInField0((unsigned int*)self, 0x2020) == 0) {
+        DispatchWithZeroExtras_02193428(obj, (void*)1);
     }
     if (*p == 0x2710) {
         func_020a7ce0(obj);
     }
-    if (_Z15GetBitsInField0Pjj(self, 0x2020) != 0) {
+    if (GetBitsInField0((unsigned int*)self, 0x2020) != 0) {
         return;
     }
     struct Out020a654c out;
@@ -79,7 +82,7 @@ extern "C" ARM void func_020a654c(struct Res020a654c* self) {
     if (out.f4 == 0) {
         return;
     }
-    if (_Z12IsField0NullPPv(self->nodeList) == 0) {
+    if (IsField0Null((void**)self->nodeList) == 0) {
         return;
     }
     func_ov017_021a93f0(self, out.f4, 0);

@@ -9,7 +9,6 @@ struct Entry_02028bd0* FindEntryByCurrentId02027cb0(void);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 struct PtrWithU16_021a3338 { unsigned short field0; };
 struct EntryField2_021a3338 { unsigned char pad0[2]; unsigned short field2 : 2; unsigned short pad3 : 14; };
@@ -28,7 +27,7 @@ ARM void SyncVec3ForFlaggedCombatants_021a3338(void*) {
         int base = idx * 0xc + 0x70;
         GameObject* combatant = battleStruct->GetMaybeFieldMonsterByIndex(i + base);
         if (combatant) {
-            if (value == _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant)) {
+            if (value == ((Object3D*)((struct U16Field0x6_020375f8*)combatant))->GetField06()) {
                 EventVec3 v = *(EventVec3*)((char*)combatant + 0x44);
                 v.b = func_02018fbc((int)ptr, &v);
                 _ZN8Vector3iaSERKS_((int*)((char*)combatant + 0x44), (int*)&v);

@@ -10,12 +10,11 @@ int AbsPlus159IfNegative0215ad2c(int x);
 
 struct SearchObj0202ff34;
 
-extern "C" void _ZN7Model3D5ClearEv(unsigned char* self);
 struct Obj0207e378;
 extern "C" void _ZN7Model3D21CopyAndProcessRawFileEP14AllocatorUnionPKvjNS_18TextureStagingModeE(struct Obj0207e378*, void*, void*, unsigned int, int);
 extern "C" ARM void _ZN7Model3D12LoadFromFileEPKcP14AllocatorUnionNS_18TextureStagingModeE(void* a, void* b, void* c, int d);
 
-extern "C" void _ZN7Model3D22ApplyTexturesFromModelEPS_(void* obj, void* p);
+struct Model3D;
 
 extern const char data_ov001_02165745[];
 extern SafeAllocator* data_ov001_021658b8[8];
@@ -34,7 +33,7 @@ extern "C" ARM int func_ov001_0215ef54(char* obj, int count) {
     SafeAllocator* alloc = data_ov001_021658b8[0];
     void* newBuf = alloc->Allocate(0xac);
     if (newBuf == 0) return 0;
-    _ZN7Model3D5ClearEv((unsigned char*)newBuf);
+    ((Model3D*)((unsigned char*)newBuf))->Clear();
 
     int out1;
     int out2;
@@ -51,7 +50,7 @@ extern "C" ARM int func_ov001_0215ef54(char* obj, int count) {
         int idx = AbsPlus159IfNegative0215ad2c(t);
         GameObject* combatant = battle->GetGameObjectByIndex(idx);
         if (combatant != 0 && *(void**)((char*)combatant + 0x8) != 0) {
-            _ZN7Model3D22ApplyTexturesFromModelEPS_(*(void**)((char*)combatant + 0x8), newBuf);
+            ((Model3D*)(*(void**)((char*)combatant + 0x8)))->ApplyTexturesFromModel((Model3D*)newBuf);
         }
     }
     return 1;

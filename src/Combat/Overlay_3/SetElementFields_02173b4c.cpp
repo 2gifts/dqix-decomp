@@ -11,8 +11,8 @@ enum { kRegion130 = 0x130 };
 enum { kRegion44000 = 0x44000 };
 #endif
 
-
-extern "C" void* _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j(void*, unsigned int);
+struct Obj02173bb0;
+void* GetElementIfInRange_02173bb0(Obj02173bb0*, unsigned int);
 extern "C" void func_0205ac40(void*, void*);
 
 // USA: func_ov003_02173b4c  (semantic: SetElementFields_02173b4c)
@@ -30,16 +30,16 @@ extern "C" ARM void func_ov003_02173b4c(void* obj) {
     }
 #if defined(jpn)
     if (o[0] != 0) {
-        elem = _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j((char*)obj + kRegion130, 1);
+        elem = GetElementIfInRange_02173bb0((Obj02173bb0*)((char*)obj + kRegion130), 1);
     } else {
-        elem = _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j((char*)obj + kRegion130, 0);
+        elem = GetElementIfInRange_02173bb0((Obj02173bb0*)((char*)obj + kRegion130), 0);
     }
 #else
     flag = 6;
     if (o[0] != 0) {
         flag = 7;
     }
-    elem = _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j((char*)obj + kRegion130, flag);
+    elem = GetElementIfInRange_02173bb0((Obj02173bb0*)((char*)obj + kRegion130), flag);
 #endif
     if (elem == 0) {
         return;

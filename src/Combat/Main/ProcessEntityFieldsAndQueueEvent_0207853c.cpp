@@ -1,11 +1,11 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_02057924(void);
 extern "C" void __clear(void* buf, int n);
 
 struct Struct020372b8;
-extern "C" void _ZN8Object3D24TransitionInheritedAlphaEii(struct Struct020372b8* obj, int a, int b);
 
 struct InitStruct02078484Struct {
     unsigned char f00;
@@ -45,7 +45,6 @@ struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 struct Vec3Zero0207853c { int a; int b; int c; };
 extern "C" void func_ov017_021c95ec(int c1, int rem, int f2val, int tag, int negOne, struct Vec3Zero0207853c v, int a8, int a9, int a10);
@@ -67,7 +66,7 @@ struct Entity0207853c {
 extern "C" ARM int func_0207853c(struct Entity0207853c* obj) {
     void* g = func_0202ae18();
     obj->fb2 = 0;
-    _ZN8Object3D24TransitionInheritedAlphaEii((struct Struct020372b8*)obj, 0, 0x7d);
+    ((Object3D*)((struct Struct020372b8*)obj))->TransitionInheritedAlpha(0, 0x7d);
 
     if (obj->f178 > 0) {
         void* list = func_02057924();
@@ -80,7 +79,7 @@ extern "C" ARM int func_0207853c(struct Entity0207853c* obj) {
     }
 
     if (CheckField0NonZero((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
-        int c1 = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)obj);
+        int c1 = ((Object3D*)((struct U16Field0x6_020375f8*)obj))->GetField06();
         int f2val = obj->f2;
         int rem = (obj->f4 - 0x70) % 0xc;
         if (rem >= 0 && rem < 0xc) {

@@ -4,7 +4,8 @@
 #define func_0204f41c func_02050678
 #endif
 
-extern "C" void _Z29AccumulateFixedAngle_021d8a74P14Accum_021d8a74f(void* obj, float angle);
+struct Accum_021d8a74;
+void AccumulateFixedAngle_021d8a74(Accum_021d8a74*, float);
 void FillCombatBuffer021d8ad4(void* obj, char* buf);
 
 struct ElemFld4_021d9208 {
@@ -30,7 +31,8 @@ struct Elem_021d9208 {
     unsigned int d;
 };
 
-extern "C" struct Elem_021d9208* _Z29GetElementIfInBounds_021d99f8P18ListHeader021d99f8j(void* list, unsigned int idx);
+struct ListHeader021d99f8;
+struct Elem_021d9208* GetElementIfInBounds_021d99f8(ListHeader021d99f8*, unsigned int);
 extern "C" void func_ov028_021d8a40(void* buf, unsigned int val);
 extern "C" int func_020420e8(void* d, int flag);
 #if defined(jpn)
@@ -41,7 +43,7 @@ extern char data_ov028_021da41d[];
 #else
 extern "C" void func_0204f41c(void* buf, int scaled, int byteField, void* d, unsigned char nibble0, unsigned char field3, short* p1, short* p2, int flagC);
 #endif
-extern "C" int _Z12TestFlagMaskPti(void* flagAddr, int mask);
+int TestFlagMask(unsigned short*, int);
 
 extern int data_02114e30;
 
@@ -49,7 +51,7 @@ extern int data_02114e30;
 extern "C" ARM void func_ov028_021d9208(char* self, int arg1) {
     float scale = *(float*)self;
     float angle = 0.5f * ((float)arg1 * scale);
-    _Z29AccumulateFixedAngle_021d8a74P14Accum_021d8a74f(self + 0x60, angle);
+    AccumulateFixedAngle_021d8a74((Accum_021d8a74*)(self + 0x60), angle);
     FillCombatBuffer021d8ad4(self + 0x60, *(char**)(self + 0x40));
 
     char* buf40 = *(char**)(self + 0x40);
@@ -81,7 +83,7 @@ extern "C" ARM void func_ov028_021d9208(char* self, int arg1) {
 
     for (;;) {
         unsigned short idx = *(unsigned short*)(self + 0x6c);
-        struct Elem_021d9208* elem = _Z29GetElementIfInBounds_021d99f8P18ListHeader021d99f8j(self, idx);
+        struct Elem_021d9208* elem = GetElementIfInBounds_021d99f8((ListHeader021d99f8*)self, idx);
         if (elem == 0) {
             found = 1;
             goto exitLoop;
@@ -193,7 +195,7 @@ extern "C" ARM void func_ov028_021d9208(char* self, int arg1) {
 fail:
     found = 0;
 exitLoop:
-    _Z12TestFlagMaskPti(&data_02114e30, 0x2000);
+    TestFlagMask((unsigned short*)&data_02114e30, 0x2000);
     if (found != 0) {
         *(unsigned char*)(self + 0x80) = 2;
         *(unsigned char*)(self + 0x81) = 0;

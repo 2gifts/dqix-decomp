@@ -28,10 +28,13 @@ struct Field150 {
     unsigned char flag : 1;
 };
 
-extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(char*, char*);
-extern "C" int _Z18CheckField0NonZeroPi(char*);
-extern "C" void _Z19SetFlag320_02195530Ph(GameResources*);
-extern "C" Field150* _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(GameObject*);
+struct TailList020469b4;
+struct TailNode020469b4;
+void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
+int CheckField0NonZero(int*);
+void SetFlag320_02195530(unsigned char*);
+struct Field150Holder02052e2c;
+Field150* GetField150Ptr0x488_02052e2c(Field150Holder02052e2c*);
 extern "C" char* func_02012fe4();
 extern "C" char* func_0202ae18();
 extern "C" int func_0202c508(char*);
@@ -46,21 +49,20 @@ extern "C" ARM void func_ov003_02163d7c(char* self) {
     GameResources* res = func_ov017_0218b5b0();
     char* list = *(char**)((char*)res + 0x3000 + kRegionValue6FC_4EC);
     char* node = *(char**)((char*)res + 0x3000 + kRegionValue734_524);
-    Field150* field = _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(
-        state->GetGameObjectByIndex(*(signed char*)(self + kRegionValue400_200 + kRegionValueA2_CA)));
+    Field150* field = GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)(state->GetGameObjectByIndex(*(signed char*)(self + kRegionValue400_200 + kRegionValueA2_CA))));
     char* entry = func_0202ae18();
     func_ov017_021bbae4(node, *(unsigned int*)(info + 0x8), 1);
     node[kRegionValueCD_C9] = *(signed char*)(self + kRegionValue400_200 + kRegionValueA2_CA);
     node[kRegionValueCE_CA] = field->flag;
     node[kRegionValueCF_CB] = 0;
-    _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(list, node);
+    AppendNodeToTail((TailList020469b4*)list, (TailNode020469b4*)node);
     self[kRegionValue4A3_2CB] = 0x10;
     *(unsigned int*)(self + kRegionValue464_28C) &= ~0x8000;
-    if (!_Z18CheckField0NonZeroPi(entry)) {
+    if (!CheckField0NonZero((int*)entry)) {
         return;
     }
     if (!func_0202c508(entry)) {
         return;
     }
-    _Z19SetFlag320_02195530Ph(res);
+    SetFlag320_02195530((unsigned char*)res);
 }

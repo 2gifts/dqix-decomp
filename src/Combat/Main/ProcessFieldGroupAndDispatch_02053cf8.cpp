@@ -1,8 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" void* _ZN8Object3D27UseRenderConfigDiffuseColorEv(void* obj);
-
 struct Buf7_02053cf8 { int v[7]; };
 extern struct Buf7_02053cf8 data_020e7bfc;
 
@@ -14,7 +12,7 @@ struct Obj02053cf8 {
 // USA: func_02053cf8  (semantic: ProcessFieldGroupAndDispatch_02053cf8)
 extern "C" ARM void func_02053cf8(struct Obj02053cf8* obj) {
     GameState* battleStruct = GameState::GetInstance();
-    _ZN8Object3D27UseRenderConfigDiffuseColorEv(obj);
+    ((Object3D*)obj)->UseRenderConfigDiffuseColor();
     int base = obj->f4 * 0xc;
     struct Buf7_02053cf8 ids = data_020e7bfc;
     ids.v[0] = base + 0x13;
@@ -28,7 +26,7 @@ extern "C" ARM void func_02053cf8(struct Obj02053cf8* obj) {
     while (*p >= 0) {
         GameObject* c = battleStruct->GetGameObjectByIndex(*p);
         if (c != 0) {
-            _ZN8Object3D27UseRenderConfigDiffuseColorEv(c);
+            ((Object3D*)c)->UseRenderConfigDiffuseColor();
         }
         p++;
     }

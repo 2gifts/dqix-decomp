@@ -19,11 +19,11 @@ extern "C" void _Z12SetByte0x1caPhh(void*, int);
 int TestBitBySignedByteIndex(SearchStruct* obj, int value);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
-extern "C" void _Z26CallHelperWithBuf_021907dciiiii(GameResources*, int, int, int, int);
+void CallHelperWithBuf_021907dc(int, int, int, int, int);
 signed char GetSignedByte0x1ca(void*);
 void SetVecYFromValue02033874(Obj02033874*, int);
 void ClearBitsInWord(unsigned int*, unsigned int);
-extern "C" void _Z29SetByte0x5cdaAndClearField0xaPhh(void*, int);
+void SetByte0x5cdaAndClearField0xa(unsigned char*, unsigned char);
 void* GetField0x74deForValidIndex(char* p, unsigned int index);
 void SetWord0x71f8(void*, int);
 extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(Obj02053f7c*, int, int);
@@ -162,7 +162,7 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
             }
             func_ov017_02191108(res, 1, show, 1, 1);
         } else {
-            _Z26CallHelperWithBuf_021907dciiiii(res, i, 1, show, 1);
+            CallHelperWithBuf_021907dc((int)res, i, 1, show, 1);
         }
     }
 
@@ -184,7 +184,7 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
         ClearBitsInWord((unsigned int*)res, 0x40);
 
         Snapshot021b0bc0* snap = self->snapshot;
-        _Z29SetByte0x5cdaAndClearField0xaPhh(gs, snap->f0);
+        SetByte0x5cdaAndClearField0xa((unsigned char*)gs, snap->f0);
         memcpy((char*)gs + 0x5cdc, snap->block4, sizeof(snap->block4));
         memcpy((char*)gs + 0x5e6c, snap->block194, sizeof(snap->block194));
         memcpy(GetField0x74deForValidIndex((char*)gs, 0), snap->block2a4, sizeof(snap->block2a4));

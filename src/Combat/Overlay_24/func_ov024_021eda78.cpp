@@ -16,19 +16,28 @@ struct Ctx_021eda78 {
     struct Battle_021eda78* battle;
 };
 
-extern "C" struct Cbt_021eda78* _Z16GetCombatantByIDii(struct Battle_021eda78* battle, int id);
-extern "C" int _Z31IsCombatantFlagMask512_021eda60P10GameObject(struct Cbt_021eda78* c);
-extern "C" int _Z37IsCombatantFlagMask134217728_021edbc0P10GameObject(struct Cbt_021eda78* c);
-extern "C" int _Z37IsCombatantFlagMask268435456_021edbd8P10GameObject(struct Cbt_021eda78* c);
-extern "C" int _Z37IsCombatantFlagMask536870912_021edbf0P10GameObject(struct Cbt_021eda78* c);
-extern "C" int _Z29IsFlagBit67108864Set_021edc08P13S_flag4000000(struct Cbt_021eda78* c);
-extern "C" int _Z28IsFlagBit1048576Set_021edc20P12S_flag100000(struct Cbt_021eda78* c);
-extern "C" int _Z28IsFlagBit2097152Set_021edc38P12S_flag200000(struct Cbt_021eda78* c);
-extern "C" int _Z23IsFlagBit22Set_021e47dcP16FlagObj_021e47dc(struct Cbt_021eda78* c);
-extern "C" int _Z31IsFlagBit1073741824Set_021edc50P14S_flag40000000(struct Cbt_021eda78* c);
-extern "C" int _Z31IsFlagBit2147483648Set_021edc68P14S_flag80000000(struct Cbt_021eda78* c);
-extern "C" int _Z17IsState4_021edc80P18S_state21_021edc80(struct Cbt_021eda78* c);
-extern "C" int _Z17IsState5_021edca4P18S_state21_021edca4(struct Cbt_021eda78* c);
+struct Cbt_021eda78* GetCombatantByID(int, int);
+struct GameObject;
+int IsCombatantFlagMask512_021eda60(GameObject*);
+int IsCombatantFlagMask134217728_021edbc0(GameObject*);
+int IsCombatantFlagMask268435456_021edbd8(GameObject*);
+int IsCombatantFlagMask536870912_021edbf0(GameObject*);
+struct S_flag4000000;
+int IsFlagBit67108864Set_021edc08(S_flag4000000*);
+struct S_flag100000;
+int IsFlagBit1048576Set_021edc20(S_flag100000*);
+struct S_flag200000;
+int IsFlagBit2097152Set_021edc38(S_flag200000*);
+struct FlagObj_021e47dc;
+int IsFlagBit22Set_021e47dc(FlagObj_021e47dc*);
+struct S_flag40000000;
+int IsFlagBit1073741824Set_021edc50(S_flag40000000*);
+struct S_flag80000000;
+int IsFlagBit2147483648Set_021edc68(S_flag80000000*);
+struct S_state21_021edc80;
+int IsState4_021edc80(S_state21_021edc80*);
+struct S_state21_021edca4;
+int IsState5_021edca4(S_state21_021edca4*);
 
 static inline int IsRank1(struct Cbt_021eda78* c) {
     return c->stats->rank21 == 1;
@@ -40,14 +49,14 @@ static inline int IsRank2(struct Cbt_021eda78* c) {
 
 // USA: func_ov024_021eda78
 extern "C" ARM int func_ov024_021eda78(struct Ctx_021eda78* ctx, int id) {
-    struct Cbt_021eda78* c = _Z16GetCombatantByIDii(ctx->battle, id);
+    struct Cbt_021eda78* c = GetCombatantByID((int)ctx->battle, id);
     if (!c) {
         return 0;
     }
-    if (_Z31IsCombatantFlagMask512_021eda60P10GameObject(c)) {
+    if (IsCombatantFlagMask512_021eda60((GameObject*)c)) {
         return 1;
     }
-    if (_Z37IsCombatantFlagMask134217728_021edbc0P10GameObject(c)) {
+    if (IsCombatantFlagMask134217728_021edbc0((GameObject*)c)) {
         return 1;
     }
     if (IsRank1(c)) {
@@ -56,35 +65,35 @@ extern "C" ARM int func_ov024_021eda78(struct Ctx_021eda78* ctx, int id) {
     if (IsRank2(c)) {
         return 1;
     }
-    if (_Z37IsCombatantFlagMask268435456_021edbd8P10GameObject(c)) {
+    if (IsCombatantFlagMask268435456_021edbd8((GameObject*)c)) {
         return 1;
     }
-    if (_Z37IsCombatantFlagMask536870912_021edbf0P10GameObject(c)) {
+    if (IsCombatantFlagMask536870912_021edbf0((GameObject*)c)) {
         return 1;
     }
-    if (_Z29IsFlagBit67108864Set_021edc08P13S_flag4000000(c)) {
+    if (IsFlagBit67108864Set_021edc08((S_flag4000000*)c)) {
         return 1;
     }
-    if (_Z28IsFlagBit1048576Set_021edc20P12S_flag100000(c)) {
+    if (IsFlagBit1048576Set_021edc20((S_flag100000*)c)) {
         return 1;
     }
-    if (_Z28IsFlagBit2097152Set_021edc38P12S_flag200000(c)) {
+    if (IsFlagBit2097152Set_021edc38((S_flag200000*)c)) {
         return 1;
     }
-    if (_Z23IsFlagBit22Set_021e47dcP16FlagObj_021e47dc(c)) {
+    if (IsFlagBit22Set_021e47dc((FlagObj_021e47dc*)c)) {
         return 1;
     }
-    if (_Z31IsFlagBit1073741824Set_021edc50P14S_flag40000000(c)) {
+    if (IsFlagBit1073741824Set_021edc50((S_flag40000000*)c)) {
         return 1;
     }
-    if (_Z31IsFlagBit2147483648Set_021edc68P14S_flag80000000(c)) {
+    if (IsFlagBit2147483648Set_021edc68((S_flag80000000*)c)) {
         return 1;
     }
-    if (_Z17IsState4_021edc80P18S_state21_021edc80(c)) {
+    if (IsState4_021edc80((S_state21_021edc80*)c)) {
         return 1;
     }
-    if (_Z17IsState5_021edca4P18S_state21_021edca4(c)) {
+    if (IsState5_021edca4((S_state21_021edca4*)c)) {
         return 1;
     }
-    return _Z28IsFlagBit1048576Set_021edc20P12S_flag100000(c);
+    return IsFlagBit1048576Set_021edc20((S_flag100000*)c);
 }

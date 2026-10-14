@@ -3,7 +3,6 @@
 #include "GameState/GameState.h"
 
 struct Obj374b0;
-extern "C" void* _ZN8Object3D25GetCurrentAnimationConfigEv(struct Obj374b0* obj);
 
 struct List_020347b4;
 struct Entry_020347b4;
@@ -44,7 +43,7 @@ extern "C" ARM void func_0208ec78(struct Param0208ec78* p0) {
     g = func_0202ae18();
 
     if (p0->field8 != 0) {
-        void* field4 = _ZN8Object3D25GetCurrentAnimationConfigEv(p0->field8);
+        void* field4 = ((Object3D*)p0->field8)->GetCurrentAnimationConfig();
         if (field4 != 0) {
             Entry_020347b4* rate = _ZN4BCFG18GetAnimationRecordEi((List_020347b4*)field4, 0);
             if (rate != 0) {

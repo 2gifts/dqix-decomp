@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Memory/SafeAllocator.h"
 
 struct Variant02030b0c {
     int tag;
@@ -14,7 +15,6 @@ struct Struct02030b7c {
 extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 
 int StringLength(const char* s);
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* thisPtr, unsigned int size);
 
 struct Struct0215e498 {
     short f0;
@@ -75,7 +75,7 @@ extern "C" ARM int func_ov003_0215e510(struct Args0215e510* obj) {
     if (text1 != NULL) {
         int len1 = StringLength(text1);
         if (len1 != 0) {
-            char* buf1 = (char*)_ZN13SafeAllocator8AllocateEj(data_ov003_02180cb8.allocator, len1 + 1);
+            char* buf1 = (char*)((SafeAllocator*)data_ov003_02180cb8.allocator)->Allocate(len1 + 1);
             local.f4 = (int)buf1;
             sprintf(buf1, text1);
         }
@@ -85,7 +85,7 @@ extern "C" ARM int func_ov003_0215e510(struct Args0215e510* obj) {
     if (text2 != NULL) {
         int len2 = StringLength(text2);
         if (len2 != 0) {
-            char* buf2 = (char*)_ZN13SafeAllocator8AllocateEj(data_ov003_02180cb8.allocator, len2 + 1);
+            char* buf2 = (char*)((SafeAllocator*)data_ov003_02180cb8.allocator)->Allocate(len2 + 1);
             local.f8 = (int)buf2;
             sprintf(buf2, text2);
         }

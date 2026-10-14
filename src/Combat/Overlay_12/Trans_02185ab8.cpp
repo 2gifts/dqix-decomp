@@ -17,8 +17,10 @@ struct ProfileEditor
     unsigned char state;
 };
 
-extern "C" void _Z19InitEntries0205d2bcP11Obj0205d2bc(void* window);
-extern "C" void _Z29CallInitEntriesIfSet_021e76a8P17Container021e76a8(void* card);
+struct Obj0205d2bc;
+void InitEntries0205d2bc(Obj0205d2bc*);
+struct Container021e76a8;
+void CallInitEntriesIfSet_021e76a8(Container021e76a8*);
 extern "C" unsigned int func_ov023_021e6b8c(ProfileEditor* editor);
 
 // USA: func_ov012_02185ab8
@@ -28,9 +30,9 @@ extern "C" ARM void func_ov012_02185ab8(ProfileEditor* editor)
 extern "C" ARM unsigned int func_ov012_02185ab8(ProfileEditor* editor)
 #endif
 {
-    _Z29CallInitEntriesIfSet_021e76a8P17Container021e76a8(editor->card);
+    CallInitEntriesIfSet_021e76a8((Container021e76a8*)editor->card);
     if (editor->state != 0)
-        _Z19InitEntries0205d2bcP11Obj0205d2bc(editor->window);
+        InitEntries0205d2bc((Obj0205d2bc*)editor->window);
 #if !defined(jpn)
     return func_ov023_021e6b8c(editor);
 #endif

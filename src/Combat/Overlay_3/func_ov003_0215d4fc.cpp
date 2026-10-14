@@ -48,42 +48,51 @@ extern int data_02109bf4;
 extern int data_02108760;
 
 extern "C" int *func_0202ae18();
-extern "C" void *_Z10GetWord0x0Pi(GameState *);
+void * GetWord0x0(int*);
 Ctl *GetGlobalField0x1c020421a0();
 void *GetGlobalPtr021075f4();
 unsigned char *GetData02153637();
 extern "C" int func_0202c508(int *);
-extern "C" void _Z24ReinitController02043204Pc(void *);
+void ReinitController02043204(char*);
 extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
-extern "C" void *_Z21GetFieldByKey020e0434P17Container020e0310i(void *, int);
+struct Container020e0310;
+void * GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov003_0215cab0(Scene *, void *);
 void *FindEntryPointerByKey0203df78(void *, int);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void *, int);
-extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(void *, int);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void *, int, int);
+struct Entry_0205d6a0;
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
+struct Actor0209c678;
+void DispatchContextByState0209c678(Actor0209c678*, int);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
 extern "C" void func_0205e944(void *, int);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(void *);
-extern "C" void _Z24InitActorContext0209c20cP13Actor0209c20c(void *);
+int IsBrightnessTransitionActive(GameResources*);
+struct Actor0209c20c;
+void InitActorContext0209c20c(Actor0209c20c*);
 void ResetAndDispatchActorContext0209c6d8(void *, short);
 void StoreInFirstEmptySlot(unsigned char *, unsigned char);
-extern "C" int _Z28GetEntryStatusForKey020e34bcP17Container020e34bci(unsigned char *, int);
+struct Container020e34bc;
+int GetEntryStatusForKey020e34bc(Container020e34bc*, int);
 char *GetCombatantChecked(GameState *, int);
 extern "C" void func_ov017_021c9e00(int, int, int, int);
 void Dispatch020e3428(void *, int);
-extern "C" void _Z37ClearEntryIfCurrentArrMatches020e3468P13Entry020e3054i(void *, int);
+struct Entry020e3054;
+void ClearEntryIfCurrentArrMatches020e3468(Entry020e3054*, int);
 extern "C" void func_ov017_021a2fa0(void *);
 extern "C" void func_02012fe4();
 extern "C" void func_ov017_0219bd1c(int, int, int, int);
 extern "C" void func_ov017_021921fc(void *, int, int);
 int IsAnimationActive0209ca2c(void *);
 void StopAndReset0209c7fc(void *);
-extern "C" void _Z34PropagateValueToActiveSlot02040b2cP11Obj02040b2ci(void *, int);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void *, int, void *);
+struct Obj02040b2c;
+void PropagateValueToActiveSlot02040b2c(Obj02040b2c*, int);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
 
 // USA: func_ov003_0215d4fc
 extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
     GameState *gs    = GameState::GetInstance();
-    void *res        = _Z10GetWord0x0Pi(gs);
+    void *res        = GetWord0x0((int*)gs);
     Ctl *ctl         = GetGlobalField0x1c020421a0();
     int *a           = func_0202ae18();
     void *b          = GetGlobalPtr021075f4();
@@ -102,7 +111,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
 
     if (state == 0) {
         if (self->b3f3 != 0) {
-            _Z24ReinitController02043204Pc(ctl);
+            ReinitController02043204((char*)ctl);
             self->state = self->state + 1;
             return;
         }
@@ -117,14 +126,14 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
                     key = 0x72;
                 }
             }
-            func_ov003_0215cab0(self, _Z21GetFieldByKey020e0434P17Container020e0310i(self->cont64, key));
+            func_ov003_0215cab0(self, GetFieldByKey020e0434((Container020e0310*)self->cont64, key));
             self->state = 8;
             return;
         }
         if (self->b3f0 != 0) {
             key = 0x6a;
         }
-        func_ov003_0215cab0(self, _Z21GetFieldByKey020e0434P17Container020e0310i(self->cont64, key));
+        func_ov003_0215cab0(self, GetFieldByKey020e0434((Container020e0310*)self->cont64, key));
         self->b3bb = 2;
         void *e = FindEntryPointerByKey0203df78(b, (*(Ent **) ((char *) func_ov017_0218b5b0() + 0x3000 + 0x710))->key);
         if (e != 0) {
@@ -136,18 +145,18 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
         if (ctl->w998 != 0) {
             return;
         }
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(self->list98, 0);
-        _Z30DispatchContextByState0209c678P13Actor0209c678i(&data_02109bf4, 0x10);
-        _Z13SetBrightnessP13GameResourcesii(res, -16, 0x3c);
+        ResetEntryList0205d6a0((Entry_0205d6a0*)self->list98, 0);
+        DispatchContextByState0209c678((Actor0209c678*)&data_02109bf4, 0x10);
+        SetBrightness((GameResources*)res, -16, 0x3c);
         func_0205e944(&data_02108760, 0);
         self->b3f5  = 1;
         self->state = self->state + 1;
     }
     if (state == 2) {
-        if (_Z28IsBrightnessTransitionActiveP13GameResources(res) != 0) {
+        if (IsBrightnessTransitionActive((GameResources*)res) != 0) {
             return;
         }
-        _Z24InitActorContext0209c20cP13Actor0209c20c(&data_02109bf4);
+        InitActorContext0209c20c((Actor0209c20c*)&data_02109bf4);
         ResetAndDispatchActorContext0209c6d8(&data_02109bf4, 0x37);
         self->w3e8  = 0xb4;
         self->state = self->state + 1;
@@ -157,7 +166,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
         self->state = self->state + 1;
     }
     if (state == 4) {
-        int status = _Z28GetEntryStatusForKey020e34bcP17Container020e34bci(d, 1);
+        int status = GetEntryStatusForKey020e34bc((Container020e34bc*)d, 1);
         if (status == 1 || self->b3f4 != 0) {
             unsigned char *p              = _Z17GetPtrField0x2a04P9GameState(gs);
             *(unsigned int *) (p + 0xf6c) = *(unsigned int *) (p + 0xf6c) - self->w3cc;
@@ -178,7 +187,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
             Dispatch020e3428(d, 1);
             self->state = self->state + 1;
         } else if ((unsigned int) (status - 3) <= 2) {
-            _Z37ClearEntryIfCurrentArrMatches020e3468P13Entry020e3054i(d, 1);
+            ClearEntryIfCurrentArrMatches020e3468((Entry020e3054*)d, 1);
             self->state = 3;
         }
     }
@@ -196,20 +205,20 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
             return;
         }
         StopAndReset0209c7fc(&data_02109bf4);
-        _Z13SetBrightnessP13GameResourcesii(res, 0, 0x3c);
+        SetBrightness((GameResources*)res, 0, 0x3c);
         func_0205e944(&data_02108760, 0x7f);
         self->b3ec = 1;
         self->b3ed = 0;
         void *e = FindEntryPointerByKey0203df78(b, (*(Ent **) ((char *) func_ov017_0218b5b0() + 0x3000 + 0x710))->key);
         if (e != 0) {
-            _Z34PropagateValueToActiveSlot02040b2cP11Obj02040b2ci(e, self->w3f8);
+            PropagateValueToActiveSlot02040b2c((Obj02040b2c*)e, self->w3f8);
         }
         self->state = self->state + 1;
     } else if (self->state == 7) {
         if (self->b3ec != 0) {
             return;
         }
-        if (_Z28IsBrightnessTransitionActiveP13GameResources(res) != 0) {
+        if (IsBrightnessTransitionActive((GameResources*)res) != 0) {
             return;
         }
         self->b3f5 = 0;
@@ -221,7 +230,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
             return;
         }
         ctl->w998 = 1;
-        _Z22SetIndexedName02046574P11Obj02046574iPc(ctl, 0, *(void **) ((char *) gs->GetUnknownGameObject() + 0x134));
+        SetIndexedName02046574((Obj02046574*)ctl, 0, (char*)(*(void **) ((char *) gs->GetUnknownGameObject() + 0x134)));
         int key = 0x3f3;
         if (self->b3f0 != 0) {
             if (sb == 0) {
@@ -232,7 +241,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
                 key = 0x6d;
             }
         }
-        func_ov003_0215cab0(self, _Z21GetFieldByKey020e0434P17Container020e0310i(self->cont64, key));
+        func_ov003_0215cab0(self, GetFieldByKey020e0434((Container020e0310*)self->cont64, key));
         self->state = self->state + 1;
     }
     if (self->state == 8 && ctl->w998 == 0) {

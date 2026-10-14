@@ -4,7 +4,6 @@
 
 struct OffsetTable02072e34;
 void BuildOffsetTable02072e34(int n, struct OffsetTable02072e34* out);
-extern "C" void _ZN7Model3D33CreateBoneMatrixAndMaterialArraysEP13SafeAllocatori(unsigned char* obj, SafeAllocator* allocator, unsigned int flags);
 
 extern int data_ov017_021d61c0[7];
 
@@ -20,7 +19,7 @@ ARM void SetupCombatantAllocations_021901ac(void) {
 			if (combatant != NULL) {
 				unsigned char* sub = *(unsigned char**)((char*)combatant + 8);
 				if (sub != NULL) {
-					_ZN7Model3D33CreateBoneMatrixAndMaterialArraysEP13SafeAllocatori(sub, NULL, 0);
+					((Model3D*)sub)->CreateBoneMatrixAndMaterialArrays(NULL, 0);
 				}
 			}
 		}

@@ -1,6 +1,5 @@
 #include <globaldefs.h>
-
-extern "C" void _ZN8Object3D20StopCurrentAnimationEv(unsigned char* obj);
+#include "World/Object3D.h"
 
 struct Entry_021646b8 { int type; char pad[8]; void* field_c; };
 
@@ -17,14 +16,14 @@ extern "C" ARM int func_ov001_021646b8(Entry_021646b8* table, int index) {
 	case 5:
 		member = entry->field_c;
 		if (member == 0) return 0;
-		_ZN8Object3D20StopCurrentAnimationEv((unsigned char*)member);
+		((Object3D*)((unsigned char*)member))->StopCurrentAnimation();
 		return 1;
 	case 6:
 		member = entry->field_c;
 		if (member == 0) return 0;
 		member = *(void**)((char*)member + 0x18);
 		if (member == 0) return 0;
-		_ZN8Object3D20StopCurrentAnimationEv((unsigned char*)member);
+		((Object3D*)((unsigned char*)member))->StopCurrentAnimation();
 		return 1;
 	default:
 		return 0;

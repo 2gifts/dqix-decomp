@@ -9,8 +9,9 @@ enum { kChildPointer = 0x10, kChildFlags = 0xae2 };
 #include "GameState/GameState.h"
 
 int GetWord0x0(int* obj);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
+int IsBrightnessTransitionActive(GameResources*);
 
 struct Struct0215b0fc {
     unsigned char pad0[kChildPointer];
@@ -36,14 +37,14 @@ extern "C" ARM void func_ov006_0215b0fc(struct Struct0215b0fc* obj) {
         return;
     }
     if (state == 1) {
-        _Z13SetBrightnessP13GameResourcesii((void*)ctx, 0, 8);
+        SetBrightness((GameResources*)ctx, 0, 8);
         obj->f390 = obj->f390 + 1;
         return;
     }
     if (state != 2) {
         return;
     }
-    if (_Z28IsBrightnessTransitionActiveP13GameResources((int*)ctx) != 0) {
+    if (IsBrightnessTransitionActive((GameResources*)ctx) != 0) {
         return;
     }
     obj->f38f = 4;

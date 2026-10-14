@@ -52,7 +52,7 @@ struct StoreStruct;
 
 GlobalData* GetGlobalField0x1c020421a0(void);
 extern "C" void* memset(void* dst, int c, unsigned int n);
-extern "C" SkillData* _Z27GetBoundedField156_02171674Pvi(UnitEntry* entry, int index);
+SkillData* GetBoundedField156_02171674(void*, int);
 GameObject* GetCombatantWithFlag0x100(GameState* gs, int id);
 #if defined(jpn)
 #define _Z35NotifyLocalizedResourceLoad020dd040iPc func_020dea34
@@ -61,11 +61,12 @@ extern "C" void _Z35NotifyLocalizedResourceLoad020dd040iPc(int id, char* buf);
 extern "C" void func_02046608(GlobalData* messages, int a, const char* input, char* output, int b, int c, int d);
 extern "C" void func_02046380(GlobalData* messages);
 int IsFlag0x18Bit0x200Set(GameObject* obj);
-extern "C" int _Z22AdjustValueByFieldFlagPvj(GameObject* obj, unsigned int key);
-extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(GlobalData* messages, int index, int value);
+int AdjustValueByFieldFlag(void*, unsigned int);
+void StoreInArray0x8b0(StoreStruct*, int, int);
 const char* CallFunc020e0434With02153694(int key);
 int AppendString02042058(char* dst, const char* src);
-extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Window* window, int key);
+struct Struct_0205d81c;
+void* FindElementByC40205d81c(Struct_0205d81c*, int);
 #if defined(jpn)
 extern "C" void func_0205d304(Window* window, char* text, int a, int b, int c, int d, int e);
 void SetByteInRange(unsigned char*, int, unsigned char);
@@ -93,7 +94,7 @@ extern "C" ARM void func_ov000_02178d28(MenuState* menu, UnitEntry* entry) {
     memset(buf, 0, 0x960);
 #endif
     GameState* gs = GameState::GetInstance();
-    skill = _Z27GetBoundedField156_02171674Pvi(entry, cursor);
+    skill = GetBoundedField156_02171674(entry, cursor);
     if (skill == NULL) {
         return;
     }
@@ -125,10 +126,10 @@ extern "C" ARM void func_ov000_02178d28(MenuState* menu, UnitEntry* entry) {
     } else if (skill->adjustKey >= 0xff) {
         value = entry->power;
     } else {
-        value = _Z22AdjustValueByFieldFlagPvj(target, skill->adjustKey);
+        value = AdjustValueByFieldFlag(target, skill->adjustKey);
     }
-    _Z17StoreInArray0x8b0P11StoreStructii(messages, 0, value);
-    _Z17StoreInArray0x8b0P11StoreStructii(messages, 1, entry->power);
+    StoreInArray0x8b0((StoreStruct*)messages, 0, value);
+    StoreInArray0x8b0((StoreStruct*)messages, 1, entry->power);
 #if defined(jpn)
     SetByteInRange((unsigned char*)messages, 0, 3);
     SetByteInRange((unsigned char*)messages, 1, 3);
@@ -139,7 +140,7 @@ extern "C" ARM void func_ov000_02178d28(MenuState* menu, UnitEntry* entry) {
     AppendString02042058(text, CallFunc020e0434With02153694(0x3ec));
 #endif
     Window* window = &menu->window;
-    if (_Z23FindElementByC40205d81cP15Struct_0205d81ci(window, 0x22) != NULL) {
+    if (FindElementByC40205d81c((Struct_0205d81c*)window, 0x22) != NULL) {
 #if defined(jpn)
         TryApplyElemFields0205d5d0((StructA0205d5d0*)window, 0x22, (int)text, 1);
 #else

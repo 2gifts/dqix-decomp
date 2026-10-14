@@ -1,6 +1,7 @@
 #include "Memory/SafeAllocator.h"
 #include "Resource/Brightness.h"
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Struct0209c830;
 
@@ -17,8 +18,6 @@ struct Scene0217c2bc {
 extern "C" GameResources *func_ov017_0218b5b0(void);
 void DispatchIfField0xc4NonNeg_0205ebfc(void *obj, int a, int b);
 extern "C" void func_ov003_0217cb3c(Scene0217c2bc *self, int mainScreen, int alternate);
-extern "C" void _ZN8Object3D11MakeVisibleEv(void *obj);
-extern "C" void _ZN8Object3D10InitializeEv(void *p);
 void Set3DClearColor(int a, int b, int c, int d, int e);
 extern "C" void func_ov003_0217c974(Scene0217c2bc *self);
 void SetValueAndActivate0209c830(struct Struct0209c830 *, unsigned short);
@@ -37,7 +36,7 @@ extern "C" ARM void func_ov003_0217c2bc(Scene0217c2bc *self) {
         if (--self->timer != 0) return;
         DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 0, 0);
         func_ov003_0217cb3c(self, 1, 0);
-        _ZN8Object3D11MakeVisibleEv(self->object);
+        ((Object3D*)self->object)->MakeVisible();
         Set3DClearColor(0, 0, 0x7fff, 0, 0);
         *(volatile unsigned int *) 0x4000000 = (*(volatile unsigned int *) 0x4000000 & ~0x1f00) | 0x300;
         SetBrightness(resources, 0x10, 0xa);
@@ -68,7 +67,7 @@ extern "C" ARM void func_ov003_0217c2bc(Scene0217c2bc *self) {
         Set3DClearColor(0, 0x1f, 0x7fff, 0, 0);
         *(volatile unsigned int *) 0x4000000 = (*(volatile unsigned int *) 0x4000000 & ~0x1f00) | 0x100;
         self->allocA.Reset();
-        _ZN8Object3D10InitializeEv(self->object);
+        ((Object3D*)self->object)->Initialize();
         func_ov003_0217c974(self);
         self->timer = 0x3c;
         self->state++;

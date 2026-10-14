@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "GameState/GameState.h"
 
 struct Container020e0310 { char data[0x18]; };
 struct Obj2081;
@@ -60,13 +61,11 @@ struct StoreStruct* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(struct StoreStruct*);
 void* CallFunc020e52a0(void*, int);
 void StoreInArray0x8b0(struct StoreStruct*, int, int);
-extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" void* _ZN9GameState20GetUnknownGameObjectEv(struct GameStateStub*);
 void InitObjFromCombatantId020e4bf4(void*, int);
 extern "C" void func_02046608(struct StoreStruct*, int, const char*, char*, int, int, int);
-extern "C" char* _Z22FindEntryByKey0204254cii(char*, int);
+char* FindEntryByKey0204254c(int, int);
 extern "C" void __clear(void*, int);
-extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(struct Container02080f8c*, int, char*);
+void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
 void UpdateField3a8Timer_02159fb0(struct Obj3a8Timer_02159fb0*);
 extern char data_ov006_0215ffd2[];
 extern char data_ov006_0215ffea[];
@@ -109,7 +108,7 @@ extern "C" ARM void func_ov006_0215a00c(struct Obj0215a00c* self) {
         StoreInArray0x8b0(fmt, 0, self->sub.field387);
         StoreInArray0x8b0(fmt, 1, rem);
 
-        struct CombatantObj* gobj = (struct CombatantObj*)_ZN9GameState20GetUnknownGameObjectEv((struct GameStateStub*)_ZN9GameState11GetInstanceEv());
+        struct CombatantObj* gobj = (struct CombatantObj*)((GameState*)((struct GameStateStub*)GameState::GetInstance()))->GetUnknownGameObject();
         if (gobj != 0) {
             InitObjFromCombatantId020e4bf4(&combatant, gobj->id);
             fmt->field0 = &combatant;
@@ -152,7 +151,7 @@ extern "C" ARM void func_ov006_0215a00c(struct Obj0215a00c* self) {
                 p += 2;
                 pos += 2;
             } else {
-                ParseEntry* e = (ParseEntry*)_Z22FindEntryByKey0204254cii(p, 1);
+                ParseEntry* e = (ParseEntry*)FindEntryByKey0204254c((int)p, 1);
                 if (e != 0) {
                     step = e->adv;
                 }
@@ -167,7 +166,7 @@ extern "C" ARM void func_ov006_0215a00c(struct Obj0215a00c* self) {
         self->sub.field80 = pos;
         __clear(buf, 0x400);
         memcpy(buf, base, pos);
-        _Z26SetEntryFirstField02080f8cP17Container02080f8cii((struct Container02080f8c*)self->field14, 1, buf);
+        SetEntryFirstField02080f8c((struct Container02080f8c*)self->field14, 1, (int)buf);
         func_020813ec(self->field14, 1);
         ClearElementFlag0x20((struct Obj2081*)self->field14, 1);
         self->field3b0 = 1;

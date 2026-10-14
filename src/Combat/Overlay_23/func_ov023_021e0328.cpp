@@ -1,13 +1,11 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
-
 struct List0202fec8;
 
 struct InitStruct2075;
 void ClearStructFields(struct InitStruct2075* p);
 
-extern "C" void _ZN13SafeAllocator5ResetEv(void* thisPtr);
 extern "C" void func_02076080(void* a, void* b, int c, int d);
 
 // USA: func_ov023_021e0328
@@ -33,7 +31,7 @@ extern "C" ARM int func_ov023_021e0328(void* obj) {
         if (out1 != 0 && out2 != 0) {
 #endif
 
-            _ZN13SafeAllocator5ResetEv(*(void**)((char*)obj + 0x40));
+            ((SafeAllocator*)(*(void**)((char*)obj + 0x40)))->Reset();
             func_02076080(*(void**)((char*)obj + 0xc8), *(void**)((char*)obj + 0x40), out1, out2);
             *(unsigned short*)((char*)obj + regionalOffset1) &= ~8;
         }

@@ -6,7 +6,6 @@ signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 extern "C" void func_ov017_021cf730(int a, int b);
 extern "C" void func_ov017_021c4fa0(int a, int b);
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 void EnqueueEventTag147_021cdaa0(void);
 
 struct Evt021cd9e8 {
@@ -34,7 +33,7 @@ extern "C" ARM void func_ov017_021cd9e8(int p0, struct Evt021cd9e8* evt, GameSta
         signed char idx = GetSearchStructCurrentArrEntry(search);
         GameObject* combatant = battleStruct->GetGameObjectByIndex(idx);
         if (combatant != NULL) {
-            val = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant);
+            val = ((Object3D*)((struct U16Field0x6_020375f8*)combatant))->GetField06();
         }
     }
 

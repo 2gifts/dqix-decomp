@@ -1,19 +1,15 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
-
+#include "Resource/Script.h"
 
 struct List0202fec8;
 
-
 struct ResetStruct;
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 
 struct StreamState;
 struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* state, void* dataPtr);
 
@@ -57,10 +53,10 @@ ARM int RunOrPollScript02095ee0(struct Ctx02095ee0* ctx) {
             return 2;
         }
 
-        _ZN6Script10InitializeEv((struct ResetStruct*)local);
+        ((Script*)((struct ResetStruct*)local))->Initialize();
         _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(local, data_020f13fc);
-        _ZN6Script4LoadEPKvj((struct StreamState*)local, (struct StreamHeader*)out1, out2);
-        _ZN6Script7ExecuteEv((struct Struct02030774*)local);
+        ((Script*)((struct StreamState*)local))->Load((struct StreamHeader*)out1, out2);
+        ((Script*)((struct Struct02030774*)local))->Execute();
         ((BackgroundLoader*)(id))->RemoveTask((int)(ctx->field4c4));
         ctx->field4c4 = -1;
 

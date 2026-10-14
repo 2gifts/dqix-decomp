@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-extern "C" void _ZN8Object3D14AdvanceEffectsEv(void*);
 
 extern unsigned short data_02114e30;
 
@@ -25,5 +25,5 @@ extern "C" ARM void func_ov015_0218e574(struct S0218e574* obj) {
     if (ok == 0) {
         return;
     }
-    _ZN8Object3D14AdvanceEffectsEv(obj->field0x24);
+    ((Object3D*)obj->field0x24)->AdvanceEffects();
 }

@@ -4,10 +4,10 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 void ForwardField4To02057334(int* obj);
-extern "C" void _ZN8Object3D14AdvanceEffectsEv(void*);
 
 extern unsigned short data_02114e30;
 
@@ -41,6 +41,6 @@ ARM void HandleFlagAndDispatch_0218e60c(struct S0218e60c* obj) {
     if (p->field0xc != 0) {
         ForwardField4To02057334((int*)p);
     } else {
-        _ZN8Object3D14AdvanceEffectsEv(obj->field0x24);
+        ((Object3D*)obj->field0x24)->AdvanceEffects();
     }
 }

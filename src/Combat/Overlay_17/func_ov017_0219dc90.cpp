@@ -78,12 +78,16 @@ extern "C" void func_020288e0(InlineEntry* table);
 void SetFlagsForFlaggedCombatants_0219e0ec(void* self);
 extern "C" int func_02028a54(InlineEntry* base, int id);
 extern "C" void func_ov017_0219e180(BattleOverlay0219dc90* self, int id);
-extern "C" InlineEntry* _Z19FindInlineEntryByIdP14Entry_02028bd0i(InlineEntry* base, int id);
+struct Entry_02028bd0;
+InlineEntry* FindInlineEntryById(Entry_02028bd0*, int);
 extern "C" unsigned short func_02028460(int* a, int* b);
 int IsInRange0201b588(int id);
-extern "C" void _Z19InitStruct_021b46d8P14Struct021b46d8(GrottoSlot* slot);
-extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(TailList020469b4* list, GrottoSlot* node);
-extern "C" void _Z25ClearFieldcIfSet_021b4760P11Obj021b4760(GrottoSlot* slot);
+struct Struct021b46d8;
+void InitStruct_021b46d8(Struct021b46d8*);
+struct TailNode020469b4;
+void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
+struct Obj021b4760;
+void ClearFieldcIfSet_021b4760(Obj021b4760*);
 extern "C" void func_02046a8c(TailList020469b4* list, GrottoSlot* node);
 
 // USA: func_ov017_0219dc90
@@ -99,7 +103,7 @@ extern "C" ARM void func_ov017_0219dc90(BattleOverlay0219dc90* self, int combata
     if (combatant == NULL) return;
     int found = func_02028a54(table, id);
     func_ov017_0219e180(self, id);
-    InlineEntry* entry = _Z19FindInlineEntryByIdP14Entry_02028bd0i(table, id);
+    InlineEntry* entry = FindInlineEntryById((Entry_02028bd0*)table, id);
     PendingGroup* pending = &self->pending;
     if (entry != NULL) {
         combatant->b8 = entry->f34 != 0 ? func_02028460(entry->vec18, combatant->vec44) : 0;
@@ -116,19 +120,19 @@ extern "C" ARM void func_ov017_0219dc90(BattleOverlay0219dc90* self, int combata
             }
             GrottoSlot* slot = &self->slots[entry->slotIndex];
             if (slot->used == 0) {
-                _Z19InitStruct_021b46d8P14Struct021b46d8(slot);
+                InitStruct_021b46d8((Struct021b46d8*)slot);
                 slot->entry = entry;
                 slot->kind = kind;
                 slot->value = value;
-                _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(self->slotList, slot);
+                AppendNodeToTail(self->slotList, (TailNode020469b4*)slot);
             } else {
-                _Z25ClearFieldcIfSet_021b4760P11Obj021b4760(slot);
+                ClearFieldcIfSet_021b4760((Obj021b4760*)slot);
                 func_02046a8c(self->slotList, slot);
-                _Z19InitStruct_021b46d8P14Struct021b46d8(slot);
+                InitStruct_021b46d8((Struct021b46d8*)slot);
                 slot->entry = entry;
                 slot->kind = kind;
                 slot->value = value;
-                _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(self->slotList, slot);
+                AppendNodeToTail(self->slotList, (TailNode020469b4*)slot);
             }
         } else {
             combatant->c2 |= 0x40;

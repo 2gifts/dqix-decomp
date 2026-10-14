@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Obj02037bbc;
-extern "C" void _ZN8Object3D18EnableBoneTrackingEv(struct Obj02037bbc*);
 
 struct SNode0204a3f0 {
     unsigned int flags0;
@@ -23,7 +23,7 @@ struct Owner0204a3f0 {
 ARM void SetHolderAndMarkNode0204a3f0(struct Owner0204a3f0* owner, struct Holder0204a3f0* h) {
     struct SNode0204a3f0* s;
     owner->holder = h;
-    _ZN8Object3D18EnableBoneTrackingEv((struct Obj02037bbc*)h);
+    ((Object3D*)((struct Obj02037bbc*)h))->EnableBoneTracking();
     s = owner->holder->node;
     if (s == NULL) return;
     if (!s->bit0) s = NULL;

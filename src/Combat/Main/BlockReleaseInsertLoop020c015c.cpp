@@ -4,7 +4,8 @@
 struct BlockedContextList;
 void BlockCurrentContext(struct BlockedContextList* p);
 
-extern "C" void* _Z9LockMutexP5Mutex(void* p);
+struct Mutex;
+void* LockMutex(Mutex*);
 extern "C" void func_020bf79c(void* p);
 
 ARM SignedAllocatorHeader* PopFirstAndDecOwnerRef020bf3c8(SignedAllocatorList* list);
@@ -19,7 +20,7 @@ extern "C" ARM void func_020c015c(void *obj) {
     for (;;) {
         BlockCurrentContext((BlockedContextList*)(base + 0x4c0));
     retry:
-        _Z9LockMutexP5Mutex(base + 0x4c8);
+        LockMutex((Mutex*)(base + 0x4c8));
         {
             SignedAllocatorHeader *e = PopFirstAndDecOwnerRef020bf3c8((SignedAllocatorList*)(base + 0x4e0));
             if (e == 0) {

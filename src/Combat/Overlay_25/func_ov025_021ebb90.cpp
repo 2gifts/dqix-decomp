@@ -122,7 +122,6 @@ void AppendUniqueShort0216346c(char* obj, int val);
 void AppendUniqueShort021634c8(char* obj, int val);
 extern "C" short func_ov000_0215ffa0(void* obj);
 extern "C" int func_ov025_021d8c30(void* sl_, void* sb_, int kind, int category, int idx, int inner, int flag);
-extern "C" void _ZN8Object3D11MakeVisibleEv(unsigned char* obj);
 void ClearSubstructFlag0x4(unsigned char* obj);
 int GetSubstructByte0x56(unsigned char* obj);
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
@@ -131,13 +130,14 @@ extern "C" void func_02043124(void* self);
 struct Obj0203a588* GetData02104b6c(void);
 void ResetLowFlagEntries0203a588(struct Obj0203a588* obj);
 void ZeroFieldsAt0x6e8(void* obj);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* self, int a, int b);
+struct GameResources;
+void SetMainBrightness(GameResources*, int, int);
 int TestBit0At0x2f4(unsigned char* obj);
 int TestBit1At0x2f4(unsigned char* obj);
 extern "C" void* func_02057924(void);
-extern "C" int _ZNK8Object3D9GetHeightEv(void* obj);
 extern "C" void _ZN8Vector3iaSERKS_(struct Vec3* dst, struct Vec3* src);
-extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3* in, int scale, struct Vec3* out);
+struct Vector3i;
+void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 extern "C" int func_020c32f8(int);
 extern "C" int func_020c3260(int);
 extern "C" float func_0200c700(int);
@@ -319,7 +319,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                         func_ov000_021626a0(cw, 4, 0);
                         GameObject* c2 = battle->GetCombatantByIndex(targetId2);
                         if (c2 != 0) {
-                            _ZN8Object3D11MakeVisibleEv((unsigned char*)c2);
+                            ((Object3D*)((unsigned char*)c2))->MakeVisible();
                             ClearSubstructFlag0x4((unsigned char*)c2);
                             if (GetSubstructByte0x56((unsigned char*)c2) != 0) {
                                 SetByte0xbeShiftPrev((struct Bytes02033b88*)c2, 0);
@@ -378,7 +378,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                     params.flags.bit7 = 0;
                     params.scale.z = 0x1000;
 
-                    if (obj->entries[i].n & 1) params.pos.y += _ZNK8Object3D9GetHeightEv(target) / 2;
+                    if (obj->entries[i].n & 1) params.pos.y += ((Object3D*)target)->GetHeight() / 2;
                     if (params.pos.y < obj->f304) params.pos.y = obj->f304;
                     params.flags.bit2 = 0;
 
@@ -426,7 +426,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                                         _ZN8Vector3iaSERKS_(&targetPos, (struct Vec3*)((char*)victim + 0x44));
                                         Vector3fix_Subtract((const Vector3fix*)&selfPos, (const Vector3fix*)&targetPos, (Vector3fix*)&toTarget);
                                         Vector3fix_Normalize((const Vector3fix*)&toTarget, (Vector3fix*)&toTarget);
-                                        _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&toTarget, dir.z, &dir);
+                                        Vector3fixMultiplyScalar((Vector3i const*)&toTarget, dir.z, (Vector3i*)&dir);
                                         _ZN8Vector3iaSERKS_(&targetRot, (struct Vec3*)((char*)victim + 0x50));
                                         int yaw = -targetRot.y;
                                         int cosv = (int)(4096.0f * (func_0200c700(func_020c32f8(yaw)) / 4294967296.0f));
@@ -470,7 +470,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                     FindNodeAndProcess02057fb4(spawnObj, obj->entries[i].k, (int)&params);
                 }
 
-                if (obj->entries[i].d & 0x20) _Z17SetMainBrightnessP13GameResourcesii(p54, 0x10, 0xf);
+                if (obj->entries[i].d & 0x20) SetMainBrightness((GameResources*)p54, 0x10, 0xf);
                 obj->entries[i].d |= 2;
             }
         }
@@ -524,7 +524,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                                                     slots[cur].cat, obj->entries[i].idx, slots[cur].idx, 0);
                     obj->entries[i].w++;
                     if (obj->entries[i].d & 0x20) {
-                        _Z17SetMainBrightnessP13GameResourcesii(p54, 0, 0xf);
+                        SetMainBrightness((GameResources*)p54, 0, 0xf);
                         obj->entries[i].d &= ~0x20;
                     }
                     if (IsIdUnique021ee438(obj->f30c, obj->f308) == 0 && waitUnique != 0) {

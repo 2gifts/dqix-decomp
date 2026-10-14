@@ -10,7 +10,7 @@ extern char data_020f29cc;
 extern "C" int func_ov017_021959b4(void);
 void* GetGlobalField0x1c020421a0(void);
 extern "C" void* func_0202ae18(void);
-extern "C" char* _Z15GetFieldIfFlag4Pc(void* obj);
+char* GetFieldIfFlag4(char*);
 extern "C" unsigned short* func_02012fe4(void);
 void InitBattleIfListHasId0x1c(void* self);
 int CheckField0NonZero(int* p);
@@ -18,7 +18,8 @@ extern "C" int func_0202c508(void* obj);
 extern "C" void func_ov017_021cf730(int a, int b);
 void ClearIntAt0x23c(unsigned char* obj);
 extern "C" void func_020531f0(void* obj);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(void* obj, int arg1);
+struct Obj020397cc;
+void CancelPendingAction020397cc(Obj020397cc*, int);
 void ResetElapsedState020e11a4(void);
 extern "C" void func_02046380(void* global);
 int CallFunc020e0434With02153694(int value);
@@ -53,7 +54,7 @@ extern "C" ARM void func_020d9870(struct Obj020d9870* self) {
     void* g1c = GetGlobalField0x1c020421a0();
     FontBankLoader* g = GetGlobal02109400();
     void* t = func_0202ae18();
-    char* f4 = _Z15GetFieldIfFlag4Pc(gs);
+    char* f4 = GetFieldIfFlag4((char*)gs);
     unsigned short* p = func_02012fe4();
 
     if (func_ov017_021959b4() != 0) {
@@ -77,7 +78,7 @@ extern "C" ARM void func_020d9870(struct Obj020d9870* self) {
     } else if (self->state == 3) {
         if (unkObj != NULL) {
             func_020531f0(unkObj);
-            _Z27CancelPendingAction020397ccP11Obj020397cci(unkObj, 1);
+            CancelPendingAction020397cc((Obj020397cc*)unkObj, 1);
         }
         ResetElapsedState020e11a4();
         func_02046380(g1c);

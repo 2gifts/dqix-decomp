@@ -1,9 +1,8 @@
 #include <globaldefs.h>
-
-extern "C" void _ZN8Object3D10InitializeEv(void*);
+#include "World/Object3D.h"
 
 // USA: func_02072ac4
 ARM void ResetFieldAc(void* obj) {
-    _ZN8Object3D10InitializeEv(obj);
+    ((Object3D*)obj)->Initialize();
     *(int*)((char*)obj + 0xac) = -1;
 }

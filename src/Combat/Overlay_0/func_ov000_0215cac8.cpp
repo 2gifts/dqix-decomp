@@ -50,12 +50,14 @@ void ResetStruct02157cdc(void* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 
 SkillData* SearchBothTables02079e2c(char* data, int id);
-extern "C" void _Z18AppendNode02160068P11Obj02160068P12Node02160068(ActionNode* obj, ActionEntry* node);
-extern "C" void _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(ActionNode* obj, TargetNode* node);
+struct Node02160068;
+struct Obj02160068;
+void AppendNode02160068(Obj02160068*, Node02160068*);
+struct Node021600cc;
+struct Obj021600cc;
+void AppendNode021600cc(Obj021600cc*, Node021600cc*);
 extern "C" OutStruct0215ccbc* func_ov000_0215e958(void* self);
-extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(
-    void* self, OutStruct0215ccbc* out, GameObject* combatant, short valC, short valA, short valB,
-    int wordC, int wordD, unsigned char byteE);
+void PopulateEntry_0215ccbc(int, OutStruct0215ccbc*, GameObject*, short, short, short, int, int, unsigned char);
 void AppendToChainAndIncCount0215ffc4(void* node, void* entry, int v);
 void AddEntryAndIncrementCount0215a88c(void* self, void* entry, int value);
 
@@ -90,7 +92,7 @@ extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, sho
         entry->hp = c->currentStats_->primaryStats.currHP;
         entry->mp = c->currentStats_->primaryStats.currMP;
     }
-    _Z18AppendNode02160068P11Obj02160068P12Node02160068(work, entry);
+    AppendNode02160068((Obj02160068*)work, (Node02160068*)entry);
 
     for (int i = 0; i < count; i++) {
         TargetNode* tn = GetTableEntry0x8e01Bound0x88(self);
@@ -103,15 +105,14 @@ extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, sho
         if (out == 0) {
             continue;
         }
-        _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(
-            self, out, target, 0, CurrHP(target), CurrMP(target), 0, 0, 0);
+        PopulateEntry_0215ccbc((int)self, out, target, 0, CurrHP(target), CurrMP(target), 0, 0, 0);
         tn->id = ids[i];
         tn->active = 1;
         AppendToChainAndIncCount0215ffc4(tn, out, 0);
         for (int j = 0; j < valueCounts[i]; j++) {
             AddEntryAndIncrementCount0215a88c(self, out, *values++);
         }
-        _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(work, tn);
+        AppendNode021600cc((Obj021600cc*)work, (Node021600cc*)tn);
         self->targetCount++;
         self->resultCount++;
     }

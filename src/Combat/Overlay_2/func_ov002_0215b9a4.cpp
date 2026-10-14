@@ -19,13 +19,15 @@ extern ModePage0215b9a4 data_ov002_0216cae8[];
 extern ModePage0215b9a4 data_ov002_0216caec[];
 
 extern "C" void *memset(void *dst, int value, unsigned int length);
-extern "C" unsigned char *_Z23FindElementByC40205d81cP15Struct_0205d81ci(char *s, int key);
-extern "C" void _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(char *obj, int a, void *b, int c, unsigned char d);
+struct Struct_0205d81c;
+unsigned char * FindElementByC40205d81c(Struct_0205d81c*, int);
+struct StructA0205d5d0;
+void TryApplyElemFields0205d5d0(StructA0205d5d0*, int, int, int, unsigned char);
 
 // USA: func_ov002_0215b9a4
 extern "C" ARM void func_ov002_0215b9a4(Battle0215b9a4 *self, unsigned char key, int flag) {
     char *base          = (char *) self;
-    unsigned char *elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci(base + 0x2c8 + 0xc00, key);
+    unsigned char *elem = FindElementByC40205d81c((Struct_0205d81c*)(base + 0x2c8 + 0xc00), key);
     if (elem == 0) {
         return;
     }
@@ -55,7 +57,7 @@ extern "C" ARM void func_ov002_0215b9a4(Battle0215b9a4 *self, unsigned char key,
         return;
     }
     (self->*data_ov002_0216cfac[key])(*(void **) (base + 0x1000 + 0xbd0), hl);
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(base + 0x2c8 + 0xc00, key, *(void **) (base + 0x1000 + 0xbd0), 0, 0);
+    TryApplyElemFields0205d5d0((StructA0205d5d0*)(base + 0x2c8 + 0xc00), key, (int)(*(void **) (base + 0x1000 + 0xbd0)), 0, 0);
     if (*(int *) (base + 0x1000 + 0xbcc) == 0) {
         return;
     }
@@ -67,8 +69,7 @@ extern "C" ARM void func_ov002_0215b9a4(Battle0215b9a4 *self, unsigned char key,
                 break;
             }
             (self->*data_ov002_0216cfac[page])(*(void **) (base + 0x1000 + 0xbd0), hl);
-            _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(base + 0x2c8 + 0xc00, (unsigned char) page,
-                                                                 *(void **) (base + 0x1000 + 0xbd0), 0, 0);
+            TryApplyElemFields0205d5d0((StructA0205d5d0*)(base + 0x2c8 + 0xc00), (unsigned char) page, (int)(*(void **) (base + 0x1000 + 0xbd0)), 0, 0);
         }
     }
     *(int *) (base + 0x1000 + 0xbcc) = 0;

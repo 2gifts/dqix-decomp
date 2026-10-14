@@ -28,7 +28,6 @@ struct CombatantId020288e0 {
 
 GameObject* GetCombatantWithFlag0x200(GameState* battleStruct, int combatantId);
 int GetField0x158(void* obj);
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(void* obj);
 void ClearCombatantSlot(GameState* battleStruct, int id);
 void InitializeSubObjectsAndFields020289c4(BigRecord020289c4*);
 
@@ -45,7 +44,7 @@ extern "C" ARM void func_020288e0(BigRecord020289c4* records)
             GameObject* combatant = GetCombatantWithFlag0x200(state, j);
             if (combatant == NULL) continue;
             if (!GetField0x158(combatant)) {
-                if (_ZNK8Object3D10GetField06Ev(combatant) != key) continue;
+                if (((Object3D*)combatant)->GetField06() != key) continue;
             } else {
                 if (key != ((CombatantId020288e0*)combatant)->field15c) continue;
             }

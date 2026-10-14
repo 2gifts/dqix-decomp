@@ -22,7 +22,8 @@ void SetBitsInWord(unsigned int* obj, unsigned int mask);
 extern "C" void func_020a0cc4(unsigned int);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern "C" void func_020c9be0(void);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
+struct GameResources;
+void SetBrightness(GameResources*, int, int);
 struct ResetObj020d7a5c;
 struct ResetObj020d7a5c* GetGlobalResetObj020d7a50();
 struct Obj020d7aa0;
@@ -41,13 +42,13 @@ struct Obj021b2388 {
     char pad0[0x8];
     int field8;
     int fieldc;
-    SafeAllocator allocator;   // 0x10
-    char name[0x14];           // 0x24
-    struct Flags38_021b2388 field38;  // 0x38
+    SafeAllocator allocator;
+    char name[0x14];
+    struct Flags38_021b2388 field38;
     char pad2[0x2];
-    unsigned char field3e;     // 0x3e
-    unsigned int field40;      // 0x40
-    void* field44;             // 0x44
+    unsigned char field3e;
+    unsigned int field40;
+    void* field44;
 };
 
 // USA: func_ov017_021b2388  (semantic: InitMenuAllocatorAndLoadData_021b2388)
@@ -90,7 +91,7 @@ extern "C" ARM int func_ov017_021b2388(struct Obj021b2388* ctx) {
     ctx->fieldc = ((BackgroundLoader*)(loadedList))->QueueLoadFile((const char*)((int)tmp), (SafeAllocator*)((int)&ctx->allocator));
 
     if (!ctx->field38.bit4) {
-        _Z13SetBrightnessP13GameResourcesii((void*)base, -16, 30);
+        SetBrightness((GameResources*)base, -16, 30);
     }
 
     TeardownAndResetState020d7aa0((struct Obj020d7aa0*)GetGlobalResetObj020d7a50());

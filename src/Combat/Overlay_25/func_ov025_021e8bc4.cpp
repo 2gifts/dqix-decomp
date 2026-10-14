@@ -9,12 +9,8 @@ void* GetActiveCombatWork(void);
 extern "C" void* func_ov000_02160f14(void* obj);
 void SetField0x3b0Value(GameState* battleStruct, int value);
 void ClearCombatantSlot(GameState* battleStruct, int id);
-extern "C" void _ZN8Object3D7DestroyEv(unsigned char* obj);
 struct Container02037364;
-extern "C" void _ZN8Object3D26RemoveAnimationPackageByIDEi(struct Container02037364* obj, int key);
 struct S1a0;
-extern "C" void _ZN8Object3D23SetCurrentAnimationTimeEi(struct S1a0* obj, unsigned int v);
-extern "C" void _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, void* member, int arg3);
 
 struct Node021e8bc4 {
     unsigned char type;
@@ -47,9 +43,9 @@ extern "C" ARM void func_ov025_021e8bc4(struct Obj021e8bc4* obj, int priority) {
                 if (name) strcpy(buf, name);
                 unsigned char b = *(unsigned char*)((char*)combatant + 0x19);
                 unsigned int saved = *(unsigned int*)((char*)combatant + 0x1c);
-                _ZN8Object3D26RemoveAnimationPackageByIDEi((struct Container02037364*)combatant, node->id4);
-                _ZN8Object3D24MaybeSetRegularAnimationEPKci(combatant, buf, b);
-                _ZN8Object3D23SetCurrentAnimationTimeEi((struct S1a0*)combatant, saved);
+                ((Object3D*)((struct Container02037364*)combatant))->RemoveAnimationPackageByID(node->id4);
+                ((Object3D*)combatant)->MaybeSetRegularAnimation((char const*)buf, b);
+                ((Object3D*)((struct S1a0*)combatant))->SetCurrentAnimationTime(saved);
             }
             break;
         }
@@ -62,7 +58,7 @@ extern "C" ARM void func_ov025_021e8bc4(struct Obj021e8bc4* obj, int priority) {
         case 4: {
             GameObject* combatant = battle->GetGameObjectByIndex(node->id2);
             if (combatant) {
-                _ZN8Object3D7DestroyEv((unsigned char*)combatant);
+                ((Object3D*)((unsigned char*)combatant))->Destroy();
                 ClearCombatantSlot(battle, node->id2);
             }
             break;

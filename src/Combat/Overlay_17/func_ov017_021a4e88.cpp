@@ -43,25 +43,28 @@ struct Res021a4e88 {
 
 void* GetGlobalPtr021075f4(void);
 extern "C" void __clear(void* p, int n);
-extern "C" Entry021a4e88* _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(void* list, int id);
-extern "C" void _Z12ClearFlag0x1Pj(Entry021a4e88* e);
-extern "C" void _Z10SetFlag0x1Pj(Entry021a4e88* e);
-extern "C" void _Z21ClearActiveChildStatePc(Entry021a4e88* e);
+struct EntryList_203dce4;
+Entry021a4e88* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
+void ClearFlag0x1(unsigned int*);
+void SetFlag0x1(unsigned int*);
+void ClearActiveChildState(char*);
 extern "C" Vec3_021a4e88 _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(Entry021a4e88* e);
 struct Vec3_020406f8;
 struct Node020406f8;
 void SelectVec3FromSources020406f8(Vec3_020406f8* out, Node020406f8* n);
-extern "C" Info021a4e88* _Z19GetField0xc02040538P9S02040538(Entry021a4e88* e);
+struct S02040538;
+Info021a4e88* GetField0xc02040538(S02040538*);
 Entry021a4e88* FindEntryPointerByKey0203df78(void* list, int key);
-extern "C" int _Z30CheckSubstructByte0x7cPositivePa(void* obj);
-extern "C" short _Z29GetAngleDeltaBetween_021a4700P4Vec3iS0_(Vec3_021a4e88* a, int base, Vec3_021a4e88* b);
-extern "C" unsigned char* _Z11GetField0x8Pi(Entry021a4e88* e);
+int CheckSubstructByte0x7cPositive(signed char*);
+struct Vec3;
+short GetAngleDeltaBetween_021a4700(Vec3*, int, Vec3*);
+unsigned char* GetField0x8(int*);
 int fix32abs(int x);
 
 static inline short GetAngleToEntry(Vec3_021a4e88* pos, int base, Entry021a4e88* e) {
     Vec3_021a4e88 cur;
     SelectVec3FromSources020406f8((Vec3_020406f8*)&cur, (Node020406f8*)e);
-    return _Z29GetAngleDeltaBetween_021a4700P4Vec3iS0_(pos, base, &cur);
+    return GetAngleDeltaBetween_021a4700((Vec3*)pos, base, (Vec3*)&cur);
 }
 
 // USA: func_ov017_021a4e88
@@ -83,11 +86,11 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
     int bestIdx = -1;
     short best = 0x3244;
     for (int i = 0; i < 0x20; i++) {
-        Entry021a4e88* e = _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(list, i);
+        Entry021a4e88* e = GetEntryUnlessFlag0x8000((EntryList_203dce4*)list, i);
         if (e == NULL) {
             continue;
         }
-        _Z12ClearFlag0x1Pj(e);
+        ClearFlag0x1((unsigned int*)e);
         int hidden;
         if (e->flags & 0x40000) {
             hidden = 1;
@@ -98,7 +101,7 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
         Vec3_021a4e88 epos = _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(e);
         int inZone = 0;
         int reach = 0x1800;
-        Info021a4e88* info = _Z19GetField0xc02040538P9S02040538(e);
+        Info021a4e88* info = GetField0xc02040538((S02040538*)e);
         if (info != NULL) {
             if (info->shape != NULL) {
                 Vector3fix_Add(&epos, &info->shape->center, &epos);
@@ -124,20 +127,20 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
         if (hidden) {
             e->flags |= 0x40000;
         }
-        _Z10SetFlag0x1Pj(e);
-        _Z21ClearActiveChildStatePc(e);
+        SetFlag0x1((unsigned int*)e);
+        ClearActiveChildState((char*)e);
         if (info->linkKey != 0) {
             Entry021a4e88* link = FindEntryPointerByKey0203df78(list, info->linkKey);
             if (link != NULL) {
-                _Z10SetFlag0x1Pj(link);
-                _Z21ClearActiveChildStatePc(link);
+                SetFlag0x1((unsigned int*)link);
+                ClearActiveChildState((char*)link);
                 link->flags |= 0x20000;
             }
         }
         if ((e->flags & 0x200) || res->busy != 0) {
             continue;
         }
-        if (_Z30CheckSubstructByte0x7cPositivePa(obj)) {
+        if (CheckSubstructByte0x7cPositive((signed char*)obj)) {
             continue;
         }
         int angle = (short)fix32abs(GetAngleToEntry(&pos, (short)rot.y, e));
@@ -150,7 +153,7 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
             best = angle;
             continue;
         }
-        unsigned char* data = _Z11GetField0x8Pi(e);
+        unsigned char* data = GetField0x8((int*)e);
         if (checkKind == 0 || data[2] == 1) {
             continue;
         }

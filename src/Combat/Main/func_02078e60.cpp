@@ -1,11 +1,11 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 struct Entry_02028bd0;
 struct Entry_02028bd0* GetEntryTableBase(void);
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
 
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 struct List_020283fc;
 int FindListIndexById(struct List_020283fc* list, int id);
@@ -70,7 +70,7 @@ extern "C" ARM unsigned short func_02078e60(void* obj, char* out) {
 
     *out = 0;
     table = GetEntryTableBase();
-    entry = FindInlineEntryById(table, _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)o));
+    entry = FindInlineEntryById(table, ((Object3D*)((struct U16Field0x6_020375f8*)o))->GetField06());
     if (entry == NULL) {
         return 0;
     }

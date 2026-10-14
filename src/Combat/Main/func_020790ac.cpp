@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" void* func_0202ae18(void);
 extern "C" void __clear(void* buf, int n);
@@ -8,7 +9,6 @@ struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 
 struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 struct Object3D;
 extern "C" int func_02079238(Object3D* obj, int arg);
@@ -64,7 +64,7 @@ extern "C" ARM void func_020790ac(struct Obj020790ac* obj) {
         return;
     }
 
-    int id = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)obj);
+    int id = ((Object3D*)((struct U16Field0x6_020375f8*)obj))->GetField06();
     int f2val = obj->f2;
     int rem = (obj->f4 - 0x70) % 0xc;
     if (rem >= 0 && rem < 0xc) {

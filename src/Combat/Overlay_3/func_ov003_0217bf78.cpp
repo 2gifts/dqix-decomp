@@ -45,7 +45,6 @@ void ApplyVec3Tail(void *obj, int *vec);
 void RegisterCombatantSlot(GameState *battleStruct, int id, GameObject *combatant);
 extern "C" void func_ov003_0217ca84(Scene0217bf78 *self, unsigned short fillValue);
 void ResetSubBg1AndClearCache020a64e8(void);
-extern "C" void _ZN8Object3D10MakeHiddenEv(void *obj);
 void Set3DClearColor(int a, int b, int c, int d, int e);
 int SetPowCnt1Bit15_0217c2a0(int enable);
 extern "C" void func_ov003_0217cb3c(Scene0217bf78 *self, int mainScreen, int alternate);
@@ -103,7 +102,7 @@ extern "C" ARM void func_ov003_0217bf78(Scene0217bf78 *self) {
             self->state = 0;
         }
         if (self->field_160 != 0) ResetSubBg1AndClearCache020a64e8();
-        _ZN8Object3D10MakeHiddenEv(self->object);
+        ((Object3D*)self->object)->MakeHidden();
         Set3DClearColor(0, 0x1f, 0x7fff, 0, 0);
         *(volatile unsigned int *) 0x4000000 = (*(volatile unsigned int *) 0x4000000 & ~0x1f00) | 0x100;
         SetPowCnt1Bit15_0217c2a0(1);

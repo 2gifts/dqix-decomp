@@ -7,8 +7,10 @@ enum { kRegionValue998_868 = 0x998 };
 #endif
 
 void* GetGlobalField0x1c020421a0(void);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void*, int);
-extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
+struct Entry_0205d6a0;
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
+struct Container020e0310;
+void* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov003_02159250(void*, void*);
 extern "C" void func_ov017_021d243c(int);
 extern "C" int func_ov017_0218b5b0(void);
@@ -21,8 +23,8 @@ ARM void UpdateResponseState_0215af00(void* self) {
     unsigned char state = *(unsigned char*)(s + 0x580);
 
     if (state == 0) {
-        _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(s + 0xf4, 1);
-        void* val = _Z21GetFieldByKey020e0434P17Container020e0310i(s + 0x64, 0x442);
+        ResetEntryList0205d6a0((Entry_0205d6a0*)(s + 0xf4), 1);
+        void* val = GetFieldByKey020e0434((Container020e0310*)(s + 0x64), 0x442);
         func_ov003_02159250(self, val);
         *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
     }

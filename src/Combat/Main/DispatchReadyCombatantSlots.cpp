@@ -1,8 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" int _ZNK8Object3D9IsVisibleEv(unsigned char* obj);
-
 struct Obj0205a148;
 void Dispatch0205a148(struct Obj0205a148* obj);
 
@@ -31,7 +29,7 @@ ARM void DispatchReadyCombatantSlots(struct Elem020d7638* obj) {
         if (i > 3) id = i + 0xbc;
         combatant = bs->GetGameObjectByIndex(id);
         if (!combatant) continue;
-        if (!_ZNK8Object3D9IsVisibleEv((unsigned char*)combatant)) continue;
+        if (!((Object3D*)((unsigned char*)combatant))->IsVisible()) continue;
         if (!((struct Field41_020d7638*)combatant)->bit5) continue;
         Dispatch0205a148((struct Obj0205a148*)&obj[i]);
     }

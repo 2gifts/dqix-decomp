@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct StatA02154c30 {
     unsigned int id;
@@ -32,7 +33,6 @@ struct Cache02154c30 {
     unsigned char pad[2];
 };
 
-extern "C" void *_ZN9GameState11GetInstanceEv();
 extern "C" Member02154c30 *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
 int GetTableValue(void *p);
 
@@ -43,7 +43,7 @@ static inline int G8(int *p) { return *p; }
 // USA: func_ov002_02154c30
 extern "C" ARM int func_ov002_02154c30(Cache02154c30 *cache) {
     int changed = 0;
-    void *gs    = _ZN9GameState11GetInstanceEv();
+    void *gs    = GameState::GetInstance();
     Member02154c30 *m;
     Cache02154c30 *e;
     int i;

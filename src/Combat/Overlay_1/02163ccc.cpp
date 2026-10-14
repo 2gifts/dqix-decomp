@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "World/Object3D.h"
 
 extern "C" char* func_ov017_0218b5b0(void);
 extern "C" int func_ov017_021d60f4(void* a);
@@ -9,9 +10,6 @@ extern SafeAllocator* data_ov001_021658b8[8];
 struct HeadList020469f8;
 struct HeadNode020469f8;
 void PrependNodeToHead(struct HeadList020469f8* list, struct HeadNode020469f8* node);
-
-extern "C" void _ZN8Object3D11MakeVisibleEv(unsigned char* obj);
-extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 
 struct Entry_02163ccc { int type; int val; int pad2; unsigned char* child; };
 struct DataTable_02163ccc { char pad0[4]; Entry_02163ccc* table; };
@@ -52,8 +50,8 @@ extern "C" ARM int func_ov001_02163ccc(char* self, int mode) {
                 obj = data_ov001_02165880.table[idx].child;
             }
             if (obj == 0) return 0;
-            _ZN8Object3D11MakeVisibleEv(obj);
-            _ZN8Object3D10EnableFlagEi(obj, 0x40000000);
+            ((Object3D*)obj)->MakeVisible();
+            ((Object3D*)obj)->EnableFlag(0x40000000);
         }
         func_ov017_021b621c(node, allocator, obj);
         *(short*)(node + 0xfe) = (short)slot;

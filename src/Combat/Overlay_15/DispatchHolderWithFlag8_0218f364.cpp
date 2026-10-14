@@ -1,6 +1,5 @@
 #include <globaldefs.h>
-
-extern "C" void _ZN8Object3D24MaybeSetRegularAnimationEPKci(void*, void*, int);
+#include "World/Object3D.h"
 
 struct Obj0218f364 {
 	char pad1c[0x1c];
@@ -17,10 +16,10 @@ extern "C" ARM void func_ov015_0218f364(struct Obj0218f364* obj, void* p) {
 	switch (state) {
 	case 0:
 	case 1:
-		_ZN8Object3D24MaybeSetRegularAnimationEPKci(obj->holder, p, obj->flags | 8);
+		((Object3D*)obj->holder)->MaybeSetRegularAnimation((char const*)p, obj->flags | 8);
 		return;
 	default:
-		_ZN8Object3D24MaybeSetRegularAnimationEPKci(obj->holder, p, obj->flags | 8);
+		((Object3D*)obj->holder)->MaybeSetRegularAnimation((char const*)p, obj->flags | 8);
 		return;
 	}
 }

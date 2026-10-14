@@ -4,8 +4,10 @@
 int AdjustValueByFieldFlag(void *obj, unsigned int flag);
 void *GetGlobalField0x1c020421a0();
 extern "C" void func_02046380();
-extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(void *g, int idx, int val);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(void *c, int key);
+struct StoreStruct;
+void StoreInArray0x8b0(StoreStruct*, int, int);
+struct Container020e0310;
+int GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_02046608(void *g, int a, int b, int c, int d, int e, int f);
 
 struct Struct020fdcb0 { int f0; int f4; char pad[0x18]; };
@@ -40,8 +42,8 @@ extern "C" ARM void func_ov002_0215f084(void *objPtr, int param2) {
     Struct020fdcb0 *e = &data_020fdcb0[s];
     void *g = GetGlobalField0x1c020421a0();
     func_02046380();
-    _Z17StoreInArray0x8b0P11StoreStructii(g, 0, adjResult);
-    _Z17StoreInArray0x8b0P11StoreStructii(g, 1, e->f4);
-    int fieldResult = _Z21GetFieldByKey020e0434P17Container020e0310i(base + 0x20, 0xbb8);
+    StoreInArray0x8b0((StoreStruct*)g, 0, adjResult);
+    StoreInArray0x8b0((StoreStruct*)g, 1, e->f4);
+    int fieldResult = GetFieldByKey020e0434((Container020e0310*)(base + 0x20), 0xbb8);
     func_02046608(g, 0xa, fieldResult, param2, 0x100, 0, 0);
 }

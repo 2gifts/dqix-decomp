@@ -9,9 +9,12 @@ const int kProfileWindowOffset = 0xac;
 const int kProfileCardOffset = 0xd28;
 #endif
 
-extern "C" void _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(void*);
-extern "C" void _Z28CallFunc0204c8f0OverList0x9cP12Cont0205d228(void*);
-extern "C" void _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(void*);
+struct Cont0205d274;
+void CallFunc0204b04cOverList0x98(Cont0205d274*);
+struct Cont0205d228;
+void CallFunc0204c8f0OverList0x9c(Cont0205d228*);
+struct Cont0205d1e0;
+void ClearBuffers0204b010OverList0x98(Cont0205d1e0*);
 void UpdateEntryFromDoublePtr_021e6b04(char*);
 extern "C" void _Z37InitBuffersAndConfigureEntry_021e761cPv(void*);
 extern "C" void func_0205da88(void*, int, int, int);
@@ -23,12 +26,12 @@ void HandleElementSpecial17_021e6a90(void*);
 // USA: func_ov012_02185a24  (semantic: Trans_02185a24)
 extern "C" ARM void func_ov012_02185a24(char* obj) {
     _Z37InitBuffersAndConfigureEntry_021e761cPv(obj + kProfileCardOffset);
-    _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(obj + kProfileWindowOffset);
-    _Z28CallFunc0204c8f0OverList0x9cP12Cont0205d228(obj + kProfileWindowOffset);
+    ClearBuffers0204b010OverList0x98((Cont0205d1e0*)(obj + kProfileWindowOffset));
+    CallFunc0204c8f0OverList0x9c((Cont0205d228*)(obj + kProfileWindowOffset));
     func_0205da88(obj + kProfileWindowOffset, 1, 2, 1);
     func_0205da88(obj + kProfileWindowOffset, 1, 3, 1);
     func_0205da88(obj + kProfileWindowOffset, 2, 3, 0);
-    _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(obj + kProfileWindowOffset);
+    CallFunc0204b04cOverList0x98((Cont0205d274*)(obj + kProfileWindowOffset));
     func_ov023_021e67f4(obj);
     func_ov023_021e68cc(obj);
     func_ov023_021e6a14(obj);

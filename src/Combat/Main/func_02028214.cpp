@@ -1,6 +1,5 @@
 #include <globaldefs.h>
-
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int size);
+#include "Memory/SafeAllocator.h"
 
 struct Entry02028214 {
     unsigned char* a;
@@ -43,7 +42,7 @@ extern "C" ARM void func_02028214(void* a, int b) {
     int i2;
     for (i2 = 0; i2 < s->n; i2++) {
         struct Elem02028214* e = &s->base[i2];
-        e->buf = (unsigned char**)_ZN13SafeAllocator8AllocateEj((void*)b, e->count << 2);
+        e->buf = (unsigned char**)((SafeAllocator*)((void*)b))->Allocate(e->count << 2);
         int cnt = 0;
         if (e->buf == NULL) {
             e->count = 0;

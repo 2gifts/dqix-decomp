@@ -100,49 +100,62 @@ struct Sim { char buf[0x7c]; };
 struct Big { char buf[0x678]; };
 
 extern "C" int func_ov000_02153e40(void* obj, short* buf, int max, int start);
-extern "C" void _Z21UpdateCombatantAttackii(void* self, int id);
-extern "C" void _Z22UpdateCombatantDefenseii(void* self, int id);
-extern "C" void _Z22UpdateCombatantAgilityii(void* self, int id);
-extern "C" void _Z20UpdateCombatantCharmii(void* self, int id);
-extern "C" void _Z27UpdateCombatantMagicalMightii(void* self, int id);
-extern "C" void _Z29UpdateCombatantMagicalMendingii(void* self, int id);
+void UpdateCombatantAttack(int, int);
+void UpdateCombatantDefense(int, int);
+void UpdateCombatantAgility(int, int);
+void UpdateCombatantCharm(int, int);
+void UpdateCombatantMagicalMight(int, int);
+void UpdateCombatantMagicalMending(int, int);
 void ClearData4Bytes_021f67f8(void);
 extern "C" void __clear(void* buf, int n);
-extern "C" int _Z13NextRandomMaxP6Randomi(void* rng, int max);
-extern "C" int _Z19ClassifyField0x81fePc(void* self);
-extern "C" float _Z22NextRandomFloatBetweenP6Randomff(void* rng, float lo, float hi);
+struct Random;
+int NextRandomMax(Random*, int);
+int ClassifyField0x81fe(char*);
+float NextRandomFloatBetween(Random*, float, float);
 extern "C" void func_020749ac(void* arr, int lo, int hi, int mode);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" Combatant* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
-extern "C" Combatant* _Z25GetCombatantWithFlag0x400P9GameStatei(void* gs, int id);
-extern "C" PartyInfo* _Z19GetField0x19cOrNullP9S02053dc0(Combatant* c);
+Combatant* GetCombatantWithFlag0x400(GameState*, int);
+struct S02053dc0;
+PartyInfo* GetField0x19cOrNull(S02053dc0*);
 extern "C" void func_020dc548(signed char id, signed char* out, signed char* count);
 void InitStruct02160030(void* obj);
-extern "C" void _Z18ResetEntry02157d14P11Obj02157d14(ActionEntry* e);
+struct Obj02157d14;
+void ResetEntry02157d14(Obj02157d14*);
 void ResetStruct02157cdc(void* obj);
 extern "C" int func_ov000_02155f9c(void* self, int id, int checkSub);
 extern "C" void func_ov024_021f73b8(Big* b);
 extern "C" void func_ov024_021f9030(Big* b, void* self, int id, ActionNode* node);
-extern "C" int _Z30GetCombatantField0x148Bits3To4ii(void* self, int id);
+int GetCombatantField0x148Bits3To4(int, int);
 void ClearInt0208a910(int* out);
 extern "C" int func_0208a91c(int* p0, void* self, int id, int* outCount, short* outTargets);
 SkillData* SearchBothTables02079e2c(char* data, int id);
-extern "C" void* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(void* container, int key);
-extern "C" void _Z29ReplaceEntryAndFormat0204887cP11Obj0204887cPc(Combatant* c, void* e);
-extern "C" void _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(ActionNode* obj, TargetNode* node);
-extern "C" void _Z18AppendNode02160068P11Obj02160068P12Node02160068(ActionNode* obj, ActionEntry* node);
+struct Container02070e60;
+void* SearchWithLow15Comparator02070fd0(Container02070e60*, int);
+struct Obj0204887c;
+void ReplaceEntryAndFormat0204887c(Obj0204887c*, char*);
+struct Node021600cc;
+struct Obj021600cc;
+void AppendNode021600cc(Obj021600cc*, Node021600cc*);
+struct Node02160068;
+struct Obj02160068;
+void AppendNode02160068(Obj02160068*, Node02160068*);
 extern "C" int func_ov000_0215f57c(void* self, int id);
-extern "C" void _Z29ProcessCombatEntries_0215f110Pc(void* self);
+void ProcessCombatEntries_0215f110(char*);
 extern "C" void func_ov000_0215f1ac(void* self);
-extern "C" int _Z14IsFlag10088SetP7S_10088(Combatant* c);
-extern "C" int _Z22IsFlag0x18Bit0x2000SetP10GameObject(Combatant* c);
-extern "C" int _Z31IsCombatantModStatsFlag0x100SetP10GameObject(Combatant* c);
+struct S_10088;
+int IsFlag10088Set(S_10088*);
+struct GameObject;
+int IsFlag0x18Bit0x2000Set(GameObject*);
+int IsCombatantModStatsFlag0x100Set(GameObject*);
 ActionNode* GetWorkArrayEntry0215e9d8(void* self);
 ActionEntry* GetTableEntry0x8e00Bound0x48(void* self);
-extern "C" TargetNode* _Z22GetNodeAtIndex021600f8P12List021600f8i(ActionNode* list, int index);
-extern "C" ActionEntry* _Z22GetNodeAtIndex02160094P12List02160094i(ActionNode* list, int index);
+struct List021600f8;
+TargetNode* GetNodeAtIndex021600f8(List021600f8*, int);
+struct List02160094;
+ActionEntry* GetNodeAtIndex02160094(List02160094*, int);
 extern "C" void func_ov000_0215767c(void* self, ActionNode* src, ActionNode* dst);
-extern "C" void _Z19InitStruct_021eb510Pv(Sim* s);
+void InitStruct_021eb510(void*);
 extern "C" void func_ov024_021eb5d0(Sim* s, void* self, ActionNode* a, ActionNode* b, int mode);
 extern "C" void func_ov000_02157d3c(void* self, ActionNode* a, int flag);
 extern "C" void func_ov000_0215bf5c(void* self, ActionNode* a);
@@ -167,7 +180,7 @@ static inline Combatant* GetCombatant(int id) {
 
 static inline Combatant* GetFlagged0x400(int id) {
     GameState* bs = GameState::GetInstance();
-    return _Z25GetCombatantWithFlag0x400P9GameStatei(bs, id);
+    return GetCombatantWithFlag0x400((GameState*)bs, id);
 }
 
 // USA: func_ov000_0215d63c
@@ -180,12 +193,12 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
 
     for (long i = 0; i < count; i++) {
         int id = ids.v[i];
-        _Z21UpdateCombatantAttackii(self, id);
-        _Z22UpdateCombatantDefenseii(self, id);
-        _Z22UpdateCombatantAgilityii(self, id);
-        _Z20UpdateCombatantCharmii(self, id);
-        _Z27UpdateCombatantMagicalMightii(self, id);
-        _Z29UpdateCombatantMagicalMendingii(self, id);
+        UpdateCombatantAttack((int)self, id);
+        UpdateCombatantDefense((int)self, id);
+        UpdateCombatantAgility((int)self, id);
+        UpdateCombatantCharm((int)self, id);
+        UpdateCombatantMagicalMight((int)self, id);
+        UpdateCombatantMagicalMending((int)self, id);
     }
 
     ClearData4Bytes_021f67f8();
@@ -208,7 +221,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                 if (party) {
                     continue;
                 }
-                if (n != 0 && _Z13NextRandomMaxP6Randomi(self, 100) >= 0x43) {
+                if (n != 0 && NextRandomMax((Random*)self, 100) >= 0x43) {
                     continue;
                 }
             } else if (self->mode == 1) {
@@ -221,7 +234,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                 }
             }
         }
-        if (_Z19ClassifyField0x81fePc(self) != 0) {
+        if (ClassifyField0x81fe((char*)self) != 0) {
             int id = ids.v[i];
             int party = 0;
             if (!(id < 0 || id > 3)) {
@@ -233,7 +246,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         }
         cands[n].id = ids.v[i];
         unsigned int power = c->stats->power;
-        cands[n].weight = (float)power * _Z22NextRandomFloatBetweenP6Randomff(self, 0.51f, 1.0f);
+        cands[n].weight = (float)power * NextRandomFloatBetween((Random*)self, 0.51f, 1.0f);
         n++;
     }
 
@@ -259,7 +272,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         if (party) {
             Combatant* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids.v[i]);
             if (c != 0) {
-                PartyInfo* info = _Z19GetField0x19cOrNullP9S02053dc0(c);
+                PartyInfo* info = GetField0x19cOrNull((S02053dc0*)c);
                 if (info != 0 && (info->flags & 1)) {
                     PartyList members = data_ov000_02182a60;
                     signed char partyCount = 0;
@@ -267,7 +280,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     for (unsigned int j = 0; j < partyCount; j++) {
                         Combatant* m = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, members.v[j]);
                         if (m != 0) {
-                            PartyInfo* mi = _Z19GetField0x19cOrNullP9S02053dc0(m);
+                            PartyInfo* mi = GetField0x19cOrNull((S02053dc0*)m);
                             if (mi != 0) {
                                 mi->flags |= 1;
                             }
@@ -283,7 +296,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         InitStruct02160030(node);
         node->entryCount = 1;
         node->entry = &self->entries[self->entryCount];
-        _Z18ResetEntry02157d14P11Obj02157d14(node->entry);
+        ResetEntry02157d14((Obj02157d14*)node->entry);
         node->entry->id = ids.v[i];
 
         TargetList targets = data_ov000_02182ba4;
@@ -295,7 +308,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         if (party) {
             Combatant* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids.v[i]);
             if (c != 0) {
-                PartyInfo* info = _Z19GetField0x19cOrNullP9S02053dc0(c);
+                PartyInfo* info = GetField0x19cOrNull((S02053dc0*)c);
                 if (info != 0 && (info->flags & 1)) {
                     continue;
                 }
@@ -313,7 +326,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
             if (party) {
                 Combatant* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids.v[i]);
                 if (c != 0) {
-                    PartyInfo* info = _Z19GetField0x19cOrNullP9S02053dc0(c);
+                    PartyInfo* info = GetField0x19cOrNull((S02053dc0*)c);
                     if (info != 0) {
                         node->action = info->action;
                     }
@@ -335,7 +348,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     }
                 }
             } else {
-                int kind = _Z30GetCombatantField0x148Bits3To4ii(self, (short)node->entry->id);
+                int kind = GetCombatantField0x148Bits3To4((int)self, (short)node->entry->id);
                 int selfId = (short)node->entry->id;
                 Combatant* me = GetFlagged0x400(selfId);
                 if (kind != 2) {
@@ -345,9 +358,9 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     SkillData* sk = SearchBothTables02079e2c((char*)data, (short)node->action);
                     if (sk != 0) {
                         while (sk->type == 0x22) {
-                            void* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(self->field8e18 + 0x684, sk->linked);
+                            void* e = SearchWithLow15Comparator02070fd0((Container02070e60*)(self->field8e18 + 0x684), sk->linked);
                             if (e != 0) {
-                                _Z29ReplaceEntryAndFormat0204887cP11Obj0204887cPc(me, e);
+                                ReplaceEntryAndFormat0204887c((Obj0204887c*)me, (char*)e);
                                 me->stats->skill36 = sk->linked;
                             }
                             memset(targets.v, -1, sizeof(targets));
@@ -376,7 +389,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
             ResetStruct02157cdc(tn);
             tn->id = targets.v[j];
             tn->active = 1;
-            _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(node, tn);
+            AppendNode021600cc((Obj021600cc*)node, (Node021600cc*)tn);
             self->targetCount++;
         }
         self->actionCount++;
@@ -388,7 +401,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
             InitStruct02160030(node2);
             node2->entryCount = 1;
             node2->entry = &self->entries[self->entryCount];
-            _Z18ResetEntry02157d14P11Obj02157d14(node2->entry);
+            ResetEntry02157d14((Obj02157d14*)node2->entry);
             node2->entry->id = ids.v[i];
 
             TargetList targets2 = data_ov000_02182b04;
@@ -397,8 +410,8 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                 node2->action = 0x1f7;
             } else {
                 node2->action = 2;
-                int kind = _Z30GetCombatantField0x148Bits3To4ii(self, (short)node2->entry->id);
-                Combatant* me = _Z25GetCombatantWithFlag0x400P9GameStatei(gs, node2->entry->id);
+                int kind = GetCombatantField0x148Bits3To4((int)self, (short)node2->entry->id);
+                Combatant* me = GetCombatantWithFlag0x400((GameState*)gs, node2->entry->id);
                 if (kind != 2) {
                     int work2;
                     ClearInt0208a910(&work2);
@@ -406,9 +419,9 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     SkillData* sk = SearchBothTables02079e2c((char*)data, (short)node2->action);
                     if (sk != 0) {
                         while (sk->type == 0x22) {
-                            void* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(self->field8e18 + 0x684, sk->linked);
+                            void* e = SearchWithLow15Comparator02070fd0((Container02070e60*)(self->field8e18 + 0x684), sk->linked);
                             if (e != 0) {
-                                _Z29ReplaceEntryAndFormat0204887cP11Obj0204887cPc(me, e);
+                                ReplaceEntryAndFormat0204887c((Obj0204887c*)me, (char*)e);
                                 me->stats->skill36 = sk->linked;
                             }
                             memset(targets2.v, -1, sizeof(targets2));
@@ -436,7 +449,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                 ResetStruct02157cdc(tn);
                 tn->id = targets2.v[j];
                 tn->active = 1;
-                _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(node2, tn);
+                AppendNode021600cc((Obj021600cc*)node2, (Node021600cc*)tn);
                 self->targetCount++;
             }
             self->actionCount++;
@@ -444,7 +457,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         }
     }
 
-    _Z29ProcessCombatEntries_0215f110Pc(self);
+    ProcessCombatEntries_0215f110((char*)self);
     func_ov000_0215f1ac(self);
 
     for (j = 0; j < self->actionCount; j++) {
@@ -454,13 +467,13 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         if (c == 0) {
             continue;
         }
-        if (_Z14IsFlag10088SetP7S_10088(c) != 0) {
+        if (IsFlag10088Set((S_10088*)c) != 0) {
             continue;
         }
         if (c->stats->flag2) {
             continue;
         }
-        if (_Z22IsFlag0x18Bit0x2000SetP10GameObject(c) != 0) {
+        if (IsFlag0x18Bit0x2000Set((GameObject*)c) != 0) {
             continue;
         }
         if (c->stats->flag0) {
@@ -474,7 +487,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
             }
         }
 
-        int modFlag = _Z31IsCombatantModStatsFlag0x100SetP10GameObject(c);
+        int modFlag = IsCombatantModStatsFlag0x100Set((GameObject*)c);
         ActionNode* w = GetWorkArrayEntry0215e9d8(self);
         if (w == 0) {
             break;
@@ -482,8 +495,8 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
         InitStruct02160030(w);
         func_ov000_0215767c(self, node, w);
         Sim sim;
-        _Z19InitStruct_021eb510Pv(&sim);
-        _Z19InitStruct_021eb510Pv(&sim);
+        InitStruct_021eb510(&sim);
+        InitStruct_021eb510(&sim);
         func_ov024_021eb5d0(&sim, self, w, node, 0);
         if (func_ov000_02155f9c(self, ids.v[j], 1) != 0) {
             modFlag = 0;
@@ -524,36 +537,36 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                 InitStruct02160030(echo);
                 w2->action = echo->action = w->action;
                 for (int j = 0; j < w->targetCount; j++) {
-                    TargetNode* src = _Z22GetNodeAtIndex021600f8P12List021600f8i(w, j);
+                    TargetNode* src = GetNodeAtIndex021600f8((List021600f8*)w, j);
                     int srcId = src->id;
                     Combatant* t = GetCombatant(srcId);
                     if (t == 0) {
                         continue;
                     }
-                    if (_Z14IsFlag10088SetP7S_10088(t) != 0) {
+                    if (IsFlag10088Set((S_10088*)t) != 0) {
                         continue;
                     }
-                    if (_Z22IsFlag0x18Bit0x2000SetP10GameObject(t) != 0) {
+                    if (IsFlag0x18Bit0x2000Set((GameObject*)t) != 0) {
                         break;
                     }
                     TargetNode* tn = &self->targets[self->targetCount];
                     ResetStruct02157cdc(tn);
                     tn->id = src->id;
                     tn->active = 1;
-                    _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(echo, tn);
+                    AppendNode021600cc((Obj021600cc*)echo, (Node021600cc*)tn);
                     self->targetCount++;
                 }
                 for (int k = 0; k < w->entryCount; k++) {
-                    ActionEntry* src = _Z22GetNodeAtIndex02160094P12List02160094i(w, k);
+                    ActionEntry* src = GetNodeAtIndex02160094((List02160094*)w, k);
                     int srcId = (short)src->id;
                     Combatant* t = GetCombatant(srcId);
                     if (t == 0) {
                         break;
                     }
-                    if (_Z14IsFlag10088SetP7S_10088(t) != 0) {
+                    if (IsFlag10088Set((S_10088*)t) != 0) {
                         break;
                     }
-                    if (_Z22IsFlag0x18Bit0x2000SetP10GameObject(t) != 0) {
+                    if (IsFlag0x18Bit0x2000Set((GameObject*)t) != 0) {
                         break;
                     }
                     ActionEntry* e = GetTableEntry0x8e00Bound0x48(self);
@@ -564,21 +577,21 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     e->f1c = -1;
                     e->f30 = 0;
                     e->id = src->id;
-                    _Z18AppendNode02160068P11Obj02160068P12Node02160068(w2, e);
+                    AppendNode02160068((Obj02160068*)w2, (Node02160068*)e);
                     self->tableCount++;
                     e = &self->entries[self->entryCount];
                     memset(e, 0, 0x30);
                     e->f1c = -1;
                     e->f30 = 0;
                     e->id = src->id;
-                    _Z18AppendNode02160068P11Obj02160068P12Node02160068(echo, e);
+                    AppendNode02160068((Obj02160068*)echo, (Node02160068*)e);
                     self->entryCount++;
                 }
                 if (echo->targetCount != 0 && w->entryCount == w2->entryCount) {
                     again = 0;
                     Sim sim2;
-                    _Z19InitStruct_021eb510Pv(&sim2);
-                    _Z19InitStruct_021eb510Pv(&sim2);
+                    InitStruct_021eb510(&sim2);
+                    InitStruct_021eb510(&sim2);
                     func_ov024_021eb5d0(&sim2, self, w2, echo, 1);
                     func_ov000_02157d3c(self, w2, 0);
                     self->workCount++;

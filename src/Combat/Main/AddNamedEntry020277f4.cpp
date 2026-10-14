@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
-
-extern "C" void* _ZN13SafeAllocator8AllocateEj(void* thisPtr, unsigned int size);
+#include "Memory/SafeAllocator.h"
 
 struct Entry020277f4 {
     int value;
@@ -20,7 +19,7 @@ struct Table020277f4 {
 extern "C" ARM void func_020277f4(Table020277f4* obj, int value, const char* key, void* allocator) {
     if (obj->capacity <= obj->count) return;
     obj->list[obj->count].value = value;
-    char* buf = (char*)_ZN13SafeAllocator8AllocateEj(allocator, strlen(key) + 1);
+    char* buf = (char*)((SafeAllocator*)allocator)->Allocate(strlen(key) + 1);
     obj->list[obj->count].str = buf;
     strcpy(obj->list[obj->count].str, key);
     obj->count = obj->count + 1;

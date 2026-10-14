@@ -3,7 +3,6 @@
 
 extern "C" int func_ov017_021d60f4(void*);
 extern int AbsPlus159IfNegative0215ad2c(int x);
-extern "C" void _ZN8Object3D7DestroyEv(unsigned char* obj);
 void ClearCombatantSlot(GameState* battleStruct, int id);
 extern "C" void func_ov001_0215acb4(void* p);
 
@@ -19,7 +18,7 @@ extern "C" ARM int func_ov001_0215b9c4(void* self) {
 	int id = AbsPlus159IfNegative0215ad2c(func_ov017_021d60f4(self));
 	GameObject* combatant = bs->GetGameObjectByIndex(id);
 	if (combatant == 0) return 0;
-	_ZN8Object3D7DestroyEv((unsigned char*)combatant);
+	((Object3D*)((unsigned char*)combatant))->Destroy();
 	ClearCombatantSlot(bs, id);
 	if (data_ov001_02165880.elems != 0) {
 		int i;

@@ -6,7 +6,8 @@ int FindAndSetFreeSlot021673e0(struct Struct5e00* obj);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" void NSBXX_Tex_WritePaletteVRAMOffset(void* obj, int value);
 extern "C" void _ZN8Object3D23SetTexturePaletteOffsetEj(unsigned char* obj, int value);
-extern "C" int _Z23StageTexFilePaletteDataPV8NSBXXTexb(void* src, int mode);
+struct NSBXXTex;
+int StageTexFilePaletteData(NSBXXTex volatile*, bool);
 
 // USA: func_ov000_02166784
 ARM void AllocateSlotAndConfigureField02166784(struct Struct5e00* obj1, unsigned char* obj2, unsigned char* obj3) {
@@ -26,7 +27,7 @@ ARM void AllocateSlotAndConfigureField02166784(struct Struct5e00* obj1, unsigned
         int len = *(int*)((char*)field + 0x38);
         CleanInvalidateCacheRange((char*)field + len, off << 3);
         NSBXX_Tex_WritePaletteVRAMOffset(field, slot);
-        _Z23StageTexFilePaletteDataPV8NSBXXTexb(field, 1);
+        StageTexFilePaletteData((NSBXXTex volatile*)field, 1);
         _ZN8Object3D23SetTexturePaletteOffsetEj(obj3, slot);
     }
 }

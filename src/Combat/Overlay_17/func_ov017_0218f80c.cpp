@@ -3,8 +3,9 @@
 
 extern "C" int _ZN7Model3D7GetTEX0Ev(void* obj);
 void DelayThenSyncBit0(void);
-extern "C" void _Z23StageTexFilePaletteDataPV8NSBXXTexb(int a, int b);
-extern "C" void _Z21StageTexFileImageDataPV8NSBXXTexb(int a, int b);
+void StageTexFilePaletteData(NSBXXTex volatile*, bool);
+struct NSBXXTex;
+void StageTexFileImageData(NSBXXTex volatile*, bool);
 
 struct SlotIdTable_0218f80c {
     int v[12];
@@ -51,7 +52,7 @@ extern "C" ARM void func_ov017_0218f80c(void* obj, int idx) {
         if (field58 == 0) {
             continue;
         }
-        _Z23StageTexFilePaletteDataPV8NSBXXTexb(field58, 0);
-        _Z21StageTexFileImageDataPV8NSBXXTexb(field58, 0);
+        StageTexFilePaletteData((NSBXXTex volatile*)field58, 0);
+        StageTexFileImageData((NSBXXTex volatile*)field58, 0);
     }
 }

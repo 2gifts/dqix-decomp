@@ -9,7 +9,8 @@ enum { kRegionValue9AE_7DE = 0x9ae };
 #endif
 
 void* GetGlobalField0x1c020421a0(void);
-extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(void*, int, int);
+struct Struct_0205d81c;
+void SetElementFieldC2(Struct_0205d81c*, int, int);
 
 struct Obj0205dee8;
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8* obj, int val);
@@ -28,9 +29,9 @@ extern "C" ARM void func_ov003_02159c04(void* self) {
     unsigned char state = *(unsigned char*)(s + 0x580);
 
     if (state == 0) {
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 0, 0);
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 1, 0);
-        _Z17SetElementFieldC2P15Struct_0205d81cii(s + 0xf4, 2, 0);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 0);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 0);
+        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 0);
         SetFieldB0AndUpdate0205dee8((struct Obj0205dee8*)(s + 0xf4), 1);
         *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
     }

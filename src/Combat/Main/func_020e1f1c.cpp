@@ -35,10 +35,12 @@ struct Owner020e1f1c {
 };
 
 void* AllocateVRAMStagingMemory(unsigned int value);
-extern "C" int _Z20GetHalfProductField8P15HasDims020e1288(void* obj);
+struct HasDims020e1288;
+int GetHalfProductField8(HasDims020e1288*);
 extern "C" void func_020e2018(void* owner);
 void ClearStruct02020520(Struct02020520* s);
-extern "C" void _Z20ClearTwoWordsAndByteP6S_b20c(void* obj);
+struct S_b20c;
+void ClearTwoWordsAndByte(S_b20c*);
 void SetField0_0205b220(void* obj, int value);
 void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
 
@@ -48,7 +50,7 @@ extern "C" ARM void* func_020e1f1c(Owner020e1f1c* owner) {
     owner->buffer = buffer;
     if (buffer != 0) {
         Panel020e1f1c* panel = owner->panel;
-        int half = _Z20GetHalfProductField8P15HasDims020e1288(panel);
+        int half = GetHalfProductField8((HasDims020e1288*)panel);
         memset((char*)owner->buffer + panel->offset, 0, panel->stride + half);
         func_020e2018(owner);
         int count = owner->panel->count;
@@ -63,7 +65,7 @@ extern "C" ARM void* func_020e1f1c(Owner020e1f1c* owner) {
             d->e = s->h;
         }
         void* obj = owner->panel->obj;
-        _Z20ClearTwoWordsAndByteP6S_b20c(obj);
+        ClearTwoWordsAndByte((S_b20c*)obj);
         SetField0_0205b220(obj, (int)((unsigned int)owner->buffer + owner->panel->offset));
         SetFieldsAt0x4And0x8_0205b228(obj, (int)owner->panel->layouts, count);
     }

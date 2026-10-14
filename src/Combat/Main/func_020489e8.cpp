@@ -9,17 +9,12 @@ struct Bits41_37474 {
     unsigned char lo5 : 5;
     unsigned char hi3 : 3;
 };
-extern "C" int _ZNK8Object3D11GetOwnAlphaEv(struct Bits41_37474* obj);
-
-
-extern "C" ARM void _ZN10AlphaTween15SetCurrentValueEf(unsigned short* out, float val);
 
 struct Obj02034a30 {
     unsigned short field0;
     unsigned short field2;
     float field4;
 };
-extern "C" float _ZN10AlphaTween7AdvanceEi(struct Obj02034a30* obj, int param);
 
 extern "C" void func_02048f64(void* obj);
 extern "C" void func_0204956c(void* obj);
@@ -55,9 +50,9 @@ extern "C" ARM void func_020489e8(struct Obj020489e8* obj) {
     if (isNonzero) {
         GameState* battleStruct = GameState::GetInstance();
         int threshold = battleStruct->GetEffectiveDeltaTime();
-        int bits = _ZNK8Object3D11GetOwnAlphaEv((struct Bits41_37474*)obj);
-        _ZN10AlphaTween15SetCurrentValueEf(&((struct Obj02034a30*)((char*)obj->field13c + 0x60))->field0, (float)bits);
-        float result = _ZN10AlphaTween7AdvanceEi((struct Obj02034a30*)((char*)obj->field13c + 0x60), threshold);
+        int bits = ((Object3D*)((struct Bits41_37474*)obj))->GetOwnAlpha();
+        ((AlphaTween*)(&((struct Obj02034a30*)((char*)obj->field13c + 0x60))->field0))->SetCurrentValue((float)bits);
+        float result = ((AlphaTween*)((struct Obj02034a30*)((char*)obj->field13c + 0x60)))->Advance(threshold);
         unsigned char v = (unsigned char)(int)result;
         ((struct Bits41_37474*)obj)->lo5 = v;
     }

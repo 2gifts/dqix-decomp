@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" int func_ov017_021d60f4(int id);
 
@@ -6,7 +7,6 @@ struct Struct_203cec4;
 void SetOrClearFlag0x8(struct Struct_203cec4* obj, int enable);
 struct Struct_0203fc5c;
 int SetField40IfPositive(struct Struct_0203fc5c* obj, float value);
-extern "C" void _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, void* pool, int zero);
 
 struct Row02165880 {
     int type;
@@ -52,7 +52,7 @@ extern "C" ARM int func_ov001_0216013c(int id) {
         if (obj2 == 0) {
             return 0;
         }
-        _ZN8Object3D24MaybeSetRegularAnimationEPKci(obj2, &data_ov001_02165769, 0);
+        ((Object3D*)obj2)->MaybeSetRegularAnimation((char const*)&data_ov001_02165769, 0);
     }
 
     return 1;

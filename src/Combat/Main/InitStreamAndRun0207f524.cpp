@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct ResetStruct {
     int w0;
@@ -15,14 +16,11 @@ struct ResetStruct {
     char pad[0x400];
     unsigned char b42c;
 };
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 
 struct StreamState;
 struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
 
 struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
 extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
 struct List0207f6ac;
@@ -38,10 +36,10 @@ ARM void InitStreamAndRun0207f524(void* param0, void* param1, struct StreamHeade
         struct ResetStruct local;
         data_02108ee0.field0 = param1;
         data_02108ee0.field4 = param0;
-        _ZN6Script10InitializeEv(&local);
+        ((Script*)&local)->Initialize();
         _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f0fb0);
-        _ZN6Script4LoadEPKvj((struct StreamState*)&local, param2, param3);
-        _ZN6Script7ExecuteEv((struct Struct02030774*)&local);
+        ((Script*)((struct StreamState*)&local))->Load(param2, param3);
+        ((Script*)((struct Struct02030774*)&local))->Execute();
         ResolveEntryRefs0207f72c((struct List0207f6ac*)param0);
     }
 }

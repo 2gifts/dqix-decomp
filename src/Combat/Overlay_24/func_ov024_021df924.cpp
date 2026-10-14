@@ -94,7 +94,7 @@ void* GetActiveCombatWork();
 char* GetOffsetPtr02160f08(void* work);
 void* ZeroInitReturn020de824(void* obj);
 void InitStruct0207cbe8(char* obj);
-extern "C" void _Z28SetShortFields0x8e4aTo0x8e4ePviii(void* world, short a, short b, short c);
+void SetShortFields0x8e4aTo0x8e4e(void*, int, int, int);
 extern "C" int func_0207ccf0(void* buf, int a, int b, int c, int d, int e, int f);
 int CopyIndexedRegion0x75f0(void* unused, short* indices, int* dest, int count);
 extern "C" void func_020abe84(void* unused, short* indices, Counts021df924* values, int count);
@@ -171,7 +171,7 @@ extern "C" ARM void* func_ov024_021df924(Action021df924* self, short id, int tar
             InitStruct0207cbe8((char*)&loader);
             if (found) {
                 self->message->id = resultID;
-                _Z28SetShortFields0x8e4aTo0x8e4ePviii(self->world, entryID, combatantKey, resultID);
+                SetShortFields0x8e4aTo0x8e4e(self->world, (short)entryID, (short)combatantKey, (short)resultID);
                 loader.source = special;
             } else {
                 loader.source = normal;

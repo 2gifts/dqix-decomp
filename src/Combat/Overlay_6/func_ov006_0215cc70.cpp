@@ -60,9 +60,10 @@ struct Obj0215cc70 {
     int IsCritical() { return (flags & 0x40) != 0; }
 };
 
-extern "C" Entry0215cc70* _Z25MergeIntoBuffers_0215fd60PvPsPhi(void* self, short* ids, unsigned char* buf, unsigned char* count);
+Entry0215cc70* MergeIntoBuffers_0215fd60(void*, short*, unsigned char*, int);
 extern "C" int func_ov006_02153f24(void* table, int id);
-extern "C" void _Z24ExpireStatusSlot02159094P11Obj02159094(Obj0215cc70* self);
+struct Obj02159094;
+void ExpireStatusSlot02159094(Obj02159094*);
 extern "C" void _Z13Func_0215a33cP11Obj0215a33c(Obj0215cc70* self, int critical);
 extern "C" int func_ov006_0215a384(Obj0215cc70* self, int critical);
 extern "C" void func_ov006_0215fe34(Obj0215cc70* self, void* list);
@@ -71,32 +72,37 @@ int GetField0x3acValue(GameState* gs);
 extern "C" int func_020dd4c4(signed char a, void* list);
 extern "C" void func_ov006_02159db0(Obj0215cc70* self);
 extern "C" int func_ov006_02159e50(Obj0215cc70* self);
-extern "C" int _Z21CheckAnyFlag_021570b4Pc(Ctx0215cc70* ctx);
+int CheckAnyFlag_021570b4(char*);
 void* GetBTRandom(void);
-extern "C" unsigned int _Z13NextRandomMaxP6Randomi(void* rng, int max);
-extern "C" void _Z18SetElementFlag0x20P7Obj2081i(void* elements, int key);
-extern "C" void _Z20ClearElementFlag0x20P7Obj2081i(void* elements, int key);
+struct Random;
+unsigned int NextRandomMax(Random*, int);
+struct Obj2081;
+void SetElementFlag0x20(Obj2081*, int);
+void ClearElementFlag0x20(Obj2081*, int);
 extern "C" int _Z26CheckFlagOrByte55_02158c70v(Obj0215cc70* self);
 extern "C" void func_ov006_02153cbc(void* table, int a, int b, void* out);
 extern "C" void func_ov006_0215759c(void* list, Entry0215cc70* entry, int count);
 extern "C" void func_ov006_02158de0(Obj0215cc70* self);
 unsigned int* GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int* p, unsigned int bits);
-extern "C" void _Z19ClearStruct020a9ea4P14Struct020a9ea4(void* p);
+struct Struct020a9ea4;
+void ClearStruct020a9ea4(Struct020a9ea4*);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
 extern "C" int func_020aad1c(void* loader, void* name, int a, int b);
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(unsigned int* p, unsigned int bits);
+struct FlagWord020466f4;
+void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
 void** CallFunc020e52a0(void* lookup, int id);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" void func_020e4864(void* src, void* dst, int a, int b, int c, int d);
-extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(void* elements, int key, void* value);
+struct Container02080f8c;
+void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
 void Forward0207f7acObjPlus4Size0x40(void* elements, int key);
 extern "C" void func_020813ec(void* elements, int key);
-extern "C" void _Z30InitHandleAndDispatch_021571fcPc(Ctx0215cc70* ctx);
+void InitHandleAndDispatch_021571fc(char*);
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void* p, int value);
-extern "C" void _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(void* elements, int key);
-extern "C" void _Z25SetByte_0215728c_0215728cPv(Ctx0215cc70* ctx);
+void CallFunc0204c804OnMatchingKey(Obj2081*, int);
+void SetByte_0215728c_0215728c(void*);
 
 static inline short* ChancePtr(Obj0215cc70* self) { return (short*)((char*)self + 0x382); }
 static inline short* ChanceWords(Obj0215cc70* self) { return (short*)self; }
@@ -114,15 +120,15 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
         Entry0215cc70* entry;
         self->busy = 0;
         self->mergeCount = 0;
-        entry = _Z25MergeIntoBuffers_0215fd60PvPsPhi(self, self->ids, self->mergeBuf, &self->mergeCount);
+        entry = MergeIntoBuffers_0215fd60(self, self->ids, self->mergeBuf, (int)&self->mergeCount);
         self->entry = entry;
         if (entry != 0) {
             self->chance = func_ov006_02153f24(self->table, entry->id);
             self->state++;
         } else {
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
             self->state = 0x78;
             self->flags |= 0x20;
             self->message = 0xb;
@@ -156,13 +162,13 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
                 self->state++;
             }
         } else {
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
             self->state = 0x78;
         }
     } else if (self->state == 5) {
-        if (_Z21CheckAnyFlag_021570b4Pc(ctx) == 0) {
+        if (CheckAnyFlag_021570b4((char*)ctx) == 0) {
             self->flags &= ~0x40;
             bool hasCount = false;
             if (self->entry != 0 && self->entry->count > 0) {
@@ -174,15 +180,15 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
                 self->messageTimer = 0;
                 self->flags |= 0x20;
                 self->state++;
-                if (_Z13NextRandomMaxP6Randomi(GetBTRandom(), 10000) / 100 < self->chance) {
+                if (NextRandomMax((Random*)GetBTRandom(), 10000) / 100 < self->chance) {
                     self->flags |= 0x40;
                 }
                 _Z13Func_0215a33cP11Obj0215a33c(self, self->IsCritical());
             } else {
-                _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0x10);
-                _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0x11);
-                _Z18SetElementFlag0x20P7Obj2081i(self->elements, 1);
-                _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0);
+                SetElementFlag0x20((Obj2081*)self->elements, 0x10);
+                SetElementFlag0x20((Obj2081*)self->elements, 0x11);
+                SetElementFlag0x20((Obj2081*)self->elements, 1);
+                SetElementFlag0x20((Obj2081*)self->elements, 0);
                 self->ctx->flags |= 0x10;
                 self->field432 = 1;
                 self->waitCount = 0;
@@ -219,7 +225,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             self->state++;
         }
     } else if (self->state == 8) {
-        if (_Z21CheckAnyFlag_021570b4Pc(ctx) == 0) {
+        if (CheckAnyFlag_021570b4((char*)ctx) == 0) {
             if (_Z26CheckFlagOrByte55_02158c70v(self)) {
                 short id = 0x13;
                 self->state++;
@@ -264,11 +270,11 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
                 self->state++;
             }
         } else {
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
             self->flags = (self->flags | 0x20) & ~0x40;
-            _Z20ClearElementFlag0x20P7Obj2081i(self->elements, 0);
+            ClearElementFlag0x20((Obj2081*)self->elements, 0);
             self->message = 0x19;
             self->messageTimer = 0;
             self->flags |= 0x20;
@@ -276,7 +282,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
         }
     } else if (self->state == 0x5a) {
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            _Z20ClearElementFlag0x20P7Obj2081i(self->elements, 0);
+            ClearElementFlag0x20((Obj2081*)self->elements, 0);
             self->message = 0x24;
             self->messageTimer = 0;
             self->flags |= 0x20;
@@ -287,13 +293,13 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
     } else if (self->state == 0xd) {
         self->message = 0x36;
         self->messageTimer = 0;
-        _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0);
+        SetElementFlag0x20((Obj2081*)self->elements, 0);
         self->state++;
     } else if (self->state == 0xe) {
         self->flags |= 0x200;
         if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() <= 0) {
             OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0x80);
-            _Z19ClearStruct020a9ea4P14Struct020a9ea4(self->loader);
+            ClearStruct020a9ea4((Struct020a9ea4*)self->loader);
             self->state++;
         }
     } else if (self->state == 0xf) {
@@ -305,7 +311,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             size = 0x14;
         }
         if (func_020aad1c(self->loader, &data_0211e33c, size, 0) == 1) {
-            _Z18ClearFlags020466f4P16FlagWord020466f4j(GetDataPtr02114e04_020d6c00(), 0x80);
+            ClearFlags020466f4((FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x80);
             self->state++;
             self->flags &= ~0x200;
         }
@@ -319,16 +325,16 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             self->message = 0x1a;
             self->messageTimer = 0;
             self->flags |= 0x20;
-            _Z20ClearElementFlag0x20P7Obj2081i(self->elements, 0);
+            ClearElementFlag0x20((Obj2081*)self->elements, 0);
             self->state++;
         }
     } else if (self->state == 0x12) {
         self->field42c = 0;
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0x10);
-            _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0x11);
-            _Z18SetElementFlag0x20P7Obj2081i(self->elements, 1);
-            _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0);
+            SetElementFlag0x20((Obj2081*)self->elements, 0x10);
+            SetElementFlag0x20((Obj2081*)self->elements, 0x11);
+            SetElementFlag0x20((Obj2081*)self->elements, 1);
+            SetElementFlag0x20((Obj2081*)self->elements, 0);
             self->ctx->flags |= 0x10;
             self->field432 = 1;
             self->waitCount = 0;
@@ -349,7 +355,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
         if (res != 0) {
             memset(*self->buffer, 0, 0x80);
             func_020e4864(*res, *self->buffer, 1, 0, 0, 0);
-            _Z26SetEntryFirstField02080f8cP17Container02080f8cii(self->elements, 0x7f, *self->buffer);
+            SetEntryFirstField02080f8c((Container02080f8c*)self->elements, 0x7f, (int)(*self->buffer));
         }
         Forward0207f7acObjPlus4Size0x40(self->elements, 0x7f);
         func_020813ec(self->elements, 0x12);
@@ -358,7 +364,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
         sound = 0x3e;
         if (self->IsCritical()) {
             sound = 0x3f;
-            _Z30InitHandleAndDispatch_021571fcPc(self->ctx);
+            InitHandleAndDispatch_021571fc((char*)self->ctx);
         }
         _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, sound);
         self->message = 0xc;
@@ -373,12 +379,12 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
     } else if (self->state == 0x17) {
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
             short id;
-            _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 0x12);
+            CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 0x12);
             self->busy = 0;
             ctx->flags &= ~0x800;
             id = 0x1f;
             if (self->IsCritical()) {
-                _Z25SetByte_0215728c_0215728cPv(self->ctx);
+                SetByte_0215728c_0215728c(self->ctx);
                 id = self->variant + 0x1b;
             }
             self->flags |= 0x20;
@@ -412,7 +418,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             if (res != 0) {
                 memset(*self->buffer, 0, 0x80);
                 func_020e4864(*res, *self->buffer, 1, 0, 0, 0);
-                _Z26SetEntryFirstField02080f8cP17Container02080f8cii(self->elements, 0x7f, *self->buffer);
+                SetEntryFirstField02080f8c((Container02080f8c*)self->elements, 0x7f, (int)(*self->buffer));
             }
             Forward0207f7acObjPlus4Size0x40(self->elements, 0x7f);
             func_020813ec(self->elements, 0x12);
@@ -423,14 +429,14 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             self->field42f = 1;
             _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x3e);
             ctx->flags |= 0x400;
-            _Z18SetElementFlag0x20P7Obj2081i(self->elements, 0);
+            SetElementFlag0x20((Obj2081*)self->elements, 0);
             self->message = 0xc;
             self->messageTimer = 0;
             self->state++;
         } else {
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
-            _Z24ExpireStatusSlot02159094P11Obj02159094(self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
+            ExpireStatusSlot02159094((Obj02159094*)self);
             self->flags |= 0x20;
             self->message = 0xb;
             self->messageTimer = 0;
@@ -446,9 +452,9 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
         if (self->field42f != 0) {
             self->field42c = 0;
         } else if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 0x12);
+            CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 0x12);
             ctx->flags &= ~0x800;
-            _Z20ClearElementFlag0x20P7Obj2081i(self->elements, 0);
+            ClearElementFlag0x20((Obj2081*)self->elements, 0);
             self->flags |= 0x20;
             self->message = 0x24;
             self->messageTimer = 0;

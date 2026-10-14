@@ -111,7 +111,8 @@ int SelectResultCode_021e9320(Ctx_021e9320*, int, int);
 int SelectMessageByFlags2_021e939c(Ctx_021e939c*, int, int, int);
 int SelectResultCode_021e9464(Ctx_021e9464*, int, int);
 void AppendToChainAndIncCount0215ffc4(void*, void*, int);
-extern "C" void _Z28SetFirstEmptySlot48_021eb4e4P24SlotArrayStruct_021eb4e4i(Self_021e4c04*, TurnAction_021e4c04*);
+struct SlotArrayStruct_021eb4e4;
+void SetFirstEmptySlot48_021eb4e4(SlotArrayStruct_021eb4e4*, int);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" void func_ov000_02159eac(void*, void*, int);
 extern "C" int func_ov000_02156068(void*, int, int, int);
@@ -310,7 +311,7 @@ extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int
         func_ov000_0215cd44(self->battle, entry, target, 0, effects.value, 0);
         AppendToChainAndIncCount0215ffc4(self->action, entry, 2);
         self->battle->entryCount++;
-        _Z28SetFirstEmptySlot48_021eb4e4P24SlotArrayStruct_021eb4e4i(self, self->action);
+        SetFirstEmptySlot48_021eb4e4((SlotArrayStruct_021eb4e4*)self, (int)self->action);
     }
     if (special) {
         void* extra = func_ov000_0215e958(self->battle);

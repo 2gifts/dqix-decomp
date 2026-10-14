@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" int func_ov017_021d60f4(void*);
-extern "C" void _ZN8Object3D10SetField9eEh(unsigned char* obj, unsigned char value);
 int CallHelperIfCheckPasses_0218fcf8(int a, int b, int c);
 int CallHelperIfCheckPasses_0218f92c(int a, int b, int c);
 
@@ -29,7 +29,7 @@ extern "C" ARM int func_ov001_0215cf98(void* self, int mode) {
             if (mode - 4 > 0) {
                 extra = func_ov017_021d60f4((char*)self + 0x20);
             }
-            _ZN8Object3D10SetField9eEh((unsigned char*)p, (unsigned char)(extra & 0xff));
+            ((Object3D*)((unsigned char*)p))->SetField9e((unsigned char)(extra & 0xff));
 
             int cond = (sval >= 0 && sval <= 3);
             if (cond) {

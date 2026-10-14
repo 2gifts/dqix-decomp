@@ -30,7 +30,7 @@ int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int LookupValueByKey020a0b3c(struct KeyMap020a0b3c *map, int key);
-extern "C" int _Z25DecrementKeyValue020a0a08P14KeyMap020a0a08ii(struct KeyMap020a0a08 *map, int key, signed char amount);
+int DecrementKeyValue020a0a08(KeyMap020a0a08*, int, int);
 extern "C" int _Z26AddKeyValueClamped020a095cP14KeyMap020a095cii(struct KeyMap020a095c *map, int key, signed char amount);
 extern "C" char *_Z25GetCombatantWithFlag0x100P9GameStatei(GameState *gs, int id);
 int CountMatchingUntilNegative02083994(struct Slots02083994 *s, int value);
@@ -142,8 +142,7 @@ extern "C" ARM void func_ov002_02163bd0(char *base) {
                     void *map = GetPtrField0x2a04(GameState::GetInstance());
                     int v     = LookupValueByKey020a0b3c((struct KeyMap020a0b3c *) map,
                                                                                *(short *) (base + 0x1c00 + 0x22));
-                    _Z25DecrementKeyValue020a0a08P14KeyMap020a0a08ii((struct KeyMap020a0a08 *) map,
-                                                                     *(short *) (base + 0x1c00 + 0x22), v);
+                    DecrementKeyValue020a0a08((struct KeyMap020a0a08 *) map, *(short *) (base + 0x1c00 + 0x22), (signed char)v);
                     _Z26AddKeyValueClamped020a095cP14KeyMap020a095cii((struct KeyMap020a095c *) map,
                                                                       *(short *) (base + 0x1c00 + 0x22), v);
                     *(short *) (base + 0x1c00 + 0x28) = 0x236e;
