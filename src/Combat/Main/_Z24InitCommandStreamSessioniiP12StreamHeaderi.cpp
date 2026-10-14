@@ -2,13 +2,13 @@
 
 #include "Resource/Script.h"
 
-struct StreamHeader02072488;
+struct StreamHeader;
 extern "C" int data_02108da8;
 extern Script::OpcodeLookupEntry data_020f0ca0[];
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0207249c
-extern "C" ARM int _Z33InitCommandStreamSession_0207249ciiP12StreamHeaderi(int arg0, int arg1, StreamHeader02072488* arg2, int arg3) {
+ARM int InitCommandStreamSession_0207249c(int arg0, int arg1, StreamHeader* arg2, int arg3) {
     *((int*)((char*)&data_02108da8 + 4)) = arg0;
     *((int*)((char*)&data_02108da8 + 0)) = arg1;
     Script s;

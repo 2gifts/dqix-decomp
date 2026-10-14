@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Graphics/VRAMStaging.h"
 
 struct List0204af64 {
     char pad0[0xc];
@@ -21,7 +22,6 @@ extern char data_02107800;
 extern "C" void* func_ov017_0218b5b0(void*);
 void ResetList0204af64(struct List0204af64*);
 extern "C" void func_0204b174(void* list, void* rec, void* alloc, int size);
-extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
 extern "C" unsigned int GetMainBG1ScreenBase(void);
 extern "C" void ColorEffect_ConfigureAlphaBlend(void* reg, int a, int b, int c, int d);
 
@@ -62,11 +62,11 @@ extern "C" ARM void func_02044d0c(void) {
         unsigned char i;
         memset(base, 0, 0x1000);
         for (i = 0; i < 6; i++) {
-            _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(10, (int)base, i << 12, 0x1000, 1, 0);
+            StageMemoryToVRAM(VRAMSubregion_MainBG3Character, base, i << 12, 0x1000, 1, 0);
         }
         char* p = *(char**)(&data_02107800 + 4);
         if (p + BG_UPLOAD_SOURCE_OFFSET != 0) {
-            _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(8, (int)(p + BG_UPLOAD_SOURCE_OFFSET), 0x20, BG_UPLOAD_SIZE, 1, 0);
+            StageMemoryToVRAM(VRAMSubregion_MainBG2Character, p + BG_UPLOAD_SOURCE_OFFSET, 0x20, BG_UPLOAD_SIZE, 1, 0);
         }
     }
 
@@ -74,13 +74,13 @@ extern "C" ARM void func_02044d0c(void) {
         unsigned short* w;
         unsigned short v;
         memset(base, 0, 0x1000);
-        _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(7, (int)base, 0, 0x800, 1, 0);
+        StageMemoryToVRAM(VRAMSubregion_MainBG2Screen, base, 0, 0x800, 1, 0);
         w = (unsigned short*)(base + 0x800);
         for (v = 0; v < 0x300; v++) {
             *w = v;
             w++;
         }
-        _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(9, (int)base, 0, 0x800, 1, 0);
+        StageMemoryToVRAM(VRAMSubregion_MainBG3Screen, base, 0, 0x800, 1, 0);
         unsigned int bg = GetMainBG1ScreenBase();
         if (bg != 0) {
             memset((void*)bg, 0, 0x800);

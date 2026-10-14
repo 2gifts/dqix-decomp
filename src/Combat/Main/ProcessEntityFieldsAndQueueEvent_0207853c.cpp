@@ -34,9 +34,6 @@ void InitStruct02078484(struct InitStruct02078484Struct* p);
 
 struct Vector3i;
 
-struct Vec3i_020374f0 { int x; int y; int z; };
-extern "C" struct Vec3i_020374f0 _ZNK8Object3D8GetScaleEv(unsigned char* src);
-
 void FindNodeAndProcess02057fb4(void* list, int id, int a3);
 
 int CheckField0NonZero_0202b7d8(int* obj);
@@ -73,7 +70,7 @@ extern "C" ARM int func_0207853c(struct Entity0207853c* obj) {
         struct InitStruct02078484Struct s;
         InitStruct02078484(&s);
         *(Vector3i*)&s.f2c = *(Vector3i const*)&obj->f44;
-        const struct Vec3i_020374f0& tmp = _ZNK8Object3D8GetScaleEv((unsigned char*)obj);
+        const Vector3fix& tmp = ((Object3D*)obj)->GetScale();
         *(Vector3i*)&s.f44 = *(Vector3i const*)((int*)&tmp);
         FindNodeAndProcess02057fb4(list, obj->f178, (int)&s);
     }

@@ -1,41 +1,21 @@
 #include <globaldefs.h>
-
-struct Vec0201e88c {
-    int v[3];
-};
-
-struct Elem0201e88c {
-    struct Vec0201e88c a;
-    struct Vec0201e88c b;
-    short f18;
-    int f1c;
-    int f20;
-    int f24;
-    int f28;
-};
-
-struct Container0201e88c {
-    char unk[0x80];
-    unsigned short count;
-    unsigned short pad82;
-    struct Elem0201e88c* base;
-};
+#include "World/ZoneFeatures.h"
 
 // USA: func_0201e88c
-extern "C" ARM void _ZN12ZoneFeatures28CreateOpcode7bEntry_0201e88cERKNS_13Opcode7bEntryE(struct Container0201e88c* c, struct Elem0201e88c* src) {
+ARM void ZoneFeatures::CreateOpcode7bEntry_0201e88c(const Opcode7bEntry& src) {
     unsigned short count;
-    struct Elem0201e88c* dst;
-    if (c->base == NULL) {
+    Opcode7bEntry* dst;
+    if (entries7b_ == NULL) {
         return;
     }
-    count = c->count;
-    c->count = count + 1;
-    dst = &c->base[count];
-    dst->a = src->a;
-    dst->b = src->b;
-    dst->f18 = src->f18;
-    dst->f1c = src->f1c;
-    dst->f20 = src->f20;
-    dst->f24 = src->f24;
-    dst->f28 = src->f28;
+    count = arraySize7b_;
+    arraySize7b_ = count + 1;
+    dst = &entries7b_[count];
+    dst->vector_0 = src.vector_0;
+    dst->vector_c = src.vector_c;
+    dst->unk_18 = src.unk_18;
+    dst->minX = src.minX;
+    dst->minZ = src.minZ;
+    dst->maxX = src.maxX;
+    dst->maxZ = src.maxZ;
 }

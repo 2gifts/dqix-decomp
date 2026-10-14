@@ -1,9 +1,8 @@
 #include <globaldefs.h>
+#include "Graphics/VRAMStaging.h"
 
 struct State0204166c;
 void Forward020416c0(struct State0204166c* s);
-
-extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
 
 extern "C" void func_020439b0(void* self, int flag);
 
@@ -41,7 +40,7 @@ extern "C" ARM void func_020432c4(char* obj) {
         data_021077fc = ptrField->field68 << 3;
     }
 
-    _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(0, (int)&data_020e7af8, data_021077fc, 0x20, 1, 1);
+    StageMemoryToVRAM(VRAMSubregion_TexturePalette, &data_020e7af8, data_021077fc, 0x20, true, true);
 
     for (i = 0; i < 0x80; i++) {
 #if defined(jpn)

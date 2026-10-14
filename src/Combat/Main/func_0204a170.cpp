@@ -3,8 +3,6 @@
 #include "Graphics/Vector.h"
 #include "GameState/GameState.h"
 
-struct Vector3i;
-extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(void* dst, const Vector3fix& src);
 extern "C" void func_020a2d14(void* actor);
 extern "C" void func_0204a4ac(void* self);
 extern "C" void func_0202eab8(void* obj);
@@ -53,7 +51,7 @@ extern "C" ARM void func_0204a170(struct Obj0204a170* self) {
         if (target != NULL) {
             *(Vector3i*)((int*)&self->f21c->pos) = *(Vector3i const*)((int*)((char*)target + 0x44));
             *(Vector3i*)((int*)&self->f21c->rot) = *(Vector3i const*)((int*)((char*)target + 0x50));
-            _ZN8Object3D8SetScaleEPK8Vector3i(self->f21c, ((Object3D*)target)->GetScale());
+            ((Object3D*)self->f21c)->SetScale(&((Object3D*)target)->GetScale());
         }
     }
 

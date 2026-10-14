@@ -1,13 +1,12 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Graphics/VRAMStaging.h"
 
-extern const int data_020e7b60[];
-
-extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
+extern const VRAMSubregion data_020e7b60[];
 
 // USA: func_0204ac60
-extern "C" ARM int func_0204ac60(int unused, int index, char* obj) {
+extern "C" ARM void func_0204ac60(int unused, int index, char* obj) {
     int tmp;
     memcpy(&tmp, obj + 8, 4);
-    return _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(data_020e7b60[index], (int)(obj + 0xc), 0, tmp, 1, 0);
+    StageMemoryToVRAM(data_020e7b60[index], obj + 0xc, 0, tmp, 1, 0);
 }

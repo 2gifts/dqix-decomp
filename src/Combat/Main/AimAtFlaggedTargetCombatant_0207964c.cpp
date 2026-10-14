@@ -7,10 +7,6 @@ int fix32ReduceAngle0To2Pi(int arg);
 struct Obj02033874;
 void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
 
-struct Vec3Fixed02037c80 { int x; int y; int z; };
-struct Obj02037c80;
-extern "C" struct Vec3Fixed02037c80 _ZNK8Object3D15GetPointInFrontEi(struct Obj02037c80* obj, int scale);
-
 struct CombatantFlagObj0207964c {
     char pad[0xc1];
     unsigned char flags2 : 2;
@@ -25,7 +21,7 @@ extern "C" ARM void func_0207964c(unsigned char* self) {
         if (combatant != NULL) {
             if (!(((struct CombatantFlagObj0207964c*)combatant)->flags2 & 1)) {
                 int scale = ((Object3D*)combatant)->GetRadius() / 4 + ((Object3D*)self)->GetRadius() / 2;
-                struct Vec3Fixed02037c80 vec = _ZNK8Object3D15GetPointInFrontEi((struct Obj02037c80*)combatant, scale);
+                Vector3fix vec = ((Object3D*)combatant)->GetPointInFront(scale);
                 int angleArg = *(int*)(combatant + 0x54) + 0x3244;
                 int aim = fix32ReduceAngle0To2Pi(angleArg);
                 *(Vector3i*)((int*)(self + 0x44)) = *(Vector3i const*)((int*)&vec);

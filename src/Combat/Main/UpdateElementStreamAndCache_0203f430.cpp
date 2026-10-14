@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Graphics/itcm/VRAMStaging.h"
 
 struct List02040468;
 struct Element0203f430 {
@@ -28,13 +29,14 @@ struct Entry0203f430 {
     char pad1[2];
     struct SubRecord0203f430* records;
     int fieldC;
-    int field10;
+    const void* field10;
 };
 struct Entry0203f430* GetListElementByIndex(struct List_0203f354* list, unsigned int index);
 
 void CleanInvalidateCacheRange(const void* where, unsigned int len);
 int CancelVRAMStagingOperation(int value);
-extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
+int StageMemoryToVRAM(VRAMSubregion subregion, const void* data, unsigned int offset,
+    unsigned int length, bool highPriority, bool allocateStagingSpace);
 
 struct Obj0203f430 {
     struct List02040468* list;
@@ -74,10 +76,10 @@ extern "C" ARM void func_0203f430(struct Obj0203f430* self) {
 
     if (entry->count4 != 0) {
         CancelVRAMStagingOperation(self->field58);
-        self->field58 = _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(1, entry->field10, self->field4c, entry->fieldC, 0, 0);
+        self->field58 = StageMemoryToVRAM(VRAMSubregion_TextureImage, entry->field10, self->field4c, entry->fieldC, false, false);
     }
     CancelVRAMStagingOperation(self->field5a);
-    self->field5a = _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(0, (int)element->field20, element->field24, element->field1c << 1, 0, 0);
+    self->field5a = StageMemoryToVRAM(VRAMSubregion_TexturePalette, element->field20, element->field24, element->field1c << 1, false, false);
     self->field44 = self->field30;
     self->field48 = self->field34;
 }

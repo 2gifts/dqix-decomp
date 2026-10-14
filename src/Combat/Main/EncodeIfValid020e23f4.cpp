@@ -1,13 +1,13 @@
 #include <globaldefs.h>
+#include "Graphics/VRAMStaging.h"
 #if defined(jpn)
 #define data_020ee950 data_020eea14
 #endif
 
 struct HasDims020e1288;
 int GetHalfProductField8(struct HasDims020e1288* obj);
-extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
 
-extern int data_020ee950[];
+extern VRAMSubregion data_020ee950[];
 
 struct F3fFlags020e23f4 { unsigned char bit0 : 1; };
 
@@ -21,7 +21,7 @@ struct StreamDims020e23f4 {
 };
 
 struct Obj020e23f4 {
-    int field0;
+    unsigned char* field0;
     struct StreamDims020e23f4* field4;
 };
 
@@ -33,10 +33,10 @@ extern "C" ARM void func_020e23f4(struct Obj020e23f4* obj) {
     dims = obj->field4;
     int f30 = dims->f30;
     int half = GetHalfProductField8((struct HasDims020e1288*)dims);
-    _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(
+    StageMemoryToVRAM(
         data_020ee950[dims->f3e],
         obj->field0 + f30,
         f30,
         dims->f34 + half,
-        1, 0);
+        true, false);
 }

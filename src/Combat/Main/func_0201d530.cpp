@@ -9,9 +9,6 @@ struct Vector3i;
 
 int fix32ReduceAngle0To2Pi(int value);
 
-struct RecordArray0201e710 { char pad[0x24]; void* items; int count; int capacity; };
-extern "C" void* _ZN12ZoneFeatures28CreateOpcode6aEntry_0201e710ERKNS_13Opcode6aEntryE(struct RecordArray0201e710* arr, void* src);
-
 static inline int FixedMulRound0201d530(int a, int b) {
     return (int)(((long long)a * b + 0x800) >> 12);
 }
@@ -30,7 +27,7 @@ struct Record0201d530 {
 struct GlobalCtx0201d530 {
     void* lastEntry;
     int pad4;
-    struct RecordArray0201e710* arr;
+    ZoneFeatures* arr;
 };
 extern struct GlobalCtx0201d530 data_020fdc20;
 
@@ -58,6 +55,6 @@ ARM int WarpScript_Opcode_73_0201d530(Script::Parameter* arg0, int) {
     int qx = FixedMulRound0201d530(halfX, halfX);
     rec.f24 = qx + qz;
 
-    data_020fdc20.lastEntry = _ZN12ZoneFeatures28CreateOpcode6aEntry_0201e710ERKNS_13Opcode6aEntryE(data_020fdc20.arr, &rec);
+    data_020fdc20.lastEntry = data_020fdc20.arr->CreateOpcode6aEntry_0201e710(*(ZoneFeatures::Opcode6aEntry*)&rec);
     return 1;
 }
