@@ -4,10 +4,26 @@
 
 struct TransitionEvent { char pad[4]; unsigned short type; unsigned short target; unsigned short first; unsigned short second; short x; short y; short z; };
 struct TransitionHeader { unsigned short target; char pad2[5]; unsigned char active; char pad8[8]; Vector3i position; unsigned short angle; char pad1e[0x43]; unsigned char direct; };
-struct TransitionZone { unsigned short id; char pad[0x27b6]; Vector3i position; };
+struct TransitionZone {
+    unsigned short id;
+#if defined(jpn)
+    char pad[0x27f6];
+#else
+    char pad[0x27b6];
+#endif
+    Vector3i position;
+};
 struct TailList020469b4;
 struct TailNode020469b4 { char links[8]; };
-struct TransitionNode : TailNode020469b4 { unsigned short first; char pad[0xfb]; unsigned char special; };
+struct TransitionNode : TailNode020469b4 {
+    unsigned short first;
+#if defined(jpn)
+    char pad[0xf7];
+#else
+    char pad[0xfb];
+#endif
+    unsigned char special;
+};
 struct SearchStruct0202c1a4;
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 int IsField0Null(void**);

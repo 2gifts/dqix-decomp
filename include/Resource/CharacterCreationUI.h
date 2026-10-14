@@ -126,5 +126,7 @@ struct CharacterCreationUI {
     char names[2][11];
     unsigned char nameFlags[2];
     unsigned char keyboardChoice;
+    signed char keyboardPage;
+    signed char previousKeyboardPage;
 #endif
 };
