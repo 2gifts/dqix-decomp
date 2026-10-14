@@ -20023,3 +20023,19 @@ src/Combat/Main/func_0200cf24.cpp:
 src/Combat/Main/func_02019210.cpp:
     complete
     .text start:0x02019220 end:0x02019518
+
+src/Combat/Main/func_02024000.cpp:
+    complete
+    .text start:0x02024010 end:0x0202428c
+
+src/Combat/Main/func_020aff0c.cpp:
+    complete
+    .text start:0x020aff1c end:0x020b006c
+
+src/Combat/Main/func_0202cb50.cpp:
+    complete
+    .text start:0x0202cb60 end:0x0202ccb4
+
+src/Combat/Main/func_02099304.cpp:
+    complete
+    .text start:0x02099314 end:0x0209954c
