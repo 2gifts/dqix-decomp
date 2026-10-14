@@ -18374,3 +18374,7 @@ src/Combat/Main/func_0201a300.cpp:
 src/Combat/Main/AdjustAndDispatchEntry0203c1c8.cpp:
     complete
     .text start:0x0203bd44 end:0x0203bdf4
+
+src/Combat/Main/func_0208cb08.cpp:
+    complete
+    .text start:0x0208d3e8 end:0x0208d868
