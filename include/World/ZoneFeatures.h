@@ -25,7 +25,7 @@ struct MaybeVector4fix
     // if we make it implicit, it gets placed too early in the TU
     // defining as operator= works but causes trouble on other compilers
     // when put in a union
-    MaybeVector4fix& CopyFrom(const MaybeVector4fix& other);
+    MaybeVector4fix& CopyFrom_0201d474(const MaybeVector4fix& other);
 };
 
 class ZoneFeatures
@@ -173,7 +173,7 @@ public:
         } unk_2c;
         Opcode6aEntry* pNext;
 
-        void Reset();
+        void Reset_0201d424();
     };
 
     struct Opcode7bEntry
@@ -220,7 +220,7 @@ public:
     unsigned short arrayCapacity7b_;
     Opcode7bEntry* entries7b_;
 
-    void Reset();
+    void Reset_0201e248();
 
     void AllocateOpcode64Entries_0201e25c(int count, SafeAllocator* alloc);
     void AllocateGrottoTileFeaturePlacementEntries_0201e288(int count, SafeAllocator* alloc);

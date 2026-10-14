@@ -33,7 +33,7 @@ extern "C" void func_020134e0(void* obj);
 // USA: func_0201c014
 ARM void* InitBigStruct0201c014(void* obj) {
     ((SafeAllocator*)((char*)obj + kOffset54))->ResetAllocatorPointer();
-    ((ZoneFeatures*)((char*)obj + kOffset6c))->Reset();
+    ((ZoneFeatures*)((char*)obj + kOffset6c))->Reset_0201e248();
     *(int*)((char*)obj + kOffsetf4) = 0;
     ((LightingInfo*)((char*)obj + kOffset10c))->Initialize();
     func_0200ee94((char*)obj + kOffset498, 2, 0xac, (void*)_ZN7Model3DC1Ev, (void*)_ZN7Model3DD1Ev);

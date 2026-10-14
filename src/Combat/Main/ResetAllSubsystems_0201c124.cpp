@@ -39,6 +39,6 @@ extern "C" ARM void* func_0201c124(void* self) {
     func_0200ef44((char*)self + nameTablesOffset, 4, 0x88, (void*)NotifyThenResetNameTable_0201c108);
     func_0200ef44((char*)self + modelsOffset, 2, 0xac, (void*)_ZN7Model3DD1Ev);
     ((LightingInfo*)((char*)self + lightingOffset))->Initialize();
-    ((ZoneFeatures*)((char*)self + featuresOffset))->Reset();
+    ((ZoneFeatures*)((char*)self + featuresOffset))->Reset_0201e248();
     return self;
 }

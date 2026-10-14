@@ -51,7 +51,7 @@ void ClearIfMatchAndFinalize_021a3498(Ctx021a3498*);
 extern "C" void func_020a654c(GameResources*);
 extern "C" void func_020ac9ac(GameResources*);
 extern "C" void func_02011b68(GameState*);
-int GetFlags(int);
+int GetFlags_0202e09c(int);
 void AdvanceActor020a20d8(void*);
 extern "C" void func_ov000_0216d464(void*);
 extern "C" void func_0204a170(void*);
@@ -135,9 +135,9 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     func_02011b68(state);
     void* animation = GetField0x3b0Value_020100bc(state);
     if (animation) {
-        if (GetFlags((int)animation) & 4) AdvanceActor020a20d8(animation);
-        else if (GetFlags((int)animation) & 8) func_ov000_0216d464(animation);
-        else if (GetFlags((int)animation) & 16) func_0204a170(animation);
+        if (GetFlags_0202e09c((int)animation) & 4) AdvanceActor020a20d8(animation);
+        else if (GetFlags_0202e09c((int)animation) & 8) func_ov000_0216d464(animation);
+        else if (GetFlags_0202e09c((int)animation) & 16) func_0204a170(animation);
     }
     func_ov017_0218d0ec(self);
     if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 3) {

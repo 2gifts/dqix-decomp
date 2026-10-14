@@ -48,7 +48,7 @@ extern char data_ov025_021ef7d9[];
 extern char data_ov025_021ef7df[];
 extern char data_ov025_021ef7e6[];
 extern Obj0205eaa0 data_02108760;
-int GetFlags(int);
+int GetFlags_0202e09c(int);
 Object3D* GetField0x21c(S0204a438*);
 void SetAngleAndTrigTable0202e9a4(AngleTrig0202e9a4*, int);
 extern "C" void func_0204a170(int);
@@ -64,7 +64,7 @@ extern "C" ARM int func_ov025_021e2980(AnimationCommand* command, AnimationTarge
     GameState* game = GameState::GetInstance();
     if (command->target == 0x19) {
         void* camera = GetField0x3b0Value_020100bc(game);
-        if (GetFlags((int)camera) & 0x10) {
+        if (GetFlags_0202e09c((int)camera) & 0x10) {
             Object3D* object = GetField0x21c((S0204a438*)camera);
             if (object) {
                 SetAngleAndTrigTable0202e9a4((AngleTrig0202e9a4*)camera, 0xf000);

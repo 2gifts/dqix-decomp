@@ -40,7 +40,7 @@ ARM int WarpScript_Opcode_73_0201d530(Script::Parameter* arg0, int) {
     struct Record0201d530 rec;
     int tmp[3];
 
-    ((ZoneFeatures::Opcode6aEntry*)((char*)&rec))->Reset();
+    ((ZoneFeatures::Opcode6aEntry*)((char*)&rec))->Reset_0201d424();
     rec.f4 = ((Script::Parameter*)param0)->ToInt();
 
     struct TaggedValue02030b44* next = (extern TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)((char*)param0 + 8)))->ToVec3fix((Vector3i*)tmp);

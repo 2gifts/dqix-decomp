@@ -137,7 +137,7 @@ int WarpScript_Opcode_6b_0201d044(Script::Parameter* params, int numParams)
 {
     Script::Parameter* paramsStart = params;
     ZoneFeatures::Opcode6aEntry entry;
-    entry.Reset();
+    entry.Reset_0201d424();
     int hash = (params++)->ToInt();
     entry.maybeType = hash;
     bool didSubtraction = false;
@@ -219,7 +219,7 @@ int WarpScript_Opcode_6b_0201d044(Script::Parameter* params, int numParams)
             vecC.z = 4096.0f * (params++)->ToFloat();
             Vector3fix vecD;
             params = params->ToVec3fix(&vecD);
-            entry.unk_2c.type4.vector_4.CopyFrom(difference);
+            entry.unk_2c.type4.vector_4.CopyFrom_0201d474(difference);
             entry.unk_2c.type4.distance_14 = distance;
             entry.unk_2c.type4.vector_18 = vecC;
             entry.unk_2c.type4.vector_24 = vecD;
@@ -248,7 +248,7 @@ int WarpScript_Opcode_6b_0201d044(Script::Parameter* params, int numParams)
     return 1;
 }
 
-void ZoneFeatures::Opcode6aEntry::Reset()
+void ZoneFeatures::Opcode6aEntry::Reset_0201d424()
 {
     VectorizedMemset(this, 0, sizeof(Opcode6aEntry));
     unk_0 = 0;
@@ -266,7 +266,7 @@ void ZoneFeatures::Opcode6aEntry::Reset()
     pNext = NULL;
 }
 
-MaybeVector4fix &MaybeVector4fix::CopyFrom(const MaybeVector4fix &other)
+MaybeVector4fix &MaybeVector4fix::CopyFrom_0201d474(const MaybeVector4fix &other)
 {
     vec3 = other.vec3;
     fix32_t sourceW = other.w;
@@ -298,7 +298,7 @@ int WarpScript_Opcode_70_0201d4ec(Script::Parameter* params, int numParams)
 int WarpScript_Opcode_73_0201d530(Script::Parameter* params, int numParams)
 {
     ZoneFeatures::Opcode6aEntry entry;
-    entry.Reset();
+    entry.Reset_0201d424();
     entry.maybeType = (params++)->ToInt();
     Vector3fix tempVector;
     params = params->ToVec3fix(&tempVector);
@@ -444,7 +444,7 @@ int WarpScript_Opcode_74_0201d638(Script::Parameter* params, int numParams)
         }
         Vector3fix vecD;
         params = params->ToVec3fix(&vecD);
-        data_020fdc20.currentEntry->unk_2c.type4.vector_4.CopyFrom(vector4);
+        data_020fdc20.currentEntry->unk_2c.type4.vector_4.CopyFrom_0201d474(vector4);
         data_020fdc20.currentEntry->unk_2c.type4.distance_14 = distance;
         data_020fdc20.currentEntry->unk_2c.type4.vector_18 = vecC;
         data_020fdc20.currentEntry->unk_2c.type4.vector_24 = vecD;
@@ -643,7 +643,7 @@ void ExecuteZoneWarpScript_0201e1d0(const void* data, unsigned int length, ZoneF
     data_020fdc20.currentEntry = NULL;
 }
 
-void ZoneFeatures::Reset()
+void ZoneFeatures::Reset_0201e248()
 {
     VectorizedMemset(this, 0, sizeof(ZoneFeatures));
 }

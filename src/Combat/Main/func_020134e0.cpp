@@ -59,7 +59,7 @@ extern "C" ARM void func_020134e0(char* obj) {
     *(short*)(obj + 0x27d6 + TailFieldDelta) = 0;
     *(char*)(obj + 0x23bb + MiddleFieldDelta) = -1;
 
-    ((ZoneFeatures*)(obj + 0x6c + MiddleFieldDelta))->Reset();
+    ((ZoneFeatures*)(obj + 0x6c + MiddleFieldDelta))->Reset_0201e248();
     ((AtmosphericEffectSet*)(obj + 0xf4 + MiddleFieldDelta))->Reset();
     ((LightingInfo*)(obj + 0x10c + MiddleFieldDelta))->Initialize();
     ((SafeAllocator*)(obj + 0x54 + MiddleFieldDelta))->ResetAllocatorPointer();

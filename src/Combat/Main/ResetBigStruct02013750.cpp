@@ -48,7 +48,7 @@ ARM void ResetBigStruct02013750(void* obj, int flag) {
     *(unsigned char*)((char*)obj + 0x2000 + (IS_JPN ? 0x3dc : 0x3bc)) = 0;
     *(unsigned char*)((char*)obj + 0x2000 + (IS_JPN ? 0x3dd : 0x3bd)) = 0;
     *(unsigned char*)((char*)obj + (IS_JPN ? 0x854 : 0x834)) = 0;
-    ((ZoneFeatures*)((char*)obj + (IS_JPN ? 0x8c : 0x6c)))->Reset();
+    ((ZoneFeatures*)((char*)obj + (IS_JPN ? 0x8c : 0x6c)))->Reset_0201e248();
     ZeroInit020de848((char*)obj + (IS_JPN ? 0x394 : 0x354) + 0x2400);
     ((AtmosphericEffectSet*)((struct Struct0207a5b8*)((char*)obj + (IS_JPN ? 0x114 : 0xf4))))->Reset();
     ResetFourSubStructs_02012fa4((char*)obj + (IS_JPN ? 0x620 : 0x600));

@@ -114,7 +114,7 @@ void Zone3D::SwitchZone_0201383c(unsigned short newID, int)
     unknown_834_ = 0;
     unknown_2820_ = 0;
 
-    substruct_6c_.Reset();
+    substruct_6c_.Reset_0201e248();
 
     substruct_c_.buffer1[0] = 0;
     substruct_c_.buffer2[0] = 0;

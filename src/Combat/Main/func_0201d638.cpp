@@ -11,7 +11,7 @@ struct Param0201d638 {
 struct Vector3i;
 
 struct Vec4fix0201d638 { int v[3]; int w; };
-extern "C" extern void _ZN15MaybeVector4fix8CopyFromERKS_(struct Vec4fix0201d638* dst, struct Vec4fix0201d638* src);
+extern "C" extern void _ZN15MaybeVector4fix17CopyFrom_0201d474ERKS_(struct Vec4fix0201d638* dst, struct Vec4fix0201d638* src);
 
 struct Vec3fix0201d638 { int x, y, z; };
 extern "C" void __clear(void* buf, int n);
@@ -179,7 +179,7 @@ extern "C" ARM int _Z29WarpScript_Opcode_74_0201d638PN6Script9ParameterEi(unsign
         int vecD[3];
         p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)src))->ToVec3fix((Vector3i*)vecD);
 
-        _ZN15MaybeVector4fix8CopyFromERKS_((struct Vec4fix0201d638*)(REC + 0x30), &diffAndDot);
+        _ZN15MaybeVector4fix17CopyFrom_0201d474ERKS_((struct Vec4fix0201d638*)(REC + 0x30), &diffAndDot);
         W(0x40) = len;
         *(Vector3i*)((int*)(REC + 0x44)) = *(Vector3i const*)vecC;
         *(Vector3i*)((int*)(REC + 0x50)) = *(Vector3i const*)vecD;

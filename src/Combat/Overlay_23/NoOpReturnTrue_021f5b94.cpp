@@ -21,21 +21,16 @@ extern DownloadScriptState data_ov023_021fff08;
 #endif
 
 #if defined(jpn)
-extern "C"
-#endif
-ARM int HandleDownloadedQuestFlagsOpcode(
-#if defined(jpn)
-    Script::Parameter* params, int numParams
-#else
-    void
-#endif
-) {
-#if defined(jpn)
+extern "C" ARM int HandleDownloadedQuestFlagsOpcode(Script::Parameter* params, int numParams) {
     if (params->ToInt() != 0) {
         data_ov023_021fff08.quest->flags |= 1;
     } else {
         data_ov023_021fff08.quest->flags &= 1;
     }
-#endif
     return 1;
 }
+#else
+ARM int HandleDownloadedQuestFlagsOpcode_ov023_021f5b94() {
+    return 1;
+}
+#endif

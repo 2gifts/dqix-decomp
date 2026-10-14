@@ -10,7 +10,7 @@ struct Struct0201d474 {
 };
 
 // USA: func_0201d474
-extern "C" ARM struct Struct0201d474* _ZN15MaybeVector4fix8CopyFromERKS_(struct Struct0201d474* dst, struct Struct0201d474* src) {
+extern "C" ARM struct Struct0201d474* _ZN15MaybeVector4fix17CopyFrom_0201d474ERKS_(struct Struct0201d474* dst, struct Struct0201d474* src) {
     dst->head = src->head;
     dst->tail = src->tail;
     return dst;

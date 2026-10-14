@@ -41,7 +41,7 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
     Zone3D* zone = func_02012fe4();
     ActiveGrottoClass* grotto = &zone->grotto_;
     ZoneFeatures features;
-    features.Reset();
+    features.Reset_0201e248();
 
     if (loader->GetTaskStatus(request->taskId)) {
         if (loader->GetDetailedTaskStatus(request->taskId) == BackgroundLoader::TaskStatus_Complete) {
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
                     if (strcmp(data_ov017_021d7b57, extension) == 0) {
                         unsigned int scriptSize;
                         void* script = DecompressLZ77FileIntoScratchSpace(scriptAllocator, file, scriptSize);
-                        features.Reset();
+                        features.Reset_0201e248();
                         features.LoadFromScript_0201e2b4(&scriptAllocator, script, scriptSize);
                     }
                     index++;
@@ -119,5 +119,5 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
         request->taskId = loader->QueueLoadFile(data_ov017_021d7b3a, 0);
         request->state = 3;
     }
-    features.Reset();
+    features.Reset_0201e248();
 }

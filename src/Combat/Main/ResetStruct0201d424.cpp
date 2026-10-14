@@ -3,7 +3,7 @@
 #include "World/ZoneFeatures.h"
 
 // USA: func_0201d424
-ARM void ZoneFeatures::Opcode6aEntry::Reset() {
+ARM void ZoneFeatures::Opcode6aEntry::Reset_0201d424() {
     char* obj = (char*)this;
     VectorizedMemset(obj, 0, 0x74);
     *(short*)(obj + 0x0) = 0;
