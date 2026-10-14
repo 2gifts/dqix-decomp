@@ -1,13 +1,9 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Combat/FieldActorState.h"
+#include "Graphics/Vector.h"
 
-struct Vec3 {
-    int x;
-    int y;
-    int z;
-};
-
-extern "C" struct Vec3 func_02034104(GameObject* combatant);
+extern "C" Vector3fix func_02034104(void* combatant);
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* obj);
@@ -16,86 +12,58 @@ int CheckField0NonZero(int* obj);
 struct Obj02033834;
 extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int arg);
 
-struct Vec3Fixed02030e2c {
-    int x;
-    int y;
-    int z;
-};
-extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(struct Vec3Fixed02030e2c* in, int scale, struct Vec3Fixed02030e2c* out);
 
 struct Obj02033b68;
 extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68* obj, int newVal);
 
-extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 
-struct U16Field0x6_020375f8;
-extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 
 extern "C" int _s32_div_f(int a, int b);
 
-extern "C" void func_ov017_021c927c(int a, int b, int c, struct Vec3 v, int d, int e, int f);
-
-struct Entity02077a34 {
-    char pad0[0x2];
-    short f2;
-    short f4;
-    char pad1[0x3e];
-    struct Vec3 f44;
-    char pad2[0x62];
-    short fb2;
-    short fb4;
-    char pad3[0xa2];
-    struct Vec3 f158;
-    char pad4[0x2];
-    unsigned short f166;
-    char pad5[0x12];
-    unsigned char f17a;
-    char pad17b[0x2];
-    unsigned char f17d;
-};
+extern "C" void func_ov017_021c927c(int a, int b, int c, Vector3fix v, int d, int e, int f);
 
 // USA: func_02077a34
-extern "C" ARM int func_02077a34(struct Entity02077a34* self) {
+extern "C" ARM int func_02077a34(FieldMonsterState* self) {
     GameState* battleStruct = GameState::GetInstance();
-    GameObject* combatant = battleStruct->GetPartyMemberByIndex(self->f166);
+    GameObject* combatant = battleStruct->GetPartyMemberByIndex(self->combatantId);
     if (combatant == 0) {
         return 0;
     }
 
     int scale = 0;
-    self->f17d |= 0x40;
+    self->flags |= 0x40;
     void* g = func_0202ae18();
     if (func_0202c508(g)) {
-        struct Vec3 posCopy = func_02034104(combatant);
-        struct Vec3 delta;
-        Vector3fix_Subtract((const Vector3fix*)&posCopy, (const Vector3fix*)&self->f44, (Vector3fix*)&delta);
-        Vector3fix_Normalize((const Vector3fix*)&delta, (Vector3fix*)&delta);
+        Vector3fix posCopy = func_02034104(combatant);
+        Vector3fix delta;
+        Vector3fix_Subtract(&posCopy, &self->actor.base.object.position_, &delta);
+        Vector3fix_Normalize(&delta, &delta);
         scale = fix32_Atan2(delta.x, delta.z);
         _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, scale);
-        _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&delta, 0xa000, (struct Vec3Fixed02030e2c*)&delta);
-        Vector3fix_Add((const Vector3fix*)&self->f44, (const Vector3fix*)&delta, (Vector3fix*)&self->f158);
+        Vector3fixMultiplyScalar(&delta, 0xa000, &delta);
+        Vector3fix_Add(&self->actor.base.object.position_, &delta, &self->targetPosition);
     }
 
-    self->fb4 = 0x1c2;
-    self->fb2 = 0x1c2;
+    self->actor.base.fieldB4 = 0x1c2;
+    self->actor.base.fieldB2 = 0x1c2;
     _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)self, 1);
 
-    int a = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)battleStruct->GetProtagonist());
-    int b = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)self);
+    int a = battleStruct->GetProtagonist()->obj3D_.GetField06();
+    int b = self->actor.base.object.GetField06();
     if (a == b) {
-        _ZN8Object3D11DisableFlagEi((unsigned char*)self, 0x80);
+        self->actor.base.object.DisableFlag(0x80);
     }
-    self->f17a = 0;
+    self->rising = 0;
 
     if (CheckField0NonZero((int*)g)) {
         if (func_0202c508(g)) {
-            int c1 = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)self);
-            int f2val = self->f2;
-            struct Vec3* vp = &self->f158;
-            int rem = (self->f4 - 0x70) % 0xc;
+            int c1 = self->actor.base.object.GetField06();
+            int f2val = self->actor.base.object.unknown_2_;
+            Vector3fix* vp = &self->targetPosition;
+            int rem = (self->actor.base.object.unknown_4_ - 0x70) % 0xc;
             if (rem >= 0 && rem < 0xc) {
-                struct Vec3 v = *vp;
-                func_ov017_021c927c(c1, rem, f2val, v, scale, 5, self->f166);
+                Vector3fix v = *vp;
+                func_ov017_021c927c(c1, rem, f2val, v, scale, 5, self->combatantId);
             }
         }
     }

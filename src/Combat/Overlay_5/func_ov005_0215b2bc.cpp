@@ -5,13 +5,12 @@
 extern unsigned char data_02114e54;
 
 struct MenuTail {
+#if defined(jpn)
+    char pad[0x4f8];
+#else
     char pad[0x4fc];
+#endif
     int index;
-};
-
-struct Res3000 {
-    char pad[0x708];
-    int* ptr708;
 };
 
 struct Obj0205eaa0;
@@ -54,9 +53,14 @@ struct Triplet {
 
 struct Menu {
     char pad0[0xd90];
+#if defined(jpn)
+    char pad1[0x196c - 0xd90];
+#else
     char pad1[0x19f4 - 0xd90];
+#endif
     char scale_[0x2d90 - 0x19f4];
-    char pad2[0x3d78 - 0x2d90];
+    EquipmentSlot slots_[24];
+    char pad2[0x3d78 - 0x2d90 - sizeof(EquipmentSlot) * 24];
     short count_;
     char pad3[0x3daa - 0x3d7a];
     unsigned char f3daa_;
@@ -111,7 +115,7 @@ extern "C" ARM void func_ov005_0215b2bc(Menu* self) {
         if (hasCoords == 0) {
             found = 1;
             unsigned int tick = GameState::GetInstance()->GetTickCount();
-            func_0205bf58((char*)self + 0x19f4, tick ? tick : found);
+            func_0205bf58(self->scale_, tick ? tick : found);
             sel = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((Struct_0205bb84*)&self->scale_[0]);
             if (CheckFlag30Or401_02157190(self)) flag2 = 1;
         }
@@ -123,7 +127,7 @@ extern "C" ARM void func_ov005_0215b2bc(Menu* self) {
             self->page_ = self->pages_[sel & 0xff];
         }
         self->f3dbb_ = self->kind_;
-        MenuTail* hold = (MenuTail*)_Z19GetField1c_021a193cPi(((Res3000*)((char*)(long)func_ov017_0218b5b0() + 0x3000))->ptr708);
+        MenuTail* hold = (MenuTail*)_Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
         _Z28DispatchByIdxAndCond021551fcPchi((char*)self, hold->index, 0);
         if (flag2 == 0) return;
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
@@ -134,7 +138,7 @@ extern "C" ARM void func_ov005_0215b2bc(Menu* self) {
         EquipmentSlot* slots;
         int j = 0;
         for (; j < 8; j++) {
-            slots = (EquipmentSlot*)((char*)self + 0x2d90);
+            slots = self->slots_;
             EquipmentSlot* s = &slots[j];
             if (j == self->count_) continue;
             if (s->item_ < 0) continue;
