@@ -6211,7 +6211,7 @@ data_020e8a34 kind:data(any) addr:0x020e8b48
 data_020e8a4c kind:data(any) addr:0x020e8b60
 data_020e8a54 kind:data(any) addr:0x020e8b68
 data_020e8a84 kind:data(any) addr:0x020e8b98
-data_020e8ba0 kind:data(any) addr:0x020e8ba0
+@57 kind:data(byte[0x3]) addr:0x020e8ba0 local
 data_020e8a8c kind:data(any) addr:0x020e8ba6
 data_020e8bae kind:data(any) addr:0x020e8bae
 data_020e8bb8 kind:data(any) addr:0x020e8bb8
