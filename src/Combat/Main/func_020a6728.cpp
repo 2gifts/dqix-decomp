@@ -3,7 +3,13 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
+#include "World/Zone3D.h"
 #include "std_library_functions.h"
+
+#if defined(jpn)
+#define data_020f1b50 data_020f1cc8
+#define data_020f1b52 data_020f1cca
+#endif
 
 struct Actor020a6728 {
     Object3D object;
@@ -18,32 +24,8 @@ struct Actor020a6728 {
     Vector3i homePosition;
     char pad_150[0x20];
 };
-struct ActorResources020a6728 {
-    char pad_0[0x310];
-    char tables[1];
-};
-struct ActorOwner020a6728 {
-    char pad_0[0xc4];
-    SafeAllocator allocator;
-    char pad_d8[0x2cc - 0xd8];
-    ActorResources020a6728 resources;
-    ActorResources020a6728* GetResources() { return &resources; }
-    char* GetTables() {
-        ActorResources020a6728* base = GetResources();
-        return base->tables;
-    }
-};
-struct ActorPosition020a6728 {
-    char pad_0[0x2774];
-    Vector3i position;
-    int height;
-    const Vector3i& GetPosition() {
-        const Vector3i* result = &position;
-        return *result;
-    }
-};
 struct SearchTable;
-struct SearchEntry020a6728 { char pad_0[5]; char name[1]; };
+struct SearchEntry020a6728;
 struct PointerField32c_ffc0;
 struct Obj02033874;
 struct Flags02033fdc;
@@ -55,29 +37,31 @@ void* LoadFileIntoNewAllocation(const char*, SafeAllocator&, unsigned int*);
 extern "C" void _Z17InitActor020a75a0Pc(char*);
 extern "C" void _Z25RestorePairTables0207df90Pc(char*);
 extern "C" void _Z24BackupPairTables0207dfacPc(char*);
-extern "C" ActorPosition020a6728* func_02012fe4();
+extern "C" Zone3D* func_02012fe4();
 extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(Obj02033874*, int);
 void ClearFlag0x4At0xe0(Flags02033fdc*);
 void RegisterCombatantSlot(GameState*, int, GameObject*);
 extern "C" void _Z37ResetContainerAndHandleFields020da1acPv(void*);
-extern "C" void func_020a72ac(ActorPosition020a6728*, int);
+extern "C" void func_020a72ac(Zone3D*, int);
 extern char data_020f1b50[];
 extern char data_020f1b52[];
 extern ActorAllocation020a6728 data_ov017_021d82fc;
 
 // USA: func_020a6728
-extern "C" ARM void func_020a6728(ActorOwner020a6728* self, int id) {
+// JPN: func_020a84cc
+// KEEP-NAME
+extern "C" ARM void func_020a6728(GameResources* self, int id) {
     GameState* state = GameState::GetInstance();
     SearchEntry020a6728* entry = FindEntryByHalfwordKey(GetPtrField0x468(state), id);
     const char* name = 0;
-    if (entry != 0) name = entry->name;
+    if (entry != 0) name = (const char*)entry + 5;
     if (id != 10000 && id != 10100) {
         if (id < 20000 || id > 29999 || name == 0 || strstr(name, data_020f1b50) != 0)
             return;
     }
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    SafeAllocator* allocator = &self->allocator;
-    char* tables = self->GetTables();
+    SafeAllocator* allocator = &self->allocator_array_38[7];
+    char* tables = (char*)&self->unknown_2cc + 0x310;
     GetPointerAt0x32c((PointerField32c_ffc0*)state);
     if (loader->GetNumQueuedTasks() > 0) return;
     unsigned int length;
@@ -101,12 +85,14 @@ extern "C" ARM void func_020a6728(ActorOwner020a6728* self, int id) {
     loadInfo.allocator = allocator;
     actor->object.LoadFromCHRArchive(&loadInfo);
     _Z24BackupPairTables0207dfacPc(tables);
-    ActorPosition020a6728* position = func_02012fe4();
+    Zone3D* zone = func_02012fe4();
     state->GetUnknownGameObject();
-    actor->object.position_ = position->GetPosition();
-    actor->homePosition = position->GetPosition();
+    ZoneSavedActorState* saved = zone->GetSavedActorState();
+    actor->object.position_ = saved->position;
+    saved = zone->GetSavedActorState();
+    actor->homePosition = saved->position;
     actor->object.SetScale(0xa0, 0xa0, 0xa0);
-    _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)actor, position->height);
+    _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)actor, zone->savedActor_.rotationY);
     actor->slot = 0xc9;
     actor->field_b4 = 0x106;
     actor->field_b6 = 10;

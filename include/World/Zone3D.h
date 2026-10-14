@@ -41,6 +41,15 @@ struct ZoneChestRenderRecord
     Foo02048004* object;
 };
 
+struct ZoneSavedActorState
+{
+    Vector3i position;
+    int rotationY;
+    short nodeId;
+    unsigned short zoneId;
+    unsigned char active;
+};
+
 // sizeof == 0x2824, as seen in the dynamic allocation of one
 // of these in func_ov001_02163b14 (usa).
 // In JPN version, sizeof == 0x2864.
@@ -155,7 +164,9 @@ public:
     union {
         char unk_276c[0x2820 - 0x276c];
         struct {
-            char unknown_276c_[0x27d8 - 0x276c];
+            char unknown_276c_[8];
+            ZoneSavedActorState savedActor_;
+            char unknown_278c_[0x27d8 - 0x278c];
             unsigned short pendingType2Mask_;
             unsigned short pendingLootableMask_;
             char unknown_27dc_[0x281e - 0x27dc];
@@ -168,6 +179,10 @@ public:
 public:
     // usa: _ZN6Zone3D10SwitchZoneEti
     void SwitchZone(unsigned short newID, int);
+
+    inline ActiveGrottoClass* GetActiveGrotto() { return &grotto_; }
+
+    inline ZoneSavedActorState* GetSavedActorState() { return &savedActor_; }
 
     // usa: _ZN6Zone3D13UnpackMapAMDJEv
     int UnpackMapAMDJ();
@@ -183,10 +198,14 @@ public:
 };
 
 #if defined(jpn)
+typedef char ZoneSavedActorStateSizeCheck[sizeof(ZoneSavedActorState) == 0x18 ? 1 : -1];
+typedef char Zone3DSavedActorOffsetCheck[offsetof(Zone3D, savedActor_) == 0x27b4 ? 1 : -1];
 typedef char Zone3DNodeHeadOffsetCheck[offsetof(Zone3D, firstBMDJStruct_41c_) == 0x43c ? 1 : -1];
 typedef char Zone3DTerrainArrayOffsetCheck[offsetof(Zone3D, terrainElements_) == 0x844 ? 1 : -1];
 typedef char Zone3DStorageSizeCheck[sizeof(Zone3D) == 0x2864 ? 1 : -1];
 #else
+typedef char ZoneSavedActorStateSizeCheck[sizeof(ZoneSavedActorState) == 0x18 ? 1 : -1];
+typedef char Zone3DSavedActorOffsetCheck[offsetof(Zone3D, savedActor_) == 0x2774 ? 1 : -1];
 typedef char Zone3DNodeHeadOffsetCheck[offsetof(Zone3D, firstBMDJStruct_41c_) == 0x41c ? 1 : -1];
 typedef char Zone3DTerrainArrayOffsetCheck[offsetof(Zone3D, terrainElements_) == 0x824 ? 1 : -1];
 typedef char Zone3DStorageSizeCheck[sizeof(Zone3D) == 0x2824 ? 1 : -1];

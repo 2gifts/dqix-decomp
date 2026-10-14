@@ -7147,7 +7147,7 @@ data_020f1308 kind:data(any) addr:0x020f13d8
 data_020f1330 kind:data(any) addr:0x020f1400
 data_020f134a kind:data(any) addr:0x020f141a
 data_020f1356 kind:data(any) addr:0x020f1426
-data_020f1438 kind:data(any) addr:0x020f1438
+@stringBase0 kind:data(byte[0x3]) addr:0x020f1438 local
 data_020f143c kind:data(any) addr:0x020f143c
 data_020f1394 kind:data(any) addr:0x020f1458
 data_020f146e kind:data(any) addr:0x020f146e
