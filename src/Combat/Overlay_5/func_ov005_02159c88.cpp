@@ -1,12 +1,23 @@
 #include <globaldefs.h>
+#include "Resource/GameResources.h"
 
-extern "C" int labs(int);
+#if defined(jpn)
+#define REGION(j,u) (j)
+#else
+#define REGION(j,u) (u)
+#endif
+
+struct MemberScreen {
+    char unknown[REGION(0x4f8,0x4fc)];
+    int member;
+};
+
+extern "C" long labs(long);
 extern "C" void _Z23CopyThreeFields02157174P11Dst02157174P11Src02157174(void* dst, void* src);
 extern "C" void _Z25RenderFlaggedIndexedEntryP16StructAt020473c8i(void* entry, int flag);
 extern "C" void func_02047554(void* obj, int val, int param1);
 extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(void* container, short key);
-extern "C" char* func_ov017_0218b5b0();
-extern "C" char* _Z19GetField1c_021a193cPi(void* p);
+extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
 extern "C" int func_020dd4c4(char a, void* b);
 extern "C" void func_ov005_02154d18(void* obj, int a, int b);
 extern "C" void func_ov005_02154d34(void* obj, int a, int b);
@@ -24,6 +35,8 @@ struct Obj02159c88 {
     Vec3_02159c88 pos;
     char pad1[0x80 - 0x28];
     short color;
+    short timer;
+    char unknown84[4];
 };
 
 struct Slot02159c88 {
@@ -35,12 +48,10 @@ struct Slot02159c88 {
     int pad2[2];
 };
 
-struct Timer02159c88 { short t; char pad[0x86]; };
-
 struct Menu02159c88 {
     char pad0[0xdf4];
     void* container;
-    char pad1[0x1a34 - 0xdf8];
+    char pad1[REGION(0x19ac,0x1a34) - 0xdf8];
     char frame;
     char pad2[0x2c80 - 0x1a35];
     char entry2c80[0x80];
@@ -50,13 +61,8 @@ struct Menu02159c88 {
     short color2d88;
     char pad4[0x2d90 - 0x2d8a];
     Slot02159c88 slots[0x18];
-    char pad5[0x30b2 - (0x2d90 + 0x18 * 0x1c)];
-    char pad6[0x3cf0 - 0x30b2];
-    char entry3cf0[0x1c];
-    Vec3_02159c88 vec;
-    char pad7[0x3d72 - 0x3d18];
-    short counter;
-    char pad8[4];
+    Obj02159c88 slotModels[24];
+    Obj02159c88 dragModel;
     short selected;
     char pad9[0x3da8 - 0x3d7a];
     unsigned char flagA8;
@@ -100,16 +106,12 @@ extern "C" ARM void func_ov005_02159c88(Menu02159c88* self) {
             }
         }
     }
-    int k = 0;
-    while (k < 0x18) {
-        int off = k * 0x88;
-        short tv = *(short*)((char*)self + 0x30b2 + off);
-        k++;
-        if (tv < 0x1f)
-            *(short*)((char*)self + 0x30b2 + off) = tv + 1;
+    for (int k = 0; k < 24; k++) {
+        if (self->slotModels[k].timer < 0x1f)
+            self->slotModels[k].timer++;
     }
-    if (self->selected >= 0 && self->counter < 0x1f)
-        self->counter = self->counter + 1;
+    if (self->selected >= 0 && self->dragModel.timer < 0x1f)
+        self->dragModel.timer = self->dragModel.timer + 1;
     if (self->mode == 0) {
         for (int i = 0; i < 8; i++) {
             Slot02159c88* s = &self->slots[i];
@@ -122,8 +124,8 @@ extern "C" ARM void func_ov005_02159c88(Menu02159c88* self) {
                 _Z25RenderFlaggedIndexedEntryP16StructAt020473c8i(o, 1);
                 G3_MTX_POP = 1;
                 if (self->flagA8 == 0 && self->flagA9 == 0) {
-                    int tx = v.x + 0x8000;
-                    int ty = v.y + 0x8000;
+                    int tx = v.x + REGION(0x11000,0x8000);
+                    int ty = v.y + REGION(0x10000,0x8000);
                     int tz = v.z + 0x1000;
                     G3_MTX_PUSH = 0;
                     G3_MTX_TRANS = tx;
@@ -156,9 +158,9 @@ extern "C" ARM void func_ov005_02159c88(Menu02159c88* self) {
                 void* elem = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->container, id);
                 if (elem != 0) {
                     Obj02159c88* o = s->obj;
-                    char* res = func_ov017_0218b5b0();
-                    char* holder = _Z19GetField1c_021a193cPi(*(void**)(res + 0x3708));
-                    if (func_020dd4c4(*(int*)(holder + 0x4fc), elem) != 0) {
+                    GameResources* res = func_ov017_0218b5b0();
+                    MemberScreen* holder = _Z19GetField1c_021a193cPi((int*)res->unknown_ptr_array_36fc[3]);
+                    if (func_020dd4c4(holder->member, elem) != 0) {
                         int px = s->x;
                         int py = s->y;
                         Vec3_02159c88 p = o->pos;
@@ -186,8 +188,8 @@ extern "C" ARM void func_ov005_02159c88(Menu02159c88* self) {
                             if (self->flagA8 == 0 && self->flagA9 == 0) {
                                 Vec3_02159c88 v = o->pos;
                                 G3_MTX_PUSH = 0;
-                                G3_MTX_TRANS = v.x + 0x8000;
-                                G3_MTX_TRANS = v.y + 0x8000;
+                                G3_MTX_TRANS = v.x + REGION(0x11000,0x8000);
+                                G3_MTX_TRANS = v.y + REGION(0x10000,0x8000);
                                 G3_MTX_TRANS = v.z + 0x1000;
                                 self->color2d88 = 0xf0a;
                                 func_02047554(self->entry2d08, 0, 1);
@@ -201,18 +203,18 @@ extern "C" ARM void func_ov005_02159c88(Menu02159c88* self) {
     }
     if (self->selected >= 0 && self->flagAB == 0) {
         G3_MTX_PUSH = 0;
-        _Z25RenderFlaggedIndexedEntryP16StructAt020473c8i(self->entry3cf0, 1);
+        _Z25RenderFlaggedIndexedEntryP16StructAt020473c8i(&self->dragModel, 1);
         G3_MTX_POP = 1;
-        Vec3_02159c88 v = self->vec;
+        Vec3_02159c88 v = self->dragModel.pos;
         func_ov005_02154d18(&self->frame, v.x, v.y);
         func_ov005_02154d34(&self->frame, v.x, v.y);
         func_ov005_02154d50(&self->frame, 0x18000, 0x18000);
         func_ov005_02154d7c(&self->frame, 0x18000, 0x18000);
         if (self->selected < 8 && self->flagAB == 0) {
-            Vec3_02159c88 w = self->vec;
+            Vec3_02159c88 w = self->dragModel.pos;
             G3_MTX_PUSH = 0;
-            G3_MTX_TRANS = w.x + 0x8000;
-            G3_MTX_TRANS = w.y + 0x8000;
+            G3_MTX_TRANS = w.x + REGION(0x11000,0x8000);
+            G3_MTX_TRANS = w.y + REGION(0x10000,0x8000);
             G3_MTX_TRANS = w.z + 0x1000;
             self->color2d88 = 0xf0a;
             func_02047554(self->entry2d08, 0, 1);

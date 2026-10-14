@@ -67,7 +67,11 @@ extern "C" ARM void func_ov017_021b11d8(void* obj, void* node) {
         return;
     }
     if (mode == 1) {
+#if defined(jpn)
+        Slot_021b11d8* slot = (Slot_021b11d8*)((char*)GameState::GetInstance() + 0x7280);
+#else
         Slot_021b11d8* slot = (Slot_021b11d8*)((char*)GameState::GetInstance() + 0x74c0);
+#endif
         for (int i = 0; i < 3; i++, slot++) {
             if (slot->owner < 4) {
                 continue;

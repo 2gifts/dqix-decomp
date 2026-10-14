@@ -60,7 +60,11 @@ struct Combatant02082828 {
     unsigned char field56c;
     unsigned char field56d;
     unsigned char field56e;
-    unsigned char field56f[0x2e1];
+#if defined(jpn)
+    unsigned char field56f[0x7b8 - 0x56f];
+#else
+    unsigned char field56f[0x850 - 0x56f];
+#endif
     Obj02082cdc triples[13];
     unsigned char field8ec[36];
     unsigned char field910[9];
@@ -87,6 +91,10 @@ void InitIndexedElements02083508(Obj02083508*);
 void CopyFrom027ffcf4(void*);
 extern char data_020f1010[];
 extern char data_020ef078[];
+
+#if defined(jpn)
+extern char data_020f1130[];
+#endif
 
 // USA: func_02082828
 extern "C" ARM void func_02082828(Combatant02082828* object) {
@@ -166,11 +174,23 @@ extern "C" ARM void func_02082828(Combatant02082828* object) {
         object->slots[slotIndex].index = -1;
     }
     unsigned char hardwareAddress[6];
+#if defined(jpn)
+    char suffix[11];
+    CopyFrom027ffcf4(hardwareAddress);
+    char firstLetter[] = "\x82\x60";
+    char secondLetter[] = "\x82\x60";
+    signed char first = (hardwareAddress[0] + hardwareAddress[1] + hardwareAddress[2]) % 26;
+    firstLetter[1] += first;
+    signed char second = (hardwareAddress[3] + hardwareAddress[4] + hardwareAddress[5]) % 26;
+    secondLetter[1] += second;
+    sprintf(suffix, data_020f1130, firstLetter, secondLetter);
+#else
     char suffix[18];
     CopyFrom027ffcf4(hardwareAddress);
     int first = (hardwareAddress[0] + hardwareAddress[2] + hardwareAddress[4]) % 26;
     int second = (hardwareAddress[1] + hardwareAddress[3] + hardwareAddress[5]) % 26;
     sprintf(suffix, data_020f1010, (signed char)(first + 65), (signed char)(second + 65));
+#endif
     sprintf(object->name, data_020ef078, suffix);
     object->field956 = 0;
     object->field958 = -1;

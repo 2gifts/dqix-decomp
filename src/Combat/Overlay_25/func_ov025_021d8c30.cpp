@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
@@ -171,7 +172,6 @@ struct Obj02176150;
 extern "C" void* func_0202ae18(void);
 struct Obj0203a588* GetData02104b6c(void);
 extern "C" int _Z16GetField02163524Pv(void* obj);
-void* GetData02108e10(void);
 extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
 extern "C" unsigned char _Z25GetByte_021dcc64_021dcc64Pv(void* obj);
 extern "C" ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8* list, int index);

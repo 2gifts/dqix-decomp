@@ -14,7 +14,11 @@ struct Struct020dbd9c {
 struct ItemInfoWindow {
     char unk_0[0x48];
     void* partNames_;
+#if defined(jpn)
+    char unk_4c[0x6f0 - 0x4c];
+#else
     char unk_4c[0x774 - 0x4c];
+#endif
     unsigned short flags_;
     unsigned char visible_;
     char unk_777[0x6];
@@ -49,7 +53,9 @@ struct RecipeRecord {
 };
 
 struct AlchemyPot {
+#if !defined(jpn)
     char names_[3][0x80];
+#endif
     SafeAllocator* allocators_;
     SafeAllocator* itemAllocator_;
     SafeAllocator* nextItemAllocator_;
@@ -126,7 +132,11 @@ struct Container020e0310;
 struct Container020dedd0;
 
 extern "C" void __clear(void* dst, int size);
-const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
+int GetFieldByKey020e0434(Container020e0310* texts, int id);
+#if defined(jpn)
+extern "C" int func_020e12ec(char* destination, const char* source);
+#define data_ov006_0215ff5c data_ov006_021612c0
+#endif
 void ZeroInit020de848(void* obj);
 int BuildDescriptorFlag1_020de980(void* obj, void* alloc, void* data, int size, int id);
 void* FindElementByKey020dedd0(Container020dedd0* c, int key);
@@ -150,10 +160,17 @@ extern "C" ARM void func_ov006_021557c0(AlchemyPot* self) {
     if (item > 0) {
         if (self->itemStep_ == 0) {
             short innerKey = self->itemSprites_ + 0x26;
+#if defined(jpn)
+            const char* inner = (const char*)GetFieldByKey020e0434((Container020e0310*)self->texts_, innerKey);
+            char path[0x40];
+            func_020e12ec(path, inner);
+            self->task_ = loader->QueueLoadGP1(path, 0);
+#else
             short gp2Key = self->itemSprites_ + 0x64;
-            const char* inner = GetFieldByKey020e0434((Container020e0310*)self->texts_, innerKey);
-            const char* gp2 = GetFieldByKey020e0434((Container020e0310*)self->texts_, gp2Key);
+            const char* inner = (const char*)GetFieldByKey020e0434((Container020e0310*)self->texts_, innerKey);
+            const char* gp2 = (const char*)GetFieldByKey020e0434((Container020e0310*)self->texts_, gp2Key);
             self->task_ = loader->QueueLoadFileInGP2(gp2, inner, 0);
+#endif
             self->itemStep_++;
         }
         if (self->itemStep_ == 1) {
@@ -186,13 +203,22 @@ extern "C" ARM void func_ov006_021557c0(AlchemyPot* self) {
     }
 
     if (self->itemStep_ == 0) {
+#if defined(jpn)
+        short innerKey = 0x26;
+        innerKey += self->nextRecipe_->letter_;
+        const char* inner = (const char*)GetFieldByKey020e0434((Container020e0310*)self->texts_, innerKey);
+        char path[0x40];
+        func_020e12ec(path, inner);
+        self->task_ = loader->QueueLoadGP1(path, 0);
+#else
         short gp2Key = 0x64;
         short innerKey = 0x26;
         gp2Key += self->nextRecipe_->letter_;
         innerKey += self->nextRecipe_->letter_;
-        const char* inner = GetFieldByKey020e0434((Container020e0310*)self->texts_, innerKey);
-        const char* gp2 = GetFieldByKey020e0434((Container020e0310*)self->texts_, gp2Key);
+        const char* inner = (const char*)GetFieldByKey020e0434((Container020e0310*)self->texts_, innerKey);
+        const char* gp2 = (const char*)GetFieldByKey020e0434((Container020e0310*)self->texts_, gp2Key);
         self->task_ = loader->QueueLoadFileInGP2(gp2, inner, 0);
+#endif
         self->itemStep_++;
     } else if (self->itemStep_ == 1) {
         if (loader->GetTaskStatus(self->task_) == 0)
@@ -218,6 +244,11 @@ extern "C" ARM void func_ov006_021557c0(AlchemyPot* self) {
         func_ov023_021dcd90(&self->window_, 1);
         const char* names[3] = {0};
         if (self->itemNames_ != 0) {
+#if defined(jpn)
+            names[0] = (const char*)GetFieldByKey020e0434((Container020e0310*)self->itemNames_, self->nextRecipe_->ingredients_[0]);
+            names[1] = (const char*)GetFieldByKey020e0434((Container020e0310*)self->itemNames_, self->nextRecipe_->ingredients_[1]);
+            names[2] = (const char*)GetFieldByKey020e0434((Container020e0310*)self->itemNames_, self->nextRecipe_->ingredients_[2]);
+#else
             memset(self->names_, 0, sizeof(self->names_));
             const char** name = CallFunc020e52a0(self->itemNames_, self->nextRecipe_->ingredients_[0]);
             if (name != 0) {
@@ -234,6 +265,7 @@ extern "C" ARM void func_ov006_021557c0(AlchemyPot* self) {
                 func_020e4864(*name, self->names_[2], 1, 0, 0, 0);
                 names[2] = self->names_[2];
             }
+#endif
         }
         unsigned char counts[3] = {0};
         GameState* gs = GameState::GetInstance();
@@ -242,7 +274,13 @@ extern "C" ARM void func_ov006_021557c0(AlchemyPot* self) {
             char* actor = (char*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, party->ids[i]);
             if (actor != 0) {
                 for (int j = 0; j < 8; j++) {
-                    BattleEquipmentView* equipment = *(BattleEquipmentView**)(actor + 0x150);
+                    BattleEquipmentView* equipment = *(BattleEquipmentView**)(actor
+#if defined(jpn)
+                        + 0x144
+#else
+                        + 0x150
+#endif
+                    );
                     BattleEquipmentEntry* entry = &equipment->entries[data_ov006_0215ff5c[j]];
                     if (entry != 0) {
                         int equipped = entry->category <= 7;

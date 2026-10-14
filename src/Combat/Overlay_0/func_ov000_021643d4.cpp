@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
+#include "World/Zone3D.h"
+#include "World/ZoneTerrain.h"
 
-struct Vector3i {
-    int x, y, z;
-    Vector3i& operator=(const Vector3i& o);
-};
+struct GameResources;
+
 typedef Vector3i Vec3;
 
 struct PartyEntry {
@@ -64,20 +64,28 @@ struct PtrBlock {
     unsigned char count;
 };
 
-struct Blk264 {
-    char pad[0xb6];
-    unsigned char b;
+// Layout shared with InitState0208f7ec.cpp. InitBigStruct0201c014 and
+// TeardownOverlayState_021a316c initialize this subobject of Zone3D.
+struct InitState0208f7ecStruct {
+    int field0;                     // 0x0
+    int field4;                     // 0x4
+    char pad8[0xb4 - 8];            // 0x8..0xb3
+    unsigned char b4;               // 0xb4
+    unsigned char b5;               // 0xb5
+    signed char b6;                 // 0xb6
+    signed char b7;                 // 0xb7
+    signed char b8;                 // 0xb8
+    char padb9;                     // 0xb9
+    unsigned short ba;              // 0xba
+    signed char bc;                 // 0xbc
+    signed char& ByteB6() { return b6; }
 };
 
-struct Blk2400 {
-    char pad[0x2400];
-    Blk264 z;
-};
+static inline InitState0208f7ecStruct& GetInitState(Zone3D& zone) {
+    // Existing storage is at USA 0x2664 / JPN 0x26a4, directly after grotto_.
+    return *(InitState0208f7ecStruct*)zone.unk_2664;
+}
 
-struct Obj14 {
-    char pad[0x264];
-    Blk2400 q;
-};
 
 struct BlkSub {
     char data[0x48];
@@ -159,9 +167,8 @@ struct CombatRoot {
 extern "C" int _ZN9GameState11GetInstanceEv();
 extern "C" int _ZN16BackgroundLoader11GetInstanceEv();
 extern "C" int func_0202ae18(int);
-extern "C" int func_ov017_0218b5b0();
+extern "C" GameResources* func_ov017_0218b5b0();
 extern "C" int _Z28FindEntryByCurrentId02027cb0v();
-extern "C" int func_02012fe4();
 extern "C" PtrBlock* _Z17GetPtrField0x2a04P9GameState(int gs);
 extern "C" Actor* _ZN9GameState14GetProtagonistEv(int gs);
 extern "C" Actor* _Z32FindCombatantByField16a_021a278cPvi(int ov, int id);
@@ -176,13 +183,8 @@ extern "C" void _ZN8Object3D17SetInheritedAlphaEi(Actor* a, int v);
 extern "C" void _Z20ClearFlag0x1ceBit0x4Ph(Actor* a);
 extern "C" int _Z18GetSignedByte0x1caPv(Actor* a);
 extern "C" Actor* _ZN9GameState31GetMaybeWanderingMonsterByIndexEi(int gs, int idx);
-extern "C" void Vector3fix_Subtract(const Vec3* a, const Vec3* b, Vec3* out);
-extern "C" void Vector3fix_Normalize(Vec3* a, Vec3* out);
-extern "C" int Vector3fix_Distance(const Vec3* a, const Vec3* b);
 extern "C" int _ZNK8Object3D9GetRadiusEv(Actor* a);
 extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(const Vec3* v, int s, Vec3* out);
-extern "C" Vec3 func_02019210(int a, const Vec3* b, const Vec3* c, int d);
-extern "C" int func_02018fbc(int a, Vec3* v);
 extern "C" void _Z21AimAndSetVecY020338d4P14Struct020338d4P4Vec3(Actor* a, Vec3* v);
 extern "C" void _Z26EnqueueEventTag20_021cee78ih(int id, unsigned char v);
 extern "C" int _ZNK8Object3D10GetField06Ev(Actor* a);
@@ -215,7 +217,7 @@ extern "C" void _Z23SetIntField540_0216f700Pvi(void* p, int v);
 extern "C" void _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i(int p, int v);
 extern "C" void _Z18SetField0x3b0ValueP9GameStatei(int gs, void* p);
 extern "C" void func_020134e0(void* p);
-extern "C" void _Z38ResetTaskAndDestroyAllocators_021a050cPc(int ov);
+void ResetTaskAndDestroyAllocators_021a050c(GameResources* resources);
 extern "C" int _Z20GetFieldB08_0219e008Pv(int ov);
 extern "C" void _Z35DestroyAllocatorsFromTable_021a1114Pc(int ov);
 extern "C" void func_ov017_021a07f4(int ov);
@@ -242,18 +244,6 @@ extern "C" void func_ov017_021c8654();
 extern "C" void func_ov017_021c847c();
 extern "C" void _Z25ClearGlobalBuffer02107850v();
 
-static inline char* Off264(int o) {
-#if defined(jpn)
-    return (char*)o + 0x2a4;
-#else
-    return (char*)o + 0x264;
-#endif
-}
-
-static inline char* Off2400(char* p) {
-    return p + 0x2400;
-}
-
 extern SlotTable data_ov000_02183034;
 extern float data_ov000_021838e8[5];
 extern float data_ov000_0218423c[5];
@@ -262,9 +252,10 @@ extern float data_ov000_0218423c[5];
 extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     int gs = _ZN9GameState11GetInstanceEv();
     int search = func_0202ae18(_ZN16BackgroundLoader11GetInstanceEv());
-    int ov = func_ov017_0218b5b0();
+    GameResources* resources = func_ov017_0218b5b0();
+    int ov = (int)resources;
     EntryInfo* entry = (EntryInfo*)_Z28FindEntryByCurrentId02027cb0v();
-    int obj14 = func_02012fe4();
+    Zone3D* obj14 = func_02012fe4();
     PtrBlock* pb = _Z17GetPtrField0x2a04P9GameState(gs);
     Actor* hero = _ZN9GameState14GetProtagonistEv(gs);
     Actor* enemy = _Z32FindCombatantByField16a_021a278cPvi(ov, c->info->id8);
@@ -380,7 +371,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     _Z15SetBitsInField4Pjj(ov, 0x10);
     _Z15SetBitsInField4Pjj(ov, 0x40);
     _Z15SetBitsInField4Pjj(ov, 0x80);
-    Off2400(Off264(obj14))[0xb6] = 0;
+    GetInitState(*obj14).ByteB6() = 0;
     _Z15SetBitsInField8Pjj(ov, 4);
     func_ov000_0216d2d0(c->sub_c18);
     _Z23SetIntField540_0216f700Pvi(c->sub_c18, c->f29c);
@@ -396,7 +387,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
 #else
     func_020134e0((char*)c + 0x2c8 + 0xc00);
 #endif
-    _Z38ResetTaskAndDestroyAllocators_021a050cPc(ov);
+    ResetTaskAndDestroyAllocators_021a050c(resources);
     if (_Z20GetFieldB08_0219e008Pv(ov) == 4) {
         _Z35DestroyAllocatorsFromTable_021a1114Pc(ov);
         func_ov017_021a07f4(ov);

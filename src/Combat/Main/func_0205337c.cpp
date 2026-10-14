@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
-#pragma opt_propagation off
 
 extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
 extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(struct FlagWord02046708* word, unsigned int mask);
@@ -22,6 +21,8 @@ struct Node0205337c {
 struct Anim0205337c {
     signed char anim[5];
     signed char animIdx;
+    signed char* GetTable() { return anim; }
+    int GetIndex() const { return animIdx; }
 };
 
 struct Obj0205337c {
@@ -32,10 +33,6 @@ struct Obj0205337c {
     unsigned char pad2[0x190 - 0x17e];
     struct Node0205337c* node;
 };
-
-inline signed char* GetAnimTable_0205337c(struct Obj0205337c* obj) {
-    return obj->anim.anim;
-}
 
 // USA: func_0205337c
 extern "C" ARM void func_0205337c(struct Obj0205337c* obj) {
@@ -53,8 +50,9 @@ extern "C" ARM void func_0205337c(struct Obj0205337c* obj) {
     outB -= 0xc;
     outA -= 0xc;
 
-    int idx = obj->anim.animIdx;
-    int kind = GetAnimTable_0205337c(obj)[idx];
+    int idx = obj->anim.GetIndex();
+    signed char* animations = obj->anim.GetTable();
+    int kind = animations[idx];
     if (!(kind != 0xc && kind != 0xd && kind != 0xe)) {
         outB -= 0xc;
         outA -= 6;

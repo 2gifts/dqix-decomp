@@ -18394,3 +18394,160 @@ src/Combat/Main/func_0200c7d4.cpp:
 src/Combat/Main/func_0200cf24.cpp:
     complete
     .text start:0x0200cde8 end:0x0200ce08
+
+src/Filesystem/ConvertResourceNameForGP1.cpp:
+    complete
+    .text start:0x020e12ec end:0x020e1348
+
+src/Filesystem/LoadConvertedResourceIntoScratch.cpp:
+    complete
+    .text start:0x020e0968 end:0x020e09d0
+
+src/Combat/Main/func_0208bb78.cpp:
+    .text start:0x0208c46c end:0x0208c764
+
+src/Combat/Main/func_02024518.cpp:
+    complete
+    .text start:0x02023eec end:0x0202471c
+
+src/Combat/Main/func_0208fc30.cpp:
+    complete
+    .text start:0x02090544 end:0x02090780
+    .data start:0x020f1438 end:0x020f143c
+
+src/Combat/Main/func_020a6728.cpp:
+    complete
+    .text start:0x020a84cc end:0x020a8710
+
+src/Combat/Main/func_020a6aac.cpp:
+    complete
+    .text start:0x020a8850 end:0x020a9050
+
+src/Combat/Main/func_02079900.cpp:
+    complete
+    .text start:0x0207a7c8 end:0x0207a8cc
+
+src/Combat/Main/func_0203c4d0.cpp:
+    complete
+    .text start:0x0203c634 end:0x0203c758
+
+src/Combat/Main/func_02019210.cpp:
+    complete
+    .text start:0x02018fb0 end:0x020192a8
+
+src/Combat/Main/GetEntryByteField0203c284.cpp:
+    complete
+    .text start:0x0203be6c end:0x0203bf00
+
+src/Combat/Main/func_02018d28.cpp:
+    complete
+    .text start:0x02018ac8 end:0x02018cd0
+
+src/Combat/Main/func_0201a300.cpp:
+    complete
+    .text start:0x0201a0a0 end:0x0201a3a0
+
+src/Combat/Main/AdjustAndDispatchEntry0203c1c8.cpp:
+    complete
+    .text start:0x0203bd44 end:0x0203bdf4
+
+src/Combat/Main/func_0208cb08.cpp:
+    complete
+    .text start:0x0208d3e8 end:0x0208d868
+
+src/Combat/Main/func_0203c35c.cpp:
+    complete
+    .text start:0x0203c4b4 end:0x0203c628
+
+src/Combat/Main/func_0208cfcc.cpp:
+    complete
+    .text start:0x0208d89c end:0x0208dc08
+
+src/Combat/Main/func_0208d42c.cpp:
+    complete
+    .text start:0x0208dcf4 end:0x0208ddd8
+
+src/Combat/Main/func_02083e28.cpp:
+    complete
+    .text start:0x02084740 end:0x02085380
+
+src/Combat/Main/func_020236dc.cpp:
+    complete
+    .text start:0x020230a4 end:0x02023464
+
+src/Combat/Main/func_02082828.cpp:
+    complete
+    .text start:0x02083164 end:0x02083664
+    .rodata start:0x020e8ba0 end:0x020e8ba6
+
+src/Combat/Main/NormalizeGlyphKey02042ea4.cpp:
+    complete
+    .text start:0x02042ea4 end:0x02042f9c
+
+src/Combat/Main/FindGlyphKeyIndex02042f9c.cpp:
+    complete
+    .text start:0x02042f9c end:0x02043014
+
+src/Combat/Main/FindGlyphIndexWithFallback02043014.cpp:
+    complete
+    .text start:0x02043014 end:0x02043060
+
+src/Combat/Main/func_0201099c.cpp:
+    complete
+    .text start:0x020107f8 end:0x020110b0
+
+src/Filesystem/LoadIndexedResourceIntoScratch.cpp:
+    complete
+    .text start:0x020e08f0 end:0x020e0968
+
+src/Combat/Main/FindOrAllocateSlot0203c5a8.cpp:
+    complete
+    .text start:0x0203c7f4 end:0x0203cb58
+
+src/Combat/Main/func_02021b84.cpp:
+    complete
+    .text start:0x0202162c end:0x02021a44
+
+src/Combat/Main/ComputeAndApplyWithCounter020e04f4.cpp:
+    complete
+    .text start:0x020e2168 end:0x020e21e8
+
+src/Combat/Main/func_0203bebc.cpp:
+    complete
+    .text start:0x0203b914 end:0x0203bb6c
+
+src/Combat/Main/FinalizeRecordListDisplay02020cb8.cpp:
+    complete
+    .text start:0x020208cc end:0x02020a64
+
+src/Combat/Main/RefreshRecordListDisplay02020e58.cpp:
+    complete
+    .text start:0x02020a64 end:0x02020bc8
+
+src/Combat/Main/func_020e0574.cpp:
+    complete
+    .text start:0x020e21e8 end:0x020e2240
+
+src/Combat/Main/func_02022dc8.cpp:
+    complete
+    .text start:0x02022848 end:0x02022ae4
+
+src/Filesystem/LoadSelectedTextEntries.cpp:
+    complete
+    .text start:0x020e1fc4 end:0x020e203c
+
+src/Combat/Main/DecrementEntryCount0x24.cpp:
+    complete
+    .text start:0x0203cbe4 end:0x0203cc74
+
+src/Combat/Main/ReleaseEntry0203c54c.cpp:
+    complete
+    .text start:0x0203c758 end:0x0203c7f4
+
+src/Combat/Main/FormatAndDispatchWeightedEntries_020230fc.cpp:
+    complete
+    .text start:0x02022b7c end:0x02022cbc
+
+src/Combat/Main/FormatAndDispatchWeightedEntries_02023218.cpp:
+    complete
+    .text start:0x02022cbc end:0x02022da0

@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #if defined(jpn)
 #define LOW_REGION(j, u) (j)
 #else
@@ -11,12 +12,6 @@
 #include "std_library_functions.h"
 
 struct StructA0205d5d0;
-#if defined(jpn)
-extern "C" void _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* window, int state, int text, int a);
-#else
-extern "C" void _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* window, int state, int text, int a, unsigned char b);
-#endif
-
 struct ProfileEditor02185cf8
 {
     char unk_0[LOW_REGION(0x90, 0xac)];
@@ -86,8 +81,8 @@ extern "C" ARM void func_ov012_02185cf8(ProfileEditor02185cf8* self)
     if (functions.functions[self->state_] != 0)
         (self->*functions.functions[self->state_])(self->text_, hidden);
 #if defined(jpn)
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)self->window_, self->state_, (int)self->text_, 0);
+    TryApplyElemFields0205d5d0((StructA0205d5d0*)self->window_, self->state_, (int)self->text_, 0);
 #else
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)self->window_, self->state_, (int)self->text_, 0, 0);
+    TryApplyElemFields0205d5d0((StructA0205d5d0*)self->window_, self->state_, (int)self->text_, 0, 0);
 #endif
 }

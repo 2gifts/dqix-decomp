@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #if defined(jpn)
 #define IS_JPN 1
@@ -28,7 +29,11 @@ extern "C" void func_0204cb20(void* elem, int c, int d, unsigned char e);
 #endif
 
 // USA: func_0205d5d0
-ARM int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e) {
+ARM int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d
+#if !defined(jpn)
+, unsigned char e
+#endif
+) {
     Elem0205d5d0* elem;
     unsigned char i;
 

@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -17,12 +18,6 @@ struct TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(struct Struct0217f8c0*
 extern "C" void func_ov000_02179cdc(void* obj, int id);
 extern "C" void func_ov000_02179ed8(void* obj, void* entry, void* buf);
 struct StructA0205d5d0;
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0*, int, int, int);
-#else
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0*, int, int, int, unsigned char);
-#endif
-
 // USA: func_ov000_02179c6c
 ARM void ApplyElemFieldsSlot21_02179c6c(void* obj, int id) {
     void* entry = FindMatchingTableEntry0217f8c0((struct Struct0217f8c0*)obj);
@@ -31,7 +26,7 @@ ARM void ApplyElemFieldsSlot21_02179c6c(void* obj, int id) {
     memset(buf, 0, REGION_OFFSET_1);
     func_ov000_02179ed8(obj, entry, buf);
 #if defined(jpn)
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)((char*)obj + 0x188), 0x15, (int)buf, 1);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)((char*)obj + 0x188), 0x15, (int)buf, 1);
 #else
     TryApplyElemFields0205d5d0((struct StructA0205d5d0*)((char*)obj + 0x188), 0x15, (int)buf, 1, 0);
 #endif

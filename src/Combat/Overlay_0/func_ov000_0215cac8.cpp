@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
 struct OutStruct0215ccbc;
@@ -47,7 +48,7 @@ extern "C" TargetNode* _Z28GetTableEntry0x8e01Bound0x88Pv(void* self);
 extern "C" void _Z18InitStruct02160030Pv(void* obj);
 extern "C" void _Z19ResetStruct02157cdcPv(void* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
-extern "C" char* _Z15GetData02108e10v(void);
+
 extern "C" SkillData* _Z24SearchBothTables02079e2cPci(char* data, int id);
 extern "C" void _Z18AppendNode02160068P11Obj02160068P12Node02160068(ActionNode* obj, ActionEntry* node);
 extern "C" void _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(ActionNode* obj, TargetNode* node);
@@ -79,7 +80,7 @@ extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, sho
     entry->f1c = -1;
     entry->f30 = 0;
     work->action = action;
-    SkillData* sk = _Z24SearchBothTables02079e2cPci(_Z15GetData02108e10v(), (short)work->action);
+    SkillData* sk = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)work->action);
     if (sk != 0) {
         work->category = sk->category;
     }

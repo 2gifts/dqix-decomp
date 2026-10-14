@@ -4,7 +4,6 @@
 #define func_ov013_02186cac func_ov013_02187fc0
 #endif
 
-#pragma opt_propagation off
 
 struct Struct_0205d81c;
 struct Elem_0205d81c {
@@ -49,11 +48,10 @@ extern "C" ARM void func_ov013_02186cac(void* obj) {
     if (elem == 0) return;
     if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) return;
 
-    short yScale = elem->fae;
-    int xPos = elem->fbc + (short)(elem->fac * 8);
-    int yPos = elem->fbe + (short)(yScale * 8);
-    x = (short)xPos;
-    y = (short)yPos;
+    x = elem->fac * 8;
+    y = elem->fae * 8;
+    x += elem->fbc;
+    y += elem->fbe;
     mode = o[0x63c];
 
     if (mode != 3 && mode != 4) {

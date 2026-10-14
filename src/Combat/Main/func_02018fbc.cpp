@@ -1,92 +1,57 @@
 #include <globaldefs.h>
 
-struct Vector3fix {
-    int x;
-    int y;
-    int z;
-};
+#include "World/Zone3D.h"
+#include "World/ZoneTerrain.h"
+#include "World/Bounds3D.h"
+#include "Graphics/Vector.h"
 
-struct TerrainCtx02018fbc {
-#if defined(jpn)
-    char pad0[0x84c];
-#else
-    char pad0[0x82c];
-#endif
-    int count82c;
-    char pad1[0x23b8 - 0x830];
-    unsigned char flag23b8;
-};
-
-struct Sample02018fbc {
-    Vector3fix v0;
-    Vector3fix v1;
-    Vector3fix v2;
-    Vector3fix v3;
-};
-
-struct Grid02018fbc {
-    short cells[96][12];
-    unsigned char rest[0x80];
-};
-
-struct Probe02018fbc {
-    Vector3fix a;
-    Vector3fix b;
-};
-
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" float _fflt(int v);
 extern "C" float _fdiv(float a, float b);
 extern "C" int _ffix(float v);
-extern "C" int func_02017d90(TerrainCtx02018fbc* ctx, int i, Grid02018fbc* grid, Probe02018fbc probe, int mode);
-extern "C" void func_02031188(Sample02018fbc* dst, short* src);
-extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(Vector3fix* in, int scale, Vector3fix* out);
-extern "C" void Vector3fix_Subtract(Vector3fix* a, Vector3fix* b, Vector3fix* out);
-extern "C" int func_020312bc(Sample02018fbc* samples, int n, Vector3fix* a, Vector3fix* b, Vector3fix* out);
 
 // USA: func_02018fbc
-extern "C" ARM int func_02018fbc(TerrainCtx02018fbc* ctx, Vector3fix* p) {
+extern "C" ARM int func_02018fbc(Zone3D* ctx, Vector3fix* p) {
     Vector3fix v = *p;
-    Probe02018fbc probe;
+    Bounds3D probe;
     Vector3fix diff;
     Vector3fix up;
     Vector3fix down;
     Vector3fix out;
 
-    _ZN8Vector3iaSERKS_((int*)&probe.a, (int*)&v);
-    _ZN8Vector3iaSERKS_((int*)&probe.b, (int*)&v);
-    probe.a.x += 0x800;
-    probe.a.y += 0x1000;
-    probe.a.z += 0x800;
-    probe.b.x -= 0x800;
-    probe.b.y -= 0xa000;
-    probe.b.z -= 0x800;
+    probe.maximum = v;
+    probe.minimum = v;
+    probe.maximum.x += 0x800;
+    probe.maximum.y += 0x1000;
+    probe.maximum.z += 0x800;
+    probe.minimum.x -= 0x800;
+    probe.minimum.y -= 0xa000;
+    probe.minimum.z -= 0x800;
 
     int cell;
-    if (ctx->flag23b8 != 0) {
+    if (ctx->isInMainGrottoFloor_23b8_ != 0) {
         cell = (int)(((float)(v.x + 0x4000) / 4096.0f) / 8.0f)
              + ((int)(((float)(v.z + 0x4000) / 4096.0f) / 8.0f) << 4);
     }
 
-    for (int i = 0; i < ctx->count82c; i++) {
-        if (ctx->flag23b8 == 0 || cell == i) {
-            Grid02018fbc grid;
-            Sample02018fbc samples[96];
+    for (int i = 0; i < ctx->unknown_82c_; i++) {
+        if (ctx->isInMainGrottoFloor_23b8_ == 0 || cell == i) {
+            ZoneTerrainGrid grid;
+            ZoneTerrainSample samples[96];
             int n = func_02017d90(ctx, i, &grid, probe, 0);
             if (n > 0) {
-                Sample02018fbc* sample = samples;
+                ZoneTerrainSample* sample = samples;
                 int scale;
                 for (int j = 0; j < n; j++, sample++) {
-                    scale = (*(int*)&grid.rest[4]) << 12;
+                    scale = grid.scale << 12;
                     func_02031188(sample, &grid.cells[j][0]);
-                    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&sample->v0, scale, &sample->v0);
-                    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&sample->v1, scale, &sample->v1);
-                    _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&sample->v2, scale, &sample->v2);
+                    Vector3fixMultiplyScalar(&sample->a, scale, &sample->a);
+                    Vector3fixMultiplyScalar(&sample->b, scale, &sample->b);
+                    Vector3fixMultiplyScalar(&sample->c, scale, &sample->c);
                 }
-                Vector3fix_Subtract(&v, (Vector3fix*)&grid.rest[8], &diff);
-                _ZN8Vector3iaSERKS_((int*)&up, (int*)&diff);
+                Vector3fix_Subtract(&v, &grid.position, &diff);
+                up = diff;
                 up.y += 0x1000;
-                _ZN8Vector3iaSERKS_((int*)&down, (int*)&diff);
+                down = diff;
                 down.y -= 0xa000;
                 if (func_020312bc(samples, n, &up, &down, &out) != -1) {
                     out.y += 0x199;

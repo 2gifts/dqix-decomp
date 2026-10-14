@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
@@ -11,13 +12,6 @@ void InitBoxLayout_021d921c(void* obj, int unused, int w, int h);
 extern "C" void func_ov023_021d9290(void* obj, void* buf, unsigned char step);
 
 struct StructA0205d5d0;
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d);
-#else
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
-
-
 // USA: func_ov023_021d8f2c  (semantic: AdvanceScaleBoxState_021d8f2c)
 extern "C" ARM int func_ov023_021d8f2c(char* obj) {
 #if defined(jpn)
@@ -86,7 +80,7 @@ extern "C" ARM int func_ov023_021d8f2c(char* obj) {
     memset(*(void**)(obj + 4), 0, regionalOffset0);
     func_ov023_021d9290(obj, *(void**)(obj + 4), *(unsigned char*)(obj + 0x118));
 #if defined(jpn)
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1);
 #else
     TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1, 0);
 #endif

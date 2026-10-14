@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "std_library_functions.h"
 
 struct S_10088;
 int GetFieldAt0x150(unsigned char* obj);
-void* GetData02108e10(void);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 int IsFlag10088Set(struct S_10088* obj);
 struct AddEntryList_021f6a1c;

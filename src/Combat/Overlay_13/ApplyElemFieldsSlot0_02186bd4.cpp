@@ -1,7 +1,7 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define TryApplyElemFields0205d5d0 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih
 #define LOW_REGION(j, u) (j)
 #else
 #define LOW_REGION(j, u) (u)
@@ -10,11 +10,6 @@
 #include "std_library_functions.h"
 
 struct StructA0205d5d0;
-#if defined(jpn)
-extern "C" int TryApplyElemFields0205d5d0(struct StructA0205d5d0*, int, int, int);
-#else
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0*, int, int, int, unsigned char);
-#endif
 extern "C" void func_ov013_02185424(void*, void*);
 
 struct SkillPointMenu {

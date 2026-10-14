@@ -26,14 +26,25 @@ struct Transition021b1564 {
     unsigned int savedFlags, savedFlags4, savedFlags8;
     unsigned char stage, alternate, result;
 };
-struct Controller021b1564 { char pad_0[0x5c]; signed char* action; char pad_60[0x938]; int busy; };
+struct Controller021b1564 {
+#if defined(jpn)
+    char pad_0[0x28];
+#else
+    char pad_0[0x5c];
+#endif
+    signed char* action;
+#if defined(jpn)
+    char pad_60[0x868 - 0x2c];
+#else
+    char pad_60[0x998 - 0x60];
+#endif
+    int busy;
+};
 struct Overlay006021b1564 { char pad_0[0x394]; unsigned short flags; char pad_396[0x9e]; unsigned char result; };
 struct BufferTail021b1564 { char pad_0[0x1000]; char work[1]; };
 struct Buffer021b1564 { char pad_0[0x820]; BufferTail021b1564 tail; };
-struct ZoneView021b1564 { char pad_0[0x840]; char range[1]; };
 struct PlayerView021b1564 { char pad_0[0xae]; short angle; };
 struct ResourceBlock021b1564 { char initial[0x5b0]; char restored[1]; };
-struct ResourceView021b1564 { char pad_0[0x2cc]; ResourceBlock021b1564 block; };
 struct EntryNode021b1564 { char pad_0[0x114]; void* entry; char pad_118[0xc]; int id; char pad_128[0x11]; unsigned char active; };
 GameResources* GetWord0x0(int*);
 extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
@@ -45,7 +56,14 @@ unsigned int GetField4(unsigned int*);
 unsigned int GetField8(unsigned int*);
 void SetBitsInField4(unsigned int*, unsigned int);
 extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+#if defined(jpn)
+extern "C" void func_0204500c(void*, signed char*, int);
+#define func_ov006_021576a0 func_ov006_02158ca8
+enum { TransitionArenaSize = 0x3b000, TransitionAllocationSize = 0x3c820 };
+#else
 extern "C" void func_0204500c(void*, signed char*, int, int);
+enum { TransitionArenaSize = 0x3cc00, TransitionAllocationSize = 0x3e420 };
+#endif
 extern "C" void _Z24ReinitController02043204Pc(char*);
 extern "C" int func_020457e0(void*);
 void SetField0x23cTrue(void*);
@@ -134,7 +152,11 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
             GameObject* current = game->GetUnknownGameObject();
             if (current) _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)current, 1);
             if (*controller->action) {
+#if defined(jpn)
+                func_0204500c(controller, controller->action, 0);
+#else
                 func_0204500c(controller, controller->action, 0, 0xe3);
+#endif
                 controller->busy = 1;
             } else _Z24ReinitController02043204Pc((char*)controller);
             self->stage = 100;
@@ -162,8 +184,8 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         ++self->stage;
         return;
     } else if (self->stage == 2) {
-        func_020a0cc4(0x3e420);
-        Buffer021b1564* buffer = (Buffer021b1564*)AllocateAligned4(&data_02114e20, 0x3e420);
+        func_020a0cc4(TransitionAllocationSize);
+        Buffer021b1564* buffer = (Buffer021b1564*)AllocateAligned4(&data_02114e20, TransitionAllocationSize);
         if (!buffer) {
             func_020a0c0c();
             self->inactive = 1;
@@ -174,7 +196,7 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         Controller021b1564* current = _Z26GetGlobalField0x1c020421a0v();
         _Z24ReinitController02043204Pc((char*)current);
         func_02043124(current);
-        self->allocator.CreateTypeA(buffer, 0x3cc00);
+        self->allocator.CreateTypeA(buffer, TransitionArenaSize);
         self->allocator.Reset();
         self->plugin = (Obj020979c0*)self->allocator.Allocate(0x20);
         data_ov017_021d83ec = (Overlay006021b1564*)self->allocator.Allocate(0x438);
@@ -207,7 +229,7 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         Zone3D* zone = func_02012fe4();
         func_0203e0a0(entries, zone->currentZoneID_);
         _Z33ResetOverlayAndAllocator_0219bf74v();
-        if (_Z19IsIdInRange020981e4ii((int)((ZoneView021b1564*)zone)->range, CurrentZone021b1564(zone))) {
+        if (_Z19IsIdInRange020981e4ii((int)zone->unk_840, CurrentZone021b1564(zone))) {
             func_ov017_021a316c(resources);
             resources->allocator_array_38[7].Reset();
         }
@@ -264,7 +286,7 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         func_ov017_021a2fa0(resources);
         func_ov017_0219b624(resources);
         func_ov017_0219ba0c(resources, 0);
-        ResourceBlock021b1564* block = &((ResourceView021b1564*)resources)->block;
+        ResourceBlock021b1564* block = (ResourceBlock021b1564*)resources->unknown_2cc;
         Controller021b1564* current = _Z26GetGlobalField0x1c020421a0v();
         _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)block->restored);
         _Z25RestorePairTables0207df90Pc(block->restored);

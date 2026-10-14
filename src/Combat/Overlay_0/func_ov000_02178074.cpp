@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
@@ -47,12 +48,6 @@ struct TextWorkspace {
 
 extern "C" TextWorkspace* _Z26GetGlobalField0x1c020421a0v();
 extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d);
-#else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
-
 extern "C" void func_ov000_021781f8(struct Owner_02178074* obj, struct InStruct_02178074* in);
 extern "C" void func_ov000_0217c638(struct Owner_02178074* obj, int a, int b);
 extern "C" void func_ov000_0217831c(struct Owner_02178074* obj, void* textBuffer);
@@ -121,8 +116,8 @@ extern "C" ARM void func_ov000_02178074(struct Owner_02178074* obj, struct InStr
     func_ov000_02176210(panel, 7, 0x21);
 #endif
 #if defined(jpn)
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)&obj->panel, 7, (int)textBuffer, 1);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)&obj->panel, 7, (int)textBuffer, 1);
 #else
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)panel, 7, (int)textBuffer, 1, 0);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)panel, 7, (int)textBuffer, 1, 0);
 #endif
 }

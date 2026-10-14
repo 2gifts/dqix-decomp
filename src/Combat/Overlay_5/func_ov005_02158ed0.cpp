@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #if defined(jpn)
 #define LOW_REGION(j, u) (j)
 #else
@@ -45,12 +46,6 @@ struct EquipmentMenu {
 extern Touch02114e54 data_02114e54;
 
 extern "C" void func_ov005_02159a30(EquipmentMenu* self, unsigned short* text, int touched);
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d);
-#else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
-
 // USA: func_ov005_02158ed0
 extern "C" ARM void func_ov005_02158ed0(EquipmentMenu* self) {
     unsigned char mode = self->textMode_;
@@ -67,8 +62,8 @@ extern "C" ARM void func_ov005_02158ed0(EquipmentMenu* self) {
     if (style == 1)
         func_ov005_02159a30(self, self->text_, touched);
 #if defined(jpn)
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)&self->window_, style, (int)self->text_, 1);
+    TryApplyElemFields0205d5d0((StructA0205d5d0*)&self->window_, style, (int)self->text_, 1);
 #else
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)&self->window_, style, (int)self->text_, 1, 0);
+    TryApplyElemFields0205d5d0((StructA0205d5d0*)&self->window_, style, (int)self->text_, 1, 0);
 #endif
 }

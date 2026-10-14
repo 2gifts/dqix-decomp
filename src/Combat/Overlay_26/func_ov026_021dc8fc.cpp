@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -87,7 +88,6 @@ void ClearBitInArray0x8ec(unsigned char*, int);
 int TestBitInArray0x8ec(unsigned char*, int);
 extern "C" int _Z28CollectSetBitIndices020839dcP16BitArray020839dcPhi(BitArray020839dc*, unsigned char*, int);
 extern "C" Entry0209a9dc* _Z21FindEntryById0209a9dcP14Holder0209a9dci(Holder0209a9dc*, int);
-char* GetData02108e10();
 extern "C" CommandEntry* _Z24SearchBothTables02079e2cPci(char*, int);
 extern "C" void _Z30SetFieldAndUpdateCount02171640P9S02171698ii(S02171698*, int, int);
 extern "C" void _Z30SetFieldAndUpdateCount02171968P9S021719c0ii(S021719c0*, int, int);
@@ -158,8 +158,8 @@ extern "C" ARM void func_ov026_021dc8fc(void*, void*, void*, Container_021dae60*
         Entry0209a9dc* entry = _Z21FindEntryById0209a9dcP14Holder0209a9dci(holder, extraIds[i]);
         if (entry && entry->command) commandIds[count++] = entry->command;
     }
-    char* commandTable = GetData02108e10();
-    for (int i = 0; i < count; ++i) entries[i] = _Z24SearchBothTables02079e2cPci(commandTable, commandIds[i]);
+    ActionDataTables* commandTable = GetData02108e10();
+    for (int i = 0; i < count; ++i) entries[i] = _Z24SearchBothTables02079e2cPci((char*)commandTable, commandIds[i]);
     int secondaryCount = 0;
     int commandIndex;
     int primaryCount = 0;

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include <GameState/GameState.h>
 #include <Util/Random.h>
 #include <std_library_functions.h>
@@ -17,7 +18,7 @@ struct TargetDefinition {
     unsigned int field1ca : 13;
 };
 struct CombatantGroup { char pad[0x17c]; unsigned char group; };
-void* GetData02108e10();
+
 extern "C" void* _Z24SearchBothTables02079e2cPci(char*, int);
 extern "C" int func_ov000_0215e9fc(Random*, short*, int, int);
 extern "C" short func_ov000_02154f30(Random*, short, int, short*);

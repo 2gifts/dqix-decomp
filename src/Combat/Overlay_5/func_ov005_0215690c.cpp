@@ -13,9 +13,17 @@ struct Body {
 };
 
 struct MemberScreen {
+#if defined(jpn)
+    char unk_0[0x4f8];
+#else
     char unk_0[0x4fc];
+#endif
     int member_;
+#if defined(jpn)
+    char unk_500[0x56c - 0x4fc];
+#else
     char unk_500[0x634 - 0x500];
+#endif
     unsigned short flags_;
 };
 
@@ -32,7 +40,11 @@ struct EquipmentSlot {
 };
 
 struct EquipmentMenu {
+#if defined(jpn)
+    char unk_0[0x196c];
+#else
     char unk_0[0x19f4];
+#endif
     char cursor_[0x2d90 - 0x19f4];
     EquipmentSlot slots_[24];
     char slotModels_[0x3d78 - 0x3030];
@@ -57,6 +69,13 @@ struct EquipmentMenu {
     char unk_3dd0[0x3dfc - 0x3dd0];
     unsigned char pages_[8];
 };
+
+#if defined(jpn)
+#define data_ov005_0215cc84 data_ov005_0215e064
+#define data_ov005_0215cc14 data_ov005_0215dff4
+#define data_ov005_0215cd58 data_ov005_0215e138
+#define data_ov005_0215cd50 data_ov005_0215e130
+#endif
 
 extern const Vector3fix data_ov005_0215cc84[8];
 extern const signed char data_ov005_0215cc14[8];

@@ -6,7 +6,6 @@
 #define func_ov005_0215a37c func_ov005_0215b8d0
 #define func_ov005_0215a3bc func_ov005_0215b910
 #define func_ov005_0215a418 func_ov005_0215b96c
-#define func_ov005_0215a620 func_ov005_0215bb74
 #define func_ov005_0215a720 func_ov005_0215bc6c
 #define func_ov005_0215aa44 func_ov005_0215bf64
 #define func_ov005_0215ae7c func_ov005_0215c33c

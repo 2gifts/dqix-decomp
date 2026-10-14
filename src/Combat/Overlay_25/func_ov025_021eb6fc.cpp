@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 
 struct Obj0205eaa0;
@@ -22,7 +23,6 @@ struct Obj021eb6fc {
 
 void* GetActiveCombatWork(void);
 extern "C" void* _Z18GetSlotPtr02160f20Pv(void* obj);
-void* GetData02108e10(void);
 extern "C" Entry021eb6fc* _Z24SearchBothTables02079e2cPci(char* p, int key);
 extern "C" int _Z20IsMatchingID02163690i(int id);
 extern "C" unsigned char* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094*, int);

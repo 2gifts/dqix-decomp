@@ -9,11 +9,21 @@
 
 // Represents a party member, monster in battle, monster on the field
 // or grotto boss. 
+struct CombatantStatus;
+
 class GameObject
 {
 public:
     Object3D obj3D_; // might be inherited instead
-    char unk_ac[0x134 - 0xac];
+    union {
+        char unk_ac[0x134 - 0xac];
+        struct {
+            char unknown_ac[0xb2 - 0xac];
+            unsigned short unknown_b2_;
+            char unknown_b4[0x130 - 0xb4];
+            CombatantStatus* savedState_130_;
+        } combatFields_;
+    };
     BaseCombatStats* baseStats_;
     ModifiableCombatStats* currentStats_;
 };

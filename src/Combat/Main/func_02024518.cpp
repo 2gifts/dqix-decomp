@@ -6,9 +6,13 @@
 #include "std_library_functions.h"
 
 #if defined(jpn)
-enum { kActionStateOffset = 0x914, kGrottoPrefix = 0xc, kGrottoBase = 0x2400, kVisitedIndex = 0x4c };
+enum { kActionStateOffset = 0x914, kVisitedIndex = 0x4c };
+#define data_020e7074 data_020e7940
+#define data_020e7076 data_020e7942
+#define data_020e7056 data_020e7922
+#define data_020e7057 data_020e7923
 #else
-enum { kActionStateOffset = 0x9c0, kGrottoPrefix = 0x3ec, kGrottoBase = 0x2000, kVisitedIndex = 12 };
+enum { kActionStateOffset = 0x9c0, kVisitedIndex = 12 };
 #endif
 
 struct ForwardingRecord02024518 {
@@ -57,9 +61,9 @@ extern signed char data_020e7056[][2];
 extern signed char data_020e7057[][2];
 
 void *GetData02105254();
-extern "C" void *func_02012fe4();
+extern "C" Zone3D *func_02012fe4();
 int IsInRange0201b5b0(int id);
-extern "C" void func_02027974(void *object, int adjacencyData, int state);
+extern "C" void func_02027974(void *object, const unsigned char* adjacencyData, int state);
 extern "C" void func_0203b8bc(void *data, int mode, int index, int x, int y, int state, int width, int height,
                               unsigned short palette);
 void SetArraySlotFlag0203b718(void *owner, int mode, int index, int value);
@@ -71,22 +75,15 @@ int CheckActionAllowed(Actor02024d48 *entry, int state);
 void SetElementFields0202756c(void *receiver, int x, int y, int index, unsigned char type, unsigned char flags,
                               unsigned short palette, unsigned char opacity, int scaleX, int scaleY);
 
-static inline char *GrottoOffset3ec(Zone3D *zone) {
-    return reinterpret_cast<char *>(zone) + kGrottoPrefix;
-}
-
-static inline ActiveGrottoClass *GrottoOffset2000(char *zone) {
-    return reinterpret_cast<ActiveGrottoClass *>(zone + kGrottoBase);
-}
-
 // USA: func_02024518
+// JPN: func_02023eec
 extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
     int pz;
     int px;
     GameState *gameState  = GameState::GetInstance();
     GameObject *object    = gameState->GetUnknownGameObject();
     void *displayState    = GetData02105254();
-    Zone3D *zone          = static_cast<Zone3D *>(func_02012fe4());
+    Zone3D *zone          = func_02012fe4();
     int count;
     int zoneId            = zone->currentZoneID_;
     Vector3i position     = object->obj3D_.position_;
@@ -128,7 +125,7 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
         if (self->mapState == 0) return;
         if (zone->unknown_424_ == 0) {
             unsigned char *visitedTiles =
-                reinterpret_cast<unsigned char *>(&gameState->unk_6fc0[kVisitedIndex]) + ((zoneId % 20) - 1) * 32;
+                (unsigned char*)&gameState->unk_6fc0[kVisitedIndex] + ((zoneId % 20) - 1) * 32;
             fix32_t angle = fix32_Divide(FIX32_MULTIPLY(object->obj3D_.rotation_.y, 0xb4000), 0x3243);
             if (angle > 0xb4000) angle -= 0x168000;
             angle >>= 12;
@@ -159,8 +156,8 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
             } else {
                 visitedTiles[centerZ * 2 + 1] |= 1U << (centerX - 8);
             }
-            func_02027974(self, reinterpret_cast<int>(GrottoOffset2000(GrottoOffset3ec(zone))->floorMap_.pMapAdjacencyData),
-                          self->mapState);
+            ActiveGrottoClass* grotto = zone->GetActiveGrotto();
+            func_02027974(self, grotto->floorMap_.pMapAdjacencyData, self->mapState);
         }
         self->forwardingPending = 0;
         SetArraySlotFlag0203b718(displayState, 1, 0, self->forwardingFill);
@@ -172,15 +169,15 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
         self->forwardingPending = 0;
         SetArraySlotFlag0203b718(displayState, 1, 0, self->forwardingFill);
         for (int i = 0; i < self->forwardingCount; i++) {
-            Entry_02027878 *entry = GetEntryFromList(reinterpret_cast<List_02027878 *>(self), self->forwarding[i].entryIndex);
+            Entry_02027878 *entry = GetEntryFromList((List_02027878*)self, self->forwarding[i].entryIndex);
             if (entry) {
-                ForwardParamsToB8bc(reinterpret_cast<Bcb8Params *>(reinterpret_cast<char *>(entry) + 8),
+                ForwardParamsToB8bc((Bcb8Params*)((char*)entry + 8),
                                     self->forwardingX + self->forwarding[i].x - tileX + 32,
                                     self->forwardingY + self->forwarding[i].y - tileZ + 16);
             }
         }
     }
-    AccumulateBattleTimer0202441c(reinterpret_cast<BattleTimer0202441c *>(self));
+    AccumulateBattleTimer0202441c((BattleTimer0202441c*)self);
     for (int i = 0; i < count; i++) {
         CombatActionPosition *entry = &entries[i];
         if (!CheckCombatantReadyForAction020243b8(self, entry->combatantId)) continue;
@@ -195,7 +192,7 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
         if (self->flags & 1) {
             if (IsNonCombatantAction(entry->type)) continue;
         }
-        if (!CheckActionAllowed(reinterpret_cast<Actor02024d48 *>(entry), self->actionState)) continue;
+        if (!CheckActionAllowed((Actor02024d48*)entry, self->actionState)) continue;
         SetElementFields0202756c(self, (x + 0x7c) << 12, (z + 0x5c) << 12, entry->elementId, entry->type, 0,
                                  entry->palette, 0xff, 0x1000, 0x1000);
     }

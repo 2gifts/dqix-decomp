@@ -9,7 +9,6 @@ struct Foo0207df50;
 struct Struct0200fb08;
 #if defined(jpn)
 enum { PairTablesOffset = 0x4ac };
-#define func_02018d28 func_02018ac8
 #define data_ov017_021d656c data_ov017_021d69bc
 #define data_ov017_021d751f data_ov017_021d797b
 #define data_ov017_021d7544 data_ov017_021d7982

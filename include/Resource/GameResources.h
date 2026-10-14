@@ -3,6 +3,8 @@
 #include "Memory/SafeAllocator.h"
 #include "World/ZoneLootableRecord.h"
 
+struct MapDisplay;
+
 // sizeof == 0x44c8, or 0x4218 in JPN version.
 // Referenced in a huge number of places, seems to be responsible for all
 // kinds of resource management in game (memory allocation and pointers
@@ -75,7 +77,7 @@ struct GameResources
 
     void* unknown_ptr_36c8; // jpn: offset 34b8
     void* unknown_ptr_36cc; // jpn: offset 34bc
-    void* unknown_ptr_36d0; // jpn: offset 34c0
+    MapDisplay* unknown_ptr_36d0; // jpn: offset 34c0
     char unknown_36d4[4]; // jpn: offset 34c4
     void* unknown_ptr_36d8; // jpn: offset 34c8
     char unknown_36dc[0x20]; // jpn: offset 34cc

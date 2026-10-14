@@ -1,15 +1,16 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
 extern "C" int func_ov000_021537b8(char* self, short id, void* rec);
-void* GetData02108e10(void);
+
 int IsFlag0x14Bit0x20Set(GameObject* combatant);
 void* SearchBothTables02079e2c(char* p, int key);
 
 // USA: func_ov000_0215f110
 ARM void ProcessCombatEntries_0215f110(char* self) {
     char* selfP = self;
-    void* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10();
     int i = 0;
     while (i < *(int*)(selfP + 0x8000 + 0xe7c)) {
         char* rec = (char*)(*(int**)(selfP + 0x8000 + 0xe78)) + i * 0x28;

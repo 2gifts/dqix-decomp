@@ -4,8 +4,9 @@
 #include "Grotto/Main/ActiveGrottoClass.h"
 #include "World/Object3D.h"
 #include "std_library_functions.h"
+#include "World/GrottoTileGraph.h"
 
-extern "C" char* func_02012fe4(void);
+extern "C" Zone3D* func_02012fe4(void);
 void* GetPtrField0x468(void* obj);
 extern "C" int _Z17IsInRange0201b5b0i(int id);
 void ClearHalfword0x18(void* obj);
@@ -16,7 +17,6 @@ extern "C" void _Z20Clear12Bytes0206efc4Pv(void* obj);
 struct ZeroWordAndByte0206ee60Struct;
 extern "C" void _Z23ZeroWordAndByte0206ee60P29ZeroWordAndByte0206ee60Struct(struct ZeroWordAndByte0206ee60Struct* obj);
 extern "C" void _Z20Clear12Bytes020a8e88Pv(void* obj);
-extern "C" void func_0201a300(char* zone, int floor, void* monster, int a, int b);
 
 extern const char data_ov017_021d7afc[];
 extern const char data_ov017_021d7b06[];
@@ -33,19 +33,11 @@ struct MonsterEntry021b478c {
 struct SearchTable;
 MonsterEntry021b478c* FindEntryByHalfwordKey(struct SearchTable* table, int key);
 
-struct Monster021b478c {
-    unsigned short id;
-    unsigned char pad2[0xc - 2];
-    unsigned char loaded;
-    unsigned char padd[0x10 - 0xd];
-    SafeAllocator* allocator;
-};
-
 struct Request021b478c {
     unsigned char pad0;
     unsigned char done;
     unsigned char pad2[8 - 2];
-    Monster021b478c* monster;
+    GrottoTileOwner0201a300* monster;
     int taskId;
     unsigned char state;
 };
@@ -60,7 +52,7 @@ extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
     GameState* battle;
     BackgroundLoader* loader;
     struct SearchTable* table;
-    char* zone;
+    Zone3D* zone;
     int id;
     MonsterEntry021b478c* entry;
     char* monster;
@@ -70,8 +62,8 @@ extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
     loader = BackgroundLoader::GetInstance();
     table = (struct SearchTable*)GetPtrField0x468(battle);
     zone = func_02012fe4();
-    grotto = (ActiveGrottoClass*)(zone + regionalOffset0);
-    id = request->monster->id;
+    grotto = &zone->grotto_;
+    id = request->monster->zoneId;
     entry = FindEntryByHalfwordKey(table, id);
 
     monster = (char*)request->monster;
@@ -82,7 +74,7 @@ extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
     _Z23ZeroWordAndByte0206ee60P29ZeroWordAndByte0206ee60Struct((struct ZeroWordAndByte0206ee60Struct*)(monster + regionalOffset5));
     _Z20Clear12Bytes020a8e88Pv(monster + regionalOffset6);
 
-    if (request->monster->id == 3 || request->monster->allocator->GetSignedAllocator() == NULL) {
+    if (request->monster->zoneId == 3 || request->monster->allocator->GetSignedAllocator() == NULL) {
         request->done = 1;
         return;
     }
@@ -112,7 +104,7 @@ extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
 
     if (_Z17IsInRange0201b5b0i(id)) {
         int floor = id % 20;
-        if (grotto->floorMap_.pMapData == NULL || *(int*)(zone + regionalOffset7) != 0) {
+        if (grotto->floorMap_.pMapData == NULL || zone->unknown_424_ != 0) {
             return;
         }
         func_0201a300(zone, floor, request->monster, 0, 0);

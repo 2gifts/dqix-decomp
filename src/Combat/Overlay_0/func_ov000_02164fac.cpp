@@ -5,6 +5,7 @@ extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 #include "Filesystem/FileIO.h"
 #include "Filesystem/GPC.h"
 #include "GameState/GameState.h"
+#include "Resource/ActionDataTables.h"
 
 struct StreamHeader;
 struct Foo0207df50;
@@ -15,8 +16,7 @@ struct State0207dfc8;
 extern "C" GameResources* func_ov017_0218b5b0();
 extern "C" void* func_0202ae18(void);
 extern "C" void func_02012de8(void);
-void* GetData02108e10(void);
-extern "C" void func_02079cf8(void* obj, void* a1, void* a2);
+
 extern "C" void _Z24RunOverlayScript0216d1c4iP12StreamHeaderiPi(int, StreamHeader*, int, int*);
 int CheckField0NonZero(int* obj);
 extern "C" void _Z21BlankFunction020d84f4v(void);
@@ -112,7 +112,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
     _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)&blocks[7]);
     BackgroundLoader::AddLockGlobal();
     func_02012de8();
-    void* table = GetData02108e10();
+    ActionDataTables* table = GetData02108e10();
     work->tableAllocator.Reset();
     func_02079cf8(table, allocator, &work->tableAllocator);
     func_02012de8();

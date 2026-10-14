@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include <Resource/IndexedResourceEntry.h>
 #include "Resource/FontBankLoader.h"
 #include "std_library_functions.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -138,7 +139,6 @@ extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
 void* GetData02108ea8(void);
 extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
 
-extern "C" void* _Z24GetIndexedEntry_021a11f4Phi(unsigned char* base, int idx);
 void SetByteField0x253(void* obj);
 
 struct Obj02053f7c;
@@ -307,7 +307,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
 
         SafeAllocator* alloc3 = GetAllocator38((GameResources*)ovBase, 3);
         Slot70* slot3 = GetSlot2cc((GameResources*)ovBase, 3);
-        func_020542b4(_Z24GetIndexedEntry_021a11f4Phi((unsigned char*)ovBase, 2), alloc3, slot3);
+        func_020542b4(GetIndexedEntry_021a11f4((GameResources*)ovBase, 2), alloc3, slot3);
         *(int*)((char*)LightingManager::GetInstance() + 0x98) = 2;
     }
 

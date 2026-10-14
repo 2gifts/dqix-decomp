@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Combat/MapDisplay.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
@@ -9,7 +10,6 @@ extern "C" char* func_0203bd08(void);
 ARM void* GetData02105254(void);
 
 extern "C" void func_02021428(void* unused0, int amount);
-extern "C" void func_02020720(char* obj);
 void InitSubScreenDisplay(void* context);
 extern "C" void _Z19TailForward0203b66cPc(char* obj);
 extern "C" void _Z21InitSubObject0203bd78Pc(char* obj);
@@ -22,15 +22,9 @@ extern "C" int _Z28DispatchCharTransfer0203b784Piiiijj(int* arr1, int idx, int c
 extern "C" void _Z24SetArraySlotFlag0203b718Pviii(void* objPtr, int mode, int idx, int fillByte);
 extern "C" void func_0203ba74(void* obj);
 
-struct Struct0205a198 { char pad[0x28]; };
 extern "C" void _Z12Init0205a198P14Struct0205a198(struct Struct0205a198* p);
 extern "C" void _Z18InitStruct0205a444Pc(char* obj);
 
-#if defined(jpn)
-extern "C" void func_02020aec(char* self, int handle, int arg2);
-#else
-extern "C" void func_02020aec(char* self, int* handle, int arg2);
-#endif
 extern "C" void _Z26InitFourEntrySlots02020aa0Pv(void* obj);
 
 struct State0xbb1c;
@@ -96,48 +90,9 @@ struct Global020fdc4c_020227dc {
 };
 extern struct Global020fdc4c_020227dc data_020fdc4c;
 
-struct Obj020227dc {
-    char pad0[0x2];
-    char nameBuf[1];
-    char pad1[0x12 - 0x3];
-    unsigned char field0x12;
-    char pad2[0x14 - 0x13];
-    int field0x14;
-    char pad3[0x20 - 0x18];
-    void* field0x20;
-    int field0x24;
-    char pad4[0x30 - 0x28];
-    int field0x30;
-    char pad5[0x94 - 0x34];
-    char field0x94[1];
-    char pad6[0xd4 - 0x95];
-    struct Struct0205a198* field0xd4;
-    char pad7[0xe0 - 0xd8];
-    unsigned short field0xe0;
-    char pad7b[0xe4 - 0xe2];
-    unsigned char field0xe4;
-    char pad8[0xe8 - 0xe5];
-    struct Struct0205a198 arr_e8[0x1c];
-    char pad9[0x55c - 0x548];
-    unsigned char field0x55c;
-    char pad10[0x779 - ContextTailRegionOffset - 0x55d];
-    unsigned char field0x779;
-    char pad11[0x9ba - 0x77a];
-    unsigned char field0x9ba;
-    char pad12[0x9c2 - 0x9bb];
-    signed char initState;
-    unsigned char field0x9c3;
-    unsigned char field0x9c4;
-    char pad13[0x9c8 - 0x9c5];
-    unsigned char field0x9c8;
-    char pad14[0xa20 - 0x9c9];
-    int taskA20;
-    int taskA24;
-    int taskA28;
-};
 
 // USA: func_020227dc
-extern "C" ARM void func_020227dc(struct Obj020227dc* ctx) {
+extern "C" ARM void func_020227dc(MapDisplay* ctx) {
     GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     unsigned short* p6 = func_02012fe4();
@@ -147,26 +102,26 @@ extern "C" ARM void func_020227dc(struct Obj020227dc* ctx) {
     int i;
     SafeAllocator* sb = (SafeAllocator*)(axisObj + 0x128);
 
-    if (ctx->initState == 0) {
+    if (ctx->loadStage == 0) {
         func_02021428(ctx, 0x19);
         loader->AddFence();
-        ctx->taskA24 = loader->QueueLoadFile(&data_020ef67c, 0);
-        ctx->taskA20 = loader->QueueLoadFileInGP2((const char*)(*(int*)((char*)&data_020ef460 + 8 - GlobalHeaderRegionOffset)), &data_020ef692, 0);
-        ctx->taskA28 = loader->QueueLoadFile(&data_020ef69f, 0);
-        ctx->initState = ctx->initState + 1;
+        ctx->taska24 = loader->QueueLoadFile(&data_020ef67c, 0);
+        ctx->taska20 = loader->QueueLoadFileInGP2((const char*)(*(int*)((char*)&data_020ef460 + 8 - GlobalHeaderRegionOffset)), &data_020ef692, 0);
+        ctx->taska28 = loader->QueueLoadFile(&data_020ef69f, 0);
+        ctx->loadStage = ctx->loadStage + 1;
         return;
     }
 
-    if (ctx->initState != 1) return;
+    if (ctx->loadStage != 1) return;
 
-    if (loader->GetTaskStatus(ctx->taskA24) == 0) return;
-    if (loader->GetTaskStatus(ctx->taskA20) == 0) return;
-    if (loader->GetTaskStatus(ctx->taskA28) == 0) return;
+    if (loader->GetTaskStatus(ctx->taska24) == 0) return;
+    if (loader->GetTaskStatus(ctx->taska20) == 0) return;
+    if (loader->GetTaskStatus(ctx->taska28) == 0) return;
 
     func_02021428(ctx, 0x19);
     if (IsAxisIntWithin16((struct AxisFloats0203b5a0*)axisObj, 1) != 0) return;
 
-    func_02020720((char*)ctx);
+    func_02020720(ctx);
     InitSubScreenDisplay(ctx);
     _Z19TailForward0203b66cPc((char*)dataPtr);
     sb->Reset();
@@ -181,38 +136,38 @@ extern "C" ARM void func_020227dc(struct Obj020227dc* ctx) {
     func_0203ba74(dataPtr);
 
     for (i = 0; i < 0x1c; i++) {
-        _Z12Init0205a198P14Struct0205a198(&ctx->arr_e8[i]);
+        _Z12Init0205a198P14Struct0205a198(&ctx->records[i]);
     }
 
-    _Z18InitStruct0205a444Pc(ctx->field0x94);
-    ctx->field0xe4 = 1;
-    ctx->field0xd4 = ctx->arr_e8;
-    ctx->field0xe0 = 0x1c;
-    ctx->field0x14 = 1;
+    _Z18InitStruct0205a444Pc((char*)&ctx->entryList);
+    ctx->entryList.active = 1;
+    ctx->entryList.records = ctx->records;
+    ctx->entryList.count = 0x1c;
+    ctx->displayMode = 1;
 #if defined(jpn)
-    func_02020aec((char*)ctx, ctx->taskA24, (int)sb);
+    func_02020aec(ctx, ctx->taska24, sb);
 #else
-    func_02020aec((char*)ctx, &ctx->taskA24, (int)sb);
+    func_02020aec(ctx, &ctx->taska24, sb);
 #endif
 
     _Z26InitFourEntrySlots02020aa0Pv(ctx);
-    ctx->field0x24 = 1;
-    ctx->field0x30 = 1;
+    ctx->nameCount = 1;
+    ctx->forwardingCount = 1;
 
     void* fileData = 0;
     unsigned int fileSize = 0;
-    loader->GetLoadedFileByID(ctx->taskA20, &fileData, &fileSize);
+    loader->GetLoadedFileByID(ctx->taska20, &fileData, &fileSize);
 
-    ctx->field0x20 = sb->Allocate(0x24);
-    ClearFields0x8((struct State0xbb1c*)((char*)ctx->field0x20 + 8));
+    ctx->names = (Entry02021578*)sb->Allocate(sizeof(Entry02021578));
+    ClearFields0x8((struct State0xbb1c*)((char*)ctx->names + 8));
 
-    _Z36SetupAndDispatchCharTransfer0203bb3cP11Obj0203bb3cPcP13SafeAllocatorit((struct Obj0203bb3c*)((char*)ctx->field0x20 + 8), (char*)fileData, sb, 1, 0);
-    ForwardParamsToB8bc((struct Bcb8Params*)((char*)ctx->field0x20 + 8), 0, 0);
+    _Z36SetupAndDispatchCharTransfer0203bb3cP11Obj0203bb3cPcP13SafeAllocatorit((struct Obj0203bb3c*)((char*)ctx->names + 8), (char*)fileData, sb, 1, 0);
+    ForwardParamsToB8bc((struct Bcb8Params*)((char*)ctx->names + 8), 0, 0);
 
-    BackgroundLoader::GetInstance()->RemoveTask(ctx->taskA20);
-    ctx->taskA20 = -1;
+    BackgroundLoader::GetInstance()->RemoveTask(ctx->taska20);
+    ctx->taska20 = -1;
 
-    loader->GetLoadedFileByID(ctx->taskA28, &fileData, &fileSize);
+    loader->GetLoadedFileByID(ctx->taska28, &fileData, &fileSize);
 
     struct ResetStruct local;
     data_020fdc4c.ctxPtr = ctx;
@@ -223,24 +178,25 @@ extern "C" ARM void func_020227dc(struct Obj020227dc* ctx) {
     _ZN6Script7ExecuteEv((struct Struct02030774*)&local);
 
     if (*p6 == 10000 || *p6 == 10100) {
-        ctx->field0x12 = 1;
-        ctx->field0x779 = 0;
-        ctx->field0x9ba = 0;
-        strcpy(ctx->nameBuf, &data_020ef6b5);
+        ctx->field12 = 1;
+        ctx->refreshRecords = 0;
+        ctx->field9ba = 0;
+        strcpy(ctx->headerName, &data_020ef6b5);
     }
 
-    BackgroundLoader::GetInstance()->RemoveTask(ctx->taskA28);
-    ctx->taskA28 = -1;
+    BackgroundLoader::GetInstance()->RemoveTask(ctx->taska28);
+    ctx->taska28 = -1;
 
     func_0202445c(ctx);
     func_ov017_02191234(axisObj);
-    ctx->field0x55c = 1;
-    ctx->field0x9c4 = 1;
-    ctx->field0x9c8 = 0;
-    ctx->field0x9c3 = 0;
-    ctx->initState = ctx->initState + 1;
+    ctx->forwardingPending = 1;
+    ctx->field9c4 = 1;
+    ctx->field9c8 = 0;
+    ctx->field9c3 = 0;
+    ctx->loadStage = ctx->loadStage + 1;
     DelayThenSyncBit0();
     func_0202343c(ctx);
     _Z32MarkActiveCombatantSlots02026b7cPh((unsigned char*)ctx);
     func_02026bdc(ctx, 0);
 }
+

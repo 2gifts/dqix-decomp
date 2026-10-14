@@ -72,6 +72,10 @@ extern "C" void func_020dfec0(void*, SafeAllocator*, void*, unsigned int);
 extern "C" void func_0208bf78(Object_0208cb08*);
 extern char data_020f11a2[], data_020f11b3[], data_020f11c0[], data_020f11da[];
 
+#if defined(jpn)
+extern char data_020f129e[], data_020f12b2[];
+#endif
+
 // USA: func_0208cb08
 extern "C" ARM void func_0208cb08(Object_0208cb08* object) {
     if (object->target < 0) return;
@@ -114,7 +118,11 @@ extern "C" ARM void func_0208cb08(Object_0208cb08* object) {
         object->pending = 1;
         object->source = object->filename;
         object->format = 3;
+#if defined(jpn)
+        object->taskId = loader->QueueLoadFile(data_020f129e, 0);
+#else
         object->taskId = loader->QueueLoadFileInGP2(data_020f11a2, data_020f11b3, 0);
+#endif
         ++object->state;
     } else if (object->state == 4) {
         if (!loader->GetTaskStatus(object->taskId)) return;
@@ -136,7 +144,11 @@ extern "C" ARM void func_0208cb08(Object_0208cb08* object) {
         object->taskId = -1;
         ++object->state;
     } else if (object->state == 5) {
+#if defined(jpn)
+        object->taskId = loader->QueueLoadFile(data_020f12b2, 0);
+#else
         object->taskId = loader->QueueLoadFileInGP2(data_020f11c0, data_020f11da, 0);
+#endif
         ++object->state;
     } else if (object->state == 6) {
         if (!loader->GetTaskStatus(object->taskId)) return;

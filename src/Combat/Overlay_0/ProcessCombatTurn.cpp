@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -100,7 +101,7 @@ struct Big { char buf[0x678]; };
 
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" Combatant* _ZN9GameState19GetCombatantByIndexEi(void* gs, int id);
-extern "C" char* _Z15GetData02108e10v(void);
+
 extern "C" int func_ov000_02153e40(void* obj, short* buf, int max, int start);
 extern "C" void _Z21UpdateCombatantAttackii(void* self, int id);
 extern "C" void _Z22UpdateCombatantDefenseii(void* self, int id);
@@ -178,7 +179,7 @@ static inline Combatant* GetFlagged0x400(int id) {
 extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
     long j;
     void* gs = _ZN9GameState11GetInstanceEv();
-    char* data = _Z15GetData02108e10v();
+    ActionDataTables* data = GetData02108e10();
     IdList ids = data_ov000_02182d34;
     long count = func_ov000_02153e40(self, ids.v, 0x10, 1);
 
@@ -346,7 +347,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     int work;
                     _Z16ClearInt0208a910Pi(&work);
                     node->action = func_0208a91c(&work, self, (unsigned short)node->entry->id, &numTargets, targets.v);
-                    SkillData* sk = _Z24SearchBothTables02079e2cPci(data, (short)node->action);
+                    SkillData* sk = _Z24SearchBothTables02079e2cPci((char*)data, (short)node->action);
                     if (sk != 0) {
                         while (sk->type == 0x22) {
                             void* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(self->field8e18 + 0x684, sk->linked);
@@ -357,7 +358,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                             memset(targets.v, -1, sizeof(targets));
                             numTargets = 0;
                             node->action = func_0208a91c(&work, self, (unsigned short)node->entry->id, &numTargets, targets.v);
-                            sk = _Z24SearchBothTables02079e2cPci(data, (short)node->action);
+                            sk = _Z24SearchBothTables02079e2cPci((char*)data, (short)node->action);
                             if (sk == 0) {
                                 break;
                             }
@@ -407,7 +408,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     int work2;
                     _Z16ClearInt0208a910Pi(&work2);
                     node2->action = func_0208a91c(&work2, self, (unsigned short)node2->entry->id, &numTargets2, targets2.v);
-                    SkillData* sk = _Z24SearchBothTables02079e2cPci(data, (short)node2->action);
+                    SkillData* sk = _Z24SearchBothTables02079e2cPci((char*)data, (short)node2->action);
                     if (sk != 0) {
                         while (sk->type == 0x22) {
                             void* e = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(self->field8e18 + 0x684, sk->linked);
@@ -418,7 +419,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                             memset(targets2.v, -1, sizeof(targets2));
                             numTargets2 = 0;
                             node2->action = func_0208a91c(&work2, self, (unsigned short)node2->entry->id, &numTargets2, targets2.v);
-                            sk = _Z24SearchBothTables02079e2cPci(data, (short)node2->action);
+                            sk = _Z24SearchBothTables02079e2cPci((char*)data, (short)node2->action);
                             if (sk == 0) {
                                 break;
                             }
@@ -518,7 +519,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
             continue;
         }
 
-        SkillData* sk = _Z24SearchBothTables02079e2cPci(_Z15GetData02108e10v(), (short)w->action);
+        SkillData* sk = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), (short)w->action);
         int again = 1;
         if (sk != 0 && (sk->flags & 0x400) && sk->kind != 0x1c) {
             ActionNode* echo = &self->actions[0x47];

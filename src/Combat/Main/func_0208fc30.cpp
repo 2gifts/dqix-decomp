@@ -2,6 +2,10 @@
 #include "GameState/GameState.h"
 #include "Grotto/Main/ActiveGrottoClass.h"
 #include "Resource/GameResources.h"
+#if defined(jpn)
+#include "std_library_functions.h"
+extern const char data_020f1438[];
+#endif
 
 struct ZoneState { unsigned short zoneId; unsigned short nextZoneId; };
 struct TailList020469b4;
@@ -24,8 +28,20 @@ extern "C" void _Z15InitObj021beba4Pc(char*);
 extern "C" int _Z17IsInRange0201b588i(int);
 void* GetField0x3f8Address(GameState* battleStruct);
 
+// JPN: func_02090544
 // USA: func_0208fc30
 extern "C" ARM void func_0208fc30(ActiveGrottoClass* obj) {
+#if defined(jpn)
+    unsigned char* state;
+    GameResources* resources;
+    bool changed;
+    int* session;
+    const char* requiredNamePart;
+    int nextZoneId;
+    struct TailList020469b4* list;
+    int zoneId;
+    void* node;
+#else
     int* session;
     unsigned char* state;
     GameResources* resources;
@@ -33,6 +49,7 @@ extern "C" ARM void func_0208fc30(ActiveGrottoClass* obj) {
     int zoneId;
     int nextZoneId;
     struct TailList020469b4* list;
+#endif
     ZoneState* zone = func_02012fe4();
     zoneId = zone->zoneId;
     nextZoneId = zone->nextZoneId;
@@ -42,17 +59,30 @@ extern "C" ARM void func_0208fc30(ActiveGrottoClass* obj) {
     GetField0x3f8Address(game);
     resources = func_ov017_0218b5b0();
     list = (struct TailList020469b4*)resources->unknown_ptr_array_36fc[0];
+#if !defined(jpn)
     grotto = game->GetGrottoStruct();
+#endif
 
     if (_Z17IsInRange0201b588i(zoneId) && !_Z17IsInRange0201b588i(nextZoneId) &&
         (nextZoneId < 0x7530 || nextZoneId > 0x9c3f)) {
+#if defined(jpn)
+        changed = false;
+#else
         void* node;
         bool changed = false;
+#endif
         if (func_0202c508(session)) {
             node = resources->unknown_ptr_array_371c[6];
             func_ov017_021baedc(node, 1);
             struct FindEntryById02096134Table* table = GetGlobal02109418();
-            if (*(unsigned short*)grotto->unk_a == 6 && TestBitInByteArray((int)state, state + 0x8c, 0x12) &&
+#if defined(jpn)
+            requiredNamePart = "\x96\xb2";
+            const char* popupName = obj->GetPopupName();
+            if (strstr(popupName, requiredNamePart) != NULL &&
+#else
+            if (*(unsigned short*)grotto->unk_a == 6 &&
+#endif
+                TestBitInByteArray((int)state, state + 0x8c, 0x12) &&
                 !TestBitInByteArray((int)state, state + 0x8c, 0x2d) &&
                 !_Z21FindEntryById02096134P26FindEntryById02096134Tablei(table, 0xae)->b14) {
                 ((struct GrottoListNode*)node)->h8 = 0x5105;
@@ -69,17 +99,17 @@ extern "C" ARM void func_0208fc30(ActiveGrottoClass* obj) {
                 SetOrClearBitInArray(state, state + 0x8c, 0x2e, 1);
             }
         }
-        if (!changed && ((unsigned char*)obj)[0x260] == 0) {
+        if (!changed && (unsigned char)obj->unknown_260_[0] == 0) {
             void* node = resources->unknown_ptr_array_3afc[28];
             _Z15InitObj021beba4Pc((char*)node);
             AppendNodeToTail(list, (struct TailNode020469b4*)node);
         }
     } else {
-        if (((unsigned char*)obj)[0x261] != 0) {
+        if ((unsigned char)obj->unknown_260_[1] != 0) {
             void* node = resources->unknown_ptr_array_3afc[28];
             _Z15InitObj021beba4Pc((char*)node);
             AppendNodeToTail(list, (struct TailNode020469b4*)node);
-            ((unsigned char*)obj)[0x261] = 0;
+            obj->unknown_260_[1] = 0;
         }
     }
 }

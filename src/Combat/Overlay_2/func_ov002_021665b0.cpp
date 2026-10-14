@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -96,7 +97,6 @@ struct Slot_021665b0 {
 };
 
 extern "C" void _Z22InitStateArray02157ce0Pc(Cmd_021665b0* cmd);
-extern "C" char* _Z15GetData02108e10v(void);
 extern "C" void func_ov002_0215b814(Menu_021665b0* self);
 extern "C" Unit_021665b0* _Z19GetCombatantCheckedP9GameStatei(GameState* gs, int id);
 extern "C" Unit_021665b0* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
@@ -130,7 +130,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
     Field_021665b0* field;
     Unit_021665b0* unit;
     _Z22InitStateArray02157ce0Pc(&cmd);
-    char* data = _Z15GetData02108e10v();
+    ActionDataTables* data = GetData02108e10();
     signed char n = self->count - 1;
     short* maxHp = self->maxHp;
     short* hp = self->hp;
@@ -229,7 +229,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                         continue;
                     }
                     Unit_021665b0* caster = _Z19GetCombatantCheckedP9GameStatei(gs, other);
-                    if (_Z32ClampAndCompareThreshold02048448P14Struct02048448i(caster, (unsigned short)_Z24SearchBothTables02079e2cPci(data, 0x23)->power)) {
+                    if (_Z32ClampAndCompareThreshold02048448P14Struct02048448i(caster, (unsigned short)_Z24SearchBothTables02079e2cPci((char*)data, 0x23)->power)) {
                         found = 1;
                         break;
                     }
@@ -369,7 +369,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         }
         char* table;
         func_ov002_021536e0(&table);
-        table = data;
+        table = (char*)data;
         int k;
         int i;
         for (i = 0, k = 0x1a; i < 5; i++, k++) {
@@ -385,8 +385,8 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                 continue;
             }
             cmd.key = i + 0x1e;
-            Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci(data, cmd.key);
-            void* sub = _Z26LookupElementByKey02079ee0Pvi(data, elem->key);
+            Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci((char*)data, cmd.key);
+            void* sub = _Z26LookupElementByKey02079ee0Pvi((char*)data, elem->key);
             self->pairs[i].value = func_ov002_021538e4(&table, elem, sub, cmd.target);
             self->pairs[i].key = cmd.key;
         }
@@ -434,7 +434,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
                         continue;
                     }
                     cmd.key = 0x23;
-                    Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci(data, cmd.key);
+                    Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci((char*)data, cmd.key);
                     Unit_021665b0* caster = _Z19GetCombatantCheckedP9GameStatei(gs, self->order[t].id);
                     if (!_Z32ClampAndCompareThreshold02048448P14Struct02048448i(caster, (unsigned short)elem->power)) {
                         t++;
@@ -507,7 +507,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         Unit_021665b0* healer = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, target);
         if (_Z18GetBitInArray0x910Phi(_Z15GetFieldAt0x150Ph(healer), 0x1e) && self->pairs[4].key > 0) {
             cmd.key = 0x22;
-            if (_Z32ClampAndCompareThreshold02048448P14Struct02048448i(healer, (unsigned short)_Z24SearchBothTables02079e2cPci(data, 0x22)->power)) {
+            if (_Z32ClampAndCompareThreshold02048448P14Struct02048448i(healer, (unsigned short)_Z24SearchBothTables02079e2cPci((char*)data, 0x22)->power)) {
                 small = self->pairs[0].value;
                 short mid = self->pairs[1].value;
                 large = self->pairs[2].value;
@@ -622,7 +622,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         }
         done = 0;
         while (!done) {
-            Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci(data, self->key);
+            Elem_021665b0* elem = _Z24SearchBothTables02079e2cPci((char*)data, self->key);
             Unit_021665b0* caster = _Z19GetCombatantCheckedP9GameStatei(gs, target);
             if (caster == NULL || elem == NULL) {
                 continue;

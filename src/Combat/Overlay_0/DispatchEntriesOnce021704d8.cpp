@@ -2,43 +2,51 @@
 
 struct Struct0203c1c8 {
 #if defined(jpn)
-    char pad0[0x14];
+    short textSlots[10];
 #endif
-    int field0;
-    int field4;
+    int x;
+    int y;
 #if defined(jpn)
-    char pad1c[8];
+    int lineHeight;
+    int characterAdvance;
 #endif
-    int field8;
-    int fieldc;
-    int field10;
-    short field14;
+    int paletteOffset;
+    int alignment;
+    int priority;
+#if defined(jpn)
+    signed int affineIndex : 16;
+    unsigned int unknown32 : 8;
+    unsigned int unknown33 : 8;
+    int affineMode;
+#else
+    short entryIndex;
+#endif
 };
 
 #if defined(jpn)
-extern "C" void _Z30AdjustAndDispatchEntry0203c1c8P14Struct0203c1c8(struct Struct0203c1c8* obj, int mode);
+void AdjustAndDispatchEntry0203c1c8(Struct0203c1c8* obj, int count);
 #define REGION_COUNT 2
 #else
-void AdjustAndDispatchEntry0203c1c8(struct Struct0203c1c8* obj);
+void AdjustAndDispatchEntry0203c1c8(Struct0203c1c8* obj);
 #define REGION_COUNT 1
 #endif
 
 // USA: func_ov000_021704d8
-ARM void DispatchEntriesOnce021704d8(struct Struct0203c1c8* obj, int* arr1, int* arr2, int* arr3) {
-    obj->fieldc = 2;
-    obj->field10 = 1;
+ARM void DispatchEntriesOnce021704d8(Struct0203c1c8* obj, int* arr1, int* arr2, int* arr3) {
+    obj->alignment = 2;
+    obj->priority = 1;
     int i;
     for (i = 0; i < REGION_COUNT; i++) {
         int v0 = arr1[i];
         int v4 = arr2[i];
-        obj->field0 = v0;
-        obj->field4 = v4;
-        obj->field8 = arr3[i];
+        obj->x = v0;
+        obj->y = v4;
+        obj->paletteOffset = arr3[i];
 #if defined(jpn)
-        _Z30AdjustAndDispatchEntry0203c1c8P14Struct0203c1c8(obj, 10);
+        AdjustAndDispatchEntry0203c1c8(obj, 10);
 #else
         AdjustAndDispatchEntry0203c1c8(obj);
 #endif
     }
-    obj->field8 = 0;
+    obj->paletteOffset = 0;
 }

@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <GameState/GameState.h>
+#include <Resource/IndexedResourceEntry.h>
 
 extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 void* LoadFileIntoMemory(const char* path, void* buffer, unsigned int* outLength);
@@ -72,7 +73,6 @@ struct PartyLog02166e5c {
 struct RegionCode02166e5c { unsigned char bytes[4]; };
 
 extern "C" GameResources* func_ov017_0218b5b0();
-extern "C" T020545b8* _Z24GetIndexedEntry_021a11f4Phi(GameResources*, int);
 extern "C" void _Z25DestroyAllocators020545b8P9T020545b8(T020545b8*);
 extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(InternalBlock02166e5c*);
 extern "C" void _Z25RestorePairTables0207df90Pc(char*);
@@ -112,7 +112,7 @@ extern "C" ARM void func_ov000_02166e5c(BattleWork02166e5c* self) {
     GameResources* resources = func_ov017_0218b5b0();
     SafeAllocator* allocator = &resources->allocator_array_38[3];
     blocks = (InternalBlock02166e5c*)resources->unknown_2cc;
-    _Z25DestroyAllocators020545b8P9T020545b8(_Z24GetIndexedEntry_021a11f4Phi(resources, 2));
+    _Z25DestroyAllocators020545b8P9T020545b8((T020545b8*)GetIndexedEntry_021a11f4(resources, 2));
     allocator->Reset();
     _Z26CopyInternalFields0207df50P11Foo0207df50(&blocks[3]);
     _Z25RestorePairTables0207df90Pc(blocks[3].bytes);

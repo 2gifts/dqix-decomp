@@ -1,8 +1,8 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
 extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" void* _Z15GetData02108e10v();
 extern "C" void* _Z19GetActiveCombatWorkv();
 extern "C" void* _Z18GetSlotPtr02160f20Pv(void* work);
 extern "C" void* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int idx);
@@ -114,7 +114,7 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
     int in;
     int kb;
     void* gs = _ZN9GameState11GetInstanceEv();
-    void* data = _Z15GetData02108e10v();
+    ActionDataTables* data = GetData02108e10();
     void* work = _Z19GetActiveCombatWorkv();
     Slot* slot = (Slot*)_Z18GetSlotPtr02160f20Pv(work);
     *(char**)self = arg;

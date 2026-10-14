@@ -4,6 +4,13 @@
 #include "System/LoadToVRAM.h"
 #include <std_library_functions.h>
 
+#if defined(jpn)
+#define REGION(j,u) (j)
+#define data_ov023_021fd565 data_ov023_021fc854
+#else
+#define REGION(j,u) (u)
+#endif
+
 struct ParentFlags021dc520 { int field0; unsigned int unknown0:27; unsigned int first:1; unsigned int second:1; unsigned int unknown1:3; };
 struct Obj020dee58 { ParentFlags021dc520* parent; int field4; unsigned int lowNibble:4; unsigned int midField:5; unsigned int rowCount:3; unsigned int unknown:20; };
 struct Struct02075db0 { char pad0[0x14]; void* objects; char pad18[0xc]; int** rows; char pad28[0x34]; unsigned short field5c; char pad5e[2]; int columnIndex, rowIndex; };
@@ -15,10 +22,10 @@ struct View021dc520 {
     Obj020dee58* selection;
     char pad50[0x74];
     Struct02075db0* table;
-    char padc8[0x64];
+    char padc8[REGION(0x60,0x64)];
     SpriteContext0205ac40 renderer;
     B174Outer sprites[30];
-    char pad630[0x144];
+    char pad630[REGION(0xc4,0x144)];
     unsigned short flags;
     char pad776[5];
     signed char mode, subScreen;
@@ -80,7 +87,7 @@ extern "C" ARM void func_ov023_021dc520(View021dc520* view) {
                 else if (style == 2) sprite = &view->sprites[27];
                 else sprite = &view->sprites[28];
                 int y = (gauge->y + 10) << 12;
-                int x = (gauge->x + 202) << 12;
+                int x = (gauge->x + REGION(190,202)) << 12;
                 sprite->position[0] = x;
                 sprite->position[1] = y;
                 sprite->firstObject = i + 0x48;
@@ -89,7 +96,7 @@ extern "C" ARM void func_ov023_021dc520(View021dc520* view) {
         }
     }
     if (!(view->flags & 0x1000)) {
-        int x = 203;
+        int x = REGION(191,203);
         unsigned char index = 0;
         while (index < view->selection->rowCount) {
             sprite = &view->sprites[21];
@@ -126,7 +133,7 @@ extern "C" ARM void func_ov023_021dc520(View021dc520* view) {
     }
     int lookup = LookupValueFromField8(view->selection);
     sprite = &view->sprites[lookup + 1];
-    sprite->position[0] = 0x10000;
+    sprite->position[0] = REGION(0x18000,0x10000);
     sprite->position[1] = 0x8000;
     sprite->firstObject = 0x52;
     func_0205ac40(&view->renderer, sprite);
@@ -140,7 +147,7 @@ extern "C" ARM void func_ov023_021dc520(View021dc520* view) {
         unsigned char indicator = data_ov023_021fd565[first][second];
         if (indicator) {
             sprite = &view->sprites[indicator];
-            sprite->position[0] = 0x90000;
+            sprite->position[0] = REGION(0x9a000,0x90000);
             sprite->position[1] = 0x8000;
             sprite->firstObject = 0x53;
             func_0205ac40(&view->renderer, sprite);

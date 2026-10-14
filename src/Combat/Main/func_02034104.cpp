@@ -1,61 +1,52 @@
 #include <globaldefs.h>
 #include "Combat/SearchEntry.h"
+#include "Graphics/Vector.h"
+#include "World/Object3D.h"
+#include "Resource/GameResources.h"
 
 extern "C" void* func_0202ae18(void);
-extern "C" int func_ov017_0218b5b0(void);
 int CheckField0NonZero(int* obj);
 extern "C" int func_0202c508(void* obj);
 struct SearchStruct;
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
-struct Vec3s02030fc8 {
-    signed short x;
-    signed short y;
-    signed short z;
-};
-extern "C" void _Z16Vector3fix16CopyP8Vector3sPKS_(struct Vec3s02030fc8* dst, struct Vec3s02030fc8* src);
-
-struct Vec3Int_02034104 {
-    int v[3];
-};
-
 struct FlagsByte0xc1_02034104 {
     unsigned char lowBits2 : 2;
 };
 
 // USA: func_02034104
-extern "C" ARM void func_02034104(Vec3Int_02034104* dst, void* obj) {
+extern "C" ARM Vector3fix func_02034104(void* obj) {
+    Object3D* object = (Object3D*)obj;
     void* thing = func_0202ae18();
     func_ov017_0218b5b0();
     if (CheckField0NonZero((int*)thing)) {
         if (func_0202c508(thing)) {
-            short field4 = *(short*)((char*)obj + 4);
+            short field4 = object->unknown_4_;
             if (GetEntryBySignedByteIndex((struct SearchStruct*)thing, field4)) {
-                field4 = *(short*)((char*)obj + 4);
+                field4 = object->unknown_4_;
                 signed char cur = GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)thing);
                 if (cur != field4) {
                     FlagsByte0xc1_02034104* flags = (FlagsByte0xc1_02034104*)((char*)obj + 0xc1);
                     if (flags->lowBits2 & 1) {
-                        field4 = *(short*)((char*)obj + 4);
-                        void* entry = GetEntryBySignedByteIndex((struct SearchStruct*)thing, field4);
-                        Vec3s02030fc8 tmp;
+                        field4 = object->unknown_4_;
+                        SearchEntry0202c178* entry = GetEntryBySignedByteIndex((struct SearchStruct*)thing, field4);
+                        Vector3fix16 tmp;
 #if defined(jpn)
-                        tmp.x = *(short*)((char*)entry + 8);
-                        tmp.y = *(short*)((char*)entry + 10);
-                        tmp.z = *(short*)((char*)entry + 12);
+                        tmp.x = entry->x;
+                        tmp.y = entry->y;
+                        tmp.z = entry->z;
 #else
-                        _Z16Vector3fix16CopyP8Vector3sPKS_(&tmp, (struct Vec3s02030fc8*)((char*)entry + 8));
+                        Vector3fix16Copy(&tmp, (const Vector3fix16*)&entry->x);
 #endif
-                        Vec3Int_02034104 scaled;
-                        scaled.v[0] = tmp.x << 7;
-                        scaled.v[1] = tmp.y << 7;
-                        scaled.v[2] = tmp.z << 7;
-                        *dst = scaled;
-                        return;
+                        Vector3fix scaled;
+                        scaled.x = tmp.x << 7;
+                        scaled.y = tmp.y << 7;
+                        scaled.z = tmp.z << 7;
+                        return scaled;
                     }
                 }
             }
         }
     }
-    *dst = *(Vec3Int_02034104*)((char*)obj + 0x44);
+    return object->position_;
 }

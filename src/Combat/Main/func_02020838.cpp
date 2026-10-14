@@ -1,6 +1,8 @@
 #include <globaldefs.h>
+#include "Combat/MapDisplay.h"
+#include "World/Zone3D.h"
 
-extern "C" void* func_02012fe4(void);
+extern "C" Zone3D* func_02012fe4(void);
 extern "C" void DisableSubObjVRAMBanks(void);
 extern "C" int DisableSubBGVRAMBanks(void);
 void SetSubBgMode(unsigned int mode);
@@ -9,22 +11,18 @@ extern "C" void MapVRAMBanksToSubBG(int);
 extern "C" void _Z24SetSubBg0Control02020968iiiii(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 extern "C" void _Z24SetSubBg1Control0202099ciiiii(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 
-struct SubScreenState02020838 {
-    unsigned char pad[0xc];
-    unsigned char mode : 4;
-};
 
 // USA: func_02020838
-extern "C" ARM void func_02020838(void) {
+extern "C" ARM void func_02020838(MapDisplay* unusedContext) {
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4001000;
-    SubScreenState02020838* state = *(SubScreenState02020838**)((char*)func_02012fe4() + 8);
+    Zone3D_StructPtr_8* state = func_02012fe4()->pUnknownStruct_8_;
 
     DisableSubBGVRAMBanks();
     DisableSubObjVRAMBanks();
     SetSubBgMode(0);
     MapVRAMBanksToSubBG(0x80);
 
-    if (state->mode == 0) {
+    if (state->unknown_c_low_ == 0) {
         *dispcnt = (*dispcnt & ~0x1f00) | 0x1100;
         _Z24SetSubBg0Control02020968iiiii(0, 0, 0xf, 0, 0);
         _Z24SetSubBg1Control0202099ciiiii(0, 0, 0x10, 0, 0);

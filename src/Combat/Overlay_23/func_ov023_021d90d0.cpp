@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
@@ -15,13 +16,6 @@ struct Elem_0205d81c;
 struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 
 struct StructA0205d5d0;
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d);
-#else
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
-
-
 // USA: func_ov023_021d90d0  (semantic: AdvanceBoxLayoutState_021d90d0)
 extern "C" ARM int func_ov023_021d90d0(char* obj) {
 #if defined(jpn)
@@ -64,7 +58,7 @@ extern "C" ARM int func_ov023_021d90d0(char* obj) {
     func_ov023_021d94e4(obj, *(void**)(obj + 4), *(unsigned char*)(obj + 0x118));
 
 #if defined(jpn)
-    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1);
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1);
 
 
 #else

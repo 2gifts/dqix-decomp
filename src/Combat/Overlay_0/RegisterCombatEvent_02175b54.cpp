@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 
 #if defined(jpn)
 #define REGION_OFFSET_0 0x1f00
@@ -16,7 +17,7 @@
 
 #include "GameState/GameState.h"
 
-void* GetData02108e10(void);
+
 void* SearchBothTables02079e2c(char* p, int key);
 void* GetPtrField0x2a04(GameState* battleStruct);
 extern "C" void* func_ov000_02161318(void* obj, int id);
@@ -24,7 +25,7 @@ extern "C" int func_ov000_02171210(void* a, void* b);
 
 // USA: func_ov000_02175b54  (semantic: RegisterCombatEvent_02175b54)
 extern "C" ARM void func_ov000_02175b54(void* obj) {
-    void* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10();
     if (data == 0) {
         return;
     }

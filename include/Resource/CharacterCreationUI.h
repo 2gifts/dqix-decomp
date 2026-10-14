@@ -1,6 +1,11 @@
 #pragma once
 
 #include "World/Object3D.h"
+#include "Memory/SafeAllocator.h"
+
+struct SpriteContext0205ac40;
+struct B174Outer;
+struct Container0205a3d0;
 
 struct CreationTextEntry {
     int key;
@@ -72,20 +77,36 @@ struct CreationChoiceGrid {
 
 struct CharacterCreationUI {
 #if defined(jpn)
-    unsigned char unknownBeforeTexts[0xc0];
+    SafeAllocator allocators[8];
 #else
-    unsigned char unknownBeforeTexts[0xe0];
+    SafeAllocator allocators[9];
+#endif
+    SafeAllocator* modelAllocator;
+    SafeAllocator* previewAllocators;
+#if defined(jpn)
+    unsigned char unknownBeforeTexts[0xc0 - 0xa8];
+#else
+    unsigned char unknownBeforeTexts[0xe0 - 0xbc];
 #endif
     Container020e0310 texts;
+    unsigned char unknownBeforeTextBuffer[0x10];
+    char* textBuffer;
 #if defined(jpn)
-    unsigned char unknownBeforeTileMaps[0x11c - 0xc8];
+    unsigned char unknownBeforeTileMaps[0x11c - 0xdc];
 #else
-    unsigned char unknownBeforeTileMaps[0x158 - 0xe8];
+    unsigned char unknownBeforeTileMaps[0x158 - 0xfc];
 #endif
     CreationTileMap tileMaps[4];
     unsigned char unknownBeforeWindows[0x20];
     CreationWindow windows[2];
-    unsigned char unknownBeforeCharacter[0x7f8 - 0x370];
+    unsigned char unknownBeforeSprites[0x7d8 - 0x370];
+    SpriteContext0205ac40* firstSpriteContext;
+    B174Outer* firstSprites;
+    Container0205a3d0* firstSpriteEntries;
+    SpriteContext0205ac40* spriteContext;
+    B174Outer* sprites;
+    Container0205a3d0* spriteEntries;
+    unsigned char unknownBeforeCharacter[0x7f8 - 0x7f0];
     void* character;
     void* nextCharacter;
     unsigned int unknown800;
@@ -105,7 +126,7 @@ struct CharacterCreationUI {
     unsigned char selection;
     unsigned char unknownAfterSelection[3];
     void* characterData;
-    unsigned int unknownD8c;
+    int touchedChoice;
     int resourceTask;
     unsigned char resourceStep;
     unsigned char mode;
@@ -121,7 +142,10 @@ struct CharacterCreationUI {
     unsigned char hairStyle[2];
     unsigned char hairColor[2];
 #if defined(jpn)
-    unsigned char unknownBeforeKeyboardChoice[0x18];
+    char names[2][11];
+    unsigned char nameFlags[2];
     unsigned char keyboardChoice;
+    signed char keyboardPage;
+    signed char previousKeyboardPage;
 #endif
 };

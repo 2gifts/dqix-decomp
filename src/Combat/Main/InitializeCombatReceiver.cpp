@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 
 #include "Combat/ActionState.h"
+#include "Combat/MapDisplay.h"
 #include "System/Memory.h"
 
 struct State_1f9b8 {
@@ -25,7 +26,6 @@ struct Stopwatch0201f9e8 {
 
 void InitStruct_0201f9b8(State_1f9b8 *state);
 extern "C" void InitStopwatch0201f9e8(Stopwatch0201f9e8 *timer);
-extern "C" void func_02020720(char *receiver);
 void ClearRecords02026644(char *receiver);
 
 extern State_1f9b8 data_020fdcb0[4];
@@ -35,97 +35,21 @@ extern unsigned char data_020fda36;
 #else
 extern unsigned char data_020fdcce;
 #endif
-struct CombatReceiverInitializationView {
-    unsigned char unknown0[0x12];
-    unsigned char field12;
-    unsigned char unknown13[0x54a];
-    unsigned char mask55d;
-    unsigned char field55e;
-    unsigned char unknown55f[0x45];
-    int flags5a4;
-    unsigned char field5a8;
-    #if defined(jpn)
-    unsigned char unknown5a9[0x110];
-#else
-    unsigned char unknown5a9[0x1bc];
-#endif
-    unsigned char field765;
-    unsigned char unknown766[0x6];
-    int field76c;
-    int field770;
-    int field774;
-    unsigned char field778;
-    unsigned char field779;
-    unsigned char unknown77a[0x2];
-    int field77c;
-    unsigned char field780;
-    unsigned char unknown781[0x237];
-    unsigned char field9b8;
-    unsigned char field9b9;
-    unsigned char field9ba;
-    unsigned char unknown9bb[0x6];
-    unsigned char field9c1;
-    unsigned char field9c2;
-    unsigned char field9c3;
-    unsigned char field9c4;
-    unsigned char field9c5;
-    unsigned char field9c6;
-    unsigned char field9c7;
-    unsigned char field9c8;
-    unsigned char unknown9c9[0x3];
-    int handle9cc;
-    int handle9d0;
-    int handle9d4;
-    int handles9d8[0x8];
-    int handle9f8;
-    int handle9fc;
-    int handlea00;
-    int handlea04;
-    int handlea08;
-    int handlea0c;
-    int handlea10;
-    int handlea14;
-    int handlea18;
-    int handlea1c;
-    int handlea20;
-    int handlea24;
-    int handlea28;
-    int handlea2c;
-    int handlea30;
-    unsigned char fielda34;
-    unsigned char bytesa35[0x10];
-    unsigned char bytesa45[0x10];
-    unsigned char bytesa55[0x20];
-#if !defined(jpn)
-    unsigned char unknowna75[0x20];
-#endif
-    unsigned char fielda95;
-    unsigned char fielda96;
-    unsigned char fielda97;
-    unsigned char unknowna98[0x10a];
-    unsigned char bytesba2[0x40];
-    unsigned char unknownbe2[0x2];
-    int fieldbe4;
-    int fieldbe8;
-    short fieldbec;
-    short fieldbee;
-};
 
 // USA: func_02020554
-extern "C" ARM void func_02020554(void *receiver) {
-    CombatReceiverInitializationView *obj = (CombatReceiverInitializationView *) receiver;
+extern "C" ARM void func_02020554(MapDisplay *obj) {
 #if defined(jpn)
     VectorizedMemset(obj, 0, 0xad8);
 #else
     VectorizedMemset(obj, 0, 0xc30);
 #endif
     obj->field9c1 = 0;
-    obj->field9c2 = 0;
+    obj->loadStage = 0;
     obj->field9c3 = 0;
     obj->field9c4 = 0;
     obj->field9c6 = 0;
     obj->fielda96 = 0;
-    func_02020720((char *) obj);
+    func_02020720(obj);
 
     for (int i = 0; i < 4; i++) {
         InitStruct_0201f9b8(&data_020fdcb0[i]);
@@ -133,17 +57,17 @@ extern "C" ARM void func_02020554(void *receiver) {
         InitStopwatch0201f9e8((Stopwatch0201f9e8 *) &data_020fdc60[i]);
     }
 
-    obj->flags5a4 |= 1;
+    obj->flags |= 1;
     obj->field765 = 1;
     obj->field5a8 = 0;
     obj->field12  = 0;
-    obj->field9c7 = 0;
+    obj->failed = 0;
     obj->field778 = 0;
     obj->field9c5 = 0;
     obj->field76c = 0;
     obj->field770 = 0;
     obj->field774 = 0;
-    obj->field779 = 0;
+    obj->refreshRecords = 0;
     obj->field9ba = 0;
     obj->field77c = 0;
     obj->field780 = 0;
@@ -154,28 +78,28 @@ extern "C" ARM void func_02020554(void *receiver) {
     obj->field9c8  = 0;
     obj->mask55d   = 0xf;
     obj->field55e  = 0;
-    obj->handle9cc = -1;
+    obj->fileTask920 = -1;
 #if !defined(jpn)
-    obj->handle9f8 = -1;
+    obj->scriptTask = -1;
 #endif
-    obj->handle9d0 = -1;
-    obj->handle9d4 = -1;
-    obj->handle9fc = -1;
-    obj->handlea00 = -1;
-    obj->handlea04 = -1;
-    obj->handlea08 = -1;
-    obj->handlea0c = -1;
-    obj->handlea10 = -1;
-    obj->handlea14 = -1;
-    obj->handlea18 = -1;
-    obj->handlea1c = -1;
-    obj->handlea20 = -1;
-    obj->handlea24 = -1;
-    obj->handlea28 = -1;
-    obj->handlea2c = -1;
-    obj->handlea30 = -1;
+    obj->namesTask = -1;
+    obj->fileTask928 = -1;
+    obj->task9fc = -1;
+    obj->taska00 = -1;
+    obj->taska04 = -1;
+    obj->taska08 = -1;
+    obj->taska0c = -1;
+    obj->taska10 = -1;
+    obj->taska14 = -1;
+    obj->taska18 = -1;
+    obj->taska1c = -1;
+    obj->taska20 = -1;
+    obj->taska24 = -1;
+    obj->taska28 = -1;
+    obj->taska2c = -1;
+    obj->fileTask984 = -1;
     for (int i = 0; i < 8; i++) {
-        obj->handles9d8[i] = -1;
+        obj->nameTasks[i] = -1;
     }
     obj->fielda34 = 0xff;
     VectorizedMemset(obj->bytesa35, 0, 0x10);
@@ -184,10 +108,11 @@ extern "C" ARM void func_02020554(void *receiver) {
     obj->fielda95 = 0;
     obj->fielda97 = 0;
 #if !defined(jpn)
-    VectorizedMemset(obj->bytesba2, 0, 0x40);
-    obj->fieldbe4 = 0;
-    obj->fieldbe8 = 0;
-    obj->fieldbec = 0;
-    obj->fieldbee = 0;
+    VectorizedMemset(obj->scriptName, 0, 0x40);
+    obj->scriptNameWidth = 0;
+    obj->fieldb3c = 0;
+    obj->fieldb40 = 0;
+    obj->fieldb42 = 0;
 #endif
 }
+

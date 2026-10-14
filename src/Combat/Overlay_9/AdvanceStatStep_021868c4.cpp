@@ -2,7 +2,6 @@
 #include "Resource/CharacterCreationUI.h"
 
 #if defined(jpn)
-#define func_ov009_02188ee8 func_ov009_02189e04
 #define _Z20SetStatValue021855dcPhi func_ov009_021867bc
 #endif
 

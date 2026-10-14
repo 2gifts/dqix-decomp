@@ -1,3 +1,85 @@
+#if defined(jpn)
+#include <globaldefs.h>
+#include <std_library_functions.h>
+#include "Resource/CharacterCreationUI.h"
+
+struct Obj0205eaa0;
+struct TouchState { char unknown[0x55]; unsigned char touching; };
+struct PartyMemberData { char unknown[0x3c]; char name[1]; };
+extern "C" void func_ov009_02188c2c(CharacterCreationUI*);
+extern "C" void func_ov009_02188d9c(void*);
+extern "C" void func_ov009_02188e70(CharacterCreationUI*, int);
+extern "C" int func_ov009_02185c58(void*);
+extern "C" int func_ov009_02188ee8(CharacterCreationUI*);
+extern "C" void func_ov009_0218ad0c(void*);
+extern "C" void func_ov009_021867bc(unsigned char*, int);
+extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+extern char data_ov009_0218bc59[];
+extern const char data_020ef078[];
+extern unsigned short data_02114e30[];
+extern TouchState data_02114e54;
+extern Obj0205eaa0 data_02108760;
+
+extern "C" ARM void func_ov009_02186e00(CharacterCreationUI* self)
+{
+    if (self->step == 0) {
+        self->keyboardChoice = 0;
+        func_ov009_02188c2c(self);
+        func_ov009_02188d9c(self);
+        func_ov009_02188e70(self, self->keyboardChoice);
+        self->flags |= 1;
+        self->keyboardPage = self->previousKeyboardPage = 0;
+        self->flags &= ~0x800;
+        if (self->nameFlags[self->sex] != 0 && self->names[self->sex][8] == 0) {
+            for (int character = 1; character < 5; character++) {
+                if (self->names[self->sex][character * 2] == 0) {
+                    for (int fill = character; fill < 5; fill++)
+                        memcpy(&self->names[self->sex][fill * 2], data_ov009_0218bc59, 2);
+                }
+            }
+            self->flags |= 0x8000;
+        }
+        self->step++;
+    } else if (self->step == 1) {
+        if (self->flags & 0x80)
+            return;
+        if (!func_ov009_02185c58(self->unknownBeforeTileMaps))
+            return;
+        int result = func_ov009_02188ee8(self);
+        if (result == -2) {
+            func_ov009_0218ad0c(self);
+        } else if (result == -3) {
+            func_ov009_021867bc((unsigned char*)self, 7);
+        } else if (result >= 101 && result <= 108) {
+            result -= 100;
+            if (result <= self->furthestState[self->sex] && result != self->state)
+                func_ov009_021867bc((unsigned char*)self, (unsigned char)result);
+        }
+        if (self->flags & 0x400000) {
+            self->flags |= 0x2000;
+            self->step++;
+        }
+        if (self->flags & 0x800) {
+            if (result == -2)
+                self->flags |= 0x1000000;
+            PartyMemberData* member = (PartyMemberData*)self->characterData;
+            sprintf(member->name, data_020ef078, self->names[self->sex]);
+            func_ov009_021867bc((unsigned char*)self, 9);
+        }
+    } else if (self->step == 2) {
+        if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x401) || data_02114e54.touching != 0) {
+            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            self->flags = (self->flags & ~0x400000) | 0x2000;
+            self->step = 1;
+        } else if (TestFlag0SetAndFlag1Clear(data_02114e30, 2)) {
+            self->flags = (self->flags & ~0x400000) | 0x2000;
+            self->step = 1;
+        }
+    }
+}
+
+#else
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
@@ -305,3 +387,5 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreation* self)
         self->cursorHeight_ = height;
     }
 }
+
+#endif

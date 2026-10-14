@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/CombatantRecovery.h"
 #include "GameState/Field3b0.h"
 #include "GameState/BattleRecordSnapshot.h"
 #include "World/ZoneChest.h"
@@ -9,7 +10,6 @@ struct SearchStruct0202c1a4;
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4 *ctx);
 extern "C" void func_ov017_021d0924(int a, int b, int p1, int flag);
 extern "C" void _Z19ClearNibble0206ece8iiPhj(int a, int b, unsigned char *c, unsigned d);
-extern "C" void *func_ov017_0218b5b0(void);
 extern "C" int func_0202c508(void *ctx);
 extern "C" void *func_02012fe4(void);
 void *GetPointerFromArray0x3c(unsigned char *arr, unsigned idx);
@@ -124,7 +124,6 @@ extern struct Str02109bf4 {
     unsigned char foo : 1;
 } data_02109bf4;
 extern "C" void _Z27InitAndAppendEntity020dac40P12Root020dac40(void);
-extern "C" void *_Z25GetCombatantWithFlag0x100P9GameStatei(void *battle, int idx);
 extern "C" void *_Z15GetFieldAt0x150Ph(void *p);
 extern "C" void _Z27RemoveSlotShiftDown0208386cP13Slots0208386ci(void *slots, int idx);
 extern "C" void _Z25DecrementKeyValue020a0a08P14KeyMap020a0a08ii(void *map, int key, int amount);
@@ -185,7 +184,6 @@ extern "C" void _Z27EnqueueEventTag141_021ce110itth(int a, unsigned short b, uns
 extern "C" void func_0206e748(void *obj, int a, int b, int c, int d);
 extern "C" void _Z20AppendNodeToField494P8Obj64af8P9Node64af8(void *obj, void *node);
 extern "C" int _Z24CheckField0x56bLowNibbleP11Obj02061bd8(void *obj);
-extern "C" void _Z21ClearFieldBit02053fe4P9T02053fe4(void *obj, int val, int flag);
 extern "C" void _Z18TryClearFlags0x130Pht(void *obj, unsigned short flag);
 extern "C" void func_ov017_02191108(void *base, int a, int b, int c, int d);
 extern "C" void _Z21SetByteSavingPreviousP11Foo02033b58h(void *obj, unsigned char v);
@@ -1108,7 +1106,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         GameState *battle = _ZN9GameState11GetInstanceEv();
         void *base = func_ov017_0218b5b0();
         for (int i = 0; i < 4; i++) {
-            void *combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(battle, i);
+            GameObject *combatant = GetCombatantWithFlag0x100(battle, i);
             if (!combatant)
                 continue;
             if (!_Z24CheckField0x56bLowNibbleP11Obj02061bd8(combatant))
@@ -1118,12 +1116,12 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
                 continue;
             if (msg->p1 == 0) {
                 unsigned short val = *(unsigned short *)((char *)*(void **)((char *)combatant + 0x134) + 0x30);
-                _Z21ClearFieldBit02053fe4P9T02053fe4(combatant, val, 1);
+                ClearFieldBit02053fe4(combatant, val, 1);
             } else if (msg->p1 == 1) {
                 int val = Field134_30(combatant);
-                _Z21ClearFieldBit02053fe4P9T02053fe4(combatant, val / 2, 1);
+                ClearFieldBit02053fe4(combatant, val / 2, 1);
             } else {
-                _Z21ClearFieldBit02053fe4P9T02053fe4(combatant, 1, 1);
+                ClearFieldBit02053fe4(combatant, 1, 1);
             }
             _Z18TryClearFlags0x130Pht(combatant, 1);
             func_ov017_02191108(base, 1, 1, 1, 1);
@@ -1350,7 +1348,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         if (s5 == 0)
             return 1;
         if (s6 >= 0 && s6 <= 3) {
-            void *combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(battle, s6);
+            GameObject *combatant = GetCombatantWithFlag0x100(battle, s6);
             if (!combatant)
                 return 1;
             void *field = _Z15GetFieldAt0x150Ph(combatant);

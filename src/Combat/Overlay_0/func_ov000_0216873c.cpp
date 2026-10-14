@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Resource/Brightness.h"
@@ -17,7 +18,7 @@ void SetCombatWorkFlags0x55f4(void* work, int mask);
 int GetCombatWorkFlags0x55f4(void* work, int mask);
 void ResetBigStruct02013750(void* obj, int flag);
 extern "C" void func_ov000_02172720(void* obj);
-char* GetData02108e10(void);
+
 void ClearTwoRegions02079f9c(char* obj);
 struct Obj020d6f0c;
 struct Container020d6d18;
@@ -92,7 +93,7 @@ extern "C" ARM void func_ov000_0216873c(struct BattleScene0216873c* scene) {
     ResetBigStruct02013750(scene->bigStruct, 1);
     func_ov000_02172720(scene->field_0x3760);
     SetCombatWorkFlags0x55f4(scene, 0x800);
-    ClearTwoRegions02079f9c(GetData02108e10());
+    ClearTwoRegions02079f9c((char*)GetData02108e10());
     MaybeInvoke0204719c(&scene->model0);
     MaybeInvoke0204719c(&scene->model1);
     if (scene->entryManager != 0) {

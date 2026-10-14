@@ -1,17 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
-
-struct Obj02040c2c;
-extern "C" void func_02040c2c(Obj02040c2c* entry, void* context, int elapsedTicks, int movementTicks);
-
-struct Entry0203dd20 {
-    unsigned int flags;
-};
+#include "Combat/CombatantMotion.h"
 
 struct Obj0203dd20 {
     char pad0[0xc];
-    struct Entry0203dd20* entries[0x20];
+    Obj02040c2c* entries[0x20];
 };
 
 // USA: func_0203dd20
@@ -26,9 +20,9 @@ ARM void ApplyScaleToCombatants0203dd20(struct Obj0203dd20* obj) {
     b = battleStruct->GetEffectiveDeltaTime();
     c = battleStruct->GetTickCount();
     for (i = 0; i < 0x20; i++) {
-        struct Entry0203dd20* entry = obj->entries[i];
+        Obj02040c2c* entry = obj->entries[i];
         if (entry != NULL && !(entry->flags & 0x8000)) {
-            func_02040c2c(reinterpret_cast<Obj02040c2c*>(entry), context, b, c);
+            func_02040c2c(entry, context, b, c);
         }
     }
 }

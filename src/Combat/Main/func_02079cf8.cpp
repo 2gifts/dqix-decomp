@@ -2,26 +2,26 @@
 #include "Filesystem/GPC.h"
 #include "Filesystem/FileIO.h"
 #include "GameState/GameState.h"
+#include "Resource/ActionDataTables.h"
 
 extern "C" {
     void __clear(void*, unsigned int);
     extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(GameState*);
-    void func_02079a58(void*, void*, void*, void*, unsigned int, unsigned int);
-    void func_02079bac(void*, void*, void*, void*, unsigned int, unsigned int);
 }
 
 struct Obj02079808;
 extern "C" void* _Z24ResetObjectState02079a3cPv(void* obj);
-extern "C" int _Z23RelocateOffsets02079808PvP11Obj02079808(void* base, struct Obj02079808* obj);
 
 extern unsigned char data_0211e33c[0x30000];
 extern const char data_020f0e02[];
 extern const char data_020f0e17[];
 extern const char data_020f0e28[];
 
+// This loader exists only in the USA and EUR versions.
+#if !defined(jpn)
 // USA: func_02079cf8
 #pragma opt_propagation off
-extern "C" ARM void func_02079cf8(void* obj, void* a1, unsigned int a2) {
+extern "C" ARM void func_02079cf8(ActionDataTables* obj, SafeAllocator* a1, SafeAllocator* a2) {
     unsigned int len;
     unsigned char* base;
     base = data_0211e33c;
@@ -48,15 +48,17 @@ extern "C" ARM void func_02079cf8(void* obj, void* a1, unsigned int a2) {
         DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, base + len,
             outSize2, capacity, buf);
 
-        func_02079a58((char*)obj + 0xc, a1, base + len,
-            (void*)_Z23RelocateOffsets02079808PvP11Obj02079808, 0, a2);
+        func_02079a58(&obj->alternateActions, a1, base + len,
+            RelocateOffsets02079808, 0, a2);
 
         DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, base + len,
             outSize2, capacity, data_020f0e28);
 
-        func_02079bac((char*)obj + 0x24, a1, base + len, NULL, 0, 0);
+        func_02079bac(&obj->alternateDamage, a1, base + len, NULL, 0, 0);
     }
 
     pair.Reset();
     ZeroDestroyGPCPointer(&pair.pGPCFile);
 }
+
+#endif

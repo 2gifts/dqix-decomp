@@ -9,12 +9,12 @@
 #include "World/ZoneFeatures.h"
 #include "World/Zone3D.h"
 #include "std_library_functions.h"
+#include "World/GrottoTileGraph.h"
 
 extern "C" Zone3D* func_02012fe4(void);
 extern "C" void func_020a0cc4(unsigned int size);
 extern "C" void func_020a0c0c(void);
 extern "C" int _Z17IsInRange0201b5b0i(int id);
-extern "C" void func_0201a300(char* zone, int floor, void* monster, void* buffer, FloorMap* map);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion* alloc, void* data);
 
@@ -27,15 +27,9 @@ extern const char data_ov017_021d7b53[];
 extern const char data_ov017_021d7b57[];
 extern const char data_ov017_021d7b3a[];
 
-struct ZoneLoadTarget {
-    unsigned short zoneId;
-    unsigned char pad2[0xc - 2];
-    unsigned char loaded;
-};
-
 struct Request021b4a88 {
     unsigned char pad0[8];
-    ZoneLoadTarget* target;
+    GrottoTileOwner0201a300* target;
     int taskId;
     unsigned char state;
 };
@@ -108,7 +102,7 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
                 TileFeaturePlacementData* buffer = (TileFeaturePlacementData*)AllocateAligned4(&data_02114e20, sizeof(TileFeaturePlacementData) * 256);
                 current->CalculateFloorMap(floor, width, height, &map);
                 func_02019728(zone, floor, &features, buffer, &map);
-                func_0201a300(reinterpret_cast<char*>(zone), floor, request->target, buffer, &map);
+                func_0201a300(zone, floor, request->target, buffer, &map);
                 _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, buffer);
                 map.Clear2();
             }

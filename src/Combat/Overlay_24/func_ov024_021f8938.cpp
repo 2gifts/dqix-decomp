@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include <GameState/GameState.h>
 
 struct Element02079f20 {
@@ -25,12 +26,11 @@ struct ActionScaling {
     unsigned int mode_ : 2;
     unsigned int unused1A : 14;
 };
-void* GetData02108e10();
 extern "C" Element02079f20* _Z26LookupElementByKey02079ee0Pvi(void*, int);
 
 // USA: func_ov024_021f8938
 extern "C" ARM void func_ov024_021f8938(void* unused, float* value, float* spread, int unused2, ActionScaling* action, GameObject* actor) {
-    void* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10();
     *value = 0;
     *spread = 0;
     Element02079f20* element = _Z26LookupElementByKey02079ee0Pvi(data, action->key_);

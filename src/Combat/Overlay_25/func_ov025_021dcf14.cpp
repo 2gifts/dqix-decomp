@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Graphics/Vector.h"
@@ -100,7 +101,6 @@ extern "C" void _Z29PushNodeFromFreeList_021eee48P11Obj021eee48P11Rec021eee48(vo
 extern "C" void _Z16SetFlag0x4At0xe0P13Flags02033fcc(GameObject* obj);
 extern "C" void _Z18ClearFlag0x4At0xe0P13Flags02033fdc(GameObject* obj);
 extern "C" int _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(GameObject* obj, int value);
-extern "C" void* _Z15GetData02108e10v(void);
 extern "C" struct TableEntry021dcf14* _Z24SearchBothTables02079e2cPci(void* table, int key);
 extern "C" struct Node021dcf14* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int index);
 extern "C" struct First021dcf14* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int index);
@@ -340,7 +340,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
         if (sl[Field6e4b] == 6) {
             void* slot = _Z18GetSlotPtr02160f20Pv(sl);
             struct TableEntry021dcf14* entry =
-                _Z24SearchBothTables02079e2cPci(_Z15GetData02108e10v(), *(short*)slot);
+                _Z24SearchBothTables02079e2cPci(GetData02108e10(), *(short*)slot);
             if (entry && entry->kind18 == 2) {
                 struct Node021dcf14* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(slot, cur->nodeIndex);
                 if (node == NULL) {
@@ -683,7 +683,6 @@ extern "C" void func_ov000_021626a0(void* obj, int a, int b);
 extern "C" void _ZN8Vector3iaSERKS_(Vector3fix* dst, const Vector3fix* src);
 extern "C" void func_ov000_02167f10(void* obj);
 extern "C" void _Z18ClearFlag0x4At0xe0P13Flags02033fdc(GameObject* obj);
-extern "C" void* _Z15GetData02108e10v(void);
 extern "C" int func_ov025_021ed444(void* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
 extern "C" int func_ov025_021ed564(void* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
 extern "C" void _Z20SetShortTriple0x6e44Pvttt(void* obj, unsigned short a, unsigned short b, unsigned short c);
@@ -915,25 +914,25 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
         }
         list = cur->list;
         struct TableEntry021dcf14* row =
-            _Z24SearchBothTables02079e2cPci(_Z15GetData02108e10v(), *(short*)list);
+            _Z24SearchBothTables02079e2cPci(GetData02108e10(), *(short*)list);
         int kind2 = 0;
-        int r7 = 0;
-        int r8 = 0;
+        int forceCameraDispatch = 0;
+        int suppressKindCameraDispatch = 0;
         if (row) {
             if (row->kind18 == 2) {
                 kind2 = 1;
             }
         }
         if (list->id == 0x246 || list->id == 0x30d) {
-            r7 = 1;
+            forceCameraDispatch = 1;
         }
         if (list->id == 0x30f || list->id == 0x243) {
-            r8 = 1;
+            suppressKindCameraDispatch = 1;
         }
         void* fx = func_02057924();
         struct InitStruct02078484Struct req;
         _Z18InitStruct02078484P24InitStruct02078484Struct(&req);
-        if (r7 || (sl[ModeByte] != 3 && kind2 != 0 && r8 == 0)) {
+        if (forceCameraDispatch || (sl[ModeByte] != 3 && kind2 != 0 && suppressKindCameraDispatch == 0)) {
             func_ov000_0216d370(sl + CameraBase, 1, 1, 1);
             if (!_Z20TryDispatch_021dce7cPhP10In021dce7ci(sl, list, *(short*)(sl + Field6efc))) {
                 func_ov000_0216df00(sl + CameraBase, *(short*)(sl + Field6efc), 0, 0, 1.8f);
@@ -977,7 +976,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
                 _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, *(unsigned short*)(sl + Field6f04), 0);
             }
             TIMER = *(unsigned int*)(sl + Field6fc8);
-        } else if (sl[ModeByte] == 3 || kind2 == 0 || r8 != 0) {
+        } else if (sl[ModeByte] == 3 || kind2 == 0 || suppressKindCameraDispatch != 0) {
             int savedId;
             func_ov000_0216d370(sl + CameraBase, 1, 1, 1);
             savedId = *(short*)(sl + Field6efc);

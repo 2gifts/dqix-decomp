@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/MapDisplay.h"
 #include "std_library_functions.h"
 
 struct Struct02020520 {
@@ -23,8 +24,24 @@ extern "C" ARM void* __clear(void* dst, int count);
 extern char data_020ef6b6;
 extern "C" int func_0205b234(void* selector, int weight, int mode, char* buf, int a, int b);
 
+#if defined(jpn)
+extern short data_020e790a[6], data_020e7916[6], data_020e78f2[6], data_020e78fe[6];
+int StringLength(const char* text);
+
+// The actual JPN caller supplies capacity; this drawing path does not consume it.
+extern "C" ARM void func_02023218(MapDisplay* obj, char* buffer, int offset, unsigned int capacity) {
+    Struct02020520 entries[6];
+    S_b20c selector;
+    InitWeightedEntries02023064(entries, 6, data_020e790a, data_020e7916, data_020e78f2, data_020e78fe);
+    ClearTwoWordsAndByte(&selector);
+    SetField0_0205b220(&selector, (int)(buffer + offset));
+    SetFieldsAt0x4And0x8_0205b228(&selector, (int)entries, 6);
+    func_0205b234(&selector, 14, 3, obj->GetMapNameText(), 10, 15);
+    func_0205b234(&selector, (short)(StringLength(obj->GetMapNameText()) / 2 * 10 + 15), 3, obj->GetLevelLabelText(), 10, 15);
+}
+#else
 // USA: func_02023218  (semantic: FormatAndDispatchWeightedEntries_02023218)
-extern "C" ARM void func_02023218(char* obj, int p1, int p2) {
+extern "C" ARM void func_02023218(char* obj, char* buffer, int offset) {
     short a[21];
     short b[21];
     short c[21];
@@ -52,7 +69,7 @@ extern "C" ARM void func_02023218(char* obj, int p1, int p2) {
     }
 
     ClearTwoWordsAndByte(&sel);
-    SetField0_0205b220(&sel, p1 + p2);
+    SetField0_0205b220(&sel, (int)(buffer + offset));
     SetFieldsAt0x4And0x8_0205b228(&sel, (int)arr, 0x15);
 
     __clear(buf, 0x100);
@@ -60,3 +77,5 @@ extern "C" ARM void func_02023218(char* obj, int p1, int p2) {
 
     func_0205b234(&sel, (short)weight, 3, buf, 0xf, 0);
 }
+
+#endif

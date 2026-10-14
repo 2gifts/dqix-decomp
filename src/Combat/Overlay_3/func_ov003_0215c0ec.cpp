@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #if defined(jpn)
 enum { kTextSize=0x800 };
@@ -45,11 +46,6 @@ struct StoreStruct;
 
 extern struct TouchState02114e54 data_02114e54;
 
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0*, int, int, int);
-#else
-int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
 extern "C" void func_ov003_0215b6f0(struct BattleMenu0215c0ec* self, char* dst, int flag);
 extern "C" void func_ov003_0215b964(struct BattleMenu0215c0ec* self, char* dst, int flag);
 extern "C" void func_ov003_0215be70(struct BattleMenu0215c0ec* self, char* dst, int flag);
@@ -86,7 +82,7 @@ extern "C" ARM void func_ov003_0215c0ec(struct BattleMenu0215c0ec* self) {
             break;
         }
 #if defined(jpn)
-        _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)self->menu, mode, (int)self->text, 1);
+        TryApplyElemFields0205d5d0((struct StructA0205d5d0*)self->menu, mode, (int)self->text, 1);
 #else
         TryApplyElemFields0205d5d0((struct StructA0205d5d0*)self->menu, mode, (int)self->text, 1, 0);
 #endif
@@ -109,7 +105,7 @@ extern "C" ARM void func_ov003_0215c0ec(struct BattleMenu0215c0ec* self) {
         SetByteInRange((unsigned char*)messages, 0, 7);
         SetByteAtIndex((unsigned char*)messages, 0, 1);
 #if defined(jpn)
-        _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)self->menu, 0, (int)self->text, 1);
+        TryApplyElemFields0205d5d0((struct StructA0205d5d0*)self->menu, 0, (int)self->text, 1);
 #else
         TryApplyElemFields0205d5d0((struct StructA0205d5d0*)self->menu, 0, (int)self->text, 1, 0);
 #endif

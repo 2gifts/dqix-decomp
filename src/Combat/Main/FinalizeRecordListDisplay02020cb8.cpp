@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/MapDisplay.h"
 #include "Filesystem/BackgroundLoader.h"
 
 
@@ -40,39 +41,38 @@ struct List0204afb4;
 void ResetRecordList0204afb4(struct List0204afb4* obj);
 
 
-struct LocalListStruct02020cb8 {
-    unsigned char pad0[0x1c];
-    unsigned char lo : 4;
-    unsigned char hi : 4;
-    unsigned char pad1d[3];
-};
-
 // USA: func_02020cb8
-ARM void FinalizeRecordListDisplay02020cb8(void* self, int* handle) {
-    int data4 = (int)BackgroundLoader::GetInstance();
-    int recListHead = 0;
-    int val2Ignored = 0;
+ARM void FinalizeRecordListDisplay02020cb8(void* self, MapDisplayTaskHandle handle) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    void* recListHead = 0;
+    unsigned int val2Ignored = 0;
     void* dummyPtr;
     void* arrayC[3];
     int arrayB[3];
-    LocalListStruct02020cb8 s;
+    List0204af64 s;
     unsigned char struct2[0x10];
 
-    ((BackgroundLoader*)((struct List0202fec8*)data4))->GetLoadedFileByID((int)(*handle), (void**)(&recListHead), (unsigned int*)(&val2Ignored));
+    loader->GetLoadedFileByID(
+#if defined(jpn)
+        handle
+#else
+        *handle
+#endif
+, &recListHead, &val2Ignored);
     int count = CountActiveEntries((struct ActiveEntry02046900*)recListHead);
     for (int i = 0; i < count; i++) {
         arrayC[i] = FindRecordByIndex((struct Rec020467f0*)recListHead, i, &dummyPtr, &arrayB[i]);
     }
 
     ResetList0204af64((struct List0204af64*)&s);
-    s.lo = 1;
-    s.hi = 1;
+    s.b1c_lo = 1;
+    s.b1c_hi = 1;
     func_0204b5b4(&s, 3);
     SetWord0x18ClearByte0x1f((unsigned char*)&s, 0);
     DispatchViaTable0204b5e8((struct Obj0204b5e8*)&s, 0, 0);
 
-    *(int*)((char*)&s + 0x0) = 0x6000;
-    *(unsigned short*)((char*)&s + 0xe) = 0xfffe;
+    s.byteCount = 0x6000;
+    s.h0e = 0xfffe;
     unsigned short* tbl = (unsigned short*)((char*)arrayC[2] + 0x10);
     for (int i = 0; i < 0x300; i++) {
         tbl[i] = tbl[i] + 0x300;
@@ -92,7 +92,15 @@ ARM void FinalizeRecordListDisplay02020cb8(void* self, int* handle) {
     FlushAndDispatchList0204b0e8((struct List0204b0e8*)&s, 0);
     ResetRecordList0204afb4((struct List0204afb4*)&s);
 
-    int data4b = (int)BackgroundLoader::GetInstance();
-    ((BackgroundLoader*)(data4b))->RemoveTask((int)(*handle));
+    BackgroundLoader* finalLoader = BackgroundLoader::GetInstance();
+    finalLoader->RemoveTask(
+#if defined(jpn)
+        handle
+#else
+        *handle
+#endif
+);
+#if !defined(jpn)
     *handle = -1;
+#endif
 }

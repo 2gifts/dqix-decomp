@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include <GameState/GameState.h>
+#include "Combat/CombatantRecovery.h"
 
 struct Struct02020520 {
     int pointer;
@@ -28,16 +29,21 @@ struct MessageStore020200c0 {
 };
 
 struct PartyRecord020200c0 {
-    char pad0[0x186];
-    unsigned char revocations[0x950 - 0x186];
+    unsigned char unknown0[0x186];
+    unsigned char revocations[13];
+#if defined(jpn)
+    unsigned char unknown193[0x8b8 - 0x193];
+#else
+    unsigned char unknown193[0x950 - 0x193];
+#endif
     int vocation;
 };
-
-struct PartyMember020200c0 {
-    char pad0[0x130];
-    unsigned int* status;
-    char* name;
-    char pad138[0x150 - 0x138];
+struct PartyMember020200c0 : GameObject {
+#if defined(jpn)
+    unsigned char unknown13c[0x144 - 0x13c];
+#else
+    unsigned char unknown13c[0x150 - 0x13c];
+#endif
     PartyRecord020200c0* record;
 };
 
@@ -100,7 +106,7 @@ extern "C" ARM void func_020200c0(int combatantId, int value) {
 
     PartyMember020200c0* member = (PartyMember020200c0*)GetCombatantWithFlag0x100(gameState, combatantId);
     if (member == NULL) return;
-    char* name = member->name;
+    char* name = member->baseStats_->unk;
     func_0205b234(&dest, (short)((0x40 - func_020420e8(name, 0)) >> 1), 3, name, 0xf, 0);
 
     int color;
@@ -116,7 +122,7 @@ extern "C" ARM void func_020200c0(int combatantId, int value) {
     if (vocation == 0) vocation = -1;
     if (vocation == 0xd) vocation = 0;
     color = 0xf;
-    unsigned int status = *member->status;
+    unsigned int status = member->combatFields_.savedState_130_->flags;
     messageKey = -1;
     if (status & 1) {
         messageKey = 0xe;

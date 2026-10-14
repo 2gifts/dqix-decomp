@@ -9,7 +9,6 @@ void* GetActiveSub_02054000(struct Outer_02054000* p);
 extern short data_020e8a34[];
 
 // USA: func_0207c984  (semantic: CollectValuesRoundedTo100_0207c984)
-#pragma opt_propagation off
 extern "C" ARM int func_0207c984(unsigned char* obj, int combatantId, int categoryId, short* outArr, short* outCount) {
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
     if (combatant == 0) {
@@ -30,8 +29,7 @@ extern "C" ARM int func_0207c984(unsigned char* obj, int combatantId, int catego
     short target = data_020e8a34[categoryId];
     if (special > 0) {
         if ((short)(special - special % 100) == target) {
-            outArr[0] = special;
-            count = count + 1;
+            outArr[count++] = special;
         }
     }
 

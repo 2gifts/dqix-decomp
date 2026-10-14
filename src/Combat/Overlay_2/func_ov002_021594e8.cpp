@@ -1,9 +1,9 @@
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 #include <globaldefs.h>
 
 struct Obj0205eaa0;
 struct Obj02048350;
-void *GetData02108e10(void);
 extern "C" void *_Z24SearchBothTables02079e2cPci(char *p, int key);
 GameObject *GetCombatantChecked(GameState *gs, int id);
 extern "C" int *func_0202ae18(void);
@@ -61,8 +61,8 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
 
     p->command                        = cmd;
     GameState *gs                     = GameState::GetInstance();
-    char *tbl                         = (char *) GetData02108e10();
-    struct TableEntry021594e8 *entryA = (struct TableEntry021594e8 *) _Z24SearchBothTables02079e2cPci(tbl, p->command);
+    ActionDataTables* tbl                         = GetData02108e10();
+    struct TableEntry021594e8 *entryA = (struct TableEntry021594e8 *) _Z24SearchBothTables02079e2cPci((char*)tbl, p->command);
     GameObject *comb                  = GetCombatantChecked(gs, actor);
     int *checkPtr                     = func_0202ae18();
     int flagA                         = 0;
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
         if (p->command == 0x22) {
             _Z22InitStateArray02157ce0Pc((char *) &st);
             _Z22InitStateArray02157ce0Pc((char *) &st);
-            struct TableEntry021594e8 *entry = (struct TableEntry021594e8 *) _Z24SearchBothTables02079e2cPci(tbl, p->command);
+            struct TableEntry021594e8 *entry = (struct TableEntry021594e8 *) _Z24SearchBothTables02079e2cPci((char*)tbl, p->command);
             if (entry != NULL) {
                 __clear(buf, 4);
                 int n = CopyOutRegion0x571d((char *) gs, buf);
@@ -90,7 +90,7 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
                 }
             }
         } else {
-            struct TableEntry021594e8 *entry = (struct TableEntry021594e8 *) _Z24SearchBothTables02079e2cPci(tbl, p->command);
+            struct TableEntry021594e8 *entry = (struct TableEntry021594e8 *) _Z24SearchBothTables02079e2cPci((char*)tbl, p->command);
             if (entry != NULL && (entry->b10 & 1)) {
                 func_ov016_0218b5c0(res, -1);
                 _Z22InitStateArray02157ce0Pc((char *) &st2);

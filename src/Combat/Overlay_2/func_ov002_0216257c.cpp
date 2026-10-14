@@ -1,5 +1,6 @@
 #include "GameState/GameState.h"
 #include <globaldefs.h>
+#include <Resource/ResourceNodeInsertion.h>
 
 struct Struct0205de24;
 struct Struct_0205c570;
@@ -12,7 +13,6 @@ int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *o, int a, int b);
 int GetWord0x0(int *p);
-extern "C" void _Z31SetNodeFieldsAndInsert_021a120cPhhh(unsigned char *p, int a, int b);
 extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *base, int a);
 extern "C" void func_ov002_02161cf0(void *base);
 extern "C" void func_ov002_0215c2c8(void *base);
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov002_0216257c(char *base) {
             if (!InRange0216257c(v)) return;
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);
-            _Z31SetNodeFieldsAndInsert_021a120cPhhh((unsigned char *) GetWord0x0((int *) GameState::GetInstance()), 3, v);
+            SetNodeFieldsAndInsert_021a120c((GameResources*)GetWord0x0((int*)GameState::GetInstance()), 3, v);
             *(int *) (base + 0x1000 + 0xbb8) = 0x2b;
             *(int *) (base + 0x1000 + 0xbc0) = 0;
             func_02012fe4();

@@ -86,7 +86,11 @@ struct BattleUnit {
     char unk94[0x100];
     struct Record020836e4 records[11];
     struct EquipSlot equips[8];
-    char unk454[0x3fc];
+#if defined(jpn)
+    char unk454[0x7b8 - 0x454];
+#else
+    char unk454[0x850 - 0x454];
+#endif
     struct StatRow rows[17];
     struct StatTriple base[3];
     char unk928[0xc];

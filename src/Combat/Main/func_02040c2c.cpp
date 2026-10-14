@@ -4,6 +4,7 @@
 #include "Resource/GameResources.h"
 #include "World/Object3D.h"
 #include "Graphics/LightingManager.h"
+#include "Combat/CombatantMotion.h"
 
 struct Vec3_020406f8 { unsigned int v[3]; };
 struct Node020406f8;
@@ -46,16 +47,6 @@ struct Container02040c2c {
     unsigned char mode;
     char pad_20[0x48 - 0x20];
     struct Vector3i v48;
-};
-
-struct Obj02040c2c {
-    unsigned int flags;
-    unsigned int idleDelay;
-    char pad_08[0x4];
-    struct Container02040c2c* settings;
-    struct Object3D* attachment;
-    SpriteMotion02040c2c* spriteMotion;
-    ModelEffect02040c2c* modelMotion;
 };
 
 struct Obj0203c818;

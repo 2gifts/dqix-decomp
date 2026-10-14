@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
@@ -34,15 +35,13 @@ extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container02
 extern "C" void func_02046608(int g, int b, char* src, char* dst, int size, int f, int h);
 extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
 #if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0*, int, int, int);
 extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
-#define APPLY_TEXT(s,k,t) _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(s,k,(int)t,1)
+#define APPLY_TEXT(s,k,t) TryApplyElemFields0205d5d0(s,k,(int)t,1)
 #define DRAW_TEXT(s,t) func_0205d304(s,t,0,1,0,1,0)
 enum { textOffset=0x28, textSize=0x800, cursorOffset=0x1fa5, style=6, y=0 };
 #else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
-#define APPLY_TEXT(s,k,t) _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(s,k,(int)t,1,0)
+#define APPLY_TEXT(s,k,t) TryApplyElemFields0205d5d0(s,k,(int)t,1,0)
 #define DRAW_TEXT(s,t) func_0205d304(s,t,0,0,0,1,0,0)
 enum { textOffset=0x5c, textSize=0x960, cursorOffset=0x1d6d, style=7, y=0x18 };
 #endif

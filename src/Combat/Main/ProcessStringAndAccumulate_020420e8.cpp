@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Resource/MessageGlyphSlot.h"
+#include "Graphics/GlyphMetrics.h"
 
 extern int data_020e7a94[];
 extern "C" int _Z27FindEntryIndexByKey020424e4ii(const char* text, int fontIndex);
@@ -7,8 +8,6 @@ extern "C" FontCharacter* _Z23GetBoundedEntry020425b4ii(int index, int fontIndex
 int LookupKeyValue020425e4(int previousCharacter, int characterIndex, int fontIndex);
 
 #if defined(jpn)
-struct Metrics0202a6c4 { int field_0; int rowHeight; int columnWidth; int displayMode; };
-extern Metrics0202a6c4 data_020ef74c;
 
 // USA: func_020420e8
 extern "C" ARM void func_02028ce4(const char* text, int* widthOut, int* heightOut) {

@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Resource/FontBankLoader.h"
+#include "Resource/TextQueue.h"
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -20,11 +21,26 @@ struct StructDE234_020de234 {
 struct State0207dfc8 { unsigned int words[28]; };
 struct ResourceState021ae85c { char pad0[0x230]; State0207dfc8 spriteTables; };
 struct Zone021ae85c {
-    char pad0[0x600]; Foo02048004 sprites[6]; char pad930[0x2754 - 0x930];
+#if defined(jpn)
+    char pad0[0x620];
+#else
+    char pad0[0x600];
+#endif
+    Foo02048004 sprites[6];
+#if defined(jpn)
+    char pad930[0x2794 - 0x950];
+#else
+    char pad930[0x2754 - 0x930];
+#endif
     Container020dedd0 container;
 };
 struct Controller021ae85c {
-    char pad0[0x2d8]; int field2d8; char pad2dc[0xa]; unsigned char field2e6;
+#if defined(jpn)
+    char pad0[0x228];
+#else
+    char pad0[0x2d8];
+#endif
+    int field2d8; char pad2dc[0xa]; unsigned char field2e6;
 };
 struct Event021ae85c {
     unsigned char pad0, done; char pad2[6]; unsigned char stage, mode;
@@ -58,12 +74,14 @@ void* ZeroInitReturn020de824(void*);
 void InitStruct0207cbe8(char*);
 extern "C" int func_0207d538(void*, int, int, char*, int);
 void* GetGlobalResetObj020d7a50();
-extern "C" void func_020d7e10(void*, char*, int, int, int, int);
 void* GetField0x3b0Value(GameState*);
 void ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 void SetVec3At0x1c(Vec3Target0203a46c*, int, int, int);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
 extern Obj0205eaa0 data_02108760;
+#if defined(jpn)
+#define data_ov017_021d79a8 data_ov017_021d80dc
+#endif
 extern const char data_ov017_021d79a8[];
 extern AllocatorUnion data_02114e20;
 static inline ResourceState021ae85c* ResourceStateBuffer021ae85c(GameResources* resources) {
@@ -152,7 +170,11 @@ extern "C" ARM void func_ov017_021ae85c(Event021ae85c* self) {
         InitStruct0207cbe8((char*)&context); InitStruct0207cbe8((char*)&context);
         context.container = &zone->container;
         if (func_0207d538(&context, 2, (unsigned short)self->key, text, 1))
+#if defined(jpn)
+            func_020d7e10(GetGlobalResetObj020d7a50(), text, 0, 0, 1);
+#else
             func_020d7e10(GetGlobalResetObj020d7a50(), text, 0, 0, 1, 1);
+#endif
         DispatchWithShortB4_0205eaa0(&data_02108760, 14, 0);
         self->stage = 5; self->timer = 20; self->fade = 61;
     } else if (self->stage == 5) {

@@ -881,6 +881,9 @@ src/Combat/Overlay_4/FindNodeAndNotifyByKind_02167370.cpp:
 src/Combat/Overlay_4/ClearElemField8ForBothArrays_021660f4.cpp:
     .text start:0x0216673c end:0x021667e0
 
+src/Combat/Overlay_4/func_ov004_02166198.cpp:
+    .text start:0x021667e0 end:0x02166bf4
+
 src/Combat/Overlay_4/UpdateFlags50AndDispatch_02166b40.cpp:
     .text start:0x0216712c end:0x021671c4
 
@@ -1752,3 +1755,7 @@ src/Combat/Overlay_4/SetIndexedNameFromElem_02169a28.cpp:
 src/Combat/Overlay_4/SetNodeCountFromBattleBlock_02156760.cpp:
     complete
     .text start:0x021579ec end:0x02157a6c
+
+src/Combat/Overlay_4/func_ov004_02167068.cpp:
+    complete
+    .text start:0x0216767c end:0x0216791c

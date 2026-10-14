@@ -155,6 +155,10 @@ src/Combat/Overlay_5/func_ov005_0215a3bc.cpp:
     complete
     .text start:0x0215b910 end:0x0215b96c
 
+src/Combat/Overlay_5/func_ov005_0215c530.cpp:
+    complete
+    .text start:0x0215d914 end:0x0215df2c
+
 src/Combat/Overlay_5/func_ov005_0215cb4c.cpp:
     complete
     .text start:0x0215df2c end:0x0215dfb4
@@ -290,3 +294,31 @@ src/Combat/Overlay_5/GetTableByte0215a948.cpp:
 src/Combat/Overlay_5/02159274.cpp:
     complete
     .text start:0x0215a78c end:0x0215ad30
+
+src/Combat/Overlay_5/func_ov005_0215a620.cpp:
+    complete
+    .text start:0x0215bb74 end:0x0215bc6c
+
+src/Combat/Overlay_5/func_ov005_0215b2bc.cpp:
+    complete
+    .text start:0x0215c68c end:0x0215c8f0
+
+src/Combat/Overlay_5/func_ov005_0215a960.cpp:
+    complete
+    .text start:0x0215be90 end:0x0215bf64
+
+src/Combat/Overlay_5/func_ov005_0215690c.cpp:
+    complete
+    .text start:0x02157efc end:0x0215840c
+
+src/Combat/Overlay_5/func_ov005_02153ba4.cpp:
+    complete
+    .text start:0x02155324 end:0x021558ec
+
+src/Combat/Overlay_5/func_ov005_02159c88.cpp:
+    complete
+    .text start:0x0215b1d4 end:0x0215b81c
+
+src/Combat/Overlay_5/func_ov005_0215b520.cpp:
+    complete
+    .text start:0x0215c8f0 end:0x0215d244

@@ -2,20 +2,20 @@
 #include "World/ZoneLifecycle.h"
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"
+#include "Resource/MessageSystem.h"
 #include "Combat/Main/CopyRecord0200fbb4.h"
 
 struct BitField0203402c;
 struct Vec3copy0202ec84;
 struct TailList020469b4;
 struct TailNode020469b4;
-struct Controller02198aa0 { unsigned char padding0[0x9a0]; int field9a0; };
 struct Position02198aa0 { int x,y,z; };
 struct GrottoView02198aa0 { unsigned char padding0[8]; signed char offset; unsigned char padding9[3]; int entranceZone; Position02198aa0 position; };
 struct Cursor02198aa0 { unsigned char padding0[0x38]; int x, y; unsigned int field40, mode; unsigned char padding48[12]; unsigned char active; };
 struct Event02198aa0 { unsigned char kind; unsigned char padding1[19]; };
 struct State02198aa0 { unsigned short zoneId; unsigned char padding2[5]; unsigned char field7; unsigned char padding8[4]; unsigned char fieldC; unsigned char paddingD[15]; unsigned short angle; };
 void* GetField0x3b0Value(GameState*);
-void* GetGlobalField0x1c020421a0();
+int GetGlobalField0x1c020421a0();
 extern "C" void* func_0202ae18();
 extern "C" void* func_02012fe4();
 int CheckSubstructByte0x7cPositive(signed char*);
@@ -40,7 +40,7 @@ extern "C" ARM void func_ov017_02198aa0(GameResources* self) {
     GameObject* actor = game->GetUnknownGameObject();
     void* camera = GetField0x3b0Value(game);
     GameResources* resources = func_ov017_0218b5b0();
-    Controller02198aa0* controller = (Controller02198aa0*)GetGlobalField0x1c020421a0();
+    MessageSystem* controller = (MessageSystem*)GetGlobalField0x1c020421a0();
     void* search = func_0202ae18();
     void* zone = func_02012fe4();
     GrottoStruct* grotto = game->GetGrottoStruct();
@@ -48,7 +48,7 @@ extern "C" ARM void func_ov017_02198aa0(GameResources* self) {
     unsigned char mapType = grotto->activeMapData.GetMapType();
     unsigned char environment = grotto->activeEnviron;
     if (CheckSubstructByte0x7cPositive((signed char*)actor) || !grotto->unknown_0[0]) return;
-    if (((GrottoView02198aa0*)grotto)->entranceZone != actor->obj3D_.GetField06() || controller->field9a0) return;
+    if (((GrottoView02198aa0*)grotto)->entranceZone != actor->obj3D_.GetField06() || controller->mode) return;
     if (IsBrightnessTransitionActive(resources)) return;
     if (CheckField0xc4Low15BitsNonZero((BitField0203402c*)actor)) return;
     if (discovery != 2 && discovery != 3 && CheckField0NonZero((int*)search) && func_0202c540(search)) return;

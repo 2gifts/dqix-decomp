@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Graphics/Vector.h"
@@ -88,7 +89,6 @@ extern "C" void func_ov025_021eb044(void* obj, ...);
 extern "C" int func_ov000_0215fd90(void* entry, unsigned char effect);
 extern "C" void func_ov000_02162c14(void* work, int id, struct Buf021e3178* out);
 extern "C" void* _Z19GetActiveCombatWorkv(void);
-extern "C" void* _Z15GetData02108e10v(void);
 extern "C" struct Rec021e3178* _Z24SearchBothTables02079e2cPci(void* table, int key);
 extern "C" struct Node021e3178* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int index);
 extern "C" struct Node021e3178* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int index);
@@ -178,7 +178,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         break;
     }
     case 6: {
-        struct Rec021e3178* rec = _Z24SearchBothTables02079e2cPci(_Z15GetData02108e10v(), b->id);
+        struct Rec021e3178* rec = _Z24SearchBothTables02079e2cPci(GetData02108e10(), b->id);
         if (!rec) return 0;
         unsigned short id = b->id;
         if (id == 0x74) {
@@ -398,7 +398,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         break;
     }
     case 9: {
-        struct Rec021e3178* rec = _Z24SearchBothTables02079e2cPci(_Z15GetData02108e10v(), b->id);
+        struct Rec021e3178* rec = _Z24SearchBothTables02079e2cPci(GetData02108e10(), b->id);
         if (!rec) return 0;
         struct Node021e3178* node = _Z22GetNodeAtIndex021600f8P12List021600f8i(b, 0);
         if (!node) return 0;

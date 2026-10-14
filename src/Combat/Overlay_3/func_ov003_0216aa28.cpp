@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
@@ -58,11 +59,9 @@ extern struct TouchState_02114e54 data_02114e54;
 extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
 extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
 #if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d);
-#define APPLY_MENU(a,b,c,d,e) _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(a,b,c,d)
+#define APPLY_MENU(a,b,c,d,e) TryApplyElemFields0205d5d0(a,b,c,d)
 #else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#define APPLY_MENU(a,b,c,d,e) _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(a,b,c,d,e)
+#define APPLY_MENU(a,b,c,d,e) TryApplyElemFields0205d5d0(a,b,c,d,e)
 #endif
 extern "C" void func_ov003_02169a84(struct Menu0216aa28* menu, char* dst, int flag);
 extern "C" void func_ov003_02169d10(struct Menu0216aa28* menu, char* dst, int flag);

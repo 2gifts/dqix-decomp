@@ -1,3 +1,101 @@
+#if defined(jpn)
+#include <globaldefs.h>
+#include "Resource/CharacterCreationUI.h"
+#include <std_library_functions.h>
+
+struct Obj0204b010;
+struct Obj0204b8d0;
+struct PaletteWindow;
+enum CreationSex {
+    CreationMale = 0,
+    CreationFemale = 1,
+    CreationSexByteMax = 0xff // Storage range, not an additional selection.
+};
+void ClearBuffer0204b010(Obj0204b010*, void*);
+void DispatchEntry0204b8d0(Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
+extern "C" void func_0204b04c(void*, void*);
+extern "C" void func_0204b9b8(PaletteWindow*, int, int, int, int, unsigned int);
+
+extern "C" ARM void func_ov023_021da274(CharacterCreationUI* editor) {
+    if (editor->flags & 0x1000) {
+        ClearBuffer0204b010((Obj0204b010*)&editor->tileMaps[0], NULL);
+        int page = editor->state;
+        if (page >= 1 && page <= 8) {
+            short row = (short)((page - 1) * 2);
+            short bottom = row + 5;
+            DispatchEntry0204b8d0((Obj0204b8d0*)&editor->tileMaps[0], 0, 0, row, 15, bottom, 10, 2, 0xffff);
+        }
+        func_0204b04c(&editor->tileMaps[0], NULL);
+    }
+    if (editor->flags & 0x2000) {
+        ClearBuffer0204b010((Obj0204b010*)&editor->tileMaps[3], NULL);
+        int page = editor->state;
+        if (page == 1) {
+            unsigned int id = 0;
+            short x, y;
+            if (editor->sex == CreationMale) {
+                x = 7;
+                y = 5;
+            } else if (editor->sex == CreationFemale) {
+                id = 1;
+                x = 7;
+                y = 11;
+            }
+            DispatchEntry0204b8d0((Obj0204b8d0*)&editor->tileMaps[3], id, 0, 0, x, y, 18, 6, 0xffff);
+        } else if (page == 2) {
+            unsigned int slot = ((unsigned char*)((int)editor + (int)offsetof(CharacterCreationUI, bodyType)))[editor->sex];
+            DispatchEntry0204b8d0((Obj0204b8d0*)&editor->tileMaps[3], slot, 0, 0, (short)(slot * 5 + 4), 5, 4, 9, 0xffff);
+        } else if (page == 5) {
+            DispatchEntry0204b8d0((Obj0204b8d0*)&editor->tileMaps[3], 0, 0, 0, 4, 5, 24, 9, 0xffff);
+            int value = ((unsigned char*)((int)editor + (int)offsetof(CharacterCreationUI, faceStyle)))[editor->sex];
+            func_0204b9b8((PaletteWindow*)&editor->tileMaps[3], (short)(value % 5 * 5 + 4), (short)((value / 5 + 1) * 5), 4, 4, 2);
+        } else if (page == 3) {
+            DispatchEntry0204b8d0((Obj0204b8d0*)&editor->tileMaps[3], 0, 0, 0, 4, 5, 24, 9, 0xffff);
+            CreationSex sex = (CreationSex)editor->sex;
+            int value = ((unsigned char*)((int)editor + (int)offsetof(CharacterCreationUI, hairStyle)))[sex];
+            func_0204b9b8((PaletteWindow*)&editor->tileMaps[3], (short)(value % 5 * 5 + 4), (short)((value / 5 + 1) * 5), 4, 4, 2);
+        } else if (page == 8) {
+            if (editor->flags & 0x400000) {
+                DispatchEntry0204b8d0((Obj0204b8d0*)&editor->tileMaps[3], 3, 0, 0, 0, 14, 32, 10, 0xffff);
+            } else {
+                if (editor->previousKeyboardPage != editor->keyboardPage) {
+                    DispatchEntry0204b8d0((Obj0204b8d0*)&editor->tileMaps[2], (unsigned char)editor->keyboardPage, 0, 0, 0, 0, 32, 24, 0xffff);
+                }
+                editor->previousKeyboardPage = editor->keyboardPage;
+                func_0204b9b8((PaletteWindow*)&editor->tileMaps[2], 2, 7, 28, 12, 1);
+                if (editor->navigation.rows != 1) {
+                    short row = editor->keyboardChoice / 11;
+                    short column = editor->keyboardChoice % 11;
+                    short x = column * 2 + 3;
+                    if (column >= 5) x += 1;
+                    if (column == 10) x += 2;
+                    short y = row * 2 + 7;
+                    if (column == 10) {
+                        bool highlight = true;
+                        if (editor->mode == 0 && row == 4) highlight = false;
+                        if (highlight) {
+                            int width = 3;
+                            if (row == 5) width = 4;
+                            func_0204b9b8((PaletteWindow*)&editor->tileMaps[2], x, y, width, 2, 0);
+                        }
+                    } else {
+                        func_0204b9b8((PaletteWindow*)&editor->tileMaps[2], x, y, 2, 2, 0);
+                    }
+                }
+            }
+            func_0204b04c(&editor->tileMaps[2], NULL);
+        } else if (page == 9) {
+            unsigned int id = 0;
+            if (editor->mode == 0) id = 1;
+            DispatchEntry0204b8d0((Obj0204b8d0*)&editor->tileMaps[3], id, 0, 0, 0, 14, 32, 10, 0xffff);
+            DispatchEntry0204b8d0((Obj0204b8d0*)&editor->tileMaps[3], 2, 0, 0, 24, 9, 8, 7, 0xffff);
+            func_0204b9b8((PaletteWindow*)&editor->tileMaps[2], 2, 7, 28, 12, 1);
+            func_0204b04c(&editor->tileMaps[2], NULL);
+        }
+        func_0204b04c(&editor->tileMaps[3], NULL);
+    }
+}
+#else
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -144,3 +242,6 @@ extern "C" ARM void func_ov023_021da274(Self021da274* self) {
         func_0204b04c(&self->win1b8, NULL);
     }
 }
+
+#endif
+

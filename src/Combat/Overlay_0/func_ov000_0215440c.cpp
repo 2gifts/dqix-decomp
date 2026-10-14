@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "std_library_functions.h"
 struct Stats { char p[0x2e]; short id; };
 struct GameObject { char p[0x138]; Stats* stats; char q[0x17c - 0x13c]; unsigned char group; char r[2]; unsigned char linked; unsigned char solo; };
@@ -6,7 +7,7 @@ class GameState {public: static GameState* GetInstance();GameObject* GetCombatan
 struct S_10088;int IsFlag10088Set(S_10088*);
 extern "C" int _Z22IsFlag0x18Bit0x2000SetP10GameObject(GameObject*);
 extern "C" GameObject* _Z25GetCombatantWithFlag0x400P9GameStatei(GameState*,int);
-char* GetData02108e10();int ClassifyField0x81fe(char*);
+int ClassifyField0x81fe(char*);
 struct Skill {char p[8];unsigned int low8:8,side:2,rest8:22;char q[8];unsigned int low14:28,mode:4;unsigned int low18:5,type:7,rest18:20;unsigned int low1c:14,repeats:5,rest1c:13;};
 Skill* SearchBothTables02079e2c(char*,int);int GetCombatantField0x148Bits3To4(int,int);
 struct Random;int PickTableValueWithRandomFill_0215fbe0(Random*,int);int NextRandomMax(Random*,int);
@@ -26,20 +27,20 @@ inline GameObject* GetEnemy(int id){return _Z25GetCombatantWithFlag0x400P9GameSt
 inline GameObject* GetUnit(int id){return GameState::GetInstance()->GetCombatantByIndex(id);}
 // USA: func_ov000_0215440c
 extern "C" ARM int func_ov000_0215440c(Random* self,Action* action,short* output){
- Skill* skill=(Skill*)GetData02108e10();
+ ActionDataTables* tables = GetData02108e10();
  if(ClassifyField0x81fe((char*)self)){
-  Node02160094* node=GetNodeAtIndex02160094((List02160094*)action,0);
-  if(node){int party=(node->id>=0xc0&&node->id<=0xc7)?1:0;if(party){output[0]=0;return 1;}}
+  Node02160094* slotNode=GetNodeAtIndex02160094((List02160094*)action,0);
+  if(slotNode){int party=(slotNode->id>=0xc0&&slotNode->id<=0xc7)?1:0;if(party){output[0]=0;return 1;}}
  }
- skill=SearchBothTables02079e2c((char*)skill,action->id);if(!skill)return 0;
+ Skill* skill=SearchBothTables02079e2c((char*)tables,action->id);if(!skill)return 0;
  int count=0;
  GameObject* unit=GetEnemy(GetId(action->entry));if(!unit)return count;
  int done=0;
- if(GetCombatantField0x148Bits3To4((int)self,action->entry->id)!=2){
+ if(GetCombatantField0x148Bits3To4((int)self,GetId(action->entry))!=2){
   if(unit->linked){
    if((skill->mode==2||skill->mode==5)&&skill->side==1){
     GameObject* partner=GetUnit(GetId(unit->stats));
-    if(partner&&!IsFlag10088Set((S_10088*)partner)&&!_Z22IsFlag0x18Bit0x2000SetP10GameObject(partner)){output[0]=unit->stats->id;count++;done=1;}
+    if(partner&&!IsFlag10088Set((S_10088*)partner)&&!_Z22IsFlag0x18Bit0x2000SetP10GameObject(partner)){output[0]=GetId(unit->stats);count++;done=1;}
    }
   }else if(unit->solo)done=1;
  }
@@ -86,7 +87,7 @@ extern "C" ARM int func_ov000_0215440c(Random* self,Action* action,short* output
     Node021600f8* node=GetNodeAtIndex021600f8((List021600f8*)action,i);
     GameObject* c=GetUnit(GetId(node));
     if(!c)continue;
-    if(skill->type==0x12||skill->type==0x21||(!IsFlag10088Set((S_10088*)c)&&!_Z22IsFlag0x18Bit0x2000SetP10GameObject(c))){output[count]=node->id;count++;}
+    if(skill->type==0x12||skill->type==0x21||(!IsFlag10088Set((S_10088*)c)&&!_Z22IsFlag0x18Bit0x2000SetP10GameObject(c))){output[count]=GetId(node);count++;}
    }
   }
  }
@@ -96,5 +97,5 @@ extern "C" ARM int func_ov000_0215440c(Random* self,Action* action,short* output
   if(repeat>0){for(int i=0;i<repeat;i++){ptr[i]=output[NextRandomMax(self,count)];}memset(output,0,count*2);memcpy(output,selected.v,repeat*2);count=repeat;}
   return count;
  }
- return func_ov000_02154a04(self,(unsigned short)action->entry->id,(unsigned short)action->id,output);
+ return func_ov000_02154a04(self,(unsigned short)GetId(action->entry),(unsigned short)action->id,output);
 }

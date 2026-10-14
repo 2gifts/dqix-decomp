@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 
 struct Container020e0310;
 
@@ -6,7 +7,7 @@ extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container02
 extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
 int IsField0x118Equal2(void* obj);
 extern "C" int _Z22AppendFrameTag02041c08Pciiiii(char* dst, int a1, int a2, int a3, int a4, int a5);
-char* GetData02108e10(void);
+
 int AppendPaletteTag(char* dst, int palette);
 extern "C" const char** _Z24SearchBothTables02079e2cPci(char* table, int key);
 int AppendCursorTag(char* dst, int cursor);
@@ -49,7 +50,7 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
         if (IsField0x118Equal2(menu)) {
             _Z22AppendFrameTag02041c08Pciiiii(dst, cursor, 8, 5, 5, 5);
         }
-        char* table = GetData02108e10();
+        ActionDataTables* table = GetData02108e10();
         if (table == NULL) {
             return;
         }
@@ -70,7 +71,7 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
             if (menu->itemIds[i] == 0) {
                 _Z20AppendString02042058PcPKc(dst, emptyName);
             } else {
-                const char** entry = _Z24SearchBothTables02079e2cPci(table, (short)menu->itemIds[i]);
+                const char** entry = _Z24SearchBothTables02079e2cPci((char*)table, (short)menu->itemIds[i]);
                 if (entry == NULL) {
                     continue;
                 }
@@ -93,7 +94,7 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
             _Z22AppendFrameTag02041c08Pciiiii(dst, cursor, 8, 5, 5, 5);
         }
         AppendCursorTag(dst, cursor);
-        char* table = GetData02108e10();
+        ActionDataTables* table = GetData02108e10();
         if (table == NULL) {
             return;
         }
@@ -101,7 +102,7 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
             if (menu->itemIds[i] == 0) {
                 AppendNameTag(dst, i, emptyName);
             } else {
-                const char** entry = _Z24SearchBothTables02079e2cPci(table, (short)menu->itemIds[i]);
+                const char** entry = _Z24SearchBothTables02079e2cPci((char*)table, (short)menu->itemIds[i]);
                 if (entry == NULL) {
                     continue;
                 }

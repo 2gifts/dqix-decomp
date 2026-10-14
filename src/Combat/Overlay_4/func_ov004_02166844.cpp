@@ -7,6 +7,7 @@ enum { MainIndex = 0, ListIndex = 1, FlagOffset = 0x962, WindowPrefix = 0x1800, 
 #endif
 
 #include "Memory/SafeAllocator.h"
+#include "Resource/QuestScript.h"
 #include "System/Cache.h"
 #include "System/LoadToVRAM.h"
 #include "std_library_functions.h"
@@ -22,7 +23,6 @@ int* GetGlobal02109418(void);
 extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
 void SetFieldsAt0x4And0x8(int* obj, int a, int b);
 extern "C" void* func_0205ec34(void);
-extern "C" void func_020956b8(int* g, void* p);
 extern "C" void func_02095b30(int* g, int v);
 extern "C" void* func_ov011_021845f8(void* obj, int key);
 extern "C" void* _Z40CheckTypeAndReturnNode_02165e70_02165e70Pvi(void* obj, int type);
@@ -99,7 +99,7 @@ extern "C" ARM int func_ov004_02166844(void* a1) {
 
     memcpy(((State02166844*)data_ov004_0217101c[MainIndex])->savedBytes, c + 0x2cc, 0x66);
     ((State02166844*)data_ov004_0217101c[MainIndex])->savedWord = *(int*)((char*)g + 0xa0);
-    func_020956b8(g, node + 4);
+    func_020956b8((Header020956b8*)g, (SafeAllocator*)(node + 4));
     func_02095b30(g, 1);
 
     data_ov004_0217101c[ListIndex] = 0;

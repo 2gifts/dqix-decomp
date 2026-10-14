@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 #include "Combat/Main/BattleList.h"
 #include "Util/Random.h"
@@ -13,7 +14,7 @@ struct ShortList8 {
     short v[8];
 };
 
-void* GetData02108e10(void);
+
 extern "C" struct ActionEntry_02153f98* _Z24SearchBothTables02079e2cPci(char* p, int key);
 extern "C" int func_ov000_0215e9fc(struct Random* rand, short* buf, int max, int start);
 

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 struct Stats {unsigned short hp,mp;char p[0x1d];unsigned char state;char q[0x1a];unsigned char flags;};
 struct GameObject {char p[0xc1];unsigned char low:4,state:4;char q[0x76];Stats* stats;
 #if defined(jpn)
@@ -8,7 +9,7 @@ char r[20];
 #endif
 unsigned char* actor;};
 class GameState {public:static GameState* GetInstance();GameObject* GetCombatantByIndex(int);};
-GameObject* GetCombatantWithFlag0x100(GameState*,int);int IsFlag0x18Bit0x200Set(GameObject*);int ClassifyField0x81fe(char*);char* GetData02108e10();
+GameObject* GetCombatantWithFlag0x100(GameState*,int);int IsFlag0x18Bit0x200Set(GameObject*);int ClassifyField0x81fe(char*);
 struct Skill {char p[8];unsigned int cost:8,rest8:24;unsigned int c,flags;char q[4];unsigned int low:12,type:4,high:16;};
 Skill* SearchBothTables02079e2c(char*,int);int TestBitInArray0x8ec(unsigned char*,int);unsigned int AdjustValueByFieldFlag(void*,unsigned int);void ConsumeMP0215a124(void*,int,int);void* GetActiveCombatWork();void* GetOffsetPtr02160f08(void*);
 struct Obj02176150;extern "C" void _Z24SetShortField0xE02176150P11Obj02176150s(Obj02176150*,unsigned short);void SetField0x18Flag0x20(unsigned char*);struct Bytes02033b88;void SetByte0xbeShiftPrev(Bytes02033b88*,int);
@@ -27,7 +28,7 @@ inline GameObject* GetUnit(int id){GameState* gs=GameState::GetInstance();return
 // USA: func_ov000_021537b8
 extern "C" ARM void func_ov000_021537b8(void* self,int id,Work* work){
  GameState* gs=GameState::GetInstance();GameObject* unit=GetUnit(id);if(!unit)return;if(ClassifyField0x81fe((char*)self))return;
- Skill* skill=SearchBothTables02079e2c(GetData02108e10(),(short)work->action);if(!skill)return;
+ Skill* skill=SearchBothTables02079e2c((char*)GetData02108e10(),(short)work->action);if(!skill)return;
  int consume=1;if(!IsParty(id)&&unit->stats->mp>=255)consume=0;if(IsFlag0x18Bit0x200Set(unit))consume=0;
  if(consume){
   int cost=skill->cost;if(IsParty(id)){GameObject* member=GetCombatantWithFlag0x100(gs,id);if(member&&TestBitInArray0x8ec(member->actor,0x106))cost=AdjustValueByFieldFlag(member,cost);}

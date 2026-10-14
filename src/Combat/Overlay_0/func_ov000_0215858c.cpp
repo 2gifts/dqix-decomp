@@ -131,7 +131,6 @@ void ClearFlag0x100AndBytes7dA0(unsigned char* stats);
 extern float data_ov000_02182ad4[];
 extern float data_ov000_02182bd4[];
 
-#pragma opt_propagation off
 // USA: func_ov000_0215858c
 extern "C" ARM void func_ov000_0215858c(struct Random* random, int combatantId, int arg2) {
     struct CombatantAilments* ailments;
@@ -162,7 +161,8 @@ extern "C" ARM void func_ov000_0215858c(struct Random* random, int combatantId, 
 
         int wake = 0;
         short casterId = AILMENTS(combatant)->casterId;
-        GameObject* caster = GameState::GetInstance()->GetCombatantByIndex(casterId);
+        GameState* state = GameState::GetInstance();
+        GameObject* caster = state->GetCombatantByIndex(casterId);
         if (caster == 0) {
             wake = 1;
         }

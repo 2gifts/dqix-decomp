@@ -5,6 +5,12 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/AllocatorUnion.h"
 
+#if defined(jpn)
+enum { kTextBufferCapacity = 0x800 };
+#else
+enum { kTextBufferCapacity = 0x960 };
+#endif
+
 struct Obj020397cc;
 struct Obj02033834;
 struct Obj0205eaa0;
@@ -27,8 +33,13 @@ struct Event021ac3b0 {
     unsigned char stage, cancelled;
 };
 struct Controller021ac3b0 {
+#if defined(jpn)
+    char pad0[0x28]; char* formatted; char* text; char pad64[0x868 - 0x30];
+    int active; char pad99c[0x17e2 - 0x86c]; unsigned char field19b2;
+#else
     char pad0[0x5c]; char* formatted; char* text; char pad64[0x998 - 0x64];
     int active; char pad99c[0x19b2 - 0x99c]; unsigned char field19b2;
+#endif
 };
 struct Flags021ac3b0 { char pad0[0x8c]; unsigned char bits[1]; };
 struct Lookup021ac3b0 {
@@ -46,7 +57,11 @@ void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 void* GetGlobalResetObj020d7a50();
 int GetByte0x150Bit6(BitFlags020d805c*);
 void TeardownAndResetState020d7aa0(Obj020d7aa0*);
+#if defined(jpn)
+extern "C" void func_0204500c(void*, const char*, int);
+#else
 extern "C" void func_0204500c(void*, const char*, int, int);
+#endif
 extern "C" void func_020a0cc4(unsigned int);
 void SetVecYByMode02033834(Obj02033834*, int);
 extern "C" void func_020a0c0c();
@@ -66,7 +81,12 @@ void SetByteField0x253(void*);
 int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(Lookup021ac3b0*);
 extern Obj0205eaa0 data_02108760;
+#if defined(jpn)
+extern const char data_ov017_021d7e88[], data_ov017_021d7e96[];
+extern const char data_ov017_021d7eb0[], data_ov017_021d7ed2[];
+#else
 extern const char data_ov017_021d7920[], data_ov017_021d792f[], data_ov017_021d7949[];
+#endif
 extern AllocatorUnion data_02114e20;
 
 // USA: func_ov017_021ac3b0
@@ -89,7 +109,11 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         void* reset = GetGlobalResetObj020d7a50();
         if (GetByte0x150Bit6((BitFlags020d805c*)reset)) TeardownAndResetState020d7aa0((Obj020d7aa0*)reset);
+#if defined(jpn)
+        func_0204500c(controller, data_ov017_021d7e88, 0);
+#else
         func_0204500c(controller, data_ov017_021d7920, 0, 0xe3);
+#endif
         controller->field19b2 = 0; controller->active = 1;
         BlankFunction02094b3c(global, 10);
         BlankFunction02094b30(global, 0x1f6, 1);
@@ -101,10 +125,16 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
         CancelPendingAction020397cc((Obj020397cc*)leader, 1);
         SetVecYByMode02033834((Obj02033834*)leader, fix32ReduceAngle0To2Pi(self->source->angle));
         Descriptor021ac3b0* descriptor = zone->descriptor;
-        char archive[0x50], filename[0x40];
+        char archive[0x50];
+#if defined(jpn)
+        sprintf(archive, data_ov017_021d7e96, descriptor->kind);
+        self->task = loader->QueueLoadFile(archive, 0);
+#else
+        char filename[0x40];
         sprintf(archive, data_ov017_021d792f, descriptor->kind);
         sprintf(filename, data_ov017_021d7949, descriptor->kind);
         self->task = loader->QueueLoadFileInGP2(archive, filename, 0);
+#endif
         self->stage++;
     } else if (self->stage == 3) {
         if (!loader->GetTaskStatus(self->task)) return;
@@ -128,7 +158,7 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
     } else if (self->stage == 4) {
         char* formatted = controller->formatted;
         char* text = controller->text;
-        memset(formatted, 0, 0x960); memset(text, 0, 0x960);
+        memset(formatted, 0, kTextBufferCapacity); memset(text, 0, kTextBufferCapacity);
         if (self->info->enabled) {
             const char* message = self->info->text;
             if (self->info->kind == 1) {
@@ -140,12 +170,21 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
                 }
             }
             if (message) AppendString02042058(text, message);
+#if defined(jpn)
+            else AppendString02042058(text, data_ov017_021d7eb0);
+        } else AppendString02042058(text, data_ov017_021d7ed2);
+#else
             else AppendString02042058(text, CallFunc020e0434With02153694(0x3f2));
         } else AppendString02042058(text, CallFunc020e0434With02153694(0x53));
-        if (strlen(text) >= 0x960) text[0x95f] = 0;
+#endif
+        if (strlen(text) >= kTextBufferCapacity) text[kTextBufferCapacity - 1] = 0;
         char* data = GetData02108d18();
         Init0206f510(data); func_0206f550(data, text, formatted);
+#if defined(jpn)
+        func_0204500c(controller, formatted, 0);
+#else
         func_0204500c(controller, formatted, 0, 0xe3);
+#endif
         controller->active = 1; controller->field19b2 = 0; self->stage = 5;
     } else if (self->stage == 5) {
         if (controller->active) return;

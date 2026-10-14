@@ -46,17 +46,31 @@ int GetPackedNibbleField(PackedNibbleArray0206e120*, int);
 int GetPackedNibbleFlag0x8(PackedNibbleArray0206e2dc*, int);
 int TestBitInByteArrayAt0x84(void*, int);
 extern "C" void func_ov004_021660f4();
-extern MenuLists* data_ov004_0217101c;
+struct QuestWindowOwners {
+#if defined(jpn)
+    void** windowLists;
+    MenuLists* main;
+#else
+    MenuLists* main;
+    void** windowLists;
+#endif
+    MenuLists* GetMain() { return main; }
+};
+extern QuestWindowOwners data_ov004_0217101c;
+#if defined(jpn)
+extern char data_ov004_02170e54[];
+#else
 extern char data_ov004_021705a0[];
+#endif
 
 // USA: func_ov004_02166198
 extern "C" ARM void func_ov004_02166198() {
     MenuEntry* regular;
     MenuEntry* special;
     TableItem* items;
-    MenuLists* lists = data_ov004_0217101c;
+    MenuLists* lists = data_ov004_0217101c.GetMain();
     short count = lists->count;
-    GetTableByteOrFFData* table = reinterpret_cast<GetTableByteOrFFData*>(GetGlobal02109418());
+    GetTableByteOrFFData* table = (GetTableByteOrFFData*)(GetGlobal02109418());
     items = table->items;
     void* save = func_0205ec34();
     short regularCount = 0;
@@ -64,7 +78,7 @@ extern "C" ARM void func_ov004_02166198() {
     TableItem* firstItem;
     short firstIndex;
     for (firstIndex = 1; firstIndex <= count; firstIndex++) {
-        int id = GetTableByteOrFF(table, static_cast<unsigned char>(firstIndex));
+        int id = GetTableByteOrFF(table, (unsigned char)(firstIndex));
         firstItem = items;
         int j;
         for (j = 0; j < 0xcc; j++, firstItem++) {
@@ -72,9 +86,9 @@ extern "C" ARM void func_ov004_02166198() {
         }
         if (j == 0xcc) continue;
         if (firstItem->id == 0 || firstItem->id >= 0xff) continue;
-        int state = GetPackedNibbleField(static_cast<PackedNibbleArray0206e120*>(save), firstItem->id);
+        int state = GetPackedNibbleField((PackedNibbleArray0206e120*)(save), firstItem->id);
         if (firstItem->special) {
-            if (GetPackedNibbleFlag0x8(static_cast<PackedNibbleArray0206e2dc*>(save), firstItem->id)) specialCount++;
+            if (GetPackedNibbleFlag0x8((PackedNibbleArray0206e2dc*)(save), firstItem->id)) specialCount++;
         } else {
             switch (state) {
             case 1:
@@ -84,9 +98,11 @@ extern "C" ARM void func_ov004_02166198() {
             case 3:
                 regularCount++;
                 break;
+#if !defined(jpn)
             case 0:
                 if (TestBitInByteArrayAt0x84(table, firstItem->id)) regularCount++;
                 break;
+#endif
             }
         }
     }
@@ -95,15 +111,15 @@ extern "C" ARM void func_ov004_02166198() {
     lists->regular = 0;
     lists->special = 0;
     lists->allocator.Reset();
-    if (regularCount) lists->regular = static_cast<MenuEntry*>(lists->allocator.Allocate(regularCount * sizeof(MenuEntry)));
-    if (specialCount) lists->special = static_cast<MenuEntry*>(lists->allocator.Allocate(specialCount * sizeof(MenuEntry)));
+    if (regularCount) lists->regular = (MenuEntry*)(lists->allocator.Allocate(regularCount * sizeof(MenuEntry)));
+    if (specialCount) lists->special = (MenuEntry*)(lists->allocator.Allocate(specialCount * sizeof(MenuEntry)));
     short regularIndex = 0;
     short specialIndex = 0;
     regular = lists->regular;
     special = lists->special;
     for (short i = 1; i <= count; i++) {
         int state;
-        int id = GetTableByteOrFF(table, static_cast<unsigned char>(i));
+        int id = GetTableByteOrFF(table, (unsigned char)(i));
         TableItem* item = items;
         int j;
         for (j = 0; j < 0xcc; j++, item++) {
@@ -111,10 +127,10 @@ extern "C" ARM void func_ov004_02166198() {
         }
         if (j == 0xcc) continue;
         if (item->id == 0 || item->id >= 0xff) continue;
-        state = GetPackedNibbleField(static_cast<PackedNibbleArray0206e120*>(save), item->id);
+        state = GetPackedNibbleField((PackedNibbleArray0206e120*)(save), item->id);
         bool include = false;
         if (item->special) {
-            if (GetPackedNibbleFlag0x8(static_cast<PackedNibbleArray0206e2dc*>(save), item->id)) {
+            if (GetPackedNibbleFlag0x8((PackedNibbleArray0206e2dc*)(save), item->id)) {
                 include = true;
                 if (state == 1 && TestBitInByteArrayAt0x84(table, item->id)) state = 3;
             }
@@ -127,9 +143,11 @@ extern "C" ARM void func_ov004_02166198() {
             case 3:
                 include = true;
                 break;
+#if !defined(jpn)
             case 0:
                 if (TestBitInByteArrayAt0x84(table, item->id)) { include = true; state = 3; }
                 break;
+#endif
             }
         }
         if (!include) continue;
@@ -148,12 +166,16 @@ extern "C" ARM void func_ov004_02166198() {
         entry->field_0x8 = 0;
         memset(entry->name, 0, sizeof(entry->name));
         entry->index = i;
-        entry->state = static_cast<unsigned short>(state);
+        entry->state = (unsigned short)(state);
         entry->special = item->special;
         entry->flag12 = item->flag12;
         entry->flag9 = item->flag9;
         entry->flag11 = item->flag11;
+#if defined(jpn)
+        sprintf(entry->name, data_ov004_02170e54, i);
+#else
         sprintf(entry->name, data_ov004_021705a0, i);
+#endif
         entry->field_0x8 = 0;
         (*index)++;
     }

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
@@ -9,7 +10,6 @@ int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
 struct Holder0209a9dc;
 struct Entry0209a9dc { unsigned short id; unsigned short pad; };
 struct Entry0209a9dc* FindEntryById0209a9dc(struct Holder0209a9dc* h, int i);
-void* GetData02108e10(void);
 void* SearchBothTables02079e2c(char* p, int key);
 struct TableA68;
 void* FindEntryByKey(struct TableA68* table, int key);
@@ -71,7 +71,7 @@ extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
             g->arr1c[id].attempts[g->field70]);
         if (e != NULL) {
             short val = *(short*)((char*)e + 2);
-            void* tbl = GetData02108e10();
+            ActionDataTables* tbl = GetData02108e10();
             void* found = SearchBothTables02079e2c((char*)tbl, val);
             if (found != NULL) {
 #if defined(jpn)

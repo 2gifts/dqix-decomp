@@ -1,17 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Combat/FieldActorState.h"
 
-struct Obj02076b58;
 typedef void (Obj02076b58::*PMF02076b58)();
-
-struct Obj02076b58 {
-    char pad0[0x130];
-    int field130;
-    char pad1[0x18];
-    int field14c;
-    int field150;
-    int field154;
-};
 
 extern PMF02076b58 data_020e892c[];
 
@@ -22,11 +13,11 @@ extern "C" void func_020790ac(void* obj);
 ARM void TickActorAndDispatchPhase02076b58(Obj02076b58* obj) {
     GameState* battleStruct = GameState::GetInstance();
     func_020332ac(obj);
-    obj->field14c += battleStruct->GetEffectiveDeltaTime();
-    if (obj->field130 != 0) {
-        obj->field154 += battleStruct->GetEffectiveDeltaTime();
+    obj->elapsedTime += battleStruct->GetEffectiveDeltaTime();
+    if (obj->phase != 0) {
+        obj->phaseElapsedTime += battleStruct->GetEffectiveDeltaTime();
     }
-    obj->field150 += 1;
+    obj->tickCount += 1;
     func_020790ac(obj);
-    (obj->*data_020e892c[obj->field130])();
+    (obj->*data_020e892c[obj->phase])();
 }

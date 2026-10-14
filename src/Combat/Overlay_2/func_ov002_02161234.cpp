@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"
 #include "GameState/GameState.h"
@@ -28,7 +29,6 @@ void *Clear12Bytes020e46c4(void *p);
 extern "C" void *__clear(void *dst, int count);
 void InitObjFromCombatantId020e4bf4(void *obj, int combatantId);
 void StoreInArray0x8b0(StoreStruct *messages, int index, int value);
-void *GetData02108e10(void);
 void *SearchBothTables02079e2c(char *p, int key);
 void InitObjFromPackedFields020e4e38(void *obj, struct Src020e4e38 *src);
 unsigned char GetField0x397cValue(GameState *battleStruct);

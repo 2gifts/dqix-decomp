@@ -12,14 +12,34 @@ struct StateE468 {
 };
 struct Foo0207df50 { unsigned int first[10],second[10],field50,field54,firstPair[2],secondPair[2]; };
 struct SourceE468 { char pad0[0x568]; Foo0207df50 saved; };
-struct ActorE468 { char pad0[0x154]; SourceE468* data; };
+struct ActorE468 {
+#if defined(jpn)
+    char pad0[0x148];
+#else
+    char pad0[0x154];
+#endif
+    SourceE468* data;
+};
 struct PackedFlagsE468 { unsigned char bit0:1,bit1:1,bit2:1,bit3:1,bit4:1,bit5:1,bit6:1,bit7:1; };
 struct ParamsE468 {
     unsigned char active; char pad1[15]; unsigned char mode; PackedFlagsE468 flags; unsigned short field12;
     short field14,field16,field18,field1a,field1c; char pad1e[2]; int field20,field24,field28; Vector3i position,rotation,scale;
 };
 struct WorldE468 { unsigned short id; char pad2[2]; unsigned char field4; char pad5[2]; unsigned char field7,field8,field9,pada; signed char fieldb; unsigned char fieldc; char padd[3]; Vector3i position; unsigned short field1c; short field1e; int field20,field24,field28,field2c; char pad30[0x6c-0x30]; short field6c; char pad6e[2]; };
-struct GrottoViewE468 { unsigned char active,pending; char pad2[3]; unsigned char environment,rank,pad7,field8; char pad9[3]; int zone; Vector3i entrance; char pad1c[0x6c-0x1c]; unsigned char field6c; char pad6d[0x83-0x6d]; unsigned char field83,field84,pad85; unsigned short field86; };
+struct GrottoViewE468 {
+    unsigned char active,pending; char pad2[3]; unsigned char environment,rank,pad7,field8;
+    char pad9[3]; int zone; Vector3i entrance;
+#if defined(jpn)
+    char pad1c[0x4c-0x1c];
+#else
+    char pad1c[0x6c-0x1c];
+#endif
+    unsigned char field6c; char pad6d[0x83-0x6d];
+    unsigned char field83,field84,pad85; unsigned short field86;
+};
+#if defined(jpn)
+#define data_ov017_021d7e80 data_ov017_021d8693
+#endif
 extern AllocatorUnion data_02114e20; extern char data_ov017_021d7e80[]; extern char data_02108760[];
 extern "C" void func_0202ae18(); extern "C" void* func_02057924(); extern "C" unsigned char* func_02012fe4();
 void CancelPendingAction020397cc(Obj020397cc*,int); void SetOrClearBit(unsigned char*,int,int);

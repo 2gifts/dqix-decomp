@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
@@ -27,7 +28,6 @@ extern "C" void func_ov025_021e13e0(unsigned char*, FormationEntry*);
 extern "C" unsigned int func_ov025_021e161c(int, int, unsigned char*, int);
 extern "C" void func_ov025_021e1c20(int, unsigned char*, unsigned char*, int, void*, void*, FormationEntry*);
 extern "C" unsigned char func_ov025_021e1480(int, unsigned char*, int);
-char* GetData02108e10();
 extern "C" ActionRecord* _Z24SearchBothTables02079e2cPci(char*, int);
 
 static inline int ActorID(FormationEntry* entry) { return entry->actor_->obj3D_.unknown_4_; }
@@ -124,7 +124,7 @@ extern "C" ARM void func_ov025_021e16c8(FormationEntry* self, FormationEntry* ta
     else if (nearCount == 1) selected = nearCandidates[0];
     else if (nearCount > 1) selected = func_ov025_021e1480(GetSubstructByte0x1c((unsigned char*)self->actor_), nearCandidates, nearCount);
     if (participating) {
-        ActionRecord* record = _Z24SearchBothTables02079e2cPci(GetData02108e10(), lists->id_);
+        ActionRecord* record = _Z24SearchBothTables02079e2cPci((char*)GetData02108e10(), lists->id_);
         if (record && (record->flags_ << 16) >> 28 != 2) {
             memset(nearby, 0, 81);
             func_ov025_021e120c(nearby, position, 1, radius, 0);

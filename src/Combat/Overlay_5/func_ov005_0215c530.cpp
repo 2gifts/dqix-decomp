@@ -1,6 +1,13 @@
 #include <globaldefs.h>
+#include "Resource/GameResources.h"
 
 struct GameState;
+
+enum EquipmentItemId
+{
+    NoEquipmentItem = -1,
+    MaxStoredEquipmentItemId = 0x7fff
+};
 
 struct ItemDef0215c530
 {
@@ -58,29 +65,55 @@ struct Slot0215c530
     char pad[0x1c - 2];
 };
 
-struct Container0215c530
-{
-    int unk[2];
+struct Container020dedd0;
+struct Element020de650;
+struct Obj021dcae0 {
+    char pad0[0x48];
+    Container020dedd0* field48;
+    Element020de650* field4c;
+#if defined(jpn)
+    char pad50[0x680];
+#else
+    char pad50[0x704];
+#endif
+    int field754;
+    char pad758[0x18];
+    short field770;
+    unsigned short field772;
+    unsigned short field774;
+    unsigned char field776;
 };
 
-struct Sub0215c530
-{
-    char pad0[0x1000];
-    Container0215c530 container;
-    char pad1[0x179c - 0x1000 - sizeof(Container0215c530)];
+struct EntryList021db08c {
+    Entry0215c530* entries;
+    unsigned short unknown4;
+    unsigned short count;
 };
 
 struct Menu0215c530
 {
-    char pad0[0x244];
-    Sub0215c530 sub;
+#if defined(jpn)
+    char pad0[0x1240];
+#else
+    char pad0[0x1244];
+#endif
+    Obj021dcae0 container;
+#if defined(jpn)
+    char beforeHead[0x1958 - 0x1240 - sizeof(Obj021dcae0)];
+#else
+    char beforeHead[0x19e0 - 0x1244 - sizeof(Obj021dcae0)];
+#endif
     ListNode0215c530* head;
-    char pad1[0x2d90 - 0x19e4];
+    char pad1[8];
+    EntryList021db08c entryList;
+    char cursor[0x2d90 - 0x19f4];
     Slot0215c530 slots[24];
     char pad2[0x3d98 - 0x3030];
     short counts[8];
-    char pad3[0x3db9 - 0x3da8];
-    unsigned char f3db9;
+    char pad3[2];
+    unsigned char pageStep;
+    char pad3b[0x3db9 - 0x3dab];
+    unsigned char lastState;
     char pad4[0x3dbb - 0x3dba];
     signed char selected;
     unsigned char tab;
@@ -93,15 +126,13 @@ struct Menu0215c530
     unsigned char modes[8];
 };
 
-struct GameResources0215c530
-{
-    char pad[0x3708];
-    int* ptr;
-};
-
 struct Member0215c530
 {
+#if defined(jpn)
+    char pad[0x4f8];
+#else
     char pad[0x4fc];
+#endif
     int member;
 };
 
@@ -116,20 +147,23 @@ extern "C" void _Z15Compact0207c51cPhi(unsigned char*, int);
 extern "C" void _Z22ClearElements_021e1518Pv(void*);
 extern "C" void _Z19BuildChain_021e1b5cPviii(void*, int, int, int);
 extern "C" void _Z19BuildChain_021e1b0cPviii(void*, int, int, int);
-extern "C" GameResources0215c530* func_ov017_0218b5b0();
 extern "C" Member0215c530* _Z19GetField1c_021a193cPi(int*);
 extern "C" void _Z18InitStruct020de1d4P11StructDE1D4(StructDE1D4*);
 extern "C" void* memset(void*, int, unsigned int);
 extern "C" void* memcpy(void*, const void*, unsigned int);
 extern "C" Entry0215c530* _Z22FindEntryById_021db08cPvi(void*, int);
-extern "C" int func_020dd4c4(signed char, Item0215c530*);
-extern "C" void func_ov005_021579ec(Menu0215c530*, int, int);
+extern "C" int func_020dd4c4(int, Item0215c530*);
+extern "C" void func_ov005_021579ec(Menu0215c530*, unsigned int, unsigned char);
 extern "C" void func_0205bb04(void*, int);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void*, int, int);
 extern "C" void func_ov005_021555c0(Menu0215c530*);
-extern "C" void func_ov023_021dcae0(Container0215c530*, short);
-extern "C" void func_ov005_0215792c(Menu0215c530*, int);
+extern "C" void func_ov023_021dcae0(Obj021dcae0*, int);
+extern "C" void func_ov005_0215792c(Menu0215c530*, unsigned char);
 
+#if defined(jpn)
+#define data_ov005_0215cd08 data_ov005_0215e0e8
+#define data_ov005_0215cd00 data_ov005_0215e0e0
+#endif
 extern unsigned char data_ov005_0215cd08[];
 extern unsigned char data_ov005_0215cd00[];
 extern char data_02108760[];
@@ -170,7 +204,7 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
         unsigned char outAmounts[0x110];
         for (int i = 0; i < 0x110; i++)
         {
-            outIds[i] = -1;
+            outIds[i] = NoEquipmentItem;
             outAmounts[i] = 0;
         }
         if (!reorder)
@@ -196,7 +230,7 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
         }
         else
         {
-            signed char member = _Z19GetField1c_021a193cPi(func_ov017_0218b5b0()->ptr)->member;
+            signed char member = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->member;
             Item0215c530 item;
             ItemDef0215c530 def;
             _Z18InitStruct020de1d4P11StructDE1D4((StructDE1D4*)&item);
@@ -213,7 +247,7 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
                     memset(&def, 0, 0x20);
                     Entry0215c530* entry;
                     item.def = &def;
-                    entry = _Z22FindEntryById_021db08cPvi((char*)self + 0x19ec, id);
+                    entry = _Z22FindEntryById_021db08cPvi(&self->entryList, id);
                     if (entry)
                     {
                         item.id = entry->id;
@@ -236,7 +270,7 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
                         outIds[n] = ids[i];
                         outAmounts[n] = amounts[i];
                         n++;
-                        ids[i] = -1;
+                        ids[i] = NoEquipmentItem;
                         amounts[i] = 0;
                     }
                 }
@@ -269,7 +303,7 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
                 if (old != self->selected)
                 {
                     func_ov005_021579ec(self, 4, (unsigned char)self->selected);
-                    func_0205bb04((char*)self + 0x19f4, self->selected - 8);
+                    func_0205bb04(self->cursor, self->selected - 8);
                 }
             }
         }
@@ -292,9 +326,9 @@ extern "C" ARM void func_ov005_0215c530(Menu0215c530* self)
         self->dirty |= 0x800;
     }
     func_ov005_021555c0(self);
-    Slot0215c530* slot = &self->slots[self->selected];
-    func_ov023_021dcae0((Container0215c530*)((char*)&self->sub + 0x1000), slot->item);
+    EquipmentItemId item = (EquipmentItemId)self->slots[self->selected].item;
+    func_ov023_021dcae0(&self->container, item);
     self->dirty |= 0x40;
-    ((unsigned char*)self)[0x3daa] = 0;
-    func_ov005_0215792c(self, self->f3db9);
+    self->pageStep = 0;
+    func_ov005_0215792c(self, self->lastState);
 }

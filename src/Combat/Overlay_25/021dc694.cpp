@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"
@@ -10,7 +11,6 @@ enum { Field2a8 = 0x2a8, Field14c = 0x14c, Field29c = 0x29c, Fieldeac = 0xeac, F
 #endif
 
 extern "C" void* _Z18GetSlotPtr02160f20Pv(void* obj);
-void* GetData02108e10(void);
 extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
 extern "C" void func_ov025_021e88d8(void* obj);
 extern "C" void _Z21SetTwoFields_021e8a40Pcii(char* obj, int a, int b);
@@ -48,7 +48,7 @@ extern "C" ARM void func_ov025_021dc694(void* arg) {
     unsigned int fileLen = 0;
     loader->GetLoadedFileByID(data_ov025_021ef404, &filePtr, &fileLen);
 
-    void* table = GetData02108e10();
+    ActionDataTables* table = GetData02108e10();
     struct SearchEntry_021dc694* entry = (struct SearchEntry_021dc694*)_Z24SearchBothTables02079e2cPci((char*)table, *(short*)slot);
 
     if (filePtr != 0 && fileLen != 0 && entry != 0) {

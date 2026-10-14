@@ -56,7 +56,11 @@ struct CombatSelection {
 };
 
 struct GameState0201099c {
+#if defined(jpn)
+    unsigned char pad[0x3724];
+#else
     unsigned char pad[0x3984];
+#endif
     CombatSelection members[13];
     unsigned char memberCount;
 };
@@ -79,10 +83,18 @@ struct ResetFieldsStruct {
     short f6;
     short f8;
     char pad0a[2];
+#if defined(jpn)
+    const char** maleNames;
+#else
     int fc;
+#endif
     short f10;
     char pad12[2];
+#if defined(jpn)
+    const char** femaleNames;
+#else
     int f14;
+#endif
     short f18;
 };
 
@@ -123,7 +135,11 @@ struct CharacterRecord0201099c {
     CharacterProfile0201099c profile;
     unsigned char pad74[0x120];
     Element020de650 equipment[8];
+#if defined(jpn)
+    unsigned char pad294[0x638];
+#else
     unsigned char pad294[0x6d0];
+#endif
 };
 
 struct ShortPair0201099c {
@@ -191,13 +207,29 @@ extern const char data_020e6d6c[];
 extern const char data_020ef0b5[];
 extern unsigned char data_0211e33c[];
 extern const SlotMap0201099c data_020e6d74[];
+#if defined(jpn)
+extern const ShortPair0201099c data_020e763c[];
+extern const SlotMap0201099c data_020e7618[];
+extern unsigned char data_020e7610[];
+extern const char data_020eeff3[];
+extern "C" int func_020e052c(void*, void*, const char*, void*, short, unsigned char);
+int StringLength(const char*);
+#endif
 
 static inline const ShortPair0201099c* GetBodySize0201099c(int index) {
+#if defined(jpn)
+    return &data_020e763c[index];
+#else
     return &data_020e6d98[index];
+#endif
 }
 
 static inline const SlotMap0201099c* GetSlotMap0201099c(int index) {
+#if defined(jpn)
+    return &data_020e7618[index];
+#else
     return &data_020e6d74[index];
+#endif
 }
 
 static inline unsigned short GetStat6c0201099c(const CharacterProfile0201099c* profile) { SDK_NULL_ASSERT(profile); return profile->stat6c; }
@@ -229,6 +261,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
         vocations[2] = NextRandomMax(rng, 2) + 6;
     }
 
+#if !defined(jpn)
     SafeAllocator nameAlloc;
     nameAlloc.ResetAllocatorPointer();
     nameAlloc.ResetAllocatorPointer();
@@ -245,11 +278,16 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
     BackgroundLoader::RemoveLockGlobal();
 
     IdPair0201099c used = data_020e6d64;
+#endif
     ResetFieldsStruct templates;
     SafeAllocator scriptAlloc;
     scriptAlloc.ResetAllocatorPointer();
+#if defined(jpn)
+    scriptAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x1400), 0x1400);
+#else
     scriptAlloc.ResetAllocatorPointer();
     scriptAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x800), 0x800);
+#endif
     ResetStructFields(&templates);
     _Z39SetupHeaderAndRunBufferedScript02089de8PvS_PKc(&templates, &scriptAlloc, NULL);
     int templateCount = templates.count;
@@ -291,6 +329,22 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
         for (int j = 0; j < 13; j++) {
             m->levels[j] = t->levels[j];
         }
+#if defined(jpn)
+        const char** name = look->gender == 0 ? templates.maleNames : templates.femaleNames;
+        unsigned char vocation = GetFieldAt0x50((Struct020865b0*)m);
+        if (vocation == 1) {
+            name += NextRandomMax(rng, 5);
+        } else if (vocation == 4) {
+            name += NextRandomMax(rng, 5) + 5;
+        } else if (vocation == 2) {
+            name += NextRandomMax(rng, 5) + 10;
+        } else if (vocation == 3) {
+            name += NextRandomMax(rng, 5) + 15;
+        } else {
+            name += NextRandomMax(rng, 5);
+        }
+        memcpy(m->name, *name, StringLength(*name));
+#else
         short nameBase = 20000;
         if (look->gender == 1) {
             nameBase += 1000;
@@ -312,6 +366,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
         __clear(nameBuf, sizeof(nameBuf));
         func_020426bc(nameStr, nameBuf, 1);
         memcpy(m->name, nameBuf, sizeof(nameBuf));
+#endif
         short* equipment = m->appearance.equipment;
         for (int k = 0; k < 10; k++) {
             if (k == 2) {
@@ -329,12 +384,15 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
     SignedAllocatorHeader* scriptHeader = scriptAlloc.GetSignedAllocator();
     scriptAlloc.Destroy();
     _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, scriptHeader);
+#if !defined(jpn)
     _Z22ResetAndDetach020dfc6cP14Struct020dfc40(&names);
     SignedAllocatorHeader* nameHeader = nameAlloc.GetSignedAllocator();
     if (nameHeader != NULL) {
         nameAlloc.Destroy();
         _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, nameHeader);
     }
+
+#endif
 
     if (templateCount > 0) {
         CharacterRecord0201099c record;
@@ -356,11 +414,18 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
         SafeAllocator itemAlloc;
         itemAlloc.ResetAllocatorPointer();
         itemAlloc.ResetAllocatorPointer();
+#if defined(jpn)
+        itemAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x12c00), 0x12c00);
+#else
         itemAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x13800), 0x13800);
+#endif
         itemAlloc.Reset();
         Container020dedd0 items;
         _Z22ZeroInitReturn020de824Pv(&items);
         _Z16ZeroInit020de848Pv(&items);
+#if defined(jpn)
+        func_020e052c(&items, &itemAlloc, data_020f2a38, data_020e7610, 8, 1);
+#else
         BackgroundLoader::AddLockGlobal();
         unsigned int itemSize = 0;
         void* itemData = ExtractFileFromGP2(data_020f2a38, data_020f2a30, &itemSize);
@@ -368,12 +433,17 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
             func_020dea64(&items, &itemAlloc, itemData, itemSize, data_020e6d6c, 8);
         }
         BackgroundLoader::RemoveLockGlobal();
+#endif
         BackgroundLoader::AddLockGlobal();
         CharacterRecord0201099c* rec;
         for (int v = 0; v < 13; v++) {
             char path[0x19];
             unsigned int size;
+#if defined(jpn)
+            sprintf(path, data_020eeff3, v);
+#else
             sprintf(path, data_020ef0b5, v);
+#endif
             if (LoadFileIntoMemory(path, data_0211e33c, &size) != NULL) {
                 ResourceScriptEntry* res = &entry;
                 for (int j = 0; j < gs->memberCount; j++) {

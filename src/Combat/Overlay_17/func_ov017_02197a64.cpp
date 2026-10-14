@@ -33,12 +33,20 @@ struct Leader02197a64 {
 };
 
 struct Resources02197a64 {
+#if defined(jpn)
+    unsigned char pad0[0x4188];
+#else
     unsigned char pad0[0x4438];
+#endif
     Vector3fix heading;
 };
 
 struct Self02197a64 {
+#if defined(jpn)
+    unsigned char pad0[0x40cc];
+#else
     unsigned char pad0[0x42ec];
+#endif
     short strayCount;
 };
 

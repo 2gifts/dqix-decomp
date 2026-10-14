@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 #include <globaldefs.h>
 
@@ -90,7 +91,6 @@ struct StateArray {
 };
 
 extern "C" struct Element02157634* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* c, int key);
-void* GetData02108e10(void);
 extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
 extern "C" int _Z24IsIdInSpecialSet0201b868Pvi(void* p, int id);
 extern "C" void _Z18Something_021a6b9cih(int a, unsigned char b);
@@ -220,12 +220,12 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             return;
         }
         {
-            char* tbl = (char*)GetData02108e10();
+            ActionDataTables* tbl = GetData02108e10();
             int key = e->key;
             if (e->kind == 0x1f) {
                 key = 0xfc;
             }
-            struct TableEntry* entry = (struct TableEntry*)_Z24SearchBothTables02079e2cPci(tbl, key);
+            struct TableEntry* entry = (struct TableEntry*)_Z24SearchBothTables02079e2cPci((char*)tbl, key);
             if (entry != 0) {
                 if (entry->b10 & 1) {
                     p->flags.on = 1;
@@ -256,7 +256,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
         if (!ok) {
             actor = GetField0x397cValue(gs);
         }
-        char* tbl = (char*)GetData02108e10();
+        ActionDataTables* tbl = GetData02108e10();
         GetPtrField0x2a04(gs);
         _Z22InitStateArray02157ce0Pc((char*)&st);
         _Z22InitStateArray02157ce0Pc((char*)&st);
@@ -269,7 +269,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             st.actor = actor;
             st.count = 1;
             st.ids[0] = target;
-            struct TableEntry* entry = (struct TableEntry*)_Z24SearchBothTables02079e2cPci(tbl, key);
+            struct TableEntry* entry = (struct TableEntry*)_Z24SearchBothTables02079e2cPci((char*)tbl, key);
             if (entry != 0) {
                 func_ov016_0218b5c0(0, -1);
                 if (entry->type == 3) {

@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 
-unsigned int DisableIRQInterrupts();
-unsigned int SetIRQInterruptState(int mask);
+#include "System/Interrupts.h"
 
 struct Obj020d6610;
 
@@ -39,7 +38,6 @@ struct Msg020d63f0 {
 extern "C" void _Z28ClearAndSetBlockFlag020d6610P11Obj020d6610ii(Obj020d6610* obj, int bit, int extra);
 extern "C" void _Z31AdvanceBattleBlockQueue020d66dcP11Obj020d66dci(Obj020d66dc* obj, int mode);
 
-#pragma opt_propagation off
 // USA: func_020d63f0
 extern "C" ARM void func_020d63f0(Msg020d63f0* msg) {
     Obj020d66dc* obj = msg->obj;
@@ -58,10 +56,10 @@ extern "C" ARM void func_020d63f0(Msg020d63f0* msg) {
         case 9:
         case 0x1a: {
             unsigned short bit = msg->bit;
-            unsigned int mask = 1;
-            unsigned int state = DisableIRQInterrupts();
+            unsigned int mask = 1U << bit;
+            int state = DisableIRQInterrupts();
             unsigned short cur = obj->sub.cur;
-            mask = ~(mask << bit);
+            mask = ~mask;
             obj->blocks[cur].flagsA &= mask;
             if (obj->sub.state == 1) {
                 unsigned short next = (cur + 1) & 3;

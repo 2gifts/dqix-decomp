@@ -12,8 +12,19 @@ struct Foo0207df50 { unsigned int words[28]; };
 struct ResourceState021a6c2c { char pad0[0xc40]; Foo0207df50 effectFields; };
 struct Dispatcher021a6c2c { unsigned char fields[0xd0]; };
 struct Zone021a6c2c {
-    unsigned short id; char pad2[0x42]; int originX, originZ;
-    char pad4c[0x27b4 - 0x4c]; short field27b4;
+    unsigned short id;
+#if defined(jpn)
+    char pad2[0x64 - 2];
+#else
+    char pad2[0x44 - 2];
+#endif
+    int originX, originZ;
+#if defined(jpn)
+    char pad4c[0x27f4 - 0x6c];
+#else
+    char pad4c[0x27b4 - 0x4c];
+#endif
+    short field27b4;
     char pad27b6[0x12]; int encounterX, encounterZ;
 };
 struct Actor021a6c2c {
@@ -53,6 +64,10 @@ extern "C" void _Z26SetForwardAndStore0205ebc0Pvii(void*, int, int);
 extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(void*, int, int);
 int GetByte0x26c(char*);
 void* GetField0x3f8Address(GameState*);
+#if defined(jpn)
+#define func_ov017_021a7280 func_ov017_021a7c28
+#define data_ov017_021d777c data_ov017_021d7bb8
+#endif
 extern "C" void func_ov017_021a7280(Event021a6c2c*);
 extern char data_ov017_021d777c[];
 extern AllocatorUnion data_02114e20;

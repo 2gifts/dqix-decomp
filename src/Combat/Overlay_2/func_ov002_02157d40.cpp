@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include <globaldefs.h>
 
 #include "Combat/ResourceScriptEntry.h"
@@ -46,7 +47,6 @@ struct Obj021c2b28;
 
 extern "C" void* __clear(void* dst, int count);
 extern "C" void* func_02012fe4(void);
-void* GetData02108e10(void);
 void* GetData02153637(void);
 extern "C" void* _Z24SearchBothTables02079e2cPci(char* p, int key);
 extern "C" void* func_0202ae18(void);
@@ -285,7 +285,8 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
     struct BattleStruct* gs = _ZN9GameState11GetInstanceEv();
     int word = GetWord0x0((int*)gs);
     unsigned short* obj = (unsigned short*)func_02012fe4();
-    tbl = (char*)GetData02108e10();
+    ActionDataTables* actionTables = GetData02108e10();
+    tbl = (char*)actionTables;
     struct TableEntry* entryA = (struct TableEntry*)_Z24SearchBothTables02079e2cPci(tbl, p->command);
     struct Unit* comb = (struct Unit*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, p->actor);
     int* checkPtr = (int*)func_0202ae18();

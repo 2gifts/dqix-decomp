@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"
@@ -67,7 +68,6 @@ struct FlagObj_021da998;
 struct FlagObj_021dd260;
 struct S_10088;
 int GetFieldAt0x150(unsigned char*);
-void* GetData02108e10();
 int TestBitAt0x34(unsigned char*, unsigned int);
 int IsFlag10088Set(S_10088*);
 int IsFlagBit8388608Set_021da998(FlagObj_021da998*);

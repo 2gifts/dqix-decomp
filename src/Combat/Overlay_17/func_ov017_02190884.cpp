@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "World/Zone3D.h"
 
 struct FlagWord02046708;
 struct Obj020397cc;
@@ -21,24 +22,17 @@ struct Member02190884 {
     unsigned char modeC1 : 2;
     char padC2[0x130 - 0xc2];
     Status02190884* status;
+#if defined(jpn)
+    char pad134[0x2c6 - 0x134];
+#else
     char pad134[0x2d2 - 0x134];
+#endif
     unsigned char slot2d2;
 };
 
 struct Flags02190884 {
     char pad0[3];
     unsigned char active;
-};
-
-struct OvCtx02190884 {
-    char pad0[0x36d0];
-    unsigned char* flags6d0;
-    char pad36d4[0x3718 - 0x36d4];
-    Flags02190884* ptr718;
-    char pad371c[0x3734 - 0x371c];
-    Flags02190884* ptr734;
-    char pad3738[0x3b30 - 0x3738];
-    Flags02190884* ptrB30;
 };
 
 struct Init02190884 {
@@ -79,6 +73,9 @@ void ClearFlag0x1ceBit0x1(unsigned char* obj);
 extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(Obj02033874* obj, int value);
 void SetFlagBits0x55e(unsigned char* obj, int value);
 
+#if defined(jpn)
+#define data_ov017_021d61dc data_ov017_021d662c
+#endif
 extern Init02190884 data_ov017_021d61dc;
 
 // USA: func_ov017_02190884
@@ -108,7 +105,7 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
     }
 
     SearchStruct0202c1a4* search = func_0202ae18();
-    OvCtx02190884* ctx = (OvCtx02190884*)func_ov017_0218b5b0();
+    GameResources* ctx = func_ov017_0218b5b0();
     if (ctx == NULL) {
         return;
     }
@@ -121,7 +118,7 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
     int inRange = 0;
     int restore;
     GameObject* obj;
-    if (_Z19IsIdInRange020981e4ii((int)(map + 0x840), *(unsigned short*)map)) {
+    if (_Z19IsIdInRange020981e4ii((int)((Zone3D*)map)->unk_840, *(unsigned short*)map)) {
         inRange = 1;
     }
 
@@ -129,9 +126,9 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
     int listB[4];
     int nA = 0;
     int nB = 0;
-    Flags02190884* f718 = ctx->ptr718;
-    Flags02190884* f734 = ctx->ptr734;
-    Flags02190884* fB30 = ctx->ptrB30;
+    Flags02190884* f718 = (Flags02190884*)ctx->unknown_ptr_3718;
+    Flags02190884* f734 = (Flags02190884*)ctx->unknown_ptr_array_371c[6];
+    Flags02190884* fB30 = (Flags02190884*)ctx->unknown_ptr_array_3afc[13];
     if (!(self->status->flags & 1)) {
         listA[nA++] = id;
     } else {
@@ -345,7 +342,7 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
         }
     }
 
-    if (ctx->flags6d0 != NULL) {
-        SetFlagBits0x55e(ctx->flags6d0, 1);
+    if (ctx->unknown_ptr_36d0 != NULL) {
+        SetFlagBits0x55e((unsigned char*)ctx->unknown_ptr_36d0, 1);
     }
 }

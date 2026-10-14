@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/ActionDataTables.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
 
@@ -79,7 +80,6 @@ extern "C" void _Z28SetFirstEmptySlot48_021eb4e4P24SlotArrayStruct_021eb4e4i(str
 extern "C" unsigned long long func_ov024_021e4b14(struct Act_021da9e0* self, int a, int id, struct Rec_021da9e0* rec, int dmg);
 extern "C" int func_ov000_02159f18(void* world, unsigned long long bits, int bit);
 extern "C" struct Node_021da9e0* _Z22GetNodeAtIndex02160094P12List02160094i(void* list, int index);
-extern "C" void* _Z15GetData02108e10v();
 extern "C" struct Rec_021da9e0* _Z24SearchBothTables02079e2cPci(void* table, int id);
 extern "C" short func_ov000_0215a004(void* world, int a, int id, int dmg, void* effects, struct Rec_021da9e0* rec, int flag, int mode);
 extern "C" void func_ov000_02159eac(void* world, void* effects, int bit);
@@ -187,7 +187,7 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
                 if (first->f20 != a) r = 0;
                 unsigned int k = rec->f4.id;
                 if (k == 1 || k == 2 || k == 0xdb || k == 0xdf || k == 0xe0 || obj->fc->f1d.b0)
-                    r = _Z24SearchBothTables02079e2cPci(_Z15GetData02108e10v(), 1);
+                    r = _Z24SearchBothTables02079e2cPci(GetData02108e10(), 1);
             }
         }
         hp = func_ov000_0215a004(obj->world, a, id, dmg, &effects, r, obj->fc->f1c.b7 != 0, 0);

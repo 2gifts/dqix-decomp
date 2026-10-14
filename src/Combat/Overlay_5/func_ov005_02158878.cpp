@@ -1,3 +1,4 @@
+#include "Combat/TryApplyElemFields.h"
 #if defined(jpn)
 #define LOW_REGION(j, u) (j)
 #else
@@ -49,12 +50,6 @@ int CheckFlag30Or401_02157190(void* self);
 extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(unsigned short* obj, int mask);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* sound, int effect, int unk);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int unk);
-#if defined(jpn)
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d);
-#else
-extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d, unsigned char e);
-#endif
-
 // USA: func_ov005_02158878
 extern "C" ARM void func_ov005_02158878(EquipmentMenu* self) {
     func_0205d0e0(&self->window_);
@@ -86,9 +81,9 @@ extern "C" ARM void func_ov005_02158878(EquipmentMenu* self) {
             memset(self->text_, clear, LOW_REGION(0x800, 0x960));
             func_ov005_02158b3c(self, self->text_);
 #if defined(jpn)
-            _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)&self->window_, clear, (int)self->text_, 1);
+            TryApplyElemFields0205d5d0((StructA0205d5d0*)&self->window_, clear, (int)self->text_, 1);
 #else
-            _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)&self->window_, clear, (int)self->text_, 1, clear);
+            TryApplyElemFields0205d5d0((StructA0205d5d0*)&self->window_, clear, (int)self->text_, 1, clear);
 #endif
             return;
         }

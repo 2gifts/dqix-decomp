@@ -1,3 +1,4 @@
+#include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 #include "System/Matrix.h"
@@ -34,7 +35,6 @@ int GetField0x397cValue(GameState *gs);
 GameObject *GetCombatantChecked(GameState *gs, int id);
 int TestBitInByteArray(int unused, unsigned char *arr, int index);
 char *FindEntryByByteId020a83b0(struct List020a83b0 *l, int id);
-char *GetData02108e10();
 char *SearchBothTables02079e2c(char *t, int id);
 void ConsumeCounter02048350(struct Obj02048350 *o, int n);
 int CheckField0NonZero(int *p);
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov002_02165b44(char *base) {
                                             *(short *) (base + 0x1b00 + 0xe8), 0);
                     } else {
                         DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 0x64, 0);
-                        char *t = SearchBothTables02079e2c(GetData02108e10(), 0xca);
+                        char *t = SearchBothTables02079e2c((char*)GetData02108e10(), 0xca);
                         ConsumeCounter02048350(
                             (struct Obj02048350 *) GetCombatantChecked(gs, *(signed char *) (base + 0x1c00 + 0x20)),
                             ((struct TE5b44 *) t)->lo8);

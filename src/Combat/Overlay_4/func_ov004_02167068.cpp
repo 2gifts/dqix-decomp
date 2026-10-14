@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/QuestScript.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "Combat/ScriptElementList.h"
@@ -24,15 +25,21 @@ struct State02167068 {
     unsigned char bit6 : 1;
     unsigned char bit7 : 1;
 };
-extern State02167068* data_ov004_0217101c;
+extern void* data_ov004_0217101c[2];
+#if defined(jpn)
+enum { MainIndex = 1 };
+extern char data_ov004_02170e60[];
+extern char data_ov004_02170e7d[];
+#else
+enum { MainIndex = 0 };
 extern char data_ov004_021705a5[];
 extern char data_ov004_021705c0[];
 extern char data_ov004_021705d2[];
+#endif
 int* GetGlobal02109418();
 extern "C" int _Z25RunBufferedScript020957f4PvP12StreamHeaderi(void*, StreamHeader*, int);
 extern "C" int _Z28InitObjWithAllocator02095e90P11Obj02095e90P13SafeAllocator(Obj02095e90*, SafeAllocator*);
 extern "C" int _Z23RunOrPollScript02095ee0P11Ctx02095ee0(Ctx02095ee0*);
-extern "C" void func_0209576c(void*, SafeAllocator*, void*, int, int);
 extern "C" void func_ov004_02166198();
 extern "C" void func_ov011_021848a0(void*, int);
 extern "C" int func_ov004_02166b40(void*);
@@ -42,12 +49,16 @@ extern "C" void _Z27SetFieldD2IfChanged0208beccP11Obj0208beccih(Obj0208becc*, in
 
 // USA: func_ov004_02167068
 extern "C" ARM int func_ov004_02167068(void* self) {
-    State02167068* state = data_ov004_0217101c;
+    State02167068* state = (State02167068*)data_ov004_0217101c[MainIndex];
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     int* global = GetGlobal02109418();
     int result = 1;
     if (state->step == 0) {
+#if defined(jpn)
+        state->task = loader->QueueLoadFile(data_ov004_02170e60, 0);
+#else
         state->task = loader->QueueLoadFileInGP2(data_ov004_021705a5, data_ov004_021705c0, 0);
+#endif
         state->step = 1;
     } else if (state->step == 1) {
         if (loader->GetTaskStatus(state->task)) {
@@ -67,14 +78,18 @@ extern "C" ARM int func_ov004_02167068(void* self) {
         state->step = 3;
     } else if (state->step == 3) {
         if (_Z23RunOrPollScript02095ee0P11Ctx02095ee0((Ctx02095ee0*)global) != 1) return result;
+#if defined(jpn)
+        state->task = loader->QueueLoadFile(data_ov004_02170e7d, 0);
+#else
         state->task = loader->QueueLoadFile(data_ov004_021705d2, 0);
+#endif
         state->step = 4;
     } else if (state->step == 4) {
         if (loader->GetTaskStatus(state->task)) {
             void* buffer;
             unsigned int size;
             loader->GetLoadedFileByID(state->task, &buffer, &size);
-            if (buffer) func_0209576c(global, &state->allocator, buffer, size, 0);
+            if (buffer) func_0209576c((Header020956b8*)global, &state->allocator, buffer, size, 0);
             loader->RemoveTask(state->task);
             state->task = -1;
             state->step = 5;

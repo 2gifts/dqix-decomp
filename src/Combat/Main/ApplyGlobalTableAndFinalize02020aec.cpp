@@ -4,13 +4,9 @@
 #else
 #define IS_JPN 0
 #endif
-#if defined(jpn)
-typedef int RegionalTaskHandle;
-#else
-typedef int* RegionalTaskHandle;
-#endif
 
 #include "Filesystem/BackgroundLoader.h"
+#include "Combat/MapDisplay.h"
 
 
 struct List0202fec8;
@@ -26,13 +22,14 @@ int ProcessRecords0205a498(void* a, struct Rec020467f0* b, int flag, void* d);
 void SetBitfieldStoreBytes0205af38(int a, char* obj, int c, int d);
 
 // USA: func_02020aec  (semantic: ApplyGlobalTableAndFinalize02020aec)
-extern "C" ARM void func_02020aec(char* self, RegionalTaskHandle handle, int arg2) {
-    int listPtr = (int)BackgroundLoader::GetInstance();
-    int out1 = 0, out2 = 0;
+extern "C" ARM void func_02020aec(MapDisplay* self, MapDisplayTaskHandle handle, SafeAllocator* allocator) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    void* fileData = 0;
+    unsigned int fileLength = 0;
     #if defined(jpn)
-    ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID(handle, (void**)(&out1), (unsigned int*)(&out2));
+    loader->GetLoadedFileByID(handle, &fileData, &fileLength);
 #else
-    ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*handle), (void**)(&out1), (unsigned int*)(&out2));
+    loader->GetLoadedFileByID(*handle, &fileData, &fileLength);
 #endif
 
     char* g = (char*)GetGlobalPtr02105244();
@@ -43,16 +40,16 @@ extern "C" ARM void func_02020aec(char* self, RegionalTaskHandle handle, int arg
     g = (char*)GetGlobalPtr02105244();
     *(char**)g = p;
 
-    ProcessRecords0205a498(self + 0x94, (struct Rec020467f0*)out1, out2, (void*)arg2);
+    ProcessRecords0205a498(&self->entryList, (Rec020467f0*)fileData, fileLength, allocator);
 
-    listPtr = (int)BackgroundLoader::GetInstance();
+    loader = BackgroundLoader::GetInstance();
 #if defined(jpn)
-    ((BackgroundLoader*)(listPtr))->RemoveTask(handle);
+    loader->RemoveTask(handle);
 #else
-    ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*handle));
+    loader->RemoveTask(*handle);
     *handle = -1;
 #endif
 
-    SetBitfieldStoreBytes0205af38((int)(self + 0x94), self + 0x250, 1, 1);
-    SetBitfieldStoreBytes0205af38((int)(self + 0x94), self + 0x2a0, 1, 1);
+    SetBitfieldStoreBytes0205af38((int)&self->entryList, (char*)&self->records[9], 1, 1);
+    SetBitfieldStoreBytes0205af38((int)&self->entryList, (char*)&self->records[11], 1, 1);
 }

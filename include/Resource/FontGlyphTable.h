@@ -9,7 +9,9 @@ struct Entry020429e4 {
 
 struct Table020429e4 {
     unsigned short glyphBytes;
-    char unknown2[4];
+    unsigned char glyphWidth;
+    unsigned char glyphHeight;
+    char unknown4[2];
     short glyphCount;
     Entry020429e4* keys;
     char* glyphs;
