@@ -2,7 +2,7 @@
 
 #include "Combat/DistanceSort.h"
 #include "GameState/GameState.h"
-
+#include "Graphics/NSBXX/RenderConfig.h"
 
 struct Target02059f38;
 struct Vec3_02059f38;
@@ -11,10 +11,7 @@ void CopyVec3ToField0x44(struct Target02059f38* dst, struct Vec3_02059f38* src);
 struct FixedVec3_2034;
 struct FixedMtx3T_2034;
 
-extern "C" void* _ZN12RenderConfig20GetInverseViewMatrixEv(void);
-
 extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
-
 
 struct Vec3_02059f54 { int x; int y; int z; };
 
@@ -47,7 +44,7 @@ extern "C" ARM void func_02059f54(unsigned char* p, int combatantId) {
 
     if (flags->bit3) {
         struct Vec3_02059f54 vec = *(struct Vec3_02059f54*)(p + 0x44);
-        void* m = _ZN12RenderConfig20GetInverseViewMatrixEv();
+        void* m = (void*)RenderConfig::GetInverseViewMatrix();
         Mat4x3_ApplyToVector((const Vector3fix*)((struct FixedVec3_2034*)&vec), (const Matrix4x3*)((struct FixedMtx3T_2034*)m), (Vector3fix*)((struct FixedVec3_2034*)&vec));
         CopyVec3ToField0x44((struct Target02059f38*)p, (struct Vec3_02059f38*)&vec);
     }

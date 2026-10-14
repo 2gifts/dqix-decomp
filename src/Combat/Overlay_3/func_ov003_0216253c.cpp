@@ -51,7 +51,6 @@ void OrBitsIntoField0(unsigned int *, unsigned int);
 extern "C" void func_ov003_02165bd8(Scene *);
 void ApplyElementEffect02161438(void*);
 extern "C" int func_ov003_02160854(Scene *);
-extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 int CompareThreshold_021614e8(int);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
@@ -130,7 +129,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
         int idx = self->h48c - 0x15 + self->c49f * 4;
         ApplyElementEffect02161438(self);
         if (func_ov003_02160854(self) != 0) {
-            if (idx == *(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0x2000 + 0xc8c)) {
+            if (idx == *((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0x2000 + 0xc8c)) {
                 if (CompareThreshold_021614e8((int) self) != 0) {
                     return;
                 }
@@ -163,7 +162,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
             if (CheckField0NonZero(p) != 0 && func_0202c508(p) != 0) {
                 ClearFlag320_02195540(g);
             }
-            int a = *(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0xf7c);
+            int a = *((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0xf7c);
             int n = CountValidCombatantsMinusField_02160b84(self);
             if (a + n == 4) {
                 CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
@@ -251,7 +250,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
                 self->flags |= 2;
             }
         } else {
-            if (*(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0x2000 + 0xc8c) == 0) {
+            if (*((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0x2000 + 0xc8c) == 0) {
                 self->state = 0;
             } else {
                 self->h484  = 4;

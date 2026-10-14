@@ -169,14 +169,14 @@ float GetScaledBits12To17At0x2fc(unsigned char* p);
 float ComputeQuarterDecayFactor020748d0(int v);
 float ComputeQuarterDecayFactor(int v);
 float LookupTableC0(int v);
-extern "C" int _Z31IsCombatantFlag2Mask32_021e67b0P10GameObject(struct Cbt_021e6a90* c);
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(void* gs);
+int IsCombatantFlag2Mask32_021e67b0(GameObject*);
+void* GetPtrField0x2a04(GameState*);
 struct ArrayContainsByteStruct;
 int ArrayContainsByte(ArrayContainsByteStruct*, int);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
 int TestBit5At0x2f4(unsigned char* p);
 int TestBit10At0x2f4(unsigned char* p);
-extern "C" int _Z13NextRandomMaxP6Randomi(struct Battle_021e6a90* battle, int max);
+int NextRandomMax(Random*, int);
 int TestBit4At0x2f4(unsigned char* p);
 void ZeroFieldsAt0xe58And0xe82And0x8e52(void*);
 
@@ -421,10 +421,10 @@ extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId,
             if (target->stats->rank21 <= 3) {
                 dmg = dmg * LookupTableC0((signed char)target->stats->rank21);
             }
-            if (_Z31IsCombatantFlag2Mask32_021e67b0P10GameObject(target)) {
+            if (IsCombatantFlag2Mask32_021e67b0((GameObject*)target)) {
                 dmg = dmg * LookupTableC0(1);
             }
-            if (ArrayContainsByte((ArrayContainsByteStruct*)(_Z17GetPtrField0x2a04P9GameState(_ZN9GameState11GetInstanceEv())), targetId) &&
+            if (ArrayContainsByte((ArrayContainsByteStruct*)(GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv())), targetId) &&
                 target && target->stats->rank21 == 1) {
                 IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)ctx->battle, 0);
             }
@@ -497,13 +497,13 @@ extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId,
             miss = 0;
         }
         if (miss) {
-            dmg = _Z13NextRandomMaxP6Randomi(ctx->battle, 2);
+            dmg = NextRandomMax((Random*)ctx->battle, 2);
         }
     }
 
     if (func_ov000_02156068(ctx->battle, targetId, 0, 1)) {
         if (!crit && (action->id == 0x40 || action->id == 0x7e)) {
-            dmg = 1.0f + _Z13NextRandomMaxP6Randomi(ctx->battle, 2);
+            dmg = 1.0f + NextRandomMax((Random*)ctx->battle, 2);
         }
         if (IsPartyMember(attackerId)) {
             struct Cbt_021e6a90* p = GetCombatantWithFlag0x100((GameState*)gs, attackerId);

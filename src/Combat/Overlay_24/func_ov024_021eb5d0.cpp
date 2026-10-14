@@ -18,7 +18,6 @@ struct BattleStruct {
     int unk4;
     struct CombatantStruct* combatantList[0xe9];
 };
-extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 struct Bits8_021eb5d0 {
     unsigned char b0 : 1;
@@ -267,7 +266,6 @@ struct Targets_021eb5d0 {
 };
 extern "C" struct Targets_021eb5d0 data_ov024_021fe8f0;
 
-extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* bs, int id);
 struct Rec_021eb5d0* SearchBothTables02079e2c(char*, int);
 void* LookupElementByKey02079ee0(void* table, int key);
 extern "C" void* memset(void* dst, int value, unsigned int length);
@@ -279,7 +277,7 @@ extern "C" int func_ov024_021e8dc0(struct Act_021eb5d0* self, int id, struct Rec
 int GetTableValue(void* p);
 struct Random;
 float NextRandomFloatScaled(Random*, float, float, int);
-extern "C" int _Z13NextRandomMaxP6Randomi(void* rng, int max);
+int NextRandomMax(Random*, int);
 struct GameObject;
 int IsCombatantFlag2Mask512_021eadfc(GameObject*);
 int ConsumeMP0215a124(void* world, int id, int amount);
@@ -411,7 +409,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
     self->f10 = world;
     self->f4 = list;
     self->f8 = list->f10;
-    struct BattleStruct* bs = _ZN9GameState11GetInstanceEv();
+    struct BattleStruct* bs = (BattleStruct*)GameState::GetInstance();
     ActionDataTables* table = GetData02108e10();
     struct Rec_021eb5d0* rec = SearchBothTables02079e2c((char*)table, self->f4->f0);
     if (rec == 0) return;
@@ -487,7 +485,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
     self->f44 = -1;
     self->f10->fe38 = 0;
     if (rec->f4.id == 0x200 || rec->f4.id == 0x20c) {
-        struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs, id);
+        struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)(void*)GetCombatantWithFlag0x100((GameState*)bs, id);
         switch (rec->f4.id) {
         case 0x200:
             if (pc != 0) {
@@ -506,7 +504,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
     }
     self->f6c = 0;
     if (rec->f4.id == 0x1ff || rec->f4.id == 0x20b) {
-        int roll = _Z13NextRandomMaxP6Randomi(self->f10, 0x64);
+        int roll = NextRandomMax((Random*)self->f10, 0x64);
         int thr = 0;
         switch (rec->f4.id) {
         case 0x1ff:
@@ -539,7 +537,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
                 ConsumeMP0215a124(self->f10, id, cost);
             } else {
                 if (IN_RANGE_021eb5d0(id)) {
-                    struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs, id);
+                    struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)(void*)GetCombatantWithFlag0x100((GameState*)bs, id);
                     if (pc != 0 && TestBitInArray0x8ec(pc->f150, 0x106) != 0) cost = AdjustValueByFieldFlag(pc, cost);
                 }
                 ConsumeMP0215a124(self->f10, id, cost);
@@ -602,7 +600,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
         self->f70 = 1;
         self->f6f = 1;
         self->f74 = 0;
-        self->f10->fe6e = _Z13NextRandomMaxP6Randomi(self->f10, 0x64);
+        self->f10->fe6e = NextRandomMax((Random*)self->f10, 0x64);
         tgt32.v[i] = func_ov000_02154c68(self->f10, tgt32.v[i], rec);
         self->fc->f0e = tgt32.v[i];
         if (rec->f4.id == 0x79 && self->f18 == (count - 1)) {
@@ -661,7 +659,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
         if (alt != 0 || self->f77 != 0 || c0 != 0) {
             if (okFlag != 0) {
                 if (rec->f4.id == 0x70 || rec->f4.id == 0x48) {
-                    if (_Z13NextRandomMaxP6Randomi(self->f10, 2) == 0) self->f4->fa |= 1;
+                    if (NextRandomMax((Random*)self->f10, 2) == 0) self->f4->fa |= 1;
                 } else {
                     if (func_ov000_02156cc4(self->f10, id, rec, count) != 0) self->f4->fa |= 1;
                 }
@@ -713,7 +711,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
                     if (firstHit < 0) firstHit = s6;
                     self->fc->f1c.b7 = 1;
                     if (IN_RANGE_021eb5d0(s4)) {
-                        struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs, s4);
+                        struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)(void*)GetCombatantWithFlag0x100((GameState*)bs, s4);
                         unsigned char* fld = GetFieldAt0x150((unsigned char*)pc);
                         if (pc != 0 && fld != 0) {
                             if (*(short*)(fld + 0x2cc) > 0) {
@@ -732,7 +730,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
                 unsigned char scaled = 1;
                 if (rec2->f4.id == 1 || rec2->f4.id == 2) {
                     if (IN_RANGE_021eb5d0(s6)) {
-                        struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs, s6);
+                        struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)(void*)GetCombatantWithFlag0x100((GameState*)bs, s6);
                         if (pc != 0) {
                             struct Bit2_021eb5d0* bp = (struct Bit2_021eb5d0*)(pc->f150 + 0x2f4);
                             if (bp != 0) {
@@ -766,7 +764,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
                 flagE = 0;
                 dmg = 0;
                 ZeroFieldsAt0xe58And0xe82And0x8e52(self->f10);
-                void* arr = GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv());
+                void* arr = GetPtrField0x2a04((GameState*)(BattleStruct*)GameState::GetInstance());
                 if (self->fc->f1c.b2 != 0) {
                     if (ArrayContainsByte((ArrayContainsByteStruct*)arr, s4) != 0) {
                         IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)self->f10, 6);
@@ -895,11 +893,11 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
             self->f10->fe01 = self->f10->fe01 + 1;
         }
         if (IN_RANGE_021eb5d0(s4)) {
-            struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs, s4);
+            struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)(void*)GetCombatantWithFlag0x100((GameState*)bs, s4);
             if (pc != 0 && CheckAndClearOrEvaluateFlags_021eb1ec(self, s4) != 0) {
                 int val = accum;
                 if (rec->f18.kind != 1 && rec->f18.kind != 0x23) val = 0;
-                int roll = _Z13NextRandomMaxP6Randomi(self->f10, 0x64);
+                int roll = NextRandomMax((Random*)self->f10, 0x64);
                 unsigned int idx = func_ov024_021eb2b4(self) & 0xff;
                 if (idx >= 4) idx = 3;
                 float mult = data_ov024_021fe738[idx];
@@ -946,9 +944,9 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
     if (IN_RANGE_021eb5d0(id)) {
         ids2 = data_ov024_021fe718;
         int m = func_ov000_0215eb1c(self->f10, ids2.v, 8, 1);
-        struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs, id);
+        struct Fighter_021eb5d0* pc = (struct Fighter_021eb5d0*)(void*)GetCombatantWithFlag0x100((GameState*)bs, id);
         if (pc != 0 && m > 0 && CheckAndClearOrEvaluateFlags_021eb1ec(self, id) != 0) {
-            int roll = _Z13NextRandomMaxP6Randomi(self->f10, 0x64);
+            int roll = NextRandomMax((Random*)self->f10, 0x64);
             unsigned int idx = func_ov024_021eb2b4(self) & 0xff;
             if (idx >= 4) idx = 3;
             float mult = data_ov024_021fe738[idx];

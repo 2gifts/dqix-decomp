@@ -17,7 +17,7 @@ unsigned short GetField6b4_021b8480(void* obj);
 void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
 struct Fields020407b4;
 void SetFields0x44(struct Fields020407b4* dst, int a, int b, int c);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct Evt021d2b24 {
     char pad0[4];
@@ -66,7 +66,7 @@ extern "C" ARM void func_ov017_021d2b24(void* unused0, struct Evt021d2b24* evt, 
     if (evt->flag5 != 0) {
         struct Vec3_021c3f68 tmp;
         SetVec3_021c3f68(&tmp, evt->field8, evt->fieldc, evt->field10);
-        _ZN8Vector3iaSERKS_((int*)((char*)combatant + 0xd4), (int*)&tmp);
+        *(Vector3i*)((int*)((char*)combatant + 0xd4)) = *(Vector3i const*)((int*)&tmp);
         *(unsigned char*)((char*)combatant + 0xe0) |= 0x20;
     }
 

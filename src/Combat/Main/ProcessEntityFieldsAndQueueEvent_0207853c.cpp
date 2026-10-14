@@ -32,7 +32,7 @@ struct InitStruct02078484Struct {
 };
 void InitStruct02078484(struct InitStruct02078484Struct* p);
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct Vec3i_020374f0 { int x; int y; int z; };
 extern "C" struct Vec3i_020374f0 _ZNK8Object3D8GetScaleEv(unsigned char* src);
@@ -72,9 +72,9 @@ extern "C" ARM int func_0207853c(struct Entity0207853c* obj) {
         void* list = func_02057924();
         struct InitStruct02078484Struct s;
         InitStruct02078484(&s);
-        _ZN8Vector3iaSERKS_(&s.f2c, &obj->f44);
+        *(Vector3i*)&s.f2c = *(Vector3i const*)&obj->f44;
         const struct Vec3i_020374f0& tmp = _ZNK8Object3D8GetScaleEv((unsigned char*)obj);
-        _ZN8Vector3iaSERKS_(&s.f44, (int*)&tmp);
+        *(Vector3i*)&s.f44 = *(Vector3i const*)((int*)&tmp);
         FindNodeAndProcess02057fb4(list, obj->f178, (int)&s);
     }
 

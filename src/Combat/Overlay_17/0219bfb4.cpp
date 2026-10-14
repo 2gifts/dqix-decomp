@@ -48,7 +48,6 @@ void ClearStruct020a8170(Struct020a8170* s);
 extern "C" void func_020a818c(void* cont, SafeAllocator* alloc);
 extern "C" void func_020a8304(void* cont);
 Entry020a83fc* FindEntryById020a83fc(Container020a83fc* cont, int id);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" void func_ov017_021d1a18(short a, short b, int c, int d);
 void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a, unsigned short b);
 void InitStruct02070378(char* obj);
@@ -130,7 +129,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
                 Vector3i pos = *(Vector3i*)(field + kFieldPositionOffset);
                 pos.x = entry->posX;
                 pos.z = entry->posZ;
-                _ZN8Vector3iaSERKS_((int*)(field + kFieldPositionOffset), (int*)&pos);
+                *(Vector3i*)((int*)(field + kFieldPositionOffset)) = *(Vector3i const*)((int*)&pos);
                 func_ov017_021d1a18(entry->x, entry->y, 0, 1);
             }
             alloc.Destroy();

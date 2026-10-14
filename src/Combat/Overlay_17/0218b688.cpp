@@ -7,6 +7,7 @@
 #include "System/OverlayId.h"
 #include "Resource/ActionDataTables.h"
 #include "World/LootableContainer.h"
+#include "Graphics/LightingManager.h"
 
 struct GameResources;
 struct AllocatorUnion;
@@ -133,7 +134,6 @@ extern "C" void func_ov017_0218f064(void* self, int id, int mask, int b, int ext
 int GetLowNibbleAt0x56b(void* gs, int id);
 void* GetCombatantWithFlag0x1000(GameState* gs, int id);
 void SetField0x2d0(void* p, unsigned char value);
-extern "C" char* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
 char* GetFieldAt0x150(unsigned char*);
 extern "C" int func_020aaf84(void* buf, int a, int b, int c);
 int VerifyAndApplySaveBuffer(int flag);
@@ -146,7 +146,6 @@ int GetFlag0x5cccBit0(StateBits5ccc_11570*);
 void* GetData02109020();
 extern "C" void func_0208ea10(void* p, int a);
 unsigned long long GetCurrentTimestamp();
-extern "C" char* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 int CopyOutRegion0x5718(char*, void*);
 extern "C" int func_020dcd40();
 extern "C" void func_ov017_02191108(void* self, int a, int b, int c, int d);
@@ -201,7 +200,6 @@ void ClearTwoRegions0206ebf4(char*);
 void* GetData02108ea8();
 struct Init0207d7c0;
 void InitStructArray0207d798(Init0207d7c0*);
-extern "C" char* _ZN15LightingManager11GetInstanceEv();
 int TestBitInByteArray(int p, unsigned char* arr, int bit);
 extern "C" void func_ov017_0219bfb4(int a, int b);
 void InitAndResetHeader_0219e310(unsigned char*, int);
@@ -233,7 +231,7 @@ int GetBitsInField4(unsigned int*, unsigned int);
 void InitCombatSubsystems02012efc();
 int IsBrightnessTransitionActive(GameResources*);
 int IsField0Null(void**);
-extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
+struct Vector3i;
 struct FieldBlock63d8_115d0;
 int IsHalfword0x63d8Set(FieldBlock63d8_115d0*);
 int GetHalfword0x63d8(void* gs);
@@ -625,7 +623,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
         }
 
         if (loaded != 0) {
-            char* save = _Z17GetPtrField0x2a04P9GameState(gs);
+            char* save = (char*)GetPtrField0x2a04(gs);
             int count = CopyOutRegion0x5718((char*)gs, ids);
             unsigned char* id;
             if (GetByteField0x63d6((FieldBlock63d6_115a8*)gs) != 0) {
@@ -649,7 +647,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
                         SetField0x2d0(combatant, GetField0x3acValue(gs));
                     }
                 }
-                char* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, cur);
+                char* member = (char*)GetCombatantWithFlag0x100(gs, cur);
                 if (member != 0) {
                     char* info = GetFieldAt0x150((unsigned char*)member);
                     if (info != 0 && (*(int*)(info + 0x18) & 1)) {
@@ -695,7 +693,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
                     SetField5cb4AndRecordByte1((char*)gs, 1);
                     SetSlotByte020107dc((char*)gs, 1);
                     func_020120f0(gs);
-                    char* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, 0);
+                    char* member = (char*)GetCombatantWithFlag0x100(gs, 0);
                     if (member != 0) {
                         char* info = GetFieldAt0x150((unsigned char*)member);
                         if (info != 0) {
@@ -718,7 +716,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
                 }
             }
             if (fresh != 0) {
-                char* save = _Z17GetPtrField0x2a04P9GameState(gs);
+                char* save = (char*)GetPtrField0x2a04(gs);
                 GameObject* hero = gs->GetProtagonist();
                 if (hero != 0) {
                     CopyToBattleField02039768((int)hero, save + 0x2c8d);
@@ -770,7 +768,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     ClearTwoRegions0206ebf4((char*)self->regions);
     void* structArray = GetData02108ea8();
     InitStructArray0207d798((Init0207d7c0*)structArray);
-    char* lighting = _ZN15LightingManager11GetInstanceEv();
+    char* lighting = (char*)LightingManager::GetInstance();
     *(float*)(lighting + 0x94) = gs->GetDayTimer();
     *(int*)(lighting + 0x98) = gs->GetTimeOfDay();
     if (GetByte0x4((char*)gs) != 6 && GetByte0x4((char*)gs) != 9) {
@@ -854,7 +852,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
             request->flag7 = quit;
             GameObject* obj = gs->GetUnknownGameObject();
             if (obj != 0) {
-                _ZN8Vector3iaSERKS_(request->pos, (char*)obj + 0x44);
+                *(Vector3i*)request->pos = *(Vector3i const*)((char*)obj + 0x44);
                 request->dir = *(int*)((char*)obj + 0x54);
             }
             if (IsHalfword0x63d8Set((FieldBlock63d8_115d0*)gs) != 0) {

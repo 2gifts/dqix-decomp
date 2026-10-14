@@ -4,7 +4,7 @@
 
 void* GetField0x3f8Address(GameState*);
 extern "C" void* func_02012fe4(void);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 void InitStruct02070378(char*);
 
 #if defined(jpn)
@@ -31,13 +31,13 @@ extern "C" ARM int func_ov001_021620bc(void) {
     void* battle = GameState::GetInstance();
     struct S3f8* obj = (struct S3f8*)GetField0x3f8Address((GameState*)battle);
     char* data = (char*)func_02012fe4();
-    _ZN8Vector3iaSERKS_(tmpVec, (int*)(data + kPosition));
+    *(Vector3i*)tmpVec = *(Vector3i const*)((int*)(data + kPosition));
     short shortCc = *(short*)(data + kAngle);
     InitStruct02070378((char*)obj);
     obj->field2 = 1;
     obj->field7 = 1;
     obj->field0 = (short)(*(signed char*)(data + kMapIndex) + 0x1c40 + 0x8000);
-    _ZN8Vector3iaSERKS_(obj->vec10, tmpVec);
+    *(Vector3i*)obj->vec10 = *(Vector3i const*)tmpVec;
     obj->field1c = shortCc;
     obj->field68 = 1;
     CallFunc0200fbb4AtField0x3f8(battle, obj);

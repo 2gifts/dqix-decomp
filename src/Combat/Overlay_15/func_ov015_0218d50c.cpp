@@ -33,7 +33,7 @@ struct Obj0218d50c {
     Object3D* GetEnt(int i) { return &ents[i]; }
 };
 
-extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
+struct Vector3i;
 void DelayThenSyncBit0();
 void ResetObjectState02079a3c(void*);
 struct Foo0207df50;
@@ -114,7 +114,7 @@ extern "C" ARM int func_ov015_0218d50c(Obj0218d50c* self) {
             CopyInternalFields0207df50((Foo0207df50*)(pairs + off70));
             Vector3fix savedPos = self->GetEnt(i)->position_;
             self->ents[i].Initialize();
-            _ZN8Vector3iaSERKS_(&self->ents[i].position_, &savedPos);
+            self->ents[i].position_ = savedPos;
             self->ents[i].unknown_2_ = self->ids[i];
             if (self->ids[i] < 0) {
                 continue;

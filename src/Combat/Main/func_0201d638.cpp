@@ -11,7 +11,7 @@ extern "C" extern int _ZNK6Script9Parameter5ToIntEv(struct Param0201d638* p);
 extern "C" extern float _ZNK6Script9Parameter7ToFloatEv(struct Param0201d638* p);
 extern "C" extern char* _ZNK6Script9Parameter8ToStringEv(struct Param0201d638* p);
 extern "C" extern struct Param0201d638* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct Param0201d638* p, int* outVec);
-extern "C" extern void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct Vec4fix0201d638 { int v[3]; int w; };
 extern "C" extern void _ZN15MaybeVector4fix8CopyFromERKS_(struct Vec4fix0201d638* dst, struct Vec4fix0201d638* src);
@@ -113,7 +113,7 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
 
             int tmp[3];
             struct Param0201d638* p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)(src + 0x10), tmp);
-            _ZN8Vector3iaSERKS_((int*)(REC + 0x38), tmp);
+            *(Vector3i*)((int*)(REC + 0x38)) = *(Vector3i const*)tmp;
             int y1 = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(p));
             src = (unsigned char*)p + 0x10;
             H(0x68) = y1;
@@ -126,7 +126,7 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
                 p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)src, tmp);
                 src = (unsigned char*)p;
                 rem += 3;
-                _ZN8Vector3iaSERKS_((int*)(REC + 0x38 + i * 0xc), tmp);
+                *(Vector3i*)((int*)(REC + 0x38 + i * 0xc)) = *(Vector3i const*)tmp;
             }
         }
 
@@ -184,8 +184,8 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
 
         _ZN15MaybeVector4fix8CopyFromERKS_((struct Vec4fix0201d638*)(REC + 0x30), &diffAndDot);
         W(0x40) = len;
-        _ZN8Vector3iaSERKS_((int*)(REC + 0x44), vecC);
-        _ZN8Vector3iaSERKS_((int*)(REC + 0x50), vecD);
+        *(Vector3i*)((int*)(REC + 0x44)) = *(Vector3i const*)vecC;
+        *(Vector3i*)((int*)(REC + 0x50)) = *(Vector3i const*)vecD;
         goto ret1;
     }
 

@@ -16,7 +16,7 @@ int GetHeadNodeIdOrMinusOne(HeadNode02046b24** obj);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 int IsMatchingName0208e824(void* unused, char* str);
 struct S1a0;
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct ListNode0208f410 {
     char pad0[4];
@@ -50,7 +50,7 @@ extern "C" ARM void func_0208f410(Obj0208f410* obj) {
     int flag = 1;
     while (node) {
         ((Object3D*)((S1a0*)obj->target))->SetCurrentAnimationTime(node->f10);
-        _ZN8Vector3iaSERKS_((int*)((char*)obj->target + 0x44), (int*)&node->vec);
+        *(Vector3i*)((int*)((char*)obj->target + 0x44)) = *(Vector3i const*)((int*)&node->vec);
         ((Object3D*)obj->target)->Draw(flag);
         node = node->next;
     }

@@ -130,12 +130,10 @@ struct Member02184a4c {
     int GetBit0() { return stat->bit0; }
 };
 
-extern "C" void _ZN8Vector3iaSERKS_(Vec3i02184a4c* dst, const Vec3i02184a4c* src);
-
 struct Model02184a4c {
     char pad0[0x44];
     Vec3i02184a4c pos;
-    void SetPosition(const Vec3i02184a4c* v) { _ZN8Vector3iaSERKS_(&pos, v); }
+    void SetPosition(const Vec3i02184a4c* v) { *(Vector3i*)&pos = *(Vector3i const*)v; }
 };
 
 struct Obj02184a4c {
@@ -507,7 +505,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
             Vec3i02184a4c pos = data_ov008_0218b334;
             obj->GetModel()->SetPosition(&pos);
             Vec3i02184a4c rot = data_ov008_0218b31c;
-            _ZN8Vector3iaSERKS_(&obj->modelRot, &rot);
+            *(Vector3i*)&obj->modelRot = *(Vector3i const*)&rot;
             ((Object3D*)&obj->model)->MaybeSetBCFGAnimation(0, 0);
         }
         BackgroundLoader::RemoveLockGlobal();

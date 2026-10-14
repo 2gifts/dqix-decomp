@@ -6,7 +6,6 @@ struct Obj02013fb4;
 struct StreamHeader;
 
 extern "C" void func_0201c724(int zoneId, void* mapList, StreamHeader* data, int size);
-extern "C" void _ZN6Zone3D11LoadMapAMBLEv(Zone3D* zone);
 
 // USA: func_02013fb4
 ARM int ApplyAndClearPendingEntry02013fb4(Obj02013fb4* object) {
@@ -25,6 +24,6 @@ ARM int ApplyAndClearPendingEntry02013fb4(Obj02013fb4* object) {
                  static_cast<StreamHeader*>(fileData), fileSize);
     loader->RemoveTask(zone->mapListLoadHandle_);
     zone->mapListLoadHandle_ = -1;
-    _ZN6Zone3D11LoadMapAMBLEv(zone);
+    zone->LoadMapAMBL();
     return 1;
 }

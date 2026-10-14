@@ -73,9 +73,7 @@ struct Self_021539a0 {
     unsigned char flags;
 };
 
-extern "C" struct Loader* _ZN16BackgroundLoader11GetInstanceEv();
 struct SafeAllocator;
-extern "C" unsigned char* _ZN9GameState21GetPartyMemberByIndexEi(void*, int);
 extern "C" void __clear(void*, int);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 void* Clear0x54Bytes0208247c(void*);
@@ -128,7 +126,7 @@ extern short data_ov003_0217f288[];
 extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
     if (self->member < 0) return;
     if (!(self->flags & 1)) return;
-    struct Loader* loader = _ZN16BackgroundLoader11GetInstanceEv();
+    struct Loader* loader = (Loader*)BackgroundLoader::GetInstance();
     if (self->state == 0) {
         char path[0x18];
         __clear(path, 0x18);
@@ -150,7 +148,7 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
         int rs;
         ((BackgroundLoader*)loader)->GetLoadedFileByID(self->task50, &file, &size);
         void* gs = GameState::GetInstance();
-        unsigned char* obj = _ZN9GameState21GetPartyMemberByIndexEi(gs, self->member);
+        unsigned char* obj = (unsigned char*)((GameState*)gs)->GetPartyMemberByIndex(self->member);
         Clear0x54Bytes0208247c(self->stats);
         unsigned char* base = 0;
         unsigned char* gfx;

@@ -12,7 +12,6 @@ char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
 extern "C" void *memset(void *dst, int value, unsigned int length);
 extern "C" void func_02046380(void *g);
 void *Clear12Bytes020e46c4(void *p);
-extern "C" char *_Z25GetCombatantWithFlag0x100P9GameStatei(GameState *gs, int id);
 void SetIndexedName02046574(struct Obj02046574 *obj, int index, char *str);
 void InitObjFromCombatantId020e4bf4(void *obj, int combatantId);
 extern "C" void __clear(void *buf, int n);
@@ -48,7 +47,7 @@ extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
     Clear12Bytes020e46c4(base + 8);
     Clear12Bytes020e46c4(base + 0x14);
     char *out = *(char **) (base + 0x1000 + 0xbd0);
-    char *m   = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, *(signed char *) (arr + 2));
+    char *m   = (char *)GetCombatantWithFlag0x100(gs, *(signed char *) (arr + 2));
     if (m != NULL) {
         SetIndexedName02046574((struct Obj02046574 *) g, 0, *(char **) (m + 0x134));
         InitObjFromCombatantId020e4bf4(base + 8, *(signed char *) (arr + 2));
@@ -65,7 +64,7 @@ extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
     DispatchIfCountPositive020dcf7c(*(short *) (e + 0x18), &nm);
     *(struct Names9900 **) (g + 0x18) = &nm;
     SetIndexedName02046574((struct Obj02046574 *) g, 1, nm.a);
-    char *m2 = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, *(signed char *) (arr + 4));
+    char *m2 = (char *)GetCombatantWithFlag0x100(gs, *(signed char *) (arr + 4));
     if (m2 != NULL) {
         SetIndexedName02046574((struct Obj02046574 *) g, 2, *(char **) (m2 + 0x134));
         InitObjFromCombatantId020e4bf4(base + 0x14, *(signed char *) (arr + 4));
@@ -138,7 +137,7 @@ extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
                     }
                     if (b >= 0) {
                         int cid = *(signed char *) (arr + i + 4);
-                        char *c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, cid);
+                        char *c = (char *)GetCombatantWithFlag0x100(gs, cid);
                         if (c != NULL) {
                             func_02046380(g);
                             SetIndexedName02046574((struct Obj02046574 *) g, 2, *(char **) (c + 0x134));

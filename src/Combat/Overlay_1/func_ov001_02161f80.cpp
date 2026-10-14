@@ -6,7 +6,7 @@ void* GetField0x3f8Address(GameState*);
 extern "C" void func_02012fe4(void);
 extern "C" int func_ov017_021d60f4(void* obj);
 extern "C" float func_ov017_021d6110(void* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 void InitStruct02070378(char*);
 
 struct S3f8_02161f80 {
@@ -45,7 +45,7 @@ extern "C" ARM int func_ov001_02161f80(void* target, int count) {
     obj->field2 = 1;
     obj->field7 = 1;
     obj->field0 = (short)flag;
-    _ZN8Vector3iaSERKS_(obj->vec10, tmpArr);
+    *(Vector3i*)obj->vec10 = *(Vector3i const*)tmpArr;
     obj->field1c = (short)fixedD;
     obj->field20 = flag2;
     void* p = ((char*)func_ov017_0218b5b0()) + 0x3000;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 struct Obj02033874;
 void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
@@ -46,7 +46,7 @@ ARM int DoCombatantVecUpdate_021e87f4(struct In021e87f4* a, int b, int unused, v
         struct CombatantVec021e87f4* cv = (struct CombatantVec021e87f4*)combatant;
         local.mid = cv->mid;
         local.mid.v[1] = a->val;
-        _ZN8Vector3iaSERKS_((int*)&cv->mid, (int*)&local.mid);
+        *(Vector3i*)((int*)&cv->mid) = *(Vector3i const*)((int*)&local.mid);
     }
     return 1;
 }

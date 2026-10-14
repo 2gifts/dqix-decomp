@@ -3,7 +3,7 @@
 #include "Graphics/Vector.h"
 #include "GameState/GameState.h"
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 extern "C" void _ZN8Object3D8SetScaleEPK8Vector3i(void* dst, const Vector3fix& src);
 extern "C" void func_020a2d14(void* actor);
 extern "C" void func_0204a4ac(void* self);
@@ -51,8 +51,8 @@ extern "C" ARM void func_0204a170(struct Obj0204a170* self) {
         GameState* bs = GameState::GetInstance();
         void* target = bs->GetGameObjectByIndex(self->f260);
         if (target != NULL) {
-            _ZN8Vector3iaSERKS_((int*)&self->f21c->pos, (int*)((char*)target + 0x44));
-            _ZN8Vector3iaSERKS_((int*)&self->f21c->rot, (int*)((char*)target + 0x50));
+            *(Vector3i*)((int*)&self->f21c->pos) = *(Vector3i const*)((int*)((char*)target + 0x44));
+            *(Vector3i*)((int*)&self->f21c->rot) = *(Vector3i const*)((int*)((char*)target + 0x50));
             _ZN8Object3D8SetScaleEPK8Vector3i(self->f21c, ((Object3D*)target)->GetScale());
         }
     }
@@ -85,8 +85,8 @@ extern "C" ARM void func_0204a170(struct Obj0204a170* self) {
     Vector3fix_Add(&v2, &o->pos, &v2);
     Vector3fix_Add(&v3, &o->pos, &v3);
 
-    _ZN8Vector3iaSERKS_((int*)&self->f10, (int*)&v2);
-    _ZN8Vector3iaSERKS_((int*)&self->f04, (int*)&v1);
+    *(Vector3i*)((int*)&self->f10) = *(Vector3i const*)((int*)&v2);
+    *(Vector3i*)((int*)&self->f04) = *(Vector3i const*)((int*)&v1);
     func_0202eab8(self);
 
 struct Obj3D0204a170* t = self->f220;
@@ -95,7 +95,7 @@ struct Obj3D0204a170* t = self->f220;
     int angle = fix32ReduceAngle0To2Pi(fix32_Atan2(v3.x - t->pos.x,
                                                         v3.z - t->pos.z));
     struct Obj3D0204a170* u = self->f220;
-    _ZN8Vector3iaSERKS_((int*)&u->pos, (int*)&v3);
+    *(Vector3i*)((int*)&u->pos) = *(Vector3i const*)((int*)&v3);
 
     if (self->f265 != 0) return;
 

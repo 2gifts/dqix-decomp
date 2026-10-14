@@ -4,7 +4,7 @@
 struct Mutex;
 int TryLockMutex(Mutex*);
 void LockMutex(Mutex*);
-extern "C" void _Z11UnlockMutexP5Mutex(void* mutex);
+void UnlockMutex(Mutex*);
 extern "C" void func_0200159c(int status);
 
 struct ThreadInfo02003ddc {
@@ -55,7 +55,7 @@ extern "C" ARM int func_02003ddc(int slot) {
 
     data_020f2f94[7] = data_020f2f94[7] - 1;
     if (data_020f2f94[7] == 0) {
-        _Z11UnlockMutexP5Mutex(&data_020f3060);
+        UnlockMutex((Mutex*)&data_020f3060);
     }
 
     if (handler == (SlotHandler02003ddc)1 || (handler == 0 && slot == 1)) {

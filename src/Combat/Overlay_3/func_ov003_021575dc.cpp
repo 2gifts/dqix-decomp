@@ -18,7 +18,6 @@ struct CombatantStruct {
 };
 struct GameState;
 void* GetPtrField0x2a04(GameState*);
-extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 int FindMappedMemberId02080468(void* obj, int id);
@@ -290,7 +289,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         __clear(tagBuffer, 0x18);
         unsigned short sbCount = 0;
         int fieldVal = GetField0x3acValue((GameState*)bs);
-        struct CombatantStruct* combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(bs, fieldVal);
+        struct CombatantStruct* combatant = (CombatantStruct*)GetCombatantWithFlag0x100((GameState*)bs, fieldVal);
         for (int i = 1; i < 13; i++) {
             void* p150 = *(void**)((char*)combatant + 0x150);
             if (*(unsigned char*)((char*)p150 + (unsigned char)i + 0x186) >= 0xa) {

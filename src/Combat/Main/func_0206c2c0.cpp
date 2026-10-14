@@ -13,7 +13,6 @@ struct TaggedValue02030b44;
 extern "C" struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44* obj, int* outVec);
 
 struct S_020103b4;
-extern "C" struct S_020103b4* _ZN9GameState11GetInstanceEv();
 
 struct Data02108cec0206c2c0 {
     unsigned char byte0;
@@ -67,7 +66,7 @@ extern "C" ARM int func_0206c2c0(void* param0, int param1) {
     v6 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x30)))->ToInt();
 
     {
-        struct S_020103b4* gs = _ZN9GameState11GetInstanceEv();
+        struct S_020103b4* gs = (S_020103b4*)GameState::GetInstance();
         if (v6 == 1) {
             if (((GameState*)gs)->IsMorningDayOrEvening()) return 1;
         } else if (v6 == 0) {

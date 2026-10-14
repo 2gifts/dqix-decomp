@@ -10,7 +10,6 @@ struct Obj0205eaa0;
 struct Entry02017098* GetActorEntryByIndex(struct ActorListManager* manager, int index);
 extern "C" void func_0204792c(struct SelfObj792c* self, char* name);
 void RecomputeField0x7c(struct Struct020478bc* o, int newIndex);
-extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
 extern "C" float _fflt(int value);
 extern "C" float _fmul(float a, float b);
 extern "C" int _ffix(float value);
@@ -48,7 +47,7 @@ extern "C" ARM void func_02017098(struct ActorListManager* manager, int index) {
     fix32_t angle = 0x4b5c;
     for (int i = 0; i < 4; i++) {
         struct Segment02017098* seg = &e->segments[i];
-        _ZN8Vector3iaSERKS_(&seg->pos, &e->position);
+        seg->pos = e->position;
         int sine = FIX32_MULTIPLY(fix32sin(angle), 0x80);
         int height = _ffix(_fmul(4.0f, _fflt(0x80)));
         int cosine = FIX32_MULTIPLY(fix32cos(angle), 0x80);

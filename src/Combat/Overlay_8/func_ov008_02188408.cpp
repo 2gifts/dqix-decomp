@@ -22,7 +22,6 @@ void AppendString02042058(char* text, const char* append);
 void AppendFormatted0204201c(char* text, int append, int);
 int TestBitInByteArray(int, unsigned char*, int);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
-extern "C" void _Z23LoadBattleBlock020ac4c0Pv(void* records);
 int GetFieldPercentOver307(BattleRecordSnapshot* records);
 int GetFieldPercentOver944(BattleRecordSnapshot* records);
 int GetFieldPercentOver232(BattleRecordSnapshot* records);
@@ -148,7 +147,7 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
         else
         {
             BattleRecordSnapshot playRecords;
-            _Z23LoadBattleBlock020ac4c0Pv(&playRecords);
+            LoadBattleBlock020ac4c0(&playRecords);
             int max1 = playRecords.unknown14_0;
             int max2 = playRecords.unknown14_18;
             int max3 = playRecords.unknown14_9;

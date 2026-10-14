@@ -8,7 +8,7 @@ extern "C" void func_020391ac(void* obj);
 extern "C" void func_02038138(void* obj);
 extern "C" void func_02038598(void* obj);
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct S02037418;
 
@@ -119,7 +119,7 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
 
     if (obj->combatantId == 0xce) {
         *(int*)((char*)bs + 0x7f5c - BattleRegionOffset) = obj->field54;
-        _ZN8Vector3iaSERKS_((int*)((char*)bs + 0x7f60 - BattleRegionOffset), obj->vec);
+        *(Vector3i*)((int*)((char*)bs + 0x7f60 - BattleRegionOffset)) = *(Vector3i const*)obj->vec;
     }
 
     {

@@ -5,7 +5,6 @@ struct BinarySearch020971a8Node;
 struct BinarySearch020971a8Container;
 struct BinarySearch020971a8Node* BinarySearchByField4_02097224(struct BinarySearch020971a8Container* c, int key);
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 struct Vector3i;
 
 // USA: func_ov014_02184c08
@@ -29,7 +28,7 @@ ARM void ComputeAndStoreVecs02184c08(unsigned char* obj) {
     vecC[1] = (int)(4096.0f * *(float*)((char*)node + 0x24));
     vecC[2] = (int)(4096.0f * *(float*)((char*)node + 0x28));
 
-    _ZN8Vector3iaSERKS_((int*)(*(char**)(obj + 0x40) + 0x44), vecA);
-    _ZN8Vector3iaSERKS_((int*)(*(char**)(obj + 0x40) + 0x50), vecB);
+    *(Vector3i*)((int*)(*(char**)(obj + 0x40) + 0x44)) = *(Vector3i const*)vecA;
+    *(Vector3i*)((int*)(*(char**)(obj + 0x40) + 0x50)) = *(Vector3i const*)vecB;
     ((Object3D*)(*(unsigned char**)(obj + 0x40)))->SetScale((Vector3i const*)vecC);
 }

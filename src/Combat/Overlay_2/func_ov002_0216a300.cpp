@@ -33,7 +33,6 @@ char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
 extern "C" void func_ov002_0215b9a4(char *self, unsigned char key, int flag);
 void ResetEntryList0205d6a0(struct Entry_0205d6a0 *a, int flag);
 extern "C" void func_ov017_0219577c(int a, int b, int c);
-extern "C" char *_Z25GetCombatantWithFlag0x100P9GameStatei(GameState *gs, int id);
 extern "C" int func_020dc920(int a, int b, int c, int d);
 extern "C" void func_ov002_0216bfd4(char *self, int a);
 void EnqueueEventTag170_021d0198(int a, int b, int c, int d);
@@ -165,8 +164,7 @@ extern "C" ARM void func_ov002_0216a300(char *base) {
                         ResetEntryList0205d6a0((struct Entry_0205d6a0 *) LST(base), 0);
                         switch (*(unsigned char *) (base + 0x1000 + 0xc79)) {
                             case 0: {
-                                char *m = _Z25GetCombatantWithFlag0x100P9GameStatei(GameState::GetInstance(),
-                                                                                    *(signed char *) (base + 0x1c00 + 0x21));
+                                char *m = (char *)GetCombatantWithFlag0x100(GameState::GetInstance(), *(signed char *) (base + 0x1c00 + 0x21));
                                 int go  = 1;
                                 if (m != NULL && *(unsigned short *) (*(char **) (m + 0x130) + 4) == 0) go = 0;
                                 if (!func_020dc920(*(unsigned char *) (base + 0x1000 + 0xc21), 1, 0, 0)) go = 0;

@@ -6,7 +6,7 @@
 struct List02160094;
 struct List021600f8;
 struct Obj02033874;
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 struct List02160094* GetNodeAtIndex02160094(struct List02160094* list, int idx);
 struct List021600f8* GetNodeAtIndex021600f8(struct List021600f8* list, int idx);
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
@@ -129,7 +129,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
         for (i = 0, idp = ids; i < count; i++, idp++) {
             GameObject* t = bs->GetGameObjectByIndex(*idp);
             if (t) {
-                _ZN8Vector3iaSERKS_((int*)((char*)t + 0x44), (int*)&off);
+                *(Vector3i*)((int*)((char*)t + 0x44)) = *(Vector3i const*)((int*)&off);
                 if (((Obj021e514c*)t)->flags & 2) {
                     SetVecYFromValue02033874((struct Obj02033874*)t, angle);
                 } else {
@@ -144,7 +144,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
         DispatchByIndex021820bc(p3, (int)p1, self->idxB, (int)out);
         GameObject* obj = bs->GetGameObjectByIndex(out[0]);
         if (obj) {
-            _ZN8Vector3iaSERKS_((int*)&result, (int*)((char*)obj + 0x44));
+            *(Vector3i*)((int*)&result) = *(Vector3i const*)((int*)((char*)obj + 0x44));
             yaw = ((Obj021e514c*)obj)->rotation.y;
         }
         break;
@@ -152,7 +152,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
     case 10: {
         GameObject* obj = bs->GetGameObjectByIndex(nodeA->field20);
         if (obj) {
-            _ZN8Vector3iaSERKS_((int*)&result, (int*)((char*)obj + 0x44));
+            *(Vector3i*)((int*)&result) = *(Vector3i const*)((int*)((char*)obj + 0x44));
             result.y = result.y + (obj->obj3D_.GetHeight() >> 1);
             yaw = ((Obj021e514c*)obj)->rotation.y;
         }
@@ -162,8 +162,8 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
         int* tgt = (int*)GetField0x3b0Value(bs);
         if (!tgt) return 1;
         Case8Local021e514c L;
-        _ZN8Vector3iaSERKS_((int*)&L.b, tgt + 4);
-        _ZN8Vector3iaSERKS_((int*)&L.a, tgt + 1);
+        *(Vector3i*)((int*)&L.b) = *(Vector3i const*)(tgt + 4);
+        *(Vector3i*)((int*)&L.a) = *(Vector3i const*)(tgt + 1);
         Vector3fix_Subtract(&L.a, &L.b, &L.diff);
         unsigned char axis = self->idxB;
         if (axis != 0 && axis < 4) {
@@ -186,7 +186,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
         break;
     }
     case 9:
-        _ZN8Vector3iaSERKS_((int*)&result, (int*)&self->vec);
+        *(Vector3i*)((int*)&result) = *(Vector3i const*)((int*)&self->vec);
         if (self->flag20) yaw = 0x3244;
         break;
     }
@@ -208,7 +208,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
     for (i = 0, idp = ids; i < count; i++, idp++) {
         GameObject* t = bs->GetGameObjectByIndex(*idp);
         if (t) {
-            _ZN8Vector3iaSERKS_((int*)((char*)t + 0x44), (int*)&result);
+            *(Vector3i*)((int*)((char*)t + 0x44)) = *(Vector3i const*)((int*)&result);
             if (((Obj021e514c*)t)->flags & 2) {
                 SetVecYFromValue02033874((struct Obj02033874*)t, yaw);
             } else {

@@ -3,11 +3,9 @@
 
 struct Holder_375cc;
 struct Node_375cc;
-extern "C" Node_375cc* _ZN8Object3D26GetAnimationPackageByIndexEi(Holder_375cc* holder, int index);
 
 struct List_020347b4;
 struct Entry_020347b4;
-extern "C" Entry_020347b4* _ZN4BCFG18GetAnimationRecordEi(List_020347b4* list, int index);
 
 struct Sub0204a054 {
     char pad[0x58];
@@ -39,9 +37,9 @@ ARM void ApplyCountdownOrDispatch0204a054(struct Obj0204a054* obj) {
         return;
     }
     {
-        Node_375cc* node = _ZN8Object3D26GetAnimationPackageByIndexEi((Holder_375cc*)obj, entry->field_58);
+        Node_375cc* node = (Node_375cc*)((Object3D*)((Holder_375cc*)obj))->GetAnimationPackageByIndex(entry->field_58);
         if (node != NULL) {
-            Entry_020347b4* member = _ZN4BCFG18GetAnimationRecordEi((List_020347b4*)((char*)node + 4), entry->field_59);
+            Entry_020347b4* member = (Entry_020347b4*)((BCFG*)((List_020347b4*)((char*)node + 4)))->GetAnimationRecord(entry->field_59);
             if (member != NULL) {
                 ((Object3D*)obj)->MaybeSetRegularAnimation((char const*)member, entry->field_5a);
             }

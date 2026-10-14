@@ -7,7 +7,7 @@ enum { kManagerPad = 0x476 };
 #include "GameState/GameState.h"
 
 struct Vec3 { int x; int y; int z; };
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct Segment0217208 {
     char pad[0x1c];
@@ -54,7 +54,7 @@ extern "C" ARM void func_02017208(struct EntryList0217208* manager) {
                         struct Vec3 tmp;
                         struct Segment0217208* seg = &e->segments[k];
                         Vector3fix_Add((const Vector3fix*)&seg->pos, (const Vector3fix*)&e->vel[k], (Vector3fix*)&tmp);
-                        _ZN8Vector3iaSERKS_((int*)&seg->pos, (int*)&tmp);
+                        *(Vector3i*)((int*)&seg->pos) = *(Vector3i const*)((int*)&tmp);
                         e->vel[k].y -= 0x40;
                     }
                 }

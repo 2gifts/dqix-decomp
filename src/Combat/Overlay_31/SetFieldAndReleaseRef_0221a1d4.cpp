@@ -3,7 +3,7 @@
 struct Mutex;
 void LockMutex(Mutex*);
 struct RefNode020c80f8;
-extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8 *node);
+void UnlockMutex(Mutex*);
 
 extern char *data_ov031_0224e60c;
 
@@ -11,5 +11,5 @@ extern char *data_ov031_0224e60c;
 extern "C" ARM void func_ov031_0221a1d4(int a) {
 	LockMutex((Mutex*)(data_ov031_0224e60c + 0x1dc + 0x1000));
 	*(int*)(data_ov031_0224e60c + 0x1000) = a;
-	_Z11UnlockMutexP5Mutex((struct RefNode020c80f8*)(data_ov031_0224e60c + 0x1dc + 0x1000));
+	UnlockMutex((Mutex*)(data_ov031_0224e60c + 0x1dc + 0x1000));
 }

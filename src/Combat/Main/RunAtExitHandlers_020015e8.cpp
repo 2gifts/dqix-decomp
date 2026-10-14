@@ -4,7 +4,7 @@
 struct Mutex;
 int TryLockMutex(Mutex*);
 void LockMutex(Mutex*);
-extern "C" void _Z11UnlockMutexP5Mutex(void* mutex);
+void UnlockMutex(Mutex*);
 extern "C" void func_02001878(int status);
 extern "C" void func_0200f368();
 
@@ -60,7 +60,7 @@ extern "C" ARM void func_020015e8() {
 
     data_020f2f94 = data_020f2f94 - 1;
     if (data_020f2f94 == 0) {
-        _Z11UnlockMutexP5Mutex(&data_020f2fb8);
+        UnlockMutex((Mutex*)&data_020f2fb8);
     }
 
     if (data_020f2e60.finalizer != 0) {

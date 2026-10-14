@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 class GameState;
 struct Container020e0310;
@@ -7,9 +8,7 @@ struct DstHolder0215b8c8 {
 };
 struct StoreStruct;
 
-extern "C" GameState *_ZN9GameState11GetInstanceEv();
 extern "C" void func_ov002_02157480(void *self, int *slots);
-void *GetCombatantWithFlag0x100(GameState *gs, int slot);
 unsigned char *GetFieldAt0x150(unsigned char *c);
 const char *GetFieldByKey020e0434(Container020e0310 *tbl, int key);
 extern "C" void __clear(void *buffer, unsigned long size);
@@ -31,7 +30,7 @@ extern "C" ARM void func_ov002_021605d4(char *self, char *buf) {
     char line[0x40];
     DstHolder0215b8c8 holder;
     if (buf == 0) return;
-    GameState *gs = _ZN9GameState11GetInstanceEv();
+    GameState *gs = GameState::GetInstance();
     short idx     = *(short *) (self + 0x1c08);
     func_ov002_02157480(self, slots);
     int slot = slots[idx];

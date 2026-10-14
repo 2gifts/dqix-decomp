@@ -11,7 +11,7 @@ void SetupHandle_0218fcac(void*, int);
 struct NitroVM;
 void NitroVM_Initialize(NitroVM*);
 int NitroVM_PrepareReadFileByPath(NitroVM*, char const*);
-extern "C" void _Z18NitroVM_FinishReadP7NitroVM(void* vm);
+void NitroVM_FinishRead(NitroVM*);
 extern "C" void* func_ov016_0218e558(void* vm, int n);
 unsigned int CallIfNonNull_0218e690(void* p);
 unsigned int CallIfNonNull_0218e6a8(void* p);
@@ -39,9 +39,9 @@ void CleanCacheRange(const void* p, unsigned int n);
 struct Alarm;
 void ZeroInitializeAlarm(Alarm*);
 unsigned long long GetCurrentTimestamp(void);
-extern "C" void _Z11SetIntervalP5AlarmyyPFvPP16ProcessorContextES3_(void* a, unsigned long long residue,
-    unsigned long long interval, void* fn, void* arg);
-extern "C" void _Z11CancelAlarmP5Alarm(void* a);
+struct ProcessorContext;
+void SetInterval(Alarm*, unsigned long long, unsigned long long, void (*)(ProcessorContext**), ProcessorContext**);
+void CancelAlarm(Alarm*);
 extern "C" void _Z28SetKeyAndApplyRecord0203ad14PvtS_i(void* a, int id, void* b, int c);
 struct Obj0203aba8;
 void TryDispatchOrFallback0203aba8(Obj0203aba8*, void*, void*);
@@ -165,8 +165,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 			unsigned long long now = GetCurrentTimestamp();
 			unsigned long long per = (0xf4240ULL << 24) / CallIfNonNull_0218e678(node);
 			unsigned long long iv = ((per * 0x82ea) >> 6) / 1000;
-			_Z11SetIntervalP5AlarmyyPFvPP16ProcessorContextES3_(&data_ov016_0219d118, now + 5, (unsigned int)iv,
-				(void*)SetFlagAndMaybeIncrement_0218c024, 0);
+			SetInterval((Alarm*)&data_ov016_0219d118, now + 5, (unsigned int)iv, (void (*)(ProcessorContext**))SetFlagAndMaybeIncrement_0218c024, (ProcessorContext**)0);
 		}
 		data_ov016_0219d0c0.startTime = (GetCurrentTimestamp() << 6) / 0x82ea;
 		scale = (float)CallIfNonNull_0218e678(node) / 16777216.0f;
@@ -343,11 +342,11 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 				func_020d24c4(1);
 			}
 		}
-		_Z11CancelAlarmP5Alarm(&data_ov016_0219d118);
+		CancelAlarm((Alarm*)&data_ov016_0219d118);
 		((SafeAllocator*)data_ov016_0219d0c0.alloc)->Free(data_ov016_0219d0c0.bufL);
 		((SafeAllocator*)data_ov016_0219d0c0.alloc)->Free(data_ov016_0219d0c0.bufR);
 		ClearAndReset_0218e640(node);
-		_Z18NitroVM_FinishReadP7NitroVM(vm);
+		NitroVM_FinishRead((NitroVM*)vm);
 		if (data_ov016_0219d0c0.info->id > -1) {
 			if (data_ov016_0219d0c0.info->isSet != 0) {
 				ScaleAndNotify0203ad88(&data_02109bf4, 0, 0);

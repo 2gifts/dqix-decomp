@@ -10,7 +10,7 @@ struct Mutex;
 void* LockMutex(Mutex*);
 
 struct RefNode020c80f8;
-extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8 *node);
+void UnlockMutex(Mutex*);
 
 // USA: func_ov031_02216ab4
 ARM int GetFieldAndReleaseRef_02216ab4(void) {
@@ -21,6 +21,6 @@ ARM int GetFieldAndReleaseRef_02216ab4(void) {
 	base = data_ov031_0224e5e8.field8;
 	node = (char*)base + 0x1000 + 0x3d8;
 	int r4 = *(int*)((char*)base + 0x1000 + 0x4);
-	_Z11UnlockMutexP5Mutex((struct RefNode020c80f8*)node);
+	UnlockMutex((Mutex*)node);
 	return r4;
 }

@@ -4,6 +4,7 @@
 #include "Combat/ResourceScriptEntry.h"
 #include "Combat/Main/BattleList.h"
 #include "Filesystem/BackgroundLoader.h"
+#include "GameState/GameState.h"
 struct BattleStruct {
     int unk0;
     int unk4;
@@ -24,9 +25,6 @@ struct CombatantStruct {
     struct ModifiableCombatStats* currentStats;
 };
 struct GameState;
-void* GetPtrField0x2a04(GameState*);
-extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
-extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 struct Container020e0310;
 struct StoreStruct;
@@ -79,8 +77,6 @@ int CountEntriesByField0x8c(struct List02026a28* p);
 int CountEntriesByField0x8e(struct List02026abc* p);
 void InitByteHeader_021c2688(unsigned char* p);
 void SetFlagsAndReset02026678(char* p);
-extern "C" struct CombatantStruct* _ZN9GameState20GetUnknownGameObjectEv(struct BattleStruct* bs);
-extern "C" struct CombatantStruct* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* bs, int id);
 int IsEntryEligibleAndFlagged(struct Struct0201bc94* p);
 extern "C" void _Z26EnqueueEventTag34_021d27a0hhh(int a, int b, int c);
 int GetGlobalField0x1c020421a0(void);
@@ -111,7 +107,6 @@ extern "C" void func_ov002_021536e0(void* p);
 extern "C" int func_ov002_021536ec(void* a, void* b, int c);
 extern "C" void func_ov002_0216c42c(void* ctx, void* buf, void* entry);
 extern "C" void func_ov016_0218b5c0(int a, int b);
-extern "C" void* func_ov017_0218b5b0(void);
 extern "C" void func_ov017_0218f5a4(void* obj, int id, int b, int c, int d);
 extern "C" int func_ov017_0219ff58(int a, int b, int c, int d);
 extern "C" int func_ov017_021ab860(signed char a);
@@ -279,13 +274,13 @@ enum MsgKey { MSG_KEY_NONE = -1, MSG_KEY_DEAD = 0x232c, MSG_KEY_ALIVE = 0x233a }
 extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
     struct Frame f;
     char* tbl;
-    struct BattleStruct* gs = _ZN9GameState11GetInstanceEv();
+    struct BattleStruct* gs = (BattleStruct*)GameState::GetInstance();
     int word = GetWord0x0((int*)gs);
     unsigned short* obj = (unsigned short*)func_02012fe4();
     ActionDataTables* actionTables = GetData02108e10();
     tbl = (char*)actionTables;
     struct TableEntry* entryA = (struct TableEntry*)SearchBothTables02079e2c(tbl, p->command);
-    struct Unit* comb = (struct Unit*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, p->actor);
+    struct Unit* comb = (struct Unit*)(CombatantStruct*)GetCombatantWithFlag0x100((GameState*)gs, p->actor);
     int* checkPtr = (int*)func_0202ae18();
     int flagA = 0;
     int flagB;
@@ -324,7 +319,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 flagB = 1;
                 struct PartyList* party = (struct PartyList*)GetPtrField0x2a04((GameState*)gs);
                 for (int i = 0; i < party->count; i++) {
-                    NotifySub020541a4((struct Obj020541a4*)_ZN9GameState21GetPartyMemberByIndexEi(gs, party->ids[i]), 0);
+                    NotifySub020541a4((struct Obj020541a4*)(CombatantStruct*)((GameState*)gs)->GetPartyMemberByIndex(party->ids[i]), 0);
                 }
             } else {
                 p->msgId = 0x754e;
@@ -425,7 +420,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                         if (key < 0) {
                             continue;
                         }
-                        struct Unit* target = (struct Unit*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, f.st10c.ids[i]);
+                        struct Unit* target = (struct Unit*)(CombatantStruct*)GetCombatantWithFlag0x100((GameState*)gs, f.st10c.ids[i]);
                         if (target == 0) {
                             continue;
                         }
@@ -443,10 +438,10 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                         func_ov017_021c9e00(p->actor, 0, 0, 1);
                     }
                 } else {
-                    struct CombatantStruct* unknown = _ZN9GameState20GetUnknownGameObjectEv(gs);
+                    struct CombatantStruct* unknown = (CombatantStruct*)((GameState*)gs)->GetUnknownGameObject();
                     if (unknown != 0) {
                         SetIndexedName02046574((struct Obj02046574*)msg, 2, ((struct Unit*)unknown)->name);
-                        InitObjFromCombatant020e4c74(p->obj14, (GameObject*)_ZN9GameState20GetUnknownGameObjectEv(gs));
+                        InitObjFromCombatant020e4c74(p->obj14, (GameObject*)(CombatantStruct*)((GameState*)gs)->GetUnknownGameObject());
                         *(void**)(msg + 0x10) = p->obj14;
                     }
                     AppendString02042058((char*)(tbl + 0x860), (const char*)GetFieldByKey020e0434((struct Container020e0310*)(p->container20), 0x2333));
@@ -502,7 +497,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             unsigned char* msg = (unsigned char*)GetGlobalField0x1c020421a0();
             memset(p->text, 0, 0x960);
             tbl = p->text;
-            struct Unit* actor = (struct Unit*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, p->actor);
+            struct Unit* actor = (struct Unit*)(CombatantStruct*)GetCombatantWithFlag0x100((GameState*)gs, p->actor);
             if (actor != 0) {
                 func_02046380(msg);
                 SetIndexedName02046574((struct Obj02046574*)msg, 0, actor->name);
@@ -516,7 +511,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             int* total = f.obj148;
             int k;
             for (k = 0; k < cnt; k++) {
-                struct Unit* member = (struct Unit*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, f.ids54[k]);
+                struct Unit* member = (struct Unit*)(CombatantStruct*)GetCombatantWithFlag0x100((GameState*)gs, f.ids54[k]);
                 if (member == 0) {
                     continue;
                 }
@@ -800,7 +795,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             p->msgId = 0x7535;
             p->msgId2 = -1;
             int cured = 0;
-            struct Unit* target = (struct Unit*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, p->target);
+            struct Unit* target = (struct Unit*)(CombatantStruct*)GetCombatantWithFlag0x100((GameState*)gs, p->target);
             if (target != 0 && (*target->status & 4)) {
                 cured = 1;
             }
@@ -847,7 +842,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
             }
         } else {
             Dispatch020e3428(GetData02153637(), 1);
-            struct Unit* member = (struct Unit*)_ZN9GameState21GetPartyMemberByIndexEi(gs, p->target);
+            struct Unit* member = (struct Unit*)(CombatantStruct*)((GameState*)gs)->GetPartyMemberByIndex(p->target);
             if (res != 0) {
                 if (p->command == 0x1e || p->command == 0x1f || p->command == 0x20 || p->command == 0x21) {
                     p->prompt = 0x232c;

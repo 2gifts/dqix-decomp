@@ -14,9 +14,7 @@ struct Combatant020adda4 {
     fix32_t bearing2;
 };
 
-extern "C" ARM short _Z8fix32sini(int x);
-extern "C" ARM short _Z8fix32cosi(int x);
-extern "C" ARM void _ZN8Vector3iaSERKS_(int* dst, const int* src);
+struct Vector3i;
 ARM void Vector3fixMultiplyScalar(const Vector3fix* in, fix32_t scale, Vector3fix* out);
 
 // USA: func_020adda4
@@ -32,20 +30,20 @@ extern "C" ARM void func_020adda4(Combatant020adda4* self) {
     int cz;
     int sx;
 
-    cz = _Z8fix32cosi(pitch);
-    sx = _Z8fix32sini(pitch);
+    cz = fix32cos(pitch);
+    sx = fix32sin(pitch);
     aim.y = 0;
     aim.z = cz;
     aim.x = sx;
 
-    cz = _Z8fix32cosi(self->bearing);
-    sx = _Z8fix32sini(self->bearing);
+    cz = fix32cos(self->bearing);
+    sx = fix32sin(self->bearing);
     dir.y = 0;
     dir.z = cz;
     dir.x = sx;
 
-    cz = _Z8fix32cosi(self->bearing2);
-    sx = _Z8fix32sini(self->bearing2);
+    cz = fix32cos(self->bearing2);
+    sx = fix32sin(self->bearing2);
     aim2.y = 0;
     aim2.z = cz;
     aim2.x = sx;
@@ -54,7 +52,7 @@ extern "C" ARM void func_020adda4(Combatant020adda4* self) {
     Vector3fix_Normalize(&dir, &dir);
     Vector3fix_Normalize(&aim2, &aim2);
 
-    _ZN8Vector3iaSERKS_((int*)&step, (int*)&aim);
+    *(Vector3i*)((int*)&step) = *(Vector3i const*)((int*)&aim);
     Vector3fixMultiplyScalar(&step, 0xe66, &step);
     Vector3fix_Subtract(&pos, &step, &goal);
     Vector3fix_Subtract(&goal, &self->pivot, &dir);
@@ -69,7 +67,7 @@ extern "C" ARM void func_020adda4(Combatant020adda4* self) {
     self->bearing = fix32_Atan2(dir.x, dir.z);
     self->bearing = fix32ReduceAngle0To2Pi(self->bearing);
 
-    _ZN8Vector3iaSERKS_((int*)&step, (int*)&dir);
+    *(Vector3i*)((int*)&step) = *(Vector3i const*)((int*)&dir);
     Vector3fixMultiplyScalar(&step, 0xe66, &step);
     Vector3fix_Subtract(&self->pivot, &step, &goal2);
     Vector3fix_Subtract(&goal2, &self->pivot2, &aim2);

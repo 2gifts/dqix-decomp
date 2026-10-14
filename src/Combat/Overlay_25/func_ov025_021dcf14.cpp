@@ -94,7 +94,7 @@ void ApplyField41ToGatheredCombatants02163a7c(GatherObj02163a7c*);
 void* GetSlotPtr02160f20(void* obj);
 void ApplyVec3Tail(void*, int*);
 extern "C" void func_ov000_021626a0(void* obj, int a, int b);
-extern "C" void _ZN8Vector3iaSERKS_(Vector3fix* dst, const Vector3fix* src);
+struct Vector3i;
 extern "C" void func_ov000_02167f10(void* obj);
 struct Obj02033874;
 void SetVecYFromValue02033874(Obj02033874*, int);
@@ -219,11 +219,11 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
         }
         Vector3fix leadPos;
         if (lead) {
-            _ZN8Vector3iaSERKS_(&leadPos, &lead->obj3D_.position_);
+            leadPos = lead->obj3D_.position_;
         }
         func_ov000_02167f10(sl);
         if (lead) {
-            _ZN8Vector3iaSERKS_(&lead->obj3D_.position_, &leadPos);
+            lead->obj3D_.position_ = leadPos;
             int radius = lead->obj3D_.GetRadius();
             Vector3fix base;
             __clear(&base, sizeof(base));
@@ -275,14 +275,14 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                 Vector3fix_Subtract(&dst, &look, &dir);
                 Vector3fix_Normalize(&dir, &dir);
                 int angle = fix32_Atan2(dir.x, dir.z);
-                _ZN8Vector3iaSERKS_(&objs[i]->obj3D_.position_, &look);
+                objs[i]->obj3D_.position_ = look;
                 SetVecYFromValue02033874((Obj02033874*)objs[i], angle);
                 struct Rec021dcf14 rec;
                 ResetFields_021de110(&rec);
                 rec.f0 = 0;
                 rec.id = ((short*)(sl + Field6ef0))[i];
                 rec.val = 0x96;
-                _ZN8Vector3iaSERKS_(&rec.pos, &dst);
+                rec.pos = dst;
                 PushNodeFromFreeList_021eee48((Obj021eee48*)(sl + PendingList), (Rec021eee48*)&rec);
                 objs[i]->obj3D_.MaybeSetRegularAnimation(data_ov025_021ef460, 0);
                 SetFlag0x4At0xe0((Flags02033fcc*)objs[i]);
@@ -558,7 +558,7 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
                         rec.f0 = 0;
                         rec.id = ((short*)(sl + Field6ef0))[i];
                         rec.val = 0x12c;
-                        _ZN8Vector3iaSERKS_(&rec.pos, &dst);
+                        rec.pos = dst;
                         PushNodeFromFreeList_021eee48((Obj021eee48*)(sl + PendingList), (Rec021eee48*)&rec);
                         objs[i]->obj3D_.MaybeSetRegularAnimation(data_ov025_021ef460, 0);
                         SetFlag0x4At0xe0((Flags02033fcc*)objs[i]);
@@ -689,7 +689,6 @@ extern "C" void func_ov000_0216df00(void* obj, int id, int b, int c, float scale
 extern "C" void func_ov000_0216dbf0(void* obj, int* id, int a, int b);
 void* GetSlotPtr02160f20(void* obj);
 extern "C" void func_ov000_021626a0(void* obj, int a, int b);
-extern "C" void _ZN8Vector3iaSERKS_(Vector3fix* dst, const Vector3fix* src);
 extern "C" void func_ov000_02167f10(void* obj);
 extern "C" int func_ov025_021ed444(void* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
 extern "C" int func_ov025_021ed564(void* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
@@ -971,7 +970,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
                     sc.x = v;
                     sc.y = v;
                     sc.z = v;
-                    _ZN8Vector3iaSERKS_(&req.scale, &sc);
+                    req.scale = sc;
                 }
             }
             FindNodeAndProcess02057fb4(fx, *(short*)(sl + Field6f98), (int)&req);
@@ -995,7 +994,7 @@ extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
             if (obj) {
                 func_ov000_02167f10(sl);
                 Vector3fix v = data_ov025_021eef04;
-                _ZN8Vector3iaSERKS_(&obj->obj3D_.position_, &v);
+                obj->obj3D_.position_ = v;
                 obj->obj3D_.MakeVisible();
             }
             DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, *(unsigned short*)(sl + Field6f04), 0);

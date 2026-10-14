@@ -77,7 +77,7 @@ extern "C" void* func_02057924(void);
 int CreateAndRegisterNode02057de0(struct NodeList02057de0* list, int a1, SafeAllocator* alloc, int a2, int a3);
 int FindNodeAndProcess02057fb4(void* list, int id, int params);
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 void* SearchBothTables02079e2c(char* p, int key);
 
@@ -363,8 +363,8 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         params.b6 = 0;
         params.b7 = 0;
 
-        _ZN8Vector3iaSERKS_(&params.f2c, &pos.x);
-        _ZN8Vector3iaSERKS_(&params.f44, &scale.x);
+        *(Vector3i*)&params.f2c = *(Vector3i const*)&pos.x;
+        *(Vector3i*)&params.f44 = *(Vector3i const*)&scale.x;
         obj->nodeId = FindNodeAndProcess02057fb4(nodes, 0x11, (int)&params);
 
         struct Vec3s02184354 anchor;

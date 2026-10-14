@@ -72,7 +72,7 @@ extern "C" int func_ov025_021e771c(short* ids, int count, int a, int b);
 extern "C" void func_ov000_02161c0c(void* work, int id);
 extern "C" void func_ov000_021677fc(void* work);
 void RunFlaglearAndSetMode02167e6c_02167e6c(unsigned char*);
-extern "C" void _ZN8Vector3iaSERKS_(float* dst, float* src);
+struct Vector3i;
 
 extern const unsigned short data_ov025_021eef18[5];
 extern const unsigned short data_ov025_021eef30[7];
@@ -145,7 +145,7 @@ extern "C" ARM int func_ov025_021e7890(int self, Action021e7890* action) {
     if (unit2 != 0) {
         Sub021e7890* obj2 = unit2->sub;
         if (obj2 != 0) {
-            _ZN8Vector3iaSERKS_(obj2->v, local.v);
+            *(Vector3i*)obj2->v = *(Vector3i const*)local.v;
             obj2->b1c = local.b1c;
             obj2->b1d = local.b1d;
             obj2->b1e = local.b1e;

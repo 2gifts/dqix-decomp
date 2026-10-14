@@ -224,7 +224,6 @@ extern "C" void func_ov000_02161300(CombatRoot* c, int i);
 void SetFlag0x1ceBit0x1(unsigned char*);
 extern "C" int func_0202c540(int p);
 extern "C" void func_ov017_0219c774(int a, int b, int c);
-extern "C" Lighting* _ZN15LightingManager11GetInstanceEv();
 void EnqueueEventTag147_021cdaa0();
 extern "C" void _ZN9GameState12SetTimeOfDayE9TimeOfDay(int gs, int t);
 void LoadBattleBlock020ac4c0(void*);
@@ -431,7 +430,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     if (func_0202c540(search)) {
         func_ov017_0219c774(0, 1, 0);
     }
-    Lighting* lm = _ZN15LightingManager11GetInstanceEv();
+    Lighting* lm = (Lighting*)LightingManager::GetInstance();
     float cur = lm->value;
     if (data_ov000_0218423c[3] - data_ov000_021838e8[4] < cur && cur < data_ov000_0218423c[3]) {
         lm->value = data_ov000_0218423c[3];

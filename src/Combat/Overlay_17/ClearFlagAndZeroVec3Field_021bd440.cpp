@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 // USA: func_ov017_021bd440
 ARM void ClearFlagAndZeroVec3Field_021bd440(void* self, int partyMemberIndex) {
@@ -21,10 +21,10 @@ ARM void ClearFlagAndZeroVec3Field_021bd440(void* self, int partyMemberIndex) {
 	GameObject* combatant = GameState::GetInstance()->GetPartyMemberByIndex(partyMemberIndex);
 	if (!combatant) return;
 #if defined(jpn)
-	_ZN8Vector3iaSERKS_((int*)((char*)combatant + 0x44), (int*)(base + 0x184 + partyMemberIndex * 0xc));
+	*(Vector3i*)((int*)((char*)combatant + 0x44)) = *(Vector3i const*)((int*)(base + 0x184 + partyMemberIndex * 0xc));
 	int savedRotationY = *(int*)(base + 0x1b4 + partyMemberIndex * 4);
 #else
-	_ZN8Vector3iaSERKS_((int*)((char*)combatant + 0x44), (int*)(base + 0x188 + partyMemberIndex * 0xc));
+	*(Vector3i*)((int*)((char*)combatant + 0x44)) = *(Vector3i const*)((int*)(base + 0x188 + partyMemberIndex * 0xc));
 	int savedRotationY = *(int*)(base + 0x1b8 + partyMemberIndex * 4);
 #endif
 	*(int*)((char*)combatant + 0x50) = 0;

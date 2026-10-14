@@ -13,7 +13,6 @@ unsigned char GetByte48_021e8ba4(void* obj);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
 
 struct PtrField0x1c_020371b0;
-extern "C" void* _ZNK8Object3D23GetCurrentAnimationTimeEv(struct PtrField0x1c_020371b0* obj);
 struct S1a0;
 
 struct Struct_203dafc {
@@ -54,7 +53,7 @@ extern "C" ARM void func_ov025_021e267c(int combatantId, int arg1, int arg2, int
     if (name) {
         strcpy(buf, name);
     }
-    void* ptr = _ZNK8Object3D23GetCurrentAnimationTimeEv((struct PtrField0x1c_020371b0*)combatant);
+    void* ptr = (void*)((Object3D*)((struct PtrField0x1c_020371b0*)combatant))->GetCurrentAnimationTime();
     struct Struct_203dafc s;
     ClearEightWords(&s);
     void* byteObj = *(void**)((char*)&data_ov025_021ef988 + RegionOffsetc);

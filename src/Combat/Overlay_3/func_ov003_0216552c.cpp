@@ -7,7 +7,7 @@ extern "C" void func_ov003_021612c0(void* obj);
 extern "C" int func_ov003_02161344(void* obj);
 int CountValidCombatantsMinusField_02160b84(void* obj);
 int GetFieldIfFlag4(char* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, const int* src);
+struct Vector3i;
 void ReadFields0x70To0x78(unsigned char* obj, int* a, int* b, int* c);
 extern "C" void func_ov017_021c37a4(void);
 struct GlobalObj0202e6a8;
@@ -87,14 +87,14 @@ extern "C" ARM void func_ov003_0216552c(Menu0216552c* self) {
                 int target[3];
                 Camera0216552c* camera = (Camera0216552c*)GetFieldIfFlag4((char*)GameState::GetInstance());
                 if (camera != NULL) {
-                    _ZN8Vector3iaSERKS_(position, camera->position_);
-                    _ZN8Vector3iaSERKS_(target, camera->target_);
+                    *(Vector3i*)position = *(Vector3i const*)camera->position_;
+                    *(Vector3i*)target = *(Vector3i const*)camera->target_;
                     ReadFields0x70To0x78((unsigned char*)camera, &angle, &height, &distance);
                 }
                 func_ov017_021c37a4();
                 if (camera != NULL) {
-                    _ZN8Vector3iaSERKS_(camera->position_, position);
-                    _ZN8Vector3iaSERKS_(camera->target_, target);
+                    *(Vector3i*)camera->position_ = *(Vector3i const*)position;
+                    *(Vector3i*)camera->target_ = *(Vector3i const*)target;
                     AddWrappedField0x70_0202e784((struct GlobalObj0202e6a8*)camera, angle);
                     ClampField74BySign((struct CamState0202e6c0*)camera, height);
                     SetField78Clamped0202e71c((struct Obj0202e71c*)camera, distance);

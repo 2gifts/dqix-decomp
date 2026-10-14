@@ -98,7 +98,6 @@ unsigned char GetField0xcc0209ca98(char*);
 void* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int*, unsigned int);
 unsigned char CopyOutRegion0x5718(char*, void*);
-extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(struct GameState*, int);
 
 // USA: func_ov004_02157db8
 extern "C" ARM int func_ov004_02157db8(void* a) {
@@ -227,7 +226,7 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
     data_ov004_021707d8.ptr->arr32[4] = count;
 
     for (int i = 0; i < data_ov004_021707d8.ptr->arr32[4]; i++) {
-        void* combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(bs, data_ov004_021707d8.ptr->arr32[i]);
+        void* combatant = (void*)GetCombatantWithFlag0x100(bs, data_ov004_021707d8.ptr->arr32[i]);
         if (combatant != 0) {
             struct Nib56b_02157db8* field150 = ((struct Combatant150_02157db8*)combatant)->f150;
             int flag;

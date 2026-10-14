@@ -8,7 +8,7 @@ struct BattleTarget9a8;
 void ClearTargetMask(struct BattleTarget9a8* obj);
 
 struct RefNode020c80f8;
-extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8* node);
+void UnlockMutex(Mutex*);
 
 struct Ctx0211_020bf484 { int f0; unsigned char* f4; };
 extern struct Ctx0211_020bf484 data_021103b0;
@@ -43,8 +43,8 @@ ARM void DetachAndReleaseRefs020bf484(int expected, void* unused1, struct Ctx020
         obj->count0x120 = 0;
     }
 
-    _Z11UnlockMutexP5Mutex((struct RefNode020c80f8*)&data_02110a28);
+    UnlockMutex((Mutex*)&data_02110a28);
     if (data_021103b0.f4 != 0) {
-        _Z11UnlockMutexP5Mutex((struct RefNode020c80f8*)(data_021103b0.f4 + 0x4c8));
+        UnlockMutex((Mutex*)(data_021103b0.f4 + 0x4c8));
     }
 }

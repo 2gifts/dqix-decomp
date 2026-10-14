@@ -12,14 +12,13 @@ extern "C" int func_020e04f8(void*, void*, const char*, short, bool);
 #include "Memory/SafeAllocator.h"
 #include "System/OverlayId.h"
 #include "Graphics/LightingManager.h"
+#include "GameState/GameState.h"
 struct BattleStruct {
     int unk0;
     int unk4;
     struct CombatantStruct* combatantList[0xe9];
 };
-extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
-extern "C" void* func_ov017_0218b5b0();
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_0205ec34(void);
 extern "C" void func_020703c8(int index, int hour, int minute, int second);
@@ -46,7 +45,7 @@ extern "C" void func_ov017_021b8d1c(void* obj);
 int GetFieldIfFlag4(char* obj);
 void ClearIntAt0x23c(unsigned char* obj);
 
-extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
+struct Vector3i;
 
 extern "C" void func_ov017_021b6f18(void* node);
 extern "C" void func_ov017_021b6e70(void* evt, unsigned short tag);
@@ -54,7 +53,6 @@ extern "C" int func_0202c540(void* p);
 extern "C" void func_ov017_021b7104(void* node, void* out);
 
 struct GameState;
-void* GetPtrField0x2a04(GameState*);
 void* ZeroInitReturn020de824(void* obj);
 void ZeroInit020de848(void* obj);
 extern char* data_020f2a38;
@@ -67,7 +65,6 @@ extern "C" void func_0207d300(void* obj, short id, int a, int b);
 int DecrementKeyEverywhere02086d88(unsigned char* self, int key);
 unsigned char CopyOutRegion0x5718(char* obj, void* dst);
 struct CombatantStruct;
-extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
 int GetFieldAt0x150(unsigned char* obj);
 struct Container02083554;
 void* FindEntryByShortField02083554(struct Container02083554* c, int id);
@@ -171,7 +168,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
     BackgroundLoader* inst;
     struct TailList020469b4* tailList;
     int vec[3];
-    struct BattleStruct* battle = _ZN9GameState11GetInstanceEv();
+    struct BattleStruct* battle = (BattleStruct*)GameState::GetInstance();
     void* g = func_ov017_0218b5b0();
     void* gBase = (char*)g + 0x3000;
     tailList = *(struct TailList020469b4**)((char*)gBase + REGION_VALUE(0x4ec, 0x6fc));
@@ -274,7 +271,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
             }
 
             case 0x7a: {
-                _ZN8Vector3iaSERKS_(vec, node + 4);
+                *(Vector3i*)vec = *(Vector3i const*)(node + 4);
                 flag18 = 1;
                 break;
             }
@@ -371,13 +368,13 @@ extern "C" ARM void func_0206f81c(void* a0) {
                         if (DecrementKeyEverywhere02086d88((unsigned char*)p2a04, *(short*)(node + 2)) != 0) matchCount++;
                     }
                     if (matchCount < *(unsigned short*)(node + 4)) {
-                        battle2 = _ZN9GameState11GetInstanceEv();
+                        battle2 = (BattleStruct*)GameState::GetInstance();
                         unsigned char buf40[4];
                         int idArr[4];
                         int arrCount = 0;
                         unsigned char count = CopyOutRegion0x5718((char*)battle2, buf40);
                         for (int i = 0; i < count; i++) {
-                            struct CombatantStruct* combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(battle2, buf40[i]);
+                            struct CombatantStruct* combatant = (CombatantStruct*)GetCombatantWithFlag0x100((GameState*)battle2, buf40[i]);
                             if (combatant != NULL) {
                                 int field150 = GetFieldAt0x150((unsigned char*)combatant);
                                 if (field150 != 0) {
@@ -428,7 +425,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                         unsigned char count = CopyOutRegion0x5718((char*)battle, buf3c);
                         for (int i = 0; i < count; i++) {
                             int cid = buf3c[i];
-                            struct CombatantStruct* c = _Z25GetCombatantWithFlag0x100P9GameStatei(battle, cid);
+                            struct CombatantStruct* c = (CombatantStruct*)GetCombatantWithFlag0x100((GameState*)battle, cid);
                             if (c != NULL) {
                                 int field150 = GetFieldAt0x150((unsigned char*)c);
                                 if (field150 != 0) {
@@ -544,7 +541,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
         if (flag18 != 0 && slFlag != 0) {
             unsigned char* f3f8 = (unsigned char*)GetField0x3f8Address((GameState*)battle);
             f3f8[7] = 1;
-            _ZN8Vector3iaSERKS_(f3f8 + 0x10, vec);
+            *(Vector3i*)(f3f8 + 0x10) = *(Vector3i const*)vec;
         }
         if (flag14 != 0 && slFlag != 0) {
             unsigned char* f3f8 = (unsigned char*)GetField0x3f8Address((GameState*)battle);

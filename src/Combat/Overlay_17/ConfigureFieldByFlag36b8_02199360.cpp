@@ -13,7 +13,7 @@ extern "C" int func_0202c508(void* state);
 void* GetField0x3f8Address(GameState* battleStruct);
 struct PointerField32c_ffc0;
 void* GetPointerAt0x32c(struct PointerField32c_ffc0* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 void InitStruct02070378(char* obj);
 extern "C" void func_ov017_021d1a18(int a, int b, int c, int d);
 
@@ -29,13 +29,13 @@ extern "C" ARM void func_ov017_02199360(void* obj) {
     void* ptr32c = GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct);
 
     if (func_0202c508(state)) {
-        _ZN8Vector3iaSERKS_((int*)((char*)base + RegionOffset2774), (int*)((char*)src + 0x40));
+        *(Vector3i*)((int*)((char*)base + RegionOffset2774)) = *(Vector3i const*)((int*)((char*)src + 0x40));
         *(int*)((char*)base + RegionOffset2780) = *(short*)((char*)src + 0x4c);
         InitStruct02070378((char*)fieldPtr);
         *(short*)((char*)fieldPtr + 0x0) = 0x2710;
         ((char*)fieldPtr)[0x2] = 1;
         ((char*)fieldPtr)[0x7] = 1;
-        _ZN8Vector3iaSERKS_((int*)((char*)fieldPtr + 0x10), (int*)((char*)ptr32c + 0x44));
+        *(Vector3i*)((int*)((char*)fieldPtr + 0x10)) = *(Vector3i const*)((int*)((char*)ptr32c + 0x44));
         *(short*)((char*)fieldPtr + 0x1c) = *(int*)((char*)ptr32c + 0x54);
         ((char*)base)[RegionOffset2788] = 1;
         func_ov017_021d1a18(1, -1, 1, 0);

@@ -35,7 +35,6 @@ extern "C" void func_020813ec(void *, int);
 struct Obj0208203c;
 void ResetWithSub0208203c(Obj0208203c*);
 int FindMappedMemberId02080468(void *, int);
-extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
 struct Cont0207fe44;
@@ -58,7 +57,7 @@ extern "C" void func_ov017_021ccfd0(int);
 // USA: func_ov003_0216201c
 extern "C" ARM void func_ov003_0216201c(Scene *self) {
     GameState *gs        = GameState::GetInstance();
-    unsigned char *gp    = _Z17GetPtrField0x2a04P9GameState(gs);
+    unsigned char *gp    = (unsigned char *)GetPtrField0x2a04(gs);
     unsigned char *bits  = (unsigned char *) func_0205ec34();
     unsigned char *field = GetFieldAt0x150((unsigned char *) gs->GetPartyMemberByIndex(0));
     unsigned char state  = self->state;
@@ -67,7 +66,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
     if (state == 0) {
         CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
         self->h488 = 0x1e;
-        if (*(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0xf7c) == 1) {
+        if (*((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0xf7c) == 1) {
             self->h488 = 0x1d;
         }
         self->h48a   = FindMappedMemberId02080468(entries, self->h488);
@@ -93,7 +92,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
                     if (cv == 4) {
                         self->h484 = 6;
                         self->h486 = 2;
-                    } else if (*(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0x2000 + 0xc8c) == 0) {
+                    } else if (*((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0x2000 + 0xc8c) == 0) {
                         CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                         self->c4a3  = 2;
                         self->state = 0;
@@ -121,7 +120,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
                     short b;
                     self->cnt = self->cnt - 1;
                     func_ov003_02160c58(self, &a, &b);
-                    if (*(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0xf7c) == 1) {
+                    if (*((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0xf7c) == 1) {
                         self->h484 = 0x10;
                         self->h486 = 2;
                     } else if (b == 0) {
@@ -155,7 +154,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
                 }
                 case 0xb5:
                 case 0xb9:
-                    if (*(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0x2000 + 0xc8c) != 0) {
+                    if (*((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0x2000 + 0xc8c) != 0) {
                         CallFunc0204c804OverAllElems((Cont0207fe44*)entries);
                         self->c4a3 = 5;
                         self->c49f = 0;

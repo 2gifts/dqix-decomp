@@ -34,7 +34,7 @@ struct U16Field0x6_020375f8;
 
 extern "C" int func_02018fbc(int seed, void* v);
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
@@ -100,7 +100,7 @@ extern "C" ARM void func_02078050(struct Entity02078050* self) {
 
     if (curId == ((Object3D*)((struct U16Field0x6_020375f8*)self))->GetField06() && flags->f424 == 0) {
         v.y = func_02018fbc((int)flags, &v);
-        _ZN8Vector3iaSERKS_((int*)&self->f44, (int*)&v);
+        *(Vector3i*)((int*)&self->f44) = *(Vector3i const*)((int*)&v);
     }
 
     TrySetMode02076ccc(self, 1);

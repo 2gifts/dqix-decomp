@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 enum { field6=4,field7=6,field8=7,fieldB=8 };
@@ -7,9 +8,7 @@ enum { field6=6,field7=7,field8=8,fieldB=0xb };
 #endif
 
 extern "C" void* func_ov011_021849c8(void* p);
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
 struct GameState;
-void* GetCombatantWithFlag0x100(GameState*, int);
 extern int GetFieldAt0x150(unsigned char* obj);
 void ClearField00209a804(int* field);
 struct Ctx0209a810 { void* field0; };
@@ -92,7 +91,7 @@ extern "C" ARM int func_ov004_02161514(void* a) {
 
     t = D1[D0[field8]];
     if (t != 1 && t != 4 && t != 7) {
-        unsigned char* combatant = (unsigned char*)GetCombatantWithFlag0x100((GameState*)_ZN9GameState11GetInstanceEv(), *(int*)(D0 + 0x1c));
+        unsigned char* combatant = (unsigned char*)GetCombatantWithFlag0x100((GameState*)(void*)GameState::GetInstance(), *(int*)(D0 + 0x1c));
         if (!combatant) return 0;
         field = (unsigned char*)GetFieldAt0x150(combatant);
         if (!field) return 0;

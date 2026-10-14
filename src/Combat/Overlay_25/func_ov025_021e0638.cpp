@@ -20,7 +20,6 @@ struct CombatantStruct {
     struct BaseCombatStats* baseStats;
     struct ModifiableCombatStats* currentStats;
 };
-extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
 
 struct Obj02048c90;
 struct Obj02049410;
@@ -104,7 +103,7 @@ extern "C" void func_ov025_021e120c(void* buf, int id, int a, int b, int c);
 extern "C" void func_020c9be0(void);
 extern "C" void func_ov000_0216f82c(B6_021e0638* out, const int* cell);
 extern "C" void func_ov000_0216f74c(Pos2_021e0638* out, const int* cell);
-extern "C" void _ZN8Vector3iaSERKS_(Vec3_021e0638* dst, const Vec3_021e0638* src);
+struct Vector3i;
 extern "C" void __clear(void* p, int n);
 
 void ResetFields_021e20d8(void* obj);
@@ -366,7 +365,7 @@ found:
     }
     for (int i = 0; i < n; i++) {
         int flag = 0;
-        unsigned char* c = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei((BattleStruct*)gs, *(short*)(ents[i].obj + 4));
+        unsigned char* c = (unsigned char*)(CombatantStruct*)GetCombatantWithFlag0x100((GameState*)gs, *(short*)(ents[i].obj + 4));
         if (c != 0 && (*(unsigned int*)(c + Field18c) & 1)) {
             flag = 1;
         }
@@ -451,8 +450,8 @@ found:
                 Vec3_021e0638 vb = *(Vec3_021e0638*)(cb + 0x44);
                 vb.y = 0;
                 Data021e0638* d = GetData02107850();
-                _ZN8Vector3iaSERKS_(&d->a, &va);
-                _ZN8Vector3iaSERKS_(&d->b, &vb);
+                *(Vector3i*)&d->a = *(Vector3i const*)&va;
+                *(Vector3i*)&d->b = *(Vector3i const*)&vb;
                 d->radius = ((Object3D*)ca)->GetRadius() >> 1;
                 d->flag = 1;
             }

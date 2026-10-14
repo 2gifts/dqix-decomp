@@ -42,7 +42,6 @@ extern "C" void func_ov025_021eb8e8(struct Ctx021eb7fc* ctx);
 void ClearBitsInField4(unsigned int* p, unsigned int bits);
 struct Leader021eb7fc* GetNodeAtIndex02160094(struct List02160094* list, int index);
 struct Target021eb7fc* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
-extern "C" struct Actor021eb7fc* _ZN9GameState19GetCombatantByIndexEi(GameState* gs, int idx);
 extern "C" void func_02033920(struct Actor021eb7fc* obj, int id, int flag);
 void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
 
@@ -63,7 +62,7 @@ extern "C" ARM void func_ov025_021eb7fc(struct Ctx021eb7fc* ctx) {
             struct Leader021eb7fc* leader = GetNodeAtIndex02160094((struct List02160094*)list, 0);
             struct Target021eb7fc* target = GetNodeAtIndex021600f8((struct List021600f8*)list, 0);
             if (leader != 0 && target != 0) {
-                struct Actor021eb7fc* actor = _ZN9GameState19GetCombatantByIndexEi(gs, leader->id);
+                struct Actor021eb7fc* actor = (Actor021eb7fc*)gs->GetCombatantByIndex(leader->id);
                 if (actor != 0) {
                     func_02033920(actor, target->id, 0);
                     SetVecYFromValue02033874((struct Obj02033874*)actor, actor->facing);

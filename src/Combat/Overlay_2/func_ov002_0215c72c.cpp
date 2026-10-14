@@ -4,7 +4,6 @@
 struct Container020e0310;
 
 extern "C" void *func_0202ae18(void);
-extern "C" unsigned char *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
 extern "C" int func_ov002_02159774(void *self, int idx, int a, int b, int c);
 void AppendFrameTag02041c08(char *buf, int x, int a, int b, int c, int d);
 void AppendCursorTag(char *buf, int x);
@@ -26,7 +25,7 @@ extern "C" ARM void func_ov002_0215c72c(char *self, char *buf, int frame) {
     AppendFormatted02041fac(
         buf, (int) GetFieldByKey020e0434((Container020e0310 *) (self + 0x20), 0x44c), 0x18);
     for (int i = 0; i < *(signed char *) (self + 0x1c73); i++) {
-        unsigned char *m = _ZN9GameState21GetPartyMemberByIndexEi(gs, ((signed char *) (self + 0x1c6e))[i]);
+        unsigned char *m = (unsigned char *)((GameState*)gs)->GetPartyMemberByIndex(((signed char *) (self + 0x1c6e))[i]);
         if (m != 0) {
             AppendPaletteTag(buf, func_ov002_02159774(self, ((signed char *) (self + 0x1c6e))[i], 0, 1, 1));
             AppendNameTag(buf, n, *(const char **) (m + 0x134));

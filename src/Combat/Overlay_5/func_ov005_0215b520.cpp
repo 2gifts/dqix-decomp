@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Resource/GameResources.h"
 #include "Graphics/Vector.h"
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 #define REGION(j,u) (j)
@@ -34,10 +35,8 @@ extern "C" void func_ov005_0215792c(void* obj, unsigned char mode);
 extern "C" void func_ov005_021579ec(void* obj, unsigned int a, unsigned char b);
 extern "C" void func_ov005_02154d34(void* obj, int a, int b);
 extern "C" void func_ov005_02154d7c(void* obj, int a, int b);
-extern "C" void* _ZN9GameState11GetInstanceEv();
 MemberScreen* GetField1c_021a193c(int* p);
 struct GameState;
-void* GetCombatantWithFlag0x100(GameState*, int);
 struct Field150Holder02052e14;
 short* GetField150Ptr0x488(Field150Holder02052e14*);
 
@@ -111,7 +110,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
     if (state == 0 && self->phase == 0) {
         func_ov005_0215792c(self, 1);
         self->flags |= 0x100;
-        void* gs = _ZN9GameState11GetInstanceEv();
+        void* gs = (void*)GameState::GetInstance();
         GameResources* res = func_ov017_0218b5b0();
         MemberScreen* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
         short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)GetCombatantWithFlag0x100((GameState*)gs, holder->member));
@@ -226,7 +225,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
             self->accum = 0;
         }
     } else if (state == 1 && self->phase == 2) {
-        void* gs = _ZN9GameState11GetInstanceEv();
+        void* gs = (void*)GameState::GetInstance();
         GameResources* res = func_ov017_0218b5b0();
         MemberScreen* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
         short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)GetCombatantWithFlag0x100((GameState*)gs, holder->member));

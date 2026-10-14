@@ -3,7 +3,7 @@
 extern "C" int func_ov017_0218b5b0(void);
 struct GameResources;
 void SetMainBrightness(GameResources*, int, int);
-extern "C" void _Z16SetSubBrightnessP13GameResourcesii(void*, int, int);
+void SetSubBrightness(GameResources*, int, int);
 int IsBrightnessTransitionActive(GameResources*);
 int IsAnimationActive0209ca2c(void* obj);
 extern "C" void ColorEffect_ConfigureBrightnessAdjust(unsigned short*, int, int);
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov023_021ecaa4(Obj021ecaa4* obj) {
         if (obj->f60 == 0)
             SetMainBrightness((GameResources*)result, -16, 15);
         else
-            _Z16SetSubBrightnessP13GameResourcesii(result, -16, 15);
+            SetSubBrightness((GameResources*)result, -16, 15);
         obj->f432++;
     }
     if (state != 1) return;

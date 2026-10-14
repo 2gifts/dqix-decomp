@@ -3,8 +3,8 @@
 extern "C" void* func_ov017_0218b5b0(void);
 struct GameResources;
 void Stub(GameResources*);
-extern "C" void _Z27UpdateBrightnessTransitionsP13GameResources(void*);
-extern "C" void _Z15ApplyBrightnessP13GameResources(void*);
+void UpdateBrightnessTransitions(GameResources*);
+void ApplyBrightness(GameResources*);
 
 struct Struct020db814 {
     char pad[0x28];
@@ -19,6 +19,6 @@ ARM void InitFlag0x28FromOverlay(void*) {
     }
     obj->field0x28 = 1;
     Stub((GameResources*)obj);
-    _Z27UpdateBrightnessTransitionsP13GameResources(obj);
-    _Z15ApplyBrightnessP13GameResources(obj);
+    UpdateBrightnessTransitions((GameResources*)obj);
+    ApplyBrightness((GameResources*)obj);
 }

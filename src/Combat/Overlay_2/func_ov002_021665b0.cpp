@@ -99,7 +99,6 @@ struct Slot_021665b0 {
 void InitStateArray02157ce0(char*);
 extern "C" void func_ov002_0215b814(Menu_021665b0* self);
 Unit_021665b0* GetCombatantChecked(GameState* gs, int id);
-extern "C" Unit_021665b0* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
 Field_021665b0* GetFieldAt0x150(unsigned char*);
 int GetBitInArray0x910(unsigned char*, int);
 extern "C" int func_0209ac28(char* obj, Unit_021665b0* unit, int index);
@@ -166,7 +165,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             if (unit == NULL) {
                 continue;
             }
-            member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, id);
+            member = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, id);
             if (member == NULL) {
                 continue;
             }
@@ -194,7 +193,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         int found = 0;
         for (int i = 0; i < n; i++) {
             id = self->ids[i];
-            if (_Z25GetCombatantWithFlag0x100P9GameStatei(gs, id) == NULL) {
+            if ((Unit_021665b0*)GetCombatantWithFlag0x100(gs, id) == NULL) {
                 continue;
             }
             unit = GetCombatantChecked(gs, id);
@@ -207,7 +206,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             if (lost[id] != 0) {
                 for (int j = 0; j < n; j++) {
                     int other = self->ids[j];
-                    if (_Z25GetCombatantWithFlag0x100P9GameStatei(gs, other) != NULL && hp[other] > 0 && revives[other] > 0) {
+                    if ((Unit_021665b0*)GetCombatantWithFlag0x100(gs, other) != NULL && hp[other] > 0 && revives[other] > 0) {
                         found = 1;
                         break;
                     }
@@ -216,7 +215,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             if (dead[id] != 0) {
                 for (int j = 0; j < n; j++) {
                     int other = self->ids[j];
-                    Unit_021665b0* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, other);
+                    Unit_021665b0* member = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, other);
                     if (member == NULL) {
                         continue;
                     }
@@ -263,7 +262,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             if (unit == NULL) {
                 continue;
             }
-            member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, id);
+            member = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, id);
             if (member == NULL) {
                 continue;
             }
@@ -358,7 +357,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             }
             return;
         }
-        Unit_021665b0* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, cmd.target);
+        Unit_021665b0* member = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, cmd.target);
         if (member->status->flags & 1) {
             self->state = 2;
             self->turn = self->turn + 1;
@@ -406,7 +405,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         self->actor = actor;
         for (int i = 0; i < n; i++) {
             signed char id = self->ids[i];
-            Unit_021665b0* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, id);
+            Unit_021665b0* member = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, id);
             if (member != NULL) {
                 hp[id] = member->status->hp;
             }
@@ -416,7 +415,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         unsigned char t = 0;
         if (dead[actor] == 1) {
             while (t < n) {
-                Unit_021665b0* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, self->order[t].id);
+                Unit_021665b0* member = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, self->order[t].id);
                 if (member == NULL) {
                     t++;
                     continue;
@@ -453,7 +452,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         if (chosen) {
             self->chosen = t;
             func_ov002_021594e8(self, self->key, self->order[t].id, actor);
-            Unit_021665b0* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, actor);
+            Unit_021665b0* member = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, actor);
             Unit_021665b0* unit = GetCombatantChecked(gs, actor);
             hp[actor] = member->status->hp;
             if (!(unit->status->flags & 2)) {
@@ -506,7 +505,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             }
             return;
         }
-        Unit_021665b0* healer = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, target);
+        Unit_021665b0* healer = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, target);
         if (GetBitInArray0x910((unsigned char*)(GetFieldAt0x150((unsigned char*)healer)), 0x1e) && self->pairs[4].key > 0) {
             cmd.key = 0x22;
             if (ClampAndCompareThreshold02048448((Struct02048448*)healer, (unsigned short)SearchBothTables02079e2c((char*)data, (short)0x22)->power)) {
@@ -576,7 +575,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
             func_ov002_021594e8(self, self->key = 0x22, target, 0);
             for (int i = 0; i < n; i++) {
                 unsigned char id = self->ids[i];
-                Unit_021665b0* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, id);
+                Unit_021665b0* member = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, id);
                 if (member != NULL) {
                     hp[id] = member->status->hp;
                 }
@@ -648,7 +647,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
     } else if (state == 4) {
         int actor = self->ids[self->actorIdx];
         func_ov002_021594e8(self, self->key, self->order[self->turn].id, actor);
-        Unit_021665b0* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, actor);
+        Unit_021665b0* member = (Unit_021665b0*)GetCombatantWithFlag0x100(gs, actor);
         Unit_021665b0* unit = GetCombatantChecked(gs, actor);
         hp[actor] = member->status->hp;
         if (!(unit->status->flags & 2)) {

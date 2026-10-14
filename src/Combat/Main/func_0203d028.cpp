@@ -11,6 +11,7 @@ extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 #include "Filesystem/NitroVM.h"
 #include "std_library_functions.h"
 #include "World/Object3D.h"
+#include "GameState/GameState.h"
 struct BattleSub7e78 {
     char pad0[6];
     unsigned char field6;
@@ -23,7 +24,6 @@ struct BattleStruct {
     struct BattleSub7e78 sub7e78;
     struct BattleSub7e78* GetSub7e78() { return &sub7e78; }
 };
-extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 struct Struct_020652b4 { int field0; };
 int IsListEmpty_020652b4(struct Struct_020652b4* p);
@@ -125,12 +125,10 @@ void SetMainBrightness(GameResources*, int, int);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
 int IsPowcntBit0Set(void);
 int DispatchIfEquals1(int a);
-void SleepCurrentContext(unsigned int ms);
 
 extern "C" void func_ov017_0218f064(void* mgr, int a, int b, int c, int d);
 
 struct CombatantStruct;
-extern "C" struct CombatantStruct* _ZN9GameState20GetGameObjectByIndexEi(struct BattleStruct* battleStruct, int combatantId);
 
 struct U16Field0x6_020375f0 { char unk[6]; unsigned short field; };
 extern "C" void _ZN8Object3D10SetField06Et(struct U16Field0x6_020375f0* obj, int v);
@@ -228,7 +226,7 @@ extern "C" void func_0203db44(void* a, void* b, void* c);
 
 void SetByte0x2e8AndDispatch02041628(void* obj, int v, int z);
 void SetWord0x2f4AndDispatch02041640(void* obj, int v, int z);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 extern "C" int func_02018fbc(void* globalStruct, int* vec3);
 
@@ -313,7 +311,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
         return;
     }
 
-    struct BattleStruct* battleStruct = _ZN9GameState11GetInstanceEv();
+    struct BattleStruct* battleStruct = (BattleStruct*)GameState::GetInstance();
     GameResources* mgr = func_ov017_0218b5b0();
     struct RegNode0203d028* entry = (struct RegNode0203d028*)GetFieldAt0x0020652c8(&self->listHead);
     struct Global02012fe4* globalStruct = func_02012fe4();
@@ -398,7 +396,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
 
                     func_ov017_0218f064(mgr, 5, 0x4000, 1, 0);
 
-                    node->combatant = _ZN9GameState20GetGameObjectByIndexEi(battleStruct, 5);
+                    node->combatant = (CombatantStruct*)((GameState*)battleStruct)->GetGameObjectByIndex(5);
                     _ZN8Object3D10SetField06Et((struct U16Field0x6_020375f0*)node->combatant, idVal);
 
                     int* extra = func_ov017_021a4658(mgr, 5);
@@ -631,9 +629,9 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     SetWord0x2f4AndDispatch02041640(node->combatant, info->field58, 0);
                 }
                 int localVec3[3];
-                _ZN8Vector3iaSERKS_(localVec3, (int*)((char*)node->combatant + 0x44));
+                *(Vector3i*)localVec3 = *(Vector3i const*)((int*)((char*)node->combatant + 0x44));
                 localVec3[1] = func_02018fbc(globalStruct, localVec3);
-                _ZN8Vector3iaSERKS_((int*)((char*)node->combatant + 0x44), localVec3);
+                *(Vector3i*)((int*)((char*)node->combatant + 0x44)) = *(Vector3i const*)localVec3;
             }
             StoreToFirstNonNull02040bfc((struct Obj02040bfc*)node, info->field38);
 

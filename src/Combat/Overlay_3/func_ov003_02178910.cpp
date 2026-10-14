@@ -21,7 +21,6 @@ struct CombatantStruct {
 };
 struct GameState;
 void* GetPtrField0x2a04(GameState*);
-extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 struct Obj2081;
 struct Cont0207fdf0;
@@ -32,7 +31,6 @@ struct Element020de650 { char pad[8]; unsigned int nibble : 4; };
 struct Obj021dcae0;
 struct KeyMap020a0b3c { short* keys; signed char* values; short count; };
 
-extern "C" struct CombatantStruct* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battleStruct, int combatantId);
 unsigned char* GetFieldAt0x150(unsigned char* combatant);
 int GetField0x3acValue(GameState*);
 
@@ -100,7 +98,7 @@ static inline int IsLowKind(struct Element020de650* e) { return e->nibble <= 7; 
 
 // USA: func_ov003_02178910
 extern "C" ARM void func_ov003_02178910(unsigned char* self) {
-    struct BattleStruct* battle = _ZN9GameState11GetInstanceEv();
+    struct BattleStruct* battle = (BattleStruct*)GameState::GetInstance();
     void* battleSum = GetPtrField0x2a04((GameState*)battle);
     struct Obj2081* elemObj = *(struct Obj2081**)(self + (0x89c - kRegionSelfShift));
     int state = *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift));
@@ -171,7 +169,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
                 int field30 = *(int*)(self + (0x1000 + 0x30 - kRegionSelfShift));
                 int val = EvalOrDispatch020de194(elem2a);
                 int product = mult * val;
-                void* battleSum2 = GetPtrField0x2a04((GameState*)_ZN9GameState11GetInstanceEv());
+                void* battleSum2 = GetPtrField0x2a04((GameState*)(BattleStruct*)GameState::GetInstance());
                 int kind2 = elem2a->nibble;
                 int ok2 = func_ov003_021784bc(battleSum2, *(short*)((char*)elem2a + 0x18), kind2, field30);
                 int result;
@@ -260,7 +258,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
             }
         }
 
-        struct BattleStruct* b2 = _ZN9GameState11GetInstanceEv();
+        struct BattleStruct* b2 = (BattleStruct*)GameState::GetInstance();
         int scaleCount = ((GameState*)b2)->GetTickCount();
         int ratio = func_02081f20(self + (0x8c + 0x800 - kRegionSelfShift), scaleCount);
         if ((unsigned short)(ratio + 0xffff) <= 1) {
@@ -567,8 +565,8 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
             *(unsigned char*)(self + (0x1000 + 0x43 - kRegionSelfShift)) = combatantId;
             CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
 
-            struct BattleStruct* battle2 = _ZN9GameState11GetInstanceEv();
-            struct CombatantStruct* combatant = _ZN9GameState21GetPartyMemberByIndexEi(battle2, *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)));
+            struct BattleStruct* battle2 = (BattleStruct*)GameState::GetInstance();
+            struct CombatantStruct* combatant = (CombatantStruct*)((GameState*)battle2)->GetPartyMemberByIndex(*(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)));
             if (combatant != 0) {
                 unsigned char* field150 = GetFieldAt0x150((unsigned char*)combatant);
                 if (field150 == 0) return;

@@ -147,7 +147,6 @@ void AddToShortField02193150(Struct02193150*, int);
 extern "C" void func_0202a6c4(struct MenuList02192700* menu);
 void Deactivate0202a8cc(char*, int);
 extern "C" struct HolderNode02192700* func_ov015_0218f344(void* obj);
-extern "C" const char* _ZN4BCFG18GetAnimationRecordEi(struct BCFG* bcfg, int index);
 
 extern AllocatorUnion data_02114e20;
 extern const char data_ov015_021942a2[];
@@ -484,7 +483,7 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
             if (bcfg != 0) {
                 int num = bcfg->GetNumAnimations();
                 for (int i = 0; i < num; i++) {
-                    const char* name = _ZN4BCFG18GetAnimationRecordEi(bcfg, i);
+                    const char* name = (const char*)bcfg->GetAnimationRecord(i);
                     if (name != 0) {
                         Init0202949c((char*)&obj->items[idx]);
                         func_020294cc(&obj->items[idx], name);

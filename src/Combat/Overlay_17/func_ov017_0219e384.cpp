@@ -243,11 +243,9 @@ struct InlineEntry* GetEntryTableBase(void);
 extern "C" void* func_0205ec34(void);
 struct GrottoIds* GetPtrField0x2a04(GameState*);
 extern "C" struct SearchStruct* func_0202ae18(void);
-extern "C" char* _ZN24LootableContainerManager15GetMainInstanceEv(void);
 void* GetDataPtr02114e04_020d6c00(void);
-extern "C" int* _ZN15LightingManager11GetInstanceEv(void);
 int GetByte0x26c(char* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 extern "C" void func_02097cac(void* obj);
 struct Obj0208f944;
 void HandleGrottoTurnTransition0208f944(Obj0208f944*);
@@ -267,8 +265,8 @@ struct GameResources;
 int GetBrightnessTransitionStates(GameResources*);
 struct AxisFloats0203b57c;
 int GetAxisIntValue(AxisFloats0203b57c*, int);
-extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* obj, int a, int b);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int a, int b);
+void SetMainBrightness(GameResources*, int, int);
+void SetBrightness(GameResources*, int, int);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 struct Obj020397cc;
@@ -280,7 +278,7 @@ void EnqueueEventTag150_021d035c(unsigned char a, unsigned char b, unsigned char
 void EnqueueEventTag31_021d257c(unsigned char id, int a);
 int LookupAndForEachNode020649b0(void* obj, int kind, void* out);
 extern "C" void func_0206f81c(void* node);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
+int IsBrightnessTransitionActive(GameResources*);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 extern "C" void func_020531f0(void* obj);
 int IsField0Null(void** obj);
@@ -309,7 +307,6 @@ int IsInRange0201b588(int v);
 struct Struct021b46d8;
 void InitStruct_021b46d8(Struct021b46d8*);
 int IsValueInRange0201b5d8(int v);
-extern "C" unsigned char* _ZN17ActiveGrottoClass15GetDetailedDataEv(void* self);
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
@@ -426,9 +423,9 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 	void* obj5ec34 = func_0205ec34();
 	struct GrottoIds* ids = GetPtrField0x2a04((GameState*)battle);
 	struct SearchStruct* search = func_0202ae18();
-	char* region = _ZN24LootableContainerManager15GetMainInstanceEv();
+	char* region = (char*)LootableContainerManager::GetMainInstance();
 	void* flags14e04 = GetDataPtr02114e04_020d6c00();
-	int* data7930 = _ZN15LightingManager11GetInstanceEv();
+	int* data7930 = (int*)LightingManager::GetInstance();
 	struct WorkHi workHi;
 	struct WorkLo workLo;
 
@@ -436,7 +433,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		SubBlock02038508* byte26c = GetFieldPtrAt0x26c(actor);
 		if (GetByte0x26c((char*)actor) != 0 && byte26c->command != 2 && fld->f6c != 9999) {
 			if (fld->f67 != 0) {
-				_ZN8Vector3iaSERKS_(fld->vec10, actor->vec44);
+				*(Vector3i*)fld->vec10 = *(Vector3i const*)actor->vec44;
 			}
 			return;
 		}
@@ -491,9 +488,9 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			}
 			if ((fld->flags6e & 0x10) == 0) {
 				if ((fld->flags6e & 1) != 0) {
-					_Z17SetMainBrightnessP13GameResourcesii(ov, delta, limit);
+					SetMainBrightness((GameResources*)ov, delta, limit);
 				} else {
-					_Z13SetBrightnessP13GameResourcesii(ov, delta, limit);
+					SetBrightness((GameResources*)ov, delta, limit);
 				}
 			}
 			if (fld->mode == 1) {
@@ -537,7 +534,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		return;
 	}
 	if (self->state == 1) {
-		if (_Z28IsBrightnessTransitionActiveP13GameResources((int*)ov) == 0) {
+		if (IsBrightnessTransitionActive((GameResources*)ov) == 0) {
 			self->state = 2;
 		}
 		return;
@@ -564,7 +561,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				return;
 			}
 			DispatchWithGlobalContext020daf9c(1, 0, 1, 0);
-			_Z13SetBrightnessP13GameResourcesii(ov, -16, 0);
+			SetBrightness((GameResources*)ov, -16, 0);
 			return;
 		}
 		if (CheckField0NonZero((int*)search) != 0 &&
@@ -634,7 +631,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				InitStruct_021b46d8((Struct021b46d8*)slot);
 				slot->entry = entry;
 				if (IsValueInRange0201b5d8(run->currentZoneID_) != 0 && ((unsigned char*)grotto)[3] == 0) {
-					unsigned char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv(runSub2);
+					unsigned char* detail = (unsigned char*)((ActiveGrottoClass*)runSub2)->GetDetailedData();
 					if (detail != 0) {
 						unsigned char tag = detail[1];
 						if (tag == 1) {
@@ -653,7 +650,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			self->state = 4;
 		} else {
 			if (IsValueInRange0201b5d8(run->currentZoneID_) != 0 && ((unsigned char*)grotto)[3] == 0) {
-				unsigned char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv(runSub2);
+				unsigned char* detail = (unsigned char*)((ActiveGrottoClass*)runSub2)->GetDetailedData();
 				if (detail != 0) {
 					unsigned char tag = detail[1];
 					if (tag == 1) {
@@ -739,7 +736,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				unsigned char* sub = (unsigned char*)runContext;
 				if (sub[0x1b62] == 0) {
 					DispatchWithGlobalContext020daf9c(1, 0, 1, 0);
-					_Z13SetBrightnessP13GameResourcesii(ov, -16, 0);
+					SetBrightness((GameResources*)ov, -16, 0);
 					self->state = 7;
 					return;
 				}
@@ -861,7 +858,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		func_020acecc(ov, mapId, subId);
 		if ((fld->flags6e & 2) == 0 && func_0202c540(search) != 0 && actor != 0) {
 			if (FindAndApplyEntryVec3_021a01f4(ov, mapId, _ZNK9GameState12GetTimeOfDayEv(battle), actor, (int*)&workHi.entryVec) != 0 && actor != 0) {
-				_ZN8Vector3iaSERKS_(actor->vec44, (int*)&workHi.entryVec);
+				*(Vector3i*)actor->vec44 = *(Vector3i const*)((int*)&workHi.entryVec);
 			}
 		}
 		if (moving != 0) {
@@ -1005,7 +1002,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			EnqueueEventTag147_021cdaa0();
 		}
 		if (wantCounter != 0) {
-			_Z17SetMainBrightnessP13GameResourcesii(ov, 0, 15);
+			SetMainBrightness((GameResources*)ov, 0, 15);
 		}
 		if (wantByte != 0) {
 			SetByteField0x253(actor);
@@ -1021,7 +1018,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			}
 			if (i > 0 && fld != 0 && fld->active == 0) {
 				workLo.memberVec = *(WrappedVector3fix*)actor->vec44;
-				_ZN8Vector3iaSERKS_(c->vec44, (int*)&workLo.memberVec);
+				*(Vector3i*)c->vec44 = *(Vector3i const*)((int*)&workLo.memberVec);
 				if (fld->mapId == 10000) {
 					workLo.memberVec.entries[0] = 0xff000;
 					workLo.memberVec.entries[1] = 0;
@@ -1032,7 +1029,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		}
 		if (func_0202c508(search) != 0 && fld != 0 && fld->active == 0) {
 			void* c;
-			_ZN8Vector3iaSERKS_((int*)((char*)battle + Field7f60), actor->vec44);
+			*(Vector3i*)((int*)((char*)battle + Field7f60)) = *(Vector3i const*)actor->vec44;
 			c = _ZN9GameState21GetPartyMemberByIndexEi(battle, 0xce);
 			if (c != 0) {
 				int* src = (int*)((char*)battle + Field7f60);
@@ -1054,7 +1051,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		*(int*)((char*)GetGlobalField0x1c020421a0() + MessageField) = 0;
 		if (fld->f64 != 0) {
 			struct BattleStruct* battle2 = _ZN9GameState11GetInstanceEv();
-			int* data2 = _ZN15LightingManager11GetInstanceEv();
+			int* data2 = (int*)LightingManager::GetInstance();
 			char* ov2 = (char*)func_ov017_0218b5b0();
 			struct Combatant0219e384* c;
 			func_ov017_021b6f18(*(void**)(ov2 + Field3718));
@@ -1081,7 +1078,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			char* ov2;
 			struct Combatant0219e384* lead;
 			battle2 = _ZN9GameState11GetInstanceEv();
-			data2 = _ZN15LightingManager11GetInstanceEv();
+			data2 = (int*)LightingManager::GetInstance();
 			ov2 = (char*)func_ov017_0218b5b0();
 			lead = GetCombatantWithFlag0x100((GameState*)battle2, 0);
 			if (lead != 0 && lead->be == 2) {
@@ -1143,7 +1140,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			workLo.warpVec.entries[0] = self->v16 << 7;
 			workLo.warpVec.entries[1] = self->v18 << 7;
 			workLo.warpVec.entries[2] = self->v1a << 7;
-			_ZN8Vector3iaSERKS_((int*)((char*)run2 + Field2774), (int*)&workLo.warpVec);
+			*(Vector3i*)((int*)((char*)run2 + Field2774)) = *(Vector3i const*)((int*)&workLo.warpVec);
 			*(int*)((char*)run2 + Field2780) = self->v1c;
 			func_020a72ac(run2, self->v1e);
 			VectorizedMemset(&self->v12, 0, 0xe);

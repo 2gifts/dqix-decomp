@@ -4,7 +4,7 @@ struct Mutex;
 void* LockMutex(Mutex*);
 void SetActiveContextByte9_0220aa68(unsigned char v);
 struct RefNode020c80f8;
-extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8* node);
+void UnlockMutex(Mutex*);
 
 // USA: func_ov031_022079ac  (semantic: NotifyAndReleaseSession_022079ac)
 extern "C" ARM int func_ov031_022079ac(void* p0) {
@@ -22,6 +22,6 @@ extern "C" ARM int func_ov031_022079ac(void* p0) {
         SetActiveContextByte9_0220aa68(0);
         *(int*)((char*)ctx + 0xc) = 0;
     }
-    _Z11UnlockMutexP5Mutex((struct RefNode020c80f8*)((char*)mgr + 0xe0));
+    UnlockMutex((Mutex*)((char*)mgr + 0xe0));
     return 0;
 }

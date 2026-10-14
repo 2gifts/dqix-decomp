@@ -3,7 +3,7 @@
 struct Mutex;
 void LockMutex(Mutex*);
 struct RefNode020c80f8;
-extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8*);
+void UnlockMutex(Mutex*);
 
 extern struct RefNode020c80f8 data_ov031_02290f8c;
 extern int data_ov031_02290f88;
@@ -15,6 +15,6 @@ ARM int AcquireOnceFlag_0223fa60(void) {
 	if (wasZero) {
 		data_ov031_02290f88 = 1;
 	}
-	_Z11UnlockMutexP5Mutex(&data_ov031_02290f8c);
+	UnlockMutex((Mutex*)&data_ov031_02290f8c);
 	return wasZero;
 }

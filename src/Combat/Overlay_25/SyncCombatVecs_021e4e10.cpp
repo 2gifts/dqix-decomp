@@ -6,7 +6,7 @@ extern "C" int func_ov000_02160f14(void* work);
 extern "C" void func_ov000_0216d370(int a, int b, int c, int d);
 void* GetActiveCombatWork(void);
 void SetField0x3b0Value(GameState* battleStruct, int value);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 void ApplyVec3Tail(void* obj, int* vec);
 
 struct Inner021e4e10 {
@@ -31,7 +31,7 @@ ARM int SyncCombatVecs_021e4e10(void) {
     SetField0x3b0Value(bs, val);
     func_ov000_0216d370(val, 1, 1, 1);
     struct WorkStruct021e4e10* p2 = (struct WorkStruct021e4e10*)GetField0x3b0Value(bs);
-    _ZN8Vector3iaSERKS_((int*)&p2->vecA, (int*)&vecA);
+    *(Vector3i*)((int*)&p2->vecA) = *(Vector3i const*)((int*)&vecA);
     ApplyVec3Tail(p2, (int*)&vecB);
     return 1;
 }

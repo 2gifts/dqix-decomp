@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 enum { fieldPadding = 0x13e };
@@ -6,8 +7,6 @@ enum { fieldPadding = 0x13e };
 enum { fieldPadding = 0x14a };
 #endif
 
-extern "C" void _ZN9GameState11GetInstanceEv(void);
-extern "C" void* func_ov017_0218b5b0(void);
 extern "C" void func_ov017_02191aac(char* obj, int mode, int idx, unsigned char mask);
 unsigned long long GetCurrentTimestamp(void);
 void EnqueueEventTag17_021ce014(int a, unsigned short b, unsigned short c, unsigned short d);
@@ -24,7 +23,7 @@ struct Obj020541a4 {
 ARM void NotifySub020541a4(struct Obj020541a4* p, unsigned char b) {
     unsigned char* q = p->field150;
     if (q == 0) return;
-    _ZN9GameState11GetInstanceEv();
+    GameState::GetInstance();
     void* base = func_ov017_0218b5b0();
     q = p->field150;
     q[0x56c] = 1;

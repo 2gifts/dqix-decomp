@@ -11,7 +11,6 @@ enum { flagsOffset = 0x55f4, workOffset = 0xec8, combatantOffset = 0x6fd6, state
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 extern "C" void func_02016874(void* big);
 extern "C" void func_ov000_02161020(void* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 struct Vec3i_020374f0 { int x; int y; int z; };
 extern "C" struct Vec3i_020374f0 _ZNK8Object3D8GetScaleEv(unsigned char* src);
 struct Vector3i;
@@ -35,8 +34,8 @@ extern "C" ARM void func_ov000_02160b54(unsigned char* obj) {
         GameObject* c2 = battle->GetGameObjectByIndex(0xc8);
         if (c2 != 0) {
             if (c1 != 0) {
-                _ZN8Vector3iaSERKS_((int*)((char*)c2 + 0x44), (int*)((char*)c1 + 0x44));
-                _ZN8Vector3iaSERKS_((int*)((char*)c2 + 0x50), (int*)((char*)c1 + 0x50));
+                *(Vector3i*)((int*)((char*)c2 + 0x44)) = *(Vector3i const*)((int*)((char*)c1 + 0x44));
+                *(Vector3i*)((int*)((char*)c2 + 0x50)) = *(Vector3i const*)((int*)((char*)c1 + 0x50));
                 const struct Vec3i_020374f0& tmp = _ZNK8Object3D8GetScaleEv((unsigned char*)c1);
                 ((Object3D*)((unsigned char*)c2))->SetScale((Vector3i const*)&tmp);
             }

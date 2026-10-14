@@ -3,7 +3,6 @@
 #include "Grotto/Main/GrottoStruct.h"
 
 extern "C" void* func_02012fe4(void* unused);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 struct Vector3i;
 extern "C" void* func_0202ae18(void);
 extern int data_020e8d48;
@@ -22,9 +21,9 @@ extern "C" ARM int func_0208f748(unsigned char* obj) {
     func_0202ae18();
     GrottoStruct* grotto = battle->GetGrottoStruct();
     Vec3Local_0208f748 tmp1;
-    _ZN8Vector3iaSERKS_((int*)&tmp1, (int*)((char*)grotto + 0x10));
+    *(Vector3i*)((int*)&tmp1) = *(Vector3i const*)((int*)((char*)grotto + 0x10));
     Vec3Local_0208f748 tmp0 = *(Vec3Local_0208f748*)&data_020e8d48;
-    _ZN8Vector3iaSERKS_((int*)(obj + 0x4c), (int*)&tmp1);
+    *(Vector3i*)((int*)(obj + 0x4c)) = *(Vector3i const*)((int*)&tmp1);
     ((Object3D*)(obj + 8))->SetScale((Vector3i const*)&tmp0);
     ((Object3D*)(obj + 8))->MaybeSetBCFGAnimation(0, 0);
     ((Object3D*)(obj + 8))->MakeVisible();

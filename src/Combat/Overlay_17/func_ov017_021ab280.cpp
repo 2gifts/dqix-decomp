@@ -38,7 +38,7 @@ extern "C" unsigned char _Z19CopyOutRegion0x5718PcPv(void* src, void* dst);
 void* GetField0x3f8Address(GameState* battleStruct);
 int GetField0x3acValue(GameState* battleStruct);
 extern "C" void VectorizedMemset(void* dst, int val, int size);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 void InitAndResetHeader_0219e310(unsigned char* obj, int flag);
 struct TailList020469b4;
 struct TailNode020469b4;
@@ -168,13 +168,13 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
         *(short*)(e + 0x6c) = negOneB;
 
         *(unsigned short*)(e + 0) = obj->pos->half30;
-        _ZN8Vector3iaSERKS_((int*)(e + 0x10), (int*)&obj->pos->vecArr[0]);
+        *(Vector3i*)((int*)(e + 0x10)) = *(Vector3i const*)((int*)&obj->pos->vecArr[0]);
         *(short*)(e + 0x1c) = obj->pos->half68;
         e[0xb] = (unsigned char)obj->pos->half6a;
-        _ZN8Vector3iaSERKS_((int*)(e + 0x30), (int*)&obj->pos->vecArr[0]);
-        _ZN8Vector3iaSERKS_((int*)(e + 0x3c), (int*)&obj->pos->vecArr[1]);
-        _ZN8Vector3iaSERKS_((int*)(e + 0x48), (int*)&obj->pos->vecArr[2]);
-        _ZN8Vector3iaSERKS_((int*)(e + 0x54), (int*)&obj->pos->vecArr[3]);
+        *(Vector3i*)((int*)(e + 0x30)) = *(Vector3i const*)((int*)&obj->pos->vecArr[0]);
+        *(Vector3i*)((int*)(e + 0x3c)) = *(Vector3i const*)((int*)&obj->pos->vecArr[1]);
+        *(Vector3i*)((int*)(e + 0x48)) = *(Vector3i const*)((int*)&obj->pos->vecArr[2]);
+        *(Vector3i*)((int*)(e + 0x54)) = *(Vector3i const*)((int*)&obj->pos->vecArr[3]);
 
         e[0xc] = 1;
         e[7] = 1;

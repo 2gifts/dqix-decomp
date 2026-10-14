@@ -19,7 +19,7 @@ void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char *obj, int value, unsign
 extern "C" void func_0204ecb4(unsigned char *wnd, int a, int b, int w, int h, signed char *margins);
 struct Obj0204fbf8;
 void InvokeHandlerAfterCacheFlush0204fbf8(Obj0204fbf8*);
-extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(unsigned char *obj, int a, int b);
+void SetElementFieldC2(Struct_0205d81c*, int, int);
 
 extern Slots_0216c9fb data_ov002_0216c9fb;
 
@@ -55,9 +55,7 @@ extern "C" ARM void func_ov002_0215e44c(unsigned char *self) {
     }
     for (int j = 0; j < count; j++) {
         *(signed char *) (self + 0x1c20) = slots.v[j];
-        _Z17SetElementFieldC2P15Struct_0205d81cii(self + 0x2c8 + 0xc00,
-                                                  (unsigned char) (*(signed char *) (self + 0x1c20) + 0x2c),
-                                                  (unsigned short) (*(signed char *) (self + 0x1c20) + 6));
+        SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), (unsigned char) (*(signed char *) (self + 0x1c20) + 0x2c), (unsigned short) (*(signed char *) (self + 0x1c20) + 6));
     }
     *(signed char *) (self + 0x1c20) = -1;
 }

@@ -33,7 +33,6 @@ struct Cache02154c30 {
     unsigned char pad[2];
 };
 
-extern "C" Member02154c30 *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
 int GetTableValue(void *p);
 
 static inline int G16(unsigned short *p) { return *p; }
@@ -48,7 +47,7 @@ extern "C" ARM int func_ov002_02154c30(Cache02154c30 *cache) {
     Cache02154c30 *e;
     int i;
     for (i = 0; i < 4; i++) {
-        m = _ZN9GameState21GetPartyMemberByIndexEi(gs, i);
+        m = (Member02154c30 *)((GameState*)gs)->GetPartyMemberByIndex(i);
         if (m == 0) continue;
         e = &cache[i];
         if (!(e->v4 != G16(&m->a->v4) || e->v6 != G16(&m->b->v30) || e->v8 != G16(&m->a->v6) || e->va != G16(&m->b->v32) ||

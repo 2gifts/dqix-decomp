@@ -29,10 +29,8 @@ struct TargetList { short v[8]; };
 extern IdList data_ov000_02182cf4;
 extern TargetList data_ov000_02182bc4;
 
-extern "C" Combatant* _ZN9GameState19GetCombatantByIndexEi(void* gs, int id);
 struct GameState;
 Combatant* GetCombatantWithFlag0x400(GameState*, int);
-extern "C" Combatant* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
 void SetBool0x17fClear0x180(unsigned char*, int);
 void SetBool0x180Clear0x17f(unsigned char*, int);
 void ClearBits0x1And0x4(unsigned char*);
@@ -52,7 +50,7 @@ extern "C" ARM void func_ov000_0215e6e8(Battle* battle) {
         for (int i = 0; i < count; i++) {
             int id = ids.v[i];
             void* gs = GameState::GetInstance();
-            Combatant* c = _ZN9GameState19GetCombatantByIndexEi(gs, id);
+            Combatant* c = (Combatant*)((GameState*)gs)->GetCombatantByIndex(id);
             if (c != NULL) {
                 int isPlayerSlot = 0;
                 int id2 = ids.v[i];
@@ -93,7 +91,7 @@ extern "C" ARM void func_ov000_0215e6e8(Battle* battle) {
         count = func_ov000_0215e9fc(battle, ids.v, 0x10, 0);
         void* gs = GameState::GetInstance();
         for (int i = 0; i < count; i++) {
-            _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids.v[i]);
+            (Combatant*)GetCombatantWithFlag0x100((GameState*)gs, ids.v[i]);
         }
     }
 }

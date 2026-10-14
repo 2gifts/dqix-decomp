@@ -3,7 +3,6 @@
 
 struct Container020e0310;
 
-extern "C" unsigned char *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
 extern "C" void func_ov002_02157424(void *self, int *slots);
 extern "C" int func_ov002_02159774(void *self, int idx, int a, int b, int c);
 void AppendFrameTag02041c08(char *buf, int x, int a, int b, int c, int d);
@@ -33,7 +32,7 @@ extern "C" ARM void func_ov002_0215db8c(char *self, char *buf, int frame) {
         slot   = slots[i];
         int ok = (slot >= 0 && slot <= 3);
         if (ok) {
-            unsigned char *m = _ZN9GameState21GetPartyMemberByIndexEi(gs, slot);
+            unsigned char *m = (unsigned char *)((GameState*)gs)->GetPartyMemberByIndex(slot);
             if (m != 0) {
                 AppendPaletteTag(buf, func_ov002_02159774(self, slot, 0, 1, 1));
                 AppendNameTag(buf, i, *(const char **) (m + 0x134));

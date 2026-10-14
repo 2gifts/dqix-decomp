@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 void* GetPtrField0x2a04(GameState* battleStruct);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 struct Obj02033874;
 void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
 struct Bytes02033b88;
@@ -22,7 +22,7 @@ extern "C" ARM void func_ov017_021921fc(int* vec, int angle, int resetFlag) {
     for (; i < base[0xf7c]; i++) {
         GameObject* c = bs->GetPartyMemberByIndex(keys[i]);
         if (c != NULL) {
-            _ZN8Vector3iaSERKS_((int*)((char*)c + 0x44), vec);
+            *(Vector3i*)((int*)((char*)c + 0x44)) = *(Vector3i const*)vec;
             SetVecYFromValue02033874((struct Obj02033874*)c, angle);
             if (resetFlag != 0) {
                 SetByte0xbeShiftPrev((struct Bytes02033b88*)c, 0);

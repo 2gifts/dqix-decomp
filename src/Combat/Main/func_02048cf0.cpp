@@ -32,7 +32,7 @@ void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 struct Obj02048c90;
 void ResetInnerState02048c90(Obj02048c90*);
 extern "C" struct Vec2_0216f74c func_ov000_0216f74c(int* in);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 extern Vec3_02048cf0 data_020e7b48;
 
@@ -57,7 +57,7 @@ extern "C" ARM void func_02048cf0(struct Obj02048cf0* obj, int flag) {
         SetSubstructFields0x10And0x18ClearFlag0x1((unsigned char*)obj, fields.v);
         obj->ptr->flags20 = flags20;
         if (flags20 & 0x21) {
-            _ZN8Vector3iaSERKS_(obj->vec44, fields.v);
+            *(Vector3i*)obj->vec44 = *(Vector3i const*)fields.v;
         }
     }
     SetSubstructByte0x1c((unsigned char*)obj, cell & 0xff);

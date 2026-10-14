@@ -7,7 +7,7 @@ void* LockMutex(Mutex*);
 void UpdateObjFromContext_022031bc(int a, unsigned short b, unsigned int c);
 extern "C" int func_ov031_02203358(void);
 struct RefNode020c80f8;
-extern "C" void _Z11UnlockMutexP5Mutex(RefNode020c80f8* node);
+void UnlockMutex(Mutex*);
 
 struct Ctx_0220586c {
 	char pad0[0x64];
@@ -39,7 +39,7 @@ extern "C" ARM int func_ov031_0220586c(Obj_0220586c* self) {
 	if (b == 0 || b == 4) {
 		flag = func_ov031_02203358();
 	}
-	_Z11UnlockMutexP5Mutex((RefNode020c80f8*)(inner + 0xe0));
+	UnlockMutex((Mutex*)(inner + 0xe0));
 	if (flag != 0) {
 		ctx->field70 |= 0x40;
 		return -0x4c;

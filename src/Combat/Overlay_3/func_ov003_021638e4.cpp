@@ -33,7 +33,6 @@ struct Holder {
 };
 
 struct Res;
-extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 extern "C" Holder *func_02012fe4();
 void DispatchWithGlobalContext020daf9c(int, int, int, int);
 void SetAndLockBrightness(GameResources*, int, int);
@@ -89,7 +88,7 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
     list   = *(void **) (res + 0x3000 + 0x6fc);
     gs     = GameState::GetInstance();
     loader = BackgroundLoader::GetInstance();
-    gp     = _Z17GetPtrField0x2a04P9GameState(gs);
+    gp     = (unsigned char *)GetPtrField0x2a04(gs);
     func_02012fe4();
     unsigned char state = self->state;
 

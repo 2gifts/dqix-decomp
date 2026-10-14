@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 ARM void Forward02048144(void* p);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct Bits41_37474 {
     char unk0[0x41];
@@ -43,7 +43,7 @@ extern "C" ARM void func_020489e8(struct Obj020489e8* obj) {
     Forward02048144(obj);
     if (obj->field13c == NULL) return;
     if (obj->field13c->flags & 1) {
-        _ZN8Vector3iaSERKS_(obj->field13c->vec, obj->vecSrc);
+        *(Vector3i*)obj->field13c->vec = *(Vector3i const*)obj->vecSrc;
         obj->field13c->vec[1] = obj->field0x54;
     }
     int isNonzero = 0.0f != ((struct Obj02034a30*)((char*)obj->field13c + 0x60))->field4;

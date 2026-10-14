@@ -3,7 +3,7 @@
 struct RefNode020c80f8;
 struct Mutex;
 void LockMutex(Mutex*);
-extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8* node);
+void UnlockMutex(Mutex*);
 
 struct Foo020bcbc4;
 void CallIfFlag0x24Bit0(struct Foo020bcbc4* obj);
@@ -32,8 +32,8 @@ extern "C" ARM void func_020bf1a0(void* obj) {
     }
 
     ReleaseAndFlushContext020bf238((struct Obj020bf238*)obj);
-    _Z11UnlockMutexP5Mutex((struct RefNode020c80f8*)&data_02110a28);
+    UnlockMutex((Mutex*)&data_02110a28);
     if (data_021103b0.f4 != 0) {
-        _Z11UnlockMutexP5Mutex((struct RefNode020c80f8*)(data_021103b0.f4 + 0x4c8));
+        UnlockMutex((Mutex*)(data_021103b0.f4 + 0x4c8));
     }
 }

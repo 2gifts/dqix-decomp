@@ -12,7 +12,6 @@ struct List021600f8;
 void* GetNodeAtIndex021600f8(List021600f8*, int);
 struct GameState;
 void* GetCombatantWithFlag0x400(GameState*, int);
-extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int idx);
 void SetForwardAndStore0205ebc0(void* obj, int a, int b);
 void ForwardToTargetOrDefault0205eabc(void* obj, void* target, int arg);
 void* SearchBothTables02079e2c(char*, int);
@@ -267,7 +266,7 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
         }
     }
     if (slot->type == 1 && first != 0) {
-        Combatant* c = (Combatant*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, first->id);
+        Combatant* c = (Combatant*)(void*)GetCombatantWithFlag0x100((GameState*)gs, first->id);
         if (c != 0) {
             char* p = c->extra + 0x294;
             if (p != 0) {

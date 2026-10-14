@@ -12,7 +12,6 @@ struct BattleStruct {
     struct CombatantStruct* combatantList[0xe9];
 };
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 struct Vector3i {
     int x, y, z;
@@ -110,7 +109,7 @@ extern ShortPair0217017a data_ov004_0217017a[];
 static inline void SetNodePosXe(VObjNode* node, int x) {
     const Vec3& t = node->Method20();
     Vec3 pos;
-    _ZN8Vector3iaSERKS_((int*)&pos, (int*)&t);
+    *(Vector3i*)((int*)&pos) = *(Vector3i const*)((int*)&t);
     pos.x = x;
     node->Method1c(&pos);
 }
@@ -272,7 +271,7 @@ extern "C" ARM int func_ov004_0216ba70(void* a) {
         VObjNode* node2 = func_ov023_021f6880(func_ov011_021849c8(a), key39);
         if (node2) {
             const Vec3& lt = node2->Method20();
-            _ZN8Vector3iaSERKS_((int*)&v6c, (int*)&lt);
+            *(Vector3i*)((int*)&v6c) = *(Vector3i const*)((int*)&lt);
             v6c.x = v6c.x + ((delta2 + 2) << 12);
 
             VObjNode* node3 = func_ov023_021f6880(func_ov011_021849c8(a), j + 0x47);

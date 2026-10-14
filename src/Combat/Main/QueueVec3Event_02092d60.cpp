@@ -6,7 +6,7 @@
 #endif
 #include "GameState/GameState.h"
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 int GetWord0x0(int* obj);
 
 struct HeadNode02046b24;
@@ -40,7 +40,7 @@ extern "C" ARM void func_02092d60(struct Param1_02092d60* p1, int p2) {
     GameObject* c = bs->GetUnknownGameObject();
     if (c != 0) {
         struct Vec3_02092d60 vecBuf;
-        _ZN8Vector3iaSERKS_(&vecBuf.x, (int*)((char*)c + 0x44));
+        *(Vector3i*)&vecBuf.x = *(Vector3i const*)((int*)((char*)c + 0x44));
         int word0 = GetWord0x0((int*)bs);
         struct HeadNode02046b24** listHead = *(struct HeadNode02046b24***)((char*)(int)word0 + (IS_JPN ? 0x34ec : 0x36fc));
         int head = GetHeadNodeIdOrMinusOne(listHead);
@@ -49,7 +49,7 @@ extern "C" ARM void func_02092d60(struct Param1_02092d60* p1, int p2) {
             if (work != 0) {
                 void* slot = GetSlot021677d8(work, *(short*)((char*)c + 4));
                 if (slot != 0) {
-                    _ZN8Vector3iaSERKS_(&vecBuf.x, (int*)slot);
+                    *(Vector3i*)&vecBuf.x = *(Vector3i const*)((int*)slot);
                 }
             }
         }

@@ -206,7 +206,7 @@ int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 unsigned short GetEntryField0x4OrFieldA0202bc8c(struct SearchStruct* obj);
 int HasFlag3orFlag2And9a_021bd3a4(struct Obj_021bd3a4* obj);
 int GetSignedByte0x1ca(void* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 void SetVecYByMode02033834(struct Obj02033834* obj, int value);
 void SetVecYFromValue02033874(struct Obj02033874* obj, int value);
 int CheckSubstructByte0x7cPositive(signed char* p);
@@ -451,17 +451,17 @@ dispatched:
         unsigned char placed = 0;
         if (((Object3D*)((struct U16Field0x6_020375f8*)actor))->GetField06() == 10000 ||
             *(int*)((char*)actor + kRegionOffset15c) == 10000) {
-            _ZN8Vector3iaSERKS_(posA, &data_ov017_021d63f0);
-            _ZN8Vector3iaSERKS_(posB, &data_ov017_021d63d8);
+            *(Vector3i*)posA = *(Vector3i const*)&data_ov017_021d63f0;
+            *(Vector3i*)posB = *(Vector3i const*)&data_ov017_021d63d8;
             kind = 0;
         } else if (((Object3D*)((struct U16Field0x6_020375f8*)actor))->GetField06() == 10100 ||
                    *(int*)((char*)actor + kRegionOffset15c) == 10100) {
-            _ZN8Vector3iaSERKS_(posA, &data_ov017_021d63e4);
-            _ZN8Vector3iaSERKS_(posB, &data_ov017_021d63fc);
+            *(Vector3i*)posA = *(Vector3i const*)&data_ov017_021d63e4;
+            *(Vector3i*)posB = *(Vector3i const*)&data_ov017_021d63fc;
             kind = 0;
         } else if (GetField0x158(actor) == 0) {
-            _ZN8Vector3iaSERKS_(posA, (int*)((char*)actor + 0x44));
-            _ZN8Vector3iaSERKS_(posB, (int*)((char*)actor + 0x50));
+            *(Vector3i*)posA = *(Vector3i const*)((int*)((char*)actor + 0x44));
+            *(Vector3i*)posB = *(Vector3i const*)((int*)((char*)actor + 0x50));
             if (CheckField0xc4Low15BitsNonZero((struct BitField0203402c*)actor) != 0) {
                 posA[1] = posA[1] - fix32_Divide(((Object3D*)actor)->GetHeight(), 0x1800);
             }
@@ -469,8 +469,8 @@ dispatched:
             if (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)list) == 0x26) kind = 0;
             placed = 1;
         } else {
-            _ZN8Vector3iaSERKS_(posA, (int*)((char*)actor + kRegionOffset160));
-            _ZN8Vector3iaSERKS_(posB, (int*)((char*)actor + kRegionOffset16c));
+            *(Vector3i*)posA = *(Vector3i const*)((int*)((char*)actor + kRegionOffset160));
+            *(Vector3i*)posB = *(Vector3i const*)((int*)((char*)actor + kRegionOffset16c));
             if (GetField0x158(actor) == 1) {
                 kind = 2;
             } else {
@@ -543,12 +543,12 @@ dispatched:
             target.y = other->y << 7;
             target.z = other->z << 7;
             int angle = other->angle;
-            _ZN8Vector3iaSERKS_((int*)((char*)c + 0xd4), (int*)&target);
+            *(Vector3i*)((int*)((char*)c + 0xd4)) = *(Vector3i const*)((int*)&target);
             *(unsigned char*)((char*)c + 0xe0) |= 0x10;
             SetVecYByMode02033834((struct Obj02033834*)c, angle);
             struct Vec3s32_020c3030 current = *(struct Vec3s32_020c3030*)((char*)c + 0x44);
             if (Vector3fix_Distance((const Vector3fix*)&target, (const Vector3fix*)&current) > 0x1000) {
-                _ZN8Vector3iaSERKS_((int*)((char*)c + 0x44), (int*)&target);
+                *(Vector3i*)((int*)((char*)c + 0x44)) = *(Vector3i const*)((int*)&target);
                 SetVecYFromValue02033874((struct Obj02033874*)c, angle);
             }
         }

@@ -12,7 +12,7 @@ ARM SignedAllocatorHeader* PopFirstAndDecOwnerRef020bf3c8(SignedAllocatorList* l
 void InsertAllocatorHeaderLocked(SignedAllocatorHeader* header);
 
 struct RefNode020c80f8;
-extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8* node);
+void UnlockMutex(Mutex*);
 
 // USA: func_020c015c  (semantic: BlockReleaseInsertLoop020c015c)
 extern "C" ARM void func_020c015c(void *obj) {
@@ -24,11 +24,11 @@ extern "C" ARM void func_020c015c(void *obj) {
         {
             SignedAllocatorHeader *e = PopFirstAndDecOwnerRef020bf3c8((SignedAllocatorList*)(base + 0x4e0));
             if (e == 0) {
-                _Z11UnlockMutexP5Mutex((RefNode020c80f8*)(base + 0x4c8));
+                UnlockMutex((Mutex*)(base + 0x4c8));
             } else {
                 func_020bf79c(e);
                 InsertAllocatorHeaderLocked(e);
-                _Z11UnlockMutexP5Mutex((RefNode020c80f8*)(base + 0x4c8));
+                UnlockMutex((Mutex*)(base + 0x4c8));
                 goto retry;
             }
         }

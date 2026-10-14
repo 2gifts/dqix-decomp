@@ -13,7 +13,7 @@ extern "C" void func_0206f81c(void* p);
 void InitObj_021adc58(unsigned char* self);
 unsigned char GetField0x397cValue(GameState* battleStruct);
 int fix32ReduceAngle0To2Pi(int angle);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov017_0219922c(unsigned char* self) {
     *(unsigned short*)(node + 0x10) = (unsigned short)r;
 
     node = *(unsigned char**)(self + 0x3000 + RegionOffsetb24);
-    _ZN8Vector3iaSERKS_((int*)(node + 0x14), (int*)search);
+    *(Vector3i*)((int*)(node + 0x14)) = *(Vector3i const*)((int*)search);
 
     if (search[0x17] == 2) {
         (*(unsigned char**)(self + 0x3000 + RegionOffsetb24))[0x20] = 1;

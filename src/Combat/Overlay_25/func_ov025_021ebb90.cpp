@@ -135,7 +135,6 @@ void SetMainBrightness(GameResources*, int, int);
 int TestBit0At0x2f4(unsigned char* obj);
 int TestBit1At0x2f4(unsigned char* obj);
 extern "C" void* func_02057924(void);
-extern "C" void _ZN8Vector3iaSERKS_(struct Vec3* dst, struct Vec3* src);
 struct Vector3i;
 void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
 extern "C" int func_020c32f8(int);
@@ -398,7 +397,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                             scale.x = sv;
                             scale.y = sv;
                             scale.z = sv;
-                            _ZN8Vector3iaSERKS_(&params.scale, &scale);
+                            *(Vector3i*)&params.scale = *(Vector3i const*)&scale;
                         }
 
                         if (e->o & 2) {
@@ -422,12 +421,12 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                                     GameObject* owner = battle->GetGameObjectByIndex(ownerId);
                                     GameObject* victim = battle->GetGameObjectByIndex(targetId3);
                                     if (owner != 0 && victim != 0) {
-                                        _ZN8Vector3iaSERKS_(&selfPos, (struct Vec3*)((char*)owner + 0x44));
-                                        _ZN8Vector3iaSERKS_(&targetPos, (struct Vec3*)((char*)victim + 0x44));
+                                        *(Vector3i*)&selfPos = *(Vector3i const*)((struct Vec3*)((char*)owner + 0x44));
+                                        *(Vector3i*)&targetPos = *(Vector3i const*)((struct Vec3*)((char*)victim + 0x44));
                                         Vector3fix_Subtract((const Vector3fix*)&selfPos, (const Vector3fix*)&targetPos, (Vector3fix*)&toTarget);
                                         Vector3fix_Normalize((const Vector3fix*)&toTarget, (Vector3fix*)&toTarget);
                                         Vector3fixMultiplyScalar((Vector3i const*)&toTarget, dir.z, (Vector3i*)&dir);
-                                        _ZN8Vector3iaSERKS_(&targetRot, (struct Vec3*)((char*)victim + 0x50));
+                                        *(Vector3i*)&targetRot = *(Vector3i const*)((struct Vec3*)((char*)victim + 0x50));
                                         int yaw = -targetRot.y;
                                         int cosv = (int)(4096.0f * (func_0200c700(func_020c32f8(yaw)) / 4294967296.0f));
                                         int sinv = (int)(4096.0f * (func_0200c700(func_020c3260(yaw)) / 4294967296.0f));
@@ -458,7 +457,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                                 params.pos.y += dir.y;
                                 params.pos.z += dir.z;
                             } else {
-                                _ZN8Vector3iaSERKS_(&params.pos, &dir);
+                                *(Vector3i*)&params.pos = *(Vector3i const*)&dir;
                             }
                         }
                     }

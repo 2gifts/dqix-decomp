@@ -8,7 +8,6 @@ extern "C" void* func_02057924(void);
 extern "C" int rand(void);
 extern "C" int _s32_div_f(int a, int b);
 extern "C" int func_02018fbc(int seed, void* v);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 int IsMatchingName0208e824(void* unused, char* str);
 
 struct Entry0208f168 {
@@ -114,7 +113,7 @@ extern "C" ARM void func_0208f168(struct Self0208f168* self, void* alloc) {
                         int base = rec->startTime;
                         item->frame = base + (rand() % (rec->endTime - base));
                         node->vec[j].y = func_02018fbc((int)g, (void*)&v[j]);
-                        _ZN8Vector3iaSERKS_((int*)&item->vec, (int*)&v[j]);
+                        *(Vector3i*)((int*)&item->vec) = *(Vector3i const*)((int*)&v[j]);
                         struct Item0208f168* n = self->head;
                         if (n == 0) {
                             self->head = item;

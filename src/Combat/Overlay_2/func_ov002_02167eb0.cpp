@@ -16,7 +16,6 @@ void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int TestFlag0SetAndFlag1Clear(unsigned short *flags, int mask);
 int CheckFlagOrThreshold_02161b48(char *self, int flag);
 void SetElementFieldC2(struct Struct_0205d81c *s, int key, int value);
-extern "C" unsigned char *_ZN9GameState21GetPartyMemberByIndexEi(GameState *gs, int idx);
 void *GetPtrField0x2a04(GameState *gs);
 unsigned char *GetFieldAt0x150(unsigned char *c);
 extern "C" void func_ov002_02161cf0(void *self);
@@ -48,7 +47,7 @@ extern "C" ARM void func_ov002_02167eb0(char *base) {
         DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
         GameState *gs = GameState::GetInstance();
         GetPtrField0x2a04(gs);
-        unsigned char *m = _ZN9GameState21GetPartyMemberByIndexEi(gs, *(signed char *) (base + 0x1c20));
+        unsigned char *m = (unsigned char *)gs->GetPartyMemberByIndex(*(signed char *) (base + 0x1c20));
         if (m == 0) return;
         *(int *) (GetFieldAt0x150(m) + 0x94c) = *(short *) (base + 0x1c04);
         *(short *) (base + 0x1c04)            = -1;

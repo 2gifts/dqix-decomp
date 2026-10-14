@@ -26,7 +26,6 @@ void ResetAndApply0215be20(void*);
 int StepStateMachine0215bd34(void*);
 extern "C" void func_ov003_0215c01c(void*, int, int);
 extern "C" void* memset(void*, int, unsigned int);
-extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, int);
 unsigned char* GetFieldAt0x150(unsigned char*);
 extern "C" int _s32_div_f(int, int);
 struct StoreStruct;
@@ -120,8 +119,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
             func_ov003_0215c01c(self, 2, 1);
             *(unsigned char*)(s + 0x5a1) = (unsigned char)r;
             unsigned char* combatant =
-                (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(game,
-                    *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591));
+                (unsigned char*)(void*)GetCombatantWithFlag0x100(game, *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591));
             unsigned char* sub = GetFieldAt0x150(combatant);
             int x = *(int*)(sub + 0x950);
             *(int*)(s + 0x5a4) = *(int*)(combatant + 0x134);
@@ -215,7 +213,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
         }
         if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) return;
         int cid = *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591);
-        unsigned char* combatant = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(game, cid);
+        unsigned char* combatant = (unsigned char*)(void*)GetCombatantWithFlag0x100(game, cid);
         switch (p2) {
         case 0x406: {
             func_02048150(combatant, 0, 1);

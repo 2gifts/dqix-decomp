@@ -80,7 +80,6 @@ int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 void* FindElementByKey020dedd0(Container020dedd0* c, int key);
 int GetFlagFromField0x8Bits(Struct020dd768* s);
 extern "C" void func_ov005_02157b74(void* self, int key, int keep);
-extern "C" char* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 struct KeyedList0207c484;
 void DecrementKeyedStackAmount0207c484(KeyedList0207c484*, int, int, int);
 extern "C" void func_ov005_021555c0(void* self);
@@ -140,7 +139,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                     func_ov005_02157b74(self, 0xffff, 1);
                 } else if (self->selectedSlot >= 8 &&
                        self->selectedSlot < 0x18) {
-                    char* list = _Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
+                    char* list = (char*)GetPtrField0x2a04(GameState::GetInstance());
                     int amount = ((ItemBits02159274*)((char*)item + 8))->amount;
                     sel = *(short*)((char*)item + 0x18);
                     DecrementKeyedStackAmount0207c484((KeyedList0207c484*)(list + 0x1d4), sel, 1, amount);
@@ -237,7 +236,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                 }
                 func_ov005_02157b74(self, 0xffff, 1);
             } else if (self->selectedSlot >= 8 && self->selectedSlot < 0x18) {
-                char* list = _Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
+                char* list = (char*)GetPtrField0x2a04(GameState::GetInstance());
                 item = FindElementByKey020dedd0(
                     self->items_,
                     self->slots[self->selectedSlot].id);

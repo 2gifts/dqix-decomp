@@ -7,7 +7,7 @@ struct Obj020bcbe0;
 void PostEventsForTypes020bcbe0(Obj020bcbe0*, void*);
 struct Tween020c0260;
 void AdvanceTweenStep020c0260(Tween020c0260*);
-extern "C" int _Z21EvaluateTween020c022cP13Tween020c0260(void* tween);
+int EvaluateTween020c022c(Tween020c0260*);
 struct State020c0278;
 int CheckField8GeFieldC(State020c0278*);
 
@@ -44,7 +44,7 @@ LOOP_START:;
         }
         AdvanceTweenStep020c0260((Tween020c0260*)(entry + 0xe8));
         a = data_020ed82c[*(int*)(entry + 0x154)];
-        int evalResult = _Z21EvaluateTween020c022cP13Tween020c0260(entry + 0xe8);
+        int evalResult = EvaluateTween020c022c((Tween020c0260*)(entry + 0xe8));
         int b = data_020ed82c[evalResult >> 8];
         int c = data_020ed82c[*(int*)(entry + 0x158)];
         int newVal = c + (b + a);

@@ -54,7 +54,6 @@ void *GetGlobalPtr021075f4();
 unsigned char *GetData02153637();
 extern "C" int func_0202c508(int *);
 void ReinitController02043204(char*);
-extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 struct Container020e0310;
 void * GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov003_0215cab0(Scene *, void *);
@@ -116,7 +115,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
             return;
         }
         int key = 0x3f2;
-        if (self->w3cc > *(unsigned int *) (_Z17GetPtrField0x2a04P9GameState(gs) + 0xf6c)) {
+        if (self->w3cc > *(unsigned int *) ((unsigned char *)GetPtrField0x2a04(gs) + 0xf6c)) {
             key = 0x3fc;
             if (self->b3f0 != 0) {
                 if (sb != 0) {
@@ -168,7 +167,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
     if (state == 4) {
         int status = GetEntryStatusForKey020e34bc((Container020e34bc*)d, 1);
         if (status == 1 || self->b3f4 != 0) {
-            unsigned char *p              = _Z17GetPtrField0x2a04P9GameState(gs);
+            unsigned char *p              = (unsigned char *)GetPtrField0x2a04(gs);
             *(unsigned int *) (p + 0xf6c) = *(unsigned int *) (p + 0xf6c) - self->w3cc;
             for (i = 0; i < 4; i++) {
                 if (self->ids[i] != 0xff) {

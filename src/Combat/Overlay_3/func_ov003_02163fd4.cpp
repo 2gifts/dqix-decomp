@@ -32,7 +32,6 @@ extern "C" void func_020813ec(void *, int);
 struct Obj0208203c;
 void ResetWithSub0208203c(Obj0208203c*);
 int FindMappedMemberId02080468(void *, int);
-extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 char * GetWord0x0(int*);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
@@ -84,7 +83,7 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
             self->p470 = 0;
             switch (self->h48a) {
                 case 0xa6:
-                    if ((int) *(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0xf7c) > 1) {
+                    if ((int) *((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0xf7c) > 1) {
                         p[0]        = 3;
                         p[1]        = 4;
                         self->c4a3  = 0xb;
@@ -97,7 +96,7 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
                     }
                     break;
                 case 0xa7:
-                    if (*(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0xf7c) == 4) {
+                    if (*((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0xf7c) == 4) {
                         p[0] = 0x14;
                         p[1] = 1;
                     } else {

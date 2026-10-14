@@ -71,7 +71,6 @@ extern unsigned short data_ov000_02183510[];
 
 StoreStruct* GetGlobalField0x1c020421a0(void);
 extern "C" void* memset(void* dst, int c, unsigned int n);
-extern "C" PartyMember* _ZN9GameState21GetPartyMemberByIndexEi(GameState* gs, int idx);
 extern "C" SkillEntry* func_ov000_02170cf8(MenuEntry* entry, int key);
 GameObject* GetCombatantWithFlag0x100(GameState* gs, int idx);
 #if defined(jpn)
@@ -114,7 +113,7 @@ extern "C" ARM void func_ov000_02179cdc(BattleMenu* menu, MenuEntry* entry) {
     if (combatant == 0) {
         return;
     }
-    PartyMember* member = _ZN9GameState21GetPartyMemberByIndexEi(gs, entry->combatantId);
+    PartyMember* member = (PartyMember*)gs->GetPartyMemberByIndex(entry->combatantId);
     if (member == 0) {
         return;
     }

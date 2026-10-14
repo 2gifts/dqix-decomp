@@ -12,7 +12,7 @@ struct Vec3s32_020c3030 { int x; int y; int z; };
 struct U16Field0x6_020375f8 { char unk[0x6]; unsigned short field; };
 
 extern "C" struct Vec3_02073dfc func_02034104(GameObject* combatant);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 // USA: func_02073dfc
 extern "C" ARM int func_02073dfc(unsigned short* idPtr, struct Vec3s32_020c3030* distArg) {
@@ -26,7 +26,7 @@ extern "C" ARM int func_02073dfc(unsigned short* idPtr, struct Vec3s32_020c3030*
         if (*(int*)((char*)combatant + TargetIdOffset) != -1) {
             targetId = *(int*)((char*)combatant + TargetIdOffset);
             if (i == 0 || (combatant->obj3D_.unknown_0_ & 0x1000)) {
-                _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)combatant + TargetPositionOffset));
+                *(Vector3i*)((int*)&local) = *(Vector3i const*)((int*)((char*)combatant + TargetPositionOffset));
             }
         }
         if (*idPtr == targetId) {

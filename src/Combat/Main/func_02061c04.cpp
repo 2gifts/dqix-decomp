@@ -56,7 +56,7 @@ void SetBytesAt20And21_021a55a4(unsigned char*, unsigned char, unsigned char);
 void *GetBTRandom();
 struct Random;
 int NextRandomBetween(Random*, int, int);
-extern "C" int _Z13NextRandomMaxP6Randomi(void *rng, int max);
+int NextRandomMax(Random*, int);
 extern short data_020e7de8[14];
 extern "C" void *memmove(void *dst, const void *src, unsigned int n);
 extern "C" void _Z27EnqueueEventTag142_021cd6d8P11Src021cd6d8(void *ev);
@@ -999,7 +999,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         if (!entry)
             break;
         for (int j = 0; j < 5; j++) {
-            int idx = _Z13NextRandomMaxP6Randomi(GetBTRandom(), count);
+            int idx = NextRandomMax((Random*)GetBTRandom(), count);
             *(short *)((char *)entry + j * 2 + 4) = deck[idx];
             if (idx < count - 1)
                 memmove(&deck[idx], &deck[idx + 1], count - (idx + 1));

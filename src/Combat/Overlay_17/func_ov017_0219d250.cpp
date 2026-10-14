@@ -118,7 +118,6 @@ void* GetPtrField0x468(void*);
 Request0219d250* GetField0x3f8Address(GameState* gs);
 extern "C" void* func_0202ae18(void);
 void* GetGlobalPtr021075f4(void);
-extern "C" GrottoIds0219d250* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 extern "C" void* func_0205ec34(void);
 void ClearMonsterFlagEntries_02191bdc(unsigned char*, int);
 struct SearchTable;
@@ -131,7 +130,6 @@ struct SearchStruct;
 int TestBitBySignedByteIndex(SearchStruct*, int);
 struct SearchStruct0202c1a4;
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-extern "C" Combatant0219d250* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int i);
 extern "C" int func_0206e558(void* flags);
 extern "C" int func_ov017_0219c774(Entry0219d250* entry, int a, int b);
 void* GetGlobal02109030(void);
@@ -230,7 +228,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     request = GetField0x3f8Address(gs);
     search = func_0202ae18();
     extRegion = GetGlobalPtr021075f4();
-    party = _Z17GetPtrField0x2a04P9GameState(gs);
+    party = (GrottoIds0219d250*)GetPtrField0x2a04(gs);
     char* status = (char*)&((Zone3D*)field)->grotto_;
     func_0205ec34();
     header = self->header;
@@ -268,14 +266,14 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
                 for (i = 1; i < 4; i++) {
                     if (TestBitBySignedByteIndex((SearchStruct*)search2, i) &&
                         i != GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search2)) {
-                        Combatant0219d250* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs2, i);
+                        Combatant0219d250* c = (Combatant0219d250*)GetCombatantWithFlag0x100(gs2, i);
                         if (c != NULL && (key == c->obj3D.GetField06() || key == c->field15c)) {
                             present = 0;
                             break;
                         }
                     }
                 }
-                Combatant0219d250* c0 = _Z25GetCombatantWithFlag0x100P9GameStatei(gs2, 0);
+                Combatant0219d250* c0 = (Combatant0219d250*)GetCombatantWithFlag0x100(gs2, 0);
                 if (c0 != NULL && (key == c0->obj3D.GetField06() || key == c0->field15c)) {
                     present = 1;
                 }

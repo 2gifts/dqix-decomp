@@ -4,6 +4,7 @@
 #include "Combat/BattleSkillEligibility.h"
 #include "std_library_functions.h"
 #include "Combat/Main/BattleList.h"
+#include "Grotto/Main/ActiveGrottoClass.h"
 struct BattleStruct {
     int unk0;
     int unk4;
@@ -15,7 +16,6 @@ struct CombatantStruct {
     struct BaseCombatStats* baseStats;
     struct ModifiableCombatStats* currentStats;
 };
-extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct GameState* gs, int combatantId);
 
 class GameState {
 public:
@@ -198,9 +198,6 @@ extern "C" int func_ov000_02171bc0(void* p);
 struct LearnedMove_021f7478* GetPointerField_02171b9c_02171b9c(void* p, int i);
 struct MoveData_021f7478* SearchBothTables02079e2c(char* p, int key);
 int GetBits23To25At0x2f4(unsigned char* obj);
-extern "C" char* _ZN17ActiveGrottoClass15GetDetailedDataEv(void* grotto);
-extern "C" unsigned short _ZNK23DetailedTreasureMapData17LegacyBossMapData26MaybeGetCurrentAlternateIDEv(void* legacy);
-extern "C" int _ZN23DetailedTreasureMapData17LegacyBossMapData17CanUseLevelUpMoveEt(void* legacy, int moveId);
 float NextRandomFloat01(struct Random* rng);
 int NextRandomMax(struct Random* rng, int max);
 int NextRandomBetween(struct Random* rng, int lo, int hi);
@@ -255,7 +252,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
     }
 
     GameState* gs = GameState::GetInstance();
-    obj->self = (struct Combatant_021f7478*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, obj->id);
+    obj->self = (struct Combatant_021f7478*)(CombatantStruct*)GetCombatantWithFlag0x100(gs, obj->id);
     memset(obj->groupCounts, 0, 0xc);
 
     int cnt;
@@ -323,7 +320,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
     }
     if (obj->nQuarter >= 2) obj->manyLow = 1;
 
-    struct Combatant_021f7478* self = (struct Combatant_021f7478*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, obj->id);
+    struct Combatant_021f7478* self = (struct Combatant_021f7478*)(CombatantStruct*)GetCombatantWithFlag0x100(gs, obj->id);
     memset(obj->ratio, 0, 0x20);
     for (int i = 0; i < obj->count; i++) {
         float v = HalfDiff(GetAttack(self), GetDefense(obj->list[i]));
@@ -424,7 +421,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
 
     obj->f654 = 0;
     const signed char* pair = data_ov024_021fefb0;
-    self = (struct Combatant_021f7478*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, obj->id);
+    self = (struct Combatant_021f7478*)(CombatantStruct*)GetCombatantWithFlag0x100(gs, obj->id);
     if (self != 0) {
         for (; pair[0] != -1; pair += 2) {
             if (pair[1] == GetBits23To25At0x2f4(self->f150)) {
@@ -453,11 +450,11 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
         for (int j = 0; j < 6; j++) {
             unsigned short moveId = set->moves[j];
             if (IsGlobalU16InRange(gs) && ((struct PartyWork_021f7478*)((struct Battle_021f7478*)obj->battle)->partyWork)->f25 != 0) {
-                char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv((char*)func_02012fe4() + regionalGrottoOffset);
+                char* detail = (char*)((ActiveGrottoClass*)((char*)func_02012fe4() + regionalGrottoOffset))->GetDetailedData();
                 short kindId = c->kindId;
-                unsigned short alt = _ZNK23DetailedTreasureMapData17LegacyBossMapData26MaybeGetCurrentAlternateIDEv(detail + 0x4c);
+                unsigned short alt = ((DetailedTreasureMapData::LegacyBossMapData*)(detail + 0x4c))->MaybeGetCurrentAlternateID();
                 if (alt == kindId) {
-                    if (!_ZN23DetailedTreasureMapData17LegacyBossMapData17CanUseLevelUpMoveEt(detail + 0x4c, moveId)) continue;
+                    if (!((DetailedTreasureMapData::LegacyBossMapData*)(detail + 0x4c))->CanUseLevelUpMove(moveId)) continue;
                 }
             }
             struct MoveData_021f7478* m = SearchBothTables02079e2c((char*)moveTable2, (short)moveId);
@@ -490,13 +487,13 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
     int maxBase = 1;
     for (int i = 0; i < 4; i++) {
         if (!TestBitAt0x34(((struct Battle_021f7478*)obj->battle)->partyWork, (unsigned char)i)) continue;
-        struct Combatant_021f7478* c = (struct Combatant_021f7478*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, i);
+        struct Combatant_021f7478* c = (struct Combatant_021f7478*)(CombatantStruct*)GetCombatantWithFlag0x100(gs, i);
         if (c == 0) continue;
         if (c->baseStats->primaryStats.attack > maxBase) maxBase = c->baseStats->primaryStats.attack;
     }
     for (int i = 0; i < 4; i++) {
         if (!TestBitAt0x34(((struct Battle_021f7478*)obj->battle)->partyWork, (unsigned char)i)) continue;
-        struct Combatant_021f7478* c = (struct Combatant_021f7478*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, i);
+        struct Combatant_021f7478* c = (struct Combatant_021f7478*)(CombatantStruct*)GetCombatantWithFlag0x100(gs, i);
         if (c == 0) continue;
         obj->levelRatio[i] = (float)c->baseStats->primaryStats.attack / (float)maxBase;
     }

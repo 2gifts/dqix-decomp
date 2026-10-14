@@ -3,7 +3,7 @@
 
 struct IntField0x68_020377bc;
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct Vec3_020d7534 { int x; int y; int z; };
 extern "C" void func_020d74a4(void* base, int index, struct Vec3_020d7534 v);
@@ -44,7 +44,7 @@ extern "C" ARM void func_020d7534(struct Actor020d7534* obj) {
                     if (tmp.y > limit) {
                         tmp.y = tmp.y - limit;
                     }
-                    _ZN8Vector3iaSERKS_((int*)&actor->pos, (int*)&tmp);
+                    *(Vector3i*)((int*)&actor->pos) = *(Vector3i const*)((int*)&tmp);
                 }
                 AdvanceActorCooldownsAndPosition0205a020((unsigned char*)&obj[i], scaleCount);
             }

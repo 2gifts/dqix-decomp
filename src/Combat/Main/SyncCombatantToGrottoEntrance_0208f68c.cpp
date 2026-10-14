@@ -3,7 +3,6 @@
 #include "Grotto/Main/GrottoStruct.h"
 
 extern "C" void* func_02012fe4(void* unused);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 struct Vector3i;
 
 extern int data_020e8d3c;
@@ -22,7 +21,7 @@ extern "C" ARM void func_0208f68c(unsigned char* obj) {
         int zoneId = *(int*)((char*)grotto + 0xc);
         if (zoneId != 0 && grotto->unknown_0[0] != 0) {
             if (zoneId == val) {
-                _ZN8Vector3iaSERKS_((int*)(obj + 0x4c), (int*)&grottoVec);
+                *(Vector3i*)((int*)(obj + 0x4c)) = *(Vector3i const*)((int*)&grottoVec);
                 ((Object3D*)(obj + 8))->SetScale((Vector3i const*)&constVec);
                 ((Object3D*)(obj + 8))->MaybeSetBCFGAnimation(0, 0);
                 ((Object3D*)(obj + 8))->MakeVisible();

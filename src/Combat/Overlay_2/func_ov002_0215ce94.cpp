@@ -14,7 +14,7 @@ struct StructA0205d5d0;
 void TryApplyElemFields0205d5d0(StructA0205d5d0*, int, int, int, unsigned char);
 struct Obj0205dee8;
 void SetFieldB0AndUpdate0205dee8(Obj0205dee8*, int);
-extern "C" void _Z17SetElementFieldC2P15Struct_0205d81cii(unsigned char *obj, int a, int b);
+void SetElementFieldC2(Struct_0205d81c*, int, int);
 
 // USA: func_ov002_0215ce94
 extern "C" ARM void func_ov002_0215ce94(unsigned char *self) {
@@ -58,5 +58,5 @@ extern "C" ARM void func_ov002_0215ce94(unsigned char *self) {
         }
     }
     SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(self + 0x2c8 + 0xc00), (unsigned char) *(int *) (self + 0x1000 + 0xbb8));
-    _Z17SetElementFieldC2P15Struct_0205d81cii(self + 0x2c8 + 0xc00, (unsigned char) *(int *) (self + 0x1000 + 0xbb8), 0);
+    SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), (unsigned char) *(int *) (self + 0x1000 + 0xbb8), 0);
 }

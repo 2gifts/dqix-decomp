@@ -85,8 +85,6 @@ struct ListEntry* GetEntryByIndex0209a654(struct GetList0209a654*, unsigned int)
 void SetBitInArray0x8ec(unsigned char*, int);
 void ClearBitInArray0x8ec(unsigned char*, int);
 int TestBitInArray0x8ec(unsigned char*, int);
-extern "C" void _Z17GetPtrField0x2a04P9GameState(GameState*);
-extern "C" void* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, int);
 void* GetFieldAt0x150(unsigned char*);
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0*, int);
 extern "C" void* func_ov004_0215e47c(void*, int);
@@ -111,7 +109,7 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
 
     func_ov004_0215ee90(data_ov004_02170b90);
     gs = GameState::GetInstance();
-    combatant = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(gs, *(int*)((char*)&data_ov004_021707e8 + 0x1c));
+    combatant = (unsigned char*)(void*)GetCombatantWithFlag0x100(gs, *(int*)((char*)&data_ov004_021707e8 + 0x1c));
     field150 = (unsigned char*)GetFieldAt0x150(combatant);
     if (combatant == 0 || field150 == 0) {
         return;
@@ -121,7 +119,7 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
     char* script = data_0212633c;
     ClearFirstTwoWords0209a338((struct Pair0209a338*)&ctx);
     SetupAndRunBufferedScript0209a348(&ctx, script);
-    _Z17GetPtrField0x2a04P9GameState(gs);
+    GetPtrField0x2a04(gs);
 
     container = 0;
     {

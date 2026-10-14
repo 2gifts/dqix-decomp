@@ -60,11 +60,9 @@ struct Battle02164d74 {
 struct Bytes02033b88;
 
 void GetField02163524(void*);
-extern "C" struct PtrBlock02164d74* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 extern "C" void func_ov000_0217feb0(void* obj, unsigned char value, int id);
 int TestBitAt0x34(unsigned char*, unsigned int);
 extern "C" void func_ov000_02174a50(void* obj, int combatantId);
-extern "C" struct Combatant02164d74* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
 struct Combatant02164d74* GetCombatantWithFlag0x400(GameState* gs, int id);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void InitPackedFields02089560(char* dst, char* buf, char* src);
@@ -89,7 +87,7 @@ extern "C" ARM void func_ov000_02164d74(struct Battle02164d74* battle) {
     GameState* gs = GameState::GetInstance();
     GameResources* ov = func_ov017_0218b5b0();
     GetField02163524(battle);
-    struct PtrBlock02164d74* pb = _Z17GetPtrField0x2a04P9GameState(gs);
+    struct PtrBlock02164d74* pb = (PtrBlock02164d74*)GetPtrField0x2a04(gs);
     int i;
     for (i = 0; i < pb->count; i++) {
         func_ov000_0217feb0(battle->sub3760, 1, pb->ids[i]);
@@ -100,7 +98,7 @@ extern "C" ARM void func_ov000_02164d74(struct Battle02164d74* battle) {
             func_ov000_02174a50(battle->sub3760, i);
             continue;
         }
-        struct Combatant02164d74* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, i);
+        struct Combatant02164d74* c = (Combatant02164d74*)GetCombatantWithFlag0x100(gs, i);
         if (c == NULL) {
             continue;
         }

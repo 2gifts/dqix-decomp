@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 // USA: func_ov017_021bd3d4
 ARM void SetFlagAndSyncVec3_021bd3d4(void* self, int index) {
@@ -16,7 +16,7 @@ ARM void SetFlagAndSyncVec3_021bd3d4(void* self, int index) {
 	base[regionalOffset1] &= ~mask;
 	GameObject* combatant = GameState::GetInstance()->GetPartyMemberByIndex(index);
 	if (combatant) {
-		_ZN8Vector3iaSERKS_((int*)(base + regionalOffset2 + index * 0xc), (int*)((char*)combatant + 0x44));
+		*(Vector3i*)((int*)(base + regionalOffset2 + index * 0xc)) = *(Vector3i const*)((int*)((char*)combatant + 0x44));
 		*(int*)(base + regionalOffset3 + index * 4) = *(int*)((char*)combatant + 0x54);
 	}
 }

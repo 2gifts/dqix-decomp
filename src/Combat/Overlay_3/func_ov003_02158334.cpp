@@ -32,7 +32,6 @@ struct PartyStatusPanel {
     unsigned char memberCount;
 };
 
-extern "C" Combatant* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, int);
 struct Container02080f8c;
 void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
 struct Container02080cc0;
@@ -58,7 +57,7 @@ extern "C" ARM void func_ov003_02158334(PartyStatusPanel* self) {
 
     EntryList* entries = self->entries;
     for (unsigned char i = 0; i < self->memberCount; i++) {
-        Combatant* member = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, self->memberIds[i]);
+        Combatant* member = (Combatant*)GetCombatantWithFlag0x100(gs, self->memberIds[i]);
         if (member != NULL) {
             int color = 0xf;
             SetEntryFirstField02080f8c((Container02080f8c*)entries, id, (int)member->profile->name);

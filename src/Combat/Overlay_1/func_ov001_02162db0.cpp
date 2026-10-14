@@ -43,7 +43,6 @@ struct SlotIds02162db0 {
 };
 
 extern "C" int func_ov017_021d60f4(void* args);
-extern "C" Combatant02162db0* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gameState, int combatantId);
 struct Field150Holder02052e2c;
 short* GetField150Ptr0x488_02052e2c(Field150Holder02052e2c*);
 struct Field150Holder02052df8;
@@ -71,7 +70,7 @@ extern "C" ARM int func_ov001_02162db0(void* args, int argc) {
 
     gameState = GameState::GetInstance();
     combatantId = func_ov017_021d60f4(args);
-    combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(gameState, combatantId);
+    combatant = (Combatant02162db0*)GetCombatantWithFlag0x100(gameState, combatantId);
     if (combatant == NULL) {
         return 0;
     }

@@ -13,7 +13,7 @@ extern "C" void func_020399b0(GameObject* combatant, unsigned short arg1, int* v
 
 void* GetField0x3f8Address(GameState* battleStruct);
 unsigned char GetByte0x26c(char* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct Owner_1e80c;
 struct S_e820;
@@ -41,15 +41,15 @@ extern "C" ARM void func_ov017_0219c598(int* srcVec3, short* srcAngle, int force
     int angle;
     int i;
     if (srcVec3 != 0) {
-        _ZN8Vector3iaSERKS_(vec3, srcVec3);
+        *(Vector3i*)vec3 = *(Vector3i const*)srcVec3;
         if (srcAngle != 0) {
             angle = *srcAngle;
         }
     } else if (field3f8[0x7] != 0) {
-        _ZN8Vector3iaSERKS_(vec3, (int*)(field3f8 + 0x10));
+        *(Vector3i*)vec3 = *(Vector3i const*)((int*)(field3f8 + 0x10));
         angle = *(short*)(field3f8 + 0x1c);
     } else {
-        _ZN8Vector3iaSERKS_(vec3, (int*)&GetThreeWordsAt0x70((Owner_1e80c*)((char*)dataBase + RegionOffset6c)));
+        *(Vector3i*)vec3 = *(Vector3i const*)((int*)&GetThreeWordsAt0x70((Owner_1e80c*)((char*)dataBase + RegionOffset6c)));
         angle = GetSignedFieldAt0x7c((S_e820*)((char*)dataBase + RegionOffset6c));
     }
 

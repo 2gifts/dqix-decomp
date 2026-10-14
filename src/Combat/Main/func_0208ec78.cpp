@@ -6,7 +6,6 @@ struct Obj374b0;
 
 struct List_020347b4;
 struct Entry_020347b4;
-extern "C" Entry_020347b4* _ZN4BCFG18GetAnimationRecordEi(List_020347b4* list, int index);
 
 extern "C" void func_0208e0a8(void);
 extern "C" void* func_0202ae18(void);
@@ -45,7 +44,7 @@ extern "C" ARM void func_0208ec78(struct Param0208ec78* p0) {
     if (p0->field8 != 0) {
         void* field4 = ((Object3D*)p0->field8)->GetCurrentAnimationConfig();
         if (field4 != 0) {
-            Entry_020347b4* rate = _ZN4BCFG18GetAnimationRecordEi((List_020347b4*)field4, 0);
+            Entry_020347b4* rate = (Entry_020347b4*)((BCFG*)((List_020347b4*)field4))->GetAnimationRecord(0);
             if (rate != 0) {
                 r = (char*)rate;
                 int ifixed = (int)(4096.0f * ((float)(unsigned int)bs->GetEffectiveDeltaTime() / 16.666666f));

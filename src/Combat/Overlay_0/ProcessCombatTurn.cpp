@@ -114,7 +114,6 @@ int ClassifyField0x81fe(char*);
 float NextRandomFloatBetween(Random*, float, float);
 extern "C" void func_020749ac(void* arr, int lo, int hi, int mode);
 extern "C" void* memset(void* dst, int c, unsigned int n);
-extern "C" Combatant* _Z25GetCombatantWithFlag0x100P9GameStatei(void* gs, int id);
 Combatant* GetCombatantWithFlag0x400(GameState*, int);
 struct S02053dc0;
 PartyInfo* GetField0x19cOrNull(S02053dc0*);
@@ -270,7 +269,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
             party = 1;
         }
         if (party) {
-            Combatant* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids.v[i]);
+            Combatant* c = (Combatant*)GetCombatantWithFlag0x100((GameState*)gs, ids.v[i]);
             if (c != 0) {
                 PartyInfo* info = GetField0x19cOrNull((S02053dc0*)c);
                 if (info != 0 && (info->flags & 1)) {
@@ -278,7 +277,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     signed char partyCount = 0;
                     func_020dc548(ids.v[i], members.v, &partyCount);
                     for (unsigned int j = 0; j < partyCount; j++) {
-                        Combatant* m = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, members.v[j]);
+                        Combatant* m = (Combatant*)GetCombatantWithFlag0x100((GameState*)gs, members.v[j]);
                         if (m != 0) {
                             PartyInfo* mi = GetField0x19cOrNull((S02053dc0*)m);
                             if (mi != 0) {
@@ -306,7 +305,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
             party = 1;
         }
         if (party) {
-            Combatant* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids.v[i]);
+            Combatant* c = (Combatant*)GetCombatantWithFlag0x100((GameState*)gs, ids.v[i]);
             if (c != 0) {
                 PartyInfo* info = GetField0x19cOrNull((S02053dc0*)c);
                 if (info != 0 && (info->flags & 1)) {
@@ -324,7 +323,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                 party = 1;
             }
             if (party) {
-                Combatant* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids.v[i]);
+                Combatant* c = (Combatant*)GetCombatantWithFlag0x100((GameState*)gs, ids.v[i]);
                 if (c != 0) {
                     PartyInfo* info = GetField0x19cOrNull((S02053dc0*)c);
                     if (info != 0) {

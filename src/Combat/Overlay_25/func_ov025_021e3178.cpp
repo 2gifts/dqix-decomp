@@ -95,7 +95,6 @@ struct List021600f8;
 struct Node021e3178* GetNodeAtIndex021600f8(List021600f8*, int);
 struct Node021e3178* GetNodeAtIndex0215feb4(char*, int, int);
 void* FindNodeAtDepth0215fff4(void* node, int index, int depth);
-extern "C" struct Combatant021e3178* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState* gs, int id);
 int TestBit2At0x2f4(unsigned char* flags);
 extern "C" void __clear(void* p, int n);
 
@@ -357,7 +356,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         int id = ent->id;
         GameState* g = GameState::GetInstance();
         if (!g) break;
-        struct Combatant021e3178* c = _Z25GetCombatantWithFlag0x100P9GameStatei(g, id);
+        struct Combatant021e3178* c = (Combatant021e3178*)GetCombatantWithFlag0x100(g, id);
         if (!c) break;
         if (TestBit2At0x2f4(c->flags)) {
             NOTIFY();

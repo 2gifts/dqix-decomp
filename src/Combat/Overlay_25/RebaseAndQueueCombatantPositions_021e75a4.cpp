@@ -8,7 +8,6 @@ struct Vec3_02030ef0;
 extern "C" void* __clear(void* dst, int count);
 struct Vector3i;
 void Vector3fixDivideScalar(Vector3i const*, int, Vector3i*);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 void ResetFields_021de110(void* obj);
 struct Obj021eee48;
 struct Rec021eee48;
@@ -54,7 +53,7 @@ extern "C" ARM int func_ov025_021e75a4(void* unused0, void* unused1, struct Obj0
             struct Vec3_021e75a4* cv = (struct Vec3_021e75a4*)((char*)c + 0x44);
             struct Vec3_021e75a4 rel = *cv;
             rel.x = rel.x - accum.x;
-            _ZN8Vector3iaSERKS_((int*)cv, (int*)&rel);
+            *(Vector3i*)((int*)cv) = *(Vector3i const*)((int*)&rel);
         }
     }
 
@@ -71,7 +70,7 @@ extern "C" ARM int func_ov025_021e75a4(void* unused0, void* unused1, struct Obj0
         entry.f4 = 0x12c;
         entry.id = id;
         entry.val = 0x12c;
-        _ZN8Vector3iaSERKS_((int*)entry.rel, (int*)&accum);
+        *(Vector3i*)((int*)entry.rel) = *(Vector3i const*)((int*)&accum);
         PushNodeFromFreeList_021eee48(obj, (struct Rec021eee48*)&entry);
         ((Object3D*)c)->MaybeSetRegularAnimation((char const*)data_ov025_021ef834, 0);
     }

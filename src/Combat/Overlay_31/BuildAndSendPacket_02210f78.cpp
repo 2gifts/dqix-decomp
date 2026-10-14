@@ -5,7 +5,7 @@ int GetAndStoreSwapped_022077cc(int a, unsigned int* out);
 struct Mutex;
 void* LockMutex(Mutex*);
 struct RefNode020c80f8;
-extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8* node);
+void UnlockMutex(Mutex*);
 
 struct Entry02207440 {
 	char pad[0xa];
@@ -29,7 +29,7 @@ extern "C" ARM int func_ov031_02210f78(int a, int code, void* buf) {
 		if (s != NULL) {
 			VectorizedInvertedMemcpy(*s->fieldC, b + 4, s->fieldA);
 		}
-		_Z11UnlockMutexP5Mutex((RefNode020c80f8*)((char*)data_ov031_0224e588 + 0x1bc));
+		UnlockMutex((Mutex*)((char*)data_ov031_0224e588 + 0x1bc));
 		if (s == NULL) {
 			return 0;
 		}

@@ -7,7 +7,7 @@ void* LockMutex(Mutex*);
 void SleepCurrentContext(unsigned int arg);
 
 struct RefNode020c80f8;
-extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8 *node);
+void UnlockMutex(Mutex*);
 
 // USA: func_ov031_02217ecc
 ARM int TryProcessAndSleep_02217ecc(char *self) {
@@ -18,10 +18,10 @@ ARM int TryProcessAndSleep_02217ecc(char *self) {
 	LockMutex((Mutex*)(self + 0x1800 + 0x3f8));
 	int w = *(int*)(self + 0x1000 + 0xc10);
 	if (w == 1) {
-		_Z11UnlockMutexP5Mutex((struct RefNode020c80f8*)(self + 0x1800 + 0x3f8));
+		UnlockMutex((Mutex*)(self + 0x1800 + 0x3f8));
 		return 0;
 	}
-	_Z11UnlockMutexP5Mutex((struct RefNode020c80f8*)(self + 0x1800 + 0x3f8));
+	UnlockMutex((Mutex*)(self + 0x1800 + 0x3f8));
 	SleepCurrentContext(0xa);
 	return 1;
 }

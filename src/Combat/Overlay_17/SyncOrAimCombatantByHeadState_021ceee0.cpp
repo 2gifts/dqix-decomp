@@ -15,7 +15,7 @@ int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
 
 void* GetPtrField0x2a04(GameState* battleStruct);
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct Obj02033834;
 struct Obj02033874;
@@ -58,14 +58,14 @@ extern "C" ARM void func_ov017_021ceee0(void* unused0, struct Info021ceee0* info
         int buf[3];
         __clear(buf, 0xc);
         buf[1] = info->field10;
-        _ZN8Vector3iaSERKS_((int*)((char*)target + RegionOffset160), info->vec);
-        _ZN8Vector3iaSERKS_((int*)((char*)target + RegionOffset16c), buf);
+        *(Vector3i*)((int*)((char*)target + RegionOffset160)) = *(Vector3i const*)info->vec;
+        *(Vector3i*)((int*)((char*)target + RegionOffset16c)) = *(Vector3i const*)buf;
         return;
     }
     if (GetHeadNodeIdOrMinusOne(list) == 4) {
         return;
     }
-    _ZN8Vector3iaSERKS_((int*)((char*)held + 0x44), info->vec);
+    *(Vector3i*)((int*)((char*)held + 0x44)) = *(Vector3i const*)info->vec;
     if (info->field13 == 0) {
         SetVecYByMode02033834((struct Obj02033834*)held, info->field10);
     } else {

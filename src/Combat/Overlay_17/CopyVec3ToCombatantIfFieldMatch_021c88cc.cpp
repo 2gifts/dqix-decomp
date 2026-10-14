@@ -4,7 +4,7 @@
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
 void* GetField6b0_021b8470(void* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct Ret021c88cc {
 	unsigned char pad0[8];
@@ -36,5 +36,5 @@ ARM void CopyVec3ToCombatantIfFieldMatch_021c88cc(int unused0, Src021c88cc* src,
 	if (!c) return;
 	int* dst = *(int**)((unsigned char*)c + 0x13c);
 	if (!dst) return;
-	_ZN8Vector3iaSERKS_((int*)((unsigned char*)dst + 0x10), src->vec);
+	*(Vector3i*)((int*)((unsigned char*)dst + 0x10)) = *(Vector3i const*)src->vec;
 }
