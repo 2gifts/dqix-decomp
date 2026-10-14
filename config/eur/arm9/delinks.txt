@@ -19923,3 +19923,7 @@ src/Combat/Main/func_02066cf0.cpp:
 src/Combat/Main/func_02029988.cpp:
     complete
     .text start:0x02029998 end:0x0202a688
+
+src/Combat/Main/func_020733d8.cpp:
+    complete
+    .text start:0x020733e8 end:0x02073d60
