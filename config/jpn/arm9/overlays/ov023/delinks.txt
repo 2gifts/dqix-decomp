@@ -2985,3 +2985,7 @@ src/Combat/Overlay_23/NoOpReturnTrue_021f5b94.cpp:
 src/Combat/Overlay_23/func_ov023_021e66ac.cpp:
     complete
     .text start:0x021e6c24 end:0x021e6d64
+
+src/Combat/Overlay_23/SetupTag021d9c7c.cpp:
+    complete
+    .text start:0x021da52c end:0x021da5d8

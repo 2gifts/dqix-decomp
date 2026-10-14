@@ -77,10 +77,12 @@ struct CharacterCreationUI {
     unsigned char unknownBeforeTexts[0xe0];
 #endif
     Container020e0310 texts;
+    unsigned char unknownBeforeTextBuffer[0x10];
+    char* textBuffer;
 #if defined(jpn)
-    unsigned char unknownBeforeTileMaps[0x11c - 0xc8];
+    unsigned char unknownBeforeTileMaps[0x11c - 0xdc];
 #else
-    unsigned char unknownBeforeTileMaps[0x158 - 0xe8];
+    unsigned char unknownBeforeTileMaps[0x158 - 0xfc];
 #endif
     CreationTileMap tileMaps[4];
     unsigned char unknownBeforeWindows[0x20];
