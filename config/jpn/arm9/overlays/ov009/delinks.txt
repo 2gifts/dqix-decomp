@@ -145,3 +145,7 @@ src/Combat/Overlay_9/func_ov009_02186e00.cpp:
 src/Combat/Overlay_9/func_ov009_02188ee8.cpp:
     complete
     .text start:0x02189e04 end:0x0218a8b4
+
+src/Combat/Overlay_9/ApplyNameKeyboardChoice_0218aab0.cpp:
+    complete
+    .text start:0x0218aab0 end:0x0218ad0c
