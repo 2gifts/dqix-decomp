@@ -19975,3 +19975,7 @@ src/World/WarpScriptOpcode7c.cpp:
 src/Combat/Main/func_0209a218.cpp:
     complete
     .text start:0x0209a218 end:0x0209a338
+
+src/World/WarpScriptOpcode6b.cpp:
+    complete
+    .text start:0x0201d044 end:0x0201d424
