@@ -8,7 +8,6 @@ enum { kRegion12c0 = 0x12c0 };
 enum { kRegion1324 = 0x1324 };
 #endif
 
-
 extern "C" void __clear(void* buf, int len);
 
 struct Struct_0205c570;

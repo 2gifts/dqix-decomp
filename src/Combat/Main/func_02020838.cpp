@@ -11,7 +11,6 @@ extern "C" void MapVRAMBanksToSubBG(int);
 extern "C" void _Z24SetSubBg0Control02020968iiiii(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 extern "C" void _Z24SetSubBg1Control0202099ciiiii(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 
-
 // USA: func_02020838
 extern "C" ARM void func_02020838(MapDisplay* unusedContext) {
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4001000;

@@ -4,7 +4,6 @@
 #define func_ov013_02186cac func_ov013_02187fc0
 #endif
 
-
 struct Struct_0205d81c;
 struct Elem_0205d81c {
     unsigned char pad0[0xac];

@@ -79,7 +79,6 @@ ARM void SetEntryPosition(struct Container0205a3d0* c, int key, short a, short b
 struct Container0205a330;
 void IterateEntries0205a330(struct Container0205a330* c, int arg);
 
-
 extern "C" void func_0205ae8c(void* obj);
 
 struct Struct_0205d81c;

@@ -17,7 +17,6 @@ extern const char data_020f0e02[];
 extern const char data_020f0e17[];
 extern const char data_020f0e28[];
 
-// This loader exists only in the USA and EUR versions.
 #if !defined(jpn)
 // USA: func_02079cf8
 #pragma opt_propagation off

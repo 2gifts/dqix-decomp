@@ -2,7 +2,6 @@
 #include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
-
 extern "C" void func_ov000_021540fc(void*, int, int, int);
 
 // USA: func_ov000_021540c8

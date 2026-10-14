@@ -14,7 +14,6 @@ struct ShortList8 {
     short v[8];
 };
 
-
 extern "C" struct ActionEntry_02153f98* _Z24SearchBothTables02079e2cPci(char* p, int key);
 extern "C" int func_ov000_0215e9fc(struct Random* rand, short* buf, int max, int start);
 

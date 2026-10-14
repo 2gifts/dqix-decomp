@@ -16,7 +16,6 @@ extern "C" void func_02022da0(void*);
 #include "World/Zone3D.h"
 #include "Combat/MapDisplay.h"
 
-
 extern "C" Zone3D* func_02012fe4(void);
 extern "C" void* func_0203bd08(void);
 void* GetData02105254(void);
@@ -66,15 +65,6 @@ extern char data_020ef598;
 extern char data_020ef5a5;
 extern Script::OpcodeLookupEntry data_020ef4e8[];
 extern char data_020ef5b9;
-
-
-
-
-
-
-
-
-
 
 static inline SafeAllocator* GetResourceAllocator(GameResources* resources, int index) {
     return &resources->allocator_array_38[index];

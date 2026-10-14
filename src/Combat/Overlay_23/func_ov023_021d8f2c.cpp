@@ -3,7 +3,6 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
-
 struct Entry_0205d6a0;
 void ResetEntryList0205d6a0(struct Entry_0205d6a0* a, int flag);
 
@@ -84,7 +83,6 @@ extern "C" ARM int func_ov023_021d8f2c(char* obj) {
 #else
     TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1, 0);
 #endif
-
 
     if (*(unsigned char*)(obj + 0x118) == 4) {
         int next = *(unsigned char*)(obj + 0x11c) + 1;

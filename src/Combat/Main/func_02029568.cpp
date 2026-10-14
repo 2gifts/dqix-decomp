@@ -35,7 +35,6 @@ struct Menu02029568 {
     int arr[2];
 };
 
-
 extern "C" void _Z12Init0202949cPc(char* obj);
 
 // USA: func_02029568

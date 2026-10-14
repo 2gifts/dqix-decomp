@@ -28,7 +28,6 @@ extern "C" int func_0205b234(void* selector, int weight, int mode, char* buf, in
 extern short data_020e790a[6], data_020e7916[6], data_020e78f2[6], data_020e78fe[6];
 int StringLength(const char* text);
 
-// The actual JPN caller supplies capacity; this drawing path does not consume it.
 extern "C" ARM void func_02023218(MapDisplay* obj, char* buffer, int offset, unsigned int capacity) {
     Struct02020520 entries[6];
     S_b20c selector;

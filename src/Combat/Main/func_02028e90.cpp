@@ -6,7 +6,6 @@
 #include "System/LoadToVRAM.h"
 #include "System/Cache.h"
 
-
 // USA: func_02028e90  (semantic: FlushBg1TileMapByMode_02028e90)
 extern "C" ARM void func_02028e90(void) {
     if (glyphBitmapContext.buffer == 0) {

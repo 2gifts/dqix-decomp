@@ -19,7 +19,6 @@ struct Trig021e3178 {
     int limit;
 };
 
-
 struct Ent021e3178 {
     char pad0[0x20];
     unsigned short id;
@@ -326,7 +325,6 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
             NOTIFY();
             break;
         }
-        // fallthrough
     case 16: {
         for (struct Chain021e3178* c = b->chains; c; c = c->next) {
             for (struct Chain021e3178* m = c->head; m; m = m->next) {

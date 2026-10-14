@@ -1,5 +1,4 @@
 struct Container020e0310;
-// Established name/header fields of BattleResultMember_021d94e4.
 struct BattleResultMemberName {
     unsigned char id;
     unsigned char vocation;
@@ -13,8 +12,6 @@ struct BattleResultMemberName {
 #endif
 };
 
-// Offsets established by InitBoxLayout_021d921c,
-// InitFieldArrayFromLookup_021d8ddc and AdvanceScaleBoxState_021d8f2c.
 struct BattleResultTagWindow {
     Container020e0310* texts;
     char unknown004[0xc0 - 4];
@@ -34,7 +31,6 @@ struct BattleResultTagWindow {
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
-// The known owner fields and name header keep their original physical offsets.
 typedef char ResultCountOffsetCheck[offsetof(BattleResultTagWindow, resultCounts) == 0xdc ? 1 : -1];
 typedef char ResultMembersOffsetCheck[offsetof(BattleResultTagWindow, members) == 0x120 ? 1 : -1];
 typedef char ResultIdsOffsetCheck[offsetof(BattleResultTagWindow, memberIds) == 0x124 ? 1 : -1];

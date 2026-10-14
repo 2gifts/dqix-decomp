@@ -72,8 +72,6 @@ struct EquipmentMenu0215a620
     Modes& GetModeTable() { return modes; }
 };
 
-
-
 // USA: func_ov005_0215a620
 extern "C" ARM void func_ov005_0215a620(EquipmentMenu0215a620* obj) {
     if ((obj->dirty & 0x800) == 0) return;

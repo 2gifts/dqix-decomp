@@ -4,7 +4,6 @@
 extern "C" void func_020292ec(int a, int b, int c, int d, int e);
 void PackRegister02029470(int a, int b, int c, int d, int e, int f);
 
-
 // USA: func_02029384
 ARM int SetupViewport02029384(int a0, int a1, int a2, int a3) {
     int mode = data_020ef74c.displayMode;

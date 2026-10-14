@@ -10,7 +10,6 @@
 #define func_ov009_02184bbc func_ov009_02185ee8
 #endif
 
-
 struct Cont0205d1e0;
 struct Cont0205d228;
 struct Cont0205d274;

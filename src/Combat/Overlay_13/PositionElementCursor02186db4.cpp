@@ -7,15 +7,14 @@ int IsField0x9cEqual3(unsigned char*);
 void* GetArrayElement02184338(void*, unsigned int);
 extern "C" void func_0205ac40(void* list, void* entry);
 
-/* Display entry fetched from the draw list; only the placement fields matter here. */
 struct CursorTag_02186db4 {
     unsigned char pad00[0x14];
-    int posX;                   /* 0x14 */
-    int posY;                   /* 0x18 */
+    int posX;
+    int posY;
     unsigned char pad1c[6];
-    unsigned char size;         /* 0x22 */
+    unsigned char size;
     unsigned char pad23[3];
-    unsigned char visible;      /* 0x26 */
+    unsigned char visible;
 };
 
 // USA: func_ov013_02186db4  (semantic: PositionElementCursor02186db4)
@@ -35,7 +34,6 @@ extern "C" ARM void func_ov013_02186db4(void* obj) {
     CursorTag_02186db4* tag = (CursorTag_02186db4*)GetArrayElement02184338(*(void**)(o + 0x18), (unsigned short)tagId);
     if (tag == 0) return;
 
-    /* Cell coordinates scale by 8 pixels, then by 0x1000 into fixed point. */
     short x = *(short*)(elem + 0xac);
     short y = *(short*)(elem + 0xae);
     short baseX = *(short*)(o + 0x1e);

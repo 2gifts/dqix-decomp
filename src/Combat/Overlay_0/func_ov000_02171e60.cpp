@@ -17,7 +17,6 @@ struct Obj0203c108 {
 };
 extern "C" void _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(struct Obj0203c108* obj, char* fmt);
 
-
 extern "C" void* _Z24SearchBothTables02079e2cPci(char* table, int key);
 extern "C" int func_ov000_02171210(void* rec, void* self);
 

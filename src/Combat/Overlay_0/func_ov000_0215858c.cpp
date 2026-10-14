@@ -6,8 +6,6 @@ struct S_10088;
 struct Combatant_2088660;
 struct Obj02088674;
 
-// The ailment / buff countdown timers live inside GameObject::currentStats,
-// past the part BattleList.h currently models.
 struct CombatantAilments {
     char unk0[0x22];
     unsigned short unk22_0 : 9;

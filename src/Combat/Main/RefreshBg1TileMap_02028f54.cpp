@@ -7,7 +7,6 @@
 
 #include "System/Cache.h"
 
-
 // USA: func_02028f54  (semantic: RefreshBg1TileMap_02028f54)
 extern "C" ARM void func_02028f54(void) {
     if (glyphBitmapContext.buffer == 0) {

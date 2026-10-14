@@ -673,7 +673,6 @@ struct Pending021de124 {
     unsigned char mode;
 };
 
-
 extern "C" void func_ov000_0216d370(void* obj, int a, int b, int c);
 extern "C" void func_ov000_0216df00(void* obj, int id, int b, int c, float scale);
 extern "C" void func_ov000_0216dbf0(void* obj, int* id, int a, int b);

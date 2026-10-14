@@ -3,7 +3,6 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
-
 struct Entry_0205d6a0;
 void ResetEntryList0205d6a0(struct Entry_0205d6a0* a, int flag);
 
@@ -60,7 +59,6 @@ extern "C" ARM int func_ov023_021d90d0(char* obj) {
 #if defined(jpn)
     TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1);
 
-
 #else
     unsigned char* elem = (unsigned char*)FindElementByC40205d81c((struct Struct_0205d81c*)(obj + 0x20), 0);
     if (elem != NULL) {
@@ -68,7 +66,6 @@ extern "C" ARM int func_ov023_021d90d0(char* obj) {
         TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1, 0);
         elem[0xd8] &= ~4;
     }
-
 
 #endif
     if (*(unsigned char*)(obj + 0x118) == 9) {

@@ -89,18 +89,18 @@ struct Scene0215b520 {
     Entry0215b520 dragModel;
     short dragged;
     char beforeMode[0x3db8 - 0x3d7a];
-    unsigned char mode;     // 0x3db8
+    unsigned char mode;
     char pad4;
-    unsigned char state;    // 0x3dba
-    signed char modeB;    // 0x3dbb
-    unsigned char cursor;   // 0x3dbc
+    unsigned char state;
+    signed char modeB;
+    unsigned char cursor;
     char pad5[0x3dcc - 0x3dbd];
-    unsigned int flags;     // 0x3dcc
+    unsigned int flags;
     char pad6[0x3de2 - 0x3dd0];
-    short level;            // 0x3de2
-    int step;               // 0x3de4
-    int accum;              // 0x3de8
-    int phase;              // 0x3dec
+    short level;
+    int step;
+    int accum;
+    int phase;
 };
 
 // USA: func_ov005_0215b520

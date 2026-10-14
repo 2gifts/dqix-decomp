@@ -12,11 +12,8 @@ int CheckField0NonZero(int* obj);
 struct Obj02033834;
 extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int arg);
 
-
 struct Obj02033b68;
 extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(struct Obj02033b68* obj, int newVal);
-
-
 
 extern "C" int _s32_div_f(int a, int b);
 

@@ -64,28 +64,24 @@ struct PtrBlock {
     unsigned char count;
 };
 
-// Layout shared with InitState0208f7ec.cpp. InitBigStruct0201c014 and
-// TeardownOverlayState_021a316c initialize this subobject of Zone3D.
 struct InitState0208f7ecStruct {
-    int field0;                     // 0x0
-    int field4;                     // 0x4
-    char pad8[0xb4 - 8];            // 0x8..0xb3
-    unsigned char b4;               // 0xb4
-    unsigned char b5;               // 0xb5
-    signed char b6;                 // 0xb6
-    signed char b7;                 // 0xb7
-    signed char b8;                 // 0xb8
-    char padb9;                     // 0xb9
-    unsigned short ba;              // 0xba
-    signed char bc;                 // 0xbc
+    int field0;
+    int field4;
+    char pad8[0xb4 - 8];
+    unsigned char b4;
+    unsigned char b5;
+    signed char b6;
+    signed char b7;
+    signed char b8;
+    char padb9;
+    unsigned short ba;
+    signed char bc;
     signed char& ByteB6() { return b6; }
 };
 
 static inline InitState0208f7ecStruct& GetInitState(Zone3D& zone) {
-    // Existing storage is at USA 0x2664 / JPN 0x26a4, directly after grotto_.
     return *(InitState0208f7ecStruct*)zone.unk_2664;
 }
-
 
 struct BlkSub {
     char data[0x48];

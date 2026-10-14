@@ -9,7 +9,7 @@ struct PaletteWindow;
 enum CreationSex {
     CreationMale = 0,
     CreationFemale = 1,
-    CreationSexByteMax = 0xff // Storage range, not an additional selection.
+    CreationSexByteMax = 0xff
 };
 void ClearBuffer0204b010(Obj0204b010*, void*);
 void DispatchEntry0204b8d0(Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
@@ -244,4 +244,3 @@ extern "C" ARM void func_ov023_021da274(Self021da274* self) {
 }
 
 #endif
-

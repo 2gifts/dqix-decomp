@@ -112,7 +112,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
 #endif
             grotto->activeMapImageName);
         self->taska00 = loader->QueueLoadFileInGP2(
-            
+
 #if defined(jpn)
             *(const char**)&data_020ef460,
 #else

@@ -30,9 +30,6 @@ struct Msg021d2d64 {
     Entry021d2d64 entry;
 };
 
-
-
-
 struct Leader021d2d64 {
     Object3D obj;
     short fac;

@@ -6,7 +6,6 @@
 #define IS_JPN 0
 #endif
 
-
 struct Elem0205d5d0 {
     char pad[0xc4];
     unsigned char fieldC4;

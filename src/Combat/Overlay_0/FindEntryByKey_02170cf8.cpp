@@ -9,8 +9,6 @@
 #define REGION_OFFSET_1 0x1a4
 #endif
 
-
-
 void* SearchBothTables02079e2c(char* p, int key);
 
 struct Entry02170cf8 {

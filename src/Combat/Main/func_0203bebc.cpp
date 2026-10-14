@@ -31,7 +31,6 @@ extern "C" void _Z25CleanInvalidateCacheRangePKvj(const void* p, unsigned int le
 extern "C" void LoadToSubObjVRAM(const void* data, unsigned int offset, unsigned int length);
 extern "C" int func_0205b36c(void* self, void* glyph, short a, int b, unsigned char c, unsigned char d);
 
-
 #if defined(jpn)
 #include "Resource/FontGlyphTable.h"
 #include "System/Graphics.h"
@@ -201,4 +200,3 @@ extern "C" ARM void func_0203bebc(void* entry, void* buf, void* dest)
     ((unsigned char*)entry)[0x21] = total - 1;
 #endif
 }
-

@@ -327,7 +327,6 @@ struct Slot373c {
     char data[0x48];
 };
 
-
 struct Battle0218b688 {
     char pad0[0x28];
     unsigned char running;

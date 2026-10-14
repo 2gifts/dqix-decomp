@@ -10,12 +10,12 @@ struct Block020d63f0 {
 };
 
 struct Sub020d63f0 {
-    unsigned short resultArr[4]; // 0x0
-    unsigned short cur;          // 0x8
-    unsigned char pad0[0xe];     // 0xa
-    unsigned short state;        // 0x18
-    unsigned char pad1[2];       // 0x1a
-    unsigned short status;       // 0x1c
+    unsigned short resultArr[4];
+    unsigned short cur;
+    unsigned char pad0[0xe];
+    unsigned short state;
+    unsigned char pad1[2];
+    unsigned short status;
 };
 
 struct Obj020d66dc {
@@ -24,15 +24,15 @@ struct Obj020d66dc {
 };
 
 struct Msg020d63f0 {
-    unsigned char pad0[2];       // 0x0
-    unsigned short subType;      // 0x2
-    unsigned short event;        // 0x4
-    unsigned char pad6[6];       // 0x6
-    int param;                   // 0xc
-    unsigned char pad10[2];      // 0x10
-    unsigned short bit;          // 0x12
-    unsigned char pad14[8];      // 0x14
-    Obj020d66dc* obj;            // 0x1c
+    unsigned char pad0[2];
+    unsigned short subType;
+    unsigned short event;
+    unsigned char pad6[6];
+    int param;
+    unsigned char pad10[2];
+    unsigned short bit;
+    unsigned char pad14[8];
+    Obj020d66dc* obj;
 };
 
 extern "C" void _Z28ClearAndSetBlockFlag020d6610P11Obj020d6610ii(Obj020d6610* obj, int bit, int extra);

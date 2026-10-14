@@ -4,7 +4,6 @@
 #include "Combat/MapDisplay.h"
 #include "Memory/AllocatorUnion.h"
 
-
 class AllocatorUnion;
 int TailForward02012da4(AllocatorUnion*, void*);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
@@ -30,4 +29,3 @@ ARM void ResetTaskAndDestroyAllocators_021a050c(GameResources* self) {
     void* buf = AllocateAligned4(&data_02114e20, 0x6f78);
     self->allocator_array_38[5].CreateTypeA(buf, 0x6f78);
 }
-

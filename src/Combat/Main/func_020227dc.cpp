@@ -90,7 +90,6 @@ struct Global020fdc4c_020227dc {
 };
 extern struct Global020fdc4c_020227dc data_020fdc4c;
 
-
 // USA: func_020227dc
 extern "C" ARM void func_020227dc(MapDisplay* ctx) {
     GameState::GetInstance();
@@ -199,4 +198,3 @@ extern "C" ARM void func_020227dc(MapDisplay* ctx) {
     _Z32MarkActiveCombatantSlots02026b7cPh((unsigned char*)ctx);
     func_02026bdc(ctx, 0);
 }
-

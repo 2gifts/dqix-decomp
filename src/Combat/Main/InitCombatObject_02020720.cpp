@@ -14,7 +14,6 @@ ARM void ResetList0204af64(struct List0204af64* obj);
 
 extern "C" ARM void func_0202445c(void* obj);
 
-
 // USA: func_02020720  (semantic: InitCombatObject_02020720)
 extern "C" ARM void func_02020720(MapDisplay* obj) {
     obj->forwardingX = 0;

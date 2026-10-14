@@ -87,8 +87,6 @@ struct Node02021f88 {
     struct Node02021f88* next;
 };
 
-
-
 static inline SafeAllocator* GetAlloc02021f88(GameResources* axis, int i) {
     return &axis->allocator_array_38[i];
 }

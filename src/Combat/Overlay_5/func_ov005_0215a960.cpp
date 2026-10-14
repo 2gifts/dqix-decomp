@@ -31,7 +31,6 @@ extern "C" ARM void func_ov005_0215a960(EquipmentMenu* self) {
             self->digits_[i][j] = 0xffff;
 #if defined(jpn)
         char text[3];
-        // Two game-encoded digit sets, each terminated for the text decoder.
         text[2] = 0;
         if (i < 10) {
             text[0] = '\x82';

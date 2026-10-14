@@ -2,8 +2,6 @@
 #include "Combat/MapDisplay.h"
 #include "Filesystem/BackgroundLoader.h"
 
-
-
 struct List0202fec8;
 
 struct ActiveEntry02046900;
@@ -32,7 +30,6 @@ void FlushAndDispatchList0204b0e8(List0204b0e8* obj, void* buf);
 
 struct List0204afb4;
 void ResetRecordList0204afb4(List0204afb4* obj);
-
 
 // USA: func_02020e58
 ARM void RefreshRecordListDisplay02020e58(void* self, MapDisplayTaskHandle handle) {

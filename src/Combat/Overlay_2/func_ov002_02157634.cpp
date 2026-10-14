@@ -183,9 +183,6 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             func_020a818c(p->anim, p->alloc8a0);
             func_020a8304(p->anim);
             if (p->anim->count == 0) {
-                // The ROM writes msgId2 twice here (0x7936 is the "no target" message the
-                // sibling handlers put in msgId); the dead first store is what leaves 0x7936
-                // live for the 0x7919 prompt to be derived from.
                 p->msgId2 = 0x7936;
                 p->msgId2 = -1;
                 p->prompt = 0x7919;

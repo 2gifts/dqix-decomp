@@ -8,7 +8,6 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Combat/MapDisplay.h"
 
-
 struct List0202fec8;
 
 void* GetGlobalPtr02105244();
@@ -17,7 +16,6 @@ extern "C" void* func_0203be4c(void);
 
 struct Rec020467f0;
 int ProcessRecords0205a498(void* a, struct Rec020467f0* b, int flag, void* d);
-
 
 void SetBitfieldStoreBytes0205af38(int a, char* obj, int c, int d);
 

@@ -5,7 +5,6 @@
 struct SearchStruct0202c1a4;
 struct Foo02033b58;
 
-
 extern "C" void* func_0202ae18(void);
 int CheckField0NonZero(int* obj);
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);

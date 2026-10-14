@@ -35,7 +35,6 @@ extern "C" void func_0203bb6c(const CachedTextEntry* entry, TextOamEntry* output
                               int affineMode, int priority, int affineIndex,
                               int x, int y, int palette);
 
-// JPN indexed-text renderer, corresponding to USA func_0203c4d0.
 extern "C" ARM void func_0203c4d0(CachedTextTable* cache, int count, const short* slots,
                                 int affineMode, int priority, int affineIndex,
                                 int x, int y, int palette, int characterAdvance,

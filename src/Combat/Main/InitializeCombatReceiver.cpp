@@ -115,4 +115,3 @@ extern "C" ARM void func_02020554(MapDisplay *obj) {
     obj->fieldb42 = 0;
 #endif
 }
-

@@ -17,7 +17,6 @@
 
 #include "GameState/GameState.h"
 
-
 void* SearchBothTables02079e2c(char* p, int key);
 void* GetPtrField0x2a04(GameState* battleStruct);
 extern "C" void* func_ov000_02161318(void* obj, int id);
