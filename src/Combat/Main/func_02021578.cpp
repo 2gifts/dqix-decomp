@@ -14,6 +14,7 @@ extern "C" void func_02022da0(void*);
 #include "Resource/Script.h"
 #include "Combat/CombatScriptContext.h"
 #include "World/Zone3D.h"
+#include "Combat/MapDisplay.h"
 
 
 extern "C" Zone3D* func_02012fe4(void);
@@ -26,8 +27,6 @@ int IsAxisIntWithin16(struct AxisFloats0203b5a0* s, int axis);
 
 extern "C" int func_020420e8(void* p, int flag);
 
-extern "C" void func_02020720(char* obj);
-extern "C" void func_02020838(char* obj);
 extern "C" void _Z19TailForward0203b66cPc(char* obj);
 extern "C" void _Z21InitSubObject0203bd78Pc(char* obj);
 extern "C" void _Z25InitBattleContext0203bd24Pc(char* obj);
@@ -50,9 +49,7 @@ extern "C" void func_020211b0(char* obj, int handle);
 extern "C" void func_020211b0(char* obj, int* handle);
 #endif
 #if defined(jpn)
-extern "C" void func_02020aec(char* obj, int handle, SafeAllocator* alloc);
 #else
-extern "C" void func_02020aec(char* obj, int* handle, SafeAllocator* alloc);
 #endif
 extern "C" int _Z25InitAndCopyBuffer02023330Pvi(void* obj, int flag);
 extern "C" void _Z26InitFourEntrySlots02020aa0Pv(void* obj);
@@ -76,82 +73,20 @@ extern Script::OpcodeLookupEntry data_020ef4e8[];
 extern char data_020ef5b9;
 
 
-struct Entry02021578 {
-    int field0;
-    char* name;
-    char pad8[0x1c];
-};
 
-struct Struct0205a198 {
-    unsigned short count, flags;
-    void* cells;
-    void* copy;
-    unsigned int field0c, field10, field14, field18;
-    unsigned short field1c, index, field20;
-    unsigned char firstCell, field23, field24, field25;
-    signed char field26;
-    char padding27;
-};
 
-struct MapEntryList02021578 {
-    unsigned char unknown0[0x40];
-    Struct0205a198* records;
-    unsigned char unknown44[8];
-    unsigned short count;
-    unsigned short unknown4e;
-    unsigned char active;
-    unsigned char unknown51[3];
-};
 
-struct MapDisplay02021578 {
-    unsigned char unknown0[0x14];
-    int displayMode;
-    unsigned char unknown18[8];
-    Entry02021578* names;
-    int nameCount;
-    unsigned char unknown28[8];
-    int field30;
-    unsigned char unknown34[0x94 - 0x34];
-    MapEntryList02021578 entryList;
-    Struct0205a198 records[28];
-    char name[0x14];
-    unsigned char forwardingPending;
-    unsigned char unknown55d[REGION_VALUE(0x6cd, 0x779) - 0x55d];
-    unsigned char refreshRecords;
-    unsigned char unknown6ce[REGION_VALUE(0x90c, 0x9b8) - REGION_VALUE(0x6ce, 0x77a)];
-    unsigned char field90c;
-    unsigned char field90d;
-    unsigned char unknown90e[8];
-    signed char loadStage;
-    unsigned char field917;
-    unsigned char field918;
-    unsigned char unknown919[2];
-    unsigned char failed;
-    unsigned char field91c;
-    unsigned char unknown91d[3];
-    int fileTask920;
-    int namesTask;
-    int fileTask928;
-    int nameTasks[8];
-    int scriptTask;
-    unsigned char unknown950[0x34];
-    int fileTask984;
-    unsigned char unknown988[0x16e];
-    char scriptName[0x40];
-    unsigned char unknownb36[2];
-    int scriptNameWidth;
-    int fieldb3c;
-    unsigned short fieldb40;
-    unsigned short fieldb42;
-    unsigned char savedTiles[0x40];
-};
+
+
+
+
 
 static inline SafeAllocator* GetResourceAllocator(GameResources* resources, int index) {
     return &resources->allocator_array_38[index];
 }
 
 // USA: func_02021578
-extern "C" ARM void func_02021578(MapDisplay02021578* self) {
+extern "C" ARM void func_02021578(MapDisplay* self) {
     void* fileData;
     unsigned int fileLength;
     char buf[0x40];
@@ -219,8 +154,8 @@ extern "C" ARM void func_02021578(MapDisplay02021578* self) {
     } else if (state == REGION_VALUE(1, 2)) {
         func_02021428(self, 0x19);
         if (IsAxisIntWithin16((struct AxisFloats0203b5a0*)axis, 1) != 0) return;
-        func_02020720((char*)self);
-        func_02020838((char*)self);
+        func_02020720(self);
+        func_02020838(self);
         _Z19TailForward0203b66cPc(table);
         alloc->Reset();
         _Z21InitSubObject0203bd78Pc(battleCtx);
@@ -253,7 +188,7 @@ extern "C" ARM void func_02021578(MapDisplay02021578* self) {
         int status = loader->GetTaskStatus(self->namesTask);
         if (status == 0) return;
         self->nameCount = 0;
-        self->field30 = 0;
+        self->forwardingCount = 0;
         if (status == -1) {
             self->loadStage = 0x64;
             BackgroundLoader::GetInstance()->RemoveTask(self->namesTask);
@@ -271,8 +206,8 @@ extern "C" ARM void func_02021578(MapDisplay02021578* self) {
         func_02020c18((char*)self, &self->namesTask, alloc);
 #endif
         if (self->refreshRecords != 0) {
-            self->field90c = 1;
-            self->field90d = 0;
+            self->field9b8 = 1;
+            self->field9b9 = 0;
             _Z20ClearRecords02026644Pc((char*)self);
         }
         loader->AddFence();
@@ -300,9 +235,9 @@ extern "C" ARM void func_02021578(MapDisplay02021578* self) {
     if (self->loadStage == REGION_VALUE(4, 5)) {
         if (loader->GetTaskStatus(self->fileTask920) == 0) return;
 #if defined(jpn)
-        func_02020aec((char*)self, self->fileTask920, alloc);
+        func_02020aec(self, self->fileTask920, alloc);
 #else
-        func_02020aec((char*)self, &self->fileTask920, alloc);
+        func_02020aec(self, &self->fileTask920, alloc);
 #endif
 #if defined(jpn)
         func_02022da0(self);
@@ -331,9 +266,9 @@ extern "C" ARM void func_02021578(MapDisplay02021578* self) {
         func_0202445c(self);
         func_ov017_02191234(axis);
         self->forwardingPending = 1;
-        self->field918 = 1;
-        self->field91c = 0;
-        self->field917 = 0;
+        self->field9c4 = 1;
+        self->field9c8 = 0;
+        self->field9c3 = 0;
         self->loadStage = self->loadStage + 1;
         DelayThenSyncBit0();
         func_0202343c(self);

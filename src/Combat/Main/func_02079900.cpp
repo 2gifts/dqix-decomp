@@ -6,7 +6,7 @@ extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 #include "GameState/GameState.h"
 #include "Resource/ActionDataTables.h"
 struct Struct0200fb08;
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08*);
+unsigned char NormalizeField5_0200fb08(Struct0200fb08*);
 void* ResetObjectState02079a3c(void*);
 extern "C" void __clear(void*, unsigned int);
 #if defined(jpn)
@@ -35,7 +35,7 @@ extern "C" ARM void func_02079900(ActionDataTables* tables, SafeAllocator* alloc
         GameState* game = GameState::GetInstance();
         char filename[0x20];
         __clear(filename, 0x20);
-        StringReplaceLanguageTag(data_020f0de1, filename, _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)game));
+        StringReplaceLanguageTag(data_020f0de1, filename, NormalizeField5_0200fb08((Struct0200fb08*)game));
 #else
         const char* filename = data_020f0de1;
 #endif
