@@ -50,7 +50,7 @@ extern "C" void* func_0203be4c(char*);
 extern "C" void func_020c9be0();
 void DelayThenSyncBit0();
 #if defined(jpn)
-extern "C" void func_020208cc(void*, int);
+void FinalizeRecordListDisplay02020cb8(void*, int);
 #else
 extern "C" void _Z33FinalizeRecordListDisplay02020cb8PvPi(void*, int*);
 #endif
@@ -114,7 +114,7 @@ extern "C" ARM void func_020e081c(char* self) {
         VectorizedInvertedMemcpy((const void*)0x06600000, *(void**)(self + kBackupBuffer), *(unsigned int*)(self + kBackupSize));
         DelayThenSyncBit0();
 #if defined(jpn)
-        func_020208cc(self, *(int*)(self + kBaseTask));
+        FinalizeRecordListDisplay02020cb8(self, *(int*)(self + kBaseTask));
 #else
         _Z33FinalizeRecordListDisplay02020cb8PvPi(self, (int*)(self + kBaseTask));
 #endif

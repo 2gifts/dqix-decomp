@@ -31,8 +31,8 @@ extern "C" void _Z24SetArraySlotFlag0203b718Pviii(void* objPtr, int mode, int id
 extern "C" void func_0203ba74(void* obj);
 void DelayThenSyncBit0(void);
 #if defined(jpn)
-extern "C" void func_020208cc(void* self, int handle);
-extern "C" void func_02020a64(void* self, int handle);
+void FinalizeRecordListDisplay02020cb8(void* self, int handle);
+void RefreshRecordListDisplay02020e58(void* self, int handle);
 #else
 void FinalizeRecordListDisplay02020cb8(void* self, int* handle);
 void RefreshRecordListDisplay02020e58(void* self, int* handle);
@@ -145,12 +145,12 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         func_0203ba74(table);
         DelayThenSyncBit0();
 #if defined(jpn)
-        func_020208cc(self, self->task9fc);
+        FinalizeRecordListDisplay02020cb8(self, self->task9fc);
 #else
         FinalizeRecordListDisplay02020cb8(self, &self->task9fc);
 #endif
 #if defined(jpn)
-        func_02020a64(self, self->taska00);
+        RefreshRecordListDisplay02020e58(self, self->taska00);
 #else
         RefreshRecordListDisplay02020e58(self, &self->taska00);
 #endif

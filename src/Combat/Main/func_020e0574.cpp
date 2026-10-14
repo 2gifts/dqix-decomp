@@ -2,6 +2,23 @@
 
 extern "C" int _Z34ReplaceBinExtensionWithNat020e05f8PcPKc(char* dst, const char* fmt);
 typedef int (*ReplaceBin3)(char*, const char*, int);
+
+#if defined(jpn)
+#include "Filesystem/FileIO.h"
+
+// JPN: func_020e21e8
+extern "C" ARM void* func_020e21e8(const char* tablePath, unsigned int* outSize, int variant) {
+    char path[0x40];
+    if (tablePath == NULL)
+        return NULL;
+    *outSize = 0;
+    ((ReplaceBin3)_Z34ReplaceBinExtensionWithNat020e05f8PcPKc)(path, tablePath, variant);
+    LoadFileIntoMemory(path, data_0211e33c, outSize);
+    if (*outSize != 0)
+        return data_0211e33c;
+    return NULL;
+}
+#else
 void* LoadFileIntoMemory(const char*, void*, unsigned int*);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 
@@ -28,3 +45,4 @@ extern "C" ARM int func_020e0574(void* a, int* b, int c, int d) {
     }
     return 0;
 }
+#endif
