@@ -62,7 +62,11 @@ int CountActiveEntries(struct ActiveEntry02046900* entry);
 void* FindRecordByIndex(struct Rec020467f0* rec, int index, void** out, int* outSize);
 extern "C" void func_0204b174(void* graphics, void* file, SafeAllocator* allocator, unsigned int size);
 extern "C" void func_0207f84c(void* obj);
+#if defined(jpn)
+extern "C" void func_02080654(struct Obj0207f914* obj, int alloc, int filename);
+#else
 void SetFieldsFromFormattedValue0207f914(struct Obj0207f914* obj, int alloc, int a, int b);
+#endif
 extern "C" int func_0207f9f4(void* obj);
 void InitNodeChain0207f7f0(struct Manager0207f7f0* mgr, struct Node0207f7f0* node, int count);
 void ClearAllBuffers0207fcb8(struct Obj0207fcb8* obj);
@@ -94,9 +98,14 @@ void InitActorContext0209c20c(struct Actor0209c20c* actor);
 extern AllocatorUnion data_02114e20;
 extern unsigned short data_02114e30;
 extern struct Obj0205eaa0 data_02108760;
+#if defined(jpn)
+extern char data_ov017_021d7ddc[];
+extern char data_ov017_021d7def[];
+#else
 extern char data_ov017_021d7870[];
 extern char data_ov017_021d7883[];
 extern char data_ov017_021d789c[];
+#endif
 
 struct ActorData02109bf4 {
     char unknown[0xd0];
@@ -123,7 +132,11 @@ struct Panel021aa59c {
 };
 
 struct Menu021aa59c {
+#if defined(jpn)
+    char unknown_0[0x20];
+#else
     char unknown_0[0x2c];
+#endif
     Layer021aa59c* layers;
     char unknown_30[6];
     short cursor;
@@ -139,7 +152,11 @@ struct Input021aa59c {
 
 struct Scene021aa59c {
     unsigned short id;
+#if defined(jpn)
+    char unknown_2[0x27c2];
+#else
     char unknown_2[0x2782];
+#endif
     short y;
     short x;
     unsigned char layer;
@@ -214,7 +231,11 @@ extern "C" ARM void func_ov017_021aa59c(Self021aa59c* self, ListHead02046b60* li
         self->tileBuffer = self->alloc.Allocate(0x1400);
         self->panels = (Panel021aa59c*)self->alloc.Allocate(0x1c0);
         self->layers = (Layer021aa59c*)self->alloc.Allocate(0x40);
+#if defined(jpn)
+        self->menu = (Menu021aa59c*)self->alloc.Allocate(0x34);
+#else
         self->menu = (Menu021aa59c*)self->alloc.Allocate(0x40);
+#endif
         self->repeat = self->alloc.Allocate(0xc);
         self->input = (Input021aa59c*)self->alloc.Allocate(4);
         InitWithSub02081ee4((Obj02081ee4*)self->repeat, (Sub02081ee4*)self->input);
@@ -242,7 +263,11 @@ extern "C" ARM void func_ov017_021aa59c(Self021aa59c* self, ListHead02046b60* li
         BG1CNT = (BG1CNT & 0x43) | 0x1e00;
         BG2CNT = (BG2CNT & 0x43) | 0x1f00;
         ColorEffect_ConfigureAlphaBlend(0x04000050, 4, 1, 10, 6);
+#if defined(jpn)
+        self->loadTask = loader->QueueLoadFile(data_ov017_021d7ddc, NULL);
+#else
         self->loadTask = loader->QueueLoadFile(data_ov017_021d7870, NULL);
+#endif
         self->state = 1;
     } else if (state == 1) {
         if (loader->GetTaskStatus(self->loadTask) != 0) {
@@ -260,7 +285,11 @@ extern "C" ARM void func_ov017_021aa59c(Self021aa59c* self, ListHead02046b60* li
             loader->RemoveTask(self->loadTask);
             self->loadTask = -1;
             func_0207f84c(self->menu);
+#if defined(jpn)
+            func_02080654((Obj0207f914*)self->menu, (int)&self->alloc, (int)data_ov017_021d7def);
+#else
             SetFieldsFromFormattedValue0207f914((Obj0207f914*)self->menu, (int)&self->alloc, (int)data_ov017_021d7883, (int)data_ov017_021d789c);
+#endif
             self->state = 2;
         }
     } else if (state == 2) {
