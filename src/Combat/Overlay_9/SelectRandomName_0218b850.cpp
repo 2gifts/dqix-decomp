@@ -6,6 +6,7 @@
 int GetFieldByKey020e0434(Container020e0310*, int);
 int StringLength(const char*);
 
+// JPN: func_ov009_0218b850
 extern "C" ARM void func_ov009_0218b850(CharacterCreationUI* self)
 {
     const char* placeholder = (const char*)GetFieldByKey020e0434(&self->texts, 0x4272);

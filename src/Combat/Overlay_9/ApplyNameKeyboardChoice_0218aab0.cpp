@@ -22,6 +22,7 @@ extern const char data_ov009_0218bc82[];
 extern const char data_ov009_0218bc85[];
 extern const char data_ov009_0218bc88[];
 
+// JPN: func_ov009_0218aab0
 extern "C" ARM int func_ov009_0218aab0(CharacterCreationUI* self, unsigned char choice)
 {
     GetGlobalField0x1c020421a0();
