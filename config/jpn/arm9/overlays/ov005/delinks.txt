@@ -155,6 +155,10 @@ src/Combat/Overlay_5/func_ov005_0215a3bc.cpp:
     complete
     .text start:0x0215b910 end:0x0215b96c
 
+src/Combat/Overlay_5/func_ov005_0215c530.cpp:
+    complete
+    .text start:0x0215d914 end:0x0215df2c
+
 src/Combat/Overlay_5/func_ov005_0215cb4c.cpp:
     complete
     .text start:0x0215df2c end:0x0215dfb4
