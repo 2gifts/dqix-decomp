@@ -60,7 +60,11 @@ struct SceneEntry {
 
 struct Zone02192b48 {
     unsigned short id;
+#if defined(jpn)
+    unsigned char pad_2[0x440 - 0x2];
+#else
     unsigned char pad_2[0x420 - 0x2];
+#endif
     SceneEntry* scenes;
     unsigned char pad_424[0x824 - 0x424];
     TerrainNode** terrain;
