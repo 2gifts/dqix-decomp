@@ -1,16 +1,16 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" int _Z28DispatchNodeIfType7_02156e2cPvi(void* a, int key);
-extern "C" void* _Z20GetEntryFor_021570a4Pvi(void* obj, int index);
+int DispatchNodeIfType7_02156e2c(void* a, int key);
+void* GetEntryFor_021570a4(void* obj, int index);
 extern "C" void* func_ov004_02156fd4(void* a, int key);
 struct Container020dedd0;
-extern "C" struct Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* c, int key);
+struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 extern "C" int func_020dcc98(int combatantId);
-extern "C" int _Z26DispatchBySelector02086c4cPhii(unsigned char* obj, int id, int key);
-extern "C" short _Z23SumKeyedLookups02086bf4Pci(char* obj, int key);
+int DispatchBySelector02086c4c(unsigned char* obj, int id, int key);
+short SumKeyedLookups02086bf4(char* obj, int key);
 extern "C" void func_ov023_021f65d4(void* obj, int id, int mask);
-extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void* obj, int id, int mask);
+void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
 extern "C" void* func_ov004_02156f6c(void* a, int key);
 extern "C" void func_ov023_021f809c(void* obj, void* param2);
 
@@ -50,13 +50,13 @@ extern const Slots0215d738 data_ov004_0216fb80;
 extern "C" ARM int func_ov004_0215d738(void* a) {
     GameState* bs = GameState::GetInstance();
     unsigned char* p = (unsigned char*)GetPtrField0x2a04(bs);
-    int idx = _Z28DispatchNodeIfType7_02156e2cPvi(a, 0x5b);
+    int idx = DispatchNodeIfType7_02156e2c(a, 0x5b);
     if (idx < 0) return 0;
-    short* entry = (short*)_Z20GetEntryFor_021570a4Pvi(a, idx & 0xff);
+    short* entry = (short*)GetEntryFor_021570a4(a, idx & 0xff);
     if (!entry) return 0;
     void* container = func_ov004_02156fd4(a, 5);
     if (!container) return 0;
-    if (!_Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0*)container, *entry)) return 0;
+    if (!FindElementByKey020dedd0((struct Container020dedd0*)container, *entry)) return 0;
 
     int ids[4];
     *(Slots0215d738*)ids = data_ov004_0216fb80;
@@ -78,24 +78,24 @@ extern "C" ARM int func_ov004_0215d738(void* a) {
             node->f20 = *(int*)((char*)member + 0x134);
             id = ids[i];
             ((VObj0215d738*)node)->MethodD8(func_020dcc98((signed char)id));
-            int r = _Z26DispatchBySelector02086c4cPhii(p, id, *entry);
+            int r = DispatchBySelector02086c4c(p, id, *entry);
             if (r == 0) {
                 func_ov023_021f65d4(a, i + 0x1e4, 8);
                 func_ov023_021f65d4(a, i + 0x1ee, 8);
-                _Z26ClearNodeMaskById_021f6600Pvii(a, i + 0x1e9, 8);
+                ClearNodeMaskById_021f6600(a, i + 0x1e9, 8);
             } else {
-                _Z26ClearNodeMaskById_021f6600Pvii(a, i + 0x1e4, 8);
-                _Z26ClearNodeMaskById_021f6600Pvii(a, i + 0x1ee, 8);
+                ClearNodeMaskById_021f6600(a, i + 0x1e4, 8);
+                ClearNodeMaskById_021f6600(a, i + 0x1ee, 8);
                 func_ov023_021f65d4(a, i + 0x1e9, 8);
                 VObj0215d738* n = func_ov004_02156f38(a, i + 0x1e4);
                 if (n) n->MethodE0(r);
             }
         } else if (i == count) {
-            _Z26ClearNodeMaskById_021f6600Pvii(a, i + 0x1df, 8);
-            _Z26ClearNodeMaskById_021f6600Pvii(a, i + 0x1e4, 8);
-            _Z26ClearNodeMaskById_021f6600Pvii(a, i + 0x1ee, 8);
+            ClearNodeMaskById_021f6600(a, i + 0x1df, 8);
+            ClearNodeMaskById_021f6600(a, i + 0x1e4, 8);
+            ClearNodeMaskById_021f6600(a, i + 0x1ee, 8);
             func_ov023_021f65d4(a, i + 0x1e9, 8);
-            int sum = _Z23SumKeyedLookups02086bf4Pci((char*)p, *entry);
+            int sum = SumKeyedLookups02086bf4((char*)p, *entry);
             VObj0215d738* n = func_ov004_02156f38(a, i + 0x1e4);
             if (n) n->MethodE0(sum);
         } else {

@@ -61,7 +61,7 @@ struct Menu0215c058
 };
 
 extern "C" GameResources0215c058* func_ov017_0218b5b0();
-extern "C" Member0215c058* _Z19GetField1c_021a193cPi(int*);
+Member0215c058* GetField1c_021a193c(int*);
 extern "C" void _Z28DispatchByIdxAndCond021551fcPchi(Menu0215c058* self, int member, int change);
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
@@ -83,10 +83,10 @@ extern "C" void func_ov005_02154d7c(CursorFrame0215c058* obj, int a, int b);
 extern "C" void func_ov005_021537bc(CursorFrame0215c058* frame, int mode, unsigned short value);
 extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(void* s);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void*, int, int);
-extern "C" int _Z25CheckFlag30Or401_02157190Pv(void* self);
-extern "C" unsigned char* _Z17GetPtrField0x2a04P9GameState(GameState*);
-extern "C" short* _Z24GetPointerFromArray0xbd0Phj(unsigned char*, unsigned int);
-extern "C" signed char* _Z17GetPointerAt0xbf0Pvj(void*, unsigned int);
+int CheckFlag30Or401_02157190(void* self);
+unsigned char* GetPtrField0x2a04(GameState*);
+short* GetPointerFromArray0xbd0(unsigned char*, unsigned int);
+signed char* GetPointerAt0xbf0(void*, unsigned int);
 extern "C" void func_ov005_0215792c(Menu0215c058* self, int mode);
 
 extern "C" TouchState data_02114e54;
@@ -105,7 +105,7 @@ extern "C" ARM void func_ov005_0215c058(Menu0215c058* self)
     }
     else if (self->state == 1)
     {
-        Member0215c058* screen = _Z19GetField1c_021a193cPi(func_ov017_0218b5b0()->ptr);
+        Member0215c058* screen = GetField1c_021a193c(func_ov017_0218b5b0()->ptr);
         _Z28DispatchByIdxAndCond021551fcPchi(self, screen->member, 0);
         GameState* gs = _ZN9GameState11GetInstanceEv();
         int touched = 0;
@@ -193,12 +193,12 @@ extern "C" ARM void func_ov005_0215c058(Menu0215c058* self)
         }
         else if (sel == self->selected)
         {
-        if (_Z25CheckFlag30Or401_02157190Pv(self) != 0 || moved)
+        if (CheckFlag30Or401_02157190(self) != 0 || moved)
         {
             short index = self->selected - 8 + self->page * 16;
-            unsigned char* bag = _Z17GetPtrField0x2a04P9GameState(gs);
-            short* ids = _Z24GetPointerFromArray0xbd0Phj(bag + 0x1d4, data_ov005_0215cd10[self->tab]);
-            signed char* amounts = _Z17GetPointerAt0xbf0Pvj(bag + 0x1d4, data_ov005_0215cd10[self->tab]);
+            unsigned char* bag = GetPtrField0x2a04(gs);
+            short* ids = GetPointerFromArray0xbd0(bag + 0x1d4, data_ov005_0215cd10[self->tab]);
+            signed char* amounts = GetPointerAt0xbf0(bag + 0x1d4, data_ov005_0215cd10[self->tab]);
             short id = ids[self->held];
             signed char amount = amounts[self->held];
             ids[self->held] = ids[index];

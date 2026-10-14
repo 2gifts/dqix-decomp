@@ -13,7 +13,7 @@ struct S0215f56c;
 struct Outer02166164;
 
 int SetSublistEntriesFlag1(void* obj, int id);
-extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState*);
+void* GetPtrField0x2a04(GameState*);
 void SetOrClearFlags464_02166164(Outer02166164*, int, int);
 extern "C" void func_02042764(void* src, void* dst, int flag);
 int GetFieldAt0x50(Struct020865b0*);
@@ -24,13 +24,13 @@ void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
 extern "C" int _Z24SetEntryFlagById02080b40Pvi(void* obj, short id);
 extern "C" void _Z22SetEntryHighNibble0x13P17Container02080cc0ii(struct Container02080cc0* obj, short id, int value);
 extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(struct Container02080f8c*, int, char*);
-extern "C" void _Z30ResolveEntryValueByKey02080fe0Pvii(void*, int, int);
-extern "C" void _Z26SetEntryFirstField02080fa8P17Container02080fa8ii(struct Container02080fa8*, int, int);
-extern "C" void _Z19SetEntryHalfword0xePvii(void*, int, int);
+void ResolveEntryValueByKey02080fe0(void*, int, int);
+void SetEntryFirstField02080fa8(struct Container02080fa8*, int, int);
+void SetEntryHalfword0xe(void*, int, int);
 extern "C" void _Z27GetEntryFieldsAt0x602080828PviPsS0_(void*, short, short*, short*);
 extern "C" void _Z23GetEntryOutputs020808c8PviPsS0_(void*, short, short*, short*);
-extern "C" void _Z27SetEntryFieldsAt0x602080854Pviii(void*, int, int, int);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310*, int);
+void SetEntryFieldsAt0x602080854(void*, int, int, int);
+int GetFieldByKey020e0434(struct Container020e0310*, int);
 extern "C" void func_ov003_0215f5e8(void* menu, int page, int count);
 extern "C" void func_ov003_02160c58(void* self, short* outHigh, short* outLow);
 void SetEntryNibbleByShortId(struct StatusOwner02081198* owner, int id, int enable);
@@ -112,7 +112,7 @@ extern "C" ARM void func_ov003_02166220(StatusPanel02166220* self) {
     ShortPair02166220 ids;
 
     SetSublistEntriesFlag1(elementObj, 6);
-    party = (Party02166220*)_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
+    party = (Party02166220*)GetPtrField0x2a04(GameState::GetInstance());
     count = party->count;
     idA = 0x15;
     idB = 100;
@@ -132,8 +132,8 @@ extern "C" ARM void func_ov003_02166220(StatusPanel02166220* self) {
         if (GetFieldAt0x50((Struct020865b0*)entry) != 0) {
             v = (short)(GetFieldAt0x50((Struct020865b0*)entry) + 0x11);
         }
-        _Z30ResolveEntryValueByKey02080fe0Pvii(elementObj, (short)(idA + 4), v);
-        _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((struct Container02080fa8*)elementObj, (short)(idA + 8),
+        ResolveEntryValueByKey02080fe0(elementObj, (short)(idA + 4), v);
+        SetEntryFirstField02080fa8((struct Container02080fa8*)elementObj, (short)(idA + 8),
                                                              entry->unk2[GetFieldAt0x50((Struct020865b0*)entry)]);
         color = ClassifyRatio_0215f56c((S0215f56c*)entry);
         if (idA == ((struct EntryList02166220*)elementObj)->field36 && color == 0xf) {
@@ -149,7 +149,7 @@ extern "C" ARM void func_ov003_02166220(StatusPanel02166220* self) {
             SetEntryFlagById02080b40(elementObj, idB);
             self->counters[i] = entry->bit0 + 1;
             kind = entry->unkF[GetFieldAt0x50((Struct020865b0*)entry)];
-            _Z19SetEntryHalfword0xePvii(elementObj, idC, (short)(kind + 100));
+            SetEntryHalfword0xe(elementObj, idC, (short)(kind + 100));
             if (kind != 0) {
                 color = 5;
                 if (kind == 0xa) {
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov003_02166220(StatusPanel02166220* self) {
                 key = i + 0x19;
                 _Z27GetEntryFieldsAt0x602080828PviPsS0_(elementObj, key, &t22, &t20);
                 _Z23GetEntryOutputs020808c8PviPsS0_(elementObj, key, &t1e, &t1c);
-                _Z27SetEntryFieldsAt0x602080854Pviii(elementObj, idC, (short)(t22 + t1e + 1), t20);
+                SetEntryFieldsAt0x602080854(elementObj, idC, (short)(t22 + t1e + 1), t20);
                 SetEntryHighNibble0x13(elementObj, idC, color);
                 SetEntryFlagById02080b40(elementObj, idC);
             }
@@ -167,7 +167,7 @@ extern "C" ARM void func_ov003_02166220(StatusPanel02166220* self) {
             SetEntryFlagById02080b40(elementObj, idA);
             _Z26SetEntryFirstField02080f8cP17Container02080f8cii(
                 (struct Container02080f8c*)elementObj, idA,
-                (char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont2dc, 0x7530));
+                (char*)GetFieldByKey020e0434(&self->cont2dc, 0x7530));
         }
         row++;
         idA = (short)(idA + 1);
@@ -177,10 +177,10 @@ extern "C" ARM void func_ov003_02166220(StatusPanel02166220* self) {
 
     func_ov003_0215f5e8(elementObj, self->page, count);
     func_ov003_02160c58(self, &outHigh, &outLow);
-    party = (Party02166220*)_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
+    party = (Party02166220*)GetPtrField0x2a04(GameState::GetInstance());
     outLow = outLow - (party->countF7c - 1);
-    _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((struct Container02080fa8*)elementObj, 0x23, outLow);
-    _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((struct Container02080fa8*)elementObj, 0x24, outHigh);
+    SetEntryFirstField02080fa8((struct Container02080fa8*)elementObj, 0x23, outLow);
+    SetEntryFirstField02080fa8((struct Container02080fa8*)elementObj, 0x24, outHigh);
 
     ids = data_ov003_0217f3ec.ids;
     for (int n = 0; n < 2; n++) {

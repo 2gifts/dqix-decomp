@@ -35,7 +35,7 @@ float GetActiveBitIndex(GameState*);
 void InitFieldsFromCombatant_0219bcac(unsigned char);
 unsigned char* GetField0x3f8Address(GameState*);
 void* GetGlobal02109418();
-extern "C" void _Z25CallFunc0205ec34_020965f8v(void*);
+void* CallFunc0205ec34_020965f8();
 void* ZeroInitReturn020de824(void*);
 void ZeroInit020de848(void*);
 void InitStruct020de1d4(StructDE1D4*);
@@ -214,7 +214,8 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
         lighting->timeOfDayIndex_ = gs->GetTimeOfDay();
         InitFieldsFromCombatant_0219bcac(1);
         GetField0x3f8Address(gs)[0xa] = 0;
-        _Z25CallFunc0205ec34_020965f8v(GetGlobal02109418());
+        GetGlobal02109418();
+        CallFunc0205ec34_020965f8();
 
         ZeroInitReturn020de824(list);
         ZeroInit020de848(list);

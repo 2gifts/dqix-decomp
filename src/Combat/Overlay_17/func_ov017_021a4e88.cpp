@@ -41,7 +41,7 @@ struct Res021a4e88 {
     int busy;
 };
 
-extern "C" void* _Z20GetGlobalPtr021075f4v(void);
+void* GetGlobalPtr021075f4(void);
 extern "C" void __clear(void* p, int n);
 extern "C" Entry021a4e88* _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(void* list, int id);
 extern "C" void _Z12ClearFlag0x1Pj(Entry021a4e88* e);
@@ -52,11 +52,11 @@ struct Vec3_020406f8;
 struct Node020406f8;
 void SelectVec3FromSources020406f8(Vec3_020406f8* out, Node020406f8* n);
 extern "C" Info021a4e88* _Z19GetField0xc02040538P9S02040538(Entry021a4e88* e);
-extern "C" Entry021a4e88* _Z29FindEntryPointerByKey0203df78Pvi(void* list, int key);
+Entry021a4e88* FindEntryPointerByKey0203df78(void* list, int key);
 extern "C" int _Z30CheckSubstructByte0x7cPositivePa(void* obj);
 extern "C" short _Z29GetAngleDeltaBetween_021a4700P4Vec3iS0_(Vec3_021a4e88* a, int base, Vec3_021a4e88* b);
 extern "C" unsigned char* _Z11GetField0x8Pi(Entry021a4e88* e);
-extern "C" int _Z8fix32absi(int x);
+int fix32abs(int x);
 
 static inline short GetAngleToEntry(Vec3_021a4e88* pos, int base, Entry021a4e88* e) {
     Vec3_021a4e88 cur;
@@ -67,7 +67,7 @@ static inline short GetAngleToEntry(Vec3_021a4e88* pos, int base, Entry021a4e88*
 // USA: func_ov017_021a4e88
 extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
     GameState* gs = GameState::GetInstance();
-    void* list = _Z20GetGlobalPtr021075f4v();
+    void* list = GetGlobalPtr021075f4();
     Res021a4e88* res = (Res021a4e88*)func_ov017_0218b5b0();
     Obj021a4e88* obj = (Obj021a4e88*)gs->GetUnknownGameObject();
     if (obj == NULL) {
@@ -114,10 +114,10 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
             }
         }
         if (inZone == 0) {
-            if (reach < _Z8fix32absi(pos.x - epos.x)) {
+            if (reach < fix32abs(pos.x - epos.x)) {
                 continue;
             }
-            if (reach < _Z8fix32absi(pos.z - epos.z)) {
+            if (reach < fix32abs(pos.z - epos.z)) {
                 continue;
             }
         }
@@ -127,7 +127,7 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
         _Z10SetFlag0x1Pj(e);
         _Z21ClearActiveChildStatePc(e);
         if (info->linkKey != 0) {
-            Entry021a4e88* link = _Z29FindEntryPointerByKey0203df78Pvi(list, info->linkKey);
+            Entry021a4e88* link = FindEntryPointerByKey0203df78(list, info->linkKey);
             if (link != NULL) {
                 _Z10SetFlag0x1Pj(link);
                 _Z21ClearActiveChildStatePc(link);
@@ -140,7 +140,7 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
         if (_Z30CheckSubstructByte0x7cPositivePa(obj)) {
             continue;
         }
-        int angle = (short)_Z8fix32absi(GetAngleToEntry(&pos, (short)rot.y, e));
+        int angle = (short)fix32abs(GetAngleToEntry(&pos, (short)rot.y, e));
         if (angle > best) {
             continue;
         }
