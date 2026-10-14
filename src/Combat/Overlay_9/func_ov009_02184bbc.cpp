@@ -11,9 +11,6 @@
 #endif
 
 
-#if defined(jpn)
-#define func_ov023_021da274 func_ov023_021daa30
-#endif
 struct Cont0205d1e0;
 struct Cont0205d228;
 struct Cont0205d274;
@@ -22,7 +19,11 @@ void ClearBuffers0204b010OverList0x98(Cont0205d1e0*);
 void CallFunc0204c8f0OverList0x9c(Cont0205d228*);
 void CallFunc0204b04cOverList0x98(Cont0205d274*);
 
+#if defined(jpn)
+extern "C" void func_ov023_021da274(CharacterCreationUI* obj);
+#else
 extern "C" void func_ov023_021da274(void* obj);
+#endif
 #if defined(jpn)
 extern "C" void func_ov023_021da770(CharacterCreationUI* obj);
 #else
@@ -42,7 +43,11 @@ extern "C" ARM void func_ov009_02184bbc(void* objRaw) {
         return;
     }
 
+#if defined(jpn)
+    func_ov023_021da274((CharacterCreationUI*)objRaw);
+#else
     func_ov023_021da274(obj);
+#endif
 #if defined(jpn)
     func_ov023_021da770((CharacterCreationUI*)objRaw);
 #else
