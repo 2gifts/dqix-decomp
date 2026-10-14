@@ -37,11 +37,6 @@ extern "C" void _Z12Init0205a198P14Struct0205a198(struct Struct0205a198* p);
 extern "C" void _Z18InitStruct0205a444Pc(char* obj);
 
 extern "C" int _Z26FormatAndCopyNames02020b98Pv(void* obj);
-#if defined(jpn)
-extern "C" void func_02020c18(char* obj, int handle, SafeAllocator* alloc);
-#else
-extern "C" void func_02020c18(char* obj, int* handle, SafeAllocator* alloc);
-#endif
 extern "C" void _Z20ClearRecords02026644Pc(char* obj);
 #if defined(jpn)
 extern "C" void func_020211b0(char* obj, int handle);
@@ -201,9 +196,9 @@ extern "C" ARM void func_02021578(MapDisplay* self) {
             return;
         }
 #if defined(jpn)
-        func_02020c18((char*)self, self->namesTask, alloc);
+        func_02020c18(self, self->namesTask, alloc);
 #else
-        func_02020c18((char*)self, &self->namesTask, alloc);
+        func_02020c18(self, &self->namesTask, alloc);
 #endif
         if (self->refreshRecords != 0) {
             self->field9b8 = 1;

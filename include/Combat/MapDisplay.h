@@ -192,3 +192,4 @@ extern "C" void func_02020720(MapDisplay* self);
 // The caller supplies its display context; this global screen setup does not read it.
 extern "C" void func_02020838(MapDisplay* unusedContext);
 extern "C" void func_02020aec(MapDisplay* self, MapDisplayTaskHandle handle, SafeAllocator* allocator);
+extern "C" void func_02020c18(MapDisplay* self, MapDisplayTaskHandle handle, SafeAllocator* allocator);

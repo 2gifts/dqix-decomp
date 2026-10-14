@@ -25,7 +25,6 @@ extern "C" void func_0203ba74(void* obj);
 void DelayThenSyncBit0(void);
 void FinalizeRecordListDisplay02020cb8(void* self, int* handle);
 void RefreshRecordListDisplay02020e58(void* self, int* handle);
-extern "C" void func_02020c18(char* obj, int* handle, SafeAllocator* alloc);
 void CopyStringOrDefault02026428(void* obj, const char* name);
 void SetEventStringAndAccumulateLength02026470(void* obj, int flag);
 struct Struct0205a198;
@@ -112,7 +111,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         int status = loader->GetTaskStatus(self->namesTask);
         if (status == 0) return;
         if (status > 0) {
-            func_02020c18((char*)self, &self->namesTask, alloc);
+            func_02020c18(self, &self->namesTask, alloc);
         } else {
             BackgroundLoader::GetInstance()->RemoveTask(self->namesTask);
             self->namesTask = -1;
@@ -165,4 +164,3 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
     }
 }
 #endif
-

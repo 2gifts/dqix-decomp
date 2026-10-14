@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/CombatantRecovery.h"
 #include "GameState/GameState.h"
 
 struct ArrayContainsByteStruct;
@@ -29,25 +30,8 @@ struct Msg021d2d64 {
     Entry021d2d64 entry;
 };
 
-struct Hp021d2d64 {
-    char pad0[4];
-    unsigned short hp;
-    unsigned short mp;
-};
 
-struct Max021d2d64 {
-    char pad0[0x30];
-    unsigned short maxHp;
-    unsigned short maxMp;
-};
 
-struct Unit021d2d64 {
-    char pad0[4];
-    short id;
-    char pad6[0x130 - 6];
-    Hp021d2d64* cur;
-    Max021d2d64* max;
-};
 
 struct Leader021d2d64 {
     Object3D obj;
@@ -98,7 +82,6 @@ int GetByte0x150Bit6(BitFlags020d805c* obj);
 extern "C" int _Z31TestFlagBit55dIfActive_0218b628i(signed char bit);
 extern "C" void func_ov017_0218b5c0(int set, signed char bit);
 extern "C" void _Z32SetIndexedFieldsIfValid_02191ba0Pcit(char* res, int id, int value);
-extern "C" void _Z21ClearFieldBit02053fe4P9T02053fe4(void* obj, int field, int flag);
 extern "C" void _Z19InitContext020e1154Pv(void* obj);
 int TryClearFlags0x130(unsigned char* obj, unsigned short flag);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
@@ -186,15 +169,15 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                 if (reset->state >= 3) ok = 0;
                 int id = local.ids[i];
                 Msgs021d2d64 msgs = data_ov017_021d6ce8.msgs;
-                Unit021d2d64* unit = (Unit021d2d64*)GetCombatantWithFlag0x100(gs, id);
+                GameObject* unit = GetCombatantWithFlag0x100(gs, id);
                 if (unit == 0) continue;
                 saved = _Z31TestFlagBit55dIfActive_0218b628i(id);
                 if (ok) func_ov017_0218b5c0(0, id);
                 Val021d2d64* v = &local.vals[i];
                 int shown = 0;
                 if (local.type == 1) {
-                    int max = unit->max->maxHp;
-                    int value = unit->cur->hp;
+                    int max = unit->baseStats_->primaryStats.maxHP;
+                    int value = unit->combatFields_.savedState_130_->hp;
                     int sum = value + v->lo;
                     int delta;
                     if (sum >= max) {
@@ -202,15 +185,15 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                     } else {
                         delta = sum - value;
                     }
-                    unit->cur->hp = value + delta;
+                    unit->combatFields_.savedState_130_->hp = value + delta;
                     v->lo = delta;
                     if (delta > 0) {
                         msgs.v[0] = 0x232c;
                         shown = 1;
                     }
                 } else if (local.type == 2) {
-                    int max = unit->max->maxMp;
-                    int value = unit->cur->mp;
+                    int max = unit->baseStats_->primaryStats.maxMP;
+                    int value = unit->combatFields_.savedState_130_->mp;
                     int sum = value + v->lo;
                     int delta;
                     if (sum >= max) {
@@ -218,7 +201,7 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                     } else {
                         delta = sum - value;
                     }
-                    unit->cur->mp = value + delta;
+                    unit->combatFields_.savedState_130_->mp = value + delta;
                     v->lo = delta;
                     if (delta > 0) {
                         msgs.v[0] = 0x795f;
@@ -229,7 +212,7 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                     if (ListContainsId(list, 0x1a) && ((Revive021d2d64*)res->unknown_ptr_array_3afc[4])->busy != 0) {
                         canRevive = 0;
                     }
-                    if ((int)unit->cur->hp > 0 || v->lo == 0 || canRevive == 0) {
+                    if ((int)unit->combatFields_.savedState_130_->hp > 0 || v->lo == 0 || canRevive == 0) {
                         v->lo = 0;
                     } else {
                         Leader021d2d64* l = (Leader021d2d64*)gs->GetUnknownGameObject();
@@ -237,9 +220,9 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                             _Z32SetIndexedFieldsIfValid_02191ba0Pcit((char*)res, id, v->lo);
                             shown = 0;
                         } else {
-                            _Z21ClearFieldBit02053fe4P9T02053fe4(unit, v->lo, 1);
-                            if (unit->max->maxHp < v->lo) {
-                                v->lo = unit->max->maxHp;
+                            ClearFieldBit02053fe4(unit, v->lo, 1);
+                            if (unit->baseStats_->primaryStats.maxHP < v->lo) {
+                                v->lo = unit->baseStats_->primaryStats.maxHP;
                             }
                             shown = 1;
                             if (ListContainsId(list, 0x1a)) {
@@ -281,12 +264,12 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                         func_02046380(g);
                         char who[0xc];
                         _Z20Clear12Bytes020e46c4Pv(who);
-                        _Z30InitObjFromCombatantId020e4bf4Pvi(who, unit->id);
+                        _Z30InitObjFromCombatantId020e4bf4Pvi(who, unit->obj3D_.unknown_4_);
                         *(char**)((char*)g + 0x10) = who;
                         SetByteInRange((unsigned char*)g, 0, 0);
                         StoreInArray0x8b0((StoreStruct*)g, 0, v->lo);
                         SetByteInRange((unsigned char*)g, 9, 0);
-                        StoreInArray0x8b0((StoreStruct*)g, 9, unit->id);
+                        StoreInArray0x8b0((StoreStruct*)g, 9, unit->obj3D_.unknown_4_);
                         char out[0x80];
                         __clear(out, 0x80);
                         func_02046608(g, 0xc, text, out, 0xe3, 0, 1);

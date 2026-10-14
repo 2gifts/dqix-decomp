@@ -38,10 +38,8 @@ extern "C" int LoadToSubObjVRAM(int, int, unsigned int);
 extern "C" void _Z26InitFourEntrySlots02020aa0Pv(void* obj);
 extern "C" void func_02027974(void* obj, int a, void* b);
 #if defined(jpn)
-extern "C" void func_02020c18(char* obj, int handle, SafeAllocator* alloc);
 extern "C" void func_02020fc4(void* obj, int handle, SafeAllocator* alloc);
 #else
-extern "C" void func_02020c18(char* obj, int* handle, SafeAllocator* alloc);
 extern "C" void func_02020fc4(void* obj, int* handle, SafeAllocator* alloc);
 #endif
 extern "C" void func_020210f8(char* obj, int* handle, SafeAllocator* alloc);
@@ -247,9 +245,9 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
             self->field754 = node;
         } else {
 #if defined(jpn)
-            func_02020c18((char*)self, self->namesTask, alloc);
+            func_02020c18(self, self->namesTask, alloc);
 #else
-            func_02020c18((char*)self, &self->namesTask, alloc);
+            func_02020c18(self, &self->namesTask, alloc);
 #endif
         }
         loader->AddFence();
@@ -336,4 +334,3 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         func_02026bdc(self, 0);
     }
 }
-

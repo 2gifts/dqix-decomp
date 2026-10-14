@@ -1,16 +1,13 @@
 #include <globaldefs.h>
+#include "Combat/CombatantRecovery.h"
 #include "GameState/GameState.h"
 
 struct PartySlots { char pad0[0xf78]; signed char ids[4]; unsigned char count; };
-struct RecoveryValues { unsigned int flags; unsigned short hp; unsigned short mp; };
-struct MaximumValues { char pad0[0x30]; unsigned short hp; unsigned short mp; };
-struct PartyCombatant { char pad0[0x130]; RecoveryValues* values; MaximumValues* maximum; };
 struct BattleContext { int field0; void* controller; };
 extern BattleContext data_ov017_021d82e0;
 void CopyByteField0x253To0x252(void*);
 unsigned char GetByteField0x252(void*);
 unsigned char GetField0x397cValue(GameState*);
-extern "C" void _Z21ClearFieldBit02053fe4P9T02053fe4(void* obj, int field, int flag);
 void TryClearFlags0x130(unsigned char*, unsigned short);
 extern "C" void func_ov017_021c9e00(int, int, int, int);
 extern "C" void func_ov017_02191108(void*, int, int, int, int);
@@ -31,24 +28,24 @@ extern "C" ARM void func_ov017_0218d2f0(unsigned char revive, unsigned char cure
     }
     for (unsigned char i = 0; i < count; ++i) {
         short index = party->ids[i];
-        PartyCombatant* combatant = (PartyCombatant*)GetCombatantWithFlag0x100(game, index);
+        GameObject* combatant = GetCombatantWithFlag0x100(game, index);
         if (!combatant || (!all && index != GetField0x397cValue(game))) continue;
         if (revive) {
-            if (combatant->values->flags & 1) {
-                _Z21ClearFieldBit02053fe4P9T02053fe4(combatant, 1, 1);
+            if (combatant->combatFields_.savedState_130_->flags & 1) {
+                ClearFieldBit02053fe4(combatant, 1, 1);
                 TryClearFlags0x130((unsigned char*)combatant, 1);
             }
         }
-        if (cure && !(combatant->values->flags & 1)) {
-            if (combatant->values->flags) combatant->values->flags &= 4;
+        if (cure && !(combatant->combatFields_.savedState_130_->flags & 1)) {
+            if (combatant->combatFields_.savedState_130_->flags) combatant->combatFields_.savedState_130_->flags &= 4;
         }
-        if (amount && !(combatant->values->flags & 1)) {
-            int hp = combatant->values->hp + amount;
-            if (combatant->maximum->hp < hp) hp = combatant->maximum->hp;
-            combatant->values->hp = hp;
-            hp = combatant->values->mp + amount;
-            if (combatant->maximum->mp < hp) hp = combatant->maximum->mp;
-            combatant->values->mp = hp;
+        if (amount && !(combatant->combatFields_.savedState_130_->flags & 1)) {
+            int hp = combatant->combatFields_.savedState_130_->hp + amount;
+            if (combatant->baseStats_->primaryStats.maxHP < hp) hp = combatant->baseStats_->primaryStats.maxHP;
+            combatant->combatFields_.savedState_130_->hp = hp;
+            hp = combatant->combatFields_.savedState_130_->mp + amount;
+            if (combatant->baseStats_->primaryStats.maxMP < hp) hp = combatant->baseStats_->primaryStats.maxMP;
+            combatant->combatFields_.savedState_130_->mp = hp;
         }
         func_ov017_021c9e00(index, 1, 0, 1);
         func_ov017_02191108(data_ov017_021d82e0.controller, 1, 1, 1, 1);
