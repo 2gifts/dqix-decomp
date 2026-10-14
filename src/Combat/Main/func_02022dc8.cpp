@@ -1,5 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Combat/MapDisplay.h"
+#include "Combat/CombatantRecovery.h"
 
 struct State_1f9b8 {
     int hp;
@@ -16,32 +18,23 @@ struct State_1f9b8 {
     unsigned char field_0x1f;
 };
 struct Stopwatch0201f9e8 { unsigned char fields[0x14]; };
-struct CombatStats02022dc8 { int status; unsigned short hp; unsigned short mp; };
-struct CurrentStats02022dc8 { unsigned char field_0x0[0x30]; unsigned short hp; unsigned short mp; };
-struct CombatData02022dc8 { unsigned char field_0x0[0x950]; int index; };
-struct PartyMember02022dc8 {
-    unsigned char field_0x0[0x130];
-    CombatStats02022dc8* stats;
-    CurrentStats02022dc8* current;
-    unsigned char field_0x138[0x18];
-    CombatData02022dc8* data;
-    unsigned char field_0x154[0x38];
-    unsigned int flags;
+struct CombatData02022dc8 {
+#if defined(jpn)
+    unsigned char unknown[0x8b8];
+#else
+    unsigned char unknown[0x950];
+#endif
+    int index;
 };
-struct CombatReceiver02022dc8 {
-    unsigned char field_0x0[0x55d];
-    unsigned char memberMask;
-    unsigned char field_0x55e[0x1fa];
-    unsigned char memberIndices[4];
-    unsigned char memberCount;
-    unsigned char field_0x75d[7];
-    unsigned char field_0x764;
-    unsigned char field_0x765[0x253];
-    unsigned char queued;
-    unsigned char field_0x9b9[0xa];
-    unsigned char active;
-    unsigned char field_0x9c4;
-    unsigned char field_0x9c5;
+struct PartyMember02022dc8 : GameObject {
+#if defined(jpn)
+    unsigned char unknown13c[0x144 - 0x13c];
+#else
+    unsigned char unknown13c[0x150 - 0x13c];
+#endif
+    CombatData02022dc8* data;
+    unsigned char unknownAfterData[0x38];
+    unsigned int recoveryFlags;
 };
 struct FlagWord02046708;
 struct Obj020214f0;
@@ -52,35 +45,39 @@ extern "C" void InitStopwatch0201f9e8(Stopwatch0201f9e8*);
 unsigned short GetTableValue(void*);
 extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v(void);
 extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708*, unsigned int);
-extern "C" void func_02022bb0(CombatReceiver02022dc8*);
-extern "C" void func_020e0688(CombatReceiver02022dc8*);
+#if defined(jpn)
+extern "C" void func_02022644(MapDisplay*);
+#else
+extern "C" void func_02022bb0(MapDisplay*);
+#endif
+extern "C" void func_020e0688(MapDisplay*);
 extern "C" void _Z25HandleQueuedEntry02026694Pc(char*);
 extern "C" void _Z27HandleStateDispatch020214f0P11Obj020214f0(Obj020214f0*);
-extern "C" void func_02026bdc(CombatReceiver02022dc8*, int);
+extern "C" void func_02026bdc(MapDisplay*, int);
 
 // USA: func_02022dc8
-extern "C" ARM void func_02022dc8(CombatReceiver02022dc8* receiver) {
+extern "C" ARM void func_02022dc8(MapDisplay* receiver) {
     GameState* game = GameState::GetInstance();
     for (int i = 0; i < 4; ++i) {
         if (!game->GetPartyMemberByIndex(i)) _Z19InitStruct_0201f9b8P11State_1f9b8(&data_020fdcb0[i]);
     }
-    int memberCount = receiver->memberCount;
+    int memberCount = receiver->field75c;
     if (memberCount) {
         for (int i = memberCount; i < 4; ++i) InitStopwatch0201f9e8(&data_020fdc60[i]);
     }
-    for (int i = 0; i < receiver->memberCount; ++i) {
-        int index = receiver->memberIndices[i];
+    for (int i = 0; i < receiver->field75c; ++i) {
+        int index = receiver->flags758[i];
         unsigned char mask = 1 << index;
         State_1f9b8* state = &data_020fdcb0[index];
         PartyMember02022dc8* member = (PartyMember02022dc8*)game->GetPartyMemberByIndex(index);
-        if (!member || !(receiver->memberMask & mask)) continue;
-        int hp = member->stats->hp;
-        int currentHP = member->current->hp;
-        int mp = member->stats->mp;
-        int currentMP = member->current->mp;
+        if (!member || !(receiver->mask55d & mask)) continue;
+        int hp = member->combatFields_.savedState_130_->hp;
+        int currentHP = member->baseStats_->primaryStats.maxHP;
+        int mp = member->combatFields_.savedState_130_->mp;
+        int currentMP = member->baseStats_->primaryStats.maxMP;
         int valueIndex = member->data->index;
         unsigned char value = GetTableValue(member);
-        int status = member->stats->status;
+        int status = member->combatFields_.savedState_130_->flags;
         state->stateChanged |= state->index != valueIndex;
         state->stateChanged |= state->tableValue != value;
         state->stateChanged |= state->status != status;
@@ -98,18 +95,22 @@ extern "C" ARM void func_02022dc8(CombatReceiver02022dc8* receiver) {
         state->index = valueIndex;
         state->tableValue = value;
         state->status = status;
-        if (state->hp > 0) member->flags &= ~1;
+        if (state->hp > 0) member->recoveryFlags &= ~1;
         if (state->reset) {
             state->statsChanged = 0;
             state->reset = 0;
         }
     }
     if (_Z17TestFlags02046708P16FlagWord02046708j(_Z27GetDataPtr02114e04_020d6c00v(), 1)) {
+#if defined(jpn)
+        func_02022644(receiver);
+#else
         func_02022bb0(receiver);
+#endif
     } else {
-        if (receiver->field_0x9c5 && receiver->field_0x764) func_020e0688(receiver);
-        if (receiver->queued) _Z25HandleQueuedEntry02026694Pc((char*)receiver);
-        if (receiver->active) _Z27HandleStateDispatch020214f0P11Obj020214f0((Obj020214f0*)receiver);
+        if (receiver->field9c5 && receiver->field764) func_020e0688(receiver);
+        if (receiver->field9b8) _Z25HandleQueuedEntry02026694Pc((char*)receiver);
+        if (receiver->field9c3) _Z27HandleStateDispatch020214f0P11Obj020214f0((Obj020214f0*)receiver);
         else func_02026bdc(receiver, 1);
     }
 }

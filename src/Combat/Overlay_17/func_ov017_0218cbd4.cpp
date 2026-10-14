@@ -6,7 +6,6 @@
 #include "World/Zone3D.h"
 
 #if defined(jpn)
-#define func_02022dc8 func_02022848
 #define func_ov017_021a624c func_ov017_021a6c40
 #define func_02011b68 func_020118e0
 #define func_ov017_02196430 func_ov017_02196ff8

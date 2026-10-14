@@ -18464,3 +18464,12 @@ src/Combat/Main/func_020e0574.cpp:
     complete
     .text start:0x020e21e8 end:0x020e2240
 
+
+src/Combat/Main/func_02022dc8.cpp:
+    complete
+    .text start:0x02022848 end:0x02022ae4
+
+src/Filesystem/LoadSelectedTextEntries.cpp:
+    complete
+    .text start:0x020e1fc4 end:0x020e203c
+
