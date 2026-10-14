@@ -10,7 +10,8 @@ struct Element020e545c;
 typedef void (*ElementCallback020e545c)(ElementList020e545c*, Element020e545c*);
 int InvokeCallbackPerElement020e545c(ElementList020e545c* list, ElementCallback020e545c callback);
 
-extern "C" extern void _Z22RemapBothPointerFieldsPvP12Pair020e5204(void* a, void* b);
+struct Pair020e5204;
+void RemapBothPointerFields(void* a, Pair020e5204* b);
 
 struct List020e5604 {
     unsigned int field0;
@@ -42,9 +43,9 @@ extern "C" ARM int func_020e5604(struct List020e5604* self, SafeAllocator* alloc
     if (self->field8) {
         memcpy(self->field8, src + (GetField0Low12Times16020e544c((Header020e544c*)self) + 4), size2);
     }
-    if ((void*)_Z22RemapBothPointerFieldsPvP12Pair020e5204 != 0) {
+    if ((void*)RemapBothPointerFields != 0) {
         InvokeCallbackPerElement020e545c((ElementList020e545c*)self,
-            (ElementCallback020e545c)_Z22RemapBothPointerFieldsPvP12Pair020e5204);
+            (ElementCallback020e545c)RemapBothPointerFields);
     }
     self->field0 = (self->field0 & ~0x80000000) | 0x80000000;
     return 1;

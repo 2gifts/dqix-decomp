@@ -3,10 +3,12 @@
 #include "std_library_functions.h"
 
 #if defined(jpn)
-#define _Z35NotifyLocalizedResourceLoad020dcfc8iPc func_020de9cc
+extern "C" void func_020de9cc(int id, char* buf);
+#define NotifyLocalizedResourceLoad020dcfc8 func_020de9cc
+#else
+void NotifyLocalizedResourceLoad020dcfc8(int id, char* buf);
 #endif
 int GetGlobalField0x1c020421a0();
-extern "C" void _Z35NotifyLocalizedResourceLoad020dcfc8iPc(int id, char* buf);
 extern "C" void func_02046608(int a, int b, void* fmt, void* dst, int p4, int p5, int p6);
 struct Struct_0205d81c;
 struct Elem_0205d81c;
@@ -39,7 +41,7 @@ extern "C" ARM void func_ov000_021781f8(char* obj, struct InStruct_021781f8* in)
 #endif
     char* buf = *(char**)(GetGlobalField0x1c020421a0() + textOffset);
     memset(buf, 0, textSize);
-    _Z35NotifyLocalizedResourceLoad020dcfc8iPc(*(short*)(obj + 0x26 + *(signed char*)(obj + cursorOffset) * 2), buf);
+    NotifyLocalizedResourceLoad020dcfc8(*(short*)(obj + 0x26 + *(signed char*)(obj + cursorOffset) * 2), buf);
 #if !defined(jpn)
     func_02046608(GetGlobalField0x1c020421a0(), 0xa, buf, text, 0x72, 0, 0);
 #endif

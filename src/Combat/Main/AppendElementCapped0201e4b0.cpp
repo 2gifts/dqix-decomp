@@ -1,36 +1,16 @@
 #include <globaldefs.h>
-
-struct Inner0201e4b0 {
-    unsigned int v[6];
-};
-
-struct Pair0201e4b0 {
-    unsigned int v[2];
-};
-
-struct Elem0201e4b0 {
-    struct Inner0201e4b0 blk;
-    struct Pair0201e4b0 mid;
-    short f20;
-};
-
-struct List0201e4b0 {
-    char unk[0xc];
-    struct Elem0201e4b0* data;
-    int count;
-    int capacity;
-};
+#include "World/ZoneFeatures.h"
 
 // USA: func_0201e4b0
-extern "C" ARM void _ZN12ZoneFeatures28CreateOpcode66Entry_0201e4b0ERKNS_13Opcode66EntryE(struct List0201e4b0* list, struct Elem0201e4b0* src) {
-    int count = list->count;
-    struct Elem0201e4b0* dst;
-    if (count >= list->capacity) {
+ARM void ZoneFeatures::CreateOpcode66Entry_0201e4b0(const Opcode66Entry& source) {
+    int count = arraySize66_;
+    Opcode66Entry* dst;
+    if (count >= arrayCapacity66_) {
         return;
     }
-    dst = &list->data[count];
-    dst->blk = src->blk;
-    dst->mid = src->mid;
-    dst->f20 = src->f20;
-    list->count++;
+    dst = &entries66_[count];
+    COPY_ARRAY(dst->unk_0, source.unk_0);
+    COPY_ARRAY(dst->unk_18, source.unk_18);
+    dst->unk_20 = source.unk_20;
+    arraySize66_++;
 }

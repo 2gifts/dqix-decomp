@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Graphics/itcm/VRAMStaging.h"
 
 extern "C" int func_0204027c(void* list, int a, int b, int c, int d);
 extern "C" int func_020bb588(int a, int b, int c);
@@ -10,7 +11,7 @@ struct List02040468;
 struct Element0203f02c {
     char pad0[0x1c];
     int field0x1c;
-    int field0x20;
+    void* field0x20;
     int field0x24;
     char pad1[0xc];
     int field0x34;
@@ -18,7 +19,8 @@ struct Element0203f02c {
 struct Element0203f02c* GetValidElement02040468(struct List02040468* list, int index);
 
 int CancelVRAMStagingOperation(int value);
-extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
+int StageMemoryToVRAM(VRAMSubregion subregion, const void* data, unsigned int offset,
+    unsigned int length, bool highPriority, bool allocateStagingSpace);
 
 struct Obj0203f02c {
     struct List02040468* list;
@@ -47,7 +49,7 @@ ARM void UpdateElementStream0203f02c(struct Obj0203f02c* obj, int param1, int pa
         int v = func_020bb588(element->field0x34, 0, 0);
         obj->field0x4c = ((unsigned int)v << 16) >> 13;
         CancelVRAMStagingOperation(obj->field0x5a);
-        obj->field0x5a = _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(0, element->field0x20, element->field0x24, element->field0x1c << 1, 0, 0);
+        obj->field0x5a = StageMemoryToVRAM(VRAMSubregion_TexturePalette, element->field0x20, element->field0x24, element->field0x1c << 1, false, false);
     }
 
     BackupPairTables0207dfac(param3);

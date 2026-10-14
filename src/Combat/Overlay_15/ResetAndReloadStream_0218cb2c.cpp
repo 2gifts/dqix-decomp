@@ -21,21 +21,9 @@ struct Container02037364;
 
 extern "C" void* __clear(void* dst, int count);
 void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outLen);
-extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
 
 struct Struct_203dafc;
 void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
-
-struct Params02036804 {
-    int flag;
-    void* data;
-    unsigned int size;
-    void* alloc;
-    int one;
-    int pad18;
-    int pad1c;
-    int pad20;
-};
 
 extern char data_ov015_02194078;
 extern int data_0211e33c;
@@ -60,14 +48,14 @@ extern "C" ARM void func_ov015_0218cb2c(void* self, int val) {
         void* buffer = LoadFileIntoMemory(buf, &data_0211e33c, &length);
 
         if (buffer != 0) {
-            struct Params02036804 params;
+            ObjectArchiveLoadInfo params;
             ClearEightWords_0203dafc((struct Struct_203dafc*)&params);
-            params.alloc = &allocator;
-            params.data = &data_0211e33c;
-            params.size = length;
-            params.one = 1;
-            params.pad20 = 3;
-            _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(*(void**)(base + 0x24), &params, 0);
+            params.allocator = &allocator;
+            params.fileData = &data_0211e33c;
+            params.unk_8 = length;
+            params.unk_10 = 1;
+            params.packageID = 3;
+            ((Object3D*)(*(void**)(base + 0x24)))->LoadFromCCHROrCMOTArchive(&params, 0);
         }
 
         BackgroundLoader::RemoveLockGlobal();

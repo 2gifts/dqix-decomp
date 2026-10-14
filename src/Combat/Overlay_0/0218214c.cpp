@@ -1,9 +1,10 @@
 #include <globaldefs.h>
 #include "World/ZoneLootableRecord.h"
 #include "Filesystem/FileIO.h"
+#include "GameState/GameState.h"
 
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
-extern "C" unsigned char _Z24NormalizeField5_0200fb08P14Struct0200fb08(void* obj);
+struct Struct0200fb08;
+int NormalizeField5_0200fb08(Struct0200fb08*);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 extern "C" void func_02047b40(Foo02048004* sprite, const void* file, SafeAllocator* allocator);
 
@@ -94,7 +95,7 @@ extern "C" ARM void func_ov000_0218214c(Foo02048004* comboSprites, SafeAllocator
     int i;
     int j;
     int skip;
-    unsigned char mode = _Z24NormalizeField5_0200fb08P14Struct0200fb08(_ZN9GameState11GetInstanceEv());
+    int mode = NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance());
     int count;
 
     skip = 2;

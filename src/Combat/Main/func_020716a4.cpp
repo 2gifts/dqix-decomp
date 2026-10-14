@@ -10,19 +10,13 @@ struct Variant02030b0c {
 extern "C" void* func_0205ec34(void);
 extern "C" void func_0206dfe8(void* p, int a, int b);
 
-extern "C" void _Z20ClearRegions0206e080Pci(void* obj, int slot);
-#define _Z20ClearRegions0206e080Pci _Z20ClearRegions0206e080Pci
-extern "C" void _Z31ClearIndexedEntryFields0206e0d0Pci(void* obj, int slot);
-#define _Z31ClearIndexedEntryFields0206e0d0Pci _Z31ClearIndexedEntryFields0206e0d0Pci
+void ClearRegions0206e080(char* obj, int slot);
+void ClearIndexedEntryFields0206e0d0(char* obj, int slot);
 void SetOrClearBitInArray_0206df6c(void* obj, unsigned char* arr, int idx, int flag);
-#define SetOrClearBitInArray_0206df6c SetOrClearBitInArray_0206df6c
 
 void SetField5cb0AndRecordByte0_02010774(char* obj, int v);
-#define SetField5cb0AndRecordByte0_02010774 SetField5cb0AndRecordByte0_02010774
 void SetField5cb4AndRecordByte1_020107a8(char* obj, int v);
-#define SetField5cb4AndRecordByte1_020107a8 SetField5cb4AndRecordByte1_020107a8
 void SetSlotByte020107dc(char* base, int val);
-#define SetSlotByte020107dc SetSlotByte020107dc
 
 struct MsgQueueState02108d70 {
     unsigned char forceFlag;
@@ -68,8 +62,8 @@ extern "C" ARM int func_020716a4(struct Variant02030b0c* args, int count) {
     SetSlotByte020107dc((char*)bs, c);
 
     entry = func_0205ec34();
-    _Z20ClearRegions0206e080Pci(entry, *(unsigned char*)((char*)entry + 0x332));
-    _Z31ClearIndexedEntryFields0206e0d0Pci(entry, *(unsigned char*)((char*)entry + 0x332));
+    ClearRegions0206e080((char*)entry, *(unsigned char*)((char*)entry + 0x332));
+    ClearIndexedEntryFields0206e0d0((char*)entry, *(unsigned char*)((char*)entry + 0x332));
     func_0206dfe8(entry, 0, 0x200);
     func_0206dfe8(entry, 0x38e, 0x3e8);
 

@@ -1,29 +1,18 @@
 #include <globaldefs.h>
+#include "Graphics/NSBXX/NSBXX.h"
+#include "Graphics/NSBXX/Animation.h"
 
-struct DispatchTarget020b78bc {
-    char pad0[4];
-    unsigned short field4;
-};
-
-struct DispatchArgs020b78bc {
-    int field0;
-    int pad4;
-    struct DispatchTarget020b78bc* field8;
-};
-
-struct BoneMatrixRenderData;
-struct NSBXXAnimationJAC;
-void CalculateBoneMatrixRenderDataFromJAC(NSBXXAnimationJAC*, int, int, BoneMatrixRenderData*);
+void CalculateBoneMatrixRenderDataFromJAC(NSBXXAnimationJAC* jac, int arg, fix32_t time, BoneMatrixRenderData* bmrd);
 
 // USA: func_020b78bc
-extern "C" ARM void _Z30JACAnimationProcessingCallbackPvP13AnimationDatai(int a0, struct DispatchArgs020b78bc* args, int a2) {
-    struct DispatchTarget020b78bc* target = args->field8;
-    int value = args->field0;
-    int limit = target->field4 << 12;
+ARM void JACAnimationProcessingCallback(void* a0, AnimationData* args, int a2) {
+    NSBXXAnimationJAC* target = (NSBXXAnimationJAC*)args->pRawData_;
+    fix32_t value = args->time_;
+    int limit = target->numFrames_ << 12;
     if (value >= limit) {
         value = limit - 1;
     } else if (value < 0) {
         value = 0;
     }
-    CalculateBoneMatrixRenderDataFromJAC((NSBXXAnimationJAC*)target, a2, value, (BoneMatrixRenderData*)a0);
+    CalculateBoneMatrixRenderDataFromJAC(target, a2, value, (BoneMatrixRenderData*)a0);
 }

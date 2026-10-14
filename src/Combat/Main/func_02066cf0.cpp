@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Graphics/VRAMStaging.h"
 
 struct CE28Obj;
 void LoadStateBytePair0206b804(char* obj, int* out1, int* out2);
@@ -25,9 +26,6 @@ void SetIntIntShortAt0xc_02066ce0(struct SetIntIntShortAt0xcStruct* s, int a, in
 void CallFunc0205c96cIfMode6AndFlag_02044530(char* obj, int flag);
 
 extern "C" void _Z15Forward02044830v(void* obj, int* lineX, int* lineY);
-int AllocateVRAMStagingMemory(unsigned int);
-extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
-int FreeVRAMStagingMemory(void const*);
 
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, int c, int d);
 extern "C" void* __clear(void* dst, int count);
@@ -35,7 +33,7 @@ extern "C" void func_02066a6c(void* obj, int flag);
 extern "C" void func_020e2110(void* target);
 extern "C" void func_020675fc(void* obj);
 extern "C" void func_020654b8(void* obj, int cfg, void* glyph, short x, short y, int flags);
-extern "C" void func_02045864(int x, int y, void* metrics, int staging, int p5, int p6, int p7, unsigned char table);
+extern "C" void func_02045864(int x, int y, void* metrics, void* staging, int p5, int p6, int p7, unsigned char table);
 extern "C" void func_020417b0(void* glyph, unsigned short font, void* palette, int alpha);
 extern "C" void func_0204459c(void* obj, int flag);
 extern "C" void func_020653e4(int a, int b);
@@ -251,7 +249,7 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
             }
         } else if (obj->toVram) {
             if (obj->field44 != obj->end) {
-                int staging = AllocateVRAMStagingMemory(0x3000);
+                void* staging = AllocateVRAMStagingMemory(0x3000);
                 if (staging != 0) {
                     unsigned char j;
                     int vramOffset = (int)(((unsigned int)*(int*)((char*)obj->texture + 0x50) << 16) >> 13);
@@ -276,8 +274,8 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
                         }
                     }
 
-                    _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(1, staging, vramOffset, 0x3000, 1, 0);
-                    FreeVRAMStagingMemory((void const*)staging);
+                    StageMemoryToVRAM(VRAMSubregion_TextureImage, staging, vramOffset, 0x3000, true, false);
+                    FreeVRAMStagingMemory(staging);
                 }
             }
         } else if (obj->target) {

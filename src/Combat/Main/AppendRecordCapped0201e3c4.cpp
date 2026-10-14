@@ -1,36 +1,17 @@
 #include <globaldefs.h>
-
-struct Name0201e3c4 {
-    char c[9];
-};
-
-struct Code0201e3c4 {
-    char c[5];
-};
-
-struct Elem0201e3c4 {
-    unsigned short id;
-    struct Name0201e3c4 name;
-    struct Code0201e3c4 code;
-};
-
-struct List0201e3c4 {
-    char unk[0x30];
-    struct Elem0201e3c4* data;
-    int count;
-    int capacity;
-};
+#include "World/ZoneFeatures.h"
+#include "std_library_functions.h"
 
 // USA: func_0201e3c4
-extern "C" ARM void _ZN12ZoneFeatures46CreateGrottoTileFeaturePlacementEntry_0201e3c4ERK24TileFeaturePlacementData(struct List0201e3c4* list, struct Elem0201e3c4* src) {
-    int count = list->count;
-    struct Elem0201e3c4* dst;
-    if (count >= list->capacity) {
+ARM void ZoneFeatures::CreateGrottoTileFeaturePlacementEntry_0201e3c4(const TileFeaturePlacementData& data) {
+    int count = grottoTileFeatureEntryCount_;
+    TileFeaturePlacementData* dst;
+    if (count >= grottoTileFeatureEntryCapacity_) {
         return;
     }
-    dst = &list->data[count];
-    dst->id = src->id;
-    dst->name = src->name;
-    dst->code = src->code;
-    list->count++;
+    dst = &grottoTileFeatureEntries_[count];
+    dst->tileID = data.tileID;
+    COPY_ARRAY(dst->directionBitmasks, data.directionBitmasks);
+    COPY_ARRAY(dst->tilename, data.tilename);
+    grottoTileFeatureEntryCount_++;
 }

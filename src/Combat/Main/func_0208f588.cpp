@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "World/Object3D.h"
+#include "Filesystem/FileIO.h"
 #if defined(jpn)
 #define data_020e8d54 data_020e8e70
 #endif
@@ -45,14 +46,13 @@ struct ArchivePath0208f588 {
 extern const struct ArchivePath0208f588 data_020e8d54;
 
 extern "C" struct Context02012fe4* func_02012fe4(void);
-extern "C" void* _Z25LoadFileIntoNewAllocationPKcR13SafeAllocatorPj(const char* path, void* allocator, unsigned int* outSize);
 struct ObjectArchiveLoadInfo;
 
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
 
 // USA: func_0208f588
-extern "C" ARM int func_0208f588(struct ArchiveHolder0208f588* self, void* allocator, char* pairObj) {
+extern "C" ARM int func_0208f588(struct ArchiveHolder0208f588* self, SafeAllocator* allocator, char* pairObj) {
     unsigned int size;
     struct ArchivePath0208f588 path;
     struct ObjectArchiveLoadInfo0208f588 info;
@@ -66,7 +66,7 @@ extern "C" ARM int func_0208f588(struct ArchiveHolder0208f588* self, void* alloc
     }
 
     path = data_020e8d54;
-    data = _Z25LoadFileIntoNewAllocationPKcR13SafeAllocatorPj(path.text, allocator, &size);
+    data = LoadFileIntoNewAllocation(path.text, *allocator, &size);
     if (data == 0) {
         return 0;
     }

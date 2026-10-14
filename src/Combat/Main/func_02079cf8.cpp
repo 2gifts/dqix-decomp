@@ -6,8 +6,10 @@
 
 extern "C" {
     void __clear(void*, unsigned int);
-    extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(GameState*);
 }
+
+struct Struct0200fb08;
+int NormalizeField5_0200fb08(Struct0200fb08*);
 
 struct Obj02079808;
 void* ResetObjectState02079a3c(void* obj);
@@ -41,7 +43,7 @@ extern "C" ARM void func_02079cf8(ActionDataTables* obj, SafeAllocator* a1, Safe
         char buf[0x20];
         __clear(buf, sizeof(buf));
 
-        int language = _Z24NormalizeField5_0200fb08P14Struct0200fb08(battle);
+        int language = NormalizeField5_0200fb08((Struct0200fb08*)battle);
         StringReplaceLanguageTag(data_020f0e17, buf, language);
 
         DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, base + len,

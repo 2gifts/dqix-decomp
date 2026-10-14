@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Graphics/itcm/VRAMStaging.h"
 
 struct List02040468;
 struct Element0203f370 {
@@ -19,12 +20,13 @@ struct Entry0203f370 {
     char pad1[2];
     void* records;
     int fieldC;
-    int field10;
+    const void* field10;
 };
 struct Entry0203f370* GetListElementByIndex(struct List_0203f354* list, unsigned int index);
 
 int CancelVRAMStagingOperation(int value);
-extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, int d, unsigned char e, unsigned char f);
+int StageMemoryToVRAM(VRAMSubregion subregion, const void* data, unsigned int offset,
+    unsigned int length, bool highPriority, bool allocateStagingSpace);
 
 struct Obj0203f370 {
     struct List02040468* list;
@@ -56,7 +58,7 @@ extern "C" ARM void func_0203f370(struct Obj0203f370* self) {
     if (entry == 0 || entry->records == 0 || entry->count4 == 0) return;
 
     CancelVRAMStagingOperation(self->field58);
-    self->field58 = _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(1, entry->field10, self->field4c, entry->fieldC, 0, 0);
+    self->field58 = StageMemoryToVRAM(VRAMSubregion_TextureImage, entry->field10, self->field4c, entry->fieldC, false, false);
     self->field44 = self->field30;
     self->field48 = self->field34;
 }

@@ -1,11 +1,9 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
-
+#include "Graphics/Vector.h"
 
 struct Flags0202ecfc;
 void ClearFlag0x1At0x168(struct Flags0202ecfc* p);
-extern "C" short _Z8fix32sini(int x);
-extern "C" short _Z8fix32cosi(int x);
 
 struct Block0202ecc8 { unsigned int v[12]; };
 struct Dst0202ecc8;
@@ -33,9 +31,9 @@ extern "C" ARM void func_ov000_0216d560(struct Obj0216d560* obj, int id) {
         struct Field50_0216d560 fieldB = *(struct Field50_0216d560*)((char*)c + 0x50);
         struct Table_0216d560 tbl;
         struct Block0202ecc8 block;
-        tbl.x = _Z8fix32sini(fieldB.y);
+        tbl.x = fix32sin(fieldB.y);
         tbl.y = 0;
-        tbl.z = _Z8fix32cosi(fieldB.y);
+        tbl.z = fix32cos(fieldB.y);
         func_ov000_0216d234(&tbl, &fieldA, &block);
         CopyBlockToField0xf0((struct Dst0202ecc8*)obj, &block);
     }

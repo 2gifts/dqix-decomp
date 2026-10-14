@@ -55,9 +55,11 @@ extern "C" void* memset(void* dst, int c, unsigned int n);
 SkillData* GetBoundedField156_02171674(void*, int);
 GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gs, int id);
 #if defined(jpn)
-#define _Z35NotifyLocalizedResourceLoad020dd040iPc func_020dea34
+extern "C" void func_020dea34(int id, char* buf);
+#define NotifyLocalizedResourceLoad020dd040 func_020dea34
+#else
+void NotifyLocalizedResourceLoad020dd040(int id, char* buf);
 #endif
-extern "C" void _Z35NotifyLocalizedResourceLoad020dd040iPc(int id, char* buf);
 extern "C" void func_02046608(GlobalData* messages, int a, const char* input, char* output, int b, int c, int d);
 extern "C" void func_02046380(GlobalData* messages);
 int IsFlag0x18Bit0x200Set_ov000_02153a8c(GameObject* obj);
@@ -109,7 +111,7 @@ extern "C" ARM void func_ov000_02178d28(MenuState* menu, UnitEntry* entry) {
 #if !defined(jpn)
     char textBuf[0x800];
 #endif
-    _Z35NotifyLocalizedResourceLoad020dd040iPc(skill->kind, buf);
+    NotifyLocalizedResourceLoad020dd040(skill->kind, buf);
 #if defined(jpn)
     text = buf;
 #else

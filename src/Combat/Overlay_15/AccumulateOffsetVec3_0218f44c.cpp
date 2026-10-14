@@ -1,8 +1,7 @@
 #include <globaldefs.h>
+#include "System/Matrix.h"
 
-struct Vec3 { int x; int y; int z; };
-extern "C" void Vector3fix_Add(struct Vec3* a, struct Vec3* b, struct Vec3* out);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vec3 : Vector3i {};
 
 extern "C" void __clear(void* ptr, int size);
 
@@ -19,35 +18,35 @@ struct Obj0218f44c {
 
 // USA: func_ov015_0218f44c
 ARM void AccumulateOffsetVec3_0218f44c(struct Obj0218f44c* obj, struct Vec3 accum) {
-    struct Vec3 local;
+    Vector3i local;
     __clear(&local, 0xc);
     switch (obj->mode) {
         case 0:
-            _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)obj->base + 0xf0));
+            local = *(Vector3i*)((char*)obj->base + 0xf0);
             Vector3fix_Add(&local, &accum, &local);
-            _ZN8Vector3iaSERKS_((int*)((char*)obj->base + 0xf0), (int*)&local);
-            _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)obj->base + 0x44));
+            *(Vector3i*)((char*)obj->base + 0xf0) = local;
+            local = *(Vector3i*)((char*)obj->base + 0x44);
             Vector3fix_Add(&local, &accum, &local);
-            _ZN8Vector3iaSERKS_((int*)((char*)obj->base + 0x44), (int*)&local);
+            *(Vector3i*)((char*)obj->base + 0x44) = local;
             break;
         case 1:
-            _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)&obj->base->arr[1] + 0x44));
+            local = *(Vector3i*)((char*)&obj->base->arr[1] + 0x44);
             Vector3fix_Add(&local, &accum, &local);
-            _ZN8Vector3iaSERKS_((int*)((char*)&obj->base->arr[1] + 0x44), (int*)&local);
-            _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)obj->base + 0xf0));
+            *(Vector3i*)((char*)&obj->base->arr[1] + 0x44) = local;
+            local = *(Vector3i*)((char*)obj->base + 0xf0);
             Vector3fix_Add(&local, &accum, &local);
-            _ZN8Vector3iaSERKS_((int*)((char*)obj->base + 0xf0), (int*)&local);
-            _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)obj->base + 0x3a0));
+            *(Vector3i*)((char*)obj->base + 0xf0) = local;
+            local = *(Vector3i*)((char*)obj->base + 0x3a0);
             Vector3fix_Add(&local, &accum, &local);
-            _ZN8Vector3iaSERKS_((int*)((char*)obj->base + 0x3a0), (int*)&local);
-            _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)obj->base + 0x44));
+            *(Vector3i*)((char*)obj->base + 0x3a0) = local;
+            local = *(Vector3i*)((char*)obj->base + 0x44);
             Vector3fix_Add(&local, &accum, &local);
-            _ZN8Vector3iaSERKS_((int*)((char*)obj->base + 0x44), (int*)&local);
+            *(Vector3i*)((char*)obj->base + 0x44) = local;
             break;
         default:
-            _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)obj->base + 0x44));
+            local = *(Vector3i*)((char*)obj->base + 0x44);
             Vector3fix_Add(&local, &accum, &local);
-            _ZN8Vector3iaSERKS_((int*)((char*)obj->base + 0x44), (int*)&local);
+            *(Vector3i*)((char*)obj->base + 0x44) = local;
             break;
     }
 }

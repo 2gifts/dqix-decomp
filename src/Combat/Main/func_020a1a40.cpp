@@ -3,12 +3,11 @@
 #include "Resource/ResourceMutex.h"
 #include "Filesystem/OverlayFSManagement.h"
 #include "Filesystem/FSInnerDefs.h"
+#include "Filesystem/FileAccessor.h"
 
 void DispatchByFlag020d9834(int flag);
 void NitroVM_Initialize(NitroVM* vm);
-extern "C" unsigned int _Z21LoadCompressedOverlayRK15OverlayMetadataP7NitroVM(const OverlayMetadata* overlay, NitroVM* machine);
-extern "C" void _Z18NitroVM_FinishReadP7NitroVM(NitroVM* vm);
-extern "C" void _Z36DecompressAndStaticInitializeOverlayRK15OverlayMetadata(const OverlayMetadata* overlay);
+void DecompressAndStaticInitializeOverlay(const OverlayMetadata& overlay);
 extern "C" int func_020a1ccc(unsigned int id);
 
 extern volatile int data_01ffd348;
@@ -29,7 +28,7 @@ extern "C" ARM int func_020a1a40(unsigned int id) {
     int cur;
     const OverlayMetadata* meta;
     NitroVM machine;
-    unsigned int ok;
+    bool ok;
     if (id < 0x23) {
         table = data_020e8f20;
         rowIdx = data_01ffd348;
@@ -44,7 +43,7 @@ extern "C" ARM int func_020a1a40(unsigned int id) {
             LockResourceMutex();
             meta = &data_01ffd394[id];
             NitroVM_Initialize(&machine);
-            ok = _Z21LoadCompressedOverlayRK15OverlayMetadataP7NitroVM(meta, &machine);
+            ok = LoadCompressedOverlay(*meta, &machine);
             UnlockResourceMutex();
             if (ok) {
                 result = 0;
@@ -55,8 +54,8 @@ extern "C" ARM int func_020a1a40(unsigned int id) {
                     DispatchByFlag020d9834(0);
                 }
                 LockResourceMutex();
-                _Z18NitroVM_FinishReadP7NitroVM(&machine);
-                _Z36DecompressAndStaticInitializeOverlayRK15OverlayMetadata(meta);
+                NitroVM_FinishRead(&machine);
+                DecompressAndStaticInitializeOverlay(*meta);
                 UnlockResourceMutex();
                 data_01ffd340 = 0;
                 if (data_01ffd344) {

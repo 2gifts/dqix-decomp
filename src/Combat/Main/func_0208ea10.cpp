@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
+#include "Filesystem/FileIO.h"
 #include "Resource/Script.h"
 
 #if defined(jpn)
@@ -19,9 +20,6 @@ extern "C" int rand(void);
 
 struct ResetStruct0208ea10;
 
-void* LoadFileIntoMemory(const char*, void*, unsigned int*);
-extern "C" void* _Z13GetFileInNarcPKvPKcPS0_Pjj(const void*, const char*, void**, void**, unsigned int);
-
 extern "C" void __clear(void*, int);
 extern "C" int sprintf(char*, const char*, ...);
 
@@ -29,7 +27,6 @@ extern int data_020f1308;
 extern char data_020f1330[];
 extern char data_020f134a[];
 extern char data_020f1356[];
-extern char data_0211e33c[];
 
 struct Fields0208ea10 {
     unsigned int low9 : 9;
@@ -55,7 +52,7 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
     char name[0x40];
     unsigned int fileLen;
     unsigned int size;
-    void* ptr;
+    const void* ptr;
 
     unsigned char* gs = (unsigned char*)GameState::GetInstance();
 
@@ -72,7 +69,7 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
     fileLen = 0;
 
     if (LoadFileIntoMemory(data_020f1330, data_0211e33c, &fileLen) != 0) {
-        if (_Z13GetFileInNarcPKvPKcPS0_Pjj(data_0211e33c, data_020f134a, (void**)&ptr, (void**)&size, 0) != 0) {
+        if (GetFileInNarc(data_0211e33c, data_020f134a, &ptr, &size, 0) != 0) {
             ((Script*)((struct ResetStruct0208ea10*)scriptFirst))->Initialize();
             ((Script*)((struct ResetStruct0208ea10*)scriptFirst))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f1308);
             ((Script*)((struct ResetStruct0208ea10*)scriptFirst))->Load(ptr, size);
@@ -84,7 +81,7 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
         for (i = 1; i <= 0x3f; i++) {
             sprintf(name, data_020f1356, i);
             fileLen = 0;
-            if (_Z13GetFileInNarcPKvPKcPS0_Pjj(data_0211e33c, name, (void**)&ptr, (void**)&size, 0) != 0) {
+            if (GetFileInNarc(data_0211e33c, name, &ptr, &size, 0) != 0) {
                 ((Script*)((struct ResetStruct0208ea10*)scriptLoop))->Initialize();
                 ((Script*)((struct ResetStruct0208ea10*)scriptLoop))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f1308);
                 ((Script*)((struct ResetStruct0208ea10*)scriptLoop))->Load(ptr, size);

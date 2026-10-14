@@ -83,7 +83,6 @@ void CopyInternalFields0207df50(Foo0207df50* p);
 extern "C" int func_02057e6c(void* mgr, int id, SafeAllocator* alloc, void* data, unsigned int length, Foo0207df50* fields);
 void CopyCountedBytesToIntArray02010834(Base02010834* base, int index, int* out, int* outCount);
 extern "C" int func_0202c508(void* p);
-extern "C" void _ZN8Vector3iaSERKS_(Vector3i* dst, const Vector3i& src);
 void FindNodeAndProcess02057fb4(void* list, int id, int params);
 void SetForwardAndStore0205ebc0(void* obj, int arg1, int arg2);
 void DispatchIfField0xc4NonNeg_0205ebfc(void* obj, int a, int b);
@@ -211,8 +210,8 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
                 params[k].b5 = 0;
                 params[k].b6 = 0;
                 params[k].b7 = 0;
-                _ZN8Vector3iaSERKS_(&params[k].position, ((Object3D*)member)->position_);
-                _ZN8Vector3iaSERKS_(&params[k].scale, ((Object3D*)member)->GetScale());
+                params[k].position = ((Object3D*)member)->position_;
+                params[k].scale = ((Object3D*)member)->GetScale();
                 FindNodeAndProcess02057fb4(mgr, 5, (int)&params[k]);
             }
         }

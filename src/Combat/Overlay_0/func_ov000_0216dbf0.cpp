@@ -1,52 +1,46 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 extern "C" void func_ov000_0216d370(char* obj, int flagA, int flagB, int flagC);
-extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" void* _ZN9GameState20GetGameObjectByIndexEi(void* gs, int id);
 void SetFlagOrState0216d530(void*, int);
-extern "C" int _ZNK8Object3D9GetRadiusEv(unsigned char* obj);
-extern "C" int _ZNK8Object3D9GetHeightEv(void* obj);
-extern "C" ARM int Vector3fix_Length(int* v);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 void ApplyVec3Tail_0202e694(void* obj, int* vec);
 
-struct Vec3_0216dbf0 { int x, y, z; };
-extern Vec3_0216dbf0 data_ov000_02183280;
+extern Vector3i data_ov000_02183280;
 
 // USA: func_ov000_0216dbf0
 extern "C" ARM void func_ov000_0216dbf0(char* self, int* ids, int count, short flag) {
     func_ov000_0216d370(self, 1, 1, 1);
     *(unsigned char*)(self + 0x220) = 3;
 
-    Vec3_0216dbf0 c = data_ov000_02183280;
-    Vec3_0216dbf0 v;
+    Vector3i c = data_ov000_02183280;
+    Vector3i v;
     v.x = 0x5e38;
 
-    void* gs = _ZN9GameState11GetInstanceEv();
+    GameState* gs = GameState::GetInstance();
 
     int dist = 0;
     int rad = 0;
     int hgt = 0x2000;
 
     if (count == 1) {
-        void* o = _ZN9GameState20GetGameObjectByIndexEi(gs, *ids);
+        GameObject* o = gs->GetGameObjectByIndex(*ids);
         if (o != 0) {
             SetFlagOrState0216d530(self, *ids);
-            rad = _ZNK8Object3D9GetRadiusEv((unsigned char*)o) >> 1;
-            hgt = _ZNK8Object3D9GetHeightEv(o);
+            rad = o->obj3D_.GetRadius() >> 1;
+            hgt = o->obj3D_.GetHeight();
         }
     } else {
         for (int i = 0; i < count; i++, ids++) {
-            void* o = _ZN9GameState20GetGameObjectByIndexEi(gs, *ids);
+            GameObject* o = gs->GetGameObjectByIndex(*ids);
             if (o != 0) {
-                Vec3_0216dbf0 pos = *(Vec3_0216dbf0*)((char*)o + 0x44);
-                int len = Vector3fix_Length((int*)&pos);
+                Vector3i pos = o->obj3D_.position_;
+                int len = Vector3fix_Length(&pos);
                 if (dist < len) {
                     dist = len;
-                    rad = _ZNK8Object3D9GetRadiusEv((unsigned char*)o) >> 1;
+                    rad = o->obj3D_.GetRadius() >> 1;
                 }
-                if (hgt < _ZNK8Object3D9GetHeightEv(o)) {
-                    hgt = _ZNK8Object3D9GetHeightEv(o);
+                if (hgt < o->obj3D_.GetHeight()) {
+                    hgt = o->obj3D_.GetHeight();
                 }
             }
         }
@@ -78,7 +72,7 @@ extern "C" ARM void func_ov000_0216dbf0(char* self, int* ids, int count, short f
         }
     }
 
-    _ZN8Vector3iaSERKS_((int*)(self + 0x10), (int*)&c);
+    *(Vector3i*)(self + 0x10) = c;
     ApplyVec3Tail_0202e694(self, (int*)&v);
     *(int*)(self + 0x238) = 0x1c;
     *(int*)(self + 0x23c) = 0x14;

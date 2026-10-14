@@ -5,9 +5,11 @@
 
 #if defined(jpn)
 enum { textOffset=0x28, textSize=0x800, width=12, height=7, xOffset=0x17, lineHeight=8 };
-#define _Z35NotifyLocalizedResourceLoad020dcfc8iPc func_020de9cc
+extern "C" void func_020de9cc(int id, char* buf);
+#define NotifyLocalizedResourceLoad020dcfc8 func_020de9cc
 #else
 enum { textOffset=0x5c, textSize=0x960, width=16, height=8, xOffset=0x10, lineHeight=5 };
+void NotifyLocalizedResourceLoad020dcfc8(int id, char* buf);
 #endif
 struct GlobalText {
     char pad0[textOffset];
@@ -53,7 +55,6 @@ struct BattleMenu {
 GlobalText* GetGlobalField0x1c020421a0();
 void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 ActionInfo* GetPointerField_02171b9c_02171b9c(void* obj, int idx);
-extern "C" void _Z35NotifyLocalizedResourceLoad020dcfc8iPc(int id, char* buf);
 extern "C" void func_02046608(GlobalText* g, int a, char* src, char* dst, int b, int c, int d);
 void* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 #if defined(jpn)
@@ -90,7 +91,7 @@ extern "C" ARM void func_ov000_0217964c(BattleMenu* menu, BattleActor* actor) {
     if (action->messageId <= 0) {
         return;
     }
-    _Z35NotifyLocalizedResourceLoad020dcfc8iPc(action->messageId, text);
+    NotifyLocalizedResourceLoad020dcfc8(action->messageId, text);
 #if !defined(jpn)
     func_02046608(GetGlobalField0x1c020421a0(), 0xa, text, buf, 0x72, 0, 0);
 #endif

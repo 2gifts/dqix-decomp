@@ -1,10 +1,10 @@
 #include <globaldefs.h>
+#include "Filesystem/BackgroundLoader.h"
 
 #if defined(jpn)
 #define func_ov014_02185c90 func_ov014_02186d00
 #endif
 
-struct Loader;
 struct Ent {
     char pad[0x16];
     unsigned char f16;
@@ -90,10 +90,6 @@ struct Draw {
     char pad3[0x28];
 };
 
-extern "C" struct Loader* _ZN16BackgroundLoader11GetInstanceEv();
-extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(struct Loader*, int);
-extern "C" void _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(struct Loader*, int, void**, unsigned int*);
-extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(struct Loader*, int);
 struct ActiveEntry02046900;
 int CountActiveEntries(ActiveEntry02046900*);
 struct Rec020467f0;
@@ -122,7 +118,6 @@ extern "C" void func_0204b5b4(void*, int);
 struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 extern "C" void func_0204b4c0(void*, void*);
-extern "C" void memcpy(void*, void*, int);
 void DispatchByTag0204b2e0(void*, char*);
 struct SelfTag0204b3a0;
 void DispatchByTagLookup0204b3a0(SelfTag0204b3a0*, char*);
@@ -134,8 +129,8 @@ void DispatchByTagLookup0204b3a0(SelfTag0204b3a0*, char*);
 
 // USA: func_ov014_02185c90
 extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
-    struct Loader* loader = _ZN16BackgroundLoader11GetInstanceEv();
-    if ((self->b81 & 1) && self->b7f == 5 && _ZN16BackgroundLoader13GetTaskStatusEi(loader, self->s8c)) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    if ((self->b81 & 1) && self->b7f == 5 && loader->GetTaskStatus(self->s8c)) {
         void* rp;
         void* file;
         unsigned int size;
@@ -148,7 +143,7 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
         char buf80[0x48];
         struct ListObj list;
         int count;
-        _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, self->s8c, &file, &size);
+        loader->GetLoadedFileByID(self->s8c, &file, &size);
         count = CountActiveEntries((ActiveEntry02046900*)file);
         if (count != 0) {
             char* rec = (char*)FindRecordByIndex((Rec020467f0*)file, 0, &rp, &rs);
@@ -303,17 +298,17 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                 self->b81 &= ~0x20;
             }
         }
-        _ZN16BackgroundLoader10RemoveTaskEi(loader, self->s8c);
+        loader->RemoveTask(self->s8c);
         self->s8c = -1;
         self->b7f++;
     }
-    if ((self->b81 & 0x10) && self->b7e == 1 && _ZN16BackgroundLoader13GetTaskStatusEi(loader, self->id70)) {
+    if ((self->b81 & 0x10) && self->b7e == 1 && loader->GetTaskStatus(self->id70)) {
         void* rp;
         void* file;
         unsigned int size;
         int rs;
         struct ListObj list;
-        _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, self->id70, &file, &size);
+        loader->GetLoadedFileByID(self->id70, &file, &size);
         int count = CountActiveEntries((ActiveEntry02046900*)file);
         ResetList0204af64((List0204af64*)&list);
         SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&list, 0);
@@ -328,7 +323,7 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                 DispatchByTagLookup0204b3a0((SelfTag0204b3a0*)&list, (char*)rec);
             }
         }
-        _ZN16BackgroundLoader10RemoveTaskEi(loader, self->id70);
+        loader->RemoveTask(self->id70);
         self->id70 = -1;
         self->b7e = 0;
         self->b81 &= ~0x10;

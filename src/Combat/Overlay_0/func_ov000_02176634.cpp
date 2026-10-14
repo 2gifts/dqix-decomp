@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 #if defined(jpn)
 #define LOW_REGION(j,u) (j)
 #else
@@ -6,7 +7,6 @@
 #endif
 
 struct Container020e0310;
-struct GameState;
 
 struct NameParts02176634 {
     char* singular;
@@ -140,9 +140,6 @@ extern "C" Node02176634* func_ov000_02161318(Menu02176634*, int);
 Skill02176634* GetBoundedField420_0217199c(void*, int);
 int GetAdjustedByteField0x1d6b_ov000_021815c8(void*);
 Item02176634* FindElementByComputedKey021815e4(char*);
-extern "C" GameState* _ZN9GameState11GetInstanceEv();
-char* GetPtrField0x2a04_02010828(GameState*);
-Combatant02176634* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 PartyData02176634* GetFieldAt0x150_02053c6c(unsigned char*);
 struct Outer_02054000;
 Item02176634* GetActiveSub_02054000(Outer_02054000*);
@@ -353,9 +350,9 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
         short msgId = 0x14;
         combatantId = GetAdjustedByteField0x1d6b_ov000_021815c8(menu);
         elem = FindElementByComputedKey021815e4((char*)menu);
-        GameState* gs = _ZN9GameState11GetInstanceEv();
-        bag = GetPtrField0x2a04_02010828(gs);
-        combatant = GetCombatantWithFlag0x100_0200ff1c(gs, combatantId);
+        GameState* gs = GameState::GetInstance();
+        bag = (char*)GetPtrField0x2a04_02010828(gs);
+        combatant = (Combatant02176634*)GetCombatantWithFlag0x100_0200ff1c(gs, combatantId);
         data = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
         Item02176634* sub = GetActiveSub_02054000((Outer_02054000*)combatant);
         kind = 0x20;
@@ -507,9 +504,9 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
         msgId = 0x14;
         combatantId = GetAdjustedByteField0x1d6b_ov000_021815c8(menu);
         elem = FindElementByComputedKey021815e4((char*)menu);
-        GameState* gs = _ZN9GameState11GetInstanceEv();
-        bag = GetPtrField0x2a04_02010828(gs);
-        combatant = GetCombatantWithFlag0x100_0200ff1c(gs, combatantId);
+        GameState* gs = GameState::GetInstance();
+        bag = (char*)GetPtrField0x2a04_02010828(gs);
+        combatant = (Combatant02176634*)GetCombatantWithFlag0x100_0200ff1c(gs, combatantId);
         data = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
         Item02176634* sub = GetActiveSub_02054000((Outer_02054000*)combatant);
         kind = 0x20;

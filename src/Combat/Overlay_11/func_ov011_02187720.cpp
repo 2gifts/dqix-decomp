@@ -22,7 +22,7 @@ extern "C" ARM void* func_ov011_021845f8(void* ctx, int v);
 extern "C" ARM void* func_ov011_021849c8(void* ctx);
 extern "C" ARM void* func_ov017_0218b5b0(void);
 extern "C" ARM int func_ov023_021fc518(void* obj, void* script, int id, int heapId, int unk2, int unk);
-extern "C" void _Z40InitTenAllocatorsAndClearFields_021e4e8cPv(void* model);
+void InitTenAllocatorsAndClearFields_021e4e8c(void* model);
 
 struct ListHead_021f67ac;
 struct ListNode_021f67ac;
@@ -86,7 +86,7 @@ extern "C" ARM int func_ov011_02187720(struct TaggedNumber02184c30* params, int 
             allocator++;
         } while (allocator < model->allocators + 10);
         model->animationAllocator.ResetAllocatorPointer();
-        _Z40InitTenAllocatorsAndClearFields_021e4e8cPv(model);
+        InitTenAllocatorsAndClearFields_021e4e8c(model);
         model++;
     } while (model < prototype.models + 2);
     memcpy(object, &prototype, sizeof(MenuObject02187720));

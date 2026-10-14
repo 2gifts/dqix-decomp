@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "System/Matrix.h"
 
 struct Flags0202ecfc;
 void ClearFlag0x1At0x168(struct Flags0202ecfc* p);
@@ -12,18 +13,15 @@ void ClearThreeHalfwords(struct HalfwordTriple0202e98c* p);
 void* CallFunc020a0d58AtField0x16c_0202ee84(char* obj);
 void* CallFunc020a0d58AtField0x194_0202ee94(void* obj);
 void* CallFunc020a0d58AtField0x1bc_0202eea4(void* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-
-struct Vec3_0216d370 { int x, y, z; };
 
 // USA: func_ov000_0216d370  (semantic: ResetCombatFields_0216d370)
 extern "C" ARM void func_ov000_0216d370(char* obj, int flagA, int flagB, int flagC) {
     *(unsigned char*)(obj + 0x220) = 0;
     if (*(int*)(obj + 0x224) >= 0) {
-        struct Vec3_0216d370 tmp1 = *(struct Vec3_0216d370*)(obj + 0x12c);
-        struct Vec3_0216d370 tmp2 = *(struct Vec3_0216d370*)(obj + 0x120);
-        _ZN8Vector3iaSERKS_((int*)(obj + 0x10), (int*)&tmp1);
-        _ZN8Vector3iaSERKS_((int*)(obj + 0x4), (int*)&tmp2);
+        Vector3i tmp1 = *(Vector3i*)(obj + 0x12c);
+        Vector3i tmp2 = *(Vector3i*)(obj + 0x120);
+        *(Vector3i*)(obj + 0x10) = tmp1;
+        *(Vector3i*)(obj + 0x4) = tmp2;
     }
 
     *(int*)(obj + 0x224) = -1;

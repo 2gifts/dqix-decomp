@@ -74,9 +74,11 @@ extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" SkillEntry* func_ov000_02170cf8(MenuEntry* entry, int key);
 GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gs, int idx);
 #if defined(jpn)
-#define _Z35NotifyLocalizedResourceLoad020dd040iPc func_020dea34
+extern "C" void func_020dea34(int id, char* buf);
+#define NotifyLocalizedResourceLoad020dd040 func_020dea34
+#else
+void NotifyLocalizedResourceLoad020dd040(int id, char* buf);
 #endif
-extern "C" void _Z35NotifyLocalizedResourceLoad020dd040iPc(int id, char* buf);
 extern "C" void func_02046608(StoreStruct* store, int kind, char* src, char* dst, int a, int b, int c);
 extern "C" void func_02046380(StoreStruct* store);
 int IsFlag0x18Bit0x200Set_ov000_02153a8c(GameObject* obj);
@@ -122,7 +124,7 @@ extern "C" ARM void func_ov000_02179cdc(BattleMenu* menu, MenuEntry* entry) {
     if (flagged == 0) {
         return;
     }
-    _Z35NotifyLocalizedResourceLoad020dd040iPc(skill->nameId, buf);
+    NotifyLocalizedResourceLoad020dd040(skill->nameId, buf);
 #if !defined(jpn)
     char text[0x800];
 #endif

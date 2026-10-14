@@ -18,7 +18,6 @@
 
 extern "C" void* __clear(void* dst, int count);
 void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outLen);
-extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
 
 struct Foo0207df50;
 void CopyInternalFields0207df50(struct Foo0207df50* p);
@@ -28,17 +27,6 @@ struct Vector3i;
 
 struct Struct_203dafc;
 void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
-
-struct Params02036804 {
-    int flag;
-    void* data;
-    unsigned int size;
-    void* alloc;
-    int one;
-    int pad18;
-    int pad1c;
-    int pad20;
-};
 
 struct Vec3Words02193cfc { unsigned int v[3]; };
 
@@ -72,17 +60,17 @@ extern "C" ARM int func_ov015_0218df0c(void* self, int* desc) {
     if (buffer == 0) {
         ok = 0;
     } else {
-        struct Params02036804 params;
+        ObjectArchiveLoadInfo params;
         ClearEightWords_0203dafc((struct Struct_203dafc*)&params);
-        void* allocPtr = *(void**)((char*)self + 8);
+        SafeAllocator* allocPtr = *(SafeAllocator**)((char*)self + 8);
         unsigned int sz = length;
         void* dataPtr = &data_0211e33c;
         int onePtr = ok;
-        params.data = dataPtr;
-        params.size = sz;
-        params.alloc = allocPtr;
-        params.one = onePtr;
-        _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(*(void**)((char*)self + 0x24), &params, 0);
+        params.fileData = dataPtr;
+        params.unk_8 = sz;
+        params.allocator = allocPtr;
+        params.unk_10 = onePtr;
+        ((Object3D*)(*(void**)((char*)self + 0x24)))->LoadFromCCHROrCMOTArchive(&params, 0);
 
         struct Vec3Words02193cfc v = data_ov015_02193cfc;
         ((Object3D*)((unsigned char*)*(void**)((char*)self + 0x24)))->SetScale((Vector3i const*)&v);

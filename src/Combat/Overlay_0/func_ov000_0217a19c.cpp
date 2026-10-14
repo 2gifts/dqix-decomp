@@ -2,9 +2,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-#if defined(jpn)
-#define _Z35NotifyLocalizedResourceLoad020dd040iPc func_020dea34
-#endif
 struct Container020e0310;
 struct Struct_0205d81c;
 
@@ -30,7 +27,12 @@ struct Entry02170cf8 {
 
 int GetGlobalField0x1c020421a0();
 extern "C" struct Entry02170cf8* func_ov000_02170cf8(char* obj, int val);
-extern "C" void _Z35NotifyLocalizedResourceLoad020dd040iPc(int len, char* buf);
+#if defined(jpn)
+extern "C" void func_020dea34(int len, char* buf);
+#define NotifyLocalizedResourceLoad020dd040 func_020dea34
+#else
+void NotifyLocalizedResourceLoad020dd040(int len, char* buf);
+#endif
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" void func_02046608(int g, int b, char* src, char* dst, int size, int f, int h);
 void* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
@@ -57,7 +59,7 @@ extern "C" ARM void func_ov000_0217a19c(char* obj, char* table) {
     signed char cursor = *(signed char*)(obj + cursorOffset);
     struct Entry02170cf8* entry = func_ov000_02170cf8(table, *(unsigned short*)(obj + 0x10 + cursor * 2));
     if (entry != 0) {
-        _Z35NotifyLocalizedResourceLoad020dd040iPc(entry->textId, str);
+        NotifyLocalizedResourceLoad020dd040(entry->textId, str);
     } else {
         str = (char*)GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), 0x20);
     }
