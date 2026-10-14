@@ -18447,3 +18447,7 @@ src/Combat/Main/ComputeAndApplyWithCounter020e04f4.cpp:
     complete
     .text start:0x020e2168 end:0x020e21e8
 
+
+src/Combat/Main/func_0203bebc.cpp:
+    complete
+    .text start:0x0203b914 end:0x0203bb6c

@@ -2,6 +2,8 @@
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
+#include "World/Zone3D.h"
+#include "Resource/MessageSystem.h"
 
 struct Entry0219d250 {
     unsigned short id;
@@ -35,7 +37,11 @@ struct Request0219d250 {
 struct Node0219d250 {
     unsigned char unk0[2];
     unsigned char active;
-    unsigned char unk3[0x175];
+#if defined(jpn)
+    unsigned char unk3[0x174 - 3];
+#else
+    unsigned char unk3[0x178 - 3];
+#endif
     unsigned char set : 1;
     unsigned char rest : 7;
     unsigned char a;
@@ -46,7 +52,11 @@ struct Node0219d250 {
 
 struct Combatant0219d250 {
     Object3D obj3D;
+#if defined(jpn)
+    char padAc[0x150 - 0xac];
+#else
     char padAc[0x15c - 0xac];
+#endif
     int field15c;
 };
 
@@ -70,7 +80,11 @@ struct GrottoIds0219d250 {
 };
 
 struct Battle0219d250 {
+#if defined(jpn)
+    char pad0[0x3448];
+#else
     char pad0[0x3658];
+#endif
     unsigned char b3658;
     char pad3659[0x36f0 - 0x3659];
     int f36f0;
@@ -79,12 +93,20 @@ struct Battle0219d250 {
     unsigned char* header;
     char pad3710[0x3734 - 0x3710];
     Node0219d250* node;
+#if defined(jpn)
+    char pad3738[0x40c9 - 0x3528];
+#else
     char pad3738[0x42e9 - 0x3738];
+#endif
     unsigned char b42e9;
     unsigned char b42ea;
     char pad42eb;
     unsigned short h42ec;
+#if defined(jpn)
+    char pad42ee[0x4214 - 0x40ce];
+#else
     char pad42ee[0x44c4 - 0x42ee];
+#endif
     void* regions;
 };
 
@@ -153,6 +175,12 @@ extern "C" void _Z26CallHelperWithBuf_021907dciiiii(Battle0219d250* self, int a,
 
 extern char data_02109bf4;
 
+#if defined(jpn)
+enum { ZoneKeyOffset = 0x2816 };
+#else
+enum { ZoneKeyOffset = 0x27d6 };
+#endif
+
 // USA: func_ov017_0219d250
 extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg) {
     Node0219d250* node;
@@ -195,7 +223,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     search = func_0202ae18();
     extRegion = _Z20GetGlobalPtr021075f4v();
     party = _Z17GetPtrField0x2a04P9GameState(gs);
-    char* status = field + 0x23ec;
+    char* status = (char*)&((Zone3D*)field)->grotto_;
     func_0205ec34();
     header = self->header;
     if (hero == NULL || unknown == NULL) {
@@ -308,7 +336,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
         func_020531f0(unknown);
     }
     ClearField0xc4KeepBit0x8000((unsigned char*)hero);
-    if (*(int*)(controller + 0x998) != 0) {
+    if (((MessageSystem*)controller)->active != NULL) {
         _Z24ReinitController02043204Pc(controller);
     }
     func_02043124(controller);
@@ -333,9 +361,9 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     }
     if (!(request->flags6e & 2)) {
         func_ov017_021a316c(self);
-        if (((SafeAllocator*)(field + 0x54))->GetSignedAllocator()) {
-            ((SafeAllocator*)(field + 0x54))->Destroy();
-            ((SafeAllocator*)(field + 0x54))->ResetAllocatorPointer();
+        if (((Zone3D*)field)->internalAllocator_.GetSignedAllocator()) {
+            ((Zone3D*)field)->internalAllocator_.Destroy();
+            ((Zone3D*)field)->internalAllocator_.ResetAllocatorPointer();
         }
         func_ov017_0219de70(self, other, entry);
     }
@@ -367,7 +395,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     }
     self->b3658 = 0;
     _ZN6Zone3D10SwitchZoneEti(field, request->id, request->mode);
-    if (_Z19IsIdInRange020981e4ii(field + 0x840, id) || _Z19IsIdInRange020981e4ii(field + 0x840, heroZone)) {
+    if (_Z19IsIdInRange020981e4ii(((Zone3D*)field)->unk_840, id) || _Z19IsIdInRange020981e4ii(((Zone3D*)field)->unk_840, heroZone)) {
         if (CheckField0NonZero((int*)search) == 0) {
             func_ov017_02191108(self, 1, 1, 1, 1);
         } else {
@@ -380,7 +408,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
             }
         }
     }
-    *(unsigned short*)(field + 0x27d6) = 0;
+    *(unsigned short*)(field + ZoneKeyOffset) = 0;
     for (int j = 0; j < 4; j++) {
         if (member != NULL && j != ((Unknown0219d250*)unknown)->s4) {
             member->obj3D.DisableFlag(0x1010);

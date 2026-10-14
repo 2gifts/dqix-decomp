@@ -3,7 +3,9 @@
 extern "C" void __clear(void* buf, int size);
 extern "C" int func_020426bc(void* src, void* buf, int flag);
 extern "C" int func_02001aec(void* entry, void* param1, int category);
+#if !defined(jpn)
 extern "C" void func_0203bebc(void* entry, void* buf, void* dest);
+#endif
 
 struct Entry0203c5a8 {
     char pad[0x20];
@@ -35,7 +37,7 @@ struct CachedGlyphTablePrefix {
 
 extern "C" int func_02043014(int, unsigned short*);
 extern "C" char* func_02043110(int, int);
-extern "C" void func_0203b914(CachedGlyphEntry*, int, char*, char**, int, void*);
+extern "C" void func_0203bebc(void*, int, char*, char**, int, void*);
 #endif
 
 #if defined(jpn)
@@ -111,7 +113,7 @@ extern "C" ARM void func_0203c5a8(void* self, void* param1, short* outIndex)
                     glyphs[0] = func_02043110(10, first);
                     glyphs[1] = func_02043110(10, second);
                     glyphs[2] = func_02043110(10, third);
-                    func_0203b914(entry, cache->engine, text + position, glyphs,
+                    func_0203bebc(entry, cache->engine, text + position, glyphs,
                         characterAdvance, cache->bitmapStorage + index * 128);
                     cache->allocatedEntries += 2;
                     entry->references = 1;
