@@ -48,15 +48,15 @@ struct Scene02166070 {
     Object3D* models[4];
 };
 
-extern "C" ModelEntry* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(BinarySearchByComparatorStruct*, int);
-extern "C" void _Z25SetFlag0x400Reset020484d0Pv(void*);
-extern "C" void _Z25RestorePairTables0207df90Pc(char*);
-extern "C" void _Z24BackupPairTables0207dfacPc(char*);
+ModelEntry* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
+void SetFlag0x400Reset020484d0(void*);
+void RestorePairTables0207df90(char*);
+void BackupPairTables0207dfac(char*);
 void ClearEightWords(struct Struct_203dafc*);
-extern "C" ModelNames* _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(struct Container02070e60*, int);
-extern "C" void _Z24RunOverlayScript0216d1c4iP12StreamHeaderiPi(int, struct StreamHeader*, int, int*);
-extern "C" void _Z24InitObjectFields020484f8PhP13Input020484f8(unsigned char*, Input020484f8*);
-extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50*);
+ModelNames* SearchWithLow15Comparator02070fd0(struct Container02070e60*, int);
+void RunOverlayScript0216d1c4(int, struct StreamHeader*, int, int*);
+void InitObjectFields020484f8(unsigned char*, Input020484f8*);
+void CopyInternalFields0207df50(struct Foo0207df50*);
 extern "C" void _ZN8Object3D10SetField78Et(Object3D*, unsigned int);
 extern "C" void _ZN8Object3D10SetField7aEt(Object3D*, unsigned int);
 extern "C" void func_0207de48(char*, int, int);
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov000_02166070(Scene02166070* self, GPCReadPair* pair, 
     unsigned int animLength;
     const void* scriptPtr;
     unsigned int scriptSize;
-    ModelEntry* entry = _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(search, (short)id);
+    ModelEntry* entry = SearchWithComparator0206f4f0(search, (short)id);
     if (entry == 0) return;
     sprintf(path, data_ov000_02183a47, entry->name);
     if (!DecompressFileFromGPCByName(pair->pGPCFile, pair->machine, data_0211e33c + offset, length, 0x30000 - offset, path)) {
@@ -107,37 +107,37 @@ extern "C" ARM void func_ov000_02166070(Scene02166070* self, GPCReadPair* pair, 
         if (flag) BackgroundLoader::RemoveLockGlobal();
         return;
     }
-    _Z25SetFlag0x400Reset020484d0Pv(obj);
+    SetFlag0x400Reset020484d0(obj);
     obj->unknown_2_ = id;
-    _Z25RestorePairTables0207df90Pc(self->tables1bc);
+    RestorePairTables0207df90(self->tables1bc);
     ClearEightWords(&params);
     params.fieldTable = (int)model;
     params.fieldLength = modelLength;
     params.allocator = alloc;
     obj->LoadFromCCHROrCMOTArchive((ObjectArchiveLoadInfo*)&params, 0);
-    _Z24BackupPairTables0207dfacPc(self->tables1bc);
+    BackupPairTables0207dfac(self->tables1bc);
     ClearEightWords(&params);
     params.fieldTable = (int)anim;
     params.fieldLength = animLength;
     params.allocator = alloc;
     obj->LoadFromCCHROrCMOTArchive((ObjectArchiveLoadInfo*)&params, 0);
-    input.names = _Z33SearchWithLow15Comparator02070fd0P17Container02070e60i(names, id);
-    input.entry = _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(search, id << 16 >> 16);
+    input.names = SearchWithLow15Comparator02070fd0(names, id);
+    input.entry = SearchWithComparator0206f4f0(search, id << 16 >> 16);
     sprintf(input.names->name, data_020ef078, input.entry->id);
     if (scriptPtr == 0) {
         input.script = 0;
     } else {
-        _Z24RunOverlayScript0216d1c4iP12StreamHeaderiPi((int)alloc, (StreamHeader*)scriptPtr, scriptSize, &input.script);
+        RunOverlayScript0216d1c4((int)alloc, (StreamHeader*)scriptPtr, scriptSize, &input.script);
     }
-    _Z24InitObjectFields020484f8PhP13Input020484f8((unsigned char*)obj, &input);
+    InitObjectFields020484f8((unsigned char*)obj, &input);
     unsigned int low = (unsigned short)input.names->words;
     unsigned int high;
     _ZN8Object3D10SetField78Et(obj, (high = input.names->words >> 16, low));
     _ZN8Object3D10SetField7aEt(obj, high);
     self->models[slot] = obj;
     if (id == 0x13f || id == 0x13d || id == 0x321) {
-        _Z26CopyInternalFields0207df50P11Foo0207df50((struct Foo0207df50*)self->tables14c);
-        _Z25RestorePairTables0207df90Pc(self->tables14c);
+        CopyInternalFields0207df50((struct Foo0207df50*)self->tables14c);
+        RestorePairTables0207df90(self->tables14c);
         func_0207de48(self->tables14c, 0x800, 0);
         func_0207de48(self->tables14c, 0xb800, 0x400);
     }
