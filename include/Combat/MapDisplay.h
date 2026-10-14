@@ -47,6 +47,8 @@ struct ForwardingRecord02024518;
 struct Node02021f88;
 
 struct MapDisplay {
+    char* GetMapNameText() { return (char*)unknown5b4; }
+    char* GetLevelLabelText() { return (char*)&unknown5b4[0x40]; }
     unsigned char state;
     unsigned char unknown1;
     char headerName[0x10];

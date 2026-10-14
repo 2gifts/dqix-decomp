@@ -1,10 +1,11 @@
+#if !defined(jpn)
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "System/Cache.h"
 
 int GetGlobalField0x1c020421a0(void);
 void DelayThenSyncBit0(void);
-extern "C" int func_02023218(void* arg0, void* buf, int flag);
+extern "C" void func_02023218(void* arg0, void* buf, int flag);
 extern "C" int LoadToSubObjVRAM(void* buf, int a1, int a2);
 
 // USA: func_020233b8
@@ -33,3 +34,5 @@ ARM int InitAndCopyBuffer020233b8(void* arg0, int flag1)
 
     return 1;
 }
+
+#endif

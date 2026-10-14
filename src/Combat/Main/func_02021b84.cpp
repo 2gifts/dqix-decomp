@@ -10,7 +10,7 @@
 #include "System/Cache.h"
 #include "System/LoadToVRAM.h"
 int GetGlobalField0x1c020421a0(void);
-extern "C" void func_02022cbc(MapDisplay* self, void* buffer, int offset, unsigned int capacity);
+extern "C" void func_02023218(MapDisplay* self, void* buffer, int offset, unsigned int capacity);
 extern char data_020ef4b1[], data_020ef4c9[], data_020ef4d0[];
 #endif
 #include "Resource/GameResources.h"
@@ -209,7 +209,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         char* buffer = messages->formatBuffer;
         char* vram = (char*)0x06600000;
         VectorizedInvertedMemcpy(vram + 0x2bc0, buffer, 0x540);
-        func_02022cbc(self, buffer, 0, 0x540);
+        func_02023218(self, buffer, 0, 0x540);
         DelayThenSyncBit0();
         CleanInvalidateCacheRange(buffer, 0x540);
         LoadToSubObjVRAM(buffer, 0x2bc0, 0x540);
