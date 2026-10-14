@@ -1,14 +1,23 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov005_0215a620 func_ov005_0215bb74
+enum { backgroundOffset = 0xe80, itemCountsOffset = 0x3d10, tileX = 24, tileWidth = 8 };
+#else
+enum { backgroundOffset = 0xe84, itemCountsOffset = 0x3d98, tileX = 22, tileWidth = 10 };
 #endif
 
-struct Obj0204b8d0;
-extern "C" void _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(struct Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
+struct BackgroundResourceEntry;
+struct Obj0204b8d0 {
+    char unknown0[0x10];
+    BackgroundResourceEntry* entries;
+    unsigned short* destination;
+    char unknown18[5];
+    unsigned char count;
+};
+void DispatchEntry0204b8d0(struct Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
 
 struct List0204b0e8;
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(struct List0204b0e8*, void*);
+void FlushAndDispatchList0204b0e8(struct List0204b0e8*, void*);
 
 struct ListNode0215c530
 {
@@ -30,7 +39,9 @@ struct Container0215c530
 
 struct Sub0215c530
 {
-    char pad0[0x1000];
+    char pad0[backgroundOffset - 0x244];
+    Obj0204b8d0 backgrounds[3];
+    char beforeContainer[0x1000 - (backgroundOffset - 0x244) - sizeof(Obj0204b8d0) * 3];
     Container0215c530 container;
     char pad1[0x179c - 0x1000 - sizeof(Container0215c530)];
 };
@@ -42,7 +53,7 @@ struct EquipmentMenu0215a620
     ListNode0215c530* head;
     char pad1[0x2d90 - 0x19e4];
     Slot0215c530 slots[24];
-    char pad2[0x3d98 - 0x3030];
+    char pad2[itemCountsOffset - 0x3030];
     short counts[8];
     char pad3[0x3db8 - 0x3da8];
     unsigned char state;
@@ -69,7 +80,7 @@ extern "C" ARM void func_ov005_0215a620(EquipmentMenu0215a620* obj) {
 
     unsigned char state = obj->state;
     if (!(state != 0 && state != 1)) {
-        _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((struct Obj0204b8d0*)((char*)obj + 0x284 + 0xc00), 0, 0x16, 0x16, 0x16, 0x16, 0xa, 2, 0xffff);
+        DispatchEntry0204b8d0(&obj->sub.backgrounds[0], 0, tileX, 22, tileX, 22, tileWidth, 2, 0xffff);
     } else {
         unsigned char mode = obj->tab;
         unsigned char* table = obj->GetModeTable();
@@ -78,8 +89,8 @@ extern "C" ARM void func_ov005_0215a620(EquipmentMenu0215a620* obj) {
         if (kind == 1) j = 4;
         else if (kind == 2) j = 2;
         else if (kind == 3) j = 3;
-        _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((struct Obj0204b8d0*)((char*)obj + 0x284 + 0xc00), j, 0, 0, 0x16, 0x16, 0xa, 2, 0xffff);
+        DispatchEntry0204b8d0(&obj->sub.backgrounds[0], j, 0, 0, tileX, 22, tileWidth, 2, 0xffff);
     }
-    _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((struct List0204b0e8*)((char*)obj + 0x284 + 0xc00), 0);
+    FlushAndDispatchList0204b0e8((List0204b0e8*)&obj->sub.backgrounds[0], 0);
     obj->dirty &= ~0x800;
 }

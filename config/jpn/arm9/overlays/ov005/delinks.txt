@@ -290,3 +290,7 @@ src/Combat/Overlay_5/GetTableByte0215a948.cpp:
 src/Combat/Overlay_5/02159274.cpp:
     complete
     .text start:0x0215a78c end:0x0215ad30
+
+src/Combat/Overlay_5/func_ov005_0215a620.cpp:
+    complete
+    .text start:0x0215bb74 end:0x0215bc6c

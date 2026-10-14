@@ -2989,3 +2989,7 @@ src/Combat/Overlay_23/func_ov023_021e66ac.cpp:
 src/Combat/Overlay_23/SetupTag021d9c7c.cpp:
     complete
     .text start:0x021da52c end:0x021da5d8
+
+src/Combat/Overlay_23/SetupTag021d9da4.cpp:
+    complete
+    .text start:0x021da63c end:0x021da6f0
