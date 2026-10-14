@@ -18355,3 +18355,7 @@ src/Combat/Main/func_0203c4d0.cpp:
 src/Combat/Main/func_02019210.cpp:
     complete
     .text start:0x02018fb0 end:0x020192a8
+
+src/Combat/Main/GetEntryByteField0203c284.cpp:
+    complete
+    .text start:0x0203be6c end:0x0203bf00
