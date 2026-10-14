@@ -13,9 +13,8 @@ extern AllocatorUnion data_02114e20;
 extern int data_ov017_021d669c[];
 
 // USA: func_ov017_021a050c
-ARM void ResetTaskAndDestroyAllocators_021a050c(char* receiver) {
-    GameResources* self = (GameResources*)receiver;
-    MapDisplay* display = (MapDisplay*)self->unknown_ptr_36d0;
+ARM void ResetTaskAndDestroyAllocators_021a050c(GameResources* self) {
+    MapDisplay* display = self->unknown_ptr_36d0;
     func_02020720(display);
 
     for (int i = 0; data_ov017_021d669c[i] >= 0; i++) {

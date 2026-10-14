@@ -86,9 +86,9 @@ extern "C" ARM void func_ov017_021c9f18(void* unused, const PartyStatsEvent* eve
         }
     }
     if (event->special != 0) func_ov017_0218b5f8(-1);
-    unsigned char* flagTable = static_cast<unsigned char*>(controller->unknown_ptr_36d0);
+    MapDisplay* flagTable = controller->unknown_ptr_36d0;
     if (flagTable != NULL) {
-        SetBoolFlagAt558(flagTable, (unsigned char)index, event->special);
+        SetBoolFlagAt558((unsigned char*)flagTable, (unsigned char)index, event->special);
         if (event->special != 0 && (oldHP != event->hp || oldMP != event->mp)) _Z25SetArrayEntryFlag02026f20ii((int)flagTable, index & 0xff);
     }
     if (changed == 0) return;
