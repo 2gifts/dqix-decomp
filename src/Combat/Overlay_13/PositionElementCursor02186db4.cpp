@@ -1,5 +1,4 @@
 #include <globaldefs.h>
-#pragma opt_propagation off
 
 struct Struct_0205d81c;
 
@@ -37,12 +36,15 @@ extern "C" ARM void func_ov013_02186db4(void* obj) {
     if (tag == 0) return;
 
     /* Cell coordinates scale by 8 pixels, then by 0x1000 into fixed point. */
-    int dx8 = *(short*)(elem + 0xac) * 8;
-    int dy8 = *(short*)(elem + 0xae) * 8;
+    short x = *(short*)(elem + 0xac);
+    short y = *(short*)(elem + 0xae);
     short baseX = *(short*)(o + 0x1e);
-
-    tag->posX = (short)(baseX + 3 + (short)dx8) * 0x1000;
-    tag->posY = (short)((short)dy8 + 3) * 0x1000;
+    x *= 8;
+    y *= 8;
+    x += baseX + 3;
+    y += 3;
+    tag->posX = x * 0x1000;
+    tag->posY = y * 0x1000;
     tag->visible = 1;
     tag->size = 0x20;
     func_0205ac40(*(void**)(o + 0x18), tag);
