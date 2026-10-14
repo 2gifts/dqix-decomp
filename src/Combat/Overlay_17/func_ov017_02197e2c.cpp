@@ -1,20 +1,27 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
+#include "World/Zone3D.h"
 
-struct InteractionPoint { Vector3i position; short angle; char pad_e[8]; unsigned char enabled; unsigned char type; char pad18[12]; };
-struct InteractionZone { char pad[0x477]; unsigned char count; };
 struct InteractionPlayer { Object3D obj; char padac[0x12]; unsigned char mode; };
-struct InteractionReset { char pad[0x150]; unsigned char mode : 6; unsigned char flags : 2; };
-struct InteractionRequest { unsigned char type; char pad1; short index; int field4; InteractionPoint* point; int fieldc; short angle; short direction; };
+struct InteractionReset {
+#if defined(jpn)
+    char pad[0xf0];
+#else
+    char pad[0x150];
+#endif
+    unsigned char mode : 6;
+    unsigned char flags : 2;
+};
+struct InteractionRequest { unsigned char type; char pad1; short index; int field4; ZoneChestRenderRecord* point; int fieldc; short angle; short direction; };
 struct S02046b1c;
 struct Vec3;
-extern "C" InteractionZone* func_02012fe4();
+extern "C" Zone3D* func_02012fe4();
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
 void* GetField0x3b0Value(GameState*);
 bool CheckSubstructByte0x7cPositive(signed char*);
 extern "C" void* _Z23GetField0x0List02046b1cP9S02046b1c(S02046b1c*);
-InteractionPoint* GetElementStride0x24(unsigned char*, int);
+ZoneChestRenderRecord* GetElementStride0x24(unsigned char*, int);
 int fix32abs(int);
 extern "C" int func_020c32f8(int);
 extern "C" int func_020c3260(int);
@@ -29,22 +36,22 @@ static inline int MultiplyFix(int a, int b) { return (int)(((long long)a * b + 0
 // USA: func_ov017_02197e2c
 extern "C" ARM void func_ov017_02197e2c(GameResources* resources) {
     GameState* game = GameState::GetInstance();
-    InteractionZone* zone = func_02012fe4();
+    Zone3D* zone = func_02012fe4();
     _Z26GetGlobalField0x1c020421a0v();
     GetField0x3b0Value(game);
     InteractionPlayer* player = (InteractionPlayer*)game->GetUnknownGameObject();
     Vector3i* position = &player->obj.position_;
     if (CheckSubstructByte0x7cPositive((signed char*)player)) return;
-    if (!zone->count) return;
+    if (!zone->numChests_) return;
     int direction = 0;
     int hasList = 0;
     void* list = _Z23GetField0x0List02046b1cP9S02046b1c((S02046b1c*)resources->unknown_ptr_array_36fc[0]);
     if (list) hasList = 1;
     int bestAngle = 0x3244;
-    InteractionPoint* candidate = 0;
-    InteractionPoint* selected = 0;
+    ZoneChestRenderRecord* candidate = 0;
+    ZoneChestRenderRecord* selected = 0;
     int selectedIndex = -1;
-    for (int i = 0; i < zone->count; i++) {
+    for (int i = 0; i < zone->numChests_; i++) {
         candidate = GetElementStride0x24((unsigned char*)zone, i);
         if (!candidate) continue;
         Vector3i distance;
@@ -60,7 +67,7 @@ extern "C" ARM void func_ov017_02197e2c(GameResources* resources) {
         Vector3i rotated = *position;
         rotated.y = 0;
         Vector3fix_Subtract(&rotated, &point, &rotated);
-        int angle = -(candidate->angle - 0x6487);
+        int angle = -(candidate->angleY - 0x6487);
         int cosine = (int)(4096.0f * (func_0200c700(func_020c32f8(angle)) / 4294967296.0f));
         int sine = (int)(4096.0f * (func_0200c700(func_020c3260(angle)) / 4294967296.0f));
         Matrix3x3 rotation;
@@ -75,9 +82,9 @@ extern "C" ARM void func_ov017_02197e2c(GameResources* resources) {
     }
     if (hasList || selectedIndex < 0 || !candidate || !selected) return;
     if (player->mode != 0 && player->mode != 1) return;
-    if ((selected->type == 1 || selected->type == 2) && selected->enabled != 1) return;
+    if ((selected->secondPass == 1 || selected->secondPass == 2) && selected->active != 1) return;
     InteractionReset* reset = _Z25GetGlobalResetObj020d7a50v();
-    int enabled = selected->enabled == 1 ? 1 : 0;
+    int enabled = selected->active == 1 ? 1 : 0;
     if (!enabled) return;
     if (reset->mode > 1) return;
     InteractionRequest request;

@@ -4,10 +4,18 @@
 #include "System/LoadToVRAM.h"
 
 struct PaletteState0203c35c {
+    #if defined(jpn)
+    unsigned char padding[0x604];
+    #else
     unsigned char padding[0x504];
+    #endif
     int engine;
     int field_508;
     unsigned int paletteOffset;
+    #if defined(jpn)
+    unsigned char unknown610[4];
+    unsigned short palette[112];
+    #endif
 };
 struct PaletteWork0203c35c {
     unsigned char padding[0x60];
@@ -18,7 +26,14 @@ struct PaletteColor0203c35c {
     float green;
     float blue;
 };
+#if defined(jpn)
+extern PaletteState0203c35c* data_02105244;
+#define data_020e78c4 data_020e8220
+#define data_020e78b0 data_020e81ec
+#define data_020e78a0 data_020e81dc
+#else
 int GetGlobalField0x1c020421a0();
+#endif
 extern PaletteColor0203c35c data_020e78c4[] __attribute__((aligned(4)));
 extern float data_020e78b0[];
 extern unsigned short data_020e78a0[];
@@ -33,7 +48,11 @@ extern "C" ARM void func_0203c35c(PaletteState0203c35c* state) {
     unsigned int i;
     int shade;
     unsigned short colors[16] = {};
+#if defined(jpn)
+    palette = data_02105244->palette;
+#else
     palette = ((PaletteWork0203c35c*)GetGlobalField0x1c020421a0())->palette;
+#endif
     unsigned short paletteBytes = 0xe0;
     memset(palette, 0, paletteBytes);
     for (i = 0; i < 7; i++) {
