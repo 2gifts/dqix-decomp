@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Graphics/GlyphMetrics.h"
 
 struct Menu02029568 {
     int type;
@@ -34,7 +35,6 @@ struct Menu02029568 {
     int arr[2];
 };
 
-extern unsigned short data_020ef74c;
 
 extern "C" void _Z12Init0202949cPc(char* obj);
 
@@ -62,7 +62,7 @@ extern "C" ARM void func_02029568(struct Menu02029568* m) {
     m->f6f = 0;
     m->f6a = 0;
     m->f68 = 0;
-    data_020ef74c = 0x7d40;
+    data_020ef74c.unknown0 = 0x7d40;
     m->f71 = 0;
     m->f72 = 0;
     m->f73 = 0;

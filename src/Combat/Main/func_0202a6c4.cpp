@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Graphics/GlyphMetrics.h"
 #include "std_library_functions.h"
 
 struct Entry0202a6c4 {
@@ -30,14 +31,6 @@ struct Menu0202a6c4 {
     short visibleLast;
 };
 
-struct Metrics0202a6c4 {
-    int field_0;
-    int rowHeight;
-    int columnWidth;
-    int font;
-};
-
-extern Metrics0202a6c4 data_020ef74c;
 extern char data_020ef772[];
 extern char data_020ef775[];
 extern "C" int func_020420e8(const char*, int);
@@ -53,7 +46,7 @@ static inline int VisibleSelectionRemainder(int last, int first, unsigned int co
 extern "C" ARM void func_0202a6c4(Menu0202a6c4* menu) {
     char number[16];
     int width = strlen(menu->text);
-    if (data_020ef74c.font >= 3 && data_020ef74c.font <= 6) {
+    if (data_020ef74c.displayMode >= 3 && data_020ef74c.displayMode <= 6) {
         int measured;
         #if defined(jpn)
         int height;
@@ -68,7 +61,7 @@ extern "C" ARM void func_0202a6c4(Menu0202a6c4* menu) {
     int index = 0;
     while (entry != NULL) {
         int length;
-        if (data_020ef74c.font >= 3 && data_020ef74c.font <= 6) {
+        if (data_020ef74c.displayMode >= 3 && data_020ef74c.displayMode <= 6) {
             int measured;
             #if defined(jpn)
             int height;

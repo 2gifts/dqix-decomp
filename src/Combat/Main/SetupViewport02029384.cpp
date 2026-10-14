@@ -1,17 +1,13 @@
 #include <globaldefs.h>
+#include "Graphics/GlyphMetrics.h"
 
 extern "C" void func_020292ec(int a, int b, int c, int d, int e);
 void PackRegister02029470(int a, int b, int c, int d, int e, int f);
 
-struct Struct020ef74c {
-    char pad[0xc];
-    int mode;
-};
-extern struct Struct020ef74c data_020ef74c;
 
 // USA: func_02029384
 ARM int SetupViewport02029384(int a0, int a1, int a2, int a3) {
-    int mode = data_020ef74c.mode;
+    int mode = data_020ef74c.displayMode;
 
     if (mode == 2) {
         return 0;

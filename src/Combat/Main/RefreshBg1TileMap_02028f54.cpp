@@ -1,16 +1,12 @@
 #include <globaldefs.h>
 #include "Graphics/GlyphBitmapContext.h"
+#include "Graphics/GlyphMetrics.h"
 
 #include "std_library_functions.h"
 #include "System/LoadToVRAM.h"
 
 #include "System/Cache.h"
 
-struct GfxModeState02028f54 {
-    char pad[0xc];
-    int mode;
-};
-extern struct GfxModeState02028f54 data_020ef74c;
 
 // USA: func_02028f54  (semantic: RefreshBg1TileMap_02028f54)
 extern "C" ARM void func_02028f54(void) {
@@ -32,7 +28,7 @@ extern "C" ARM void func_02028f54(void) {
             tile++;
         }
     }
-    int mode = data_020ef74c.mode;
+    int mode = data_020ef74c.displayMode;
     CleanInvalidateCacheRange(glyphBitmapContext.buffer, 32 * 24 * sizeof(unsigned short));
     if (mode == 3) {
         LoadToMainBG1ScreenData(glyphBitmapContext.buffer, 0, 32 * 24 * sizeof(unsigned short));
