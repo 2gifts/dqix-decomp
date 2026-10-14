@@ -10,15 +10,34 @@ struct FlagWord020466f4;
 struct ListHead02046b60;
 struct Actor021bb27c {
     Object3D object; char padac[0x15]; unsigned char state:2, rest:6;
-    char padc2[0x1e]; unsigned char flags; char pade1[0xab]; unsigned int field18c;
+    char padc2[0x1e]; unsigned char flags;
+#if defined(jpn)
+    char pade1[0x180 - 0xe1];
+#else
+    char pade1[0x18c - 0xe1];
+#endif
+    unsigned int field18c;
 };
 struct PartyState021bb27c { char pad0[0xf78]; unsigned char indices[4], count; };
-struct Zone021bb27c { char pad0[0x27d6]; unsigned short key; };
+struct Zone021bb27c {
+#if defined(jpn)
+    char pad0[0x2816];
+#else
+    char pad0[0x27d6];
+#endif
+    unsigned short key;
+};
 struct Encounter021bb27c { unsigned short key; unsigned char active; char pad3[0xb]; unsigned char fieldE; };
 struct Detail021bb27c { unsigned short field0; unsigned char field2; };
 struct Event021bb27c {
     char pad0[8]; unsigned short zone, mode; char padc[5]; unsigned char resetActor, resetAll;
-    char pad13[3]; unsigned short kind, key; char pad1a[0x62]; SafeAllocator allocator;
+    char pad13[3]; unsigned short kind, key;
+#if defined(jpn)
+    char pad1a[0x78 - 0x1a];
+#else
+    char pad1a[0x7c - 0x1a];
+#endif
+    SafeAllocator allocator;
     char pad90[0xa]; unsigned char field9a; char pad9b[0x34]; unsigned char fieldcf;
     char padd0[0x2d]; unsigned char fieldfd; char padfe; unsigned char fieldff;
     char pad100[4]; unsigned char field104; char pad105[3]; unsigned char field108;
@@ -26,7 +45,14 @@ struct Event021bb27c {
     char pad117[0xd]; SafeAllocator nestedAllocator; SafeAllocator* externalAllocator;
     char pad13c[0x38]; unsigned char actorMask, restoreMask;
 };
-struct ResourceKey021bb27c { char pad0[0x44ac]; unsigned short key; };
+struct ResourceKey021bb27c {
+#if defined(jpn)
+    char pad0[0x41fc];
+#else
+    char pad0[0x44ac];
+#endif
+    unsigned short key;
+};
 struct Bounds021bb27c { int zone; Vector3fix origin, extent, destination; };
 int GetFieldIfFlag4(char*);
 extern "C" int* func_0202ae18();
@@ -58,6 +84,11 @@ extern "C" void func_ov017_021921fc(const Vector3fix*, int, int);
 void EnqueueEventTag150_021d035c(unsigned char, unsigned char, unsigned char);
 int GetByteFieldMasked0x1ce(void*, int);
 extern "C" void func_ov017_021bd4d0(Event021bb27c*, unsigned char, int, int);
+#if defined(jpn)
+#define data_ov017_021d7d6c data_ov017_021d8544
+#define data_ov017_021d7d72 data_ov017_021d854a
+#define data_ov017_021d6c20 data_ov017_021d7018
+#endif
 extern const char data_ov017_021d7d6c[], data_ov017_021d7d72[];
 extern AllocatorUnion data_02114e20;
 extern const Bounds021bb27c data_ov017_021d6c20[3];

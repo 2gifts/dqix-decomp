@@ -1,7 +1,27 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
+#if defined(jpn)
+#include "Filesystem/FileIO.h"
 
+extern "C" void* func_020e21e8(const char* tablePath, unsigned int* outSize, int variant);
+extern "C" char* func_020e046c(char* destination, void* data, void* sizeWord, int index);
+
+// JPN: func_020e2168
+extern "C" ARM int func_020e2168(char* destination, const char* tablePath,
+    int index, int variant, bool lock) {
+    if (destination == NULL || tablePath == NULL || index < 0)
+        return 0;
+    if (lock)
+        BackgroundLoader::AddLockGlobal();
+    unsigned int size;
+    func_020e21e8(tablePath, &size, variant);
+    char* result = func_020e046c(destination, data_0211e33c, (void*)size, index);
+    if (lock)
+        BackgroundLoader::RemoveLockGlobal();
+    return (int)result;
+}
+#else
 extern "C" int func_020e0574(void* a, int* b, int c, int d);
 extern "C" int func_020e046c(int a, int b, int c, int d);
 
@@ -24,3 +44,4 @@ ARM int ComputeAndApplyWithCounter020e04f4(int p0, void* p1, int p2, int p3, uns
     }
     return result;
 }
+#endif
