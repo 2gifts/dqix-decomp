@@ -1,8 +1,5 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
-#if defined(jpn)
-extern "C" void func_0203c758(char*, char*);
-#endif
 
 extern char* data_02105244;
 void ReleaseEntry0203c54c(char* obj, short* idxPtr);
@@ -11,7 +8,7 @@ void ReleaseEntry0203c54c(char* obj, short* idxPtr);
 ARM void ReleaseGlobalEntry0203c198(char* obj) {
     if (data_02105244 == NULL) return;
 #if defined(jpn)
-    func_0203c758(data_02105244, obj);
+    ReleaseEntry0203c54c(data_02105244, reinterpret_cast<short*>(obj));
     memset(obj, -1, 0x14);
     *(unsigned int*)(obj + 0x30) &= ~0xff0000;
 #else
