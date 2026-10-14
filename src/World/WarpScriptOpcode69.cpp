@@ -42,7 +42,7 @@ ARM bool ProcessExtraOpcode69Params_0201cb60(Script::Parameter *param, int numPa
 // USA: func_0201ccc8
 ARM int WarpScript_Opcode_69_0201ccc8(Script::Parameter *params, int numParams) {
     ZoneFeatures::Opcode68Entry entry;
-    entry.Reset();
+    entry.Reset_0201ce10();
     Script::Parameter *p = params;
     fix32_t centreX      = (int) (4096.0f * (p++)->ToFloat());
     fix32_t centreY      = (int) (4096.0f * (p++)->ToFloat());

@@ -12,7 +12,7 @@ struct ListHeadCEE68 {
 };
 
 // USA: func_020cee68
-ARM void AppendNodeToTail(struct ListHeadCEE68* list, struct NodeCEE68* node) {
+ARM void AppendNodeToTail_020cee68(struct ListHeadCEE68* list, struct NodeCEE68* node) {
     struct NodeCEE68* cur;
     struct NodeCEE68* next;
     if (list == 0) return;

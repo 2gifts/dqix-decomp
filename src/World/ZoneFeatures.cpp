@@ -10,7 +10,7 @@ extern Script::OpcodeLookupEntry data_020ef388[];
 extern "C"
 {
     extern "C" void* _Z25GetPtrField0x468_02011584Pv(GameState*);
-    void _ZN12ZoneFeatures13Opcode68Entry5ResetEv(void*);
+    void _ZN12ZoneFeatures13Opcode68Entry14Reset_0201ce10Ev(void*);
 
     Matrix4x3 _Z15RotationMatrixYi(fix32_t);
 
@@ -100,7 +100,7 @@ int WarpScript_Opcode_68_0201cb38(Script::Parameter* params, int numParams)
     return 1;
 }
 
-void ZoneFeatures::Opcode68Entry::Reset()
+void ZoneFeatures::Opcode68Entry::Reset_0201ce10()
 {
     unk_0 = 0;
     unk_1c = -1;
@@ -662,7 +662,7 @@ void ZoneFeatures::AllocateGrottoTileFeaturePlacementEntries_0201e288(int count,
     grottoTileFeatureEntryCapacity_ = count;
 }
 
-void ZoneFeatures::LoadFromScript(SafeAllocator* alloc, const void* script, unsigned int length)
+void ZoneFeatures::LoadFromScript_0201e2b4(SafeAllocator* alloc, const void* script, unsigned int length)
 {
     ExecuteZoneWarpScript_0201e1d0(script, length, this, alloc);
 }

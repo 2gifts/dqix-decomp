@@ -36,7 +36,7 @@ struct RefArray0xc6fc {
 #if defined(jpn)
 ARM void DecrementEntryCount0x24(struct RefArray0xc6fc* obj, const short* indices)
 #else
-ARM void DecrementEntryCount0x24(struct RefArray0xc6fc* obj, short index)
+ARM void DecrementEntryCount0x24_0203c6fc(struct RefArray0xc6fc* obj, short index)
 #endif
 {
 #if defined(jpn)

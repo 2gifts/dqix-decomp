@@ -61,7 +61,7 @@ public:
         int unk_64[2];
         int unk_6c;
 
-        void Reset();
+        void Reset_0201ce10();
     };
 
     // Used by opcodes 6a, 6b, 73, 74
@@ -225,7 +225,7 @@ public:
     void AllocateOpcode64Entries_0201e25c(int count, SafeAllocator* alloc);
     void AllocateGrottoTileFeaturePlacementEntries_0201e288(int count, SafeAllocator* alloc);
 
-    void LoadFromScript(SafeAllocator* alloc, const void* script, unsigned int length);
+    void LoadFromScript_0201e2b4(SafeAllocator* alloc, const void* script, unsigned int length);
     Opcode64Entry* GetOpcode64Entry_0201e2d8(int index);
 
     void CreateOpcode64Entry_0201e304(const Opcode64Entry& data);

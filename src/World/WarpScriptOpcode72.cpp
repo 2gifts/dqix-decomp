@@ -4,7 +4,7 @@
 ARM int WarpScript_Opcode_72_0201ce80(Script::Parameter *params, int numParams) {
     Script::Parameter *paramsStart = params;
     ZoneFeatures::Opcode68Entry entry;
-    entry.Reset();
+    entry.Reset_0201ce10();
     fix32_t centreX     = (int) (4096.0f * (params++)->ToFloat());
     fix32_t centreY     = (int) (4096.0f * (params++)->ToFloat());
     fix32_t centreZ     = (int) (4096.0f * (params++)->ToFloat());

@@ -75,7 +75,7 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
                         unsigned int scriptSize;
                         void* script = DecompressLZ77FileIntoScratchSpace(scriptAllocator, file, scriptSize);
                         features.Reset();
-                        features.LoadFromScript(&scriptAllocator, script, scriptSize);
+                        features.LoadFromScript_0201e2b4(&scriptAllocator, script, scriptSize);
                     }
                     index++;
                 }

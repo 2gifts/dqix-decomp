@@ -16,7 +16,7 @@ struct RefArray0xc6fc;
 #if defined(jpn)
 void DecrementEntryCount0x24(struct RefArray0xc6fc* obj, const short* indices);
 #else
-void DecrementEntryCount0x24(struct RefArray0xc6fc* obj, short index);
+void DecrementEntryCount0x24_0203c6fc(struct RefArray0xc6fc* obj, short index);
 #endif
 
 #if defined(jpn)
@@ -52,7 +52,7 @@ ARM void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* fmt) {
         IncrementEntryCount0x24_0203c6b8((struct RefArray0xc6b8*)data_02105244, oldIdx);
         ReleaseGlobalEntry0203c198((char*)obj);
         func_0203c5a8(data_02105244, buf, &obj->idx);
-        DecrementEntryCount0x24((struct RefArray0xc6fc*)data_02105244, oldIdx);
+        DecrementEntryCount0x24_0203c6fc((struct RefArray0xc6fc*)data_02105244, oldIdx);
 #endif
     }
 }

@@ -18,7 +18,7 @@ struct Struct0201ce10 {
 };
 
 // USA: func_0201ce10
-ARM void ZoneFeatures::Opcode68Entry::Reset() {
+ARM void ZoneFeatures::Opcode68Entry::Reset_0201ce10() {
     struct Struct0201ce10* p = (struct Struct0201ce10*)this;
     p->f00 = 0;
     p->f1c = -1;
