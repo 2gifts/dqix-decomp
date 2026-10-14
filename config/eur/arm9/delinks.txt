@@ -20019,3 +20019,7 @@ src/Combat/Main/func_0200c7d4.cpp:
 src/Combat/Main/func_0200cf24.cpp:
     complete
     .text start:0x0200cf24 end:0x0200cf44
+
+src/Combat/Main/func_02019210.cpp:
+    complete
+    .text start:0x02019220 end:0x02019518
