@@ -18429,6 +18429,7 @@ src/Combat/Main/FindGlyphIndexWithFallback02043014.cpp:
 src/Combat/Main/func_0201099c.cpp:
     complete
     .text start:0x020107f8 end:0x020110b0
+
 src/Filesystem/LoadIndexedResourceIntoScratch.cpp:
     complete
     .text start:0x020e08f0 end:0x020e0968
