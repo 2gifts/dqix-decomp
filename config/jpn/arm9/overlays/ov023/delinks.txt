@@ -4,6 +4,10 @@
     .data       start:0x021fcd20 end:0x021fec40 kind:data align:32
     .bss        start:0x021fec40 end:0x021ff1a0 kind:bss align:32
 
+src/Combat/Overlay_23/BuildElemPaletteTags_021d9a6c.cpp:
+    complete
+    .text start:0x021da264 end:0x021da52c
+
 src/Combat/Overlay_23/AddOffset20_021f7318.cpp:
     complete
     .text start:0x021f6854 end:0x021f685c
