@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/ZoneFeatures.h"
 
 struct SetFieldsStruct {
     char unk0[0x80];
@@ -8,7 +9,10 @@ struct SetFieldsStruct {
 };
 
 // USA: func_0201e878
-extern "C" ARM void _ZN12ZoneFeatures21SetOpcode7bAllocationEPNS_13Opcode7bEntryEt(struct SetFieldsStruct* p, int value, short id) {
+ARM void ZoneFeatures::SetOpcode7bAllocation(ZoneFeatures::Opcode7bEntry* arg0, unsigned short arg1) {
+    struct SetFieldsStruct* p = (struct SetFieldsStruct*)this;
+    int value = (int)arg0;
+    short id = (short)arg1;
     p->field84 = value;
     p->field82 = id;
     p->field80 = 0;

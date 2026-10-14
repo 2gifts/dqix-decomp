@@ -1,15 +1,17 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "World/ZoneFeatures.h"
 
 struct Foo0201e288 {
-    char  pad[0x30]; // 0x0..0x2f
-    void* ptr;       // 0x30
-    int   idx;       // 0x34
-    int   count;     // 0x38
+    char  pad[0x30];
+    void* ptr;
+    int   idx;
+    int   count;
 };
 
 // USA: func_0201e288
-extern "C" ARM void _ZN12ZoneFeatures41AllocateGrottoTileFeaturePlacementEntriesEiP13SafeAllocator(struct Foo0201e288* obj, int count, SafeAllocator* alloc) {
+ARM void ZoneFeatures::AllocateGrottoTileFeaturePlacementEntries(int count, SafeAllocator* alloc) {
+    struct Foo0201e288* obj = (struct Foo0201e288*)this;
     obj->ptr = alloc->Allocate(count * 0x10);
     obj->idx = 0;
     obj->count = count;

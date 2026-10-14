@@ -16,7 +16,8 @@ unsigned int GetGlobalField0x1c020421a0();
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0205ce50
-extern "C" ARM unsigned int _Z37SetupGlobalObjType3AndInitSelfPointerPh(unsigned int self) {
+ARM unsigned int SetupGlobalObjType3AndInitSelfPointer(unsigned char* arg0) {
+    unsigned int self = (unsigned int)arg0;
     unsigned int global = GetGlobalField0x1c020421a0();
     SetField0x1e20((void*)global, (void*)(self + 0xb4));
     if (IsField440Empty((CE28Obj*)(global + stateLowOffset + stateHighOffset)) == 0) {

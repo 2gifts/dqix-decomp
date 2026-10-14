@@ -1,15 +1,17 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "World/ZoneFeatures.h"
 
 struct Foo0201e480 {
-    char  pad[0xc]; // 0x0..0xb
-    void* ptr;      // 0xc
-    int   idx;      // 0x10
-    int   count;    // 0x14
+    char  pad[0xc];
+    void* ptr;
+    int   idx;
+    int   count;
 };
 
 // USA: func_0201e480
-extern "C" ARM void _ZN12ZoneFeatures23AllocateOpcode66EntriesEiP13SafeAllocator(struct Foo0201e480* obj, int count, SafeAllocator* alloc) {
+ARM void ZoneFeatures::AllocateOpcode66Entries(int count, SafeAllocator* alloc) {
+    struct Foo0201e480* obj = (struct Foo0201e480*)this;
     obj->ptr = alloc->Allocate(count * 0x24);
     obj->idx = 0;
     obj->count = count;

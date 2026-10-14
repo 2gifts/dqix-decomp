@@ -17,7 +17,8 @@ struct Actor02076ccc {
 
 // KEEP-NAME
 // USA: func_02076ccc
-extern "C" ARM bool _Z18TrySetMode02076cccPvi(struct Actor02076ccc* obj, int mode) {
+ARM bool TrySetMode02076ccc(void* arg0, int mode) {
+    struct Actor02076ccc* obj = (struct Actor02076ccc*)arg0;
     if (obj->field_130 == mode) {
         return true;
     }

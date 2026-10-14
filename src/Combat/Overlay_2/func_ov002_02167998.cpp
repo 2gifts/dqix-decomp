@@ -23,7 +23,6 @@ struct Flags3c {
     unsigned int top : 1;
 };
 
-extern "C" unsigned char *_ZN9GameState21GetPartyMemberByIndexEi(GameState *gs, int idx);
 int GetField0x3acValue(GameState *gs);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int clear, int key);
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
@@ -127,7 +126,7 @@ extern "C" ARM void func_ov002_02167998(char *base) {
             return;
         }
         int member       = *(signed char *) (base + 0x1c20);
-        unsigned char *m = _ZN9GameState21GetPartyMemberByIndexEi(gs, member);
+        unsigned char *m = (unsigned char *)gs->GetPartyMemberByIndex(member);
         if (m == 0) return;
         switch (mode) {
         case 0:
