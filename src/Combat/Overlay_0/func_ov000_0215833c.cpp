@@ -29,12 +29,12 @@ extern float data_ov000_02182ad4[];
 extern float data_ov000_02182bd4[];
 
 int NextRandomMax(struct Random* random, int max);
-int IsFlag0x14Bit0x8Set(GameObject* combatant);
-void ClearFlag0x14Bit0x8AndBytes(void* stats);
-int CheckFlag0x14Bit0x10Set(unsigned char* stats);
-void ClearBattleFlag0x14Bit4(void* stats);
-int IsFlag0x14Bit0x20Set(GameObject* combatant);
-void ClearFlag0x20AndBytes(void* stats);
+int IsFlag0x14Bit0x8Set_ov000_02156038(GameObject* combatant);
+void ClearFlag0x14Bit0x8AndBytes_020882dc(void* stats);
+int CheckFlag0x14Bit0x10Set_020882f8(unsigned char* stats);
+void ClearBattleFlag0x14Bit4_02088390(void* stats);
+int IsFlag0x14Bit0x20Set_ov000_021543f4(GameObject* combatant);
+void ClearFlag0x20AndBytes_020883fc(void* stats);
 
 // USA: func_ov000_0215833c
 extern "C" ARM int func_ov000_0215833c(struct Random* random, int index, ActionNode* node) {
@@ -49,39 +49,39 @@ extern "C" ARM int func_ov000_0215833c(struct Random* random, int index, ActionN
     float r = (float)NextRandomMax(random, 100) / 100.0f;
     turns = &SLEEP(combatant)->turns7f;
 
-    if (IsFlag0x14Bit0x8Set(combatant)) {
+    if (IsFlag0x14Bit0x8Set_ov000_02156038(combatant)) {
         if (turns[0] != 0) {
             int remaining = turns[0] - 1;
             float chance = data_ov000_02182ad4[remaining & 0xff];
             turns[0] = remaining;
             if (chance > r) {
                 turns[0] = 0;
-                ClearFlag0x14Bit0x8AndBytes(combatant->currentStats_);
+                ClearFlag0x14Bit0x8AndBytes_020882dc(combatant->currentStats_);
                 node->action = 0x384;
                 node->targetCount = 0;
                 return 1;
             }
         }
-    } else if (CheckFlag0x14Bit0x10Set((unsigned char*)combatant->currentStats_)) {
+    } else if (CheckFlag0x14Bit0x10Set_020882f8((unsigned char*)combatant->currentStats_)) {
         if (turns[1] != 0) {
             int remaining = turns[1] - 1;
             float chance = data_ov000_02182bd4[remaining & 0xff];
             turns[1] = remaining;
             if (chance > r) {
                 turns[1] = 0;
-                ClearBattleFlag0x14Bit4(combatant->currentStats_);
+                ClearBattleFlag0x14Bit4_02088390(combatant->currentStats_);
                 node->action = 0x385;
                 node->targetCount = 0;
                 return 1;
             }
         }
-    } else if (IsFlag0x14Bit0x20Set(combatant) && turns[2] != 0) {
+    } else if (IsFlag0x14Bit0x20Set_ov000_021543f4(combatant) && turns[2] != 0) {
         int remaining = turns[2] - 1;
         float chance = data_ov000_02182ad4[remaining & 0xff];
         turns[2] = remaining;
         if (chance > r) {
             turns[2] = 0;
-            ClearFlag0x20AndBytes(combatant->currentStats_);
+            ClearFlag0x20AndBytes_020883fc(combatant->currentStats_);
             node->action = 0x3aa;
             node->targetCount = 0;
             return 1;

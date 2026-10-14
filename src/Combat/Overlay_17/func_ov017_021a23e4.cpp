@@ -34,17 +34,17 @@ struct FieldMonster021a23e4 {
 
 extern "C" void* func_0202ae18();
 extern "C" int func_0202c540(void*);
-GameObject* GetCombatantWithFlag0x100(GameState*, int);
-extern "C" int _Z36GetBitflagForCombatantColor_021a26e8ii(int, int);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
+int GetBitflagForCombatantColor_021a26e8(int, int);
 extern "C" void* func_0205ec34();
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
-Entry_02028bd0* GetEntryTableBase();
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
+Entry_02028bd0* GetEntryTableBase_02027ca4();
 AreaEntry021a23e4* FindInlineEntryById(Entry_02028bd0*, int);
-extern "C" SpawnEntry021a23e4* _Z31FindMatchingEntryByMask02073ec4iPv(int, void*);
-extern "C" int _Z27SelectWeightedEntry02073fdcPv(void*);
-extern "C" MonsterInfo021a23e4* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(BinarySearchByComparatorStruct*, int);
-extern "C" int _Z40FindCombatantWithNegativeField2_021a20c0iii(int, int, int);
-int GetField0x17dBits4To5IfFlag8(unsigned char*);
+SpawnEntry021a23e4* FindMatchingEntryByMask02073ec4(int, void*);
+int SelectWeightedEntry02073fdc(void*);
+MonsterInfo021a23e4* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
+int FindCombatantWithNegativeField2_021a20c0(int, int, int);
+int GetField0x17dBits4To5IfFlag8_020795cc(unsigned char*);
 extern "C" int func_02032370(int);
 extern "C" void func_02076a8c(void*);
 extern "C" int func_ov017_021a2128(int arena, int areaId, int monsterId, int variant, const Vector3fix* position, int y, int entryId, unsigned char flags);
@@ -54,36 +54,36 @@ extern "C" int func_ov017_021a2128(int arena, int areaId, int monsterId, int var
 extern "C" ARM unsigned short func_ov017_021a23e4(int arena, int combatantId, int mask, int monsterId) {
     GameState* state = GameState::GetInstance();
     if (func_0202c540(func_0202ae18()) != 0) return 0;
-    Object3D* combatant = (Object3D*)GetCombatantWithFlag0x100(state, combatantId);
+    Object3D* combatant = (Object3D*)GetCombatantWithFlag0x100_0200ff1c(state, combatantId);
     if (!combatant) return 0;
-    if (mask == 0) mask = _Z36GetBitflagForCombatantColor_021a26e8ii(arena, combatantId);
+    if (mask == 0) mask = GetBitflagForCombatantColor_021a26e8(arena, combatantId);
     int areaId = combatant->GetField06();
     unsigned char* ctx = (unsigned char*)func_0205ec34();
-    if (TestBitInByteArray((int)ctx, ctx + 0x8c, 0x79a) && monsterId != 0x26 && monsterId != 0x27 && monsterId != 0x28 &&
+    if (TestBitInByteArray_0206dfb0((int)ctx, ctx + 0x8c, 0x79a) && monsterId != 0x26 && monsterId != 0x27 && monsterId != 0x28 &&
         areaId >= 0x190 && areaId <= 0x199)
         return 0;
-    AreaEntry021a23e4* area = FindInlineEntryById(GetEntryTableBase(), areaId);
+    AreaEntry021a23e4* area = FindInlineEntryById(GetEntryTableBase_02027ca4(), areaId);
     if (!area) return 0;
-    SpawnEntry021a23e4* spawn = _Z31FindMatchingEntryByMask02073ec4iPv(mask, area->masks);
+    SpawnEntry021a23e4* spawn = FindMatchingEntryByMask02073ec4(mask, area->masks);
     if (!spawn) return 0;
     if (monsterId < 0) {
-        monsterId = _Z27SelectWeightedEntry02073fdcPv(spawn);
+        monsterId = SelectWeightedEntry02073fdc(spawn);
         if (monsterId < 0) return 0;
     }
-    MonsterInfo021a23e4* info = _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi((BinarySearchByComparatorStruct*)area->monsters, (short)monsterId);
+    MonsterInfo021a23e4* info = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)area->monsters, (short)monsterId);
     if (!info) return 0;
     int size = info->radius << 2;
     int dist = combatant->GetRadius() / 4 + size / 2;
     Vector3fix position = combatant->GetPointInFront(dist);
     Vector3fix rotation = *(Vector3fix*)((char*)combatant + 0x50);
     int angle = fix32ReduceAngle0To2Pi(rotation.y + 0x3244);
-    if (_Z40FindCombatantWithNegativeField2_021a20c0iii(arena, area->category, 12) < 0) {
+    if (FindCombatantWithNegativeField2_021a20c0(arena, area->category, 12) < 0) {
         int candidates[12];
         int count = 0;
         for (int i = 0; i < 12; i++) {
             int index = i + (area->category * 12 + 0x70);
             FieldMonster021a23e4* m = (FieldMonster021a23e4*)state->GetMaybeFieldMonsterByIndex(index);
-            if (m && m->kind != 9 && GetField0x17dBits4To5IfFlag8((unsigned char*)m) < 0)
+            if (m && m->kind != 9 && GetField0x17dBits4To5IfFlag8_020795cc((unsigned char*)m) < 0)
                 candidates[count++] = index;
         }
         Object3D* victim = (Object3D*)state->GetMaybeFieldMonsterByIndex(candidates[func_02032370(count)]);

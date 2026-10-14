@@ -1,27 +1,27 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState* battleStruct);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-int IsFlag0x18Bit0x1000Set(GameObject* combatant);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+int IsFlag0x18Bit0x1000Set_ov000_02155154(GameObject* combatant);
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
-extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(unsigned char* obj, int idx);
+int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct* s, int val);
+void IncrementByteCounterCapped0x63_0215a8d4(unsigned char* obj, int idx);
 extern "C" float func_ov000_02155a04(GameObject* obj);
 struct Outer_02054000;
-extern "C" void* _Z21GetActiveSub_02054000P14Outer_02054000(struct Outer_02054000* p);
+void* GetActiveSub_02054000(struct Outer_02054000* p);
 struct Field150Holder02052df8;
 int GetHalfwordEntryFromField150(struct Field150Holder02052df8* obj, int index);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
+int LoadBattleBlock020ac4c0(void* dst);
 struct S_a0840;
-void AddSaturateField0x44(struct S_a0840* p, unsigned int amount);
+void AddSaturateField0x44_020a0840(struct S_a0840* p, unsigned int amount);
 struct S_a02d0;
-void AddClamped24BitFieldAt0x20(struct S_a02d0* p, unsigned int amount);
-int GetField0x3acValue(GameState* battleStruct);
+void AddClamped24BitFieldAt0x20_020a02d0(struct S_a02d0* p, unsigned int amount);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 struct S_a0644;
-void AddClamped16BitHighAt0x24(struct S_a0644* p, unsigned int amount);
-int CopyInBattleField0x7540(void* src);
+void AddClamped16BitHighAt0x24_020a0644(struct S_a0644* p, unsigned int amount);
+int CopyInBattleField0x7540_020ac494(void* src);
 
 extern signed char data_ov000_02182a7c[];
 
@@ -144,8 +144,8 @@ extern "C" ARM void func_ov000_021554f4(struct Battle021554f4* self, int idx, in
     unsigned short v;
     unsigned int x;
     GameState* gs = GameState::GetInstance();
-    struct ArrayContainsByteStruct* list = (struct ArrayContainsByteStruct*)GetPtrField0x2a04(GameState::GetInstance());
-    struct Combatant021554f4* c = (struct Combatant021554f4*)GetCombatantWithFlag0x400(gs, idx);
+    struct ArrayContainsByteStruct* list = (struct ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(GameState::GetInstance());
+    struct Combatant021554f4* c = (struct Combatant021554f4*)GetCombatantWithFlag0x400_0200fea4(gs, idx);
     if (c == 0) return;
 
     if (c->stats->f0 == 0 && flags == 8) {
@@ -156,13 +156,13 @@ extern "C" ARM void func_ov000_021554f4(struct Battle021554f4* self, int idx, in
         return;
     }
 
-    if (c->action != 0 && c->action->id == 0xf5 && IsFlag0x18Bit0x1000Set((GameObject*)c)
-        && ArrayContainsByte(list, c->stats->f2e)
-        && !(IsFlag0x18Bit0x1000Set((GameObject*)c) && c->f181 != 0)
-        && c->f182 != 0 && ArrayContainsByte(list, target)) {
+    if (c->action != 0 && c->action->id == 0xf5 && IsFlag0x18Bit0x1000Set_ov000_02155154((GameObject*)c)
+        && ArrayContainsByte_02086ef0(list, c->stats->f2e)
+        && !(IsFlag0x18Bit0x1000Set_ov000_02155154((GameObject*)c) && c->f181 != 0)
+        && c->f182 != 0 && ArrayContainsByte_02086ef0(list, target)) {
         struct Combatant021554f4* t = (struct Combatant021554f4*)GameState::GetInstance()->GetCombatantByIndex(target);
         if (t != 0 && t->stats->f58.bits.kind == 2) {
-            _Z39IncrementByteCounterCapped0x63_0215a8d4Phi((unsigned char*)self, 8);
+            IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)self, 8);
         }
     }
 
@@ -233,9 +233,9 @@ extern "C" ARM void func_ov000_021554f4(struct Battle021554f4* self, int idx, in
     }
 
     if (IsPartyIndex(target)) {
-        GameObject* o = GetCombatantWithFlag0x100(gs, target);
+        GameObject* o = GetCombatantWithFlag0x100_0200ff1c(gs, target);
         if (o == 0) return;
-        struct SubBits* sub = (struct SubBits*)_Z21GetActiveSub_02054000P14Outer_02054000((struct Outer_02054000*)o);
+        struct SubBits* sub = (struct SubBits*)GetActiveSub_02054000((struct Outer_02054000*)o);
         if (sub != 0) {
             e->f24 = sub->f;
         }
@@ -244,18 +244,18 @@ extern "C" ARM void func_ov000_021554f4(struct Battle021554f4* self, int idx, in
         }
     }
 
-    if (!ArrayContainsByte(list, target)) return;
+    if (!ArrayContainsByte_02086ef0(list, target)) return;
     if (flags & 1) return;
     if (flags & 2) return;
     if (flags & 4) return;
     if (flags & 0x10) return;
     if (flags & 0x20) return;
 
-    _Z23LoadBattleBlock020ac4c0Pv(buf);
-    AddSaturateField0x44((struct S_a0840*)buf, 1);
-    AddClamped24BitFieldAt0x20((struct S_a02d0*)(buf + 0x68), 1);
-    if (target == GetField0x3acValue(gs)) {
-        AddClamped16BitHighAt0x24((struct S_a0644*)buf, 1);
+    LoadBattleBlock020ac4c0(buf);
+    AddSaturateField0x44_020a0840((struct S_a0840*)buf, 1);
+    AddClamped24BitFieldAt0x20_020a02d0((struct S_a02d0*)(buf + 0x68), 1);
+    if (target == GetField0x3acValue_020100a8(gs)) {
+        AddClamped16BitHighAt0x24_020a0644((struct S_a0644*)buf, 1);
     }
-    CopyInBattleField0x7540(buf);
+    CopyInBattleField0x7540_020ac494(buf);
 }

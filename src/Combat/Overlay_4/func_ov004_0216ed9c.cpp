@@ -65,27 +65,27 @@ struct Obj24_021b1fe8;
 struct Obj24_021b1ffc;
 
 extern "C" void* func_ov004_0216ea38(void* ctx, int key);
-extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
-int GetBattleSubField0xbcForState(void);
+int GetGlobalField0x1c020421a0(void);
+int GetBattleSubField0xbcForState_020d4ac8(void);
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" Node0216ed9c* func_ov023_021f6880(void*, int);
 extern "C" int func_ov023_021f6f10(void*);
 extern "C" void func_ov023_021fb27c(void* node, unsigned short v);
 extern "C" void func_ov017_021b1e24(void* a, void* b);
-extern "C" int _Z34GetFieldromField_021b1fd4_021b1fd4Pv(void* obj);
+int GetFieldromField_021b1fd4_021b1fd4(void* obj);
 extern "C" void func_ov023_021fa078(void* obj, void* ctx, unsigned short val, Vec3_0216ed9c* srcVec, int p5, int p6);
-extern "C" unsigned char _Z26GetSubByteField34_021b2024P14Obj24_021b2024(Obj24_021b2024* obj);
-extern "C" unsigned char _Z26GetSubByteField35_021b2038P14Obj24_021b2038(Obj24_021b2038* obj);
-void* FindEntryByKey(TableA68* table, int key);
+unsigned char GetSubByteField34_021b2024(Obj24_021b2024* obj);
+unsigned char GetSubByteField35_021b2038(Obj24_021b2038* obj);
+void* FindEntryByKey_02072a68(TableA68* table, int key);
 extern "C" void func_0204500c(void* field, void* buf, int p2, int p3);
-extern "C" unsigned char _Z27GetSubByteField438_021b204cP14Obj24_021b204c(Obj24_021b204c* obj);
-extern "C" unsigned char _Z26GetSubByteField44_021b1fe8P14Obj24_021b1fe8(Obj24_021b1fe8* obj);
-extern "C" void* _Z38GetOffsetPtrromField_021b1fc0_021b1fc0Pv(void* obj);
+unsigned char GetSubByteField438_021b204c(Obj24_021b204c* obj);
+unsigned char GetSubByteField44_021b1fe8(Obj24_021b1fe8* obj);
+void* GetOffsetPtrromField_021b1fc0_021b1fc0(void* obj);
 extern "C" void func_ov011_021848a0(void* obj, int val);
-extern "C" int _Z37SendBattleSaveBufferOrSetFlag020ac7b4i(int flag);
-extern "C" int _Z27GetSubWordField394_021b1ffcP14Obj24_021b1ffc(Obj24_021b1ffc* obj);
+int SendBattleSaveBufferOrSetFlag020ac7b4(int flag);
+int GetSubWordField394_021b1ffc(Obj24_021b1ffc* obj);
 extern "C" void func_02046380(void* g);
-void StoreInArray0x8b0(StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(StoreStruct* base, int index, int value);
 
 static inline char* GetFive(char* actor) {
     return *(char**)(actor + 0x3000 + fiveOffset);
@@ -99,11 +99,11 @@ extern "C" ARM int func_ov004_0216ed9c(void* self) {
     void* list = *(void**)(actor + 0x3000 + listOffset);
     char* five = GetFive(actor);
     TableA68* table = (TableA68*)func_ov004_0216ea38(self, 4);
-    int g = _Z26GetGlobalField0x1c020421a0v();
+    int g = GetGlobalField0x1c020421a0();
     unsigned char state = data_ov004_02171048.ptr->flags2e[0];
 
     if (state == 2) {
-        int v = GetBattleSubField0xbcForState();
+        int v = GetBattleSubField0xbcForState_020d4ac8();
         node = func_ov023_021f6880(func_ov011_021849c8(self), 0x97);
         if (node == 0 || func_ov023_021f6f10(node) != 1) {
             node = 0;
@@ -118,7 +118,7 @@ extern "C" ARM int func_ov004_0216ed9c(void* self) {
             int i;
             Node0216ed9c* coin;
             int id;
-            int total = _Z34GetFieldromField_021b1fd4_021b1fd4Pv(five) >> 12;
+            int total = GetFieldromField_021b1fd4_021b1fd4(five) >> 12;
             int count = total - data_ov004_02171048.ptr->numSpawned;
             if (count == 0) goto spawned;
 
@@ -159,15 +159,15 @@ extern "C" ARM int func_ov004_0216ed9c(void* self) {
         }
 spawned:
 
-        unsigned char a = _Z26GetSubByteField34_021b2024P14Obj24_021b2024((Obj24_021b2024*)five);
-        unsigned char b = _Z26GetSubByteField35_021b2038P14Obj24_021b2038((Obj24_021b2038*)five);
+        unsigned char a = GetSubByteField34_021b2024((Obj24_021b2024*)five);
+        unsigned char b = GetSubByteField35_021b2038((Obj24_021b2038*)five);
         if (data_ov004_02171048.shown1 == 0 && a == 5 && b == 0) {
-            func_0204500c((void*)g, FindEntryByKey(table, 0xcc), 0, 0xe3);
+            func_0204500c((void*)g, FindEntryByKey_02072a68(table, 0xcc), 0, 0xe3);
             *(int*)(g + 0x998) = 1;
             data_ov004_02171048.shown1 = 1;
         }
         if (data_ov004_02171048.shown0 == 0 && a == 5 && b == 5) {
-            func_0204500c((void*)g, FindEntryByKey(table, 0xcd), 0, 0xe3);
+            func_0204500c((void*)g, FindEntryByKey_02072a68(table, 0xcd), 0, 0xe3);
             *(int*)(g + 0x998) = 1;
             data_ov004_02171048.shown0 = 1;
         }
@@ -185,17 +185,17 @@ spawned:
         char* buf = *(char**)(g + 0x5c);
         memset(buf, 0, 0x960);
 
-        if (_Z27GetSubByteField438_021b204cP14Obj24_021b204c((Obj24_021b204c*)five)) {
-            const char* s = (const char*)FindEntryByKey(table, 0x71);
+        if (GetSubByteField438_021b204c((Obj24_021b204c*)five)) {
+            const char* s = (const char*)FindEntryByKey_02072a68(table, 0x71);
             memcpy(buf, s, strlen(s));
-        } else if (_Z26GetSubByteField44_021b1fe8P14Obj24_021b1fe8((Obj24_021b1fe8*)five) & 2) {
-            _Z38GetOffsetPtrromField_021b1fc0_021b1fc0Pv(five);
+        } else if (GetSubByteField44_021b1fe8((Obj24_021b1fe8*)five) & 2) {
+            GetOffsetPtrromField_021b1fc0_021b1fc0(five);
             data_ov004_02171048.ptr->flags2e[1] = 1;
-            const char* s = (const char*)FindEntryByKey(table, 0xca);
+            const char* s = (const char*)FindEntryByKey_02072a68(table, 0xca);
             int len = strlen(s);
             memcpy(buf, s, len);
             if (data_ov004_02171048.ptr->flags2e[3]) {
-                const char* s2 = (const char*)FindEntryByKey(table, 0xd6);
+                const char* s2 = (const char*)FindEntryByKey_02072a68(table, 0xd6);
                 memcpy(buf + len, s2, strlen(s2));
             }
             func_ov011_021848a0(self, 0xca);
@@ -214,14 +214,14 @@ spawned:
                 }
             }
             memcpy(&((QuestView0216ed9c*)((char*)gs + serialBase + serialPage))->identifier, &data_ov004_02171048.ptr->cfg, 4);
-            if (!_Z37SendBattleSaveBufferOrSetFlag020ac7b4i(0)) return 0;
-            if (!_Z37SendBattleSaveBufferOrSetFlag020ac7b4i(1)) return 0;
+            if (!SendBattleSaveBufferOrSetFlag020ac7b4(0)) return 0;
+            if (!SendBattleSaveBufferOrSetFlag020ac7b4(1)) return 0;
         } else {
-            const char* s = (const char*)FindEntryByKey(table, 0xcb);
+            const char* s = (const char*)FindEntryByKey_02072a68(table, 0xcb);
             memcpy(buf, s, strlen(s));
-            int w = _Z27GetSubWordField394_021b1ffcP14Obj24_021b1ffc((Obj24_021b1ffc*)five);
+            int w = GetSubWordField394_021b1ffc((Obj24_021b1ffc*)five);
             func_02046380((void*)g);
-            StoreInArray0x8b0((StoreStruct*)g, 0, w);
+            StoreInArray0x8b0_020465c0((StoreStruct*)g, 0, w);
             func_ov011_021848a0(self, 0xcb);
             data_ov004_02171048.ptr->flags2e[1] = 0;
         }
