@@ -14,17 +14,18 @@ extern const char data_020f29cc[];
 extern const char data_020f29b8[];
 
 // USA: func_020dd0b0  (semantic: ApplyCounterIfValid020dd0b0)
-#pragma opt_propagation off
 extern "C" ARM void func_020dd0b0(int len, char* buf) {
+    const char* innerFile;
+    const char* archive;
     if (len >= 0 && buf != NULL) {
         struct Struct020dfc40 s;
-        void* p1;
-        int p5;
-        p5 = (int)data_020f29b8;
-        p1 = (void*)data_020f29cc;
+        archive = data_020f29b8;
+        innerFile = data_020f29cc;
         buf[0] = 0;
         ResetAndReturnSelf020dfc2c(&s);
         ResetStruct020dfc40(&s);
-        ComputeAndApplyWithCounter020e04f4((int)buf, p1, len, 0, 1, p5);
+    } else {
+        return;
     }
+    ComputeAndApplyWithCounter020e04f4((int)buf, (void*)innerFile, len, 0, 1, (int)archive);
 }
