@@ -35,11 +35,11 @@ extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* gs);
 extern "C" void func_02046380(StoreStruct* store);
 extern "C" void* memset(void* dst, int value, unsigned int length);
-extern "C" void _Z21RegisterSlotA020cf0fci(int out);
-extern "C" StoreStruct* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" void _Z26StoreInArray0x8b0_020465c0P11StoreStructii(StoreStruct* store, int index, int value);
-extern "C" int _Z21CalculateAge_02098f20iii(int a, int b, int c);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574* obj, int index, char* name);
+void RegisterSlotA020cf0fc(int out);
+StoreStruct* GetGlobalField0x1c020421a0(void);
+void StoreInArray0x8b0_020465c0(StoreStruct* store, int index, int value);
+int CalculateAge_02098f20(int a, int b, int c);
+void SetIndexedName02046574(Obj02046574* obj, int index, char* name);
 
 // USA: func_02099304
 extern "C" ARM int func_02099304(ScriptRequest* request, char* name, const void* data, unsigned int size, void* buffer, int bufferSize, unsigned char flags, char* nameA, char* nameB) {
@@ -62,7 +62,7 @@ extern "C" ARM int func_02099304(ScriptRequest* request, char* name, const void*
     } else {
         if (flags & 2) {
             if (func_0202c508(gs)) {
-                _Z21RegisterSlotA020cf0fci((int)slot);
+                RegisterSlotA020cf0fc((int)slot);
                 if (slot[1] == request->mid && slot[2] == request->hi) {
                     data_021098e8.flags |= 1;
                 }
@@ -80,26 +80,26 @@ extern "C" ARM int func_02099304(ScriptRequest* request, char* name, const void*
         }
     }
 
-    StoreStruct* store = _Z26GetGlobalField0x1c020421a0v();
+    StoreStruct* store = GetGlobalField0x1c020421a0();
     func_02046380(store);
     unsigned int hi = request->hi;
-    _Z26StoreInArray0x8b0_020465c0P11StoreStructii(store, 1, request->mid);
-    _Z26StoreInArray0x8b0_020465c0P11StoreStructii(store, 2, hi);
+    StoreInArray0x8b0_020465c0(store, 1, request->mid);
+    StoreInArray0x8b0_020465c0(store, 2, hi);
     if (request->top) {
         int age;
         if (request->offset < 0) {
             age = 0;
         } else {
-            age = _Z21CalculateAge_02098f20iii(request->lo, request->mid, request->hi);
+            age = CalculateAge_02098f20(request->lo, request->mid, request->hi);
             if (age < 0) {
                 age = 0;
             }
         }
-        _Z26StoreInArray0x8b0_020465c0P11StoreStructii(store, 0, age);
+        StoreInArray0x8b0_020465c0(store, 0, age);
     }
-    _Z22SetIndexedName02046574P11Obj02046574iPc((Obj02046574*)store, 0, name);
-    _Z22SetIndexedName02046574P11Obj02046574iPc((Obj02046574*)store, 1, nameA);
-    _Z22SetIndexedName02046574P11Obj02046574iPc((Obj02046574*)store, 2, nameB);
+    SetIndexedName02046574((Obj02046574*)store, 0, name);
+    SetIndexedName02046574((Obj02046574*)store, 1, nameA);
+    SetIndexedName02046574((Obj02046574*)store, 2, nameB);
 
     ((Script*)scriptBuf)->Initialize();
     ((Script*)scriptBuf)->SetOpcodeLookup((Script::OpcodeLookupEntry*)data_020f1504);

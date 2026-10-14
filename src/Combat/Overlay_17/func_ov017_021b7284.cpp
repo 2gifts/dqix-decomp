@@ -147,7 +147,7 @@ extern "C" SearchStruct0202c1a4* func_0202ae18(void);
 struct PointerField32c_ffc0;
 void* GetPointerAt0x32c_0200ffc0(PointerField32c_ffc0* obj);
 void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
-extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7cti(Obj02053f7c* obj, unsigned short a, int b);
+void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c* obj, unsigned short a, int b);
 int CheckField0NonZero_0202b7d8(int* obj);
 extern "C" void __clear(void* buf, int n);
 int GetField0x3acValue_020100a8(GameState* gs);
@@ -294,7 +294,7 @@ done:
             colorHolder = GetPtrField0x114_02033fa0(leader);
         }
         for (int i = 0; i < party->count; i++) {
-            _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7cti((Obj02053f7c*)gs->GetPartyMemberByIndex(party->ids[i]), self->id, 1);
+            SetField0x1b2IfMatchOrFlag02053f7c((Obj02053f7c*)gs->GetPartyMemberByIndex(party->ids[i]), self->id, 1);
         }
         if (CheckField0NonZero_0202b7d8(&search->active) == 0) {
             __clear(present, sizeof(present));

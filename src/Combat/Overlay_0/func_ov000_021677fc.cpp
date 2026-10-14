@@ -1,14 +1,14 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" int _Z29GetSubstructByte0x56_02049ee8Ph(unsigned char* obj);
-extern "C" int _Z29GetThresholdOrDefault021681f8ii(int id, int count);
-extern "C" int _Z26ComputeScaledRatio02167b5cii(int a, int b);
-extern "C" void _Z24StoreThreeFields02167b54Piiii(int* obj, int a, int b, int c);
-extern "C" void _Z46SetSubstructFields4And0xcClearFlag0x2_02049b20PhPi(unsigned char* obj, int* src);
-extern "C" void _Z41SetSubstructField0x8ClearFlag0x2_02049bacPhPi(unsigned char* obj, int* src);
-extern "C" void _Z23SetIntField560_0216f718Pvi(void* obj, int val);
-extern "C" void _Z23SetIntField564_0216f720Pvi(void* obj, int val);
+int GetSubstructByte0x56_02049ee8(unsigned char* obj);
+int GetThresholdOrDefault021681f8(int id, int count);
+int ComputeScaledRatio02167b5c(int a, int b);
+void StoreThreeFields02167b54(int* obj, int a, int b, int c);
+void SetSubstructFields4And0xcClearFlag0x2_02049b20(unsigned char* obj, int* src);
+void SetSubstructField0x8ClearFlag0x2_02049bac(unsigned char* obj, int* src);
+void SetIntField560_0216f718(void* obj, int val);
+void SetIntField564_0216f720(void* obj, int val);
 
 struct EnemyGroup_021677fc {
     unsigned char field_0x0;
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov000_021677fc(Owner_021677fc* obj) {
         for (int j = 0; j < group->count; j++) {
             int id = group->ids[j] + 0xc0;
             GameObject* c = battle->GetCombatantByIndex(id);
-            if (c != 0 && _Z29GetSubstructByte0x56_02049ee8Ph((unsigned char*)c) != 0) {
+            if (c != 0 && GetSubstructByte0x56_02049ee8((unsigned char*)c) != 0) {
                 int found;
                 struct BattleData_021677fc* d = obj->data;
                 int i = 0;
@@ -79,7 +79,7 @@ done:
                     int free = -1;
                     for (int i = 0; i < 8; i++) {
                         GameObject* o = battle->GetCombatantByIndex(obj->data->slots[i] & 0xff);
-                        if (o == 0 || _Z29GetSubstructByte0x56_02049ee8Ph((unsigned char*)o) == 0) {
+                        if (o == 0 || GetSubstructByte0x56_02049ee8((unsigned char*)o) == 0) {
                             free = i;
                             break;
                         }
@@ -102,7 +102,7 @@ done:
         if (c != 0) {
             int radius = c->obj3D_.GetRadius();
             int height = c->obj3D_.GetHeight();
-            int thr = _Z29GetThresholdOrDefault021681f8ii(c->obj3D_.unknown_2_, n);
+            int thr = GetThresholdOrDefault021681f8(c->obj3D_.unknown_2_, n);
             obj->totalWidth += MulFix(radius, thr);
             if (obj->maxHeight < height) {
                 obj->maxHeight = height;
@@ -110,27 +110,27 @@ done:
         }
     }
     obj->maxHeight += 0x800;
-    int ratio = _Z26ComputeScaledRatio02167b5cii(obj->totalWidth, n & 0xff);
+    int ratio = ComputeScaledRatio02167b5c(obj->totalWidth, n & 0xff);
     obj->totalWidth += ratio * (n - 1);
     int x = -(obj->totalWidth / 2);
     for (int i = 0; i < 8; i++) {
         GameObject* c = battle->GetCombatantByIndex(obj->data->slots[i] & 0xff);
         if (c != 0) {
             int radius = c->obj3D_.GetRadius();
-            int thr = _Z29GetThresholdOrDefault021681f8ii(c->obj3D_.unknown_2_, n);
+            int thr = GetThresholdOrDefault021681f8(c->obj3D_.unknown_2_, n);
             int w = MulFix(radius, thr);
             int half = w / 2;
             int a[3];
             int b[3];
             x += half;
-            _Z24StoreThreeFields02167b54Piiii(a, x, 0xcc, -0x2800);
-            _Z46SetSubstructFields4And0xcClearFlag0x2_02049b20PhPi((unsigned char*)c, a);
-            _Z24StoreThreeFields02167b54Piiii(b, 0, 0, 0);
-            _Z41SetSubstructField0x8ClearFlag0x2_02049bacPhPi((unsigned char*)c, b);
+            StoreThreeFields02167b54(a, x, 0xcc, -0x2800);
+            SetSubstructFields4And0xcClearFlag0x2_02049b20((unsigned char*)c, a);
+            StoreThreeFields02167b54(b, 0, 0, 0);
+            SetSubstructField0x8ClearFlag0x2_02049bac((unsigned char*)c, b);
             x += half;
             x += ratio;
         }
     }
-    _Z23SetIntField560_0216f718Pvi(sub, obj->totalWidth);
-    _Z23SetIntField564_0216f720Pvi(sub, obj->maxHeight);
+    SetIntField560_0216f718(sub, obj->totalWidth);
+    SetIntField564_0216f720(sub, obj->maxHeight);
 }
