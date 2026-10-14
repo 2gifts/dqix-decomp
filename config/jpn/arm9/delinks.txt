@@ -18404,3 +18404,8 @@ src/Combat/Main/func_02082828.cpp:
     complete
     .text start:0x02083164 end:0x02083664
     .rodata start:0x020e8ba0 end:0x020e8ba6
+
+src/Combat/Main/NormalizeGlyphKey02042ea4.cpp:
+    complete
+    .text start:0x02042ea4 end:0x02042f9c
+
