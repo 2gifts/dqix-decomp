@@ -16,17 +16,19 @@ struct S02098834 {
 extern "C" extern struct S02098834* _Z18CopyStruct02098834P9S02098834S0_(struct S02098834* dst, struct S02098834* src);
 extern "C" void func_02098364(void* entry);
 
-struct Ctx02098a84 {
-    unsigned char pad0[0xb38];
-    int b38;
-    unsigned char pad1[0xb74 - 0xb38 - 4];
-    int b74;
+struct ValueList02098e3c {
+    S02098834 entries[30];
+    unsigned char unknown1b30[8];
+    int field1b38;
+    unsigned char unknown1b3c[0x1b68 - 0x1b3c];
+    unsigned int values[3];
+    int fallbackIndex;
 };
 
 // USA: func_02098a84
-#pragma opt_common_subs off
-extern "C" ARM int func_02098a84(struct S02098834* arr) {
-    if (((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b38 == 0) {
+extern "C" ARM int func_02098a84(ValueList02098e3c* list) {
+    S02098834* arr = list->entries;
+    if (list->field1b38 == 0) {
         return 0;
     }
 
@@ -43,7 +45,7 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
         if (e->category == 9 || e->category == 10) {
             continue;
         }
-        if (Field0x1b68ContainsValue((struct ValueList02098e3c*)arr, e->valueId) == 0) {
+        if (Field0x1b68ContainsValue(list, e->valueId) == 0) {
             allValid = 0;
         }
     }
@@ -57,9 +59,9 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
             if (freeIdx < 6) {
                 return freeIdx;
             }
-            _Z18CopyStruct02098834P9S02098834S0_(&arr[freeIdx], &arr[((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
-            func_02098364(&arr[((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
-            return ((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74;
+            _Z18CopyStruct02098834P9S02098834S0_(&arr[freeIdx], &arr[list->fallbackIndex]);
+            func_02098364(&arr[list->fallbackIndex]);
+            return list->fallbackIndex;
         }
         recycle = freeIdx;
     } else {
@@ -68,7 +70,7 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
             if (e->category == 9 || e->category == 10) {
                 continue;
             }
-            if (Field0x1b68ContainsValue((struct ValueList02098e3c*)arr, e->valueId) == 0) {
+            if (Field0x1b68ContainsValue(list, e->valueId) == 0) {
                 recycle = idx;
                 break;
             }
@@ -80,7 +82,7 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
         if (e->category == 9 || e->category == 10) {
             continue;
         }
-        if (Field0x1b68ContainsValue((struct ValueList02098e3c*)arr, e->valueId) == 0) {
+        if (Field0x1b68ContainsValue(list, e->valueId) == 0) {
             last = idx;
             _Z18CopyStruct02098834P9S02098834S0_(&arr[recycle], e);
             recycle = idx;
@@ -95,7 +97,7 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
             continue;
         }
         e = &arr[recycle];
-        if (Field0x1b68ContainsValue((struct ValueList02098e3c*)arr, e->valueId) == 0) {
+        if (Field0x1b68ContainsValue(list, e->valueId) == 0) {
             e->category = 2;
         }
     }
@@ -104,7 +106,7 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
             continue;
         }
         e = &arr[recycle];
-        if (Field0x1b68ContainsValue((struct ValueList02098e3c*)arr, e->valueId) == 0) {
+        if (Field0x1b68ContainsValue(list, e->valueId) == 0) {
             e->category = 3;
         }
     }
@@ -113,7 +115,7 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
             continue;
         }
         e = &arr[recycle];
-        if (Field0x1b68ContainsValue((struct ValueList02098e3c*)arr, e->valueId) == 0) {
+        if (Field0x1b68ContainsValue(list, e->valueId) == 0) {
             e->category = 4;
         }
     }
@@ -122,7 +124,7 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
             continue;
         }
         e = &arr[recycle];
-        if (Field0x1b68ContainsValue((struct ValueList02098e3c*)arr, e->valueId) == 0) {
+        if (Field0x1b68ContainsValue(list, e->valueId) == 0) {
             e->category = 5;
         }
     }
@@ -131,7 +133,7 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
             continue;
         }
         e = &arr[recycle];
-        if (Field0x1b68ContainsValue((struct ValueList02098e3c*)arr, e->valueId) == 0) {
+        if (Field0x1b68ContainsValue(list, e->valueId) == 0) {
             e->category = 6;
         }
     }
@@ -139,8 +141,7 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
     if (last < 6) {
         return last;
     }
-    _Z18CopyStruct02098834P9S02098834S0_(resetSlot, &arr[((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
-    func_02098364(&arr[((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
-    return ((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74;
+    _Z18CopyStruct02098834P9S02098834S0_(resetSlot, &arr[list->fallbackIndex]);
+    func_02098364(&arr[list->fallbackIndex]);
+    return list->fallbackIndex;
 }
-#pragma opt_common_subs reset
