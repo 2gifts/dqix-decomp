@@ -167,7 +167,7 @@ extern "C" void func_ov017_021c37a4(void);
 extern "C" int func_0202c508(struct SearchStruct* obj);
 int TestFlagBitAt0xe(struct SearchStruct* obj, int value);
 int TestSearchFlagBit0202c758(struct SearchStruct* obj, int value);
-extern "C" void _Z27EnqueueEventTag173_021d1810tth(int a, int b, signed char c);
+void EnqueueEventTag173_021d1810(int, int, signed char);
 void EnqueueEventTag49_021cea34(int a0);
 void SetSearchFlagBit0202c6dc(struct SearchStruct* obj, int value);
 extern "C" int func_ov017_02195658(unsigned char* self);
@@ -310,7 +310,7 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
             if (TestFlagBitAt0xe(search, i) == 0) continue;
             if (TestSearchFlagBit0202c758(search, i) != 0) continue;
             func_02094030(GetGlobal02109030(), 3, noTarget, i);
-            _Z27EnqueueEventTag173_021d1810tth(3, noTarget, i);
+            EnqueueEventTag173_021d1810(3, noTarget, i);
             EnqueueEventTag49_021cea34(i);
             SetSearchFlagBit0202c6dc(search, i);
         }

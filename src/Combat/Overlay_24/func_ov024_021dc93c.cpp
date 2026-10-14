@@ -7,7 +7,7 @@ int ArrayContainsByte(ArrayContainsByteStruct*, int);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
 int CheckField0x14FiveFlagsClear020881c4(unsigned char*);
 int CheckField0x14FiveFlagsClear0208810c(unsigned char*);
-extern "C" void _Z26SetFlag0x800000AndByte0x24Pvh(void*,int);
+void SetFlag0x800000AndByte0x24(void*, int);
 int SetFlag0x800000AndCall02088208(void*, int);
 void ResetAndSetFlag0x1000000(void*);
 int GetCodeForCategory_021e8c48(void*, int);
@@ -81,7 +81,7 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
       AddEntryAndIncrementCount0215a88c(obj->context,entry,message);
       func_ov000_0215af54(obj->context,id,0);
      }else{
-      _Z26SetFlag0x800000AndByte0x24Pvh(target->currentStats_,count);
+      SetFlag0x800000AndByte0x24(target->currentStats_, count);
      }
     }
    }

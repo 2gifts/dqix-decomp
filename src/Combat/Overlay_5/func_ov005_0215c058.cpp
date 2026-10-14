@@ -62,7 +62,7 @@ struct Menu0215c058
 
 extern "C" GameResources0215c058* func_ov017_0218b5b0();
 Member0215c058* GetField1c_021a193c(int*);
-extern "C" void _Z28DispatchByIdxAndCond021551fcPchi(Menu0215c058* self, int member, int change);
+void DispatchByIdxAndCond021551fc(char*, int, int);
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
 extern "C" void func_ov005_02156658(Menu0215c058* self, int x, int y);
@@ -107,7 +107,7 @@ extern "C" ARM void func_ov005_0215c058(Menu0215c058* self)
     else if (self->state == 1)
     {
         Member0215c058* screen = GetField1c_021a193c(func_ov017_0218b5b0()->ptr);
-        _Z28DispatchByIdxAndCond021551fcPchi(self, screen->member, 0);
+        DispatchByIdxAndCond021551fc((char*)self, screen->member, 0);
         GameState* gs = _ZN9GameState11GetInstanceEv();
         int touched = 0;
         int moved = 0;

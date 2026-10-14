@@ -12,11 +12,11 @@ extern "C" char* func_ov017_0218b5b0(void);
 extern "C" int func_0202c508(void* obj);
 extern "C" void func_ov017_021d0924(int kind, unsigned char index, int flags, unsigned short packedTime);
 
-extern "C" void _Z14GetEntry3BytesP9EntryDEE8iPhS1_S1_(void* base, unsigned char index, unsigned char* outA, unsigned char* outB, unsigned char* outC);
-#define GetEntry3Bytes _Z14GetEntry3BytesP9EntryDEE8iPhS1_S1_
+extern "C" void _Z14GetEntry3BytesP9EntryDEE8hPhS1_S1_(void* base, unsigned char index, unsigned char* outA, unsigned char* outB, unsigned char* outC);
+#define GetEntry3Bytes _Z14GetEntry3BytesP9EntryDEE8hPhS1_S1_
 
-extern "C" void _Z14SetEntry3BytesP9EntryDEC8ihhh(void* base, unsigned char index, unsigned char a, unsigned char b, unsigned char c);
-#define SetEntry3Bytes _Z14SetEntry3BytesP9EntryDEC8ihhh
+extern "C" void _Z14SetEntry3BytesP9EntryDEC8hhhh(void* base, unsigned char index, unsigned char a, unsigned char b, unsigned char c);
+#define SetEntry3Bytes _Z14SetEntry3BytesP9EntryDEC8hhhh
 
 void ClearRegions0206e080(char* base, int index);
 void ClearIndexedEntryFields0206e0d0(char* base, int index);

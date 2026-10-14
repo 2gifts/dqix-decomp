@@ -104,7 +104,7 @@ extern "C" int func_ov005_0215840c(Menu02157b74* self, int id);
 extern "C" void func_02083e28(void* model, int arg);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void func_0207c378(char* list, short key, int amount, int category);
-extern "C" void _Z28DispatchByIdxAndCond021551fcPchi(Menu02157b74* self, int byteVal, int cond);
+void DispatchByIdxAndCond021551fc(char*, int, int);
 extern "C" void func_ov005_02155544(Menu02157b74* self);
 extern "C" void func_ov005_021555c0(Menu02157b74* self);
 struct Obj0205eaa0;
@@ -187,7 +187,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
             func_0207c378(bag + 0x1d4, cur, 1, data_ov005_0215cd38[self->tab]);
         }
         self->entries[self->selected].id = -1;
-        _Z28DispatchByIdxAndCond021551fcPchi(self, GetField1c_021a193c((int*)(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708))))->actor, 1);
+        DispatchByIdxAndCond021551fc((char*)self, GetField1c_021a193c((int*)(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708))))->actor, 1);
         func_ov005_02155544(self);
         self->dirty |= 0x10;
         self->f3da8 = 0;
@@ -280,7 +280,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
         if (item->equipType == 7) {
             SetPtrFieldByte021583fc((Holder021583fc*)who, 1);
         }
-        _Z28DispatchByIdxAndCond021551fcPchi(self, GetField1c_021a193c((int*)(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708))))->actor, 1);
+        DispatchByIdxAndCond021551fc((char*)self, GetField1c_021a193c((int*)(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708))))->actor, 1);
     }
 
     if (kind == 0x62) {

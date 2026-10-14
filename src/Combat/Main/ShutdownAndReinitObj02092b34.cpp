@@ -23,7 +23,7 @@ int GetGlobalField0x1c020421a0();
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
 struct Obj02092aa4;
-void InitObj02092aa4(struct Obj02092aa4* obj, unsigned char param);
+void InitObj02092aa4(Obj02092aa4* obj, int param);
 
 // USA: func_02092b34  (semantic: ShutdownAndReinitObj02092b34)
 extern "C" ARM void func_02092b34(struct Obj02092b34* obj) {

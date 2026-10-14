@@ -13,7 +13,7 @@ extern int GetFieldAt0x150(unsigned char* obj);
 void ClearField00209a804(int* field);
 struct Ctx0209a810 { void* field0; };
 void SetupAndRunBufferedScript0209a810(Ctx0209a810* ctx, void* value);
-extern "C" void _Z27SetField38IfState8_0215e49cPvis(void* a, int key, int value);
+void SetField38IfState8_0215e49c(void*, int, int);
 int CheckAfterTwoCalls_0215e460(void);
 extern "C" void func_ov004_0215e574(void* a, int key, int c, int d, int e);
 void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag);
@@ -102,15 +102,15 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         rows = buf.rows[D1[D0[field8]]];
         cnt = 0;
 
-        for (i = 0xc; i < 0x30; i++) _Z27SetField38IfState8_0215e49cPvis(a, i, 0x3a);
-        _Z27SetField38IfState8_0215e49cPvis(a, 0x31, 0x3a);
-        _Z27SetField38IfState8_0215e49cPvis(a, 0x32, 0x3a);
-        _Z27SetField38IfState8_0215e49cPvis(a, 0xc, 0x3b);
-        _Z27SetField38IfState8_0215e49cPvis(a, 0xd, 1);
+        for (i = 0xc; i < 0x30; i++) SetField38IfState8_0215e49c(a, i, 0x3a);
+        SetField38IfState8_0215e49c(a, 0x31, 0x3a);
+        SetField38IfState8_0215e49c(a, 0x32, 0x3a);
+        SetField38IfState8_0215e49c(a, 0xc, 0x3b);
+        SetField38IfState8_0215e49c(a, 0xd, 1);
         if (CheckAfterTwoCalls_0215e460()) {
-            _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 4);
+            SetField38IfState8_0215e49c(a, 0xe, 4);
         } else {
-            _Z27SetField38IfState8_0215e49cPvis(a, 0xe, D1[D0[field8]] + 4);
+            SetField38IfState8_0215e49c(a, 0xe, D1[D0[field8]] + 4);
         }
 
         if (D0[2] != D1[D0[field8]]) {
@@ -134,7 +134,7 @@ extern "C" ARM int func_ov004_02161514(void* a) {
             unsigned short level = rows[i].level;
             if (level != 0 && level <= limit) {
                 int st;
-                _Z27SetField38IfState8_0215e49cPvis(a, cnt + 0xf, id + 0x3f);
+                SetField38IfState8_0215e49c(a, cnt + 0xf, id + 0x3f);
                 st = 0xf;
                 if (D0[2] != D1[D0[field8]]) st = 3;
                 node = func_ov023_021f6880(obj, cnt + 0xf);
@@ -145,17 +145,17 @@ extern "C" ARM int func_ov004_02161514(void* a) {
 
         if (cnt == 0) {
             showAll = 1;
-            for (j = 0xc; j < 0x30; j++) _Z27SetField38IfState8_0215e49cPvis(a, j, 0x3a);
-            _Z27SetField38IfState8_0215e49cPvis(a, 0x31, 0x1e1);
-            _Z27SetField38IfState8_0215e49cPvis(a, 0x32, 0x1e3);
+            for (j = 0xc; j < 0x30; j++) SetField38IfState8_0215e49c(a, j, 0x3a);
+            SetField38IfState8_0215e49c(a, 0x31, 0x1e1);
+            SetField38IfState8_0215e49c(a, 0x32, 0x1e3);
             func_ov004_0215e574(a, 0x31, 0xff, 0, 0);
             func_ov004_0215e574(a, 0x32, 0xff, 0, 0);
-            _Z27SetField38IfState8_0215e49cPvis(a, 0xc, 0x3b);
-            _Z27SetField38IfState8_0215e49cPvis(a, 0xd, 1);
+            SetField38IfState8_0215e49c(a, 0xc, 0x3b);
+            SetField38IfState8_0215e49c(a, 0xd, 1);
             if (CheckAfterTwoCalls_0215e460()) {
-                _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 4);
+                SetField38IfState8_0215e49c(a, 0xe, 4);
             } else {
-                _Z27SetField38IfState8_0215e49cPvis(a, 0xe, D1[D0[field8]] + 4);
+                SetField38IfState8_0215e49c(a, 0xe, D1[D0[field8]] + 4);
             }
             same = 1;
             if (D0[2] != D1[D0[field8]]) same = 0;
@@ -170,17 +170,17 @@ extern "C" ARM int func_ov004_02161514(void* a) {
     } else {
         int st;
         showAll = 1;
-        for (j = 0xc; j < 0x30; j++) _Z27SetField38IfState8_0215e49cPvis(a, j, 0x3a);
-        _Z27SetField38IfState8_0215e49cPvis(a, 0x31, 0x1e1);
-        _Z27SetField38IfState8_0215e49cPvis(a, 0x32, 0x1e3);
+        for (j = 0xc; j < 0x30; j++) SetField38IfState8_0215e49c(a, j, 0x3a);
+        SetField38IfState8_0215e49c(a, 0x31, 0x1e1);
+        SetField38IfState8_0215e49c(a, 0x32, 0x1e3);
         func_ov004_0215e574(a, 0x31, 0xff, 0, 0);
         func_ov004_0215e574(a, 0x32, 0xff, 0, 0);
-        _Z27SetField38IfState8_0215e49cPvis(a, 0xc, 0x3b);
-        _Z27SetField38IfState8_0215e49cPvis(a, 0xd, 1);
+        SetField38IfState8_0215e49c(a, 0xc, 0x3b);
+        SetField38IfState8_0215e49c(a, 0xd, 1);
         if (CheckAfterTwoCalls_0215e460()) {
-            _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 4);
+            SetField38IfState8_0215e49c(a, 0xe, 4);
         } else {
-            _Z27SetField38IfState8_0215e49cPvis(a, 0xe, D1[D0[field8]] + 4);
+            SetField38IfState8_0215e49c(a, 0xe, D1[D0[field8]] + 4);
         }
         same = 1;
         if (D0[2] != D1[D0[field8]]) same = 0;

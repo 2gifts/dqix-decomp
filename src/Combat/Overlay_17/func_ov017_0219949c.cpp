@@ -11,7 +11,7 @@ extern "C" void* func_0202ae18(void);
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 struct U16Field0x6_020375f8;
-void EnqueueEventTag154_021d0860(unsigned char a, unsigned char b, unsigned char c);
+void EnqueueEventTag154_021d0860(int a, int b, int c);
 
 // USA: func_ov017_0219949c
 extern "C" ARM void func_ov017_0219949c(void* ctx, int combatantId, int matchType, unsigned char slotId, signed char threshold) {

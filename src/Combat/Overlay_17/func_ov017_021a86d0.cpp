@@ -112,7 +112,7 @@ unsigned char* GetField0x3f8Address(GameState*);
 extern "C" void VectorizedMemset(void* dst, int value, unsigned int size);
 void InitContext020e1154(void* p);
 void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short, unsigned short);
-extern "C" void _Z26EnqueueEventTagB5_021d1dc0ssPisi(unsigned short id, int a, int* buf, int b, int c);
+void EnqueueEventTagB5_021d1dc0(unsigned short, int, int*, int, int);
 void InitAndResetHeader_0219e310(unsigned char* obj, int arg);
 struct TailList020469b4;
 struct TailNode020469b4;
@@ -379,7 +379,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             }
             int buf[3];
             SetHalfFieldsAndEnqueueIfActive_021d1c2c((unsigned char)self->choice, 0);
-            _Z26EnqueueEventTagB5_021d1dc0ssPisi(self->choice, 0, buf, 0, 0);
+            EnqueueEventTagB5_021d1dc0(self->choice, 0, buf, 0, 0);
             CallFunc0200fbb4AtField0x3f8(gs, ctx);
             unsigned char* header = *(unsigned char**)(res + ResourceNode);
             InitAndResetHeader_0219e310(header, 0);
@@ -472,7 +472,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             AppendNodeToTail((TailList020469b4*)tail, (TailNode020469b4*)node);
             int buf[3];
             SetHalfFieldsAndEnqueueIfActive_021d1c2c((unsigned char)self->choice, 0);
-            _Z26EnqueueEventTagB5_021d1dc0ssPisi(self->choice, 0, buf, msgA, msgB);
+            EnqueueEventTagB5_021d1dc0(self->choice, 0, buf, msgA, msgB);
         }
         self->state = 100;
         ReinitController02043204(g);

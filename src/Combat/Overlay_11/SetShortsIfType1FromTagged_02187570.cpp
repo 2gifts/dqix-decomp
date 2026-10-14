@@ -20,7 +20,7 @@ extern int ScaleStatsIfType12_021f6f10(void* self);
 #endif
 
 struct Obj021fb25c;
-extern "C" void _Z18SetShorts_021fb25cP11Obj021fb25cttti(struct Obj021fb25c* obj, unsigned int a1, unsigned int a2, unsigned int a3, int a4);
+void SetShorts_021fb25c(Obj021fb25c*, unsigned int, unsigned int, unsigned int, int);
 
 // USA: func_ov011_02187570  (semantic: SetShortsIfType1FromTagged_02187570)
 extern "C" ARM int func_ov011_02187570(struct TaggedNumber02184c30* a) {
@@ -34,6 +34,6 @@ extern "C" ARM int func_ov011_02187570(struct TaggedNumber02184c30* a) {
     struct Obj021fb25c* node = (struct Obj021fb25c*)func_ov023_021f6880(obj, v0);
     if (!node) return 1;
     if (ScaleStatsIfType12_021f6f10(node) != 1) return 1;
-    _Z18SetShorts_021fb25cP11Obj021fb25cttti(node, v1, v2, v3, v4);
+    SetShorts_021fb25c(node, v1, v2, v3, v4);
     return 1;
 }

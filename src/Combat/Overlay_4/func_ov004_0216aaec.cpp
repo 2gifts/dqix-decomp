@@ -55,7 +55,7 @@ extern "C" void func_02046608(struct StoreStruct* a, int b, void* c, void* d);
 #else
 extern "C" void func_02046608(struct StoreStruct* a, int b, void* c, void* d, int e, int f, int g);
 #endif
-void SetOffset100Fields_021f8960(char* base, short a, short b);
+void SetOffset100Fields_021f8960(char* base, short a, unsigned short b);
 void SetToggleState(struct ToggleState* s, int a, int b);
 void SetFlag0x9c6(struct SetFlagStruct* p, int value);
 

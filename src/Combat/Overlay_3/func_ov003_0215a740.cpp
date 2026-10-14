@@ -37,7 +37,7 @@ void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" int func_ov003_0215bf18(void*, int);
 int AddCappedFieldF6c_0215b580(int, int);
 struct Struct0209c830;
-void SetValueAndActivate0209c830(Struct0209c830*, unsigned short);
+void SetValueAndActivate0209c830(Struct0209c830*, int);
 int IsAnimationActive0209ca2c(void*);
 extern "C" void func_02048150(void*, int, int);
 void TryClearFlags0x130(unsigned char*, unsigned short);

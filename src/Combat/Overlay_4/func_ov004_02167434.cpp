@@ -30,7 +30,7 @@ short GetScaledFieldValue_02166684(int a);
 extern "C" short func_ov004_021666bc(void* a1, char* outFlag);
 struct GetTableByteOrFFData* GetGlobal02109418(void);
 extern "C" struct Ctx0205ec34* func_0205ec34(void);
-unsigned char GetTableByteOrFF(struct GetTableByteOrFFData* s, unsigned int idx);
+unsigned char GetTableByteOrFF(GetTableByteOrFFData* s, unsigned char idx);
 extern "C" int func_02095d30(struct GetTableByteOrFFData* list, int value, int mode);
 extern "C" void func_ov004_02166198(void);
 extern "C" void func_ov004_02165f2c(void);

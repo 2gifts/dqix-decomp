@@ -11,7 +11,7 @@ int ScaleStatsIfType12_021f6f10(void* self);
 extern "C" int func_ov023_021e1f0c(int a, short b, short c, short d);
 extern "C" void func_ov023_021f65d4(void* obj, int id, int mask);
 void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
-extern "C" void _Z25SetFields5cAnd5e_021f65b4PvS_tt(void* a, void* b, short v1, short v2);
+void SetFields5cAnd5e_021f65b4(void*, void*, short, short);
 
 class VObj021555b0 {
 public:
@@ -65,6 +65,6 @@ extern "C" ARM int func_ov004_021555b0(void* a) {
         func_ov023_021f65d4(a, 0x3a, 8);
     }
 
-    _Z25SetFields5cAnd5e_021f65b4PvS_tt(a, (void*)0x2c, 0, v);
+    SetFields5cAnd5e_021f65b4(a, (void*)0x2c, 0, v);
     return 0;
 }

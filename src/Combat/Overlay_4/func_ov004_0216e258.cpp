@@ -2,7 +2,6 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
-
 extern "C" int func_020ab7a8(void* obj, int flag);
 void SetByte0x4(char* obj, unsigned char value);
 void* GetDataPtr02114e04_020d6c00(void);
@@ -13,7 +12,7 @@ int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
 void* GetNodeIfType6_0216ae9c(void* a, int id);
-void SetOffset100Fields_021f8960(char* base, short a, short b);
+void SetOffset100Fields_021f8960(char* base, short a, unsigned short b);
 
 struct FieldGroup02171034 {
 #if defined(jpn)

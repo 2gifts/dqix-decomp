@@ -6,6 +6,6 @@ struct S_9c58 {
 };
 
 // USA: func_ov023_021f9c58
-ARM void SetShortField44_021f9c58(struct S_9c58 *obj, short v) {
+ARM void SetShortField44_021f9c58(S_9c58* obj, unsigned short v) {
 	obj->val = v;
 }

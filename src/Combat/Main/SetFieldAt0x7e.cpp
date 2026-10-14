@@ -6,6 +6,6 @@ struct S_e828 {
 };
 
 // USA: func_0201e828
-ARM void SetFieldAt0x7e(struct S_e828* p, short v) {
+ARM void SetFieldAt0x7e(S_e828* p, unsigned short v) {
     p->field7e = v;
 }

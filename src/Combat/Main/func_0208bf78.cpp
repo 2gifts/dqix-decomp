@@ -101,7 +101,7 @@ struct RecordView0208bf78 {
 
 void ForwardInitStreamHeader0208d854(StreamHeader0208d82c*);
 GetTableByteOrFFData* GetGlobal02109418();
-extern "C" unsigned char _Z16GetTableByteOrFFP20GetTableByteOrFFDataj(GetTableByteOrFFData*, unsigned char);
+unsigned char GetTableByteOrFF(GetTableByteOrFFData*, unsigned char);
 int RunBufferedScript02095870(void*, StreamHeader*, int, int, unsigned char*);
 int CountActiveEntries(ActiveEntry02046900*);
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
@@ -140,7 +140,7 @@ extern char data_020f1120[], data_020f113b[], data_020f114d[], data_020f116b[], 
 extern char data_020f1192[], data_020f1197[];
 
 static inline unsigned char GetMonsterIndex0208bf78(GetTableByteOrFFData* table, int target) {
-    return _Z16GetTableByteOrFFP20GetTableByteOrFFDataj(table, target);
+    return GetTableByteOrFF(table, target);
 }
 
 static inline SaveDate0208bf78 GetSaveDate0208bf78(GetTableByteOrFFData* table, unsigned char id) {

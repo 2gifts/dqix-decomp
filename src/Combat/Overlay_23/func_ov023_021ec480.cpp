@@ -92,7 +92,7 @@ int IsBrightnessTransitionActive(GameResources* resources);
 void SetForwardAndStore0205ebc0(void* sound, int a, int b);
 void DispatchIfField0xc4NonNeg_0205ebfc(void* sound, int a, int b);
 void SetElementFieldC2(Struct_0205d81c* window, int item, int value);
-void SetValueAndActivate0209c830(Struct0209c830* obj, unsigned short value);
+void SetValueAndActivate0209c830(Struct0209c830* obj, int value);
 int TestBitInByteArray(int a, unsigned char* b, int flag);
 int IsAnimationActive0209ca2c(void* obj);
 int DispatchIfFlagsOrByteSet_021ed014(struct GuideWindow_021ec480* window);

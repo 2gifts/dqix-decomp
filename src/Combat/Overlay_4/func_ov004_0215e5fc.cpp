@@ -22,7 +22,7 @@ extern "C" void* func_ov023_021f6880(void*, int);
 extern "C" short func_ov023_021f6f10(void*);
 extern "C" void func_ov023_021f809c(void*, void*);
 void* CheckNodeState6_0215e4c0(void*, int);
-extern "C" void _Z27SetOffset100Fields_021f8960Pcss(char*, short, unsigned short);
+void SetOffset100Fields_021f8960(char*, short, unsigned short);
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0*, int);
 extern "C" void func_02083738(void*, int);
 extern "C" void func_0208358c(void*, void*, int);
@@ -225,6 +225,6 @@ extern "C" ARM void func_ov004_0215e5fc(void* a, int idx) {
         }
     }
     Node0215e5fc* nn = (Node0215e5fc*)CheckNodeState6_0215e4c0(a, 4);
-    _Z27SetOffset100Fields_021f8960Pcss((char*)nn, 0, 0xffff);
+    SetOffset100Fields_021f8960((char*)nn, 0, 0xffff);
     func_ov023_021f809c(nn, a);
 }

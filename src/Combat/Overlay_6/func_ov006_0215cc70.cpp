@@ -100,7 +100,8 @@ void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
 void Forward0207f7acObjPlus4Size0x40(void* elements, int key);
 extern "C" void func_020813ec(void* elements, int key);
 void InitHandleAndDispatch_021571fc(char*);
-extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void* p, int value);
+struct Struct0209c830;
+void SetValueAndActivate0209c830(Struct0209c830*, int);
 void CallFunc0204c804OnMatchingKey(Obj2081*, int);
 void SetByte_0215728c_0215728c(void*);
 
@@ -366,7 +367,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             sound = 0x3f;
             InitHandleAndDispatch_021571fc((char*)self->ctx);
         }
-        _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, sound);
+        SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, sound);
         self->message = 0xc;
         self->messageTimer = 0;
         self->state++;
@@ -427,7 +428,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             func_ov006_02158de0(self);
             self->selected = -1;
             self->field42f = 1;
-            _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x3e);
+            SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x3e);
             ctx->flags |= 0x400;
             SetElementFlag0x20((Obj2081*)self->elements, 0);
             self->message = 0xc;

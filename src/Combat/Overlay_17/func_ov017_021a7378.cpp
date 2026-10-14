@@ -106,7 +106,7 @@ void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 void InitAndAppendState61_021a65c4(void* scene, unsigned char kind, int arg);
 extern "C" void func_ov017_021baedc(TailNode020469b4* node, int flag);
 void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a, unsigned short b);
-extern "C" void _Z26EnqueueEventTagB5_021d1dc0ssPisi(unsigned short id, int a, int* buf, int b, int c);
+void EnqueueEventTagB5_021d1dc0(unsigned short, int, int*, int, int);
 void* GetGlobal02109418(void);
 EntryCounter* FindEntryById02096134(FindEntryById02096134Table* table, int id);
 void ReinitController02043204(char* obj);
@@ -255,11 +255,11 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
         Vector3i pos;
         if (self->kind == 3) {
             SetHalfFieldsAndEnqueueIfActive_021d1c2c(3, 0);
-            _Z26EnqueueEventTagB5_021d1dc0ssPisi(3, 0, (int*)&pos, 0x7346, 0);
+            EnqueueEventTagB5_021d1dc0(3, 0, (int*)&pos, 0x7346, 0);
         } else {
             pos = camera->position;
             SetHalfFieldsAndEnqueueIfActive_021d1c2c(0, 0);
-            _Z26EnqueueEventTagB5_021d1dc0ssPisi(0, params->angle, (int*)&pos, 0, 0);
+            EnqueueEventTagB5_021d1dc0(0, params->angle, (int*)&pos, 0, 0);
         }
         if (globals->battleCount < 0xff) {
             globals->battleCount++;

@@ -16,7 +16,7 @@ int HasActiveEntryForId(unsigned char* arr, int id, int offset);
 
 GameObject* FindCombatantByField16a_021a278c(void* unused, int val);
 
-void MaybeResetEntry_021c5e28(int id, short val);
+void MaybeResetEntry_021c5e28(int id, int val);
 
 extern "C" void func_0207d7f4(Entry0207d9bc* arr, unsigned short key, int a, unsigned char b, int c, unsigned short d, int e);
 extern "C" void func_0207dcf0(int a);

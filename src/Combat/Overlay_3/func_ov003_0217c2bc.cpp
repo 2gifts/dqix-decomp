@@ -20,7 +20,7 @@ void DispatchIfField0xc4NonNeg_0205ebfc(void *obj, int a, int b);
 extern "C" void func_ov003_0217cb3c(Scene0217c2bc *self, int mainScreen, int alternate);
 void Set3DClearColor(int a, int b, int c, int d, int e);
 extern "C" void func_ov003_0217c974(Scene0217c2bc *self);
-void SetValueAndActivate0209c830(struct Struct0209c830 *, unsigned short);
+void SetValueAndActivate0209c830(Struct0209c830*, int);
 
 extern int data_02108760;
 extern struct Struct0209c830 data_02109bf4;

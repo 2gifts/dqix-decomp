@@ -6,7 +6,7 @@
 struct FieldFlagBlock;
 void ResetAndEnableFieldFlag(struct FieldFlagBlock* block);
 GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
-extern "C" void _Z26EnqueueEventTag58_021cf594thh(unsigned short a, int b, int c);
+void EnqueueEventTag58_021cf594(unsigned short, int, int);
 extern "C" void* func_02012fe4(void);
 
 // USA: func_ov004_02168760
@@ -49,7 +49,7 @@ extern "C" ARM int func_ov004_02168760(void) {
         if (!member) continue;
         if (GetCombatantWithFlag0x1000(bs, i)) continue;
         if (member->obj3D_.GetField06() != zone) continue;
-        _Z26EnqueueEventTag58_021cf594thh(0x1130, i, 1);
+        EnqueueEventTag58_021cf594(0x1130, i, 1);
     }
     return 0;
 }

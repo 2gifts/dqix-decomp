@@ -2,7 +2,7 @@
 
 int ScaleField0xccBy1000(void* obj);
 int ScaleAndNotify0203ad88(void* obj, void* target, int arg2);
-int SetKeyAndApplyRecord0203ad14(void* obj, unsigned short key, void* target, int arg3);
+int SetKeyAndApplyRecord0203ad14(void* obj, int key, void* target, int arg3);
 typedef int (*SetKeyAndApplyRecord0203ad14ShortFn)(void*, short, void*, int);
 
 // USA: func_0203ae4c

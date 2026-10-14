@@ -26,7 +26,7 @@ extern "C" float func_0200c700(long long);
 extern "C" void Vector3fix_Add(struct Vec3* a, struct Vec3* b, struct Vec3* out);
 struct EntryList_203dce4* GetGlobalPtr021075f4();
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24**);
-struct Obj0201b600* FindElemByKeys(struct Obj0201b600*, int, short);
+struct Obj0201b600* FindElemByKeys(Obj0201b600*, int, unsigned short);
 struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4*, int);
 void ClearFlag0x1(unsigned int*);
 int IsField0Null(void**);

@@ -32,7 +32,7 @@ int IsCombatantFlagit2Set_02155f88_02155f88(void* obj, int id);
 void ResetFields_0215873c(void* obj);
 void SetFlag_02158a50_02158a50(unsigned char*);
 struct Struct0209c830;
-void SetValueAndActivate0209c830(Struct0209c830*, unsigned short);
+void SetValueAndActivate0209c830(Struct0209c830*, int);
 int IsAnimationActive0209ca2c(void* obj);
 void SetOrClearBitInArray(void* a, unsigned char* b, int c, int d);
 void* ZeroInitReturn020de824(void* obj);

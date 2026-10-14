@@ -9,7 +9,7 @@ struct Obj020397cc;
 void* GetPtrField0x2a04(GameState* battleStruct);
 int GetSignedByte0x1c8(void* obj);
 void SetByteField0x253(void* obj);
-void EnqueueEventTag35_021d2ad0(unsigned char a, int b, int c, int d, unsigned char e);
+void EnqueueEventTag35_021d2ad0(short a, int b, int c, int d, unsigned char e);
 void EnqueueEventTag36_021d2c34(unsigned char a, unsigned char b, unsigned char c);
 void* GetDataPtr02114e04_020d6c00();
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);

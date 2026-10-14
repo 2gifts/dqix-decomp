@@ -40,9 +40,9 @@ extern "C" void func_ov000_0218124c(void*, int, void*, int, short, short, short,
 extern "C" void func_ov000_021741e0(void* obj, float maxSpeed, float speed, int x, int argE,
     unsigned char slotIdx, unsigned char byteG, unsigned char byteH, unsigned char byteI, unsigned char flagJ);
 #if defined(jpn)
-extern "C" void _Z32InitSlotHPCategoryEntry_021811f4Pviii(void*, int, void*, int, short, short);
+extern "C" void _Z32InitSlotHPCategoryEntry_021811f4Pviss(void*, int, void*, int, short, short);
 #else
-extern "C" void _Z32InitSlotHPCategoryEntry_021811f4Pviii(void*, int, short, short);
+extern "C" void _Z32InitSlotHPCategoryEntry_021811f4Pviss(void*, int, short, short);
 #endif
 
 extern const int data_ov000_021833cc[][2];
@@ -205,11 +205,11 @@ extern "C" ARM void func_ov000_02173954(char* obj) {
             DispatchEntry0204b8d0((struct Obj0204b8d0*)(obj + 0x8c4), 1, 0, 0, tx, ty, 0x20, 0x19, idx + 2);
 #if defined(jpn)
             if (!func_ov000_02174324(obj, ids[i], x + 0x25, y + 0x17)) {
-                _Z32InitSlotHPCategoryEntry_021811f4Pviii(obj, idx, obj + 0x8c4, e47f, tx + 7, ty + 3);
+                _Z32InitSlotHPCategoryEntry_021811f4Pviss(obj, idx, obj + 0x8c4, e47f, tx + 7, ty + 3);
                 func_ov000_0218124c(obj, idx, obj + 0x8c4, e440, tx + 2, ty + 2);
 #else
             if (!func_ov000_02174324(obj, ids[i], x + 0x24, y + 0x16)) {
-                _Z32InitSlotHPCategoryEntry_021811f4Pviii(obj, idx, x + 0x2c, y + 0x16);
+                _Z32InitSlotHPCategoryEntry_021811f4Pviss(obj, idx, x + 0x2c, y + 0x16);
                 func_ov000_0218124c(obj, idx, obj + 0x8c4, e440, tx + 2, ty + 2, x + 0xc, y + 0x16);
 #endif
             }
@@ -274,11 +274,11 @@ extern "C" ARM void func_ov000_02173954(char* obj) {
             func_ov000_02180ca8(obj, e, list);
 #if defined(jpn)
             if (!func_ov000_02174324(obj, idx, x + 0x30, y + 0x16)) {
-                _Z32InitSlotHPCategoryEntry_021811f4Pviii(obj, idx, list, e47f, tx + 8, ty + 3);
+                _Z32InitSlotHPCategoryEntry_021811f4Pviss(obj, idx, list, e47f, tx + 8, ty + 3);
                 func_ov000_0218124c(obj, idx, list, e440, tx + 3, ty + 2);
 #else
             if (!func_ov000_02174324(obj, idx, x + 0x28, y + 0x16)) {
-                _Z32InitSlotHPCategoryEntry_021811f4Pviii(obj, idx, x + 0x2c, y + 0x16);
+                _Z32InitSlotHPCategoryEntry_021811f4Pviss(obj, idx, x + 0x2c, y + 0x16);
                 func_ov000_0218124c(obj, idx, list, e440, tx + 2, ty + 2, x + 0x14, y + 0x16);
 #endif
             }

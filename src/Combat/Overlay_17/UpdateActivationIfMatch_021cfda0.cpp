@@ -3,7 +3,7 @@
 struct UpdateStateStruct;
 
 unsigned char* GetElementStride0x24(unsigned char* p, int i);
-void UpdateActivationState(struct UpdateStateStruct* p, unsigned char h, int i1, int i2);
+void UpdateActivationState(UpdateStateStruct* p, int h, int i1, int i2);
 extern "C" void* func_02012fe4(void* self);
 
 struct Obj021cfda0 {

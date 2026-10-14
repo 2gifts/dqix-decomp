@@ -30,7 +30,7 @@ unsigned char GetField0x397cValue(GameState* gs);
 void SetVec3_021c3f68(struct Vec3_021c3f68* obj, int x, int y, int z);
 extern "C" void* func_ov017_021b8468(void* obj);
 void* GetSlot021677d8(void* work, int idx);
-extern "C" void _Z26EnqueueEventTag35_021d2ad0hiiih(short id, int x, int y, int z, unsigned char arg);
+void EnqueueEventTag35_021d2ad0(short, int, int, int, unsigned char);
 extern "C" int func_0202c508(void* p);
 
 // USA: func_ov017_021c3e18
@@ -61,10 +61,10 @@ extern "C" ARM void func_ov017_021c3e18(unsigned char arg) {
                 pos = *(Vector3i*)GetSlot021677d8(work, id);
             }
         }
-        _Z26EnqueueEventTag35_021d2ad0hiiih(member->obj3D_.unknown_4_, pos.x, pos.y, pos.z, arg);
+        EnqueueEventTag35_021d2ad0(member->obj3D_.unknown_4_, pos.x, pos.y, pos.z, arg);
     }
     if (func_0202c508(search)) {
         Vector3i pos = *(Vector3i*)((char*)gs + RegionOffset7f60);
-        _Z26EnqueueEventTag35_021d2ad0hiiih(0xce, pos.x, pos.y, pos.z, arg);
+        EnqueueEventTag35_021d2ad0(0xce, pos.x, pos.y, pos.z, arg);
     }
 }

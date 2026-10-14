@@ -21,7 +21,7 @@ extern int AccumulateFlaggedSlotBits020861d0(unsigned char* actor);
 extern int AccumulateFlaggedSlotBits0208623c(unsigned char* actor);
 extern int AccumulateSlotBitsFromTable020862a8(unsigned char* actor);
 extern int AccumulateSlotBitsFromTable02086314(unsigned char* actor);
-extern "C" void _Z27SetField38IfState8_0215e49cPvis(void* a, int key, int value);
+void SetField38IfState8_0215e49c(void*, int, int);
 extern "C" extern int func_ov023_021f6f10(void* self);
 extern int CheckAfterTwoCalls_0215e460(void);
 extern "C" int func_ov004_0215e4e8(void* a, int key);
@@ -245,9 +245,9 @@ extern "C" ARM int func_ov004_0216033c(void* a) {
 
     {
         if (!(*(Flags49c**)(combatant + extensionOffset))->bit0) {
-            _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 2);
+            SetField38IfState8_0215e49c(a, 0xe, 2);
         } else {
-            _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 3);
+            SetField38IfState8_0215e49c(a, 0xe, 3);
         }
     }
 
@@ -331,7 +331,7 @@ stats_done:
     case 11: r4 = 0xf; break;
     }
     if (CheckAfterTwoCalls_0215e460() != 0) r4 = 4;
-    _Z27SetField38IfState8_0215e49cPvis(a, 0xf, r4);
+    SetField38IfState8_0215e49c(a, 0xf, r4);
 
     int r5v = func_ov004_0215e4e8(a, 0xf);
     Node0215e47c* vnode = func_ov004_0215e47c(a, 0xf);
@@ -400,7 +400,7 @@ stats_done:
         case 25: msgId = 0x2a; break;
         case 26: msgId = 0x2b; break;
         }
-        _Z27SetField38IfState8_0215e49cPvis(a, idx + 0x2a, msgId);
+        SetField38IfState8_0215e49c(a, idx + 0x2a, msgId);
 
         kNode = func_ov023_021f6880(obj118b, k + 0x5f);
         if (kNode) {

@@ -133,7 +133,7 @@ extern "C" void func_ov017_021a124c(void* p);
 extern "C" void func_ov017_0218f064(void* self, int id, int mask, int b, int extra);
 int GetLowNibbleAt0x56b(void* gs, int id);
 void* GetCombatantWithFlag0x1000(GameState* gs, int id);
-void SetField0x2d0(void* p, unsigned char value);
+void SetField0x2d0(void* p, int value);
 char* GetFieldAt0x150(unsigned char*);
 extern "C" int func_020aaf84(void* buf, int a, int b, int c);
 int VerifyAndApplySaveBuffer(int flag);

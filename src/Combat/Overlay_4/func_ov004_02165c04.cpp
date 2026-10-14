@@ -18,7 +18,7 @@ struct List0204b0e8;
 void FlushAndDispatchList0204b0e8(struct List0204b0e8*, void*);
 
 struct Obj021fb25c;
-void SetShorts_021fb25c(struct Obj021fb25c*, unsigned short, unsigned short, unsigned short, int);
+void SetShorts_021fb25c(Obj021fb25c*, unsigned int, unsigned int, unsigned int, int);
 
 // USA: func_ov004_02165c04  (semantic: DispatchByNormalizedKindWithExtra_02165c04)
 extern "C" ARM int func_ov004_02165c04(void* a) {

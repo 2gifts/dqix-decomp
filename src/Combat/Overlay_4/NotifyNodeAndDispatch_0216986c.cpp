@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 void* GetNodeIfType1_02168aa0(void* a, int id);
-void SetByte38_021fb274(void* obj, unsigned char val);
+void SetByte38_021fb274(void* obj, int val);
 struct Fields021849e0;
 void SetFieldConditional_021849e0(struct Fields021849e0* obj, unsigned short val);
 extern "C" void func_ov004_0216920c(void* obj);

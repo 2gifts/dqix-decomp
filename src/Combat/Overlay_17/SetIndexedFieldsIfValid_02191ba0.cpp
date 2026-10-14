@@ -16,7 +16,7 @@ struct PendingCombatantUpdatesView {
 };
 
 // USA: func_ov017_02191ba0
-ARM void SetIndexedFieldsIfValid_02191ba0(char* resources, int index, unsigned short value) {
+ARM void SetIndexedFieldsIfValid_02191ba0(char* resources, int index, int value) {
     int valid = index >= 0 && index <= 3;
     if (!valid) return;
     PendingCombatantUpdatesView* updates = (PendingCombatantUpdatesView*)resources;

@@ -53,7 +53,7 @@ extern "C" GameResources* func_ov017_0218b5b0(void);
 MemberScreen* GetField1c_021a193c(int* obj);
 Element020de650* FindElementByKey020dedd0(Container020dedd0* c, int key);
 extern "C" int func_020dd4c4(signed char member, Element020de650* entry);
-extern "C" void _Z28DispatchByIdxAndCond021551fcPchi(EquipmentMenu* self, int member, int change);
+void DispatchByIdxAndCond021551fc(char*, int, int);
 
 extern "C" TouchState data_02114e54;
 
@@ -78,5 +78,5 @@ extern "C" ARM void func_ov005_0215bf58(EquipmentMenu* self)
         else
             self->infoFlags_ &= ~0x100;
     }
-    _Z28DispatchByIdxAndCond021551fcPchi(self, member, 0);
+    DispatchByIdxAndCond021551fc((char*)self, member, 0);
 }

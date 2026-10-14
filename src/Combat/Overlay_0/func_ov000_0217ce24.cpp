@@ -32,7 +32,7 @@ TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(Struct0217f8c0*);
 int GetField0x3acValue(GameState*);
 int CountSetBitsLow12_0x68(void*);
 void SetElementStateIfLess0217a9d0(int,int,int,Struct_0205d81c*);
-extern "C" void _Z15InitObj02092aa4P11Obj02092aa4h(Obj02092aa4*,int);
+void InitObj02092aa4(Obj02092aa4*, int);
 void CreateTypeAFromAllocator(SafeAllocator*,SafeAllocator*);
 int CheckFlagsOrField_0217c5f4_0217c5f4(void*);
 void ResetEntryList0205d6a0(Entry_0205d6a0*,int);
@@ -112,7 +112,7 @@ extern "C" ARM void func_ov000_0217ce24(Root* self,int a,int b)
             func_ov000_02176e3c(self,0,self->commands[self->index],a,b,1);
             self->index++;self->commands[self->index]=9;
             self->allocator.Reset();
-            _Z15InitObj02092aa4P11Obj02092aa4h((Obj02092aa4*)&self->firstAllocator,(signed char)self->member);
+            InitObj02092aa4((Obj02092aa4*)&self->firstAllocator, (signed char)self->member);
             CreateTypeAFromAllocator(&self->firstAllocator,&self->allocator);
             self->flagB3|=8;
             break;

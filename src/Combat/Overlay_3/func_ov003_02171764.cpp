@@ -22,7 +22,7 @@ extern int TestFlagBitAt0xe(struct SearchStruct* obj, int value);
 struct CheckField0AndGlobalHalfStruct0202c508;
 extern "C" int func_0202c508(struct CheckField0AndGlobalHalfStruct0202c508* obj);
 
-extern "C" void _Z27EnqueueEventTag173_021d1810tth(unsigned short a, short b, unsigned char c);
+void EnqueueEventTag173_021d1810(int, int, signed char);
 extern int* GetGlobal02109030(void);
 extern "C" void func_02094030(int* a, unsigned short b, short c, unsigned char d);
 extern void RemoveSearchEntry0202c21c(struct SearchStruct* obj, int value);
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov003_02171764(char* self) {
 
     if (TestFlagBitAt0xe(search, *(unsigned char*)(self + 0x199)) != 0) {
         if (func_0202c508((struct CheckField0AndGlobalHalfStruct0202c508*)search) != 0) {
-            _Z27EnqueueEventTag173_021d1810tth(4, -1, 0);
+            EnqueueEventTag173_021d1810(4, -1, 0);
             int* g = GetGlobal02109030();
             func_02094030(g, 4, -1, 0);
         }

@@ -15,7 +15,7 @@ void ResetAndEnableFieldFlag(struct FieldFlagBlock* obj);
 void ClearFieldKeepBit0x10(void* obj);
 void InitAndInsertNode_021acd30(char* self, unsigned char a, unsigned char b, unsigned char c);
 void EnqueueEventTag57WithAB_021cf4b0(int a, int b);
-extern "C" void _Z27EnqueueEventTag173_021d1810tth(int a, int b, signed char c);
+void EnqueueEventTag173_021d1810(int, int, signed char);
 int GetField0x3acValue(GameState* gs);
 int GetWord0x0(int* obj);
 int* GetGlobal02109030(void);
@@ -105,7 +105,7 @@ extern "C" ARM void func_02093428(struct BattlePhaseState02093428* s) {
         s->field30 = 3;
         s->field35 = 4;
         EnqueueEventTag57WithAB_021cf4b0(v, 3);
-        _Z27EnqueueEventTag173_021d1810tth(10000, -1, (signed char)GetField0x3acValue(bs));
+        EnqueueEventTag173_021d1810(10000, -1, (signed char)GetField0x3acValue(bs));
         return;
     }
 

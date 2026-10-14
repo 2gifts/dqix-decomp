@@ -41,7 +41,7 @@ extern "C" void func_ov004_0215e574(void*, int, int, int, int);
 extern "C" SlotNode0216276c* func_ov023_021f6880(void*, int);
 int GetFlagBitFromField150_0215eb20(void*, int);
 int CheckAfterTwoCalls_0215e460();
-void SetField38IfState8_0215e49c(void*, int, short);
+void SetField38IfState8_0215e49c(void*, int, int);
 typedef void (*SetSlotValue0216276c)(void*, int, int);
 extern "C" int func_ov004_0215e4e8(void*, short);
 extern "C" SlotNode0216276c* func_ov004_0215e47c(void*, int);

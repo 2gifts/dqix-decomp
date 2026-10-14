@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 struct S_10088;
 int IsFlag10088Set(S_10088*);
-extern "C" void _Z29ResetFields14And18KeepFlag0x4Pht(unsigned char*,int);
+void ResetFields14And18KeepFlag0x4(unsigned char*, int);
 extern "C" void func_ov000_02159eac(void*,void*,int);
 GameObject* GetCombatantWithFlag0x100(GameState*,int);
 unsigned short SelectByIndexRange0to3_021da644(int,int,int);
@@ -45,7 +45,7 @@ extern "C" ARM void* func_ov024_021dd278(Obj021dd278* obj,int sourceID,int id,Pa
             break;
         }
         short hp=(int)(factor*(float)(unsigned int)target->currentStats_->primaryStats.maxHP);
-        _Z29ResetFields14And18KeepFlag0x4Pht((unsigned char*)target->currentStats_,hp);
+        ResetFields14And18KeepFlag0x4((unsigned char*)target->currentStats_, hp);
         func_ov000_02159eac(obj->context,&effects,3);
         ((State021dd278*)target->currentStats_)->changed=1;
         if(IsParty(id)){

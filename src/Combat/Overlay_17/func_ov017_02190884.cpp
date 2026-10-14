@@ -59,7 +59,7 @@ extern "C" void func_020531f0(void* obj);
 int GetSignedByte0x1c9(void* obj);
 unsigned char GetField0x397cValue(GameState* battleStruct);
 void ClearByte0xc1Flag0x4(unsigned char* obj);
-extern "C" void _Z12SetByte0x1c8Phh(void* obj, int value);
+void SetByte0x1c8(unsigned char*, int);
 void SetByteField0x253(void* obj);
 void CancelPendingAction020397cc(Obj020397cc* obj, int flag);
 void ClearFlag0x1ceBit0x4(unsigned char* obj);
@@ -67,8 +67,8 @@ int CheckField0NonZero(int* obj);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* search);
 void SetByte0xc1Flag0x4(unsigned char* obj);
 void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
-extern "C" void _Z12SetByte0x1c9Phh(void* obj, int value);
-extern "C" void _Z12SetByte0x1caPhh(void* obj, int value);
+void SetByte0x1c9(unsigned char*, int);
+void SetByte0x1ca(unsigned char*, int);
 void ClearFlag0x1ceBit0x1(unsigned char* obj);
 void SetVecYFromValue02033874(Obj02033874* obj, int value);
 void SetFlagBits0x55e(unsigned char* obj, int value);
@@ -248,7 +248,7 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
         }
         ClearByte0xc1Flag0x4((unsigned char*)m);
         if (i == 0) {
-            _Z12SetByte0x1c8Phh(m, -1);
+            SetByte0x1c8((unsigned char*)m, -1);
             m->fieldB6 = 0x28;
             m->fieldB0 = 0x324;
             if (cancel != 0) {
@@ -265,7 +265,7 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
                 SetByte0xc1Flag0x4((unsigned char*)m);
             }
         } else {
-            _Z12SetByte0x1c8Phh(m, out[shown - 1]);
+            SetByte0x1c8((unsigned char*)m, out[shown - 1]);
             m->fieldB6 = 0x66;
             m->fieldB0 = 0x648;
             if (reset != 0) {
@@ -276,9 +276,9 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
             }
             m->obj3D_.EnableFlag(0x80);
         }
-        _Z12SetByte0x1c9Phh(m, i);
+        SetByte0x1c9((unsigned char*)m, i);
         m->fieldB4 = 0x189;
-        _Z12SetByte0x1caPhh(m, out[0]);
+        SetByte0x1ca((unsigned char*)m, out[0]);
         if (clearBit1 != 0) {
             ClearFlag0x1ceBit0x1((unsigned char*)m);
         }
@@ -312,16 +312,16 @@ extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearB
     if (id == 0 && gs->GetPartyMemberByIndex(0xce) != NULL) {
         Member02190884* m = (Member02190884*)gs->GetPartyMemberByIndex(0xce);
         if (m != NULL) {
-            _Z12SetByte0x1c8Phh(m, last);
+            SetByte0x1c8((unsigned char*)m, last);
             m->fieldB6 = 0x66;
             m->fieldB0 = 0x648;
             ClearBytesAndZeroBlock02039d24((unsigned char*)m);
             if (cancel != 0) {
                 CancelPendingAction020397cc((Obj020397cc*)m, 1);
             }
-            _Z12SetByte0x1c9Phh(m, total);
+            SetByte0x1c9((unsigned char*)m, total);
             m->fieldB4 = 0x189;
-            _Z12SetByte0x1caPhh(m, out[0]);
+            SetByte0x1ca((unsigned char*)m, out[0]);
             m->obj3D_.EnableFlag(0x80);
             if (clearBit1 != 0) {
                 ClearFlag0x1ceBit0x1((unsigned char*)m);

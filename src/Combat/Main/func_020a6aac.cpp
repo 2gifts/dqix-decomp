@@ -49,7 +49,7 @@ void ClearCombatantSlot(GameState*, int);
 struct Obj0201b600;
 struct Elem0201b600;
 struct Struct02013380;
-struct Elem0201b600* FindElemByKeys(struct Obj0201b600*, int, short);
+struct Elem0201b600* FindElemByKeys(Obj0201b600*, int, unsigned short);
 void SetFlag0x40AndToggle0x4(struct Struct02013380* obj, int unused, int clear4);
 void ApplyElementFlags0201b8c8(struct Obj0201b600* obj, int a1, int a2, int a3);
 

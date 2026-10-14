@@ -12,7 +12,7 @@ struct UpdateStateStruct {
 };
 
 // USA: func_02015a98
-ARM void UpdateActivationState(struct UpdateStateStruct* p, unsigned char value, int clearFlag, int force) {
+ARM void UpdateActivationState(UpdateStateStruct* p, int value, int clearFlag, int force) {
     if (p->field16 == 1) {
         p->field16 = 2;
         p->field14 = value;

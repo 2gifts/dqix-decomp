@@ -8,7 +8,7 @@ struct Struct0209c830 {
 	char pad2[4];
 	unsigned short value;
 };
-void SetValueAndActivate0209c830(struct Struct0209c830* p, unsigned short value);
+void SetValueAndActivate0209c830(Struct0209c830* p, int value);
 
 extern struct Struct0209c830 data_02109bf4;
 

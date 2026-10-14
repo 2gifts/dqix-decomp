@@ -8,7 +8,7 @@ struct Struct0209c830 {
 };
 
 // USA: func_0209c830
-ARM void SetValueAndActivate0209c830(struct Struct0209c830* p, unsigned short value) {
+ARM void SetValueAndActivate0209c830(Struct0209c830* p, int value) {
     p->value = value;
     p->active = 1;
 }

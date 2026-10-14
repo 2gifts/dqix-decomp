@@ -11,7 +11,7 @@ struct TargetHalfwords0202e95c {
 };
 
 // USA: func_0202e95c
-ARM void SetTargetHalfwords0202e95c(struct TargetHalfwords0202e95c* obj, short a, short b) {
+ARM void SetTargetHalfwords0202e95c(TargetHalfwords0202e95c* obj, short a, unsigned short b) {
     if (b != 0) {
         obj->field214 = a;
         obj->field216 = b;

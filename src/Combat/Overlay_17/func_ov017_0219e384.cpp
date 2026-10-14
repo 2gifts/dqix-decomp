@@ -382,7 +382,8 @@ void CopyVec3ToField0x10AndCall0202e5d8(char*, int*);
 extern "C" void func_ov017_021982ac(void* ov);
 void ApplyVecFromField0x246(char*);
 void SetCombatModeFromCase020dc2d0(int v);
-extern "C" void _Z14SetByteAt0x2c5P23ByteField0x2c5_020a2cbch(void* obj, int v);
+struct ByteField0x2c5_020a2cbc;
+void SetByteAt0x2c5(ByteField0x2c5_020a2cbc*, int);
 extern "C" void func_020ae53c(int v);
 void NotifyOv017OnFlag0x1130(void);
 void MarkActiveCombatantSlots02026b7c(unsigned char*);
@@ -390,7 +391,7 @@ void SyncVec3ForFlaggedCombatants_021a3338(void* ov);
 void InitAndAppendState61_021a65c4(void* ov, unsigned char a, int b);
 void EnqueueEventTag147_021cdaa0(void);
 void SetByteField0x253(void* obj);
-extern "C" void _Z26EnqueueEventTag35_021d2ad0hiiih(short id, int x, int y, int z, unsigned char f);
+void EnqueueEventTag35_021d2ad0(short, int, int, int, unsigned char);
 void* GetGlobalField0x1c020421a0(void);
 extern "C" void func_ov017_021a7a74(void* ov, struct Msg021b6e70* fnMsg);
 struct Combatant0219e384* GetCombatantWithFlag0x100(GameState*, int);
@@ -952,7 +953,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			ClearFlags020466f4((FlagWord020466f4*)flags14e04, 1);
 			SetCombatModeFromCase020dc2d0(0);
 		}
-		_Z14SetByteAt0x2c5P23ByteField0x2c5_020a2cbch(flag4, ((struct HdrFlags4*)(header + 4))->noSkip == 0 ? 1 : 0);
+		SetByteAt0x2c5((ByteField0x2c5_020a2cbc*)flag4, ((struct HdrFlags4*)(header + 4))->noSkip == 0 ? 1 : 0);
 		func_020ae53c(1);
 		NotifyOv017OnFlag0x1130();
 		MarkActiveCombatantSlots02026b7c((unsigned char*)(*(void**)(ov + Field36d0)));
@@ -1024,7 +1025,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 					workLo.memberVec.entries[1] = 0;
 					workLo.memberVec.entries[2] = 0xff000;
 				}
-				_Z26EnqueueEventTag35_021d2ad0hiiih(c->GetId(), workLo.memberVec.entries[0], workLo.memberVec.entries[1], workLo.memberVec.entries[2], 0);
+				EnqueueEventTag35_021d2ad0(c->GetId(), workLo.memberVec.entries[0], workLo.memberVec.entries[1], workLo.memberVec.entries[2], 0);
 			}
 		}
 		if (func_0202c508(search) != 0 && fld != 0 && fld->active == 0) {
@@ -1043,7 +1044,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		}
 		if (func_0202c508(search) != 0) {
 			int* src = (int*)((char*)battle + Field7f60);
-			_Z26EnqueueEventTag35_021d2ad0hiiih(0xce, *(int*)((char*)battle + Field7f60), src[1], src[2], 0);
+			EnqueueEventTag35_021d2ad0(0xce, *(int*)((char*)battle + Field7f60), src[1], src[2], 0);
 		}
 		if (fld != 0 && (fld->flags6e & 0x20) != 0) {
 			func_ov017_0219c598(0, 0, 1);

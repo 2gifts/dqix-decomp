@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void* func_02012fe4(void);
-void SetOrClearElemFlag0x4ByKeys(int mode, int key1, short key2);
+void SetOrClearElemFlag0x4ByKeys(int mode, int key1, unsigned short key2);
 void SetFlagBitAndNotifyOverlay17(int id, int flag);
 
 // USA: func_020ae6e8

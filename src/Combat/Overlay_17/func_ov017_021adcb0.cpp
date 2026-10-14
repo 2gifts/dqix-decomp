@@ -96,7 +96,8 @@ void SetByteIfChanged02033b68(Obj02033b68* obj, int v);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern "C" void func_ov017_0218d510(GameResources* res, SafeAllocator* alloc);
 void SetByteField0x253(void* obj);
-extern "C" void _Z21UpdateActivationStateP17UpdateStateStructhii(void* p, int id, int a, int b);
+struct UpdateStateStruct;
+void UpdateActivationState(UpdateStateStruct*, int, int, int);
 void EnqueueEventTag164_021cfd5c(unsigned char a, unsigned short b, unsigned short c);
 int IsField10Eq2_0218d618(Struct0218d618* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
@@ -252,9 +253,9 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
             Element021adcb0* elem = (Element021adcb0*)GetElementStride0x24(save, self->slot);
             if (elem) {
                 if (elem->kind == 2 || elem->kind == 1) {
-                    _Z21UpdateActivationStateP17UpdateStateStructhii(elem, *(short*)((char*)member + 4), 1, 1);
+                    UpdateActivationState((UpdateStateStruct*)elem, *(short*)((char*)member + 4), 1, 1);
                 } else {
-                    _Z21UpdateActivationStateP17UpdateStateStructhii(elem, *(short*)((char*)member + 4), 1, 0);
+                    UpdateActivationState((UpdateStateStruct*)elem, *(short*)((char*)member + 4), 1, 0);
                 }
             }
             EnqueueEventTag164_021cfd5c(*(short*)((char*)member + 4), *(unsigned short*)save, self->slot);

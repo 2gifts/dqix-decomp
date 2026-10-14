@@ -9,7 +9,7 @@ extern "C" void* func_ov004_0215e47c(void* a, int key);
 extern "C" int func_ov023_021f6f10(void);
 
 // USA: func_ov004_0215e49c
-ARM void SetField38IfState8_0215e49c(void* a, int key, short value) {
+ARM void SetField38IfState8_0215e49c(void* a, int key, int value) {
 	char* node = (char*)func_ov004_0215e47c(a, key);
 	if (node == NULL) {
 		return;

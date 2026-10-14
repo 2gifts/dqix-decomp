@@ -27,7 +27,7 @@ int ComputeScaledSum0205bb84(Struct_0205bb84*);
 extern "C" int func_0205bf58(void*, int);
 int CheckFlag30Or401_02157190(void*);
 char* GetField1c_021a193c(int*);
-extern "C" void _Z28DispatchByIdxAndCond021551fcPchi(char*, int, int);
+void DispatchByIdxAndCond021551fc(char*, int, int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_ov005_021555c0(void*);
 extern "C" void func_ov005_0215792c(void*, unsigned char);
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov005_0215b2bc(Menu* self) {
         }
         self->f3dbb_ = self->kind_;
         MenuTail* hold = (MenuTail*)GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
-        _Z28DispatchByIdxAndCond021551fcPchi((char*)self, hold->index, 0);
+        DispatchByIdxAndCond021551fc((char*)self, hold->index, 0);
         if (flag2 == 0) return;
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         func_ov005_021555c0(self);

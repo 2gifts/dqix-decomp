@@ -18,7 +18,7 @@ int CheckSubstructByte0x7cPositive(signed char*);
 int IsField0Null(void**);
 GameObject* GetCombatantWithFlag0x100(GameState*, int);
 int TryClearFlags0x130(unsigned char*, unsigned short);
-void EnqueueEventTag34_021d27a0(unsigned char, unsigned char, unsigned char);
+void EnqueueEventTag34_021d27a0(int, int, int);
 void* SearchBothTables02079e2c(char*, int);
 struct Obj02048350;
 int ConsumeCounter02048350(struct Obj02048350*, int);

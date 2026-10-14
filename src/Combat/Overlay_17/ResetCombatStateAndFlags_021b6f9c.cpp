@@ -15,7 +15,7 @@ void PopStack0AndTrigger(int flag);
 void PopStack1AndTrigger(int flag);
 void SetByteField0x253(void* obj);
 struct Obj02053f7c;
-void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c* obj, short a, int b);
+void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c* obj, unsigned short a, int b);
 ARM void EnqueueEventTag127ForParty_021c3f70(unsigned short tag);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 extern "C" void func_020a0c0c(void);

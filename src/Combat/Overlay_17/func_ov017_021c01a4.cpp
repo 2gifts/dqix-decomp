@@ -11,7 +11,7 @@ void ClearFlagBits(unsigned char* obj, int mask);
 void SetByteField0x253(void* obj);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 struct Obj02092aa4;
-extern "C" void _Z15InitObj02092aa4P11Obj02092aa4h(struct Obj02092aa4* obj, int param);
+void InitObj02092aa4(Obj02092aa4*, int);
 void CreateTypeAFromAllocator(SafeAllocator* self, SafeAllocator* src);
 extern "C" int func_020a0cc4(int id);
 extern "C" void func_020a0c0c();
@@ -56,7 +56,7 @@ extern "C" ARM void func_ov017_021c01a4(struct Obj021c01a4* self) {
             self->done = 1;
             return;
         }
-        _Z15InitObj02092aa4P11Obj02092aa4h(data_ov017_021d8474, self->b20);
+        InitObj02092aa4(data_ov017_021d8474, self->b20);
         CreateTypeAFromAllocator((SafeAllocator*)data_ov017_021d8474, &self->alloc);
         self->state++;
     } else if (self->state == 1) {

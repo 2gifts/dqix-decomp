@@ -8,10 +8,10 @@ enum { kObjectEventFlagOffset = 0x2d2 };
 #endif
 
 GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
-extern "C" void _Z13SetField0x2d0Pvh(void* obj, int value);
-extern "C" void _Z13SetField0x2d1Pvh(void* obj, int value);
-extern "C" void _Z12SetByte0x1c8Phh(void* obj, int value);
-extern "C" void _Z12SetByte0x1c9Phh(void* obj, int value);
+void SetField0x2d0(void*, int);
+void SetField0x2d1(void*, int);
+void SetByte0x1c8(unsigned char*, int);
+void SetByte0x1c9(unsigned char*, int);
 
 struct LocalEvt021ce3ac {
     unsigned char pad0[4];
@@ -29,9 +29,9 @@ ARM void ApplyEventTag38Fields_021ce3ac(int unused0, LocalEvt021ce3ac* evt, Game
     if (c == NULL) {
         return;
     }
-    _Z13SetField0x2d0Pvh(c, evt->field6);
-    _Z13SetField0x2d1Pvh(c, evt->field7);
-    _Z12SetByte0x1c8Phh(c, evt->field8);
-    _Z12SetByte0x1c9Phh(c, evt->field9);
+    SetField0x2d0(c, evt->field6);
+    SetField0x2d1(c, evt->field7);
+    SetByte0x1c8((unsigned char*)c, evt->field8);
+    SetByte0x1c9((unsigned char*)c, evt->field9);
     *((unsigned char*)c + kObjectEventFlagOffset) = evt->fielda;
 }

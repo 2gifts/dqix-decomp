@@ -3,7 +3,7 @@
 void* GetNodeIfType6_0216ae9c(void* a, int id);
 extern "C" void func_ov023_021f8120(void* node);
 extern "C" void func_ov023_021f7eb8(void* node, void* a, int buf, int mode, int a5, int a6, int a7, int a8, int a9, int a10);
-void SetOffset100Fields_021f8960(char* base, short a, short b);
+void SetOffset100Fields_021f8960(char* base, short a, unsigned short b);
 struct Obj_02184ad8;
 ARM void SetField1c8True_02184ad8(Obj_02184ad8* obj);
 

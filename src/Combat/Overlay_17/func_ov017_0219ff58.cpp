@@ -41,8 +41,8 @@ extern "C" void func_02048150(void* combatant, int a, int b);
 int RestoreMaxHpToFull(struct Combatant02048260* c);
 int RestoreMaxMpToFull(struct Combatant020482bc* c);
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
-extern "C" void _Z12SetByte0x1c8Phh(void* obj, int value);
-void SetByte0x1c9(unsigned char* obj, unsigned char value);
+void SetByte0x1c8(unsigned char*, int);
+void SetByte0x1c9(unsigned char* obj, int value);
 void SetByteField0x253(void* obj);
 extern "C" void func_ov017_021cedf4(int a, int b, int c);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
@@ -72,7 +72,7 @@ extern "C" ARM int func_ov017_0219ff58(unsigned char* ov, int flagA, int flagB, 
                 c->flags18c &= ~1;
                 SetByte0xbeShiftPrev((struct Bytes02033b88*)c, 0);
                 if (c->status->flags & 1) {
-                    _Z12SetByte0x1c8Phh(c, -1);
+                    SetByte0x1c8((unsigned char*)c, -1);
                     SetByte0x1c9((unsigned char*)c, 0);
                     SetByteField0x253(c);
                 }

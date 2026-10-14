@@ -12,8 +12,7 @@ int LookupAndForEachNodeIfMatch02064b24(void* a, int mode, unsigned short id, vo
 struct Obj0201b600;
 struct Elem0201b600;
 struct FeatureElem02017a94;
-extern "C" struct FeatureElem02017a94* _Z14FindElemByKeysP11Obj0201b600is(
-    struct Obj0201b600* obj, int key1, unsigned short key2);
+struct FeatureElem02017a94* FindElemByKeys(Obj0201b600*, int, unsigned short);
 
 struct FeatureElem02017a94 {
     unsigned short key;
@@ -59,7 +58,7 @@ extern "C" ARM void func_02017a94(Zone3D* zone) {
             for (colLow = 0; colLow < 0x7f; colLow++) {
                 if (GetBitmapPixel(bmp, (unsigned char)row, (short)colLow)) {
                     struct FeatureElem02017a94* e =
-                        _Z14FindElemByKeysP11Obj0201b600is((struct Obj0201b600*)zone, row, colLow);
+                        FindElemByKeys((struct Obj0201b600*)zone, row, colLow);
                     if (e != NULL) {
                         e->flags &= ~4;
                     }
@@ -68,7 +67,7 @@ extern "C" ARM void func_02017a94(Zone3D* zone) {
             for (colHigh = 0x80; colHigh < 0xff; colHigh++) {
                 if (GetBitmapPixel(bmp, (unsigned char)row, (short)colHigh)) {
                     struct FeatureElem02017a94* e =
-                        _Z14FindElemByKeysP11Obj0201b600is((struct Obj0201b600*)zone, row, colHigh - 0x80);
+                        FindElemByKeys((struct Obj0201b600*)zone, row, colHigh - 0x80);
                     struct FeatureNode02017a94* n;
                     if (e != NULL) {
                         e->flags |= 4;

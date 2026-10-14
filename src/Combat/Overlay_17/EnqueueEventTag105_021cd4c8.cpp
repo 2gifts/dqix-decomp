@@ -4,7 +4,7 @@ void* GetData02100044(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 // USA: func_ov017_021cd4c8
-ARM void EnqueueEventTag105_021cd4c8(unsigned short a0, unsigned short a1, unsigned char a2) {
+ARM void EnqueueEventTag105_021cd4c8(unsigned short a0, unsigned short a1, signed char a2) {
 	void* p = GetData02100044();
 	unsigned char buf[0x14];
 	buf[0] = 0x69;

@@ -104,7 +104,7 @@ int IsValueEqual12(int x);
 extern "C" int func_020420e8(void* p, int flag);
 int CallFunc020e0434With02153694(int value);
 int CheckAfterTwoCalls_0215e460(void);
-extern "C" void _Z27SetField38IfState8_0215e49cPvis(void* a, int key, int value);
+void SetField38IfState8_0215e49c(void*, int, int);
 extern "C" struct TableA68* func_ov023_021fa598(HudNode* node);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 int GetGlobalField0x1c020421a0(void);
@@ -242,9 +242,9 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
     }
 
     if (CheckAfterTwoCalls_0215e460() != 0) {
-        _Z27SetField38IfState8_0215e49cPvis(self, 0x7c, 0x201);
+        SetField38IfState8_0215e49c(self, 0x7c, 0x201);
     } else {
-        _Z27SetField38IfState8_0215e49cPvis(self, 0x7c, data_ov004_021707e8.slot + 0x1e4);
+        SetField38IfState8_0215e49c(self, 0x7c, data_ov004_021707e8.slot + 0x1e4);
     }
 
     char* text = data_ov004_021707e8.textBuf;

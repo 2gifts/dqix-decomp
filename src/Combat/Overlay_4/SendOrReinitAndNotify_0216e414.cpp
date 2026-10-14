@@ -11,7 +11,7 @@ int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
 void* GetNodeIfType6_0216ae9c(void* a, int id);
-void SetOffset100Fields_021f8960(char* base, short a, short b);
+void SetOffset100Fields_021f8960(char* base, short a, unsigned short b);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 void SetByte0x7f70(void* obj, unsigned char value);
 

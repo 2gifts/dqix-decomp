@@ -57,7 +57,7 @@ struct KeyboardScreen {
 KeyboardCanvas* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 const char* FindEntryByKey(struct TableA68* table, int key);
 extern "C" int func_020420e8(const char* text, int large);
-void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char* obj, int value, unsigned char key);
+void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char* obj, int value, int key);
 extern "C" void func_0204ecb4(KeyboardCanvas* wnd, int a, int b, int w, int h, signed char* margins);
 extern "C" void func_0204f41c(KeyboardCanvas* ctx, short x, short y, const char* str, int size,
                               unsigned char palette, short* outA, short* outB, int flag);

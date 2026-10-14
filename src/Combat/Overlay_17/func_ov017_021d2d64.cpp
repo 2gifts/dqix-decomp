@@ -78,7 +78,7 @@ int GetGlobalField0x1c020421a0(void);
 int GetByte0x150Bit6(BitFlags020d805c* obj);
 int TestFlagBit55dIfActive_0218b628(int);
 extern "C" void func_ov017_0218b5c0(int set, signed char bit);
-extern "C" void _Z32SetIndexedFieldsIfValid_02191ba0Pcit(char* res, int id, int value);
+void SetIndexedFieldsIfValid_02191ba0(char*, int, int);
 void InitContext020e1154(void* obj);
 int TryClearFlags0x130(unsigned char* obj, unsigned short flag);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
@@ -214,7 +214,7 @@ extern "C" ARM void func_ov017_021d2d64(void* unused, Msg021d2d64* msg, GameStat
                     } else {
                         Leader021d2d64* l = (Leader021d2d64*)gs->GetUnknownGameObject();
                         if (l != 0 && (l->fac != 0 || l->obj.GetFlag(0x8000000) != 0)) {
-                            _Z32SetIndexedFieldsIfValid_02191ba0Pcit((char*)res, id, v->lo);
+                            SetIndexedFieldsIfValid_02191ba0((char*)res, id, v->lo);
                             shown = 0;
                         } else {
                             ClearFieldBit02053fe4(unit, v->lo, 1);

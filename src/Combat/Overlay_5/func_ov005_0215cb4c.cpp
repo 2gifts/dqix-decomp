@@ -17,7 +17,7 @@ struct EquipmentMenu
     unsigned char fadeStep_;
 };
 
-void SetValueAndActivate0209c830(Struct0209c830* p, unsigned short value);
+void SetValueAndActivate0209c830(Struct0209c830* p, int value);
 int IsAnimationActive0209ca2c(void* obj);
 
 extern "C" Struct0209c830 data_02109bf4;

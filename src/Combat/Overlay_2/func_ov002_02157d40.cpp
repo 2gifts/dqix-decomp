@@ -78,7 +78,7 @@ int CountEntriesByField0x8e(struct List02026abc* p);
 void InitByteHeader_021c2688(unsigned char* p);
 void SetFlagsAndReset02026678(char* p);
 int IsEntryEligibleAndFlagged(struct Struct0201bc94* p);
-extern "C" void _Z26EnqueueEventTag34_021d27a0hhh(int a, int b, int c);
+void EnqueueEventTag34_021d27a0(int, int, int);
 int GetGlobalField0x1c020421a0(void);
 void InitAndInsertNode_021acd30(char* p, unsigned char a, unsigned char b, unsigned char c);
 int CountMatchingEntries02026a78(char* p);
@@ -776,7 +776,7 @@ extern "C" ARM void func_ov002_02157d40(struct BattleMenu* p) {
                 }
                 if (ok) {
                     func_ov016_0218b5c0(0, -1);
-                    _Z26EnqueueEventTag34_021d27a0hhh(1, p->actor, p->target);
+                    EnqueueEventTag34_021d27a0(1, p->actor, p->target);
                     DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
                     p->msgId = 0x7536;
                     p->msgId2 = -1;

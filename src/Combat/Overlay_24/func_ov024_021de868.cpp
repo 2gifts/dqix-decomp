@@ -5,7 +5,7 @@
 
 struct S_10088;
 int IsFlag10088Set(struct S_10088* obj);
-void ResetFields14And18KeepFlag0x4(unsigned char* obj, unsigned short val);
+void ResetFields14And18KeepFlag0x4(unsigned char* obj, int val);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" float func_ov024_021db358(GameObject* obj);
 short ApplyHPDelta0215a16c(void* unused, int id, int delta, short* outApplied);

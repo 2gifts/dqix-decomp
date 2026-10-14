@@ -41,7 +41,7 @@ struct MenuLists {
 };
 int* GetGlobal02109418();
 extern "C" void* func_0205ec34();
-unsigned char GetTableByteOrFF(GetTableByteOrFFData*, unsigned int);
+unsigned char GetTableByteOrFF(GetTableByteOrFFData*, unsigned char);
 int GetPackedNibbleField(PackedNibbleArray0206e120*, int);
 int GetPackedNibbleFlag0x8(PackedNibbleArray0206e2dc*, int);
 int TestBitInByteArrayAt0x84(void*, int);

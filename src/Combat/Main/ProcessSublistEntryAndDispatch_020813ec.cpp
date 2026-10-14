@@ -14,7 +14,7 @@ unsigned int FindMatchingElemSumOrScaledPtr02081e18(Obj02081e18*, int);
 struct Obj02081de0;
 int FindElementWithByte0xc4Is0xff(Obj02081de0*);
 int ClearSublistEntriesFlag4(void *obj, int id);
-extern "C" int _Z37SetField0xa0AndByte0xc4IfFlag0x1ClearPhih(void *a, int c, int id);
+int SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char*, int, int);
 struct Params02081498;
 int DispatchMessageAndInvokeList02081498(void*, void*, Params02081498*);
 int ProcessEntryList02081574(void *obj, void *a, void *b);
@@ -42,7 +42,7 @@ extern "C" ARM int func_020813ec(void *obj, int id) {
     }
 
     if (a != 0) {
-        _Z37SetField0xa0AndByte0xc4IfFlag0x1ClearPhih((void *)a, c, id);
+        SetField0xa0AndByte0xc4IfFlag0x1Clear((unsigned char*)a, c, id);
         DispatchMessageAndInvokeList02081498(obj, (void *)a, (Params02081498*)b);
         ProcessEntryList02081574(obj, (void *)a, (void *)b);
         InvokeHandlerAfterCacheFlush0204fbf8((Obj0204fbf8*)a);

@@ -3,12 +3,13 @@
 
 extern "C" void __clear(void* buf, int size);
 int CollectCombatantsWithFlag0x1000(GameState* battleStruct, unsigned char* out);
-extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(GameObject* obj, int a, int b);
+struct Obj02053f7c;
+void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c*, unsigned short, int);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* search);
 void EnqueueEventTag147_021cdaa0(void);
 int CheckByteAtIndex_021c5bf8(int index, int key);
-extern "C" void _Z24MaybeResetEntry_021c5e28is(int id, int val);
+void MaybeResetEntry_021c5e28(int, int);
 extern "C" void func_ov017_021c5a8c(int a, int key);
 int IsValidCombatantValue_021c5a1c(int val);
 void* GetData02108ea8(void);
@@ -172,7 +173,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
     for (i = 0; i < count; i++) {
         member = gs->GetPartyMemberByIndex(members[i]);
         if (member != NULL) {
-            _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(member, cmd->id, 1);
+            SetField0x1b2IfMatchOrFlag02053f7c((Obj02053f7c*)member, cmd->id, 1);
         }
     }
 
@@ -181,7 +182,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
         if (!IsSpecialId(cmd->id)) {
             if (cmd->field9 != 0) {
                 if (CheckByteAtIndex_021c5bf8(index, cmd->id) == 0) {
-                    _Z24MaybeResetEntry_021c5e28is(index, cmd->id);
+                    MaybeResetEntry_021c5e28(index, cmd->id);
                 } else {
                     func_ov017_021c5a8c(index, cmd->id);
                 }
@@ -207,7 +208,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
                     func_ov017_021c5a8c(index, cmd->id);
                 }
             } else {
-                _Z24MaybeResetEntry_021c5e28is(index, cmd->id);
+                MaybeResetEntry_021c5e28(index, cmd->id);
             }
         } else {
             func_ov017_021c5a8c(index, cmd->id);

@@ -29,7 +29,7 @@ void _Z20ResetFields_0215873cPv(void *);
 void *_Z26GetGlobalField0x1c020421a0v(void);
 void _Z24ReinitController02043204Pc(void *);
 void _Z25SetFlag_02158a50_02158a50Ph(void *);
-void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void *, int);
+void _Z27SetValueAndActivate0209c830P14Struct0209c830i(void *, int);
 void func_ov003_0215582c(void *);
 int _Z23GetHeadNodeIdOrMinusOnePP16HeadNode02046b24(void *);
 int _ZNK8Object3D19HasAnimationStoppedEv(void *);
@@ -216,7 +216,7 @@ extern "C" ARM void func_ov003_0215704c(struct Ctrl0215704c *self) {
         self->f1d4 = 0;
         _Z24ReinitController02043204Pc(_Z26GetGlobalField0x1c020421a0v());
         _Z25SetFlag_02158a50_02158a50Ph(self);
-        _Z27SetValueAndActivate0209c830P14Struct0209c830t(data_02109bf4, 0x34);
+        _Z27SetValueAndActivate0209c830P14Struct0209c830i(data_02109bf4, 0x34);
         self->state = self->state + 1;
     } else if (state == 7) {
         self->f1d4 = self->f1d4 + self->f1dc;

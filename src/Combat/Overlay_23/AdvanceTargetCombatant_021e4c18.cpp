@@ -11,7 +11,7 @@ struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern struct Obj0205eaa0 data_02108760;
 extern "C" void func_ov005_021551d4(void* p);
-void DispatchByIdxAndCond021551fc(char* base, unsigned char byteVal, int cond);
+void DispatchByIdxAndCond021551fc(char* base, int byteVal, int cond);
 typedef void (*DispatchFn021551fc)(char*, int, int);
 
 extern unsigned char data_02114e54;
@@ -105,7 +105,6 @@ extern "C" ARM void func_ov023_021e4c18(struct Obj021e4c18* obj) {
 #else
     func_ov023_021e2ce8(obj->arr4ec[index], obj->fc8);
 #endif
-
 
     combatant = battleStruct->GetGameObjectByIndex(obj->arr4ec[index]);
     unsigned short cflags = combatant->obj3D_.unknown_0_;

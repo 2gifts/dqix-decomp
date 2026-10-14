@@ -8,7 +8,7 @@ struct EntryDEE8 {
 };
 
 // USA: func_0206dee8
-ARM void GetEntry3Bytes(struct EntryDEE8* base, int index, unsigned char* outA, unsigned char* outB, unsigned char* outC) {
+ARM void GetEntry3Bytes(EntryDEE8* base, unsigned char index, unsigned char* outA, unsigned char* outB, unsigned char* outC) {
     *outA = base[index].a;
     *outB = base[index].b;
     *outC = base[index].c;

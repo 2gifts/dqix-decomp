@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 extern "C" int func_020aaf84(void* ptr, int a, int b, int c);
 struct StateBits5ccc_1155c;
 void ClearFlag0x5cccBit0(struct StateBits5ccc_1155c* state);
@@ -17,7 +16,7 @@ int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
 void* GetNodeIfType6_0216ae9c(void* a, int id);
-void SetOffset100Fields_021f8960(char* base, short a, short b);
+void SetOffset100Fields_021f8960(char* base, short a, unsigned short b);
 void SetByte0x4(char* obj, unsigned char value);
 
 extern unsigned char data_ov004_02171034[];

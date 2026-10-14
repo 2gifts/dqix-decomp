@@ -31,7 +31,7 @@ signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 int ForEachNodeUntilFalse02064704(void*, Node02064704*, void*);
 int GetPackedNibbleField(PackedNibbleArray0206e120*, int);
 int IsNibbleFieldZeroOrOne(PackedNibbleArray0206e120*, int);
-void GetEntry3Bytes(EntryDEE8*, int, unsigned char*, unsigned char*, unsigned char*);
+void GetEntry3Bytes(EntryDEE8*, unsigned char, unsigned char*, unsigned char*, unsigned char*);
 extern "C" void func_0206e164(PackedNibbleArray0206e120*, int, int);
 
 static inline int IsSearchState(PackedNibbleArray0206e120* values, int index, int state) {

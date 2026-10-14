@@ -15,7 +15,7 @@ void SetBitsInField4(unsigned int* obj, unsigned int mask);
 void SetBitsInField8(unsigned int* obj, unsigned int mask);
 extern "C" void* func_02012fe4(void);
 struct S_e828;
-extern "C" void _Z14SetFieldAt0x7eP6S_e828s(struct S_e828* p, unsigned short v);
+void SetFieldAt0x7e(S_e828*, unsigned short);
 void SetWord0x7f6c(void* obj, int value);
 void SetFieldFlag17188_0218d258(void* obj);
 
@@ -36,7 +36,7 @@ extern "C" ARM int func_ov004_0216ecd0(void) {
     if (!v) return 0;
     struct S_e828* p = (struct S_e828*)((char*)v + stateOffset);
     if (!p) return 0;
-    _Z14SetFieldAt0x7eP6S_e828s(p, *(unsigned short*)(data_ov004_02171048.ptr + 0xc));
+    SetFieldAt0x7e(p, *(unsigned short*)(data_ov004_02171048.ptr + 0xc));
     SetWord0x7f6c(bs, 5);
     *(char*)((char*)bs + 0x7000 + firstFlag) = 1;
     *(char*)((char*)bs + 0x7000 + secondFlag) = 1;

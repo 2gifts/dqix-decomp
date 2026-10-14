@@ -100,10 +100,11 @@ struct Obj0208bf28;
 void SetFieldD20208bf28(Obj0208bf28*, int, unsigned char);
 unsigned char* GetGlobal02109418();
 struct GetTableByteOrFFData;
-int GetTableByteOrFF(GetTableByteOrFFData*, unsigned int);
+int GetTableByteOrFF(GetTableByteOrFFData*, unsigned char);
 void RegisterSlotA020cf0fc(int);
 void RegisterSlotB020cf1a8(int);
-extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(void* p, int v);
+struct Struct0209c830;
+void SetValueAndActivate0209c830(Struct0209c830*, int);
 void ClearField0xd0AndSetFlag0x1IfByte0xd4Not2(unsigned char*);
 void SetFlag0x2IfByte0xd4Not3(unsigned char*);
 extern "C" void func_0205e944(void* p, int v);
@@ -501,11 +502,11 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                     packed.b.d = sb.f0;
                     packed.b.e = sb.f4;
                     *(unsigned int*)(g + idx * 4 + 0x178) = packed.w;
-                    _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x32);
+                    SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x32);
                 }
             } else if (tok > REGION_VALUE(0xff39, 0xff34) && tok < REGION_VALUE(0xff4e, 0xff49)) {
                 ProcessPendingFlag02045688(message);
-                _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, tok - REGION_VALUE(0xff08, 0xff03));
+                SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, tok - REGION_VALUE(0xff08, 0xff03));
                 (self + 0x1000)[REGION_VALUE(0x7fa, 0x9c9)] = 1;
                 return;
             } else if (tok >= REGION_VALUE(0xff4f, 0xff4a) && tok <= REGION_VALUE(0xff51, 0xff4c)) {
@@ -523,7 +524,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                     *(unsigned short*)(ent + 0xda) = *(unsigned short*)(ent + 0xda) | 0x200;
                     ClearField0xd0AndSetFlag0x1IfByte0xd4Not2((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
                     *(self + REGION_VALUE(0x1789, 0x195b)) |= 1;
-                    _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x33);
+                    SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x33);
                 }
             } else if (tok == 0xff13) {
                 unsigned char* ent = *(unsigned char**)(self + REGION_VALUE(0x4c, 0x8c));
@@ -531,7 +532,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                     *(unsigned short*)(ent + 0xda) = *(unsigned short*)(ent + 0xda) | 0x300;
                     ClearField0xd0AndSetFlag0x1IfByte0xd4Not2((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
                     *(self + REGION_VALUE(0x1789, 0x195b)) |= 1;
-                    _Z27SetValueAndActivate0209c830P14Struct0209c830t(&data_02109bf4, 0x44);
+                    SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x44);
                 }
             } else if (tok == 0xff12) {
                 if (*(void**)(self + REGION_VALUE(0x4c, 0x8c)) != 0) {

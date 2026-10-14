@@ -141,7 +141,8 @@ struct SearchResult02192700* SearchWithComparator0206f4f0(BinarySearchByComparat
 extern "C" int func_ov015_02190d08(struct Obj02192700* obj);
 struct Container020dedd0;
 struct Element020dedd0* FindElementByKey020dedd0(Container020dedd0*, int);
-extern "C" void _Z22SetShortFields0219313cP14Struct0219313css(struct MenuList02192700* menu, int a, int b);
+struct Struct0219313c;
+void SetShortFields0219313c(Struct0219313c*, int, int);
 struct Struct02193150;
 void AddToShortField02193150(Struct02193150*, int);
 extern "C" void func_0202a6c4(struct MenuList02192700* menu);
@@ -459,7 +460,7 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 entry = func_ov015_02193160(obj, obj->state, &idx);
             }
         }
-        _Z22SetShortFields0219313cP14Struct0219313css(&obj->menu, 0, count - 1);
+        SetShortFields0219313c((Struct0219313c*)&obj->menu, 0, count - 1);
         AddToShortField02193150((Struct02193150*)&obj->menu, obj->cursors[obj->state]);
         func_0202a6c4(&obj->menu);
         Deactivate0202a8cc((char*)&obj->menu, 1);
@@ -492,7 +493,7 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 }
             }
         }
-        _Z22SetShortFields0219313cP14Struct0219313css(&obj->menu, 0, count - 1);
+        SetShortFields0219313c((Struct0219313c*)&obj->menu, 0, count - 1);
         AddToShortField02193150((Struct02193150*)&obj->menu, 0);
         func_0202a6c4(&obj->menu);
         Deactivate0202a8cc((char*)&obj->menu, 1);

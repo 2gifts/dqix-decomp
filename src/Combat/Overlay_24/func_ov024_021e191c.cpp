@@ -4,7 +4,7 @@
 struct FlagObj_021dd260;
 int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
 int CheckField0x14FiveFlagsClear020881c4(unsigned char*);
-void SetFlag0x800000AndByte0x24(void*,unsigned char);
+void SetFlag0x800000AndByte0x24(void*, int);
 void ResetAndSetFlag0x1000000(void*);
 extern "C" void* func_ov000_0215e958(void*);
 void AddEntryAndIncrementCount0215a88c(void*,void*,int);

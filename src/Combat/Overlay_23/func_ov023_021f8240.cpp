@@ -181,8 +181,8 @@ extern "C" void func_02046608(void* messages, int, const char* input, char* outp
 extern "C" int func_020420e8(const char* text, int font);
 extern "C" void func_0204f41c(Canvas_021f8240* canvas, short x, short y, const char* text, unsigned char font,
                               unsigned char color, unsigned short* width, unsigned short* height, int);
-extern "C" void _Z28SetShortAt_021f8c48_021f8c48Phs(MenuText_021f8240* text, unsigned short width);
-extern "C" void _Z28SetShortAt_021f8c58_021f8c58Phs(MenuText_021f8240* text, unsigned short height);
+void SetShortAt_021f8c48_021f8c48(unsigned char*, unsigned short);
+void SetShortAt_021f8c58_021f8c58(unsigned char*, unsigned short);
 extern "C" void func_0204f7e8(Canvas_021f8240* canvas, short x, short y, int value, unsigned char font,
                               unsigned char color, unsigned short* width, unsigned short* height, int, int, int, int);
 extern "C" void func_ov023_021fbcb0(MenuNumber_021f8240* number, unsigned short width);
@@ -304,8 +304,8 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
 #else
             func_0204f41c(&self->canvas_, x, y, string, font, color, &textWidth, &textHeight, 0);
 #endif
-            _Z28SetShortAt_021f8c48_021f8c48Phs(text, textWidth);
-            _Z28SetShortAt_021f8c58_021f8c58Phs(text, textHeight);
+            SetShortAt_021f8c48_021f8c48((unsigned char*)text, textWidth);
+            SetShortAt_021f8c58_021f8c58((unsigned char*)text, textHeight);
         }
         else if (kind == 2)
         {

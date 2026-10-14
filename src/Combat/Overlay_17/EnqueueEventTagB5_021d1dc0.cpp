@@ -29,7 +29,7 @@ struct LocalEvt021d1dc0 {
 };
 
 // USA: func_ov017_021d1dc0
-ARM void EnqueueEventTagB5_021d1dc0(short a, short b, int* vec3, short c, int d) {
+ARM void EnqueueEventTagB5_021d1dc0(unsigned short a, int b, int* vec3, int c, int d) {
 	if (!CheckField0NonZero(func_0202ae18())) return;
 	if (GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)func_0202ae18()) != 0) return;
 	void* p = GetData02100044();

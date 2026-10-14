@@ -18,7 +18,7 @@ void* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov003_02159250(void*, void*);
 extern "C" void func_02043124(void*);
 struct Struct0209c830;
-void SetValueAndActivate0209c830(Struct0209c830*, unsigned short);
+void SetValueAndActivate0209c830(Struct0209c830*, int);
 int IsAnimationActive0209ca2c(void*);
 
 extern unsigned char data_02109bf4;

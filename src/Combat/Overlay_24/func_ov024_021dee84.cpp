@@ -8,7 +8,7 @@ struct StatStageStruct02087c84;
 int SetStatStageBit15(struct StatStageStruct02087c84* p, int delta);
 void UpdateCombatantMagicalMending(int unused, int combatantId);
 struct RefStruct_021e9990;
-unsigned short CheckPersonalityCode_021e9990(struct RefStruct_021e9990* s, int id, int unused2, int flag, signed char sb);
+unsigned short CheckPersonalityCode_021e9990(RefStruct_021e9990* s, int id, int unused2, unsigned char flag, signed char sb);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);

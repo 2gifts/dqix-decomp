@@ -13,7 +13,7 @@ struct List021600f8;
 void* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
 void ClearSubstructFlag0x4(unsigned char* obj);
 int CheckSubstructFlag0x200(unsigned char* obj);
-extern "C" void _Z20SetSubstructByte0x6cPhh(unsigned char* obj, int value);
+void SetSubstructByte0x6c(unsigned char*, int);
 extern "C" void func_02033920(void* a, int b, int c);
 
 extern char data_ov025_021ef404[];
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov025_021dc220(void* obj) {
                     }
                     if (allow) {
                         if (_ZZ16GetTimer021ef974vE1s != 0) {
-                            _Z20SetSubstructByte0x6cPhh((unsigned char*)combatant, idx);
+                            SetSubstructByte0x6c((unsigned char*)combatant, idx);
                         } else {
                             func_02033920(combatant, idx, 1);
                         }

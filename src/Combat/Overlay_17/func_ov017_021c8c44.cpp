@@ -39,8 +39,8 @@ extern "C" int func_0202c508(void* search);
 Entry0207d9bc* GetData02108ea8(void);
 void ResetEntryByKey0207da7c(Entry0207d9bc* arr, unsigned short key);
 void EnqueueEventForFlaggedCombatants_021a33e0(void* ctx, int key);
-extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(Obj02053f7c* obj, unsigned short a, int b);
-#define _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi
+extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7cti(Obj02053f7c* obj, unsigned short a, int b);
+#define _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7cti _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7cti
 void CallHelperWithBuf_021907dc(int a, int b, int c, int d, int e);
 void ClearMatchingHalfword_02197324(unsigned char* obj, unsigned short key);
 
@@ -100,11 +100,11 @@ extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs,
         Combatant021c8c44* c = (Combatant021c8c44*)GetCombatantWithFlag0x100(gs, j);
         if (c != NULL) {
             if (id == c->obj3D.unknown_4_) {
-                _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi((Obj02053f7c*)c, 0, 1);
+                _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7cti((Obj02053f7c*)c, 0, 1);
             } else if (c->obj3D.unknown_0_ & 0x1000) {
                 Combatant021c8c44* leader = (Combatant021c8c44*)GetCombatantWithFlag0x100(gs, 0);
                 if (leader != NULL) {
-                    _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi((Obj02053f7c*)c, leader->field_1b2, 1);
+                    _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7cti((Obj02053f7c*)c, leader->field_1b2, 1);
                 }
             }
         }

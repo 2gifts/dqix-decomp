@@ -15,7 +15,7 @@ extern "C" void* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
 extern "C" GameResources* func_ov017_0218b5b0();
 extern "C" void func_0202c288(void*);
-extern "C" void _Z12SetByte0x1caPhh(void*, int);
+void SetByte0x1ca(unsigned char*, int);
 int TestBitBySignedByteIndex(SearchStruct* obj, int value);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
@@ -26,7 +26,7 @@ void ClearBitsInWord(unsigned int*, unsigned int);
 void SetByte0x5cdaAndClearField0xa(unsigned char*, unsigned char);
 void* GetField0x74deForValidIndex(char* p, unsigned int index);
 void SetWord0x71f8(void*, int);
-extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(Obj02053f7c*, int, int);
+void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c*, unsigned short, int);
 extern "C" void* func_0205ec34(void);
 extern "C" void func_0206dfe8(void*, int, int);
 void CopyRegionsAndClearField0206e70c(char*);
@@ -142,7 +142,7 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
     }
     GameObject* leader = gs->GetPartyMemberByIndex(self->leader);
     if (leader != NULL) {
-        _Z12SetByte0x1caPhh(leader, *(short*)((char*)leader + 4));
+        SetByte0x1ca((unsigned char*)leader, *(short*)((char*)leader + 4));
     }
     short* y = ys;
     for (int i = 0; i < 4; i++, y++) {
@@ -199,7 +199,7 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
         for (int i = 0; i < 4; i++) {
             GameObject* member = gs->GetPartyMemberByIndex(i);
             if (member != NULL) {
-                _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi((Obj02053f7c*)member, snap->ids[i], 1);
+                SetField0x1b2IfMatchOrFlag02053f7c((Obj02053f7c*)member, snap->ids[i], 1);
             }
         }
 

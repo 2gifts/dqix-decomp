@@ -5,26 +5,25 @@ enum { kNodeOffset = 0x43c };
 enum { kNodeOffset = 0x41c };
 #endif
 
-
 struct Elem0201b600 { unsigned short key; unsigned char pad[0x6e]; };
 struct Node0201b600 {
-    int f0;                      // 0x00
-    unsigned char pad4[0x10];    // 0x04
-    int count;                   // 0x14
-    unsigned char pad18[0x2c];   // 0x18
-    struct Elem0201b600* arr;    // 0x44
-    unsigned char pad48[0xc];    // 0x48
-    struct Node0201b600* next;   // 0x54
+    int f0;
+    unsigned char pad4[0x10];
+    int count;
+    unsigned char pad18[0x2c];
+    struct Elem0201b600* arr;
+    unsigned char pad48[0xc];
+    struct Node0201b600* next;
 };
 struct Obj0201b600 {
     unsigned char pad0[kNodeOffset];
     struct Node0201b600* head;
-    unsigned char pad420[4];     // 0x420
-    int f424;                    // 0x424
+    unsigned char pad420[4];
+    int f424;
 };
 
 // USA: func_0201b600
-ARM struct Elem0201b600* FindElemByKeys(struct Obj0201b600* obj, int key1, short key2) {
+ARM struct Elem0201b600* FindElemByKeys(Obj0201b600* obj, int key1, unsigned short key2) {
     struct Node0201b600* node;
     int count;
     int i;

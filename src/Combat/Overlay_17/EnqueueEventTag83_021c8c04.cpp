@@ -13,7 +13,7 @@ struct LocalEvt021c8c04 {
 };
 
 // USA: func_ov017_021c8c04
-ARM void EnqueueEventTag83_021c8c04(unsigned short a, unsigned char b, int c) {
+ARM void EnqueueEventTag83_021c8c04(int a, int b, int c) {
 	LocalEvt021c8c04 buf;
 	void* p = GetData02100044();
 	buf.tag = 0x53;

@@ -216,7 +216,7 @@ void func_ov023_021f454c(Scene_021edf54* self);
 void func_ov017_021cd218(unsigned short event, unsigned short value, unsigned short scaled, unsigned short bits, unsigned short kind, unsigned short id);
 void func_ov017_021cd590(unsigned short event, int* experience, int a, int b);
 void func_ov017_021cd35c(unsigned short event, char* drops, unsigned char count, signed char mask);
-void _Z27EnqueueEventTag105_021cd4c8tth(unsigned short event, unsigned short item, signed char mask);
+void _Z27EnqueueEventTag105_021cd4c8tta(unsigned short event, unsigned short item, signed char mask);
 int func_0202c540(void* mode);
 int func_020abe84(void* unused, short* indices, Flags_021ed7e0* values, int count);
 int func_ov023_021f5150(Scene_021edf54* self, BattleInfo_021edf54* info, int* experience, int* gold, int legacy);
@@ -372,7 +372,7 @@ extern "C" ARM int func_ov023_021edf54(Scene_021edf54* self) {
             func_ov017_021cd590(self->info_->event_, self->experience_, 0, 0);
             func_ov017_021cd35c(self->info_->event_, self->drops_, self->dropCount_, self->memberMask_);
             if (self->map_ != 0)
-                _Z27EnqueueEventTag105_021cd4c8tth(self->info_->event_, self->mapItem_, self->memberMask_);
+                _Z27EnqueueEventTag105_021cd4c8tta(self->info_->event_, self->mapItem_, self->memberMask_);
             if (self->world_->bonus_ != 0) {
                 unsigned int bonus = ScaleU(self->world_->rateA_, self->world_->bonus_);
                 GameState* state = GameState::GetInstance();

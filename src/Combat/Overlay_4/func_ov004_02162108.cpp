@@ -55,7 +55,7 @@ extern "C" void __clear(void* buf, int n);
 extern "C" void* func_ov011_021849c8(void* self);
 extern "C" Node02162108* func_ov004_0215e47c(void* a, int key);
 extern "C" void func_ov004_0215e574(void* a, unsigned short key, int c, int d, int e);
-extern "C" void _Z27SetField38IfState8_0215e49cPvis(void* a, int key, int value);
+void SetField38IfState8_0215e49c(void*, int, int);
 extern "C" Node02162108* func_ov023_021f6880(void* list, int key);
 extern "C" int func_ov023_021f6f10(Node02162108* node);
 extern "C" struct TableA68* func_ov023_021fa598(Node02162108* node);
@@ -106,10 +106,10 @@ extern "C" ARM int func_ov004_02162108(void* self) {
     func_ov004_0215e574(self, 0xc, 0xff, 0, 0);
 
     if (data_ov004_02170b90[1].count != 0) {
-        for (i = 0xd; i < 0xf; i++) _Z27SetField38IfState8_0215e49cPvis(self, i, 0x3a);
-        for (i = 0xf; i < 0x1d; i++) _Z27SetField38IfState8_0215e49cPvis(self, i, 0x11e);
-        _Z27SetField38IfState8_0215e49cPvis(self, 0x31, 0x3a);
-        _Z27SetField38IfState8_0215e49cPvis(self, 0x32, 0x3a);
+        for (i = 0xd; i < 0xf; i++) SetField38IfState8_0215e49c(self, i, 0x3a);
+        for (i = 0xf; i < 0x1d; i++) SetField38IfState8_0215e49c(self, i, 0x11e);
+        SetField38IfState8_0215e49c(self, 0x31, 0x3a);
+        SetField38IfState8_0215e49c(self, 0x32, 0x3a);
         for (j = 0; j < 3; j++) {
             node = func_ov023_021f6880(obj, j + 0x65);
             if (node != 0) node->flags &= ~8;
@@ -136,7 +136,7 @@ extern "C" ARM int func_ov004_02162108(void* self) {
                 if (st == 0xf) mark[side] = 1;
                 id = side + 0xd;
                 ids = page->entries[idx - 1].ids;
-                _Z27SetField38IfState8_0215e49cPvis(self, id, i + 0x19f);
+                SetField38IfState8_0215e49c(self, id, i + 0x19f);
                 if (side == 0) {
                     func_ov004_0215e574(self, id, 0x80, 0, 0);
                 } else {
@@ -195,15 +195,15 @@ extern "C" ARM int func_ov004_02162108(void* self) {
         if (mark[0] == 0 && mark[1] == 0) dim = 1;
     } else {
         void* obj2;
-        for (i = 0xd; i < 0xf; i++) _Z27SetField38IfState8_0215e49cPvis(self, i, 0x3a);
-        for (i = 0xf; i < 0x1d; i++) _Z27SetField38IfState8_0215e49cPvis(self, i, 0x11e);
+        for (i = 0xd; i < 0xf; i++) SetField38IfState8_0215e49c(self, i, 0x3a);
+        for (i = 0xf; i < 0x1d; i++) SetField38IfState8_0215e49c(self, i, 0x11e);
         obj2 = func_ov011_021849c8(self);
         for (i = 0; i < 3; i++) {
             node = func_ov023_021f6880(obj2, i + 0x65);
             if (node != 0) node->flags |= 8;
         }
-        _Z27SetField38IfState8_0215e49cPvis(self, 0x31, 0x1e0);
-        _Z27SetField38IfState8_0215e49cPvis(self, 0x32, 0x1e3);
+        SetField38IfState8_0215e49c(self, 0x31, 0x1e0);
+        SetField38IfState8_0215e49c(self, 0x32, 0x1e3);
         func_ov004_0215e574(self, 0x31, 0xff, 0, 0);
         func_ov004_0215e574(self, 0x32, 0xff, 0, 0);
         if (data_ov004_021707e8.field6 == 0) {

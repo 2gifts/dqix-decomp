@@ -21,7 +21,7 @@ struct LocalEvt021c6a9c {
 };
 
 // USA: func_ov017_021c6a9c
-ARM void EnqueueEventTag67_021c6a9c(unsigned short a0, unsigned char a1, unsigned short a2, unsigned char a3, unsigned char a4, signed char a5) {
+ARM void EnqueueEventTag67_021c6a9c(unsigned short a0, int a1, int a2, unsigned char a3, unsigned char a4, signed char a5) {
     void* p = GetData02100044();
     LocalEvt021c6a9c buf;
     struct Inner021c6a9c* r6 = &buf.fields;

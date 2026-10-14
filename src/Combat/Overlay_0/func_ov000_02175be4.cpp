@@ -6,7 +6,7 @@ void* GetCombatantWithFlag0x1000(GameState*,int);
 int GetField0x3acValue(GameState*);
 int GetClampedArrayField0xd1c(char*,int);
 int GetClampedArrayField0xd3c(char*,int);
-extern "C" void _Z26EnqueueEventTag67_021c6a9cththha(unsigned short,int,int,unsigned char,unsigned char,signed char);
+void EnqueueEventTag67_021c6a9c(unsigned short, int, int, unsigned char, unsigned char, signed char);
 struct Node02175be4 {
     char p0[0x1d]; signed char selection; char p1[8]; unsigned short key;
     char p2[6]; signed char state;
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov000_02175be4(Root02175be4* obj) {
         if (node) {
             unsigned char a=GetClampedArrayField0xd1c((char*)obj,node->selection);
             unsigned char b=GetClampedArrayField0xd3c((char*)obj,node->selection);
-            _Z26EnqueueEventTag67_021c6a9cththha(obj->event,i,(unsigned short)GetKey02175be4(node),a,b,node->state);
+            EnqueueEventTag67_021c6a9c(obj->event, i, (unsigned short)GetKey02175be4(node), a, b, node->state);
         }
     }
 }

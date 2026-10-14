@@ -49,7 +49,7 @@ struct Struct021b11b0;
 void InitState39_021b11b0(Struct021b11b0*);
 extern "C" int *func_0202ae18();
 int CheckField0NonZero(int *);
-extern "C" void _Z27EnqueueEventTag173_021d1810tth(int, int, int);
+void EnqueueEventTag173_021d1810(int, int, signed char);
 void *GetGlobal02109030();
 extern "C" void func_02094030(void *, int, int, int);
 unsigned int *GetDataPtr02114e04_020d6c00();
@@ -141,7 +141,7 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
                 }
             }
             if (CheckField0NonZero(func_0202ae18()) != 0) {
-                _Z27EnqueueEventTag173_021d1810tth(0, -1, (signed char) GetField0x3acValue(gs));
+                EnqueueEventTag173_021d1810(0, -1, (signed char) GetField0x3acValue(gs));
                 func_02094030(GetGlobal02109030(), 1, -1, 0);
             }
         } else {

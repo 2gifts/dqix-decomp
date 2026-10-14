@@ -15,7 +15,7 @@ void SetBitsInField4(unsigned int* obj, unsigned int mask);
 void SetBitsInField8(unsigned int* obj, unsigned int mask);
 
 struct S_e828;
-extern "C" void _Z14SetFieldAt0x7eP6S_e828s(struct S_e828* p, unsigned short v);
+void SetFieldAt0x7e(S_e828*, unsigned short);
 
 void SetByteField0x253(void* obj);
 
@@ -48,7 +48,7 @@ extern "C" ARM int func_ov004_02158298(void) {
     if (!p) return 0;
     p = (char*)p + stateOffset;
     if (!p) return 0;
-    _Z14SetFieldAt0x7eP6S_e828s((struct S_e828*)p, data_ov004_021707d8.ptr->mc);
+    SetFieldAt0x7e((struct S_e828*)p, data_ov004_021707d8.ptr->mc);
 
     SetByteField0x253(battle->GetUnknownGameObject());
 

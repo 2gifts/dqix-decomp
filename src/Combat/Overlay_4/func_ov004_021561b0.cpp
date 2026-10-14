@@ -94,7 +94,7 @@ void SetCellIfInBounds_021f9b30(Grid021f9b30*, short, unsigned int, unsigned int
 typedef void (*UnsignedGridCellSetter)(Grid021f9b30*, unsigned short, unsigned int, unsigned int);
 typedef void (*UnsignedOffsetSetter)(char*, unsigned short, unsigned short);
 extern "C" void func_ov023_021f9d14(Grid021f9b30*, void*);
-void SetOffset100Fields_021f8960(char*, short, short);
+void SetOffset100Fields_021f8960(char*, short, unsigned short);
 extern "C" void func_ov023_021f809c(void*, void*);
 int NotifyByBitfield_021560e8(void*);
 

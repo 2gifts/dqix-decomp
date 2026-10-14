@@ -41,7 +41,7 @@ void InitStruct02070378(char*);
 extern "C" void func_ov017_021baedc(TailNode020469b4*, int);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short, unsigned short);
-void EnqueueEventTagB5_021d1dc0(short, short, int*, short, int);
+void EnqueueEventTagB5_021d1dc0(unsigned short, int, int*, int, int);
 const char* CallFunc020e0434With02153694(int);
 void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" void func_0204500c(void*, const char*, int

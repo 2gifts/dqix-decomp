@@ -62,7 +62,7 @@ extern "C" void _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30*, 
 Node02165ea4* SetFieldIfType1_02165ea4_02165ea4(void*, int, int);
 struct Struct0200fb08;
 int NormalizeField5_0200fb08(Struct0200fb08*);
-unsigned int GetTableByteOrFF(GetTableByteOrFFData*, unsigned int);
+unsigned int GetTableByteOrFF(GetTableByteOrFFData*, unsigned char);
 int TestBitInByteArray02096100(int, unsigned char*, int);
 const char* Lookup4Entry_021f63ac(void*, int, int);
 extern "C" void* memset(void*, int, unsigned int);

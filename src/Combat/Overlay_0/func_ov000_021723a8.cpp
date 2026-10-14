@@ -14,7 +14,7 @@ void ResetList0204af64(struct List0204af64* obj);
 void InitStruct0205cfd4(struct InitTarget0205cfd4* obj);
 void Init0205bef8(struct Struct_0205bef8* obj);
 extern "C" void func_0204c684(void* obj);
-void InitObj02092aa4(struct Obj02092aa4* obj, unsigned char mode);
+void InitObj02092aa4(Obj02092aa4* obj, int mode);
 void InitStruct0205a444(char* obj);
 extern "C" void* func_0202ae18(GameState* gs);
 int GetField0x3acValue(GameState* gs);

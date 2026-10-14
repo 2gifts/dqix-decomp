@@ -15,7 +15,7 @@ struct StructA0205d5d0;
 void TryApplyElemFields0205d5d0(StructA0205d5d0*, int, int, int, unsigned char);
 struct Struct_0205d81c;
 unsigned char * FindElementByC40205d81c(Struct_0205d81c*, int);
-void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char *obj, int value, unsigned char b);
+void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char* obj, int value, int b);
 extern "C" void func_0204ecb4(unsigned char *wnd, int a, int b, int w, int h, signed char *margins);
 struct Obj0204fbf8;
 void InvokeHandlerAfterCacheFlush0204fbf8(Obj0204fbf8*);

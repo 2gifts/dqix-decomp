@@ -39,7 +39,7 @@ int GetWord0x0(int*);
 unsigned char NormalizeField5_0200fb08(Struct0200fb08*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 int* GetGlobal02109418();
-unsigned char GetTableByteOrFF(GetTableByteOrFFData*, unsigned int);
+unsigned char GetTableByteOrFF(GetTableByteOrFFData*, unsigned char);
 int TestBitInByteArrayAt0x84(void*, int);
 
 // USA: func_0208bb78

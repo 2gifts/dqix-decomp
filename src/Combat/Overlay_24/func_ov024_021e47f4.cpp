@@ -9,7 +9,7 @@ int SetStatStageBit15(struct StatStageStruct02087c84* p, int delta);
 void UpdateCombatantMagicalMending(int random, int combatantId);
 struct RefStruct_021e9990;
 struct Info_021e47f4;
-extern "C" int _Z29CheckPersonalityCode_021e9990P18RefStruct_021e9990iiia(struct RefStruct_021e9990* s, int id, struct Info_021e47f4* info, unsigned char decrease, signed char sb);
+int CheckPersonalityCode_021e9990(RefStruct_021e9990*, int, int, unsigned char, signed char);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 struct Obj_021e8ca0;
 void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
@@ -38,7 +38,7 @@ extern "C" ARM unsigned long long func_ov024_021e47f4(struct Obj_021e47f4* obj, 
 	local.lo = 0;
 	local.hi = 0;
 	if (applied) {
-		int code = _Z29CheckPersonalityCode_021e9990P18RefStruct_021e9990iiia((struct RefStruct_021e9990*)obj, id, info, decrease, result);
+		int code = CheckPersonalityCode_021e9990((struct RefStruct_021e9990*)obj, id, (int)info, decrease, result);
 		func_ov000_02159eac(obj->field0x10, &local, 0x21);
 		void* entry = AddEntryToListAndIncCount_021e8ca0((struct Obj_021e8ca0*)obj, code);
 		if (entry) {

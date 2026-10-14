@@ -36,7 +36,7 @@ void SetSubstructWord0x68(unsigned char* obj, int value);
 int CheckSubstructFlag0x400(unsigned char* obj);
 void ClearSubstructFlag0x400(unsigned char* obj);
 int GetSubstructByte0x6c(unsigned char* obj);
-void SetSubstructByte0x6c(unsigned char* obj, unsigned char value);
+void SetSubstructByte0x6c(unsigned char* obj, int value);
 extern "C" void func_02033920(GameObject* obj, int id, int flag);
 
 // USA: func_ov025_021eb8e8

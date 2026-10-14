@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Struct0209c830;
-void SetValueAndActivate0209c830(struct Struct0209c830*, unsigned short);
+void SetValueAndActivate0209c830(Struct0209c830*, int);
 
 extern struct Struct0209c830 data_02109bf4;
 

@@ -18,7 +18,7 @@ extern "C" void func_ov023_021dcba4(void* obj, int val);
 extern "C" void func_ov023_021dcae0(void* obj, int val);
 
 // USA: func_ov005_021551fc
-ARM void DispatchByIdxAndCond021551fc(char* base, unsigned char byteVal, int cond) {
+ARM void DispatchByIdxAndCond021551fc(char* base, int byteVal, int cond) {
 	signed char idx = *(signed char*)(base + 0x3d00 + R(0x33,0xbb));
 	short val = *(short*)(base + idx * 0x1c + 0x2d00 + R(0x8,0x90));
 	*(unsigned char*)(base + 0x1000 + R(0x936,0x9be)) = byteVal;

@@ -26,7 +26,7 @@ struct SlotState_021b0288 {
 extern "C" SearchStruct0202c1a4* func_0202ae18(void);
 unsigned char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
-void SetField0x2d0(void* obj, unsigned char value);
+void SetField0x2d0(void* obj, int value);
 extern "C" void func_ov017_021c32b0(SlotPair_021b0288* pairs, int count);
 void SetField0x3acValue(GameState* gs, int value);
 extern "C" void func_ov017_02191108(void* unused, int c, int d, int e, int flag);

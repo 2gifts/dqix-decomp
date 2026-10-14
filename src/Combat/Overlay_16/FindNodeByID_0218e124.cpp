@@ -7,7 +7,7 @@ struct Node0218e124 {
 };
 
 // USA: func_ov016_0218e124
-ARM void* FindNodeByID_0218e124(Node0218e124** list, unsigned short id) {
+ARM void* FindNodeByID_0218e124(Node0218e124** list, int id) {
 	Node0218e124* node = *list;
 	while (node) {
 		if (node->id == id) return node;

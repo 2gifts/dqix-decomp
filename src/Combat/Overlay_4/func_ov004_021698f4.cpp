@@ -26,7 +26,7 @@ void SetFieldConditional_021849e0(struct Fields021849e0* obj, unsigned short val
 extern "C" void* func_ov023_021f6524(void* ctx, int value);
 struct S021f9c0c;
 void* ClearBuffer_021f9c0c(struct S021f9c0c* obj);
-void SetByte38_021fb274(void* obj, unsigned char val);
+void SetByte38_021fb274(void* obj, int val);
 extern "C" void func_ov004_02169658(void* a);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 

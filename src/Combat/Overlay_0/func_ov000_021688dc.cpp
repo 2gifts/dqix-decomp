@@ -111,7 +111,7 @@ void SetField0x3b0Value(GameState* state, int value);
 
 struct S_10088;
 int IsFlag10088Set(struct S_10088* obj);
-void ResetFields14And18KeepFlag0x4(unsigned char* obj, unsigned short val);
+void ResetFields14And18KeepFlag0x4(unsigned char* obj, int val);
 int CheckField0NonZero(int* obj);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 int CollectSetBitIndicesAt0x34(unsigned char* obj, short* outArray);
@@ -142,7 +142,7 @@ void* GetDataPtr02114e04_020d6c00(void);
 void SetByteField0x253(void* obj);
 
 struct Obj02053f7c;
-void SetField0x1b2IfMatchOrFlag02053f7c(struct Obj02053f7c* obj, short a, int b);
+void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c* obj, unsigned short a, int b);
 struct Obj02049f50;
 void SetField41AndScaleSub02049f50(struct Obj02049f50* obj, int val, int count);
 int TestBitInArray0x8ec(unsigned char* obj, int index);
@@ -198,7 +198,7 @@ int GetByte2IfGlobalFlagSet(unsigned char* p);
 void ClearBitOrNotifyOverlay020e3798(unsigned char* obj);
 
 void ConfigurePairMode020bb48c(unsigned int mode, int installHandlers);
-extern "C" void _Z26EnqueueEventTag83_021c8c04thi(int a, int b, int c);
+void EnqueueEventTag83_021c8c04(int, int, int);
 extern "C" void _ZN8Object3D10SetField06Et(void* obj, int value);
 
 struct Bits0c1 { unsigned char lo : 2; unsigned char hi : 6; };
@@ -560,7 +560,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
     }
 
     if (CheckField0NonZero((int*)search)) {
-        _Z26EnqueueEventTag83_021c8c04thi(*(unsigned short*)(*(unsigned char**)(work + kWorkConfig) + 8), sp14, *p30);
+        EnqueueEventTag83_021c8c04(*(unsigned short*)(*(unsigned char**)(work + kWorkConfig) + 8), sp14, *p30);
     }
 
     func_ov000_02168284(work);

@@ -6,7 +6,7 @@ void SetFlagBitAndNotifyOverlay17(int param0, int param1);
 
 struct Obj0201b600;
 struct Elem0201b600 { unsigned short key; unsigned short flags; };
-struct Elem0201b600* FindElemByKeys(struct Obj0201b600*, int, short);
+struct Elem0201b600* FindElemByKeys(Obj0201b600*, int, unsigned short);
 
 // USA: func_020ae7d4
 ARM void SetElemFlag0x4PairAndNotify17(int mode) {

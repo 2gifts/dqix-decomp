@@ -3,7 +3,7 @@
 
 struct Obj0201b600;
 struct Elem0201b600;
-struct Elem0201b600* FindElemByKeys(struct Obj0201b600*, int, short);
+struct Elem0201b600* FindElemByKeys(Obj0201b600*, int, unsigned short);
 struct Struct02013380;
 void SetFlag0x40AndToggle0x4(struct Struct02013380* obj, int unused, int clear4);
 

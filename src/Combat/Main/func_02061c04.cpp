@@ -87,8 +87,8 @@ extern "C" void func_ov017_021913d0(void *base, int field);
 struct ElemFlags3Bit0d3d78 { unsigned char field3 : 3; unsigned char rest : 5; };
 extern int data_02108844;
 void ResetFieldGroup4444_0218b664(char*);
-extern "C" void _Z27EnqueueEventTag154_021d0860hhh(int a, int b, int c);
-extern "C" void _Z30SetFieldFromHelper491_02198f70Pvh(void *base, int b);
+void EnqueueEventTag154_021d0860(int, int, int);
+void SetFieldFromHelper491_02198f70(void*, int);
 extern "C" void func_ov017_0219c520(void);
 void SetName56AndFlag_0218d7b0(unsigned char*, char*);
 struct BitFlag17Entry { unsigned int pad : 17; unsigned int flag17 : 1; };
@@ -119,7 +119,7 @@ struct FlagsField0x2e { unsigned short pad0x2e_lo : 4; unsigned short flagsHi : 
 
 extern "C" void func_020732cc(int p1);
 void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a, unsigned short b);
-extern "C" void _Z26EnqueueEventTagB5_021d1dc0ssPisi(unsigned short a, short b, int *c, short d, int e);
+void EnqueueEventTagB5_021d1dc0(unsigned short, int, int*, int, int);
 extern AllocatorUnion data_02114e20;
 void *AllocateAligned4(AllocatorUnion *alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion *alloc, void *data);
@@ -1221,7 +1221,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         ResetFieldGroup4444_0218b664((char*)base);
         GameState::GetInstance();
         signed char b = *((signed char *)base + REGION_VALUE(0x4196, 0x4446));
-        _Z27EnqueueEventTag154_021d0860hhh(4, 0, b);
+        EnqueueEventTag154_021d0860(4, 0, b);
         *((unsigned char *)base + REGION_VALUE(0x4198, 0x4448)) = 1;
         b = *((signed char *)base + REGION_VALUE(0x4196, 0x4446));
         *((unsigned char *)base + REGION_VALUE(0x4197, 0x4447)) = b;
@@ -1229,7 +1229,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     }
     case 0xd2: {
         void *base = func_ov017_0218b5b0();
-        _Z30SetFieldFromHelper491_02198f70Pvh(base, *((signed char *)base + REGION_VALUE(0x4196, 0x4446)));
+        SetFieldFromHelper491_02198f70(base, *((signed char *)base + REGION_VALUE(0x4196, 0x4446)));
         return 1;
     }
     case 0xd3: {
@@ -1289,7 +1289,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             *(short *)((char *)p0 + 0x2700 + REGION_VALUE(0xf4, 0xb4)) = p1;
             if (CheckField0NonZero((int *)ctx)) {
                 SetHalfFieldsAndEnqueueIfActive_021d1c2c((unsigned char)p1, 0);
-                _Z26EnqueueEventTagB5_021d1dc0ssPisi((unsigned short)p1, 0, (int *)&d8Local, 0, 0);
+                EnqueueEventTagB5_021d1dc0((unsigned short)p1, 0, (int *)&d8Local, 0, 0);
             }
         }
         return 1;

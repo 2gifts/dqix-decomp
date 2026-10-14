@@ -42,7 +42,7 @@ unsigned long long GetCurrentTimestamp(void);
 struct ProcessorContext;
 void SetInterval(Alarm*, unsigned long long, unsigned long long, void (*)(ProcessorContext**), ProcessorContext**);
 void CancelAlarm(Alarm*);
-extern "C" void _Z28SetKeyAndApplyRecord0203ad14PvtS_i(void* a, int id, void* b, int c);
+void SetKeyAndApplyRecord0203ad14(void*, int, void*, int);
 struct Obj0203aba8;
 void TryDispatchOrFallback0203aba8(Obj0203aba8*, void*, void*);
 void UpdateScaleOrApplyRecord0203ae4c(void* a, int b, void* c);
@@ -177,7 +177,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 				unsigned long long t = (GetCurrentTimestamp() << 6) / 0x82ea;
 				if (data_ov016_0219d0c0.startTime + p->delay <= t) {
 					if (p->isSet != 0) {
-						_Z28SetKeyAndApplyRecord0203ad14PvtS_i(&data_02109bf4, p->id, 0, 0);
+						SetKeyAndApplyRecord0203ad14(&data_02109bf4, p->id, 0, 0);
 					} else {
 						TryDispatchOrFallback0203aba8((Obj0203aba8*)&data_02109bf4, (void*)p->id, &data_ov016_0219d0cc);
 					}

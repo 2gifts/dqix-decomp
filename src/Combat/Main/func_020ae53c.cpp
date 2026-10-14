@@ -18,7 +18,7 @@ void SetElemFlag0x4PairAndNotify17(int mode);
 void SetElemFlag0x4QuadAndNotify17(int mode);
 void NotifyElemAndOverlay17OnFlag020ae990(int a);
 void SyncEightElementFlags(void);
-extern "C" void _Z27SetOrClearElemFlag0x4ByKeysiis(int mode, int key1, unsigned short key2);
+void SetOrClearElemFlag0x4ByKeys(int, int, unsigned short);
 void SetFlagBitAndNotifyOverlay17(int param0, int param1);
 
 // USA: func_020ae53c
@@ -39,7 +39,7 @@ extern "C" ARM void func_020ae53c(int arg) {
     arg = TestBitInByteArray((int)f, f + 0x8c, 0x385);
     if (*func_02012fe4() == 0x1cea) {
         for (key = 0x4e; key <= 0x58; key++) {
-            _Z27SetOrClearElemFlag0x4ByKeysiis((unsigned char)arg, 0, key);
+            SetOrClearElemFlag0x4ByKeys((unsigned char)arg, 0, key);
         }
         SetFlagBitAndNotifyOverlay17(0x47, arg != 0);
     }

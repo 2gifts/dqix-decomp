@@ -19,7 +19,7 @@ struct LocalBuf021c5e28 {
 };
 
 // USA: func_ov017_021c5e28
-ARM void MaybeResetEntry_021c5e28(int id, short val) {
+ARM void MaybeResetEntry_021c5e28(int id, int val) {
 	func_0202ae18();
 	if (func_0202c508()) {
 		void* p = GetData02100044();

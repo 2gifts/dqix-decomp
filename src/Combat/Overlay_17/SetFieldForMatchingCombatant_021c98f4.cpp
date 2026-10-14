@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 struct Obj02053f7c;
-void SetField0x1b2IfMatchOrFlag02053f7c(struct Obj02053f7c* obj, short a, int b);
+void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c* obj, unsigned short a, int b);
 
 // USA: func_ov017_021c98f4
 ARM void SetFieldForMatchingCombatant_021c98f4(int target, int flag) {

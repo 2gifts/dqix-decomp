@@ -6,8 +6,8 @@ struct Struct020dfc40;
 void ResetStruct020dfc40(struct Struct020dfc40* p);
 
 struct Obj02092aa4 {
-    SafeAllocator allocator;             // 0x0
-    char pad14[0x2c - 0x14];             // 0x14
+    SafeAllocator allocator;
+    char pad14[0x2c - 0x14];
     int field2c;
     short field30;
     short field32;
@@ -22,7 +22,7 @@ struct Obj02092aa4 {
 };
 
 // USA: func_02092aa4
-ARM void InitObj02092aa4(struct Obj02092aa4* obj, unsigned char param) {
+ARM void InitObj02092aa4(Obj02092aa4* obj, int param) {
     obj->allocator.ResetAllocatorPointer();
     ResetStruct020dfc40((struct Struct020dfc40*)((char*)obj + 0x14));
 

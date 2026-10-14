@@ -16,7 +16,7 @@ void SetForwardAndStore0205ebc0(void* obj, int a, int b);
 void ForwardToTargetOrDefault0205eabc(void* obj, void* target, int arg);
 void* SearchBothTables02079e2c(char*, int);
 int SetSlotEntryNoFlag_021eb42c(void* self, short b, short c);
-extern "C" int _Z21SetSlotEntry_021eb148Pvssh(void* self, short b, int c, unsigned char d);
+int SetSlotEntry_021eb148(void*, short, int, unsigned char);
 extern "C" void* func_ov000_0215ffa0(void* node);
 void* FindNodeAtDepth0215fff4(void* node, int limit, int idx);
 extern "C" int func_ov000_0215fd90(void* obj, int flag);
@@ -177,27 +177,27 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
                 if (small == 0) {
                     Combatant* c = (Combatant*)GetCombatantWithFlag0x400((GameState*)gs, prev);
                     if (c != 0 && c->id == 0xf4) {
-                        _Z21SetSlotEntry_021eb148Pvssh(self, 0x1a, 0xcfe5, 1);
+                        SetSlotEntry_021eb148(self, 0x1a, 0xcfe5, 1);
                     }
                     flag = 1;
                 } else {
                     SetSlotEntryNoFlag_021eb42c(self, 0x22, 1);
                 }
             } else if (k == 2) {
-                _Z21SetSlotEntry_021eb148Pvssh(self, 0x20, 0x2c6, 3);
+                SetSlotEntry_021eb148(self, 0x20, 0x2c6, 3);
             } else if (!(k != 5 && k != 4)) {
                 short prev = *(short*)(node + (j - 1) * 2 + 0xe);
                 in = 0;
                 if (prev >= 0) in = prev <= 3;
                 if (in == 0) flag = 1;
-                _Z21SetSlotEntry_021eb148Pvssh(self, 0x23, 0x4d8, 3);
+                SetSlotEntry_021eb148(self, 0x23, 0x4d8, 3);
             }
         }
         {
             void* cid = func_ov000_0215ffa0(node);
             Combatant* c = (Combatant*)((GameState*)gs)->GetCombatantByIndex((int)cid);
             if (c != 0 && (*(unsigned int*)(c->flagsObj + 0x18) & 0x20)) {
-                _Z21SetSlotEntry_021eb148Pvssh(self, 0x1f, 0xb2c, 3);
+                SetSlotEntry_021eb148(self, 0x1f, 0xb2c, 3);
                 *(short*)(self + 0x21c) = 0x1f;
             }
         }
@@ -212,7 +212,7 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
                         SetSlotEntryNoFlag_021eb42c(self, 0x1b, 0x3c);
                     }
                     if (func_ov000_0215fd90(f, 0xc)) {
-                        _Z21SetSlotEntry_021eb148Pvssh(self, 0x19, 0x38e, 2);
+                        SetSlotEntry_021eb148(self, 0x19, 0x38e, 2);
                     } else if (func_ov000_0215fd90(f, 6) == 0) {
                         ForwardToTargetOrDefault0205eabc(&data_02108760, 0, 0);
                         if (((unsigned char*)f)[0x1c] != 0 && flag != 0) {

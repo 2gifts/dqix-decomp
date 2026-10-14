@@ -36,7 +36,7 @@ void OrBitsIntoField0(unsigned int*, unsigned int);
 extern "C" void func_ov017_021d1118(int, int, int, int);
 extern "C" void func_ov017_021d1014(int, int, int);
 struct Struct0209c830;
-void SetValueAndActivate0209c830(Struct0209c830*, unsigned short);
+void SetValueAndActivate0209c830(Struct0209c830*, int);
 int CountEntriesType1WithId(int);
 struct Struct020a9ea4;
 void ClearStruct020a9ea4(Struct020a9ea4*);

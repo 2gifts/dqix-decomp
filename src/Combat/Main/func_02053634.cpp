@@ -22,7 +22,7 @@ void ForwardToTargetOrDefault0205eabc(void* obj, void* target, int arg);
 int SetTargetFieldAndForEach02064a9c(void* param0, void* param1);
 int GetFieldIfFlag4(char* obj);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-extern "C" void _Z25EnqueueEventTag6_021cc2f0h(int a0);
+void EnqueueEventTag6_021cc2f0(int);
 void SetFlagsAt0x244(unsigned char* obj, unsigned char mask);
 void ClearFlagBits(unsigned char* obj, int mask);
 
@@ -231,7 +231,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 if (cid == GetField0x397cValue(bs)
                     && TestFlag0SetAndFlag1Clear(&data_02114e30, 0xc03) != 0) {
                     flag = 1;
-                    _Z25EnqueueEventTag6_021cc2f0h(*(short*)(ctx + 4));
+                    EnqueueEventTag6_021cc2f0(*(short*)(ctx + 4));
                 } else {
                     if (*(unsigned char*)(ctx + OBJECT_OFFSET(0x184)) != 0) {
                         ctx[OBJECT_OFFSET(0x184)] = *(unsigned char*)(ctx + OBJECT_OFFSET(0x184)) - 1;

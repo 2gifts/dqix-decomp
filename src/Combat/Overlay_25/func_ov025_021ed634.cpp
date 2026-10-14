@@ -107,7 +107,7 @@ GameObject* GetCombatantWithFlag0x400(GameState* gs, int id);
 GameObject* GetCombatantWithFlag0x100(GameState* gs, int id);
 extern "C" void func_020e4ce8(void* dst, void* src, int flag);
 void CopyStringToField0x3ac(char* g, char* s);
-extern "C" void _Z13SetByte0x1880Pvh(void* g, signed char b);
+void SetByte0x1880(void*, signed char);
 void CopyStringToField042c(void* g, char* s);
 extern "C" int _Z22CheckKeyMatch_0215fb9cis(int obj, unsigned short id);
 void BuildName020488ec(char* s);
@@ -366,7 +366,7 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
         }
         if (v40 >= 0) {
             if (func_ov025_021ed5a4(v40, nameB)) func_020473a0(g, nameB);
-            _Z13SetByte0x1880Pvh(g, (signed char)v40);
+            SetByte0x1880(g, (signed char)v40);
         }
 
 #else
@@ -385,7 +385,7 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
             }
         }
         if (v40 >= 0) {
-            _Z13SetByte0x1880Pvh(g, (signed char)v40);
+            SetByte0x1880(g, (signed char)v40);
             int b = IsValidId(v40) ? 1 : 0;
             if (b != 0) {
                 InitObjFromCombatantId020e4bf4(objB, v40);

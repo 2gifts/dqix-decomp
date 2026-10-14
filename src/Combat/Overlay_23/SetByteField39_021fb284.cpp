@@ -6,6 +6,6 @@ struct S_b284 {
 };
 
 // USA: func_ov023_021fb284
-ARM void SetByteField39_021fb284(struct S_b284 *obj, unsigned char v) {
+ARM void SetByteField39_021fb284(S_b284* obj, int v) {
 	obj->val = v;
 }

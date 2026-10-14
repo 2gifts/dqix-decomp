@@ -7,7 +7,7 @@ int ScaleStatsIfType12_021f6f10(void* self);
 struct Struct0200fb08;
 unsigned char NormalizeField5_0200fb08(struct Struct0200fb08* obj);
 struct Obj021fb25c;
-void SetShorts_021fb25c(struct Obj021fb25c *obj, unsigned short a, unsigned short b, unsigned short c, int d);
+void SetShorts_021fb25c(Obj021fb25c* obj, unsigned int a, unsigned int b, unsigned int c, int d);
 
 // USA: func_ov004_0216a810  (semantic: SetStatShortsByLanguage_0216a810)
 extern "C" ARM int func_ov004_0216a810(void* a) {

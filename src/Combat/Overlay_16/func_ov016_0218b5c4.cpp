@@ -95,7 +95,8 @@ void ClearThreeWords020e57e0(Struct020e57e0* p);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 void InitAndRunBufferedScript020e57f4(int, int, StreamHeader*, int);
 int GetWord0x7f6c(void* gs);
-extern "C" ScriptNode0218b5c4* _Z21FindNodeByID_0218e124PP12Node0218e124t(NodeList0218b5c4* list, int id);
+struct Node0218e124;
+ScriptNode0218b5c4* FindNodeByID_0218e124(Node0218e124**, int);
 void DispatchContextByState0209c678(Actor0209c678* actor, int arg);
 void ScaleAndNotify0203ad88(void* a, void* b, int c);
 extern "C" void func_020bbd9c();
@@ -256,7 +257,7 @@ extern "C" ARM void func_ov016_0218b5c4(Self0218b5c4* self) {
     if (id >= 0) {
         EncodeSignFlaggedHalfword((short*)0x400006c, -16);
         EncodeSignFlaggedHalfword((short*)0x400106c, -16);
-        ScriptNode0218b5c4* node = _Z21FindNodeByID_0218e124PP12Node0218e124t(&nodes, id);
+        ScriptNode0218b5c4* node = FindNodeByID_0218e124((Node0218e124**)&nodes, id);
         if (node != 0) {
             if (node->fade != 0) {
                 DispatchContextByState0209c678((Actor0209c678*)&data_02109bf4, 0);

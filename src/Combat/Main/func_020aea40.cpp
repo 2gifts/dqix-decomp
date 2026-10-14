@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 struct Token020aea40 { unsigned short value; };
 extern "C" Token020aea40* func_02012fe4();
-void SetOrClearElemFlag0x4ByKeys(int, int, short);
+void SetOrClearElemFlag0x4ByKeys(int, int, unsigned short);
 extern unsigned char data_020e9148[], data_020e9149[], data_020e914a[];
 // USA: func_020aea40
 extern "C" ARM void func_020aea40(unsigned int index, int clear) {
