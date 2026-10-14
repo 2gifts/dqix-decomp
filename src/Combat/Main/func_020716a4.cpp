@@ -1,11 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
     union { int i; float f; } u;
 };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 extern "C" void* func_0205ec34(void);
 extern "C" void func_0206dfe8(void* p, int a, int b);
@@ -49,17 +49,17 @@ extern "C" ARM int func_020716a4(struct Variant02030b0c* args, int count) {
     int i;
     GameState* bs;
 
-    v0 = _ZNK6Script9Parameter5ToIntEv(args);
+    v0 = ((Script::Parameter*)args)->ToInt();
     if (data_02108d70.field14 != v0) {
         return 1;
     }
 
-    a = _ZNK6Script9Parameter5ToIntEv(args + 1);
-    b = _ZNK6Script9Parameter5ToIntEv(args + 2);
+    a = ((Script::Parameter*)(args + 1))->ToInt();
+    b = ((Script::Parameter*)(args + 2))->ToInt();
     {
         struct Variant02030b0c* last = args + 3;
         args = args + 4;
-        c = _ZNK6Script9Parameter5ToIntEv(last);
+        c = ((Script::Parameter*)last)->ToInt();
     }
 
     bs = GameState::GetInstance();
@@ -74,7 +74,7 @@ extern "C" ARM int func_020716a4(struct Variant02030b0c* args, int count) {
     func_0206dfe8(entry, 0x38e, 0x3e8);
 
     for (i = 0; i < count - 4; i++) {
-        v = _ZNK6Script9Parameter5ToIntEv(args);
+        v = ((Script::Parameter*)args)->ToInt();
         args = args + 1;
         switch (v >> 16) {
         case 2:

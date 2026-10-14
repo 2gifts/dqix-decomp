@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
@@ -8,8 +9,6 @@ struct Variant02030b0c {
     } u;
 };
 struct Struct02030b7c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 extern "C" void* func_02012fe4(void);
 
 struct Global020fdc4c_f950 {
@@ -22,9 +21,9 @@ extern struct Global020fdc4c_f950 data_020fdc4c;
 ARM int CacheField4IfIdMatches(struct Variant02030b0c* v) {
     int val;
     if (data_020fdc4c.field4 != 0) return 1;
-    val = _ZNK6Script9Parameter5ToIntEv(v);
+    val = ((Script::Parameter*)v)->ToInt();
     if (val == *(unsigned short*)func_02012fe4()) {
-        data_020fdc4c.field4 = _ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)(v + 1));
+        data_020fdc4c.field4 = (void*)((Script::Parameter*)((struct Struct02030b7c*)(v + 1)))->ToString();
     }
     return 1;
 }

@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 extern "C" void func_ov000_02169b78(void* node);
 
@@ -13,7 +14,7 @@ struct TaggedValue02030b44 {
     int type;
     union { int i; float f; } value;
 };
-extern "C" struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44* obj, int* outVec);
+struct Vector3i;
 
 struct EventNode0216b26c {
     int type;
@@ -27,7 +28,7 @@ ARM int EnqueueEvent_0216b26c_0216b26c(struct TaggedValue02030b44* obj) {
     node->type = 0;
     node->next = 0;
     node->type = 0x30;
-    _ZN6Script9Parameter9ToVec3fixEP8Vector3i(obj, node->vec);
+    (TaggedValue02030b44*)((Script::Parameter*)obj)->ToVec3fix((Vector3i*)node->vec);
     func_ov000_02169b78(node);
     return 1;
 }

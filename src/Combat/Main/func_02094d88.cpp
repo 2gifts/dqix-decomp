@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
@@ -9,7 +10,6 @@ struct Variant02030b0c {
     } u;
 };
 
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 extern "C" void* func_0205ec34(void);
 
 struct PackedNibbleArray0206e120 {
@@ -54,8 +54,8 @@ extern Owner020958fc data_02109418;
 
 // USA: func_02094d88
 extern "C" ARM int func_02094d88(struct Variant02030b0c* arr, int b) {
-    int p0 = _ZNK6Script9Parameter5ToIntEv(&arr[0]);
-    int p1 = _ZNK6Script9Parameter5ToIntEv(&arr[1]);
+    int p0 = ((Script::Parameter*)&arr[0])->ToInt();
+    int p1 = ((Script::Parameter*)&arr[1])->ToInt();
     if (p1 == data_02109404.f8) {
         goto tail;
     }
@@ -72,15 +72,15 @@ extern "C" ARM int func_02094d88(struct Variant02030b0c* arr, int b) {
 early:
     return 1;
 tail:
-    int p2 = _ZNK6Script9Parameter5ToIntEv(&arr[2]);
-    int p3 = _ZNK6Script9Parameter5ToIntEv(&arr[3]);
-    int p4 = _ZNK6Script9Parameter5ToIntEv(&arr[4]);
+    int p2 = ((Script::Parameter*)&arr[2])->ToInt();
+    int p3 = ((Script::Parameter*)&arr[3])->ToInt();
+    int p4 = ((Script::Parameter*)&arr[4])->ToInt();
     if (p3 * 100 + p4 > data_02109404.f3 * 100 + data_02109404.f4) {
         return 0;
     }
-    int p5 = _ZNK6Script9Parameter5ToIntEv(&arr[5]);
+    int p5 = ((Script::Parameter*)&arr[5])->ToInt();
     void* nibbles = func_0205ec34();
-    int p6 = _ZNK6Script9Parameter5ToIntEv(&arr[6]);
+    int p6 = ((Script::Parameter*)&arr[6])->ToInt();
     if (p6 >= 0) {
         int ok = (GetPackedNibbleField((struct PackedNibbleArray0206e120*)nibbles, p6) == 3);
         if (ok == 0) {
@@ -96,13 +96,13 @@ tail:
     node->bits4c = p4;
     node->bit9 = p5;
 
-    int p7 = _ZNK6Script9Parameter5ToIntEv(&arr[7]);
+    int p7 = ((Script::Parameter*)&arr[7])->ToInt();
     node->bit11 = p7;
-    int p8 = _ZNK6Script9Parameter5ToIntEv(&arr[8]);
+    int p8 = ((Script::Parameter*)&arr[8])->ToInt();
     node->bit10 = p8;
-    int p9 = _ZNK6Script9Parameter5ToIntEv(&arr[9]);
+    int p9 = ((Script::Parameter*)&arr[9])->ToInt();
     node->bit12 = p9;
-    int p10 = _ZNK6Script9Parameter5ToIntEv(&arr[10]);
+    int p10 = ((Script::Parameter*)&arr[10])->ToInt();
     node->bit13 = p10;
 
     node->f8 = 0;

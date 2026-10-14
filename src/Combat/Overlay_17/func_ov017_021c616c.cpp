@@ -13,8 +13,8 @@ GameObject* FindCombatantByField16a_021a278c(void* unused, int val);
 void TrySetMode02076ccc(void*, int);
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
 struct Obj02053f7c;
-extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7cti(struct Obj02053f7c* obj, unsigned short a, int b);
-#define SetField0x1b2IfMatchOrFlag02053f7c _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7cti
+void SetField0x1b2IfMatchOrFlag02053f7c(struct Obj02053f7c* obj, unsigned short a, int b);
+#define SetField0x1b2IfMatchOrFlag02053f7c SetField0x1b2IfMatchOrFlag02053f7c
 void ResetStopwatchesUnlessCurrent_021c6034(signed char* arr);
 
 struct EventHdr021c616c {

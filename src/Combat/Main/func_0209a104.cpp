@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c*);
 
 struct W12 {
     unsigned int a : 5;
@@ -25,7 +25,7 @@ void AppendRecord12Capped0209a4f0(struct RecordList0209a4f0* list, struct Record
 
 extern struct RecordList0209a4f0* data_02109ba4;
 
-static inline int PI(char* p, int off) { struct Variant02030b0c* q = (struct Variant02030b0c*)(p + off); int r = _ZNK6Script9Parameter5ToIntEv(q); return r; }
+static inline int PI(char* p, int off) { struct Variant02030b0c* q = (struct Variant02030b0c*)(p + off); int r = ((Script::Parameter*)q)->ToInt(); return r; }
 
 // USA: func_0209a104
 extern "C" ARM int func_0209a104(char* v) {

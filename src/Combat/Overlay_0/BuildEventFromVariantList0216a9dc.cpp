@@ -1,10 +1,9 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct TaggedValue02030b44;
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 extern "C" void func_ov000_02169b78(void* p);
 
 struct Data02184264 {
@@ -26,7 +25,7 @@ ARM int BuildEventFromVariantList0216a9dc(char* obj, int count) {
         *(unsigned char*)(p + 0x8) = 7;
         *(unsigned short*)(p + 0xa) = 0x1000;
     } else if (tag == 1) {
-        int val = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)obj);
+        int val = ((Script::Parameter*)((struct Variant02030b0c*)obj))->ToInt();
         *(unsigned char*)(p + 0x8) = (unsigned char)val;
         *(unsigned short*)(p + 0xa) = 0x1000;
         obj += 8;
@@ -36,10 +35,10 @@ ARM int BuildEventFromVariantList0216a9dc(char* obj, int count) {
     if (idx <= count) {
         int tag2 = *(int*)obj;
         if (tag2 == 2) {
-            float f = _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)obj);
+            float f = ((Script::Parameter*)((struct TaggedValue02030b44*)obj))->ToFloat();
             *(unsigned short*)(p + 0xa) = (unsigned short)(int)(f * 4096.0f);
         } else if (tag2 == 1) {
-            int v = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)obj);
+            int v = ((Script::Parameter*)((struct Variant02030b0c*)obj))->ToInt();
             float vf = (float)v;
             *(unsigned short*)(p + 0xa) = (unsigned short)(int)((vf / 1000.0f) * 4096.0f);
         }

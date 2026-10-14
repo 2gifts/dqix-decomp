@@ -2,12 +2,12 @@
 
 #include "Combat/NodeLookup.h"
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct TaggedValue02030b44;
-extern "C" struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44* obj, int* outVec);
+struct Vector3i;
 
 struct Node0206c938;
 
@@ -48,7 +48,7 @@ extern "C" ARM int func_0206c938(void* param0, int param1) {
     int key;
 
     param0 = (char*)param0 + 8;
-    key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)orig);
+    key = ((Script::Parameter*)((struct Variant02030b0c*)orig))->ToInt();
     node = (Node0206c938*)FindNodeByByteId(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
@@ -71,7 +71,7 @@ extern "C" ARM int func_0206c938(void* param0, int param1) {
         if (newNode == 0) {
             return 0;
         }
-        param0 = (void*)_ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct TaggedValue02030b44*)param0, newNode->vec);
+        param0 = (void*)(TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)param0))->ToVec3fix((Vector3i*)newNode->vec);
         newNode->flag0xc = 0;
         if (prev == 0) {
             node->head0x34 = newNode;

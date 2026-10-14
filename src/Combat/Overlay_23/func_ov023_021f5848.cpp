@@ -1,15 +1,14 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Util/Random.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct TaggedValue02030b44 {
     int type;
     union { int i; float f; } value;
 };
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct Element020de650;
 struct Container020dedd0;
@@ -44,7 +43,7 @@ struct ElementHalf1a_021f5848 { char pad[0x1a]; unsigned short half1a; };
 // USA: func_ov023_021f5848
 extern "C" ARM int func_ov023_021f5848(struct Variant02030b0c* obj) {
     if (data_ov023_021fff08.flag != 0) return 1;
-    int v = _ZNK6Script9Parameter5ToIntEv(obj);
+    int v = ((Script::Parameter*)obj)->ToInt();
     struct Target021f5848* ptr = data_ov023_021fff08.ptr;
     if (v == ptr->half0xf8) {
         if (data_ov023_021fff08.container == 0) {
@@ -59,8 +58,8 @@ extern "C" ARM int func_ov023_021f5848(struct Variant02030b0c* obj) {
             return 0;
         }
         GetPtrField0x2a04(GameState::GetInstance());
-        float a = _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)obj + 8));
-        float b = _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)obj + 0x10));
+        float a = ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)obj + 8)))->ToFloat();
+        float b = ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)obj + 0x10)))->ToFloat();
         struct Random* rng = GetBTRandom();
         unsigned short half1a = found->half1a;
         float randVal = NextRandomFloatBetween(rng, a, b);

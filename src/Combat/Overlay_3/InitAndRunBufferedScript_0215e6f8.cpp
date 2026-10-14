@@ -8,8 +8,6 @@ struct StreamHeader;
 
 struct Struct02030774;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
-
 extern int data_ov003_02180cb8;
 extern int data_ov003_0217ff40;
 
@@ -19,7 +17,7 @@ extern "C" ARM void func_ov003_0215e6f8(int handler0, int handler1, struct Strea
     *(int*)((char*)&data_ov003_02180cb8 + 4) = handler0;
     *(int*)&data_ov003_02180cb8 = handler1;
     ((Script*)((struct ResetStruct*)local))->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_ov003_0217ff40);
+    ((Script*)((struct ResetStruct*)local))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_ov003_0217ff40);
     ((Script*)((struct StreamState*)local))->Load(buffer, length);
     ((Script*)((struct Struct02030774*)local))->Execute();
 }

@@ -3,12 +3,11 @@
 #include "Combat/NodeLookup.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" extern int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Struct02030b7c;
-extern "C" extern void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 
 struct Node0206d7e4;
 
@@ -34,7 +33,7 @@ struct Node0206d7e4 {
 // USA: func_0206d7e4
 ARM int SetNodeStringsFromVariants0206d7e4(void* param0) {
     struct Node0206d7e4* node;
-    int key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
+    int key = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
     node = (Node0206d7e4*)FindNodeByByteId(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
@@ -52,7 +51,7 @@ ARM int SetNodeStringsFromVariants0206d7e4(void* param0) {
     char* str;
     unsigned short len;
 
-    str = (char*)_ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)((char*)param0 + 8));
+    str = (char*)(extern void*)((Script::Parameter*)((struct Struct02030b7c*)((char*)param0 + 8)))->ToString();
     len = (unsigned short)strlen(str);
     node->str0x54 = ((SafeAllocator*)data_02108cec.field0x14)->Allocate(len + 1);
     if (node->str0x54 != 0) {
@@ -60,7 +59,7 @@ ARM int SetNodeStringsFromVariants0206d7e4(void* param0) {
         memcpy(node->str0x54, str, len);
     }
 
-    str = (char*)_ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)((char*)param0 + 0x10));
+    str = (char*)(extern void*)((Script::Parameter*)((struct Struct02030b7c*)((char*)param0 + 0x10)))->ToString();
     len = (unsigned short)strlen(str);
     node->str0x58 = ((SafeAllocator*)data_02108cec.field0x14)->Allocate(len + 1);
     if (node->str0x58 != 0) {

@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct TaggedValue02030b44;
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 extern "C" void func_ov000_02169b78(void* p);
 
@@ -18,8 +17,8 @@ extern struct Data02184264 data_ov000_02184264;
 // USA: func_ov000_0216a95c
 ARM int CreateEventFromVariant_0216a95c(char* obj) {
     char* p = (char*)data_ov000_02184264.alloc->Allocate(0x14);
-    int val = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)obj);
-    float f = _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)(obj + 8));
+    int val = ((Script::Parameter*)((struct Variant02030b0c*)obj))->ToInt();
+    float f = ((Script::Parameter*)((struct TaggedValue02030b44*)(obj + 8)))->ToFloat();
     int scaled = (int)(f * 4096.0f);
     *(int*)(p + 0x0) = 0;
     *(int*)(p + 0x4) = 0;

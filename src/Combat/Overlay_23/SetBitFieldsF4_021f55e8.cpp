@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct BitFieldsF4_021f55e8 {
     unsigned int low : 12;
@@ -28,8 +28,8 @@ extern struct Data021fff08_021f55e8 data_ov023_021fff08;
 extern "C" ARM int func_ov023_021f55e8(void* objRaw) {
     struct Variant02030b0c* obj = (struct Variant02030b0c*)objRaw;
     if (data_ov023_021fff08.flag2 == 0) return 1;
-    data_ov023_021fff08.ptr->f4.low = _ZNK6Script9Parameter5ToIntEv(obj);
-    data_ov023_021fff08.ptr->f4.mid = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 8));
-    data_ov023_021fff08.ptr->f4.hi = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 0x10));
+    data_ov023_021fff08.ptr->f4.low = ((Script::Parameter*)obj)->ToInt();
+    data_ov023_021fff08.ptr->f4.mid = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 8)))->ToInt();
+    data_ov023_021fff08.ptr->f4.hi = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 0x10)))->ToInt();
     return 1;
 }

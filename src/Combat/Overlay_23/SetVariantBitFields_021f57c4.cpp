@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct PackedBits021f57c4 {
     unsigned int low : 12;
@@ -25,8 +25,8 @@ extern struct Data021fff08_021f57c4 data_ov023_021fff08;
 // USA: func_ov023_021f57c4  (semantic: SetVariantBitFields_021f57c4)
 extern "C" ARM int func_ov023_021f57c4(void* objRaw) {
     struct Variant02030b0c* obj = (struct Variant02030b0c*)objRaw;
-    data_ov023_021fff08.ptr->bits.low = _ZNK6Script9Parameter5ToIntEv(obj);
-    data_ov023_021fff08.ptr->bits.mid = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 8));
-    data_ov023_021fff08.ptr->bits.hi = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 0x10));
+    data_ov023_021fff08.ptr->bits.low = ((Script::Parameter*)obj)->ToInt();
+    data_ov023_021fff08.ptr->bits.mid = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 8)))->ToInt();
+    data_ov023_021fff08.ptr->bits.hi = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 0x10)))->ToInt();
     return 1;
 }

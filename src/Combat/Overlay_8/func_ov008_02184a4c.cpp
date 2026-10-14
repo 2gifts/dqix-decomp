@@ -20,6 +20,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
+#include "World/Object3D.h"
 
 extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" int sprintf(char* buffer, const char* format, ...);
@@ -235,7 +236,7 @@ void CopyInternalFields0207df50(Foo0207df50*);
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
 int LoadFileIntoMemory(const char* path, void* dst, unsigned int* outSize);
-extern "C" int _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* info, void* callback);
+struct ObjectArchiveLoadInfo;
 struct Vector3i;
 void InitCombatController020a2010(void* obj);
 struct Vec3Target0202e5c0;
@@ -499,7 +500,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
             info.fileData = data_0211e33c;
             info.size = size;
             info.unk_10 = 1;
-            _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(&obj->model, &info, NULL);
+            ((Object3D*)&obj->model)->LoadFromCCHROrCMOTArchive((ObjectArchiveLoadInfo*)&info, (int (*)(BCFG::AnimationRecord*))NULL);
             Vec3i02184a4c scale = data_ov008_0218b328;
             ((Object3D*)&obj->model)->SetScale((Vector3i const*)&scale);
             Vec3i02184a4c pos = data_ov008_0218b334;

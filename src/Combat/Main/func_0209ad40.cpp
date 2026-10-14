@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c { int tag; int u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct StoreCellWordHalfSource;
 struct StoreCellWordHalfRow;
@@ -31,8 +31,8 @@ extern "C" ARM int func_0209ad40(struct Variant02030b0c* arg0) {
     int j = *(int*)(q + 0x1cc);
 
     struct Source0209ad40 src;
-    src.w = (unsigned int)_ZNK6Script9Parameter5ToIntEv(arg0);
-    int v = _ZNK6Script9Parameter5ToIntEv(&arg0[1]);
+    src.w = (unsigned int)((Script::Parameter*)arg0)->ToInt();
+    int v = ((Script::Parameter*)&arg0[1])->ToInt();
 
     src.b.lo = (unsigned char)v;
     src.b.hi = (unsigned char)(v >> 8);

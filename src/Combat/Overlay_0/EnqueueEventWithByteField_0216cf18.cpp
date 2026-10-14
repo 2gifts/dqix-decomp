@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" extern int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c*);
 
 struct EventCtx0216cf18 {
     char pad[8];
@@ -24,7 +24,7 @@ ARM int EnqueueEventWithByteField_0216cf18(struct Variant02030b0c* obj, int coun
     e->type = 0x82;
     e->field8 = 1;
     if (count >= 1) {
-        e->field8 = (unsigned char)_ZNK6Script9Parameter5ToIntEv(obj);
+        e->field8 = (unsigned char)((Script::Parameter*)obj)->ToInt();
     }
     func_ov000_02169b78(e);
     return 1;

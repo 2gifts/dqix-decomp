@@ -1,10 +1,9 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct TaggedValue02030b44;
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 extern "C" void func_ov000_02169b78(void* p);
 
 struct Data02184264 {
@@ -20,13 +19,13 @@ ARM int BuildEventFromVariantList0216b088(char* obj, int count) {
     *(int*)(p + 0x4) = 0;
     *(int*)(p + 0x0) = 0x2b;
 
-    int val0 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)obj);
+    int val0 = ((Script::Parameter*)((struct Variant02030b0c*)obj))->ToInt();
     *(unsigned char*)(p + 0x8) = (unsigned char)val0;
-    int val1 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(obj + 8));
+    int val1 = ((Script::Parameter*)((struct Variant02030b0c*)(obj + 8)))->ToInt();
     *(unsigned char*)(p + 0x9) = (unsigned char)val1;
 
     if (count >= 3) {
-        float f = _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)(obj + 0x10));
+        float f = ((Script::Parameter*)((struct TaggedValue02030b44*)(obj + 0x10)))->ToFloat();
         *(int*)(p + 0xc) = (int)(f * 4096.0f);
     }
 

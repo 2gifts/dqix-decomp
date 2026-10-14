@@ -1,11 +1,11 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
     union { int i; float f; } u;
 };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Obj0215e4c8 {
     unsigned char kind;
@@ -29,18 +29,18 @@ extern struct Globals02180cb8 data_ov003_02180cb8;
 extern "C" ARM int func_ov003_0215e628(struct Variant02030b0c* params) {
     struct Obj0215e4c8 local;
     ClearStruct_0215e4c8(&local);
-    local.kind = _ZNK6Script9Parameter5ToIntEv(&params[0]);
-    local.width = _ZNK6Script9Parameter5ToIntEv(&params[1]);
+    local.kind = ((Script::Parameter*)&params[0])->ToInt();
+    local.width = ((Script::Parameter*)&params[1])->ToInt();
     struct Variant02030b0c* heightParam = &params[2];
     params += 3;
-    local.height = _ZNK6Script9Parameter5ToIntEv(heightParam);
+    local.height = ((Script::Parameter*)heightParam)->ToInt();
     local.count = local.width * local.height;
     signed char count = local.count;
     short* dst = (short*)((SafeAllocator*)data_ov003_02180cb8.allocator)->Allocate(count * 2);
     local.values = dst;
     if (dst != NULL) {
         for (int i = 0; i < count; i++) {
-            *dst = _ZNK6Script9Parameter5ToIntEv(params++);
+            *dst = ((Script::Parameter*)(params++))->ToInt();
             dst++;
         }
     }

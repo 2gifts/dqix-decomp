@@ -1,13 +1,13 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c*);
 
 extern "C" int func_ov017_0218b5b0(void);
 
 struct TaggedValue02030b44;
-extern "C" struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44*, int*);
+struct Vector3i;
 
 struct Cont0208e778;
 struct Node0208e778;
@@ -40,7 +40,7 @@ ARM int AllocateAndInitEffectNode0208e35c(char* v) {
     SafeAllocator* alloc = (SafeAllocator*)(func_ov017_0218b5b0() + 0x1a0);
     struct EffectNode0208e35c* node = (struct EffectNode0208e35c*)alloc->Allocate(0x70);
     node->next = NULL;
-    int tag = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)v);
+    int tag = ((Script::Parameter*)((struct Variant02030b0c*)v))->ToInt();
     node->dw0.val1 = tag;
     node->dw1.fieldB = 8;
     node->dw0.val2 = 1;
@@ -48,7 +48,7 @@ ARM int AllocateAndInitEffectNode0208e35c(char* v) {
     node->dw1.fieldA = 9;
     node->dw0.reserved0 = 0;
     for (int i = 0; i < 7; i++) {
-        v = (char*)_ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct TaggedValue02030b44*)v, node->vec[i]);
+        v = (char*)(TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)v))->ToVec3fix((Vector3i*)node->vec[i]);
     }
     node->dw2 = 0;
     node->dw1.fieldC = 0;

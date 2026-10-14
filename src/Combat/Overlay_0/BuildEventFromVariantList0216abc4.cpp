@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 extern "C" void func_ov000_02169b78(void* p);
 
 struct Data02184264 {
@@ -19,7 +19,7 @@ ARM int BuildEventFromVariantList0216abc4(char* obj, int count) {
         *(int*)(p + 0x0) = 0;
         *(int*)(p + 0x4) = 0;
         *(int*)(p + 0x0) = 0x1e;
-        int val = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)obj);
+        int val = ((Script::Parameter*)((struct Variant02030b0c*)obj))->ToInt();
         *(int*)(p + 0xc) = val;
         *(signed char*)(p + 0x8) = -1;
         func_ov000_02169b78(p);
@@ -27,9 +27,9 @@ ARM int BuildEventFromVariantList0216abc4(char* obj, int count) {
         *(int*)(p + 0x0) = 0;
         *(int*)(p + 0x4) = 0;
         *(int*)(p + 0x0) = 0x1e;
-        int val0 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)obj);
+        int val0 = ((Script::Parameter*)((struct Variant02030b0c*)obj))->ToInt();
         *(unsigned char*)(p + 0x8) = (unsigned char)val0;
-        int val1 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(obj + 8));
+        int val1 = ((Script::Parameter*)((struct Variant02030b0c*)(obj + 8)))->ToInt();
         *(int*)(p + 0xc) = val1;
         func_ov000_02169b78(p);
     }

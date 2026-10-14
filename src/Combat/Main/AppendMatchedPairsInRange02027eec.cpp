@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct List_020283c0;
 struct ListEntry_020283c0;
@@ -20,8 +20,8 @@ extern void* data_020fdd30;
 extern "C" ARM int func_02027eec(void* param0) {
     struct AppendEntry pair;
     int start, end, id;
-    start = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
-    end = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 8));
+    start = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
+    end = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 8)))->ToInt();
     pair.a = 0;
     pair.b = 0;
     id = start + 1;

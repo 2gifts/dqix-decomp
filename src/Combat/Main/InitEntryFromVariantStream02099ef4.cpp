@@ -1,12 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02099ef4 { int tag; union { int i; float f; } value; };
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct TaggedValue02030b44;
-extern "C" struct TaggedValue02030b44* _ZN6Script9Parameter11ToVec3fix16EP8Vector3s(struct TaggedValue02030b44* obj, short* outVec);
+struct Vector3s;
 
 struct Entry02099ef4 {
     unsigned char field0;
@@ -27,19 +27,19 @@ ARM int InitEntryFromVariantStream02099ef4(struct Variant02099ef4* p) {
     struct Entry02099ef4* entry;
     struct Variant02099ef4* cursor;
 
-    id = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)p);
+    id = ((Script::Parameter*)((struct Variant02030b0c*)p))->ToInt();
     entry = &data_02109a54[id];
     entry->field0 = (unsigned char)id;
 
-    entry->field1 = (unsigned char)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(p + 1));
+    entry->field1 = (unsigned char)((Script::Parameter*)((struct Variant02030b0c*)(p + 1)))->ToInt();
 
-    cursor = (struct Variant02099ef4*)_ZN6Script9Parameter11ToVec3fix16EP8Vector3s((struct TaggedValue02030b44*)(p + 2), entry->vec0);
-    cursor = (struct Variant02099ef4*)_ZN6Script9Parameter11ToVec3fix16EP8Vector3s((struct TaggedValue02030b44*)cursor, entry->vec1);
+    cursor = (struct Variant02099ef4*)(TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)(p + 2)))->ToVec3fix16((Vector3s*)entry->vec0);
+    cursor = (struct Variant02099ef4*)(TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)cursor))->ToVec3fix16((Vector3s*)entry->vec1);
 
-    entry->field0e = (unsigned char)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)cursor);
+    entry->field0e = (unsigned char)((Script::Parameter*)((struct Variant02030b0c*)cursor))->ToInt();
 
-    cursor = (struct Variant02099ef4*)_ZN6Script9Parameter11ToVec3fix16EP8Vector3s((struct TaggedValue02030b44*)(cursor + 1), entry->vec2);
-    _ZN6Script9Parameter11ToVec3fix16EP8Vector3s((struct TaggedValue02030b44*)cursor, entry->vec3);
+    cursor = (struct Variant02099ef4*)(TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)(cursor + 1)))->ToVec3fix16((Vector3s*)entry->vec2);
+    (TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)cursor))->ToVec3fix16((Vector3s*)entry->vec3);
 
     return 1;
 }

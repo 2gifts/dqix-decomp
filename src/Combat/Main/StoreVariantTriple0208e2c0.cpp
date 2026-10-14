@@ -7,9 +7,9 @@ enum { kOffsetcda = 0xcda };
 #endif
 
 #include "GameState/GameState.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(Variant02030b0c*);
 
 struct Entry02108ff4 {
     unsigned short a;
@@ -22,16 +22,16 @@ extern Entry02108ff4 data_02108ff4[];
 extern "C" ARM int func_0208e2c0(char* v) {
     unsigned char* battleField = (unsigned char*)GameState::GetInstance();
     Entry02108ff4* table = data_02108ff4;
-    int idRaw = _ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)v);
+    int idRaw = ((Script::Parameter*)((Variant02030b0c*)v))->ToInt();
     v += 8;
     unsigned char id = (unsigned char)idRaw;
     battleField = battleField + 0x5000;
     for (int i = 0; i < 8; i++) {
-        unsigned short aVal = (unsigned short)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)v);
-        unsigned char bVal = (unsigned char)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)(v + 8));
+        unsigned short aVal = (unsigned short)((Script::Parameter*)((Variant02030b0c*)v))->ToInt();
+        unsigned char bVal = (unsigned char)((Script::Parameter*)((Variant02030b0c*)(v + 8)))->ToInt();
         char* arg3 = v + 0x10;
         v += 0x18;
-        unsigned char cVal = (unsigned char)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)arg3);
+        unsigned char cVal = (unsigned char)((Script::Parameter*)((Variant02030b0c*)arg3))->ToInt();
         if (i == battleField[kOffsetcda]) {
             table[id].a = aVal;
             table[id].b = bVal;

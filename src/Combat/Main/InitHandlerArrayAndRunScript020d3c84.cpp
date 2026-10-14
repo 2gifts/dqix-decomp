@@ -16,8 +16,6 @@ struct StreamHeader;
 
 struct Struct02030774;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
-
 struct HandlerSlotArray020d3c84 {
     unsigned char entries[HANDLER_BYTES];
     int count;
@@ -32,7 +30,7 @@ ARM void InitHandlerArrayAndRunScript020d3c84(struct HandlerSlotArray020d3c84* a
     arr->count = 0;
     data_021142c4 = arr;
     ((Script*)((struct ResetStruct*)local))->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_020f22d0);
+    ((Script*)((struct ResetStruct*)local))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f22d0);
     ((Script*)((struct StreamState*)local))->Load(buffer, length);
     ((Script*)((struct Struct02030774*)local))->Execute();
 }

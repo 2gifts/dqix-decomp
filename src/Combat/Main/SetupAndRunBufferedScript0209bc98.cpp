@@ -22,8 +22,6 @@ struct StreamState;
 
 struct Struct02030774;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
-
 struct LocalA0209bc98 {
     void* field0;
     int field4;
@@ -54,7 +52,7 @@ ARM void SetupAndRunBufferedScript0209bc98(void* param0, struct StreamHeader* pa
 
         struct ResetStruct local2;
         ((Script*)&local2)->Initialize();
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local2, &data_020f16c0);
+        ((Script*)&local2)->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f16c0);
         ((Script*)((struct StreamState*)&local2))->Load(param1, param2);
         ((Script*)((struct Struct02030774*)&local2))->Execute();
     }

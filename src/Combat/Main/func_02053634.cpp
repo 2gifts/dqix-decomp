@@ -2,6 +2,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
+#include "World/Object3D.h"
 
 int GetGlobalField0x1c020421a0(void);
 unsigned char GetField0x397cValue(GameState* battleStruct);
@@ -9,7 +10,7 @@ int GetSignedByte0x1c9(void* obj);
 int GetIndexedEntryField0x178(signed char* obj);
 
 extern "C" void func_020531f0(void* obj);
-extern "C" int _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* loadInfo, void* animCallback);
+struct ObjectArchiveLoadInfo;
 extern "C" void* func_02012fe4(void);
 extern "C" void func_0205308c(void* obj, int val);
 extern "C" void* func_0205ec34(void);
@@ -115,7 +116,7 @@ extern "C" ARM void func_02053634(void* obj) {
             params.alloc = alloc;
             params.pad20 = 2;
             params.one = 1;
-            if (_ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(ctx, &params, 0) == 0) {
+            if (((Object3D*)ctx)->LoadFromCCHROrCMOTArchive((ObjectArchiveLoadInfo*)&params, (int (*)(BCFG::AnimationRecord*))0) == 0) {
                 goto loadFail;
             }
             if (((Object3D*)ctx)->MaybeSetRegularAnimation(&data_020f0477, 1) == 0) {

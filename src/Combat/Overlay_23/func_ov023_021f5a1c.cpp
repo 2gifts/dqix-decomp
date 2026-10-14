@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 extern "C" void* func_0205ec34(void);
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct PackedNibbleArray0206e2dc;
 int GetPackedNibbleFlag0x8(struct PackedNibbleArray0206e2dc* obj, int index);
@@ -29,7 +29,7 @@ extern struct Data021fff08_021f5a1c data_ov023_021fff08;
 extern "C" ARM int func_ov023_021f5a1c(struct Variant02030b0c* list, int count) {
     void* obj = func_0205ec34();
     for (int i = 0; i < count; i++) {
-        int v = _ZNK6Script9Parameter5ToIntEv(list);
+        int v = ((Script::Parameter*)list)->ToInt();
         list = (struct Variant02030b0c*)((char*)list + 8);
         int flag = GetPackedNibbleFlag0x8((struct PackedNibbleArray0206e2dc*)obj, v);
         if (flag == 0) {

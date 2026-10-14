@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Resource/Script.h"
 
 #if defined(jpn)
 enum { PackedEntriesLow = 0x27c, PackedEntriesHigh = 0x5800 };
@@ -8,7 +9,6 @@ enum { PackedEntriesLow = 0xdc, PackedEntriesHigh = 0x5c00 };
 #endif
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c*);
 extern "C" int _s32_div_f(int a, int b);
 extern "C" void* func_0208e0a8(void);
 
@@ -34,12 +34,12 @@ struct Bits0208e894 {
 extern "C" ARM int func_0208e894(char* v) {
     struct Bits0208e894* w;
     struct Entry02108ff4* tbl;
-    int idx = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)v);
-    int p10 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x10));
-    int k = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x20));
-    int p28 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x28));
-    int p30 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x30));
-    int p38 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x38));
+    int idx = ((Script::Parameter*)((struct Variant02030b0c*)v))->ToInt();
+    int p10 = ((Script::Parameter*)((struct Variant02030b0c*)(v + 0x10)))->ToInt();
+    int k = ((Script::Parameter*)((struct Variant02030b0c*)(v + 0x20)))->ToInt();
+    int p28 = ((Script::Parameter*)((struct Variant02030b0c*)(v + 0x28)))->ToInt();
+    int p30 = ((Script::Parameter*)((struct Variant02030b0c*)(v + 0x30)))->ToInt();
+    int p38 = ((Script::Parameter*)((struct Variant02030b0c*)(v + 0x38)))->ToInt();
     w = (struct Bits0208e894*)((char*)GameState::GetInstance() + PackedEntriesLow + PackedEntriesHigh);
     if (k == 8) {
         w[idx].f0 = 0;

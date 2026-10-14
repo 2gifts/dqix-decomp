@@ -7,9 +7,9 @@ enum { kAllocatorOffset = 0x8, kOwnerOffset = 0x10, kListOffset = 0x754 };
 #endif
 
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c { int tag; union { int i; float f; } u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 extern int data_020fdc4c;
 
@@ -35,7 +35,7 @@ extern "C" ARM int func_0201f660(struct Variant02030b0c* arr, int count) {
         ((SafeAllocator*)*(char**)((char*)&data_020fdc4c + kAllocatorOffset))->Allocate(node->count * 2);
     if (node->data == 0) return 0;
     for (int i = 0; i < node->count; i++) {
-        node->data[i] = (short)_ZNK6Script9Parameter5ToIntEv(arr);
+        node->data[i] = (short)((Script::Parameter*)arr)->ToInt();
         arr++;
     }
     struct Node0201f660* head = *(struct Node0201f660**)((char*)(*(void**)((char*)&data_020fdc4c + kOwnerOffset)) + kListOffset);

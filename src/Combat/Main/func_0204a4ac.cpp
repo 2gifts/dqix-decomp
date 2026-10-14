@@ -14,8 +14,6 @@ struct Item02037af8 {
     char pad2[0x36];
 };
 
-extern "C" void _ZN8Object3D9TrackBoneEPNS_17TrackedBoneMatrixE(void* owner, struct Item02037af8* item);
-
 struct Holder0204a4ac {
     char pad0[0x21c];
     struct KeyNodeOwner* owner;
@@ -48,14 +46,14 @@ extern "C" ARM void func_0204a4ac(struct Holder0204a4ac* self) {
 
     if (self->keyB >= 0) {
         data_02107870[0].key = self->keyA;
-        _ZN8Object3D9TrackBoneEPNS_17TrackedBoneMatrixE(self->owner, &data_02107870[0]);
+        ((Object3D*)self->owner)->TrackBone((Object3D::TrackedBoneMatrix*)&data_02107870[0]);
     }
     if (self->keyB >= 0) {
         data_02107870[1].key = self->keyB;
-        _ZN8Object3D9TrackBoneEPNS_17TrackedBoneMatrixE(self->owner, &data_021078a8);
+        ((Object3D*)self->owner)->TrackBone((Object3D::TrackedBoneMatrix*)&data_021078a8);
     }
     if (self->keyC >= 0) {
         data_02107870[2].key = self->keyC;
-        _ZN8Object3D9TrackBoneEPNS_17TrackedBoneMatrixE(self->owner, &data_021078e0);
+        ((Object3D*)self->owner)->TrackBone((Object3D::TrackedBoneMatrix*)&data_021078e0);
     }
 }

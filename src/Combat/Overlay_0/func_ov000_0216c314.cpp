@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct TaggedValue02030b44 { int type; union { int i; float f; } value; };
-extern "C" extern float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44*);
 
 struct Variant02030b0c;
-extern "C" extern int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c*);
 
 struct EventCtx02184264 {
     char pad[8];
@@ -28,8 +27,8 @@ extern "C" ARM int func_ov000_0216c314(struct TaggedValue02030b44* obj) {
     e->type = 0;
     e->field4 = 0;
     e->type = 0x60;
-    e->field8 = (unsigned short)(int)(_ZNK6Script9Parameter7ToFloatEv(obj) * 4096.0f);
-    e->fielda = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 8));
+    e->field8 = (unsigned short)(int)(((Script::Parameter*)obj)->ToFloat() * 4096.0f);
+    e->fielda = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 8)))->ToInt();
     func_ov000_02169b78(e);
     return 1;
 }

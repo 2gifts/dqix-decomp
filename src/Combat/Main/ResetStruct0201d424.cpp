@@ -1,8 +1,10 @@
 #include <globaldefs.h>
 #include "System/Memory.h"
+#include "World/ZoneFeatures.h"
 
 // USA: func_0201d424
-extern "C" ARM void _ZN12ZoneFeatures13Opcode6aEntry5ResetEv(char* obj) {
+ARM void ZoneFeatures::Opcode6aEntry::Reset() {
+    char* obj = (char*)this;
     VectorizedMemset(obj, 0, 0x74);
     *(short*)(obj + 0x0) = 0;
     *(int*)(obj + 0x4) = 0;

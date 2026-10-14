@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 extern "C" void func_ov000_02169b78(void*);
 
@@ -10,11 +11,9 @@ struct Struct02184264 {
 extern struct Struct02184264 data_ov000_02184264;
 
 struct Variant02030b0c { int tag; int u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct TaggedValue02030b44 { int type; union { int i; float f; } value; };
-extern "C" extern struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44* obj, int* outVec);
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
+struct Vector3i;
 
 struct VariantNodeTag0x56 {
     int tag;
@@ -31,14 +30,14 @@ extern "C" ARM int func_ov000_0216be6c(struct Variant02030b0c* v, int count) {
     node->tag = 0;
     node->unused = 0;
     node->tag = 0x56;
-    node->value = (unsigned char)_ZNK6Script9Parameter5ToIntEv(v);
-    struct TaggedValue02030b44* next = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct TaggedValue02030b44*)((char*)v + 8), node->vec1);
-    node->vec2[0] = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(next + 0));
-    node->vec2[1] = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(next + 1));
-    node->vec2[2] = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(next + 2));
+    node->value = (unsigned char)((Script::Parameter*)v)->ToInt();
+    struct TaggedValue02030b44* next = (extern TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)((char*)v + 8)))->ToVec3fix((Vector3i*)node->vec1);
+    node->vec2[0] = (int)(4096.0f * ((Script::Parameter*)(next + 0))->ToFloat());
+    node->vec2[1] = (int)(4096.0f * ((Script::Parameter*)(next + 1))->ToFloat());
+    node->vec2[2] = (int)(4096.0f * ((Script::Parameter*)(next + 2))->ToFloat());
     node->flag = 0;
     if (count >= 8) {
-        node->flag = (unsigned char)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(next + 3));
+        node->flag = (unsigned char)((Script::Parameter*)((struct Variant02030b0c*)(next + 3)))->ToInt();
     }
     func_ov000_02169b78(node);
     return 1;

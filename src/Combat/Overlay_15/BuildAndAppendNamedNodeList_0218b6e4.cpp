@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 #include "Memory/AllocatorUnion.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Struct02030b7c { int field0; void* field4; };
 struct Variant02030b0c { int tag; union { int i; float f; } u; };
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 int StringLength(const char* s);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 
@@ -27,7 +26,7 @@ extern struct List8_0218ba1c* data_ov015_02194560;
 extern "C" ARM int func_ov015_0218b6e4(char* obj, int count) {
     char* base = obj;
     obj = obj + 8;
-    char* n0 = (char*)_ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)base);
+    char* n0 = (char*)(void*)((Script::Parameter*)((struct Struct02030b7c*)base))->ToString();
     struct Entry8_0218ba1c entry;
     entry.a = 0;
     entry.b = 0;
@@ -43,11 +42,11 @@ extern "C" ARM int func_ov015_0218b6e4(char* obj, int count) {
     int i = 1;
     while (i < count) {
         struct NamedNode0218b6e4* node;
-        char* name = (char*)_ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)obj);
-        int v1 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(obj + 8));
+        char* name = (char*)(void*)((Script::Parameter*)((struct Struct02030b7c*)obj))->ToString();
+        int v1 = ((Script::Parameter*)((struct Variant02030b0c*)(obj + 8)))->ToInt();
         char* v2addr = obj + 0x10;
         obj = obj + 0x18;
-        int v2 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)v2addr);
+        int v2 = ((Script::Parameter*)((struct Variant02030b0c*)v2addr))->ToInt();
 
         node = (struct NamedNode0218b6e4*)AllocateAligned4(&data_02114e20, 0xc);
         node->name = 0;

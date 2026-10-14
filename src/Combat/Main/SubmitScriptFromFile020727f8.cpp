@@ -10,7 +10,6 @@ struct StreamHeader;
 struct Struct02030774;
 
 void* LoadFileIntoMemory(const char*, void*, unsigned int*);
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* state, void* dataPtr);
 
 extern char data_0211e33c[];
 extern int data_020f0cc8;
@@ -43,7 +42,7 @@ ARM void SubmitScriptFromFile020727f8(void* param0, const char* path, int param2
         data_02108db0.field0 = stackArg;
 
         ((Script*)((struct ResetStruct*)buf))->Initialize();
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(buf, &data_020f0cc8);
+        ((Script*)buf)->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f0cc8);
         ((Script*)((struct StreamState*)buf))->Load(header, count);
         ((Script*)((struct Struct02030774*)buf))->Execute();
     }

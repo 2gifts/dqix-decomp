@@ -2,11 +2,10 @@
 
 #include "Combat/NodeLookup.h"
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct TaggedValue02030b44;
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct Node0206c4e8;
 
@@ -40,7 +39,7 @@ struct Node0206c4e8 {
 ARM int AllocateAndAppendEffectNode0206c4e8(void* param0) {
     struct Node0206c4e8* node;
     struct Effect0206c4e8* eff;
-    int key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
+    int key = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
     node = (Node0206c4e8*)FindNodeByByteId(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
@@ -56,11 +55,11 @@ ARM int AllocateAndAppendEffectNode0206c4e8(void* param0) {
     }
 
     eff = (struct Effect0206c4e8*)((SafeAllocator*)data_02108cec.field0x14)->Allocate(0x18);
-    eff->f4 = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)param0 + 8)));
-    eff->f8 = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)param0 + 0x10)));
-    eff->fc = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)param0 + 0x18)));
-    eff->f10 = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)param0 + 0x20)));
-    eff->tag = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x28));
+    eff->f4 = (int)(4096.0f * ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)param0 + 8)))->ToFloat());
+    eff->f8 = (int)(4096.0f * ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)param0 + 0x10)))->ToFloat());
+    eff->fc = (int)(4096.0f * ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)param0 + 0x18)))->ToFloat());
+    eff->f10 = (int)(4096.0f * ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)param0 + 0x20)))->ToFloat());
+    eff->tag = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x28)))->ToInt();
     eff->next = 0;
 
     if (node->head0x40 == 0) {

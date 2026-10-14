@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
@@ -8,8 +9,6 @@ struct Variant02030b0c {
         float f;
     } u;
 };
-
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Struct0205ec40 {
     unsigned short f0;
@@ -33,15 +32,15 @@ extern char data_02108844;
 
 // USA: func_0205f9cc
 extern "C" ARM int func_0205f9cc(struct Variant02030b0c* arr, int b) {
-    int id = _ZNK6Script9Parameter5ToIntEv(&arr[0]);
+    int id = ((Script::Parameter*)&arr[0])->ToInt();
     if (id != *(int*)(&data_02108844 + 0x484)) {
         return 0;
     }
 
-    int startSec = _ZNK6Script9Parameter5ToIntEv(&arr[1]);
-    int startMs = _ZNK6Script9Parameter5ToIntEv(&arr[2]);
-    int endSec = _ZNK6Script9Parameter5ToIntEv(&arr[3]);
-    int endMs = _ZNK6Script9Parameter5ToIntEv(&arr[4]);
+    int startSec = ((Script::Parameter*)&arr[1])->ToInt();
+    int startMs = ((Script::Parameter*)&arr[2])->ToInt();
+    int endSec = ((Script::Parameter*)&arr[3])->ToInt();
+    int endMs = ((Script::Parameter*)&arr[4])->ToInt();
 
     int cur = *(int*)(&data_02108844 + 0x488);
     int start = startSec * 1000 + startMs;
@@ -63,7 +62,7 @@ extern "C" ARM int func_0205f9cc(struct Variant02030b0c* arr, int b) {
     node->f3 = endSec;
     node->f4 = startMs;
     node->f5 = endMs;
-    node->f6 = _ZNK6Script9Parameter5ToIntEv(&arr[5]);
+    node->f6 = ((Script::Parameter*)&arr[5])->ToInt();
 
     func_0205ec70(alloc, b - 6, &arr[6], &node->f8, &node->fc);
 

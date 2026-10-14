@@ -11,7 +11,6 @@ struct Struct02030774;
 
 struct Elem0203066c { unsigned int key; int val; };
 struct Obj0203066c { int count; struct Elem0203066c* list; };
-extern "C" int _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct Obj0203066c* obj, struct Elem0203066c* arr);
 
 struct Ctx9bc4_98e0 {
     void* field0;
@@ -34,7 +33,7 @@ extern "C" ARM void func_ov028_021d98e0(SelfObj98e0* self, SafeAllocator* alloc,
     data_ov028_021d9bc4.field4 = alloc;
     data_ov028_021d9bc4.field0 = self;
     ((Script*)((struct ResetStruct*)local))->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct Obj0203066c*)local, &data_ov028_021d9ac0);
+    ((Script*)((struct Obj0203066c*)local))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_ov028_021d9ac0);
     ((Script*)((struct StreamState*)local))->Load(header, length);
     ((Script*)((struct Struct02030774*)local))->Execute();
 }

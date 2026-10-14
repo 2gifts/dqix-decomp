@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "Util/Random.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Packed_021f5680 {
     unsigned int lo : 7;
@@ -34,10 +34,10 @@ extern "C" ARM int func_ov023_021f5680(struct Variant02030b0c* obj) {
         data_ov023_021fff08.index = data_ov023_021fff08.index + 1;
         return 1;
     }
-    int v0 = _ZNK6Script9Parameter5ToIntEv(obj);
-    int v1 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 8));
-    int v2 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 0x10));
-    int v3 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 0x18));
+    int v0 = ((Script::Parameter*)obj)->ToInt();
+    int v1 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 8)))->ToInt();
+    int v2 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 0x10)))->ToInt();
+    int v3 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 0x18)))->ToInt();
     for (int i = 0; i < data_ov023_021fff08.count; i++) {
         if (data_ov023_021fff08.index == data_ov023_021fff1c[i]) {
             struct Random* rng = GetBTRandom();

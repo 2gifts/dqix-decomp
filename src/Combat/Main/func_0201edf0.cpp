@@ -1,10 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Arg0201edf0 { int type; union { int i; float f; } value; };
-
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Arg0201edf0*);
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct Arg0201edf0*);
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Arg0201edf0*);
 
 struct Inner3_0201f214 { unsigned int v[3]; };
 
@@ -52,38 +49,38 @@ extern "C" ARM int func_0201edf0(struct Arg0201edf0* p, int n) {
     int a1;
     int a4;
 
-    a0 = _ZNK6Script9Parameter5ToIntEv(&p[0]);
-    a1 = _ZNK6Script9Parameter5ToIntEv(&p[1]);
-    v2 = _ZNK6Script9Parameter7ToFloatEv(&p[2]);
-    v3 = _ZNK6Script9Parameter7ToFloatEv(&p[3]);
-    v4 = _ZNK6Script9Parameter7ToFloatEv(&p[4]);
-    a4 = _ZNK6Script9Parameter5ToIntEv(&p[5]);
+    a0 = ((Script::Parameter*)&p[0])->ToInt();
+    a1 = ((Script::Parameter*)&p[1])->ToInt();
+    v2 = ((Script::Parameter*)&p[2])->ToFloat();
+    v3 = ((Script::Parameter*)&p[3])->ToFloat();
+    v4 = ((Script::Parameter*)&p[4])->ToFloat();
+    a4 = ((Script::Parameter*)&p[5])->ToInt();
     struct Arg0201edf0* a6 = &p[6];
     p += 7;
-    (void)_ZNK6Script9Parameter8ToStringEv(a6);
+    (void)(void*)((Script::Parameter*)a6)->ToString();
     v7 = 1.0f;
     v8 = 1.0f;
     v9 = 1.0f;
     if (n > 10) {
-        v7 = _ZNK6Script9Parameter7ToFloatEv(&p[0]);
-        v8 = _ZNK6Script9Parameter7ToFloatEv(&p[1]);
+        v7 = ((Script::Parameter*)&p[0])->ToFloat();
+        v8 = ((Script::Parameter*)&p[1])->ToFloat();
         struct Arg0201edf0* z = &p[2];
         p += 3;
-        v9 = _ZNK6Script9Parameter7ToFloatEv(z);
+        v9 = ((Script::Parameter*)z)->ToFloat();
     }
     v10 = 0.0f;
     v11 = 0.0f;
     v12 = 0.0f;
     if (n > 7) {
-        v10 = _ZNK6Script9Parameter7ToFloatEv(&p[0]);
-        v11 = _ZNK6Script9Parameter7ToFloatEv(&p[1]);
+        v10 = ((Script::Parameter*)&p[0])->ToFloat();
+        v11 = ((Script::Parameter*)&p[1])->ToFloat();
         struct Arg0201edf0* z = &p[2];
         p += 3;
-        v12 = _ZNK6Script9Parameter7ToFloatEv(z);
+        v12 = ((Script::Parameter*)z)->ToFloat();
     }
     h6 = 0xf;
     if (n > 13) {
-        h6 = _ZNK6Script9Parameter5ToIntEv(&p[0]) & 0xff;
+        h6 = ((Script::Parameter*)&p[0])->ToInt() & 0xff;
         if (h6 & 0x10) {
             h6 &= ~0x10;
         } else {

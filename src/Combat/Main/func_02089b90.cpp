@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Block1c02089edc {
     unsigned short v[10];
@@ -53,8 +54,6 @@ struct Parameter02089b90 {
     void* str;
 };
 
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Parameter02089b90* p);
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Parameter02089b90* p);
 int StringLength(const char* s);
 extern "C" float _fflt(int v);
 extern "C" float _fdiv(float a, float b);
@@ -82,38 +81,38 @@ extern "C" ARM int func_02089b90(struct Parameter02089b90* p) {
     e.b3e = 0;
     e.b3f = 0;
     if (data_02108efc.pool->field8 == 1) {
-        e.b0 = (signed char)_ZNK6Script9Parameter5ToIntEv(&p[0]);
-        str = (char*)_ZNK6Script9Parameter8ToStringEv(&p[1]);
+        e.b0 = (signed char)((Script::Parameter*)&p[0])->ToInt();
+        str = (char*)(void*)((Script::Parameter*)&p[1])->ToString();
         if (str != 0) {
             int len = StringLength(str);
             e.w4 = (int)data_02108efc.alloc->Allocate(len + 1);
             memset((void*)e.w4, 0, len + 1);
             memcpy((void*)e.w4, str, len);
         }
-        e.b8 = (unsigned char)_ZNK6Script9Parameter5ToIntEv(&p[2]);
-        e.ha = (short)_ZNK6Script9Parameter5ToIntEv(&p[3]);
-        e.wc = _ZNK6Script9Parameter5ToIntEv(&p[4]);
-        e.b10 = (unsigned char)_ZNK6Script9Parameter5ToIntEv(&p[5]);
-        e.b11 = (unsigned char)_ZNK6Script9Parameter5ToIntEv(&p[6]);
-        e.b12 = (unsigned char)_ZNK6Script9Parameter5ToIntEv(&p[7]);
+        e.b8 = (unsigned char)((Script::Parameter*)&p[2])->ToInt();
+        e.ha = (short)((Script::Parameter*)&p[3])->ToInt();
+        e.wc = ((Script::Parameter*)&p[4])->ToInt();
+        e.b10 = (unsigned char)((Script::Parameter*)&p[5])->ToInt();
+        e.b11 = (unsigned char)((Script::Parameter*)&p[6])->ToInt();
+        e.b12 = (unsigned char)((Script::Parameter*)&p[7])->ToInt();
         base = p;
         p += 9;
-        idx = _ZNK6Script9Parameter5ToIntEv(&base[8]);
+        idx = ((Script::Parameter*)&base[8])->ToInt();
         if (idx >= 0 && idx <= 5) {
             e.w14 = _fdiv(_fflt(data_020e8c58[e.b8][idx][0]), 4096.0f);
             e.w18 = _fdiv(_fflt(data_020e8c5c[e.b8][idx][0]), 4096.0f);
         }
         for (i = 0; i < 10; i++) {
-            e.block1c.v[i] = (short)_ZNK6Script9Parameter5ToIntEv(p);
+            e.block1c.v[i] = (short)((Script::Parameter*)p)->ToInt();
             p++;
         }
         for (i = 0; i < 13; i++) {
-            e.block30.v[i] = (unsigned char)_ZNK6Script9Parameter5ToIntEv(p);
+            e.block30.v[i] = (unsigned char)((Script::Parameter*)p)->ToInt();
             p++;
         }
-        e.b3d = (unsigned char)_ZNK6Script9Parameter5ToIntEv(&p[0]);
-        e.b3e = (unsigned char)_ZNK6Script9Parameter5ToIntEv(&p[1]);
-        e.b3f = (unsigned char)_ZNK6Script9Parameter5ToIntEv(&p[2]);
+        e.b3d = (unsigned char)((Script::Parameter*)&p[0])->ToInt();
+        e.b3e = (unsigned char)((Script::Parameter*)&p[1])->ToInt();
+        e.b3f = (unsigned char)((Script::Parameter*)&p[2])->ToInt();
     }
     AppendCappedElement02089edc(data_02108efc.pool, &e);
     return 1;

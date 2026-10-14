@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Data021fff08 {
     char pad0[0x2];
@@ -14,7 +14,7 @@ extern struct Data021fff08 data_ov023_021fff08;
 // USA: func_ov023_021f55b8  (semantic: SetShortIfFlagSet_021f55b8)
 extern "C" ARM int func_ov023_021f55b8(struct Variant02030b0c* v) {
     if (data_ov023_021fff08.flag != 0) {
-        *data_ov023_021fff08.field0xc = (short)_ZNK6Script9Parameter5ToIntEv(v);
+        *data_ov023_021fff08.field0xc = (short)((Script::Parameter*)v)->ToInt();
     }
     return 1;
 }

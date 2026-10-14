@@ -5,18 +5,17 @@ enum { RegionalPad = 0x10 };
 #endif
 
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
     union { int i; float f; } u;
 };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct TaggedValue02030b44 {
     int type;
     union { int i; float f; } value;
 };
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct Container02027b5c;
 void AppendCappedElement02027b5c(struct Container02027b5c* c, unsigned short h, unsigned char b, int w4, int w8);
@@ -39,10 +38,10 @@ struct QuadArg0201f3b4 {
 // USA: func_0201f3b4  (semantic: AppendScaledElementFromVariants_0201f3b4)
 extern "C" ARM int func_0201f3b4(struct QuadArg0201f3b4* arg0) {
     float c;
-    int a = _ZNK6Script9Parameter5ToIntEv(&arg0->v0);
-    int b = _ZNK6Script9Parameter5ToIntEv(&arg0->v1);
-    c = _ZNK6Script9Parameter7ToFloatEv(&arg0->v2);
-    float d = _ZNK6Script9Parameter7ToFloatEv(&arg0->v3);
+    int a = ((Script::Parameter*)&arg0->v0)->ToInt();
+    int b = ((Script::Parameter*)&arg0->v1)->ToInt();
+    c = ((Script::Parameter*)&arg0->v2)->ToFloat();
+    float d = ((Script::Parameter*)&arg0->v3)->ToFloat();
     func_02012fe4();
     if (b == 0) return 1;
     float roundedD;

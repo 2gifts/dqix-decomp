@@ -1,10 +1,9 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct TaggedValue02030b44;
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 void InsertShortIntoTable021098f4(unsigned short);
 
@@ -37,7 +36,7 @@ extern "C" ARM int func_0206ed44(void* param0) {
     int i;
     short* arr;
     int key;
-    key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
+    key = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
     arr = (short*)data_02108d04.field8;
     if (arr != 0) {
         for (i = 0; i < data_02108d04.field0; i++) {
@@ -53,12 +52,12 @@ extern "C" ARM int func_0206ed44(void* param0) {
         return 0;
     }
     node->key = (short)key;
-    node->f2 = (unsigned char)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 8));
-    node->f3 = (unsigned char)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x10));
-    node->f4 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x18));
-    node->f8 = (short)(int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)param0 + 0x20)));
-    node->fa = (short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x28));
-    node->fc = (short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x30));
+    node->f2 = (unsigned char)((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 8)))->ToInt();
+    node->f3 = (unsigned char)((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x10)))->ToInt();
+    node->f4 = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x18)))->ToInt();
+    node->f8 = (short)(int)(4096.0f * ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)param0 + 0x20)))->ToFloat());
+    node->fa = (short)((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x28)))->ToInt();
+    node->fc = (short)((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x30)))->ToInt();
     if (((unsigned int)node->f4 << 26 >> 29) == 0) {
         node->f4 &= ~7;
     }

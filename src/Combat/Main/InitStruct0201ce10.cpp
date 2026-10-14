@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/ZoneFeatures.h"
 
 struct Struct0201ce10 {
     int f00;
@@ -17,7 +18,8 @@ struct Struct0201ce10 {
 };
 
 // USA: func_0201ce10
-extern "C" ARM void _ZN12ZoneFeatures13Opcode68Entry5ResetEv(struct Struct0201ce10* p) {
+ARM void ZoneFeatures::Opcode68Entry::Reset() {
+    struct Struct0201ce10* p = (struct Struct0201ce10*)this;
     p->f00 = 0;
     p->f1c = -1;
     p->f50 = 0;

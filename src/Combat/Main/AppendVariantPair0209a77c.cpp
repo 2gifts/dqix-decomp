@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct PairEntry0209a93c;
 struct PairHolder0209a93c;
@@ -17,8 +17,8 @@ struct Pair0209a77c {
 // USA: func_0209a77c
 ARM int AppendVariantPair0209a77c(void* arg) {
     struct Pair0209a77c pair;
-    pair.a = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)arg);
-    pair.b = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)arg + 8));
+    pair.a = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)arg))->ToInt();
+    pair.b = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)((char*)arg + 8)))->ToInt();
     AppendPairCapped0209a93c(data_02109ba8, (struct PairEntry0209a93c*)&pair);
     return 1;
 }

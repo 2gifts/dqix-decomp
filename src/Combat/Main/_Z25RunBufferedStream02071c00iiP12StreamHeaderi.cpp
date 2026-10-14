@@ -19,8 +19,6 @@ struct ResetStruct {
     unsigned char b42c;
 };
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct* p, void* q);
-
 struct Global02108d98 {
     unsigned short h0;
     char pad0[2];
@@ -43,7 +41,7 @@ ARM int RunBufferedStream02071c00(int arg0, int arg1, struct StreamHeader* heade
     data_02108d98.h0 = 0;
 
     ((Script*)&local)->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f0c78);
+    ((Script*)&local)->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f0c78);
     ((Script*)&local)->Load(header, length);
     ((Script*)&local)->Execute();
 }

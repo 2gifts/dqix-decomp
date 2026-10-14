@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 
 #include "Combat/NodeLookup.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct TaggedValue02030b44;
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct Node0206d3d4;
 
@@ -31,7 +30,7 @@ struct Node0206d3d4 {
 // USA: func_0206d3d4
 ARM int SetNodeFx32ValueFromVariant0206d3d4(void* param0) {
     struct Node0206d3d4* node;
-    int key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
+    int key = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
     node = (Node0206d3d4*)FindNodeByByteId(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
@@ -45,7 +44,7 @@ ARM int SetNodeFx32ValueFromVariant0206d3d4(void* param0) {
     if (node == 0) {
         return 0;
     }
-    node->value0x3c = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)param0 + 8)));
+    node->value0x3c = (int)(4096.0f * ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)param0 + 8)))->ToFloat());
     node->flags0xc |= 0x800;
     return 1;
 }

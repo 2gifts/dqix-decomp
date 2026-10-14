@@ -1,12 +1,11 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
     int val;
 };
-
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Manager02109404 {
     unsigned char f0;
@@ -44,11 +43,11 @@ void SetSlotA4(struct Owner02095910* owner, struct Node02095910* node);
 // USA: func_020951d8
 extern "C" ARM int func_020951d8(struct Variant02030b0c* arr, int b) {
     struct Node02095910* node;
-    int p0 = _ZNK6Script9Parameter5ToIntEv(&arr[0]);
-    int p1 = _ZNK6Script9Parameter5ToIntEv(&arr[1]);
+    int p0 = ((Script::Parameter*)&arr[0])->ToInt();
+    int p1 = ((Script::Parameter*)&arr[1])->ToInt();
     struct Variant02030b0c* q = &arr[2];
     arr += 3;
-    int p2 = _ZNK6Script9Parameter5ToIntEv(q);
+    int p2 = ((Script::Parameter*)q)->ToInt();
     int n = data_02109418[0];
     struct Entry0210941c* tbl = data_0210941c;
     if (data_02109404.f0 == 0) {
@@ -71,7 +70,7 @@ extern "C" ARM int func_020951d8(struct Variant02030b0c* arr, int b) {
     int i;
     node->link = 0;
     for (i = 0; i < b - 3; i++) {
-        int v = _ZNK6Script9Parameter5ToIntEv(arr);
+        int v = ((Script::Parameter*)arr)->ToInt();
         arr++;
         if ((v >> 16) == 1000) {
             if (bigCount <= 5) {

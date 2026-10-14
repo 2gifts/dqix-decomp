@@ -11,8 +11,6 @@ struct StreamHeader;
 
 struct Struct02030774;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* state, void* dataPtr);
-
 struct DataStruct02109404_95ee0 {
     char pad0;
     unsigned char f1;
@@ -54,7 +52,7 @@ ARM int RunOrPollScript02095ee0(struct Ctx02095ee0* ctx) {
         }
 
         ((Script*)((struct ResetStruct*)local))->Initialize();
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(local, data_020f13fc);
+        ((Script*)local)->SetOpcodeLookup((Script::OpcodeLookupEntry*)data_020f13fc);
         ((Script*)((struct StreamState*)local))->Load((struct StreamHeader*)out1, out2);
         ((Script*)((struct Struct02030774*)local))->Execute();
         ((BackgroundLoader*)(id))->RemoveTask((int)(ctx->field4c4));

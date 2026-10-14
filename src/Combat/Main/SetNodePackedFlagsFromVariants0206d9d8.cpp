@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 
 #include "Combat/NodeLookup.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct Node0206d9d8;
 
 struct Data02108cec {
@@ -31,7 +31,7 @@ ARM int SetNodePackedFlagsFromVariants0206d9d8(void* param0) {
     int a;
     int b;
     int c;
-    int key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
+    int key = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
     node = (Node0206d9d8*)FindNodeByByteId(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
@@ -45,9 +45,9 @@ ARM int SetNodePackedFlagsFromVariants0206d9d8(void* param0) {
     if (node == 0) {
         return 0;
     }
-    a = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 8));
-    b = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x10));
-    c = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x18));
+    a = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 8)))->ToInt();
+    b = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x10)))->ToInt();
+    c = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 0x18)))->ToInt();
     node->field0x20 = (unsigned short)(a | (b << 5) | (c << 10));
     node->flag0xa |= 0x80;
     return 1;

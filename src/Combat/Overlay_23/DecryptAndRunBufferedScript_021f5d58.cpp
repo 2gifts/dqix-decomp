@@ -17,7 +17,6 @@ struct ResetStruct;
 struct StreamState;
 struct StreamHeader;
 struct Struct02030774;
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
 extern int data_ov023_021fe34c;
 
 struct Data021fff08_021f5d58 { char pad[0xc]; void* fieldC; void* field10; };
@@ -48,7 +47,7 @@ extern "C" ARM int func_ov023_021f5d58(unsigned char* buf, int len, unsigned cha
     if (!GetFileInNarc(out, data_ov023_021fd69d, &file, &size, 0)) return 0;
 #endif
     ((Script*)((struct ResetStruct*)local))->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_ov023_021fe34c);
+    ((Script*)((struct ResetStruct*)local))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_ov023_021fe34c);
 #if defined(jpn)
     ((Script*)((struct StreamState*)local))->Load((struct StreamHeader*)file, size);
 #else

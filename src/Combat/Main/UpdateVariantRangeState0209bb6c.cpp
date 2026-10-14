@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Table0209bb6c { char pad[0xc0]; int count; };
 struct Ctx0209bb6c {
@@ -21,7 +21,7 @@ ARM int UpdateVariantRangeState0209bb6c(struct Variant02030b0c* obj, int count) 
     data_02109bb0->field14 = 0;
     if (data_02109bb0->field10 == 0) return 1;
     {
-        int val = _ZNK6Script9Parameter5ToIntEv(obj);
+        int val = ((Script::Parameter*)obj)->ToInt();
         if (val != data_02109bb0->field4) return 1;
     }
 
@@ -30,10 +30,10 @@ ARM int UpdateVariantRangeState0209bb6c(struct Variant02030b0c* obj, int count) 
     c = 0;
     d = 0;
     if (count > 1) {
-        a = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 8));
-        b = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 0x10));
-        c = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 0x18));
-        d = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)obj + 0x20));
+        a = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 8)))->ToInt();
+        b = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 0x10)))->ToInt();
+        c = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 0x18)))->ToInt();
+        d = ((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 0x20)))->ToInt();
     }
 
     {

@@ -1,10 +1,9 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c { int tag; union { int i; float f; } u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct TaggedValue02030b44 { int type; union { int i; float f; } value; };
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct EntryTable0209bd94;
 struct SubEntry0209be44 { unsigned short a; short b; };
@@ -29,11 +28,11 @@ ARM int AppendSubEntryFromDualVariant0209ba70(struct DualVariant0209ba70* v) {
     if (data_02109bb0->active == 0) {
         return 1;
     }
-    *(int*)&sub = _ZNK6Script9Parameter5ToIntEv(&v->primary);
+    *(int*)&sub = ((Script::Parameter*)&v->primary)->ToInt();
     if (v->secondary.tag == 2) {
-        sub.b = (short)(int)(_ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)&v->secondary) * 4096.0f);
+        sub.b = (short)(int)(((Script::Parameter*)((struct TaggedValue02030b44*)&v->secondary))->ToFloat() * 4096.0f);
     } else if (v->secondary.tag == 1) {
-        sub.b = (short)(_ZNK6Script9Parameter5ToIntEv(&v->secondary) << 12);
+        sub.b = (short)(((Script::Parameter*)&v->secondary)->ToInt() << 12);
     }
     if (sub.b == 0) {
         sub.b = 0x1000;

@@ -1,16 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "System/Memory.h"
+#include "Resource/Script.h"
 
 struct Param0201d638 {
     int tag;
     union { int i; float f; } u;
 };
 
-extern "C" extern int _ZNK6Script9Parameter5ToIntEv(struct Param0201d638* p);
-extern "C" extern float _ZNK6Script9Parameter7ToFloatEv(struct Param0201d638* p);
-extern "C" extern char* _ZNK6Script9Parameter8ToStringEv(struct Param0201d638* p);
-extern "C" extern struct Param0201d638* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct Param0201d638* p, int* outVec);
 struct Vector3i;
 
 struct Vec4fix0201d638 { int v[3]; int w; };
@@ -58,7 +55,7 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
     case 0:
         B(0x2c) = 0;
         if (count != 0) {
-            H(0) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
+            H(0) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
         }
         goto ret1;
 
@@ -66,64 +63,64 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
         W(4) = 0;
         B(0x2c) = 1;
         if (count != 0) {
-            H(0) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
+            H(0) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
         }
         goto ret1;
 
     case 1:
         if (count != 0) {
-            H(0) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
+            H(0) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
         }
         goto ret1;
 
     case 2: {
         if (count == 3) {
-            B(0x2c) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
-            B(0x2d) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 8));
-            BITS2E.high12 = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x10));
+            B(0x2c) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
+            B(0x2d) = ((Script::Parameter*)((struct Param0201d638*)(src + 8)))->ToInt();
+            BITS2E.high12 = ((Script::Parameter*)((struct Param0201d638*)(src + 0x10)))->ToInt();
             BITS2E.low4 = 0;
             goto ret1;
         }
 
         int rem = 0;
-        B(0x2c) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
-        B(0x2d) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 8));
-        BITS2E.high12 = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x10));
+        B(0x2c) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
+        B(0x2d) = ((Script::Parameter*)((struct Param0201d638*)(src + 8)))->ToInt();
+        BITS2E.high12 = ((Script::Parameter*)((struct Param0201d638*)(src + 0x10)))->ToInt();
         struct Param0201d638* flags = (struct Param0201d638*)(src + 0x18);
         src += 0x20;
-        BITS2E.low4 = _ZNK6Script9Parameter5ToIntEv(flags);
+        BITS2E.low4 = ((Script::Parameter*)flags)->ToInt();
         rem += 4;
 
         if (BITS2E.high12 & 8) {
             if (((struct Param0201d638*)src)->tag == 0) {
-                char* name = _ZNK6Script9Parameter8ToStringEv((struct Param0201d638*)src);
+                char* name = (extern char*)((Script::Parameter*)((struct Param0201d638*)src))->ToString();
                 src += 8;
                 rem += 1;
                 struct Elem0209998c* e = FindElementByName0209998c((struct List0209998c*)nameList, name);
                 if (e == 0) return 0;
                 H(0x30) = e->f0;
             } else {
-                H(0x30) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
+                H(0x30) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
                 src += 8;
                 rem += 1;
             }
 
-            H(0x32) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
-            H(0x34) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 8));
+            H(0x32) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
+            H(0x34) = ((Script::Parameter*)((struct Param0201d638*)(src + 8)))->ToInt();
 
             int tmp[3];
-            struct Param0201d638* p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)(src + 0x10), tmp);
+            struct Param0201d638* p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)(src + 0x10)))->ToVec3fix((Vector3i*)tmp);
             *(Vector3i*)((int*)(REC + 0x38)) = *(Vector3i const*)tmp;
-            int y1 = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(p));
+            int y1 = (int)(4096.0f * ((Script::Parameter*)p)->ToFloat());
             src = (unsigned char*)p + 0x10;
             H(0x68) = y1;
-            int y2 = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)((char*)p + 8)));
+            int y2 = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)((char*)p + 8)))->ToFloat());
             H(0x6a) = y2;
             rem += 7;
 
             int i;
             for (i = 1; i < 4; i++) {
-                p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)src, tmp);
+                p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)src))->ToVec3fix((Vector3i*)tmp);
                 src = (unsigned char*)p;
                 rem += 3;
                 *(Vector3i*)((int*)(REC + 0x38 + i * 0xc)) = *(Vector3i const*)tmp;
@@ -131,34 +128,34 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
         }
 
         if (rem < count) {
-            _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)src);
+            ((Script::Parameter*)((struct Param0201d638*)src))->ToFloat();
             src += 8;
             rem += 1;
         }
         if (rem < count) {
-            _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
+            ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
             src += 8;
         }
         if (BITS2E.high12 & 0x20) {
-            W(0x6c) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)src));
+            W(0x6c) = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)src))->ToFloat());
         }
         goto ret1;
     }
 
     case 3:
-        B(0x2c) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
+        B(0x2c) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
         goto ret1;
 
     case 4: {
-        unsigned char v1 = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
+        unsigned char v1 = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
         BITS2C.low7 = v1;
-        B(0x2d) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 8));
-        unsigned char v3 = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x10));
+        B(0x2d) = ((Script::Parameter*)((struct Param0201d638*)(src + 8)))->ToInt();
+        unsigned char v3 = ((Script::Parameter*)((struct Param0201d638*)(src + 0x10)))->ToInt();
         BITS2C.flag = v3;
 
         int vecA[3], vecB[3];
-        struct Param0201d638* p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)(src + 0x18), vecA);
-        p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i(p, vecB);
+        struct Param0201d638* p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)(src + 0x18)))->ToVec3fix((Vector3i*)vecA);
+        p = (extern Param0201d638*)((Script::Parameter*)p)->ToVec3fix((Vector3i*)vecB);
         src = (unsigned char*)p;
 
         struct Vec4fix0201d638 diffAndDot;
@@ -170,17 +167,17 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
         int vecC[3];
         __clear(vecC, 0xc);
         if (BITS2C.low7 == 4) {
-            p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)src, vecC);
+            p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)src))->ToVec3fix((Vector3i*)vecC);
             src = (unsigned char*)p;
         } else {
-            vecC[1] = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)src));
+            vecC[1] = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)src))->ToFloat());
             struct Param0201d638* nxt = (struct Param0201d638*)(src + 8);
             src += 0x10;
-            vecC[2] = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(nxt));
+            vecC[2] = (int)(4096.0f * ((Script::Parameter*)nxt)->ToFloat());
         }
 
         int vecD[3];
-        p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)src, vecD);
+        p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)src))->ToVec3fix((Vector3i*)vecD);
 
         _ZN15MaybeVector4fix8CopyFromERKS_((struct Vec4fix0201d638*)(REC + 0x30), &diffAndDot);
         W(0x40) = len;
@@ -190,68 +187,68 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
     }
 
     case 5:
-        H(0x2c) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
-        H(0x2e) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 8));
+        H(0x2c) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
+        H(0x2e) = ((Script::Parameter*)((struct Param0201d638*)(src + 8)))->ToInt();
         if (count <= 2) goto ret1;
-        H(0) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x10));
+        H(0) = ((Script::Parameter*)((struct Param0201d638*)(src + 0x10)))->ToInt();
         goto ret1;
 
     case 8:
         if (count != 0) {
-            H(0) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
+            H(0) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
         }
         goto ret1;
 
     case 9: {
-        H(0x2c) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
-        H(0x2e) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 8));
-        B(0x30) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x10));
-        B(0x31) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x18));
+        H(0x2c) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
+        H(0x2e) = ((Script::Parameter*)((struct Param0201d638*)(src + 8)))->ToInt();
+        B(0x30) = ((Script::Parameter*)((struct Param0201d638*)(src + 0x10)))->ToInt();
+        B(0x31) = ((Script::Parameter*)((struct Param0201d638*)(src + 0x18)))->ToInt();
         if ((B(0x31) & 2) == 0) goto ret1;
 
         if (((struct Param0201d638*)(src + 0x20))->tag == 0) {
             struct Param0201d638* vp = (struct Param0201d638*)(src + 0x20);
             src += 0x28;
-            char* name = _ZNK6Script9Parameter8ToStringEv(vp);
+            char* name = (extern char*)((Script::Parameter*)vp)->ToString();
             struct Elem0209998c* e = FindElementByName0209998c((struct List0209998c*)nameList, name);
             if (e == 0) return 0;
             H(0x32) = e->f0;
         } else {
             struct Param0201d638* vp = (struct Param0201d638*)(src + 0x20);
             src += 0x28;
-            H(0x32) = _ZNK6Script9Parameter5ToIntEv(vp);
+            H(0x32) = ((Script::Parameter*)vp)->ToInt();
         }
 
-        H(0x34) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
-        H(0x36) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 8));
+        H(0x34) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
+        H(0x36) = ((Script::Parameter*)((struct Param0201d638*)(src + 8)))->ToInt();
 
-        struct Param0201d638* p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)(src + 0x10), (int*)(REC + 0x38));
-        H(0x68) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(p));
-        H(0x6a) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)((char*)p + 8)));
-        p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)((char*)p + 0x10), (int*)(REC + 0x44));
-        p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i(p, (int*)(REC + 0x50));
-        p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i(p, (int*)(REC + 0x5c));
-        H(0x6c) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(p));
-        H(0x6e) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)((char*)p + 8));
+        struct Param0201d638* p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)(src + 0x10)))->ToVec3fix((Vector3i*)(REC + 0x38));
+        H(0x68) = (int)(4096.0f * ((Script::Parameter*)p)->ToFloat());
+        H(0x6a) = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)((char*)p + 8)))->ToFloat());
+        p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)((char*)p + 0x10)))->ToVec3fix((Vector3i*)(REC + 0x44));
+        p = (extern Param0201d638*)((Script::Parameter*)p)->ToVec3fix((Vector3i*)(REC + 0x50));
+        p = (extern Param0201d638*)((Script::Parameter*)p)->ToVec3fix((Vector3i*)(REC + 0x5c));
+        H(0x6c) = (int)(4096.0f * ((Script::Parameter*)p)->ToFloat());
+        H(0x6e) = ((Script::Parameter*)((struct Param0201d638*)((char*)p + 8)))->ToInt();
         goto ret1;
     }
 
     case 10: {
-        H(0x2c) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
-        struct Param0201d638* p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)(src + 8), (int*)(REC + 0x30));
-        H(0x2e) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(p));
-        W(0x3c) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)((char*)p + 8)));
+        H(0x2c) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
+        struct Param0201d638* p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)(src + 8)))->ToVec3fix((Vector3i*)(REC + 0x30));
+        H(0x2e) = (int)(4096.0f * ((Script::Parameter*)p)->ToFloat());
+        W(0x3c) = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)((char*)p + 8)))->ToFloat());
         if (count <= 6) goto ret1;
-        p = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct Param0201d638*)((char*)p + 0x10), (int*)(REC + 0x40));
-        H(0x4c) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv(p));
+        p = (extern Param0201d638*)((Script::Parameter*)((struct Param0201d638*)((char*)p + 0x10)))->ToVec3fix((Vector3i*)(REC + 0x40));
+        H(0x4c) = (int)(4096.0f * ((Script::Parameter*)p)->ToFloat());
         goto ret1;
     }
 
     case 12: {
         VectorizedMemset(REC + 0x2c, 0, 0x18);
-        B(0x2c) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)src);
-        B(0x2d) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 8));
-        B(0x2e) = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x10));
+        B(0x2c) = ((Script::Parameter*)((struct Param0201d638*)src))->ToInt();
+        B(0x2d) = ((Script::Parameter*)((struct Param0201d638*)(src + 8)))->ToInt();
+        B(0x2e) = ((Script::Parameter*)((struct Param0201d638*)(src + 0x10)))->ToInt();
 
         unsigned char* rec = REC;
         switch (rec[0x2c]) {
@@ -259,16 +256,16 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
             rec[0x30] = 0;
             rec[0x31] = 0;
             rec[0x33] = 0;
-            rec[0x34] = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x18));
-            rec[0x35] = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x20));
-            rec[0x32] = _ZNK6Script9Parameter5ToIntEv((struct Param0201d638*)(src + 0x28));
+            rec[0x34] = ((Script::Parameter*)((struct Param0201d638*)(src + 0x18)))->ToInt();
+            rec[0x35] = ((Script::Parameter*)((struct Param0201d638*)(src + 0x20)))->ToInt();
+            rec[0x32] = ((Script::Parameter*)((struct Param0201d638*)(src + 0x28)))->ToInt();
             goto ret1;
 
         case 2:
             rec[0x30] = 0;
             *(int*)(rec + 0x34) = 0;
-            *(int*)(rec + 0x38) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)(src + 0x18)));
-            *(int*)(rec + 0x3c) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)(src + 0x20)));
+            *(int*)(rec + 0x38) = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)(src + 0x18)))->ToFloat());
+            *(int*)(rec + 0x3c) = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)(src + 0x20)))->ToFloat());
             rec[0x40] = 0x19;
             goto ret1;
 
@@ -276,9 +273,9 @@ extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* 
             rec[0x30] = 0;
             rec[0x31] = 0;
             *(int*)(rec + 0x34) = 0x733;
-            *(int*)(rec + 0x38) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)(src + 0x18)));
-            *(int*)(rec + 0x3c) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)(src + 0x20)));
-            *(int*)(rec + 0x40) = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct Param0201d638*)(src + 0x28)));
+            *(int*)(rec + 0x38) = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)(src + 0x18)))->ToFloat());
+            *(int*)(rec + 0x3c) = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)(src + 0x20)))->ToFloat());
+            *(int*)(rec + 0x40) = (int)(4096.0f * ((Script::Parameter*)((struct Param0201d638*)(src + 0x28)))->ToFloat());
             *(int*)(rec + 0x38) = 0x733;
             *(int*)(rec + 0x40) = ~0x198;
             goto ret1;

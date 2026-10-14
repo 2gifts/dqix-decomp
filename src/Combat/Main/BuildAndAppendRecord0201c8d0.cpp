@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
@@ -8,10 +9,8 @@ struct Variant02030b0c {
         float f;
     } u;
 };
-extern "C" extern int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Struct02030b7c;
-extern "C" extern void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 
 struct Name0201e3c4 { char c[9]; };
 struct Code0201e3c4 { char c[5]; };
@@ -33,14 +32,14 @@ extern struct GlobalList020fdc20_0201c8d0 data_020fdc20;
 // USA: func_0201c8d0
 extern "C" ARM int _Z20WarpScript_Opcode_7ePN6Script9ParameterEi(unsigned char* src) {
     struct Elem0201e3c4 elem;
-    elem.id = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)src);
+    elem.id = ((Script::Parameter*)((struct Variant02030b0c*)src))->ToInt();
     struct Struct02030b7c* strFieldPtr = (struct Struct02030b7c*)(src + 8);
     src += 0x10;
-    char* namePtr = (char*)_ZNK6Script9Parameter8ToStringEv(strFieldPtr);
+    char* namePtr = (char*)(extern void*)((Script::Parameter*)strFieldPtr)->ToString();
     strcpy(elem.code.c, namePtr);
     int i;
     for (i = 0; i < 9; i++) {
-        elem.name.c[i] = (char)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)src);
+        elem.name.c[i] = (char)((Script::Parameter*)((struct Variant02030b0c*)src))->ToInt();
         src += 8;
     }
     _ZN12ZoneFeatures37CreateGrottoTileFeaturePlacementEntryERK24TileFeaturePlacementData(data_020fdc20.list, &elem);

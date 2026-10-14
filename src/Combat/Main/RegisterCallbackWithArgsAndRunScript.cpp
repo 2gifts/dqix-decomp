@@ -8,8 +8,6 @@ struct StreamHeader;
 
 struct Struct02030774;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
-
 struct CallbackCache02108d04 {
     short field0;
     short pad2;
@@ -28,7 +26,7 @@ ARM void RegisterCallbackWithArgsAndRunScript(void* p0, void* p1, struct StreamH
     data_02108d04.field0 = p5;
     data_02108d04.field4 = p1;
     ((Script*)((struct ResetStruct*)local))->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_020f0a3c);
+    ((Script*)((struct ResetStruct*)local))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f0a3c);
     ((Script*)((struct StreamState*)local))->Load(buffer, length);
     ((Script*)((struct Struct02030774*)local))->Execute();
 }

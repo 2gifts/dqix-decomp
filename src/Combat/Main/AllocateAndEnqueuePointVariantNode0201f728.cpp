@@ -5,12 +5,11 @@ enum { kAllocatorOffset = 4, kOwnerOffset = 0xc, kListOffset = 0x6a8 };
 enum { kAllocatorOffset = 8, kOwnerOffset = 0x10, kListOffset = 0x754 };
 #endif
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct TaggedValue02030b44 { int type; union { int i; float f; } value; };
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct Variant02030b0c { int tag; union { int i; float f; } u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 extern int data_020fdc4c;
 
@@ -41,11 +40,11 @@ extern "C" ARM int func_0201f728(struct Args0201f728* arg0, int n) {
     node->data = (short*)
         ((SafeAllocator*)*(char**)((char*)&data_020fdc4c + kAllocatorOffset))->Allocate(node->count * 2);
     if (node->data == 0) return 0;
-    node->x = (int)(_ZNK6Script9Parameter7ToFloatEv(&arg0->x) * 4096.0f);
+    node->x = (int)(((Script::Parameter*)&arg0->x)->ToFloat() * 4096.0f);
     struct Variant02030b0c* p = (struct Variant02030b0c*)((char*)arg0 + 0x10);
-    node->y = (int)(_ZNK6Script9Parameter7ToFloatEv(&arg0->y) * 4096.0f);
+    node->y = (int)(((Script::Parameter*)&arg0->y)->ToFloat() * 4096.0f);
     for (int i = 0; i < node->count; i++) {
-        node->data[i] = (short)_ZNK6Script9Parameter5ToIntEv(p);
+        node->data[i] = (short)((Script::Parameter*)p)->ToInt();
         p++;
     }
     struct Node0201f728* head = *(struct Node0201f728**)((char*)(*(void**)((char*)&data_020fdc4c + kOwnerOffset)) + kListOffset);

@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 #include "World/ZoneFeatures.h"
+#include "Resource/Script.h"
 
 class SafeAllocator;
 struct Variant02030b0c;
 struct Foo0201e288;
-
-extern "C" extern int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c*);
 
 struct GlobalList020fdc20_c8a8 {
     int pad0;
@@ -15,8 +14,9 @@ struct GlobalList020fdc20_c8a8 {
 extern struct GlobalList020fdc20_c8a8 data_020fdc20;
 
 // USA: func_0201c8a8
-extern "C" ARM int _Z20WarpScript_Opcode_7dPN6Script9ParameterEi(struct Variant02030b0c* v) {
-    int n = _ZNK6Script9Parameter5ToIntEv(v);
+ARM int WarpScript_Opcode_7d(Script::Parameter* arg0, int) {
+    struct Variant02030b0c* v = (struct Variant02030b0c*)arg0;
+    int n = ((Script::Parameter*)v)->ToInt();
     ((ZoneFeatures*)data_020fdc20.array)->AllocateGrottoTileFeaturePlacementEntries(n, data_020fdc20.alloc);
     return 1;
 }

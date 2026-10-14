@@ -11,7 +11,6 @@ struct ResetStruct;
 struct StreamState;
 struct StreamHeader;
 struct Struct02030774;
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
 
 extern int data_ov031_02291e04;
 extern int data_ov031_0224c8dc;
@@ -45,7 +44,7 @@ extern "C" ARM int func_ov031_02243714(char* ctx) {
 	memset(allocated, 0, 0x38);
 	((BackgroundLoader*)((struct List0202fec8*)list))->GetLoadedFileByID((int)(*(int*)(ctx + 0x3a0)), (void**)(&out1), (unsigned int*)(&out2));
 	((Script*)((struct ResetStruct*)local))->Initialize();
-	_ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_ov031_0224c8dc);
+	((Script*)((struct ResetStruct*)local))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_ov031_0224c8dc);
 	((Script*)((struct StreamState*)local))->Load((struct StreamHeader*)out1, out2);
 	((Script*)((struct Struct02030774*)local))->Execute();
 	return 1;

@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Struct02030b7c;
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 extern "C" void func_ov000_02169b78(void* p);
 
 struct Data02184264 {
@@ -19,7 +19,7 @@ extern "C" ARM int func_ov000_0216b394(struct Struct02030b7c* obj) {
     *(int*)(p + 0x4) = 0;
     *(int*)(p + 0x0) = 0x33;
 
-    char* text = (char*)_ZNK6Script9Parameter8ToStringEv(obj);
+    char* text = (char*)(void*)((Script::Parameter*)obj)->ToString();
     if (text) {
         int len = strlen(text);
         char* buf = (char*)data_ov000_02184264.alloc->Allocate(len + 1);

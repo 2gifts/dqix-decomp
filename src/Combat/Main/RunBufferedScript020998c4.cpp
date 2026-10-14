@@ -13,7 +13,6 @@ struct StreamHeader;
 struct Struct02030774;
 
 void* LoadFileIntoMemory(const char*, void*, unsigned int*);
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* state, void* dataPtr);
 
 struct Obj020995c0;
 extern struct Obj020995c0* data_02109924;
@@ -33,7 +32,7 @@ ARM void RunBufferedScript020998c4(struct Obj020995c0* param0) {
     if (header != 0) {
         data_02109924 = param0;
         ((Script*)((struct ResetStruct*)buf))->Initialize();
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(buf, data_020f1524);
+        ((Script*)buf)->SetOpcodeLookup((Script::OpcodeLookupEntry*)data_020f1524);
         ((Script*)((struct StreamState*)buf))->Load(header, count);
         ((Script*)((struct Struct02030774*)buf))->Execute();
         data_02109924 = 0;

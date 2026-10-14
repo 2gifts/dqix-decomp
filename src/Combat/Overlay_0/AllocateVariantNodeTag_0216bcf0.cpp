@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 extern "C" void func_ov000_02169b78(void*);
 
@@ -10,7 +11,6 @@ struct Struct02184264 {
 extern struct Struct02184264 data_ov000_02184264;
 
 struct Variant02030b0c { int tag; int u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct VariantNodeTag0x4f {
     int tag;
@@ -24,13 +24,13 @@ struct VariantNodeTag0x4f {
 extern "C" ARM int func_ov000_0216bcf0(struct Variant02030b0c* v, int argc) {
     struct VariantNodeTag0x4f* node = (struct VariantNodeTag0x4f*)data_ov000_02184264.alloc->Allocate(sizeof(struct VariantNodeTag0x4f));
     node->tag = 0x4f;
-    node->value = (unsigned char)_ZNK6Script9Parameter5ToIntEv(v);
+    node->value = (unsigned char)((Script::Parameter*)v)->ToInt();
     node->count = 1;
     node->flag = 1;
     if (argc < 2) goto done;
-    node->count = (unsigned char)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)v + 8));
+    node->count = (unsigned char)((Script::Parameter*)((struct Variant02030b0c*)((char*)v + 8)))->ToInt();
     if (argc < 3) goto done;
-    node->flag = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)v + 0x10));
+    node->flag = ((Script::Parameter*)((struct Variant02030b0c*)((char*)v + 0x10)))->ToInt();
 done:
     func_ov000_02169b78(node);
     return 1;

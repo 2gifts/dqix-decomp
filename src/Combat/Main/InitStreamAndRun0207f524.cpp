@@ -22,7 +22,6 @@ struct StreamHeader;
 
 struct Struct02030774;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
 struct List0207f6ac;
 void ResolveEntryRefs0207f72c(struct List0207f6ac* p);
 
@@ -37,7 +36,7 @@ ARM void InitStreamAndRun0207f524(void* param0, void* param1, struct StreamHeade
         data_02108ee0.field0 = param1;
         data_02108ee0.field4 = param0;
         ((Script*)&local)->Initialize();
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f0fb0);
+        ((Script*)&local)->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f0fb0);
         ((Script*)((struct StreamState*)&local))->Load(param2, param3);
         ((Script*)((struct Struct02030774*)&local))->Execute();
         ResolveEntryRefs0207f72c((struct List0207f6ac*)param0);

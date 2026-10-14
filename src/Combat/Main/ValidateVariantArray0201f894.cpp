@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
@@ -8,19 +9,17 @@ struct Variant02030b0c {
     } u;
 };
 
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
-
 struct VariantArray0201f894 {
     struct Variant02030b0c items[6];
 };
 
 // USA: func_0201f894
 ARM int ValidateVariantArray0201f894(struct VariantArray0201f894* s) {
-    _ZNK6Script9Parameter5ToIntEv(&s->items[0]);
-    _ZNK6Script9Parameter5ToIntEv(&s->items[1]);
-    _ZNK6Script9Parameter5ToIntEv(&s->items[2]);
-    _ZNK6Script9Parameter5ToIntEv(&s->items[3]);
-    _ZNK6Script9Parameter5ToIntEv(&s->items[4]);
-    _ZNK6Script9Parameter5ToIntEv(&s->items[5]);
+    ((Script::Parameter*)&s->items[0])->ToInt();
+    ((Script::Parameter*)&s->items[1])->ToInt();
+    ((Script::Parameter*)&s->items[2])->ToInt();
+    ((Script::Parameter*)&s->items[3])->ToInt();
+    ((Script::Parameter*)&s->items[4])->ToInt();
+    ((Script::Parameter*)&s->items[5])->ToInt();
     return 1;
 }

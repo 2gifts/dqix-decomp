@@ -1,18 +1,18 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Struct02030b7c {
     int field0;
     void* field4;
 };
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 int StringLength(const char* s);
 
 struct Pool02089ac0 {
     char pad[0x14];
-    char** strings;   // +0x14
-    short count;      // +0x18
+    char** strings;
+    short count;
 };
 
 struct Ctx02108efc02089ac0 {
@@ -29,7 +29,7 @@ extern "C" ARM int func_02089ac0(struct Struct02030b7c* items) {
     short count = data_02108efc.pool->count;
     strings = (char**)data_02108efc.alloc->Allocate(count * 4);
     for (short i = 0; i < count; i++) {
-        char* text = (char*)_ZNK6Script9Parameter8ToStringEv(items);
+        char* text = (char*)(void*)((Script::Parameter*)items)->ToString();
         items = (struct Struct02030b7c*)((char*)items + 8);
         int len = StringLength(text);
         strings[i] = (char*)data_02108efc.alloc->Allocate(len + 1);

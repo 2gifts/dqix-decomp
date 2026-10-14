@@ -1,9 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
-
-extern "C" int _ZNK6Script9Parameter5ToIntEv(void* variant);
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(void* s);
+#include "Resource/Script.h"
 
 struct LogEntry021536fc { int val; char* str; };
 struct LogHeader021536fc { int count; void* allocator; LogEntry021536fc** entries; };
@@ -11,11 +9,11 @@ extern LogHeader021536fc data_ov001_02165800;
 
 // USA: func_ov001_021536fc  (semantic: AppendVariantLogEntry_021536fc)
 extern "C" ARM int func_ov001_021536fc(void* variant) {
-    int val = _ZNK6Script9Parameter5ToIntEv(variant);
+    int val = ((Script::Parameter*)variant)->ToInt();
     LogEntry021536fc* entries = *data_ov001_02165800.entries;
     entries[data_ov001_02165800.count].val = val;
 
-    char* s = (char*)_ZNK6Script9Parameter8ToStringEv((char*)variant + 8);
+    char* s = (char*)(void*)((Script::Parameter*)((char*)variant + 8))->ToString();
     if (!s) {
         return 0;
     }

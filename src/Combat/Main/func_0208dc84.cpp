@@ -1,9 +1,8 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Variant02030b0c* p);
 int StringLength(char const*);
 extern "C" char* strcpy(char* dst, const char* src);
 
@@ -68,18 +67,18 @@ extern "C" ARM int func_0208dc84(char* p
 
     if (data_02108fd4.field4 != 0) {
         unsigned short i;
-        c.field0 = (short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)p);
-        s = (char*)_ZNK6Script9Parameter8ToStringEv((struct Variant02030b0c*)(p + 8));
-        c.field2.b0 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(p + 0x10));
-        c.field2.b9 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(p + 0x18));
-        c.field2.b2 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(p + 0x20));
+        c.field0 = (short)((Script::Parameter*)((struct Variant02030b0c*)p))->ToInt();
+        s = (char*)(void*)((Script::Parameter*)((struct Variant02030b0c*)(p + 8)))->ToString();
+        c.field2.b0 = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x10)))->ToInt();
+        c.field2.b9 = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x18)))->ToInt();
+        c.field2.b2 = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x20)))->ToInt();
 #if defined(jpn)
         extra = 0;
         if (parameterCount - 5) {
-            extra = (char*)_ZNK6Script9Parameter8ToStringEv((struct Variant02030b0c*)(p + 0x28));
+            extra = (char*)(void*)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x28)))->ToString();
         }
 #else
-        c.field2.b15 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(p + 0x28));
+        c.field2.b15 = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x28)))->ToInt();
 #endif
         for (i = 0; i < *data_02108fd4.field0; i++) {
             if (data_02108fd4.field4[i] == c.field2.b9) {
@@ -106,8 +105,8 @@ extern "C" ARM int func_0208dc84(char* p
             }
         }
     } else {
-        c.field0 = (short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)p);
-        s = (char*)_ZNK6Script9Parameter8ToStringEv((struct Variant02030b0c*)(p + 8));
+        c.field0 = (short)((Script::Parameter*)((struct Variant02030b0c*)p))->ToInt();
+        s = (char*)(void*)((Script::Parameter*)((struct Variant02030b0c*)(p + 8)))->ToString();
         if (s != 0) {
             dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength(s) + 1));
             c.field4 = (int)dst;
@@ -115,16 +114,16 @@ extern "C" ARM int func_0208dc84(char* p
                 strcpy((char*)dst, s);
             }
         }
-        c.field2.b0 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(p + 0x10));
-        c.field2.b9 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(p + 0x18));
-        c.field2.b2 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(p + 0x20));
+        c.field2.b0 = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x10)))->ToInt();
+        c.field2.b9 = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x18)))->ToInt();
+        c.field2.b2 = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x20)))->ToInt();
 #if defined(jpn)
         extra = 0;
         if (parameterCount - 5) {
-            extra = (char*)_ZNK6Script9Parameter8ToStringEv((struct Variant02030b0c*)(p + 0x28));
+            extra = (char*)(void*)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x28)))->ToString();
         }
 #else
-        c.field2.b15 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(p + 0x28));
+        c.field2.b15 = (unsigned short)((Script::Parameter*)((struct Variant02030b0c*)(p + 0x28)))->ToInt();
 #endif
 #if defined(jpn)
         if (extra != 0) {

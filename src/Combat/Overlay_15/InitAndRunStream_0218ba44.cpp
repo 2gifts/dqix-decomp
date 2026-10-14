@@ -30,7 +30,6 @@ struct StreamState;
 
 struct Struct02030774;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
 extern "C" void func_ov015_0218b828();
 void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outLen);
 
@@ -57,7 +56,7 @@ extern "C" ARM void func_ov015_0218ba44(void* self, const char* path) {
 
         struct ResetStruct local;
         ((Script*)&local)->Initialize();
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_ov015_02193fa0);
+        ((Script*)&local)->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_ov015_02193fa0);
         ((Script*)((struct StreamState*)&local))->Load((struct StreamHeader*)buffer, length);
         ((Script*)((struct Struct02030774*)&local))->Execute();
     }

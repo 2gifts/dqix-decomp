@@ -10,7 +10,7 @@
 struct Variant02030b0c;
 
 struct TaggedValue02030b44;
-extern "C" struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44* obj, int* outVec);
+struct Vector3i;
 
 struct S_020103b4;
 
@@ -102,7 +102,7 @@ extern "C" ARM int func_0206c2c0(void* param0, int param1) {
         return 1;
     }
 
-    q = _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct TaggedValue02030b44*)((char*)param0 + 0x48), rec->vec);
+    q = (TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)((char*)param0 + 0x48)))->ToVec3fix((Vector3i*)rec->vec);
     rec->field1c = (unsigned short)(int)(4096.0f * ((Script::Parameter*)q)->ToFloat());
 
     if (param1 > 13) {

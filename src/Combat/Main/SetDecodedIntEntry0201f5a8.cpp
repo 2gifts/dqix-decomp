@@ -1,10 +1,10 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
     union { int i; float f; } u;
 };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 extern "C" void func_02027910(void*, int, int, int, int);
 
 struct Global020fdc4c_f5a8 {
@@ -28,10 +28,10 @@ struct Vec4Variant0201f5a8 {
 
 // USA: func_0201f5a8
 ARM int SetDecodedIntEntry0201f5a8(struct Vec4Variant0201f5a8* arg0) {
-    int a = _ZNK6Script9Parameter5ToIntEv(&arg0->v0);
-    int b = _ZNK6Script9Parameter5ToIntEv(&arg0->v1);
-    int c = _ZNK6Script9Parameter5ToIntEv(&arg0->v2);
-    int d = _ZNK6Script9Parameter5ToIntEv(&arg0->v3);
+    int a = ((Script::Parameter*)&arg0->v0)->ToInt();
+    int b = ((Script::Parameter*)&arg0->v1)->ToInt();
+    int c = ((Script::Parameter*)&arg0->v2)->ToInt();
+    int d = ((Script::Parameter*)&arg0->v3)->ToInt();
     func_02027910((void*)data_020fdc4c.field10, a, b, c, d);
     return 1;
 }

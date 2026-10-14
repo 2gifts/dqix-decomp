@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Struct02184264 {
     unsigned char pad[8];
@@ -12,10 +13,8 @@ extern "C" void __clear(void* buf, int size);
 extern "C" void func_ov000_02169b78(void*);
 
 struct Variant02030b0c { int tag; int u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Struct02030b7c;
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 
 struct Vec3s02030fc8 { signed short x, y, z; };
 struct Vector3s;
@@ -45,17 +44,17 @@ extern "C" ARM int func_ov000_0216b478(struct Variant02030b0c* v, int count) {
     int flagC = 1;
     __clear(&zeroVec, 6);
 
-    int intVal = _ZNK6Script9Parameter5ToIntEv(v);
-    byteVal = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)v + 8)) - 0x1a;
+    int intVal = ((Script::Parameter*)v)->ToInt();
+    byteVal = ((Script::Parameter*)((struct Variant02030b0c*)((char*)v + 8)))->ToInt() - 0x1a;
 
-    char* strPtr = (char*)_ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)((char*)v + 0x10));
+    char* strPtr = (char*)(void*)((Script::Parameter*)((struct Struct02030b7c*)((char*)v + 0x10)))->ToString();
     if (strPtr != 0) {
         copied = (char*)data_ov000_02184264.alloc->Allocate(strlen(strPtr) + 1);
         strcpy(copied, strPtr);
     }
 
     if (count >= 4) {
-        flagC = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)v + 0x18));
+        flagC = ((Script::Parameter*)((struct Variant02030b0c*)((char*)v + 0x18)))->ToInt();
     }
 
     node->tag = 0;

@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Struct02030b7c;
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 extern "C" void func_ov000_02169b78(void* node);
 extern int data_ov000_02184264;
 
@@ -19,7 +19,7 @@ ARM int BuildStringEventWithTag_0216ad0c(struct Struct02030b7c* arg) {
     node->tag = 0;
     node->unused = 0;
     node->tag = 0x22;
-    char* str = (char*)_ZNK6Script9Parameter8ToStringEv(arg);
+    char* str = (char*)(void*)((Script::Parameter*)arg)->ToString();
     char* buf = (char*)(*(SafeAllocator**)((char*)&data_ov000_02184264 + 0x8))->Allocate(strlen(str) + 1);
     node->str = buf;
     strcpy(buf, str);

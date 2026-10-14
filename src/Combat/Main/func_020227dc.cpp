@@ -53,8 +53,6 @@ struct ResetStruct {
     unsigned char b42c;
 };
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
-
 struct StreamHeader;
 struct StreamState;
 
@@ -170,7 +168,7 @@ extern "C" ARM void func_020227dc(MapDisplay* ctx) {
     data_020fdc4c.ctxPtr = ctx;
     data_020fdc4c.allocatorPtr = sb;
     ((Script*)&local)->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020ef498);
+    ((Script*)&local)->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020ef498);
     ((Script*)((struct StreamState*)&local))->Load((struct StreamHeader*)fileData, (int)fileSize);
     ((Script*)((struct Struct02030774*)&local))->Execute();
 

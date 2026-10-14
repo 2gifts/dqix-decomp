@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 extern "C" void func_ov000_02169b78(void* node);
 
@@ -10,10 +11,8 @@ struct Struct02184264 {
 extern struct Struct02184264 data_ov000_02184264;
 
 struct Variant02030b0c { int tag; int u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* v);
 
 struct TaggedValue02030b44 { int type; union { int i; float f; } value; };
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct VariantNodeTag0216d110 {
     int tag;
@@ -28,8 +27,8 @@ extern "C" ARM int func_ov000_0216d110(struct Variant02030b0c* v) {
     node->tag = 0;
     node->unused = 0;
     node->tag = 0x8c;
-    node->value = (unsigned char)_ZNK6Script9Parameter5ToIntEv(v);
-    float degrees = _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)v + 8));
+    node->value = (unsigned char)((Script::Parameter*)v)->ToInt();
+    float degrees = ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)v + 8)))->ToFloat();
     node->angle = (int)(degrees * 3.14159274f / 180.0f * 4096.0f);
     func_ov000_02169b78(node);
     return 1;

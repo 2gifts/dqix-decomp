@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 
 #include "Combat/NodeLookup.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct TaggedValue02030b44;
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct Node0206cb48;
 
@@ -29,7 +28,7 @@ struct Node0206cb48 {
 // USA: func_0206cb48  (semantic: SetNodeScaledFloatFromVariant0206cb48)
 extern "C" ARM int func_0206cb48(void* param0) {
     struct Node0206cb48* node;
-    int key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
+    int key = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
     node = (Node0206cb48*)FindNodeByByteId(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
@@ -43,6 +42,6 @@ extern "C" ARM int func_0206cb48(void* param0) {
     if (node == 0) {
         return 0;
     }
-    node->value0x38 = (int)(4096.0f * _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)((char*)param0 + 8)));
+    node->value0x38 = (int)(4096.0f * ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)param0 + 8)))->ToFloat());
     return 1;
 }

@@ -1,25 +1,25 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Struct02030b7c {
     int field0;
     void* field4;
 };
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 
 int StringLength(const char* s);
 
 struct Target020899fc {
     char pad0[0xc];
-    char** array;   // 0xc
-    short count;     // 0x10
+    char** array;
+    short count;
 };
 
 struct Data02108efc {
-    struct Target020899fc* target;  // 0x0
+    struct Target020899fc* target;
     char pad1[0xc - 4];
-    SafeAllocator* allocator;         // 0xc
+    SafeAllocator* allocator;
 };
 extern struct Data02108efc data_02108efc;
 
@@ -32,7 +32,7 @@ extern "C" ARM int func_020899fc(struct Struct02030b7c* elements) {
     arr = (char**)data_02108efc.allocator->Allocate(count * 4);
 
     for (i = 0; i < count; i++) {
-        char* str = (char*)_ZNK6Script9Parameter8ToStringEv(elements);
+        char* str = (char*)(void*)((Script::Parameter*)elements)->ToString();
         elements++;
 
         int len = StringLength(str);

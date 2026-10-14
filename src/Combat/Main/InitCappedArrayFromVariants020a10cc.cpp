@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c { int tag; union { int i; float f; } u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Obj020a14fc;
 void InitCappedArray020a14fc(struct Obj020a14fc* obj, void* flag, int count);
@@ -26,10 +26,10 @@ extern struct Global02109d94_10cc data_02109d94;
 // USA: func_020a10cc
 ARM int InitCappedArrayFromVariants020a10cc(struct Vec4Variant020a10cc* arg0) {
     unsigned short sum = 0;
-    unsigned short a = (unsigned short)_ZNK6Script9Parameter5ToIntEv(&arg0->v0);
-    unsigned short b = (unsigned short)_ZNK6Script9Parameter5ToIntEv(&arg0->v1);
-    unsigned short c = (unsigned short)_ZNK6Script9Parameter5ToIntEv(&arg0->v2);
-    unsigned short d = (unsigned short)_ZNK6Script9Parameter5ToIntEv(&arg0->v3);
+    unsigned short a = (unsigned short)((Script::Parameter*)&arg0->v0)->ToInt();
+    unsigned short b = (unsigned short)((Script::Parameter*)&arg0->v1)->ToInt();
+    unsigned short c = (unsigned short)((Script::Parameter*)&arg0->v2)->ToInt();
+    unsigned short d = (unsigned short)((Script::Parameter*)&arg0->v3)->ToInt();
 
     if (data_02109d94.flags & 1) sum += a;
     if (data_02109d94.flags & 2) sum += b;

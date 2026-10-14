@@ -25,8 +25,6 @@ struct StreamState;
 
 struct Struct02030774;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
-
 extern void* data_02108ed8[2];
 extern int data_020f0f88;
 
@@ -38,7 +36,7 @@ ARM void LoadEntryArrayFromStream0207ef74(struct EntryArray0207efdc* param0, Saf
         data_02108ed8[1] = param0;
         data_02108ed8[0] = param1;
         ((Script*)&local)->Initialize();
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f0f88);
+        ((Script*)&local)->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f0f88);
         ((Script*)((struct StreamState*)&local))->Load(param2, param3);
         ((Script*)((struct Struct02030774*)&local))->Execute();
     }

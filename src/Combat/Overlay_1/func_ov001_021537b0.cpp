@@ -6,7 +6,6 @@ struct ResetStruct;
 struct StreamState;
 struct StreamHeader;
 struct Struct02030774;
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
 
 struct Global021537b0 { int word0; SafeAllocator* allocPtr; void* selfPtr; };
 extern Global021537b0 data_ov001_02165800;
@@ -25,7 +24,7 @@ extern "C" ARM void func_ov001_021537b0(Self021537b0* self, SafeAllocator* alloc
     data_ov001_02165800.selfPtr = self;
 
     ((Script*)((struct ResetStruct*)local))->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_ov001_02164b80);
+    ((Script*)((struct ResetStruct*)local))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_ov001_02164b80);
     ((Script*)((struct StreamState*)local))->Load(buffer, length);
     ((Script*)((struct Struct02030774*)local))->Execute();
 
@@ -39,7 +38,7 @@ extern "C" ARM void func_ov001_021537b0(Self021537b0* self, SafeAllocator* alloc
     }
 
     ((Script*)((struct ResetStruct*)local))->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_ov001_02164b90);
+    ((Script*)((struct ResetStruct*)local))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_ov001_02164b90);
     ((Script*)((struct StreamState*)local))->Load(buffer, length);
     ((Script*)((struct Struct02030774*)local))->Execute();
 }

@@ -18,7 +18,6 @@ extern "C" void* func_0208e0a8(void);
 extern "C" int rand(void);
 
 struct ResetStruct0208ea10;
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct0208ea10*, int*);
 
 void* LoadFileIntoMemory(const char*, void*, unsigned int*);
 extern "C" void* _Z13GetFileInNarcPKvPKcPS0_Pjj(const void*, const char*, void**, void**, unsigned int);
@@ -75,7 +74,7 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
     if (LoadFileIntoMemory(data_020f1330, data_0211e33c, &fileLen) != 0) {
         if (_Z13GetFileInNarcPKvPKcPS0_Pjj(data_0211e33c, data_020f134a, (void**)&ptr, (void**)&size, 0) != 0) {
             ((Script*)((struct ResetStruct0208ea10*)scriptFirst))->Initialize();
-            _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct0208ea10*)scriptFirst, &data_020f1308);
+            ((Script*)((struct ResetStruct0208ea10*)scriptFirst))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f1308);
             ((Script*)((struct ResetStruct0208ea10*)scriptFirst))->Load(ptr, size);
             ((Script*)((struct ResetStruct0208ea10*)scriptFirst))->Execute();
             ((unsigned char*)func_0208e0a8())[0xa] = 1;
@@ -87,7 +86,7 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
             fileLen = 0;
             if (_Z13GetFileInNarcPKvPKcPS0_Pjj(data_0211e33c, name, (void**)&ptr, (void**)&size, 0) != 0) {
                 ((Script*)((struct ResetStruct0208ea10*)scriptLoop))->Initialize();
-                _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct0208ea10*)scriptLoop, &data_020f1308);
+                ((Script*)((struct ResetStruct0208ea10*)scriptLoop))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f1308);
                 ((Script*)((struct ResetStruct0208ea10*)scriptLoop))->Load(ptr, size);
                 ((Script*)((struct ResetStruct0208ea10*)scriptLoop))->Execute();
             }

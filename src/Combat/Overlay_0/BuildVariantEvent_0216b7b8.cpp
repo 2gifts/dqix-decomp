@@ -1,12 +1,11 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c { int tag; int u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Struct02030b7c;
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 
 extern "C" void func_ov000_02169b78(void* node);
 
@@ -32,9 +31,9 @@ extern "C" ARM int func_ov000_0216b7b8(char* arg) {
     node->tag = 0;
     node->unused = 0;
     node->tag = 0x3b;
-    node->b8 = (_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)arg) & 0xff) - 0x1a;
-    node->b9 = (_ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(arg + 0x8)) & 0xff) - 0x1a;
-    char* text = (char*)_ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)(arg + 0x10));
+    node->b8 = (((Script::Parameter*)((struct Variant02030b0c*)arg))->ToInt() & 0xff) - 0x1a;
+    node->b9 = (((Script::Parameter*)((struct Variant02030b0c*)(arg + 0x8)))->ToInt() & 0xff) - 0x1a;
+    char* text = (char*)(void*)((Script::Parameter*)((struct Struct02030b7c*)(arg + 0x10)))->ToString();
     if (text != NULL) {
         char* buf = (char*)data_ov000_02184264.alloc->Allocate(strlen(text) + 1);
         node->str = buf;

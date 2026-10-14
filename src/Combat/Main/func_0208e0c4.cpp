@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c*);
 struct TaggedValue02030b44;
-extern "C" struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44*, int*);
+struct Vector3i;
 extern "C" int func_ov017_0218b5b0(void);
 
 struct Cont0208e778;
@@ -50,16 +50,16 @@ extern "C" ARM int func_0208e0c4(char* v) {
     SafeAllocator* alloc = (SafeAllocator*)(func_ov017_0218b5b0() + 0x1a0);
     struct Node0208e0c4* node = (struct Node0208e0c4*)alloc->Allocate(0x70);
     node->next = 0;
-    node->dw0.val1 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)v);
-    node->dw0.reserved0 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)(v + 8));
-    node->dw0.val2 = (unsigned char)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)(v + 0x10));
-    node->dw1.b.fieldA = (unsigned char)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)(v + 0x20));
+    node->dw0.val1 = (unsigned short)((Script::Parameter*)((Variant02030b0c*)v))->ToInt();
+    node->dw0.reserved0 = (unsigned short)((Script::Parameter*)((Variant02030b0c*)(v + 8)))->ToInt();
+    node->dw0.val2 = (unsigned char)((Script::Parameter*)((Variant02030b0c*)(v + 0x10)))->ToInt();
+    node->dw1.b.fieldA = (unsigned char)((Script::Parameter*)((Variant02030b0c*)(v + 0x20)))->ToInt();
     if (node->dw1.b.fieldA == 8) {
-        node->dw1.b.low9 = (unsigned short)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)(v + 0x28));
-        node->dw1.b.hi4 = (unsigned char)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)(v + 0x30));
+        node->dw1.b.low9 = (unsigned short)((Script::Parameter*)((Variant02030b0c*)(v + 0x28)))->ToInt();
+        node->dw1.b.hi4 = (unsigned char)((Script::Parameter*)((Variant02030b0c*)(v + 0x30)))->ToInt();
         Variant02030b0c* p38 = (Variant02030b0c*)(v + 0x38);
         v += 0x40;
-        node->dw1.b.fieldB = (unsigned char)_ZNK6Script9Parameter5ToIntEv(p38);
+        node->dw1.b.fieldB = (unsigned char)((Script::Parameter*)p38)->ToInt();
     } else {
         unsigned char* tbl = (unsigned char*)data_02108ff4;
         node->dw1.b.low9 = *(unsigned short*)(tbl + node->dw1.b.fieldA * 4);
@@ -68,7 +68,7 @@ extern "C" ARM int func_0208e0c4(char* v) {
         node->dw1.b.fieldB = ((Entry02108ff4*)(tbl + node->dw1.b.fieldA * 4))->c;
     }
     for (int i = 0; i < 8; i++) {
-        v = (char*)_ZN6Script9Parameter9ToVec3fixEP8Vector3i((TaggedValue02030b44*)v, node->vec[i]);
+        v = (char*)(TaggedValue02030b44*)((Script::Parameter*)((TaggedValue02030b44*)v))->ToVec3fix((Vector3i*)node->vec[i]);
     }
     node->dw2 = 0;
     node->dw1.raw &= 0xe01fffff;

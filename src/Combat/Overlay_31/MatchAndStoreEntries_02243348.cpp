@@ -1,13 +1,12 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "System/WirelessScanDescriptor.h"
+#include "Resource/Script.h"
 
 struct Struct02030b7c {
     int field0;
     void* field4;
 };
-
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 
 struct DataBlock02291e04 {
     unsigned char count;
@@ -29,7 +28,7 @@ extern DataBlock02291e04 data_ov031_02291e04;
 
 // USA: func_ov031_02243348  (semantic: MatchAndStoreEntries_02243348)
 extern "C" ARM int func_ov031_02243348(struct Struct02030b7c* s) {
-    void* target = _ZNK6Script9Parameter8ToStringEv(s);
+    void* target = (void*)((Script::Parameter*)s)->ToString();
     int matched = 0;
     int i = 0;
     while (i < data_ov031_02291e04.count) {

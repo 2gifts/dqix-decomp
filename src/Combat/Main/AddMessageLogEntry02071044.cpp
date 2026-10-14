@@ -1,17 +1,16 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c {
     int tag;
     union { int i; float f; } u;
 };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Struct02030b7c {
     int field0;
     void* field4;
 };
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 
 int StringLength(const char* s);
 
@@ -34,15 +33,15 @@ struct MsgEntry02071044 {
 };
 
 struct MsgQueueState02071044 {
-    unsigned char forceFlag;          // 0x0
+    unsigned char forceFlag;
     char pad1[7];
-    struct MsgEntry02071044* entries; // 0x8
+    struct MsgEntry02071044* entries;
     char pad2[4];
-    int limit;                        // 0x10
+    int limit;
     char pad3[8];
-    int targetValue;                  // 0x1c
+    int targetValue;
     char pad4[4];
-    int count;                        // 0x24
+    int count;
 };
 extern struct MsgQueueState02071044 data_02108d70;
 
@@ -58,14 +57,14 @@ extern "C" ARM int func_02071044(struct MsgArgs02071044* args) {
         return 0;
     }
 
-    v0 = _ZNK6Script9Parameter5ToIntEv(&args->v0);
-    _ZNK6Script9Parameter5ToIntEv(&args->v1);
+    v0 = ((Script::Parameter*)&args->v0)->ToInt();
+    ((Script::Parameter*)&args->v1)->ToInt();
 
     if (v0 == data_02108d70.targetValue || data_02108d70.forceFlag != 0) {
-        _ZNK6Script9Parameter5ToIntEv(&args->v2);
-        _ZNK6Script9Parameter5ToIntEv(&args->v3);
-        _ZNK6Script9Parameter5ToIntEv(&args->v4);
-        key = _ZNK6Script9Parameter5ToIntEv(&args->v5);
+        ((Script::Parameter*)&args->v2)->ToInt();
+        ((Script::Parameter*)&args->v3)->ToInt();
+        ((Script::Parameter*)&args->v4)->ToInt();
+        key = ((Script::Parameter*)&args->v5)->ToInt();
 
         for (i = 0; i < data_02108d70.count; i++) {
             if (data_02108d70.entries[i].id == key) {
@@ -77,8 +76,8 @@ extern "C" ARM int func_02071044(struct MsgArgs02071044* args) {
 
         data_02108d70.entries[data_02108d70.count].id = key;
 
-        _ZNK6Script9Parameter5ToIntEv(&args->v6);
-        text = _ZNK6Script9Parameter8ToStringEv(&args->v7);
+        ((Script::Parameter*)&args->v6)->ToInt();
+        text = (void*)((Script::Parameter*)&args->v7)->ToString();
         if (!text) {
             return 0;
         }

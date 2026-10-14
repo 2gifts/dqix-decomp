@@ -20,8 +20,6 @@ struct ResetStruct {
 struct StreamState;
 struct StreamHeader;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
-
 struct Struct02030774;
 
 struct Global02109d94_020a147c {
@@ -46,7 +44,7 @@ ARM void SetupGlobalAndRunScript020a147c(void* param0, void* param1, struct Stre
         data_02109d94.field2 = param5;
         data_02109d94.field0 = param6;
         ((Script*)&local)->Initialize();
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f18ec);
+        ((Script*)&local)->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f18ec);
         ((Script*)((struct StreamState*)&local))->Load(param2, param3);
         ((Script*)((struct Struct02030774*)&local))->Execute();
     }

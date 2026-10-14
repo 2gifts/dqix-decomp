@@ -12,7 +12,6 @@ struct ResetStruct;
 struct StreamState;
 struct StreamHeader;
 struct Struct02030774;
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
 extern int data_ov023_021fe34c;
 
 struct Data021fff08_021f6058 { char pad[0x8]; char* quest; char* data; };
@@ -47,7 +46,7 @@ extern "C" ARM int func_ov023_021f6058(unsigned char* buf, int len, unsigned cha
     data_ov023_021fff08.quest = (char*)buf;
     d->flags &= ~0x240;
     ((Script*)((struct ResetStruct*)local))->Initialize();
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_ov023_021fe34c);
+    ((Script*)((struct ResetStruct*)local))->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_ov023_021fe34c);
     ((Script*)((struct StreamState*)local))->Load((struct StreamHeader*)out, len - 4);
     ((Script*)((struct Struct02030774*)local))->Execute();
     return 1;

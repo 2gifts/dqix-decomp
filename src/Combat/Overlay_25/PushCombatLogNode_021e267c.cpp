@@ -7,10 +7,11 @@ enum { RegionOffsetc = 0xc };
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
+#include "World/Object3D.h"
 
 void* GetArrayEntry_021e8a54_021e8a54(char* obj);
 unsigned char GetByte48_021e8ba4(void* obj);
-extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
+struct ObjectArchiveLoadInfo;
 
 struct PtrField0x1c_020371b0;
 struct S1a0;
@@ -63,7 +64,7 @@ extern "C" ARM void func_ov025_021e267c(int combatantId, int arg1, int arg2, int
     s.field10 = 1;
     unsigned char b = GetByte48_021e8ba4(byteObj);
     s.field1c = b + 4;
-    _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(combatant, &s, flag);
+    ((Object3D*)combatant)->LoadFromCCHROrCMOTArchive((ObjectArchiveLoadInfo*)&s, (int (*)(BCFG::AnimationRecord*))flag);
     if (name) {
         ((Object3D*)combatant)->MaybeSetRegularAnimation((char const*)buf, 0);
         ((Object3D*)((struct S1a0*)combatant))->SetCurrentAnimationTime((unsigned int)ptr);

@@ -40,8 +40,6 @@ struct StreamHeader;
 
 struct Struct02030774;
 
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
-
 // USA: func_0209562c
 ARM void SetupHeaderAndRunBufferedScript0209562c(struct HeaderStruct0209562c* header, int param1, struct StreamHeader* buffer, int length, unsigned short param4, int param5, int param6) {
     if (param1 != 0 && buffer != 0 && length != 0) {
@@ -53,7 +51,7 @@ ARM void SetupHeaderAndRunBufferedScript0209562c(struct HeaderStruct0209562c* he
         data_02109404.f0 = 0;
         struct ResetStruct local;
         ((Script*)&local)->Initialize();
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f1444);
+        ((Script*)&local)->SetOpcodeLookup((Script::OpcodeLookupEntry*)&data_020f1444);
         ((Script*)((struct StreamState*)&local))->Load(buffer, length);
         ((Script*)((struct Struct02030774*)&local))->Execute();
     }

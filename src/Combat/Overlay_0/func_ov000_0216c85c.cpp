@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 extern "C" void func_ov000_02169b78(void*);
 
@@ -10,7 +11,6 @@ struct Struct02184264 {
 extern struct Struct02184264 data_ov000_02184264;
 
 struct Variant02030b0c { int tag; int u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct VariantNodeTag0x73 {
     int tag;
@@ -29,11 +29,11 @@ extern "C" ARM int func_ov000_0216c85c(struct Variant02030b0c* v, int count) {
     unsigned short id;
     int value;
     unsigned char flag;
-    value = _ZNK6Script9Parameter5ToIntEv(&v[0]);
-    id = _ZNK6Script9Parameter5ToIntEv(&v[1]);
+    value = ((Script::Parameter*)&v[0])->ToInt();
+    id = ((Script::Parameter*)&v[1])->ToInt();
     flag = 0;
     if (count >= 3) {
-        flag = _ZNK6Script9Parameter5ToIntEv(&v[2]);
+        flag = ((Script::Parameter*)&v[2])->ToInt();
     }
     node->value = value;
     node->id = id - 0x1a;

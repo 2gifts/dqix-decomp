@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c { int tag; int u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct GetRowByIndexRow;
 GetRowByIndexRow* GetRowByIndex(GetRowByIndexRow* base, int i);
@@ -20,7 +20,7 @@ extern "C" ARM int func_0209ae10(struct Variant02030b0c* arg0) {
     int i = *(int*)(q + 0x1c8);
     int j = *(int*)(q + 0x1d0);
 
-    unsigned int v = (unsigned int)_ZNK6Script9Parameter5ToIntEv(arg0);
+    unsigned int v = (unsigned int)((Script::Parameter*)arg0)->ToInt();
 
     q = *(char**)((char*)data_02109bac + 0x0);
     StoreWordToRowArray((StoreWordToRowArrayRow*)q, i, j, &v);

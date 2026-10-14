@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Entry0209bd94;
 struct EntryTable0209bd94;
@@ -12,10 +12,10 @@ struct RingEntry0209ae9c {
 };
 
 struct Inner0209ae9c {
-    struct RingEntry0209ae9c entries[6]; // 0x0 - 0x1c8
-    int count;                          // 0x1c8
-    int field1cc;                       // 0x1cc
-    int field1d0;                       // 0x1d0
+    struct RingEntry0209ae9c entries[6];
+    int count;
+    int field1cc;
+    int field1d0;
 };
 
 struct LocalStruct0209ae9c {
@@ -29,7 +29,7 @@ extern struct LocalStruct0209ae9c* data_02109bac;
 ARM int PushHandleIntoRing0209ae9c(struct Variant02030b0c* param0) {
     data_02109bac->field8 = 0;
 
-    int handle = _ZNK6Script9Parameter5ToIntEv(param0);
+    int handle = ((Script::Parameter*)param0)->ToInt();
     if (FindEntryByHalfword0209bd94(data_02109bac->field4, handle) == NULL) {
         return 1;
     }

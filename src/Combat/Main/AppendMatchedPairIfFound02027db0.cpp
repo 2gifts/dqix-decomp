@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct List_020283c0;
 struct ListEntry_020283c0;
@@ -22,8 +22,8 @@ ARM int AppendMatchedPairIfFound02027db0(void* param0) {
     int a, b;
     entry.b = 0;
     entry.a = 0;
-    a = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
-    b = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 8));
+    a = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
+    b = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 8)))->ToInt();
     if (a == b) return 0;
     entry.a = (int)FindListEntryById((struct List_020283c0*)data_020fdd30, a);
     entry.b = (int)FindListEntryById((struct List_020283c0*)data_020fdd30, b);

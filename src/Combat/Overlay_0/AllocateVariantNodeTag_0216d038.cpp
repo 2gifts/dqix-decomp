@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 extern "C" void func_ov000_02169b78(void*);
 extern "C" void __clear(void* buf, int size);
@@ -13,9 +14,7 @@ extern struct Struct02184264 data_ov000_02184264;
 struct Variant02030b0c { int tag; int u; };
 
 struct TaggedValue02030b44 { int type; union { int i; float f; } value; };
-extern "C" extern struct TaggedValue02030b44* _ZN6Script9Parameter9ToVec3fixEP8Vector3i(struct TaggedValue02030b44* obj, int* outVec);
-
-extern "C" extern void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct Vector3i;
 
 struct VariantNodeTag0x8a {
     int tag;
@@ -31,8 +30,8 @@ ARM int AllocateVariantNodeTag_0216d038(struct Variant02030b0c* v) {
     int tmp[3];
     node->tag = 0x8a;
     __clear(tmp, sizeof(tmp));
-    _ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct TaggedValue02030b44*)v, tmp);
-    _ZN8Vector3iaSERKS_(node->vec, tmp);
+    (extern TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)v))->ToVec3fix((Vector3i*)tmp);
+    *(Vector3i*)node->vec = *(Vector3i const*)tmp;
     func_ov000_02169b78(node);
     return 1;
 }

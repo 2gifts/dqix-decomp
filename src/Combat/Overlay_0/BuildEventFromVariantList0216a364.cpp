@@ -1,10 +1,9 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct TaggedValue02030b44;
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 extern "C" void func_ov000_02169b78(void* p);
 
 struct Data02184264 {
@@ -17,7 +16,7 @@ extern struct Data02184264 data_ov000_02184264;
 ARM int BuildEventFromVariantList0216a364(char* obj, int count) {
     char* p = (char*)data_ov000_02184264.alloc->Allocate(0x18);
     *(int*)(p + 0x0) = 0xc;
-    int val0 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)obj);
+    int val0 = ((Script::Parameter*)((struct Variant02030b0c*)obj))->ToInt();
     *(short*)(p + 0x8) = (short)val0;
     *(unsigned char*)(p + 0xa) = 0;
     *(int*)(p + 0xc) = 0;
@@ -30,17 +29,17 @@ ARM int BuildEventFromVariantList0216a364(char* obj, int count) {
     }
 
     if (count >= 2) {
-        int val1 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)obj);
+        int val1 = ((Script::Parameter*)((struct Variant02030b0c*)obj))->ToInt();
         *(unsigned char*)(p + 0xa) = (unsigned char)val1;
         obj += 8;
     }
 
     if (count >= 3) {
-        float f0 = _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)obj);
+        float f0 = ((Script::Parameter*)((struct TaggedValue02030b44*)obj))->ToFloat();
         *(float*)(p + 0xc) = f0;
-        float f1 = _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)(obj + 8));
+        float f1 = ((Script::Parameter*)((struct TaggedValue02030b44*)(obj + 8)))->ToFloat();
         *(float*)(p + 0x10) = f1;
-        float f2 = _ZNK6Script9Parameter7ToFloatEv((struct TaggedValue02030b44*)(obj + 0x10));
+        float f2 = ((Script::Parameter*)((struct TaggedValue02030b44*)(obj + 0x10)))->ToFloat();
         *(float*)(p + 0x14) = f2;
     }
 

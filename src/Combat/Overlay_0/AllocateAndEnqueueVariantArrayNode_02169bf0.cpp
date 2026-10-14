@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Variant02030b0c { int tag; int u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 
 struct Zeroable02169a40;
 void ZeroStruct02169a40(struct Zeroable02169a40* s);
@@ -32,7 +32,7 @@ extern "C" ARM int func_ov000_02169bf0(struct Variant02030b0c* v, int count) {
         unsigned short sawFlag = 0;
         int i = 0;
         for (; i < node->count; v++, i++) {
-            buffer[i] = (unsigned short)_ZNK6Script9Parameter5ToIntEv(v);
+            buffer[i] = (unsigned short)((Script::Parameter*)v)->ToInt();
             if (buffer[i] == 1) sawFlag = 1;
         }
         if (sawFlag) {

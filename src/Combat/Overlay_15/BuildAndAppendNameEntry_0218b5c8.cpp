@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 #include "Memory/AllocatorUnion.h"
 #include "std_library_functions.h"
+#include "Resource/Script.h"
 
 struct Struct02030b7c;
 struct Variant02030b0c;
-extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 int StringLength(const char* s);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 
@@ -28,11 +27,11 @@ extern struct List0218b9d4* data_ov015_02194560;
 
 // USA: func_ov015_0218b5c8  (semantic: BuildAndAppendNameEntry_0218b5c8)
 extern "C" ARM int func_ov015_0218b5c8(char* obj) {
-    char* n1 = (char*)_ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)obj);
-    char* n2 = (char*)_ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)(obj + 8));
-    int v1 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(obj + 0x10));
-    int v2 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(obj + 0x18));
-    int v3 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(obj + 0x20));
+    char* n1 = (char*)(void*)((Script::Parameter*)((struct Struct02030b7c*)obj))->ToString();
+    char* n2 = (char*)(void*)((Script::Parameter*)((struct Struct02030b7c*)(obj + 8)))->ToString();
+    int v1 = ((Script::Parameter*)((struct Variant02030b0c*)(obj + 0x10)))->ToInt();
+    int v2 = ((Script::Parameter*)((struct Variant02030b0c*)(obj + 0x18)))->ToInt();
+    int v3 = ((Script::Parameter*)((struct Variant02030b0c*)(obj + 0x20)))->ToInt();
 
     struct Entry0218b9d4 entry;
     entry.a = 0;

@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
 
 struct TaggedValue02030b44 { int type; union { int i; float f; } value; };
-extern "C" extern float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44*);
 
 struct EventCtx0216cd28 {
     char pad[8];
@@ -24,7 +24,7 @@ ARM int EnqueueEventWithScaledFloatField_0216cd28(struct TaggedValue02030b44* ob
     e->type = 0x7b;
     int result = 0xf000;
     if (flag > 0) {
-        float val = _ZNK6Script9Parameter7ToFloatEv(obj);
+        float val = ((Script::Parameter*)obj)->ToFloat();
         result = (int)(val * 4096.0f);
     }
     e->field8 = result;
