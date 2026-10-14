@@ -1,7 +1,6 @@
 #include "World/ZoneWarpScript.h"
 #include <globaldefs.h>
 
-#ifdef usa
 // USA: func_0201d044
 ARM int WarpScript_Opcode_6b(Script::Parameter* params, int numParams)
 {
@@ -116,4 +115,3 @@ ARM int WarpScript_Opcode_6b(Script::Parameter* params, int numParams)
     instance->CreateOpcode6aEntry(entry);
     return 1;
 }
-#endif
