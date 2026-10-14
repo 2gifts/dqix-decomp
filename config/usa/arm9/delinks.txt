@@ -20068,3 +20068,18 @@ src/Combat/Main/func_0200cf24.cpp:
 src/Combat/Main/func_02019210.cpp:
     complete
     .text start:0x02019210 end:0x02019508
+
+
+src/Combat/Main/func_02024000.cpp:
+    complete
+    .text start:0x02024000 end:0x0202427c
+
+
+src/Combat/Main/func_02074c18.cpp:
+    complete
+    .text start:0x02074c18 end:0x02074e54
+
+
+src/Combat/Main/func_020aff0c.cpp:
+    complete
+    .text start:0x020aff0c end:0x020b005c
