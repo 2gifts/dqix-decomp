@@ -38,7 +38,15 @@ struct MapReceiver02024518 {
     int mapState;
     int mapPalette;
     int forwardingFill;
-
+    unsigned char unknown78[0x55c - 0x78];
+    unsigned char forwardingPending;
+    unsigned char unknown55d[0x5a4 - 0x55d];
+    int flags;
+    unsigned char unknown5a8[4];
+    fix32_t cameraX;
+    fix32_t cameraZ;
+    unsigned char unknown5b4[kActionStateOffset - 0x5b4];
+    unsigned char actionState;
 };
 
 struct List_02027878;
@@ -70,7 +78,6 @@ void SetElementFields0202756c(void *receiver, int x, int y, int index, unsigned 
 // USA: func_02024518
 // JPN: func_02023eec
 extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
-    unsigned char *receiver = (unsigned char*)self;
     int pz;
     int px;
     GameState *gameState  = GameState::GetInstance();
@@ -86,27 +93,27 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
     count = func_020236dc(entries, groups, &position);
 
     fix32_t scale = self->scale;
-    int cameraX   = (int) ((float) FIX32_MULTIPLY(*(fix32_t*)(receiver + 0x5ac), self->scale) / 4096.0f);
-    int cameraZ   = (int) ((float) FIX32_MULTIPLY(*(fix32_t*)(receiver + 0x5b0), scale) / 4096.0f);
+    int cameraX   = (int) ((float) FIX32_MULTIPLY(self->cameraX, self->scale) / 4096.0f);
+    int cameraZ   = (int) ((float) FIX32_MULTIPLY(self->cameraZ, scale) / 4096.0f);
     int objectX   = (int) ((float) FIX32_MULTIPLY(position.x, scale) / 4096.0f);
     int objectZ   = (int) ((float) FIX32_MULTIPLY(position.z, scale) / 4096.0f);
     if (objectX - cameraX > 30 || cameraX - objectX > 30) {
         if (objectX > cameraX) {
-            *(fix32_t*)(receiver + 0x5ac) += fix32_Divide((objectX - cameraX - 30) << 12, scale);
+            self->cameraX += fix32_Divide((objectX - cameraX - 30) << 12, scale);
         } else {
-            *(fix32_t*)(receiver + 0x5ac) -= fix32_Divide((cameraX - objectX - 30) << 12, scale);
+            self->cameraX -= fix32_Divide((cameraX - objectX - 30) << 12, scale);
         }
     }
     if (objectZ - cameraZ > 10 || cameraZ - objectZ > 20) {
         if (objectZ > cameraZ) {
-            *(fix32_t*)(receiver + 0x5b0) += fix32_Divide((objectZ - cameraZ - 10) << 12, self->scale);
+            self->cameraZ += fix32_Divide((objectZ - cameraZ - 10) << 12, self->scale);
         } else {
-            *(fix32_t*)(receiver + 0x5b0) -= fix32_Divide((cameraZ - objectZ - 20) << 12, self->scale);
+            self->cameraZ -= fix32_Divide((cameraZ - objectZ - 20) << 12, self->scale);
         }
     }
     scale         = self->scale;
-    cameraX       = (int) ((float) FIX32_MULTIPLY(*(fix32_t*)(receiver + 0x5ac), scale) / 4096.0f);
-    cameraZ       = (int) ((float) FIX32_MULTIPLY(*(fix32_t*)(receiver + 0x5b0), scale) / 4096.0f);
+    cameraX       = (int) ((float) FIX32_MULTIPLY(self->cameraX, scale) / 4096.0f);
+    cameraZ       = (int) ((float) FIX32_MULTIPLY(self->cameraZ, scale) / 4096.0f);
     self->screenX = cameraX;
     self->screenY = cameraZ;
     int tileX     = cameraX < 0 ? cameraX / 8 - 1 : cameraX / 8;
@@ -152,14 +159,14 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
             ActiveGrottoClass* grotto = zone->GetActiveGrotto();
             func_02027974(self, grotto->floorMap_.pMapAdjacencyData, self->mapState);
         }
-        receiver[0x55c] = 0;
+        self->forwardingPending = 0;
         SetArraySlotFlag0203b718(displayState, 1, 0, self->forwardingFill);
         int mapX        = self->forwardingX - tileX;
         int mapY        = self->forwardingY - tileZ + 16;
         void *mapLayer  = GetData02105254();
         func_0203b8bc(mapLayer, 1, 0, mapX + 32, mapY, self->mapState, 32, 32, self->mapPalette);
     } else {
-        receiver[0x55c] = 0;
+        self->forwardingPending = 0;
         SetArraySlotFlag0203b718(displayState, 1, 0, self->forwardingFill);
         for (int i = 0; i < self->forwardingCount; i++) {
             Entry_02027878 *entry = GetEntryFromList((List_02027878*)self, self->forwarding[i].entryIndex);
@@ -182,10 +189,10 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
             x += data_020e70f0[group][entry->variant][0];
             z += data_020e70f4[group][entry->variant][0];
         }
-        if (*(int*)(receiver + 0x5a4) & 1) {
+        if (self->flags & 1) {
             if (IsNonCombatantAction(entry->type)) continue;
         }
-        if (!CheckActionAllowed((Actor02024d48*)entry, receiver[kActionStateOffset])) continue;
+        if (!CheckActionAllowed((Actor02024d48*)entry, self->actionState)) continue;
         SetElementFields0202756c(self, (x + 0x7c) << 12, (z + 0x5c) << 12, entry->elementId, entry->type, 0,
                                  entry->palette, 0xff, 0x1000, 0x1000);
     }
