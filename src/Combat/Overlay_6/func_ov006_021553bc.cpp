@@ -5,15 +5,13 @@ struct CallIfFlag0x800_021571ccStruct;
 struct Container020e0310;
 
 #if defined(jpn)
-#define SetFields_021dceac func_ov023_021dd7b0
 #define func_ov023_021dced4 func_ov023_021dd7d8
 int GetFieldByKey020e0434(Container020e0310*, int);
-extern "C" void SetFields_021dceac(char*, int, int, unsigned char, unsigned char, unsigned char);
 #else
 const char** CallFunc020e52a0(void* names, int item);
 extern "C" void func_020e4864(const char*, char*, int, int, int, int);
-void SetFields_021dceac(char*, int, int, unsigned char, unsigned char, unsigned char);
 #endif
+void SetFields_021dceac(char*, int, int, unsigned char, unsigned char, unsigned char);
 extern "C" void func_ov023_021dced4(AlchemyItemInfoWindow*, unsigned char);
 void CallIfFlag_021571cc_021571cc(CallIfFlag0x800_021571ccStruct*);
 

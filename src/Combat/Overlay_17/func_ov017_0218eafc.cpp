@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
+#include "Combat/CombatantRecovery.h"
 #include "Graphics/NSBXX/GeometryFifo.h"
 #include "Graphics/NSBXX/RenderConfig.h"
 #include "System/Graphics.h"
@@ -8,14 +9,12 @@
 struct Obj02061bd8;
 
 struct Battle0218eafc {
+#if defined(jpn)
+    unsigned char pad0[0x34b8];
+#else
     unsigned char pad0[0x36c8];
+#endif
     Model3D* model;
-};
-
-struct Combatant0218eafc {
-    Object3D object;
-    unsigned char padAc[0x18c - 0xac];
-    unsigned int status;
 };
 
 extern "C" void* func_02057924(void);
@@ -41,33 +40,33 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
     if (flagged) func_02057ab8(list, idx);
     if (GetField0x3b0Value(gs) == 0) return;
 
-    Combatant0218eafc* member = (Combatant0218eafc*)gs->GetPartyMemberByIndex(idx);
+    CombatantRecovery* member = (CombatantRecovery*)gs->GetPartyMemberByIndex(idx);
     int shadowId = idx * 12 + 0x13;
     Object3D* shadow = (Object3D*)gs->GetGameObjectByIndex(shadowId);
-    if (member->object.GetFlag(0x200)) return;
+    if (member->obj3D_.GetFlag(0x200)) return;
     if (CheckFlag0x1ceBit2Set((unsigned char*)member)) return;
-    if (member->object.IsChild()) return;
-    Model3D* model = member->object.pModel_;
+    if (member->obj3D_.IsChild()) return;
+    Model3D* model = member->obj3D_.pModel_;
     if (model == NULL) return;
     ModelRenderContext* context = model->unknown_flags_a8_0_ ? &model->renderContext_ : NULL;
     if (context == NULL) return;
 
     bool clip = true;
     if (GetBitsInField4((unsigned int*)battle, 0x1000)) clip = false;
-    int alpha = member->object.GetCombinedAlpha();
-    fix32_t alphaScale = member->object.GetAlphaScaleFactor();
+    int alpha = member->obj3D_.GetCombinedAlpha();
+    fix32_t alphaScale = member->obj3D_.GetAlphaScaleFactor();
 
     Vector3i saved;
     if (IsField0x1b4Or0x1b8Positive((int*)member)) {
-        saved = member->object.position_;
+        saved = member->obj3D_.position_;
         Vector3i raised = saved;
         raised.y += GetFieldAt0x1b8((unsigned char*)member);
-        member->object.position_ = raised;
+        member->obj3D_.position_ = raised;
         if (shadow) shadow->position_ = raised;
     }
 
-    if ((member->status & 1) && !(member->status & 2) && member->object.IsVisible()) {
-        member->object.PopulateRenderConfigWorld();
+    if ((member->recoveryFlags & 1) && !(member->recoveryFlags & 2) && member->obj3D_.IsVisible()) {
+        member->obj3D_.PopulateRenderConfigWorld();
         RenderConfig::SubmitToFifo();
         battle->model->SetAlpha(alpha);
         battle->model->Draw(clip);
@@ -75,7 +74,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
         return;
     }
 
-    member->object.EnableFlag(0x20000);
+    member->obj3D_.EnableFlag(0x20000);
     Vector3i shadowPos;
     if (func_02032fdc(member, clip, &shadowPos)) {
         int weaponId = idx * 12 + 0x14;
@@ -123,7 +122,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
                 part->EnableFlag(0x8000);
                 part->Draw(false);
             }
-            if (member->status & 0x20) {
+            if (member->recoveryFlags & 0x20) {
                 part = (Object3D*)gs->GetGameObjectByIndex(accessoryId);
                 if (part) {
                     part->EnableFlag(0x8000);
@@ -140,7 +139,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
                     effect->Draw(false);
                 }
             }
-            if (member->object.IsParent()) member->object.DrawChildren(&member->object);
+            if (member->obj3D_.IsParent()) member->obj3D_.DrawChildren(&member->obj3D_);
             if (idx == 0) {
                 Object3D* effect = _Z21GetField4334_021bdbc0Ph((unsigned char*)battle);
                 if (effect) {
@@ -151,7 +150,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
             }
             if (shadow) {
                 shadow->position_ = shadowPos;
-                shadow->rotation_ = member->object.rotation_;
+                shadow->rotation_ = member->obj3D_.rotation_;
                 shadow->Draw(false);
             }
         }
@@ -160,7 +159,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
     }
 
     if (IsField0x1b4Or0x1b8Positive((int*)member)) {
-        member->object.position_ = saved;
+        member->obj3D_.position_ = saved;
         if (shadow) shadow->position_ = saved;
     }
 }
