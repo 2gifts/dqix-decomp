@@ -3037,3 +3037,7 @@ src/Combat/Overlay_23/ConfigureEntryPositions_021da770.cpp:
 src/Combat/Overlay_23/func_ov023_021dab5c.cpp:
     complete
     .text start:0x021db3c8 end:0x021db4b4
+
+src/Combat/Overlay_23/func_ov023_021da9b4.cpp:
+    complete
+    .text start:0x021db240 end:0x021db3c8
