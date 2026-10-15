@@ -20058,3 +20058,28 @@ src/Combat/Main/func_02099304.cpp:
     complete
     .text start:0x02099304 end:0x0209953c
 
+
+
+src/Combat/Main/ExtractFileFromGP2.cpp:
+    complete
+    .text start:0x0207568c end:0x020757b4
+
+
+src/Combat/Main/func_0203a0b4.cpp:
+    complete
+    .text start:0x0203a0b4 end:0x0203a46c
+
+
+src/Combat/Main/func_0205b530.cpp:
+    complete
+    .text start:0x0205b530 end:0x0205b674
+
+
+src/Combat/Main/func_02076080.cpp:
+    complete
+    .text start:0x02076080 end:0x02076738
+
+
+src/Combat/Main/func_020a57e4.cpp:
+    complete
+    .text start:0x020a57e4 end:0x020a5b1c
