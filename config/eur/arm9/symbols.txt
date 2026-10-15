@@ -7651,7 +7651,7 @@ data_020fdd44 kind:bss addr:0x020fdd44
 data_020fe9a4 kind:bss addr:0x020fe9a4
 data_020fe9ac kind:bss addr:0x020fe9ac
 data_020fe9cc kind:bss addr:0x020fe9cc
-data_020fefcc kind:bss addr:0x020fefcc
+_ZZ14GetTurnCountervE1s kind:bss addr:0x020fefcc
 data_020fefd4 kind:bss addr:0x020fefd4
 data_020fefe0 kind:bss addr:0x020fefe0
 data_020fefec kind:bss addr:0x020fefec
