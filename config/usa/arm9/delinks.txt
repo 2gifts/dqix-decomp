@@ -20102,3 +20102,33 @@ src/Combat/Main/func_0202c04c.cpp:
 src/Combat/Main/func_020aaf84.cpp:
     complete
     .text start:0x020aaf84 end:0x020ab314
+
+
+src/Combat/Main/func_0201c1f8.cpp:
+    complete
+    .text start:0x0201c1f8 end:0x0201c3a4
+
+
+src/Combat/Main/func_0202555c.cpp:
+    complete
+    .text start:0x0202555c end:0x02025b0c
+
+
+src/Combat/Main/func_02071874.cpp:
+    complete
+    .text start:0x02071874 end:0x02071b38
+
+
+src/Combat/Main/func_0208a03c.cpp:
+    complete
+    .text start:0x0208a03c end:0x0208a370
+
+
+src/Combat/Main/func_020995f8.cpp:
+    complete
+    .text start:0x020995f8 end:0x02099888
+
+
+src/Combat/Main/func_020d39dc.cpp:
+    complete
+    .text start:0x020d39dc end:0x020d3c08
