@@ -1553,7 +1553,7 @@ data_ov017_021d83ac kind:bss addr:0x021d8c6c
 data_ov017_021d83b0 kind:bss addr:0x021d8c70
 data_ov017_021d8c7c kind:bss addr:0x021d8c7c
 data_ov017_021d83cc kind:bss addr:0x021d8c8c
-data_ov017_021d83d4 kind:bss addr:0x021d8c94
+_ZZ19GetTransferProgressvE1s kind:bss addr:0x021d8c94
 data_ov017_021d83ec kind:bss addr:0x021d8cac
 data_ov017_021d83f0 kind:bss addr:0x021d8cb0
 data_ov017_021d840c kind:bss addr:0x021d8ccc
