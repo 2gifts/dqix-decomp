@@ -13,7 +13,7 @@ struct Foo02033b58;
 void SetByteSavingPrevious(struct Foo02033b58* p, unsigned char v);
 
 struct ShortPair0xba0xbc;
-void SetFields0xbaAnd0xbc_02032fd0(struct ShortPair0xba0xbc* obj, short a, short b);
+void SetFields0xbaAnd0xbc_02032fd0(ShortPair0xba0xbc* obj, short a, unsigned short b);
 
 struct Entity02078cc0 {
     char pad0[0x44];

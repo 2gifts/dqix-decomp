@@ -10,7 +10,7 @@ int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 extern "C" void __clear(void* buf, int len);
 
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 
 struct Obj53dfc;
 int GetField8FromField19c_02053dfc(struct Obj53dfc* obj);
@@ -55,7 +55,7 @@ extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
 
     int i;
     for (i = 0; i < 4; i++) {
-        if (TestBitAt0x34_020a35e0(*(unsigned char**)((char*)obj + regionalOffset3), (unsigned char)i)) {
+        if (TestBitAt0x34_020a35e0(*(unsigned char**)((char*)obj + regionalOffset3), i)) {
             GameObject* ci = GetCombatantWithFlag0x100_0200ff1c(battleStruct, i);
             if (ci != 0 && CheckField0x56bLowNibble((struct Obj02061bd8*)ci) == 0) {
                 arrC[i] = (float)(unsigned int)GetField8FromField19c_02053dfc((struct Obj53dfc*)ci);
@@ -68,7 +68,7 @@ extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
     if (CheckField0NonZero_0202b7d8((int*)p)) {
         countF = 0.0f;
         for (i = 0; i < 4; i++) {
-            if (TestBitAt0x34_020a35e0(*(unsigned char**)((char*)obj + regionalOffset3), (unsigned char)i) && TestBitBySignedByteIndex_0202c1c0(p, i)) {
+            if (TestBitAt0x34_020a35e0(*(unsigned char**)((char*)obj + regionalOffset3), i) && TestBitBySignedByteIndex_0202c1c0(p, i)) {
                 countF += 1.0f;
             }
         }
@@ -108,7 +108,7 @@ extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
 
     if (flag == 0) {
         for (flag = 0; flag < 4; flag++) {
-            if (TestBitAt0x34_020a35e0(*(unsigned char**)((char*)obj + regionalOffset3), (unsigned char)flag)) {
+            if (TestBitAt0x34_020a35e0(*(unsigned char**)((char*)obj + regionalOffset3), flag)) {
                 GetCombatantWithFlag0x100_0200ff1c(battleStruct, flag);
             }
         }

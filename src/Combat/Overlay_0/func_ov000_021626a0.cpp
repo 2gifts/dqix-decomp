@@ -34,7 +34,7 @@ int GetSubstructByte0x56_02049ee8(unsigned char* obj);
 void SetRemappedBitAt0xa26_020d76b8(struct RemapFlagOwner* obj, int index);
 void ClearFlagBit_020d76d8(unsigned char* base, int bit);
 int ClassifyField0x81fe_ov000_0215fc60(char* base);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 
 // USA: func_ov000_021626a0
 extern "C" ARM void func_ov000_021626a0(BattleWork* work, int index, int show) {
@@ -90,7 +90,7 @@ extern "C" ARM void func_ov000_021626a0(BattleWork* work, int index, int show) {
         if (obj == NULL) {
             continue;
         }
-        if (TestBitAt0x34_020a35e0(work->field_0x2a0, (unsigned char)j)) {
+        if (TestBitAt0x34_020a35e0(work->field_0x2a0, j)) {
             obj->obj3D_.MakeHidden();
             ClearFlagBit_020d76d8((unsigned char*)remap, j);
         }

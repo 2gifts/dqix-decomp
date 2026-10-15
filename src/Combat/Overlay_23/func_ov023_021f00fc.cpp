@@ -65,7 +65,7 @@ void GetGlobalField0x1c020421a0();
 int CheckField0NonZero_0202b7d8(int* unknown);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* unknown);
 int CollectCombatantsWithFlag0x1000_02010038(GameState* gameState, unsigned char* members);
-int TestBitAt0x34_020a35e0(unsigned char* info, unsigned int member);
+int TestBitAt0x34_020a35e0(unsigned char* info, unsigned char member);
 BattleResultMember_021f00fc* FindByByteAt118_021f0360(void* end, int member);
 void* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int member);
 unsigned int GetTableEntry138_021eea98(Obj021eea98* member);
@@ -102,7 +102,7 @@ extern "C" ARM int func_ov023_021f00fc(BattleScene_021f00fc* self)
         }
         for (int i = 0; i < 4; i++)
         {
-            if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, (unsigned char)i) && alive[i] != 0)
+            if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, i) && alive[i] != 0)
             {
                 BattleResultMember_021f00fc* member = FindByByteAt118_021f0360(_ZZ17GetGlobal021ffefcvE1s, i);
                 void* partyMember = GetCombatantWithFlag0x100_0200ff1c(gameState, i);
@@ -129,7 +129,7 @@ extern "C" ARM int func_ov023_021f00fc(BattleScene_021f00fc* self)
     int total = 0;
     for (int i = 0; i < 4; i++)
     {
-        if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, (unsigned char)i))
+        if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, i))
             total += self->experience_[i];
     }
     if (total > 0)

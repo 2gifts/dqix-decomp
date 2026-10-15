@@ -40,8 +40,8 @@ void* GetDataPtr02114e04_020d6c00(void);
 void ClearFlags020466f4(FlagWord020466f4* word, unsigned int mask);
 void OrBitsIntoField0_020466e4(unsigned int* obj, unsigned int mask);
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
-void SetBitInField0x34_020a35cc(unsigned char* obj, int index);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+void SetBitInField0x34_020a35cc(unsigned char* obj, unsigned char index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 extern "C" void func_020c9be0(void);
 void EnqueueEventTag127ForParty_021c3f70(unsigned short tag);
 

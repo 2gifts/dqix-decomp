@@ -29,7 +29,7 @@ void SetName0204a440(char* obj, const char* src);
 void SetStringField0234_0204a464(char* obj, const char* src);
 void SetField0x3b0Value_020100c4(GameState*, int);
 void RegisterCombatantSlot_0200fd38(GameState*, int, GameObject*);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 int CountSetBitsAt0x34_020a35f8(unsigned char*);
 void FormatEffectStats02072c9c(int, char*);
 struct Fields020407b4;
@@ -151,7 +151,7 @@ extern "C" ARM void func_ov026_021dc440(SafeAllocator* allocator, BattleWork* se
             }
         }
         for (int i = 0; i < 4; ++i) {
-            if (TestBitAt0x34_020a35e0(party, (unsigned char)i)) {
+            if (TestBitAt0x34_020a35e0(party, i)) {
                 GameObject* member = GetCombatantWithFlag0x100_0200ff1c(game, i);
                 if (member) {
                     char tmp[0x14];

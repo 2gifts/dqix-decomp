@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void* func_0202ae18(void);
@@ -22,7 +22,7 @@ extern "C" ARM int func_ov023_021f5150(void* p0, unsigned char* p1, int* p2, int
     int sum = 0;
     int i;
     for (i = 0; i < 4; i++) {
-        if (!TestBitAt0x34_020a35e0(p1, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0(p1, i)) continue;
         sum += p2[i];
         GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, i);
         if (c == 0) continue;

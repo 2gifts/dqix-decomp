@@ -61,7 +61,7 @@ struct Bytes02033b88;
 
 void GetField02163524(void*);
 extern "C" void func_ov000_0217feb0(void* obj, unsigned char value, int id);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 extern "C" void func_ov000_02174a50(void* obj, int combatantId);
 struct Combatant02164d74* GetCombatantWithFlag0x400_0200fea4(GameState* gs, int id);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov000_02164d74(struct Battle02164d74* battle) {
     }
     REG_POWCNT1 |= 0x8000;
     for (i = 0; i < 4; i++) {
-        if (!TestBitAt0x34_020a35e0((unsigned char*)battle->info, (unsigned char)i)) {
+        if (!TestBitAt0x34_020a35e0((unsigned char*)battle->info, i)) {
             func_ov000_02174a50(battle->sub3760, i);
             continue;
         }

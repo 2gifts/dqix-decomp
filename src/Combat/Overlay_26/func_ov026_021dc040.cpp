@@ -27,7 +27,7 @@ struct FormationStats {
 };
 Object3D* GetField0x21c(S0204a438*);
 int ClassifyField0x81fe_ov000_0215fc60(char*);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 void SetVecYFromValue02033874(Obj02033874*, int);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void SetField0x3b0Value_020100c4(GameState*, int);
@@ -65,7 +65,7 @@ extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* sel
             Vector3fix center = {};
             int groupCounts[2] = {};
             for (int index = 0; index < count; ++index) {
-                if (TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)members[index])) {
+                if (TestBitAt0x34_020a35e0((unsigned char*)party, members[index])) {
                     GameObject* member = GetCombatantWithFlag0x100_0200ff1c(game, members[index]);
                     if (member && member->obj3D_.pModel_) {
                         FormationStats* stats = (FormationStats*)member->baseStats_;
@@ -91,7 +91,7 @@ extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* sel
             Vector3fixMultiplyScalar(&center, (int)(4096.0f * (1.0f / (float)count)), &center);
             int offset = -center.x;
             for (int index = 0; index < count; ++index) {
-                if (TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)members[index])) {
+                if (TestBitAt0x34_020a35e0((unsigned char*)party, members[index])) {
                     GameObject* member = GetCombatantWithFlag0x100_0200ff1c(game, members[index]);
                     if (member) {
                         Vector3fix position = member->obj3D_.position_;
@@ -106,7 +106,7 @@ extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* sel
     if (self->animationState == 0 && !animation->HasAnimationStopped()) return 0;
     if (self->animationState != 6) {
         for (int index = 0; index < 4; ++index) {
-            if (TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)index)) {
+            if (TestBitAt0x34_020a35e0((unsigned char*)party, index)) {
                 GameObject* member = GetCombatantWithFlag0x100_0200ff1c(game, index);
                 if (member) {
                     member->obj3D_.RemoveAnimationPackageByID(3);

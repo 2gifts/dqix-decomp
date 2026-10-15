@@ -6,14 +6,14 @@ enum { bitsOffset = 0x2a0, modeOffset = 0x951 };
 #endif
 #include "GameState/GameState.h"
 
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 extern "C" void func_02049e00(void);
 
 // USA: func_ov000_02167dd8
 ARM void RunFlagPassAndSetMode02167dd8_02167dd8(unsigned char* obj) {
     GameState* battle = GameState::GetInstance();
     for (int i = 0; i < 4; i++) {
-        if (TestBitAt0x34_020a35e0(*(unsigned char**)(obj + bitsOffset), (unsigned char)i)) {
+        if (TestBitAt0x34_020a35e0(*(unsigned char**)(obj + bitsOffset), i)) {
             if (battle->GetCombatantByIndex(i)) func_02049e00();
         }
     }

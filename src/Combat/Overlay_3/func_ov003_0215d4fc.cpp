@@ -68,7 +68,7 @@ extern "C" void func_0205e944(void *, int);
 int IsBrightnessTransitionActive(GameResources*);
 struct Actor0209c20c;
 void InitActorContext0209c20c(Actor0209c20c*);
-void ResetAndDispatchActorContext0209c6d8(void *, short);
+void ResetAndDispatchActorContext0209c6d8(void*, int);
 void StoreInFirstEmptySlot_020e3368(unsigned char *, unsigned char);
 struct Container020e34bc;
 int GetEntryStatusForKey020e34bc(Container020e34bc*, int);

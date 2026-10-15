@@ -49,7 +49,7 @@ void InitState60_021aa16c(Obj021aa16c*);
 struct HeadList020469f8;
 struct HeadNode020469f8;
 void PrependNodeToHead(HeadList020469f8*, HeadNode020469f8*);
-void Something_021a6b9c(int, unsigned char);
+void Something_021a6b9c(void*, int);
 void * GetStatFieldPointer02064904(void*, int, unsigned int);
 extern "C" void func_ov017_021a5568(void *node);
 void SetBytesAt20And21_021a55a4(unsigned char*, unsigned char, unsigned char);
@@ -118,7 +118,7 @@ struct CmdMsg64 { unsigned short cmd, p1, p2, p3, p4, p5; unsigned short rest[8]
 struct FlagsField0x2e { unsigned short pad0x2e_lo : 4; unsigned short flagsHi : 12; };
 
 extern "C" void func_020732cc(int p1);
-void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a, unsigned short b);
+void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned char a, unsigned short b);
 void EnqueueEventTagB5_021d1dc0(unsigned short, int, int*, int, int);
 extern AllocatorUnion data_02114e20;
 void *AllocateAligned4_02012d88(AllocatorUnion *alloc, unsigned int size);
@@ -926,7 +926,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     }
     case 0xb9: {
         void *base = func_ov017_0218b5b0();
-        Something_021a6b9c((int)base, 0);
+        Something_021a6b9c(base, 0);
         return 1;
     }
     case 0xba:
@@ -1288,7 +1288,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             void *p0 = func_02012fe4();
             *(short *)((char *)p0 + 0x2700 + REGION_VALUE(0xf4, 0xb4)) = p1;
             if (CheckField0NonZero_0202b7d8((int *)ctx)) {
-                SetHalfFieldsAndEnqueueIfActive_021d1c2c((unsigned char)p1, 0);
+                SetHalfFieldsAndEnqueueIfActive_021d1c2c(p1, 0);
                 EnqueueEventTagB5_021d1dc0((unsigned short)p1, 0, (int *)&d8Local, 0, 0);
             }
         }

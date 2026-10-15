@@ -50,7 +50,7 @@ void SetSubstructByte0x56_02049f28(unsigned char*);
 void ComputeAngleHeightDistance0202ea4c(Obj0202ea4c*);
 void UpdateEntry0216d50c(void*);
 int GetField0x3acValue_020100a8(GameState*);
-void ResetAndDispatchActorContext0209c6d8(void*, short);
+void ResetAndDispatchActorContext0209c6d8(void*, int);
 void DispatchAndSetTreasureMapUnknownBit_020117cc(char*, int);
 void ScaleOrResetCombatants_021ed988(char*, int);
 MoveName* SearchBothTables02079e2c(char*, int);

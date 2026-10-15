@@ -53,7 +53,7 @@ Node021600f8* GetNodeAtIndex021600f8(List021600f8* list, int index);
 void ResetStruct_021e3158(struct Reset021e3158* p);
 void InitStruct02078484(struct InitStruct02078484Struct* p);
 int FindNodeAndProcess02057fb4(void*, int, int);
-void ClearCombatantSlotIfValidId02057db8(int, int);
+void ClearCombatantSlotIfValidId02057db8(void*, int);
 extern "C" void* func_02057924(void);
 
 extern struct Reset021e3158 data_ov025_021ef9a8;
@@ -112,7 +112,7 @@ extern "C" ARM int func_ov025_021e4624(struct Param021e4624* p, void* slot) {
         if (dist >= range) {
             return 0;
         }
-        ClearCombatantSlotIfValidId02057db8((int)list, data_ov025_021ef988.objectId);
+        ClearCombatantSlotIfValidId02057db8(list, data_ov025_021ef988.objectId);
         ResetStruct_021e3158(&data_ov025_021ef9a8);
         return 1;
     }

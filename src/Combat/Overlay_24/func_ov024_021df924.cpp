@@ -94,7 +94,7 @@ void* GetActiveCombatWork_ov000_02160130();
 char* GetOffsetPtr02160f08(void* work);
 void* ZeroInitReturn020de824(void* obj);
 void InitStruct0207cbe8(char* obj);
-void SetShortFields0x8e4aTo0x8e4e_ov000_0215fa70(void*, int, int, int);
+void SetShortFields0x8e4aTo0x8e4e_ov000_0215fa70(void*, short, short, short);
 extern "C" int func_0207ccf0(void* buf, int a, int b, int c, int d, int e, int f);
 int CopyIndexedRegion0x75f0_020ac020(void* unused, short* indices, int* dest, int count);
 extern "C" void func_020abe84(void* unused, short* indices, Counts021df924* values, int count);
@@ -171,7 +171,7 @@ extern "C" ARM void* func_ov024_021df924(Action021df924* self, short id, int tar
             InitStruct0207cbe8((char*)&loader);
             if (found) {
                 self->message->id = resultID;
-                SetShortFields0x8e4aTo0x8e4e_ov000_0215fa70(self->world, (short)entryID, (short)combatantKey, (short)resultID);
+                SetShortFields0x8e4aTo0x8e4e_ov000_0215fa70(self->world, entryID, combatantKey, resultID);
                 loader.source = special;
             } else {
                 loader.source = normal;

@@ -5,7 +5,7 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 
 int GetFieldAt0x150_02053c6c(unsigned char* obj);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 struct S_10088;
 int IsFlag10088Set_02010088(struct S_10088* obj);
 struct AddEntryList_021f6a1c;

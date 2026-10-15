@@ -12,7 +12,7 @@ struct S02163c80 { char pad[kBitsOffset]; unsigned char* bitsPtr; };
 
 struct Obj02086b98;
 struct S_10088;
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 int AreListedCombatantsBit0Set(struct Obj02086b98* o);
 int IsFlag10088Set_02010088(struct S_10088* obj);
 

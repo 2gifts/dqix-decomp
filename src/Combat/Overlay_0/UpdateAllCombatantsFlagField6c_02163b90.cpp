@@ -10,7 +10,7 @@
 
 struct S02163b90 { char pad[REGION_OFFSET_0]; unsigned char* bitsPtr; };
 
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 void SetSubstructByte0x56_02049f28(unsigned char* obj);
 void ClearSubstructByte0x56_02049f3c(unsigned char* obj);
 

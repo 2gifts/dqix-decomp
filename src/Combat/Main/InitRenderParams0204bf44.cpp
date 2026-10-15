@@ -39,7 +39,7 @@ struct RenderParams0204bf44 {
 };
 
 // USA: func_0204bf44
-ARM void InitRenderParams0204bf44(RenderParams0204bf44* d, int arg1, RenderSource0204bf44* s, unsigned int) {
+ARM void InitRenderParams0204bf44(RenderParams0204bf44* d, void* arg1, RenderSource0204bf44* s, unsigned int) {
     d->src = s;
     d->p4 = (char*)s + d->src->o24;
     d->p8 = (char*)s + d->src->o28;

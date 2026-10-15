@@ -49,7 +49,7 @@ extern "C" void func_020a818c(void* cont, SafeAllocator* alloc);
 extern "C" void func_020a8304(void* cont);
 Entry020a83fc* FindEntryById020a83fc(Container020a83fc* cont, int id);
 extern "C" void func_ov017_021d1a18(short a, short b, int c, int d);
-void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a, unsigned short b);
+void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned char a, unsigned short b);
 void InitStruct02070378(char* obj);
 void InitAndResetHeader_0219e310(unsigned char* node, int v);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);

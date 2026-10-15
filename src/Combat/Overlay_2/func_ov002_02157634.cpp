@@ -93,7 +93,7 @@ struct StateArray {
 struct Element02157634* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 void* SearchBothTables02079e2c(char* p, int key);
 int IsIdInSpecialSet0201b868(void* p, int id);
-void Something_021a6b9c(int a, unsigned char b);
+void Something_021a6b9c(void* a, int b);
 void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
 unsigned char GetField0x397cValue_020100b0(GameState* gs);
 void* GetPtrField0x2a04_02010828(GameState* gs);
@@ -149,7 +149,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
         case 0x56f0:
             if (func_0202c508(check) != 0) {
                 if (IsIdInSpecialSet0201b868(obj, id) != 0) {
-                    Something_021a6b9c((int)func_ov017_0218b5b0(), 1);
+                    Something_021a6b9c(func_ov017_0218b5b0(), 1);
                     p->msgId = 0x7530;
                     p->msgId2 = -1;
                     p->nextState = 0x2b;

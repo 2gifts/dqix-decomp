@@ -144,7 +144,7 @@ PartyData02176634* GetFieldAt0x150_02053c6c(unsigned char*);
 struct Outer_02054000;
 Item02176634* GetActiveSub_02054000(Outer_02054000*);
 void DispatchIfCountPositive020dcf7c(int, void*);
-void ResetAndDispatchActorContext0209c6d8(void*, short);
+void ResetAndDispatchActorContext0209c6d8(void*, int);
 extern "C" void func_0207c378(char*, short, int, int);
 extern "C" void func_02052d7c(Combatant02176634*, int, short);
 struct KeyedList0207c484;

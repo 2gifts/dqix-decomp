@@ -4,7 +4,7 @@
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 
 struct ShortPair0xba0xbc;
-extern "C" void _Z29SetFields0xbaAnd0xbc_02032fd0P17ShortPair0xba0xbcss(struct ShortPair0xba0xbc* obj, short a, unsigned short b);
+void SetFields0xbaAnd0xbc_02032fd0(ShortPair0xba0xbc*, short, unsigned short);
 
 struct S021e7afc { char pad[8]; unsigned short field8; short fieldA; unsigned short fieldC; };
 
@@ -17,7 +17,7 @@ extern "C" ARM int func_ov025_021e7afc(struct S021e7afc* obj, int b, int unused,
     for (i = 0; i < count; i++) {
         GameObject* combatant = battle->GetMaybeWanderingMonsterByIndex(ids[i]);
         if (combatant) {
-            _Z29SetFields0xbaAnd0xbc_02032fd0P17ShortPair0xba0xbcss((struct ShortPair0xba0xbc*)combatant, obj->fieldA, obj->fieldC);
+            SetFields0xbaAnd0xbc_02032fd0((struct ShortPair0xba0xbc*)combatant, obj->fieldA, obj->fieldC);
         }
     }
     return 1;

@@ -98,7 +98,7 @@ unsigned char CopyOutRegion0x571d_020114ec(char*, void*);
 void* GetActiveCombatWork_ov000_02160130();
 void* GetOffsetPtr02160f08(void*);
 void* FindSlotById_021dae60(Container_021dae60*, int);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 char* InitAndClearBuffer_021d8a78(void*);
 
 extern signed char data_ov026_021de6a6[];

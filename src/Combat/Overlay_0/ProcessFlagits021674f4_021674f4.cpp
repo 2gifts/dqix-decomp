@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 struct ArrayContainsByteStruct;
 int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct* s, int val);
 int GetFieldAt0x150_02053c6c(unsigned char* obj);
@@ -18,7 +18,7 @@ ARM void ProcessFlagits021674f4_021674f4(unsigned char* obj, int skipArrayCheck)
 #endif
     unsigned char* bits = *(unsigned char**)((char*)*(void**)(obj + randomOffset) + 0x8000 + 0xe18);
     for (int i = 0; i < 4; i++) {
-        if (!TestBitAt0x34_020a35e0(bits, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0(bits, i)) continue;
         if (skipArrayCheck == 0) {
             if (!ArrayContainsByte_02086ef0(base, i)) continue;
         }

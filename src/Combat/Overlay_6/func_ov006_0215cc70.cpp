@@ -64,7 +64,8 @@ Entry0215cc70* MergeIntoBuffers_0215fd60(void*, short*, unsigned char*, int);
 extern "C" int func_ov006_02153f24(void* table, int id);
 struct Obj02159094;
 void ExpireStatusSlot02159094(Obj02159094*);
-extern "C" void _Z13Func_0215a33cP11Obj0215a33c(Obj0215cc70* self, int critical);
+struct Obj0215a33c;
+void Func_0215a33c(Obj0215a33c*, int);
 extern "C" int func_ov006_0215a384(Obj0215cc70* self, int critical);
 extern "C" void func_ov006_0215fe34(Obj0215cc70* self, void* list);
 extern "C" int func_ov006_0215fecc(Obj0215cc70* self);
@@ -136,7 +137,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             self->messageTimer = 0;
         }
     } else if (self->state == 1) {
-        _Z13Func_0215a33cP11Obj0215a33c(self, 0);
+        Func_0215a33c((Obj0215a33c*)self, 0);
         self->state++;
     } else if (self->state == 2) {
         if (self->taskId == -1) {
@@ -184,7 +185,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
                 if (NextRandomMax((Random*)GetBTRandom(), 10000) / 100 < self->chance) {
                     self->flags |= 0x40;
                 }
-                _Z13Func_0215a33cP11Obj0215a33c(self, self->IsCritical());
+                Func_0215a33c((Obj0215a33c*)self, self->IsCritical());
             } else {
                 SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0x10);
                 SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0x11);

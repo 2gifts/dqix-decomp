@@ -16,7 +16,7 @@ void ApplyCombatantEffectByIndex020730e0(int id, int index);
 extern "C" int NSBXX_Model_GetMaterialPolygonID(NSBXXInternalModel* model, unsigned int materialIndex);
 int GetField6b0_021b8470(void* obj);
 extern "C" unsigned char* func_ov017_021b8478(void* obj);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 
 struct Struct_203dafc;
 void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
@@ -184,7 +184,7 @@ extern "C" ARM int func_ov017_021b3e14(struct LoadWork021b3e14* self) {
     world = GetField6b0_021b8470(p3718);
     unsigned char* bits = func_ov017_021b8478(p3718);
     if (((unsigned char*)p3718)[2] != 0 && bits != NULL) {
-        if (TestBitAt0x34_020a35e0(bits, (unsigned char)self->id)) {
+        if (TestBitAt0x34_020a35e0(bits, self->id)) {
             hasScript = 1;
         }
     }

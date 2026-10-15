@@ -41,7 +41,7 @@ int CountActiveEntries(ActiveEntry02046900*);
 void InitStruct0205a444(char*);
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 extern "C" void func_0205a528(TransitionList0208cfcc*, void*, int, SafeAllocator*);
-void WrapAddByteField0x22_0205aed0(int, char*, unsigned int, int);
+void WrapAddByteField0x22_0205aed0(void*, char*, unsigned int, int);
 void SetBitfieldStoreBytes0205af38(int, char*, int, int);
 int IsSubBrightnessTransitionActive(GameResources*);
 void SetForwardAndStore0205eb54(void*, int, int);
@@ -94,7 +94,7 @@ extern "C" ARM void func_0208cfcc(Obj0208bf28* obj) {
                 void* entry = FindRecordByIndex((Rec020467f0*)file, i, &record, &size);
                 func_0205a528(&obj->list, entry, size, &owner->allocator);
             }
-            WrapAddByteField0x22_0205aed0((int)&obj->list, (char*)obj->entries, 3, 64);
+            WrapAddByteField0x22_0205aed0(&obj->list, (char*)obj->entries, 3, 64);
             loader->RemoveTask(obj->task);
             obj->task = -1;
             obj->flags |= 4;

@@ -19,7 +19,7 @@ void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 struct Container020e0310;
 void* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov003_02159250(void*, void*);
-void AppendFieldTwice_02159290(void*, int, int);
+void AppendFieldTwice_02159290(void*, unsigned short, int);
 struct Obj0205dee8;
 void SetFieldB0AndUpdate0205dee8(Obj0205dee8*, int);
 void ResetAndApply0215be20(void*);
@@ -35,7 +35,7 @@ void InitObjFromCombatantId020e4bf4(void*, int);
 struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" int func_ov003_0215bf18(void*, int);
-int AddCappedFieldF6c_0215b580(int, int);
+int AddCappedFieldF6c_0215b580(void*, int);
 struct Struct0209c830;
 void SetValueAndActivate0209c830(Struct0209c830*, int);
 int IsAnimationActive0209ca2c(void*);
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
         if (r == -2) {
             func_ov003_0215c01c(self, 1, 0);
             memset(*(void**)(s + 0x7c), 0, kRegion960);
-            AppendFieldTwice_02159290(self, (unsigned short)0x424, 0x42e);
+            AppendFieldTwice_02159290(self, 0x424, 0x42e);
             func_ov003_02159250(self, *(void**)(s + 0x7c));
             *(unsigned char*)(s + 0x580) = 6;
         } else if (r >= 0) {
@@ -150,7 +150,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                 StoreInArray0x8b0_020465c0((StoreStruct*)g, 0, *(int*)(s + 0x5ac));
                 SetByteInRange_020465f0(g, 0, 0);
                 memset(*(void**)(s + 0x7c), 0, kRegion960);
-                AppendFieldTwice_02159290(self, (unsigned short)0x425, 0x42e);
+                AppendFieldTwice_02159290(self, 0x425, 0x42e);
                 func_ov003_02159250(self, *(void**)(s + 0x7c));
                 *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
             } else {
@@ -160,7 +160,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                 *(void**)(g + 0x10) = &nb;
                 SetIndexedName02046574((Obj02046574*)g, 0, *(char**)(s + 0x5a4));
                 memset(*(void**)(s + 0x7c), 0, kRegion960);
-                AppendFieldTwice_02159290(self, (unsigned short)(p2 + 2), 0x42e);
+                AppendFieldTwice_02159290(self, (p2 + 2), 0x42e);
                 func_ov003_02159250(self, *(void**)(s + 0x7c));
                 *(unsigned char*)(s + 0x580) = 6;
             }
@@ -176,13 +176,13 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
         if (r == -1) return;
         if (r == -2 || r == 1) {
             memset(*(void**)(s + 0x7c), 0, kRegion960);
-            AppendFieldTwice_02159290(self, (unsigned short)0x426, 0x42e);
+            AppendFieldTwice_02159290(self, 0x426, 0x42e);
             func_ov003_02159250(self, *(void**)(s + 0x7c));
             *(unsigned char*)(s + 0x580) = 6;
         } else if (r == 0) {
-            if (AddCappedFieldF6c_0215b580((int)self, -*(int*)(s + 0x5ac)) == 0) {
+            if (AddCappedFieldF6c_0215b580(self, -*(int*)(s + 0x5ac)) == 0) {
                 memset(*(void**)(s + 0x7c), 0, kRegion960);
-                AppendFieldTwice_02159290(self, (unsigned short)0x427, 0x42e);
+                AppendFieldTwice_02159290(self, 0x427, 0x42e);
                 func_ov003_02159250(self, *(void**)(s + 0x7c));
                 *(unsigned char*)(s + 0x580) = 6;
             } else {

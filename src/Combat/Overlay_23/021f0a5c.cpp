@@ -77,7 +77,7 @@ struct StoreStruct;
 void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 void InitObjFromCombatantId020e4bf4(void*, int);
 extern "C" void func_0204500c(MessageController*, char*, int, int);
-void ResetAndDispatchActorContext0209c6d8(void*, short);
+void ResetAndDispatchActorContext0209c6d8(void*, int);
 extern "C" void func_ov017_021ce704(int);
 extern "C" void func_ov017_021cc730(int, int, int, int);
 extern "C" void func_ov017_021c9e00(int, int, int, int);

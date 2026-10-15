@@ -113,7 +113,7 @@ struct S_10088;
 int IsFlag10088Set_02010088(struct S_10088* obj);
 void ResetFields14And18KeepFlag0x4_0208902c(unsigned char* obj, int val);
 int CheckField0NonZero_0202b7d8(int* obj);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 int CollectSetBitIndicesAt0x34_020a3634(unsigned char* obj, short* outArray);
 
 struct ArrayContainsByteStruct {
@@ -269,7 +269,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
         int allFlagged = 1;
         int k;
         for (k = 0; k < 4; k++) {
-            if (TestBitAt0x34_020a35e0(*(unsigned char**)(work + kWorkConfig), (unsigned char)k)) {
+            if (TestBitAt0x34_020a35e0(*(unsigned char**)(work + kWorkConfig), k)) {
                 GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, k);
                 if (c != NULL) {
                     if (!IsFlag10088Set_02010088((struct S_10088*)c)) {
@@ -334,7 +334,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
     }
 
     for (int i = 0; i < 4; i++) {
-        if (TestBitAt0x34_020a35e0(*(unsigned char**)(work + kWorkConfig), (unsigned char)i)) {
+        if (TestBitAt0x34_020a35e0(*(unsigned char**)(work + kWorkConfig), i)) {
             GameObject* c = battle->GetPartyMemberByIndex(i);
             if (c != NULL) {
                 c->obj3D_.MakeVisible();
@@ -493,7 +493,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
         capacity -= size;
 
         for (int i = 0; i < 4; i++) {
-            if (TestBitAt0x34_020a35e0(*(unsigned char**)(work + kWorkConfig), (unsigned char)i)) {
+            if (TestBitAt0x34_020a35e0(*(unsigned char**)(work + kWorkConfig), i)) {
                 GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, i);
                 if (c != NULL) {
                     c->obj3D_.MakeVisible();

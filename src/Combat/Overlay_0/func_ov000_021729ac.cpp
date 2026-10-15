@@ -32,7 +32,7 @@ int CountActiveEntries(ActiveEntry02046900*);
 struct Rec020467f0;
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 extern "C" void func_0205a528(void* a, void* ptr, int val, void* d);
-void WrapAddByteField0x22_0205aed0(int, char*, unsigned int, int);
+void WrapAddByteField0x22_0205aed0(void*, char*, unsigned int, int);
 void SetBitfieldStoreBytes0205af38(int, char*, int, int);
 int* GetData02105254_0203b628();
 void SetupBankModeAndTransfer_0203b678(int* obj, int a, int b);
@@ -364,9 +364,9 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
             }
 
 #if defined(jpn)
-            WrapAddByteField0x22_0205aed0((int)self->records, self->f170, (unsigned short)count, 0x40);
+            WrapAddByteField0x22_0205aed0(self->records, self->f170, (unsigned short)count, 0x40);
 #else
-            WrapAddByteField0x22_0205aed0((int)self->records, self->f170, (unsigned short)count, 0x44);
+            WrapAddByteField0x22_0205aed0(self->records, self->f170, (unsigned short)count, 0x44);
 #endif
 
             SetBitfieldStoreBytes0205af38((int)self->records, self->f170 + 0x2a8, 1, 1);

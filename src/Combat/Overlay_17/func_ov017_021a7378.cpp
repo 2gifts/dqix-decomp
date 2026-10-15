@@ -105,7 +105,7 @@ void InitAndResetHeader_0219e310(unsigned char* obj, int flag);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 void InitAndAppendState61_021a65c4(void* scene, unsigned char kind, int arg);
 extern "C" void func_ov017_021baedc(TailNode020469b4* node, int flag);
-void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a, unsigned short b);
+void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned char a, unsigned short b);
 void EnqueueEventTagB5_021d1dc0(unsigned short, int, int*, int, int);
 void* GetGlobal02109418_02094d6c(void);
 EntryCounter* FindEntryById02096134(FindEntryById02096134Table* table, int id);

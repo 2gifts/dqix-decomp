@@ -19,7 +19,7 @@ struct Obj02159c24 {
 };
 
 // USA: func_ov005_02159c24
-ARM void InitEntryManagerAndAllocator02159c24(Obj02159c24* menu, int entriesAddress, int stateAddress) {
+ARM void InitEntryManagerAndAllocator02159c24(Obj02159c24* menu, void* entriesAddress, void* stateAddress) {
     menu->promptAllocator.Reset();
     menu->yesNo = (EntryManager020e2490*)menu->promptAllocator.Allocate(0x24);
     InitEntryManager020e2490(menu->yesNo, 0, 1, (void*)entriesAddress, &menu->promptAllocator, kEntryCount, 0x40);

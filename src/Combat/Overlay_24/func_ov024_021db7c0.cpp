@@ -8,7 +8,7 @@ struct Obj_021db7c0;
 struct Info_021db7c0;
 
 extern "C" unsigned long long func_ov024_021e4b14(struct Obj_021db7c0* obj, int a, int id, struct Info_021db7c0* info, int d);
-int CanAdjustStatStageBit3(StatStageStruct02087860*, int);
+int CanAdjustStatStageBit3(StatStageStruct02087860*, unsigned char);
 extern "C" int func_020878b4(struct StatStageStruct020878b4* p, int delta);
 void UpdateCombatantDefense(int unused, int combatantId);
 extern "C" void* func_ov000_0215e958(void* a0);
@@ -55,7 +55,7 @@ extern "C" ARM void* func_ov024_021db7c0(struct Obj_021db7c0* obj, short a, int 
     if (delta < 0) decrease = 1;
     if (flagArg) {
         res = func_ov024_021e4b14(obj, a, id, info, 1);
-        if (CanAdjustStatStageBit3((struct StatStageStruct02087860*)c->currentStats_, (unsigned char)decrease)) {
+        if (CanAdjustStatStageBit3((struct StatStageStruct02087860*)c->currentStats_, decrease)) {
             result = func_020878b4((struct StatStageStruct020878b4*)c->currentStats_, (signed char)delta);
             UpdateCombatantDefense((int)obj->field0x10, id);
             applied = 1;

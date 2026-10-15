@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 struct StatStageStruct02087c30;
-int CanAdjustStatStageBit15(struct StatStageStruct02087c30* p, int decrease);
+int CanAdjustStatStageBit15(StatStageStruct02087c30* p, unsigned char decrease);
 struct StatStageStruct02087c84;
 int SetStatStageBit15(struct StatStageStruct02087c84* p, int delta);
 void UpdateCombatantMagicalMending(int unused, int combatantId);
@@ -37,7 +37,7 @@ extern "C" ARM void* func_ov024_021dee84(struct Obj_021dee84* obj, int unused, i
 		if (stage < -2) stage = -2;
 		if (stage > 2) stage = 2;
 		if (stage < 0) decrease = 1;
-		if (CanAdjustStatStageBit15((struct StatStageStruct02087c30*)c->currentStats_, (unsigned char)decrease)) {
+		if (CanAdjustStatStageBit15((struct StatStageStruct02087c30*)c->currentStats_, decrease)) {
 			result = SetStatStageBit15((struct StatStageStruct02087c84*)c->currentStats_, (signed char)stage);
 			UpdateCombatantMagicalMending((int)obj->field0x10, id);
 			obj->field0x14++;

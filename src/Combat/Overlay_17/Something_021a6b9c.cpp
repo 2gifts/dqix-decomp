@@ -13,7 +13,7 @@ static const int kList=0x6fc, kNode=0xb90, kFirst=0x44ae, kSecond=0x44b0;
 #endif
 
 // USA: func_ov017_021a6b9c
-ARM void Something_021a6b9c(int unused0, unsigned char byteVal) {
+ARM void Something_021a6b9c(void* unused0, int byteVal) {
     unsigned char* base = (unsigned char*)func_ov017_0218b5b0();
     unsigned char* p2 = *(unsigned char**)(base + 0x3000 + kList);
     unsigned char* p1 = *(unsigned char**)(base + 0x3000 + kNode);

@@ -65,7 +65,7 @@ void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 void SetSubBg0Control0208c9cc(int, int, int, int, int);
 int CountActiveEntries(ActiveEntry02046900*);
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
-void WrapAddByteField0x22_0205aed0(int, char*, unsigned int, int);
+void WrapAddByteField0x22_0205aed0(void*, char*, unsigned int, int);
 extern "C" void func_0204b5b4(void*, int);
 extern "C" int func_0205a528(void*, void*, int, int);
 extern "C" void func_020dfec0(void*, SafeAllocator*, void*, unsigned int);
@@ -139,7 +139,7 @@ extern "C" ARM void func_0208cb08(Object_0208cb08* object) {
             void* data = FindRecordByIndex((Rec020467f0*)file, index, &record, &size);
             func_0205a528(object->resource, data, size, (int)&arena->resourceAllocator);
         }
-        WrapAddByteField0x22_0205aed0((int)object->resource, object->filename, 3, 0x40);
+        WrapAddByteField0x22_0205aed0(object->resource, object->filename, 3, 0x40);
         loader->RemoveTask(object->taskId);
         object->taskId = -1;
         ++object->state;

@@ -158,7 +158,8 @@ void ClearFlag40_02157184(ClearFlag40_02157184Struct* pot);
 void ClearField44IfSet_02158c28(StructC28* self);
 extern "C" void func_ov006_02159db0(AlchemyMenu* self);
 extern "C" signed char func_ov006_02159e50(AlchemyMenu* self);
-extern "C" void _Z13Func_0215a33cP11Obj0215a33c(AlchemyMenu* self, int great);
+struct Obj0215a33c;
+void Func_0215a33c(Obj0215a33c*, int);
 extern "C" unsigned char func_ov006_0215a384(AlchemyMenu* self, int great);
 extern "C" void func_ov006_0215fe34(AlchemyMenu* self, void* result);
 extern "C" unsigned char func_ov006_0215fecc(AlchemyMenu* self);
@@ -305,7 +306,7 @@ extern "C" ARM void func_ov006_0215dee8(AlchemyMenu* self) {
         {
             if (choice != 1)
                 return;
-            _Z13Func_0215a33cP11Obj0215a33c(self, 0);
+            Func_0215a33c((Obj0215a33c*)self, 0);
             self->step_++;
             return;
         }

@@ -170,7 +170,7 @@ extern "C" Actor* _ZN9GameState14GetProtagonistEv(int gs);
 Actor* FindCombatantByField16a_021a278c(void*, int);
 extern "C" int _ZN9GameState20GetUnknownGameObjectEv(int gs);
 extern "C" Actor* _ZN9GameState21GetPartyMemberByIndexEi(int gs, int idx);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 int GetByte0x26c_02039d7c(char*);
 struct Obj02039d84;
 void ResetObjectState02039d84(Obj02039d84*);
@@ -263,7 +263,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
         *reg = (*reg & ~0x1f00) | ((planes & ~0x10) << 8);
     }
     for (int i = 0; i < 4; i++) {
-        if (!TestBitAt0x34_020a35e0((unsigned char*)c->info, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0((unsigned char*)c->info, i)) continue;
         Actor* m = _ZN9GameState21GetPartyMemberByIndexEi(gs, i);
         if (!m) continue;
         if (GetByte0x26c_02039d7c((char*)m)) {
@@ -409,7 +409,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
         }
     }
     for (int i = 0; i < 4; i++) {
-        if (!TestBitAt0x34_020a35e0((unsigned char*)c->info, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0((unsigned char*)c->info, i)) continue;
         Actor* m = _ZN9GameState21GetPartyMemberByIndexEi(gs, i);
         if (!m) continue;
         m->savedPos = m->pos;

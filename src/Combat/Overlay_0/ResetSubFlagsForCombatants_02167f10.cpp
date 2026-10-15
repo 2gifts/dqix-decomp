@@ -9,7 +9,7 @@ enum { bitsOffset = 0x2a0, modeOffset = 0x5951 };
 struct Obj02049e88;
 void ResetSubFlags02049e88(struct Obj02049e88* obj);
 void ClearSubstructFlag0x4_02049ae4(unsigned char* obj);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 
 // USA: func_ov000_02167f10  (semantic: ResetSubFlagsForCombatants_02167f10)
 extern "C" ARM void func_ov000_02167f10(unsigned char* obj) {

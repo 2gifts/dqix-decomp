@@ -19,7 +19,7 @@ enum { kRegionValue34C0_3280 = 0x34c0 };
 void* GetGlobalField0x1c020421a0(void);
 void* GetDataPtr02114e04_020d6c00(void);
 extern "C" void* func_0202ae18(void);
-void AppendFieldTwice_02159290(void*, int, int);
+void AppendFieldTwice_02159290(void*, unsigned short, int);
 extern "C" void func_ov003_02159250(void*, void*);
 struct Struct_0205d81c;
 void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);

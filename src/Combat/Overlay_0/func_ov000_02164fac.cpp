@@ -21,7 +21,7 @@ void RunOverlayScript0216d1c4(int, StreamHeader*, int, int*);
 int CheckField0NonZero_0202b7d8(int* obj);
 void BlankFunction020d84f4(void);
 void* ResetObjectState02079a3c(void* obj);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 int CheckField0x56bLowNibble(Obj02061bd8* obj);
 void CopyInternalFields0207df50(Foo0207df50* p);
 void RestorePairTables0207df90(char* obj);
@@ -138,7 +138,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
         capacity -= size;
 
         for (int i = 0; i < 4; i++) {
-            if (!TestBitAt0x34_020a35e0(work->roster, (unsigned char)i)) {
+            if (!TestBitAt0x34_020a35e0(work->roster, i)) {
                 continue;
             }
             Combatant02164fac* c = (Combatant02164fac*)GetCombatantWithFlag0x100_0200ff1c(game, i);

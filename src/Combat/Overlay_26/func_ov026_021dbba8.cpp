@@ -38,7 +38,7 @@ struct BattleWork {
     SafeAllocator cmdAlloc;
 };
 
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 int SetByte0xbeShiftPrev(Bytes02033b88* p, int val);
 void SetField0x3b0Value_020100c4(GameState* gs, int value);
 void ClearCombatantSlot_0200fd48(GameState* gs, int id);
@@ -61,7 +61,7 @@ extern "C" ARM void func_ov026_021dbba8(BattleWork* self) {
     func_02057f00(func_02057924(), 0x1e);
 
     for (int i = 0; i < 4; i++) {
-        if (TestBitAt0x34_020a35e0((unsigned char*)self->party, (unsigned char)i)) {
+        if (TestBitAt0x34_020a35e0((unsigned char*)self->party, i)) {
             GameObject* member = GetCombatantWithFlag0x100_0200ff1c(gs, i);
             if (member != NULL) {
                 member->obj3D_.RemoveAnimationPackageByID(3);

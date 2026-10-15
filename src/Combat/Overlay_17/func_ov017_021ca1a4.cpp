@@ -13,7 +13,7 @@ extern "C" void* func_ov017_021b8468(void* obj);
 struct Combatant020A36A8;
 int MatchesActiveIndex020a36a8(struct Combatant020A36A8* obj);
 
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 
 struct Src021c6814 {
     unsigned char field0;

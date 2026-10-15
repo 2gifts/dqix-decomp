@@ -195,7 +195,7 @@ void AddClamped24BitFieldAt0x8_020a0330(S_a0330* records, unsigned int value);
 void AddClamped16BitFieldHighAt0x10_020a0110(S_a0110* time, unsigned int value);
 void AddClamped14BitFieldMidAt0xc_020a0388(S_a0388* records, unsigned int value);
 void CopyInBattleField0x7540_020ac494(void* records);
-void ResetAndDispatchActorContext0209c6d8(void* obj, short value);
+void ResetAndDispatchActorContext0209c6d8(void* obj, int value);
 void EnqueueEventTag162_021cfc74(unsigned char value);
 void ResetFields_021eefac(Reset_021eefac* end);
 int IsInRange0201b588(int zone);

@@ -53,7 +53,7 @@ void Foo0216377c(Struct0216377c* obj, unsigned char val);
 void EnqueueEventTag130_021cc050(unsigned short tag);
 
 extern "C" {
-int _Z22TestBitAt0x34_020a35e0Phj(PartyState* party, unsigned char bit);
+int _Z22TestBitAt0x34_020a35e0Phh(PartyState* party, unsigned char bit);
 void _Z23ClearBitAt0x34_020a367cPhi(PartyState* party, unsigned char bit);
 void _Z22ProcessEntries0207da94P13Entry0207da94i(void* entries, unsigned char member);
 void _Z23ClearByteAtPtr_02191b40v(GameResources* res, int member);
@@ -76,7 +76,7 @@ extern "C" ARM void func_ov026_021dbd1c(BattleWork* self, int member, int notify
     GameResources* res = func_ov017_0218b5b0();
     int wasMember = 0;
 
-    if (_Z22TestBitAt0x34_020a35e0Phj(party, member)) {
+    if (_Z22TestBitAt0x34_020a35e0Phh(party, member)) {
         wasMember = 1;
         self->turnFlag = 1;
     }

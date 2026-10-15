@@ -46,7 +46,7 @@ struct SelectedAction {
     unsigned short value;
 };
 struct ActionEntry { char pad0[0x16]; unsigned short value; };
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 extern "C" void func_ov000_02162c14(CombatActions*, int, SelectedAction*);
 extern "C" ActionEntry* func_ov000_02171d90(PartyAction*, int);
 int GetClampedArrayField0xd1c_ov000_021761c8(char*, int);
@@ -58,7 +58,7 @@ static inline int IsPartyMember(int index) { return index >= 0 && index <= 3; }
 extern "C" ARM void func_ov000_02169850(CombatActions* self) {
     GameState* game = GameState::GetInstance();
     for (int i = 0; i < 4; ++i) {
-        if (!TestBitAt0x34_020a35e0(self->state, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0(self->state, i)) continue;
         GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(game, i);
         if (!combatant) continue;
         ActionSummary* summary = GetField0x19cOrNull((S02053dc0*)combatant);

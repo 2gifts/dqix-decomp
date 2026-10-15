@@ -36,7 +36,7 @@ struct BattleWork {
 
 extern "C" int func_ov026_021d8a40();
 int IsField0Null_02046b08(void**);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 extern "C" void func_ov026_021dce34(int, BattleWork*, BattleState*, PartyState*, void*, void*, void*, void*, void*, void*, void*, void*);
 
 // USA: func_ov026_021dbe44

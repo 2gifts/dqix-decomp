@@ -3,7 +3,7 @@
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4*);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 extern "C" void* func_ov017_021b8478(void* obj);
 
 struct U16Field0x6_020375f0;

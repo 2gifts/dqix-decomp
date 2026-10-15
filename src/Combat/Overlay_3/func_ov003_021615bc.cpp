@@ -64,7 +64,7 @@ struct EntryManager020e2490;
 void InitEntryManager020e2490(EntryManager020e2490*, int, int, void*, SafeAllocator*, int, unsigned char);
 struct List0204b0e8;
 void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
-void WrapAddByteField0x22_0205aed0(int, char*, unsigned int, int);
+void WrapAddByteField0x22_0205aed0(void*, char*, unsigned int, int);
 struct Manager0207f7f0;
 struct Node0207f7f0;
 void InitNodeChain0207f7f0(Manager0207f7f0*, Node0207f7f0*, int);
@@ -378,7 +378,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
                 void* rec = FindRecordByIndex((Rec020467f0*)data, i, &out, &idx);
                 func_0205a528(self->x334, rec, idx, &self->a2a0);
             }
-            WrapAddByteField0x22_0205aed0((int)self->x334, (char*)self->p388, 0x19, 0x40);
+            WrapAddByteField0x22_0205aed0(self->x334, (char*)self->p388, 0x19, 0x40);
             loader->RemoveTask(self->taskId);
             self->taskId = -1;
             self->step = self->step + 1;

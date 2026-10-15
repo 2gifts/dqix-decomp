@@ -71,8 +71,8 @@ void* GetOffsetPtr02160f08(void* work);
 void* GetNodeAtIndex0215feb4(char* base, int threshold, int slot);
 struct Entry021e9d14* FindEntryById_021dafd0(char* obj, int id);
 struct Obj0203a588* GetData02104b6c_02039e70(void);
-extern "C" void _Z23QueuePopupEntry0203a48cP11Obj0203a48ctP15Vec3Int0203a48chii(
-    struct Obj0203a48c* obj, int id, Vector3fix* pos, int style, int field4, int field2);
+struct Vec3Int0203a48c;
+void QueuePopupEntry0203a48c(Obj0203a48c*, int, Vec3Int0203a48c*, int, int, int);
 extern "C" void* func_02057924(void);
 void InitStruct02078484(struct InitStruct02078484Struct* p);
 void FindNodeAndProcess02057fb4(void* list, int id, int a3);
@@ -108,7 +108,7 @@ extern "C" ARM void func_ov025_021e9d14(void) {
                 struct Obj0203a48c* popups = (struct Obj0203a48c*)GetData02104b6c_02039e70();
                 Vector3fix pos = actor->obj3D_.position_;
                 pos.y += actor->obj3D_.GetHeight();
-                _Z23QueuePopupEntry0203a48cP11Obj0203a48ctP15Vec3Int0203a48chii(popups, amount, &pos, 3, 0, 0);
+                QueuePopupEntry0203a48c(popups, amount, (Vec3Int0203a48c*)&pos, 3, 0, 0);
                 void* list = func_02057924();
                 struct InitStruct02078484Struct req;
                 InitStruct02078484(&req);

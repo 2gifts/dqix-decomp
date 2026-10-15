@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_ov024_021e8c48
-ARM int GetCodeForCategory_021e8c48(void* unused, int category) {
+ARM int GetCodeForCategory_021e8c48(void* unused, signed char category) {
 	switch (category) {
 		case -1:
 			return 0x36;

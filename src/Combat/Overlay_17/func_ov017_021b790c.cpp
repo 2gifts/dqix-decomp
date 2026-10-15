@@ -161,7 +161,7 @@ GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gs, int id);
 void ApplyFlag0x80ToBit0x1ClearFlag0x100_02054248(void* obj);
 unsigned char GetField0x5729Value_02010750(char* gs);
 void SetField0x5729Value_0201075c(char* gs, unsigned char value);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 extern "C" void func_ov017_021aa4cc(void* res, int flag);
 int LoadBattleBlock020ac4c0(void* dst);
 void AddClamped24BitFieldAt0x40_020a0810(S_a0810* s, unsigned int v);
@@ -282,7 +282,7 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
                 for (i = 0; i < 4; i++) {
                     GameObject* m = gs->GetPartyMemberByIndex(i);
                     if (m != NULL && !(**(int**)((char*)m + 0x130) & 1) &&
-                        TestBitAt0x34_020a35e0(self->info, (unsigned char)i) == 0) {
+                        TestBitAt0x34_020a35e0(self->info, i) == 0) {
                         SetField0x5729Value_0201075c((char*)gs, 0);
                     }
                 }

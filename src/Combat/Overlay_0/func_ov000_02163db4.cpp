@@ -14,7 +14,7 @@ extern "C" void func_020531f0(GameObject*);
 void SetCombatWorkFlags0x55f4_ov000_02160fa8(void*, int);
 int GetCombatWorkFlags0x55f4_ov000_02160fd4(void*, int);
 extern "C" int func_ov017_02195658(GameResources*);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 void EnqueueEventTag122_021c8b78(unsigned short);
 void ClearBitAt0x34_020a367c(unsigned char*, int);
 int GetField0x3acValue_020100a8(GameState*);

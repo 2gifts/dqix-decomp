@@ -103,7 +103,7 @@ void ResetTargetFlags02088474(void*, int, int);
 void ResetAndSetFlag0x2AndBits_02088560(unsigned char*);
 void ResetStateFields0208826c(unsigned char*);
 int CanAdjustField0x58_0208776c(void*, int);
-int CanAdjustStatStageBit3(StatStageStruct02087860*, int);
+int CanAdjustStatStageBit3(StatStageStruct02087860*, unsigned char);
 void UpdateCombatantAttack(int, int);
 void UpdateCombatantDefense(int, int);
 int SelectMessageByFlags_021e929c(Ctx_021e929c*, int, int);

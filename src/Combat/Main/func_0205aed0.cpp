@@ -1,6 +1,6 @@
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0205aed0
-void WrapAddByteField0x22_0205aed0(int a, char* b, unsigned int c, int d)
+void WrapAddByteField0x22_0205aed0(void* a, char* b, unsigned int c, int d)
 {
     if (b != 0) {
         unsigned short i = 0;

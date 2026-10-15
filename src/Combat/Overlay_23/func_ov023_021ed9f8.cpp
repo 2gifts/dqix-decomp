@@ -10,7 +10,7 @@ void ClearBitAt0x34_020a367c(unsigned char* obj, int index);
 struct Entry0207da94;
 void ProcessEntries0207da94(struct Entry0207da94* list, int idx);
 
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 
 extern "C" int func_ov017_021959b4(void);
 void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);

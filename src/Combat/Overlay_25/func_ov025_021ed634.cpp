@@ -123,7 +123,7 @@ void Clear12Bytes020e46c4(void* p);
 void DispatchIfCountPositive020dcf7c(int count, void* buf);
 unsigned char CopyOutRegion0x571d_020114ec(char*, void*);
 extern "C" void* func_ov017_021b8478(void* obj);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 char* GetFieldByKeyFromWork0x88_ov000_0216fcfc(void* work, int key);
 extern "C" unsigned int strlen(const char* s);
 extern "C" int sprintf(char* buf, const char* fmt, ...);
@@ -543,7 +543,7 @@ found_entry:
         char* ew = GetOffsetPtr02160f08(GetActiveCombatWork_ov000_02160130());
         for (int q = 0; q < n5; q++) {
             Entry021dafd0* e = (Entry021dafd0*)FindEntryById_021dafd0(ew, (unsigned char)out[q]);
-            if (e != 0 && TestBitAt0x34_020a35e0(tb, (unsigned char)out[q]) != 0) {
+            if (e != 0 && TestBitAt0x34_020a35e0(tb, out[q]) != 0) {
                 ++flaggedEntries;
                 if (e->v > 0) ++positiveFlaggedEntries;
             }

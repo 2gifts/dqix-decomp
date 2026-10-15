@@ -5,7 +5,7 @@
 struct S_10088;
 unsigned char CopyOutRegion0x571d_020114ec(char* obj, void* dst);
 int ClassifyField0x81fe_ov000_0215fc60(char* base);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject* combatant);
 int IsFlag10088Set_02010088(struct S_10088* obj);
 
@@ -40,7 +40,7 @@ extern "C" ARM int func_ov000_0215e9fc(char* obj, short* out, int max, unsigned 
     for (; i < n; i++) {
         id = ids[i];
         if (ClassifyField0x81fe_ov000_0215fc60(obj) != 0 && id != 0) continue;
-        if (!TestBitAt0x34_020a35e0(*(unsigned char**)(obj + 0x8e18), (unsigned char)id)) continue;
+        if (!TestBitAt0x34_020a35e0(*(unsigned char**)(obj + 0x8e18), id)) continue;
         c = GetCombatantWithFlag0x100_0200ff1c(gs, id);
         if (c == NULL) continue;
         if (IsFlag0x18Bit0x2000Set_ov000_02153c0c(c)) continue;

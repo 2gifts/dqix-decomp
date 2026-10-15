@@ -101,7 +101,7 @@ struct SkillIds_021f9030 {
 extern "C" void __clear(void* dst, int size);
 void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 int IsCombatantFlag2Mask8192_021e6798(GameObject* combatant);
 Command_021f9030* GetField0x19cOrNull(S02053dc0* p);
 Skill_021f9030* SearchBothTables02079e2c(char* table, int id);
@@ -160,7 +160,7 @@ extern "C" ARM void func_ov024_021f9030(Planner_021f9030* obj, Battle_021f9030* 
     for (i = 0; i < 4; i++) {
         GameObject* ally = GetCombatantWithFlag0x100_0200ff1c(gameState, i);
         if (ally == 0) continue;
-        if (!TestBitAt0x34_020a35e0(obj->owner->party, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0(obj->owner->party, i)) continue;
         if (IsCombatantFlag2Mask8192_021e6798(ally)) continue;
         if (*ally->status & 1) continue;
         if (ally->stats->flags18 & 0x800) {

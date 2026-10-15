@@ -99,7 +99,7 @@ extern "C" void func_02083e28(CombatantData02166e5c*, int);
 void SetBit0x954StoreIndex0x950_02083ca0(unsigned char*, int);
 void ClearTwoRegions02083c18(char*);
 void SetBitInArray0x910_02083b60(unsigned char*, int);
-void SetBitInField0x34_020a35cc(unsigned char*, int);
+void SetBitInField0x34_020a35cc(unsigned char*, unsigned char);
 struct Bytes02033b88;
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 struct Obj020397cc;

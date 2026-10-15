@@ -16,7 +16,7 @@ struct Action_021e3594 {
 struct Stats_021e3594 { char pad0[0x50]; unsigned char resistRate; };
 
 struct StatStageStruct02087860;
-int CanAdjustStatStageBit3(struct StatStageStruct02087860* p, int decrease);
+int CanAdjustStatStageBit3(StatStageStruct02087860* p, unsigned char decrease);
 struct StatStageStruct020878b4;
 extern "C" int func_020878b4(struct StatStageStruct020878b4* p, int delta);
 void UpdateCombatantDefense(int unused, int combatantId);
@@ -49,7 +49,7 @@ extern "C" ARM unsigned long long func_ov024_021e3594(struct Obj_021e3594* obj, 
 	}
 	int changed = 0;
 	int delta = 0;
-	if (CanAdjustStatStageBit3((struct StatStageStruct02087860*)c->currentStats_, (unsigned char)decrease)) {
+	if (CanAdjustStatStageBit3((struct StatStageStruct02087860*)c->currentStats_, decrease)) {
 		delta = func_020878b4((struct StatStageStruct020878b4*)c->currentStats_, (signed char)stage);
 		UpdateCombatantDefense((int)obj->field0x10, id);
 		changed = 1;

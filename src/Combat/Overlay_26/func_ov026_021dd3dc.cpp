@@ -42,7 +42,7 @@ extern "C" const Ids4 data_ov026_021de6d4;
 extern "C" SearchStruct* func_0202ae18();
 int ClassifyField0x81fe_ov000_0215fc60(char*);
 int CheckField0NonZero_0202b7d8(int*);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState*, int);
 SlotWork* FindSlotById_021dae60(Container_021dae60*, int);
 int TestBitBySignedByteIndex_0202c1c0(SearchStruct*, int);
@@ -74,10 +74,10 @@ extern "C" ARM int func_ov026_021dd3dc(BattleState* battle, PartyState* party, C
     if (ClassifyField0x81fe_ov000_0215fc60((char*)battle) != 0) {
         return 1;
     }
-    if (CheckField0NonZero_0202b7d8((int*)link) == 0 || TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)count)) {
+    if (CheckField0NonZero_0202b7d8((int*)link) == 0 || TestBitAt0x34_020a35e0((unsigned char*)party, count)) {
         result = 0;
         for (i = 0; i < 4; i++) {
-            if (!TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)i)) continue;
+            if (!TestBitAt0x34_020a35e0((unsigned char*)party, i)) continue;
             if (i != 0 && !GetCombatantWithFlag0x1000_0200ff58(gs, i)) continue;
             SlotWork* slot = FindSlotById_021dae60(list, i);
             if (!slot) continue;
@@ -88,7 +88,7 @@ extern "C" ARM int func_ov026_021dd3dc(BattleState* battle, PartyState* party, C
         }
         if (result == 0) {
             for (i = 0; i < 4; i++) {
-                if (!TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)i)) continue;
+                if (!TestBitAt0x34_020a35e0((unsigned char*)party, i)) continue;
                 if (i != 0 && !GetCombatantWithFlag0x1000_0200ff58(gs, i)) continue;
                 GameObject* c = gs->GetCombatantByIndex(i);
                 if (!c) continue;
@@ -103,7 +103,7 @@ extern "C" ARM int func_ov026_021dd3dc(BattleState* battle, PartyState* party, C
     }
     if (CheckField0NonZero_0202b7d8((int*)link)) {
         for (i = 1; i < 4; i++) {
-            if (!TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)i)) continue;
+            if (!TestBitAt0x34_020a35e0((unsigned char*)party, i)) continue;
             if (GetCombatantWithFlag0x1000_0200ff58(gs, i)) continue;
             GameObject* c = gs->GetCombatantByIndex(i);
             if (!c) continue;
@@ -135,14 +135,14 @@ extern "C" ARM int func_ov026_021dd3dc(BattleState* battle, PartyState* party, C
             int n = 0;
             int k;
             for (k = 0; k < 4; k++) {
-                if (!TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)k)) continue;
+                if (!TestBitAt0x34_020a35e0((unsigned char*)party, k)) continue;
                 if (TestBitBySignedByteIndex_0202c1c0(link, k)) {
                     cands.v[n] = k;
                     n++;
                 }
             }
             for (k = 0; k < 4; k++) {
-                if (!TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)k)) continue;
+                if (!TestBitAt0x34_020a35e0((unsigned char*)party, k)) continue;
                 GameObject* m = GetCombatantWithFlag0x1000_0200ff58(gs, k);
                 if (!m) continue;
                 if (TestBitBySignedByteIndex_0202c1c0(link, GetSignedByte0x2d0_020546a8(m))) {

@@ -16,7 +16,7 @@ struct StageParameters {
 };
 struct StatStageStruct02087860;
 struct StatStageStruct02087954;
-int CanAdjustStatStageBit3(StatStageStruct02087860*, int);
+int CanAdjustStatStageBit3(StatStageStruct02087860*, unsigned char);
 int CanAdjustStatStageBit6(StatStageStruct02087954*, int);
 extern "C" int func_020878b4(ModifiableCombatStats*, int);
 extern "C" int func_020879a8(ModifiableCombatStats*, int);
@@ -43,7 +43,7 @@ extern "C" ARM unsigned long long func_ov024_021e4910(StageAction* action, int u
     int result = 0;
     void* entry = func_ov000_0215e958(action->battle);
     if (!entry) return 0;
-    if (CanAdjustStatStageBit3((StatStageStruct02087860*)combatant->currentStats_, (unsigned char)decrease)) {
+    if (CanAdjustStatStageBit3((StatStageStruct02087860*)combatant->currentStats_, decrease)) {
         result = func_020878b4(combatant->currentStats_, (signed char)delta);
         UpdateCombatantDefense((int)action->battle, id);
         defenseChanged = 1;

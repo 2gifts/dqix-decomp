@@ -3,7 +3,7 @@
 #include "Combat/CombatantRecovery.h"
 
 extern "C" int func_020dc920(int a, int b, int c, int d);
-int TestFlagBit55dIfActive_0218b628(int bit);
+int TestFlagBit55dIfActive_0218b628(signed char bit);
 extern int data_020fdcb0[][8];
 
 struct Stat02159774 {
@@ -29,7 +29,7 @@ extern "C" ARM int func_ov002_02159774(char *self, int id, int check, int a, uns
     cur    = (float) e[0];
     max    = (float) e[2];
     if ((*(int *) (self + 0x247c) & 1) || *(int *) (self + 0x1bb8) == 4) {
-        if (TestFlagBit55dIfActive_0218b628((signed char) id)) {
+        if (TestFlagBit55dIfActive_0218b628(id)) {
             cur = (float) (int) c->combatFields_.savedState_130_->hp;
             max = (float) (int) c->baseStats_->primaryStats.maxHP;
         } else {

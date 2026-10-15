@@ -30,7 +30,7 @@ unsigned short GetField6b4_021b8480(void* obj);
 extern "C" unsigned char* func_ov017_021b8478(void* obj);
 int GetByteAtPtrOrZero_02191b58(void*, int);
 unsigned int GetBitsInField8_0203b534(unsigned int* obj, unsigned int mask);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 extern "C" void func_ov017_0218eafc(OvCtx0218e8c8* ov, int idx);
 int CheckFlag0x1ceBit2Set_02039d68(unsigned char* obj);
 extern "C" int func_02032fdc(void* obj, int a, int b);
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov017_0218e8c8(OvCtx0218e8c8* ov, int id, int mode) {
             if (id != c->obj3D_.GetField06()) continue;
         }
 
-        if (mask != NULL && TestBitAt0x34_020a35e0(mask, (unsigned char)i) == 0) continue;
+        if (mask != NULL && TestBitAt0x34_020a35e0(mask, i) == 0) continue;
 
         if (inRange && obj != NULL) {
             if (obj->obj3D_.unknown_2_ == 0x2347 || obj->obj3D_.unknown_2_ == 0x2348 ||

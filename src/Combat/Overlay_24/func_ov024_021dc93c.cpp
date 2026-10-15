@@ -10,7 +10,7 @@ int CheckField0x14FiveFlagsClear0208810c(unsigned char*);
 void SetFlag0x800000AndByte0x24_02088220(void*, int);
 int SetFlag0x800000AndCall02088208(void*, int);
 void ResetAndSetFlag0x1000000_02088150(void*);
-int GetCodeForCategory_021e8c48(void*, int);
+int GetCodeForCategory_021e8c48(void*, signed char);
 unsigned short SelectByIndexRange0to3_021da644(int,int,int);
 extern "C" void* func_ov000_0215e958(void*);
 void AddEntryAndIncrementCount0215a88c(void*,void*,int);
@@ -92,7 +92,7 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
    for(;count>0;count--){
     int result=SetFlag0x800000AndCall02088208(target->currentStats_, (int)GetCtx(obj));
     effects=0;
-    message=GetCodeForCategory_021e8c48(obj, (signed char)result);
+    message=GetCodeForCategory_021e8c48(obj, result);
     void* entry=func_ov000_0215e958(obj->context);
     if(!entry)return 0;
     if(result>0){

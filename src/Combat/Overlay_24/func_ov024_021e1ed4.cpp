@@ -5,9 +5,9 @@
 struct StatStageStruct02087860;
 struct StatStageStruct02087e18;
 struct Obj02087e6c;
-int CanAdjustStatStageBit3(StatStageStruct02087860* p, int decrease);
+int CanAdjustStatStageBit3(StatStageStruct02087860* p, unsigned char decrease);
 extern "C" int func_020878b4(void* stats, int delta);
-int CanAdjustStatStageBit21(StatStageStruct02087e18* p, int decrease);
+int CanAdjustStatStageBit21(StatStageStruct02087e18* p, unsigned char decrease);
 int ClampAndUpdateField0x58(Obj02087e6c* obj, int delta);
 int CanAdjustField0x58_0208776c(void* stats, int dir);
 extern "C" int func_020877c0(void* stats, int delta);

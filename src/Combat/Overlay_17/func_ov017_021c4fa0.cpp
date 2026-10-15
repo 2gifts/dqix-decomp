@@ -21,7 +21,7 @@ struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key)
 
 struct Obj_021bd3a4;
 int HasFlag3orFlag2And9a_021bd3a4(Obj_021bd3a4* obj);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 void* GetField6b0_021b8470(void* obj);
 int GetField6acThenCall_021b8b94(void* obj);
 

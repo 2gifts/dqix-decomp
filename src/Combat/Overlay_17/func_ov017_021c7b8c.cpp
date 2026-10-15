@@ -29,7 +29,7 @@ struct EventInfo021c7b8c {
 };
 extern "C" void* func_ov017_021b8478(void*);
 void* GetData02100044_0202ae24();
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 extern "C" void func_0205e330(void*, StatMessage021c7b8c*, int);
 
 // USA: func_ov017_021c7b8c

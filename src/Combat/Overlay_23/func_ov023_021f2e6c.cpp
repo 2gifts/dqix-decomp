@@ -55,11 +55,11 @@ extern "C" Triple021f2e6c func_ov023_021ed804(Triple021f2e6c t, void* p);
 extern "C" void _Z26SetWords_021edf38_021edf38PvP13Words021edf38(Triple021f2e6c* dst, const Triple021f2e6c& src);
 extern "C" void __clear(void* dst, int n);
 void DispatchIfCountPositive020dcf7c(int count, void* buf);
-void ResetAndDispatchActorContext0209c6d8(void* actor, short arg);
+void ResetAndDispatchActorContext0209c6d8(void* actor, int arg);
 #if !defined(jpn)
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
 #endif
-void SetShortFields0x8e4aTo0x8e4e_ov000_0215fa70(void* obj, int a, int b, int c);
+void SetShortFields0x8e4aTo0x8e4e_ov000_0215fa70(void* obj, short a, short b, short c);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
 int AreAllListedCombatantsFlagged_021ed92c(void);

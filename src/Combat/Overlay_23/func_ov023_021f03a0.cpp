@@ -100,7 +100,7 @@ extern "C" int func_ov000_02153e40(void*, short*, int, int);
 extern "C" void func_02048cf0(GameObject*, int);
 extern "C" void func_ov000_0216e3c4(void*);
 unsigned char* GetField02163524(void*);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 void ResetCombatantSlot020d7334(unsigned char*, int);
 int IsFlag10088Set_02010088(S_10088*);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
@@ -169,7 +169,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
         unsigned char* field = GetField02163524(work);
         GameState* partyGame = GameState::GetInstance();
         for (int i = 0; i < 4; i++) {
-            if (TestBitAt0x34_020a35e0((unsigned char*)work->info, (unsigned char)i)) {
+            if (TestBitAt0x34_020a35e0((unsigned char*)work->info, i)) {
                 if (field) ResetCombatantSlot020d7334(field, i);
                 GameObject* actor = partyGame->GetCombatantByIndex(i);
                 if (actor && !IsFlag10088Set_02010088((S_10088*)actor)) {
@@ -231,7 +231,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
             for (int i = 0; i < 4; i++) {
                 int id = GetCheckedSignedByte_02011518(game, (unsigned char)i);
                 GameObject* actor = GetCombatantWithFlag0x100_0200ff1c(game, id);
-                if (actor && TestBitAt0x34_020a35e0((unsigned char*)work->info, (unsigned char)id) && !IsFlag10088Set_02010088((S_10088*)actor)) {
+                if (actor && TestBitAt0x34_020a35e0((unsigned char*)work->info, id) && !IsFlag10088Set_02010088((S_10088*)actor)) {
 #if defined(jpn)
 
 #else
@@ -254,10 +254,10 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
             for (int i = 0; i < 4; i++) {
 #if defined(jpn)
                 GameObject* actor = GetCombatantWithFlag0x100_0200ff1c(game, i);
-                if (actor && TestBitAt0x34_020a35e0((unsigned char*)work->info, (unsigned char)i) && !GetCombatantWithFlag0x1000_0200ff58(game, i))
+                if (actor && TestBitAt0x34_020a35e0((unsigned char*)work->info, i) && !GetCombatantWithFlag0x1000_0200ff58(game, i))
                     stats = actor->baseStats_;
 #else
-                if (GetCombatantWithFlag0x100_0200ff1c(game, i) && TestBitAt0x34_020a35e0((unsigned char*)work->info, (unsigned char)i) && !GetCombatantWithFlag0x1000_0200ff58(game, i))
+                if (GetCombatantWithFlag0x100_0200ff1c(game, i) && TestBitAt0x34_020a35e0((unsigned char*)work->info, i) && !GetCombatantWithFlag0x1000_0200ff58(game, i))
                     InitObjFromCombatantId020e4bf4(actorName, i);
 #endif
 

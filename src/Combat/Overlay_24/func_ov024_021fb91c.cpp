@@ -68,7 +68,7 @@ struct FlagObj_021da998;
 struct FlagObj_021dd260;
 struct S_10088;
 int GetFieldAt0x150_02053c6c(unsigned char*);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 int IsFlag10088Set_02010088(S_10088*);
 int IsFlagBit8388608Set_021da998(FlagObj_021da998*);
 int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
@@ -110,7 +110,7 @@ extern "C" ARM void func_ov024_021fb91c(Context_021fb91c* context) {
     AddEntryList_021f6a1c list;
     memset(&list, 0, sizeof(list));
     for (int index = 0; index < 4; ++index) {
-        if (!TestBitAt0x34_020a35e0(context->battle->partyWork, (unsigned char)index)) continue;
+        if (!TestBitAt0x34_020a35e0(context->battle->partyWork, index)) continue;
         if (action->targetKind == 1 && index != context->id) continue;
         if (action->targetKind == 8 && index == context->id) continue;
         GameObject* target = GetCombatantByID((int)context->battle, (short)index);

@@ -164,7 +164,7 @@ void* GetPtrField0x2a04_02010828(GameState* gameState);
 extern "C" void* func_0202ae18(void);
 void SetField0x5729Value_0201075c(char* obj, unsigned char value);
 unsigned char GetField0x5729Value_02010750(char* obj);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 int CheckField0NonZero_0202b7d8(int* obj);
 extern "C" void func_ov017_021d2400(void);
 void DispatchContextByState0209c678(Actor0209c678* actor, int arg);
@@ -188,7 +188,7 @@ extern "C" int sprintf(char* buffer, const char* format, ...);
 #if !defined(jpn)
 extern "C" void func_0204500c(void* obj, const char* text, int mode, int tag);
 #endif
-void ResetAndDispatchActorContext0209c6d8(void* actor, short arg);
+void ResetAndDispatchActorContext0209c6d8(void* actor, int arg);
 extern "C" int func_ov017_021959b4(void);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* s, int val);
 void EnqueueEventTag129_021cbfb8(unsigned short a, unsigned char b);
@@ -223,7 +223,7 @@ extern "C" ARM void func_ov023_021f4c04(BattleWork* self) {
             GameObject* member = gs->GetPartyMemberByIndex(i);
             if (member == NULL) continue;
             if (((Combatant021f4c04*)member)->stats->flags & 1) continue;
-            if (TestBitAt0x34_020a35e0((unsigned char*)self->party, (unsigned char)i)) continue;
+            if (TestBitAt0x34_020a35e0((unsigned char*)self->party, i)) continue;
             SetField0x5729Value_0201075c((char*)gs, 0);
         }
         if (GetField0x5729Value_02010750((char*)gs) != 0 && CheckField0NonZero_0202b7d8((int*)owner) != 0) {

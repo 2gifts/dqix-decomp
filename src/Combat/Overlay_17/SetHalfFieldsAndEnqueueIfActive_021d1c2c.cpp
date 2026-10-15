@@ -7,7 +7,7 @@ void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 // USA: func_ov017_021d1c2c
-ARM void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a0, unsigned short a1) {
+ARM void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned char a0, unsigned short a1) {
 	func_0202ae18();
 	if (!func_0202c508()) return;
 	unsigned char* base = (unsigned char*)func_02012fe4();

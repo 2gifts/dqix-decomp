@@ -122,7 +122,7 @@ int IsFlagBit8192Set_021dd3c4(FlagObj_021dd3c4*);
 void SwapGlobalEntry0203c108(Obj0203c108*, char*);
 void SetStoredWorkPtr_ov000_021744f4(int, void*);
 void ClearFlag0x43e02176054(void*);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 void* GetField0x19cOrNull(S02053dc0*);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void Process02181364(void*);
@@ -717,14 +717,14 @@ state1:
             b3 = self->battle;
             pty = self->party;
             for (i = 0; i < 4; i++) {
-                if (TestBitAt0x34_020a35e0((unsigned char*)pty, (unsigned char)i)) {
+                if (TestBitAt0x34_020a35e0((unsigned char*)pty, i)) {
                     func_ov026_021dc8fc(self, b3, pty, self->list, self->scriptA, self->scriptB, i);
                 }
             }
         }
         for (i = 0; i < 4; i++) {
             void* p;
-            if (!TestBitAt0x34_020a35e0((unsigned char*)self->party, (unsigned char)i)) continue;
+            if (!TestBitAt0x34_020a35e0((unsigned char*)self->party, i)) continue;
             member = GetCombatantWithFlag0x100_0200ff1c(gs, i);
             if (member == 0) continue;
             p = GetField0x19cOrNull((S02053dc0*)member);
@@ -838,7 +838,7 @@ state1:
         if (func_ov026_021ddd84(res, self, self->battle, self->party, self->list, &self->turnFlag, 1) != 0) {
             return;
         }
-        if (func_ov026_021d8a40() && IsField0Null_02046b08(field3704) && TestBitAt0x34_020a35e0((unsigned char*)self->party, (unsigned char)self->party->myIndex)) {
+        if (func_ov026_021d8a40() && IsField0Null_02046b08(field3704) && TestBitAt0x34_020a35e0((unsigned char*)self->party, self->party->myIndex)) {
             func_ov026_021dce34(-1, self, self->battle, self->party, self->list, self->ctxEc8, self->ctx5c3c, self->ctx5728, self->scriptA, self->scriptB, self->ctx5910, self->view);
         }
     }
@@ -901,7 +901,7 @@ state1:
                 return;
             }
         }
-        if (func_ov026_021d8a40() && IsField0Null_02046b08(field3704) && TestBitAt0x34_020a35e0((unsigned char*)self->party, (unsigned char)self->party->myIndex)) {
+        if (func_ov026_021d8a40() && IsField0Null_02046b08(field3704) && TestBitAt0x34_020a35e0((unsigned char*)self->party, self->party->myIndex)) {
             func_ov026_021dce34(-1, self, self->battle, self->party, self->list, self->ctxEc8, self->ctx5c3c, self->ctx5728, self->scriptA, self->scriptB, self->ctx5910, self->view);
         }
         if (battle->field8e47 == 0) {
@@ -944,7 +944,7 @@ state1:
                 lnk = func_0202ae18();
                 if (CheckField0NonZero_0202b7d8(lnk)) {
                     for (i = 0; i < 4; i++) {
-                        if (TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)i) && TestBitBySignedByteIndex_0202c1c0((SearchStruct*)lnk, i)) {
+                        if (TestBitAt0x34_020a35e0((unsigned char*)party, i) && TestBitBySignedByteIndex_0202c1c0((SearchStruct*)lnk, i)) {
                             redo = (redo & self->slotDone[i]) ? 1 : 0;
                         }
                     }
@@ -1079,7 +1079,7 @@ state1:
                     all = 1;
                     for (i = 0; i < 4; i++) {
                         GameObject* c;
-                        if (TestBitAt0x34_020a35e0((unsigned char*)self->party, (unsigned char)i) && (c = gs->GetCombatantByIndex(i)) != 0) {
+                        if (TestBitAt0x34_020a35e0((unsigned char*)self->party, i) && (c = gs->GetCombatantByIndex(i)) != 0) {
                             if (IsFlag10088Set_02010088((S_10088*)c) == 0) {
                                 all = 0;
                             }
@@ -1111,7 +1111,7 @@ state1:
         if (CheckSlotsAllFree0205e488(slots)) {
             int i;
             for (i = 0; i < 4; i++) {
-                if (TestBitAt0x34_020a35e0((unsigned char*)self->party, (unsigned char)i)) {
+                if (TestBitAt0x34_020a35e0((unsigned char*)self->party, i)) {
                     GetCombatantWithFlag0x1000_0200ff58(gs, i);
                     func_ov000_02162c14(self, i, &cmdE);
                     func_ov017_021c6814(self->party->netId, i, &cmdE, 1, -1, 1);
@@ -1188,7 +1188,7 @@ state1:
             Object3D* o;
             int i;
             for (i = 0; i < 4; i++) {
-                if (TestBitAt0x34_020a35e0((unsigned char*)self->party, (unsigned char)i)) {
+                if (TestBitAt0x34_020a35e0((unsigned char*)self->party, i)) {
                     func_ov000_02162c14(self, i, &cmdF);
                     o = (Object3D*)gs->GetGameObjectByIndex(i);
                     if (o != 0) {
@@ -1204,7 +1204,7 @@ state1:
             gs = GameState::GetInstance();
             for (i = 0; i < 4; i++) {
                 GameObject* c;
-                if (TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)i) && (c = GetCombatantWithFlag0x100_0200ff1c(gs, i)) != 0) {
+                if (TestBitAt0x34_020a35e0((unsigned char*)party, i) && (c = GetCombatantWithFlag0x100_0200ff1c(gs, i)) != 0) {
                     IncrementCounterUnlessFlagged_02053dd0((IncObj*)c);
                 }
             }

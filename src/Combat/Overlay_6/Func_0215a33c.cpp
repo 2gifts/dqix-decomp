@@ -25,7 +25,7 @@ struct Obj0215a33c {
     int backgroundTask;
 };
 
-ARM void Func_0215a33c(Obj0215a33c* owner) {
+ARM void Func_0215a33c(Obj0215a33c* owner, int) {
 #if defined(jpn)
     func_ov006_02156e54(owner->pot);
 #else

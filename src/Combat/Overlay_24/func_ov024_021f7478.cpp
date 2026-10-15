@@ -179,7 +179,7 @@ int IsFlag10088Set_02010088(struct S_10088* obj);
 int IsCombatantFlag2Mask8192_021e6798(GameObject* obj);
 extern "C" float func_ov024_021db358(struct Combatant_021f7478* obj);
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 extern "C" void __clear(void* dst, int count);
 extern "C" double func_02008f5c(double);
 int GetFieldAt0x150_02053c6c(unsigned char* obj);
@@ -303,7 +303,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
     obj->nQuarter = 0;
     for (long i = 0; i < 4; i++) {
         obj->partyRatio[i] = 1.0f;
-        if (!TestBitAt0x34_020a35e0(((struct Battle_021f7478*)obj->battle)->partyWork, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0(((struct Battle_021f7478*)obj->battle)->partyWork, i)) continue;
         struct Combatant_021f7478* c = GetCombatantByID((int)obj->battle, (short)i);
         if (c == 0) continue;
         obj->partyRatio[i] = func_ov024_021db358(c);
@@ -486,13 +486,13 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
 
     int maxBase = 1;
     for (int i = 0; i < 4; i++) {
-        if (!TestBitAt0x34_020a35e0(((struct Battle_021f7478*)obj->battle)->partyWork, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0(((struct Battle_021f7478*)obj->battle)->partyWork, i)) continue;
         struct Combatant_021f7478* c = (struct Combatant_021f7478*)(CombatantStruct*)GetCombatantWithFlag0x100_0200ff1c(gs, i);
         if (c == 0) continue;
         if (c->baseStats->primaryStats.attack > maxBase) maxBase = c->baseStats->primaryStats.attack;
     }
     for (int i = 0; i < 4; i++) {
-        if (!TestBitAt0x34_020a35e0(((struct Battle_021f7478*)obj->battle)->partyWork, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0(((struct Battle_021f7478*)obj->battle)->partyWork, i)) continue;
         struct Combatant_021f7478* c = (struct Combatant_021f7478*)(CombatantStruct*)GetCombatantWithFlag0x100_0200ff1c(gs, i);
         if (c == 0) continue;
         obj->levelRatio[i] = (float)c->baseStats->primaryStats.attack / (float)maxBase;

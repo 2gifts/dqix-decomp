@@ -4,7 +4,7 @@
 void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
 int GetCombatWorkFlags0x55f4_ov000_02160fd4(void* work, int mask);
 extern "C" int func_ov017_02195658(GameResources* res);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 void ClearBitAt0x34_020a367c(unsigned char* obj, int index);
 
 void EnqueueEventTag122_021c8b78(unsigned short tag);
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov000_021640dc(struct BattleScene021640dc* scene) {
     }
     struct BattleConfig021640dc* config = scene->config;
     int partyId = func_ov017_02195658(res);
-    if (TestBitAt0x34_020a35e0((unsigned char*)config, (unsigned char)partyId)) {
+    if (TestBitAt0x34_020a35e0((unsigned char*)config, partyId)) {
         if (config->partyId == partyId) {
             SetCombatWorkFlags0x55f4_ov000_02160fa8(scene, 0x2000000);
             EnqueueEventTag122_021c8b78(config->eventTag);

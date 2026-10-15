@@ -38,7 +38,7 @@ extern Obj0205eaa0 data_02108760;
 TextRenderer* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(TextRenderer*);
 void CopyOutRegion0x571d_020114ec(char*, void*);
-int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 FoundReward* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
 void Clear12Bytes020e46c4(void*);
 extern "C" Words021edf38 func_ov023_021ed804(Words021edf38, FoundReward*);

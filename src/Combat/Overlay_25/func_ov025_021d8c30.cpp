@@ -190,7 +190,7 @@ extern "C" void func_ov000_02162dc4(unsigned char* sl, GameObject* lead, GameObj
 void ClearSubstructFlag0x4_02049ae4(unsigned char* obj);
 void SetPosAndFields0216f1e4(void* obj, int* srcVec3, int a, int b);
 void StoreFields0x1e4And0x1e8IfNonZero_0202ea10(unsigned char* obj, int a, int b);
-void SetShortTriple0x6e44_ov000_02163440(void* obj, unsigned short a, unsigned short b, unsigned short c);
+void SetShortTriple0x6e44_ov000_02163440(void* obj, short a, unsigned short b, unsigned short c);
 void Forward0205ec20(void* obj, void* target, int arg);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
@@ -202,14 +202,13 @@ void FindNodeAndProcess02057fb4(void* list, int id, int a3);
 int TestBit0At0x2f4_02085078(unsigned char* obj);
 int TestBit1At0x2f4_020850a4(unsigned char* obj);
 extern "C" int func_ov000_0215fd90(void* entry, int effect);
-void SetFields0xbaAnd0xbc_02032fd0(struct ShortPair0xba0xbc* obj, short a, short b);
+void SetFields0xbaAnd0xbc_02032fd0(ShortPair0xba0xbc* obj, short a, unsigned short b);
 void* GetActiveCombatWork_ov000_02160130(void);
 void* GetOffsetPtr02160f08(void* obj);
 void* FindEntryById_021dafd0(char* obj, int id);
 extern "C" void func_ov000_0217616c(void* p);
 void SetSubstructWord0x68_0204a00c(unsigned char* obj, int value);
-extern "C" void _Z23QueuePopupEntry0203a48cP11Obj0203a48ctP15Vec3Int0203a48chii(
-    struct Obj0203a48c* obj, int id, Vector3fix* pos, int style, int field4, int field2);
+void QueuePopupEntry0203a48c(Obj0203a48c*, int, Vec3Int0203a48c*, int, int, int);
 void SetSubstructByte0x56_02049f28(unsigned char* obj);
 void CopyObjectFields02048588(unsigned char* self, unsigned char* dst);
 void AllocateSlotAndConfigureField02166784(struct Struct5e00* obj1, unsigned char* obj2, unsigned char* obj3);
@@ -763,7 +762,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         }
         Vector3fix pos = actor->obj3D_.position_;
         pos.y += actor->obj3D_.GetHeight();
-        _Z23QueuePopupEntry0203a48cP11Obj0203a48ctP15Vec3Int0203a48chii(popups, popupId, &pos, 4, 0, 0);
+        QueuePopupEntry0203a48c(popups, popupId, (Vec3Int0203a48c*)&pos, 4, 0, 0);
     }
 
     if (func_ov000_0215fd90(target, 3)) {
@@ -959,7 +958,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         pos.y += actor->obj3D_.GetHeight();
         int big = 0;
         if (func_ov000_0215fd90(target, 0x2a)) big = 1;
-        _Z23QueuePopupEntry0203a48cP11Obj0203a48ctP15Vec3Int0203a48chii(popups, amount, &pos, big, PopupDelay(inner), PopupColor(inner));
+        QueuePopupEntry0203a48c(popups, amount, (Vec3Int0203a48c*)&pos, big, PopupDelay(inner), PopupColor(inner));
         if (!sb->queued && sl[Field6e4e] != 4) {
             func_ov000_021823dc(sl + PendingState, sb->group);
             sb->queued = 1;
@@ -976,7 +975,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             DispatchWithShortB4_0205eaa0(&data_02108760, 0x65, 0);
         }
         pos.y += actor->obj3D_.GetHeight();
-        _Z23QueuePopupEntry0203a48cP11Obj0203a48ctP15Vec3Int0203a48chii(popups, negAmount, &pos, style, 0, 0);
+        QueuePopupEntry0203a48c(popups, negAmount, (Vec3Int0203a48c*)&pos, style, 0, 0);
     }
 
     if (didAnim && leadObj && soundId > 0) {

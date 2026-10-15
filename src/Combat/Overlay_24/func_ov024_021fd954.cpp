@@ -4,7 +4,7 @@
 
 int GetFieldAt0x150_02053c6c(unsigned char* obj);
 int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 struct S_10088;
 int IsFlag10088Set_02010088(struct S_10088* obj);
 struct S88514;

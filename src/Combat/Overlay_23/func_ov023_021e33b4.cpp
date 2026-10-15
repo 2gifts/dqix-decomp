@@ -133,7 +133,7 @@ void ClearFields_021e20c0(void* table);
 void* GetFieldAt0x150_02053c6c(unsigned char* combatant);
 void CallWithAddr4000330_020c555c(int addr);
 void CopyByteFieldToNextAndSet_021e33a0_021e33a0(char* self, signed char mode);
-void InitEntryManagerAndAllocator02159c24(Obj02159c24*, int, int);
+void InitEntryManagerAndAllocator02159c24(Obj02159c24*, void*, void*);
 
 extern "C" {
 GameResources* func_ov017_0218b5b0();
@@ -226,7 +226,7 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
             self->spriteEntries_cc = (char*)self->allocator_4->Allocate(0x280);
             self->spriteExtra_d0 = self->allocator_4->Allocate(8);
             if (self->battle_0 != NULL && self->spriteExtra_d0 != NULL && self->sprites_c8 != NULL)
-                InitEntryManagerAndAllocator02159c24((Obj02159c24*)self->battle_0, (int)self->spriteExtra_d0, (int)self->sprites_c8);
+                InitEntryManagerAndAllocator02159c24((Obj02159c24*)self->battle_0, self->spriteExtra_d0, self->sprites_c8);
 
             self->tableAllocator_7c.CreateTypeA(self->allocator_4->Allocate(0x300), 0x300);
             self->dataAllocator_90.CreateTypeA(self->allocator_4->Allocate(0x200), 0x200);

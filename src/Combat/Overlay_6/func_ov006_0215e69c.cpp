@@ -66,7 +66,8 @@ struct Obj0215e69c {
 };
 
 extern "C" int func_ov006_02153f24(void* table, int id);
-extern "C" void _Z13Func_0215a33cP11Obj0215a33c(Obj0215e69c* self, int critical);
+struct Obj0215a33c;
+void Func_0215a33c(Obj0215a33c*, int);
 extern "C" int func_ov006_0215a384(Obj0215e69c* self, int critical);
 extern "C" void func_ov006_0215fe34(Obj0215e69c* self, void* list);
 extern "C" int func_ov006_0215fecc(Obj0215e69c* self);
@@ -136,7 +137,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
                 if (NextRandomMax((Random*)GetBTRandom(), 10000) / 100 < self->chance) {
                     self->flags |= 0x40;
                 }
-                _Z13Func_0215a33cP11Obj0215a33c(self, self->IsCritical());
+                Func_0215a33c((Obj0215a33c*)self, self->IsCritical());
             } else {
                 ctx->flags &= ~0x40;
                 self->waitCount = 0;

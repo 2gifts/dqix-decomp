@@ -6,7 +6,7 @@ enum { bitsOffset = 0x2a0, modeOffset = 0x951 };
 #endif
 #include "GameState/GameState.h"
 
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 extern "C" void func_02049d6c(GameObject* combatant);
 void ClearSubstructFlag0x4_02049ae4(unsigned char* obj);
 
@@ -14,7 +14,7 @@ void ClearSubstructFlag0x4_02049ae4(unsigned char* obj);
 ARM void RunFlaglearAndSetMode02167e6c_02167e6c(unsigned char* obj) {
     GameState* battle = GameState::GetInstance();
     for (int i = 0; i < 4; i++) {
-        if (TestBitAt0x34_020a35e0(*(unsigned char**)(obj + bitsOffset), (unsigned char)i)) {
+        if (TestBitAt0x34_020a35e0(*(unsigned char**)(obj + bitsOffset), i)) {
             GameObject* c = battle->GetCombatantByIndex(i);
             if (c) {
                 func_02049d6c(c);

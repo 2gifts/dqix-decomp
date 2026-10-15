@@ -227,7 +227,7 @@ void ClearSubstructFlag0x4_02049ae4(unsigned char* obj);
 void SetFieldForListedCombatants021f50fc();
 int CheckField0NonZero_0202b7d8(int* mode);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* mode);
-int TestBitAt0x34_020a35e0(unsigned char* info, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* info, unsigned char index);
 int GetField0x3acValue_020100a8(GameState* game);
 int LoadBattleBlock020ac4c0(void* dst);
 void AddSaturateField0x48_020a0858(S_a0858* block, unsigned int amount);
@@ -306,7 +306,7 @@ extern "C" ARM int func_ov023_021edf54(Scene_021edf54* self) {
 
         int none = 0;
         for (int i = 0; i < 4; i++) {
-            if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, (unsigned char)i))
+            if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, i))
                 self->experience_[i] = func_ov023_021f4098(self, i, none);
         }
 
@@ -377,7 +377,7 @@ extern "C" ARM int func_ov023_021edf54(Scene_021edf54* self) {
                 unsigned int bonus = ScaleU(self->world_->rateA_, self->world_->bonus_);
                 GameState* state = GameState::GetInstance();
                 for (int i = 0; i < 4; i++) {
-                    if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, (unsigned char)i))
+                    if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, i))
                         gained[i] = func_ov023_021f4098(self, i, bonus);
                 }
                 func_ov017_021cd590(self->info_->event_, gained, 0, 1);
@@ -427,7 +427,7 @@ extern "C" ARM int func_ov023_021edf54(Scene_021edf54* self) {
 
     Result_021edf54* result = _ZZ17GetGlobal021ffefcvE1s.work_->results_;
     for (int i = 0; i < 4; i++) {
-        if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, (unsigned char)i)) {
+        if (TestBitAt0x34_020a35e0((unsigned char*)self->info_, i)) {
             Combatant_021edf54* c = (Combatant_021edf54*)GetCombatantWithFlag0x100_0200ff1c(game, i);
             if (c != 0) {
                 result->member_ = i;

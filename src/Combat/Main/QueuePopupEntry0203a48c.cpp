@@ -28,7 +28,7 @@ struct Obj0203a48c {
 };
 
 // USA: func_0203a48c
-ARM void QueuePopupEntry0203a48c(struct Obj0203a48c* obj, unsigned short id, struct Vec3Int0203a48c* pos, unsigned char field7, int field4, int field2) {
+ARM void QueuePopupEntry0203a48c(Obj0203a48c* obj, int id, Vec3Int0203a48c* pos, int field7, int field4, int field2) {
     int value;
     int digitCount;
     struct PopupEntry0203a48c* entry;

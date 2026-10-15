@@ -97,7 +97,7 @@ const char* CallFunc020e0434With02153694_020e51cc(int);
 #if !defined(jpn)
 extern "C" void func_0204500c(TextRenderer*, const char*, int, int);
 #endif
-void ResetAndDispatchActorContext0209c6d8(void*, short);
+void ResetAndDispatchActorContext0209c6d8(void*, int);
 extern "C" int func_0202c508(void*);
 TagValueEntry020e385c* GetData02153660_020e3808();
 void ResetTaggedEntryAndNotifyOverlay020e3994(TagValueEntry020e385c*, int, int);

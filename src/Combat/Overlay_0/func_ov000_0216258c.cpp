@@ -29,7 +29,7 @@ struct BattleUi0216258c {
     char gauges[1];
 };
 
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 extern "C" HpMpGauge0216258c* func_ov000_02161318(void* obj, int index);
 extern "C" void func_ov000_0217f518(HpMpGauge0216258c* gauge);
 extern "C" void _Z24SetShortField0xC02176134P11Obj02176134s(HpMpGauge0216258c* gauge, unsigned short val);

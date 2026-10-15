@@ -7,7 +7,7 @@ int GetGlobalField0x1c020421a0(void);
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
 unsigned char CopyOutRegion0x571d_020114ec(char* obj, void* dst);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 extern "C" int func_ov023_021f4438(void* obj);
 struct TableA68;
 void* FindEntryByKey_02072a68(struct TableA68* table, int key);

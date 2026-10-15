@@ -9,7 +9,7 @@ struct StatStageStruct02087860 {
 };
 
 // USA: func_02087860
-ARM int CanAdjustStatStageBit3(struct StatStageStruct02087860* p, int decrease) {
+ARM int CanAdjustStatStageBit3(StatStageStruct02087860* p, unsigned char decrease) {
     if (p->flags & 1) return 0;
     if (decrease == 0) {
         if (p->stage3 < 2) return 1;

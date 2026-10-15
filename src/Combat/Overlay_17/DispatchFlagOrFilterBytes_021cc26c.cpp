@@ -4,7 +4,7 @@
 extern "C" void* func_ov017_021b8478(void* obj);
 int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 extern "C" void func_020531f0(void* obj);
-int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned char index);
 
 struct Obj02052f44;
 int FilterBytesAndInit02052f44(struct Obj02052f44* obj, signed char* src, int len);

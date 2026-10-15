@@ -9,7 +9,7 @@ extern "C" void func_0209c2e0(void* obj, int a, int b);
 extern "C" void func_020bbd9c(void);
 
 // USA: func_0209c6d8
-ARM void ResetAndDispatchActorContext0209c6d8(void* actor, short arg) {
+ARM void ResetAndDispatchActorContext0209c6d8(void* actor, int arg) {
     DispatchContextByState0209c678((struct Actor0209c678*)actor, 0);
     {
         int f = *(int*)((char*)actor + 0xb4);
