@@ -62,7 +62,7 @@ extern "C" ARM int func_ov004_0216dd78(void* a) {
 #if defined(jpn)
         func_0204500c(message, (const char*)entry, 0);
 #else
-        func_0204500c(message, (const char*)entry, 0, (void*)0xe3);
+        func_0204500c(message, (const char*)entry, 0, 0xe3);
 #endif
         SetByte0x7f70_02012028(battle, 0);
         ret = 0;
@@ -73,7 +73,7 @@ extern "C" ARM int func_ov004_0216dd78(void* a) {
 #if defined(jpn)
         func_0204500c(message, (const char*)entry, 0);
 #else
-        func_0204500c(message, (const char*)entry, 0, (void*)0xe3);
+        func_0204500c(message, (const char*)entry, 0, 0xe3);
 #endif
         SetByte0x7f70_02012028(battle, 0);
         ret = 0;

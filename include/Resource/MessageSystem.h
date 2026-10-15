@@ -300,5 +300,5 @@ struct MessageSystem {
 #if defined(jpn)
 extern "C" void func_0204500c(MessageSystem* window, const char* text, int mode);
 #else
-extern "C" void func_0204500c(MessageSystem* window, const char* text, int mode, void* context);
+extern "C" void func_0204500c(MessageSystem* window, const char* text, int mode, int boxWidth);
 #endif

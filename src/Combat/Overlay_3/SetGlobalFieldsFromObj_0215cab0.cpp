@@ -19,7 +19,7 @@ extern "C" ARM void func_ov003_0215cab0(MessageOwner0215cab0* owner, const char*
 #if defined(jpn)
     func_0204500c(window, text, 0);
 #else
-    func_0204500c(window, text, 0, (void*)0xe3);
+    func_0204500c(window, text, 0, 0xe3);
 #endif
     window->b19b2 = owner->messageFlag;
     window->state = owner->messageState;

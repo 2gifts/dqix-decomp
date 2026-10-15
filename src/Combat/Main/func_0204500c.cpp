@@ -48,7 +48,7 @@ extern "C" void func_02068f40(struct MessageSystem* window, const char* source, 
 extern "C" void func_02069234(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
 extern "C" void func_020695f4(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
 extern "C" void func_02069fec(struct MessageSystem* window, const char* source, char* destination);
-void InitContextString0206a974(struct Ctx0206a974*, const char*, void*);
+void InitContextString0206a974(struct Ctx0206a974*, const char*, int);
 unsigned char* GetField4Ptr020e1b24(void*);
 extern "C" void func_020e1b2c(void*, int);
 extern "C" int func_020e1f1c(void*);
@@ -200,7 +200,7 @@ extern "C" ARM void func_0204500c(MessageSystem* window, const char* text, int m
 }
 #else
 // USA: func_0204500c
-extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text, int mode, void* context) {
+extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text, int mode, int boxWidth) {
     GameState* gs = GameState::GetInstance();
 
     short itemId = *reinterpret_cast<short*>(&gs->unk_6fc0[0x7f58 - 0x6fc0]);
@@ -329,7 +329,7 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
         func_02069234(window, formatBuffer, expandedBuffer, window->b19dc);
         func_020695f4(window, expandedBuffer, formatBuffer, window->b19dc);
         func_02069fec(window, formatBuffer, expandedBuffer);
-        InitContextString0206a974((struct Ctx0206a974*)window, expandedBuffer, context);
+        InitContextString0206a974((struct Ctx0206a974*)window, expandedBuffer, boxWidth);
         func_02042b98(window, 2, 0x74, 0xfc, 0x4a);
         window->w1858 = 2;
         window->w185c = 0x7e;

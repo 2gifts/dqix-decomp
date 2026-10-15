@@ -253,7 +253,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
 #if defined(jpn)
                     func_0204500c(messages, comment, 0);
 #else
-                    func_0204500c(messages, comment, 0, (void*)0xe3);
+                    func_0204500c(messages, comment, 0, 0xe3);
 #endif
                     messages->b19b2 = 1;
                     messages->b19c8 = 1;
@@ -278,7 +278,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
 #if defined(jpn)
                     func_0204500c(messages, GetFieldByKey020e0434((Container020e0310*)&self->texts_, 10000), 0);
 #else
-                    func_0204500c(messages, GetFieldByKey020e0434((Container020e0310*)&self->texts_, 10000), 0, (void*)0xe3);
+                    func_0204500c(messages, GetFieldByKey020e0434((Container020e0310*)&self->texts_, 10000), 0, 0xe3);
 #endif
                     messages->b19b2 = 1;
                     messages->b19c8 = 1;

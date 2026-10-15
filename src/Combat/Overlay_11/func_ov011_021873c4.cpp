@@ -41,7 +41,7 @@ extern "C" ARM int func_ov011_021873c4(TaggedNumber02184c30* arguments) {
     *(int*)((char*)messages + 0x868) = 1;
     messages->flags17ff.flag4 = 1;
 #else
-    func_0204500c(messages, text, 0, (void*)0xe3);
+    func_0204500c(messages, text, 0, 0xe3);
     *(int*)((char*)messages + 0x998) = 1;
     messages->b19d2 = 1;
 #endif

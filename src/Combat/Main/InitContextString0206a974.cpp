@@ -4,7 +4,7 @@
 extern int StringLength_020d2ff0(const char* s);
 
 extern "C" void func_0206aa28(void* p);
-extern "C" void func_0206b974(void* p, int a1, void* a2, void* a3, void* a4, int a5, int a6, int a7);
+extern "C" void func_0206b974(void* p, int a1, void* a2, void* a3, int a4, int a5, int a6, int a7);
 
 struct Ctx0206a974 {
     char pad0[0x48];
@@ -20,7 +20,7 @@ struct Ctx0206a974 {
 };
 
 // USA: func_0206a974
-ARM void InitContextString0206a974(struct Ctx0206a974* p, const char* src, void* param2) {
+ARM void InitContextString0206a974(struct Ctx0206a974* p, const char* src, int boxWidth) {
     if (src == 0) return;
     {
         void* buf = p->field48;
@@ -34,7 +34,7 @@ ARM void InitContextString0206a974(struct Ctx0206a974* p, const char* src, void*
     memset(p->field4c, 0, 0x280);
     memset(p->field50, 0, 0x280);
     func_0206aa28(p);
-    func_0206b974(p, 1, p->field50, p->field60, param2, 0, 1, 1);
+    func_0206b974(p, 1, p->field50, p->field60, boxWidth, 0, 1, 1);
     {
         int len2 = StringLength_020d2ff0((const char*)p->field60);
         memcpy(p->field50, p->field60, len2);

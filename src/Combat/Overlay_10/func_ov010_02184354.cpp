@@ -263,7 +263,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         InitObjFromCombatantId020e4bf4(&casterObj, actorInfo->combatantId);
         func_02046380(presenter);
         *(void**)presenter = &casterObj;
-        func_0204500c(presenter, (const char*)entry, 0, (void*)0xe3);
+        func_0204500c(presenter, (const char*)entry, 0, 0xe3);
         *(int*)((char*)presenter + 0x998) = 1;
 #endif
     } else if (state == 2) {
@@ -283,7 +283,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
             InitObjFromCombatantId020e4bf4(&casterObj, actorInfo->combatantId);
             func_02046380(presenter);
             *(void**)presenter = &casterObj;
-            func_0204500c(presenter, (const char*)entry, 0, (void*)0xe3);
+            func_0204500c(presenter, (const char*)entry, 0, 0xe3);
             *(int*)((char*)presenter + 0x998) = 1;
 #endif
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, 0);

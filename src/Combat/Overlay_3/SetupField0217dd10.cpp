@@ -17,7 +17,7 @@ ARM void SetupField0217dd10(char* obj, int key) {
 #if defined(jpn)
     func_0204500c(window, text, 0);
 #else
-    func_0204500c(window, text, 0, (void*)0xe3);
+    func_0204500c(window, text, 0, 0xe3);
 #endif
     window->b19b2 = 1;
     window->state = 2;

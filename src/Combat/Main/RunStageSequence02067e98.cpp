@@ -10,7 +10,7 @@ extern "C" void func_020695f4(void* obj, unsigned int a, unsigned int b, unsigne
 extern "C" void func_02069fec(void* obj, unsigned int a, unsigned int b);
 
 struct Ctx0206a974;
-void InitContextString0206a974(struct Ctx0206a974* p, const char* src, void* param2);
+void InitContextString0206a974(struct Ctx0206a974* p, const char* src, int boxWidth);
 
 // USA: func_02067e98
 ARM void RunStageSequence02067e98(unsigned char* obj, int b) {
@@ -24,6 +24,6 @@ ARM void RunStageSequence02067e98(unsigned char* obj, int b) {
     func_02069234(obj, x, y, (obj + 0x1000)[0x9dc]);
     func_020695f4(obj, y, x, (obj + 0x1000)[0x9dc]);
     func_02069fec(obj, x, y);
-    InitContextString0206a974((struct Ctx0206a974*)obj, (const char*)y, (void*)0xe3);
+    InitContextString0206a974((struct Ctx0206a974*)obj, (const char*)y, 0xe3);
     *(int*)(obj + 0x9a0) = 5;
 }

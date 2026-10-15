@@ -11,7 +11,7 @@ enum { kInitialPad = 0x4c, kBufferSize = 0x280 };
 
 extern "C" void func_0206b104(void* obj);
 extern "C" void func_0206aa28(void* p);
-extern "C" void func_0206b974(void* p, int a1, void* a2, void* a3, void* a4, int a5, int a6, int a7);
+extern "C" void func_0206b974(void* p, int a1, void* a2, void* a3, int a4, int a5, int a6, int a7);
 extern int StringLength_020d2ff0(const char* s);
 
 struct Ctx0206b224 {
@@ -45,7 +45,7 @@ extern "C" ARM void func_0206b224(struct Ctx0206b224* obj) {
 
     func_0206aa28(obj);
 #if !defined(jpn)
-    func_0206b974(obj, 1, obj->field50, obj->field60, (void*)0xe3, 0, 1, 1);
+    func_0206b974(obj, 1, obj->field50, obj->field60, 0xe3, 0, 1, 1);
     int len = StringLength_020d2ff0((const char*)obj->field60);
     memcpy(obj->field50, obj->field60, len);
 #endif
