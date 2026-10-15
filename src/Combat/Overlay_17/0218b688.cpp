@@ -252,7 +252,7 @@ void DispatchByFlag020d9834(int flag);
 extern "C" void func_0209c840(void* p);
 void ResetXYField0203aa08(void* p);
 extern "C" void func_020bbd9c();
-extern "C" void _Z33CleanInvalidateOamBuffers0203bd88v(void* p);
+void CleanInvalidateOamBuffers0203bd88(void* oam);
 void Forward0204359c(void* c, int a);
 void NotifyAllEntries0203dd94(char*);
 void NoOp_0219a188(void* self);
@@ -894,7 +894,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
         func_0209c840(&data_02109bf4);
         ResetXYField0203aa08(&data_02108760);
         func_020bbd9c();
-        _Z33CleanInvalidateOamBuffers0203bd88v(oam);
+        CleanInvalidateOamBuffers0203bd88(oam);
         Forward0204359c(controller, RegionControllerMode);
         if (flag4000 != 0) {
             DispatchByFlag020d9834(1);

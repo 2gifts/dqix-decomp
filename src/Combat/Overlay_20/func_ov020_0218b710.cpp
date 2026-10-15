@@ -80,7 +80,7 @@ void InitBattleContext0203bd24(char* ctx);
 void RefreshDisplayState0205e8ec(Obj_0205e8ec* obj);
 void SetStateAndDispatch0209c3b4(Actor0209c3b4* actor, int state);
 void ResetGxEngineState020c52e8();
-extern "C" void _Z33CleanInvalidateOamBuffers0203bd88v(char* ctx);
+void CleanInvalidateOamBuffers0203bd88(void* oam);
 void SyncMainSubOam0203bdb0(Obj0203bdb0* obj);
 void ResetAllocatorAndDispatchState_0218d8d8(AllocGroup0218d8d8* obj);
 
@@ -545,7 +545,7 @@ extern "C" ARM void func_ov020_0218b710(Sequence0218b710* self) {
                 break;
             }
             WriteControlAndToggle020d86d0(0, 1);
-            _Z33CleanInvalidateOamBuffers0203bd88v(ctx);
+            CleanInvalidateOamBuffers0203bd88(ctx);
             DelayThenSyncBit0_020c9820();
             SyncMainSubOam0203bdb0((Obj0203bdb0*)ctx);
             ProcessRingJobs020bbcb4();

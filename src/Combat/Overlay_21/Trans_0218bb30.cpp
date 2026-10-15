@@ -24,8 +24,8 @@ extern "C" void func_020c5414();
 extern "C" void func_0202e0a4(void* camera);
 extern "C" void func_ov009_02184c30(void* obj);
 extern "C" void func_ov009_02184bbc(void* obj);
-extern "C" void func_0203bd08();
-void CleanInvalidateOamBuffers0203bd88();
+extern "C" void* func_0203bd08();
+void CleanInvalidateOamBuffers0203bd88(void* oam);
 void WriteControlAndToggle020d86d0(int a, int b);
 
 // USA: func_ov021_0218bb30  (semantic: Trans_0218bb30)
@@ -44,7 +44,6 @@ extern "C" ARM void func_ov021_0218bb30(Trans0218bb30* self)
     SendQueuedDataToGeometryFifo();
     func_ov009_02184c30(self->f40);
     func_ov009_02184bbc(self->f40);
-    func_0203bd08();
-    CleanInvalidateOamBuffers0203bd88();
+    CleanInvalidateOamBuffers0203bd88(func_0203bd08());
     WriteControlAndToggle020d86d0(1, 0);
 }
