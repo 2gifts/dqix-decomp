@@ -9,9 +9,7 @@ struct CombatantSleep {
     unsigned char autoAct : 1;
     unsigned char unk3c_7 : 1;
     char unk3d[0x7f - 0x3d];
-    unsigned char turns7f;
-    unsigned char turns80;
-    unsigned char turns81;
+    unsigned char turns[3];
 };
 
 struct ActionNode {
@@ -47,7 +45,7 @@ extern "C" ARM int func_ov000_0215833c(struct Random* random, int index, ActionN
         node->flag = 1;
     }
     float r = (float)NextRandomMax(random, 100) / 100.0f;
-    turns = &SLEEP(combatant)->turns7f;
+    turns = SLEEP(combatant)->turns;
 
     if (IsFlag0x14Bit0x8Set_ov000_02156038(combatant)) {
         if (turns[0] != 0) {
