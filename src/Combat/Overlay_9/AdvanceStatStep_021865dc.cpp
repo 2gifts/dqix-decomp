@@ -1,16 +1,17 @@
 #include <globaldefs.h>
 #include "Resource/CharacterCreationUI.h"
 
-#if defined(jpn)
-#define _Z20SetStatValue021855dcPhi func_ov009_021867bc
-#endif
-
 extern "C" void func_ov009_02188c2c(CharacterCreationUI* self);
 extern "C" void func_ov009_02188d9c(CharacterCreationUI* self);
 extern "C" void func_ov009_02188e70(CharacterCreationUI* self, int val);
 extern "C" void func_ov009_02188944(CharacterCreationUI* self, int val);
 extern "C" int func_ov009_02188ee8(CharacterCreationUI* self);
-extern "C" ARM void _Z20SetStatValue021855dcPhi(unsigned char *self, int val);
+#if defined(jpn)
+extern "C" ARM void func_ov009_021867bc(unsigned char *self, int val);
+#define SetStatValue021855dc func_ov009_021867bc
+#else
+ARM void SetStatValue021855dc(unsigned char *self, int val);
+#endif
 
 // USA: func_ov009_021865dc  (semantic: AdvanceStatStep_021865dc)
 extern "C" ARM void func_ov009_021865dc(CharacterCreationUI* self) {
@@ -40,11 +41,11 @@ extern "C" ARM void func_ov009_021865dc(CharacterCreationUI* self) {
 	}
 	int result = func_ov009_02188ee8(self);
 	if (result == -2) {
-		_Z20SetStatValue021855dcPhi((unsigned char*)self, 3);
+		SetStatValue021855dc((unsigned char*)self, 3);
 		return;
 	}
 	if (result == -3) {
-		_Z20SetStatValue021855dcPhi((unsigned char*)self, 1);
+		SetStatValue021855dc((unsigned char*)self, 1);
 		return;
 	}
 	if (result < 0x65 || result > 0x6c) {
@@ -59,5 +60,5 @@ extern "C" ARM void func_ov009_021865dc(CharacterCreationUI* self) {
 	if (v == self->state) {
 		return;
 	}
-	_Z20SetStatValue021855dcPhi((unsigned char*)self, v & 0xff);
+	SetStatValue021855dc((unsigned char*)self, v & 0xff);
 }

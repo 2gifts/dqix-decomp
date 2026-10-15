@@ -1,9 +1,5 @@
 #include <globaldefs.h>
 #include "Resource/CharacterCreationUI.h"
-
-#if defined(jpn)
-#define _Z20SetStatValue021855dcPhi func_ov009_021867bc
-#endif
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"
 
@@ -22,7 +18,12 @@ extern "C" void func_ov009_02188e70(CharacterCreationUI* self, int choice);
 extern "C" void func_ov009_02188944(CharacterCreationUI* self, int choice);
 extern "C" int func_ov009_02188ee8(CharacterCreationUI* self);
 extern "C" void func_ov023_021e6158(CharacterModel* character, int part);
-extern "C" void _Z20SetStatValue021855dcPhi(unsigned char* self, int state);
+#if defined(jpn)
+extern "C" void func_ov009_021867bc(unsigned char*, int);
+#define SetStatValue021855dc func_ov009_021867bc
+#else
+void SetStatValue021855dc(unsigned char* self, int state);
+#endif
 
 // USA: func_ov009_021863d0
 extern "C" ARM void func_ov009_021863d0(CharacterCreationUI* self)
@@ -80,7 +81,7 @@ extern "C" ARM void func_ov009_021863d0(CharacterCreationUI* self)
         }
         if (result == -2)
         {
-            _Z20SetStatValue021855dcPhi((unsigned char*)self, 2);
+            SetStatValue021855dc((unsigned char*)self, 2);
             return;
         }
         if (result == -3)
@@ -93,14 +94,14 @@ extern "C" ARM void func_ov009_021863d0(CharacterCreationUI* self)
 #else
                 *((unsigned char*)gameState + 0x63d4) = 0;
 #endif
-            _Z20SetStatValue021855dcPhi((unsigned char*)self, 11);
+            SetStatValue021855dc((unsigned char*)self, 11);
             return;
         }
         if (result >= 101 && result <= 108)
         {
             int state = result - 100;
             if (state <= self->furthestState[self->sex] && state != self->state)
-                _Z20SetStatValue021855dcPhi((unsigned char*)self, (unsigned char)state);
+                SetStatValue021855dc((unsigned char*)self, (unsigned char)state);
         }
     }
 }

@@ -1,16 +1,17 @@
 #include <globaldefs.h>
 #include "Resource/CharacterCreationUI.h"
 
-#if defined(jpn)
-#define _Z20SetStatValue021855dcPhi func_ov009_021867bc
-#endif
-
 extern "C" void func_ov009_02188c2c(CharacterCreationUI* self);
 extern "C" void func_ov009_02188d9c(CharacterCreationUI* self);
 extern "C" void func_ov009_02188e70(CharacterCreationUI* self, int val);
 extern "C" void func_ov009_02188944(CharacterCreationUI* self, int val);
 extern "C" int func_ov009_02188ee8(CharacterCreationUI* self);
-extern "C" ARM void _Z20SetStatValue021855dcPhi(unsigned char* self, int val);
+#if defined(jpn)
+extern "C" ARM void func_ov009_021867bc(unsigned char* self, int val);
+#define SetStatValue021855dc func_ov009_021867bc
+#else
+ARM void SetStatValue021855dc(unsigned char* self, int val);
+#endif
 
 int CallFunc020a0db8AtField0x16c_0202ee38(char* obj, int a, int b);
 void CallFunc020a0db8AtField0x194AndClearFlag2_0202ee58(char* obj, int a, int b);
@@ -68,10 +69,10 @@ extern "C" ARM void func_ov009_021866f0(CharacterCreationUI* self) {
     int result = func_ov009_02188ee8(self);
     int flag = 0;
     if (result == -2) {
-        _Z20SetStatValue021855dcPhi((unsigned char*)self, 6);
+        SetStatValue021855dc((unsigned char*)self, 6);
         flag = 1;
     } else if (result == -3) {
-        _Z20SetStatValue021855dcPhi((unsigned char*)self, 4);
+        SetStatValue021855dc((unsigned char*)self, 4);
         flag = 1;
     } else if (result >= 0x65 && result <= 0x6c) {
         int idx = self->sex;
@@ -80,7 +81,7 @@ extern "C" ARM void func_ov009_021866f0(CharacterCreationUI* self) {
         if (v <= arrv) {
             signed char cur = self->state;
             if (v != cur) {
-                _Z20SetStatValue021855dcPhi((unsigned char*)self, v & 0xff);
+                SetStatValue021855dc((unsigned char*)self, v & 0xff);
                 flag = 1;
             }
         }

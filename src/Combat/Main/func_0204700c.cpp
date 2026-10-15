@@ -1,32 +1,19 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
+#include "Graphics/Vector.h"
+#include "Resource/Brightness.h"
 
 extern "C" float _fsub(float a, float b);
 extern "C" int _fleq(float a, float b);
 extern "C" float _fdiv(float a, float b);
 extern "C" float _fmul(float a, float b);
 extern "C" int _ffix(float v);
-int fix32ReduceAngle0To2Pi(int angle);
 
-struct GameState {
-    static GameState* GetInstance();
-    int GetTickCount() const;
-};
-
-void* GetField0x3b0Value_020100bc(GameState* gs);
 extern "C" void _Z42SetField0x7cClearFields0x1ec0x1ee_0202e874Pht(unsigned char* obj, short val);
 
 struct AngleTrig0202e9a4;
 void SetAngleAndTrigTable0202e9a4(struct AngleTrig0202e9a4* obj, int angle);
-
-struct Object3D {
-    void AdvanceEffects();
-};
-
-struct GameResources;
-
-extern "C" void* func_ov017_0218b5b0(void);
-void SetMainBrightness(struct GameResources* resources, int brightness, int duration);
-void SetSubBrightness(struct GameResources* resources, int brightness, int duration);
 
 // USA: func_0204700c
 extern "C" ARM int func_0204700c(char* self) {
@@ -61,7 +48,7 @@ extern "C" ARM int func_0204700c(char* self) {
 
     *(unsigned int*)self = *(unsigned int*)self + tick;
     if (*(unsigned int*)self > 0xf && *(unsigned char*)(self + 0x1c) != 0) {
-        struct GameResources* res = (struct GameResources*)func_ov017_0218b5b0();
+        GameResources* res = func_ov017_0218b5b0();
         SetMainBrightness(res, -16, 20);
         SetSubBrightness(res, -16, 20);
         *(unsigned char*)(self + 0x1c) = 0;

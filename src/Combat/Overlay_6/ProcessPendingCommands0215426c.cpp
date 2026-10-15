@@ -1,10 +1,7 @@
 #include <globaldefs.h>
+#include "Graphics/NSBXX/GeometryFifo.h"
+#include "Graphics/NSBXX/RenderConfig.h"
 
-extern "C" void Mat4x3_Multiply(void* a, void* b, void* c);
-struct Matrix3x3;
-struct Matrix4x3;
-void GetCurrentPositionAndDirectionMatrices(Matrix4x3*, Matrix3x3*);
-extern "C" void* _ZN12RenderConfig20GetInverseViewMatrixEv(void);
 extern int data_ov006_02160380[3];
 extern int data_ov006_0216038c[3];
 
@@ -23,8 +20,8 @@ ARM void ProcessPendingCommands0215426c(Obj0215426c* o) {
 	for (int i = 0; i < 3; i++) {
 		if (data_ov006_02160380[i] == ((o->flags8 & 0x10) ? o->byteAe : -1) && data_ov006_0216038c[i] != 0) {
 			GetCurrentPositionAndDirectionMatrices((Matrix4x3*)data_ov006_0216038c[i], (Matrix3x3*)NULL);
-			void* obj2 = _ZN12RenderConfig20GetInverseViewMatrixEv();
-			Mat4x3_Multiply((void*)data_ov006_0216038c[i], obj2, (void*)data_ov006_0216038c[i]);
+			const Matrix4x3* obj2 = RenderConfig::GetInverseViewMatrix();
+			Mat4x3_Multiply((Matrix4x3*)data_ov006_0216038c[i], obj2, (Matrix4x3*)data_ov006_0216038c[i]);
 		}
 	}
 }

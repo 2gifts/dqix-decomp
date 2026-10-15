@@ -101,9 +101,9 @@ struct HeadList020469f8;
 struct HeadNode020469f8;
 void PrependNodeToHead(struct HeadList020469f8* list, struct HeadNode020469f8* node);
 
-extern "C" void _Z24InitAndRegister_0215e25cPvS_();
+void InitAndRegister_0215e25c(void*, void*);
 extern "C" void func_ov004_02168684();
-extern "C" void _Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv();
+void AllocateAndCopyBuf20_021689d8(SafeAllocator*, void*);
 extern char data_020f0b40[];
 extern char data_020f0b4c[];
 extern char data_020f0b56[];
@@ -505,7 +505,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                     unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + REGION_VALUE(0x92c, 0xb4c));
                     InitObjState_021b2174(r8node);
                     SetNameChecked_021b2ba0((S021b2ba0*)r8node, data_020f0b40);
-                    SetFields30And34_021b2bd0(r8node, (int)_Z24InitAndRegister_0215e25cPvS_, OVERLAY_ID(4));
+                    SetFields30And34_021b2bd0(r8node, (int)InitAndRegister_0215e25c, OVERLAY_ID(4));
                     PrependNodeToHead(subTail, (struct HeadNode020469f8*)r8node);
                     break;
                 }
@@ -526,7 +526,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                     SetBit5_021b2c0c((S021b2c0c*)r8node, 1);
                     SetBit3_021b2bdc((S021b2bdc*)r8node, 0);
                     SetNameChecked_021b2ba0((S021b2ba0*)r8node, data_020f0b56);
-                    SetFields30And34_021b2bd0(r8node, (int)_Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv, OVERLAY_ID(4));
+                    SetFields30And34_021b2bd0(r8node, (int)AllocateAndCopyBuf20_021689d8, OVERLAY_ID(4));
                     PrependNodeToHead(subTail, (struct HeadNode020469f8*)r8node);
                     break;
                 }

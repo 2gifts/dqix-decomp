@@ -11,6 +11,10 @@
 #endif
 
 #include <Memory/SafeAllocator.h>
+#include "World/Object3D.h"
+#include "GameState/GameState.h"
+#include "Filesystem/BackgroundLoader.h"
+#include "Resource/MessageSystem.h"
 
 struct PlayTime {
     unsigned short hours_;
@@ -44,10 +48,6 @@ struct Canvas {
 
 struct WindowCursor {
     int pad_0[0x40 / 4];
-};
-
-struct Object3D {
-    int pad_0[0xac / 4];
 };
 
 struct BattleRecords {
@@ -109,41 +109,16 @@ struct BattleRecords {
     }
 };
 
-struct MessageSystem {
-    char pad_0[REGION_LAYOUT(0x868, 0x998)];
-    int busy_;
-    int unk_99c;
-    int unk_9a0;
-    char pad_9a4[REGION_LAYOUT(0x17de, 0x19ae) - REGION_LAYOUT(0x874, 0x9a4)];
-    unsigned char unk_19ae;
-    char pad_19af[REGION_LAYOUT(0x17e2, 0x19b2) - REGION_LAYOUT(0x17df, 0x19af)];
-    unsigned char unk_19b2;
-    char pad_19b3[REGION_LAYOUT(0x17f6, 0x19c5) - REGION_LAYOUT(0x17e3, 0x19b3)];
-    unsigned char unk_19c5;
-    char pad_19c6[REGION_LAYOUT(0x17f9, 0x19c8) - REGION_LAYOUT(0x17f7, 0x19c6)];
-    unsigned char unk_19c8;
-};
-
 struct CombatantData {
     char pad_0[0x49c];
     unsigned char female_ : 1;
 };
 
-struct PartyMember {
-    char pad_0[REGION_LAYOUT(0x144, 0x150)];
+struct PartyMember : GameObject {
+    char pad_13c[REGION_LAYOUT(0x144, 0x150) - 0x13c];
     CombatantData* data_;
 };
 
-struct GameState {
-    static GameState* GetInstance();
-};
-
-struct BackgroundLoader {
-    static void AddLockGlobal();
-    static void RemoveLockGlobal();
-};
-
-struct GameResources;
 struct S_a05d8;
 struct List020727d8;
 struct StreamHeader;
@@ -167,7 +142,6 @@ void* LoadFileIntoMemory(const char* path, void* archive, unsigned int* size);
 void ResetListHeader020727d8(List020727d8* list);
 extern "C" void _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(void* list, StreamHeader* file, int size, int id, void* output, int female);
 int GetField0x3acValue_020100a8(GameState* gameState);
-PartyMember* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int index);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void AppendString02042058(char* text, const char* append);
 int ComputeScaledSum0205bb84(Struct_0205bb84* cursor);
@@ -175,11 +149,7 @@ int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int value);
 
 extern "C" {
-void* memset(void* buffer, int value, unsigned long size);
 void* ExtractFileFromGP2(char* path, char* inner, unsigned int* size);
-#if !defined(jpn)
-void func_0204500c(MessageSystem* messages, const char* text, int value, int value2);
-#endif
 void func_ov008_02186964(BattleRecords* self);
 int func_ov008_02186a30(BattleRecords* self, int ticks);
 void* func_0202ae18();
@@ -188,7 +158,6 @@ int func_0202c540(void* value);
 
 #if defined(jpn)
 extern "C" void _Z28SubmitScriptFromFile020727f8PvPKciS_h(void*, const char*, int, void*, int);
-extern "C" void func_0204500c(MessageSystem*, const char*, int);
 #endif
 
 // USA: func_ov008_02185dc0
@@ -197,8 +166,8 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
     GameState* gameState = GameState::GetInstance();
     GameResources* resources = GetWord0x0_0200fb8c((int*)gameState);
     MessageSystem* messages = GetGlobalField0x1c020421a0();
-    if (messages->busy_ != 0)
-        messages->unk_19ae = 0;
+    if (messages->active != NULL)
+        messages->b19ae = 0;
     signed char step = self->step_;
     if (step == 0)
     {
@@ -209,7 +178,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
     {
         if (REGION_FLAG(self, 0x20000) && REGION_FLAG(self, 0x200))
         {
-            if (messages->unk_9a0 != 3)
+            if (messages->mode != 3)
                 return;
             self->flags_ &= ~0x20000;
         }
@@ -228,7 +197,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
 #if !defined(jpn)
             int shown = 1;
 #endif
-            messages->busy_ = 1;
+            messages->active = (void*)1;
             if (self->title_ > 0)
             {
 #if !defined(jpn)
@@ -251,7 +220,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
                     TextList list;
                     ResetListHeader020727d8((List020727d8*)&list);
                     _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, self->comment_, path, 0);
-                    PartyMember* member = GetCombatantWithFlag0x100_0200ff1c(gameState, GetField0x3acValue_020100a8(gameState));
+                    PartyMember* member = (PartyMember*)GetCombatantWithFlag0x100_0200ff1c(gameState, GetField0x3acValue_020100a8(gameState));
                     ResetListHeader020727d8((List020727d8*)&list);
                     int female = member->data_->female_;
                     _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, path, self->title_, comment, female);
@@ -273,7 +242,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
                     file = ExtractFileFromGP2(path, inner, &size);
                     if (file != NULL)
                     {
-                        PartyMember* member = GetCombatantWithFlag0x100_0200ff1c(gameState, GetField0x3acValue_020100a8(gameState));
+                        PartyMember* member = (PartyMember*)GetCombatantWithFlag0x100_0200ff1c(gameState, GetField0x3acValue_020100a8(gameState));
                         ResetListHeader020727d8((List020727d8*)&list);
                         int female = member->data_->female_;
                         _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(&list, (StreamHeader*)file, size, self->title_, comment, female);
@@ -284,11 +253,11 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
 #if defined(jpn)
                     func_0204500c(messages, comment, 0);
 #else
-                    func_0204500c(messages, comment, 0, 0xe3);
+                    func_0204500c(messages, comment, 0, (void*)0xe3);
 #endif
-                    messages->unk_19b2 = 1;
-                    messages->unk_19c8 = 1;
-                    messages->unk_99c = 2;
+                    messages->b19b2 = 1;
+                    messages->b19c8 = 1;
+                    messages->state = 2;
                     if (self->page_ != NULL)
                     {
                         self->flags_ |= 0x200;
@@ -309,17 +278,17 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
 #if defined(jpn)
                     func_0204500c(messages, GetFieldByKey020e0434((Container020e0310*)&self->texts_, 10000), 0);
 #else
-                    func_0204500c(messages, GetFieldByKey020e0434((Container020e0310*)&self->texts_, 10000), 0, 0xe3);
+                    func_0204500c(messages, GetFieldByKey020e0434((Container020e0310*)&self->texts_, 10000), 0, (void*)0xe3);
 #endif
-                    messages->unk_19b2 = 1;
-                    messages->unk_19c8 = 1;
-                    messages->unk_99c = 2;
+                    messages->b19b2 = 1;
+                    messages->b19c8 = 1;
+                    messages->state = 2;
                 }
             }
             if (REGION_FLAG(self, 0x20000))
             {
-                messages->unk_19c5 = 1;
-                messages->unk_19b2 = 0;
+                messages->b19c5 = 1;
+                messages->b19b2 = 0;
                 self->flags_ |= 0x200;
                 self->step_ = 1;
                 return;

@@ -1,23 +1,12 @@
 #include <globaldefs.h>
+#include <GameState/GameState.h>
+#include <Graphics/Vector.h>
 
-struct Vector3i { int x,y,z; Vector3i& operator=(const Vector3i&); };
-struct Object3D { char pad[0x44]; Vector3i position; int GetHeight() const; };
-class GameState { public: static GameState* GetInstance(); Object3D* GetGameObjectByIndex(int); };
-int fix32ReduceAngle0To2Pi(int);
-int fix32SignedAngleDistance(int,int);
-int fix32abs(int);
-void Vector3fixMultiplyScalar(const Vector3i*, int, Vector3i*);
 int IsValueInRange0216f728(unsigned short*);
 void ApplyVec3Tail_0202e694(void*, int*);
 int GetField0x7c_0202e88c(void*);
 extern "C" void _Z42SetField0x7cClearFields0x1ec0x1ee_0202e874Pht(unsigned char*, int);
 extern "C" {
-void Vector3fix_Subtract(const Vector3i*, const Vector3i*, Vector3i*);
-int Vector3fix_Length(const Vector3i*);
-int Vector3fix_Distance(const Vector3i*,const Vector3i*);
-int fix32_Divide(int,int);
-int fix32_Atan2(int,int);
-void Vector3fix_Add(const Vector3i*, const Vector3i*, Vector3i*);
 void func_0202e5d8(void*,int,int,int);
 extern int data_ov000_02183fc8;
 struct State0216ea38 { unsigned short random,kind; int value4,value8,valueC,value10,value14; };
@@ -39,15 +28,15 @@ extern "C" ARM void func_ov000_0216ea38(Root0216ea38* obj) {
     data_ov000_02184270.value10 += 0xcc;
     data_ov000_02184270.value14 += 0x14;
     data_ov000_02184270.value4 += 4;
-    Object3D* a = gs->GetGameObjectByIndex(obj->first);
-    Object3D* b = gs->GetGameObjectByIndex(obj->second);
+    GameObject* a = gs->GetGameObjectByIndex(obj->first);
+    GameObject* b = gs->GetGameObjectByIndex(obj->second);
     if (!a || !b) return;
-    int ah = a->GetHeight(), bh = b->GetHeight();
+    int ah = a->obj3D_.GetHeight(), bh = b->obj3D_.GetHeight();
     int reverse = 0;
     if (ah >= 0x2000) reverse = 1;
     if (bh >= 0x2000) reverse = 0;
     if (bh < 0x2000 && ah < 0x2000) reverse = data_ov000_02184270.random % 2;
-    Vector3i pa(a->position), pb(b->position), direction, result, offset;
+    Vector3i pa(a->obj3D_.position_), pb(b->obj3D_.position_), direction, result, offset;
     Vector3fix_Subtract(&pb, &pa, &direction);
     int length = Vector3fix_Length(&direction);
     if (length) Vector3fixMultiplyScalar(&direction, fix32_Divide(0x1000,length), &direction);
@@ -55,12 +44,12 @@ extern "C" ARM void func_ov000_0216ea38(Root0216ea38* obj) {
     else Vector3fixMultiplyScalar(&direction,length/2,&offset);
     if (!reverse) {
         Vector3fix_Add(&pa,&offset,&result);
-        int h = a->GetHeight();
+        int h = a->obj3D_.GetHeight();
         result.y = (int)((float)result.y + 0.75f*(float)h);
     } else {
         Vector3fixMultiplyScalar(&offset,-0x1000,&offset);
         Vector3fix_Add(&pb,&offset,&result);
-        int h = b->GetHeight();
+        int h = b->obj3D_.GetHeight();
         result.y = (int)((float)result.y + 0.75f*(float)h);
     }
     if (result.y > 0x1000) result.y = 0x1000;

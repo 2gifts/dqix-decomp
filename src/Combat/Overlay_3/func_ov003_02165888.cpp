@@ -1,11 +1,11 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
+#include "Resource/CharacterCreationUI.h"
 
 struct Container02080cc0;
 struct Container02080f8c;
 struct Container02080fa8;
-struct Container020e0310 { char pad[4]; };
 struct StatusOwner02081198;
 struct StatusOwner02081164;
 
@@ -48,7 +48,7 @@ struct EntryList {
 struct StatusPanel {
     char pad[0x2dc];
     Container020e0310 cont2dc;
-    char pad2e0[0x324 - 0x2e0];
+    char pad2e4[0x324 - 0x2e4];
     struct Container02080cc0* elementObj;
     char pad328[0x468 - 0x328];
     unsigned char counters[4];
