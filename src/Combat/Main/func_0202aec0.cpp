@@ -47,7 +47,7 @@ struct Info_0202aec0 {
     unsigned char pad1c[0x38];
 };
 
-extern int data_020fefcc;
+extern "C" int _ZZ14GetTurnCountervE1s;
 
 // USA: func_0202aec0
 extern "C" ARM void func_0202aec0(Obj_0202aec0* obj) {
@@ -78,7 +78,7 @@ extern "C" ARM void func_0202aec0(Obj_0202aec0* obj) {
     obj->sub.fe = 0;
     obj->sub.ff = 0;
     obj->sub.f10 = 0;
-    (&data_020fefcc)[1] = 0;
+    (&_ZZ14GetTurnCountervE1s)[1] = 0;
     memset(obj->sub.f38, 0, 0x10);
     memset(obj->sub.f48, 0, 0x10);
     obj->sub.f11 = 1;
