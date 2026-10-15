@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Resource/FontBankLoader.h"
 #include "Combat/Main/CopyRecord0200fbb4.h"
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 extern "C" char data_ov017_021d7c0c[];
@@ -9,12 +10,6 @@ enum { WorkBuffer = 0x1000, MessageContainer = 0x230, ResourceTail = 0x34ec, Res
 #else
 enum { WorkBuffer = 0x1400, MessageContainer = 0x2e0, ResourceTail = 0x36fc, ResourceNode = 0x370c, ResourceAux = 0x3734, SubEnd = 0x264, SubByte = 0x25f, MessageState = 0x998, MessageResult = 0x9a0, MessageLeft = 0x914, MessageWidth = 0x918, MessageTop = 0x916, MessageDone = 0x19ae, GrottoResult = 0x27b4, GrottoFlag = 0x281f };
 #endif
-
-struct Vec3_021a86d0 {
-    int x;
-    int y;
-    int z;
-};
 
 struct Sub021a86d0 {
     char pad0[0x4];
@@ -52,26 +47,19 @@ struct Self021a86d0 {
     unsigned char container[0x10];
 };
 
-extern "C" void* _ZN9GameState11GetInstanceEv(void);
 char* GetGlobalField0x1c020421a0(void);
 extern "C" char* func_02012fe4(void);
-extern "C" unsigned int _ZNK9GameState12GetTickCountEv(void* gs);
 void SetupAndDispatch0205c904(unsigned char* obj, int value);
 void* GetGlobalResetObj020d7a50(void);
 struct Obj020d7aa0;
 void TeardownAndResetState020d7aa0(Obj020d7aa0*);
-extern "C" void* _ZN9GameState14GetProtagonistEv(void* gs);
 struct Obj020397cc;
 void CancelPendingAction020397cc(Obj020397cc*, int);
-extern "C" char* func_ov017_0218b5b0(void);
 void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
 extern "C" void ColorEffect_ConfigureAlphaBlend(void* reg, int plane1, int plane2, int ev1, int ev2);
 void* GetGlobalPtr021075f4_0203cf4c(void);
 void* FindEntryPointerByKey0203df78(void* p, int key);
-extern "C" char* _ZN9GameState20GetUnknownGameObjectEv(void* gs);
-extern "C" Vec3_021a86d0 _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(void* node);
-extern "C" void Vector3fix_Subtract(const Vec3_021a86d0* a, const Vec3_021a86d0* b, Vec3_021a86d0* out);
-extern "C" void Vector3fix_Normalize(const Vec3_021a86d0* a, Vec3_021a86d0* out);
+extern "C" Vector3fix _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(void* node);
 extern "C" int fix32_Atan2(int y, int x);
 #include "Combat/EntryGetterTypes.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -107,7 +95,6 @@ void ReinitController02043204(char* obj);
 void SetupGlobalObjType3AndInitSelfPointer_0205ce50(unsigned char* obj);
 extern "C" int func_020457e0(char* obj);
 extern "C" unsigned char* func_0205ec34(void);
-struct GameState;
 unsigned char* GetField0x3f8Address_0200fd0c(GameState*);
 extern "C" void VectorizedMemset(void* dst, int value, unsigned int size);
 void InitContext020e1154(void* p);
@@ -144,17 +131,17 @@ static inline void GX_SetVisiblePlane(unsigned int plane) {
 
 // USA: func_ov017_021a86d0
 extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
-    void* gs = _ZN9GameState11GetInstanceEv();
+    GameState* gs = GameState::GetInstance();
     char* g = GetGlobalField0x1c020421a0();
     char* flags = func_02012fe4();
     Sub021a86d0* sub = (Sub021a86d0*)self->sub;
-    SetupAndDispatch0205c904(self->sub, _ZNK9GameState12GetTickCountEv(gs));
+    SetupAndDispatch0205c904(self->sub, gs->GetTickCount());
 
     if (self->state == 0) {
         TeardownAndResetState020d7aa0((Obj020d7aa0*)GetGlobalResetObj020d7a50());
         self->planes = GX_GetVisiblePlane();
         GX_SetVisiblePlane(0x11);
-        CancelPendingAction020397cc((Obj020397cc*)_ZN9GameState14GetProtagonistEv(gs), 1);
+        CancelPendingAction020397cc((Obj020397cc*)gs->GetProtagonist(), 1);
         SetBitsInField4_0203b4d8((unsigned int*)func_ov017_0218b5b0(), 0x40);
         ColorEffect_ConfigureAlphaBlend((void*)0x4000050, 0x10, 1, 0x1f, 0);
         void* tbl = GetGlobalPtr021075f4_0203cf4c();
@@ -165,10 +152,10 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             node = FindEntryPointerByKey0203df78(tbl, 0xcb);
         }
         if (node != NULL) {
-            char* unk = _ZN9GameState20GetUnknownGameObjectEv(gs);
-            Vec3_021a86d0 target = _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(node);
-            Vec3_021a86d0 diff;
-            Vector3fix_Subtract((Vec3_021a86d0*)(unk + 0x44), &target, &diff);
+            GameObject* unk = gs->GetUnknownGameObject();
+            Vector3fix target = _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(node);
+            Vector3fix diff;
+            Vector3fix_Subtract(&unk->obj3D_.position_, &target, &diff);
             Vector3fix_Normalize(&diff, &diff);
             int angle = fix32_Atan2(diff.x, diff.z);
             if (angle < 0) {
@@ -197,7 +184,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             func_020dfec0(self->container, self->allocator, data, length);
             ((BackgroundLoader*)loader)->RemoveTask(self->task);
             self->task = -1;
-            SetIndexedName02046574((Obj02046574*)g, 0, *(char**)((char*)_ZN9GameState14GetProtagonistEv(gs) + 0x134));
+            SetIndexedName02046574((Obj02046574*)g, 0, *(char**)((char*)gs->GetProtagonist() + 0x134));
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             func_ov017_021a933c(self, 0x64);
             *(int*)(g + MessageState) = 1;
@@ -266,7 +253,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         }
     } else if (self->state == 3) {
         void* cont = *(void**)(g + MessageContainer);
-        IterateEntries0205a330((Container0205a330*)cont, _ZNK9GameState12GetTickCountEv(gs));
+        IterateEntries0205a330((Container0205a330*)cont, gs->GetTickCount());
         g[MessageDone] = 0;
         int sel = GetScaledSumIfActive0205cecc(self->sub);
         if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 1)) {
@@ -316,9 +303,9 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         int chapter;
         int part;
         unsigned char* bits = func_0205ec34();
-        char* res = func_ov017_0218b5b0();
+        char* res = (char*)func_ov017_0218b5b0();
         void* tail = *(void**)(res + ResourceTail);
-        unsigned char* ctx = GetField0x3f8Address_0200fd0c((GameState*)gs);
+        unsigned char* ctx = GetField0x3f8Address_0200fd0c(gs);
         VectorizedMemset(ctx, 0, 0x70);
         ctx[4] = 1;
         ctx[8] = 1;
@@ -479,7 +466,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
     } else if (self->state == 100 && *(int*)(g + MessageResult) == 0) {
         ReinitController02043204(g);
         SetupGlobalObjType3AndInitSelfPointer_0205ce50(self->sub);
-        SetByteField0x253_020397c0(_ZN9GameState14GetProtagonistEv(gs));
+        SetByteField0x253_020397c0(gs->GetProtagonist());
         func_ov017_021a92a0(self);
         self->done = 1;
     }

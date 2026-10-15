@@ -1,22 +1,7 @@
 #include <globaldefs.h>
-#include "Combat/Main/BattleList.h"
-struct CombatantStruct {
-    unsigned short flags;
-    char unk[0x132];
-    struct BaseCombatStats* baseStats;
-    struct ModifiableCombatStats* currentStats;
-};
-struct BattleStruct {
-    int unk0;
-    int unk4;
-    struct CombatantStruct* combatantList[0xe9];
-};
-extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
+#include "System/Matrix.h"
+#include "GameState/GameState.h"
 
-struct Vector3i {
-    int x, y, z;
-    Vector3i& operator=(const Vector3i& other);
-};
 typedef Vector3i Vec3;
 
 class VObjNode {
@@ -100,7 +85,7 @@ extern "C" int func_ov004_0216af24(void* a, short key);
 
 extern DataTable02171034 data_ov004_02171034;
 
-static inline BattleRegion4000* GetRegion(struct BattleStruct* bs) {
+static inline BattleRegion4000* GetRegion(GameState* bs) {
     return &((BattleStructExt*)bs)->region3e80.region4000;
 }
 struct ShortPair0217017a { short a; short b; };
@@ -150,14 +135,14 @@ extern "C" ARM int func_ov004_0216ba70(void* a) {
     int delta;
     int base;
     BattleRegion4000* ext;
-    struct BattleStruct* bs2;
+    GameState* bs2;
     BattleRegion4000* reg2;
     Vec3 v6c;
 
-    ext = &((BattleStructExt*)_ZN9GameState11GetInstanceEv())->region3e80.region4000;
+    ext = &((BattleStructExt*)GameState::GetInstance())->region3e80.region4000;
     count = ext->flagD4;
 
-    bs2 = _ZN9GameState11GetInstanceEv();
+    bs2 = GameState::GetInstance();
     reg2 = GetRegion(bs2);
 
     func_ov004_0216afb0(a, 0x37, 2, 0xd3, 6, 0x46, 4, 0xa, 1);
@@ -254,7 +239,7 @@ extern "C" ARM int func_ov004_0216ba70(void* a) {
         if (typeVal >= 0 && typeVal < 0xd) {
             int sl = 0x3e7;
             if (typeVal != 0) sl = (short)(typeVal + 6);
-            unsigned char flagD6 = GetRegion(_ZN9GameState11GetInstanceEv())->flagD6;
+            unsigned char flagD6 = GetRegion(GameState::GetInstance())->flagD6;
             if (flagD6 == 1) sl = 0x46;
             func_ov004_0216aed0(a, j * 3 + 0x39, sl, 0);
         }
@@ -333,7 +318,7 @@ extern "C" ARM int func_ov004_0216ba70(void* a) {
     case 0x10: msgId = 0x47; break;
     }
 
-    if (GetRegion(_ZN9GameState11GetInstanceEv())->flagD7 != 0) {
+    if (GetRegion(GameState::GetInstance())->flagD7 != 0) {
         msgId = 0x2bc;
     }
     if (msgId >= 0) {

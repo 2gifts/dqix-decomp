@@ -112,7 +112,6 @@ void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
-extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
 
 struct Entry0209854c;
 struct Entry0209854c* FindEntryByFieldC0209854c(struct Entry0209854c* list, int target);
@@ -371,7 +370,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             params.fieldc = (int)sb;
             params.field4 = (int)loadedPtr;
             params.field8 = (int)outLen;
-            _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(node->state, &params, 0);
+            ((Object3D*)node->state)->LoadFromCCHROrCMOTArchive((ObjectArchiveLoadInfo*)&params, 0);
             BackupPairTables0207dfac(fp);
         }
         else if (entry->type == 4) {
@@ -492,7 +491,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             params.fieldc = (int)sb;
             params.field4 = (int)decompressed;
             params.field8 = (int)decompSize;
-            _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(node->state, &params, 0);
+            ((Object3D*)node->state)->LoadFromCCHROrCMOTArchive((ObjectArchiveLoadInfo*)&params, 0);
             BackupPairTables0207dfac(fp);
 
             node->state->flags_d4 |= 2;
@@ -563,7 +562,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     if (bit == 0) {
                         ((Object3D*)((int)node->state))->LoadFromCHRArchive((ObjectArchiveLoadInfo*)((int)&lockParams));
                     } else if (bit == 1) {
-                        _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(node->state, &lockParams, 0);
+                        ((Object3D*)node->state)->LoadFromCCHROrCMOTArchive((ObjectArchiveLoadInfo*)&lockParams, 0);
                     }
                 }
             }

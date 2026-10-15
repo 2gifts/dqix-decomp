@@ -1,14 +1,16 @@
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
+#include "GameState/GameState.h"
+#include "Filesystem/BackgroundLoader.h"
 #include "World/Zone3D.h"
 #include "World/ZoneTerrain.h"
 
 struct GameResources;
-
-typedef Vector3i Vec3;
+struct Struct020338d4;
+struct Vec3;
 
 struct PartyEntry {
-    Vec3 pos;
+    Vector3i pos;
     short angle;
     short pad;
 };
@@ -26,16 +28,16 @@ struct InfoBlock {
 struct Actor {
     unsigned short flags;
     char pad0[0x44 - 2];
-    Vec3 pos;
-    Vec3 rot;
+    Vector3i pos;
+    Vector3i rot;
 #if defined(jpn)
     char pad1[0x150 - 0x5c];
 #else
     char pad1[0x15c - 0x5c];
 #endif
     int f15c;
-    Vec3 savedPos;
-    Vec3 savedRot;
+    Vector3i savedPos;
+    Vector3i savedRot;
 };
 
 struct SlotEnt {
@@ -160,16 +162,10 @@ struct CombatRoot {
     int f77f0;
 };
 
-extern "C" int _ZN9GameState11GetInstanceEv();
-extern "C" int _ZN16BackgroundLoader11GetInstanceEv();
-extern "C" int func_0202ae18(int);
+extern "C" int func_0202ae18(BackgroundLoader*);
 extern "C" GameResources* func_ov017_0218b5b0();
 int FindEntryByCurrentId02027cb0();
-PtrBlock* GetPtrField0x2a04_02010828(GameState*);
-extern "C" Actor* _ZN9GameState14GetProtagonistEv(int gs);
 Actor* FindCombatantByField16a_021a278c(void*, int);
-extern "C" int _ZN9GameState20GetUnknownGameObjectEv(int gs);
-extern "C" Actor* _ZN9GameState21GetPartyMemberByIndexEi(int gs, int idx);
 int TestBitAt0x34_020a35e0(unsigned char*, unsigned char);
 int GetByte0x26c_02039d7c(char*);
 struct Obj02039d84;
@@ -178,9 +174,8 @@ void EnqueueEventTag60Field_021d440c(int i);
 void ClearField0xc4KeepBit0x8000_0203409c(unsigned char*);
 void ClearFlag0x1ceBit0x4_02039d58(unsigned char*);
 int GetSignedByte0x1ca_02039888(void*);
-extern "C" Actor* _ZN9GameState31GetMaybeWanderingMonsterByIndexEi(int gs, int idx);
-void Vector3fixMultiplyScalar(const Vec3* v, int s, Vec3* out);
-extern "C" void _Z21AimAndSetVecY020338d4P14Struct020338d4P4Vec3(Actor* a, Vec3* v);
+void Vector3fixMultiplyScalar(const Vector3i* v, int s, Vector3i* out);
+void AimAndSetVecY020338d4(Struct020338d4*, Vec3*);
 void EnqueueEventTag20_021cee78(int id, unsigned char v);
 void SetField0x158_02053ec8(void*, int);
 int CheckField0NonZero_0202b7d8(int*);
@@ -194,7 +189,6 @@ struct Field3f8* GetField0x3f8Address_0200fd0c(GameState*);
 int GetField0x3acValue_020100a8(GameState*);
 void ClearSlotsAndProcess_021a27e8(void* controller);
 extern "C" void func_ov017_0219b938(int ov);
-extern "C" Actor* _ZN9GameState27GetMaybeFieldMonsterByIndexEi(int gs, int idx);
 int GetGlobalPtr021075f4_0203cf4c();
 int GetField0x8c_0203e06c(void*);
 void SetCombatWorkFlags0x55f4_ov000_02160fa8(void*, int);
@@ -217,7 +211,6 @@ int GetFieldB08_0219e008(void*);
 void DestroyAllocatorsFromTable_021a1114(char*);
 extern "C" void func_ov017_021a07f4(int ov);
 void SetFieldB08_0219dffc(void*, int);
-extern "C" int _ZN13SafeAllocator8AllocateEj(void* a, unsigned int size);
 struct Field0x19cData;
 void SetAndClearField0x19c_02053da0(char*, Field0x19cData*);
 extern "C" void func_ov000_02161300(CombatRoot* c, int i);
@@ -225,7 +218,6 @@ void SetFlag0x1ceBit0x1_02039894(unsigned char*);
 extern "C" int func_0202c540(int p);
 extern "C" void func_ov017_0219c774(int a, int b, int c);
 void EnqueueEventTag147_021cdaa0();
-extern "C" void _ZN9GameState12SetTimeOfDayE9TimeOfDay(int gs, int t);
 void LoadBattleBlock020ac4c0(void*);
 struct S_a07e0;
 void AddClamped24BitFieldAt0x3c_020a07e0(S_a07e0*, unsigned int);
@@ -245,17 +237,17 @@ extern float data_ov000_0218423c[5];
 
 // USA: func_ov000_021643d4
 extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
-    int gs = _ZN9GameState11GetInstanceEv();
-    int search = func_0202ae18(_ZN16BackgroundLoader11GetInstanceEv());
+    GameState* gs = GameState::GetInstance();
+    int search = func_0202ae18(BackgroundLoader::GetInstance());
     GameResources* resources = func_ov017_0218b5b0();
     int ov = (int)resources;
     EntryInfo* entry = (EntryInfo*)FindEntryByCurrentId02027cb0();
     Zone3D* obj14 = func_02012fe4();
-    PtrBlock* pb = GetPtrField0x2a04_02010828((GameState*)gs);
-    Actor* hero = _ZN9GameState14GetProtagonistEv(gs);
+    PtrBlock* pb = (PtrBlock*)GetPtrField0x2a04_02010828(gs);
+    Actor* hero = (Actor*)gs->GetProtagonist();
     Actor* enemy = FindCombatantByField16a_021a278c((void*)ov, c->info->id8);
-    _ZN9GameState20GetUnknownGameObjectEv(gs);
-    Actor* leader = _ZN9GameState21GetPartyMemberByIndexEi(gs, c->info->partyIdx);
+    gs->GetUnknownGameObject();
+    Actor* leader = (Actor*)gs->GetPartyMemberByIndex(c->info->partyIdx);
     c->savedPlanes = (*(volatile unsigned int*)0x4000000 & 0x1f00) >> 8;
     {
         volatile unsigned int* reg = (volatile unsigned int*)0x4001000;
@@ -264,7 +256,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     }
     for (int i = 0; i < 4; i++) {
         if (!TestBitAt0x34_020a35e0((unsigned char*)c->info, i)) continue;
-        Actor* m = _ZN9GameState21GetPartyMemberByIndexEi(gs, i);
+        Actor* m = (Actor*)gs->GetPartyMemberByIndex(i);
         if (!m) continue;
         if (GetByte0x26c_02039d7c((char*)m)) {
             ResetObjectState02039d84((Obj02039d84*)m);
@@ -279,12 +271,12 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
         ((Object3D*)m)->SetInheritedAlpha(0x1f);
         ClearFlag0x1ceBit0x4_02039d58((unsigned char*)m);
         if (c->info->modeC == 0x1b) {
-            Actor* o = _ZN9GameState21GetPartyMemberByIndexEi(gs, 0);
+            Actor* o = (Actor*)gs->GetPartyMemberByIndex(0);
             if (!o) continue;
             if (**(unsigned int**)((char*)o + 0x130) & 1) {
-                o = _ZN9GameState21GetPartyMemberByIndexEi(gs, (short)GetSignedByte0x1ca_02039888(o));
+                o = (Actor*)gs->GetPartyMemberByIndex((short)GetSignedByte0x1ca_02039888(o));
                 if (!o) {
-                    o = _ZN9GameState21GetPartyMemberByIndexEi(gs, 0);
+                    o = (Actor*)gs->GetPartyMemberByIndex(0);
                 }
             }
             c->party[i].pos = o->pos;
@@ -294,14 +286,14 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
         }
     }
     if (enemy) {
-        Vec3 ep = enemy->pos;
+        Vector3i ep = enemy->pos;
         for (int j = 0; j < pb->count; j++) {
             int id = pb->ids[j];
-            Actor* mon = _ZN9GameState31GetMaybeWanderingMonsterByIndexEi(gs, id);
+            Actor* mon = (Actor*)gs->GetMaybeWanderingMonsterByIndex(id);
             if (!mon) continue;
             if (c->info->flag4 == 0) {
-                Vec3 mp = mon->pos;
-                Vec3 dir, off;
+                Vector3i mp = mon->pos;
+                Vector3i dir, off;
                 Vector3fix_Subtract(&ep, &mp, &dir);
                 Vector3fix_Normalize(&dir, &dir);
                 int dist = Vector3fix_Distance(&ep, &mp);
@@ -312,7 +304,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
                 mp.y = func_02018fbc(obj14, &mp);
                 mon->pos = mp;
             }
-            _Z21AimAndSetVecY020338d4P14Struct020338d4P4Vec3(mon, &ep);
+            AimAndSetVecY020338d4((Struct020338d4*)mon, (Vec3*)&ep);
             EnqueueEventTag20_021cee78(id, 0);
         }
     }
@@ -330,9 +322,9 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     }
     ResetOverlayAndAllocator_0219bf74();
     func_ov017_0219bd1c(0, 4, 1, 0);
-    char* f3f8 = (char*)GetField0x3f8Address_0200fd0c((GameState*)gs);
-    int sel = GetField0x3acValue_020100a8((GameState*)gs);
-    *(Vec3*)(f3f8 + 0x10) = c->party[sel].pos;
+    char* f3f8 = (char*)GetField0x3f8Address_0200fd0c(gs);
+    int sel = GetField0x3acValue_020100a8(gs);
+    *(Vector3i*)(f3f8 + 0x10) = c->party[sel].pos;
     *(short*)(f3f8 + 0x1c) = c->party[sel].angle;
 #if defined(jpn)
     unsigned int w = *(unsigned short*)(*(char**)((char*)ov + 0x3000 + 0x508) + 0x600 + 0xc4);
@@ -340,14 +332,14 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     unsigned int w = *(unsigned short*)(*(char**)((char*)ov + 0x3000 + 0x718) + 0x600 + 0xc4);
 #endif
     if (w) {
-        char* p = (char*)GetField0x3f8Address_0200fd0c((GameState*)gs);
+        char* p = (char*)GetField0x3f8Address_0200fd0c(gs);
         *(unsigned short*)p = w;
         p[0xa] = 0;
     }
     ClearSlotsAndProcess_021a27e8((void*)ov);
     func_ov017_0219b938(ov);
     for (int k = 0; k < 12; k++) {
-        Actor* fm = _ZN9GameState27GetMaybeFieldMonsterByIndexEi(gs, k + (entry->kind * 12 + 0x70));
+        Actor* fm = (Actor*)gs->GetMaybeFieldMonsterByIndex(k + (entry->kind * 12 + 0x70));
         if (fm) ((Object3D*)fm)->Destroy();
     }
     int glob = GetGlobalPtr021075f4_0203cf4c();
@@ -372,11 +364,11 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     SetIntField540_0216f700(c->sub_c18, c->f29c);
     c->fe20 = 0x800;
     c->fe24 = 1;
-    c->f2a4 = GetField0x3b0Value_020100bc((GameState*)gs);
+    c->f2a4 = GetField0x3b0Value_020100bc(gs);
     if (c->f2a4) {
         SetAngleAndTrigTable0202e9a4((AngleTrig0202e9a4*)((int)c->f2a4), 0xf);
     }
-    SetField0x3b0Value_020100c4((GameState*)gs, (int)c->sub_c18);
+    SetField0x3b0Value_020100c4(gs, (int)c->sub_c18);
 #if defined(jpn)
     func_020134e0((char*)c + 0x244 + 0xc00);
 #else
@@ -393,24 +385,24 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     for (int n = 0; (size = tbl.e[n].size) > 0; n++) {
         int idx = tbl.e[n].idx;
         int type = tbl.e[n].type;
-        int buf = _ZN13SafeAllocator8AllocateEj((char*)ov + 0x38, size);
+        void* buf = resources->allocator_array_38[0].Allocate(size);
         if (type == 0) {
 #if defined(jpn)
-            ((SafeAllocator*)((AllocSlot*)((char*)c + 8) + idx))->CreateTypeA((void*)buf, size);
+            ((SafeAllocator*)((AllocSlot*)((char*)c + 8) + idx))->CreateTypeA(buf, size);
 #else
-            ((SafeAllocator*)&c->allocs[idx])->CreateTypeA((void*)buf, size);
+            ((SafeAllocator*)&c->allocs[idx])->CreateTypeA(buf, size);
 #endif
         } else if (type == 1) {
 #if defined(jpn)
-            ((SafeAllocator*)((AllocSlot*)((char*)c + 8) + idx))->CreateTypeB((void*)buf, size, 4);
+            ((SafeAllocator*)((AllocSlot*)((char*)c + 8) + idx))->CreateTypeB(buf, size, 4);
 #else
-            ((SafeAllocator*)&c->allocs[idx])->CreateTypeB((void*)buf, size, 4);
+            ((SafeAllocator*)&c->allocs[idx])->CreateTypeB(buf, size, 4);
 #endif
         }
     }
     for (int i = 0; i < 4; i++) {
         if (!TestBitAt0x34_020a35e0((unsigned char*)c->info, i)) continue;
-        Actor* m = _ZN9GameState21GetPartyMemberByIndexEi(gs, i);
+        Actor* m = (Actor*)gs->GetPartyMemberByIndex(i);
         if (!m) continue;
         m->savedPos = m->pos;
         m->savedRot = m->rot;
@@ -424,7 +416,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     }
     if (!CheckField0NonZero_0202b7d8((int*)search)) {
         SetCombatWorkFlags0x55f4_ov000_02160fa8(c, 2);
-    } else if (GetField0x3acValue_020100a8((GameState*)gs) == c->info->partyIdx) {
+    } else if (GetField0x3acValue_020100a8(gs) == c->info->partyIdx) {
         SetCombatWorkFlags0x55f4_ov000_02160fa8(c, 2);
     }
     if (func_0202c540(search)) {
@@ -447,7 +439,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     }
     EnqueueEventTag147_021cdaa0();
     if (c->info->modeC == 0x1a) {
-        _ZN9GameState12SetTimeOfDayE9TimeOfDay(gs, 3);
+        gs->SetTimeOfDay(TimeOfDay_Evening);
         lm->mode = 3;
     }
     ClearBitsInWord_0203b4b0((unsigned int*)ov, 0x800);

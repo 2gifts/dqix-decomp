@@ -16,9 +16,6 @@ void *GetPointerFromArray0x3c_0201e838(unsigned char *arr, unsigned idx);
 struct AppendNode;
 struct AppendList;
 void AppendNodeToListField30_0206445c(int a, AppendNode *msg, AppendList *list);
-struct BattleStruct;
-extern "C" int _ZNK9GameState11GetDayTimerEv(BattleStruct *battle);
-extern "C" void _ZN9GameState12SetTimeOfDayE9TimeOfDay(char *battle, int p1);
 void EnqueueEventTag147_021cdaa0();
 void *GetGlobal02109418_02094d6c(void);
 extern "C" int func_020961b0(void *g, int p1);
@@ -59,14 +56,14 @@ int NextRandomBetween(Random*, int, int);
 int NextRandomMax(Random*, int);
 extern short data_020e7de8[14];
 extern "C" void *memmove(void *dst, const void *src, unsigned int n);
-extern "C" void _Z27EnqueueEventTag142_021cd6d8P11Src021cd6d8(void *ev);
 struct Src021cd6d8 {
     short f0, f1, f2, f3;
     unsigned char f4;
     short f5;
     signed char f6;
-    int f7;
+    float f7;
 };
+void EnqueueEventTag142_021cd6d8(Src021cd6d8 *ev);
 void StoreFields0x1e4And0x1e8IfNonZero_0202ea10(unsigned char*, int, int);
 void SetFlag0x4At0x168_0202ea3c(unsigned char*);
 struct FlagsAndWords0202ea20;
@@ -367,10 +364,10 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     }
     case 0x6e: {
         GameState *battle = GameState::GetInstance();
-        _ZN9GameState12SetTimeOfDayE9TimeOfDay((char *)battle, msg->p1);
-        void *d = LightingManager::GetInstance();
-        *(int *)((char *)d + 0x94) = _ZNK9GameState11GetDayTimerEv((BattleStruct *)battle);
-        *(int *)((char *)d + 0x98) = ((GameState*)((BattleStruct *)battle))->GetTimeOfDay();
+        battle->SetTimeOfDay((TimeOfDay)msg->p1);
+        LightingManager *d = LightingManager::GetInstance();
+        d->dayNightTimer_ = battle->GetDayTimer();
+        d->timeOfDayIndex_ = battle->GetTimeOfDay();
         void *ctx = func_0202ae18();
         if (func_0202c508(ctx))
             EnqueueEventTag147_021cdaa0();
@@ -807,8 +804,8 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         c0Local.f2 = 0;
         c0Local.f4 = 1;
         c0Local.f3 = -1;
-        c0Local.f7 = _ZNK9GameState11GetDayTimerEv((BattleStruct *)battle);
-        _Z27EnqueueEventTag142_021cd6d8P11Src021cd6d8(&c0Local);
+        c0Local.f7 = battle->GetDayTimer();
+        EnqueueEventTag142_021cd6d8(&c0Local);
         return 1;
     }
     case 0xa4: {
@@ -865,10 +862,10 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     }
     case 0xb1: {
         GameState *battle = GameState::GetInstance();
-        _ZN9GameState12SetTimeOfDayE9TimeOfDay((char *)battle, msg->p2);
-        void *d = LightingManager::GetInstance();
-        *(int *)((char *)d + 0x94) = _ZNK9GameState11GetDayTimerEv((BattleStruct *)battle);
-        *(int *)((char *)d + 0x98) = ((GameState*)((BattleStruct *)battle))->GetTimeOfDay();
+        battle->SetTimeOfDay((TimeOfDay)msg->p2);
+        LightingManager *d = LightingManager::GetInstance();
+        d->dayNightTimer_ = battle->GetDayTimer();
+        d->timeOfDayIndex_ = battle->GetTimeOfDay();
         battle->SetDayTimerRunning(msg->p1 == 0);
         return 1;
     }

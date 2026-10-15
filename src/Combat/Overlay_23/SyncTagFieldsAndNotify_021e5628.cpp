@@ -1,22 +1,10 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
+#include "Graphics/NSBXX/GeometryFifo.h"
 
 unsigned short (*GetVariantShortTable02109928_02099cac(void))[2];
 int CallWithAddr4000330_020c555c(int a);
-extern "C" void _ZN8Object3D14AdvanceEffectsEv(void* obj);
-struct S1a0;
-extern "C" void _ZN8Object3D23SetCurrentAnimationTimeEi(struct S1a0* obj, unsigned int v);
-extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
-struct Struct0207ea38;
-extern "C" int _ZN7Model3D12GetBoneIndexEPKc(struct Struct0207ea38* obj, char* str);
-struct Matrix3x3;
-struct Matrix4x3;
-struct ModelRenderContext;
-int GetModelBonePositionAndDirectionMatrices(ModelRenderContext*, Matrix4x3*, Matrix3x3*, unsigned int);
-struct S02035d44;
-extern "C" int _ZN8Object3D11DrawSimple2Eb(struct S02035d44* obj, int arg);
-extern "C" void _ZN8Object3D19SendTransformToFifoEv(void* obj);
 extern "C" void func_02031234(int angle);
-extern "C" void _ZN8Object3D15ApplyAnimationsEPS_(void* obj, void* child);
 
 extern char data_ov023_021fdcef;
 extern char data_ov023_021fdcf4;
@@ -26,13 +14,17 @@ extern char data_ov023_021fdd08;
 extern char data_ov023_021fdd10;
 
 struct TagObj021e5628 {
-    unsigned char pad0[0x2];
-    short field2;
-    unsigned char pad1[0x8 - 0x4];
-    void* field8;
-    unsigned char pad2[0x1c - 0xc];
-    unsigned int field1c;
-    unsigned char pad3[0xc10 - 0x20];
+    Object3D field0;
+    Object3D fieldAc;
+    Object3D field158;
+    Object3D field204;
+    Object3D field2b0;
+    Object3D field35c;
+    Object3D field408;
+    Object3D field4b4;
+    Object3D field560;
+    Object3D field60c;
+    unsigned char pad3[0xc10 - 0x6b8];
     unsigned char field_c10;
     unsigned char pad4[0xc12 - 0xc11];
     unsigned char field_c12;
@@ -41,13 +33,8 @@ struct TagObj021e5628 {
 };
 
 struct CtxObj021e5628 {
-    void* field0;
-    void* field4;
-};
-
-struct FlagObjA8_021e5628 {
-    unsigned char pad[0xa8];
-    int flagA8 : 1;
+    Object3D* field0;
+    Object3D* field4;
 };
 
 // USA: func_ov023_021e5628  (semantic: SyncTagFieldsAndNotify_021e5628)
@@ -62,79 +49,79 @@ extern "C" ARM void func_ov023_021e5628(TagObj021e5628* obj, CtxObj021e5628* ctx
     unsigned short buf[8] = {v, v, v, v, v, v, v, v};
     CallWithAddr4000330_020c555c((int)buf);
 
-    if (obj->field2 >= 0) {
-        _ZN8Object3D14AdvanceEffectsEv(obj);
-        unsigned int f1c = obj->field1c;
-        _ZN8Object3D23SetCurrentAnimationTimeEi((struct S1a0*)((char*)obj + 0x408), f1c);
-        _ZN8Object3D23SetCurrentAnimationTimeEi((struct S1a0*)((char*)obj + 0xac), f1c);
-        _ZN8Object3D23SetCurrentAnimationTimeEi((struct S1a0*)((char*)obj + 0x35c), f1c);
+    if (obj->field0.unknown_2_ >= 0) {
+        obj->field0.AdvanceEffects();
+        fix32_t f1c = obj->field0.animationTime_;
+        obj->field408.SetCurrentAnimationTime(f1c);
+        obj->fieldAc.SetCurrentAnimationTime(f1c);
+        obj->field35c.SetCurrentAnimationTime(f1c);
     }
-    if (obj->field2 <= -1) return;
+    if (obj->field0.unknown_2_ <= -1) return;
 
-    _ZN8Object3D4DrawEb(obj, 1);
+    obj->field0.Draw(true);
 
-    struct Struct0207ea38* strObj;
-    void* p = *(void**)((char*)obj + 8);
+    Model3D* strObj;
+    Model3D* p = *(Model3D**)((char*)obj + 8);
     if (p == 0) goto skipMessages;
-    if (!((struct FlagObjA8_021e5628*)p)->flagA8) p = 0;
+    if (!p->unknown_flags_a8_0_) p = 0;
     if (p == 0) goto skipMessages;
 
     {
-        strObj = (struct Struct0207ea38*)obj->field8;
+        strObj = obj->field0.pModel_;
         if (strObj == 0) return;
 
-        int r = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdcef);
-        if (r > -1) {
-            GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r);
+        int boneIndex = strObj->GetBoneIndex(&data_ov023_021fdcef);
+        if (boneIndex > -1) {
+            GetModelBonePositionAndDirectionMatrices(&p->renderContext_, 0, 0, boneIndex);
             if (ctx != 0 && ctx->field4 != 0) {
-                _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)ctx->field4, 0);
+                ctx->field4->DrawSimple2(false);
             }
-            _ZN8Object3D19SendTransformToFifoEv((char*)obj + 0x158);
-            _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x158), 0);
-            _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x204), 0);
-            _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x4b4), 0);
+            obj->field158.SendTransformToFifo();
+            obj->field158.DrawSimple2(false);
+            obj->field204.DrawSimple2(false);
+            obj->field4b4.DrawSimple2(false);
 
             if (obj->field_c10 != 0) {
-                int r2 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdcf4);
-                if (r2 > -1 && *(short*)((char*)obj + 0x562) > -1) {
-                    GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r2);
-                    _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x560), 0);
+                boneIndex = strObj->GetBoneIndex(&data_ov023_021fdcf4);
+                if (boneIndex > -1 && obj->field560.unknown_2_ > -1) {
+                    GetModelBonePositionAndDirectionMatrices(&p->renderContext_, 0, 0, boneIndex);
+                    obj->field560.DrawSimple2(false);
                 }
-                int r3 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdcfa);
-                if (r3 > -1 && *(short*)((char*)obj + 0x562) > -1) {
-                    GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r3);
+                boneIndex = strObj->GetBoneIndex(&data_ov023_021fdcfa);
+                if (boneIndex > -1 && obj->field560.unknown_2_ > -1) {
+                    GetModelBonePositionAndDirectionMatrices(&p->renderContext_, 0, 0, boneIndex);
                     func_02031234(0x3244);
-                    _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x560), 0);
+                    obj->field560.DrawSimple2(false);
                 }
             } else {
-                int r4 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdd00);
-                if (r4 > -1 && *(short*)((char*)obj + 0x562) > -1) {
-                    GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r4);
-                    _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x560), 0);
+                boneIndex = strObj->GetBoneIndex(&data_ov023_021fdd00);
+                if (boneIndex > -1 && obj->field560.unknown_2_ > -1) {
+                    GetModelBonePositionAndDirectionMatrices(&p->renderContext_, 0, 0, boneIndex);
+                    obj->field560.DrawSimple2(false);
                 }
             }
 
-            int r5 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdd08);
-            if (r5 > -1 && *(short*)((char*)obj + 0x60e) > -1) {
-                GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r5);
-                _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)((char*)obj + 0x60c), 0);
+            boneIndex = strObj->GetBoneIndex(&data_ov023_021fdd08);
+            if (boneIndex > -1 && obj->field60c.unknown_2_ > -1) {
+                GetModelBonePositionAndDirectionMatrices(&p->renderContext_, 0, 0, boneIndex);
+                obj->field60c.DrawSimple2(false);
             }
 
             if (ctx != 0 && ctx->field0 != 0) {
-                int r6 = _ZN7Model3D12GetBoneIndexEPKc(strObj, &data_ov023_021fdd10);
-                if (r6 > -1) {
-                    GetModelBonePositionAndDirectionMatrices((ModelRenderContext*)p, (Matrix4x3*)0, (Matrix3x3*)0, r6);
-                    _ZN8Object3D11DrawSimple2Eb((struct S02035d44*)ctx->field0, 0);
+                boneIndex = strObj->GetBoneIndex(&data_ov023_021fdd10);
+                if (boneIndex > -1) {
+                    GetModelBonePositionAndDirectionMatrices(&p->renderContext_, 0, 0, boneIndex);
+                    ctx->field0->DrawSimple2(false);
                 }
             }
         }
     }
 
 skipMessages:
-    _ZN8Object3D15ApplyAnimationsEPS_(obj, (char*)obj + 0x408);
-    _ZN8Object3D4DrawEb((char*)obj + 0x408, 1);
-    _ZN8Object3D15ApplyAnimationsEPS_(obj, (char*)obj + 0xac);
-    _ZN8Object3D4DrawEb((char*)obj + 0xac, 1);
-    _ZN8Object3D15ApplyAnimationsEPS_(obj, (char*)obj + 0x35c);
-    _ZN8Object3D4DrawEb((char*)obj + 0x35c, 1);
+    obj->field0.ApplyAnimations(&obj->field408);
+    obj->field408.Draw(true);
+    obj->field0.ApplyAnimations(&obj->fieldAc);
+    obj->fieldAc.Draw(true);
+    obj->field0.ApplyAnimations(&obj->field35c);
+    obj->field35c.Draw(true);
 }

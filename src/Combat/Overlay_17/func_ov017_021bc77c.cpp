@@ -75,7 +75,6 @@ extern "C" void func_ov017_0219bf04(int a, int b);
 void SetByte1True_021c178c(unsigned char* p);
 extern "C" void func_ov017_021b8bb0(unsigned short id);
 void InitStruct02070378(char*);
-extern "C" void _ZN8Vector3iaSERKS_(void* dst, const Vector3i& src);
 void SetFlagBytes02017d68(void* p);
 int PeekInputLogA_020a1eb0();
 #if defined(jpn)
@@ -453,7 +452,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
         f[2] = 1;
         *(unsigned short*)f = self->ua2;
         f[7] = 1;
-        _ZN8Vector3iaSERKS_(f + 0x10, self->vbc);
+        *(Vector3i*)(f + 0x10) = self->vbc;
         *(short*)(f + 0x1c) = self->sc8;
         SetBrightness((GameResources*)res, -16, 0);
     } else if (*(int*)((unsigned char*)gs + kGamePositionState) > 0) {
@@ -461,7 +460,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
         f[2] = 1;
         *(unsigned short*)f = *(int*)((unsigned char*)gs + kGamePositionState);
         f[7] = 1;
-        _ZN8Vector3iaSERKS_(f + 0x10, GetPos_021bc77c(gs));
+        *(Vector3i*)(f + 0x10) = GetPos_021bc77c(gs);
         *(short*)(f + 0x1c) = *(int*)((unsigned char*)gs + kGamePositionY);
         *(int*)((unsigned char*)gs + kGamePositionState) = 0;
         SetBrightness((GameResources*)res, -16, 0);

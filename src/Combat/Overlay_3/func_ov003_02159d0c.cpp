@@ -42,8 +42,6 @@ struct Struct020a9ea4;
 void ClearStruct020a9ea4(Struct020a9ea4*);
 extern "C" int func_020aad1c(void*, void*, int, int);
 void StopAndReset0209c7fc(void*);
-extern "C" int _ZN16BackgroundLoader17GetNumQueuedTasksEv(void);
-extern "C" void* _ZN9GameState20GetUnknownGameObjectEv(void);
 extern "C" void func_02046380(void*);
 struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
@@ -186,13 +184,11 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
             *(unsigned char*)(g + 0x1000 + kRegionValue9AE_7DE) = 0;
         }
         StopAndReset0209c7fc(&data_02109bf4);
-        BackgroundLoader::GetInstance();
-        if (_ZN16BackgroundLoader17GetNumQueuedTasksEv() > 0) return;
+        if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() > 0) return;
         *(unsigned char*)(s + 0x59f) = *(unsigned char*)(s + 0x59f) & ~2;
         memset(*(void**)(s + 0x7c), 0, kRegionValue960_800);
         if (*(unsigned char*)(s + 0x5b4) != 0) {
-            GameState::GetInstance();
-            unsigned char* obj = (unsigned char*)_ZN9GameState20GetUnknownGameObjectEv();
+            unsigned char* obj = (unsigned char*)GameState::GetInstance()->GetUnknownGameObject();
             func_02046380(g);
             SetIndexedName02046574((Obj02046574*)g, 0, (char*)(*(void**)(obj + 0x134)));
             AppendString02042058((char*)(*(void**)(s + 0x7c)), (char const*)GetFieldByKey020e0434((Container020e0310*)(s + 0x64), 0x3f3));

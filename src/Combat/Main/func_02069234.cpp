@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "GameState/GameState.h"
 
-struct GameState;
 struct TagContext02069234;
 
 struct StatusEffectEntry02069234 {
@@ -36,9 +36,6 @@ struct TagContext02069234 {
     char text[0x14d4];
     signed char combatantId;
 };
-
-Combatant02069234* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
-extern "C" GameState* _ZN9GameState11GetInstanceEv();
 
 char* FindUnescapedAngleBracket_020424ac(char* str);
 int IsPrefixMatch020d857c(signed char* a, signed char* b);
@@ -168,8 +165,8 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
         if (c == '[') {
             if (func_02001aec(str, data_020f0904, 4) == 0) {
                 str += 4;
-                GameState* gameState = _ZN9GameState11GetInstanceEv();
-                Combatant02069234* combatant = GetCombatantWithFlag0x100_0200ff1c(gameState, sb->combatantId);
+                GameState* gameState = GameState::GetInstance();
+                Combatant02069234* combatant = (Combatant02069234*)GetCombatantWithFlag0x100_0200ff1c(gameState, sb->combatantId);
                 if (combatant != 0) {
                     StatusEffectEntry02069234* eff = combatant->statusTable->GetEffect();
                     if (eff != 0) {

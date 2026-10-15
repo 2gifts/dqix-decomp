@@ -3,6 +3,8 @@
 #endif
 
 #include <globaldefs.h>
+#include <GameState/GameState.h>
+#include <Graphics/Vector.h>
 
 #if defined(jpn)
 #define LOW_REGION(j, u) (j)
@@ -10,15 +12,9 @@
 #define LOW_REGION(j, u) (u)
 #endif
 
-struct Mtx43_02030d84 { unsigned int v[12]; };
-extern "C" void _Z15RotationMatrixYi(Mtx43_02030d84* dst, int angle);
 void IssueCommand0x19_020c51a4(int cmd);
 
-extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" char* func_ov017_0218b5b0();
 char* GetField1c_021a193c(int*);
-struct GameState;
-void* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 struct Field150Holder02052e14;
 short* GetField150Ptr0x488(Field150Holder02052e14*);
 extern "C" void func_02047554(void* obj, int val, int param1);
@@ -48,10 +44,10 @@ struct Scene0215a418 {
 
 // USA: func_ov005_0215a418
 extern "C" ARM void func_ov005_0215a418(Scene0215a418* self) {
-    void* gs = _ZN9GameState11GetInstanceEv();
-    char* res = func_ov017_0218b5b0();
-    char* holder = GetField1c_021a193c((int*)(*(void**)(res + LOW_REGION(0x34f8, 0x3708))));
-    short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)(GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, *(int*)(holder + LOW_REGION(0x4f8, 0x4fc)))));
+    GameState* gs = GameState::GetInstance();
+    GameResources* res = func_ov017_0218b5b0();
+    char* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
+    short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)(GetCombatantWithFlag0x100_0200ff1c(gs,*(int*)(holder + LOW_REGION(0x4f8, 0x4fc)))));
     if (self->mode != 0) return;
 
     for (int i = 0; i < 8; i++) {
@@ -71,10 +67,7 @@ extern "C" ARM void func_ov005_0215a418(Scene0215a418* self) {
         G3_MTX_TRANS = 0x100000;
         G3_MTX_TRANS = y;
         G3_MTX_TRANS = -0x200000;
-        Mtx43_02030d84 mtxCopy;
-        Mtx43_02030d84 mtx;
-        _Z15RotationMatrixYi(&mtx, 0x3244);
-        mtxCopy = mtx;
+        Matrix4x3 mtxCopy = RotationMatrixY(0x3244);
         IssueCommand0x19_020c51a4((int)&mtxCopy);
         func_02047554((Entry0215a418*)((char*)ents + off), 0, 1);
         G3_MTX_POP = 1;

@@ -19,15 +19,9 @@ void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 
-struct Vec3_37774;
-struct Src_37774;
-extern "C" void _ZNK8Object3D20MaybeGetShadowSourceEv(struct Vec3_37774* dst, struct Src_37774* src);
-
 struct S02037484;
 
 void SyncBattleState0208f87c(void* self, int b, int c, int d);
-
-struct Vec3Local_0218dba0 { unsigned int v[3]; };
 
 // USA: func_ov017_0218dba0  (semantic: SyncFlaggedCombatantState_0218dba0)
 extern "C" ARM void func_ov017_0218dba0(int combatantId) {
@@ -50,10 +44,7 @@ extern "C" ARM void func_ov017_0218dba0(int combatantId) {
     tag = *(unsigned short*)((char*)misc + RegionOffset38);
     f8c = *(int*)((char*)misc + RegionOffset3c);
 
-    struct Vec3Local_0218dba0 selfVec;
-    struct Vec3Local_0218dba0 tmp;
-    _ZNK8Object3D20MaybeGetShadowSourceEv((struct Vec3_37774*)&tmp, (struct Src_37774*)combatant);
-    selfVec = tmp;
+    Vector3fix selfVec = ((Object3D*)combatant)->MaybeGetShadowSource();
 
     int mulResult = ((Object3D*)((struct S02037484*)combatant))->GetCombinedAlpha();
     float t = (float)f8c / 31.0f;
@@ -69,7 +60,7 @@ extern "C" ARM void func_ov017_0218dba0(int combatantId) {
             }
             if (mode == 2 || mode == 6) {
                 d = base->unknown50;
-                selfVec.v[1] = base->unknown4c;
+                selfVec.y = base->unknown4c;
             }
         }
     }

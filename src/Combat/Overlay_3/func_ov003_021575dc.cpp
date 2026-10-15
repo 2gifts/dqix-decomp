@@ -5,20 +5,14 @@
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
 #include "World/Object3D.h"
-struct BattleStruct {
-    int unk0;
-    int unk4;
-    struct CombatantStruct* combatantList[0xe9];
-};
+#include "GameState/GameState.h"
 struct CombatantStruct {
     unsigned short flags;
     char unk[0x132];
     struct BaseCombatStats* baseStats;
     struct ModifiableCombatStats* currentStats;
 };
-struct GameState;
 void* GetPtrField0x2a04_02010828(GameState*);
-extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 int FindMappedMemberId02080468(void* obj, int id);
 struct Obj0208203c;
@@ -51,7 +45,6 @@ void* FindElementByField020a15bc(Array020a15bc*, int);
 struct Obj02158140;
 void AppendFormattedNumber_02158140(Obj02158140*, int);
 
-extern "C" struct CombatantStruct* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battleStruct, int combatantId);
 int GetField0x3acValue_020100a8(GameState*);
 int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 void ZeroInit020de848(void* obj);
@@ -68,7 +61,6 @@ extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePa
 extern "C" ARM int func_020813ec(void* obj, int id);
 extern "C" void func_0207d300(void* obj, int a, int b, int c);
 extern "C" void* func_0205ec34(void);
-extern "C" int func_ov017_0218b5b0(void);
 extern "C" void func_020e046c(void* a, void* b, int c, int d);
 extern "C" void func_02082490(void* a, void* b, int c, int d, int e);
 extern "C" void func_ov003_02158334(void* self);
@@ -102,8 +94,8 @@ struct Bit0x49c { unsigned char bit0 : 1; };
 // USA: func_ov003_021575dc
 extern "C" ARM void func_ov003_021575dc(void* self) {
     char* s = (char*)self;
-    struct BattleStruct* bs = _ZN9GameState11GetInstanceEv();
-    void* p2a04 = GetPtrField0x2a04_02010828((GameState*)bs);
+    GameState* bs = GameState::GetInstance();
+    void* p2a04 = GetPtrField0x2a04_02010828(bs);
     unsigned char state = *(unsigned char*)(s + 0x1f9);
     void* root;
     short* evt = (short*)(s + 0x1ec);
@@ -189,7 +181,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         BackgroundLoader* loader = BackgroundLoader::GetInstance();
         signed char idx = *(signed char*)(s + 0x1f7);
         int val = 0;
-        struct CombatantStruct* comb = _ZN9GameState21GetPartyMemberByIndexEi(bs, idx);
+        GameObject* comb = bs->GetPartyMemberByIndex(idx);
         if (comb != 0) {
             void* p150 = *(void**)((char*)comb + 0x150);
             val = *(int*)((char*)p150 + 0x950);
@@ -224,7 +216,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             ((SafeAllocator*)(*(char**)s + 0x78))->Reset();
             *(short*)(s + 0x1f0) = -1;
             signed char idx = *(signed char*)(s + 0x1f7);
-            struct CombatantStruct* comb = _ZN9GameState21GetPartyMemberByIndexEi(bs, idx);
+            GameObject* comb = bs->GetPartyMemberByIndex(idx);
             if (comb != 0) {
                 void* p150 = *(void**)((char*)comb + 0x150);
                 int field950 = *(int*)((char*)p150 + 0x950);
@@ -254,7 +246,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         *(int*)(s + 0x32c) = 0;
         func_ov003_02155e38(self);
         signed char idx = *(signed char*)(s + 0x1f7);
-        struct CombatantStruct* comb = _ZN9GameState21GetPartyMemberByIndexEi(bs, idx);
+        GameObject* comb = bs->GetPartyMemberByIndex(idx);
         int field950 = -1;
         if (comb != 0) {
             void* p150 = *(void**)((char*)comb + 0x150);
@@ -288,8 +280,8 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         short tagBuffer[12];
         __clear(tagBuffer, 0x18);
         unsigned short sbCount = 0;
-        int fieldVal = GetField0x3acValue_020100a8((GameState*)bs);
-        struct CombatantStruct* combatant = (CombatantStruct*)GetCombatantWithFlag0x100_0200ff1c((GameState*)bs, fieldVal);
+        int fieldVal = GetField0x3acValue_020100a8(bs);
+        struct CombatantStruct* combatant = (CombatantStruct*)GetCombatantWithFlag0x100_0200ff1c(bs, fieldVal);
         for (int i = 1; i < 13; i++) {
             void* p150 = *(void**)((char*)combatant + 0x150);
             if (*(unsigned char*)((char*)p150 + (unsigned char)i + 0x186) >= 0xa) {
@@ -408,8 +400,8 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
         }
     } else if (state == 0x68) {
-        int r = func_ov017_0218b5b0();
-        if (IsBrightnessTransitionActive((GameResources*)r) != 0) {
+        GameResources* r = func_ov017_0218b5b0();
+        if (IsBrightnessTransitionActive(r) != 0) {
             return;
         }
         *(unsigned char*)(s + 0x338) = 0;
