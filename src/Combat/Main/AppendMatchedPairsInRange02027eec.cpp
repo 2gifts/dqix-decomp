@@ -1,39 +1,35 @@
 #include <globaldefs.h>
 #include "Resource/Script.h"
+#include "World/GrottoTileGraph.h"
 
 struct Variant02030b0c;
 
 struct List_020283c0;
-struct ListEntry_020283c0;
-struct ListEntry_020283c0* FindListEntryById(struct List_020283c0* list, int id);
+Elem02028170* FindListEntryById(struct List_020283c0* list, int id);
 
-struct AppendEntry {
-    int a;
-    int b;
-};
 struct AppendPairList;
-void AppendPairToBoundedList_020281d8(struct AppendPairList* list, struct AppendEntry* src);
+void AppendPairToBoundedList_020281d8(struct AppendPairList* list, AppendEntry* src);
 
 extern void* data_020fdd30;
 
 // USA: func_02027eec  (semantic: AppendMatchedPairsInRange02027eec)
 extern "C" ARM int func_02027eec(void* param0) {
-    struct AppendEntry pair;
+    AppendEntry pair;
     int start, end, id;
     start = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
     end = ((Script::Parameter*)((struct Variant02030b0c*)((char*)param0 + 8)))->ToInt();
-    pair.a = 0;
-    pair.b = 0;
+    pair.first = 0;
+    pair.second = 0;
     id = start + 1;
-    pair.a = (int)FindListEntryById((struct List_020283c0*)data_020fdd30, start);
+    pair.first = FindListEntryById((struct List_020283c0*)data_020fdd30, start);
     for (; id <= end;) {
-        int cur = (int)FindListEntryById((struct List_020283c0*)data_020fdd30, id);
-        pair.b = cur;
+        Elem02028170* cur = FindListEntryById((struct List_020283c0*)data_020fdd30, id);
+        pair.second = cur;
         id++;
-        if (pair.a != 0 && cur != 0) {
+        if (pair.first != 0 && cur != 0) {
             AppendPairToBoundedList_020281d8((struct AppendPairList*)data_020fdd30, &pair);
         }
-        if (pair.b != 0) pair.a = pair.b;
+        if (pair.second != 0) pair.first = pair.second;
     }
     return 1;
 }

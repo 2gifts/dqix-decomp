@@ -1,9 +1,6 @@
 #include <globaldefs.h>
+#include "System/Matrix.h"
 
-typedef union Matrix4x3 {
-    int m[4][3];
-    int a[12];
-} Matrix4x3;
 Matrix4x3 RotationMatrixX(int angle);
 void IssueCommand0x19_020c51a4(int cmd);
 

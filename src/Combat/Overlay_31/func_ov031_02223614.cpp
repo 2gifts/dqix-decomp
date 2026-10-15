@@ -1,12 +1,11 @@
 #include <globaldefs.h>
+#include "Resource/UiArrayEntry.h"
 
-struct ArrBasePair022276b4 { int* arr; int base; };
 extern ArrBasePair022276b4* data_ov031_02290c4c;
 extern unsigned short data_ov031_02248976[];
 extern unsigned short data_ov031_02248974[];
 
 extern "C" void* func_ov031_0223c560(int a, int b);
-int LookupArrayPlusBase_022276b4(ArrBasePair022276b4* p, unsigned int idx);
 int GetTableEntryByField0_022236d0(void);
 extern "C" void func_ov031_0223c980(void* obj, int a, int b, int c, int d, int e, int f, int g);
 unsigned char GetField0_02227548(void);

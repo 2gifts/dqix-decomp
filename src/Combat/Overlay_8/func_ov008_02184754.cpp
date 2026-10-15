@@ -1,5 +1,7 @@
 #include <globaldefs.h>
 #include <Memory/SafeAllocator.h>
+#include <World/Object3D.h>
+#include <GameState/GameState.h>
 
 struct PlayTime {
     unsigned short hours_;
@@ -25,11 +27,6 @@ struct Canvas {
 
 struct WindowCursor {
     int pad_0[0x40 / 4];
-};
-
-struct Object3D {
-    int pad_0[0xac / 4];
-    void AdvanceEffects();
 };
 
 struct BattleRecords {
@@ -90,11 +87,6 @@ struct StateTable {
 
 extern StateTable data_ov008_0218b340;
 extern StateFunction data_020e6d5c;
-
-struct GameState {
-    static GameState* GetInstance();
-    unsigned int GetTickCount() const;
-};
 
 struct Obj021870e4;
 struct TaskState0209ff6c;

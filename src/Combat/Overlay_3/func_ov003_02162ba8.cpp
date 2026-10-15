@@ -1,9 +1,6 @@
 #include <globaldefs.h>
-
-class GameState {
-public:
-    static GameState *GetInstance();
-};
+#include "GameState/GameState.h"
+#include "Combat/CombatantRecovery.h"
 
 struct StatusOwner02081198;
 struct StatusOwner02081164;
@@ -41,7 +38,6 @@ void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
 int CountFlaggedCombatants_02161544(void *);
 void CallFunc0204c804OverAllElems(Cont0207fe44 *);
 extern "C" int func_ov003_02160a68(unsigned char *);
-unsigned char *GetCombatantWithFlag0x100_0200ff1c(GameState *, int);
 unsigned char *GetFieldAt0x150_02053c6c(unsigned char *);
 extern "C" void func_ov003_02161480(unsigned char *);
 extern "C" void func_ov003_02166f40(unsigned char *);
@@ -114,12 +110,12 @@ extern "C" ARM void func_ov003_02162ba8(unsigned char *self) {
     } else if (state == 2) {
         unsigned char saved = self[0x4a3];
         self[0x4a3]         = 0x10;
-        unsigned char *c    = GetCombatantWithFlag0x100_0200ff1c(gs, *(short *) (self + 0x482));
+        GameObject *c       = GetCombatantWithFlag0x100_0200ff1c(gs, *(short *) (self + 0x482));
         if (c == 0) return;
-        unsigned char *o = GetFieldAt0x150_02053c6c(c);
+        unsigned char *o = GetFieldAt0x150_02053c6c((unsigned char *) c);
         self[0x4a3]      = saved;
         int f            = (*(short *) (o + 0x454) > 0);
-        if (**(unsigned int **) (c + 0x130) & 1) {
+        if (c->combatFields_.savedState_130_->flags & 1) {
             sp[0]       = 0xc;
             sp[1]       = 2;
             self[0x4a3] = 1;

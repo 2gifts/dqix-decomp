@@ -1,21 +1,6 @@
 #include <globaldefs.h>
-
-typedef long long int64_t;
-typedef short int16_t;
-
-#define FIX32_MULTIPLY(a,b) (int)(((int64_t)(a) * (int64_t)(b) + (int64_t)0x800) >> (int64_t)12)
-
-struct Vector3fix
-{
-    int x;
-    int y;
-    int z;
-};
-
-struct Matrix3x3
-{
-    int entries[9];
-};
+#include "System/Matrix.h"
+#include "Graphics/Vector.h"
 
 struct Model13158
 {
@@ -40,13 +25,6 @@ struct Node13158
     Node13158* child;
     Node13158* next;
 };
-
-extern "C" void Mat3x3_WriteRotationY(Matrix3x3* out, int sine, int cosine);
-extern "C" void Mat3x3_ApplyToVector(const Vector3fix* inVec, const Matrix3x3* inMat, Vector3fix* out);
-extern "C" void Vector3fix_Add(const Vector3fix* a, const Vector3fix* b, Vector3fix* out);
-int fix32cos(int x);
-int fix32sin(int x);
-int fix32ReduceAngle0To2Pi(int angle);
 
 // USA: func_02013158
 extern "C" ARM void func_02013158(Node13158* self, const Vector3fix* base, int* angle, const Vector3fix* scale)

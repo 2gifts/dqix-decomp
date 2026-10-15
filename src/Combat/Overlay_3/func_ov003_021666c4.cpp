@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/CharacterCreationUI.h"
 
 typedef unsigned char u8;
 typedef signed char s8;
@@ -13,9 +14,6 @@ struct Container02080f8c;
 struct Container02080fa8;
 struct StatusOwner02081198;
 struct StatusOwner02081164;
-struct Container020e0310 {
-    u8 padding_0[0x48];
-};
 struct CombatMenuEntry021666c4 {
     u8 enabled : 1;
     u8 count : 6;
@@ -27,6 +25,7 @@ struct CombatMenu021666c4 {
     s16 entry_count;
     u8 padding_228[0xb4];
     Container020e0310 messages;
+    u8 padding_2e4[0x40];
     Container02080cc0* menu;
     u8 padding_328[0x13c];
     u32 flags;

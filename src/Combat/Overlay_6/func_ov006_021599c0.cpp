@@ -1,16 +1,11 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 enum { kIngredients = 0x6c, kLayoutToCount = 0x293 };
 #else
 enum { kIngredients = 0x74, kLayoutToCount = 0x28b };
 #endif
-
-class GameState {
-public:
-    static GameState* GetInstance();
-    unsigned int GetTickCount() const;
-};
 
 struct AlchemyMenu {
     char unk_0[kIngredients];

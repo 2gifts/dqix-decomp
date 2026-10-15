@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "System/Matrix.h"
+#include "World/Object3D.h"
+#include "GameState/GameState.h"
 
-struct Vector3i { int x,y,z; Vector3i& operator=(const Vector3i&); };
-struct Object3D { char pad[0x44]; Vector3i position; int GetHeight() const; };
-class GameState { public: static GameState* GetInstance(); Object3D* GetGameObjectByIndex(int); };
 struct Random;
 int NextRandomMax(Random*, int);
 float NextRandomFloat01(Random*);
@@ -49,18 +49,18 @@ extern "C" ARM void func_ov000_0216e678(Root0216e678* obj, int first, int second
     data_ov000_02184270.random = NextRandomMax(random, 100);
     if (obj->count >= 1 && (obj->count == 5 || NextRandomMax(random, 5 - obj->count) == 0)) active = 1;
     if (active) {
-        Object3D* a = gs->GetGameObjectByIndex(obj->first);
-        Object3D* b = gs->GetGameObjectByIndex(obj->second);
+        GameObject* a = gs->GetGameObjectByIndex(obj->first);
+        GameObject* b = gs->GetGameObjectByIndex(obj->second);
         if (!a || !b) return;
-        Vector3i pa(a->position), pb(b->position), direction, result, offset;
-        int height = b->GetHeight();
+        Vector3i pa(a->obj3D_.position_), pb(b->obj3D_.position_), direction, result, offset;
+        int height = b->obj3D_.GetHeight();
         Vector3fix_Subtract(&pb, &pa, &direction);
         int length = Vector3fix_Length(&direction);
         if (length != 0) Vector3fixMultiplyScalar(&direction, fix32_Divide(0x1000, length), &direction);
         if (length / 2 > 0x3000) Vector3fixMultiplyScalar(&direction, 0x2000, &offset);
         else Vector3fixMultiplyScalar(&direction, length / 2, &offset);
         Vector3fix_Add(&pa, &offset, &result);
-        int ownHeight = a->GetHeight();
+        int ownHeight = a->obj3D_.GetHeight();
         result.y = (int)((float)result.y + 0.75f * (float)ownHeight);
         obj->position = result;
         Options0216e678 options(data_ov000_021832c4);

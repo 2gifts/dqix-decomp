@@ -6,6 +6,8 @@
 #endif
 #include <globaldefs.h>
 #include "GameState/BattleRecordSnapshot.h"
+#include "GameState/GameState.h"
+#include "World/Object3D.h"
 
 #include <Memory/SafeAllocator.h>
 
@@ -45,10 +47,6 @@ struct Canvas {
 
 struct WindowCursor {
     int pad_0[0x40 / 4];
-};
-
-struct Object3D {
-    int pad_0[0xac / 4];
 };
 
 struct BattleRecords {
@@ -101,10 +99,6 @@ struct BattleRecords {
     void* guestTexts_;
     void* guestTitles_;
     BattleRecordPlayClock times_[2];
-};
-
-struct GameState {
-    static GameState* GetInstance();
 };
 
 struct Container020e0310;

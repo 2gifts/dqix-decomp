@@ -1,16 +1,5 @@
 #include <globaldefs.h>
-
-typedef signed long long int64_t;
-typedef int fix32_t;
-
-class Object3D
-{
-public:
-    char pad0[0xac];
-    void SetScale(fix32_t x, fix32_t y, fix32_t z);
-};
-
-extern "C" fix32_t fix32_Divide(fix32_t num, fix32_t denom);
+#include <World/Object3D.h>
 
 static inline fix32_t FX_Mul(fix32_t a, fix32_t b)
 {

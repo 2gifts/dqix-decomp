@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "GameState/GameState.h"
 
-class GameState { public: static GameState* GetInstance(); };
 void* GetCombatantWithFlag0x1000_0200ff58(GameState*,int);
 int GetField0x3acValue_020100a8(GameState*);
 int GetClampedArrayField0xd1c_ov000_021761c8(char*,int);

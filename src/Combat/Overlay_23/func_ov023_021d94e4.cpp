@@ -1,10 +1,5 @@
 #include <globaldefs.h>
-
-class GameState
-{
-public:
-    static GameState* GetInstance();
-};
+#include "GameState/GameState.h"
 
 struct BattleResultStatWord_021d94e4
 {

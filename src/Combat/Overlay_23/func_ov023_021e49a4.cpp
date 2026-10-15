@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Resource/CharacterCreationUI.h"
 
 struct CombatSlots02045cac;
-struct Container020e0310 { unsigned char fields[0x18]; };
 struct BattleTexts021e49a4 {
     unsigned char padding_0[0xc00];
     Container020e0310 dictionary;

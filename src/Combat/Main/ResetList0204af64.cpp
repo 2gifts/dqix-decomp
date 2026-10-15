@@ -1,22 +1,8 @@
 #include <globaldefs.h>
+#include "Combat/MapDisplay.h"
 
 struct Struct0204a82c;
 ARM void ClearStruct0204a82c(struct Struct0204a82c*);
-
-struct List0204af64 {
-    char pad0[0xc];
-    unsigned char b0c;
-    unsigned char pad0d;
-    unsigned short h0e;
-    int w10;
-    int w14;
-    int w18;
-    unsigned char b1c_lo : 4;
-    unsigned char b1c_hi : 4;
-    unsigned char b1d;
-    unsigned char b1e;
-    unsigned char b1f;
-};
 
 // USA: func_0204af64
 ARM void ResetList0204af64(struct List0204af64* obj) {

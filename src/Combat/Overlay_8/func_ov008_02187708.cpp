@@ -1,5 +1,7 @@
 #include <globaldefs.h>
 #include <Memory/SafeAllocator.h>
+#include <World/Object3D.h>
+#include <Filesystem/BackgroundLoader.h>
 
 struct PlayTime {
     unsigned short hours_;
@@ -58,10 +60,6 @@ struct Canvas {
 
 struct WindowCursor {
     int pad_0[0x40 / 4];
-};
-
-struct Object3D {
-    int pad_0[0xac / 4];
 };
 
 struct BattleRecords {
@@ -141,12 +139,6 @@ static inline char* GetHeroTitle(GameState* gameState)
 {
     return (char*)gameState + 0x569c;
 }
-
-struct BackgroundLoader {
-    static BackgroundLoader* GetInstance();
-    static void AddLockGlobal();
-    static void RemoveLockGlobal();
-};
 
 struct MessageSystem {
     char pad_0[0x10];

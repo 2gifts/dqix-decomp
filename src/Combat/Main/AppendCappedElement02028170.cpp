@@ -1,15 +1,5 @@
 #include <globaldefs.h>
-
-struct Elem02028170 {
-    unsigned char b0;
-    unsigned char b1;
-    unsigned char b2;
-    unsigned char b3;
-    unsigned short h4;
-    unsigned short h6;
-    unsigned short h8;
-    int w12;
-};
+#include "World/GrottoTileGraph.h"
 
 struct Container02028170 {
     unsigned char capacity;
@@ -25,13 +15,13 @@ ARM void AppendCappedElement02028170(struct Container02028170* c, struct Elem020
     struct Elem02028170* dst;
     if (c->capacity <= count) return;
     dst = &c->base[count];
-    dst->b0 = src->b0;
-    dst->b1 = src->b1;
-    dst->b2 = src->b2;
-    dst->b3 = src->b3;
-    dst->h4 = src->h4;
-    dst->h6 = src->h6;
-    dst->h8 = src->h8;
-    dst->w12 = src->w12;
+    dst->id = src->id;
+    dst->field_1 = src->field_1;
+    dst->field_2 = src->field_2;
+    dst->flags = src->flags;
+    dst->x = src->x;
+    dst->field_6 = src->field_6;
+    dst->z = src->z;
+    dst->field_c = src->field_c;
     c->count++;
 }

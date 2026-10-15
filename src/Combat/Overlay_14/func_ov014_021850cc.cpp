@@ -6,6 +6,7 @@
 #include <std_library_functions.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"
+#include "Resource/GameResources.h"
 #include "World/Object3D.h"
 
 struct MonsterListEntry {
@@ -60,15 +61,6 @@ struct MonsterBest {
 
 struct HabitatTable {
     char unk_0[0x20];
-};
-
-struct GameResources {
-#if defined(jpn)
-    char unk_0[0x27c];
-#else
-    char unk_0[0x2cc];
-#endif
-    char unknown_2cc[0xe70];
 };
 
 struct MonsterInfoScreen {
@@ -146,7 +138,6 @@ extern "C" void func_020e4864(const char* input, char* output, int, int, int, in
 void* ResetAndReturnSelf020dfc2c(void* text);
 void ResetStruct020dfc40(Struct020dfc40* text);
 extern "C" void func_020e046c(char* output, void* file, unsigned int size, short infoID);
-extern "C" GameResources* func_ov017_0218b5b0();
 void CopyInternalFields0207df50(Foo0207df50* p);
 void RestorePairTables0207df90(char* p);
 void BackupPairTables0207dfac(char* p);

@@ -1,7 +1,5 @@
 #include <globaldefs.h>
-struct Vector3i { int x,y,z; Vector3i& operator=(const Vector3i&); };
-struct Object3D { char pad[0x44]; Vector3i position; int GetHeight() const; };
-class GameState { public: static GameState* GetInstance(); Object3D* GetCombatantByIndex(int); };
+#include "GameState/GameState.h"
 int ClampScaledStat_0216352c(int,float,float);
 void ReadFields0x70To0x78_0202e7d4(unsigned char*,int*,int*,int*);
 int fix32abs(int);
@@ -17,13 +15,13 @@ inline int HeightOffset(int h,float f) { return h-(int)(4096.0f*f); }
 inline int Mul(int a,int b) { return (int)(((long long)a*b+0x800)>>12); }
 // USA: func_ov000_0216df00
 extern "C" ARM void func_ov000_0216df00(Camera* self,int id,int force,float offset,float factor) {
-    Object3D* unit=GameState::GetInstance()->GetCombatantByIndex(id);
+    GameObject* unit=GameState::GetInstance()->GetCombatantByIndex(id);
     if(!unit) return;
     int reuse=0;
     if(self->index==id && self->mode==1 && force==0) reuse=1;
     int party=0;
     if(IsParty(id)) party=1;
-    int height=unit->GetHeight();
+    int height=unit->obj3D_.GetHeight();
     int half=height/2;
     if(half<0x1000) half=0x1000;
     int minimum=(half+0x800)*self->scale/self->divisor;
@@ -52,7 +50,7 @@ extern "C" ARM void func_ov000_0216df00(Camera* self,int id,int force,float offs
     if(low<0) low=0;
     func_0202e5d8(self,0,low,distance);
     self->angle=-20;
-    Vector3i pos(unit->position);
+    Vector3i pos(unit->obj3D_.position_);
     int coordinates[2]={pos.x,pos.z};
     int changed=0;
     int* coordinate=coordinates;
@@ -64,6 +62,6 @@ extern "C" ARM void func_ov000_0216df00(Camera* self,int id,int force,float offs
     if(changed) {
         pos.y=0xcc;
         func_ov000_02167f10(GetActiveCombatWork_ov000_02160130());
-        unit->position=pos;
+        unit->obj3D_.position_=pos;
     }
 }

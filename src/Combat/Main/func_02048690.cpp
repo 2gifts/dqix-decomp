@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Object3D.h"
 
 extern "C" void func_020489e8(void* obj);
 struct Bytes02033b88;
@@ -9,18 +10,6 @@ void FindNodeAndProcess02057fb4(void*, int, int);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern unsigned char data_02108760;
-
-struct Vec3i02048690 {
-    int x;
-    int y;
-    int z;
-};
-
-class Object3D {
-public:
-    Vec3i02048690 MaybeGetShadowSource() const;
-    void TransitionInheritedAlpha(int, int);
-};
 
 struct InitStruct02048690 {
     unsigned char f00;
@@ -108,7 +97,7 @@ extern "C" ARM void func_02048690(void* selfp) {
     s.b6 = 0;
     s.b7 = 0;
 
-    const struct Vec3i02048690& p = ((Object3D*)self)->MaybeGetShadowSource();
+    const Vector3fix& p =((Object3D*)self)->MaybeGetShadowSource();
     s.f2c = p.x;
     s.f30 = p.y;
     s.f34 = p.z;

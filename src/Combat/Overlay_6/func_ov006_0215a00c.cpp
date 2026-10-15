@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
+#include "Resource/CharacterCreationUI.h"
 
-struct Container020e0310 { char data[0x18]; };
 struct Obj2081;
 struct Container02080f8c;
 struct Obj3a8Timer_02159fb0;
@@ -46,6 +46,7 @@ struct Obj0215a00c {
     int field34;
     char pad38[0x158 - 0x38];
     struct Container020e0310 field158;
+    char pad160[0x170 - 0x160];
     struct Sub170 field170;
     short field1ec;
     char pad1ee[0x300 - 0x1ee];

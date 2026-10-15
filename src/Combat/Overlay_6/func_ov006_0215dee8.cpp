@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 enum { kMenuCursor = 0x2a, kLayoutToTable = 0x48, kWindowFlags = 0x1054 };
@@ -34,11 +35,6 @@ struct AlchemyPot {
 struct Menu {
     char unk_0[kMenuCursor];
     short cursor_;
-};
-
-class GameState {
-public:
-    static GameState* GetInstance();
 };
 
 struct AlchemyMenu {

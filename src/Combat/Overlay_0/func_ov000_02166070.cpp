@@ -5,6 +5,7 @@
 #include "Filesystem/FileIO.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Resource/MonsterDefinition.h"
 
 extern char data_ov000_02183a47[];
 extern char data_ov000_02183a4e[];
@@ -14,7 +15,6 @@ extern char data_020ef078[];
 
 struct StreamHeader;
 struct Container02070e60 { unsigned char data[0xc]; };
-struct BinarySearchByComparatorStruct { unsigned char data[0xc]; };
 struct Struct_203dafc {
     int field0;
     int fieldTable;
@@ -34,7 +34,7 @@ struct Input020484f8 { ModelEntry* entry; ModelNames* names; int script; };
 
 struct CombatantRoster02166070 {
     unsigned char pad_00[0x678];
-    BinarySearchByComparatorStruct search;
+    List0206f170 search;
     Container02070e60 names;
 };
 struct Scene02166070 {
@@ -64,7 +64,7 @@ extern "C" void func_0207de48(char*, int, int);
 // USA: func_ov000_02166070
 extern "C" ARM void func_ov000_02166070(Scene02166070* self, GPCReadPair* pair, int slot, int id, int flag, unsigned int offset) {
     CombatantRoster02166070* roster = self->roster;
-    BinarySearchByComparatorStruct* search = &roster->search;
+    BinarySearchByComparatorStruct* search = &roster->search.table;
     SafeAllocator* alloc = &self->allocator;
     Container02070e60* names = &roster->names;
     char path[0x10];

@@ -1,25 +1,11 @@
 #include <globaldefs.h>
+#include "Combat/MapDisplay.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "System/BGBases.h"
 #include "System/Cache.h"
 #include "System/LoadToVRAM.h"
 #include "std_library_functions.h"
-
-struct List0204af64 {
-    char pad0[0xc];
-    unsigned char b0c;
-    unsigned char pad0d;
-    unsigned short h0e;
-    int w10;
-    int w14;
-    int w18;
-    unsigned char b1c_lo : 4;
-    unsigned char b1c_hi : 4;
-    unsigned char b1d;
-    unsigned char b1e;
-    unsigned char b1f;
-};
 
 struct Word0x0_0215e5b0 {
     char pad0[0x2c];

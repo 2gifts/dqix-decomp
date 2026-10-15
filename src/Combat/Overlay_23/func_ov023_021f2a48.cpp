@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
+#include "Resource/MonsterDefinition.h"
 
 struct Words021edf38 { unsigned int a_, b_, c_; };
-struct BinarySearchByComparatorStruct { int fields_[4]; };
 struct TableA68 { int fields_[4]; };
 struct Flags_021ed7e0 {
     unsigned int unused0_ : 11; unsigned int first_ : 7; unsigned int second_ : 7;

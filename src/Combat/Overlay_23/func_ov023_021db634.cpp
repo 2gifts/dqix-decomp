@@ -1,14 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 #if defined(jpn)
 extern "C" const char data_ov023_021fcdef[];
 extern "C" const char data_ov023_021fcdfe[];
 #endif
-
-class GameState
-{
-public:
-    static GameState* GetInstance();
-};
 
 struct Canvas_021db634;
 

@@ -1,11 +1,5 @@
 #include <globaldefs.h>
-
-struct Element020e0310;
-struct Container020e0310 {
-    unsigned int count : 12;
-    unsigned int remaining : 20;
-    Element020e0310* entries;
-};
+#include "Resource/CharacterCreationUI.h"
 
 #if defined(jpn)
 enum { kMessagesOffset = 0x208, kFlagOffset = 0x17e2, kModeOffset = 0x86c };

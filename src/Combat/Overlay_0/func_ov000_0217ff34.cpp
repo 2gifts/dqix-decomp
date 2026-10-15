@@ -1,6 +1,6 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
-class GameState { public: static GameState* GetInstance(); };
 struct Unit0217ff34;
 Unit0217ff34* GetCombatantWithFlag0x400_0200fea4(GameState*,int);
 int GetGlobalField0x1c020421a0();

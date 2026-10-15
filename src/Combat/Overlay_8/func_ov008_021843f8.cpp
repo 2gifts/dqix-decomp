@@ -1,5 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/BattleRecordSnapshot.h"
+#include "GameState/GameState.h"
+#include "World/Object3D.h"
 #include <Memory/SafeAllocator.h>
 
 struct ClearRecords {
@@ -41,10 +43,6 @@ struct SavedRecords {
     PlayRecords records_;
 };
 
-struct GameState {
-    static GameState* GetInstance();
-};
-
 static inline SavedRecords* GetSavedRecords(GameState* gameState)
 {
 #if defined(jpn)
@@ -59,11 +57,6 @@ struct S020a13c4;
 struct List0204af64;
 struct InitTarget0205cfd4;
 struct Struct_0205bef8;
-
-struct Object3D {
-    char pad_0[0xac];
-    void Initialize();
-};
 
 void* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0_020466e4(unsigned int* field, unsigned int bits);

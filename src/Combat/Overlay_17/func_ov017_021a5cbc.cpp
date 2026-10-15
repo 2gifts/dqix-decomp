@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include <GameState/GameState.h>
 #include <Filesystem/BackgroundLoader.h>
+#include <Combat/MapDisplay.h>
 
 struct Pair021a5cbc { unsigned char values[2]; };
 struct Node0x20_021a5ad0 {
@@ -10,17 +11,6 @@ struct Node0x20_021a5ad0 {
     unsigned char high : 4;
     char pad_1d[3];
 };
-struct Struct0205a198 {
-    unsigned short count, flags;
-    void* cells;
-    void* copy;
-    unsigned int field0c, field10, field14, field18;
-    unsigned short field1c, index, field20;
-    unsigned char firstCell, field23, field24, field25;
-    signed char field26;
-    char padding27;
-};
-struct Script021a5cbc { char pad_0[0x40]; Struct0205a198* records; char pad_44[8]; unsigned short count; char pad_4e[2]; unsigned char active; };
 struct Widths021a5cbc { short values[5]; };
 struct Config021a5cbc {
     char pad_0[0x98];
@@ -70,7 +60,7 @@ void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 extern "C" void func_0204b174(Node0x20_021a5ad0*, void*, SafeAllocator*, int);
 void Init0205a198(Struct0205a198*);
 void InitStruct0205a444(char*);
-extern "C" int func_0205a528(Script021a5cbc*, void*, int, SafeAllocator*);
+extern "C" int func_0205a528(MapEntryList*, void*, int, SafeAllocator*);
 void FillFieldWithEncoded_021a5ad0(Node0x20_021a5ad0*, int, int);
 extern "C" void func_0204bc74(Node0x20_021a5ad0*, int, int, int, int, int, int);
 void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
@@ -134,9 +124,9 @@ extern "C" ARM void func_ov017_021a5cbc(GameResources* self) {
         loader->RemoveTask((*reinterpret_cast<int*>(self->unknown_4094 + 0x128)));
         (*reinterpret_cast<int*>(self->unknown_4094 + 0x128)) = -1;
         for (int i = 0; i < 7; ++i) Init0205a198(&reinterpret_cast<Struct0205a198*>(self->unknown_41c8)[i]);
-        InitStruct0205a444((char*)static_cast<Script021a5cbc*>(self->unknown_ptr_41c4));
-        static_cast<Script021a5cbc*>(self->unknown_ptr_41c4)->active = 0;
-        Script021a5cbc* script = static_cast<Script021a5cbc*>(self->unknown_ptr_41c4);
+        InitStruct0205a444((char*)static_cast<MapEntryList*>(self->unknown_ptr_41c4));
+        static_cast<MapEntryList*>(self->unknown_ptr_41c4)->active = 0;
+        MapEntryList* script = static_cast<MapEntryList*>(self->unknown_ptr_41c4);
         script->records = reinterpret_cast<Struct0205a198*>(self->unknown_41c8);
         script->count = 7;
         #if defined(jpn)
@@ -156,7 +146,7 @@ extern "C" ARM void func_ov017_021a5cbc(GameResources* self) {
         int size;
         for (int i = 0; i < count; ++i) {
             void* entry = FindRecordByIndex((Rec020467f0*)file, i, &record, &size);
-            func_0205a528(static_cast<Script021a5cbc*>(self->unknown_ptr_41c4), entry, size, &self->allocator_array_38[16]);
+            func_0205a528(static_cast<MapEntryList*>(self->unknown_ptr_41c4), entry, size, &self->allocator_array_38[16]);
         }
         loader->RemoveTask((*reinterpret_cast<int*>(self->unknown_4094 + 0x128)));
         (*reinterpret_cast<int*>(self->unknown_4094 + 0x128)) = -1;

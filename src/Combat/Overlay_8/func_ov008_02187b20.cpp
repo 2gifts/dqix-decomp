@@ -10,6 +10,8 @@
 #define func_ov008_02187b20 func_ov008_021888fc
 #endif
 #include <Memory/SafeAllocator.h>
+#include <World/Object3D.h>
+#include <GameState/GameState.h>
 
 struct PlayTime {
     unsigned short hours_;
@@ -105,10 +107,6 @@ struct WindowCursor {
     int pad_0[0x40 / 4];
 };
 
-struct Object3D {
-    int pad_0[0xac / 4];
-};
-
 struct BattleRecords {
     SafeAllocator allocator_;
     SafeAllocator backgroundAllocator_;
@@ -161,10 +159,6 @@ struct BattleRecords {
     PlayTime times_[2];
 };
 
-struct GameState {
-    static GameState* GetInstance();
-};
-
 struct StoreStruct;
 struct Container020e0310;
 
@@ -187,9 +181,6 @@ extern "C" {
 void __clear(void* buffer, unsigned long size);
 void func_02046380(unsigned char* messages);
 char* func_0205ec34();
-unsigned long strlen(const char* text);
-void* memcpy(void* destination, const void* source, unsigned long size);
-char* strstr(const char* text, const char* search);
 }
 
 // USA: func_ov008_02187b20

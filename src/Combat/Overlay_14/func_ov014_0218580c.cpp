@@ -7,6 +7,8 @@
 #endif
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
+#include "GameState/GameState.h"
+#include "Graphics/LightingManager.h"
 
 #define BG0CNT (*(volatile unsigned short*)(0x04000008))
 #define BG1CNT (*(volatile unsigned short*)(0x0400000a))
@@ -46,17 +48,6 @@ struct Sprite {
 struct SpriteRenderer;
 struct ActiveEntry02046900;
 struct Rec020467f0;
-class GameState {
-public:
-    static GameState* GetInstance();
-};
-struct GameResources;
-
-struct LightingManager {
-    char unk_0[0x85];
-    bool fogEnabled_;
-    static LightingManager* GetInstance();
-};
 
 struct MonsterInfoScreen {
     void** buffers_;

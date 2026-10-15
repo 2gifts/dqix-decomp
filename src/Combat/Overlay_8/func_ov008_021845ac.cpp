@@ -19,6 +19,8 @@
 #endif
 #include <globaldefs.h>
 #include <Memory/SafeAllocator.h>
+#include <World/Object3D.h>
+#include <Filesystem/BackgroundLoader.h>
 
 struct PlayTime {
     unsigned short hours_;
@@ -44,11 +46,6 @@ struct Canvas {
 
 struct WindowCursor {
     int pad_0[0x10];
-};
-
-struct Object3D {
-    char pad_0[0xac];
-    void Destroy();
 };
 
 struct BattleRecords {
@@ -99,11 +96,6 @@ struct BattleRecords {
     void* guestTexts_;
     void* guestTitles_;
     PlayTime times_[2];
-};
-
-struct BackgroundLoader {
-    static BackgroundLoader* GetInstance();
-    void RemoveTask(int task);
 };
 
 struct MessageSystem {

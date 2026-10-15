@@ -1,9 +1,7 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Combat/MapDisplay.h"
 
-struct Struct0205a198 {
-    char data[0x28];
-};
 void Init0205a198(struct Struct0205a198*);
 struct ClearTarget0205a234;
 void ClearField0And40205a234(struct ClearTarget0205a234*);

@@ -8,10 +8,7 @@ extern char data_ov013_02188dfa[];
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "System/Graphics.h"
-
-struct GameState {
-    static GameState* GetInstance();
-};
+#include "GameState/GameState.h"
 
 void InitStruct0205a444(char* renderer);
 struct Struct0205a198;
@@ -24,7 +21,6 @@ extern "C" void func_0205a528(void* renderer, void* file, unsigned int size, Saf
 extern "C" void func_020728ac(void* texts, SafeAllocator* allocator, void* file, unsigned int size, int, int, int);
 struct List0208df10;
 void ClearList0208df10(List0208df10* table);
-void* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int member);
 void* GetFieldAt0x150_02053c6c(unsigned char* member);
 signed char GetTableByte020dd11c(unsigned int vocation, unsigned int index);
 struct Struct0208df20;
@@ -251,7 +247,7 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
             allocators[2].Reset();
             short* skills = NULL;
             short vocationSkills[5] = {};
-            void* member = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), self->member_);
+            GameObject* member = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), self->member_);
             if (member != NULL)
             {
                 PartyMemberData021870f0* data = (PartyMemberData021870f0*)GetFieldAt0x150_02053c6c((unsigned char*)member);

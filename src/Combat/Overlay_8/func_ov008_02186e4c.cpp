@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include <Memory/SafeAllocator.h>
 #include <Graphics/Vector.h>
+#include <World/Object3D.h>
 
 struct PlayTime {
     unsigned short hours_;
@@ -26,12 +27,6 @@ struct Canvas {
 
 struct WindowCursor {
     int pad_0[0x40 / 4];
-};
-
-struct Object3D {
-    int pad_0[0x50 / 4];
-    Vector3fix rotation_;
-    int pad_5c[(0xac - 0x5c) / 4];
 };
 
 struct BattleRecords {

@@ -1,26 +1,7 @@
 #include <globaldefs.h>
-
-struct Vector3i {
-    int x;
-    int y;
-    int z;
-    Vector3i& operator=(const Vector3i& other);
-};
-
-struct Object3D {
-    char pad0[0x44];
-    Vector3i position;
-    int GetHeight() const;
-};
-
-struct GameResources;
-
-class GameState {
-public:
-    static GameState* GetInstance();
-    Object3D* GetGameObjectByIndex(int idx);
-    unsigned int GetEffectiveDeltaTime() const;
-};
+#include "System/Matrix.h"
+#include "World/Object3D.h"
+#include "GameState/GameState.h"
 
 struct CameraDispatch {
     int active;
@@ -83,7 +64,7 @@ static inline int FxMul(int a, int b) {
 // USA: func_020a212c
 extern "C" ARM void func_020a212c(BattleCamera* self, int checkInput) {
     GameState* gs = GameState::GetInstance();
-    Object3D* target = gs->GetGameObjectByIndex(self->followIndex);
+    GameObject* target = gs->GetGameObjectByIndex(self->followIndex);
     GameResources* res = GetWord0x0_0200fb8c((int*)gs);
     int angle = GetField0x70_0202e7f0(self);
     int left = 0;
@@ -162,8 +143,8 @@ extern "C" ARM void func_020a212c(BattleCamera* self, int checkInput) {
     int blended = 0;
     __clear(&pos, 0xc);
     if (target) {
-        pos = target->position;
-        pos.y += target->GetHeight() / 2;
+        pos = target->obj3D_.position_;
+        pos.y += target->obj3D_.GetHeight() / 2;
         Vector3fix_Add(&pos, &self->offset, &pos);
         Vector3i eye = pos;
         if (CheckField0NonZero020a10a8(&self->dispatch.active)) {
@@ -172,7 +153,7 @@ extern "C" ARM void func_020a212c(BattleCamera* self, int checkInput) {
             eye = self->dispatch.result;
         }
         CopyVec3ToField0x10AndCall0202e5d8_0202ec5c((char*)self, (int*)&eye);
-        blended = func_020a299c(self, &pos, target);
+        blended = func_020a299c(self, &pos, &target->obj3D_);
     }
     if (self->flags245 & 0x10) {
         Vector3fixMultiplyScalar(&self->offset, 0xccc, &self->offset);
@@ -214,8 +195,8 @@ extern "C" ARM void func_020a212c(BattleCamera* self, int checkInput) {
     }
     if (self->zoom != 0) {
         Vector3i eye = self->eye;
-        Vector3i center = target->position;
-        center.y += target->GetHeight() / 2;
+        Vector3i center = target->obj3D_.position_;
+        center.y += target->obj3D_.GetHeight() / 2;
         Vector3i delta;
         Vector3fix_Subtract(&eye, &center, &delta);
         Vector3fixMultiplyScalar(&delta, self->zoom, &delta);

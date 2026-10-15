@@ -1,9 +1,5 @@
 #include <globaldefs.h>
-
-class Object3D {
-public:
-    void Initialize();
-};
+#include "World/Object3D.h"
 
 struct Obj021fce28 {
     char pad[0x20];

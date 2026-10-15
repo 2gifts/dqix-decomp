@@ -1,12 +1,11 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 struct Struct020dfc40;
 struct InitStruct02174408;
 struct Obj02081ee4;
 struct Sub02081ee4;
 struct List0204af64;
-struct GameState;
-struct GameObject;
 
 struct Global020421a0 {
     char unk_0[0x5c];
@@ -89,10 +88,6 @@ void ResetList0204af64(List0204af64 *);
 extern "C" void func_0204c684(void *);
 unsigned char CopyOutRegion0x5718_02011494(char *, void *);
 GameObject *GetCombatantWithFlag0x100_0200ff1c(GameState *, int);
-class GameState {
-public:
-    static GameState *GetInstance();
-};
 
 // USA: func_ov003_02174114
 extern "C" ARM void func_ov003_02174114(Battle02174114 *self) {

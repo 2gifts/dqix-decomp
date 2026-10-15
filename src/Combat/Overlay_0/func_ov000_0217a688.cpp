@@ -1,8 +1,7 @@
 #include <globaldefs.h>
 #include <GameState/GameState.h>
+#include <Resource/CharacterCreationUI.h>
 
-struct Element020e0310;
-struct Container020e0310 { unsigned int count : 12; unsigned int rest : 20; Element020e0310* base; };
 struct NameDescriptor { char* singular_; char* plural_; unsigned int flags_; };
 struct StoreStruct { char pad0[0x20]; NameDescriptor* names_; };
 struct TargetMenu {

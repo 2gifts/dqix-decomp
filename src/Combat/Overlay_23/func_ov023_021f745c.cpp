@@ -5,18 +5,11 @@
 #define REGIONAL_PARAMETER int p5,
 #endif
 #include "Memory/SafeAllocator.h"
+#include "Combat/MapDisplay.h"
 
 struct ObjBase021f6ed8;
 extern "C" ARM void func_ov023_021f6ed8(struct ObjBase021f6ed8* obj);
 
-struct List0204af64 {
-    char pad0[0x1c];
-    unsigned char b1c_lo : 4;
-    unsigned char b1c_hi : 4;
-    unsigned char b1d;
-    unsigned char b1e;
-    unsigned char b1f;
-};
 void ResetList0204af64(struct List0204af64* obj);
 void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 extern "C" void func_0204b5b4(void*, int);

@@ -1,12 +1,12 @@
 #include <globaldefs.h>
-struct Vector3i { int x,y,z; };
-struct Object3D { char pad[0x44]; Vector3i position; int GetRadius() const; int GetHeight() const; int IsVisible() const; int GetInheritedAlpha() const; int GetOwnAlpha() const; };
-class GameState { public: static GameState* GetInstance(); Object3D* GetCombatantByIndex(int); };
+#include "System/Matrix.h"
+#include "World/Object3D.h"
+#include "GameState/GameState.h"
 void* GetActiveCombatWork_ov000_02160130();
 float GetScaledField0x6002049fec(char*);
 struct Obj02049f50;
 void SetField41AndScaleSub02049f50(Obj02049f50*,int,int);
-extern "C" { int func_ov000_02153e40(void*,short*,int,int); void Vector3fix_Subtract(const Vector3i*,const Vector3i*,Vector3i*); int Vector3fix_InnerProduct(const Vector3i*,const Vector3i*); int func_02049fc0(void*); }
+extern "C" { int func_ov000_02153e40(void*,short*,int,int); int func_02049fc0(void*); }
 struct Node { char p0[0x20]; unsigned short id; char p1[0xe]; Node* next; };
 struct Group { char p0[0xe]; short ids[4]; unsigned char spare,count; char p1[8]; Group* next; };
 struct Work { char p0[0x10]; Node* nodes; Group* groups; };
@@ -22,15 +22,15 @@ extern "C" ARM void func_ov000_0216f3d4(Camera* self) {
     if(self->instant) { duration=0; self->instant=0; }
     short* id=ids;
     for(int i=0;i<count;i++,id++) {
-        Object3D* unit=gs->GetCombatantByIndex(*id);
-        if(!unit || !unit->IsVisible() || unit->GetInheritedAlpha()<=0) continue;
+        GameObject* unit=gs->GetCombatantByIndex(*id);
+        if(!unit || !unit->obj3D_.IsVisible() || unit->obj3D_.GetInheritedAlpha()<=0) continue;
         Vector3i camera(self->position);
-        int radius=unit->GetRadius()/2;
+        int radius=unit->obj3D_.GetRadius()/2;
         int near=radius+0x2000;
         int far=radius+0x2b33;
         near=Square(near); far=Square(far);
-        Vector3i origin(camera),position(unit->position),delta;
-        position.y+=unit->GetHeight()/2;
+        Vector3i origin(camera),position(unit->obj3D_.position_),delta;
+        position.y+=unit->obj3D_.GetHeight()/2;
         Vector3fix_Subtract(&position,&origin,&delta);
         int distance=Vector3fix_InnerProduct(&delta,&delta);
         int selected=self->index==*id;
@@ -53,11 +53,11 @@ extern "C" ARM void func_ov000_0216f3d4(Camera* self) {
             }
         }
         if(distance<=near && !selected) {
-            if((!func_02049fc0(unit) && unit->GetOwnAlpha()>0) || (func_02049fc0(unit) && GetScaledField0x6002049fec((char*)unit)>0.0f))
+            if((!func_02049fc0(unit) && unit->obj3D_.GetOwnAlpha()>0) || (func_02049fc0(unit) && GetScaledField0x6002049fec((char*)unit)>0.0f))
                 SetField41AndScaleSub02049f50((Obj02049f50*)unit,0,duration);
         } else {
             if(distance>=far || duration==0 || selected) {
-                if(duration==0 || (!func_02049fc0(unit) && unit->GetOwnAlpha()<31) || (func_02049fc0(unit) && GetScaledField0x6002049fec((char*)unit)<31.0f))
+                if(duration==0 || (!func_02049fc0(unit) && unit->obj3D_.GetOwnAlpha()<31) || (func_02049fc0(unit) && GetScaledField0x6002049fec((char*)unit)<31.0f))
                     SetField41AndScaleSub02049f50((Obj02049f50*)unit,31,duration);
             }
         }

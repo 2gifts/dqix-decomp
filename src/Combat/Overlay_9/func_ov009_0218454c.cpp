@@ -1,13 +1,11 @@
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #include "Memory/SafeAllocator.h"
+#include "Combat/MapDisplay.h"
+#include "World/Object3D.h"
 
 struct Struct020dfc40 {
     char unk_0[0x18];
-};
-
-struct List0204af64 {
-    char unk_0[0x20];
 };
 
 struct InitTarget0205cfd4 {
@@ -31,11 +29,6 @@ struct Struct021847c4 {
     int stepY_;
     int columns_;
     int rows_;
-};
-
-struct Object3D {
-    char unk_0[0xac];
-    void Initialize();
 };
 
 unsigned int* GetDataPtr02114e04_020d6c00();

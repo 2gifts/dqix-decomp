@@ -1,15 +1,10 @@
 #include <globaldefs.h>
+#include "Resource/CharacterCreationUI.h"
 int GetShortAt0x0020dfbd4(short*);
 
 struct Element020e0310 {
     int a;
     int b;
-};
-
-struct Container020e0310 {
-    unsigned int count : 12;
-    unsigned int rest : 20;
-    struct Element020e0310 *base;
 };
 
 typedef int (*KeyFunc020e0310)(struct Element020e0310 *);

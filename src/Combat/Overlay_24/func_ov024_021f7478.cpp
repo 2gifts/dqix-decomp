@@ -5,6 +5,7 @@
 #include "std_library_functions.h"
 #include "Combat/Main/BattleList.h"
 #include "Grotto/Main/ActiveGrottoClass.h"
+#include "GameState/GameState.h"
 struct BattleStruct {
     int unk0;
     int unk4;
@@ -17,10 +18,6 @@ struct CombatantStruct {
     struct ModifiableCombatStats* currentStats;
 };
 
-class GameState {
-public:
-    static GameState* GetInstance();
-};
 struct S_10088;
 struct Random;
 struct S021719c0;

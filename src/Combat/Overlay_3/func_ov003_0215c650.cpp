@@ -3,6 +3,7 @@
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"
 #include "System/Graphics.h"
+#include "Combat/MapDisplay.h"
 
 struct MainBgControlBackup02074af4 {
     unsigned short savedBg0Cnt;
@@ -23,10 +24,6 @@ struct Struct020dfc40 {
 
 struct InitTarget0205cfd4 {
     char data[0xbc];
-};
-
-struct List0204af64 {
-    char data[0x20];
 };
 
 struct Elem0204c684 {

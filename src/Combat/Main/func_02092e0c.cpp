@@ -1,17 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
-struct Container020e0310 {
-    unsigned int count : 12;
-    unsigned int stringBytes : 19;
-    unsigned int ownsStorage : 1;
-    void* entries;
-    char* strings;
-};
+#include "Resource/CharacterCreationUI.h"
 struct MessageController {
     SafeAllocator allocator;
     Container020e0310 messages;
-    char unknown20[0xc];
+    char unknown1c[0x10];
     int loadTask;
     short messageKey;
     short messageDelay;

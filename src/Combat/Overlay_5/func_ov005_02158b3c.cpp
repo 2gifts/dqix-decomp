@@ -8,13 +8,7 @@
 #include <GameState/GameState.h>
 #include <Combat/Main/BattleList.h>
 #include <Resource/GameResources.h>
-
-struct Element020e0310;
-struct Container020e0310 {
-    unsigned int count : 12;
-    unsigned int flags : 20;
-    Element020e0310* entries;
-};
+#include <Resource/CharacterCreationUI.h>
 
 void* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void* global);

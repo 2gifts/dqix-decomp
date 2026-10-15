@@ -3,6 +3,7 @@
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 #include "Combat/ScriptElementList.h"
+#include "Resource/CharacterCreationUI.h"
 #include "std_library_functions.h"
 
 struct StreamHeader0208d82c;
@@ -17,10 +18,6 @@ struct HeadNode02046b24;
 struct List0204af64;
 struct Obj0204b5e8;
 struct SelfTag0204b3a0;
-
-struct Container020e0310 {
-    unsigned char data[0x18];
-};
 
 struct SaveDate0208bf78 {
     unsigned int year : 7;
@@ -83,6 +80,7 @@ struct Arena0208bf78 {
 struct RecordView0208bf78 {
     Arena0208bf78* arena;
     Container020e0310 strings;
+    unsigned char pad_c[0x10];
     StreamHeader0208d860 elements;
     unsigned char pad_2c[0x90];
     int taskId;

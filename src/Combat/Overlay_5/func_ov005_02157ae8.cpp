@@ -1,14 +1,5 @@
 #include <globaldefs.h>
-
-struct GameObject {
-    unsigned short flags;
-};
-
-class GameState {
-public:
-    static GameState* GetInstance();
-    GameObject* GetGameObjectByIndex(int idx);
-};
+#include "GameState/GameState.h"
 
 extern "C" int* func_0202ae18(GameState* gs);
 int CheckField0NonZero_0202b7d8(int* p);
@@ -23,7 +14,7 @@ extern "C" ARM int func_ov005_02157ae8(void* self, int member) {
         GameObject* object = gameState->GetGameObjectByIndex(member);
         if (object == NULL)
             return 0;
-        unsigned short flags = object->flags;
+        unsigned short flags = object->obj3D_.unknown_0_;
         int leader = GetField0x3acValue_020100a8(gameState);
         if (flags & 0x200) {
             if (member != leader)

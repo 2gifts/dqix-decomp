@@ -11,12 +11,7 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
-
-class GameState {
-public:
-    static GameState* GetInstance();
-    unsigned int GetTickCount() const;
-};
+#include "GameState/GameState.h"
 
 struct AlchemyMenu {
     char unk_0[R(0x94, 0x9c)];

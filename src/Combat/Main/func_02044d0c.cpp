@@ -1,21 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Graphics/VRAMStaging.h"
-
-struct List0204af64 {
-    char pad0[0xc];
-    unsigned char b0c;
-    unsigned char pad0d;
-    unsigned short h0e;
-    int w10;
-    int w14;
-    int w18;
-    unsigned char b1c_lo : 4;
-    unsigned char b1c_hi : 4;
-    unsigned char b1d;
-    unsigned char b1e;
-    unsigned char b1f;
-};
+#include "Combat/MapDisplay.h"
 
 extern char data_02107800;
 

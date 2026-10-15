@@ -4,13 +4,7 @@
 #define LOW_REGION(j, u) (u)
 #endif
 #include <globaldefs.h>
-
-struct Element020e0310;
-struct Container020e0310 {
-    unsigned int count : 12;
-    unsigned int flags : 20;
-    Element020e0310* entries;
-};
+#include "Resource/CharacterCreationUI.h"
 
 struct EquipmentMenu {
     char unk_0[0xdf8];

@@ -5,13 +5,10 @@ enum { kRegion4c = 0x48 };
 enum { kRegion4c = 0x4c };
 #endif
 #include "Memory/SafeAllocator.h"
+#include "Combat/MapDisplay.h"
 
 struct InitTarget0205cfd4;
 struct Struct020dfc40;
-
-struct List0204af64 {
-    unsigned char data[0x20];
-};
 
 extern "C" void func_02074af4(void* obj);
 void InitStruct0205cfd4(struct InitTarget0205cfd4* s);

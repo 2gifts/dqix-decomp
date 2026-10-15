@@ -2,6 +2,7 @@
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 #include "Grotto/Main/ActiveGrottoClass.h"
+#include "Resource/MonsterDefinition.h"
 
 struct Words021edf38 { unsigned int a_, b_, c_; };
 struct Pair0209a338 { int first_, second_; };
@@ -10,7 +11,6 @@ struct Obj020d6f0c;
 struct Container020d6d18;
 struct Container0203a54c;
 struct TagValueEntry020e385c;
-struct BinarySearchByComparatorStruct { int fields_[4]; };
 struct BattleInfo {
     char pad0[8]; unsigned short event_; char padA[2]; int type_;
     char pad10[0x25 - 0x10]; unsigned char special_; char pad26[0x678 - 0x26];

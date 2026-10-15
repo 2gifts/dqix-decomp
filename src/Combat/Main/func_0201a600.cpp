@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "System/Matrix.h"
 
 #if defined(jpn)
 #define REGION_VALUE(jpnValue, usaValue) jpnValue
@@ -9,16 +10,8 @@
 struct GameState;
 struct SafeAllocator;
 
-struct Vector3i {
-    int x;
-    int y;
-    int z;
-
-    Vector3i& operator=(const Vector3i& other);
-};
-
 struct Struct0201ae8c {
-    int matrix[9];
+    Matrix3x3 matrix;
     Vector3i pos;
     int angle;
 };
@@ -116,12 +109,9 @@ int _Z17IsInRange0201b588i(int zoneId);
 unsigned short _ZNK17ActiveGrottoClass19GetActiveGrottoSeedEv(const ActiveGrotto0201a600* grotto);
 int _ZNK17ActiveGrottoClass22GetActiveGrottoEnvironEv(const ActiveGrotto0201a600* grotto);
 int _ZNK17ActiveGrottoClass13GetFloorCountEv(const ActiveGrotto0201a600* grotto);
-void srand(unsigned int seed);
 int _Z39GenerateGrottoObjectPositionOrientationPviiPiS0_PK24TileFeaturePlacementDatab(
     void* zone, int tileX, int tileY, int* outX, int* outZ, const void* tileData, bool preferFaceDown);
 int _ZNK8FloorMap16GetAdjacencyBitsEii(const FloorMap0201a600* map, int x, int y);
-void Mat3x3_WriteRotationY(int* out, int sine, int cosine);
-void Mat3x3_WriteIdentity(int* out);
 Struct0201ae8c* _Z18CopyStruct0201ae8cP14Struct0201ae8cS0_(Struct0201ae8c* dst, Struct0201ae8c* src);
 Field3f8_0201a600* _Z29GetField0x3f8Address_0200fd0cP9GameState(GameState* gs);
 int func_02018fbc(Zone0201a600* zone, Vector3i* pos);
@@ -253,16 +243,16 @@ extern "C" ARM int func_0201a600(Zone0201a600* self) {
         }
         if (self->upStairDir == 0) {
             placement.angle = 0x3243;
-            Mat3x3_WriteRotationY(placement.matrix, 0, -0x1000);
+            Mat3x3_WriteRotationY(&placement.matrix, 0, -0x1000);
         } else if (self->upStairDir == 1) {
             placement.angle = 0x1921;
-            Mat3x3_WriteRotationY(placement.matrix, 0x1000, 0);
+            Mat3x3_WriteRotationY(&placement.matrix, 0x1000, 0);
         } else if (self->upStairDir == 2) {
             placement.angle = 0;
-            Mat3x3_WriteIdentity(placement.matrix);
+            Mat3x3_WriteIdentity(&placement.matrix);
         } else if (self->upStairDir == 3) {
             placement.angle = 0x4b65;
-            Mat3x3_WriteRotationY(placement.matrix, -0x1000, 0);
+            Mat3x3_WriteRotationY(&placement.matrix, -0x1000, 0);
         }
         _Z18CopyStruct0201ae8cP14Struct0201ae8cS0_(&grotto->floorMap.up, &placement);
     }
@@ -354,7 +344,7 @@ extern "C" ARM int func_0201a600(Zone0201a600* self) {
         placement.pos.z = z;
         placement.pos.y = 0;
         placement.angle = 0;
-        Mat3x3_WriteIdentity(placement.matrix);
+        Mat3x3_WriteIdentity(&placement.matrix);
         adjacency = GetAdjacency0201a600(&grotto->floorMap, tileX, tileY);
         key = adjacency.bits;
         found = 0;

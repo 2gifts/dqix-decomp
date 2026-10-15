@@ -2,8 +2,8 @@
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
+#include "Combat/MapDisplay.h"
 
-struct List0204af64 { char pad[0x20]; };
 struct InitTarget0205cfd4 { char pad[0xbc]; };
 struct Struct_0205bef8 { char pad[0x40]; };
 struct Obj02092aa4 { char pad[0x3c]; };

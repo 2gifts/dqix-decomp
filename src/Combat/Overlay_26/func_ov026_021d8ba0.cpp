@@ -6,6 +6,7 @@
 #include "Resource/GameResources.h"
 #include "Combat/Main/BattleList.h"
 #include "Util/Random.h"
+#include "Resource/CharacterCreationUI.h"
 
 struct Container_021dae60;
 struct BattleWork;
@@ -32,7 +33,6 @@ struct S02053dc0;
 struct Bytes02033b88;
 struct State0207dfc8;
 struct TagValueEntry020e385c;
-struct Container020e0310 { char pad[0xc4]; };
 struct Obj02046574;
 struct FlagWord02046708;
 struct FlagWord020466f4;
@@ -328,6 +328,7 @@ struct BattleWork {
     char ctxEc8[0x2898];
     char list[0xb8];
     Container020e0310 msgBox;
+    char pad3820[0xbc];
     int activeSlot;
     char pad38e0[0x7d0];
     int turnCount;

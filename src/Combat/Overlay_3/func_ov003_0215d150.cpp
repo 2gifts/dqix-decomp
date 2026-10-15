@@ -1,9 +1,7 @@
 #include "GameState/GameState.h"
+#include "Resource/CharacterCreationUI.h"
 #include <globaldefs.h>
 
-struct Container020e0310 {
-    char pad0[0x34];
-};
 struct Struct_0205c570;
 struct Struct0205cf1c;
 struct Obj0205eaa0;
@@ -20,6 +18,7 @@ struct Ctl {
 struct Scene {
     char pad0[0x64];
     Container020e0310 cont64;
+    char pad6c[0x98 - 0x6c];
     char list98[0x3b8 - 0x98];
     unsigned char state;
     char pad3b9[2];

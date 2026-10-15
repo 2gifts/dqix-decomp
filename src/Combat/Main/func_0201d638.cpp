@@ -3,26 +3,12 @@
 #include "System/Memory.h"
 #include "Resource/Script.h"
 #include "World/ZoneFeatures.h"
+#include "Combat/Main/ElementLookup.h"
 
 struct Vector3i;
 
 struct Vec3fix0201d638 { int x, y, z; };
 extern "C" void __clear(void* buf, int n);
-
-struct Elem0209998c {
-    unsigned short f0;
-    unsigned short f2;
-    unsigned char f4;
-    char f5[7];
-    unsigned char fc;
-    unsigned char fd;
-    unsigned char fe;
-    unsigned char pad;
-};
-struct List0209998c { struct Elem0209998c* data; int count; int cap; };
-extern struct Elem0209998c* FindElementByName0209998c(struct List0209998c* list, const char* name);
-
-void* GetPtrField0x468_02011584(void* obj);
 
 struct GlobalCtx0201d638 { unsigned char* lastEntry; };
 extern struct GlobalCtx0201d638 data_020fdc20;

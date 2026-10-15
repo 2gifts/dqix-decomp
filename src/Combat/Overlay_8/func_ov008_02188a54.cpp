@@ -7,14 +7,9 @@
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
 #include <Resource/Brightness.h>
+#include <Resource/CharacterCreationUI.h>
+#include <Combat/MapDisplay.h>
 
-struct Container020e0310 { char data[0x18]; };
-struct List0204af64 {
-    char pad0[0x1c];
-    unsigned char format : 4;
-    unsigned char layer : 4;
-    char pad1[3];
-};
 struct Entry_0205d6a0;
 struct Obj0204b5e8;
 struct AllocTarget0204b12c;
@@ -43,7 +38,7 @@ struct BattleRecords {
     SafeAllocator backgroundAllocator;
     char pad1[0xa0 - 0x28];
     Container020e0310 texts;
-    char pad2[0xf0 - 0xb8];
+    char pad2[0xf0 - 0xa8];
     List0204af64 background;
     List0204af64 textBackground;
     TextWindow window;
@@ -107,16 +102,16 @@ extern "C" ARM int func_ov008_02188a54(BattleRecords* self, int lastClear) {
             self->backgroundAllocator.Reset();
             ResetList0204af64(&self->background);
             SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->background, 0);
-            self->background.format = 1;
-            self->background.layer = 0;
+            self->background.b1c_lo = 1;
+            self->background.b1c_hi = 0;
             func_0204b5b4(&self->background, 1);
             DispatchViaTable0204b5e8((Obj0204b5e8*)&self->background, 0, 0);
             AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->background, &self->backgroundAllocator);
             AllocateArray0204af38((Foo0204af38*)&self->background, 1, &self->backgroundAllocator);
             ResetList0204af64(&self->textBackground);
             SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->textBackground, 0);
-            self->textBackground.format = 1;
-            self->textBackground.layer = 1;
+            self->textBackground.b1c_lo = 1;
+            self->textBackground.b1c_hi = 1;
             func_0204b5b4(&self->textBackground, 0);
             DispatchViaTable0204b5e8((Obj0204b5e8*)&self->textBackground, 0, 0);
             AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->textBackground, &self->backgroundAllocator);

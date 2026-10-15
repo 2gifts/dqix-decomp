@@ -3,6 +3,7 @@
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
 #include "Resource/Script.h"
+#include "Combat/WorkRecord.h"
 
 struct Variant02030b0c;
 struct TaggedValue02030b44;
@@ -14,8 +15,6 @@ extern "C" char* func_0205ec34();
 int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 int TestBitWithBias0206eb98(unsigned char*, int);
 void UnlinkNodeByByteId0206dd68(void*, int);
-void ClearWorkRecord0206bf2c(struct Rec0206bf2c*);
-extern "C" void func_0206db48(void*, struct Rec0206bf2c*);
 
 struct Data02108cec {
     unsigned char pad0[0xa];
@@ -25,20 +24,6 @@ struct Data02108cec {
     void* field0x14;
 };
 extern struct Data02108cec data_02108cec;
-
-struct Rec0206bf2c {
-    unsigned char field0x0;
-    unsigned char pad1;
-    unsigned short field0x2;
-    unsigned char pad2[0x6];
-    unsigned char flags0xa;
-    unsigned char pad3[0x10 - 0xb];
-    int vec0x10[3];
-    short field0x1c;
-    unsigned char field0x1e;
-    unsigned char pad4[0x44 - 0x1f];
-    unsigned short id0x44;
-};
 
 // USA: func_0206d4e0
 extern "C" ARM int func_0206d4e0(void* param0, int param1) {
@@ -100,21 +85,21 @@ extern "C" ARM int func_0206d4e0(void* param0, int param1) {
         return 0;
     }
     ClearWorkRecord0206bf2c(rec);
-    rec->field0x2 = (unsigned short)a;
+    rec->field2 = (unsigned short)a;
     int rem = param1 - half * 2 - even;
-    rec->field0x0 = (unsigned char)b;
+    rec->field0 = (unsigned char)b;
     if (rem < 4) {
-        UnlinkNodeByByteId0206dd68(data_02108cec.field0x10, rec->field0x0);
+        UnlinkNodeByByteId0206dd68(data_02108cec.field0x10, rec->field0);
         return 1;
     }
 
-    struct TaggedValue02030b44* v = (TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)((char*)arg + 0x18)))->ToVec3fix((Vector3i*)rec->vec0x10);
-    rec->field0x1c = (short)(4096.0f * ((Script::Parameter*)v)->ToFloat());
+    struct TaggedValue02030b44* v = (TaggedValue02030b44*)((Script::Parameter*)((struct TaggedValue02030b44*)((char*)arg + 0x18)))->ToVec3fix((Vector3i*)rec->vec);
+    rec->field1c = (short)(4096.0f * ((Script::Parameter*)v)->ToFloat());
     if (even) {
-        rec->field0x1e = (unsigned char)((Script::Parameter*)((struct Variant02030b0c*)((char*)v + 8)))->ToInt();
+        rec->field1e = (unsigned char)((Script::Parameter*)((struct Variant02030b0c*)((char*)v + 8)))->ToInt();
     }
-    rec->id0x44 = data_02108cec.field0xa;
-    rec->flags0xa |= 4;
+    rec->field44 = data_02108cec.field0xa;
+    rec->flagsA_b1 = 1;
     func_0206db48(data_02108cec.field0x10, rec);
     return 1;
 }

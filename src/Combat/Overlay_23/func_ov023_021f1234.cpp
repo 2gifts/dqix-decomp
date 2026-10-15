@@ -2,6 +2,7 @@
 #include "Resource/FontBankLoader.h"
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
+#include <GameState/GameState.h>
 
 struct GameResources;
 struct ArrayContainsByteStruct;
@@ -9,11 +10,6 @@ struct Entry_0205d6a0;
 struct TableA68;
 struct Container02186e74;
 struct Reset_021eefac;
-
-struct GameState {
-    static GameState* GetInstance();
-    unsigned int GetTickCount() const;
-};
 
 struct MessageSystem_021f1234 {
 #if defined(jpn)
@@ -129,7 +125,6 @@ extern "C" BattleEnd_021f1234* _ZZ17GetGlobal021ffefcvE1s;
 extern char data_02108760[];
 
 MessageSystem_021f1234* GetGlobalField0x1c020421a0();
-ArrayContainsByteStruct* GetPtrField0x2a04_02010828(GameState* gameState);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* array, int id);
 void InitCombatEntry_021d8b6c(void* window);
 void ResetEntryList0205d6a0(Entry_0205d6a0* window, int value);
@@ -141,7 +136,6 @@ void SetMainBrightness(GameResources* resources, int brightness, int duration);
 int IsMainBrightnessTransitionActive(GameResources* resources);
 void ZeroInit020de868(void* icons);
 void InitAllocatorArray02186e74(Container02186e74* abilities, SafeAllocator* allocator);
-void* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int member);
 void SetupContextForMode0205ea20(void* sound, int mode);
 unsigned char* GetFieldAt0x150_02053c6c(unsigned char* member);
 void ResetFields_021eefac(Reset_021eefac* end);
@@ -185,7 +179,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
     void* unk = func_0205ec34();
     MessageSystem_021f1234* messages = GetGlobalField0x1c020421a0();
     int id = end->current_;
-    int inParty = ArrayContainsByte_02086ef0(GetPtrField0x2a04_02010828(gameState), id);
+    int inParty = ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(gameState), id);
     if (self->skillMenu_ == NULL)
     {
         if (self->resultWindow_ != NULL)
@@ -264,7 +258,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
 
                 func_ov013_02186eec(self->abilities_, 0);
                 InitAllocatorArray02186e74((Container02186e74*)self->abilities_, allocator);
-                void* member = GetCombatantWithFlag0x100_0200ff1c(gameState, id);
+                GameObject* member = GetCombatantWithFlag0x100_0200ff1c(gameState, id);
                 if (member != NULL)
                 {
                     func_ov013_02184b4c(self->skillMenu_, member);
@@ -292,7 +286,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
         }
         else if (end->step_ == 5)
         {
-            void* member = GetCombatantWithFlag0x100_0200ff1c(gameState, id);
+            GameObject* member = GetCombatantWithFlag0x100_0200ff1c(gameState, id);
             if (func_ov013_021847c4(self->skillMenu_, gameState->GetTickCount()) == 6)
             {
                 if (loader->GetNumQueuedTasks() > 0)
@@ -331,7 +325,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
             {
                 SetupContextForMode0205ea20(data_02108760, 0x65);
                 GetCombatantWithFlag0x100_0200ff1c(gameState, id);
-                void* member = GetCombatantWithFlag0x100_0200ff1c(gameState, id);
+                GameObject* member = GetCombatantWithFlag0x100_0200ff1c(gameState, id);
                 if (member != NULL)
                 {
                     func_ov013_02184c8c(self->skillMenu_, member);

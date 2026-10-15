@@ -1,13 +1,5 @@
 #include <globaldefs.h>
-
-class Script {
-public:
-    struct OpcodeLookupEntry;
-    void Initialize();
-    void SetOpcodeLookup(OpcodeLookupEntry* lookup);
-    void Load(const void* data, unsigned int size);
-    void Execute();
-};
+#include "Resource/Script.h"
 
 struct ScriptRequest {
     unsigned int lo : 12;
@@ -29,7 +21,7 @@ struct ScriptGlobal {
 };
 
 extern ScriptGlobal data_021098e8;
-extern char data_020f1504[];
+extern Script::OpcodeLookupEntry data_020f1504[];
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* gs);
@@ -45,7 +37,7 @@ void SetIndexedName02046574(Obj02046574* obj, int index, char* name);
 extern "C" ARM int func_02099304(ScriptRequest* request, char* name, const void* data, unsigned int size, void* buffer, int bufferSize, unsigned char flags, char* nameA, char* nameB) {
     void* gs = func_0202ae18();
     int slot[4];
-    unsigned char scriptBuf[0x430];
+    Script script;
 
     if (request == 0 || name == 0) {
         return 0;
@@ -101,9 +93,9 @@ extern "C" ARM int func_02099304(ScriptRequest* request, char* name, const void*
     SetIndexedName02046574((Obj02046574*)store, 1, nameA);
     SetIndexedName02046574((Obj02046574*)store, 2, nameB);
 
-    ((Script*)scriptBuf)->Initialize();
-    ((Script*)scriptBuf)->SetOpcodeLookup((Script::OpcodeLookupEntry*)data_020f1504);
-    ((Script*)scriptBuf)->Load(data, size);
-    ((Script*)scriptBuf)->Execute();
+    script.Initialize();
+    script.SetOpcodeLookup(data_020f1504);
+    script.Load(data, size);
+    script.Execute();
     return 1;
 }

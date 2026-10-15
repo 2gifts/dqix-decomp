@@ -7,6 +7,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
+#include "World/ZoneLootableRecord.h"
 
 struct TaggedNumber02184c30 {
     int type;
@@ -30,12 +31,6 @@ extern "C" ARM int func_ov023_021fb534(void* obj, void* ctx, int arg2, int arg3,
 struct ListHead_021f67ac;
 struct ListNode_021f67ac;
 void AppendNodeToList_021f67ac(struct ListHead_021f67ac* head, struct ListNode_021f67ac* node);
-
-struct NameTable02048080 {
-    int count;
-    void* entries;
-};
-void ClearNameTable(struct NameTable02048080* table);
 
 extern char data_ov023_021fee68;
 

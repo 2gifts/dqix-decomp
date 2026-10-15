@@ -12,6 +12,7 @@
 #endif
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
+#include "Filesystem/BackgroundLoader.h"
 
 struct StructInit36e0;
 struct AlchemyPot;
@@ -19,12 +20,6 @@ struct AlchemyPot;
 extern "C" void func_ov006_021547c8(AlchemyPot*);
 void TailCallInitStruct_02153730(StructInit36e0*);
 char* GetGlobalField0x1c020421a0();
-
-class BackgroundLoader {
-public:
-    static BackgroundLoader* GetInstance();
-    void RemoveTask(int taskID);
-};
 
 struct AlchemyMenu {
 #if !defined(jpn)

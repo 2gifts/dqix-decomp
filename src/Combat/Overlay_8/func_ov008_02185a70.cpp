@@ -7,6 +7,9 @@
 #endif
 
 #include <Memory/SafeAllocator.h>
+#include <World/Object3D.h>
+#include <Resource/MessageSystem.h>
+#include <Filesystem/BackgroundLoader.h>
 
 struct PlayTime {
     unsigned short hours_;
@@ -34,10 +37,6 @@ struct Canvas {
 
 struct WindowCursor {
     int pad_0[0x40 / 4];
-};
-
-struct Object3D {
-    int pad_0[0xac / 4];
 };
 
 struct GuideWindow {
@@ -101,19 +100,6 @@ struct BattleRecords {
     }
 };
 
-struct MessageSystem {
-#if defined(jpn)
-    char pad_0[0x870];
-    int unk_9a0;
-    char pad_9a4[0x17de - 0x874];
-#else
-    char pad_0[0x9a0];
-    int unk_9a0;
-    char pad_9a4[0x19ae - 0x9a4];
-#endif
-    unsigned char unk_19ae;
-};
-
 struct TouchState {
     char pad_0[0x55];
     unsigned char touching_;
@@ -121,10 +107,6 @@ struct TouchState {
 
 extern unsigned short data_02114e30[];
 extern TouchState data_02114e54;
-
-struct BackgroundLoader {
-    static BackgroundLoader* GetInstance();
-};
 
 struct GameResources;
 struct Entry_0205d6a0;
@@ -163,10 +145,10 @@ extern "C" ARM void func_ov008_02185a70(BattleRecords* self, unsigned int ticks)
     FontBankLoader* music = GetGlobal02109400_02094a00();
     unsigned char step = self->step_;
     if (step >= 2)
-        messages->unk_19ae = 0;
+        messages->b19ae = 0;
     if (step == 0)
     {
-        if (messages->unk_9a0 != 3)
+        if (messages->mode != 3)
             return;
         self->step_++;
     }

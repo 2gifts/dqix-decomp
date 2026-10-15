@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 #define func_ov006_021580b8 func_ov006_02159668
@@ -52,11 +53,6 @@ struct Unknown_02075cdc {
     char unk_48[4];
     int unk_4c;
     char unk_50[0x70 - 0x50];
-};
-
-class GameState {
-public:
-    static GameState* GetInstance();
 };
 
 int CheckElementFlag_02158080_02158080(Obj2081*, int);

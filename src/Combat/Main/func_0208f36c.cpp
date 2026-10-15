@@ -1,10 +1,5 @@
 #include <globaldefs.h>
-
-class Object3D {
-public:
-    void SetScale(int x, int y, int z);
-    bool MaybeSetBCFGAnimation(int index, int flags);
-};
+#include "World/Object3D.h"
 
 struct Self0208f36c {
     char pad0[8];

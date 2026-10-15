@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "GameState/GameState.h"
 
-class GameState { public: static GameState* GetInstance(); };
 struct Unit02155184;
 Unit02155184* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 struct Container02070e60;

@@ -2,6 +2,8 @@
 #include <std_library_functions.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
+#include <Grotto/Main/ActiveGrottoClass.h>
+#include <GameState/GameState.h>
 
 struct BinarySearchByComparatorStruct;
 struct TableA68;
@@ -58,22 +60,6 @@ struct PlayRecords_021eefd0 {
     char unk_68[0xb0 - 0x68];
 };
 
-struct DetailedTreasureMapData_021eefd0 {
-    unsigned char discoveryState_;
-    unsigned char mapType_;
-    char unk_2[0xe - 2];
-    char clearedBy_[0xc];
-    char unk_1a[0x56 - 0x1a];
-    unsigned char legacyLevel_;
-    char unk_57[0x65 - 0x57];
-    unsigned char regularLevel_;
-};
-
-class ActiveGrottoClass {
-public:
-    DetailedTreasureMapData_021eefd0* GetDetailedData();
-};
-
 struct ZoneData_021eefd0 {
     unsigned short id_;
 #if defined(jpn)
@@ -83,31 +69,6 @@ struct ZoneData_021eefd0 {
 #endif
 
     ActiveGrottoClass grotto_;
-};
-
-struct GrottoStruct_021eefd0 {
-    unsigned char unknown_0[4];
-};
-
-struct GameObject_021eefd0 {
-    char unk_0[0x134];
-    void* baseStats_;
-};
-
-struct GameState {
-    static GameState* GetInstance();
-    GameObject_021eefd0* GetProtagonist();
-    GrottoStruct_021eefd0* GetGrottoStruct();
-};
-
-struct GameResources_021eefd0 {
-#if defined(jpn)
-    char unk_0[0x3508];
-#else
-    char unk_0[0x3718];
-#endif
-
-    void* unknown_ptr_3718;
 };
 
 struct Unknown_021b8478_021eefd0 {
@@ -203,7 +164,6 @@ void DispatchAndSetTreasureMapUnknownBit_020117cc(char* gameState, int map);
 
 extern "C" {
 void __clear(void* buffer, unsigned long size);
-GameResources_021eefd0* func_ov017_0218b5b0();
 Unknown_021b8478_021eefd0* func_ov017_021b8478(void* unk);
 MessageName_021eefd0 func_ov023_021ed804(MessageName_021eefd0 name, void* monster);
 #if !defined(jpn)
@@ -267,7 +227,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
                 return self->endState_;
             }
         }
-        GameResources_021eefd0* resources = func_ov017_0218b5b0();
+        GameResources* resources = func_ov017_0218b5b0();
         void* unk = NULL;
         Unknown_021b8478_021eefd0* unk2 = NULL;
         int kind = -1;
@@ -432,7 +392,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         end->step_++;
         if (self->info_->grotto_ != 0 || self->info_->legacyBoss_ != 0)
         {
-            GrottoStruct_021eefd0* grotto = GameState::GetInstance()->GetGrottoStruct();
+            GrottoStruct* grotto = GameState::GetInstance()->GetGrottoStruct();
             self->unk_6e38 = 1;
             grotto->unknown_0[3] = 1;
             EnqueueEventTag162_021cfc74(1);
@@ -458,7 +418,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         ResetFields_021eefac((Reset_021eefac*)end);
         void* unk = func_0202ae18();
         ZoneData_021eefd0* zone = func_02012fe4();
-        DetailedTreasureMapData_021eefd0* map = zone->grotto_.GetDetailedData();
+        DetailedTreasureMapData* map = zone->grotto_.GetDetailedData();
         if (self->info_->legacyBoss_ != 0)
         {
             if (IsInRange0201b588(zone->id_))
@@ -466,15 +426,15 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
                 PlayRecords_021eefd0 records;
                 LoadBattleBlock020ac4c0(&records);
                 AddClamped14BitFieldMidAt0xc_020a0388((S_a0388*)&records, 1);
-                if (map != NULL && map->mapType_ == 2 && map->legacyLevel_ > records.unk_c_7)
-                    records.unk_c_7 = map->legacyLevel_;
+                if (map != NULL && map->mapType_ == 2 && map->legacy_.level_ > records.unk_c_7)
+                    records.unk_c_7 = map->legacy_.level_;
                 CopyInBattleField0x7540_020ac494(&records);
             }
             return 4;
         }
         if (self->info_->grotto_ != 0)
         {
-            DetailedTreasureMapData_021eefd0* map2 = func_02012fe4()->grotto_.GetDetailedData();
+            DetailedTreasureMapData* map2 = func_02012fe4()->grotto_.GetDetailedData();
             GameState* gameState = GameState::GetInstance();
             if (func_0202c508(unk))
             {
@@ -503,8 +463,8 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
                 PlayRecords_021eefd0 records;
                 LoadBattleBlock020ac4c0(&records);
                 AddClamped14BitFieldMidAt0xc_020a0388((S_a0388*)&records, 1);
-                if (map != NULL && map->mapType_ == 1 && map->regularLevel_ > records.unk_c_0)
-                    records.unk_c_0 = map->regularLevel_;
+                if (map != NULL && map->mapType_ == 1 && map->regular_.level_ > records.unk_c_0)
+                    records.unk_c_0 = map->regular_.level_;
                 CopyInBattleField0x7540_020ac494(&records);
             }
         }

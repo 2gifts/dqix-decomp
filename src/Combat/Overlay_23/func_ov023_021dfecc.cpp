@@ -3,26 +3,13 @@
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/FileIO.h"
+#include "Combat/MapDisplay.h"
 
 struct Obj021dcb70;
 unsigned char LookupByField8_021dcb70(struct Obj021dcb70* p);
 
 struct List0202fec8;
 
-struct List0204af64 {
-    char pad0[0xc];
-    unsigned char b0c;
-    unsigned char pad0d;
-    unsigned short h0e;
-    int w10;
-    int w14;
-    int w18;
-    unsigned char b1c_lo : 4;
-    unsigned char b1c_hi : 4;
-    unsigned char b1d;
-    unsigned char b1e;
-    unsigned char b1f;
-};
 void ResetList0204af64(struct List0204af64* obj);
 
 extern "C" void func_0204b5b4(void*, int);
