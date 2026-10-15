@@ -20043,3 +20043,44 @@ src/Combat/Main/func_02099304.cpp:
 src/Combat/Main/func_0204cc68.cpp:
     complete
     .text start:0x0204cc78 end:0x0204cd70
+
+src/Combat/Main/_Z26BinarySearchRecord0209a004Pvi.cpp:
+    complete
+    .text start:0x0209a014 end:0x0209a098
+
+src/Combat/Main/func_0203f98c.cpp:
+    complete
+    .text start:0x0203f99c end:0x0203fc38
+
+src/Combat/Main/func_0207fe80.cpp:
+    complete
+    .text start:0x0207fe90 end:0x0208010c
+
+src/Combat/Main/ExtractFileFromGP2.cpp:
+    complete
+    .text start:0x0207569c end:0x020757c4
+
+src/Combat/Main/func_0203a0b4.cpp:
+    complete
+    .text start:0x0203a0c4 end:0x0203a47c
+
+src/Combat/Main/func_0205b530.cpp:
+    complete
+    .text start:0x0205b540 end:0x0205b684
+
+src/Combat/Main/func_02076080.cpp:
+    complete
+    .text start:0x02076090 end:0x02076748
+
+src/Combat/Main/func_020a57e4.cpp:
+    complete
+    .text start:0x020a57f4 end:0x020a5b2c
+
+src/Combat/Main/func_0202c04c.cpp:
+    complete
+    .text start:0x0202c05c end:0x0202c188
+    .bss start:0x020fefcc end:0x020fefd4
+
+src/Combat/Main/func_020aaf84.cpp:
+    complete
+    .text start:0x020aaf94 end:0x020ab324
