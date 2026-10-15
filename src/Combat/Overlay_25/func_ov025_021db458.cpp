@@ -20,19 +20,19 @@ struct Work021db458 {
     unsigned char flags : 6;
 };
 
-extern "C" void* _Z18GetSlotPtr02160f20Pv(void*);
+void* GetSlotPtr02160f20(void*);
 extern "C" int func_ov000_0215e9fc(void* obj, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(void* obj, short* buf, int max, int start);
-extern "C" int _Z35IsSubstructByte0x4fNonZero_02049afcPh(unsigned char* obj);
+int IsSubstructByte0x4fNonZero_02049afc(unsigned char* obj);
 extern "C" void* __clear(void* dst, int count);
-extern "C" ActorNode021db458* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094*, int);
-extern "C" TargetNode021db458* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8*, int);
+ActorNode021db458* GetNodeAtIndex02160094(List02160094*, int);
+TargetNode021db458* GetNodeAtIndex021600f8(List021600f8*, int);
 
 // USA: func_ov025_021db458
 extern "C" ARM void func_ov025_021db458(Work021db458* work) {
     int reach;
     int j;
-    _Z18GetSlotPtr02160f20Pv(work);
+    GetSlotPtr02160f20(work);
     GameState* game = GameState::GetInstance();
     if (work->mode != 2) return;
     void* list;
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov025_021db458(Work021db458* work) {
     for (int i = 0; i < count; i++) {
         GameObject* obj = game->GetCombatantByIndex(ids[i]);
         if (!obj) continue;
-        if (!_Z35IsSubstructByte0x4fNonZero_02049afcPh((unsigned char*)obj) || (list = work->list) == 0) continue;
+        if (!IsSubstructByte0x4fNonZero_02049afc((unsigned char*)obj) || (list = work->list) == 0) continue;
         WrappedVector3fix dir;
         WrappedVector3fix otherPos;
         WrappedVector3fix pos;
@@ -56,8 +56,8 @@ extern "C" ARM void func_ov025_021db458(Work021db458* work) {
         short* id = ids;
         pos = body->position;
         pos.vec.y = 0xcc;
-        actors = _Z22GetNodeAtIndex02160094P12List02160094i((List02160094*)list, 0);
-        TargetNode021db458* targets = _Z22GetNodeAtIndex021600f8P12List021600f8i((List021600f8*)list, 0);
+        actors = GetNodeAtIndex02160094((List02160094*)list, 0);
+        TargetNode021db458* targets = GetNodeAtIndex021600f8((List021600f8*)list, 0);
         ActorNode021db458* a = actors;
         int self = body->id;
         for (; a; a = a->next) {
