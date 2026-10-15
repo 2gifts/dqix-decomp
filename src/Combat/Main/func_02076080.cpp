@@ -8,10 +8,10 @@ struct Array02048090 {
     int count;
     void* buffer;
 };
-extern "C" void _Z21AllocateArray02048090P13Array02048090iP13SafeAllocator(struct Array02048090* obj, int count, SafeAllocator* alloc);
+void AllocateArray02048090(struct Array02048090* obj, int count, SafeAllocator* alloc);
 
 struct Struct02076928;
-extern "C" void _Z26UpdateSelectedCell02076928P14Struct02076928i(struct Struct02076928* s, int val);
+void UpdateSelectedCell02076928(struct Struct02076928* s, int val);
 
 extern "C" void func_02076994(void* ctx, unsigned char* data, unsigned int val, unsigned int w, unsigned int h);
 
@@ -174,7 +174,7 @@ extern "C" ARM int func_02076080(struct Struct02076080* sl, SafeAllocator* sb, u
     data += paletteSize * 2;
     memcpy(&sl->f54.count, data + 0x1e, 4);
     data += 0x22;
-    _Z21AllocateArray02048090P13Array02048090iP13SafeAllocator(&sl->f54, sl->f54.count, sb);
+    AllocateArray02048090(&sl->f54, sl->f54.count, sb);
 
     int count = sl->f54.count;
     if (sl->f54.count > 0) {
@@ -206,6 +206,6 @@ extern "C" ARM int func_02076080(struct Struct02076080* sl, SafeAllocator* sb, u
     }
 
     sl->f5f = 1;
-    _Z26UpdateSelectedCell02076928P14Struct02076928i((struct Struct02076928*)sl, 1);
+    UpdateSelectedCell02076928((struct Struct02076928*)sl, 1);
     return 0;
 }

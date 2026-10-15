@@ -111,12 +111,12 @@ extern "C" void func_ov015_02191294(void*);
 extern "C" void func_ov015_02191668(void*);
 extern "C" void func_ov015_02190d7c(void*);
 extern "C" void func_ov015_021901c8(void*);
-extern "C" void _Z33CleanInvalidateOamBuffers0203bd88v(void*);
+void CleanInvalidateOamBuffers0203bd88(void* oam);
 void ResetXYField0203aa08(void*);
 extern "C" void func_020bbd9c();
 extern "C" unsigned long long _ll_udiv(unsigned long long, unsigned long long);
 extern "C" float func_0200c76c(unsigned long long);
-extern "C" int _Z22GetSignedField020c39c8PVt(void*);
+int GetSignedField020c39c8(unsigned short volatile*);
 void SyncMainSubOam0203bdb0(Obj0203bdb0*);
 void FlushOrClearBuffer020290ac(int);
 
@@ -288,7 +288,7 @@ extern "C" ARM void func_ov015_021934f8(Battle021934f8* self)
         }
         func_ov015_02190d7c(self);
         func_ov015_021901c8(self);
-        _Z33CleanInvalidateOamBuffers0203bd88v(context);
+        CleanInvalidateOamBuffers0203bd88(context);
         ResetXYField0203aa08(&data_02108760);
         func_020bbd9c();
 
@@ -310,7 +310,7 @@ extern "C" ARM void func_ov015_021934f8(Battle021934f8* self)
         }
         loader->RemoveAllLocks();
         self->prevTime = _ll_udiv(GetCurrentTimestamp() * 64000, 33514);
-        if (_Z22GetSignedField020c39c8PVt(MASTER_BRIGHT) > -16)
+        if (GetSignedField020c39c8((unsigned short volatile*)MASTER_BRIGHT) > -16)
             DelayThenSyncBit0_020c9820();
         GetCurrentTimestamp();
         SyncMainSubOam0203bdb0((Obj0203bdb0*)context);

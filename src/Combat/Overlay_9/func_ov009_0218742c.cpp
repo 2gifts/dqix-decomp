@@ -102,10 +102,7 @@ extern char data_0211e33c[] __attribute__((aligned(4)));
 extern EquipmentMapping0218742c data_ov009_0218aac8[];
 extern char data_ov009_0218ad26[];
 
-inline PackedStats0218742c* SnapshotStats(Snapshot0218742c* snapshot) {
-    PackedStats0218742c* result = snapshot->stats;
-    return result;
-}
+inline PackedStats0218742c* SnapshotStats(Snapshot0218742c* snapshot) { return snapshot->stats; }
 
 // USA: func_ov009_0218742c
 extern "C" ARM void func_ov009_0218742c(Menu0218742c* menu) {

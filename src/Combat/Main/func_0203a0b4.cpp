@@ -11,10 +11,10 @@ struct Vec3Target0203a46c {
     int z;
 };
 
-extern "C" int _Z27GetField0x3b0Value_020100bcP9GameState(GameState*);
-extern "C" void _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, struct Vec3copy0202ec84*, int*, int*);
+int GetField0x3b0Value_020100bc(GameState*);
+void ComputeTwoFromVec3_0202ec84(void*, struct Vec3copy0202ec84*, int*, int*);
 void SetVec3At0x1c(struct Vec3Target0203a46c*, int, int, int);
-extern "C" void _Z24StoreVec3At0x34_0203a47cPjjjj(unsigned int*, unsigned int, unsigned int, unsigned int);
+void StoreVec3At0x34_0203a47c(unsigned int*, unsigned int, unsigned int, unsigned int);
 extern "C" void func_02047554(void* sprite, int digit, int flag);
 
 extern const int data_020e7830[5];
@@ -55,7 +55,7 @@ extern "C" ARM void func_0203a0b4(struct Obj0203a0b4* obj) {
     int baseX;
     int digit;
     int left;
-    void* camera = (void*)_Z27GetField0x3b0Value_020100bcP9GameState(GameState::GetInstance());
+    void* camera = (void*)GetField0x3b0Value_020100bc(GameState::GetInstance());
     if (camera == 0) return;
     i = obj->cursor;
     while (i != obj->limit) {
@@ -67,7 +67,7 @@ extern "C" ARM void func_0203a0b4(struct Obj0203a0b4* obj) {
             int value = slot->value;
             digit = 1;
             int x, y;
-            _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(camera, &slot->anchor, &x, &y);
+            ComputeTwoFromVec3_0202ec84(camera, &slot->anchor, &x, &y);
             x += slot->offsetX;
             y = y + slot->offsetY - 20;
             if (x < 16) x = 16;
@@ -97,7 +97,7 @@ extern "C" ARM void func_0203a0b4(struct Obj0203a0b4* obj) {
                 if (show) {
                     SetVec3At0x1c(&obj->digitSprites[spriteIndex].pos, dx + (px << 12), dy + ((y - 8) << 12), dz + (digit << 12));
                     obj->digitSprites[spriteIndex].alpha = n;
-                    _Z24StoreVec3At0x34_0203a47cPjjjj((unsigned int*)&obj->digitSprites[spriteIndex], scale, scale, 0x1000);
+                    StoreVec3At0x34_0203a47c((unsigned int*)&obj->digitSprites[spriteIndex], scale, scale, 0x1000);
                     GXFIFO_MATRIX_PUSH = 0;
                     func_02047554(&obj->digitSprites[spriteIndex], value % 10, 1);
                     GXFIFO_MATRIX_POP = 1;
@@ -113,7 +113,7 @@ extern "C" ARM void func_0203a0b4(struct Obj0203a0b4* obj) {
                 baseX -= (int)(16.0f * s);
                 int y2 = baseY - (int)(8.0f * s) - 8;
                 SetVec3At0x1c(&obj->shadowSprites[spriteIndex].pos, baseX << 12, y2 << 12, 0);
-                _Z24StoreVec3At0x34_0203a47cPjjjj((unsigned int*)&obj->shadowSprites[spriteIndex], obj->slots[i].position, obj->slots[i].position, 0x1000);
+                StoreVec3At0x34_0203a47c((unsigned int*)&obj->shadowSprites[spriteIndex], obj->slots[i].position, obj->slots[i].position, 0x1000);
                 obj->shadowSprites[spriteIndex].alpha = n;
                 GXFIFO_MATRIX_PUSH = 0;
                 func_02047554(&obj->shadowSprites[spriteIndex], 0, 1);

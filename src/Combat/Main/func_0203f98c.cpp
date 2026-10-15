@@ -10,14 +10,8 @@ struct Quad0203f98c {
     unsigned short sizeS;
     unsigned short sizeT;
 
-    unsigned short GetSizeS() const {
-        unsigned short v = sizeS;
-        return v;
-    }
-    unsigned short GetSizeT() const {
-        unsigned short v = sizeT;
-        return v;
-    }
+    unsigned short GetSizeS() const { SDK_NULL_ASSERT(this); return sizeS; }
+    unsigned short GetSizeT() const { SDK_NULL_ASSERT(this); return sizeT; }
 };
 
 struct Obj0203f98c {

@@ -21,7 +21,8 @@ int GetShortAt0x28(struct ShortField0x28_02099fe8*);
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0209a004
-extern "C" ARM struct ShortField0x28_02099fe8* _Z26BinarySearchRecord0209a004Pvi(struct Table0209a004* table, int key) {
+ARM struct ShortField0x28_02099fe8* BinarySearchRecord0209a004(void* arg0, int key) {
+    struct Table0209a004* table = (struct Table0209a004*)arg0;
     struct ShortField0x28_02099fe8* found;
     int hi, lo, mid, count;
     struct ShortField0x28_02099fe8* records = table->records;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 struct Rect0205b1ac { int offset; short x, y, w, h; };
 struct Canvas0205b530 { unsigned char* pixels; Rect0205b1ac* rects; unsigned char count; };
-extern "C" Rect0205b1ac* _Z31FindRectContainingPoint0205b1acP12Rect0205b1acjii(Rect0205b1ac*, unsigned int, int, int);
+Rect0205b1ac* FindRectContainingPoint0205b1ac(Rect0205b1ac*, unsigned int, int, int);
 // USA: func_0205b530
 extern "C" ARM void func_0205b530(Canvas0205b530* self, unsigned char* src, short x, short y) {
     if (!src) return;
@@ -12,7 +12,7 @@ extern "C" ARM void func_0205b530(Canvas0205b530* self, unsigned char* src, shor
     for (short row = 0; row < 8; src += 4, y++, row++) {
         px = x;
         for (short col = 0; col < 8; px++, col++) {
-            Rect0205b1ac* rect = _Z31FindRectContainingPoint0205b1acP12Rect0205b1acjii(rects, count, px, y);
+            Rect0205b1ac* rect = FindRectContainingPoint0205b1ac(rects, count, px, y);
             if (rect) {
                 short rx = px - rect->x;
                 short ry = y - rect->y;

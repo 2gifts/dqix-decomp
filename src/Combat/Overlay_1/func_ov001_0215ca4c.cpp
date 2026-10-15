@@ -9,8 +9,8 @@ extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 struct ScriptArgument { char data[8]; };
 extern "C" const char* func_ov017_021d612c(ScriptArgument*);
 extern "C" int func_ov017_021d60f4(ScriptArgument*);
-extern "C" int _Z28AbsPlus159IfNegative0215ad2ci(int);
-extern "C" void _Z30RegisterCombatantSlot_0200fd38P9GameStateiP10GameObject(GameState*, int, GameObject*);
+int AbsPlus159IfNegative0215ad2c(int);
+void RegisterCombatantSlot_0200fd38(GameState*, int, GameObject*);
 extern SafeAllocator* data_ov001_021658b8[];
 extern const char data_ov001_0216572d[];
 extern const char data_ov001_0216576f[];
@@ -20,7 +20,7 @@ extern "C" ARM int func_ov001_0215ca4c(ScriptArgument* arguments, int count) {
     GameState* game = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     const char* resource = func_ov017_021d612c(arguments++);
-    int slot = _Z28AbsPlus159IfNegative0215ad2ci(func_ov017_021d60f4(arguments++));
+    int slot = AbsPlus159IfNegative0215ad2c(func_ov017_021d60f4(arguments++));
     int id = slot;
     int allocatorIndex = 0;
     if (count >= 3) allocatorIndex = func_ov017_021d60f4(arguments);
@@ -88,7 +88,7 @@ extern "C" ARM int func_ov001_0215ca4c(ScriptArgument* arguments, int count) {
     info.unk_10 = 0;
     object->LoadFromCCHROrCMOTArchive(&info, 0);
     if (locked) BackgroundLoader::RemoveLockGlobal();
-    _Z30RegisterCombatantSlot_0200fd38P9GameStateiP10GameObject(game, id, (GameObject*)object);
+    RegisterCombatantSlot_0200fd38(game, id, (GameObject*)object);
     object->SetScale(266, 266, 266);
     object->MaybeSetBCFGAnimation(0, 0);
     return 1;
