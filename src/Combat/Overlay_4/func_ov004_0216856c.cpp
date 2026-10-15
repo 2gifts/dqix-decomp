@@ -13,7 +13,7 @@ struct Obj02040b2c {
 void* GetGlobalPtr021075f4_0203cf4c(void);
 void* FindEntryPointerByKey0203df78(void* base, int key);
 void PropagateValueToActiveSlot02040b2c(struct Obj02040b2c* self, int value);
-extern "C" int _Z28SetWordCCAndDispatch020415b0P11Obj020415b0i(struct Obj020415b0* obj, const char* name, int flags);
+int SetWordCCAndDispatch020415b0(Obj020415b0*, int, int);
 
 extern char data_ov004_021706f7[];
 
@@ -23,7 +23,7 @@ extern "C" ARM int func_ov004_0216856c(void) {
     if (entry) {
         PropagateValueToActiveSlot02040b2c(entry, 0x3244);
         entry->field18->field_d0 = 0;
-        _Z28SetWordCCAndDispatch020415b0P11Obj020415b0i(entry->field18, data_ov004_021706f7, 0);
+        SetWordCCAndDispatch020415b0(entry->field18, (int)data_ov004_021706f7, 0);
     }
     return 0;
 }

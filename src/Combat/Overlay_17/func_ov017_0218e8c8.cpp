@@ -28,7 +28,7 @@ extern "C" char* func_02012fe4(void);
 int IsIdInRange020981e4(int, int);
 unsigned short GetField6b4_021b8480(void* obj);
 extern "C" unsigned char* func_ov017_021b8478(void* obj);
-extern "C" int _Z27GetByteAtPtrOrZero_02191b58v(OvCtx0218e8c8* ov, int idx);
+int GetByteAtPtrOrZero_02191b58(void*, int);
 unsigned int GetBitsInField8_0203b534(unsigned int* obj, unsigned int mask);
 int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 extern "C" void func_ov017_0218eafc(OvCtx0218e8c8* ov, int idx);
@@ -57,7 +57,7 @@ extern "C" ARM void func_ov017_0218e8c8(OvCtx0218e8c8* ov, int id, int mode) {
     }
 
     for (int i = 0; i < 4; i++) {
-        unsigned char b = _Z27GetByteAtPtrOrZero_02191b58v(ov, i) | 2;
+        unsigned char b = GetByteAtPtrOrZero_02191b58(ov, i) | 2;
         if (mode == 1) {
             if (b != 0) continue;
         } else if (mode == 2 && b == 0) {

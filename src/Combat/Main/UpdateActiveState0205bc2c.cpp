@@ -15,7 +15,7 @@ struct Struct_0205bc2c {
 };
 
 // USA: func_0205bc2c
-ARM int UpdateActiveState0205bc2c(struct Struct_0205bc2c* obj) {
+ARM int UpdateActiveState0205bc2c(Struct_0205bc2c* obj, int) {
     int v1, v2;
 
     if (obj->field0 == 0) return 0;

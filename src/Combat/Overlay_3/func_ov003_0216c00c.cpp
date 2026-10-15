@@ -31,7 +31,7 @@ extern "C" int func_020457e0(char* obj);
 void ReinitController02043204(char* obj);
 void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion*, void*);
-extern "C" void _Z18ResetState02170d38v(char* p);
+void ResetState02170d38(char*);
 class Base021714a0;
 extern "C" int func_ov003_021714a0(Base021714a0* obj);
 extern "C" void func_ov003_02173c40(char* obj);
@@ -331,7 +331,7 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
         *(unsigned char*)(obj + 0x1000 + 0x3ee) = *(unsigned char*)(obj + 0xff0);
         int flag = *(unsigned char*)(obj + 0xf13);
         *(unsigned char*)(obj + 0x1000 + 0x3ed) = *(unsigned char*)(obj + 0xfe0);
-        _Z18ResetState02170d38v(obj + 0x7e0);
+        ResetState02170d38(obj + 0x7e0);
         func_ov003_02173d40(obj + 0x31c + 0xc00);
         void* sig = ((SafeAllocator*)(obj + 0x2d4 + 0x1000))->GetSignedAllocator();
         if (sig != 0) {

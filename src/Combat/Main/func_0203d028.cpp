@@ -220,7 +220,7 @@ struct Obj020415b0 {
     int field_cc;
     int field_d0;
 };
-extern "C" int _Z28SetWordCCAndDispatch020415b0P11Obj020415b0i(struct Obj020415b0* obj, int value, int z);
+int SetWordCCAndDispatch020415b0(Obj020415b0*, int, int);
 
 extern "C" void func_0203db44(void* a, void* b, void* c);
 
@@ -612,7 +612,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     StoreVec3AtField0x50_0203db34((unsigned char*)node->state, 0x4b5c, info->field1c, 0);
                 }
                 if (info->field58 != 0) {
-                    _Z28SetWordCCAndDispatch020415b0P11Obj020415b0i((struct Obj020415b0*)node->state, info->field58, 0);
+                    SetWordCCAndDispatch020415b0((struct Obj020415b0*)node->state, info->field58, 0);
                 }
                 if (info->flag7) {
                     func_0203db44(self, node, sb);

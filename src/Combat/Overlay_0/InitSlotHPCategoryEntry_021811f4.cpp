@@ -15,7 +15,7 @@ struct Entry021811f4 {
 };
 
 // USA: func_ov000_021811f4
-ARM void InitSlotHPCategoryEntry_021811f4(void* obj, int idx, short a2, short a3) {
+ARM void InitSlotHPCategoryEntry_021811f4(void* obj, int idx, short a2, int a3, short, short) {
     struct Entry021811f4* base = *(struct Entry021811f4**)((char*)obj + 0x170);
     struct Entry021811f4* e = base + (idx + 0x24);
     e->field14 = a2 << 0xc;

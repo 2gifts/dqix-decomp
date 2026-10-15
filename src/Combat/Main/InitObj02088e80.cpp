@@ -21,7 +21,7 @@ struct Obj02088e80 {
 };
 
 // USA: func_02088e80
-ARM void InitObj02088e80(struct Obj02088e80* obj) {
+ARM void InitObj02088e80(Obj02088e80* obj, int) {
     int hadBit2 = 0;
     if (obj->f14 & 0x4) hadBit2 = 1;
     obj->f14 = 1;

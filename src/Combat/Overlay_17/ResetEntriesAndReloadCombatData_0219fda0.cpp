@@ -23,8 +23,8 @@ void TailForward02012da4(AllocatorUnion* alloc, void* data);
 void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void Clear12Bytes020a8e88(void* p);
 void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
-extern "C" void _Z33DeserializeElementBuffers020a8e9cP11Obj020a8e9cP13SafeAllocatorPv(
-	void* obj, SafeAllocator* allocator, void* src, unsigned int srcSize);
+struct Obj020a8e9c;
+void DeserializeElementBuffers020a8e9c(Obj020a8e9c*, SafeAllocator*, void*, unsigned int);
 
 extern AllocatorUnion data_02114e20;
 extern const char data_ov017_021d7638[];
@@ -59,8 +59,7 @@ extern "C" ARM void func_ov017_0219fda0(void) {
 	BackgroundLoader::AddLockGlobal();
 	unsigned int fileSize;
 	if (LoadFileIntoMemory(data_ov017_021d7638, data_0211e33c, &fileSize) != NULL) {
-		_Z33DeserializeElementBuffers020a8e9cP11Obj020a8e9cP13SafeAllocatorPv(
-			elem0->buffers, elem0->allocator, data_0211e33c, fileSize);
+		DeserializeElementBuffers020a8e9c((Obj020a8e9c*)elem0->buffers, elem0->allocator, data_0211e33c, fileSize);
 	}
 	BackgroundLoader::RemoveLockGlobal();
 }

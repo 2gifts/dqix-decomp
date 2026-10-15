@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int GetByteAtPtrOrZero_02191b58(void);
+int GetByteAtPtrOrZero_02191b58(void*, int);
 typedef int (*GetByteAtPtrOrZeroFn1)(void*);
 
 // USA: func_ov017_021922ac

@@ -18,7 +18,7 @@ struct Obj020a8e9c {
 };
 
 // USA: func_020a8e9c
-ARM void DeserializeElementBuffers020a8e9c(struct Obj020a8e9c* obj, SafeAllocator* allocator, void* src) {
+ARM void DeserializeElementBuffers020a8e9c(Obj020a8e9c* obj, SafeAllocator* allocator, void* src, unsigned int) {
     if (allocator == 0 || src == 0) return;
     memcpy(obj, src, 4);
     int size1 = GetElementsByteSize020a8f60((struct Obj020a8f60*)obj);

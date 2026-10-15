@@ -26,7 +26,7 @@ extern short data_020ee856[];
 extern short data_020ee83a[];
 
 // USA: func_020e0df8
-ARM void SetupWeightedEntriesAndSubmit_020e0df8(void* obj, int b, int c) {
+ARM void SetupWeightedEntriesAndSubmit_020e0df8(void* obj, int b, int c, int) {
     struct Struct02020520 arr[7];
     InitWeightedEntries02023064(arr, 7, data_020ee82c, data_020ee848, data_020ee856, data_020ee83a);
     struct S_b20c localObj;

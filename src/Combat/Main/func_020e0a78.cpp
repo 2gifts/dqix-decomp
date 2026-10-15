@@ -17,8 +17,8 @@ struct CombatResBuildView {
 void *GetDataPtr02114e04_020d6c00();
 int TestFlags02046708(FlagWord02046708 *flags, unsigned int mask);
 extern "C" void VectorizedInvertedMemcpy(void *dst, void *src, unsigned int size);
-extern "C" void _Z38SetupWeightedEntriesAndSubmit_020e0df8Pvii(void *obj, void *buf, int offset, int dead_r3);
-extern "C" void _Z41SetupWeightedEntriesAndSubmitPair020e0cfcPvii(void *obj, void *buf, int offset, int dead_r3);
+void SetupWeightedEntriesAndSubmit_020e0df8(void*, int, int, int);
+void SetupWeightedEntriesAndSubmitPair020e0cfc(void*, int, int, int);
 extern "C" void func_020e0b4c(void *obj, void *buf, int offset, int dead_r3);
 extern "C" void func_020e0ec4(void *obj, void *buf, int offset, int dead_r3);
 void DelayThenSyncBit0_020c9820();
@@ -38,10 +38,10 @@ extern "C" ARM int func_020e0a78(void *receiver) {
 
     void *buf = state->allocator->Allocate(state->size);
     VectorizedInvertedMemcpy(state->sourceData, buf, state->size);
-    _Z38SetupWeightedEntriesAndSubmit_020e0df8Pvii(receiver, buf, 0, 0x700);
+    SetupWeightedEntriesAndSubmit_020e0df8(receiver, (int)buf, 0, 0x700);
     func_020e0b4c(receiver, buf, 0x700, 0xfc0);
     func_020e0ec4(receiver, buf, 0x16c0, 0x9c0);
-    _Z41SetupWeightedEntriesAndSubmitPair020e0cfcPvii(receiver, buf, 0x2080, 0xd00);
+    SetupWeightedEntriesAndSubmitPair020e0cfc(receiver, (int)buf, 0x2080, 0xd00);
     DelayThenSyncBit0_020c9820();
     CleanInvalidateCacheRange(buf, state->size);
     LoadToSubObjVRAM(buf, 0, state->size);

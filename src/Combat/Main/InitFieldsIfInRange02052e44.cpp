@@ -39,7 +39,7 @@ struct Obj02052e44 {
 };
 
 // USA: func_02052e44
-ARM int InitFieldsIfInRange02052e44(struct Obj02052e44* obj, signed char arg1, int arg2, int arg3) {
+ARM int InitFieldsIfInRange02052e44(Obj02052e44* obj, signed char arg1) {
     signed char idx;
     signed char val;
     GameState* battleStruct;

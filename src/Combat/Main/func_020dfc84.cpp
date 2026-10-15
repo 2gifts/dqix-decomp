@@ -11,7 +11,7 @@ struct Struct020dfc40 {
 
 int ResetHandleState020dfe88(struct Obj020dfe88* obj);
 void ResetStruct020dfc40(struct Struct020dfc40* p);
-extern "C" int _Z34ReplaceBinExtensionWithNat020e05f8PcPKc(char* dst, const char* fmt, short n);
+int ReplaceBinExtensionWithNat020e05f8(char*, char const*, short);
 extern "C" int func_020dfd40(void* self, char* a, char* b);
 
 // USA: func_020dfc84
@@ -27,9 +27,9 @@ extern "C" ARM int func_020dfc84(void* self, void* field_14, char* fmt, char* ex
     p->field_e = 1;
 
     if (n >= 0) {
-        _Z34ReplaceBinExtensionWithNat020e05f8PcPKc(buf + 0x20, fmt, n);
+        ReplaceBinExtensionWithNat020e05f8(buf + 0x20, fmt, n);
         if (ext != 0) {
-            _Z34ReplaceBinExtensionWithNat020e05f8PcPKc(buf, ext, n);
+            ReplaceBinExtensionWithNat020e05f8(buf, ext, n);
             func_020dfd40(self, buf + 0x20, buf);
         } else {
             func_020dfd40(self, buf + 0x20, 0);

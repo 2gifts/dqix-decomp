@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int ReplaceBinExtensionWithNat020e05f8(char* dst, const char* fmt);
+int ReplaceBinExtensionWithNat020e05f8(char* dst, char const* fmt, short);
 typedef int (*ReplaceBin3)(char*, const char*, int);
 
 #if defined(jpn)

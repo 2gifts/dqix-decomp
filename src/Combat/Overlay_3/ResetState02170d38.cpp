@@ -13,7 +13,7 @@ void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 void ClearBitsInWord_0203b4b0(unsigned int* obj, unsigned int mask);
 
 // USA: func_ov003_02170d38
-ARM void ResetState02170d38(void) {
+ARM void ResetState02170d38(char*) {
 	func_0202ae18();
 	func_0202b0f4();
 	*(int*)((char*)func_ov017_0218b5b0() + kRegion4494) = 0;

@@ -25,7 +25,7 @@ struct SetIntIntShortAt0xcStruct;
 void SetIntIntShortAt0xc_02066ce0(struct SetIntIntShortAt0xcStruct* s, int a, int b, short c);
 void CallFunc0205c96cIfMode6AndFlag_02044530(char* obj, int flag);
 
-extern "C" void _Z15Forward02044830v(void* obj, int* lineX, int* lineY);
+void Forward02044830(void*, int*, int*);
 
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, int c, int d);
 extern "C" void* __clear(void* dst, int count);
@@ -196,7 +196,7 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
     }
 
     if (obj->customLayout) {
-        _Z15Forward02044830v(obj, lineX, lineY);
+        Forward02044830(obj, lineX, lineY);
         for (int i = 0; i < 0x10; i++) {
             lineY[i] = obj->lineY;
         }

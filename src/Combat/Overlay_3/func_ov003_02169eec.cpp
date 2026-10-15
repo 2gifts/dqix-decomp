@@ -43,7 +43,7 @@ void GetFourSubstructPointers_0204f138(unsigned char* elem, unsigned char** a, u
                               unsigned char** d);
 void SelectCoordsByFlag0x24_02012a84(unsigned char* input, int* x, int* y);
 void SetFieldAt0x30_0205bc24(void* obj, int v);
-extern "C" int _Z25UpdateActiveState0205bc2cP15Struct_0205bc2c(Struct_0205bc2c* obj, int v);
+int UpdateActiveState0205bc2c(Struct_0205bc2c*, int);
 int GetScaledSumIfActive0205bd04(Struct_0205bd04* obj);
 int GetField0_0205bafc(void* obj);
 void ClearFlagFields_02169658(void* self);
@@ -219,7 +219,7 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                 SetFieldAt0x30_0205bc24(self->node, func_ov003_02169674(self, ax, ay, &self->rectA));
                 if (func_ov003_02169674(self, ax, ay, &self->rectA) >= 0) {
                     r7 = 1;
-                    if (_Z25UpdateActiveState0205bc2cP15Struct_0205bc2c((Struct_0205bc2c*)self->node, sb) != 0) {
+                    if (UpdateActiveState0205bc2c((Struct_0205bc2c*)self->node, sb) != 0) {
                         self->b59d = r7;
                         self->code = 2;
                         self->b59e = 0x14;

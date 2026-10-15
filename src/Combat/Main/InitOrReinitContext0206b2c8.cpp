@@ -22,7 +22,7 @@ struct Ctx0206b2c8 {
 };
 
 // USA: func_0206b2c8
-ARM void InitOrReinitContext0206b2c8(struct Ctx0206b2c8* obj) {
+ARM void InitOrReinitContext0206b2c8(Ctx0206b2c8* obj, int, void*) {
     void* r = func_0206ac94(obj);
     if (r == NULL) {
         ReinitController02043204((char*)obj);

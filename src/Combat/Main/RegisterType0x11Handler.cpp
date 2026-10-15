@@ -4,7 +4,7 @@
 
 void InitializeInterProcessorCommunication(void);
 void SetArm9IPCCommandHandler(int, IPCCommandHandler);
-void DispatchType0x11InitOnce_020d1144(int, int);
+void DispatchType0x11InitOnce_020d1144(unsigned int, unsigned int, unsigned int);
 
 struct InitGuard020d1118 { int done; void* callback; };
 extern InitGuard020d1118 data_02112140;

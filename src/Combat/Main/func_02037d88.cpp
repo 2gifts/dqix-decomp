@@ -41,7 +41,7 @@ void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 
 struct Obj02052e44;
-extern "C" int _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii(struct Obj02052e44* obj, signed char arg1);
+int InitFieldsIfInRange02052e44(Obj02052e44*, signed char);
 
 struct Obj02052f44;
 int FilterBytesAndInit02052f44(struct Obj02052f44* obj, signed char* src, int len);
@@ -184,15 +184,15 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
             int result = 0;
             if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x40)) {
                 signed char val = ptr2a04[0x2c8d];
-                result = _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii((struct Obj02052e44*)obj, val);
+                result = InitFieldsIfInRange02052e44((struct Obj02052e44*)obj, val);
                 obj->field260 = 0;
             } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x10)) {
                 signed char val = ptr2a04[0x2c8f];
-                result = _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii((struct Obj02052e44*)obj, val);
+                result = InitFieldsIfInRange02052e44((struct Obj02052e44*)obj, val);
                 obj->field260 = 2;
             } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x20)) {
                 signed char val = ptr2a04[0x2c8e];
-                result = _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii((struct Obj02052e44*)obj, val);
+                result = InitFieldsIfInRange02052e44((struct Obj02052e44*)obj, val);
                 obj->field260 = 1;
             } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80)) {
                 result = FilterBytesAndInit02052f44((struct Obj02052f44*)obj, (signed char*)(ptr2a04 + 0x2c90), 4);

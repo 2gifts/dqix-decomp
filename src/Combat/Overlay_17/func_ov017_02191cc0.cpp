@@ -4,7 +4,7 @@
 struct FlagWord02046708;
 FlagWord02046708* GetDataPtr02114e04_020d6c00();
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
-extern "C" int _Z27GetByteAtPtrOrZero_02191b58v(unsigned char* obj, int idx);
+int GetByteAtPtrOrZero_02191b58(void*, int);
 void SetupAndDispatchCombatant_02191e5c(int, int, short, unsigned char, unsigned short);
 void DispatchOrSetupCombatant_02191f4c(int, int);
 extern "C" int _ZNK8Object3D10GetField06Ev(GameObject* obj);
@@ -26,7 +26,7 @@ extern "C" ARM void func_ov017_02191cc0(unsigned char* obj) {
     unsigned short field06 = _ZNK8Object3D10GetField06Ev(protagonist);
 
     for (int i = 0; i <= 199; i++) {
-        int flags = _Z27GetByteAtPtrOrZero_02191b58v(obj, i);
+        int flags = GetByteAtPtrOrZero_02191b58(obj, i);
         if (!(flags & 1)) continue;
         GameObject* object = battle->GetGameObjectByIndex(i);
         if (object != 0 && field06 != _ZNK8Object3D10GetField06Ev(object)) continue;

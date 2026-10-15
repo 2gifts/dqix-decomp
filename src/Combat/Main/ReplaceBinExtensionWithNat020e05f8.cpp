@@ -9,7 +9,7 @@ extern const char data_020f2b6c[];
 extern const char data_020f2b71[];
 
 // USA: func_020e05f8
-ARM int ReplaceBinExtensionWithNat020e05f8(char* dst, const char* fmt) {
+ARM int ReplaceBinExtensionWithNat020e05f8(char* dst, char const* fmt, short) {
     if (!dst || !fmt) return 0;
     sprintf(dst, fmt);
     char* p = strstr(dst, data_020f2b6c);

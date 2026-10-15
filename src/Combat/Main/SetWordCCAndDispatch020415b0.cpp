@@ -8,7 +8,7 @@ struct Obj020415b0 {
 };
 
 // USA: func_020415b0
-ARM int SetWordCCAndDispatch020415b0(struct Obj020415b0* obj, int value) {
+ARM int SetWordCCAndDispatch020415b0(Obj020415b0* obj, int value, int) {
     obj->field_cc = value;
     return ((Object3D*)obj)->MaybeSetRegularAnimation((char const*)value, obj->field_d0);
 }

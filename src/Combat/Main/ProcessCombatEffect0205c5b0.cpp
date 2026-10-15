@@ -11,7 +11,7 @@ void ResetState0205bf3c(struct Struct_0205bf3c*);
 struct Struct_0205bc10;
 void ClearBytes0x4cTo0x4e(struct Struct_0205bc10*);
 struct Struct_0205bc2c;
-int UpdateActiveState0205bc2c(struct Struct_0205bc2c*);
+int UpdateActiveState0205bc2c(Struct_0205bc2c*, int);
 struct Struct_0205bb84;
 int ComputeScaledSum0205bb84(struct Struct_0205bb84*);
 extern "C" int func_0205bf58(void*, void*);
