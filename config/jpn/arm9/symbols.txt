@@ -7468,7 +7468,7 @@ data_020fdd44 kind:bss addr:0x020fdaac
 data_020fe6fc kind:bss addr:0x020fe6fc
 data_020fe9ac kind:bss addr:0x020fe704
 data_020fe9cc kind:bss addr:0x020fe724
-data_020fefcc kind:bss addr:0x020fed24
+_ZZ14GetTurnCountervE1s kind:bss addr:0x020fed24
 data_020fefd4 kind:bss addr:0x020fed2c
 data_020fefe0 kind:bss addr:0x020fed38
 data_020fefec kind:bss addr:0x020fed44
