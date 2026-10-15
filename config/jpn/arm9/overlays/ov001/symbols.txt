@@ -244,7 +244,7 @@ _Z34EnqueueContextEventType21_0215c858Pv kind:function(arm,size=0x4c) addr:0x021
 func_ov001_0215c8a4 kind:function(arm,size=0x5c) addr:0x0215df28
 _Z42EnqueueScaledVec3EventTransformed_0215c900Pv kind:function(arm,size=0x94) addr:0x0215df84
 func_ov001_0215c994 kind:function(arm,size=0xb8) addr:0x0215e018
-func_ov001_0215e0d0 kind:function(arm,size=0x290) addr:0x0215e0d0
+func_ov001_0215ca4c kind:function(arm,size=0x290) addr:0x0215e0d0
 _Z32UpdateFlagFromNodeState_0215ccdcPv kind:function(arm,size=0x74) addr:0x0215e360
 _Z34AttachTableEntriesByIndex_0215cd50Pvi kind:function(arm,size=0xa8) addr:0x0215e3d4
 _Z33UnlinkNodeFromTableState_0215cdf8Pv kind:function(arm,size=0x54) addr:0x0215e47c
@@ -552,7 +552,7 @@ data_ov001_02165752 kind:data(any) addr:0x02166d16
 data_ov001_02165758 kind:data(any) addr:0x02166d1c
 data_ov001_02165762 kind:data(any) addr:0x02166d26
 data_ov001_02165769 kind:data(any) addr:0x02166d2d
-data_ov001_02166d33 kind:data(any) addr:0x02166d33
+data_ov001_0216576f kind:data(any) addr:0x02166d33
 data_ov001_02165775 kind:data(any) addr:0x02166d39
 data_ov001_02165791 kind:data(any) addr:0x02166d55
 data_ov001_02165798 kind:data(any) addr:0x02166d5c

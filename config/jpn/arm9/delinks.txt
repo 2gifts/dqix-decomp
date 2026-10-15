@@ -18555,3 +18555,19 @@ src/Combat/Main/FormatAndDispatchWeightedEntries_02023218.cpp:
 src/Combat/Main/func_020aff0c.cpp:
     complete
     .text start:0x020b19d8 end:0x020b1b28
+
+src/Combat/Main/_Z26BinarySearchRecord0209a004Pvi.cpp:
+    complete
+    .text start:0x0209bd38 end:0x0209bdbc
+
+src/Combat/Main/func_0203f98c.cpp:
+    complete
+    .text start:0x0203fe88 end:0x02040124
+
+src/Combat/Main/func_0203a0b4.cpp:
+    complete
+    .text start:0x02039b0c end:0x02039ec4
+
+src/Combat/Main/func_02076080.cpp:
+    complete
+    .text start:0x02076f9c end:0x02077654
